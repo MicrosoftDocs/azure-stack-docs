@@ -18,12 +18,11 @@ We recommend setting up a cluster witness for clusters with two, three, or four 
 
 To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
 
-- Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage. For details, see [Recommended firewall URLs](../concepts/firewall-requirements.md#recommended-firewall-urls).
-
 ## Before you begin
 
 Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. See the following articles for more information:
 
+- Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage. For details, see [Recommended firewall URLs](../concepts/firewall-requirements.md#recommended-firewall-urls).
 - [Create an Azure account](/dotnet/azure/create-azure-account)
 - If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription)
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
@@ -67,7 +66,7 @@ This section describes how to create an Azure storage account. This account is u
 
 When you create an Azure storage account, the process automatically generates two access keys, a primary key (key1) and a secondary key (key2). For the first time creation of a cloud witness, **key1** is used. The endpoint URL is also generated automatically.
 
-An Azure cloud witness uses a blob file for storage, with an endpoint generated of the form *storage_account_name.blob.core.windows.net* as the endpoint. 
+An Azure cloud witness uses a blob file for storage, with an endpoint generated of the form *storage_account_name.blob.core.windows.net* as the endpoint.
 
 > [!NOTE]  
 > An Azure cloud witness uses HTTPS (default port 443) to establish communication with the Azure blob service. Ensure that the HTTPS port is accessible.
@@ -130,6 +129,10 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 ```
 
 ## Next steps
+
+To perform the next management task related to this article, see:
+> [!div class="nextstepaction"]
+> [Connect Azure Stack HCI to Azure](..\deploy\register-with-azure.md)
 
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 

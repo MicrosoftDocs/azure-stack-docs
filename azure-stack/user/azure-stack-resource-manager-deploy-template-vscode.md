@@ -1,10 +1,10 @@
 ---
 title: Deploy with Visual Studio Code to Azure Stack Hub 
 description: Create an Azure Resource Manager template in Visual Studio Code, and use the deployment schema to prepare a template compatible with my version of Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 ms.topic: article
 ms.date: 6/1/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 6/1/2021
 
@@ -27,6 +27,7 @@ In this article, you will deploy a Windows virtual machine.
 To understand the concepts associated with deploying and managing your Azure solutions in Azure Stack Hub, see [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md).
 
 ### API Profiles
+
 To understand the concepts associated with coordinating resource providers on Azure Stack Hub see [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md).
 
 ### The deployment schema
@@ -37,7 +38,7 @@ The Azure Stack Hub deployment schema supports hybrid profiles through Azure Res
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Access to Azure Stack Hub
-- [Azure Stack Hub PowerShell installed](../operator/powershell-install-az-module.md?toc=%2Fazure-stack%2Fuser%2FTOC.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) on a machine that reaches the management endpoints
+- [Azure Stack Hub PowerShell installed](../operator/powershell-install-az-module.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json) on a machine that reaches the management endpoints
 
 ## Install Resource Manager Tools extension
 
@@ -50,20 +51,24 @@ To install the Resource Manager Tools extension, use these steps:
 
 ## Get a template
 
-Instead of creating a template from scratch, you open a template from the AzureStack-QuickStart-Templates (https://github.com/Azure/AzureStack-QuickStart-Templates). AzureStack-QuickStart-Templates is a repository for Resource Manager templates that deploy resources to Azure Stack Hub. 
+Instead of creating a template from scratch, you open a template from the [`AzureStack-QuickStart-Templates`](https://github.com/Azure/AzureStack-QuickStart-Templates). AzureStack-QuickStart-Templates is a repository for Resource Manager templates that deploy resources to Azure Stack Hub.
 
 The template in this article called `101-vm-windows-create`. The template defines a basic deployment of a Windows VM to Azure Stack Hub.  This template also deploys a virtual network (with DNS), network security group, and a network interface.
 
 1. Open Visual Studio Code and navigate to a working folder on your machine.
 2. Open the Git bash terminal in Visual Studio Code.
 3. Run the following command to retrieve the Azure Stack Hub Quickstart repository.
-    ```bash  
-    Git clone https://github.com/Azure/AzureStack-QuickStart-Templates.git
+
+    ```bash
+    git clone https://github.com/Azure/AzureStack-QuickStart-Templates.git
     ```
+
 4. Open the directory containing the repository.
-    ```bash  
-    CD AzureStack-QuickStart-Templates
+
+    ```bash
+    cd AzureStack-QuickStart-Templates
     ```
+
 5. Select **Open** to open the file at `/101-vm-windows-create/azuredeploy.json` in the repository.
 6. Save the file into your own workspace, or if you have created a branch of the repository you can work in place.
 7. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.

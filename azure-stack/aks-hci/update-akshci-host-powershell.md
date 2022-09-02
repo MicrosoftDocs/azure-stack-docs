@@ -20,7 +20,7 @@ Updates to the Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Ser
 All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI and Windows Server availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you successfully remove the resources, the _old_ node is decommissioned and removed from the cluster.
 
 > [!Note]  
-> Microsoft recommends upgrading your AKS on Azure Stack HCI and Windows Server clusters within 30 days of a new release. If you do not update within this window, you have up to 90 days from your last upgrade before internal certificates and tokens expire. Once expired, the cluster will still be functional, however, you will need to call Microsoft Support to upgrade. Upon rebooting the cluster after the 90-day period, it will continue to remain in a non-functional state. For more information about internal certificates and tokens, visit  [Certificates and tokens](certificates-and-tokens.md).
+> Microsoft recommends upgrading your AKS on Azure Stack HCI and Windows Server clusters within 30 days of a new release. If you do not update within this window, you have up to 90 days from your last upgrade before internal certificates and tokens expire. Once expired, the cluster will still be functional, however, you will need to call Microsoft Support to upgrade. Upon rebooting the cluster after the 90-day period, it will continue to remain in a non-functional state. For more information about internal certificates and tokens, visit  [Certificates and tokens](/azure-stack/aks-hci/certificates-update-after-sixty-days).
 
 ## Update the AKS on Azure Stack HCI and Windows Server host
 

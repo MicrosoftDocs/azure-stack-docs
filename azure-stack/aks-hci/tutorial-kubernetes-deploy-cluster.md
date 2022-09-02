@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI or Windows Server cluster and use kubect1 so I can connect to the Kubernetes master node.
+# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI and Windows Server cluster and use kubect1 so I can connect to the Kubernetes master node.
 # Keyword: deploy a workload cluster
 
 ---

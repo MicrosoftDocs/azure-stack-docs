@@ -31,10 +31,10 @@ features. You can find out more information in the [Overview](container-registry
 | az acr import | Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push. |
 | az acr list | Lists all the container registries under the current subscription. |
 | az acr login | Log in to an Azure Container Registry through the Docker CLI. |
+| az acr manifest list-metadata | List manifests of a repository in an Azure Container Registry. |
 | az acr repository delete | Delete a repository or image in an Azure Container Registry. |
 | az acr repository list | List repositories in an Azure Container Registry. |
 | az acr repository show | Get the attributes of a repository or image in an Azure Container Registry. |
-| az acr repository show-manifests | Show manifests of a repository in an Azure Container Registry. |
 | az acr repository show-tags | Show tags for a repository in an Azure Container Registry. |
 | az acr repository untag | Untag an image in an Azure Container Registry. |
 | az acr repository update | Update the attributes of a repository or image in an Azure Container Registry. |

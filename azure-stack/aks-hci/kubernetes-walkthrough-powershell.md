@@ -3,61 +3,34 @@ title: Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 05/13/2022
+ms.date: 07/11/2022
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
 ms.custom: mode-api, kr2b-contr-experiment
 
-# Intent: As an IT Pro, I want to use Windows PowerShell to create AKS on Azure Stack HCI and Windows Server.
+# Intent: As an IT Pro, I want to use Windows PowerShell to create an AKS on Azure Stack HCI and Windows Server cluster.
 # Keyword: AKS setup PowerShell 
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and Windows Server and deploy a workload cluster using PowerShell
 
-> Applies to: Azure Stack HCI on Windows
+> Applies to: Azure Stack HCI or Windows Server Datacenter
 
 In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS) host. You will create AKS on Azure Stack HCI and Windows Server clusters using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
 
 > [!NOTE]
-> - If you have pre-staged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
+> - If you have pre-staged cluster service objects and DNS records, see [Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 > - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](set-proxy-settings.md).
 
 ## Before you begin
 
 - Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 - Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
-- Make sure you have **at least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI and Windows Server: 
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
-   - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role.
-   - Your subscription should specify an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
-- Use **at least one** of the following:
-   - Azure Stack HCI on Windows Server cluster
-   - Windows Server 2019/2022 Datacenter failover cluster
-   > [!NOTE]
-   > **We recommend having an Azure Stack HCI on Windows Server cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 ## Install the AksHci PowerShell module
-
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
-### On all nodes in your Azure Stack HCI cluster
-
-Run the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
-
-```powershell  
-Install-PackageProvider -Name NuGet -Force 
-Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
-```
-
-> [!IMPORTANT]  
-> **You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all PowerShell windows.
-
-Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
-
-```powershell
-Install-Module -Name AksHci -Repository PSGallery
-```
-### Register the resource provider to your subscription
+## Register the resource provider to your subscription
 
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI and Windows Server registration. To do that, run the following PowerShell commands.
 
@@ -90,7 +63,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install AKS on Azure Stack HCI and Windows Server. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
-Run the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
+Run the following command on all nodes in your Azure Stack HCI and Windows Server cluster.
 
 ```powershell
 Initialize-AksHciNode
@@ -98,7 +71,7 @@ Initialize-AksHciNode
 
 ## Step 2: Create a virtual network
 
-Run the following commands in step 2 on any one node in your Azure Stack HCI on Windows Server cluster.
+Run the following commands in step 2 on any one node in your Azure Stack HCI and Windows Server cluster.
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
@@ -126,7 +99,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 ## Step 3: Configure your deployment
 
-Run the following commands in step 3 on any one node in your Azure Stack HCI on Windows Server cluster.
+Run the following commands in step 3 on any one node in your Azure Stack HCI and Windows Server cluster.
 
 To create the configuration settings for the AKS host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -140,6 +113,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 > The values given in this example command will need to be customized for your environment.
 
 ## Step 4: Log in to Azure and configure registration settings
+### Option 1: Using your Azure AD account if you have "Owner" permissions
 
 Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure regions to proceed.
 
@@ -147,9 +121,12 @@ Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
 ```
 
+### Option 2: Using an Azure service principal
+If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. To learn more about how to use a service principal, visit [register AKS on Azure Stack HCI and Windows Server using a service principal](/reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal)
+
 ## Step 5: Start a new deployment
 
-Run the following command in step 5 on any one node in your Azure Stack HCI on Windows Server cluster.
+Run the following command in step 5 on any one node in your Azure Stack HCI or Windows Server cluster.
 
 After you've configured your deployment, you must start it in order to install the AKS on Azure Stack HCI and Windows Server agents/services and the AKS host. To begin deployment, run the following command.
 
@@ -164,7 +141,9 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your AKS host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, visit [Use node pools in AKS on Azure Stack HCI and Windows Server](use-node-pools.md).
+After installing your AKS host, you can deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. 
+
+To read more information about node pools, visit [Use node pools in AKS on Azure Stack HCI and Windows Server](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
@@ -219,22 +198,24 @@ Enable-AksHciArcConnection -name mycluster
 
 ## Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
+If you need to scale your cluster up or down, you can change the number of control plane nodes by using the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command. To change the number of Linux or Windows worker nodes in your node pool, use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
 
-To scale control plane nodes, run the following command.
+To scale control plane nodes, run the following command:
 
 ```powershell
 Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 ```
 
-To scale the worker nodes in your node pool, run the following command.
+To scale the worker nodes in your node pool, run the following command:
 
 ```powershell
 Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ```
 
 > [!NOTE]
-> In previous versions of AKS on Azure Stack HCI and Windows Server, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. AKS on Azure Stack HCI and Windows Server is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
+> In previous versions of AKS on Azure Stack HCI and Windows Server, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. Now that AKS on Azure Stack HCI and Windows Server is introducing node pools in workload clusters, you can only use this command to scale worker nodes -- **if** your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster).
+
+To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
 
 ## Access your clusters using kubectl
 

@@ -1,11 +1,11 @@
 ---
 title: Back up your storage accounts on Azure Stack Hub 
 description: Learn how to back up your storage accounts on Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 12/2/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
@@ -52,10 +52,11 @@ You will need to the Source Storage Account URL and SAS Token. For instruction o
 You will need a place to run AzCopy and to store data when copying from your source and then writing to your target Azure Stack Hub. This is an intermediate server in your source Azure Stack Hub.
 
 You can create a Linux or Windows server as your intermediate server. The server will need to have enough space to store all of the objects in the source Storage account containers.
-- For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).  
-- For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).  
 
-Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md?toc=%2FFazure-stack%2Fuser%2FTOC.json&bc=%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=%2FFazure-stack%2Fuser%2FTOC.json&bc=%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
+- For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).
+- For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).
+
+Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json).
 
 ## Set up backup for storage accounts
 
@@ -99,22 +100,20 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
 
     - For a Linux (Ubuntu) server:
 
-    ```bash  
+    ```bash
     schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\\&lt;script name>.bat
     ```
 
-    | Parameter | Note | 
+    | Parameter | Note |
     | ---- | ---- |
     | /SC | Use a minute schedule. |
     | /MO | An interval of *XX* minutes. |
     | /TN | The task name. |
     | /TR | The path to the `script.bat` file. |
 
-
     - For a Windows server:
 
     For information on using the Windows Task schedule, see [Task Scheduler for developers](/windows/win32/taskschd/task-scheduler-start-page)
-    
 
 ## Use your storage account in a disaster
 

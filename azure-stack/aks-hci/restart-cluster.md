@@ -1,9 +1,9 @@
 ---
-title: Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI 
-description: Learn how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack
+title: Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+description: Learn how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI
 author: sethmanheim
 ms.topic: article
-ms.date: 05/17/2022
+ms.date: 06/28/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -13,15 +13,15 @@ ms.reviewer: jeguan
 
 ---
 
-# Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI
+# Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 After deploying Azure Kubernetes Service on Azure Stack HCI, you can restart, remove, or reinstall your deployment, if necessary.
 
 ## Restart Azure Kubernetes Service on Azure Stack HCI
 
-Restarting Azure Kubernetes Service on Azure Stack HCI will remove all of your Kubernetes clusters (if any) and the Azure Kubernetes Service host. The restart process will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. Then, it will go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and the downloaded VHDX images are preserved. The `Set-AksHciConfig` command will remove the current VMs and create new ones.
+Restarting Azure Kubernetes Service on Azure Stack HCI and Windows Server will remove all of your Kubernetes clusters (if any) and the Azure Kubernetes Service host. The restart process will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. Then, it will go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and the downloaded VHDX images are preserved. The `Set-AksHciConfig` command will remove the current VMs and create new ones.
 
-To restart Azure Kubernetes Service on Azure Stack HCI with the same configuration settings, run the following command.
+To restart Azure Kubernetes Service on Azure Stack HCI with the same configuration settings, run the following command:
 
 ```powershell
 Restart-AksHci

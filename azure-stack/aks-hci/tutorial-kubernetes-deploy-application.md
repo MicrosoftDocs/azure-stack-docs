@@ -3,7 +3,7 @@ title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Se
 description: In this Azure Kubernetes Service on Azure Stack HCI and Windows Server tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 05/11/2022
+ms.date: 06/06/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI on Windows Server
+# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can build and deploy your own apps and services into a Kubernetes cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
 
@@ -116,7 +116,7 @@ To see the application in action, open a web browser to the external IP address 
 
 :::image type="content" source="./media/azure-vote.png" alt-text="Screenshot showing the container image Azure Voting App running in an AKS cluster opened in a local web browser" lightbox="./media/azure-vote.png":::
 
-If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json).
+If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=/azure/container-registry/breadcrumb/toc.json&toc=/azure/container-registry/toc.json).
 
 ## Next steps
 

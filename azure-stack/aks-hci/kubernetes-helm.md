@@ -4,7 +4,7 @@ description: Learn how to use the Helm packaging tool to deploy containers on Az
 services: container-service
 author: sethmanheim
 ms.topic: article
-ms.date: 05/19/2022
+ms.date: 06/28/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -14,7 +14,7 @@ ms.reviewer: scooley
 # Keyword: Helm charts deploy Helm
 ---
 
-# Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI
+# Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 [Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 

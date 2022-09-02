@@ -1,7 +1,7 @@
 ---
 title: App Service recovery on Azure Stack Hub 
 description: Learn about disaster recovery for App Service on Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 03/21/2019

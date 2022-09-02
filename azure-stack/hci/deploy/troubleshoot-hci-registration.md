@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 06/06/2022
+ms.date: 07/27/2022
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -224,11 +224,11 @@ Performing a census sync before node synchronization can result in the sync bein
 
 4. After the repair operation, the node returns to a connected state.
 
-## Stale Arc agent and extension causes registration failure
+## Registration completes successfully but Azure Arc connection in portal says Not Installed
 
 **Failure state explanation**:
 
-This happens in scenarios in which one or all of the HCI cluster nodes are already Arc-enabled before HCI registration. This can happen if you try to onboard Arc-for-Server manually before the `Register-AzStackHCI` cmdlet is executed, or if the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
+This happens in scenarios in which one or all of the HCI cluster nodes were Arc-enabled manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow. It can also happen in scenarios in which the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
 
 With the cluster in this state, when you attempt to register HCI with Azure, the registration completes successfully. However, in the Azure portal, the **Azure Arc** connection displays **Not Installed**.
 
@@ -250,7 +250,13 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
    .\azcmagent.exe disconnect --force-local-only
    ```
 
-3. Run the repair registration cmdlet:
+3. Make sure you are running the latest **Az.StackHCI** PS module:
+
+   ```powershell
+   Install-Module -Name Az.StackHCI 
+   ```
+
+4. Run the repair registration cmdlet:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration

@@ -1,9 +1,9 @@
 ---
 title: Deploy MetalLB for load balancing in Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to deploy MetalLB for load balancing in Azure Kubernetes Service on Azure Stack HCI.
+description: Learn how to deploy MetalLB for load balancing in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/11/2022
+ms.date: 06/27/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane

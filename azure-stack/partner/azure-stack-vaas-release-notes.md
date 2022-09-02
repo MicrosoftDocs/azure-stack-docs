@@ -126,7 +126,6 @@ This article has the release notes for Azure Stack Hub validation as a service.
     1. Restart the agent and rerun the test.
   - Occasionally, Cloud Simulation Engine will report failures with \*vm tests. Contact vaashelp@microsoft.com before attempting a rerun.
 
-
 2019 October 29
 
 - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow has been updated.
@@ -143,7 +142,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 - Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Hub Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the tests be scheduled in the following order – Monthly Azure Stack Hub Update Verification test, OEM Extension Package Verification test, and finally Cloud Simulation Engine.
 - VaaS Agent Update: The updated VaaS Agent now uses the Azure Stack Hub Cloud Admin credentials to query the stamp to get the stamp information in order to autopopulate the workflows.
 
-    This update requires all of the agents to be updated and restarted. See these instructions on how to update the VaaS Agent: https://docs.microsoft.com/azure-stack/partner/azure-stack-vaas-local-agent
+  This update requires all of the agents to be updated and restarted. See these instructions on [how to update the VaaS Agent](/azure-stack/partner/azure-stack-vaas-local-agent).
 - VaaS Portal UI Update: The agent selection table has been moved above the test scheduling pane to facilitate testing.
 
     When scheduling a job, it's no longer requires to enter stamp information if the VaaS agents have been correctly updated.
@@ -155,7 +154,6 @@ This article has the release notes for Azure Stack Hub validation as a service.
 - Cloud Simulation Engine in the Package Validation workflow has been updated to expedite validation time:  
     Run time: Reduced to 6 hours  
     Version: 5.1.13.0 -> 5.1.22.0  
-
 
 2019 January 17
 
@@ -216,6 +214,7 @@ If you're running the Azure Stack Hub Monthly Update Verification workflow and t
                               -Region $Region `
                               -CloudAdminCredentials $CloudAdminCreds
     ```
+
     > [!NOTE]
     > The `$CloudAdminCreds` required by the script are for the Azure Stack Hub instance being validated. They're not the Azure Active Directory credentials used by the VaaS tenant.
 

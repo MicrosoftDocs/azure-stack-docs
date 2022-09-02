@@ -2,10 +2,10 @@
 title: Deployment network traffic 
 titleSuffix: Azure Stack Hub
 description: Learn about network traffic flow during Azure Stack Hub deployment.
-author: BryanLa
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
 
