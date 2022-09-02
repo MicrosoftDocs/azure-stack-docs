@@ -62,20 +62,22 @@ Use this procedure to deploy a multi-server cluster using PowerShell.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID and the Azure Cloud name and run the following PowerShell commands from an administrative prompt:
+1. Run PowerShell as administrator.
+
+1. Set the following parameters: 
 
     ```powershell
     $SubscriptionID="Azure_subscription_ID"
-    $AzureCred=get-credential
+    $AzureCred=Get-Credential
     $AzureCloud="AzureCloud_name"
-    $DomainAdminCred=get-credential
-    $LocalAdminCred=get-credential
+    $DomainAdminCred=Get-Credential
+    $LocalAdminCred=Get-Credential
     ```
 
 1. Set up the deployment tool:
 
     ```powershell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred
+    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred -LocalAdminCredential $LocalAdminCred -DomainAdminCredential $DomainAdminCred
     ```
 
 1. Change the directory to *C:\clouddeployment\setup*.
@@ -83,7 +85,7 @@ Use this procedure to deploy a multi-server cluster using PowerShell.
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\InstallAzureStack-AsZ.ps1 Invoke-clouddeployment -JSONFilePath <path_to_config_file.json>
+    Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
     ```
 
     > [!NOTE]
@@ -122,22 +124,24 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
 
 1. Sign in to the first (staging) server using local administrative credentials.
 
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
+1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the *C:\* drive.
 
-1. Enter your Azure subscription ID and the Azure Cloud name and run the following PowerShell commands from an administrative prompt:
+1. Run PowerShell as administrator.
+
+1. Set the following parameters:
 
     ```powershell
     $SubscriptionID="Azure_subscription_ID"
-    $AzureCred=get-credential
+    $AzureCred=Get-Credential
     $AzureCloud="AzureCloud_name"
-    $DomainAdminCred=get-credential
-    $LocalAdminCred=get-credential
+    $DomainAdminCred=Get-Credential
+    $LocalAdminCred=Get-Credential
     ```
 
 1. Set up the deployment tool:
 
     ```powershell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred
+    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred -LocalAdminCredential $LocalAdminCred -DomainAdminCredential $DomainAdminCred
     ```
 
 1. Change the directory to *C:\clouddeployment\setup*.
@@ -145,7 +149,7 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\InstallAzureStack-AsZ.ps1 Invoke-clouddeployment -JSONFilePath <path_to_config_file.json>
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
     ```
 
     > [!NOTE]
