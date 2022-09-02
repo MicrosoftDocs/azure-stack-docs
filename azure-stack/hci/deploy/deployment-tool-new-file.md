@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) interactively
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) interactively using a new configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 09/02/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -67,8 +67,6 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
     This step takes several minutes to complete.
 
-    > [!NOTE]
-    > If you manually extracted deployment content from the ZIP file previously, you must run `BootstrapCloudDeploymentTool-Internal.ps1` instead.
 
 ## Run the deployment tool
 
@@ -130,13 +128,15 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
-1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details.
+1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
+
+    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to  difference in the overall speed. 
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png" alt-text="Screenshot of the Deployment step 2.1 network adapters page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png":::
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported. 
+    When defining the network intents, for this preview release, only the following two sets of network intents are supported.
 
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
@@ -186,9 +186,12 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time. 
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
+
+    > [!NOTE]
+    > When you start the deployment, the page may not show actual progress even after the staging server has restarted. Refresh the page once using the browser refresh and then the page will automatically refresh for the remainder of the deployment.
 
 ## Next steps
 
