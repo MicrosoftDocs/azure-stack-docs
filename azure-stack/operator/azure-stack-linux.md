@@ -32,11 +32,12 @@ Wherever possible, download the images available through marketplace management.
 To get support for the Azure Linux Agent and extensions in Azure Stack Hub, the [Linux Agent](https://github.com/Azure/WALinuxAgent) version on the Linux virtual machine (VM) must be later than or equal to version 2.2.10 and Azure Stack Hub must run a build that is within two releases of the current release. For information about Azure Stack Hub updates, see [Azure Stack Hub release notes](./release-notes.md).
 
 As of July 2020, the minimum supported version is 2.2.41 for the Linux Agent. If the Linux Agent version is earlier than version 2.2.10, you must update the VM by using the distribution package manager and by enabling auto-update.
- - If the distribution vendor doesn't have the minimum Linux Agent version in the package repositories, the system is still in support. If the Linux Agent version is later than version 2.1.7, you must enable the Agent auto-update feature. It will retrieve the latest version of code for extension handling.
- - If the Linux Agent version is earlier than version 2.2.10, or if the Linux system is out-of-support, we may require you to update the agent before getting support.
- - If the Linux Agent version is customized by a publisher, Microsoft may direct you to the publisher for support agent or extension-specific support because of the customization. To upgrade the Linux Agent, see [How to update the Azure Linux Agent on a VM](/azure/virtual-machines/extensions/update-linux-agent).
 
-###  Check your Linux Agent Version
+- If the distribution vendor doesn't have the minimum Linux Agent version in the package repositories, the system is still in support. If the Linux Agent version is later than version 2.1.7, you must enable the Agent auto-update feature. It will retrieve the latest version of code for extension handling.
+- If the Linux Agent version is earlier than version 2.2.10, or if the Linux system is out-of-support, we may require you to update the agent before getting support.
+- If the Linux Agent version is customized by a publisher, Microsoft may direct you to the publisher for support agent or extension-specific support because of the customization. To upgrade the Linux Agent, see [How to update the Azure Linux Agent on a VM](/azure/virtual-machines/extensions/update-linux-agent).
+
+### Check your Linux Agent Version
 
 To check your Linux Agent Version, run:
 
@@ -53,15 +54,16 @@ Goal State Agent - 2.2.48.1
 ```
 
 For more information about the agent, see the [FAQ for WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ).
+
 #### Prepare your own Linux image
 
 You can prepare your own Linux image using the following instructions:
 
-* [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
+* [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
 * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
-* [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+* [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
 
 ## Cloud-init
 

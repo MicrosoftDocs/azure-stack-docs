@@ -38,7 +38,7 @@ In addition to the Azure Account extension for Visual Studio, a number of other 
 - [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
 - [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
-- An environment with PowerShell using the AZ modules for Azure Stack Hub. For instructions, see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&preserve-view=true).
+- An environment with PowerShell using the AZ modules for Azure Stack Hub. For instructions, see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=/azure-stack/breadcrumb/toc.json?toc=/azure-stack/user/toc.json&view=azs-2008&preserve-view=true).
 
 ## Get your credentials
 
