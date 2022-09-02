@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) interactively
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) interactively using a new configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 09/02/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---

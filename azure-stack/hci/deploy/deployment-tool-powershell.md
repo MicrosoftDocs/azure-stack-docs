@@ -85,7 +85,7 @@ Use this procedure to deploy a multi-server cluster using PowerShell.
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
     ```
 
     > [!NOTE]

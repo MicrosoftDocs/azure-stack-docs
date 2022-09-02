@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 09/02/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -27,7 +27,7 @@ To rerun the deployment if there is a failure, follow these steps:
 1. Run the following command on your first (staging) server: 
  
     ```powershell
-    Invoke-CloudDeployment.ps1 -Rerun -Verbose
+    .\Invoke-CloudDeployment.ps1 -Rerun -Verbose
     ```
     
     This command should restart the deployment in verbose mode.
