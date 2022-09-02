@@ -198,8 +198,6 @@
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
-    - name: Update Network Controller certificates
-      href: manage/update-network-controller-certificates.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
@@ -234,6 +232,18 @@
     href: manage/collect-diagnostic-data.md
 - name: Concepts
   items:
+  - name: Security
+    items:
+    - name: Security for SDN
+      items:
+      - name: Secure the Network Controller
+        href: concepts/nc-security.md
+      - name: Manage certificates for SDN
+        href: concepts/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: concepts/update-network-controller-certificates.md
+      - name: Authenticate with Kerberos
+        href: concepts/kerberos-with-spn.md
   - name: Storage and clusters
     items:
     - name: Single-node clusters
