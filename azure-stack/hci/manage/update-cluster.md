@@ -345,7 +345,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
 
 ## Perform a manual feature update of a Failover Cluster using SCONFIG
 
-To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](../windows-server/administration/server-core/server-core-sconfig) 
+To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig)
 
 For each node in the cluster, run these commands on the node:
 
