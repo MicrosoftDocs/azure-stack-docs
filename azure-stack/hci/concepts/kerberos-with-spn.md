@@ -45,7 +45,7 @@ The Network Controller automatically configures the SPN. All you need to do is t
 
     e.  Click **OK** twice.
 
-7.  Repeat step 3 - 6 for each Network Controller machines.
+7.  Repeat steps 3 - 6 for each Network Controller machine.
 
 8.  Close **Active Directory Users and Computers**.
 
