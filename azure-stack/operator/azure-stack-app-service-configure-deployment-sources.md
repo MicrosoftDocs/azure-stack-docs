@@ -161,6 +161,11 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 <!--- Azure App Service on Azure Stack Hub 2022 H1 pivot --->
 ::: zone pivot="version-2022h1"
 
+> [!IMPORTANT]
+> If you are reconfiguring existing applications after upgrading to Azure App Service on Azure Stack Hub 2022 H1 
+> you must revoke all tokens and your end users will need to reauthorize with the providers on their applications to enable synchronisation from source control providers
+>
+
 ## Configure GitHub
 
 You must have a GitHub account to complete this task. You might want to use an account for your organization rather than a personal account.
