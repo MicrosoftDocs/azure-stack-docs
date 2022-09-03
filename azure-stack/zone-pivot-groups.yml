@@ -13,7 +13,7 @@ groups:
   prompt: Choose version
   pivots:
   - id: version-2022h1
-    title: App Service on Azure Stavk Hub 2022 H1
+    title: App Service on Azure Stack Hub 2022 H1
   - id: version-previous
     title: Previous versions
 - id: management-tool-portal-powershell
