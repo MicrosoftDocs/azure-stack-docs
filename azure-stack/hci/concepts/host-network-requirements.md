@@ -29,7 +29,7 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 ## Select a network adapter
 
-Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/network-atc-overview) to configure your adapters for the appropriate traffic types.
+Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
 For more information about this role-based NIC qualification, please see this [link](https://aka.ms/RoleBasedNIC).
 
@@ -39,7 +39,7 @@ For more information about this role-based NIC qualification, please see this [l
 |Level|Management Role|Compute Role|Storage Role|
 |----|----|----|----|
 |Role-based distinction|Management|Compute Standard|Compute Storage|
-|Maximum Award|<Not Applicable>|Compute Premium|Storage Premium|
+|Maximum Award|Not Applicable|Compute Premium|Storage Premium|
  
 > [!NOTE]
 > The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
