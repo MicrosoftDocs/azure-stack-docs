@@ -6,7 +6,7 @@ ms.author: mosagie
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/23/2022
+ms.date: 09/06/2022
 ---
 
 # BitLocker encryption
