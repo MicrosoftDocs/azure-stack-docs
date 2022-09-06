@@ -17,9 +17,9 @@ This article describes the security baseline settings associated with your Azure
 
 The security baseline on Azure Stack HCI:
 
-- Enables customers to closely meet with CIS Benchmark and DISA STIG requirements for the OS and the Microsoft recommended security baseline.
-- Reduces OPEX - with built-in drift protection, and consistent at scale monitoring via Azure Arc Hybrid edge baseline.
-- Improves the security posture via disablement of legacy protocols and ciphers.
+- Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the operating system (OS) and the Microsoft recommended security baseline.
+- Reduces the operating expenditure (OPEX) with its built-in drift protection mechanism and consistent at scale monitoring via the Azure Arc Hybrid Edge baseline.
+- Improves the security posture by disabling legacy protocols and ciphers.
 
 ## View the settings
 
