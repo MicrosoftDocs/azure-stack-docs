@@ -30,7 +30,7 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
 2. Run the following command in PowerShell:
 
     ```powershell
-    Get-AszRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
+    Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
     ```
 
 3. See the results of the recovery keys displayed in PowerShell.
