@@ -21,7 +21,7 @@ You can use this topic to learn how to manage certificates for Network Controlle
 If you are not using Kerberos for securing the Network Controller communication, you can use X.509 certificates for authentication, authorization, and encryption.
 
 SDN in Windows Server 2019 and 2016 Datacenter supports both self\-signed and Certification Authority \(CA\)-signed X.509 certificates. This topic provides step-by-step instructions for creating these certificates and applying them to secure Network Controller Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer \(SLB\).
-.
+
 When you are using certificate\-based authentication, you must enroll one certificate on Network Controller nodes that is used in the following ways.
 
 1. Encrypting Northbound Communication with Secure Sockets Layer \(SSL\) between Network Controller nodes and management clients, such as System Center Virtual Machine Manager.
@@ -45,7 +45,7 @@ You can create a self-signed X.509 certificate and export it with the private ke
 
 When you create self\-signed certificates, you can use the following guidelines.
 
-- You can use the IP address of the Network Controller REST Endpoint for the DnsName parameter - but this is not recommended because it requires that the Network Controller nodes are all located within a single management subnet \(e.g. on a single rack\)
+- You can use the IP address of the Network Controller REST Endpoint for the DnsName parameter - but this isn't recommended because it requires that the Network Controller nodes are all located within a single management subnet \(e.g. on a single rack\)
 - For multiple node NC deployments, the DNS name that you specify will become the FQDN of the Network Controller Cluster \(DNS Host A records are automatically created.\)
 - For single node Network Controller deployments, the DNS name can be the Network Controller's host name followed by the full domain name.
 
@@ -191,7 +191,7 @@ Following is a partial example of the server REST resource.
 
 For mutual authentication, the Hyper-V host must also have a certificate to communicate with Network Controller.
 
-You can enroll the certificate from a Certification Authority \(CA\). If a CA based certificate is not found on the host machine, SCVMM creates a self-signed certificate and provisions it on the host machine.
+You can enroll the certificate from a Certification Authority \(CA\). If a CA based certificate isn't found on the host machine, SCVMM creates a self-signed certificate and provisions it on the host machine.
 
 Network Controller and the Hyper-V host certificates must be trusted by each other. The Hyper-V host certificate's root certificate must be present in the Network Controller Trusted Root Certification Authorities store for the Local Computer, and vice versa.
 
@@ -226,6 +226,6 @@ Example of MUX REST resource \(partial\):
 For mutual authentication, you must also have a certificate on the SLB MUX devices. This certificate is automatically configured by SCVMM when you deploy software load balancer using SCVMM.
 
 >[!IMPORTANT]
->On the host and SLB nodes, it is critical that the Trusted Root Certification Authorities certificate store does not include any certificate where “Issued to” is not the same as “Issued by”. If this occurs, communication between Network Controller and the southbound device fails.
+>On the host and SLB nodes, it is critical that the Trusted Root Certification Authorities certificate store does not include any certificate where “Issued to” isn't the same as “Issued by”. If this occurs, communication between Network Controller and the southbound device fails.
 
-Network Controller and the SLB MUX certificates must be trusted by each other \(the SLB MUX certificate's root certificate must be present in the Network Controller machine Trusted Root Certification Authorities store and vice versa\). When you're using self\-signed certificates, SCVMM ensures that the required certificates are present in the in the Trusted Root Certification Authorities store for the Local Computer.
+Network Controller and the SLB MUX certificates must be trusted by each other \(the SLB MUX certificate's root certificate must be present in the Network Controller machine Trusted Root Certification Authorities store and vice versa\). When you're using self\-signed certificates, SCVMM ensures that the required certificates are present in the Trusted Root Certification Authorities store for the Local Computer.

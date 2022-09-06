@@ -202,6 +202,16 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage Network Controller security
+      items:
+      - name: Secure the Network Controller
+        href: manage/nc-security.md
+      - name: Manage certificates for SDN
+        href: manage/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: manage/update-network-controller-certificates.md
+      - name: Authenticate with Kerberos
+        href: manage/kerberos-with-spn.md
     - name: Manage software load balancers
       items:
       - name: Manage software load balancers
@@ -232,18 +242,6 @@
     href: manage/collect-diagnostic-data.md
 - name: Concepts
   items:
-  - name: Security
-    items:
-    - name: Security for SDN
-      items:
-      - name: Secure the Network Controller
-        href: concepts/nc-security.md
-      - name: Manage certificates for SDN
-        href: concepts/sdn-manage-certs.md
-      - name: Update Network Controller certificates
-        href: concepts/update-network-controller-certificates.md
-      - name: Authenticate with Kerberos
-        href: concepts/kerberos-with-spn.md
   - name: Storage and clusters
     items:
     - name: Single-node clusters
