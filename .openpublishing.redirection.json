@@ -1282,11 +1282,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "azure-stack/hci/manage/update-network-controller-certificates.md",
-      "redirect_url": "/azure-stack/hci/concepts/update-network-controller-certificates",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "azure-stack/hci/concepts/update-network-controller-certificates.md",
       "redirect_url": "/azure-stack/hci/manage/update-network-controller-certificates",
       "redirect_document_id": false
