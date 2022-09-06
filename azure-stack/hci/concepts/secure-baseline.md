@@ -1,5 +1,5 @@
 ---
-title: Security baseline settings
+title: Security baseline settings on Azure Stack HCI
 description: See the default secure baseline settings available.
 author: meaghanlewis
 ms.author: mosagie
