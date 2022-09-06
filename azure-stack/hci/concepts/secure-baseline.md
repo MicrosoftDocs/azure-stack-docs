@@ -15,7 +15,7 @@ We’re working diligently to provide a secure by default product to our custome
 
 This security baseline enables customers to closely meet with CIS Benchmark and DISA STIG requirements for the OS and the Microsoft recommended security baseline. It reduces OPEX - with built-in drift protection, and consistent at scale monitoring via Azure Arc Hybrid edge baseline. Finally, it also improves the security posture via disablement of legacy protocols and ciphers.
 
-You can download the [complete list of settings]() for your reference.
+You can find and download the complete list of settings at: https://aka.ms/hci-securitybase
 
 ## Next steps
 
