@@ -25,7 +25,7 @@ The security baseline on Azure Stack HCI:
 
 ## View the settings
 
-You can find and download the complete list of settings at: aka.ms/hci-securitybase
+You can find and download the complete list of settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase)
 
 ## Next steps
 
