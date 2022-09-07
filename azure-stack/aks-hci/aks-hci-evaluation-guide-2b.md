@@ -296,7 +296,7 @@ This is fine for evaluation purposes. There are a number of optional parameters 
 * **-loadBalancerVmSize**: size of your load balancer VM. Default is Standard_A2_V2.
 * **-nodeVmSize**: size of your worker node VM. Default is Standard_K8S3_v1.
 
-For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet documentation](/reference/ps/new-akshcicluster.md). To get a list of available VM sizes, run **Get-AksHciVmSize**.
+For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet documentation](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To get a list of available VM sizes, run **Get-AksHciVmSize**.
 
 ### Node pools, taints, and max pod counts
 
