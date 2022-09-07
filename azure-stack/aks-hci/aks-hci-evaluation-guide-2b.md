@@ -397,7 +397,7 @@ Enable-AksHciArcConnection -name "akshciclus001"
 
 ### Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [Enable-AksHciArcConnection](/reference/ps/enable-akshciarcconnection.md) PowerShell cmdlet.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [Enable-AksHciArcConnection](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection) PowerShell cmdlet.
 
 > [!NOTE]
 > After connecting the cluster, it can take between five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in the Azure portal.
