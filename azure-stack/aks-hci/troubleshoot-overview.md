@@ -48,4 +48,4 @@ For issues that are specific to Azure Stack HCI, use the following links:
 ## Next steps
 
 - To monitor the health, performance, and resources of control plane nodes and workloads, use the AKS on Azure Stack HCI and Windows Server [on-premises monitoring](monitor-logging.md) solution.
-- To monitor Azure Arc-enabled Kubernetes clusters, see [Azure Monitor Container Insights](/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json)
+- To monitor Azure Arc-enabled Kubernetes clusters, see [Azure Monitor Container Insights](/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json)
