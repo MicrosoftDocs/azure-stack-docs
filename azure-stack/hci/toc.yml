@@ -335,9 +335,9 @@
       - name: Use Windows Defender Application Control 
         href: concepts/security-windows-defender-application-control.md
       - name: Review security baseline, drift control
-        href: manage/preview-channel.md
+        href: concepts/secure-baseline.md
       - name: Understand BitLocker encryption
-        href: manage/preview-channel.md
+        href: concepts/security-bitlocker.md
     - name: Assess environment readiness
       href: manage/use-environment-checker.md
   - name: Deploy version 22H2 
