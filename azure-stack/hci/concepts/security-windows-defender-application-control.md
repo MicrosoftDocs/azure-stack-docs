@@ -30,7 +30,7 @@ Base policy details are as follows:
 
 The base policy identifier is always the same across deployments. Customers and partners can build supplemental policies based on the base policy. The base policy is combined with the recommended block rules for drivers and applications documented here:
 
- > * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
+> * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
 > * [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
 
 Here's the Microsoft base policy prior to merging with blocked rules:
@@ -438,6 +438,11 @@ Use the following steps to create a supplemental policy:
    ```
 
 1. To activate the supplemental policy, reboot your system or invoke the code integrity policy refresher tool ```refreshpolicy.exe```. The tool will try to activate all policies in the active policy folder.
+
+> [!NOTE]
+>
+> * You can download the last version of the "refreshpolicy.exe" here: [Refresh CI Policy download](https://www.microsoft.com/download/details.aspx?id=102925).
+> * You can locally find the file under C:\nugetstore\microsoft.as.infra.security.applicationcontrol[version]\content\policy\
 
 ## Next steps
 
