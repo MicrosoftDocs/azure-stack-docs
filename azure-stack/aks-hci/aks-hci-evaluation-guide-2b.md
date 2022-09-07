@@ -393,7 +393,7 @@ Enable-AksHciArcConnection -name "akshciclus001"
 ```
 
 > [!NOTE]
-> This example connects your target cluster to Azure Arc using the subscription ID and resource group passed in the **Set-AksHciRegistration** cmdlet when deploying AKS on Azure Stack HCI. If you want to use alternative settings, [see the cmdlet documentation](/reference/ps/enable-akshciarcconnection.md).
+> This example connects your target cluster to Azure Arc using the subscription ID and resource group passed in the **Set-AksHciRegistration** cmdlet when deploying AKS on Azure Stack HCI. If you want to use alternative settings, [see the cmdlet documentation](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection).
 
 ### Verify connected cluster
 
