@@ -1302,6 +1302,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/deploy/cluster-set.md",
+      "redirect_url": "/windows-server/failover-clustering/cluster-set",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/aks-hci/kubernetes-walkthrough-powershell-proxy.md",
       "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell",
       "redirect_document_id": true
