@@ -62,44 +62,6 @@ To deploy App Service resource provider, follow these steps:
 
    ![Screenshot that shows the screen for specifying the ARM endpoints for the App Service.][2]
 
-# [Azure App Service on Azure Stack 2022 H1](#tab/2022H1-connected)
-6. On the next App Service Installer page you will connect to your Azure Stack Hub:
-
-    1. Select the connection method you wish to use - **Credential** or **Service Principal**
- 
-        - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
-            - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
-
-        - **Service Principal**
-            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
-
-    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
-
-    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-
-    ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][3]
-
-# [Previous versions](#tab/previous-connected)
-6. On the next App Service Installer page you will connect to your Azure Stack Hub:
-
-    1. Select the connection method you wish to use - **Credential** or **Service Principal**
- 
-        - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
-            - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
-
-        - **Service Principal**
-            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
-
-    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
-
-    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-
-    ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][3]
-
 6. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
