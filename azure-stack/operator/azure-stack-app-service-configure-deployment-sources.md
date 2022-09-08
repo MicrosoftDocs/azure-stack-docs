@@ -106,10 +106,7 @@ You must have a **Microsoft** account linked to a OneDrive account to complete t
 1. Enter the **Redirect URI**.  Choose platform - Web and in a default Azure Stack Hub deployment, the redirect URI is in the form - `https://portal.<region>.<FQDN>/TokenAuthorize`.
 1. Select **Register**
 1. The next screen lists the properties of your new app. Save the **Application (client) ID** to a temporary location.
-
-    ![OneDrive Application Properties][11]
-
-5. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
+1. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
 1. Make a note of the value of the new secret.
 1. Under **API Permissions**, select **Add a permission**
 1. Add the **Microsoft Graph Permissions** - **Delegated Permissions**.
@@ -227,10 +224,7 @@ You must have a **Microsoft** account linked to a OneDrive account to complete t
 1. Enter the **Redirect URI**.  Choose platform - Web and in a default Azure Stack Hub deployment, the redirect URI is in the form - `https://api.appservice.<region>.<FQDN>:44300/auth/onedrive/callback`.
 1. Select **Register**
 1. The next screen lists the properties of your new app. Save the **Application (client) ID** to a temporary location.
-
-    ![OneDrive Application Properties][11]
-
-5. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
+1. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
 1. Make a note of the value of the new secret.
 1. Under **API Permissions**, select **Add a permission**
 1. Add the **Microsoft Graph Permissions** - **Delegated Permissions**.
