@@ -54,8 +54,6 @@
       href: deploy/single-server.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy a cluster set
-      href: deploy/cluster-set.md
     - name: Host networking with Network ATC
       href: deploy/network-atc.md
   - name: Deploy SDN
