@@ -322,11 +322,11 @@ This is useful when:
 The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes.
 
 ```azurepowershell
-Switch-ASWDACPolicy -Mode Audit
+Switch-AsWdacPolicy -Mode Audit
 
-Switch-ASWDACPolicy -Mode Enforced
+Switch-AsWdacPolicy -Mode Enforced
 
-Get-ASWDACPolicyMode
+Get-AsWdacPolicyMode
   This returns an integer - for example,
 	0 – Not deployed
 	1 – Audit
@@ -335,12 +335,11 @@ Get-ASWDACPolicyMode
 Here is a sample output:
 
 ```azurepowershell
-Switch-WDACPolicyMode -To Audit
-PS C:\temp> Get-WDACPolicyMode
+PS C:\temp> Get-AsWdacPolicyMode
 
 2
 
-PS C:\temp> Switch-WDACPolicyMode -To Audit
+PS C:\temp> Switch-AsWdacPolicy -Mode Audit
 VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
 a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
 
