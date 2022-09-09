@@ -78,6 +78,8 @@ To deploy App Service resource provider, follow these steps:
 
     1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
+    1. Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
+
     ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][3]
 
 7. Now you can deploy into an existing virtual network that you configured [using these steps](azure-stack-app-service-before-you-get-started.md#virtual-network), or let the App Service installer create a new virtual network and subnets. To create a VNet, follow these steps:
@@ -146,9 +148,9 @@ To deploy App Service resource provider, follow these steps:
     ![Screenshot that shows the screen where you provide the number of role instances and their corresponding compute sku in the App Service Installer][9]
 
     > [!NOTE]
-    > **Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
+    > **Windows Server 2022 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
 
-13. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud. Select **Next**.
+13. In the **Select Platform Image** box, choose your deployment Windows Server **2022** virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud.  Select **Next**.
 
 14. On the next App Service Installer page, follow these steps:
 
@@ -550,6 +552,8 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
+    1. Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
+
 1. You can allow the Azure App Service installer to create a virtual network and associated subnets. Or, you can deploy into an existing virtual network, as configured through [these steps](azure-stack-app-service-before-you-get-started.md#virtual-network).
    - To use the Azure App Service installer method, select **Create VNet with default settings**, accept the defaults, and then select **Next**.
    - To deploy into an existing network, select **Use existing VNet and Subnets**, and then:
@@ -625,16 +629,16 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Set role tiers and SKU options in Azure App Service Installer][9]
 
-1. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available on the compute resource provider for the Azure App Service cloud. Select **Next**.
+1. In the **Select Platform Image** box, choose your prepared Windows Server 2022 Datacenter virtual machine (VM) image from the images available on the compute resource provider for the Azure App Service cloud. Select **Next**.
 
     > [!NOTE]
-    > Windows Server 2016 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled.
+    > Windows Server 2022 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2022 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2022 image with this feature pre-enabled.
     >
-    > See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
+    > See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md?tabs=2022H1-connected%2C2022H1-disconnected&pivots=state-disconnected#tabpanel_2_2022H1-disconnected) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
     >
     >- Publisher = MicrosoftWindowsServer
     >- Offer = WindowsServer
-    >- SKU = 2016-Datacenter
+    >- SKU = AppService
     >- Version = Specify the "latest" version
 
 1. On the next page:
