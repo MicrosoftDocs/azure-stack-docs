@@ -74,7 +74,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
     1. If an existing Azure App Service deployment is detected, then the resource group and storage account are populated and unavailable.
 
-      ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][3]
+      ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][9]
 
 8. On the summary page:
    1. Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
@@ -219,7 +219,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
    1. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
 
-      ![Azure App Service Installation Detected][3]
+      ![Azure App Service Installation Detected][9]
 8. On the summary page:
    1. Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
    2. If the configurations are correct, select the check box.
@@ -301,3 +301,4 @@ Prepare for other admin operations for Azure App Service on Azure Stack Hub:
 [6]: ./media/azure-stack-app-service-update/app-service-installer-exe.png
 [7]: ./media/azure-stack-app-service-update/app-service-exe-advanced-create-package.png
 [8]: ./media/azure-stack-app-service-update/app-service-exe-advanced-complete-offline.png
+[9]: ./media/azure-stack-app-service-update/app-service-azure-stack-subscription-information-2022h1.png
