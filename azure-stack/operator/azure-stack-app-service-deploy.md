@@ -80,7 +80,7 @@ To deploy App Service resource provider, follow these steps:
 
     1. Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
 
-    ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][3]
+    ![Screenshot that shows where you specify the Azure Stack Hub subscription information in the App Service installer.][13]
 
 7. Now you can deploy into an existing virtual network that you configured [using these steps](azure-stack-app-service-before-you-get-started.md#virtual-network), or let the App Service installer create a new virtual network and subnets. To create a VNet, follow these steps:
 
@@ -975,6 +975,7 @@ Prepare for additional admin operations for App Service on Azure Stack Hub:
 [10]: ./media/azure-stack-app-service-deploy/app-service-role-credentials.png
 [11]: ./media/azure-stack-app-service-deploy/app-service-azure-stack-deployment-summary.png
 [12]: ./media/azure-stack-app-service-deploy/app-service-deployment-progress.png
+[13]: ./media/azure-stack-app-service-deploy/app-service-azure-stack-subscription-information-2022h1.png
 
 <!-- Disconnected image references-->
 [13]: ./media/azure-stack-app-service-deploy/app-service-exe-advanced-create-package.png
