@@ -200,7 +200,7 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
-    - name: Manage Network Controller security
+    - name: Manage SDN security
       items:
       - name: Secure the Network Controller
         href: manage/nc-security.md
