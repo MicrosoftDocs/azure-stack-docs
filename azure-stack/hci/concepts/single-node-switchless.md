@@ -1,10 +1,10 @@
 ---
 title: Single-node storage switchless pattern
 description: Plan to deploy a single-node storage switchless pattern
-author: dcuomo
-ms.topic: how-to
+author: dansisson
+ms.topic: conceptual
 ms.date: 09/13/2022
-ms.author: jgerend 
+ms.author: v-dansisson 
 ms.reviewer: JasonGerend
 ---
 
@@ -50,7 +50,7 @@ As illustrated in the diagram above, this pattern has the following physical net
 |Link Speed|At least 1GB. 10GB recommended|At least 1GB. 10GB recommended|Check with hardware manufacturer|
 |Interface Type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|2 Teamed ports|Optional to allow adding a second server. Disconnected Ports|1 port|
-|RDMA|Optional|Depends on requirements for Guest RDMA and NIC support|N/A|N/A|
+|RDMA|Optional. Depends on requirements for Guest RDMA and NIC support|N/A|N/A|
 
 ## Network ATC intents
 
@@ -58,7 +58,7 @@ For single-node storage switchless pattern only one Network ATC intent is create
 
 :::image type="content" source="media/single-node-switchless/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-node switchless pattern" lightbox="media/single-node-switchless/network-atc.png":::
 
-### Management & Compute intent
+### Management and compute intent
 
 - Intent Type: Management and Compute
 - Intent Mode: Cluster mode
@@ -85,11 +85,11 @@ For additional information, see [Deploy host networking: Compute and management 
 
 ## Logical networks
 
-### Storage Network VLANs
+### Storage network VLANs
 
 This pattern does not require a storage network.
 
-### OOB Network
+### OOB network
 
 The Out of Band (OOB) network is dedicated to supporting the server lights out server management interfaces also known as a BMC. This network is isolated from compute workloads. The OOB customer optional for non-solution-based installations. Each BMC interface connects to a customer supplied switch. The BMC is used to automate PXE boot scenarios. The management network will require network access to the BMC interface using the IPMI UDP port 623.
 
@@ -117,7 +117,9 @@ The HNV Provider Address (PA) network serves as the underlying physical network 
 
 For additional information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
-## Network isolation options
+## Network isolation
+
+The following network isolation options are available.
 
 ### VLANs (IEEE 802.1Q)
 
@@ -125,13 +127,13 @@ VLANs allow devices that must be kept separate to share the cabling of a physica
 
 For additional information, see [Understand the usage of virtual networks and VLANs](/windows-server/networking/sdn/manage/understanding-usage-of-virtual-networks-and-vlans).
 
-### Default Network Access Policies & MicroSegmentation
+### Default network access policies and micro-segmentation
 
 Default network access policies ensures that all customer VMs in your Azure Stack HCI cluster are secure by default from external threats. With these policies, we will block inbound access to a VM by default, while giving the option to enable selective inbound ports and thus securing the VMs from external attacks. This enforcement will be available through management tools like Windows Admin Center.  
 
-Microsegmentation is the concept of creating granular network policies between applications and services. This essentially reduces the security perimeter to a fence around each application or virtual machine. The fence can permit only necessary communication between application tiers or other logical boundaries, thus making it exceedingly difficult for cyber threats to spread laterally from one system to another. This securely isolates networks from each other and reduces the total attack surface of a network security incident.
+Micro-segmentation is the concept of creating granular network policies between applications and services. This essentially reduces the security perimeter to a fence around each application or virtual machine. The fence can permit only necessary communication between application tiers or other logical boundaries, thus making it exceedingly difficult for cyber threats to spread laterally from one system to another. This securely isolates networks from each other and reduces the total attack surface of a network security incident.
 
-Default network access policies and microsegmentation are realized as 5-tuple stateful (source address prefix, source port, destination address prefix, destination port, protocol) firewall rules a.k.a Network Security Groups (NSGs) on Azure Stack HCI clusters. These policies are enforced at the vSwitch port of each virtual machine (VM). The policies are pushed through the management layer, and Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks as well as SDN overlay networks.
+Default network access policies and micro-segmentation are realized as 5-tuple stateful (source address prefix, source port, destination address prefix, destination port, protocol) firewall rules a.k.a Network Security Groups (NSGs) on Azure Stack HCI clusters. These policies are enforced at the vSwitch port of each virtual machine (VM). The policies are pushed through the management layer, and Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks as well as SDN overlay networks.
 
 > [!NOTE]
 > These capabilities are enabled by default when deploying Azure Stack HCI and will deploy Network Controller VM(s).
@@ -147,18 +149,18 @@ You can configure Quality of Service (QoS) for a virtual machine (VM) network ad
 
 For additional information, see [Configure QoS for a VM network adapter](/windows-server/networking/sdn/manage/configure-qos-for-tenant-vm-network-adapter).
 
-### Virtual Networks
+### Virtual networks
 
-Network Virtualization provides "virtual networks" (called a VM network) to virtual machines like how server virtualization (hypervisor) provides "virtual machines" to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from virtual machine provisioning. This flexibility makes it easy for customers to move to IaaS clouds and efficient for hosters and datacenter administrators to manage their infrastructure, while maintaining the necessary multi-tenant isolation, security requirements, and supporting overlapping Virtual Machine IP addresses.
+Network virtualization provides "virtual networks" (called a VM network) to virtual machines like how server virtualization (hypervisor) provides virtual machines (Vms) to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from virtual machine provisioning. This flexibility makes it easy for customers to move to IaaS clouds and efficient for hosters and datacenter administrators to manage their infrastructure, while maintaining the necessary multi-tenant isolation, security requirements, and supporting overlapping Virtual Machine IP addresses.
 
 > [!NOTE]
-> This network isolation option is NOT enabled by default when deploying Azure Stack HCI and requires user to explicitly enable it during deployment.
+> This network isolation option is not enabled by default when deploying Azure Stack HCI and requires user to explicitly enable it during deployment.
 
 For additional information, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
  
 ## L3 networking services options
 
-### Virtual Networks peering
+### Virtual network peering
 
 Virtual network peering lets you connect two virtual networks seamlessly. Once peered, for connectivity purposes, the virtual networks appear as one. The benefits of using virtual network peering include:
 
@@ -167,10 +169,9 @@ Virtual network peering lets you connect two virtual networks seamlessly. Once p
 - The ability for resources in one virtual network to communicate with resources in a different virtual network.
 - No downtime to resources in either virtual network when creating the peering.
 
-For more information, see [Virtual network peering](https://docs.microsoft.com/en-us/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering.md).
+For more information, see [Virtual network peering](/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering.md).
 
-
-### Load Balancers
+### Load balancers
 
 Cloud Service Providers (CSPs) and enterprises that are deploying Software Defined Networking (SDN) can use Software Load Balancer (SLB) to evenly distribute customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. It is also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
@@ -180,7 +181,7 @@ SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/bord
 
 For more information, see [What is SLB for SDN?](/azure-stack/hci/concepts/software-load-balancer.md).
 
-### SDN VPN Gateways
+### SDN VPN gateways
 
 SDN Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
@@ -202,4 +203,4 @@ For more information, see [What is RAS Gateway for SDN?](/azure-stack/hci/concep
 
 ## Next steps
 
-Learn about the [single-node storage switched network pattern](single-node-switched.md).
+Learn about the [single-node storage switched network pattern](single-node-switchless.md).
