@@ -268,6 +268,23 @@ Complete the following steps to rotate internal secrets:
     >
     > Contact support if you experience repeated secret rotation failures.
 
+### Rotate Azure Stack Hub root certificate
+
+The Azure Stack Hub root certificate is provisioned during deployment with an expiration of five years. Starting with 2108, internal secret rotation also rotates the root certificate. The standard secret expiration alert identifies the expiry of the root certificate and generates alerts at both 90 (warning) and 30 (critical) days.
+
+To rotate the root certificate, you must update your system to 2108 and perform [internal secret rotation](#rotate-internal-secrets).
+
+The following code snippet uses the Privileged Endpoint to list the expiration date of the root certificate:
+
+```powershell
+$pep = New-PSSession -ComputerName <ip address> -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US) 
+ 
+$stampInfo = Invoke-Command -Session $pep -ScriptBlock { Get-AzureStackStampInformation }
+
+$rootCert = $stampInfo.RootCACertificates| Sort-Object -Property NotAfter | Select-Object -First 1
+"The Azure Stack Hub Root Certificate expires on {0}" -f $rootCert.NotAfter.ToString("D") | Write-Host -ForegroundColor Cyan
+```
+
 ## Update the BMC credential
 
 The baseboard management controller monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
