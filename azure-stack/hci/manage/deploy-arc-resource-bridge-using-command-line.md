@@ -112,12 +112,6 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       Install-Moc
       ```
       
-      > [!IMPORTANT]
-      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
-      > 
-      > ```powershell
-      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-      > ```
 
       ---
 
@@ -190,7 +184,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix [-vLanID=$vlanID]
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix [-vLanID $vlanID]
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
 
@@ -282,7 +276,7 @@ Now that the custom location is available, you can create or add virtual network
    | Parameter | Description |
    | ----- | ----------- |
    | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
-   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
+   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\ClusterStorage\Volume01\OSImages\winos.vhdx". |
    | **osType** | The OS type. This can be "Windows" or "Linux"; for example, "Windows". |
 
 ## Next steps
