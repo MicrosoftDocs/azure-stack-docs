@@ -29,7 +29,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
 2. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-3. Install the required roles and features using the following command.
+3. Install the required roles and features using the following command, then reboot before continuing.
 
    ```powershell
    Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
@@ -46,6 +46,9 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    ```powershell
    Enable-ClusterStorageSpacesDirect -CacheState Disabled 
    ```
+   
+   > [!Note]
+   > The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
 
 5. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 6. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers.
@@ -60,7 +63,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
-## Adding servers to a single-node cluster (optional)
+## Change a single-node to a multi-node cluster (optional)
 
 You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
