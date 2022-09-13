@@ -99,7 +99,7 @@ To install and run the Validate-DCB tool:
 
 1. On the Save and Deploy page, in the **Configuration File Path** box, save the configuration file using a .ps1 extension to a location where you can use it again later if needed, and then select **Export** to start running the Validate-DCB tool.
 
-   - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page, which includes the ability to use an Azure Automation account to deploy the configuration and then validate it. See [Create an Azure Automation account](/azure/automation/automation-quickstart-create-account) to get started with Azure Automation.
+   - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page, which includes the ability to use an Azure Automation account to deploy the configuration and then validate it. See [Create an Azure Automation account](/azure/automation/quickstarts/create-azure-automation-account-portal) to get started with Azure Automation.
 
     :::image type="content" source="../media/validate/save-and-deploy.png" alt-text="The Save and Deploy page of the Validate-DCB configuration wizard":::
 

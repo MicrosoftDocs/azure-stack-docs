@@ -389,6 +389,6 @@ items:
     If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete the Azure resource group that was created at the beginning of this guide.
 
     For more details on cluster deployment and management:
-    - [Deploy the Azure Stack HCI operating system](/deploy/operating-system) provides a more detailed look at deployment and the various options and considerations.
+    - [Deploy the Azure Stack HCI operating system](/azure-stack/hci/deploy/operating-system) provides a more detailed look at deployment and the various options and considerations.
     - Learn how to manage VMs using [PowerShell](/azure-stack/hci/manage/vm-powershell).
     - Check out the [web-based Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920) to get an idea of the type of hardware you'll need for your cluster based on your workloads.
