@@ -1,11 +1,13 @@
 ---
 title: Single-node storage switchless pattern
 description: Plan to deploy a single-node storage switchless pattern
+ms.topic: conceptual
 author: dansisson
-ms.topic: how-to
-ms.date: 09/13/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/14/2022
 ---
 
 # Single-node storage switchless pattern
@@ -14,7 +16,7 @@ ms.reviewer: alkohli
 
 Learn about the single-node storage switchless network pattern to and determine if this configuration is viable for your deployment planning needs.
 
-For information on other single-node network patterns, see [single node deployments](single-node-switchless.md).
+For information on other network patterns, see [Azure Stack HCI network deployment patterns](test0.md).
 
 ## Scenarios
 

@@ -30,6 +30,38 @@
   items:
   - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
+- name: Plan deployment
+  items:
+  - name: Choose network reference pattern
+    href: concepts/test0.md
+  - name: Single-node deployments
+    items:
+    - name: Storage switchless
+      href: concepts/single-node-switchless.md
+    - name: Storage switched
+      href: concepts/test1.md
+    - name: Pattern components
+      href: concepts/test1.md
+    - name: Pattern IP requirements
+      href: concepts/test1.md
+    - name: Decision matrix
+      href: concepts/test1.md
+  - name: Two-node deployments
+    items:
+    - name: Storage switchless, single switch
+      href: concepts/test1.md
+    - name: Storage switchless, two switches
+      href: concepts/test1.md
+    - name: Storage switched, non-converged
+      href: concepts/test1.md
+    - name: Storage switched, fully converged
+      href: concepts/test1.md
+    - name: Pattern components
+      href: concepts/test1.md
+    - name: Pattern IP requirements
+      href: concepts/test1.md
+    - name: Decision matrix
+      href: concepts/test1.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
