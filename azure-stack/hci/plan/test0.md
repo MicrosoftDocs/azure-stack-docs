@@ -11,11 +11,11 @@ ms.date: 09/14/2022
 
 # Azure Stack HCI network deployment patterns
 
-> Applies to: Azure Stack HCI, versions 22H2
+> > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI, version 22H2 with either one or two physical hosts. 
+This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI, version 22H2 with either one or two physical hosts.
 
-The article includes 6 different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as an atomic entity and includes all the network components for specific scenarios.
+The article includes six different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as an atomic entity and includes all the network components for specific scenarios.
 
 ## Deployment patterns
 

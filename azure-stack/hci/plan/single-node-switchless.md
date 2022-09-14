@@ -1,7 +1,7 @@
 ---
-title: Single-node storage switchless pattern
-description: Plan to deploy a single-node storage switchless pattern
-ms.topic: conceptual
+title: Azure Stack HCI single node storage switchless deployment network reference pattern
+description: Plan to deploy an Azure Stack HCI single-node storage switchless network reference pattern.
+ms.topic: plan
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
@@ -10,53 +10,47 @@ ms.subservice: azure-stack-hci
 ms.date: 09/14/2022
 ---
 
-# Single-node storage switchless pattern
+# Review single-node storage switchless deployment network reference pattern for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 and version 22H2
+> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-Learn about the single-node storage switchless network pattern to and determine if this configuration is viable for your deployment planning needs.
+In this article, you'll learn about the single-node storage switchless network reference pattern that you can use to deploy your Azure Stack HCI. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
 For information on other network patterns, see [Azure Stack HCI network deployment patterns](test0.md).
 
 ## Scenarios
 
-Use the single-node storage switchless pattern in these scenarios:
+Use the single-node storage switchless pattern in the following scenarios:
 
-- Facilities that can tolerate lower level of resiliency
+- **Facilities that can tolerate lower level of resiliency**. Consider implementing this pattern whenever your location or service provided by this pattern can tolerate the lower level of resiliency without impacting your business.
 
-- Food, healthcare, finance, retail, government facilities
+- **Food, healthcare, finance, retail, government facilities**. Some food, healthcare, finance, and retail scenarios can apply this option to minimize their costs without impacting their core operations and business transactions.
 
-Consider implementing this pattern whenever your location/service provided by this pattern can tolerate the lower level of resiliency without impacting your business. Some food, healthcare, finance, and retail scenarios can apply this option to minimize their costs without impacting their core operations and business transactions. Although SDN L3 services are fully supported on this pattern, the routing services such as BGP might need to be configured on the firewall device on top of the TOR switch.
+Consider implementing this pattern whenever your location/service provided by this pattern can tolerate the lower level of resiliency without impacting your business. Some food, healthcare, finance, and retail scenarios can apply this option to minimize their costs without impacting their core operations and business transactions. Although Software Defined Networking (SDN) L3 services are fully supported on this pattern, the routing services such as as Border Gateway Protocol (BGP) may need to be configured on the firewall device on top of the rack (TOR) switch..
 
-Network security feature such as micro-segmentation or QoS don't require extra configuration the firewall device, as they're implemented at virtual network adapter layer.
-
-:::image type="content" source="media/single-node-switchless/physical-connectivity-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/single-node-switchless/physical-connectivity-layout.png":::
-
-Diagram showing single-node switchless physical connectivity layout.
-
-:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
-
-Diagram showing single-node switchless logical connectivity layout.
+Network security features such as micro-segmentation or Quality of Service (QoS) don't require extra configuration the firewall device, as they're implemented at virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI]https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
 ## Physical connectivity components
 
-As illustrated in the diagram above, this pattern has the following physical network components:
+As illustrated in the diagram below, this pattern has the following physical network components:
 
 - For northbound/southbound communication, the Azure Stack HCI cluster in this pattern is implemented with a single TOR switch.
 - Two network ports in teaming to handle the management and compute traffics, connected to the L2 switch.
 - The two RDMA NICs are disconnected as they aren’t used unless you add a second server to the system. There's no need to increase costs on cabling or physical switch ports consumption.
 - As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use headless configuration without BMC card for security purposes.
 
-|Networks|Management & Compute|Storage|BMC|
+:::image type="content" source="media/single-node-switchless/physical-connectivity-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/single-node-switchless/physical-connectivity-layout.png":::
+
+|Networks|Management & compute|Storage|BMC|
 |--|--|--|--|
-|Link Speed|At least 1 GB. 10 GB recommended|At least 1 GB. 10 GB recommended|Check with hardware manufacturer|
-|Interface Type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
-|Ports and aggregation|2 Teamed ports|Optional to allow adding a second server. Disconnected Ports|1 port|
+|Link speed|At least 1 GBps. 10 GBps recommended|At least 1 GBps. 10 GBps recommended|Check with hardware manufacturer|
+|Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
+|Ports and aggregation|Two teamed ports|Optional to allow adding a second server. Disconnected Ports|1 port|
 |RDMA|Optional. Depends on requirements for Guest RDMA and NIC support|N/A|N/A|
 
 ## Network ATC intents
 
-For single-node storage switchless pattern only one Network ATC intent is created for Management and Compute. Storage intent isn't needed because the RDMA NICs will remain disconnected.
+For single-node storage switchless pattern only one Network ATC intent is created for management and compute. RDMA network interfaces are disconnected.
 
 :::image type="content" source="media/single-node-switchless/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-node switchless pattern" lightbox="media/single-node-switchless/network-atc.png":::
 
@@ -71,21 +65,28 @@ For single-node storage switchless pattern only one Network ATC intent is create
 
 ### Storage intent
 
-- Intent Type: None
-- Intent Mode: None
-- Teaming: No. pNIC03 and pNIC04 are disconnected
+- Intent type: None
+- Intent mode: None
+- Teaming: pNIC03 and pNIC04 are disconnected
 - Default VLANs: None
 - Default subnets: None
 
-Run the following PowerShell command as an administrator:
+Follow these steps to create network intents for this reference pattern:
 
-```powershell
-Add-NetIntent -Name <management_compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
-```
+1. Run PowerShell as administrator.
+1. Run the following command:
+
+    ```powershell
+    Add-NetIntent -Name <management_compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
+    ```
 
 For more information, see [Deploy host networking: Compute and management intent](/azure-stack/hci/deploy/network-atc.md#compute-and-management-intent).
 
 ## Logical networks
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
 
 ### Storage network VLANs
 
