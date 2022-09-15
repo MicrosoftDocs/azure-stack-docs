@@ -85,17 +85,19 @@ In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 vir
 
 When you create a virtual network gateway for Azure Stack Hub, you specify the gateway SKU that you want to use. The following Virtual Network gateway SKUs are supported:
 
-* Basic
-* Standard
-* High Performance
+* **Basic** - 100 Mbps Tx/Rx
+
+* **Standard** - 100 Mbps Tx/Rx
+
+* **High Performance** -  200 Mbps Tx/Rx
   
 ## New Virtual Network gateway SKUs in public preview
 
 In Azure Stack Hub 2209 release, Microsoft is announcing the Public Preview of the new VPN Fast Path feature, which increases the total Azure Stack Hub stamp maximum throughput from 2 Gbps to 5 Gbps, and also introduces 3 new SKUs
 
-* VpnGwy1
-* VpnGwy2
-* VpnGwy3
+* **VpnGwy1** - 650 Mbps Tx/Rx
+* **VpnGwy2** - 1000 Mbps Tx/Rx
+* **VpnGwy3** - 1250 Mbps Tx/Rx
 
 Azure Stack Hub does not support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
 
