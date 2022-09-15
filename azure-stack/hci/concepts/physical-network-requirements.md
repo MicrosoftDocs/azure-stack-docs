@@ -120,7 +120,6 @@ A minimum of three CoS priorities are required without downgrading the switch ca
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
 
-
 ### Standard: IEEE 802.1AB
 
 Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and enables troubleshooting of physical networking configurations.
@@ -130,9 +129,6 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 ### Custom TLV requirements
 
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
-
-
-
 
 |Version required|Organization|TLV Subtype|
 |-----|-----|-----|
@@ -145,7 +141,7 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 |22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 ---
 
-### Maximum Transmission Unit (*New Requirement*) <br>
+### Maximum Transmission Unit (*New Requirement*)
 
 The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
 ### Border Gateway Protocol (*New Requirement*)
@@ -156,7 +152,6 @@ Border Gateway Protocol (BGP) is a standard routing protocol used to exchange ro
 
 The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services.
 
-
 |Version required|Requirement|
 |-----|-----|
 |22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit - Must support sizes inclusive of the range 1514-9174|
@@ -164,7 +159,7 @@ The DHCP relay agent is any TCP/IP host which is used to forward requests and re
 |22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
 
 ---
-#
+##
 
 ## Network traffic and architecture
 
@@ -242,3 +237,4 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 - Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
+##
