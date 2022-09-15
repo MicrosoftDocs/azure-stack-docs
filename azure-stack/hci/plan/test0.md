@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/14/2022
+ms.date: 09/15/2022
 ---
 
 # Azure Stack HCI network deployment patterns
@@ -26,7 +26,7 @@ Use the following table to directly go to a pattern and its content.
 
 |Storage switchless |Storage switched|
 |---------|---------|
-|![Storage switchless - need to replace](media/plan-deployment/storage-switchless-one-tor-switch.png)<br>[Go to this pattern](single-node-switchless.md)     | ![Storage switched - need to replace](media/plan-deployment/storage-switchless-two-tor-switch.png)<br>[Go to this pattern](test1.md)         |
+|![Storage switchless - need to replace](media/plan-deployment/storage-switchless-one-tor-switch.png)<br>[Go to this pattern](single-node-switchless.md)     | ![Storage switched - need to replace](media/plan-deployment/storage-switchless-two-tor-switch.png)<br>[Go to this pattern](single-node-switched.md)         |
 
 ### Two node deployment patterns
 

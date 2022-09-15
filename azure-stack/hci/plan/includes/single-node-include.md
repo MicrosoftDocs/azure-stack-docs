@@ -11,6 +11,22 @@ ms.date: 09/15/2022
 
 The Out of Band (OOB) network is dedicated to supporting the "lights-out" server management interface also known as the baseboard management controller (BMC). This network is isolated from compute workloads. The OOB network is optional for non-solution-based installations. Each BMC interface connects to a customer-supplied switch. The BMC is used to automate PXE boot scenarios. The management network requires access to the BMC interface using Intelligent Platform Management Interface (IPMI) User Datagram Protocol (UDP) port 623.
 
+### Management VLAN
+
+All physical compute hosts require access to the management logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the management logical network.
+
+A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. When DHCP is the preferred IP assignment method, DHCP reservations without expiration are recommended.
+
+The management network supports the following VLAN configurations:
+
+- **Native VLAN** - you aren't required to supply VLAN IDs. This is required for solution-based installations.
+
+- **Tagged VLAN** - you supply VLAN IDs at the time of deployment.
+
+The management network supports traffic used for management of the cluster, including Remote Desktop, Windows Admin Center, and Active Directory.
+
+For more information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
+
 ### Compute VLANs
 
 In some scenarios, you don’t need to use SDN Virtual Networks with Virtual Extensible LAN (VXLAN) encapsulation. Instead, you can use traditional VLANs to isolate your tenant workloads. Those VLANs are configured on the TOR switch's port in trunk mode. When connecting new VMs to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
