@@ -155,10 +155,13 @@ The DHCP relay agent is any TCP/IP host which is used to forward requests and re
 
 |Version required|Requirement |
 |-----|-----|
-|22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit -  _Must support  sizes inclusive of the range 1514-9174_|
+|22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit - Must support sizes inclusive of the range 1514-9174|
 |22H2 and later **(*New in 22H2*)**|Border Gateway Protocol|
 |22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
+
+
 ---
+
 
 ## Network traffic and architecture
 
