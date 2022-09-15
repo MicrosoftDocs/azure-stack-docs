@@ -159,9 +159,9 @@ Given the differences between the two platforms outlined above, the user should 
 ### Service principals can be provided by Azure AD or AD FS
 
 Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to Azure Active Directory (Azure AD), therefore Active Directory Federated Services (AD FS) is used. How Azure Stack Hub tenants create SPNs is documented here:
- - [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#overview)
- - [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
+- [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-connected#overview)
+- [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 ## Next steps
 
