@@ -25,7 +25,7 @@ Existing setups can be adjusted by re-creating the virtual network gateway and i
 
 ## New virtual network gateways SKUs available when VPN Fast is enabled
 
-In addition to the 3 new SKUs, the overall gateway pool capacity for S2S VPN tunnels will increase from 2 Gbps to 5 Gbps per Gateway VM which allows a greater number of tunnels using the existing SKUs (Basic, Standard and High Performance).
+In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing for a greater number VPN connections.
 
 The following table shows the new throughput for each SKU when VPN Fast Path is enabled:
 

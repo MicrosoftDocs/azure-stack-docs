@@ -38,7 +38,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 When you create a virtual network gateway, you must specify the SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughput, features, and SLAs.
 
-You can have 10 high performance gateways or 20 basic and standard before your reach the maximum capacity. The maximum can also be reached for a total aggregate throughput of 4 Gbps.
+You can have 10 high performance gateways or 20 basic and standard before your reach the maximum capacity.
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
@@ -50,9 +50,9 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 ### Gateway SKUs with VPN Fast Path Enabled
 
-With the release of VPN Fast Path Public Preview, Azure Stack Hub supports three new SKUs with higher throughput. It also increases the overall stamp capacity from 4 Gbps to 10 Gbps.
+With the release of VPN Fast Path Public Preview, Azure Stack Hub supports three new SKUs with higher throughput.
 
-New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack stamp. 
+New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack stamp.
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 

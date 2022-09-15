@@ -107,8 +107,7 @@ Consider the following when you select the SKU:
 
 ## Gateway availability
 
-High availability scenarios can only be configured on the **High Performance Gateway** connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack Hub only supports the active/passive configuration.
-
+Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack Hub only supports the active/passive configuration.
 
 ## Next steps
 
