@@ -41,13 +41,13 @@
       - name: Storage switchless
         href: plan/single-node-switchless.md
       - name: Storage switched
-        href: plan/test1.md
+        href: plan/single-node-switched.md
       - name: Pattern components
-        href: plan/test1.md
+        href: plan/single-node-components.md
       - name: Pattern IP requirements
-        href: plan/test1.md
+        href: plan/single-node-ip-requirements.md
       - name: Decision matrix
-        href: plan/test1.md
+        href: plan/single-node-decision-matrix.md
     - name: Two-node deployments
       items:
       - name: Storage switchless, single switch

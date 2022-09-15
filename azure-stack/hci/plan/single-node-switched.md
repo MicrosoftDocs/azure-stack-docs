@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI single node storage switched deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI single-node storage switchless network reference pattern.
+description: Plan to deploy an Azure Stack HCI single-node storage switched network reference pattern.
 ms.topic: conceptual
 author: dansisson
 ms.author: v-dansisson
