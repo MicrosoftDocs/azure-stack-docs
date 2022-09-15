@@ -139,6 +139,17 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|ETS Recommendation (Subtype = A)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|PFC Configuration (Subtype = B)|
 |22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+
+
+| Version Required                   | Organization | TLV Subtype                      |
+|------------------------------------|--------------|----------------------------------|
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Port VLAN ID (Subtype = 2)       |
+| 22H2 and later                     | IEEE 802.1   | VLAN Name (Subtype = 3)          |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Link Aggregation (Subtype = 7)   |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Configuration (Subtype = 9)  |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Recommendation (Subtype = A) |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | PFC Configuration (Subtype = B)  |
+| 22H2 and later                     | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 ---
 
 ### Maximum Transmission Unit (*New Requirement*)
