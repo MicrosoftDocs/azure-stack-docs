@@ -28,7 +28,7 @@ These requirements are also published in [Windows Hardware Compatibility Program
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
-# [20H2/21H2](#tab/20-21H2)
+# [20H2 & 21H2](#tab/20-21H2)
 
 
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
@@ -64,7 +64,7 @@ This section lists industry standards that are mandatory for network switches us
 
 Here are the mandatory IEEE standards and specifications:
 
-# [20H2/21H2](#tab/20-21H2reqs)
+# [20H2 & 21H2](#tab/20-21H2reqs)
 
 ### Standard: IEEE 802.1Q
 
@@ -131,35 +131,40 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
 
+
+
+
 |Version required|Organization|TLV Subtype|
 |-----|-----|-----|
-|22H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
-|22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|Port VLAN ID (Subtype = 2)|
+|22H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|Link Aggregation (Subtype = 7)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|ETS Configuration (Subtype = 9)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|ETS Recommendation (Subtype = A)|
 |22H2 and later **(*New in 22H2*)**|IEEE 802.1|PFC Configuration (Subtype = B)|
+|22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+---
 
-### Additional Requirements
+### Maximum Transmission Unit (*New Requirement*) <br>
 
-Outside of IEEE 8021.Q, 802.1Qbb, 802.1Qaz and 802.1AB, the following are additional requirements for switches:
-
-### Maximum Transmission Unit
 The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
-### Border Gateway Protocol
+### Border Gateway Protocol (*New Requirement*)
+
 Border Gateway Protocol (BGP) is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering.
 
-### DHCP Relay Agent
+### DHCP Relay Agent (*New Requirement*)
+
 The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services.
+
 
 |Version required|Requirement|
 |-----|-----|
 |22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit - Must support sizes inclusive of the range 1514-9174|
 |22H2 and later **(*New in 22H2*)**|Border Gateway Protocol|
 |22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
----
 
+---
+#
 
 ## Network traffic and architecture
 
