@@ -141,7 +141,6 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 | 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | PFC Configuration (Subtype = B)  |
 | 22H2 and later                     | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
----
 
 ### Maximum Transmission Unit (*New Requirement*)
 
