@@ -159,7 +159,7 @@ The DHCP relay agent is any TCP/IP host which is used to forward requests and re
 |22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
 
 ---
-##
+
 
 ## Network traffic and architecture
 
@@ -237,4 +237,3 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 - Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
-##
