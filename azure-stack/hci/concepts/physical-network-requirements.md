@@ -153,13 +153,11 @@ Border Gateway Protocol (BGP) is a standard routing protocol used to exchange ro
 ### DHCP Relay Agent
 The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services.
 
-|Version required|Requirement |
+|Version required|Requirement|
 |-----|-----|
 |22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit - Must support sizes inclusive of the range 1514-9174|
 |22H2 and later **(*New in 22H2*)**|Border Gateway Protocol|
 |22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
-
-
 ---
 
 
