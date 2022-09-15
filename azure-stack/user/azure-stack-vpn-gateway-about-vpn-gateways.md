@@ -91,11 +91,11 @@ When you create a virtual network gateway for Azure Stack Hub, you specify the g
   
 ## New Virtual Network gateway SKUs in public preview
 
-In Azure Stack Hub 2203 release, Microsoft is announcing the Public Preview of the new VPN Fast Path feature, which increases the total Azure Stack Hub stamp maximum throughput from 2 Gbps to 5 Gbps, and also introduces 3 new SKUs
+In Azure Stack Hub 2209 release, Microsoft is announcing the Public Preview of the new VPN Fast Path feature, which increases the total Azure Stack Hub stamp maximum throughput from 2 Gbps to 5 Gbps, and also introduces 3 new SKUs
 
-* VPN Gw1
-* VPN GW2
-* VPN Gw3
+* VpnGwy1
+* VpnGwy2
+* VpnGwy3
 
 Azure Stack Hub does not support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
 
