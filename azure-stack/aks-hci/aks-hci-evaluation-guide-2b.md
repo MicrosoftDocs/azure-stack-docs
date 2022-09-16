@@ -296,7 +296,7 @@ This is fine for evaluation purposes. There are a number of optional parameters 
 * **-loadBalancerVmSize**: size of your load balancer VM. Default is Standard_A2_V2.
 * **-nodeVmSize**: size of your worker node VM. Default is Standard_K8S3_v1.
 
-For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet documentation](/reference/ps/new-akshcicluster.md). To get a list of available VM sizes, run **Get-AksHciVmSize**.
+For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet documentation](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To get a list of available VM sizes, run **Get-AksHciVmSize**.
 
 ### Node pools, taints, and max pod counts
 
@@ -393,11 +393,11 @@ Enable-AksHciArcConnection -name "akshciclus001"
 ```
 
 > [!NOTE]
-> This example connects your target cluster to Azure Arc using the subscription ID and resource group passed in the **Set-AksHciRegistration** cmdlet when deploying AKS on Azure Stack HCI. If you want to use alternative settings, [see the cmdlet documentation](/reference/ps/enable-akshciarcconnection.md).
+> This example connects your target cluster to Azure Arc using the subscription ID and resource group passed in the **Set-AksHciRegistration** cmdlet when deploying AKS on Azure Stack HCI. If you want to use alternative settings, [see the cmdlet documentation](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection).
 
 ### Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [Enable-AksHciArcConnection](/reference/ps/enable-akshciarcconnection.md) PowerShell cmdlet.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [Enable-AksHciArcConnection](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection) PowerShell cmdlet.
 
 > [!NOTE]
 > After connecting the cluster, it can take between five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in the Azure portal.
