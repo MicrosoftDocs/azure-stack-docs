@@ -208,7 +208,7 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
 
    This command takes a few moments to complete, but once done, you should see confirmation that the configuration has been saved.
 
-   For more information about some of the other parameters that you can use when defining your configuration, [see the quickstart here](setup-powershell.md#step-3-configure-your-deployment).
+   For more information about some of the other parameters that you can use when defining your configuration, [see the quickstart here](/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-3-configure-your-deployment).
 
    If you make a mistake, run **Set-AksHciConfig** without any parameters, and that will reset your configuration.
 
