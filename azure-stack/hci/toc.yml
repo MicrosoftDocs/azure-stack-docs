@@ -35,7 +35,7 @@
   - name: Plan networking
     items:
     - name: Choose network reference pattern
-      href: plan/test0.md
+      href: plan/choose-network-pattern.md
     - name: Single-node deployments
       items:
       - name: Storage switchless
@@ -51,19 +51,29 @@
     - name: Two-node deployments
       items:
       - name: Storage switchless, single switch
-        href: plan/test1.md
+        href: plan/two-node-switchless-single-switch.md
       - name: Storage switchless, two switches
-        href: plan/test1.md
+        href: plan/two-node-switchless-two-switches.md
       - name: Storage switched, non-converged
-        href: plan/test1.md
+        href: plan/two-node-switched-non-converged.md
       - name: Storage switched, fully converged
-        href: plan/test1.md
+        href: plan/two-node-switched-converged.md
       - name: Pattern components
-        href: plan/test1.md
+        href: plan/two-node-components.md
       - name: Pattern IP requirements
-        href: plan/test1.md
+        href: plan/two-node-ip-requirements.md
       - name: Decision matrix
-        href: plan/test1.md
+        href: plan/two-node-decision-matrix.md
+  - name: Host networking
+    items:
+    - name: Physical network requirements
+      href: concepts/physical-network-requirements.md
+    - name: Host network requirements
+      href: concepts/host-network-requirements.md
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md
+    - name: Firewall requirements
+      href: concepts/firewall-requirements.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS

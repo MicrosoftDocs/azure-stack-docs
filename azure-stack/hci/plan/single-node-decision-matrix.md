@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/15/2022
+ms.date: 09/19/2022
 ---
 
 # Review single-node storage reference pattern decision matrix for Azure Stack HCI
@@ -20,7 +20,7 @@ Study the single-node storage reference pattern decision matrix to help decide w
 |Feature|Storage switchless|Storage switched|
 |--|--|--|
 |Scalable pattern|unsuitable|suitable|
-|HA solution|unsuitable|unsuitable|neutral|
+|HA solution|unsuitable|unsuitable|
 |VLAN based Tenants|suitable|suitable|
 |SDN L3 integration|neutral|suitable|
 |TCO|suitable|neutral|
@@ -29,7 +29,6 @@ Study the single-node storage reference pattern decision matrix to help decide w
 |Physical Switch Operational costs|suitable|neutral|
 |Physical Switch routing and ACLs|neutral|neutral|
 
-
 ## Next steps
 
-[Choose a reference pattern](test0.md).
+- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)

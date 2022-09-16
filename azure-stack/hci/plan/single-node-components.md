@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/15/2022
+ms.date: 09/19/2022
 ---
 
 # Review single-node storage reference pattern components for Azure Stack HCI
@@ -20,7 +20,7 @@ In this article, you'll learn about which network components get deployed for si
 
 ## Components running on VMs
 
-The following table lists all the components runnin on VMs for a single-node network pattern:
+The following table lists all the components running on VMs for a single-node network pattern:
 
 |Component|Number of VMs|OS disk size|Data disk size|vCPUs|Memory|
 |--|--|--|--|--|--|
@@ -82,4 +82,4 @@ The following components run as services or agents on the host server:
 
 ## Next steps
 
-Learn about [single-node IP requirements](single-node-switchless.md).
+Learn about [single-node IP requirements](single-node-ip-requirements.md).
