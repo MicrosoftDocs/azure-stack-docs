@@ -16,9 +16,7 @@ ms.date: 09/15/2022
 
 In this article, you'll learn about which network components get deployed for two-node reference patterns, as shown below:
 
-:::image type="content" source="media/two-node-components/components.png" alt-text="Diagram showing components for the two-node switched pattern" lightbox="media/two-node-components/components.png":::
-
 
 ## Next steps
 
-Learn about [Two-node deployment IP requirements](two-node-ip-requirementsswitchless.md).
+Learn about [Two-node deployment IP requirements](two-node-ip-requirements.md).

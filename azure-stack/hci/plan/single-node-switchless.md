@@ -16,7 +16,7 @@ ms.date: 09/19/2022
 
 In this article, you'll learn about the single-node storage switchless network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](test0.md).
+For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 

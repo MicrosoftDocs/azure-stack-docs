@@ -26,4 +26,4 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 ## Next steps
 
-Learn about the [two-node storage switchless, one switch network pattern](two-node-switchless-one-switch.md).
+Learn about the [two-node storage switchless, one switch network pattern](two-node-switchless-single-switch.md).
