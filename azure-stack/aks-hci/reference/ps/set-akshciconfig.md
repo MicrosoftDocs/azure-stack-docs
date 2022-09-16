@@ -40,6 +40,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-cloudAgentAuthorizerPort <int>]
                  [-clusterRoleName <String>]
                  [-cloudLocation <String>]
+                 [-concurrentDownloads <int>]
                  [-skipHostLimitChecks]
                  [-skipRemotingChecks]
                  [-insecure]
