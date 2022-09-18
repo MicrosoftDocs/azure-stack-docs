@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 08/31/2022
+ms.date: 09/18/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -16,7 +16,29 @@ ms.lastreviewed:
 ---
 # Migrate File Share
 
-This document provides instructions on how to migrate to new File Server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider content file share.
+This document provides instructions on how to migrate to new File Server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider content file share.4
+
+## Backup the Ap pService secrets
+
+## Back up App Service secrets
+When recovering App Service from backup, you need to provide the App Service keys used by the initial deployment. This information should be saved as soon as App Service is successfully deployed and stored in a safe location. The resource provider infrastructure configuration is recreated from backup during recovery using App Service recovery PowerShell cmdlets.
+
+Use the administration portal to back up app service secrets by following these steps: 
+
+1. Sign in to the Azure Stack Hub administrator portal as the service admin.
+
+2. Browse to **App Service** -> **Secrets**. 
+
+3. Select **Download Secrets**.
+
+   ![Download secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/download-secrets.png)
+
+4. When secrets are ready for downloading, click **Save** and store the App Service secrets (**SystemSecrets.JSON**) file in a safe location. 
+
+   ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/save-secrets.png)
+
+> [!NOTE]
+> Repeat these steps every time the App Service secrets are rotated.
 
 ## Back up the existing App Service file share
 
@@ -48,24 +70,29 @@ net use $source /delete
 
 In addition to copying the file share contents, you must also reset permissions on the file share itself. To reset permissions, open an admin command prompt on the file server computer and run the **ReACL.cmd** file. The **ReACL.cmd** file is located in the App Service installation files in the **BCDR** directory.
 
-## Update connection details in the Azure App Service on Azure Stack Hub Resource Provider
+## Migrate the file share
 
-Login to the SQL Server instance hosting the App Service databases and run the following SQL Script to update the database.  You must replace **\<mynewfileserver.contoso.local\>** with the name of the new file server.
+1. In the Azure Stack Hub Administration Portal navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+1. By default, remote desktop is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+1. Navigate to the resource group containing the App Service Resource Provider deployment, by default this is **AppService.<region>** and connect to **CN0-VM**.
+1. Open an Administrator PowerShell session and run **net stop webfarmservice**
+1. Repeat step 3 and 4 for all other controllers.
+1. Return to the **CN0-VM** remote desktop session.
+1. Copy the App Service secrets file ot the controller.
+1. In an Administrator PowerShell session run
+      ```powershell
+      Restore-AppServiceStamp -FilePath <local secrets file> -OverrideContentShare <new file share location> -CoreBackupFilePath <filepath>
+      ```
+      1. A prompt will appear to confirm the key values, **verify** and **press ENTER** to continue, or close the PowerShell session to cancel.
+1. Once the cmdlet has finished, all worker instances from custom worker tiers will be removed, and then added back via the next PowerSHell script
+1. In the same administrative PowerShell session or a new Administrative PowerShell session, run:
+      ```powershell
+      Restore-AppServiceRoles
+      ```
+   This command will inspect the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of the custom worker tiers
 
-```sql
-SELECT * FROM [admin].[WebSystems]
-      UPDATE [admin].[WebSystems]
-      SET [FileShare] ='\\<mynewfileserver.contoso.local>\websites'
-      Where id = 1
- 
-      SELECT * FROM [runtime].[HostingConfigurations]
-      WHERE ConfigurationKey like 'ContentShare'
- 
-      UPDATE [runtime].[HostingConfigurations]
- 
-      SET ConfigurationValue = '<mynewfileserver.contoso.local>'
-      WHERE ConfigurationKey like 'ContentShare'
-```
+1. in the same, or a new, administrative PowerShell session run net start Webfarm service
+1. Repeat the previous step for all other controllers.
 
 ## Update file server credentials
 
