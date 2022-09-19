@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 08/09/2022
+ms.date: 09/15/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 08/09/2022
+ms.lastreviewed: 09/15/2022
 ms.reviewer: jeguan
 
 ---
@@ -40,6 +40,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-cloudAgentAuthorizerPort <int>]
                  [-clusterRoleName <String>]
                  [-cloudLocation <String>]
+                 [-concurrentDownloads <int>]
                  [-skipHostLimitChecks]
                  [-skipRemotingChecks]
                  [-insecure]
@@ -356,6 +357,20 @@ Aliases:
 Required: False
 Position: Named
 Default value: MocLocation
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -concurrentDownloads
+How many parts to segment content downloads into for the large files downloaded during installations and upgrades. By default, large files are segmented into 10 concurrent downloads. This parameter is a preview feature.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

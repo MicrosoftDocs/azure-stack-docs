@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/19/2022
+ms.date: 08/23/2022
 ms.author: sethm
 ms.reviewer: shisab
 ms.lastreviewed: 04/19/2022
@@ -32,7 +32,7 @@ For more information about cmdlets that Microsoft support can execute during a r
 
 Remote support gives you the ability to:
 
-- Improve the speed to resolution as Microsoft Support no longer needs to arrange a meeting with you for troubleshooting.
+- Improve the speed to resolution. After the initial scoping consultation with Microsoft Support, you can enable remote support. At that point Microsoft Support no longer needs to arrange meetings with you for further troubleshooting.
 - Reduce the number of [privileged endpoint (PEP) session elevation](azure-stack-privileged-endpoint.md#unlocking-the-privileged-endpoint-for-support-scenarios) to resolve issues.
 - View the detailed transcript of all executed operations at any time.
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.

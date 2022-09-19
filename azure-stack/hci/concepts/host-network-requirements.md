@@ -22,15 +22,37 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 - **Compute traffic:** Traffic originating from or destined to a virtual machine (VM). 
 - **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration.
-- **Management traffic:** Traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Management traffic:** Traffic to or from outside the local cluster. For example, storage replica traffic or traffic used by the administrator for management of the cluster like Remote Desktop, Windows Admin Center, Active Directory, etc.
+
+> [!IMPORTANT]
+> Storage replica uses non-RDMA based SMB traffic. This and the directional nature of the traffic (North-South) makes it closely aligned to that of "management" traffic listed above, similar to that of a traditional file share.
 
 ## Select a network adapter
 
-Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality problems. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
+Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
-You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Here's an example of the notation for Premium AQ:
+For more information about this role-based NIC qualification, please see this [link](https://aka.ms/RoleBasedNIC).
 
-:::image type="content" source="media/plan-networking/windows-certified.png" alt-text="Screenshot of Windows Certified options, with a Premium AQ option highlighted." lightbox="media/plan-networking/windows-certified.png":::
+> [!IMPORTANT]
+> Using an adapter outside of its qualified traffic type is not supported.
+
+|Level|Management Role|Compute Role|Storage Role|
+|----|----|----|----|
+|Role-based distinction|Management|Compute Standard|Compute Storage|
+|Maximum Award|Not Applicable|Compute Premium|Storage Premium|
+ 
+> [!NOTE]
+> The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
+ 
+![image](https://user-images.githubusercontent.com/12801954/188225569-bb160be0-96a2-4563-97d5-3d8efb3cb597.png)
+
+## Driver Requirements
+
+Inbox drivers are not supported for use with Azure Stack HCI. To identify if your adapter is using an inbox driver, run the following cmdlet. An adapter is using an inbox driver if the **DriverProvider** property is **Microsoft.**
+
+```Powershell
+Get-NetAdapter -Name <AdapterName> | Select *Driver*
+```
 
 ## Overview of key network adapter capabilities
 

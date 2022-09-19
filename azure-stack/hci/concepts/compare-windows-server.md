@@ -13,7 +13,7 @@ ms.date: 05/24/2021
 
 > Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
 
-This article explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both, as they are intended for different and complementary purposes.
+This article explains key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
 ## When to use Azure Stack HCI
 
@@ -34,9 +34,9 @@ For information about licensing Windows Server VMs running on an Azure Stack HCI
 
 ## When to use Windows Server
 
-Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, and includes the ability for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
-:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
 Use Windows Server for:
 
@@ -44,7 +44,7 @@ Use Windows Server for:
 - As the runtime server for a Windows application.
 - To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS).
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation.
-- For traditional infrastructure such as VMs connected to Fibre Channel SAN storage.
+- For traditional infrastructure, such as VMs connected to Fibre Channel SAN storage.
 
 ## Compare product positioning
 
@@ -52,11 +52,11 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 
 | Attribute    | Azure Stack HCI | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
-| Product type     | Cloud service that includes an operating system and more. | Operating system |
+| Product type     | Cloud service that includes an operating system and more. | Operating system. |
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement. | Has its own end-user license agreement. |
 | Licensing        | Billed to your Azure subscription. | Has its own paid license. |
 | Support          | Covered under Azure support. | Can be covered by different support agreements, including Microsoft Premier Support. |
-| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on integrated systems. | Microsoft Volume Licensing Service Center or Evaluation Center. |
+| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci) or comes preinstalled on integrated systems. | Microsoft Volume Licensing Service Center or Evaluation Center. |
 | Runs in VMs      | For evaluation only; intended as a host operating system. | Yes, in the cloud or on premises. |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog). | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/).|
 | Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer). |None.|
@@ -72,10 +72,10 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No (1)|
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No <sup>1</sup>|
 
-(1) Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
-
+ <sup>1</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+ 
 ## Compare technical features
 
 The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
@@ -99,7 +99,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
-For more information, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
+For more information, see [What's New in Azure Stack HCI, version 22H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
 ## Compare management options
 
@@ -107,19 +107,19 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Desktop experience | No | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
 | Third-party tools | Yes | Yes |
-| Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
-| Cluster integrates with Azure Resource Manager | Yes | No |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual (1) |
-| Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual (1) |
-| Azure Arc-enabled VM management (preview)| Yes | No |
+| Azure portal | Yes (natively) | Requires Azure Arc agent |
+| Azure portal > Extensions and Arc-enabled host | Yes | Manual <sup>1</sup>|
+| Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
+| Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
+| Azure portal > Azure Resource Manager integration for clusters | Yes | No |
+| Azure portal > Arc-enabled VM management (preview) | Yes | No |
+| Desktop experience | No | Yes |
 
-(1) Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+<sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.
 
 ## Compare product pricing
 
