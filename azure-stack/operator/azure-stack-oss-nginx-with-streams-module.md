@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Setup OSS Nginx with Streams SSL module as the transparent proxy for Azure Stack Hub.
 author: baobiao
 ms.topic: article
-ms.date: 05/19/2022
+ms.date: 09/19/2022
 ms.author: vwidjaja
 ms.lastreviewed: 
 ms.reviewer: 
