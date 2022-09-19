@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 08/31/2022
+ms.date: 09/18/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -71,84 +71,25 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
     ```
 3. Verify that both App Service databases have been successfully restored and exit SQL Server Management Studio.
 
-## Update connection strings
+## Migrate the SQL Server
 
-1. In the Azure Stack Administration Portal navigate to the **ControllersNSG** Network Security Group
-1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
-1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
-1. Stop the **WebFarmService** on all active controllers.  You may need to change the failure actions on the service to "Take no action and manually kill the process" - Note if you take this action you must restore the original behavior of the service once this process is complete.
-1. Repeat the steps [Update Hosting Connection string](#update-app-service-hosting-database-connection-string) and [Update Metering Connection String](#update-app-service-metering-database-connection-string) for all controllers within the App Service deployment.
-1. [Update the connection strings inside the database](#update-connection-strings-inside-the-database)
-1. [Update role instances](#update-role-instances)
-1. [Update Virtual Machine Scale Set Definitions](#update-virtual-machine-scale-set-definitions)
+1. In the Azure Stack Hub Administration Portal navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+1. By default, remote desktop is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService./<region/> and connect to **CN0-VM**.
+1. Open an Administrator PowerShell session and run **net stop webfarmservice**
+1. Repeat step 3 and 4 for all other controllers.
+1. Return to **CN0-VM**'s RDP Session and copy the secrets file to the controller
+1. In an Administrator PowerShell session run
+      ```powershell
+      Restore-AppServiceStamp -FilePath <local secrets file> -OverrideDatabaseServer <new database server> -CoreBackupFilePath <filepath>
+      ```
+   1. A prompt will appear to confirm the key values, press **Enter** to continue or close the PowerShell session to cancel.
+1. Once the cmdlet completes, **all** worker instances from the custom worker tiers will be removed and those instances will be added back by the next step
+1. In the same PowerShell session or a new Administrative PowerShell session, run the following PowerShell script which will inspect all the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of custom worker tiers:
+   ```powershell
+   Restore-AppServiceRoles
+   ```
+1. in the same, or a new, administrative PowerShell session run net start Webfarm service
+1. Repeat the previous step for all other controllers.
 1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
-
-### Update App Service Hosting Database connection string
-
-1. Open PowerShell as administrator
-1. Execute the following script, replacing **\<SQL-SERVER_OLD\>** and **\<SQL-SERVER-NEW\>** references accordingly:
-```PowerShell
-Import-Module AppService
- 
-$hcnstr = Get-AppServiceConnectionString -Type Hosting
-$hbuilder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($hcnstr)
-$hbuilder.'Data Source' = $builder.DataSource.Replace("<SQL-SERVER-OLD>", "<SQL-SERVER-NEW>"))
-$hbuilder.ConnectionString
-Set-AppServiceConnectionString -Type Hosting -ConnectiongString $hbuilder.ConnectionString
-```
-
-1. Close PowerShell session to clear cached variables.
-
-### Update App Service Metering Database connection string
-
-1. Open PowerShell as administrator
-1. Execute the following script, replacing **<SQL-SERVER_OLD\>** and **<SQL-SERVER-NEW\>** references accordingly:
-```PowerShell
-Import-Module AppService
- 
-$mcnstr = Get-AppServiceConnectionString -Type Metering
-$mbuilder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($mcnstr)
-$mbuilder.'Data Source' = $builder.DataSource.Replace("<SQL-SERVER-OLD>", "<SQL-SERVER-NEW>")
-$mbuilder.ConnectionString
-set-AppServiceConnectionString -Type Metering -ConnectiongString $mbuilder.ConnectionString -ServerName "<IPv4-OF-CURRENT-CONTROLLER>"
-```
-1. Close PowerShell session to clear cached variables.
-
-### Update connection strings inside the database
-
-1. Open PowerShell as administrator
-1. List the connection contexts retrieved from the database, this command will list the connection contexts
-```PowerShell
-Import-Module AppService
-$manager = New-Object Microsoft.Web.Hosting.SiteManager
-$manager.ConnectionContexts | Format-Table ConnectionName, ConnectionString –Wrap
-```
-1. Update the connection string for each context.  Replace **\<CONNECTION-CONTEXT-NAME\>** with the context name indicated in step 1.  Replace **\<SQL-SERVER-OLD\>** and **\<SQL-SERVER-NEW\>** references:
-```PowerShell
-$cnstr = $connectio.ConnectionContexts["<CONNECTION-CONTEXT-NAME>"].ConnectionString
-$builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($cnstr)
-$builder.'Data Source' = $builder.DataSource.Replace("<SQL-SERVER-OLD>", "<SQL-SERVER-NEW>")
-$builder.ConnectionString
-$manager.ConnectionContexts["<CONNECTION-CONTEXT-NAME>"].ConnectionString = $builder.ConnectionString
-$manager.CommitChanges()
-```
-1. Close PowerShell session to clear cached variables.
-
-### Update role instances
-
-1. Start the WebFarmService on the primary controller.
-1. Repair all roles to make sure the changes are propogated to every role instance.
-1. Wait for all roles to become ready
-1. Start WebFarmService on the secondary controller.
-
-### Update Virtual Machine Scale Set Definitions
-
-1. Open PowerShell as administrator and execute the following script:
-```PowerShell
-Import-Module AppService
-Restore-AppServiceRoles
-```
-1. Close PowerShell session to clear cached variables
-1. Check the status of Virtual Machine Scale Sets in the Admin Portal and wait until the status for all App Service scale sets are marked as **succeeded**
-
