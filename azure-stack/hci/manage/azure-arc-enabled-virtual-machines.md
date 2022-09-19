@@ -71,8 +71,11 @@ Deploying Azure Arc Resource Bridge requires the following:
   - At least 4 vCPUs
   - At least 8 GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
-- A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server.
-- An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
+- If using DHCP, ensure that DHCP server has enough IP addresses for Resource Bridge VM ($VMIP). You can have a tagged or untagged DHCP server. 
+- Please make sure $VMIP has internet access.
+- An IP address for the load balancer running inside the Resource Bridge ($controlPlaneIP). The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. 
+- Please make sure $controlPlaneIP has internet access.
+- The Host must be able to reach the IPs given to the control plane endpoint ($controlPlaneIP) and Arc Resource Bridge VM ($VMIP). Please work with your network administrator to enable this.
 - An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
 - A shared cluster volume to store configuration details and the OS image for your Resource Bridge VM.
 - An Azure subscription ID where your Resource Bridge, custom location, and cluster extension resources will reside.
