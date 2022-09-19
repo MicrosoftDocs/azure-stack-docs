@@ -46,7 +46,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 ### Estimated upgrade time
 
 The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
-## Instructions to use AKS engine 0.70.0
+## Instructions to use AKS engine 0.71.0
 
 Microsoft upgraded the Azure Cloud Provider in version 0.70.0. The Azure Cloud Provider is a core component shared between AKS Azure and AKS engine on Azure Stack Hub. 
 
