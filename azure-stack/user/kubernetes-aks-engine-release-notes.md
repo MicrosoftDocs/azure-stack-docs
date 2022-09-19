@@ -167,6 +167,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.66.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.66.1
 -   https://github.com/Azure/aks-engine/releases/tag/v0.67.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.70.0
 
 ::: moniker-end
 
