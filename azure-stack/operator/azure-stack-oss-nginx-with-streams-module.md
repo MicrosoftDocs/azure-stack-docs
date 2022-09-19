@@ -4,8 +4,8 @@ titleSuffix: Azure Stack
 description: Setup OSS Nginx with Streams SSL module as the transparent proxy for Azure Stack Hub.
 author: baobiao
 ms.topic: article
-ms.date: 
-ms.author: 
+ms.date: 05/19/2022
+ms.author: vwidjaja
 ms.lastreviewed: 
 ms.reviewer: 
 
@@ -165,7 +165,7 @@ The following sections are used for by the respective OSS Nginx modules.
   - The Streams SSL module will listen on `Port 443`.
   - Streams SSL PreRead is enabled to pre-populate the `ssl_preread_server_name` with the SNI value in the HTTP Request.
   - Access logs are defined in to the specified location.
-  - We use "double mapping" to determine if the HTTPS Request is "whitelisted" to pass-through because other conditional expressions are not supported.
+  - We use "double mapping" to determine if the HTTPS Request can pass-through because If-Then-Else and SWITCH conditional expressions are not supported.
   - The first map compares the `ssl_preread_server_name` to a list of regular expressions of Microsoft Azure domain names and maps `allow_fqdn` to TRUE if there is a match. Otherwise to FALSE.
   - The second map compares the boolean value of `allow_fqdn` and writes the value of `ssl_preread_server_name` into the place holder `destination_ssl_server` if TRUE. Otherwise it writes a value of "`-`" to cause the request to fail.
   - The `proxy_pass` directive is used to forward the HTTPS Request to the next hop.
@@ -332,7 +332,7 @@ The Datacenter Load Balancer will need to:
 - No session affinity is required as every egress request is stateless.
 - Permit egress TCP/80 and egress TCP/443 traffic to the backend pool.
 
-![High Availability with Datacenter Load Balancer Capability](./media/azure-stack-oss-nginx-with-streams-module/azure-stack-oss-nginx-with-streams-module-loadbalancer.svg)
+![High Availability with Datacenter Hardware Load Balancer Capability](./media/azure-stack-oss-nginx-with-streams-module/azure-stack-oss-nginx-with-streams-module-loadbalancer.svg)
 
 ## High Availability with Software Clustering (Optional)
 For use cases when the datacenter does not have load balancer capability to support outbound HTTP requests from Apps zone to DMZ zone. The OSS Nginx instances in DMZ zone can be software clustered to provide Active-Passive high availability for Azure Stack Hub egress requests. Session failover will not be setup across OSS Nginx servers. The Border switches will need to route all egress traffic from Azure Stack Hub towards the Virtual IP of the software cluster.
@@ -342,7 +342,7 @@ The software clustering will:
 - Maintain a heartbeat between the Active and Passive Nodes in the cluster to discover if the Active Node is able to continue servicing Azure Stack Hub egress HTTP requests.
 - Automatically start the OSS Nginx service in the Passive node and assign the floating Virtual IP when the Active Node has failed the heartbeat check.
 
-![High Availability with Datacenter Load Balancer Capability](./media/azure-stack-oss-nginx-with-streams-module/azure-stack-oss-nginx-with-streams-module-software.svg)
+![High Availability with Software Clustering Capability](./media/azure-stack-oss-nginx-with-streams-module/azure-stack-oss-nginx-with-streams-module-software.svg)
 
 ### Update Hosts File in Cluster Nodes
 Modify the `/etc/hosts` file in each OSS Nginx VM to statistically define the IP Address and Hostname to facilitate operations. In the following installation instructions we will assume that a CIDR of `10.1.0.0/29` is allocated by your datacenter network administrator to setup your software clustering of OSS Nginx servers. Expect to use a larger CIDR if your datacenter needs to run additional monitoring and security capabilities for every subnet allocated.
