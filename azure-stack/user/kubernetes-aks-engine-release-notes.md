@@ -5,8 +5,8 @@ author: sethmanheim
 ms.topic: article
 ms.date: 06/03/2022
 ms.author: sethm
-ms.reviewer: waltero
-ms.lastreviewed: 05/06/2022
+ms.reviewer: sumsmith
+ms.lastreviewed: 09/19/2022
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
