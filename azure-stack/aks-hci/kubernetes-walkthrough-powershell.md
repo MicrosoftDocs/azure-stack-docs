@@ -115,7 +115,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 ## Step 4: Log in to Azure and configure registration settings
 ### Option 1: Using your Azure AD account if you have "Owner" permissions
 
-Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure regions to proceed.
+Run the following [Set-AksHciRegistration](/azure-stack/aks-hci/reference/ps/set-akshciregistration) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure regions to proceed.
 
 ```powershell
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
