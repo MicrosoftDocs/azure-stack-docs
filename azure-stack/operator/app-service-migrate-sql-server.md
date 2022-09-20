@@ -73,7 +73,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 
 ## Migrate the SQL Server
 
-1. In the Azure Stack Hub Administration Portal navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+1. In the Azure Stack Hub Administration Portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 1. By default, remote desktop is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Open an Administrator PowerShell session and run **net stop webfarmservice**
@@ -89,7 +89,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
    ```powershell
    Restore-AppServiceRoles
    ```
-1. in the same, or a new, administrative PowerShell session run net start Webfarm service
+1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.

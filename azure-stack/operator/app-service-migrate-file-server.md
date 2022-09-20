@@ -70,13 +70,13 @@ In addition to copying the file share contents, you must also reset permissions 
 
 ## Migrate the file share
 
-1. In the Azure Stack Hub Administration Portal navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+1. In the Azure Stack Hub Administration Portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 1. By default, remote desktop is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider deployment, by default this is **AppService.\<region\>** and connect to **CN0-VM**.
 1. Open an Administrator PowerShell session and run **net stop webfarmservice**
 1. Repeat step 3 and 4 for all other controllers.
 1. Return to the **CN0-VM** remote desktop session.
-1. Copy the App Service secrets file ot the controller.
+1. Copy the App Service secrets file to the controller.
 1. In an Administrator PowerShell session run
       ```powershell
       Restore-AppServiceStamp -FilePath <local secrets file> -OverrideContentShare <new file share location> -CoreBackupFilePath <filepath>
@@ -89,7 +89,7 @@ In addition to copying the file share contents, you must also reset permissions 
       ```
    This command will inspect the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of the custom worker tiers
 
-1. in the same, or a new, administrative PowerShell session run net start Webfarm service
+1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
@@ -98,7 +98,7 @@ In addition to copying the file share contents, you must also reset permissions 
 
 If the credentials have changed you must update the file share credentials to connect to the new file server (FileShareOwnerCredential and FileShareUserCredential).
 
-1. In the Azure Stack Administration Portal navigate to the **ControllersNSG** Network Security Group
+1. In the Azure Stack Administration Portal, navigate to the **ControllersNSG** Network Security Group
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Launch the **Web Cloud Management Console**
