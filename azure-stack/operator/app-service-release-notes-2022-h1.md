@@ -23,7 +23,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2022 H1 build number is **98.1.1.677**
+The App Service on Azure Stack Hub 2022 H1 build number is **98.0.1.699**
 
 ## Prerequisites
 
@@ -60,15 +60,22 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
+  - 2022-09 Cumulative Update for .NET Framework 3.5 and 4.8 for Microsoft server operating system version 21H2 for x64 (KB5017028)
   - ASP.NET Core 
     - 3.1.18
     - 3.1.23
     - 6.0.2
     - 6.0.3
-  - Azul OpenJDK
-    - 8.52.0.23
-    - 11.44.13
-  - Git 2.33.1.1
+  - Eclipse Temurin OpenJDK 8
+    - 8u302
+    - 8u312
+    - 8u322
+  - Microsoft OpenJDK 11
+    - 11.0.12.7.1
+    - 11.0.13.8
+    - 11.0.14.1
+    - 17.0.1.12
+    - 17.0.2.8
   - MSBuild 
     - 16.7.0
     - 17.1.0
@@ -93,39 +100,20 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
     - 10.0.20
   - Updated Kudu to 97.40427.5713
 
+
 - **Updates to underlying operating system of all roles**:
-  - [2021-11 Cumulative Update for Windows Server 2022 for x64-based Systems (KB5007192)](https://support.microsoft.com/help/5007192)
-  - [2021-09 Servicing Stack Update for Windows Server 2022 for x64-based Systems (KB5005698)](https://support.microsoft.com/help/5005698)
-  - Defender Definition 1.353.743.0
+  - [2022-09 Cumulative Update for Windows Server 2022 for x64-based Systems (KB5017316)](https://support.microsoft.com/help/5017316)
+  - Defender Definition 1.373.353.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
 - TLS Cipher Suites updated to maintain consistency with Azure Service.
 
-- Added support for 2020-09-01-hybrid profile
-
 ## Issues fixed in this release
 
-- App Service can now be deployed when running the installer from a FIPS-Compliant Client machine
-
-- App Service Role Health is now automatically checked before completing App Service secret rotation procedures.  If all roles not in ready state, secret rotation will be blocked
-
-- Outbound IP Address for sites is now displayed in the properties and Custom Domains blades within the tenant portal
-
-- Included further details on event of Custom Domain verification failure
-
-- Customers can successfully upload and delete private certificates in the tenant portal
-
-- Issue resolved whereby FrontEnd role instances can remain in Auto Repair loop because of a missing dependency in Functions scaling components
-
-- Resolved Single Sign On Failures to SCM Site because of changes in Azure AD endpoints
-
-
-- Updated load balancer health probes on Front-End roles and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front-End role instance(s) when not in Ready state.
-
-- Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10 GB, Shared Workers is 500 MB
-
-- Added algorithm to Log Scavenger routines to prevent workers entering repair loop in event generated http logs exceed available space on worker.
+- Automatically clean up SiteDataRecord and TraceMessages tables within the App Service Resource Provider database(s).
+- Private certificate now shows in sites with deployment slot(s).
+- Improved reliability of upgrade process, by verifying all roles are ready.
 
 ## Pre-Update steps
 
