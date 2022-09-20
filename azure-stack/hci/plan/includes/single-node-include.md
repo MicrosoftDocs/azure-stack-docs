@@ -125,4 +125,3 @@ SDN Gateway requires [Network Controller](/azure-stack/hci/concepts/network-cont
 Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
 
 For more information, see [What is RAS Gateway for SDN?](/azure-stack/hci/concepts/gateway-overview.md)
-
