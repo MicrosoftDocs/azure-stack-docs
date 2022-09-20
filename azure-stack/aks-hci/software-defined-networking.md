@@ -49,7 +49,7 @@ To deploy AKS on Azure Stack HCI and Windows Server with SDN, you need to make s
 - **SDN requirements**  
     [Plan a Software Defined Network infrastructure](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure)
 - **Learn module**  
-    [Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
+    [Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)
 
 > [!NOTE]  
 > For SDN integration with AKS on Azure Stack HCI and Windows Server you need the network controller and software load balancer components. Gateway VMs are optional and not required.
