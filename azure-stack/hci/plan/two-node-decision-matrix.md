@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/19/2022
+ms.date: 09/20/2022
 ---
 
 # Review two-node storage reference pattern decision matrix for Azure Stack HCI
@@ -29,9 +29,6 @@ Study the two-node storage reference pattern decision matrix to help decide whic
 |Physical switch operational costs|suitable|neutral|neutral|unsuitable|
 |Physical switch routing and ACLs|neutral|neutral|neutral|neutral|
 
-## Next steps
-
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
 ## Next steps
 
 - [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
