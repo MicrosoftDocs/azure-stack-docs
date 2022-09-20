@@ -26,27 +26,27 @@ Use the single-node storage switchless pattern in the following scenarios:
 
 - **Food, healthcare, finance, retail, government facilities**. Some food, healthcare, finance, and retail scenarios can apply this option to minimize their costs without impacting core operations and business transactions.
 
-Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as as Border Gateway Protocol (BGP) may need to be configured on the firewall device for the top of the rack (TOR) switch.
+Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as as Border Gateway Protocol (BGP) may need to be configured for the firewall device for the top of the rack (TOR) switch.
 
-Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
+Network security features such as micros-egmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
 ## Physical connectivity components
 
 As illustrated in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the Azure Stack HCI cluster is implemented using a single TOR switch.
-- Two teamed network ports to handle the management and compute traffic connected to the L2 switch.
-- Two RDMA NICs are disconnected as they aren’t used unless you add a second server to your cluster. There's no need to increase costs on cabling or physical switch ports.
-- As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use headless configuration without BMC card for security purposes.
+- For northbound/southbound traffic, the Azure Stack HCI cluster is implemented using a single TOR L2 or L3 switch.
+- Two teamed network ports to handle the management and compute traffic connected to the switch.
+- Two RDMA NICs are disconnected as they aren’t used unless you add a second server to your cluster for scale-out. There's no increased costs for cabling or physical switch ports.
+- (Optional) A BMC card can be used to enable remote management of the environment. Some solutions might use a headless configuration without the BMC card for security purposes.
 
 :::image type="content" source="media/single-node-switchless/physical-connectivity-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/single-node-switchless/physical-connectivity-layout.png":::
 
-|Networks|Management & compute|Storage|BMC|
+|Network|Management & compute|Storage|BMC|
 |--|--|--|--|
-|Link speed|At least 1 GBps. 10 GBps recommended|At least 1 GBps. 10 GBps recommended|Check with hardware manufacturer|
-|Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
-|Ports and aggregation|Two teamed ports|Optional to allow adding a second server. Disconnected Ports|1 port|
-|RDMA|Optional. Depends on requirements for Guest RDMA and NIC support|N/A|N/A|
+|Link speed|At least 1 GBps; 10 GBps recommended.|At least 1 GBps; 10 GBps recommended.|Check with hardware manufacturer|
+|Interface type|RJ45, SFP+, or SFP28|SFP+ or SFP28|RJ45|
+|Ports and aggregation|Two teamed ports|Optional to allow adding a second server; disconnected ports.|One port|
+|RDMA|Optional. Depends on requirements for guest RDMA and NIC support|N/A|N/A|
 
 ## Logical network components
 
@@ -56,13 +56,13 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 ### Storage network VLANs
 
-This pattern doesn't require a storage network.
+Optional - this pattern doesn't require a storage network.
 
 [!INCLUDE [includes](includes/single-node-include.md)]
 
 ## Network ATC intents
 
-For single-node storage switchless patterns, only one Network ATC intent is created for management and compute. RDMA network interfaces are disconnected.
+This pattern uses only one Network ATC intent for management and compute traffic. The RDMA network interfaces are disconnected.
 
 :::image type="content" source="media/single-node-switchless/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-node switchless pattern" lightbox="media/single-node-switchless/network-atc.png":::
 
@@ -71,7 +71,7 @@ For single-node storage switchless patterns, only one Network ATC intent is crea
 - Intent type: Management and compute
 - Intent mode: Cluster mode
 - Teaming: Yes - pNIC01 and pNIC02 are teamed
-- Default management VLAN: Configured VLAN for management adapters isn’t modified
+- Default management VLAN: Configured VLAN for management adapters is ummodified
 - PA VLAN and vNICs: Network ATC is transparent to PA vNICs and VLANs
 - Compute VLANs and vNICs: Network ATC is transparent to compute VMs vNICs and VLANs
 
@@ -83,9 +83,9 @@ For single-node storage switchless patterns, only one Network ATC intent is crea
 - Default VLANs: None
 - Default subnets: None
 
-Follow these steps to create network intents for this reference pattern:
+Follow these steps to create a network intent for this reference pattern:
 
-1. Run PowerShell as administrator.
+1. Run PowerShell as Administrator.
 1. Run the following command:
 
     ```powershell

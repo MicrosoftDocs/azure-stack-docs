@@ -80,7 +80,7 @@ For more information, see [Network ATC overview](/concepts/network-atc-overview.
 - PA VLAN and vNICs: Network ATC is transparent to PA vNICs and VLAN
 - Compute VLANs and vNICs: Network ATC is transparent to compute VM vNICs and VLANs
 
-For more information, see [Deploy host networking](deploy/network-atc.md).
+For more information, see [Deploy host networking](/deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 

@@ -88,7 +88,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
     - 10.71.1.0/24 for storage network 1
     - 10.71.2.0/24 for storage network 2
 
-For more information, see [Deploy host networking](deploy/network-atc.md).
+For more information, see [Deploy host networking](/deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 
