@@ -238,8 +238,9 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
        ![Azure App Service Upgrade Summary][4]
 
->!NOTE
+> !NOTE
 > Upgrading to 2022.H1 can take a considerable amount of time dependent on the number of role instances deployed within the App Service on Azure Stack Hub Resource Provider deployment.
+>
 
 1. Upgrade progress page:
     1. Track the upgrade progress. The duration of the upgrade of App Service on Azure Stack Hub varies dependent on number of role instances deployed.
