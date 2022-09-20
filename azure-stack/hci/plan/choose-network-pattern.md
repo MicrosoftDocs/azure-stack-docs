@@ -6,14 +6,14 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/16/2022
+ms.date: 09/21/2022
 ---
 
 # Azure Stack HCI network deployment patterns
 
-> > Applies to: Azure Stack HCI, version 22H2 (preview)
+> > Applies to: Azure Stack HCI, version 21H2; Azure Stack HCI, version 22H2 (preview)
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI, version 22H2 with either one or two physical hosts.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI with either one or two physical hosts.
 
 The article includes six different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
@@ -23,19 +23,19 @@ Use the following table to directly go to a pattern and its content.
 
 ### Single-node deployment patterns
 
-|Storage switchless |Storage switched|
+|Go to [storage switchless](single-node-switchless.md) |Go to [storage switched](single-node-switched.md)|
 |---------|---------|
-|![Storage switchless - need to replace](media/plan-deployment/storage-switchless-one-tor-switch.png)<br>[Go to this pattern](single-node-switchless.md)     | ![Storage switched - need to replace](media/plan-deployment/storage-switchless-two-tor-switch.png)<br>[Go to this pattern](single-node-switched.md)         |
+|![Diagram showing single-node switchless network pattern](media/plan-deployment/single-node-switchless.png)| ![Diagram showing single-node switched network pattern](media/plan-deployment/single-node-switched.png)         |
 
 ### Two-node deployment patterns
 
-|Storage switchless, single TOR switch |Storage switched, two TOR switches  |
+|Go to [Storage switchless, single TOR switch](two-node-switchless-single-switch.md) |Go to [Storage switched, two TOR switches](two-node-switchless-two-switches.md)|
 |---------|---------|
-|![Storage switchless with single TOR switch](media/plan-deployment/storage-switched-non-converged-two-tor-switch.png)<br>[Go to this pattern](two-node-switchless-single-switch.md)      | ![Storage switchless with two TOR switches](media/plan-deployment/storage-switched-fully-converged-two-tor-switch.png)<br>[Go to this pattern](two-node-switchless-two-switches.md)        |
+|![Diagram showing two-node storage switchless with single TOR switch](media/plan-deployment/two-node-switchless-single-switch.png) | ![Diagram showing two-node storage switchless with two TOR switches](media/plan-deployment/two-node-switchless-two-switches.png)|
 
-|Storage switched, non-converged, two TOR switches    | Storage switched, fully-converged, two TOR switches        |
+|Go to [Diagram showing two-node storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [Storage switched, fully-converged, two TOR switches](two-node-switched-converged.md)       |
 |---------|---------|
-|![Storage switched, non converged, two TOR switches ](media/plan-deployment/storage-switchless-one-tor-switch.png)<br>[Go to this pattern](two-node-switched-non-converged.md)        | ![Storage switched, fully converged, two TOR switches ](media/plan-deployment/storage-switchless-two-tor-switch.png)<br>[Go to this pattern](two-node-switched-converged.md)         |
+|![Storage switched, non converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully converged, two TOR switches ](media/plan-deployment/two-node-switched-converged.png)|
 
 ## Next steps
 

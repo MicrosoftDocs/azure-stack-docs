@@ -20,7 +20,17 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 ## Scenarios
 
+## Physical connectivity components
 
+:::image type="content" source="media/two-node-switchless-two-switches/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/physical-components-layout.png":::
+
+## Network ATC intents
+
+:::image type="content" source="media/two-node-switchless-two-switches/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-two-switches/network-atc.png":::
+
+## Logical connectivity components
+
+:::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
 
 [!INCLUDE [includes](includes/two-node-include.md)]
 

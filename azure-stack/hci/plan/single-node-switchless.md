@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/19/2022
+ms.date: 09/21/2022
 ---
 
 # Review single-node storage switchless deployment network reference pattern for Azure Stack HCI
@@ -26,7 +26,7 @@ Use the single-node storage switchless pattern in the following scenarios:
 
 - **Food, healthcare, finance, retail, government facilities**. Some food, healthcare, finance, and retail scenarios can apply this option to minimize their costs without impacting core operations and business transactions.
 
-Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as as Border Gateway Protocol (BGP) may need to be configured on the firewall device on the top of the rack (TOR) switch.
+Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as as Border Gateway Protocol (BGP) may need to be configured on the firewall device for the top of the rack (TOR) switch.
 
 Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI]https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
@@ -82,7 +82,7 @@ Follow these steps to create network intents for this reference pattern:
 
 For more information, see [Deploy host networking: Compute and management intent](/azure-stack/hci/deploy/network-atc.md#compute-and-management-intent).
 
-## Logical networks
+## Logical network components
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 

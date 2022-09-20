@@ -14,20 +14,19 @@ ms.date: 09/19/2022
 
 > Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-Study the single-node storage reference pattern decision matrix to help decide which reference pattern is best suited for your deployment needs:
-
+Review the single-node storage reference pattern decision matrix to help decide which reference pattern is best suited based on your deployment needs:
 
 |Feature|Storage switchless|Storage switched|
 |--|--|--|
 |Scalable pattern|unsuitable|suitable|
 |HA solution|unsuitable|unsuitable|
-|VLAN based Tenants|suitable|suitable|
+|VLAN-based tenants|suitable|suitable|
 |SDN L3 integration|neutral|suitable|
-|TCO|suitable|neutral|
+|Total cost of ownership (TCO)|suitable|neutral|
 |Compacted/portable solution|suitable|neutral|
 |RDMA Performance|neutral|neutral|
-|Physical Switch Operational costs|suitable|neutral|
-|Physical Switch routing and ACLs|neutral|neutral|
+|Physical switch operational costs|suitable|neutral|
+|Physical switch routing and ACLs|neutral|neutral|
 
 ## Next steps
 

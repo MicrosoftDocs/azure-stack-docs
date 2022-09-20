@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/19/2022
+ms.date: 09/20/2022
 ---
 
 ### OOB network
@@ -40,7 +40,7 @@ For more information, see [Plan an SDN infrastructure: Management and HNV Provid
 
 ## Network isolation options
 
-The following network isolation options are available.
+The following network isolation options are available:
 
 ### VLANs (IEEE 802.1Q)
 
@@ -57,7 +57,7 @@ Micro-segmentation is the concept of creating granular network policies between 
 Default network access policies and micro-segmentation are realized as 5-tuple stateful (source address prefix, source port, destination address prefix, destination port, protocol) firewall rules a.k.a Network Security Groups (NSGs) on Azure Stack HCI clusters. These policies are enforced at the vSwitch port of each virtual machine (VM). The policies are pushed through the management layer, and Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks as well as SDN overlay networks.
 
 > [!NOTE]
-> These capabilities are enabled by default when deploying Azure Stack HCI and will deploy Network Controller VM(s).
+> These capabilities are enabled by default when deploying Azure Stack HCI and SDN Network Controller VMs.
 
 For more information, see [What is Datacenter Firewall?](/azure-stack/hci/concepts/datacenter-firewall-overview).
  
@@ -75,7 +75,7 @@ For more information, see [Configure QoS for a VM network adapter](/windows-serv
 Network virtualization provides "virtual networks" (called a VM network) to virtual machines like how server virtualization (hypervisor) provides virtual machines (Vms) to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from virtual machine provisioning. This flexibility makes it easy for customers to move to IaaS clouds and efficient for hosters and datacenter administrators to manage their infrastructure, while maintaining the necessary multi-tenant isolation, security requirements, and supporting overlapping Virtual Machine IP addresses.
 
 > [!NOTE]
-> This network isolation option isn't enabled by default when deploying Azure Stack HCI and requires user to explicitly enable it during deployment.
+> This network isolation option isn't enabled by default when deploying Azure Stack HCI and requires you to explicitly enable it during deployment.
 
 For more information, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
@@ -92,7 +92,7 @@ Virtual network peering lets you connect two virtual networks seamlessly. Once p
 
 For more information, see [Virtual network peering](/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering.md).
 
-### Load balancers
+### SDN software load balancer
 
 Cloud Service Providers (CSPs) and enterprises that are deploying Software Defined Networking (SDN) can use Software Load Balancer (SLB) to evenly distribute customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
