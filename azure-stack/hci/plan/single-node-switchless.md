@@ -28,7 +28,7 @@ Use the single-node storage switchless pattern in the following scenarios:
 
 Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as as Border Gateway Protocol (BGP) may need to be configured on the firewall device for the top of the rack (TOR) switch.
 
-Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI]https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
+Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
 ## Physical connectivity components
 
@@ -47,6 +47,18 @@ As illustrated in the diagram below, this pattern has the following physical net
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Optional to allow adding a second server. Disconnected Ports|1 port|
 |RDMA|Optional. Depends on requirements for Guest RDMA and NIC support|N/A|N/A|
+
+## Logical network components
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
+
+### Storage network VLANs
+
+This pattern doesn't require a storage network.
+
+[!INCLUDE [includes](includes/single-node-include.md)]
 
 ## Network ATC intents
 
@@ -80,19 +92,7 @@ Follow these steps to create network intents for this reference pattern:
     Add-NetIntent -Name <management_compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
     ```
 
-For more information, see [Deploy host networking: Compute and management intent](/azure-stack/hci/deploy/network-atc.md#compute-and-management-intent).
-
-## Logical network components
-
-As illustrated in the diagram below, this pattern has the following logical network components:
-
-:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
-
-### Storage network VLANs
-
-This pattern doesn't require a storage network.
-
-[!INCLUDE [includes](includes/single-node-include.md)]
+For more information, see [Deploy host networking: Compute and management intent](/deploy/network-atc.md#compute-and-management-intent).
 
 ## Next steps
 

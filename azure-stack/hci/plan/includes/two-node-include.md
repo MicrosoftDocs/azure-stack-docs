@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/20/2022
+ms.date: 09/21/2022
 ---
 
 ### OOB network
@@ -59,7 +59,7 @@ Default network access policies and micro-segmentation are realized as 5-tuple s
 > [!NOTE]
 > These capabilities are enabled by default when deploying Azure Stack HCI and SDN Network Controller VMs.
 
-For more information, see [What is Datacenter Firewall?](/azure-stack/hci/concepts/datacenter-firewall-overview).
+For more information, see [What is Datacenter Firewall?](/azure-stack/hci/concepts/datacenter-firewall-overview)
  
 ### QoS for VM network adapters
 
@@ -80,6 +80,8 @@ Network virtualization provides "virtual networks" (called a VM network) to virt
 For more information, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
 ## L3 networking services options
+
+The following L3 networking services options are supported:
 
 ### Virtual network peering
 

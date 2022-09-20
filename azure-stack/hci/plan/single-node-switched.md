@@ -29,7 +29,7 @@ Consider implementing this pattern whenever if you have plans to scale up your A
 
 Software Defined Networking (SDN) L3 services are fully supported on this pattern. Routing services such as BGP can be configured directly on the TOR switches if they support L3 services.
 
-Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI]https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
+Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
 ## Physical connectivity components
 
@@ -47,6 +47,22 @@ As illustrated in the diagram below, this pattern has the following physical net
 |Link speed|At least 1 GBps. 10 GBps recommended|At least 10 GBps.|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Two standalone ports|One port|
+
+## Logical networks
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/single-node-switched/logical-connectivity-layout.png" alt-text="Diagram showing single-node switched logical connectivity layout" lightbox="media/single-node-switched/logical-connectivity-layout.png":::
+
+### Storage network VLANs
+
+The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, although both may use the same VLAN tag. For single-node deployments with RDMA NICs connected to the physical switch, this network can be pre-staged and configured if you are planning to scale up the environment in the future.
+
+The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the ATC-predefined VLANs by default (711 and 712). However, these VLANs can be customized if needed. If the default subnet defined by Network ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
+
+For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+
+[!INCLUDE [includes](includes/single-node-include.md)]
 
 ## Network ATC intents
 
@@ -86,22 +102,6 @@ Follow these steps to create network intents for this reference pattern:
     ```
 
 For more information, see [Deploy host networking: Compute and management intent](/azure-stack/hci/deploy/network-atc.md#compute-and-management-intent).
-
-## Logical networks
-
-As illustrated in the diagram below, this pattern has the following logical network components:
-
-:::image type="content" source="media/single-node-switched/logical-connectivity-layout.png" alt-text="Diagram showing single-node switched logical connectivity layout" lightbox="media/single-node-switched/logical-connectivity-layout.png":::
-
-### Storage network VLANs
-
-The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, although both may use the same VLAN tag. For single-node deployments with RDMA NICs connected to the physical switch, this network can be pre-staged and configured if you are planning to scale up the environment in the future.
-
-The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the ATC-predefined VLANs by default (711 and 712). However, these VLANs can be customized if needed. If the default subnet defined by Network ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
-
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
-
-[!INCLUDE [includes](includes/single-node-include.md)]
 
 ## Next steps
 

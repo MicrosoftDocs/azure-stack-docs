@@ -46,11 +46,11 @@ As illustrate in the diagram below, this pattern has the following physical netw
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Two standalone ports|One port|
 
-## Network ATC intents
-
-:::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
-
 ## Logical connectivity components
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/two-node-switchless-single-switch/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-single-switch/logical-components-layout.png":::
 
 ### Storage Network VLANs
 
@@ -58,9 +58,47 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate on different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if required. In addition, if the default subnets defined by Network ATC (10.71.1.0/24 and 10.71.2.0/24) are not usable, you are responsible for assigning all storage IP addresses in the cluster.
 
-:::image type="content" source="media/two-node-switchless-single-switch/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-single-switch/logical-components-layout.png":::
+For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/two-node-include.md)]
+
+## Network ATC intents
+
+For two-node storage switchless patterns, two Network ATC intents are created. The first for management and compute network traffic, and the second for storage traffic.
+
+:::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
+
+### Management & compute intent
+
+- Intent Type: Management and Compute
+- Intent Mode: Cluster mode
+- Teaming: Yes. pNIC01 and pNIC02 Team
+- Default Management VLAN: Configured VLAN for management adapters isn’t modified
+- PA & Compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs
+
+### Storage intent
+
+- Intent type: Storage
+- Intent mode: Cluster mode
+- Teaming: pNIC03 and pNIC04 use SMB Multichannel to provide resiliency and bandwidth aggregation
+- Default VLANs:
+    - 711 for storage network 1
+    - 712 for storage network 2
+- Default subnets:
+    - 10.71.1.0/24 for storage network 1
+    - 10.71.2.0/24 for storage network 2
+
+For more information, see [Deploy host networking](deploy/network-atc.md).
+
+Follow these steps to create network intents for this reference pattern:
+
+1. Run PowerShell as administrator.
+1. Run the following command:
+
+    ```powershell
+    Add-NetIntent -Name <Management_Compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
+    Add-NetIntent -Name <Storage> -Storage -ClusterName <HCI01> -AdapterName <pNIC03, pNIC04>
+    ```
 
 ## Next steps
 
