@@ -17,7 +17,7 @@ Use this topic to assess system requirements for servers, storage, and networkin
 
 ## Server requirements
 
-A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers; however, clusters can be combined using cluster sets to create an HCI platform of hundreds of nodes.
+A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
 
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
