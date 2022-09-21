@@ -52,7 +52,7 @@ Another option is the use of an intermediary network device that will provide a 
 
 The last option is the use of a stretched vLAN. With a stretched vLAN, virtual machines can keep the same IP address no matter the site it is on. However, due to some of the complexities of configuring and maintaining a stretched vLAN, this option is not recommended by Microsoft.
 
-With any of the above options, additional considerations (DNS, ARP caches, TTL, etc.) need to be accounted for when it comes to client connectivity and must be thoroughly thought out.  Please work with your networking team to identify the best option to meet your needs.
+With any of the above options, additional considerations (DNS, ARP caches, TTL, etc.) need to be accounted for when it comes to client connectivity and must be thoroughly thought out. Please work with your networking team to identify the best option to meet your needs.
 
 ## Next steps
 
