@@ -205,4 +205,4 @@ For related information, see also:
 
 - [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
-- [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/learn/modules/implement-firewall-load-balancer/)
+- [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/training/modules/implement-firewall-load-balancer/)

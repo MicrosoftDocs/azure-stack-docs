@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Physical network requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 20H2, 21H2 and 22H2
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
@@ -26,6 +26,9 @@ Microsoft tests Azure Stack HCI to the standards and protocols identified in the
 
 The following vendors (in alphabetical order) have confirmed that their switches support the Azure Stack HCI requirements:
 
+# [20H2 & 21H2](#tab/20-21H2)
+
+
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
 | -----  | -----  | -----  | -----   | -----   |
 | Arista Networks <br><br>*EOS version of 4.26.2F or later is required* |[7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) |
@@ -33,6 +36,17 @@ The following vendors (in alphabetical order) have confirmed that their switches
 | Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
 | Lenovo | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
 | NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
+
+
+# [22H2](#tab/22H2)
+
+| Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
+| -----  | -----  | -----  | -----   | -----   |
+| Arista Networks <br><br>*EOS version of 4.26.2F or later is required* |[7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) |
+| Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
+| NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
+
+---
 
 > [!IMPORTANT]
 > We update this list as we're informed of changes by network switch vendors.
@@ -45,6 +59,8 @@ This section lists industry standards that are mandatory for network switches us
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
 
 Here are the mandatory IEEE standards and specifications:
+
+# [20H2 & 21H2](#tab/20-21H2reqs)
 
 ### Standard: IEEE 802.1Q
 
@@ -81,6 +97,72 @@ LLDP allows organizations to define their own custom TLVs. These are called Orga
 |-----|-----|-----|
 |20H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |20H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+
+
+
+# [22H2](#tab/22H2reqs)
+
+### Standard: IEEE 802.1Q
+
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+
+### Standard: IEEE 802.1Qbb
+
+Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
+
+### Standard: IEEE 802.1Qaz
+
+Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
+
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+
+> [!NOTE]
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
+
+### Standard: IEEE 802.1AB
+
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and enables troubleshooting of physical networking configurations.
+
+Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+
+### Custom TLV requirements
+
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
+
+
+| Version Required                   | Organization | TLV Subtype                      |
+|------------------------------------|--------------|----------------------------------|
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Port VLAN ID (Subtype = 2)       |
+| 22H2 and later                     | IEEE 802.1   | VLAN Name (Subtype = 3)          |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Link Aggregation (Subtype = 7)   |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Configuration (Subtype = 9)  |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Recommendation (Subtype = A) |
+| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | PFC Configuration (Subtype = B)  |
+| 22H2 and later                     | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
+
+
+### Maximum Transmission Unit 
+*New Requirement in 22H2*
+
+The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
+### Border Gateway Protocol 
+*New Requirement in 22H2*
+
+Border Gateway Protocol (BGP) is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+
+### DHCP Relay Agent 
+*New Requirement in 22H2*
+
+The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+
+|Version required|Requirement|
+|-----|-----|
+|22H2 and later **(*New in 22H2*)**|Maximum Transmission Unit - Must support sizes inclusive of the range 1514-9174|
+|22H2 and later **(*New in 22H2*)**|Border Gateway Protocol|
+|22H2 and later **(*New in 22H2*)**|DHCP Relay Agent|
+
+---
+
 
 ## Network traffic and architecture
 
