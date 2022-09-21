@@ -42,7 +42,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Guest IP failover considerations
 
-When talking about stretch clustering, one of the considerations that must be accounted for are the virtual machines and the IP addresses being used. Data centers that reside in different locations generally have different IP subnets. The IP addresses the virtual machines use would be good for one data center but unreachable in another. Therefore, planning how to deal with IP address changes must be accounted for. For the most part, there are four different ways to handle changing the IP address on the virtual machine on failover. There may be others, but this document will cover the top four.
+When talking about stretch clustering, one of the considerations that must be accounted for are the virtual machines and the IP addresses being used. Datacenters that reside in different locations generally have different IP subnets. The IP addresses the virtual machines use would be good for one datacenter but unreachable in another. Therefore, planning how to deal with IP address changes must be accounted for. For the most part, there are four different ways to handle changing the IP address on the virtual machine on failover. There may be others, but this document will cover the top four.
 
 The first and easiest is the use of DHCP. When moving a virtual machine from one site to another, one step that it will do is request a DHCP address. This will obtain the proper IP Address for the proper site it is in as long as a DHCP server is available.
 
