@@ -82,6 +82,8 @@ To renew REST certificate, complete the following steps:
    \$cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
    ```
 
+1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
+
 1. Provide Read and Allow permissions for NT Authority/Network Service on the certificate:
    
    ```powershell
@@ -95,8 +97,6 @@ To renew REST certificate, complete the following steps:
    $privKeyAcl.AddAccessRule($accessRule)
    Set-Acl $privKeyCertFile.FullName $privKeyAcl
    ```
-
-1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
 
 1. [(Only for self-signed certificate) Copy the certificate public key to all the hosts and Software Load Balancer VMs](#copy-the-certificate-public-key-to-all-the-hosts-and-software-load-balancer-vms-only-for-self-signed-certificate).
 
