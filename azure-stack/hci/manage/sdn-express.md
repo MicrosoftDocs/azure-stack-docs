@@ -214,4 +214,4 @@ The following configuration sample files for deploying SDN are available on the 
 ## Next steps
 
 - [Manage VMs](../manage/vm.md)
-- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)
