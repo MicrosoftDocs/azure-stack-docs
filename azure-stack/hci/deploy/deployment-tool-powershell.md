@@ -3,9 +3,9 @@ title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI version 22H2 using Windows PowerShell (preview) 
 author: dansisson
 ms.topic: how-to
-ms.date: 08/31/2022
+ms.date: 09/22/2022
 ms.author: v-dansisson
-ms.reviewer: jgerend
+ms.reviewer: alkohli
 ---
 
 # Deploy Azure Stack HCI version 22H2 using PowerShell (preview) 
@@ -36,27 +36,28 @@ Before you begin, make sure you have done the following:
 
 1. Review the configuration file to ensure the provided values match your environment details before you copy it to the first (staging) server.
 
-1. Log in to the staging server using local administrator credentials.
+1. Sign in to the staging server using local administrator credentials.
 
 1. Copy the config file to the staging server by using the following command:
-```Copy-item -path <source> -destination c:\setup\config.json```
+
+```powershell
+Copy-Item -path <Path for you source file> -destination C:\setup\config.json
+```
 
 ## Set up the deployment tool
 
-The following parameters are required to set up the deployment tool properly:
+The following parameters are required to set up and run the deployment tool properly:
 
 |Parameter|Description|
 |----|----|
 |`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
-|`DomainAdminCredentials`|Specify the Active Directory account username. The username cannot be *Administrator*.|
+|`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
-|`RegistrationCloudName`|Specify the Azure Cloud to use.|
-|`RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc.|
-|`RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. Multi-factor authentication (MFA) is not supported.|
 
-## Deploy a multi-node cluster
 
-Use this procedure to deploy a multi-server cluster using PowerShell.
+## Deploy a cluster
+
+Use this procedure to deploy a multiple-node cluster or a single-server using PowerShell.
 
 1. Log on to the first (staging) server using local administrative credentials.
 
@@ -64,84 +65,17 @@ Use this procedure to deploy a multi-server cluster using PowerShell.
 
 1. Run PowerShell as administrator.
 
-1. Set the following parameters: 
-
-    ```powershell
-    $SubscriptionID="Azure_subscription_ID"
-    $AzureCred=Get-Credential
-    $AzureCloud="AzureCloud_name"
-    $DomainAdminCred=Get-Credential
-    $LocalAdminCred=Get-Credential
-    ```
-
-1. Set up the deployment tool:
-
-    ```powershell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred -LocalAdminCredential $LocalAdminCred -DomainAdminCredential $DomainAdminCred
-    ```
-
-1. Change the directory to *C:\clouddeployment\setup*.
-
-1. Specify the path to your configuration file and run the following to start the deployment:
-
-    ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
-    ```
-
-    > [!NOTE]
-    > You can also deploy with a Service Principal Name (SPN) using the `-RegistrationSPCredential` parameter.
-
-## Deploy a single-node cluster
-
-Use this procedure to deploy a single-server cluster using PowerShell. It is similar to that for a multi-server cluster but you must modify your configuration file slightly first:
-
-1. Open the configuration file in a text editor.
-
-1. Search for *PhysicalNodes*.
-
-1. Remove all physical nodes except one. Here’s an example of the *PhysicalNodes* section before the configuration file is modified:
-
-    ```powershell
-    "PhysicalNodes": [
-                  {
-                      "Name": "Server1"
-                  },
-                  {
-                      "Name": "Server2"
-                  }
-              ]
-    ```
-
-    Here’s an example of the configuration file after it is modified:
-
-    ```powershell
-    "PhysicalNodes": [
-                  {
-                    "Name": "Server1"
-                  }               
-                  ]
-    ```
-
-1. Sign in to the first (staging) server using local administrative credentials.
-
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the *C:\* drive.
-
-1. Run PowerShell as administrator.
-
 1. Set the following parameters:
 
     ```powershell
-    $SubscriptionID="Azure_subscription_ID"
-    $AzureCred=Get-Credential
-    $AzureCloud="AzureCloud_name"
-    $DomainAdminCred=Get-Credential
+    $DeploymentUserCred=Get-Credential
     $LocalAdminCred=Get-Credential
     ```
 
 1. Set up the deployment tool:
 
     ```powershell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred -LocalAdminCredential $LocalAdminCred -DomainAdminCredential $DomainAdminCred
+    .\BootstrapCloudDeploymentTool.ps1
     ```
 
 1. Change the directory to *C:\clouddeployment\setup*.
@@ -149,11 +83,13 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json>
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred
     ```
 
     > [!NOTE]
     > You can also deploy with a Service Principal Name (SPN) using the `-RegistrationSPCredential` parameter.
+
+
 
 ## Next steps
 

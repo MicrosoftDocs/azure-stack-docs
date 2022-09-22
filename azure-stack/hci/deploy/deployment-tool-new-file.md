@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) interactively
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) interactively using a new configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 09/02/2022
+ms.date: 09/22/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -34,13 +34,6 @@ Before you begin, make sure you've done the following:
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
-The Azure Stack HCI version 22H2 preview deployment tool requires the following parameters to run:
-
-|Parameters|Description|
-|----|----|
-|`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
-|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you're a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
-|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release doesn't support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -49,20 +42,11 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
 1. Run PowerShell as administrator.
- 
-1. Set the following parameters:
-
-    ```PowerShell
-    $SubscriptionID="<Azure_subscription_ID>"
-    $AzureCred=Get-Credential
-    $AzureCloud="AzureCloud"
-    ```
-    In this release, only `AzureCloud` is supported.
 
 1. Run the following command to install the deployment tool:
 
    ```PowerShell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred
+    .\BootstrapCloudDeploymentTool.ps1 
     ```
 
     This step takes several minutes to complete.
@@ -86,30 +70,41 @@ If you want to use an existing configuration file you have previously created, s
 
       :::image type="content" source="media/deployment-tool/new-file/deploy-new-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/new-file/deploy-new-get-started.png":::
 
-1. On step **1.1 Configure privacy**, set the privacy settings as they apply to your organization.
+1. On step 1.1 **Provide registration details**, enter the following details to authenticate your cluster with Azure:
+
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
+
+    1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
+    
+    1. Copy the authentication code.
+    
+    1. Select **login**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported. 
+
+    1. Go back to the deployment screen and provide the Azure registration details.
+
+    1. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
+
+    1. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
+
+        > [!NOTE]
+        > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
+
+    1. Select an existing **Azure resource group** from the dropdown to associate with the cluster resource. To create a new resource group, leave the field empty.
+
+    1. Select an **Azure region** from the dropdown or leave the field empty to use the default.
+
+
+1. On step **1.2 Configure privacy**, set the privacy settings as they apply to your organization.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-privacy.png" alt-text="Screenshot of the Deployment step 1.1 Configure privacy page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-privacy.png":::
 
-1. On **step 1.2 Add servers**, follow these steps:
+1. On **step 1.3 Add servers**, follow these steps:
 
     1. Provide the local administrator credentials. Make sure that the local administrator credentials are identical across all the servers.
 
     1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png":::
-
-1. On **step 1.3 Specify Active Directory details**, enter the following:
-    1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
-    1. Enter the **Computer name prefix** used when you prepared the Active Directory.
-    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
-    1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
-    1. Specify an IP address for the **NTP time server** you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this isn't possible, specify an internal NTP server.
-    
-        Only IP addresses can be provided in this release. You can't, for example, specify the NTP server as *time.windows.com*.
-
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
-
-    
 
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
@@ -124,6 +119,14 @@ If you want to use an existing configuration file you have previously created, s
     - [BitLocker for OS boot volume and BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview).
     - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing).
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
+
+1. On **step 1.5 Specify Active Directory details**, enter the following:
+    1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
+    1. Enter the **Computer name prefix** used when you prepared the Active Directory.
+    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
+    1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
+
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
 
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
