@@ -17,13 +17,11 @@ This article describes how to configure network security groups with network sec
 > [!IMPORTANT]
 > The network security tags feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-The network security tags feature enables you to create custom user-defined tags, attach those tags to your virtual machine network interfaces (NICs), and apply network access policies (with network security groups) based on these tags.
+With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
 ## Key benefits
 
-The network security tags feature addresses the limitations that you face when using network security groups. In Azure Stack HCI, version 21H2, you can create network security groups to configure access policies based on network constructs (network prefixes/subnets). 
-
-For example, if you want to prevent your Web Server VMs from communicating with your database VMs, you will need to identify corresponding network subnets and create policy to deny communication between those subnets. This has a few limitations:
+In Azure Stack HCI, version 21H2, you could create network security groups to configure access policies based on network constructs (network prefixes/subnets). So, if you want to prevent your Web Server VMs from communicating with your database VMs, you must identify corresponding network subnets and create policy to deny communication between those subnets. There are a few limitations with this approach:
 
 - Your security policies are tied to network constructs, so you will need to know which apps are hosted on which network segments. You will need to have a fair understanding of your network infrastructure and architecture.
 
