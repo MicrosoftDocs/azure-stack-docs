@@ -95,7 +95,8 @@ In addition to copying the file share contents, you must also reset permissions 
       ```
    This command will inspect the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of the custom worker tiers
 
-1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**
+1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**.
+
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
