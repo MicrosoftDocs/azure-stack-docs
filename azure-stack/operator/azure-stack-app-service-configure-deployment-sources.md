@@ -108,7 +108,7 @@ You must have a **Microsoft** account linked to a OneDrive account to complete t
 1. The next screen lists the properties of your new app. Save the **Application (client) ID** to a temporary location.
 1. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
 1. Make a note of the value of the new secret.
-1. Under **API Permissions**, select **Add a permission**
+1. Under **API Permissions**, select **Add a permission**.
 1. Add the **Microsoft Graph Permissions** - **Delegated Permissions**.
 
     - **Files.ReadWrite.AppFolder**
