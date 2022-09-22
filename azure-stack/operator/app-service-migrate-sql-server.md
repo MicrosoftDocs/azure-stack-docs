@@ -22,7 +22,8 @@ ms.lastreviewed:
 This document provides instructions on how to migrate to new SQL Server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider databases - appservice_hosting and appservice_metrics.
 
 ## Back up App Service secrets
-When preparing to migrate, you must backup the App Service keys used by the initial deployment. 
+When preparing to migrate, you must back up the App Service keys used by the initial deployment. 
+
 
 Use the administration portal to back up app service secrets by following these steps: 
 
