@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/21/2022
+ms.date: 09/22/2022
 ---
 
 # Review single-node storage reference pattern components for Azure Stack HCI
