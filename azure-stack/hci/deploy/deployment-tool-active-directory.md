@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Stack HCI version 22H2 (preview) deplo
 description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 09/22/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -49,7 +49,7 @@ In this release, only the Active Directory prepared via the provided script is s
 To prepare and configure Active Directory, follow these steps:
 
 1. Sign in to a computer that is joined to your Active Directory domain as a local administrator.
-1. Download the *Adprep* command from [PowerShell Gallery](https://microsoft.sharepoint.com/sites/knowledgecenter/_layouts/15/TopicPagePreview.aspx?topicId=AL_GQSuzYWffyPyTBvhVtw0Ow&topicName=PowerShell%20Gallery&lang=en&ls=Ans_Bing) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
+1. Download the script to prepare Active Directory from [GitHub repository](https://github.com/Azure/AzureStack-Tools/tree/master/HCI/AsHciADArtifactsPreCreationTool.ps1) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
 1. Create a [Microsoft Key Distribution Service root key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
 
 1. Run the following PowerShell command as administrator:
