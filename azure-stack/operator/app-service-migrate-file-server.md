@@ -16,7 +16,8 @@ ms.lastreviewed:
 ---
 # Migrate File Share
 
-This document provides instructions on how to migrate to new File Server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider content file share.4
+This article provides instructions on how to migrate to the new file server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider content file share.
+
 
 ## Back up App Service secrets
 When recovering App Service from backup, you need to provide the App Service keys used by the initial deployment. This information should be saved as soon as App Service is successfully deployed and stored in a safe location. The resource provider infrastructure configuration is recreated from backup during recovery using App Service recovery PowerShell cmdlets.
