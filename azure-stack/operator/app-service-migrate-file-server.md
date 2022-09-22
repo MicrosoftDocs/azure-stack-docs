@@ -107,7 +107,8 @@ If the credentials have changed you must update the file share credentials to co
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Launch the **Web Cloud Management Console**
-1. Check in the **Web Cloud Management Console -> Web Cloud**, verify that both **Controllers** are **Ready**
+1. Check in the **Web Cloud Management Console -> Web Cloud**, verify that both **Controllers** are **Ready**.
+
 1. Select Credentials \<insert screenshot here\>.
 1. Next select the credential you wish to update – in this case the FileShareOwnerCrdential or the FileShareUserCredential and select edit – either from the menu bar or from the right click context menu. \<screenshot\>
 1. Enter the new credential details and then click OK.
