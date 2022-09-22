@@ -102,9 +102,9 @@ You must have a **Microsoft** account linked to a OneDrive account to complete t
 1. Go to <https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade> and sign in using your Microsoft account.
 1. Under **App registrations**, select **New registration**.
 1. Enter a **Name** for the new app registration: for example, enter **App Service on Azure Stack Hub**.
-1. Under **Supported account types**, select **Personal Microsoft accounts only**
+1. Under **Supported account types**, select **Personal Microsoft accounts only**.
 1. Enter the **Redirect URI**.  Choose platform - Web and in a default Azure Stack Hub deployment, the redirect URI is in the form - `https://portal.<region>.<FQDN>/TokenAuthorize`.
-1. Select **Register**
+1. Select **Register**.
 1. The next screen lists the properties of your new app. Save the **Application (client) ID** to a temporary location.
 1. Under **Certificates & secrets**, choose **Client Secrets** and select **New client secret**.  Provide a description and choose the expiration length for the new secret and select **Add**.
 1. Make a note of the value of the new secret.
