@@ -44,7 +44,8 @@ Use the admin portal to back up App Service secrets by following these steps:
 
 App Service stores tenant app info in the file share. This file share must be backed up on a regular basis along with the App Service databases so that as little data as possible is lost if a restore or migration is required.
 
-To back up the App Service file share content, use Azure Backup Server or another method to regularly copy the file share content to the location you've saved all previous recovery info.
+To back up the App Service file share content, use Azure Backup Server or another method to regularly copy the file share content to the location to which you've saved all previous recovery info.
+
 
 For example, you can use these steps to use Robocopy from a Windows PowerShell (not PowerShell ISE) console session:
 
