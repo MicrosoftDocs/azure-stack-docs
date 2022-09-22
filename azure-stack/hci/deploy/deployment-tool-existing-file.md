@@ -201,13 +201,13 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in your cluster.
 
-The Azure Stack HCI version 22H2 preview deployment tool requires the following parameters to run:
+<!--The Azure Stack HCI version 22H2 preview deployment tool requires the following parameters to run:
 
 |Parameters|Description|
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
 |`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
-|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. **Note**: This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
+|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. **Note**: This preview release does not support Multi-factor Authentication (MFA) or admin consent.|-->
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -215,18 +215,11 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands as administrator:
-
-    ```PowerShell
-    $SubscriptionID="your_Azure_subscription_ID"
-    $AzureCred=get-credential
-    $AzureCloud="AzureCloud"
-    ```
 
 1. Run the following command to install the deployment tool:
 
    ```PowerShell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred
+    .\BootstrapCloudDeploymentTool.ps1 
     ```
 
     This step takes several minutes to complete.
