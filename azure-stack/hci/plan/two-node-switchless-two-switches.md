@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/21/2022
+ms.date: 09/22/2022
 ---
 
 # Review two-node storage switchless, two switches deployment network reference pattern for Azure Stack HCI
@@ -43,22 +43,6 @@ As illustrated in the diagram below, this pattern has the following physical net
 |Ports and aggregation|Two teamed ports|Two standalone ports|One port|
 
 :::image type="content" source="media/two-node-switchless-two-switches/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/physical-components-layout.png":::
-
-## Logical connectivity components
-
-As illustrated in the diagram below, this pattern has the following logical network components:
-
-:::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
-
-### Storage Network VLANs
-
-The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both may share the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
-
-The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
-
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
-
-[!INCLUDE [includes](includes/two-node-include.md)]
 
 ## Network ATC intents
 
@@ -97,6 +81,22 @@ Follow these steps to create network intents for this reference pattern:
     Add-NetIntent -Name <Management_Compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
     Add-NetIntent -Name <Storage> -Storage -ClusterName <HCI01> -AdapterName <pNIC03, pNIC04>
     ```
+
+## Logical connectivity components
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
+
+### Storage Network VLANs
+
+The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both may share the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
+
+The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
+
+For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+
+[!INCLUDE [includes](includes/two-node-include.md)]
 
 ## Next steps
 

@@ -48,18 +48,6 @@ As illustrated in the diagram below, this pattern has the following physical net
 |Ports and aggregation|Two teamed ports|Optional to allow adding a second server; disconnected ports.|One port|
 |RDMA|Optional. Depends on requirements for guest RDMA and NIC support|N/A|N/A|
 
-## Logical network components
-
-As illustrated in the diagram below, this pattern has the following logical network components:
-
-:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
-
-### Storage network VLANs
-
-Optional - this pattern doesn't require a storage network.
-
-[!INCLUDE [includes](includes/single-node-include.md)]
-
 ## Network ATC intents
 
 This pattern uses only one Network ATC intent for management and compute traffic. The RDMA network interfaces are disconnected.
@@ -93,6 +81,18 @@ Follow these steps to create a network intent for this reference pattern:
     ```
 
 For more information, see [Deploy host networking: Compute and management intent](/deploy/network-atc.md#compute-and-management-intent).
+
+## Logical network components
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
+
+### Storage network VLANs
+
+Optional - this pattern doesn't require a storage network.
+
+[!INCLUDE [includes](includes/single-node-include.md)]
 
 ## Next steps
 

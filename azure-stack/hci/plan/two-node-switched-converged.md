@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/21/2022
+ms.date: 09/22/2022
 ---
 
 # Review two-node storage switched, fully-converged deployment network reference pattern for Azure Stack HCI
@@ -44,22 +44,6 @@ As described in the diagram below, this pattern has the following physical netwo
 |Interface type|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|One port|
 
-## Logical connectivity components
-
-As illustrated in the diagram below, this pattern has the following logical network components:
-
-:::image type="content" source="media/two-node-switched-converged/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switched-converged/logical-components-layout.png":::
-
-### Storage Network VLANs
-
-The storage intent-based traffic in this pattern shares the physical network adapters with management and compute.
-
-The storage network operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
-
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
-
-[!INCLUDE [includes](includes/two-node-include.md)]
-
 ## Network ATC intents
 
 :::image type="content" source="media/two-node-switched-converged/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switched-converged/network-atc.png":::
@@ -90,6 +74,22 @@ Follow these steps to create network intents for this reference pattern:
     ```powershell
     Add-NetIntent -Name <Management_Compute> -Management -Compute -Storage -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
     ```
+
+## Logical connectivity components
+
+As illustrated in the diagram below, this pattern has the following logical network components:
+
+:::image type="content" source="media/two-node-switched-converged/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switched-converged/logical-components-layout.png":::
+
+### Storage Network VLANs
+
+The storage intent-based traffic in this pattern shares the physical network adapters with management and compute.
+
+The storage network operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
+
+For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+
+[!INCLUDE [includes](includes/two-node-include.md)]
 
 ## Next steps
 

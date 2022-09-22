@@ -38,16 +38,12 @@
       href: plan/choose-network-pattern.md
     - name: Single-node deployments
       items:
-      - name: Storage switchless
+      - name: Single switch
         href: plan/single-node-switchless.md
-      - name: Storage switched
-        href: plan/single-node-switched.md
       - name: Pattern components
         href: plan/single-node-components.md
       - name: Pattern IP requirements
         href: plan/single-node-ip-requirements.md
-      - name: Decision matrix
-        href: plan/single-node-decision-matrix.md
     - name: Two-node deployments
       items:
       - name: Storage switchless, single switch

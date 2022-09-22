@@ -51,4 +51,4 @@ In this article, learn about the IP requirements for deploying a single-node net
 
 ## Next steps
 
-[Choose a reference pattern](single-node-decision-matrix.md).
+- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)

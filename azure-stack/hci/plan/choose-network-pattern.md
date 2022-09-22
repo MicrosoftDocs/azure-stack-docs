@@ -6,26 +6,26 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/21/2022
+ms.date: 09/22/2022
 ---
 
 # Azure Stack HCI network deployment patterns
 
 > > Applies to: Azure Stack HCI, version 21H2; Azure Stack HCI, version 22H2 (preview)
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI with either one or two physical hosts.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI with either one or two physical hosts (nodes).
 
-The article includes six different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
+The article includes five different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
 ## Choose a network reference pattern
 
 Use the following table to directly go to a pattern and its content.
 
-### Single-node deployment patterns
+### Single-node deployment pattern
 
-|Go to [storage switchless](single-node-switchless.md) |Go to [storage switched](single-node-switched.md)|
-|---------|---------|
-|![Diagram showing single-node switchless network pattern](media/plan-deployment/single-node-switchless.png)| ![Diagram showing single-node switched network pattern](media/plan-deployment/single-node-switched.png)         |
+Go to [single-node pattern](single-node-switchless.md)
+
+![Diagram showing single-node network pattern](media/plan-deployment/single-node-switchless.png)
 
 ### Two-node deployment patterns
 
