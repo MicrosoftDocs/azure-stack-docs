@@ -80,7 +80,8 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Open an Administrator PowerShell session and run **net stop webfarmservice**
 1. Repeat step 3 and 4 for all other controllers.
-1. Return to **CN0-VM**'s RDP Session and copy the secrets file to the controller
+1. Return to **CN0-VM**'s RDP session and copy the secrets file to the controller.
+
 1. In an Administrator PowerShell session run
       ```powershell
       Restore-AppServiceStamp -FilePath <local secrets file> -OverrideDatabaseServer <new database server> -CoreBackupFilePath <filepath>
