@@ -22,7 +22,8 @@ This article provides instructions on how to migrate to the new file server infr
 ## Back up App Service secrets
 When recovering App Service from backup, you need to provide the App Service keys used by the initial deployment. This information should be saved as soon as App Service is successfully deployed and stored in a safe location. The resource provider infrastructure configuration is recreated from backup during recovery using App Service recovery PowerShell cmdlets.
 
-Use the administration portal to back up app service secrets by following these steps: 
+Use the admin portal to back up App Service secrets by following these steps: 
+
 
 1. Sign in to the Azure Stack Hub administrator portal as the service admin.
 
