@@ -39,7 +39,8 @@ Use the administration portal to back up app service secrets by following these 
 
    ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-migrate-sql-server/save-secrets.png)
 
-## Backup the App Service databases from the current server
+## Back up the App Service databases from the current server
+
 
 To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely on a regular basis. However, any method of ensuring regular SQL backups are created can be used.
 
