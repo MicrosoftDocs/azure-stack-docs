@@ -96,4 +96,4 @@ Optional - this pattern doesn't require a storage network.
 
 ## Next steps
 
-Learn about the [single-node storage switched network pattern](single-node-switched.md).
+Learn about two-node patterns - [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
