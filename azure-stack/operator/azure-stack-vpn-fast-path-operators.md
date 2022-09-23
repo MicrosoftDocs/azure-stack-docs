@@ -67,7 +67,8 @@ With the release of the VPN Fast Path public preview, there is a new PowerShell 
 ```powershell
 Get-AzsVirtualNetworkGatewayConnection
 ```
-https://learn.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewayconnection
+
+For more information, see the [documentation for **Get-AzsVirtualNetworkGatewayConnection**](/powershell/module/az.network/get-azvirtualnetworkgatewayconnection).
 
 
 ## How to enable Azure Stack Hub VPN Fast Path
