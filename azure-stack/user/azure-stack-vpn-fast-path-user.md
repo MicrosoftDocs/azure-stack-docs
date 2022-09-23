@@ -25,7 +25,7 @@ Existing setups can be adjusted by re-creating the virtual network gateway and i
 
 ## New virtual network gateways SKUs available when VPN Fast is enabled
 
-In addition to the 3 new SKUs, the overall gateway pool capacity for S2S VPN tunnels will increase from 2 Gbps to 5 Gbps per Gateway VM which allows a greater number of tunnels using the existing SKUs (Basic, Standard and High Performance).
+In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing for a greater number VPN connections.
 
 The following table shows the new throughput for each SKU when VPN Fast Path is enabled:
 
@@ -34,9 +34,9 @@ The following table shows the new throughput for each SKU when VPN Fast Path is 
 |**Basic** | 100 Mbps Tx/Rx |
 |**Standard** | 100 Mbps Tx/Rx |
 |**High Performance** | 200 Mbps Tx/Rx |
-|**VPNGw1**| 650 Mbps Tx/Rx |
-|**VPNGw2**|  1000 Mbps Tx/Rx |
-|**VPNGw3**|  1250 Mbps Tx/Rx |
+|**VpnGwy1**| 650 Mbps Tx/Rx |
+|**VpnGwy2**|  1000 Mbps Tx/Rx |
+|**VpnGwy3**|  1250 Mbps Tx/Rx |
 
 ## Create virtual network gateways to use the new SKUs
 
@@ -44,7 +44,7 @@ With the VPN Fast Path public preview release, tenant users are able to create v
 
 ### Create virtual network gateways with new SKUs using the Azure Stack Hub portal
 
-If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) are only visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
+If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGwy1**, **VpnGwy2**, **VpnGwy3**) are only visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
 
 The following URL example makes the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
 

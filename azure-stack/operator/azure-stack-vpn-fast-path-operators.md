@@ -62,6 +62,15 @@ Azure Stack Hub VPN Fast Path relies on the new SDN Gateway service, and it come
 - List local network gateway settings. Tenant users are able to re-use local network gateway resources and configurations. However, we also recommend that you save the existing configuration just in case they need to be re-created.
 - Once VPN Fast Path is enabled, tenants must re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
+With the release of the VPN Fast Path public preview, there is a new PowerShell command that operators can leverage to list all the existing connections created by their tenants. This can help the operator manage capacity and reach out to the tenant admins in case they need to recreate their Virtual Network Gateways:
+
+```powershell
+Get-AzsVirtualNetworkGatewayConnection
+```
+
+For more information, see the [documentation for **Get-AzsVirtualNetworkGatewayConnection**](/powershell/module/az.network/get-azvirtualnetworkgatewayconnection).
+
+
 ## How to enable Azure Stack Hub VPN Fast Path
 
 For the VPN Fast Path public preview, operators can enable the new feature using the following PowerShell commands. Once the feature reaches general availability, the operators will also have the option to enable the feature using the Azure Stack Hub admin portal.
@@ -89,6 +98,16 @@ Get-AzSVPNFastPath
 ```
 
 ![PowerShell validating VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-get.png)
+
+### Disable Azure Stack Hub VPN Fast Path using PowerShell
+
+```powershell
+Set-AzSVPNFastPath -Disable
+```
+
+If you need to disable VPN Fast Path, you must first work with your tenant to delete and recreate all their Virtual Network Gateways using VPN Fast Path SKUs.
+Since stamp VPN capacity increases when VPN Fast Path is enabled, you will be unable to disable VPN Fast Path if the overall in use capacity exceeds the total capacity when Azure Stack Hub is not using VPN Fast Path.
+
 
 ## Azure Stack Hub Gateway Pool architecture
 
