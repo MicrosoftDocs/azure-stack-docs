@@ -41,6 +41,16 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
+## Unable to deploy Arc Resource Bridge
+
+Here are the possible reasons that the deployment of Arc Resource Bridge could fail. Contact your network administrator to provide the required permission and access.
+
+- `$VMIP` and `$controlPlaneIP` don't have internet access. 
+
+- The host isn't able to reach `$controlPlaneIP` and `$VMIP`.
+
+- From inside the Arc Resource Bridge VM (`$VMIP`), the VM isn't able to do DNS resolution.
+ 
 ## Limitations and known issues
 
 - Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
