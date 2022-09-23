@@ -319,7 +319,10 @@ This is useful when:
 > * When your application is blocked, WDAC will create a corresponding event. Review the Event log to understand the details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
 > * When your script is blocked because of the embedded script enforcement provided by WDAC, you will receive an error message around "Constrained Language Mode" or "Core Type in this language mode". For more information, see [about_Language_Modes for PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes#constrained-language-constrained-language).
 
-The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes.
+The following PowerShell commands interact with the Orchestrator to enable the selected modes.
+
+> [!WARNING]
+> The Orchestrator will take up to 2 to 3 minutes to switch to the selected mode.
 
 ```azurepowershell
 Switch-AsWdacPolicy -Mode Audit
