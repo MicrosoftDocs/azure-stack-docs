@@ -62,12 +62,13 @@ Azure Stack Hub VPN Fast Path relies on the new SDN Gateway service, and it come
 - List local network gateway settings. Tenant users are able to re-use local network gateway resources and configurations. However, we also recommend that you save the existing configuration just in case they need to be re-created.
 - Once VPN Fast Path is enabled, tenants must re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
-With the release of the VPN Fast Path Public preview, there is a new PowerShell command that operators can leverage to list all the existing connections created by their tenants. This can help the operator manage capacity and reach out to the tenant admins in case they need to recreate their Virtual Network Gateways.
+With the release of the VPN Fast Path public preview, there is a new PowerShell command that operators can leverage to list all the existing connections created by their tenants. This can help the operator manage capacity and reach out to the tenant admins in case they need to recreate their Virtual Network Gateways:
 
 ```powershell
 Get-AzsVirtualNetworkGatewayConnection
 ```
-https://learn.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewayconnection
+
+For more information, see the [documentation for **Get-AzsVirtualNetworkGatewayConnection**](/powershell/module/az.network/get-azvirtualnetworkgatewayconnection).
 
 
 ## How to enable Azure Stack Hub VPN Fast Path
