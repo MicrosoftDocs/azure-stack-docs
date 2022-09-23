@@ -91,7 +91,7 @@ When you create a virtual network gateway for Azure Stack Hub, you specify the g
   
 ## New Virtual Network gateway SKUs in public preview
 
-In Azure Stack Hub 2209 release, Microsoft is announcing the Public Preview of the new [VPN Fast Path feature](media/azure-stack-vpn-fast-path-user.md), which increases the total Azure Stack Hub stamp maximum throughput from 2 Gbps to 5 Gbps, and also introduces 3 new SKUs
+In Azure Stack Hub 2209 release, Microsoft is announcing the Public Preview of the new [VPN Fast Path feature](/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways.md), which increases the total Azure Stack Hub stamp maximum throughput from 2 Gbps to 5 Gbps, and also introduces 3 new SKUs
 
 * **VpnGw1** - 650 Mbps Tx/Rx
 * **VpnGw2** - 1000 Mbps Tx/Rx
