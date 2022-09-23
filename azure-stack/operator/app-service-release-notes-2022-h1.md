@@ -27,13 +27,14 @@ The App Service on Azure Stack Hub 2022 H1 build number is **98.0.1.699**
 
 ## What's New?
 
-Azure App Service on Azure Stack Hub 2022 H1 brings a number of new capabilities to Azure Stack Hub
-- All roles are now powered by Windows Server 2022 Datacenter
-- Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService 
-- Network design update for all worker virtual machine scalesets, addressing customers faced with SNAT port exhaustion issues
-- Increased number of outbound addresses for all applications which can be discovered in the properties of an application,
-- Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances
-- Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: As a result of introducing Deployment Center, Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
+Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azure Stack Hub
+
+- All roles are now powered by Windows Server 2022 Datacenter.
+- Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService. 
+- Network design update for all worker virtual machine scale sets, addressing customers faced with SNAT port exhaustion issues.
+- Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
+- Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
+- Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
 
 ## Prerequisites
 
@@ -135,9 +136,9 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins have not been successfully migrated to contained users
+- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins haven't been successfully migrated to contained users
 
-Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and have not successfully migrated the database logins to contained users, may experience upgrade failures.  
+Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, may experience upgrade failures.  
 
 Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  **This script is non-destructive and will not cause downtime**.
 
@@ -226,7 +227,7 @@ This script must be run under the following conditions
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you've used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
@@ -242,9 +243,9 @@ This script must be run under the following conditions
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
-- Custom domains are not supported in disconnected environments
+- Custom domains aren't supported in disconnected environments
 
-App Service performs domain ownership verification against public DNS endpoints, as a result custom domains are not supported in disconnected scenarios.
+App Service performs domain ownership verification against public DNS endpoints, as a result custom domains aren't supported in disconnected scenarios.
 
 ## Next steps
 
