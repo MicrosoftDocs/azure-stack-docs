@@ -62,7 +62,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account, and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
@@ -78,7 +78,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
       ![Azure App Service Installation Detected][9]
 
-1. In the next screen, you will see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
+1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
 
     ![Azure App Service Pre-Upgrade Status Check][10]
 
@@ -126,7 +126,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account, and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
@@ -222,7 +222,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
    1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account, and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
@@ -238,7 +238,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
       ![Azure App Service Installation Detected][9]
 
-1. In the next screen, you will see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
+1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
 
     ![Azure App Service Pre-Upgrade Status Check][10]
 
@@ -287,7 +287,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
    1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account, and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
