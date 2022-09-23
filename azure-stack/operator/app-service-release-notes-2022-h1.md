@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 05/23/2022
+ms.date: 09/23/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -24,6 +24,16 @@ These release notes describe the improvements and fixes in Azure App Service on 
 ## Build reference
 
 The App Service on Azure Stack Hub 2022 H1 build number is **98.0.1.699**
+
+## What's New?
+
+Azure App Service on Azure Stack Hub 2022 H1 brings a number of new capabilities to Azure Stack Hub
+- All roles are now powered by Windows Server 2022 Datacenter
+- Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService 
+- Network design update for all worker virtual machine scalesets, addressing customers faced with SNAT port exhaustion issues
+- Increased number of outbound addresses for all applications which can be discovered in the properties of an application,
+- Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances
+- Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: As a result of introducing Deployment Center, Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
 
 ## Prerequisites
 
@@ -81,7 +91,6 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
     - 17.1.0
   - MSDeploy 3.5.100608.567
   - NodeJS
-    - 14.16.0
     - 14.18.1
     - 16.9.1
     - 16.13.0
@@ -107,8 +116,6 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
-- TLS Cipher Suites updated to maintain consistency with Azure Service.
-
 ## Issues fixed in this release
 
 - Automatically clean up SiteDataRecord and TraceMessages tables within the App Service Resource Provider database(s).
@@ -116,6 +123,8 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 - Improved reliability of upgrade process, by verifying all roles are ready.
 
 ## Pre-Update steps
+
+Azure App Service on Azure Stack Hub 2022 H1 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
