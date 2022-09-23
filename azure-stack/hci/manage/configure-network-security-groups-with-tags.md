@@ -23,11 +23,11 @@ With network security tags, you can create custom user-defined tags, attach thos
 
 In Azure Stack HCI, version 21H2, you could create network security groups to configure access policies based on network constructs (network prefixes/subnets). So, if you want to prevent your Web Server VMs from communicating with your database VMs, you must identify corresponding network subnets and create policy to deny communication between those subnets. There are a few limitations with this approach:
 
-- Your security policies are tied to network constructs, so you will need to know which apps are hosted on which network segments. You will need to have a fair understanding of your network infrastructure and architecture.
+- Your security policies are tied to network constructs, so you'll need to know which apps are hosted on which network segments. You will need to have a fair understanding of your network infrastructure and architecture.
 
-- You normally build policy for one application and may want to reuse that policy for other applications as well. For example, your web app in production environment can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments. Now, if you provision another web app, it will have a similar policy. But, with network segmentation, your policy needs to be recreated because the policy has network elements which will be unique to apps.
+- You normally build policy for one application and may want to reuse that policy for other applications as well. For example, your web app in production environment can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments. Now, if you provision another web app, it will have a similar policy. But, with network segmentation, your policy needs to be recreated because the policy has network elements that are unique to apps.
 
-- If you decommission your old application and provision a new application in the same network segment, you will have to modify your policy.
+- If you decommission your old application and provision a new application in the same network segment, you'll have to modify your policy.
 
 With the network security tags feature, you no longer need to track the network segments where your applications are hosted. Using the same Web Server and database VMs example above, you can tag corresponding VMs with "Web" and "Database" network security tags. You can then create a network security group rule to prevent "Web" network security tag from communicating with "Database" network security tag.
 
