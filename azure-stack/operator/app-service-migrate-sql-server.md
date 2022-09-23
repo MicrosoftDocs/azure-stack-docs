@@ -43,7 +43,7 @@ Use the administration portal to back up app service secrets by following these 
 ## Back up the App Service databases from the current server
 
 
-To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely on a regular basis. However, any method of ensuring regular SQL backups are created can be used.
+To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely regularly. However, any method of ensuring regular SQL backups are created can be used.
 
 To manually back up these databases while logged into the SQL Server, use the following PowerShell commands:
 
@@ -90,12 +90,12 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
       Restore-AppServiceStamp -FilePath <local secrets file> -OverrideDatabaseServer <new database server> -CoreBackupFilePath <filepath>
       ```
    1. A prompt will appear to confirm the key values, press **Enter** to continue or close the PowerShell session to cancel.
-1. Once the cmdlet completes, **all** worker instances from the custom worker tiers will be removed and those instances will be added back by the next step
-1. In the same PowerShell session or a new Administrative PowerShell session, run the following PowerShell script which will inspect all the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of custom worker tiers:
+1. Once the cmdlet completes, **all** worker instances from the custom worker tiers will be removed, and those instances will be added back by the next step
+1. In the same PowerShell session or a new Administrative PowerShell session, run the following PowerShell script, that will inspect all the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of custom worker tiers:
    ```powershell
    Restore-AppServiceRoles
    ```
 1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**
 1. Repeat the previous step for all other controllers.
-1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
+1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
