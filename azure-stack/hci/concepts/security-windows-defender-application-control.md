@@ -4,7 +4,7 @@ description: This topic provides guidance on Windows Defender Application Contro
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 08/30/2022
+ms.date: 09/23/2022
 ---
 <!-- To do:
  -- call out CIP before using acro -->
@@ -441,8 +441,8 @@ Use the following steps to create a supplemental policy:
 
 > [!NOTE]
 >
-> * You can download the last version of the "refreshpolicy.exe" here: [Refresh CI Policy download](https://www.microsoft.com/download/details.aspx?id=102925).
-> * You can locally find the file under C:\nugetstore\microsoft.as.infra.security.applicationcontrol[version]\content\policy\
+> * To get the latest version of the `refreshpolicy.exe`, you can download [Refreshed CI Policy](https://www.microsoft.com/download/details.aspx?id=102925).
+> * The `refreshpolicy.exe` resides on your local system at `C:\nugetstore\microsoft.as.infra.security.applicationcontrol[version]\content\policy\`.
 
 ## Next steps
 
