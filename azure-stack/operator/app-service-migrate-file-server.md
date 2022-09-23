@@ -42,7 +42,7 @@ Use the admin portal to back up App Service secrets by following these steps:
 
 ## Back up the existing App Service file share
 
-App Service stores tenant app info in the file share. This file share must be backed up on a regular basis along with the App Service databases so that as little data as possible is lost if a restore or migration is required.
+App Service stores tenant app info in the file share. This file share must be backed up regularly along with the App Service databases so that as little data as possible is lost if a restore or migration is required.
 
 To back up the App Service file share content, use Azure Backup Server or another method to regularly copy the file share content to the location to which you've saved all previous recovery info.
 
@@ -78,7 +78,7 @@ In addition to copying the file share contents, you must also reset permissions 
 
 1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
 
-1. Navigate to the resource group containing the App Service Resource Provider deployment, by default this is **AppService.\<region\>** and connect to **CN0-VM**.
+1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
 1. Open an Administrator PowerShell session and run **net stop webfarmservice**
 1. Repeat step 3 and 4 for all other controllers.
 1. Return to the **CN0-VM** remote desktop session.
@@ -88,7 +88,7 @@ In addition to copying the file share contents, you must also reset permissions 
       Restore-AppServiceStamp -FilePath <local secrets file> -OverrideContentShare <new file share location> -CoreBackupFilePath <filepath>
       ```
       1. A prompt will appear to confirm the key values, **verify** and **press ENTER** to continue, or close the PowerShell session to cancel.
-1. Once the cmdlet has finished, all worker instances from custom worker tiers will be removed, and then added back via the next PowerSHell script
+1. Once the cmdlet has finished, all worker instances from custom worker tiers will be removed, and then added back via the next PowerShell script
 1. In the same administrative PowerShell session or a new Administrative PowerShell session, run:
       ```powershell
       Restore-AppServiceRoles
@@ -98,13 +98,13 @@ In addition to copying the file share contents, you must also reset permissions 
 1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**.
 
 1. Repeat the previous step for all other controllers.
-1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group.
+1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
 
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
 
 ## Update file server credentials
 
-If the credentials have changed you must update the file share credentials to connect to the new file server (FileShareOwnerCredential and FileShareUserCredential).
+If the credentials have changed, you must update the file share credentials to connect to the new file server (FileShareOwnerCredential and FileShareUserCredential).
 
 1. In the Azure Stack admin portal, navigate to the **ControllersNSG** Network Security Group.
 
@@ -118,11 +118,11 @@ If the credentials have changed you must update the file share credentials to co
 1. Next select the credential you wish to update – in this case the FileShareOwnerCrdential or the FileShareUserCredential and select edit – either from the menu bar or from the right click context menu. \<screenshot\>
 1. Enter the new credential details and then click OK.
 1. Repeat for the FileShareUserCredential if that has changed also.
-1. Once you have completed updating the credentials you must **restart CN0-VM**.
+1. Once you have completed updating the credentials, you must **restart CN0-VM**.
 1. Wait for **CN0-VM** and verify the role is marked as **Ready** in the Admin Portal -> App Service -> Roles
 1. Restart CN1-VM and verify the role is marked as **Ready**
 1. Once both controllers are marked as Ready, Repair all other Role instances.  Recommend working through each role type i.e. Management, Front End etc methodically one set at a time.
-1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group.
+1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
 
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
 
