@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 06/03/2022
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 09/19/2022
+ms.lastreviewed: 09/23/2022
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -105,7 +105,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0         |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0 |
-| 2206                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0, 0.71.0 |                 |
+| 2206                                           | 0.67.0, 0.67.3, 0.70.0, 0.71.0 |                 |
 
 ## Kubernetes version upgrade path in AKS engine v0.71.0
 
