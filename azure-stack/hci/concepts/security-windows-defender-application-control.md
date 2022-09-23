@@ -433,7 +433,7 @@ Use the following steps to create a supplemental policy:
 
    ```azurepowershell
    [XML]$policy = Get-Content c:\wdac\Contoso-supplemental-policy.xml 
-   Copy-Item -Path c:\wdac\Contoso-supplemental-policy.bin -Destination “C:\Windows\System32\CodeIntegrity\CiPolicies\Active\$($policy.SiPolicy.PolicyId).cip"
+   Copy-Item -Path c:\wdac\Contoso-supplemental-policy.bin -Destination "C:\Windows\System32\CodeIntegrity\CiPolicies\Active\$($policy.SiPolicy.PolicyId).cip"
    ```
 
 1. To activate the supplemental policy, reboot your system or invoke the code integrity policy refresher tool ```refreshpolicy.exe```. The tool will try to activate all policies in the active policy folder.
