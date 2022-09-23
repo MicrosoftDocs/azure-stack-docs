@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/22/2022
+ms.date: 09/23/2022
 ---
 
 # Review single-node storage deployment network reference pattern for Azure Stack HCI

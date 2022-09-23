@@ -7,14 +7,14 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/22/2022
+ms.date: 09/23/2022
 ---
 
 # Review single-node storage reference pattern components for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-In this article, you'll learn about which network components get deployed for single-node reference patterns, as shown below:
+In this article, you'll learn about which network components are deployed for the single-node reference pattern, as shown below:
 
 :::image type="content" source="media/single-node-components/components.png" alt-text="Diagram showing components for single-node network pattern" lightbox="media/single-node-components/components.png":::
 
