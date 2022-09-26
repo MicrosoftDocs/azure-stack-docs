@@ -41,15 +41,15 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
-## Unable to deploy Arc Resource Bridge
+## KVA timeout error
 
-Here are the possible reasons that the deployment of Arc Resource Bridge could fail. Contact your network administrator to provide the required permission and access.
+Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
 
-- `$VMIP` and `$controlPlaneIP` don't have internet access. 
+- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
+- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
+- The host isn't able to reach $controlPlaneIP or $VMIP.
 
-- The host isn't able to reach `$controlPlaneIP` and `$VMIP`.
-
-- From inside the Arc Resource Bridge VM (`$VMIP`), the VM isn't able to do DNS resolution.
+To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
  
 ## Limitations and known issues
 
