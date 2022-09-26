@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI version 22H2 using Windows PowerShell (preview) 
 author: dansisson
 ms.topic: how-to
-ms.date: 09/22/2022
+ms.date: 09/26/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -27,6 +27,9 @@ Before you begin, make sure you have done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
+    - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
+    - [Assign permissions from the Azure portal](./register-with-azure.md/#assign-permissions-from-azure-portal).
 
 ## Prepare the configuration file
 
@@ -70,6 +73,10 @@ Use this procedure to deploy a multiple-node cluster or a single-server using Po
     ```powershell
     $DeploymentUserCred=Get-Credential
     $LocalAdminCred=Get-Credential
+    $SPNAppID = "<Your App ID>"
+    $SPNSecret= "<Your SPN Secret>"
+    $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
+    $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
     ```
 
 1. Set up the deployment tool:
@@ -85,10 +92,6 @@ Use this procedure to deploy a multiple-node cluster or a single-server using Po
     ```powershell
     .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred
     ```
-
-    > [!NOTE]
-    > You can also deploy with a Service Principal Name (SPN) using the `-RegistrationSPCredential` parameter.
-
 
 
 ## Next steps
