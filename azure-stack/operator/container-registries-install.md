@@ -26,7 +26,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
 * **Azure Stack Hub version**  
     You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2108 update and later releases. Install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
 * **Certificate requirements**  
-    The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](azure-stack-pki-certs.md)."
+    The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. Additionally, it must not be a Cyptography: Next Generation (CNG) certificate, as these are not currently supported by the public preview of ACR on Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](azure-stack-pki-certs.md)."
 
     The URI for this new certificate should have the following format:
 
@@ -35,6 +35,8 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
     For example:
 
     `*.azsacr.azurestack.contoso.com`
+* **Azure Stack Hub state**  
+    Only after validating that your Azure Stack Hub is healthy should you install ACR. You can do so by following the steps listed on "[Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md)."
 ## Generate your certificate
 
 You can use the following steps to generate an ACR certificate using The Azure Stack Hub Readiness Checker tool. You must specific the version of the **Microsoft.AzureStack.ReadinessChecker** module for the steps to work.
