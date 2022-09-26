@@ -182,5 +182,5 @@ To apply a network security group to a network security tag via Windows Admin Ce
 For related information, see also:
 
 - [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md)
-- [Use Datacenter Firewall to configure ACLs with Windows Admin Center](use-datacenter-firewall-windows-admin-center.md)
-- [Use Datacenter Firewall to configure ACLs with PowerShell](use-datacenter-firewall-powershell.md)
+- [Configure network security groups with Windows Admin Center](use-datacenter-firewall-windows-admin-center.md)
+- [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md)
