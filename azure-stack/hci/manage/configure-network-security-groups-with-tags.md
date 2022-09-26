@@ -47,7 +47,7 @@ To create network security tag based network security groups, follow these steps
 
 ## Create network security tags
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the ACL on.
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the network security group on.
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
 
@@ -103,7 +103,7 @@ You can assign a network security tag to an existing VM by changing its settings
 
 ## Create a network security group
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the ACL on.
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the network security group on.
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
 
@@ -113,13 +113,13 @@ You can assign a network security tag to an existing VM by changing its settings
 
     :::image type="content" source="media/network-security-groups-with-tags/create-network-security-group.png" alt-text="Screenshot showing the Network Security Group pane.":::
 
-1. Under **Network Security Groups**, verify that the **Provisioning state** of the new ACL shows **Succeeded**.
+1. Under **Network Security Groups**, verify that the **Provisioning state** of the new network security group shows **Succeeded**.
 
 ## Create a network security group rule
 
 After you create a network security group, you're ready to create network security group rules. If you want to apply network security group rules to both inbound and outbound traffic, you need to create two rules.
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the ACL on.
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the network security group on.
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
 
