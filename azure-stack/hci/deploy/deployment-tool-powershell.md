@@ -90,7 +90,7 @@ Use this procedure to deploy a multiple-node cluster or a single-server using Po
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred
     ```
 
 
