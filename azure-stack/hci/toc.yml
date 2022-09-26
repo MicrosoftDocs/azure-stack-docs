@@ -34,6 +34,8 @@
   items:
   - name: Plan networking
     items:
+    - name: Network reference patterns overview
+      href: plan/network-patterns-overview.md
     - name: Choose network reference pattern
       href: plan/choose-network-pattern.md
     - name: Single-node deployments
