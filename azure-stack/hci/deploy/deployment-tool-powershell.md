@@ -29,7 +29,7 @@ Before you begin, make sure you have done the following:
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 - Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
     - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-    - [Assign permissions from the Azure portal](./register-with-azure.md/#assign-permissions-from-azure-portal).
+    - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-azure-portal).
 
 ## Prepare the configuration file
 
