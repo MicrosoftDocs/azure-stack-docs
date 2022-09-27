@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/23/2022
+ms.date: 09/27/2022
 ---
 
 # Azure Stack HCI network deployment patterns
@@ -35,7 +35,7 @@ Use the following table to directly go to a pattern and its content.
 
 |Go to [storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [storage switched, fully-converged, two TOR switches](two-node-switched-converged.md)       |
 |---------|---------|
-|![Diagram showing two-node storage switched, non-converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully-converged, two TOR switches ](media/plan-deployment/two-node-switched-converged.png)|
+|![Diagram showing two-node storage switched, non-converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully converged, two TOR switches ](media/plan-deployment/two-node-switched-converged.png)|
 
 ## Next steps
 

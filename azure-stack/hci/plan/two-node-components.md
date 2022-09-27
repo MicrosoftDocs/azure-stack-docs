@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/19/2022
+ms.date: 09/27/2022
 ---
 
 # Review two-node storage reference pattern components for Azure Stack HCI
@@ -34,7 +34,7 @@ The following table lists all the components running on VMs for two-node network
 
 #### Network Controller VM
 
-The Network Controller VM is deployed by default unless it is explicitly opt-out. If Network Controller VM is not deployed, the default access network access policies will not be available. Additionally, it is needed if you have any of the following requirements:
+The Network Controller VM is deployed by default unless it's explicitly opt-out. If Network Controller VM isn't deployed, the default access network access policies won't be available. Additionally, it's needed if you have any of the following requirements:
 
 - Create and manage virtual networks. Connect virtual machines (VMs) to virtual network subnets.
 
@@ -52,15 +52,15 @@ Tenant VMs...
 
 #### SDN Load Balancer VM
 
-This is a first-party software load balancer used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It is also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
+The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
 #### SDN Gateway VM
 
-This is used for routing network traffic between a virtual network and another network, either local or remote. Gateways can be used to:
+The SDN Gateway VM is used for routing network traffic between a virtual network and another network, either local or remote. Gateways can be used to:
 
 - Create secure site-to-site IPsec connections between SDN virtual networks and external customer networks over the internet.
 
-- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter is not an encrypted connection. For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server.md).
+- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter isn't an encrypted connection. For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server.md).
 
 - Create Layer 3 connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
