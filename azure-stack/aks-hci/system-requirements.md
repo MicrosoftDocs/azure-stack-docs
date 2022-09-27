@@ -185,7 +185,7 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 ----
 
-#### Stretched Cluster in AKS on Azure Stack HCI and AKS on Windows Server 
+#### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server 
 > [!NOTE]
 > At this time, stretched cluster has not been validated for different customer use cases and is not supported for use in your AKS on-premises environment. We advise that you use the backup and disaster recovery approach for your datacenter operational continuity.  
 
