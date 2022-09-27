@@ -187,7 +187,7 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 #### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server
 
-As outlined in the [Stretched clusters overview](../../hci/concepts/stretched-clusters.md), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
+As outlined in the [Stretched clusters overview](../hci/concepts/stretched-clusters.md), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
 
 #### Arc for Kubernetes requirements
 > [!NOTE]
