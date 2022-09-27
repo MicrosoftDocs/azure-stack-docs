@@ -7,14 +7,14 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/22/2022
+ms.date: 09/27/2022
 ---
 
 # Review two-node storage switched, non-converged deployment network reference pattern for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switches network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
 For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
@@ -22,9 +22,9 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenter facilities.
 
-Consider implementing this pattern when looking for enhanced network performance of your system and you plan to add additional nodes. East-West storage traffic replication will not interfere or compete with north-sound traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
+Deploy this pattern for enhanced network performance of your system and if you plan to add additional nodes. East-West storage traffic replication won't interfere or compete with north-sound traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
 
-Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as micro-segmentation and QoS don't require additional configuration on the firewall device as they are implemented at the virtual network adapter layer.
+Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device as they're implemented at the virtual network adapter layer.
 
 ## Physical connectivity components
 
@@ -42,7 +42,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 |Networks|Management & compute|Storage|BMC|
 |--|--|--|--|
-|Link speed|At least 1 GBps. 10 GBps recommended|At least 10 GBps|Check with hardware manufacturer|
+|Link speed|At least 1 Gbps. 10 Gbps recommended|At least 10 Gbps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Two standalone ports|One port|
 
@@ -50,7 +50,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 :::image type="content" source="media/two-node-switched-non-converged/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switched-non-converged/network-atc.png":::
 
-### Management & Compute intent
+### Management & compute intent
 
 - Intent type: Management and compute
 - Intent mode: Cluster mode
@@ -90,13 +90,12 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both can use the same VLAN tag.
 
-The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all torage IP addresses in the cluster.
+The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
 
 For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/two-node-include.md)]
 
-
 ## Next steps
 
-Learn about the [two-node storage switched, fully-converged network pattern](two-node-switched-converged.md).
+Learn about the [two-node storage switched, fully converged network pattern](two-node-switched-converged.md).

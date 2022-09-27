@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/26/2022
+ms.date: 09/27/2022
 ---
 
 # Network reference patterns overview for Azure Stack HCI
@@ -24,13 +24,13 @@ A deployment consists of singe or two-node systems that connect to one or two To
 
 - One optional BMC for OOB management.
 
-A single-node deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully-converged host network adapters.
+A single-node deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
 
 ## Advantages and disadvantages
 
 The following highlights some advantages and disadvantages of using switchless configurations:
 
-- No switch is necessary for East-West traffic, however, a switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs, but this is dependent on the number of nodes in the cluster.
+- No switch is necessary for East-West traffic, however, a switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs, but is dependent on the number of nodes in the cluster.
 
 - If switchless is used, configuration is limited to the host, which may reduce the potential number of configuration steps needed. However, this value diminishes as the cluster size increases.
 
@@ -38,7 +38,7 @@ The following highlights some advantages and disadvantages of using switchless c
 
 - More planning is required for IP and subnet addressing schemes.
 
-- Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication cannot use these adapters.
+- Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication can't use these adapters.
 
 - As the number of nodes in the cluster grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
 
@@ -55,9 +55,9 @@ These network reference patterns can be deployed in the following scenarios:
 - Retail stores
 - Public sector and government facilities
 - Airline terminals
-- Dev/test lab environments
+- Dev and test lab environments
 - Branch offices with datacenter services
-- Traditional datacenter with multiple small-node systems sharing a single rack. Non-traditional datacenter environments are expected to have limited cooling system and power.
+- Traditional datacenters with multiple small-node systems sharing a single rack. Non-traditional datacenters generally have limited cooling and power systems.
 
 TOR switches can be Layer (L2) devices without Layer 3 (L3) capabilities. VLANs will get trunked to a central switch router where traffic can get routed.
 
@@ -67,11 +67,11 @@ For more information, see [Azure Stack remote offices and branches](/azure/archi
 
 Azure Stack HCI requires periodic connectivity to Azure. If your organization's outbound firewall is restricted, you would need to include firewall requirements for outbound endpoints and internal rules and ports. There are required and recommended endpoints for the Azure Stack HCI core components, which include cluster creation, registration and billing, Microsoft Update, and cloud cluster witness.
 
-Refer to the documentation firewall requirements for Azure Stack HCI - Azure Stack HCI  for a complete list of the endpoints. You need to make sure to include these URLS in your Allow list. Proper network ports need to be opened between all server nodes both within a site and between sites (for stretched clusters).
+See the [firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table) for a complete list of endpoints. Make sure to include these URLS in your allowed list. Proper network ports need to be opened between all server nodes both within a site and between sites (for stretched clusters).
 
-With Azure Stack HCI the connectivity validator of the Environment Checker tool will check for the outbound connectivity requirement by default during deployment. Additionally, you have the option to run the Environment Checker tool standalone before, during, or after deployment to evaluate the outbound connectivity of your environment.
+With Azure Stack HCI the connectivity validator of the Environment Checker tool will check for the outbound connectivity requirement by default during deployment. Additionally, you can run the Environment Checker tool standalone before, during, or after deployment to evaluate the outbound connectivity of your environment.
 
-The long term vision is to have all necessary endpoints in a data file that can be easily consumed and pulled down by the environment checker tool. The same file can also be shared with your their firewall administrator to open up the necessary ports and URLs.
+A best practice is to have all relevant endpoints in a data file that can be accessed by the environment checker tool. The same file can also be shared with your firewall administrator to open up the necessary ports and URLs.
 
 For more information, see [Firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table).
 

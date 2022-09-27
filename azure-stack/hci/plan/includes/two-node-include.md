@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/26/2022
+ms.date: 09/27/2022
 ---
 
 ### OOB network
@@ -38,7 +38,7 @@ In some scenarios, you don’t need to use SDN Virtual Networks with Virtual Ext
 
 ### HNV Provider Address (PA) network
 
-The Hyper-V Network Virtualization (HNV) Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need for deploying virtual networks using VXLAN encapsulation for an additional layer of isolation and for network multitenancy.
+The Hyper-V Network Virtualization (HNV) Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need for deploying virtual networks using VXLAN encapsulation for another layer of isolation and for network multitenancy.
 
 For more information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
@@ -56,9 +56,9 @@ For more information, see [Understand the usage of virtual networks and VLANs](/
 
 Default network access policies ensure that all virtual machines (VMs) in your Azure Stack HCI cluster are secure by default from external threats. With these policies, we'll block inbound access to a VM by default, while giving the option to enable selective inbound ports and thus securing the VMs from external attacks. This enforcement is available through management tools like Windows Admin Center.  
 
-Microsegmentation is the concept of creating granular network policies between applications and services. This essentially reduces the security perimeter to a fence around each application or VM. This fence permits only necessary communication between application tiers or other logical boundaries, thus making it exceedingly difficult for cyberthreats to spread laterally from one system to another. Microsegmentation securely isolates networks from each other and reduces the total attack surface of a network security incident.
+Microsegmentation involves creating granular network policies between applications and services. This essentially reduces the security perimeter to a fence around each application or VM. This fence permits only necessary communication between application tiers or other logical boundaries, thus making it exceedingly difficult for cyberthreats to spread laterally from one system to another. Microsegmentation securely isolates networks from each other and reduces the total attack surface of a network security incident.
 
-Default network access policies and microsegmentation are realized as 5-tuple stateful (source address prefix, source port, destination address prefix, destination port, and protocol) firewall rules (also known as Network Security Groups (NSGs)) on Azure Stack HCI clusters. These policies are enforced at the vSwitch port of each VM. The policies are pushed through the management layer, and the SDN Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks as well as on SDN overlay networks.
+Default network access policies and microsegmentation are realized as five-tuple stateful (source address prefix, source port, destination address prefix, destination port, and protocol) firewall rules on Azure Stack HCI clusters. Firewall rules are also known as Network Security Groups (NSGs). These policies are enforced at the vSwitch port of each VM. The policies are pushed through the management layer, and the SDN Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks and on SDN overlay networks.
 
 > [!NOTE]
 > These capabilities are enabled by default when deploying Azure Stack HCI and Network Controller VMs.
@@ -76,7 +76,7 @@ For more information, see [Configure QoS for a VM network adapter](/windows-serv
 
 ### Virtual networks
 
-Network virtualization provides virtual networks to VMs similar to how server virtualization (hypervisor) provides VMs to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from VM provisioning. This flexibility makes it easy for you to move to IaaS clouds and is efficient for hosters and datacenter administrators to manage their infrastructure, while maintaining the necessary multi-tenant isolation, security requirements, and supporting overlapping VM IP addresses.
+Network virtualization provides virtual networks to VMs similar to how server virtualization (hypervisor) provides VMs to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from VM provisioning. Such flexibility makes it easy for you to move to (Infrastructure-as-a-Service) IaaS clouds and is efficient for hosters and datacenter administrators to manage their infrastructure, and maintaining the necessary multi-tenant isolation, security requirements, and overlapping VM IP addresses.
 
 > [!NOTE]
 > This network isolation option isn't enabled by default when deploying Azure Stack HCI and requires you to explicitly enable it during deployment.
@@ -102,7 +102,7 @@ For more information, see [Virtual network peering](/windows-server/networking/s
 
 Cloud Service Providers (CSPs) and enterprises that deploy Software Defined Networking (SDN) can use Software Load Balancer (SLB) to evenly distribute customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to VMs, and outbound NAT services for outbound connectivity.
 
-Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise virtual IP addresses to the physical network.
+Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise virtual IP addresses to the physical network.
 
 For more information, see [What is SLB for SDN?](/azure-stack/hci/concepts/software-load-balancer.md)
 
@@ -120,7 +120,7 @@ SDN Gateway can be used to:
 
 - Create Layer 3 (L3) connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
-SDN Gateway requires SDN [Network Controller](/azure-stack/hci/concepts/network-controller-overview.md), which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
+SDN Gateway requires SDN [Network Controller](/azure-stack/hci/concepts/network-controller-overview.md). Network Controller performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
 
 Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
 

@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/19/2022
+ms.date: 09/27/2022
 ---
 
 # Review two-node storage reference pattern IP requirements for Azure Stack HCI
@@ -42,7 +42,7 @@ In this article, learn about the IP requirements for deploying a two-node networ
 |Storage 2|1 IP for each host|Storage|No defined GW.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|2|
 |Tenant compute|Tenant VM IPs connected to corresponding VLANs|Compute|Tenant VLAN routing/access customer-managed.<br>VLAN trunk configuration on the physical switches required.|Customer-defined||
 |Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for NC VM,<br>1 IP for MOC VM,<br>1 IP for OEM VM (new)<br><br>**Two-node**:<br>1 NC VM IP<br>1 SLB VM IP<br>1 GW VM IP|Management|Connected (outbound internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|7 required<br>1 optional|
-|HNV (AKA PA network)|2 IPs for each host<br><br>**Two-node**:<br>1 SLB VM IP<br>1 GW VM IP|N/A|Requires default gateway to route the packets externally.|Provider Address Network VLAN<br>Subnet size needs to allocate hosts and SLB VMs<br>Potential subnet growth to be considered|NC-managed IPs|
+|HNV|2 IPs for each host<br><br>**Two-node**:<br>1 SLB VM IP<br>1 GW VM IP|N/A|Requires default gateway to route the packets externally.|Provider Address Network VLAN<br>Subnet size needs to allocate hosts and SLB VMs<br>Potential subnet growth to be considered|NC-managed IPs|
 |Public VIPs|SLB and GW public VIPs|N/A|Advertised through BGP||NC-managed IPs|
 |Private VIPs|SLB private VIPs|N/A|Advertised through BGP||NC-managed IPs|
 |GRE VIPs|GRE connections for GW VIPs|N/A|Advertised through BGP||NC-managed IPs|
