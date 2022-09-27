@@ -174,42 +174,69 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
    ### [For static IP address](#tab/for-static-ip-address)
 
+   1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
+      ```
+   
+   1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
+      ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+  
+   1. Download images used to create the Arc Resource Bridge VM from the cloud and make a copy to Azure Stack HCI:
       ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   
+   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
+      > [!IMPORTANT]
+      > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
+      >
+      >```powershell
+      >az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
+      >```
+      > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
    
+   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
-   
+
    ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
+   1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
+      ```
+   1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
+      ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   1. Download images used to create the Arc Resource Bridge VM from the cloud and make a copy to Azure Stack HCI:
       ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
-   
+      > [!IMPORTANT]
+      > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
+      >
+      >```powershell
+      >az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
+      >```
+      > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+
+   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
