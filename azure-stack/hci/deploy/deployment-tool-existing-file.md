@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) using a configuration file
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 08/30/2022
+ms.date: 09/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -243,19 +243,44 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-import.png" alt-text="Screenshot of the Deployment step 1.1 import file page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-import.png":::
 
-1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
+1. On step **1.2 Provide registration details**, enter the following details to authenticate your cluster with Azure:
 
-    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-review.png" alt-text="Screenshot of the Deployment step 1.2 review settings page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-review.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.2 registration details page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-registration-details.png":::
+
+    1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
+    
+    1. Copy the authentication code.
+    
+    1. Select **login**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported.
+
+    1. Go back to the deployment screen and provide the Azure registration details.
+
+    1. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
+
+    1. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
+
+        > [!NOTE]
+        > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
+
+    1. Select an existing **Azure resource group** from the dropdown to associate with the cluster resource. To create a new resource group, leave the field empty.
+
+    1. Select an **Azure region** from the dropdown or leave the field empty to use the default.import the existing configuration file you created by selecting **Browse** or dragging the file to the page.
+
+
+1. On step **1.3 Review deployment setting**, review the settings stored in the configuration file.
+
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-review.png" alt-text="Screenshot of the Deployment step 1.3 review settings page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-review.png":::
 
 1. On step **2.1 Credentials**, enter the username and password for the Active Directory account and username and password for the local administrator account.
-When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn't supported.
+
+    When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn't supported.
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-2-credentials.png" alt-text="Screenshot of the Deployment step 2.1 page." lightbox="media/deployment-tool/config-file/deploy-existing-step-2-credentials.png":::
 
     > [!NOTE]
     > Credentials are never collected or stored in the configuration file.
 
-1. On step **3.1 Deploy the cluster**, click **Deploy** to start deployment of your cluster.
+1. On step **3.1 Deploy the cluster**, select **Deploy** to start deployment of your cluster.
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png" alt-text="Screenshot of the Deploy cluster page." lightbox="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png":::
 
