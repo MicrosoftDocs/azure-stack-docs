@@ -129,7 +129,7 @@ There are a variety of settings that you can change for a VM.
         - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
         - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
-    - To change additional settings for a network adapter adapter, click **Advanced** to be able to:
+    - To change additional settings for a network adapter, click **Advanced** to be able to:
         - Select between dynamic or static MAC address type
         - Enable MAC address spoofing
         - Enable bandwidth management and specify the max/min range
@@ -177,7 +177,7 @@ You can easily move a virtual machine to another server or another cluster as fo
 1. Under **Tools**, scroll down and select **Virtual machines**.
 1. Under the **Inventory** tab, select a VM from the list and select **Manage > Move**.
 1. Choose a server from the list and select **Move**.
-1. If you want to move both the VM and it's storage, choose whether to move it to another cluster or to another server in the same cluster.
+1. If you want to move both the VM and its storage, choose whether to move it to another cluster or to another server in the same cluster.
 
     :::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/manage-vm/vm-more-move.png":::
 
@@ -257,7 +257,7 @@ You can use Windows Admin Center to configure Azure Site Recovery and replicate 
 
 ## Remove a VM and resources
 
-To remove VM and it's resources, see [Remove a VM](vm-powershell.md#remove-a-vm).
+To remove VM and its resources, see [Remove a VM](vm-powershell.md#remove-a-vm).
 
 ## Next steps
 

@@ -90,7 +90,7 @@ You can apply a network security group to a network interface, either while crea
 1. On the **Settings** page, select **Networks**.
 1. Scroll down to **Network security group**, expand the drop-down list, select a network security group, and select **Save network settings**.
 
-    :::image type="content" source="./media/network-security-groups/apply-network-security-group-network-interface.png" alt-text="Screenshot of Windows Admin Center showing the Network setting option to associates a network security group with a network interface." lightbox="./media/network-security-groups/apply-network-security-group-network-interface.png":::
+    :::image type="content" source="./media/network-security-groups/apply-network-security-group-network-interface.png" alt-text="Screenshot of Windows Admin Center showing the Network setting option to associate a network security group with a network interface." lightbox="./media/network-security-groups/apply-network-security-group-network-interface.png":::
 
     Completing the last step associates the network security group with the network interface and applies it to all incoming and outgoing traffic for the network interface.
 
