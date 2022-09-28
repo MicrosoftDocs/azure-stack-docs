@@ -192,9 +192,9 @@
       href: manage/sdn-express.md
     - name: Update SDN infrastructure
       href: manage/update-sdn.md       
-    - name: Use Datacenter Firewall
+    - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Use Datacenter Firewall with PowerShell
+    - name: Configure network security groups with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
     - name: Configure network security groups with tags
       href: manage/configure-network-security-groups-with-tags.md
