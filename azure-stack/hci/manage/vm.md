@@ -33,8 +33,8 @@ You can easily create a new VM using Windows Admin Center.
 1. Under **Network**, select one of the following for the isolation mode from the dropdown list:
     - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
     - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
-    - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
-    - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+    - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
+    - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
 1. Under **Storage**, click **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
 1. Under **Operating system**, do one of the following:
@@ -126,8 +126,8 @@ There are a variety of settings that you can change for a VM.
     - Select one of the following for the isolation mode from the dropdown list:
         - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
         - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
-        - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
-        - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+        - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
+        - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
     - To change additional settings for a network adapter adapter, click **Advanced** to be able to:
         - Select between dynamic or static MAC address type
