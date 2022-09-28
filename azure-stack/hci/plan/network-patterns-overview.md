@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/27/2022
+ms.date: 09/28/2022
 ---
 
 # Network reference patterns overview for Azure Stack HCI
@@ -26,7 +26,7 @@ A deployment consists of singe or two-node systems that connect to one or two To
 
 A single-node deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
 
-## Advantages and disadvantages
+## Switchless advantages and disadvantages
 
 The following highlights some advantages and disadvantages of using switchless configurations:
 
@@ -69,7 +69,7 @@ Azure Stack HCI requires periodic connectivity to Azure. If your organization's 
 
 See the [firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table) for a complete list of endpoints. Make sure to include these URLS in your allowed list. Proper network ports need to be opened between all server nodes both within a site and between sites (for stretched clusters).
 
-With Azure Stack HCI the connectivity validator of the Environment Checker tool will check for the outbound connectivity requirement by default during deployment. Additionally, you can run the Environment Checker tool standalone before, during, or after deployment to evaluate the outbound connectivity of your environment.
+With Azure Stack HCI the connectivity validator of the [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.3-preview) tool will check for the outbound connectivity requirement by default during deployment. Additionally, you can run the Environment Checker tool standalone before, during, or after deployment to evaluate the outbound connectivity of your environment.
 
 A best practice is to have all relevant endpoints in a data file that can be accessed by the environment checker tool. The same file can also be shared with your firewall administrator to open up the necessary ports and URLs.
 
