@@ -336,7 +336,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
 
 4. **Verify that the upgraded cluster functions as expected.**
    
-   Roles should fail-over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
+   Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
 
 
 5. **Validate the cluster.**
