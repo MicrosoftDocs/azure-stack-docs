@@ -26,7 +26,7 @@ For Azure Stack HCI, customers can set up alerts using pre-existing sample Log q
 
 ## Set up alerts using Insights
 
-Alerts can be set up using Azure Insights workbooks if the Insights function has been configured, via the Azure portal, for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](https://learn.microsoft.com/en-us/azure-stack/hci/manage/monitor-hci-single) to enable Insights monitoring for your cluster before setting up alerts.
+Alerts can be set up using Azure Insights workbooks if the Insights function has been configured, via the Azure portal, for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](https://learn.microsoft.com/azure-stack/hci/manage/monitor-hci-single) to enable Insights monitoring for your cluster before setting up alerts.
 
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
@@ -39,4 +39,4 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 
 From the alerts interface you can set up alert rules and send notifications.
 
-To learn more about setting up alerts, see [Create Azure Monitor alert rules](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+To learn more about setting up alerts, see [Create Azure Monitor alert rules](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
