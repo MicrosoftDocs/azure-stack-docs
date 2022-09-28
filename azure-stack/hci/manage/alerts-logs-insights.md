@@ -18,7 +18,7 @@ For Azure Stack HCI, customers can set up alerts using pre-existing sample Log q
 1. Navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
 3. *Are there specific sample logs to mention in this document?*
-4. Select **Load to Editor** to open the query workspace. *Is the step after choosing a specific sample log?*
+4. Select **Load to Editor** to open the query workspace. *Is there a specific sample log to choose before continuing with this step?*
 5. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
 6. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
