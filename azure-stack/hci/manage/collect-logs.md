@@ -19,7 +19,7 @@ You can manually collect and send the diagnostic logs to Microsoft. In this rele
 
 ## Collect logs via PowerShell
 
-Use the `Send-DiagnosticData` cmdlet to manually collect and send diagnostic logs to Microsoft. You can run this cmdlet from any Azure Stack HCI server node.
+Use the `Send-DiagnosticData` cmdlet to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system. You can run this cmdlet from any Azure Stack HCI server node.
 
 Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
