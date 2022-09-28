@@ -16,10 +16,13 @@ For Azure Stack HCI, customers can set up alerts using pre-existing sample Log q
 ## Set up alerts using sample Log queries
 
 1. Navigate to **Azure Monitor > Logs**.
-2. Add a filter for **`Resource type`** and select **Azure Stack HCI**. Here you will get a populated list of sample logs for Azure Stack HCI.
-3. Select **Load to Editor** to open the query workspace.
-4. Set the scope to **Log analytics workspace** for logs linked to the cluster.
-5. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
+2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
+3. *Are there specific sample logs to mention in this document?*
+4. Select **Load to Editor** to open the query workspace. *Is the step after choosing a specific sample log?*
+5. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
+6. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
+
+*Are there any specifics to mention that might be beneficial for customers after getting their results?*
 
 ## Set up alerts using Insights
 
@@ -29,9 +32,10 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
 
 1. Navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
-2. Once the workbook is loaded, select the **Cluster Health** tab, and you should see all the health faults for your clusters.
-3. Select, the blue icon **what is this called** highlighted above to edit the query.
-4. After the query loads, select the **+ New alert rule** option.
+2. Once the workbook is loaded, select the **Cluster Health** tab to see all the health faults for your clusters.
+3. *Is there anything else important customers would need to know or do before going to the next step?*
+4. Select the blue icon, *what is this called*, highlighted above to edit the query. *Why would customers need to do perform this step?*
+5. After the query loads, select the **+ New alert rule** option. *Why would customers need to perform this step, what more should be known before performing this step or after?*
 
 From the alerts interface you can set up alert rules and send notifications.
 
