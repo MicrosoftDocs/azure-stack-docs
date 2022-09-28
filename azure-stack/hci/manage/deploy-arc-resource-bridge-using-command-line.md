@@ -288,7 +288,7 @@ Now that the custom location is available, you can create or add virtual network
    | Parameter | Description |
    | ----- | ----------- |
    | **vlan-id** | vLAN identifier for Arc VMs. |
-   | **vnetName** | Name of the vnet. |
+   | **vnetName** | Name of the virtual network. |
 
 1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
    
