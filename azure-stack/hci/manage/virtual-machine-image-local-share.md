@@ -1,19 +1,19 @@
 ---
-title: Create Azure Stack HCI VM from Azure Marketplace images via Azure CLI
-description: Learn how to create Azure Stack HCI VM images using source images from Azure Marketplace.
+title: Create Azure Stack HCI VM from images in a local share via Azure CLI
+description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/26/2022
+ms.date: 09/27/2022
 ---
 
-# Create Azure Stack HCI VM image using Azure Marketplace images (preview)
+# Create Azure Stack HCI VM image using images in a local share (preview)
 
 > Applies to: Azure Stack HCI versions 22H2 (preview) and 21H2
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
 > [!IMPORTANT]
 > The Azure Marketplace on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
@@ -24,13 +24,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
-- If you're using custom images, you'll have the following extra prerequisites depending on where the custom images are located:
-
-    - You should have a VHD loaded in your Azure Storage account. See how to [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image?tabs=windows#copy-vhd-to-storage-account-using-azcopy). The container and the blob associated with the image must have anonymous read access if using Blob URL to specify as the image path. For more information, see how to [Change the access level for the container in your Storage account](/azure/storage/blobs/anonymous-read-access-configure?tabs=portal#set-the-public-access-level-for-a-container). If you don't want to change the container access, you'll need to use the Blob SAS URI. For more information, see how to [Get the Blob SAS URI](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal).
-    - You should have a VHD/VHDX uploaded to a local share on your Azure Stack HCI cluster.
-    - The VHDX image must be Gen 2 type and secure boot enabled.
-    - The image should reside on a Cluster Shared Volume available to all the servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
+[!INCLUDE [hci-vm-image-prerequisites-local-share](../../includes/hci-vm-image-prerequisites-local-share.md)]
 
 - Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
 
@@ -41,85 +35,17 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+[!INCLUDE [hci-vm-image-prerequisites-local-share](../../includes/hci-vm-image-prerequisites-local-share.md)]
 ---
 
 
-## Add VM image from Azure Marketplace
+## Add VM image from image in local share
 
-You'll create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You'll create a VM image starting from an image in a local share of your cluster and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
 Follow these steps to create a VM image using the Azure CLI.
-
-### Download the preview extension
-
-1. Run PowerShell as an administrator.
-
-1. Download the preview extension. To download, type:
-    
-    ```azurecli
-    $sourceURI = "https://azshciarcvmartifacts.blob.core.windows.net/arc-vm-artifacts/azurestackhci-0.2.3-py3-none-any.whl" 
-    $destination = <any folder> 
-    Invoke-WebRequest -Uri $sourceURI -OutFile "$destination\azurestackhci-0.2.3-py3-none-any.whl"
-    ```
-
-### Install the preview extension
-
-1. Run PowerShell as an administrator.
-
-1. Verify the version of the az CLI. Type:
-
-    ```azurecli
-    az version
-    ```
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
-
-1. Remove any older versions of `azurestackhci` extensions that are installed on your cluster.
-
-   ```azurecli
-   az extension remove --name azurestackhci
-   ``` 
-
-1. Switch to the directory that contains the preview extension. Install the preview extension.
-
-    ```azurecli
-    az extension add --source .\<Azure Stack HCI preview extension file name>
-    ```
-
-1. When prompted, type `y` to confirm the installation.
- 
-    Here's a sample output:
-
-    ```
-    PS C:\Users\Administrator> az account set --subscription "<Subscription ID>"
-    PS C:\Users\Administrator> az extension remove --name azurestackhci
-    The extension azurestackhci is not installed.
-    PS C:\Users\Administrator> cd C:\Users\azcli
-    PS C:\Users\azcli> dir
-    
-    Directory: C:\Users\\azcli
-    Mode                LastWriteTime         Length Name
-    ----                -------------         ------ ----
-    -a----         8/1/2022  11:04 AM         109247 azurestackhci-0.2.3-py3-none-any.whl
-    
-    PS C:\Users\azcli> az extension add --source .\azurestackhci-0.2.3-py3-none-any.whl
-    Are you sure you want to install this extension? (y/n): y
-    The installed extension 'azurestackhci' is experimental and not covered by customer support. Please use with discretion.
-    PS C:\Users\ azcli>
-    ```
 
 ### Set some parameters
 
@@ -129,6 +55,8 @@ Set your subscription, resource group, location, OS type for the image. Replace 
 $Subscription = "<Subscription ID>"
 $Resource_Group = "<Resource group>"
 $Location = "<Location for your Azure Stack HCI cluster>"
+$ImageName = <VM image name>
+$ImageSourcePath = <path to the source image>
 $OsType = "<OS of source image>"
 ```
 
@@ -139,6 +67,8 @@ The parameters are described in the following table:
 | `Subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
 | `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
 | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+| `ImageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
+| `ImageSourcePath`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
 | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
@@ -148,75 +78,62 @@ PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mkclus90-rg"
 PS C:\Users\azcli> $location = "eastus2euap"
 PS C:\Users\azcli> $osType = "Windows"
+PS C:\ClusterStorage\Volume1> $ImageName = "winostest"
+PS C:\ClusterStorage\Volume1> $ImageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
 ```
 
-### Create VM image from marketplace image
+### Create VM image from image in local share
 
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
 
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv)
     ```
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
+1. Create the VM image starting with a specified image in a local share on your Azure Stack HCI cluster.
 
     ```azurecli
-    az azurestackhci images create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "<VM image name>"  --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
+    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
     ```
-A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
+A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
 
 Here's a sample output:
 
 ```
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
-PS C:\Users\azcli> $customLocationID
-/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04
-PS C:\Users\azcli> az azurestackhci images create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "marketplacetest03"  --os-type $osType --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
+PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
+Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
- "extendedLocation": {
- "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
- "type": "CustomLocation"
- },
- "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
- "location": "eastus2euap",
- "name": "marketplacetest03",
- "properties": {
-    "containerName": null,
-    "identifier": {
-    "offer": "windowsserver",
-    "publisher": "microsoftwindowsserver",
-    "sku": "2022-datacenter-azure-edition-core"
-    },
-  "imagePath": null,
-  "provisioningState": "Succeeded",
-  "resourceName": "marketplacetest03",
-  "status": {
-    "downloadStatus": {},
-    "provisioningStatus": {
-    "operationId": "<Operation ID>",
-      "status": "Succeeded"
-    }
+  "extendedLocation": {
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+    "type": "CustomLocation"
   },
-    "version": {
-      "name": "20348.707.220609",
-        "storageProfile": {
-          "osDiskImage": {}
-        }
-      }
-    }
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
+  "location": "eastus2euap",
+  "name": "mktplace8",
+  "properties": {
+    "containerName": null,
+    "hyperVGeneration": null,
+    "identifier": null,
+    "imagePath": null,
+    "osType": "Windows",
+    "provisioningState": "Succeeded",
+    "status": null,
+    "version": null
   },
   "resourceGroup": "mkclus90-rg",
   "systemData": {
-    "createdAt": "2022-08-01T22:29:11.074104+00:00",
+    "createdAt": "2022-08-05T20:52:38.579764+00:00",
     "createdBy": "guspinto@microsoft.com",
     "createdByType": "User",
-    "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-    "lastModifiedByType": "Application"
+    "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
+    "lastModifiedBy": "guspinto@microsoft.com",
+    "lastModifiedByType": "User"
   },
   "tags": null,
-  "type": "microsoft.azurestackhci/marketplacegalleryimages"
+  "type": "microsoft.azurestackhci/galleryimages"
 }
 PS C:\Users\azcli>
+
 ```
 
 # [Azure portal](#tab/azureportal)
@@ -460,7 +377,7 @@ Follow these steps to use Azure CLI to view properties of an image:
         Here's a sample output for this command:
 
         ```
-        PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --id $mktplaceImageID
+        PS C:\Users\azcli> az azurestackhci image show --id $mktplaceImageID
         Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
@@ -492,7 +409,7 @@ Follow these steps to use Azure CLI to view properties of an image:
           "tags": null,
           "type": "microsoft.azurestackhci/galleryimages"
         }
-        PS C:\Users\azcli\bugbash-extension>
+        PS C:\Users\azcli>
         ```
 
 1.	Take the following steps when specifying name and resource group.
@@ -513,7 +430,7 @@ Follow these steps to use Azure CLI to view properties of an image:
         Here's a sample output:
 
          ```azurecli
-         PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+         PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
          Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
          {
             "extendedLocation": {
@@ -545,7 +462,7 @@ Follow these steps to use Azure CLI to view properties of an image:
             "tags": null,
             "type": "microsoft.azurestackhci/galleryimages"
          }
-         PS C:\Users\azcli\bugbash-extension>        
+         PS C:\Users\azcli>        
          ```
 
 # [Azure portal](#tab/azureportal)
@@ -591,16 +508,16 @@ You can delete image two ways:
 After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
 
 ```
-PS C:\Users\azcli\bugbash-extension> $subscription = "<Subscription ID>"
-PS C:\Users\azcli\bugbash-extension> $resource_group = "mkclus90-rg"
-PS C:\Users\azcli\bugbash-extension> $mktplaceImage = "marketplacetest04"
-PS C:\Users\azcli\bugbash-extension> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> $subscription = "<Subscription ID>"
+PS C:\Users\azcli> $resource_group = "mkclus90-rg"
+PS C:\Users\azcli> $mktplaceImage = "marketplacetest04"
+PS C:\Users\azcli> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest04' under resource group 'mkclus90-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
-PS C:\Users\azcli\bugbash-extension>
+PS C:\Users\azcli>
 ```
 
 # [Azure portal](#tab/azureportal)
