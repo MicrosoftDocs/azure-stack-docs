@@ -152,9 +152,9 @@ After you create a network security group, you're ready to create network securi
 
 You can apply a network security group to:
 
-- [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md#apply-an-acl-to-a-virtual-network)
-- [Logical network subnet](use-datacenter-firewall-windows-admin-center.md#apply-an-acl-to-a-logical-network)
-- [Specific network interface](use-datacenter-firewall-windows-admin-center.md#apply-an-acl-to-a-network-interface)
+- [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-virtual-network)
+- [Logical network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-logical-network)
+- [Specific network interface](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-network-interface)
 - [Network security tag](#apply-network-security-group-to-a-network-security-tag)
 
 ### Apply network security group to a network security tag

@@ -235,7 +235,7 @@ In this example, we demonstrate how to add a network security group to a virtual
 
 ## Remove a network security group from a network interface
 
-In this example, we show you how to remove a network security group from a network interface. Removing a network security group applies the default set of rules to the network interface. The default set of rules allows all outbound traffic but blocks all inbound traffic. If you want to allow all inbound traffic, you must follow the previous [example](#add-an-acl-to-a-network-interface) to add a network security group that allows all inbound and all outbound traffic.
+In this example, we show you how to remove a network security group from a network interface. Removing a network security group applies the default set of rules to the network interface. The default set of rules allows all outbound traffic but blocks all inbound traffic. If you want to allow all inbound traffic, you must follow the previous [example](#add-a-network-security-group-to-a-network-interface) to add a network security group that allows all inbound and all outbound traffic.
 
 1. Get the network interface from which you will remove the network security group.
    ```PowerShell
