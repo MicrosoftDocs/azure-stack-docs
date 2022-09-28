@@ -21,7 +21,7 @@ You enable and configure Datacenter Firewall by creating network security groups
 
 Tenant administrators can install and configure firewall policies to help protect their networks from unwanted traffic originating from internet and intranet networks.
 
-:::image type="content" source="media/datacenter-firewall/overview-multitenant-firewall.png" alt-text="Datacenter Firewall in the network stack" border="false":::
+:::image type="content" source="media/datacenter-firewall/overview-multitenant-firewall.png" alt-text="Screenshot of the Datacenter Firewall in the network stack" border.="false":::
 
 The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs. You can also configure and manage Datacenter Firewall policies using Windows Admin Center.
 
