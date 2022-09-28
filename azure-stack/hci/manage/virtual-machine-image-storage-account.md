@@ -143,25 +143,33 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 
 1. Go to **Resources** > **VM images**.
 
-1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Marketplace**.
+1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Storage Account**.
 
-   :::image type="content" source="./media/manage-vm-resources/add-image-from-azure-marketplace.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/manage-vm-resources/add-image-from-azure-marketplace.png":::
+   :::image type="content" source="./media/manage-vm-resources/add-image-from-azure-storage-account.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/manage-vm-resources/add-image-from-azure-storage-account.png":::
 
 1. In the **Create an image** page, on the **Basics** tab, input the following information:
 
-    1. **Subscription.** Select a subscription to associate with your VM image.
+    1. **Subscription** Select a subscription to associate with your VM image.
 
-    1. **Resource group.** Create new or select an existing resource group that you'll associate with the VM image.
+    1. **Resource group** Create new or select an existing resource group that you'll associate with the VM image.
+    
+    1. **Save image as** Enter a name for your VM image.
 
-    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
+    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
 
-    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Stack HCI cluster.
+    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Stack HCI cluster.
 
-    1. **Save image as.** Enter a name for your VM image.
+    1. **OS type** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
+    
+    1. **VM generation.** Select the Generation of the image.
+
+    1. **Source.** The source of the image should be Storage blobs and is automatically populated.
+
+    1. **Storage blob.** Specify the Azure Storage account path for the source image on your HCI cluster.
 
 1. Select **Review + Create** to create your VM image.
 
-   :::image type="content" source="./media/manage-vm-resources/create-an-image.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/manage-vm-resources/create-an-image.png":::
+   :::image type="content" source="./media/manage-vm-resources/create-an-image-storage-account-review-create.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/manage-vm-resources/create-an-image-storage-account-create.png":::
 
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
         
