@@ -114,7 +114,7 @@
         href: manage/virtual-machine-image-azure-marketplace.md
       - name: Using images in  Azure Storage account
         href: manage/virtual-machine-image-storage-account.md
-      - nameL Using images in local share 
+      - name: Using images in local share 
         href: manage/virtual-machine-image-local-share.md
     - name: Uninstall Azure Arc Resource Bridge
       href: manage/uninstall-arc-resource-bridge.md
