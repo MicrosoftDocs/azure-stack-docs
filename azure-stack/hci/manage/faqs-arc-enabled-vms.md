@@ -16,10 +16,6 @@ Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision a
 
 This article answers some frequently asked questions (FAQs) about Azure Arc-enabled VMs running on Azure Stack HCI clusters.
 
-## Can I create virtual machines on a tagged vLAN?
-  
-vLAN tagged VMs is currently not supported.
-
 ## Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 
 Yes. Azure Kubernetes Service on Azure Stack HCI and Windows Server and VM provisioning from the Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster will also remove Arc Resource Bridge.

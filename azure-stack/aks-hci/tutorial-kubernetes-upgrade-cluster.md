@@ -145,7 +145,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 1. To get all available workload cluster updates, run the following command:
 
    ```powershell 
-   PS C:\> Get-AksHciClusterUpgrades -name mycluster
+   PS C:\> Get-AksHciClusterUpdates -name mycluster
    ```
 
    ```output
@@ -158,7 +158,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 2. To initiate the workload cluster update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1
+   PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
    ```
 
 ## Validate an upgrade
