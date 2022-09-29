@@ -226,10 +226,13 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Arc for Servers](/azure/azure-arc/servers/network-requirements)
 - [Azure Arc resource bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+- [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
+- [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
+- [Remote Support](/manage/get-remote-support#configure-proxy-settings)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/network-requirements)
 - [Windows Admin Center in Azure Portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
 
@@ -311,12 +314,18 @@ Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-w
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
-Refer to the following articles for information about how to configure proxy servers:
+Refer to the following resources for information about how to configure proxy server settings in:
 
-- To configure a proxy server on AKS on Azure Stack HCI, see [Configure proxy server settings on AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
-- To configure the HTTPS-PROXY environment correctly with AKS-HCI, see [Set proxy for Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings).
-- To configure a proxy for Arc for Servers, see the "Update or remove proxy settings" section in [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
-- To configure a proxy for Microsoft Monitoring Agent (MMA), see the [Network requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) section in the Log Analytics agent overview article.
+- [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
+- [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings).
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
+- [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support).
+- [Azure Monitor Agent](/azure/azure-monitor/agents/.azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration).
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?view=o365-worldwide#network-configuration).
+- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements).
+- Windows Admin Center. In the Windows Admin Center UI, go to **Settings** > **Proxy** and enter the proxy server address and any relevant bypass or authentication information.
+
+    :::image type="content" source="./media/firewall-requirements/windows-admin-center-proxy.png" alt-text="Screenshot of Windows Admin Center Proxy settings pane." lightbox="./media/firewall-requirements/windows-admin-center-proxy.png":::
 
 ## Update Microsoft Defender firewall
 
