@@ -314,16 +314,16 @@ Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-w
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
-Refer to the following resources for information about how to configure proxy server settings in:
+Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
-- [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
-- [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings).
-- [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
-- [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support).
-- [Azure Monitor Agent](/azure/azure-monitor/agents/.azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration).
-- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration).
-- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements).
-- Windows Admin Center. In the Windows Admin Center UI, go to **Settings** > **Proxy** and enter the proxy server address and any relevant bypass or authentication information.
+- [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
+- [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
+- [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
+- [Azure Monitor Agent](/azure/azure-monitor/agents/.azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
+- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+- To configure proxy server in Windows Admin Center, go to **Settings** > **Proxy**, enter the proxy server address and any relevant bypass or authentication information, and select **Apply**.
 
     :::image type="content" source="./media/firewall-requirements/windows-admin-center-proxy.png" alt-text="Screenshot of Windows Admin Center Proxy settings pane." lightbox="./media/firewall-requirements/windows-admin-center-proxy.png":::
 
