@@ -224,17 +224,17 @@ This is optional. If you choose to use a cloud witness as the cluster witness, y
 Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service.
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
-- [Arc for Servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc resource bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
+- [Azure Arc Resource Bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
-- [Remote Support](/manage/get-remote-support#configure-proxy-settings)
+- [Remote support](/manage/get-remote-support#configure-proxy-settings)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/network-requirements)
-- [Windows Admin Center in Azure Portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
+- [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
 
 ## Firewall requirements for internal rules and ports
 
