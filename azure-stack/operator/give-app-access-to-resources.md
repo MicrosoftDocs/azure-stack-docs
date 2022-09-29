@@ -115,7 +115,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
     # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
     # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # To use a test certificate, use the New-SelfSignedCertificate cmdlet
-    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
     #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
@@ -175,7 +175,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
     # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # To use a self-signed test certificate, use the New-SelfSignedCertificate cmdlet
-    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
     #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
    
@@ -245,7 +245,7 @@ Update the certificate credential using PowerShell, substituting your own values
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Create a self-signed certificate for testing purposes, using the New-SelfSignedCertificate cmdlet 
-     # See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+     # See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
      # In production, use Get-Item to retrieve a managed certificate from the certificate store.
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.

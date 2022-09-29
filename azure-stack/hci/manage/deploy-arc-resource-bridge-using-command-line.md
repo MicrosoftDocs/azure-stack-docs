@@ -22,7 +22,7 @@ This article describes how to use command line to deploy Azure Arc Resource Brid
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
 - [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
 
-If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
+To deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
 For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
 
@@ -72,12 +72,12 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | Parameter | Description |
    | ----- | ----------- |
    | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
-   | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. |
+   | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
    | **vlanID** | (Optional) vLAN identifier. |
-   | **VMIP** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify this parameter, the Arc Resource Bridge will get an IP address from DHCP. |
+   | **VMIP** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify this parameter, the Arc Resource Bridge will get an IP address from DHCP. The IP address given from DHCP must be reserved for Arc Resource Bridge. |
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250,192.168.250.255". |
-   | **IPAddressPrefix** | (Required only for static IP configurations) The PrefixLength specifies the subnet mask for the IP address. For example: "192.168.0.0/16". |
+   | **IPAddressPrefix** | (Required only for static IP configurations) The PrefixLength specifies the subnet mask for the IP address. The IP address prefix needs to be entered in CIDR format. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
    | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
@@ -88,24 +88,17 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       ### [For static IP address](#tab/for-static-ip-address)
 
       ```PowerShell
-      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP  
+      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP  
 
       Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP 
 
       Install-Moc
       ```
 
-      > [!IMPORTANT]
-      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
-      > 
-      > ```powershell
-      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-      > ```
-
       ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
       ```PowerShell
-      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
+      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
 
       Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable
 
@@ -181,42 +174,69 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
    ### [For static IP address](#tab/for-static-ip-address)
 
+   1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix [-vLanID $vlanID]
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
+      ```
+   
+   1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
+      ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+  
+   1. Download images used to create the Arc Resource Bridge VM from the cloud and make a copy to Azure Stack HCI:
       ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   
+   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
+      > [!IMPORTANT]
+      > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
+      >
+      >```powershell
+      >az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
+      >```
+      > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
    
+   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
-   
+
    ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
+   1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP [-vLanID=$vlanID]
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
+      ```
+   1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
+      ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   1. Download images used to create the Arc Resource Bridge VM from the cloud and make a copy to Azure Stack HCI:
       ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-
+   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
-   
+      > [!IMPORTANT]
+      > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
+      >
+      >```powershell
+      >az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
+      >```
+      > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+
+   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
@@ -253,12 +273,22 @@ Now you can navigate to the resource group in Azure and see the custom location 
 
 Now that the custom location is available, you can create or add virtual networks and gallery images for the custom location associated with the Azure Stack HCI cluster.
 
-1. Create or add a network switch for VMs. Make sure you have an external vmswitch deployed on all hosts of the Azure Stack HCI cluster. Provide the vmswitch name that will be used for network interfaces during VM provisioning. The parameter **vnetName** should be the name of the virtual network from the hosts of the cluster, for example: "myvnet".
+1. Create or add a network switch for VMs. Make sure you have an external vmswitch deployed on all hosts of the Azure Stack HCI cluster.
 
    ```azurecli
+   $vlan-id=<vLAN identifier for Arc VMs>   
    $vnetName=<name of the vnet>
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName
+   New-MocGroup -name "Default_Group" -location "MocLocation"
+   New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vmswitchName"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlan-id
    ```
+
+   where:
+
+   | Parameter | Description |
+   | ----- | ----------- |
+   | **vlan-id** | vLAN identifier for Arc VMs. |
+   | **vnetName** | Name of the virtual network. |
 
 1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
    
@@ -276,7 +306,7 @@ Now that the custom location is available, you can create or add virtual network
    | Parameter | Description |
    | ----- | ----------- |
    | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
-   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
+   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\ClusterStorage\Volume01\OSImages\winos.vhdx". |
    | **osType** | The OS type. This can be "Windows" or "Linux"; for example, "Windows". |
 
 ## Next steps
