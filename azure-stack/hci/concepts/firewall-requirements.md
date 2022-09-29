@@ -229,7 +229,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
-- [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server&preserve-view=true )
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
 - [Remote Support](/manage/get-remote-support#configure-proxy-settings)
