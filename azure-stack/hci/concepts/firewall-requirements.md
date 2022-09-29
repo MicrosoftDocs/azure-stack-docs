@@ -321,7 +321,7 @@ Refer to the following resources for information about how to configure proxy se
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support).
 - [Azure Monitor Agent](/azure/azure-monitor/agents/.azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration).
-- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?view=o365-worldwide#network-configuration).
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration).
 - [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements).
 - Windows Admin Center. In the Windows Admin Center UI, go to **Settings** > **Proxy** and enter the proxy server address and any relevant bypass or authentication information.
 
