@@ -6,7 +6,7 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/16/2022
+ms.date: 09/29/2022
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -34,10 +34,13 @@ For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements,
 
 ## Gather information
 
-To prepare for deployment, you'll need to take note of the server names, domain names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
+To prepare for deployment, you'll need to take note of the server names, domain names, computer account names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
 
 - **Server name:** Get familiar with your organization's naming policies for computers, files, paths, and other resources. If you need to provision several servers, each should have a unique name.
 - **Domain name:** Get familiar with your organization's policies for domain naming and domain joining. You'll be joining the servers to your domain, and you'll need to specify the domain name.
+- **Computer account names:** Servers that you want to add as cluster nodes have computer accounts. These computer accounts need to be moved into their own dedicated organizational unit (OU).
+- **Organizational unit (OU):** If not already done so, create a dedicated OU for your computer accounts. Consult your domain administrator about creating an OU. For detailed information, see [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster.md#verify-the-prerequisites).
+
 - **Static IP addresses:** Azure Stack HCI requires static IP addresses for storage and workload (VM) traffic and doesn't support dynamic IP address assignment through DHCP for this high-speed network. You can use DHCP for the management network adapter unless you're using two in a team, in which case again you need to use static IPs. Consult your network administrator about the IP address you should use for each server in the cluster.
 - **RDMA networking:** There are two types of RDMA protocols: iWarp and RoCE. Note which one your network adapters use, and if RoCE, also note the version (v1 or v2). For RoCE, also note the model of your top-of-rack switch.
 - **VLAN ID:** Note the VLAN ID to be used for the network adapters on the servers, if any. You should be able to obtain this from your network administrator.
