@@ -53,7 +53,7 @@
     - name: Deploy on a single server
       href: deploy/single-server.md
     - name: Single server scale-out
-      href: manage/single-server-scale-out.md
+      href: manage/single-node-scale-out.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Host networking with Network ATC
