@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/28/2022
+ms.date: 09/29/2022
 ---
 
 # Review single-node storage deployment network reference pattern for Azure Stack HCI
@@ -104,7 +104,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 Optional - this pattern doesn't require a storage network.
 
-[!INCLUDE [includes](includes/single-node-include.md)]
+[!INCLUDE [includes](includes/hci-patterns-single-node-include.md)]
 
 ## Next steps
 

@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/27/2022
+ms.date: 09/29/2022
 ---
 
 ### OOB network
