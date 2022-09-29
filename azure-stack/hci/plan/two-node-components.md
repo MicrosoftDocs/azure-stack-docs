@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/28/2022
+ms.date: 09/29/2022
 ---
 
 # Review two-node storage reference pattern components for Azure Stack HCI
@@ -50,7 +50,7 @@ Tenant VMs...
 
 ### Optional components
 
-The following are optional components. For more information on Software Defined Networking (SDN), see  [Plan a Software Defined Network infrastructure](concepts/plan-software-defined-networking-infrastructure.md).
+The following are optional components. For more information on Software Defined Networking (SDN), see  [Plan a Software Defined Network infrastructure](/concepts/plan-software-defined-networking-infrastructure.md).
 
 #### SDN Load Balancer VM
 
