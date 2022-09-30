@@ -347,19 +347,19 @@ Once the feature updates are installed, you'll need to update the cluster functi
 
 To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig)
 
-For each node in the cluster, run these commands on the node:
+For each node in the cluster, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node<node> -Drain`
 
     Check suspend using `Get-ClusterGroup`--nothing should be running on the target node.
 
-    Run the **SCONFIG** option 6.3.
+    Run the **SCONFIG** option 6.3 on the target node.
 
-    After the node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no jobs or all jobs are completed.
+    After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
 
-2. `Resume-ClusterNode- Node<node> -Failback`
+2. `Resume-ClusterNode -Node <nodename> -Failback`
 
-    When all nodes have been upgraded, run these two cmdlets:
+When all nodes have been upgraded, run these two cmdlets:
 
    `Update-ClusterFunctional Level`
 
