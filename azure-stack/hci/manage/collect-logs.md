@@ -19,7 +19,7 @@ You can manually collect and send the diagnostic logs to Microsoft. In this rele
 
 ## Collect logs via PowerShell
 
-Use the `Send-DiagnosticData` cmdlet to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system. You can run this cmdlet from any Azure Stack HCI server node.
+Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
 
 Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
@@ -44,6 +44,8 @@ After Azure Stack HCI collects log data, it is retained for 90 days. To get a hi
   ```
 
 ## Examples and sample outputs
+
+Here are some example commands with sample outputs that show how to use the `Send-DiagnosticData` cmdlet with different parameters.
 
 ### Send diagnostics data with date filtering
 
@@ -87,7 +89,7 @@ In this example, you send diagnostic data with role filtering for BareMetal and 
 
 ### Get a history of log collection
 
-Here's a sample output of the 'Get-LogCollectionHistory' cmdlet:
+Here's a sample output of the `Get-LogCollectionHistory` cmdlet:
 
    ```output
    PS C:\CloudDeployment\logs> Get-LogCollectionHistory
@@ -119,33 +121,25 @@ Here's a sample output of the 'Get-LogCollectionHistory' cmdlet:
    PS C:\CloudDeployment\logs>
    ```
 
+## Additional considerations on diagnostics logs
+
+- The command takes some time to run based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+
+- When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
+
+   - The policy mode of Windows Defender Application Control (WDAC) must be set to audit to run the log collection cmdlet successfully. If it's set to enforced, switch the policy mode to audit before running the log collection cmdlet. See [Known issue with log collection](#known-issue-with-log-collection)
+ 
 ## Known issue with log collection
 
 This release comes with Windows Defender Application Control (WDAC) enabled and enforced by default, which limits the applications and the code that you can run on the core platform. As a result, when you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
 
 **Workaround**
 
-As a workaround, switch the default policy mode of WDAC from enforced to audit before running the the `Send-DiagnosticData` cmdlet.
+As a workaround, switch the default policy mode of WDAC from enforced to audit before running the `Send-DiagnosticData` cmdlet. After collecting logs, switch the WDAC policy mode back to enforced. For instructions on how to switch policy modes, see [Switch between WDAC policy modes]()
 
-1. Run PowerShell as administrator.
+### Switch between WDAC policy modes
 
-1. Check the default policy mode of WDAC:
-
-   ```powershell
-   Get-AsWdacPolicyMode
-   ```
-
-1. Check the value of the `PolicyMode` parameter. It must be **Audit** and not **Enforced**.
-
-   If `PolicyMode` is already **Audit**, skip steps 4 and 5. If it's **Enforced**, continue to step 4.
-
-1. Run the following cmdlet to switch the policy mode. Wait up to five minutes for `PolicyMode` to get updated to **Audit**.
-
-    ```powershell
-    Switch-ASWDACPolicy -Mode Audit
-    ```
-
-1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**.
+[!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
 
 1. Run `Send-DiagnosticData` to collect logs.
 
@@ -153,7 +147,7 @@ As a workaround, switch the default policy mode of WDAC from enforced to audit b
    Send-DiagnosticData -Verbose
    ```
 
-1. After log collection is complete, you can run the following cmdlet to switch WDAC policy mode back to the default enforced mode.
+1. After log collection is complete, run the following cmdlet to switch WDAC policy mode back to the default enforced mode.
 
     ```powershell
     Switch-ASWDACPolicy -Mode Enforced
@@ -162,4 +156,4 @@ As a workaround, switch the default policy mode of WDAC from enforced to audit b
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- Review known issues in Azure Stack HCI, version 22H2 (preview)
+- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues-22h2?branch=release-asz-aug)
