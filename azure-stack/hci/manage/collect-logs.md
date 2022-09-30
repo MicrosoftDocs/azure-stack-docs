@@ -31,17 +31,23 @@ where:
 
 - `FromDate` and `ToDate` parameters collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past one hour by default. 
 
-- `FilterByRole` parameter collects and sends diagnostic logs for each role. Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles. This list may change in a future release.
+- `FilterByRole` parameter collects and sends diagnostic logs for each role. Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles. This list of roles may change in a future release.
 
-   DeploymentLogs, BareMetal, ECE, ALM, MOC_ARB, FleetDiagnosticsAgent, ObservabilityAgent, RemoteSupportAgent, OSUpdateLogs, AutonomousLogs, OEMDiagnostics, ObservabilityVolume, NC
+  - DeploymentLogs
+  - BareMetal
+  - ECE
+  - ALM
+  - MOC_ARB
+  - FleetDiagnosticsAgent
+  - ObservabilityAgent
+  - RemoteSupportAgent
+  - OSUpdateLogs
+  - AutonomousLogs
+  - OEMDiagnostics
+  - ObservabilityVolume
+  - NC 
 
 - `CollectSddc` parameter is set to `$true` by default, which triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes its logs as part of the log collection.
-
-After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections for the last 90 days, enter:
-
-  ```powershell
-  Get-LogCollectionHistory  
-  ```
 
 ## Examples and sample outputs
 
@@ -55,7 +61,7 @@ In this example, you send diagnostics data with date filtering for log files for
    Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
    ```
 
-   Here's the sample output of this command:
+   Here's a sample output of this command:
 
    ```output
    PS C:\CloudDeployment\logs> Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
@@ -74,7 +80,7 @@ In this example, you send diagnostic data with role filtering for BareMetal and 
    Send-DiagnosticData -FilterByRole BareMetal, ECE
    ```
 
-   Here's the sample output of this command:
+   Here's a sample output of this command:
 
    ```output
    PS C:\Users\docsuser> Send-DiagnosticData -FilterByRole BareMetal, ECE
@@ -89,7 +95,13 @@ In this example, you send diagnostic data with role filtering for BareMetal and 
 
 ### Get a history of log collection
 
-Here's a sample output of the `Get-LogCollectionHistory` cmdlet:
+After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections for the last 90 days, enter:
+
+   ```powershell
+   Get-LogCollectionHistory  
+   ```
+
+   Here's a sample output of the `Get-LogCollectionHistory` cmdlet:
 
    ```output
    PS C:\CloudDeployment\logs> Get-LogCollectionHistory
@@ -128,18 +140,20 @@ Here's a sample output of the `Get-LogCollectionHistory` cmdlet:
 - When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
 
 - The policy mode of Windows Defender Application Control (WDAC) must be set to audit to run the log collection cmdlet successfully. If it's set to enforced, switch the policy mode to audit before running the log collection cmdlet. See [Known issue with log collection](#known-issue-with-log-collection).
- 
+
 ## Known issue with log collection
 
 This release comes with Windows Defender Application Control (WDAC) enabled and enforced by default, which limits the applications and the code that you can run on the core platform. As a result, when you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
 
 ### Workaround
 
-As a workaround, switch the default policy mode of WDAC from enforced to audit before running the `Send-DiagnosticData` cmdlet. After collecting logs, switch the WDAC policy mode back to enforced. For instructions on how to switch policy modes, see [Switch between WDAC policy modes]()
+As a workaround, switch the default policy mode of WDAC from enforced to audit before running the `Send-DiagnosticData` cmdlet. After collecting logs, switch the WDAC policy mode back to enforced. For instructions on how to switch policy modes, see [Switch between WDAC policy modes](#switch-between-wdac-policy-modes).
 
 ### Switch between WDAC policy modes
 
 [!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
+
+After switching the policy mode to audit, run these cmdlets:
 
 1. Run `Send-DiagnosticData` to collect logs.
 
