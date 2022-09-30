@@ -192,10 +192,12 @@
       href: manage/sdn-express.md
     - name: Update SDN infrastructure
       href: manage/update-sdn.md       
-    - name: Use Datacenter Firewall
+    - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Use Datacenter Firewall with PowerShell
+    - name: Configure network security groups with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
@@ -286,7 +288,7 @@
     items:
     - name: SDN overview
       href: concepts/software-defined-networking.md
-    - name: Plan a SDN infrastructure
+    - name: Plan an SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
@@ -383,13 +385,13 @@
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
-      href: /learn/paths/azure-stack-hci-foundations/
+      href: /training/paths/azure-stack-hci-foundations/
     - name: Operate and maintain Azure Stack HCI
-      href: /learn/paths/operate-maintain-azure-stack-hci/
+      href: /training/paths/operate-maintain-azure-stack-hci/
     - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /learn/modules/implement-firewall-load-balancer/
+      href: /training/modules/implement-firewall-load-balancer/
     - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /learn/modules/plan-deploy-sdn-infrastructure/
+      href: /training/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
     - name: What's new in version 21H2
