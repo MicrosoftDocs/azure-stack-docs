@@ -135,15 +135,15 @@ After Azure Stack HCI collects log data, it is retained for 90 days. To get a hi
 
 ## Additional considerations on diagnostics logs
 
-- The command takes some time to run based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+- The policy mode of Windows Defender Application Control (WDAC) must be set to audit to run the `Send-DiagnosticData` cmdlet successfully. If it's set to enforced, switch the policy mode to audit before running the `Send-DiagnosticData` cmdlet. See [Known issue with log collection](#known-issue-with-log-collection).
 
-- When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
+- The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
-- The policy mode of Windows Defender Application Control (WDAC) must be set to audit to run the log collection cmdlet successfully. If it's set to enforced, switch the policy mode to audit before running the log collection cmdlet. See [Known issue with log collection](#known-issue-with-log-collection).
+- When you run the `Send-DiagnosticData` cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
 
 ## Known issue with log collection
 
-This release comes with Windows Defender Application Control (WDAC) enabled and enforced by default, which limits the applications and the code that you can run on the core platform. As a result, when you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
+This release comes with WDAC enabled and enforced by default, which limits the applications and the code that you can run on the core platform. As a result, when you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
 
 ### Workaround
 
