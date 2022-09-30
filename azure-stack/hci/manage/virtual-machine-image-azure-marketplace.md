@@ -53,7 +53,7 @@ You'll create a VM image starting from an Azure Marketplace image and then use t
 
 Follow these steps to create a VM image using the Azure CLI.
 
-### Download the preview extension
+<!--### Download the preview extension
 
 1. Run PowerShell as an administrator.
 
@@ -120,35 +120,51 @@ Follow these steps to create a VM image using the Azure CLI.
     The installed extension 'azurestackhci' is experimental and not covered by customer support. Please use with discretion.
     PS C:\Users\ azcli>
     ```
+-->
 
 ### Set some parameters
 
-Set your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
+1. Run PowerShell as an administrator.
 
-```azurecli
-$Subscription = "<Subscription ID>"
-$Resource_Group = "<Resource group>"
-$Location = "<Location for your Azure Stack HCI cluster>"
-$OsType = "<OS of source image>"
-```
 
-The parameters are described in the following table:
+1. Sign in. Type:
 
-| Parameter      | Description                                                                                |
-|----------------|--------------------------------------------------------------------------------------------|
-| `Subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
-| `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    ```azurecli
+    az login
+    ```
 
-Here's a sample output:
+1. Set your subscription.
 
-```
-PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mkclus90-rg"
-PS C:\Users\azcli> $location = "eastus2euap"
-PS C:\Users\azcli> $osType = "Windows"
-```
+    ```azurecli
+    az account set --subscription <Subscription ID>
+    ```
+
+1. Set parameters for your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
+
+    ```azurecli
+    $Subscription = "<Subscription ID>"
+    $Resource_Group = "<Resource group>"
+    $Location = "<Location for your Azure Stack HCI cluster>"
+    $OsType = "<OS of source image>"
+    ```
+    
+    The parameters are described in the following table:
+    
+    | Parameter      | Description                                                                                |
+    |----------------|--------------------------------------------------------------------------------------------|
+    | `Subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
+
+    Here's a sample output:
+    
+    ```
+    PS C:\Users\azcli> $subscription = "<Subscription ID>"
+    PS C:\Users\azcli> $resource_group = "mkclus90-rg"
+    PS C:\Users\azcli> $location = "eastus2euap"
+    PS C:\Users\azcli> $osType = "Windows"
+    ```
 
 ### Create VM image from marketplace image
 
@@ -248,7 +264,8 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
         
    :::image type="content" source="./media/manage-vm-resources/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/manage-vm-resources/create-an-image-create.png":::
-    
+  
+<!--  
 1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download. 
 
    :::image type="content" source="./media/manage-vm-resources/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/manage-vm-resources/deployment-in-progress.png":::
@@ -264,6 +281,7 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
    If the download of the VM image fails, the error details are shown in the portal blade.
 
    :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
+-->
 
 ---
 
