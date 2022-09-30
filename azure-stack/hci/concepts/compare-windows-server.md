@@ -127,7 +127,7 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Price type | Subscription service. | Varies: most often a one-time license |
+| Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
 | Price | Per core, per month | See [Pricing and licensing for Windows Server 2022](https://www.microsoft.com/windows-server/pricing) |
 | Evaluation/trial period | 60-day free trial once registered | 180-day evaluation copy |
