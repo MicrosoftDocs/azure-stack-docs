@@ -164,7 +164,7 @@ After switching the policy mode to audit, run these cmdlets:
 1. After log collection is complete, run the following cmdlet to switch WDAC policy mode back to the default enforced mode.
 
     ```powershell
-    Switch-ASWDACPolicy -Mode Enforced
+    Switch-AsWdacPolicy -Mode Enforced
     ```
 
 ## Next steps
