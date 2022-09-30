@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for a secure connection to Kubernetes
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/20/2022
+ms.date: 09/30/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -79,7 +79,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 ```  
 
 > [!NOTE]
-> For `SPN k8s/apiserver@CONTOSO.com`, use the format SPN k8s/apiserver@\<realm name>\. Usually, \<realm name> is uppercase, however, if you are having issues, create the SPN with lowercase letters. Kerberos is case sensitive. 
+> For `SPN k8s/apiserver@CONTOSO.com`, use the format SPN k8s/apiserver@\<realm name>\. On first attempt, specify \<realm name> as uppercase. However, if you are having issues, create the SPN with lowercase letters. Kerberos is case sensitive.
 
 #### Option 2
 
@@ -139,6 +139,9 @@ You should copy the three files listed below from the Azure Stack HCI cluster to
 - Create the folder path `c:\adsso` and copy the following files from the Azure Stack HCI cluster to your client machine.
   - Kubectl.exe under `$env:ProgramFiles\AksHci` to c:\adsso
   - Kubectl-adsso.exe under `$env:ProgramFiles\AksHci` to c:\adsso
+
+  > [!NOTE]
+  > The adsso.exe file is generated on the server when you run the `Get-AksHciCredential` cmdlet.
 
 ### Step 6: Connect to the API server from the client machine
 
@@ -262,13 +265,12 @@ To create the keytab file, you use the [ktpass](/windows-server/administration/w
 Here's an example using ktpass:
 
 ```bash
-ktpass /out current.keytab /princ k8s/apiserver@BCONTOSO.COM /mapuser contoso\apiserver_acct /crypto all /pass p@$$w0rd /ptype KRB5_NT_PRINCIPAL
+ktpass /out current.keytab /princ k8s/apiserver@CONTOSO.COM /mapuser contoso\apiserver_acct /crypto all /pass p@$$w0rd /ptype KRB5_NT_PRINCIPAL
 ```
 
 > [!NOTE]
 > If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where DOMAIN is the output of echo `%userdomain%`.
 
-  
 ## Determine the user or group security identifier
 
 Use one of the following two options to find the SID for your account or other accounts.
