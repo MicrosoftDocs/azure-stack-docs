@@ -18,14 +18,14 @@ sections:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
-          ## To reproduce
+          ### To reproduce
           
           1. Install AksHci.
           2. Install target cluster.
           3. Turn off cluster(vms) for more than 4 days.
           4. Turn the cluster on again.
           
-          ## Expected behavior
+          ### Expected behavior
           
           The target cluster should be unreachable. Any `kubectl` command run against the target cluster should return with an error message similar to the following:
           
