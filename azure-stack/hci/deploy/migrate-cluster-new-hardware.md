@@ -1,11 +1,11 @@
 --- 
 title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
-author: v-dasis 
+author: ronmiab 
 ms.topic: how-to 
 ms.date: 12/10/2020 
-ms.author: v-dasis 
-ms.reviewer: JasonGerend 
+ms.author: robess 
+ms.reviewer: kerimha 
 ---
 
 # Migrate to Azure Stack HCI on new hardware

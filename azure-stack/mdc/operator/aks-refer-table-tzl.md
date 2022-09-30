@@ -3,7 +3,7 @@ title: Azure Stack Hub help links cross-reference - MDC
 description: Look up portal reference links for Azure Stack Hub when operating from a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/26/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.lastreviewed: 10/26/2020
 ms.reviewer: efemmano
 
@@ -43,10 +43,10 @@ This topic lists cross-references for links that appear within alerts in the Adm
 | `https://aka.ms/reclaimcapacity` | [Reclaim capacity](../../operator/azure-stack-manage-storage-shares.md#reclaim-capacity) |
 | `https://aka.ms/validateazurestackbackupsettings` | [Run validation tool to test network infrastructure](../../operator/azure-stack-diagnostic-test.md#run-validation-tool-to-test-infrastructure-backup-settings) |
 | `https://aka.ms/virtualdiskhealth` | [Replace a physical disk in Azure Stack](../../operator/azure-stack-replace-disk.md) |
-| `https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints` | [Publish Azure Stack services in your datacenter](../../operator/azure-stack-integrate-endpoints.md) |
-| `https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-identity` | [Integrate AD FS identity with your Azure Stack datacenter](../../operator/azure-stack-integrate-identity.md) |
-| `https://docs.microsoft.com/azure/azure-stack/azure-stack-register` | [Register Azure Stack with Azure](../../operator/azure-stack-registration.md) |
-| `https://docs.microsoft.com/azure/azure-stack/azure-stack-registration` | [Register Azure Stack with Azure](../../operator/azure-stack-registration.md) |
+| `https://learn.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints` | [Publish Azure Stack services in your datacenter](../../operator/azure-stack-integrate-endpoints.md) |
+| `https://learn.microsoft.com/azure/azure-stack/azure-stack-integrate-identity` | [Integrate AD FS identity with your Azure Stack datacenter](../../operator/azure-stack-integrate-identity.md) |
+| `https://learn.microsoft.com/azure/azure-stack/azure-stack-register` | [Register Azure Stack with Azure](../../operator/azure-stack-registration.md) |
+| `https://learn.microsoft.com/azure/azure-stack/azure-stack-registration` | [Register Azure Stack with Azure](../../operator/azure-stack-registration.md) |
 
 ## Next steps
 

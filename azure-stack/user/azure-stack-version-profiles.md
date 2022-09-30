@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 12/6/2021
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: weshi1
 ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 

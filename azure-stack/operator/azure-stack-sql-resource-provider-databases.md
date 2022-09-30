@@ -2,11 +2,11 @@
 title: Create SQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2019
 
@@ -58,7 +58,7 @@ Under **Essentials**, which is shown after the database is deployed, take note o
 
 ## SQL Always On databases
 
-By design, Always On databases are handled differently than in a standalone server environment. For more information, see [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+By design, Always On databases are handled differently than in a standalone server environment. For more information, see [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/azure-sql/virtual-machines/windows/availability-group-overview).
 
 ### Verify SQL Always On databases
 

@@ -1,10 +1,10 @@
 ---
-title: Disable-AksHciArcConnection for AKS on Azure Stack HCI
-author: mattbriggs
-description: The Disable-AksHciArcConnection PowerShell command disables the Arc connection on an AKS on Azure Stack HCI cluster.
+title: Disable-AksHciArcConnection for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
+description: The Disable-AksHciArcConnection PowerShell command disables the Arc connection on an AKS on Azure Stack HCI and Windows Server cluster.
 ms.topic: reference
 ms.date: 05/25/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Disable-AksHciArcConnection
 
 ## Synopsis
-Disables Arc connection on an AKS on Azure Stack HCI cluster.
+Disables Arc connection on an AKS on Azure Stack HCI and Windows Server cluster.
 
 ## Syntax
 
@@ -27,11 +27,11 @@ Disable-AksHciArcConnection -name <String>
 ```
 
 ## Description
-Disables Arc connection on an AKS on Azure Stack HCI cluster. This command does not delete any resources on the Azure Resource Manager. After running this command, make sure you go to the Azure portal to clean up any leftover resources.
+Disables Arc connection on an AKS on Azure Stack HCI and Windows Server cluster. This command does not delete any resources on the Azure Resource Manager. After running this command, make sure you go to the Azure portal to clean up any leftover resources.
 
 ## Examples
 
-### Disconnect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using Azure user login 
+### Disconnect an AKS on Azure Stack HCI and Windows Server cluster to Azure Arc for Kubernetes using Azure user login 
 This command disconnects your workload cluster from Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access". 
 
 ```PowerShell
@@ -40,7 +40,7 @@ Disable-AksHciArcConnection -name "myCluster"
 ```
 
 
-### Disconnect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using a service principal
+### Disconnect an AKS on Azure Stack HCI and Windows Server cluster to Azure Arc for Kubernetes using a service principal
 If you do not have access to a subscription on which you're an "Owner", you can disconnect your workload cluster from Azure Arc using a service principal.
 
 The first command prompts for service principal credentials and stores them in the $Credential variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command disconnects your cluster from Azure Arc using the service principal credentials stored in the $Credential variable. 

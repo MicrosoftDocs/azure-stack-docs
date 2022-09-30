@@ -1,10 +1,10 @@
 ---
 title: Azure Kubernetes Service on Azure Stack Hub overview for users
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub overview for users.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
 ms.date: 10/26/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 
@@ -159,9 +159,9 @@ Given the differences between the two platforms outlined above, the user should 
 ### Service principals can be provided by Azure AD or AD FS
 
 Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to Azure Active Directory (Azure AD), therefore Active Directory Federated Services (AD FS) is used. How Azure Stack Hub tenants create SPNs is documented here:
- - [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#overview)
- - [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
+- [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-connected#overview)
+- [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 ## Next steps
 

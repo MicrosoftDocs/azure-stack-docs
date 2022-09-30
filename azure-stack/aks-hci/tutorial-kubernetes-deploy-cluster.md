@@ -1,18 +1,22 @@
 ---
-title: Tutorial - Deploy a cluster in Azure Kubernetes Service on Azure Stack HCI
-description: In this tutorial, learn how to create an AKS on Azure Stack HCI cluster and to use kubectl to connect to the Kubernetes master node.
+title: Deploy deploy a workload cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: In this tutorial, learn how to create an AKS on Azure Stack HCI and Windows Server cluster and to use kubectl to connect to the Kubernetes master node.
 services: 
 ms.topic: tutorial
-ms.date: 04/13/2021
-ms.author: mabrigg 
+ms.date: 04/22/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
+
+# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI and Windows Server cluster and use kubect1 so I can connect to the Kubernetes master node.
+# Keyword: deploy a workload cluster
+
 ---
 
-# Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI cluster is deployed in Azure Kubernetes Service on Azure Stack HCI. You learn how to:
+Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster is deployed in AKS on Azure Stack HCI and Windows Server. You'll learn how to:
 
 > [!div class="checklist"]
 > * Deploy an AKS cluster on Azure Stack HCI 
@@ -23,24 +27,11 @@ In later tutorials, the Azure Vote application is deployed to the cluster, scale
 
 ## Before you begin
 
-In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, and would like to follow along, start at [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, start at [Tutorial 1 - Create container images](tutorial-kubernetes-prepare-application.md).
 
-This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following commands to install it.
+This tutorial uses the AksHci PowerShell module.
 
-```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-Install-Module -Name AksHci -Repository PSGallery
-```
-
-```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
-Import-Module AksHci
-```
-**If you are using remote PowerShell, you must use CredSSP.** 
+[!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
 ## Install the Azure Kubernetes Service Host
 
@@ -82,7 +73,7 @@ Then, configure your deployment with the following command.
 Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
-Now, you are ready to install the Azure Kubernetes Service on Azure Stack HCI host.
+Now, you are ready to install the AKS on Azure Stack HCI and Windows Server host.
 
 ```powershell
 Install-AksHCi

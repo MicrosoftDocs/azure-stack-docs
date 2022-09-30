@@ -48,7 +48,7 @@ The following requirements must be met for a successful SDN deployment:
 
 SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage ](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
+If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
 
 The following shows an example using `Convert-WindowsImage`:
 
@@ -214,4 +214,4 @@ The following configuration sample files for deploying SDN are available on the 
 ## Next steps
 
 - [Manage VMs](../manage/vm.md)
-- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)

@@ -1,10 +1,10 @@
 ---
-title: New-AksHciClusterNetwork for AKS on Azure Stack HCI
-author: mattbriggs
+title: New-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The New-AksHciClusterNetwork PowerShell command creates an object for a new virtual network used by a workload cluster.
 ms.topic: reference
 ms.date: 09/07/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
@@ -79,25 +79,25 @@ Use the examples below to configure virtual networks with either static IP or DH
 ### Deploy with a static IP environment without a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address>
+$vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address>
 ```
 
 ### Deploy with a static IP environment and a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address> -vlanID <int>
+$vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address> -vlanID <int>
 ```
 
 ### Deploy with a DHCP environment without a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
+$vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 ```
 
 ### Deploy with a DHCP environment and a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
+$vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 ```
 
 ## Parameters

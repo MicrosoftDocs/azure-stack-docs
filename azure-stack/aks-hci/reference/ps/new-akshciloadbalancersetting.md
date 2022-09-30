@@ -1,10 +1,10 @@
 ---
-title: New-AksHciLoadBalancerSetting for AKS on Azure Stack HCI
-author: mattbriggs
-description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS on Azure Stack HCI.
+title: New-AksHciLoadBalancerSetting for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
+description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS on Azure Stack HCI and Windows Server.
 ms.topic: reference
 ms.date: 11/18/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
@@ -32,7 +32,7 @@ Create a load balancer object for the workload clusters.
 ### Create a load balancer object
 
 ```powershell
-PS C:\> $loadbalancer = New-AksHciLoadBalancerObject -name mylb -loadBalancerSku none
+$loadbalancer = New-AksHciLoadBalancerObject -name mylb -loadBalancerSku none
 ```
 
 ## Parameters

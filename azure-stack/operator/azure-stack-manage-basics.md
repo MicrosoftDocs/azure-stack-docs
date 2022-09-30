@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub administration basics 
 description: Learn the basics of Azure Stack Hub administration.
-author: BryanLa
+author: sethmanheim
 ms.topic: article
 ms.date: 06/16/2020
-ms.author: bryanla
+ms.author: sethm
 ms.lastreviewed: 06/16/2020
 
 # Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
@@ -70,6 +70,8 @@ There are a few account considerations to be aware of when managing Azure Stack 
 |AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Can't sign in to the ASDK host.<br><br>Owner of the Default Provider Subscription (DPS).|
 |Azure AD Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 |
+
+[!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
 
 ## What tools do I use to manage?
  

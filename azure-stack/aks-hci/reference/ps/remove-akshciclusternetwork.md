@@ -1,10 +1,10 @@
 ---
-title: Remove-AksHciClusterNetwork for AKS on Azure Stack HCI
-author: mattbriggs
+title: Remove-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Remove-AksHciClusterNetwork PowerShell command removes a virtual network.
 ms.topic: reference
 ms.date: 4/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
@@ -30,7 +30,7 @@ You can get a list of clusters associated with the network by running `Get-AksHc
 ### Remove the cluster network named "MyClusterNetwork"
 
 ```powershell
-PS C:\> Remove-AksHciClusterNetwork -name MyClusterNetwork
+Remove-AksHciClusterNetwork -name MyClusterNetwork
 ```
 
 > [!NOTE]

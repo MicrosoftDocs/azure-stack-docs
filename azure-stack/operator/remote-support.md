@@ -2,13 +2,13 @@
 title: Overview of remote support for Azure Stack Hub
 titleSuffix: Azure Stack Hub
 description: Learn about remote support for Azure Stack Hub
-author: BryanLa
+author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/06/2022
-ms.author: bryanla
+ms.date: 08/23/2022
+ms.author: sethm
 ms.reviewer: shisab
-ms.lastreviewed: 06/09/2021
+ms.lastreviewed: 04/19/2022
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
@@ -16,12 +16,11 @@ ms.lastreviewed: 06/09/2021
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only applies to version 2108.
+> Remote support is in public preview and only available in the following versions:
+> - 2108
+> - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
-Use remote support to allow a Microsoft support professional to solve your support case faster by
-permitting access to your device remotely and performing limited troubleshooting and repair. You can
-enable this feature by granting consent while controlling the access level and duration of access.
-Support can only access your device after a support request has been submitted.
+Use remote support to allow a Microsoft support professional to diagnose and help speed resolution of your support request by permitting remote access to your device for limited troubleshooting and repair. You can enable this feature by granting consent for a specific access level and duration. Support can only access your device after a support request has been submitted.
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
@@ -33,7 +32,7 @@ For more information about cmdlets that Microsoft support can execute during a r
 
 Remote support gives you the ability to:
 
-- Improve the speed to resolution as Microsoft Support no longer needs to arrange a meeting with you for troubleshooting.
+- Improve the speed to resolution. After the initial scoping consultation with Microsoft Support, you can enable remote support. At that point Microsoft Support no longer needs to arrange meetings with you for further troubleshooting.
 - Reduce the number of [privileged endpoint (PEP) session elevation](azure-stack-privileged-endpoint.md#unlocking-the-privileged-endpoint-for-support-scenarios) to resolve issues.
 - View the detailed transcript of all executed operations at any time.
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.

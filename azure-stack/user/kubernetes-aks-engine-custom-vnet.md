@@ -1,13 +1,13 @@
 ---
 title: Deploy Kubernetes cluster to custom virtual network on Azure Stack Hub  
 description: Learn how to deploy a Kubernetes cluster to a custom virtual network on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
-ms.date: 10/27/2021
-ms.author: mabrigg
+ms.date: 08/01/2022
+ms.author: sethm
 ms.reviewer: walterov
-ms.lastreviewed: 06/29/2021
+ms.lastreviewed: 04/14/2022
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
@@ -41,15 +41,19 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 3. Enter the name of your virtual network in the search box.
 4. Select **Subnets** > **+ Subnets** to add a subnet.
 5. Add a **Name** and an **Address range** using CIDR notation. Select **OK**.
-4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
+6. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
     ![virtual network Resource ID](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
-5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example `control-plane-sn`.
+7. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example `control-plane-sn`.
+
+    **Do not** associate the subnet to a network security group (NSG). 
     
     ![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
+
+
     
-6. In the subnet blade, make a note of the address range (CIDR Block) of each subnet.
+8. In the subnet blade, make a note of the address range (CIDR Block) of each subnet.
 
 ## Considerations for selecting an address space
 
@@ -104,9 +108,12 @@ VNET address space: 10.100.0.0/16.
 In this example, the `firstConsecutiveStaticIP` property would be `10.100.0.239`.
 
 ## Azure CNI address blocks example
-In the following example, you can see how these various considerations fill out the address space in the virtual network for a cluster using the Azure CNI network plugin with dedicated subnets for the control plane and agent node pools with three nodes per pool.  
+In the following example, you can see how these various considerations fill out the address space in the virtual network for a cluster using the Azure CNI network plugin with dedicated subnets for the control plane and agent node pools with three nodes per pool.
 
 VNET address space: 172.24.0.0/16.  
+
+> [!NOTE]
+> In your environment, if the public IP range is within CIDR10.0.0.0/8, use kubenet as the network plugin.
 
 | Address block (subnet) | CIDR | IP range | IP Count (available) |
 | --- | --- | --- | --- |

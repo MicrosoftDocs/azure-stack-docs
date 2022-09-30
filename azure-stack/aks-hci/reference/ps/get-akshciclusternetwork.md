@@ -1,10 +1,10 @@
 ---
-title: Get-AksHciClusterNetwork for AKS on Azure Stack HCI
-author: mattbriggs
+title: Get-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Get-AksHciClusterNetwork PowerShell command retrieves virtual network settings.
 ms.topic: reference
 ms.date: 5/11/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
@@ -30,19 +30,19 @@ Gets the VirtualNetwork object for a target cluster given either the vnet name o
 ### Get the configuration of a vnet named "MyClusterVnet1"
 
 ```powershell
-PS C:\> $clusterVNet = Get-AksHciClusterNetwork -name MyClusterVnet1
+$clusterVNet = Get-AksHciClusterNetwork -name MyClusterVnet1
 ```
 
 ### Get the vnet associated with a cluster named "MyCluster"
 
 ```powershell
-PS C:\> $clusterVNet = Get-AksHciClusterNetwork -clusterName MyCluster
+$clusterVNet = Get-AksHciClusterNetwork -clusterName MyCluster
 ```
 
 ### Get all vNet configurations in the system
 
 ```powershell
-PS C:\> $allClusterVNets = Get-AksHciClusterNetwork
+$allClusterVNets = Get-AksHciClusterNetwork
 ```
 
 > [!NOTE]

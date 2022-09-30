@@ -1,29 +1,28 @@
 ---
-title: Kubernetes Secrets Store CSI Driver integration with AKS on Azure Stack HCI
-description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Kubernetes Secrets Store CSI Driver integration with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service on Azure Stack HCI.
 ms.topic: how-to
-ms.date: 02/01/2022
-ms.author: mabrigg 
+ms.date: 04/01/2022
+ms.author: sethm 
 ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
-author: mattbriggs
-#intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
-#keyword: secret stores CSI driver
+author: sethmanheim
+
+# Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
+# Keyword: secrets stores CSI driver
+
 ---
 
-# Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with AKS on Azure Stack HCI
+# Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> [!NOTE]
-> AKS on Azure Stack HCI preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and it's recommended that you do not use these features in production scenarios. AKS on Azure Stack HCI preview features are partially covered by customer support on a best-effort basis.
-
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrating the Secrets Store CSI Driver with AKS on Azure Stack HCI allows you to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
+The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrate the Secrets Store CSI Driver with AKS on Azure Stack HCI and Windows Server allows to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
 
 With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
 ## Before you begin
 
 - You need to have an Azure account and subscription.
-- You need to have an existing deployment of AKS on Azure Stack HCI with an existing workload cluster. If you don't, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
+- You need to have an existing deployment of AKS on Azure Stack HCI and Windows Server with an existing workload cluster. If you don't, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you are running Linux clusters, they need to be on version 1.16.0 or later.
 - If you are running Windows clusters, they need to be on version 1.18.0 or later.
 - Make sure you have the following installed:
@@ -44,7 +43,7 @@ Get-AksHciCredential -name mycluster
 To install the Secrets Store CSI Driver, run the following Helm command:
 
 ```powershell
-helm repo add csi-secrets-store-provider-azure https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/charts
+helm repo add csi-secrets-store-provider-azure https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
 ```
 
 The following command installs both the Secrets Store CSI Driver and the Azure Key Vault provider:
@@ -168,7 +167,7 @@ spec:
 To deploy the `SecretProviderClass` you created in the previous step, use the following command:
 
 ```powershell
-kubectl apply -f ./new-secretproviderclass.yaml --namespace 
+kubectl apply -f ./new-secretproviderclass.yaml
 ```
 
 ## Update and apply your cluster's deployment YAML file

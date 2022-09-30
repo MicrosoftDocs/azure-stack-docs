@@ -1,10 +1,10 @@
 ---
 title: disable-akshcipreview
-author: mattbriggs
+author: sethmanheim
 description: The Disable-AksHciPreview PowerShell command enables the ability to revert from a preview channel back to the stable channel.
 ms.topic: reference
 ms.date: 09/08/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mamezgeb
 
@@ -13,10 +13,10 @@ ms.reviewer: mamezgeb
 # Disable-AksHciPreview
 
 ## Synopsis
-Reverts AKS on Azure Stack HCI from a preview channel back to the stable channel.
+Reverts AKS on Azure Stack HCI and Windows Server from a preview channel back to the stable channel.
 
 ## Description
-This cmdlet reverts AKS on Azure Stack HCI from a preview channel back to the stable channel. After running `Disable-AksHciPreview`, you need to run [Get-AksHciUpdates](get-akshciupdates.md) to list the available updates, and then run [Update-AksHci](update-akshci.md) to revert back to the stable channel. 
+This cmdlet reverts AKS on Azure Stack HCI and Windows Server from a preview channel back to the stable channel. After running `Disable-AksHciPreview`, you need to run [Get-AksHciUpdates](get-akshciupdates.md) to list the available updates, and then run [Update-AksHci](update-akshci.md) to revert back to the stable channel. 
 
 > [!NOTE]
 > The preview channel is intended to be used only for development and testing purposes.

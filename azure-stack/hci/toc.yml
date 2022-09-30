@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: What's new in Azure Stack HCI?
+  - name: What's new in Azure Stack HCI? 
     href: whats-new.md
   - name: Release information
     href: release-information.md
@@ -16,6 +16,8 @@
     href: hybrid-capabilities-with-azure-services.md
   - name: Use Azure Benefits
     href: ./manage/azure-benefits.md
+  - name: Evaluate Azure Stack HCI
+    href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -34,9 +36,11 @@
     href: deploy/operating-system.md
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: 3. Register a cluster with Azure
+  - name: 3. Set up a cluster witness
+    href: manage/witness.md    
+  - name: 4. Register a cluster with Azure
     href: deploy/register-with-azure.md
-  - name: 4. Validate the cluster
+  - name: 5. Validate the cluster
     href: deploy/validate.md
   - name: Migrate a cluster
     items:
@@ -46,10 +50,10 @@
       href: deploy/migrate-cluster-same-hardware.md
   - name: Deploy with PowerShell
     items:
+    - name: Deploy on a single server
+      href: deploy/single-server.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy a cluster set
-      href: deploy/cluster-set.md
     - name: Host networking with Network ATC
       href: deploy/network-atc.md
   - name: Deploy SDN
@@ -96,10 +100,12 @@
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage Azure Arc-enabled VMs (preview)
     items:
-    - name: Manage Azure Arc-enabled VMs
+    - name: Set up Azure Arc-enabled VMs
       href: manage/azure-arc-enabled-virtual-machines.md
-    - name: Deploy Azure Arc Resource Bridge using command line
+    - name: Deploy Arc Resource Bridge using command line
       href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Deploy Arc Resource Bridge using Windows Admin Center
+      href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
     - name: Uninstall Azure Arc Resource Bridge
@@ -136,24 +142,22 @@
       items:
       - name: Manage the cluster
         href: manage/cluster.md
+      - name: Manage the cluster using Windows Admin Center in Azure
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
         href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md 
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-      - name: Set up a cluster witness
-        href: manage/witness.md
     - name: Monitoring
       items:
-      - name: Configure Azure portal to monitor clusters (preview)
-        href: manage/monitor-azure-portal.md
+      - name: Monitor a single cluster using the Azure portal (preview)
+        href: manage/monitor-hci-single.md      
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-        href: manage/azure-stack-hci-insights.md
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Monitor clusters with Health Service
@@ -186,24 +190,40 @@
     items:
     - name: Deploy an SDN infrastructure
       href: manage/sdn-express.md
-    - name: Use Datacenter Firewall
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md       
+    - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Use Datacenter Firewall with PowerShell
+    - name: Configure network security groups with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage SDN security
+      items:
+      - name: Secure the Network Controller
+        href: manage/nc-security.md
+      - name: Manage certificates for SDN
+        href: manage/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: manage/update-network-controller-certificates.md
+      - name: Authenticate with Kerberos
+        href: manage/kerberos-with-spn.md
     - name: Manage software load balancers
-      href: manage/load-balancers.md
+      items:
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Configure load balancer for high availability ports
+        href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
-    - name: Manage cluster registration with Azure
-      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
@@ -212,6 +232,8 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
+  - name: Troubleshoot cluster registration
+    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
@@ -222,6 +244,8 @@
   items:
   - name: Storage and clusters
     items:
+    - name: Single-node clusters
+      href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
     - name: Choose drives
@@ -232,6 +256,8 @@
       href: concepts/plan-volumes.md
     - name: Understand Storage Spaces Direct
       href: concepts/storage-spaces-direct-overview.md
+    - name: Understand nested resiliency for Storage Spaces Direct
+      href: concepts/nested-resiliency.md      
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
@@ -262,7 +288,7 @@
     items:
     - name: SDN overview
       href: concepts/software-defined-networking.md
-    - name: Plan a SDN infrastructure
+    - name: Plan an SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
@@ -292,6 +318,10 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
+  - name: Install Azure Stack HCI, 22H2
+    href: manage/install-preview-version.md
+  - name: Post installation Azure Stack HCI, 22H2
+    href: manage/preview-post-installation.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -305,7 +335,7 @@
   - name: Azure Stack HCI management service Python package
     href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
   - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest&preserve-view=true
+    href: /javascript/api/@azure/arm-azurestackhci
   - name: Azure Stack HCI REST API reference
     href: /rest/api/stackhci
   - name: .NET Namespaces for Azure Stack HCI
@@ -328,7 +358,7 @@
     href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
     href: ../aks-hci/overview.md
   - name: Azure Stack family
     href: ../index.yml
@@ -344,24 +374,28 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Evaluation Guide
-    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
-    href: manage/get-support.md
+    items:
+    - name: Get support
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
-      href: /learn/paths/azure-stack-hci-foundations/
+      href: /training/paths/azure-stack-hci-foundations/
     - name: Operate and maintain Azure Stack HCI
-      href: /learn/paths/operate-maintain-azure-stack-hci/
+      href: /training/paths/operate-maintain-azure-stack-hci/
     - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /learn/modules/implement-firewall-load-balancer/
+      href: /training/modules/implement-firewall-load-balancer/
     - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /learn/modules/plan-deploy-sdn-infrastructure/
+      href: /training/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
+    - name: What's new in version 21H2
+      href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 

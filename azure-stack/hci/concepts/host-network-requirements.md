@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/22/2021
+ms.date: 07/08/2022
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -20,17 +20,39 @@ For information on how to simplify host networking using Network ATC, see [Simpl
 
 Azure Stack HCI network traffic can be classified by its intended purpose:
 
-- **Compute traffic:** Traffic originating from or destined for a virtual machine (VM).
-- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct.
-- **Management traffic:** Traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Compute traffic:** Traffic originating from or destined to a virtual machine (VM). 
+- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration.
+- **Management traffic:** Traffic to or from outside the local cluster. For example, storage replica traffic or traffic used by the administrator for management of the cluster like Remote Desktop, Windows Admin Center, Active Directory, etc.
+
+> [!IMPORTANT]
+> Storage replica uses non-RDMA based SMB traffic. This and the directional nature of the traffic (North-South) makes it closely aligned to that of "management" traffic listed above, similar to that of a traditional file share.
 
 ## Select a network adapter
 
-Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality problems. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
+Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
-You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Here's an example of the notation for Premium AQ:
+For more information about this role-based NIC qualification, please see this [link](https://aka.ms/RoleBasedNIC).
 
-:::image type="content" source="media/plan-networking/windows-certified.png" alt-text="Screenshot of Windows Certified options, with a Premium AQ option highlighted." lightbox="media/plan-networking/windows-certified.png":::
+> [!IMPORTANT]
+> Using an adapter outside of its qualified traffic type is not supported.
+
+|Level|Management Role|Compute Role|Storage Role|
+|----|----|----|----|
+|Role-based distinction|Management|Compute Standard|Compute Storage|
+|Maximum Award|Not Applicable|Compute Premium|Storage Premium|
+ 
+> [!NOTE]
+> The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
+ 
+![image](https://user-images.githubusercontent.com/12801954/188225569-bb160be0-96a2-4563-97d5-3d8efb3cb597.png)
+
+## Driver Requirements
+
+Inbox drivers are not supported for use with Azure Stack HCI. To identify if your adapter is using an inbox driver, run the following cmdlet. An adapter is using an inbox driver if the **DriverProvider** property is **Microsoft.**
+
+```Powershell
+Get-NetAdapter -Name <AdapterName> | Select *Driver*
+```
 
 ## Overview of key network adapter capabilities
 
@@ -137,7 +159,7 @@ SET is a software-based teaming technology that has been included in the Windows
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Load Balancing/Failover (LBFO) is another teaming technology commonly used with Windows Server, but is not supported with Azure Stack HCI. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO) and Link Aggregation Control Protocol (LACP) teaming technologies commonly used with Windows Server. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 
@@ -261,13 +283,13 @@ The following assumptions are made for this example:
 Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps||
-|25 Gbps|50 Gbps|25 Gbps|70%|17.5 Gbps|29%|7.25 Gbps|1%|250 Mbps|
-|40 Gbps|80 Gbps|40 Gbps|70%|28 Gbps|29%|11.6 Gbps|1%|400 Mbps|
-|50 Gbps|100 Gbps|50 Gbps|70%|35 Gbps|29%|14.5 Gbps|1%|500 Mbps|
-|100 Gbps|200 Gbps|100 Gbps|70%|70 Gbps|29%|29 Gbps|1%|1 Gbps|
-|200 Gbps|400 Gbps|200 Gbps|70%|140 Gbps|29%|58 Gbps|1%|2 Gbps|
+|---------|-----------------|--------------------------|---------|-----------------|----------------|-----------------------------|----------|-------------------|
+|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |*\*            |200 Mbps                     |          |
+|25 Gbps  |50 Gbps          |25 Gbps                   |70%       |17.5 Gbps        |29%            |7.25 Gbps                    |1%        |250 Mbps               |
+|40 Gbps  |80 Gbps          |40 Gbps                   |70%       |28 Gbps          |29%            |11.6 Gbps                    |1%        |400 Mbps|
+|50 Gbps  |100 Gbps         |50 Gbps                   |70%       |35 Gbps          |29%            |14.5 Gbps                    |1%        |500 Mbps|
+|100 Gbps |200 Gbps        |100 Gbps                    |70%      |70 Gbps          |29%            |29 Gbps                      |1%        |1 Gbps|
+|200 Gbps |400 Gbps        |200 Gbps                    |70%      |140 Gbps         |29%            |58 Gbps                      |1%        |2 Gbps|
 
 \* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
 

@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 ms.date: 05/17/2021
 ms.topic: article
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
 
@@ -73,6 +73,8 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |
 | Traffic Manager | Route incoming traffic for optimal application performance and reliability. | Supported | Not yet supported. |
 | Express Route | Set up a fast, private connection to Microsoft cloud services from your on-premises infrastructure or colocation facility. | Supported | Support for connecting Azure Stack Hub to an Express Route circuit. |
+| Virtual Machine Scale Sets | Public IP per Virtual Machine | Supported | Not supported. If needed, similar functionality can be achieved with a load balancer. |
+|  | Update or change VMs primary NIC | Supported | Not supported. It's not possible to elevate a secondary NIC to primary or vice versa in Azure Stack Hub. |
 
 ## API versions 
 

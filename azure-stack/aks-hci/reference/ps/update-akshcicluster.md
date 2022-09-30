@@ -1,10 +1,10 @@
 ---
-title: Update-AksHciCluster for AKS on Azure Stack HCI
-author: mattbriggs
+title: Update-AksHciCluster for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Update-AksHciCluster PowerShell command updates a managed Kubernetes cluster to a newer Kubernetes or OS version.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
@@ -35,13 +35,13 @@ Update a managed Kubernetes cluster to a newer Kubernetes or OS version.
 ### Update Kubernetes version
 This command updates the Kubernetes version of your workload cluster to the specified Kubernetes version. This command also updates the OS version of your AKS workload cluster to the latest available OS version. You can get the list of available Kubernetes versions using the [Get-AksHciKubernetesVersion](get-akshcikubernetesversion.md) command.
 ```powershell
-PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.18.8 
+Update-AksHciCluster -name mycluster -kubernetesVersion v1.18.8 
 ```
 
 ### Perform an operating system upgrade
 This command updates the operating system version of your AKS workload cluster without updating the Kubernetes version of your AKS workload cluster.
 ```powershell
-PS C:\> Update-AksHciCluster -name mycluster -operatingSystem
+Update-AksHciCluster -name mycluster -operatingSystem
 ```
 
 ## Parameters

@@ -1,26 +1,28 @@
 ---
-title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI
-description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI.
-author: mattbriggs
+title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+author: sethmanheim
 ms.topic: how-to
-ms.date: 05/14/2021
-ms.author: mabrigg 
+ms.date: 04/24/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
+# Intent: As an IT Pro, I need to learn how to obtain Kubelet logs in order to troubleshoot problems with my AKS on Azure Stack HCI cluster.  
+# Keyword: kubelet logs cluster nodes troubleshooting
 
 ---
 
-# Get kubelet logs from cluster nodes on AKS on Azure Stack HCI
+# Get kubelet logs from cluster nodes on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-As part of operating an AKS on Azure Stack HCI cluster, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI, and you may also need to get _kubelet_ logs from an AKS on Azure Stack HCI node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
+As part of operating an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI and Windows Server, and you may also need to get _kubelet_ logs from an AKS on Azure Stack HCI and Windows Server node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
 
 ## Before you begin
 
-This article assumes that you have an existing AKS on Azure Stack HCI cluster. If you need an AKS on Azure Stack HCI cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS on Azure Stack HCI.
+This article assumes that you have an existing AKS on Azure Stack HCI and Windows Server cluster. If you need an AKS on Azure Stack HCI and Windows Server cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS on Azure Stack HCI and Windows Server.
 
 ## Create an SSH connection
 
-First, you need to create an SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./ssh-connection.md) for Windows and Linux worker nodes.
+First, you need to create a SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./ssh-connection.md) for Windows and Linux worker nodes.
 
 ## Get kubelet logs
 
@@ -43,4 +45,4 @@ I0512 19:15:19.868169    1824 container_manager_linux.go:281]
 ## Next steps
 
 - [View logs to collect and review data](./view-logs.md) 
-- [Monitor AKS on Azure Stack HCI clusters](./monitor-logging.md)
+- [Monitor AKS on Azure Stack HCI and Windows Server clusters](./monitor-logging.md)

@@ -1,18 +1,20 @@
 ---
-title: Tutorial - Scale an application in Azure Kubernetes Service on Azure Stack HCI
+title: Tutorial - Scale an application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, learn how to scale nodes and pods in Kubernetes
 services: container-service
 ms.topic: tutorial
-ms.date: 04/13/2021
-ms.author: mabrigg 
+ms.date: 05/19/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
+# Intent: As an IT Pro, I need step-by-step instructions on how to scale application nodes and pods in a Kubernetes cluster.
+# Keyword: scale applications scale pods
 ---
 
-# Tutorial: Scale applications in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Scale applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-If you've followed the tutorials, you have a working Kubernetes cluster in AKS on Azure Stack HCI and you deployed the sample Azure Voting app. In this tutorial, part five of seven, you scale out the pods in the app. You learn how to:
+If you have completed the previous tutorials, you should have a working Kubernetes cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server and also deployed the sample Azure Voting app. This tutorial, part five of seven, describes how to scale out the pods in the app. You'll learn how to:
 
 > [!div class="checklist"]
 > * Scale the Kubernetes nodes
@@ -22,12 +24,12 @@ In later tutorials, the Azure Vote application is updated to a new version.
 
 ## Before you begin
 
-In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the AKS cluster. If you haven't done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+Previous tutorials described how to package an application into a container image, upload the image to Azure Container Registry, and create an AKS on Azure Stack HCI and Windows Server cluster. The application was then deployed to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 
 ## Manually scale pods
 
-When the Azure Vote front-end and Redis instance were deployed in previous tutorials, a single replica was created. To see the number and state of pods in your cluster, use the [kubectl get][kubectl-get] command as follows:
+Previous tutorials described how to deploy the Azure Vote front-end and Redis instance in order to create a single replica. To see the number and state of pods in your cluster, use the following [kubectl get][kubectl-get] command:
 
 ```console
 kubectl get pods
@@ -74,7 +76,7 @@ Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 If you want to scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command.
 
 > [!NOTE]
-> In previous versions of AKS on Azure Stack HCI, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. AKS on Azure Stack HCI is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
+> In previous versions of AKS on Azure Stack HCI and Windows Server, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. AKS on Azure Stack HCI and Windows Server is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
 
 Run the following command to confirm that scaling was successful.
 
@@ -95,7 +97,7 @@ Phase        : Deployed
 
 ## Next steps
 
-In this tutorial, you used different scaling features in your AKS on Azure Stack HCI cluster. You learned how to:
+In this tutorial, you used different scaling features in your AKS on Azure Stack HCI and Windows Server cluster. You learned how to:
 
 > [!div class="checklist"]
 > * Manually scale Kubernetes pods that run your application

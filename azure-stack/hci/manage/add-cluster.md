@@ -2,9 +2,9 @@
 title: Add or remove servers for an Azure Stack HCI cluster
 description: Learn how to add or remove server nodes from a cluster in Azure Stack HCI
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: JasonGerend
+ms.author: jgerend
+ms.reviewer: stevenek
 ms.date: 05/27/2021
 ---
 
@@ -41,6 +41,30 @@ Use Windows Admin Center to join the server to your cluster.
 1. On the **Inventory** tab, select **Add**.
 1. In **Server name**, enter the full-qualified domain name of the server you want to add, click **Add**, then click **Add** again at the bottom.
 1. Verify the server has been successfully added to your cluster.
+
+>[!NOTE]
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
+
+### Add a server to an SDN-enabled cluster
+
+If Software Defined Networking (SDN) is already deployed on the cluster to which you're adding a new server, Windows Admin Center doesn't automatically add the new server to the SDN environment. You must use the SDN Express script to add the new server to the SDN infrastructure of the cluster.
+
+Before you run the script, ensure that a virtual switch is created and the server is successfully added to the cluster. Also, ensure that the server is paused so that the workloads cannot move to it.
+
+1. Download the latest version of the [SDN Express PowerShell scripts from the SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
+1. Run the following PowerShell cmdlets on the newly added server:
+
+    ```powershell
+    Import-Module SDNExpressModule.PSM1 -verbose
+    $NCURI = "Insert NC URI"
+    $creds = Get-Credential
+    Add-SDNExpressHost -RestName $NCURI -VirtualSwitchName "Insert vSwitch Name" -ComputerName "Insert Name" -HostPASubnetPrefix "Example: 172.23.0.1/24" -Credential $creds
+    ```
+    where:
+    - NCURI is the Network Controller REST API in the following format:
+    `"https://<name of the Network Controller REST API>"`. For example: "https://mync.contoso.local"
+    - ComputerName is the fully qualified domain name (FQDN) of the server to be added
+    - HostPASubnetPrefix is the address prefix of the Provider Address (PA) network
 
 ## Remove a server from a cluster
 

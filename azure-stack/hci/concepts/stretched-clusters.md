@@ -1,11 +1,11 @@
 ---
 title: Stretched clusters overview
 description: Learn about stretched clusters
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
 ms.date: 12/21/2020
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: jgerend
+ms.reviewer: johnmar
 ---
 
 # Stretched clusters overview

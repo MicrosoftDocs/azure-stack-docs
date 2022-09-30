@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
-author: BryanLa
+author: sethmanheim
 ms.topic: how-to
 ms.date: 10/19/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: jerskine
 ms.lastreviewed: 10/19/2020
 

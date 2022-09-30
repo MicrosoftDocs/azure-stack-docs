@@ -6,12 +6,12 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/08/2022
+ms.date: 08/23/2022
 ---
 
 # Azure Stack HCI release information
 
-> Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
 
@@ -36,6 +36,18 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1070   | 2022-09-20            | [KB 5017381](https://support.microsoft.com/topic/b58ee96f-7ddb-4cfe-870e-5047cf2dd52d)  |
+| 20348.1006   | 2022-09-13            | [KB 5017316](https://support.microsoft.com/topic/0f0e00f9-a27c-496d-81b7-aa3b3bb010bc)  |
+| 20348.946    | 2022-08-16            | [KB 5016693](https://support.microsoft.com/topic/9fe39a88-2ed4-489f-a729-3aeae9124690)  |
+| 20348.887    | 2022-08-09            | [KB 5016627](https://support.microsoft.com/topic/e2aa1ec8-4d65-42f2-b8c9-926fe733f782)  |
+| 20348.859    | 2022-07-19            | [KB 5015879](https://support.microsoft.com/topic/53c96b35-2a45-46a4-9b1b-b17faf5ee31b)  |
+| 20348.825    | 2022-07-12            | [KB 5015827](https://support.microsoft.com/topic/959c973f-0cba-44cc-92f9-1aa4476d1ea1)  |
+| 20348.803    | 2022-06-23            | [KB 5014665](https://support.microsoft.com/topic/108cb23c-8e38-4eb4-974a-b5a30d4bc0c4)  |
+| 20348.768    | 2022-06-14            | [KB 5014678](https://support.microsoft.com/topic/16ee172a-6f0c-4863-93c1-d5c97bad9efd)  |
+| 20348.740    | 2022-05-24            | [KB 5014021](https://support.microsoft.com/topic/b2e22509-31af-4efe-a9a8-1af0256541e5)  |
+| 20348.707    | 2022-05-10            | [KB 5013944](https://support.microsoft.com/topic/73df007f-f353-421a-8f1d-2cf067243040)  |
+| 20348.681    | 2022-04-25            | [KB 5012637](https://support.microsoft.com/topic/5bd3942b-6e47-42b2-a4bd-f442c2f3a01b)  |
+| 20348.643    | 2022-04-12            | [KB 5012604](https://support.microsoft.com/topic/090da9ce-1c1d-452b-a410-2b02e583a287)  |
 | 20348.617    | 2022-03-22            | [KB 5011558](https://support.microsoft.com/topic/4142756d-672b-4aac-b696-1b4e44d55c7c)  |
 | 20348.587    | 2022-03-08            | [KB 5011497](https://support.microsoft.com/topic/7d03d4b7-992d-4044-acf0-1ee1a86fc5f5)  |
 | 20348.558    | 2022-02-15            | [KB 5010421](https://support.microsoft.com/topic/d2772c05-e070-46fd-bd4a-b203b14fee78)  |
@@ -57,6 +69,24 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.2791  | 2022-09-20            | [KB 5017382](https://support.microsoft.com/topic/fe9ea9f6-c708-4d3f-9556-c8712d822e18) |
+| 17784.2780  | 2022-09-20            | [KB 5017395](https://support.microsoft.com/topic/9647a394-bc3d-4a53-888d-e6c1a54063d2) |
+| 17784.2725  | 2022-09-13            | [KB 5017311](https://support.microsoft.com/topic/656a9caf-d9ba-470b-a85c-571bb5222413) |
+| 17784.2665  | 2022-08-23            | [KB 5016692](https://support.microsoft.com/topic/ef9e9ca6-d96e-4c71-961b-9c067a3ea118) |
+| 17784.2605  | 2022-08-09            | [KB 5016620](https://support.microsoft.com/topic/477546cd-4c9b-4ae4-a565-95f821f9e118) |
+| 17784.2576  | 2022-07-21            | [KB 5015881](https://support.microsoft.com/topic/69527982-384a-4ece-bd67-823a9b381de4) |
+| 17784.2576  |2022-07-21           | [KB 5015899](https://support.microsoft.com/topic/062f389d-c1ab-4048-bcb1-7a91a1d1a59e) |
+| 17784.2545  | 2022-07-12           | [KB 5015809](https://support.microsoft.com/topic/17737412-0a84-45ec-94f8-f909c9c9b73d) |
+| 17784.2540  |2022-07-12           | [KB 5015894](https://support.microsoft.com/topic/abc947dc-6f0f-4864-9b7c-2607cc219b99) |
+| 17784.2524  | 2022-06-23           | [KB 5014667](https://support.microsoft.com/topic/626280c0-925f-42ea-8585-e4de91c4e4f1) |
+| 17784.2515  |2022-06-23           | [KB 5014798](https://support.microsoft.com/topic/0ee8d72b-a9b6-45c1-95f7-549e71358c76) |
+| 17784.2486  | 2022-06-14           | [KB 5014698](https://support.microsoft.com/topic/555e3cc3-74ee-4774-8473-864d513af14c) |
+| 17784.2462  | 2022-05-24           | [KB 5014020](https://support.microsoft.com/topic/e530a977-a31b-46c5-b47e-7dc963b8e12f) |
+| 17784.2430  | 2022-05-10           | [KB 5013951](https://support.microsoft.com/topic/498b9df8-b7fc-4eda-8962-c8a24ad97059) |
+| 17784.2424   | 2022-05-10           | [KB 5014033](https://support.microsoft.com/topic/e8f5e8e8-fafa-4aad-a414-249d49736791) |
+| 17784.2398  | 2022-04-21           | [KB 5012660](https://support.microsoft.com/topic/b1c9150d-1bf1-4b74-aaf4-b516443c9ee6) |
+| 17784.2398   | 2022-04-21           | [KB 5012676](https://support.microsoft.com/topic/7012b919-15e8-4163-b83e-ab421f6ed200) |
+| 17784.2364   | 2022-04-12           | [KB 5012589](https://support.microsoft.com/topic/692f319e-b971-4aed-a31c-2fffb1a86c27) |
 | 17784.2337   | 2022-03-22           | [KB 5011566](https://support.microsoft.com/topic/e57ee571-744f-4f2f-9b3c-6c1e9c8f730e) |
 | 17784.2331   | 2022-03-22           | [KB 5011575](https://support.microsoft.com/topic/37a2843a-37c3-4d13-b7b3-8ebbc276e2fd) |
 | 17784.2306   | 2022-03-08           | [KB 5011490](https://support.microsoft.com/topic/a890805b-8bbe-448e-9a48-9f52fc11c558) |

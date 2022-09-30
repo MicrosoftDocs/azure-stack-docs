@@ -1,11 +1,11 @@
 ---
 title: Introduction to Azure Stack Hub Storage 
 description: Learn about Azure Stack Hub Storage services.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 2/1/2021
-ms.author: bryanla
+ms.author: sethm
 ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want to learn about Azure Stack Storage services so I can store my data.

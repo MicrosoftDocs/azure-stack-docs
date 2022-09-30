@@ -1,11 +1,11 @@
 ---
 title: Azure App Service on Azure Stack overview 
 description: Overview of Azure App Service and Azure Functions on Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 05/05/2020
-ms.author: BryanLa
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 
