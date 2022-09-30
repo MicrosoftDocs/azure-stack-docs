@@ -18,6 +18,9 @@ sections:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
+          > [!NOTE]  
+          > This issue is fixed in the September release and later.
+          
           ### To reproduce
           
           1. Install AksHci.
@@ -82,6 +85,19 @@ sections:
           
           `UpdateAksHciClusterCertificates -name <cluster-name> -fixcloudcredential `
           
+      - question: | 
+          Error 'System.Collections.Hashtable.generic_non_zero 1 [Error: Certificate has expired: Expired]'
+
+        answer: | 
+          The **Mocctl** certificate expires if it's not used for more than 60 days. AKS-HCI uses the `mocctl` command line tool to communicate with MocStack for performing Moc-related operations. The certificate used by the `mocclt` command to communicate with cloudagent expires in 60 days. The `mocctl` command renews the certificate automatically when it's used close to its expiry (after ~42 days). If the command is not used frequently, the certificate expires.
+          
+          To reproduce the behavior, install AKS-HCI, and no operation involving the `mocctl` command is performed for 60 days.
+          
+          To fix the issue, log in again once the certificate expires. Execute the following PowerShell command to log in:
+          
+          ```powershell
+          Repair-MocLogin
+          ```
       - question: | 
           Delete KVA certificate if expired after 60 days.
 
