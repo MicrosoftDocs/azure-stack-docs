@@ -41,18 +41,18 @@ ms.reviewer: alkohli
    Get-AsWdacPolicyMode
    ```
 
-Here's a sample output of these cmdlets:
+   Here's a sample output of these cmdlets:
 
-```azurepowershell
-PS C:\temp> Get-AsWdacPolicyMode
+   ```azurepowershell
+   PS C:\temp> Get-AsWdacPolicyMode
 
-2
+   2
 
-PS C:\temp> Switch-AsWdacPolicy -Mode Audit
-VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
-a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
+   PS C:\temp> Switch-AsWdacPolicy -Mode Audit
+   VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
+   a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
 
-PS C:\temp> Get-WDACPolicyMode
+   PS C:\temp> Get-WDACPolicyMode
 
-1
-```
+   1
+   ```
