@@ -15,8 +15,6 @@ ms.date: 08/22/2022
 
 This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution. The article also provides information on known issue with log collection and the associated workaround.
 
-You can manually collect and send the diagnostic logs to Microsoft. In this release, you can provide consent during deployment to allow Microsoft to use these logs for troubleshooting purposes.
-
 ## Collect logs via PowerShell
 
 Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
@@ -68,6 +66,7 @@ In this example, you send diagnostics data with date filtering for log files for
    Successfully submitted on-demand. Operation tracking Id: ec0d1a53-f75b-4df5-afb8-cfbf6d4c8118
    Current log collection status: Running
    Waiting for log collection to complete...
+   ==== CUT ==================== CUT =======
    Log collection ended with status: Succeeded
    PS C:\CloudDeployment\logs>
    ```
@@ -89,13 +88,14 @@ In this example, you send diagnostic data with role filtering for BareMetal and 
    Successfully submitted on-demand. Operation tracking Id: ea5fcb7a-4e54-4de2-b519-88439e0a8149
    Current log collection status: Running
    Waiting for log collection to complete...
+   ==== CUT ==================== CUT =======
    Log collection ended with status: Succeeded
    PS C:\Users\docsuser>
    ```
 
 ### Get a history of log collection
 
-After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections for the last 90 days, enter:
+After Azure Stack HCI collects log data, it is retained for 90 days in the Microsoft cluster and for 30 days in the customer device. To get a history of log collections for the last 90 days, enter:
 
    ```powershell
    Get-LogCollectionHistory  
