@@ -228,6 +228,23 @@
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
             href: deploy-linux-application.md
+            
+- name: Create AKS hybrid clusters from Azure (preview)
+  items:
+  - name: Overview
+  - href:
+  - name: Preview requirements
+  - href:
+  - name: Install Azure Resource Bridge on Windows Server
+  - href: 
+  - name: Configure networking for AKS hybrid preview clusters
+  - href:
+  - name: Create AKS hybrid preview clusters using Azure CLI
+  - href:
+  - name: Troubleshooting and known issues 
+  - href:
+  
+  
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
