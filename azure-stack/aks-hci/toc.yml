@@ -90,6 +90,10 @@
     href: supported-kubernetes-versions.md
   - name: Resource limits
     href: concepts-support.md
+  - name: Billing
+    items:
+      - name: Pricing details
+        href: concepts-billing-pricingdetails.md
 - name: How-to guides
   items: 
     - name: Install Azure Kubernetes Service host
