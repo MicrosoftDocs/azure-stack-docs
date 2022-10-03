@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 10/03/2022
 ---
 
 # Windows Server Azure Edition for new VMs
@@ -77,7 +77,7 @@ To create an Azure managed disk:
 1. Run the following commands in an Azure command-line prompt to set the parameters of your managed disk. Make sure to replace the items in brackets with relevant values:
 
     ```powershell
-    $urn = <URN_of_Marketplace_image> #Example: “MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest”
+    $urn = <URN_of_Marketplace_image> #Example: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest"
     $diskName = <disk_name> #Name for new disk to be created
     $diskRG = <resource_group> #Resource group that contains the new disk
     ```
@@ -101,7 +101,7 @@ To export the VHD:
 1. Download the VHD image. The process may take several minutes, so be patient. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](/azure/storage/common/storage-ref-azcopy.md) command, you can skip MD5 checksum validation by running this command:
 
     ```powershell
-    azcopy copy “$sas" "destination_path_on_cluster" --check-md5 NoCheck
+    azcopy copy "$sas" "destination_path_on_cluster" --check-md5 NoCheck
     ```
 
 ### 5. Clean up your disk
