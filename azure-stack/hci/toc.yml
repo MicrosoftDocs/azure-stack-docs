@@ -62,6 +62,8 @@
         href: plan/two-node-ip-requirements.md
       - name: Decision matrix
         href: plan/two-node-decision-matrix.md
+    - name: SDN considerations
+        href: plan/network-pattern-sdn-considerations.md
   - name: Host networking
     items:
     - name: Physical network requirements
