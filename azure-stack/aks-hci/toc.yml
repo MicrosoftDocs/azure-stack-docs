@@ -92,8 +92,6 @@
     href: concepts-support.md
 - name: How-to guides
   items: 
-    - name: Evaluate on an Azure VM
-      href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Install Azure Kubernetes Service host
       items:
           - name: With prestaged cluster service objects and DNS records
