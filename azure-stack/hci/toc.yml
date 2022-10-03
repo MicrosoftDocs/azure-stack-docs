@@ -63,7 +63,7 @@
       - name: Decision matrix
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
-        href: plan/network-pattern-sdn-considerations.md
+        href: plan/network-patterns-sdn-considerations.md
   - name: Host networking
     items:
     - name: Physical network requirements
