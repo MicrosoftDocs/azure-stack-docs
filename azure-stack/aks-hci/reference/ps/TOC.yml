@@ -8,10 +8,14 @@
     href: add-akshcinode.md
   - name: Disable-AksHciArcConnection
     href: disable-akshciarcconnection.md
+  - name: Disable-AksHciOfflinedownload
+    href: disable-akshciofflinedownload.md
   - name: Disable-AksHciPreview
     href: disable-akshcipreview.md
   - name: Enable-AksHciArcConnection
     href: enable-akshciarcconnection.md
+  - name: Enable-AksHciOfflineDownload
+    href: enable-akshciofflinedownload.md
   - name: Enable-AksHciPreview
     href: enable-akshcipreview.md
   - name: Get-AksHciAutoScalerProfile
@@ -40,6 +44,8 @@
     href: get-akshciproxysetting.md
   - name: Get-AksHciRegistration
     href: get-akshciregistration.md
+  - name: Get-AksHciRelease
+    href: get-akshcirelease.md
   - name: Get-AksHciContainerStorage
     href: get-akshcistoragecontainer.md
   - name: Get-AksHciUpdates
@@ -106,6 +112,8 @@
     href: set-akshciconfig.md
   - name: Set-AksHciNodePool
     href: set-akshcinodepool.md
+  - name: Set-AksHciOffsiteConfig
+    href: set-akshcioffsiteconfig.md
   - name: Set-AksHciRegistration
     href: set-akshciregistration.md
   - name: Sync-AksHciBilling
