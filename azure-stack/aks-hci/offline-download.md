@@ -117,7 +117,7 @@ Update-AksHci
 
 With the offsite functionality, you will download the images to a different location of your choice. This could be a location where you have a more reliable and secure connection.
 
-### Step 1: Set the offiste configurations
+### Step 1: Set the offsite configurations
 
 Run the following command at your offsite location with the version of AKS on HCI that you need:
 
