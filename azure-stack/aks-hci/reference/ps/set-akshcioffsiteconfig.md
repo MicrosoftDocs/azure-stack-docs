@@ -12,7 +12,7 @@ ms.reviewer: jeguan
 # Set-AksHciOffsiteConfig
 
 ## Synopsis
-Sets the offsite configuration to get the AKS on HCI images with offline downloading at a offsite location.
+Sets the offsite configuration to get the AKS on HCI images with offline downloading at an offsite location.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Set-AksHciOffsiteConfig  [-version <String>]
 ```
 
 ## Description
-Sets the offsite configuration to get the AKS on HCI images with offline downloading at a offsite location.
+Sets the offsite configuration to get the AKS on HCI images with offline downloading at an offsite location.
 
 ## Examples
 
