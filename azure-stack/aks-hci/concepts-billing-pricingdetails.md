@@ -17,7 +17,7 @@ ms.date: 10/04/2022
 
 # Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server pricing details
 
-Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and [install](https://docs.microsoft.com/en-us/azure-stack/aks-hci/setup) AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an [Azure Subscription](https://azure.microsoft.com/en-us/free/) which can be obtained for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
+Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure Subscription which can be obtained for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
 
 ## Pricing details
 
@@ -30,7 +30,7 @@ Azure Pricing for running workloads on AKS is based on US currency list pricing 
 
 In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage. 
 
-For detailed pricing information, visit this [Azure pricing](https://azure.microsoft.com/en-us/pricing/details/azure-stack/aks-hci/) page. The list price for AKS on Azure Stack HCI or Windows Server includes the following:
+For detailed pricing information, visit the [Azure portal](https://portal.azure.com/) page. The list price for AKS on Azure Stack HCI or Windows Server includes the following:
 
 - Includes Kubernetes control plane and load balancer nodes:
   - The Arc-enabled AKS management cluster usage is *not* charged
