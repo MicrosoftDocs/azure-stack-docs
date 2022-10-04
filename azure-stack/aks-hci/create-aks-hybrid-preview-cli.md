@@ -10,10 +10,10 @@ ms.date: 09/29/2022
 # Overview of creating AKS hybrid clusters using Az CLI
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
 
-In this walkthrough you will create an AKS hybrid cluster using the Azure control plane. The cluster will be Azure Arc connected by default. While creating the cluster, you can provide an AAD group that contains the list of AAD users with Kubernetes cluster administrator access. After you have created the AKS hybrid cluster, you will be able to authenticate to the cluster using your AAD account. You can also delegate cluster administration to other members of the group for further access and configuration and delegate access to the cluster to non-administrator users.
+In this walkthrough, you'll create an AKS hybrid cluster using the Azure control plane. The cluster will be Azure Arc connected by default. While creating the cluster, you can provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access. After you've created the AKS hybrid cluster, you'll be able to authenticate to the cluster using your Azure AD account. You can also delegate cluster administration to other members of the group for further access and configuration and delegate access to the cluster to non-administrator users.
 
 ## Before you begin
-Before you begin, make sure you have the following details from your Azure and Azure Stack HCI administrator:
+Before you begin, make sure you've the following details from your Azure and Azure Stack HCI administrator:
 
 | Parameter |  Parameter details |
 | --------- | ------------------|
@@ -41,10 +41,10 @@ az hybridaks -h
 ```
 
 ## Create an AKS hybrid cluster using Az CLI 
-Use the `az hybridaks create` command to create an AKS hybrid cluster using Az CLI. To create the cluster, you need to pass a list of AAD group or user object IDs that will have full cluster administrator privileges to the AKS cluster. To learn more about creating AAD groups and adding users, review this [documentation](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+Use the `az hybridaks create` command to create an AKS hybrid cluster using Az CLI. To create the cluster, you need to pass a list of Azure AD group or user object IDs that will have full cluster administrator privileges to the AKS cluster. To learn more about creating Azure AD groups and adding users, review this [documentation](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ```azurecli
-az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --kubernetes-version "v1.21.9" --aad-admin-group-object-ids <comma seperated list of AAD group IDs> --generate-ssh-keys 
+az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --kubernetes-version "v1.21.9" --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys 
 ```
 You can skip adding --generate-ssh-keys if you already have an SSH key named `id_rsa` in the ~/.ssh folder.
 
@@ -53,18 +53,18 @@ You can skip adding --generate-ssh-keys if you already have an SSH key named `id
 az hybridaks show -n <aks-hybrid cluster name> -g <Azure resource group>
 ```
 
-### Add a nodepool to your AKS hybrid cluster
+### Add a node pool to your AKS hybrid cluster
 ```
 az hybridaks nodepool add --name <node pool name> --cluster-name <aks-hybrid cluster name> -g <Azure resource group>
 ```
 
-### List nodepools in your AKS hybrid cluster
+### List node pools in your AKS hybrid cluster
 ```
 az hybridaks nodepool list --cluster-name <aks-hybrid cluster name> -g <Azure resource group>
 ```
 
 ## Access the AKS hybrid cluster using Az CLI 
-Login to Azure and run the following command. Make sure you have installed the `hybridaks` extension in your environment.
+Log in to Azure and run the following command. Make sure you have installed the `hybridaks` extension in your environment.
 
 ```azurecli
 az login -t <tenantID>
@@ -97,4 +97,4 @@ az hybridaks delete --resource-group <resource group name> --name <akshci cluste
 ```
 
 ## Next Steps
-- [Troubleshoot and known issyes with AKS hybrid cluster provisioning from Azure](troubleshoot-aks-hybrid-preview.md)
+- [Troubleshoot and known issues with AKS hybrid cluster provisioning from Azure](troubleshoot-aks-hybrid-preview.md)
