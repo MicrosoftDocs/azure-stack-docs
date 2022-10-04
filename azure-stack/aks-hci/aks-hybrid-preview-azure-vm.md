@@ -313,4 +313,4 @@ kubectl get pods -A --kubeconfig .\target-config
 # Next Steps
 Once you've finished quickly trying out this feature in an Azure VM, you can take a look at the following documents related to the preview:
 
-- [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
+- [Review requirements to get started with AKS hybrid cluster provisioning through Azure in your datacenter](aks-hybrid-preview-requirements.md)
