@@ -19,7 +19,7 @@ Follow these steps to install Arc Resource Bridge on Windows Server through comm
 
 Follow [this quickstart to install](kubernetes-walkthrough-powershell.md) AKS on Windows Server management cluster. Since you will be running preview software beside your AKS on Windows Server setup, we do not recommend running AKS on Windows Server and this private preview in your production environment. We highly recommend installing the AKS management cluster only if using Azure Arc Resource Bridge behind a proxy. 
 
-If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](toubleshoot-overview.md). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 To check if you have successfully installed AKS on Windows Server, run the following command:
 
