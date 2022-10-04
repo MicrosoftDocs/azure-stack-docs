@@ -308,7 +308,9 @@ az hybridaks proxy --resource-group $resourceGroup --name “test-cluster” --f
 ```
 
 ### List the pods of the provisioned cluster using the kubeconfig:
+```
 kubectl get pods -A --kubeconfig .\target-config
+```
 
 # Next Steps
 Once you've finished quickly trying out this feature in an Azure VM, you can take a look at the following documents related to the preview:
