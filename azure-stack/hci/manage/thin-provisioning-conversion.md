@@ -1,20 +1,22 @@
 ---
-title: Thin provisioning conversion for version 22H2 (preview)
-description: Learn how to convert to thin provisioning for version 22H2 (preview)
+title: Convert to thin provisioned volumes
+description: Convert fixed volumes to thin provisioned on Azure Stack HCI.
 author: dansisson
 ms.topic: how-to
-ms.date: 09/30/2022
+ms.date: 10/04/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
-# Thin provisioning conversion for version 22H2 (preview)
+# Convert to thin provisioned volumes
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-Storage thin provisioning improves storage efficiency and simplifies management. In Azure Stack HCI version 22H2, existing fixed provisioned volumes can be converted inline to thin volumes using Windows PowerShell.
+This article describes how you can use Windows PowerShell to convert existing fixed provisioned volumes to thin provisioned volumes inline on your Azure Stack HCI cluster.
 
-Fixed provisioning allocates the full size of a volume from the storage pool at the time of creation. This however is inefficient as a portion of the storage pool's resources are depleted despite the volume being empty.
+## Fixed versus thin provisioning
+
+Fixed provisioning allocates the full size of a volume from the storage pool at the time of creation. This method is inefficient as a portion of the storage pool's resources are depleted despite the volume being empty.
 
 Converting from fixed to thin provisioned volumes returns any unused storage back to the pool for other volumes to leverage. As data is added or removed from the volume, the storage allocation will increase and decrease accordingly.
 
@@ -26,26 +28,22 @@ The following conversion scenarios are *not* supported:
 - Scaling from or to a mirror-accelerated parity volume.
 - Scaling from a nested two-way mirror or a nested mirror-accelerated parity volume.
 
-> [!NOTE]
-> In this preview release, only one Azure Stack HCI deployment per Active Directory domain is supported.
-
 ## Use PowerShell to convert volumes
 
-Use Windows PowerShell to convert from fixed to thin provisioning. Run PowerShell as Administrator and do the following:
+Use PowerShell to convert from fixed to thin provisioning as follows:
 
-1. Check the volume's allocated size, size, and provisioning type by running the following command:
+1. Run PowerShell as Administrator.
+1. Check the volume's allocated size, size, and provisioning type. Run the following command:
 
     ```powershell
     Get-VirtualDisk -FriendlyName <name> | FL AllocatedSize, Size, ProvisioningType
     ```
 
-    This shows sample output for the above command:
+    Here is a sample output for the preceding command:
 
     :::image type="content" source="media/thin-provisioning-conversion/get-virtual-disk.png" alt-text="Screenshot of PowerShell output window." lightbox="media/thin-provisioning-conversion/get-virtual-disk.png":::
 
 1. Convert the volume from fixed to thin provisioned as follows:
-
-      <!---:::image type="content" source="media/pp3-release-notes/Picture3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/pp3-release-notes/Picture3.png":::--->
 
     **For a non-tiered volume**, run the following command:
 
