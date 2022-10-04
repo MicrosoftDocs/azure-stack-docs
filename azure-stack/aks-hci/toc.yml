@@ -232,9 +232,9 @@
 - name: Create AKS hybrid clusters from Azure (preview)
   items:
   - name: Overview
-  - href:
+  - href: aks-hybrid-preview-overview.md
   - name: Preview requirements
-  - href:
+  - href: 
   - name: Install Azure Resource Bridge on Windows Server
   - href: 
   - name: Configure networking for AKS hybrid preview clusters
