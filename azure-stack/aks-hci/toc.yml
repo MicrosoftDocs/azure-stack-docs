@@ -234,7 +234,7 @@
   - name: Overview
   - href: aks-hybrid-preview-overview.md
   - name: Quickly deploy AKS hybrid preview on an Azure VM
-  - href: 
+  - href: aks-hybrid-preview-azure-vm.md
   - name: Preview requirements
   - href: aks-hybrid-preview-requirements.md
   - name: Install Azure Resource Bridge on Windows Server
