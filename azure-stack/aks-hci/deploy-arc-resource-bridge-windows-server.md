@@ -6,10 +6,12 @@ ms.author: abha
 ms.topic: how-to
 ms.date: 09/29/2022
 ---
-> Applies to: Windows Server 2019 or 2022
+
 
 
 # How to install Arc Resource Bridge on Windows Server through command line
+> Applies to: Windows Server 2019 or 2022
+
 Follow the below steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
 ### Step 1: Install AKS on Windows Server using PowerShell 
