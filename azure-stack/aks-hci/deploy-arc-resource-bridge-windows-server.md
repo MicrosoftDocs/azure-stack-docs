@@ -8,6 +8,10 @@ ms.date: 09/29/2022
 ---
 > Applies to: Windows Server 2019 or 2022
 
+
+# How to install Arc Resource Bridge on Windows Server through command line
+Follow the below steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
+
 ### Step 1: Install AKS on Windows Server using PowerShell 
 
 Follow [this quickstart to install](https://docs.microsoft.com/azure-stack/aks-hci/kubernetes-walkthrough-powershell) AKS on Windows Server management cluster. Since you will be running preview software beside your AKS on Windows Server setup, we do not recommend running AKS on Windows Server and this private preview in your production environment. We however highly recommend installing AKS management cluster only if using Azure Arc Resource Bridge behind a proxy. 
