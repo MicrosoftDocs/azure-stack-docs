@@ -1,7 +1,7 @@
 ---
 title: Known issues with AKS hybrid clusters provisioned from Azure
 description: Known issues with AKS hybrid clusters provisioned from Azure
-ms.topic: troubleshoot
+ms.topic: how-to
 ms.date: 10/03/2022
 author: sethmanheim
 ms.author: sethm 
@@ -37,21 +37,21 @@ If Azure Arc Resource Bridge is already deployed, you cannot deploy the AKS mana
 Uninstalling the AKS management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
 
-# How to collect logs
+## How to collect logs
 Login to the Azure Stack HCI or Windows Server cluster and collect logs using the following command. 
 
 ```powershell
 Get-ArcHciLogs
 ```
 
-# How to get cert-based admin kubeconfig of AKS hybrid cluster provisioned through Azure
+## How to get cert-based admin kubeconfig of AKS hybrid cluster provisioned through Azure
 To get the certificate based kubeconfig of your AKS hybrid cluster, you need to login to the Azure Stack HCI or Windows Server cluster and then run the following command
 
 ```powershell
 Get-TargetClusterAdminCredentials -clusterName <aks hybrid cluster-name> -outfile <location where you want to store the target cluster kubeconfig> -kubeconfig <kubeconfig of Arc Resource Bridge>
 ```
 
-# How to uninstall the preview
+## How to uninstall the AKS hybrid cluster provisioning from Azure preview
 
 ```azurecli
 az login
