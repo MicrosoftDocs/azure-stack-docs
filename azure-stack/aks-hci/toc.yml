@@ -238,11 +238,11 @@
   - name: Preview requirements
   - href: aks-hybrid-preview-requirements.md
   - name: Install Azure Resource Bridge on Windows Server
-  - href: 
-  - name: Configure networking for AKS hybrid preview clusters
-  - href:
-  - name: Create AKS hybrid preview clusters using Azure CLI
-  - href:
+  - href: deploy-arc-resource-bridge-windows-server.md
+  - name: Step 1: Configure networking for AKS hybrid preview clusters
+  - href: create-aks-hybrid-preview-networks.md
+  - name: Step 2: Create AKS hybrid preview clusters using Azure CLI
+  - href: create-aks-hybrid-preview-cli.md
   - name: Troubleshooting and known issues 
   - href:
   
