@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/15/2022
+ms.date: 10/04/2022
 ---
 
 # What's new in Azure Stack HCI, version 22H2 (preview)
@@ -91,6 +91,49 @@ With this release, cluster-aware updating is more reliable due to the smarter re
 
 For more information, see [What is Cluster-Aware Updating?](/windows-server/failover-clustering/cluster-aware-updating)
 
+## Thin provisioning improvements
+
+With this release, you can now convert existing  fixed volumes to thin provisioned volumes using PowerShell. Thin provisioning improves storage efficiency and simplifies management. 
+
+For more information, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](./index.yml).
+
+## Single server scale-out
+
+This release supports inline fault domain and resiliency changes for single-server cluster scale-out. Azure Stack HCI version 22H2 provides easy scaling options to go from a single-node cluster to a two-node cluster, and from a two-node cluster to a three-node cluster.
+
+For more information, see [Scale out single server on your Azure Stack HCI](./index.yml).
+
+## Tag-based segmentation
+
+In this release, you can secure your application workload virtual machines (VMs) from external and lateral threats with custom tags of your choice. Assign custom tags to classify your VMs, and then apply Network Security Groups (NSGs) based on those tags to restrict communication to and from external and internal sources. For example, to prevent your SQL VMs from communicating with your web server VMs, simply tag the corresponding VMs with *SQL* and *Web* tags. You can then create an NSG to prevent *Web* tag from communicating with *SQL* tag.
+
+For more information, see [Configure network security groups with Windows Admin Center](./manage/use-datacenter-firewall-windows-admin-center.md).
+
+## Azure Arc VM changes and Azure Marketplace
+
+With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
+
+You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later. 
+
+For more information, see:
+
+  - [Create VM image using an Azure marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
+  - [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
+  - [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
+
+## New Azure Stack HCI Environment Checker tool
+
+Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that will let you validate your:
+
+- Internet connectivity.
+- Hardware.
+- Network infrastructure for valid IP ranges provided by customers for deployment.
+- Active Directory (Adprep tool is run prior to deployment).
+
+The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
+
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
+
 ## New security capabilities
 
 For new installations, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
@@ -108,28 +151,6 @@ In summary, version 22H2 provides:
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes.
 
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
-
-
-## Azure Arc VM changes and Azure Marketplace
-
-With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
-
-You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
-
-## New Azure Stack HCI Environment Checker tool
-
-Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that will let you validate your:
-
-- Internet connectivity.
-- Hardware.
-- Network infrastructure for valid IP ranges provided by customers for deployment.
-- Active Directory (Adprep tool is run prior to deployment).
-
-While the connectivity validator is available today, the hardware, network infrastructure, and Active Directory validators are coming soon.
-
-The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
-
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
 
 
 ## Next steps
