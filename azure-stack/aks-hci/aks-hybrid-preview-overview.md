@@ -11,7 +11,7 @@ ms.reviewer: abha
 # Keyword: 
 ---
 
-# Overview
+# Overview of AKS hybrid clusters provisioned from Azure [Preview]
 Currently you can manage the life cycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. Through AKS hybrid cluster provisioning from Azure, you will be able to manage AKS clusters on Azure Stack HCI and Windows Server using Azure. Furthermore, your AKS hybrid clusters managed via Azure are always automatically connected to Azure Arc.
 
 At this point in time, you can perform the following operations through the Azure Portal and Azure CLI
@@ -47,6 +47,7 @@ A cluster extension is the on-premises equivalent of an Azure Resource Manager r
 ### Custom location
 A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying Azure service instances.
 
+## Personas and roles
 ### Admin role
 The role of the infrastructure administrator is to set up the platform components: for example, setting up Azure Stack HCI or Windows Server, the AKS management cluster, Arc resource bridge, the cluster extension, and the custom location. The admin role then creates on-premises networks that the "end-user" will use while creating AKS hybrid clusters. 
 
