@@ -127,4 +127,4 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 
 ## Next steps
-- [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server-cli.md)
+- [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
