@@ -130,7 +130,7 @@ For more information, see:
 
 ## Windows Server 2022 Datacenter Azure Edition VMs on Azure Stack HCI
 
-In this release, you can run Windows Server Azure Edition on Azure Stack HCI as one of the several Azure Benefits. The preview of Marketplace VM images lets customers deploy Windows Server Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
+Beginning this release, you can run Windows Server Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
 
 
 ## New Azure Stack HCI Environment Checker tool
