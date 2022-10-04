@@ -1,3 +1,20 @@
+---
+
+title: Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server pricing details
+description: Detailed pricing information for AKS on Azure Stack HCI and Windows Server 
+ms.topic: conceptual
+author: baziwane
+ms.author: rbaziwane 
+ms.lastreviewed: 10/04/2022
+ms.reviewer: sethm
+ms.date: 10/04/2022
+
+# Intent: As a Subscription Owner, I want to understand how the AKS service is priced and what I am paying for.
+# Keyword: pricing
+
+---
+
+
 # Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server pricing details
 
 Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and [install](https://docs.microsoft.com/en-us/azure-stack/aks-hci/setup) AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an [Azure Subscription](https://azure.microsoft.com/en-us/free/) which can be obtained for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
