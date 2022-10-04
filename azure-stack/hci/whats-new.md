@@ -113,19 +113,25 @@ In this release, you can secure your application workload virtual machines (VMs)
 
 Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance, We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
 
-If you have Software Assurance, you can use Azure Hybrid Benefit with Azure Stack HCI, at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
+If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
 
 ## Azure Arc VM changes and Azure Marketplace
 
 With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
 
-You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later. 
+You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
 
 For more information, see:
 
   - [Create VM image using an Azure marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
   - [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
   - [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
+
+
+## Windows Server 2022 Datacenter Azure Edition VMs on Azure Stack HCI
+
+In this release, you can run Windows Server Azure Edition on Azure Stack HCI as one of the several Azure Benefits. The preview of Marketplace VM images lets customers deploy Windows Server Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
+
 
 ## New Azure Stack HCI Environment Checker tool
 
