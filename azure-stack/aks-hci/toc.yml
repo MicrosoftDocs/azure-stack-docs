@@ -244,7 +244,7 @@
   - name: Step 2: Create AKS hybrid preview clusters using Azure CLI
   - href: create-aks-hybrid-preview-cli.md
   - name: Troubleshooting and known issues 
-  - href:
+  - href: troubleshoot-aks-hybrid-preview.md
   
   
 - name: Troubleshooting
