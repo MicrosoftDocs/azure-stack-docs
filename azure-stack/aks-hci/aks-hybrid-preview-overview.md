@@ -32,7 +32,7 @@ Through Azure Arc, you can use the following Azure services on your AKS hybrid c
 ## Supporting technologies
 
 ### AKS on Azure Stack HCI (AKS-HCI)
-If you aren't familiar with AKS on Azure Stack HCI or AKS on Windows Server, read this great introduction - [What is AKS on Azure Stack HCI and AKS on Windows Server?](https://docs.microsoft.com/azure-stack/aks-hci/overview). AKS on Azure Stack HCI and AKS on Windows Server is generally available since June 2021. You can create AKS clusters on Azure Stack HCI and Windows Server using PowerShell and Windows Admin Center. 
+If you aren't familiar with AKS on Azure Stack HCI or AKS on Windows Server, read this great introduction - [What is AKS on Azure Stack HCI and AKS on Windows Server?](/overview). AKS on Azure Stack HCI and AKS on Windows Server is generally available since June 2021. You can create AKS clusters on Azure Stack HCI and Windows Server using PowerShell and Windows Admin Center. 
 
 ### AKS host/management cluster
 The management cluster is created for you when you install AKS on Azure Stack HCI or AKS on Windows Server. The management cluster is a specialized Kubernetes cluster that provisions and manages all AKS workload clusters (these Kubernetes workload clusters are the real deal, and they run your applications). These AKS workload clusters can only be managed using Windows Admin Center and PowerShell. The management cluster today is backed by a single VM. You can check that this VM exists by looking at Hyper-V or the Windows Admin Center VM extension.
