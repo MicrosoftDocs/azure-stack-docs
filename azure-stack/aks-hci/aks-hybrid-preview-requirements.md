@@ -11,6 +11,7 @@ ms.date: 09/29/2022
 
 
 # Prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters
+
 > Applies to: Windows Server 2019, 2022
 
 ## Minimum resource requirements
@@ -20,10 +21,9 @@ Azure Arc Resource Bridge has the following resource requirements:
   - At least 4 vCPUs
   - At least 8 GB of memory
 
-
 ## Azure requirements
 
-You need to make sure that you have your Azure environment set up. Follow the table below to ensure you've covered everything you need for a successful installation:
+Make sure that you have your Azure environment set up. Follow this table to ensure you've covered everything you need for a successful installation.
 
 Windows Server infrastructure admin:
 
@@ -36,7 +36,8 @@ Windows Server infrastructure admin:
 | 5 | Did you install the Az extensions? | `az extension add --name k8s-extension --version 1.3.3` <br> `az extension add --name customlocation --version 0.1.3` <br> `az extension add --name arcappliance --version 0.2.26` <br> `az extension add --source "https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.1.4-py3-none-any.whl" --yes` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.33.0` <br> `core                              2.33.0` <br> `telemetry                          1.0.6` <br> Extensions: <br>` arcappliance                      0.2.26` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.1.4` <br> `k8s-extension                      1.3.3` |
 
 ## PowerShell module prerequisites
-You need to next make sure that you download the right versions of PowerShell modules directly on each node in your Windows Server cluster. Open a remote PowerShell session in admin mode on each node in your cluster to download the following PowerShell modules.
+
+Next, make sure that you download the right versions of PowerShell modules directly on each node in your Windows Server cluster. Open a remote PowerShell session in admin mode on each node in your cluster to download the following PowerShell modules.
 
 Windows Server admin:
 
@@ -46,11 +47,13 @@ Windows Server admin:
 | 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense` | |
 
 ## Networking prerequisites
-Setting up the right networking requires you to work with the network administrator of your datacenter. You have 2 options to choose from - static IP and DHCP. We highly recommend using static IP for your Azure Arc Resource Bridge for optimum reliability.
+
+Setting up the right networking requires you to work with the network administrator of your datacenter. You have two options to choose from: static IP and DHCP. We highly recommend using static IP for your Azure Arc Resource Bridge for optimum reliability.
 
 Windows Server admin in consultation with the datacenter network admin:
 
 ### Option 1: Static IP networking (Highly recommended)
+
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a static IP subnet? | This subnet will be used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge. | The IP address prefix of your subnet. For example - "172.16.0.0/16" |
@@ -62,6 +65,7 @@ Windows Server admin in consultation with the datacenter network admin:
 | 7 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Option 2: DHCP networking
+
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a DHCP server with atleast 3 IP addresses in your environment? | This DHCP server will be used to assign an IP address to the underlying VM of the Azure Arc Resource Bridge. | Check with your admin if your Windows Server network environment has a DHCP server. |
@@ -71,14 +75,16 @@ Windows Server admin in consultation with the datacenter network admin:
 | 5 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Proxy settings
+
 | Prerequisite |  Item  |  Details 
 | -- | ----- | ------- |
 | 1 | HTTP URL and port information |  Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
 | 2 | HTTPS URL and port information | Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
 | 3 | [Optional] Valid credentials for authentication to the proxy server | You can either use a PowerShell credential object containing the username and password to authenticate against the proxy server or a filename or certificate string of a PFX formatted client certificate used to authenticate against the proxy server. |
 
-#### Noproxy settings 
-The following table contains the list of addresses that must be excluded.
+#### Noproxy settings
+
+The following table contains the list of addresses that must be excluded:
 
 |      **IP Address**       |    **Reason for exclusion**    |  
 | ----------------------- | ------------------------------------ | 
@@ -87,7 +93,7 @@ The following table contains the list of addresses that must be excluded.
 | 10.0.0.0/8 | private network address space |
 | 172.16.0.0/12 |Private network address space - Kubernetes Service CIDR |
 | 192.168.0.0/16 | Private network address space - Kubernetes Pod CIDR |
-| <**Your enterprise namespace**> | You may want to exempt your enterprise namespace (for example, .contoso.com) from being directed through the proxy. To exclude all addresses in a domain, you must add the domain to the `noProxy` list. Use a leading period rather than a wildcard (\*) character. In the sample, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on. |
+| **Your enterprise namespace** | You may want to exempt your enterprise namespace (for example, .contoso.com) from being directed through the proxy. To exclude all addresses in a domain, you must add the domain to the `noProxy` list. Use a leading period rather than a wildcard (\*) character. In the sample, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on. |
 
 The default value for `noProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`. While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (for example, .contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the `noProxy` list.
 
@@ -108,7 +114,7 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 
 ### Firewall URL exceptions
 
-The following firewall URL exceptions are needed on all servers in the Windows Server cluster.
+The following firewall URL exceptions are needed on all servers in the Windows Server cluster:
 
 | **URL** | **Port** | **Service** | **Notes** |
 |:--------|:---------|:------------|:----------|
@@ -128,4 +134,5 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 
 ## Next steps
+
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
