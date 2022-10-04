@@ -14,9 +14,9 @@ Follow the below steps to install Arc Resource Bridge on Windows Server through 
 
 ### Step 1: Install AKS on Windows Server using PowerShell 
 
-Follow [this quickstart to install](https://docs.microsoft.com/azure-stack/aks-hci/kubernetes-walkthrough-powershell) AKS on Windows Server management cluster. Since you will be running preview software beside your AKS on Windows Server setup, we do not recommend running AKS on Windows Server and this private preview in your production environment. We however highly recommend installing AKS management cluster only if using Azure Arc Resource Bridge behind a proxy. 
+Follow [this quickstart to install](/kubernetes-walkthrough-powershell) AKS on Windows Server management cluster. Since you will be running preview software beside your AKS on Windows Server setup, we do not recommend running AKS on Windows Server and this private preview in your production environment. We however highly recommend installing AKS management cluster only if using Azure Arc Resource Bridge behind a proxy. 
 
-If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](https://docs.microsoft.com/azure-stack/aks-hci/known-issues). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](/known-issues). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 To check if you have successfully installed AKS on Windows Server, run the following command:
 
@@ -31,7 +31,7 @@ Expected Output:
 ```powershell
 1.0.12.10727
 ```
-> Note! Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](https://docs.microsoft.com/azure-stack/aks-hci/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+> Note! Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
 
@@ -69,7 +69,7 @@ Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortuna
 | -----------| ------ | ------------ |
 | $proxyServerHTTP | Required | HTTP URL and port information. For example, "http://192.168.0.10:80" |
 | $proxyServerHTTPS | Required | HTTPS URL and port information. For example, https://192.168.0.10:443 |
-| $proxyServerNoProxy | Required | URLs which can bypass proxy. Check the [table]() for more details  |
+| $proxyServerNoProxy | Required | URLs which can bypass proxy  |
 | $certificateFilePath | Optional | Name of the certificate file path for proxy. Example: C:\Users\Palomino\proxycert.crt |
 | $proxyServerUsername | Optional | Username for proxy authentication. The username and password will be combined in a URL format similar to the following: http://username:password@proxyserver.contoso.com:3128. Example: Eleanor
 | $proxyServerPassword | Optional | Password for proxy authentication. The username and password will be combined in a URL format similar to the following: http://username:password@proxyserver.contoso.com:3128. Example: PleaseUseAStrongerPassword!
@@ -188,19 +188,14 @@ az k8s-extension show --resource-group <resource group name> --cluster-name <azu
 
 ## Step 4: Installing a custom location on top of the VM and AKS hybrid extensions on the Azure Arc Resource Bridge
 
-You need to first collect the ARM IDs of the Azure Arc Resource Bridge and the AKS hybrid and VM extensions in PowerShell variables.
+You need to first collect the ARM IDs of the Azure Arc Resource Bridge and the AKS hybrid extension in PowerShell variables.
 
 ```azurecli
 $ArcResourceBridgeId=az arcappliance show --resource-group <resource group name> --name <arc appliance name> --query id -o tsv
-
 $AKSClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc appliance name> --cluster-type appliances --name <aks hybrid extension name> --query id -o tsv
 ```
-
-$VMClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc appliance name> --cluster-type appliances --name <VM extension name> --query id -o tsv
-```
   
-You can then create the custom location for your Windows Server cluster that has the AKS hybrid and VM extensions installed on it.
-
+You can then create the custom location for your Windows Server cluster that has the AKS hybrid extension installed on it.
 ```azurecli
 az customlocation create --name <customlocation name> --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId, $VMClusterExtensionResourceId --resource-group <resource group name>
 ```
