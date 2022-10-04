@@ -14,12 +14,12 @@ ms.reviewer: abha
 # Quickstart: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
 In this quickstart, you'll learn use Az CLI to test creating AKS hybrid clusters on-premises using Azure CLI.
 
-## Before you begin
+# Before you begin
 Before you begin, make sure you meet the following requirements -
 - Have access to an Azure subscription.
 - Make sure you’re an owner on the above subscription. 
 
-### Step 1: Register your Azure subscription for  features and providers
+## Step 1: Register your Azure subscription for  features and providers
 Register the Azure providers and Azure features on your Azure subscription. You can use the Azure shell in Azure portal to complete this operation – 
 
 ```cli
