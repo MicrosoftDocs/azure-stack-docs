@@ -232,19 +232,19 @@
 - name: Create AKS hybrid clusters from Azure (preview)
   items:
   - name: Overview
-  - href: aks-hybrid-preview-overview.md
+    href: aks-hybrid-preview-overview.md
   - name: Quickly deploy AKS hybrid preview on an Azure VM
-  - href: aks-hybrid-preview-azure-vm.md
+    href: aks-hybrid-preview-azure-vm.md
   - name: Preview requirements
-  - href: aks-hybrid-preview-requirements.md
+    href: aks-hybrid-preview-requirements.md
   - name: Install Azure Resource Bridge on Windows Server
-  - href: deploy-arc-resource-bridge-windows-server.md
+    href: deploy-arc-resource-bridge-windows-server.md
   - name: Configure networking for AKS hybrid preview clusters
-  - href: create-aks-hybrid-preview-networks.md
+    href: create-aks-hybrid-preview-networks.md
   - name: Create AKS hybrid preview clusters using Azure CLI
-  - href: create-aks-hybrid-preview-cli.md
+    href: create-aks-hybrid-preview-cli.md
   - name: Troubleshooting and known issues 
-  - href: troubleshoot-aks-hybrid-preview.md
+    href: troubleshoot-aks-hybrid-preview.md
   
   
 - name: Troubleshooting
