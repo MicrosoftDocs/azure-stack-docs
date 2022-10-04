@@ -14,7 +14,7 @@ ms.reviewer: abha
 # Quickstart: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
 In this quickstart, you'll learn use Az CLI to test creating AKS hybrid clusters on-premises using Azure CLI.
 
-# Before you begin
+## Before you begin
 Before you begin, make sure you meet the following requirements -
 - Have access to an Azure subscription.
 - Make sure you’re an owner on the above subscription. 
@@ -312,7 +312,7 @@ az hybridaks proxy --resource-group $resourceGroup --name “test-cluster” --f
 kubectl get pods -A --kubeconfig .\target-config
 ```
 
-# Next Steps
+## Next Steps
 Once you've finished quickly trying out this feature in an Azure VM, you can take a look at the following documents related to the preview:
 
 - [Review requirements to get started with AKS hybrid cluster provisioning through Azure in your datacenter](aks-hybrid-preview-requirements.md)
