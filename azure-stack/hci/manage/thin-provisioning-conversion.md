@@ -1,6 +1,6 @@
 ---
 title: Convert fixed to thin provisioned volumes on Azure Stack HCI
-description: Convert fixed volumes to thin provisioned on Azure Stack HCI.
+description: Convert fixed volumes to thin provisioned volumes on Azure Stack HCI.
 author: dansisson
 ms.topic: how-to
 ms.date: 10/04/2022
