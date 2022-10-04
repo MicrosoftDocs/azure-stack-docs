@@ -12,7 +12,7 @@ ms.reviewer: abha
 
 # Limitations and known issues
 
-### KVA timeout error
+## KVA timeout error
 
 Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
 
@@ -22,10 +22,12 @@ Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in
 
 To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
 
-### Issues with using Remote Desktop 
+## Issues with using Remote Desktop
+
 Deploying Azure Arc Resource Bridge through command line must be performed with line of sight to the on-premises infrastructure. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI or Windows Server cluster. To connect on each node of the Azure Stack HCI or Windows Server cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
 
-### Issues with using AKS-HCI and Azure Arc Resource Bridge
+## Issues with using AKS-HCI and Azure Arc Resource Bridge
+
 AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster must be enabled in the following deployment order:
     1. Deploy AKS management cluster 
     2. Deploy Arc Resource Bridge 
@@ -36,16 +38,17 @@ If Azure Arc Resource Bridge is already deployed, you cannot deploy the AKS mana
 
 Uninstalling the AKS management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
-
 ## How to collect logs
-Login to the Azure Stack HCI or Windows Server cluster and collect logs using the following command. 
+
+Sign in to the Azure Stack HCI or Windows Server cluster and collect logs using the following command: 
 
 ```powershell
 Get-ArcHciLogs
 ```
 
 ## How to get cert-based admin kubeconfig of AKS hybrid cluster provisioned through Azure
-To get the certificate based kubeconfig of your AKS hybrid cluster, you need to login to the Azure Stack HCI or Windows Server cluster and then run the following command
+
+To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to the Azure Stack HCI or Windows Server cluster and then run the following command:
 
 ```powershell
 Get-TargetClusterAdminCredentials -clusterName <aks hybrid cluster-name> -outfile <location where you want to store the target cluster kubeconfig> -kubeconfig <kubeconfig of Arc Resource Bridge>
