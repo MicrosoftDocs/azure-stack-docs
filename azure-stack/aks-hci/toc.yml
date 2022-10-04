@@ -288,7 +288,7 @@
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
-    href: pricing.md
+    href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Support policies
     href: support-policies.md
   - name: Get support

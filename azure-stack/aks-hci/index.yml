@@ -33,7 +33,7 @@ landingContent:
           - text: Resource limits
             url: concepts-support.md        
           - text: Pricing
-            url: pricing.md    
+            url: concepts-billing-pricingdetails.md    
   - title: Get started
     linkLists:
       - linkListType: deploy
