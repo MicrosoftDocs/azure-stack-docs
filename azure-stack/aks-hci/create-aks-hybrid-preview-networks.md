@@ -6,14 +6,15 @@ ms.author: abha
 ms.topic: how-to
 ms.date: 09/29/2022
 ---
-> Applies to: Windows Server 2019 or 2022, Azure Stack HCI
 
-# Overview
+
+# How to create AKS hybrid networks for Azure
+> Applies to: Windows Server 2019 or 2022, Azure Stack HCI
 Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator also needs to create AKS hybrid networks on-premises and connect these networks to Azure. You can choose between DHCP and static IP based networking for your AKS hybrid clusters. 
 
 Make sure that the IP addresses you give here do not overlap with the VIP pool or k8sNodePool you created by running `New-AksHciNetworkSetting` or `New-AksHciClusterNetwork` or `New-ArcHciAksConfigFiles`.
 
-IP address exhaustion can lead Kubernetes cluster deployment failures. As an admin, you need to make sure that the network object you will create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](https://docs.microsoft.com/azure-stack/aks-hci/concepts-node-networking#minimum-ip-address-reservations-for-an-aks-on-azure-stack-hci-deployment).
+IP address exhaustion can lead Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you will create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](/concepts-node-networking#minimum-ip-address-reservations-for-an-aks-on-azure-stack-hci-deployment).
 
 
 ## Static IP based network (recommended)
@@ -96,5 +97,5 @@ Provide the following details to the end user:
 | Custom-location-id  | ARM ID of the custom location you created in step 4. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 | vnet-id | ARM ID of the Azure hybridaks vnet you created in step 6. You can get the ARM ID using `az hybridaks vnet show --name <vnet name> --resource-group <azure resource group> --query "id" -o tsv` |
 
-# Next Steps
+## Next Steps
 [Create and manage AKS hybrid clusters from Azure CLI](create-aks-hybrid-preview-cli.md)
