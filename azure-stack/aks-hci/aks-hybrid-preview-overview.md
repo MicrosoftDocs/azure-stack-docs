@@ -59,4 +59,4 @@ The role of the user/dev is to create AKS hybrid clusters and run applications o
 Once the user has the details described in the previous paragraph, they are free to create an AKS on Azure Stack HCI cluster as they see fit - Windows/Linux node pools, Kubernetes versions, etc. The user can then run their containerized applications by downloading the cluster *kubeconfig*.
 
 # Next steps
-[Pre-requisites for creating and managing AKS hybrid clusters from Azure]()
+[Quickly test AKS hybrid cluster provisioning from Azure on an Azure VM](aks-hybrid-preview-azure-vm.md)
