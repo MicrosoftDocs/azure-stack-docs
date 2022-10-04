@@ -99,4 +99,4 @@ az hybridaks delete --resource-group <resource group name> --name <akshci cluste
 ```
 
 # Next Steps
-[Deploy Azure Defender and other services on your AKS hybrid preview cluster using Azure Arc extensions]()
+- [Troubleshoot and known issyes with AKS hybrid cluster provisioning from Azure](troubleshoot-aks-hybrid-preview.md)
