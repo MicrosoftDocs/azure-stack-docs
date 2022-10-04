@@ -9,13 +9,14 @@ ms.date: 09/29/2022
 
 
 # How to create AKS hybrid networks for Azure
+
 > Applies to: Windows Server 2019 or 2022, Azure Stack HCI
+
 Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator also needs to create AKS hybrid networks on-premises and connect these networks to Azure. You can choose between DHCP and static IP based networking for your AKS hybrid clusters. 
 
-Make sure that the IP addresses you give here do not overlap with the VIP pool or k8sNodePool you created by running `New-AksHciNetworkSetting` or `New-AksHciClusterNetwork` or `New-ArcHciAksConfigFiles`.
+Make sure that the IP addresses you give here do not overlap with the VIP pool or k8sNodePool you created by running `New-AksHciNetworkSetting`, `New-AksHciClusterNetwork`, or `New-ArcHciAksConfigFiles`.
 
-IP address exhaustion can lead Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you will create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](/concepts-node-networking#minimum-ip-address-reservations-for-an-aks-on-azure-stack-hci-deployment).
-
+IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](/concepts-node-networking#minimum-ip-address-reservations-for-an-aks-on-azure-stack-hci-deployment).
 
 ## Static IP based network (recommended)
 
@@ -37,6 +38,7 @@ New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddres
 ```
 
 #### Static IP based network with Vlan
+
 ```powershell
 New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -kubeconfig $appliancekubeconfig -vlanID $vlanid
 ```
@@ -56,6 +58,7 @@ New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippools
 ```
 
 #### DHCP based network with Vlan
+
 ```powershell
 New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -kubeconfig $appliancekubeconfig -vlanid $vlanid
 ```
@@ -75,20 +78,22 @@ az hybridaks vnet create -n "hybridaksvnet" -g $resource_group --custom-location
 
 Use the following steps to create AKS hybrid clusters and assign RBAC access:
 
-1. Go to Azure Portal, navigate to the subscription and then resource group that you used to create your Appliance, custom location and connected your on-premises network.
+1. Go to the Azure portal, navigate to the subscription and then the resource group that you used to create your appliance, custom location, and connected your on-premises network.
 2. Go to IAM in the left-hand side of the portal.
-3. Click **Role assignment** -> **Add assignment**.
-4. Type in the name of the end user and assign them *contributor* access.
+3. Select **Role assignment** -> **Add assignment**.
+4. Type the name of the end user and assign them **contributor** access.
 
 
-## Download the Kubernetes VHD file 
-Run the following command to download the Linux VHD file specific to the Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.21.9
+## Download the Kubernetes VHD file
+
+Run the following command to download the Linux VHD file specific to the Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.21.9:
 
 ```powershell
 Add-KvaGalleryImage -kubernetesVersion 1.21.9
 ```
 
-## Give the end user the following details 
+## Give the end user the following details
+
 Provide the following details to the end user:
 
 | Parameter |  Parameter details |
@@ -97,5 +102,6 @@ Provide the following details to the end user:
 | Custom-location-id  | ARM ID of the custom location you created in step 4. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 | vnet-id | ARM ID of the Azure hybridaks vnet you created in step 6. You can get the ARM ID using `az hybridaks vnet show --name <vnet name> --resource-group <azure resource group> --query "id" -o tsv` |
 
-## Next Steps
+## Next steps
+
 [Create and manage AKS hybrid clusters from Azure CLI](create-aks-hybrid-preview-cli.md)
