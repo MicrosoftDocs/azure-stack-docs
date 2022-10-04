@@ -8,9 +8,10 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 09/29/2022
 ---
-> Applies to: Windows Server 2019, 2022
+
 
 # Prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters
+> Applies to: Windows Server 2019, 2022
 
 ## Minimum resource requirements
 
@@ -29,7 +30,7 @@ Windows Server infrastructure admin:
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ----- | ------- |
 | 1 | Do you have an Azure subscription?  | The Azure Arc Resource Bridge will be deployed in this Azure subscription. |  Make sure you have your subscription ID. |
-| 2 | Do you have a recent version of Az CLI installed? | Required to run the Az commands. You need to install the Az CLI on all physical nodes in your Windows Server cluster. Follow this link to [install Az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can upgrade to the latest version by running `az upgrade`. | Verify that you have Az CLI by running `az -v`. |
+| 2 | Do you have a recent version of Az CLI installed? | Required to run the Az commands. You need to install the Az CLI on all physical nodes in your Windows Server cluster. Follow this link to [install Az CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can upgrade to the latest version by running `az upgrade`. | Verify that you have Az CLI by running `az -v`. |
 | 3 | Have you registered your subscription for this preview feature? | `az account set -s <subscriptionID from step 1>` <br> `az feature register --namespace Microsoft.HybridContainerService` <br> `az feature register --namespace Microsoft.ResourceConnector` <br>`az feature register --namespace Microsoft.HybridConnectivity`| Verify if you have registered the features by running the command: <br> `az account set -s <subscriptionID from #1>` <br> `az feature show --namespace Microsoft.HybridContainerService -o table` <br> `az feature show --namespace Microsoft.HybridConnectivity -o table` |
 | 4 | Have you registered all the right providers on your subscription? | Wait till the features in the previous step have been registered before proceeding with this step. You need to register the providers to use this preview: <br> `az account set -s <subscriptionID from step #1>` <br> `az provider register --namespace Microsoft.Kubernetes` <br> `az provider register --namespace Microsoft.KubernetesConfiguration` <br> `az provider register --namespace Microsoft.ExtendedLocation` <br> `az provider register --namespace Microsoft.ResourceConnector` <br> `az provider register --namespace Microsoft.HybridContainerService`  <br> `az provider register --namespace Microsoft.HybridConnectivity` | If the status shows *registering*, try again after some time. <br> `az account set -s <subscriptionID from step #1>` <br> `az provider show --namespace Microsoft.Kubernetes -o table` <br> `az provider show --namespace Microsoft.KubernetesConfiguration -o table` <br> `az provider show --namespace Microsoft.ExtendedLocation -o table` <br> `az provider show --namespace Microsoft.ResourceConnector -o table` <br> `az provider show --namespace Microsoft.HybridContainerService -o table` <br> `az provider show --namespace Microsoft.HybridConnectivity -o table` | 
 | 5 | Did you install the Az extensions? | `az extension add --name k8s-extension --version 1.3.3` <br> `az extension add --name customlocation --version 0.1.3` <br> `az extension add --name arcappliance --version 0.2.26` <br> `az extension add --source "https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.1.4-py3-none-any.whl" --yes` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.33.0` <br> `core                              2.33.0` <br> `telemetry                          1.0.6` <br> Extensions: <br>` arcappliance                      0.2.26` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.1.4` <br> `k8s-extension                      1.3.3` |
