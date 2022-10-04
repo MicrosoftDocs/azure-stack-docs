@@ -216,4 +216,4 @@ az customlocation show --name <custom location name> --resource-group <resource 
 ```
   
 ## Next steps
-- [Create networks and download VHD images for deploying AKS hybrid clusters from Azure]()
+- [Create networks and download VHD images for deploying AKS hybrid clusters from Azure](create-aks-hybrid-preview-networks.md)
