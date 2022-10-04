@@ -53,75 +53,6 @@ You'll create a VM image starting from an Azure Marketplace image and then use t
 
 Follow these steps to create a VM image using the Azure CLI.
 
-<!--### Download the preview extension
-
-1. Run PowerShell as an administrator.
-
-1. Download the preview extension. To download, type:
-    
-    ```azurecli
-    $sourceURI = "https://azshciarcvmartifacts.blob.core.windows.net/arc-vm-artifacts/azurestackhci-0.2.3-py3-none-any.whl" 
-    $destination = <any folder> 
-    Invoke-WebRequest -Uri $sourceURI -OutFile "$destination\azurestackhci-0.2.3-py3-none-any.whl"
-    ```
-
-### Install the preview extension
-
-1. Run PowerShell as an administrator.
-
-1. Verify the version of the az CLI. Type:
-
-    ```azurecli
-    az version
-    ```
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
-
-1. Remove any older versions of `azurestackhci` extensions that are installed on your cluster.
-
-   ```azurecli
-   az extension remove --name azurestackhci
-   ``` 
-
-1. Switch to the directory that contains the preview extension. Install the preview extension.
-
-    ```azurecli
-    az extension add --source .\<Azure Stack HCI preview extension file name>
-    ```
-
-1. When prompted, type `y` to confirm the installation.
- 
-    Here's a sample output:
-
-    ```
-    PS C:\Users\Administrator> az account set --subscription "<Subscription ID>"
-    PS C:\Users\Administrator> az extension remove --name azurestackhci
-    The extension azurestackhci is not installed.
-    PS C:\Users\Administrator> cd C:\Users\azcli
-    PS C:\Users\azcli> dir
-    
-    Directory: C:\Users\\azcli
-    Mode                LastWriteTime         Length Name
-    ----                -------------         ------ ----
-    -a----         8/1/2022  11:04 AM         109247 azurestackhci-0.2.3-py3-none-any.whl
-    
-    PS C:\Users\azcli> az extension add --source .\azurestackhci-0.2.3-py3-none-any.whl
-    Are you sure you want to install this extension? (y/n): y
-    The installed extension 'azurestackhci' is experimental and not covered by customer support. Please use with discretion.
-    PS C:\Users\ azcli>
-    ```
--->
-
 ### Set some parameters
 
 1. Run PowerShell as an administrator.
@@ -265,7 +196,6 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
         
    :::image type="content" source="./media/manage-vm-resources/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/manage-vm-resources/create-an-image-create.png":::
   
-<!--  
 1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download. 
 
    :::image type="content" source="./media/manage-vm-resources/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/manage-vm-resources/deployment-in-progress.png":::
@@ -281,13 +211,16 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
    If the download of the VM image fails, the error details are shown in the portal blade.
 
    :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
--->
 
 ---
 
 ## List VM images
 
+You need to view the list of VM images to choose an image to manage.
+
 # [Azure CLI](#tab/azurecli)
+
+Follow these steps to list VM image using Azure CLI.
 
 1. Run PowerShell as an administrator.
 1. Set some parameters.
@@ -434,15 +367,14 @@ PS C:\Users\azcli>
 
 In the Azure portal of your Azure Stack HCI cluster resource, you can track the VM image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
 
-1. To view more details of any image, select the VM image name from the list of VM images.
+Follow these steps to view the list of VM images in Azure portal.
 
-1. When the image download is complete, the VM image shows up in the list of images, and the **Status** shows as **Available**.
+1. In the Azure portal, go to your Azure Stack HCI cluster resource.
+1. Go to **Resources > VM images**.
+1. In the right-pane, you can view the list of the VM images.
 
-   :::image type="content" source="./media/manage-vm-resources/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/added-vm-image.png":::
+    :::image type="content" source="./media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/list-virtual-machine-images.png":::
 
-   If the download of the VM image fails, the error details are shown in the portal blade.
-
-   :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
 ---
 
 
@@ -478,7 +410,7 @@ Follow these steps to use Azure CLI to view properties of an image:
         Here's a sample output for this command:
 
         ```
-        PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --id $mktplaceImageID
+        PS C:\Users\azcli> az azurestackhci image show --id $mktplaceImageID
         Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
@@ -510,7 +442,7 @@ Follow these steps to use Azure CLI to view properties of an image:
           "tags": null,
           "type": "microsoft.azurestackhci/galleryimages"
         }
-        PS C:\Users\azcli\bugbash-extension>
+        PS C:\Users\azcli>
         ```
 
 1.	Take the following steps when specifying name and resource group.
@@ -531,7 +463,7 @@ Follow these steps to use Azure CLI to view properties of an image:
         Here's a sample output:
 
          ```azurecli
-         PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+         PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
          Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
          {
             "extendedLocation": {
@@ -563,7 +495,7 @@ Follow these steps to use Azure CLI to view properties of an image:
             "tags": null,
             "type": "microsoft.azurestackhci/galleryimages"
          }
-         PS C:\Users\azcli\bugbash-extension>        
+         PS C:\Users\azcli>        
          ```
 
 # [Azure portal](#tab/azureportal)
@@ -609,16 +541,16 @@ You can delete image two ways:
 After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
 
 ```
-PS C:\Users\azcli\bugbash-extension> $subscription = "<Subscription ID>"
-PS C:\Users\azcli\bugbash-extension> $resource_group = "mkclus90-rg"
-PS C:\Users\azcli\bugbash-extension> $mktplaceImage = "marketplacetest04"
-PS C:\Users\azcli\bugbash-extension> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> $subscription = "<Subscription ID>"
+PS C:\Users\azcli> $resource_group = "mkclus90-rg"
+PS C:\Users\azcli> $mktplaceImage = "marketplacetest04"
+PS C:\Users\azcli> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli\bugbash-extension> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest04' under resource group 'mkclus90-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
-PS C:\Users\azcli\bugbash-extension>
+PS C:\Users\azcli>
 ```
 
 # [Azure portal](#tab/azureportal)
