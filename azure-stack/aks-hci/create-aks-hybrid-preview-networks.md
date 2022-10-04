@@ -97,4 +97,4 @@ Provide the following details to the end user:
 | vnet-id | ARM ID of the Azure hybridaks vnet you created in step 6. You can get the ARM ID using `az hybridaks vnet show --name <vnet name> --resource-group <azure resource group> --query "id" -o tsv` |
 
 # Next Steps
-[Create and manage AKS hybrid clusters from Azure CLI]()
+[Create and manage AKS hybrid clusters from Azure CLI](create-aks-hybrid-preview-cli.md)
