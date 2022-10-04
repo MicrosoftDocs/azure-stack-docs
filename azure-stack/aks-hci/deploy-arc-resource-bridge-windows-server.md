@@ -27,7 +27,7 @@ Expected Output:
 ```powershell
 1.0.12.10727
 ```
-> Note! Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](https://docs.microsoft.com/azure-stack/aks-hci/known-issues). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+> Note! Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](https://docs.microsoft.com/azure-stack/aks-hci/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
 
@@ -41,7 +41,7 @@ Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortuna
 | $resourceName | The name of your Azure Arc Resource Bridge |
 | $workDirectory | Path to a shared cluster volume that stores the config files we create for you. We recommend you use the same workDir you used while installing AKS-HCI. Make sure your workDir full path does not contain any spaces. |
 
-#### Additional parameters if you're using Static IP (recommended) -
+#### More parameters if you're using Static IP (recommended) -
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
@@ -52,14 +52,14 @@ Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortuna
 | $vmIP | This IP address will the IP address of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isnt being used anywhere else.
 | $controlPlaneIP | This IP address will be used by the Kubernetes API server of the Azure Arc Resource Bridge. Similar to $vmIP, make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
 
-#### Additional parameters if you're using DHCP -
+#### More parameters if you're using DHCP -
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
 | $vswitchname | The name of your VM switch |
 | $controlPlaneIP | This IP address will be used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
 
-#### Additional parameters if you have a proxy server in your environment -
+#### More parameters if you have a proxy server in your environment -
 
 | Parameter  | Required or Optional? |  Parameter details |
 | -----------| ------ | ------------ |
@@ -70,7 +70,7 @@ Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortuna
 | $proxyServerUsername | Optional | Username for proxy authentication. The username and password will be combined in a URL format similar to the following: http://username:password@proxyserver.contoso.com:3128. Example: Eleanor
 | $proxyServerPassword | Optional | Password for proxy authentication. The username and password will be combined in a URL format similar to the following: http://username:password@proxyserver.contoso.com:3128. Example: PleaseUseAStrongerPassword!
 
-#### Additional parameters if you are using a vlan -
+#### More parameters if you are using a vlan -
 | Parameter  |  Parameter details |
 | -----------| ------------ |
 | $vlanid | VLAN ID |
@@ -150,7 +150,7 @@ az arcappliance create hci --config-file $configfile --kubeconfig $appliancekube
 
 And with the `az arcappliance create` command, you're done with deploying the Appliance! 
 
-Before proceeding to the next step, run the following command to check if the Azure Arc Resource Bridge status says *Running*. It might not say *Running* at first. This takes time. Try again after a few minutes.
+Before proceeding to the next step, run the following command to check if the Azure Arc Resource Bridge status says *Running*. It might not say *Running* at first. This operation takes time. Try again after a few minutes.
 
 ```azurecli
 az arcappliance show --resource-group $resourceGroup --name $resourceName --query "status" -o tsv
