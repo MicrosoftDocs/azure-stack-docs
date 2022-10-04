@@ -87,27 +87,33 @@ In version 22H2, the Hyper-V live migration is faster and more reliable for swit
 
 ### Cluster-Aware Updating (CAU) improvements
 
-With this release, cluster-aware updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-aware updating also supports single-node deployments.
+With this release, cluster-aware updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-aware updating also supports single server deployments.
 
 For more information, see [What is Cluster-Aware Updating?](/windows-server/failover-clustering/cluster-aware-updating)
 
-## Thin provisioning improvements
+### Thin provisioning conversion
 
-With this release, you can now convert existing  fixed volumes to thin provisioned volumes using PowerShell. Thin provisioning improves storage efficiency and simplifies management. 
+With this release, you can now convert existing fixed provisioned volumes to thin using PowerShell. Thin provisioning improves storage efficiency and simplifies management.
 
-For more information, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](./index.yml).
+For more information, see [Convert fixed to thin provisioned volumes on your Azure Stack HCI](./index.yml).
 
-## Single server scale-out
+### Single server scale-out
 
-This release supports inline fault domain and resiliency changes for single-server cluster scale-out. Azure Stack HCI version 22H2 provides easy scaling options to go from a single-node cluster to a two-node cluster, and from a two-node cluster to a three-node cluster.
+This release supports inline fault domain and resiliency changes to scale out a single server. Azure Stack HCI version 22H2 provides easy scaling options to go from a single server to a two-node cluster, and from a two-node cluster to a three-node cluster.
 
 For more information, see [Scale out single server on your Azure Stack HCI](./index.yml).
 
-## Tag-based segmentation
+### Tag-based segmentation
 
 In this release, you can secure your application workload virtual machines (VMs) from external and lateral threats with custom tags of your choice. Assign custom tags to classify your VMs, and then apply Network Security Groups (NSGs) based on those tags to restrict communication to and from external and internal sources. For example, to prevent your SQL VMs from communicating with your web server VMs, simply tag the corresponding VMs with *SQL* and *Web* tags. You can then create an NSG to prevent *Web* tag from communicating with *SQL* tag.
 
 <!--For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md)-->.
+
+## Azure Hybrid Benefit for Azure Stack HCI
+
+Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance, We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
+
+If you have Software Assurance, you can use Azure Hybrid Benefit with Azure Stack HCI, at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
 
 ## Azure Arc VM changes and Azure Marketplace
 
