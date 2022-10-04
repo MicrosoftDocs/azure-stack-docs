@@ -6,15 +6,13 @@ ms.author: abha
 ms.topic: how-to
 ms.date: 09/29/2022
 ---
+
+# Overview of creating AKS hybrid clusters using Az CLI
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
-
-
-# Overview
 
 In this walkthrough you will create an AKS hybrid cluster using the Azure control plane. The cluster will be Azure Arc connected by default. While creating the cluster, you can provide an AAD group that contains the list of AAD users with Kubernetes cluster administrator access. After you have created the AKS hybrid cluster, you will be able to authenticate to the cluster using your AAD account. You can also delegate cluster administration to other members of the group for further access and configuration and delegate access to the cluster to non-administrator users.
 
-# Before you begin
- 
+## Before you begin
 Before you begin, make sure you have the following details from your Azure and Azure Stack HCI administrator:
 
 | Parameter |  Parameter details |
@@ -25,7 +23,7 @@ Before you begin, make sure you have the following details from your Azure and A
 
 ## Installing Az CLI and hybridAKS extension
 
-Make sure you have the latest version of Az CLI installed on your dev box. [Install Az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). You can also choose to upgrade your Az CLI using `az upgrade`.
+Make sure you have the latest version of Az CLI installed on your dev box. [Install Az CLI](/cli/azure/install-azure-cli). You can also choose to upgrade your Az CLI using `az upgrade`.
 
 Confirm that you have alteast v2.34.0 of Az CLI installed using `az -v`
 
@@ -43,7 +41,7 @@ az hybridaks -h
 ```
 
 ## Create an AKS hybrid cluster using Az CLI 
-Use the `az hybridaks create` command to create an AKS hybrid cluster using Az CLI. To create the cluster, you need to pass a list of AAD group or user object IDs that will have full cluster administrator privileges to the AKS cluster. To learn more about creating AAD groups and adding users, review this [documentation](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+Use the `az hybridaks create` command to create an AKS hybrid cluster using Az CLI. To create the cluster, you need to pass a list of AAD group or user object IDs that will have full cluster administrator privileges to the AKS cluster. To learn more about creating AAD groups and adding users, review this [documentation](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ```azurecli
 az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --kubernetes-version "v1.21.9" --aad-admin-group-object-ids <comma seperated list of AAD group IDs> --generate-ssh-keys 
@@ -98,5 +96,5 @@ az hybridaks nodepool delete --name <node pool name> --cluster-name <aks-hybrid 
 az hybridaks delete --resource-group <resource group name> --name <akshci cluster name>
 ```
 
-# Next Steps
+## Next Steps
 - [Troubleshoot and known issyes with AKS hybrid cluster provisioning from Azure](troubleshoot-aks-hybrid-preview.md)
