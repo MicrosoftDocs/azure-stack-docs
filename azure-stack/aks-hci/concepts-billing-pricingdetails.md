@@ -41,7 +41,7 @@ For detailed pricing information, visit the [Azure portal](https://portal.azure.
   - Windows Server Standard: Unlimited Windows containers and two Hyper-V containers
   - Windows Server Datacenter: Unlimited Windows and Hyper-V containers
 
-- Includes Azure     Arc-enabled Kubernetes at no extra charge and the following items:
+- Includes Azure Arc-enabled Kubernetes at no extra charge and the following items:
   - **Inventory, grouping, and tagging** in Azure
   - **Deployment of apps and configurations with GitOps**: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charged per vCPU per month)
   - **Azure Policy for Kubernetes**: Included at no extra charge (normally, the charge per vCPU per cluster for each month)
