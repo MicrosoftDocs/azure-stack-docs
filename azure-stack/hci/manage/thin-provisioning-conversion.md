@@ -3,7 +3,7 @@ title: Convert fixed to thin provisioned volumes on Azure Stack HCI
 description: Convert fixed volumes to thin provisioned volumes on Azure Stack HCI.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/04/2022
+ms.date: 10/05/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -41,7 +41,19 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
 
     Here is a sample output for the preceding command:
 
-    :::image type="content" source="media/thin-provisioning-conversion/get-virtual-disk.png" alt-text="Screenshot of PowerShell output window." lightbox="media/thin-provisioning-conversion/get-virtual-disk.png":::
+    ```powershell
+    PS C:\> New-Volume -FriendlyName DemoVolume -size 5TB -ProvisioningType Fixed
+
+    DriveLetter  FriendlyName  FileSystemType  DriveType  HealthStatus  OperationalStatus
+    -----------  ------------  --------------  ---------  ------------  -----------------
+                 DemoVolume    CSVFS_ReFS      Fixed      Healthy       OK
+
+    PS C:\> Get-VirtualDisk -FriendlyName DemoVolume | FL AllocatedSize, Size, ProvisioningType
+
+    Allocated Size   : 5497558138880
+    Size             : 5497558138880
+    ProvisioningType : Fixed
+    ```
 
 1. Convert the volume from fixed to thin provisioned as follows:
 
@@ -51,16 +63,21 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
     Set-VirtualDisk -FriendlyName <volume_name> -ProvisioningType Thin 
    ```
 
-    **For a tiered volume**, run the following commands:
+    **For a mirror-tiered volume**, run the following command:
 
    ```powershell
     Get-StorageTier <mirror_tier> | Set-StorageTier -ProvisioningType Thin
+   ```
+
+    **For a parity-tiered volume**, run the following command:
+
+   ```powershell
     Get-StorageTier <parity_tier> | Set-StorageTier -ProvisioningType Thin
    ```
 
 1. Remount the volume for the change to take effect. A remount is needed as Resilient File System (ReFS) only recognizes the provisioning type at mount time.
 
-    **For single-node clusters**, complete the following steps:
+    **For single-server clusters**, complete the following steps:
 
     1. Get the cluster shared volume (CSV) name:
 
@@ -80,7 +97,7 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
         Start-ClusterResource -Name <name>
         ```
 
-    **For two-node and greater clusters**, do the following:
+    **For two-node and larger clusters**, do the following:
 
     1. Get the CSV name and node names:
 
@@ -106,8 +123,8 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
     Get-Volume -FriendlyName <name > | Optimize-Volume -SlabConsolidate
     ```
     
-> [!NOTE]
-> Slab consolidation runs with low priority by default. To complete slab consolidation faster but with a small impact to foreground I/O, run the above command with the `-NormalPriority` parameter.
+    > [!NOTE]
+    > Slab consolidation runs with low priority by default. To complete slab consolidation faster but with a small impact to foreground I/O, run the above command with the `-NormalPriority` parameter.
 
 1. Confirm that `ProvisioningType` is set to `Thin` and `AllocatedSize` is less than the volume size (`Size`):
 

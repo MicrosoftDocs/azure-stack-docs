@@ -3,12 +3,12 @@ title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/04/2022
+ms.date: 10/05/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
-# Single server scale-out for your Azure Stack HCI (preview)
+# Single server scale-out for your Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
@@ -60,15 +60,20 @@ Complete the following steps to correctly set fault domains after adding a node:
     Set-VirtualDisk – FriendlyName <name> -FaultDomainAwareness StorageScaleUnit
     ```
 
-    **For a tiered volume**, run the following commands:
+    **For a mirror-tiered volume**, run the following command:
 
     ```powershell
     Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -FaultDomainAwareness StorageScaleUnit
+    ```
+
+    **For a parity-tiered volume**, run the following command:
+
+    ```powershell
     Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -FaultDomainAwareness StorageScaleUnit
     ```
 
     > [!NOTE]
-    > The prior command doesn't work for changing from `StorageScaleUnit` to `PhysicalDisk`, or from `StorageScaleUnit` to `Node` or `Chassis` types.
+    > The prior commands don't work for changing from `StorageScaleUnit` to `PhysicalDisk`, or from `StorageScaleUnit` to `Node` or `Chassis` types.
 
 
 ## Inline resiliency changes
@@ -80,34 +85,50 @@ Run the following command to check the progress of the resiliency changes. The r
 ```powershell
 Get-StorageJob
 ```
+
 This command displays only ongoing jobs.
 
-### Single-node to two-node cluster
+### Single-server to two-node cluster
 
 To remain as a two-way mirror, no action is required. To convert a two-way mirror to a nested two-way mirror, do the following:
 
-**For a non-tiered volume**, run the following commands:
+**For a non-tiered volume**, run the following commands to first set the virtual disk:
 
 ```powershell
 Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 4
+```
+
+Then, to move the cluster shared volume:
+
+```powershell
 Move-ClusterSharedVolume -name <name> -node <node>
 ```
 
-A remount is needed as Resilient File System (ReFS) only recognizes provisioning type at mount time. 
+A remount is needed as Resilient File System (ReFS) only recognizes provisioning type at mount time.
 
-**For a tiered volume**, run the following commands:
+**For a mirror-tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <mirror tier> | Set-StorageTier -NumberfOfDataCopies 4
-Get-StorageTier -FriendlyName <parity tier> | Set-StorageTier -NumberfOfDataCopies 4
+Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -NumberfOfDataCopies 4
+```
+
+**For a parity-tiered volume**, run the following command:
+
+```powershell
+Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -NumberfOfDataCopies 4
+```
+
+Then, to move the cluster shared volume for tiered volumes:
+
+```powershell
 Move-ClusterSharedVolume -name <name> -node <node>
 ```
 
 ### Two-node to three-node+ cluster
 
-To remain as a two-way mirror, no action is required. To convert a two-way mirror to a three-way or greater mirror, the following procedure is recommended.
+To remain as a two-way mirror, no action is required. To convert a two-way mirror to a three-way or larger mirror, the following procedure is recommended.
 
-Existing two-way mirror volumes can also take advantage of this using the following PowerShell commands. For example, for a single-node cluster or a three-node or greater cluster, you convert your two-way mirror volume into a three-way mirror volume.
+Existing two-way mirror volumes can also take advantage of this using the following PowerShell commands. For example, for a single-server cluster or a three-node or larger cluster, you convert your two-way mirror volume into a three-way mirror volume.
 
 The following scenarios are not supported:
 
@@ -115,20 +136,35 @@ The following scenarios are not supported:
 - Scaling to or from mirror-accelerated parity volumes.
 - Scaling from nested two-way mirror or nested mirror-accelerated parity volumes.
 
-**For a non-tiered volume**, run the following:
+**For a non-tiered volume**, run the following command:
 
 ```powershell
 Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 3
+```
+
+Then, to move the cluster shared volume:
+
+```powershell
 Move-ClusterSharedVolume -name <name> -node <node>
 ```
 
 A remount is needed as ReFS only recognizes provisioning type at mount time.
 
-**For a tiered volume**, run the following commands:
+**For a mirror-tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <mirror tier> | Set-StorageTier -NumberfOfDataCopies 3
-Get-StorageTier -FriendlyName <parity tier> | Set-StorageTier -NumberfOfDataCopies 3
+Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -NumberfOfDataCopies 3
+```
+
+**For a parity-tiered volume**, run the following command:
+
+```powershell
+Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -NumberfOfDataCopies 3
+```
+
+Then, to move the cluster shared volume for tiered volumes:
+
+```powershell
 Move-ClusterSharedVolume -name <name> -node <node>
 ```
 
