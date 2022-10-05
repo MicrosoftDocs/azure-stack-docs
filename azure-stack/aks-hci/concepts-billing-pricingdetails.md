@@ -58,7 +58,7 @@ If you enable hyper-threading on your physical computer, AKS will also enable hy
 
 ## Azure Hybrid Benefit for AKS
 
-AKS deployed on Azure Stack HCI and Windows Server 2019/2022 is now included at no additional cost for Azure Hybrid Benefit customers with Windows Server Datacenter and Standard with Software Assurance (SA) licenses. For more information visit https://aka.ms/ahb-aks
+AKS deployed on Azure Stack HCI and Windows Server 2019/2022 is now included at no additional cost for Azure Hybrid Benefit customers with Windows Server Datacenter and Standard with Software Assurance (SA) licenses. For more information, see [Azure Hybrid Benefit for Windows Server](https://aka.ms/ahb-aks).
 
 ## A comparison of AKS pricing
 
