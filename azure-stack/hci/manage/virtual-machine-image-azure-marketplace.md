@@ -535,7 +535,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 You can delete image two ways:
 
-- Specify name and resource-group.
+- Specify name and resource group.
 - Specify ID.
 
 After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
