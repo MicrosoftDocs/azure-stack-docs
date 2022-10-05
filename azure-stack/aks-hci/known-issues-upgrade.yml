@@ -11,28 +11,22 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Incorrect upgrade notification in Windows Admin Center.
-
-        answer: | 
-          If you receive an incorrect upgrade notification message `Successfully installed AksHci PowerShell module version null`, the upgrade operation is successful even if the notification is misleading.
-          
-          ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
-          
-          No action needed.
-      - question: | 
           After a successful upgrade, older versions of PowerShell are not removed.
 
         answer: | 
           Older versions of PowerShell are not removed
           
-          To work around this issue, you need to [run a script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
+          To work around this issue, you can [run this script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
       - question: | 
           Certificate renewal pod is in a crash loop state.
 
         answer: | 
           After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It's expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
           
-          To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
+          > [!NOTE]
+          > This issue is fixed after the April 2022 release.
+          
+          To resolve this issue, manually copy the cert tattoo file from the control plane node to each of the worker nodes.
           
           1. Copy the file from control plane VM to your host machine current directory.
           
@@ -61,6 +55,7 @@ sections:
               ```
           
           4. Repeat steps two and three for each of your worker nodes.
+          
       - question: | 
           Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days.
 
@@ -344,20 +339,6 @@ sections:
           ```
           
           After running this ssh command, the remaining nodes with the old Kubernetes version should be deleted and the upgrade will proceed.
-      - question: | 
-          After upgrading to PowerShell module 1.1.9, this error appears: 'Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1' on node: 'node1''.
-
-        answer: | 
-          This error was resolved in PowerShell module version 1.1.11.
-          
-          Update the PowerShell module to version 1.1.11 on all nodes to resolve this issue.
-      - question: | 
-          Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at 'Update-KvaInternal'.
-
-        answer: | 
-          When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. 
-          
-          An AKS on Azure Stack HCI upgrade is forward only and doesn't support version rollback, so if you get stuck, you can't upgrade.
       - question: | 
           Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster.
 
