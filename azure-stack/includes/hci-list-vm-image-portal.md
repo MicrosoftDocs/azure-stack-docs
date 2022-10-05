@@ -15,4 +15,4 @@ Follow these steps to view the list of VM images in Azure portal.
 1. Go to **Resources > VM images**.
 1. In the right-pane, you can view the list of the VM images.
 
-    :::image type="content" source="./media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot showing the list of VM images on Azure Stack HCI cluster." lightbox="./media/manage-vm-resources/list-virtual-machine-images.png":::
+    :::image type="content" source="../hci/manage/media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot showing the list of VM images on Azure Stack HCI cluster." lightbox="../hci/manage/media/manage-vm-resources/list-virtual-machine-images.png":::

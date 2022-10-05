@@ -11,8 +11,8 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
 1. Go to **Resources (Preview)** > **VM images**. In the right-pane, a list of VM images is displayed.
 
-   :::image type="content" source="./media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot showing list of images." lightbox="./media/manage-vm-resources/vm-images-list.png":::
+   :::image type="content" source="../hci/manage/media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot showing list of images." lightbox="../hci/manage/media/manage-vm-resources/vm-images-list.png":::
 
 1. Select the VM **Image name** to view the properties.
 
-   :::image type="content" source="./media/manage-vm-resources/vm-image-properties.png" alt-text="Screenshot showing the properties of a selected VM image." lightbox="./media/manage-vm-resources/vm-image-properties.png":::
+   :::image type="content" source="../hci/manage/media/manage-vm-resources/vm-image-properties.png" alt-text="Screenshot showing the properties of a selected VM image." lightbox="../hci/manage/media/manage-vm-resources/vm-image-properties.png":::
