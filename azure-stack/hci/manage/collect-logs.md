@@ -17,7 +17,7 @@ This article describes how to collect diagnostic logs and send them to Microsoft
 
 ## Collect logs via PowerShell
 
-Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
+Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
@@ -95,7 +95,7 @@ In this example, you send diagnostic data with role filtering for BareMetal and 
 
 ### Get a history of log collection
 
-After Azure Stack HCI collects log data, it is retained for 90 days in the Microsoft cluster and for 30 days in the customer device. To get a history of log collections for the last 90 days, enter:
+To get a history of log collections for the last 90 days, enter:
 
    ```powershell
    Get-LogCollectionHistory  
@@ -139,7 +139,9 @@ After Azure Stack HCI collects log data, it is retained for 90 days in the Micro
 
 - The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
-- When you run the `Send-DiagnosticData` cmdlet, the logs are copied. This copy is then parsed and sent to Microsoft. The local temporary copy is deleted from your system.
+- When you run the `Send-DiagnosticData` cmdlet, the logs are temporarily copied locally. This copy is parsed and sent to Microsoft and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+
+- When you run the `Send-DiagnosticData` cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ## Known issue with log collection
 
