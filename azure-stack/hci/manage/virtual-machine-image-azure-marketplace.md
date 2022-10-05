@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/26/2022
+ms.date: 10/05/2022
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -168,7 +168,7 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster resource, take the following steps:
+Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Stack HCI cluster resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 
@@ -365,15 +365,7 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal of your Azure Stack HCI cluster resource, you can track the VM image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
-
-Follow these steps to view the list of VM images in Azure portal.
-
-1. In the Azure portal, go to your Azure Stack HCI cluster resource.
-1. Go to **Resources > VM images**.
-1. In the right-pane, you can view the list of the VM images.
-
-    :::image type="content" source="./media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot showing the list of VM images on Azure Stack HCI cluster." lightbox="./media/manage-vm-resources/list-virtual-machine-images.png":::
+[!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
 
 ---
 
@@ -500,15 +492,8 @@ Follow these steps to use Azure CLI to view properties of an image:
 
 # [Azure portal](#tab/azureportal)
 
-In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster resource, perform the following steps:
+[!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
 
-1. Go to **Resources (Preview)** > **VM images**. In the right-pane, a list of VM images is displayed.
-
-   :::image type="content" source="./media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot showing list of images." lightbox="./media/manage-vm-resources/vm-images-list.png":::
-
-1. Select the VM **Image name** to view the properties.
-
-   :::image type="content" source="./media/manage-vm-resources/vm-image-properties.png" alt-text="Screenshot showing the properties of a selected VM image." lightbox="./media/manage-vm-resources/vm-image-properties.png":::
 ---
 
 
@@ -555,23 +540,10 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
- In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster
-resource, perform the following steps:
-
-1. Go to **Resources (Preview)** > **VM images**.
-
-1. From the list of VM images displayed in the right-pane, select the trash can icon next to the VM image you want to delete.
-
-   :::image type="content" source="./media/manage-vm-resources/delete-vm-image.png" alt-text="Screenshot showing the trash can icon against the VM image you want to delete." lightbox="./media/manage-vm-resources/delete-vm-image.png":::
-
-1. When prompted to confirm deletion, select **Yes**.
-
-   :::image type="content" source="./media/manage-vm-resources/prompt-to-confirm-deletion.png" alt-text="Screenshot showing a prompt to confirm deletion." lightbox="./media/manage-vm-resources/prompt-to-confirm-deletion.png":::
-
-After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
+[!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
 
 ---
 
 ## Next steps
 
-Use VM images to [Create Arc-enabled VMs]
+Use VM images to [Create Arc-enabled VMs](./manage-virtual-machines-in-azure-portal.md).

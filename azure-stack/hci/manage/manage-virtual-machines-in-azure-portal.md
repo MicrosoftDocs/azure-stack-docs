@@ -1,6 +1,6 @@
 ---
-title: Manage virtual machines in the Azure portal
-description: Learn how to view your cluster in the Azure portal and manage virtual machines.
+title: Create Arc-enabled virtual machines on Azure Stack HCI
+description: Learn how to view your cluster in the Azure portal and create Arc-enabled virtual machines on your Azure Stack HCI.
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 10/05/2022
 ---
 
-# View your cluster in Azure portal and manage virtual machines
+# Use VM images to create Arc-enabled virtual machines on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 21H2 and version 22H2
 
