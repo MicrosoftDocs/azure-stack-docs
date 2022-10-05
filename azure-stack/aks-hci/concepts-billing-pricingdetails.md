@@ -72,5 +72,5 @@ Use the table below to compare pricing for AKS.
 
 * Price assumes hyper-threading is available and enabled on physical systems.
 
-\* Price assumes that systems are running for the entire month.
+* Price assumes that systems are running for the entire month.
 
