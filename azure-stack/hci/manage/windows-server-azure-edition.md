@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/03/2022
+ms.date: 10/05/2022
 ---
 
 # Windows Server Azure Edition for new VMs
@@ -92,7 +92,7 @@ To create an Azure managed disk:
 
 ### 4. Export VHD to Azure Stack HCI cluster
 
-Next, you'll need to export the VHD you created from the managed disk to your Azure Stack HCI cluster, which will let you create new VMs. Use the following method in a regular web browser or in Azure Storage Explorer.
+Next, you'll need to export the VHD you created from the managed disk to your Azure Stack HCI cluster, which will let you create new VMs. Use the following method using a regular web browser or using Azure Storage Explorer.
 
 To export the VHD:
 
@@ -108,16 +108,21 @@ To export the VHD:
 
 When you're done with your VHD, free up space by deleting the managed disk.
 
-To delete the managed disk you created, run these PowerShell commands:
+To delete the managed disk you created, first revoke access:
 
 ```powershell
 az disk revoke-access --name $diskName --resource-group $diskRG 
+```
+
+Then, delete the disk:
+
+```powershell
 az disk delete --name $diskName --resource-group $diskRG --yes
 ```
 
-### 6. (optional) Convert to dynamic VHDx
+### 6. (Optional) Convert to dynamic VHDX
 
-Optionally, you can convert the downloaded VHD to a dynamic VHDx by running the following PowerShell command :
+Optionally, you can convert the downloaded VHD to a dynamic VHDX by running the following PowerShell command :
 
 ```powershell
 Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_path_on_cluster\filename.vhdx" -VHDType Dynamic
