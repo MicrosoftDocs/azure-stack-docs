@@ -70,7 +70,7 @@ Use the table below to compare pricing for AKS.
 | **-4 Worker Nodes -2 x (4 vCPU VM with Linux) -2 x (4 vCPU  VM with Windows) -16 vCPUs Total** | ~US $192 per month*                                          | ~US $384 per month*                                          | ~US $561 per month*                                          |
 | **Other information**                                        | Includes Azure Arc  enabled Kubernetes. Does not include the cost of hardware, hypervisor, or  Windows Server licenses. | Includes Azure Arc  enabled Kubernetes. Does not include the cost of hardware, hypervisor, or  Windows Server licenses. | Includes  Arc-enabled Kubernetes and the underlying infrastructure. Does not include  the cost of running Windows Server on Azure. |
 
-\* Price assumes hyper-threading is available and enabled on physical systems.
+* Price assumes hyper-threading is available and enabled on physical systems.
 
 \* Price assumes that systems are running for the entire month.
 
