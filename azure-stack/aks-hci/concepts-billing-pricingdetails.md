@@ -64,7 +64,7 @@ AKS deployed on Azure Stack HCI and Windows Server 2019/2022 is now included at 
 
 Use the table below to compare pricing for AKS.
 
-| **Workload cluster configuration**                           | **AKS \*with\* hyper-threading (most common   scenario)**    | **AKS \*without\* hyper-threading**                          | **AKS in Azure**                                             |
+| Workload cluster configuration                           | AKS \*with\* hyper-threading (most common   scenario)    | AKS without hyper-threading                          | AKS in Azure                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **-2 Worker Nodes -1  x (2 vCPU VM with Linux) -1 x (8 vCPU VM with Windows) -10 vCPUs Total** | ~US $120 per month*                                          | ~US $240 per month*                                          | ~US $350 per month*                                          |
 | **-4 Worker Nodes -2 x (4 vCPU VM with Linux) -2 x (4 vCPU  VM with Windows) -16 vCPUs Total** | ~US $192 per month*                                          | ~US $384 per month*                                          | ~US $561 per month*                                          |
