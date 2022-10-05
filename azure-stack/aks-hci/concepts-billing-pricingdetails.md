@@ -37,7 +37,7 @@ For detailed pricing information, visit the [Azure portal](https://portal.azure.
   - The workload cluster control plane and load balancer nodes are *not* charged
 
 - Includes Linux (CBL-Mariner) Container Hosts:
-  - Pricing does  not include Windows container hosts as they are licensed separately  through regular licensing channels
+  - Pricing does not include Windows container hosts as they are licensed separately through regular licensing channels
   - Windows Server Standard: Unlimited Windows containers and two Hyper-V containers
   - Windows Server Datacenter: Unlimited Windows and Hyper-V containers
 
