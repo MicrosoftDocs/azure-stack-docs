@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/05/2022
+ms.date: 10/06/2022
 ---
 
 # Windows Server Azure Edition for VMs
@@ -16,20 +16,22 @@ ms.date: 10/05/2022
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. Azure Stack HCI is the only on-premise platform to run Windows Server Azure Edition with Azure [Automanage](/azure/automanage.md). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch.md), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic.md), and Extended network for Azure.
 
+Learn more about [Azure Benefits on Azure Stack HCI](azure-benefits.md).
+
 ## Considerations
 
 To use Windows Server Azure Edition on your Azure Stack HCI environment, here are a couple of considerations:
 
 - **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed only on Azure Stack HCI version 21H2 and Azure Stack HCI version 22H2.
 
-- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.  For more information, see **[*TODO: link to licensing details*]**.
+- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.  For more information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
 >[!NOTE]
 >While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), this experience is in preview for this Azure Stack HCI release.
 
-Windows Server Azure Edition can be deployed as a guest VM using either HCI Marketplace or using the IaaS Marketplace manual [azcopy](/azure/storage/common/storage-ref-azcopy.md) option.
+Windows Server Azure Edition can be deployed as a guest VM using either an HCI Marketplace VHD image or an Azure Marketplace VHD image.
 
-## Option 1: Provision using HCI Marketplace
+## [HCI marketplace image](#tab/hci)
 
 You can provision a Windows Server Azure Edition VM directly from HCI Marketplace in conjunction with [VM provisioning using Azure Portal](azure-arc-enabled-virtual-machines.md).
 
@@ -40,7 +42,7 @@ You do this by following these steps:
 1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure Marketplace OS image.
 1. Use the Windows Server Azure Edition HCI gallery OS image to provision a VM.
 
-## Option 2: Download VHD image from Azure Marketplace
+## [Azure marketplace image](#tab/azure)
 
 As an alternative to Option 1 described above, you could instead download a Windows Server Azure Edition VHD image from Azure Marketplace, then use the VHD image to provision and deploy a VM.  To do so, complete the instructions as described below.
 
@@ -127,6 +129,8 @@ Optionally, you can convert the downloaded VHD to a dynamic VHDX by running the 
 ```powershell
 Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_path_on_cluster\filename.vhdx" -VHDType Dynamic
 ```
+
+---
 
 ## Using Hotpatch
 
