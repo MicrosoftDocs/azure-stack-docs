@@ -18,7 +18,7 @@ Azure Stack HCI version 22H2 supports inline fault domain and resiliency changes
 
 Azure Stack HCI version 22H2 provides easy scaling options to go from a single-node cluster to a two-node cluster, and from a two-node cluster to a three-node cluster. The following diagram shows how a single server can be scaled out to a multi-node cluster on your Azure Stack HCI.
 
-:::image type="content" source="media/single-node-scale-out/single-node-scale-out.png" alt-text="Diagram showing a single-node cluster to multi-node cluster scale-out." lightbox="media/single-node-scale-out/single-node-scale-out.png":::
+:::image type="content" source="media/single-node-scale-out/single-node-scale-out.png" alt-text="Diagram showing a single-server cluster to multi-node cluster scale-out." lightbox="media/single-node-scale-out/single-node-scale-out.png":::
 
 ## Inline fault domain changes
 
