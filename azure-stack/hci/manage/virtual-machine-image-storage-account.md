@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/28/2022
+ms.date: 10/05/2022
 ---
 
 # Create Azure Stack HCI VM image using image in Azure Storage account (preview)
@@ -195,164 +195,18 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 
 ## List VM images
 
+You need to view the list of VM images to choose an image to manage.
+
 # [Azure CLI](#tab/azurecli)
 
-1. Run PowerShell as an administrator.
-1. Set some parameters.
+[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
 
-    ```azurecli
-    $Subscription = "<Subscription ID associated with your cluster>"
-    $Resource_Group = "<Resource group name for your cluster>"
-    ```
-1. List all the VM images associated with your cluster. Run the following command:
-
-    ```azurecli
-    az azurestackhci image list --subscription $Subscription --resource-group $Resource_Group
-    ```
-    
-    Depending on the command used, a corresponding set of images associated with the Azure Stack HCI cluster are listed.
-
-    - If you specify just the subscription, the command lists all the images in the subscription.
-    - If you specify both the subscription and the resource group, the command lists all the images in the resource group.
-
-    These images include:
-    - VM images from marketplace images.
-    - Custom images that reside in your Azure Storage account or are in a local share on your cluster or a client connected to the cluster.
-
-Here's a sample output.
-
-```
-PS C:\Users\azcli> az azurestackhci images list --subscription "b8d594e5-51f3-4c11-9c54-a7771b81c712" --resource-group "mkclus90-rg"
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-[
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdgen1",
-    "location": "eastus2euap",
-    "name": "testvhdgen1",
-    "properties": {
-      "containerName": null,
-      "hyperVGeneration": "V1",
-      "identifier": null,
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "status": null,
-      "version": null
-    },
-    "resourceGroup": "mkclus90-rg",
-    "systemData": {
-      "createdAt": "2022-07-28T22:45:30.803142+00:00",
-      "createdBy": "guspinto@microsoft.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2022-07-28T22:45:30.803142+00:00",
-      "lastModifiedBy": "guspinto@microsoft.com",
-      "lastModifiedByType": "User"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/galleryimages"
-  },
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdxgen2",
-    "location": "eastus2euap",
-    "name": "testvhdxgen2",
-    "properties": {
-      "containerName": null,
-      "hyperVGeneration": null,
-      "identifier": null,
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "status": null,
-      "version": null
-    },
-    "resourceGroup": "mkclus90-rg",
-    "systemData": {
-      "createdAt": "2022-07-28T23:00:56.490100+00:00",
-      "createdBy": "guspinto@microsoft.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2022-07-28T23:00:56.490100+00:00",
-      "lastModifiedBy": "guspinto@microsoft.com",
-      "lastModifiedByType": "User"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/galleryimages"
-  },
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
-    "location": "eastus2euap",
-    "name": "marketplacetest03",
-    "properties": {
-      "containerName": null,
-      "hyperVGeneration": null,
-      "identifier": {
-        "offer": "windowsserver",
-        "publisher": "microsoftwindowsserver",
-        "sku": "2022-datacenter-azure-edition-core"
-      },
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "resourceName": "marketplacetest03",
-      "status": {
-        "downloadStatus": {},
-        "provisioningStatus": {
-          "operationId": "<Operation ID>",
-          "status": "Succeeded"
-        }
-      },
-      "version": {
-        "name": "20348.707.220609",
-        "properties": {
-          "storageProfile": {
-            "osDiskImage": {}
-          }
-        }
-      }
-    },
-    "resourceGroup": "mkclus90-rg",
-    "systemData": {
-      "createdAt": "2022-08-01T22:29:11.074104+00:00",
-      "createdBy": "guspinto@microsoft.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-      "lastModifiedBy": "<ID>",
-      "lastModifiedByType": "Application"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/marketplacegalleryimages"
-  }
-]
-PS C:\Users\azcli>
-
-```
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal of your Azure Stack HCI cluster resource, you can track the VM image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
+[!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
 
-1. To view more details of any image, select the VM image name from the list of VM images.
-
-1. When the image download is complete, the VM image shows up in the list of images, and the **Status** shows as **Available**.
-
-   :::image type="content" source="./media/manage-vm-resources/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/added-vm-image.png":::
-
-   If the download of the VM image fails, the error details are shown in the portal blade.
-
-   :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
 ---
-
 
 ## View VM image properties
 
@@ -360,131 +214,12 @@ You may want to view the properties of VM images before you use the image to cre
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps to use Azure CLI to view properties of an image:
-
-1. Run PowerShell as an administrator.
-1. Set the following parameters.
-
-    ```azurecli
-    $Subscription = "<Subscription ID>"
-    $Resource_Group = "<Cluster resource group>"
-    $MktplaceImage = "<Marketplace image name>"
-    ```
-
-1. You can view image properties in two different ways: specify ID or specify name and resource group. Take the following steps when specifying ID:
-
-    1. Set the following parameter.
-
-        ```azurecli
-        $MktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8"
-        ```
-
-    1.	Run the following command to view the properties.
-
-        ```az azurestackhci image show --id $mktplaceImageID```
-
-        Here's a sample output for this command:
-
-        ```
-        PS C:\Users\azcli> az azurestackhci image show --id $mktplaceImageID
-        Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-        {
-          "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-            "type": "CustomLocation"
-          },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
-          "location": "eastus2euap",
-          "name": "mktplace8",
-          "properties": {
-            "containerName": null,
-            "hyperVGeneration": null,
-            "identifier": null,
-            "imagePath": null,
-            "osType": "Windows",
-            "provisioningState": "Succeeded",
-            "status": null,
-            "version": null
-          },
-          "resourceGroup": "mkclus90-rg",
-          "systemData": {
-            "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
-            "createdByType": "User",
-            "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
-            "lastModifiedByType": "User"
-          },
-          "tags": null,
-          "type": "microsoft.azurestackhci/galleryimages"
-        }
-        PS C:\Users\azcli>
-        ```
-
-1.	Take the following steps when specifying name and resource group.
-
-    1. Set the following parameters:
-    
-        ```azurecli
-        $mktplaceImage = "mktplace8"
-        $resource_group = "mkclus90-rg"    
-        ```
-    
-    1. Run the following command to view the properties:
-    
-        ```azurecli
-        az azurestackhci image show --name $MktplaceImage --resource-group $Resource_Group
-        ```
-    	
-        Here's a sample output:
-
-         ```azurecli
-         PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
-         Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-         {
-            "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-            "type": "CustomLocation"
-            },
-            "id": "/subscriptions/b8d594e5-51f3-4c11-9c54-a7771b81c712/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
-            "location": "eastus2euap",
-            "name": "mktplace8",
-            "properties": {
-            "containerName": null,
-            "hyperVGeneration": null,
-            "identifier": null,
-            "imagePath": null,
-            "osType": "Windows",
-            "provisioningState": "Succeeded",
-            "status": null,
-            "version": null
-            },
-            "resourceGroup": "mkclus90-rg",
-            "systemData": {
-            "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
-            "createdByType": "User",
-            "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
-            "lastModifiedByType": "User"
-            },
-            "tags": null,
-            "type": "microsoft.azurestackhci/galleryimages"
-         }
-         PS C:\Users\azcli>        
-         ```
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
-In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster resource, perform the following steps:
+[!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
 
-1. Go to **Resources (Preview)** > **VM images**. In the right-pane, a list of VM images is displayed.
-
-   :::image type="content" source="./media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot showing list of images." lightbox="./media/manage-vm-resources/vm-images-list.png":::
-
-1. Select the VM **Image name** to view the properties.
-
-   :::image type="content" source="./media/manage-vm-resources/vm-image-properties.png" alt-text="Screenshot showing the properties of a selected VM image." lightbox="./media/manage-vm-resources/vm-image-properties.png":::
 ---
 
 
@@ -494,56 +229,14 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI](#tab/azurecli)
 
-1. Run PowerShell as an administrator.
-1. Set the following parameters.
-
-    ```azurecli
-    $Subscription = "<Subscription ID>"
-    $Resource_Group = "<Cluster resource group>"
-    $GalleryImageName = "<Gallery image name>"    
-    ```
-
-1. Remove an existing VM image. Run the following command:
-
-    ```azurecli
-    az azurestackhci galleryimage delete --subscription $Subscription --resource-group $Resource_Group --name $GalleryImageName --yes
-    ```
-
-You can delete image two ways:
-
-- Specify name and resource-group.
-- Specify ID.
-
-After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
-
-```
-PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mkclus90-rg"
-PS C:\Users\azcli> $mktplaceImage = "marketplacetest04"
-PS C:\Users\azcli> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest04' under resource group 'mkclus90-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
-PS C:\Users\azcli>
-```
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
- In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster
-resource, perform the following steps:
+[!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
 
-1. Go to **Resources (Preview)** > **VM images**.
-
-1. From the list of VM images displayed in the right-pane, select the trash can icon next to the VM image you want to delete.
-
-   :::image type="content" source="./media/manage-vm-resources/delete-vm-image.png" alt-text="Screenshot showing the trash can icon against the VM image you want to delete." lightbox="./media/manage-vm-resources/delete-vm-image.png":::
-
-1. When prompted to confirm deletion, select **Yes**.
-
-   :::image type="content" source="./media/manage-vm-resources/prompt-to-confirm-deletion.png" alt-text="Screenshot showing a prompt to confirm deletion." lightbox="./media/manage-vm-resources/prompt-to-confirm-deletion.png":::
-
-After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
 ---
 
+## Next steps
+
+Use VM images to [Create Arc-enabled VMs](./manage-virtual-machines-in-azure-portal.md).
