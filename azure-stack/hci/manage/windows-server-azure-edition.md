@@ -52,7 +52,7 @@ You can run the commands below from the Azure Portal using either the Azure Clou
 
 **Using Azure Cloud shell:** Make sure you're connected to Azure and are running [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/overview) in either a command prompt or in a bash environment.
 
-**Using Azure CLI locally:** Run the [az login](https://learn.microsoft.com/azure/authenticate-azure-cli) command to sign into Azure. Follow any other prompts to finish signing in.
+**Using Azure CLI locally:** Run the [az login](https://learn.microsoft.com/cli/azure/reference-index?#az-login) command to sign into Azure. Follow any other prompts to finish signing in.
 
 If this is your first time using Azure CLI, install any required extensions as described in [Use extensions with the Azure CLI](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview).
 
