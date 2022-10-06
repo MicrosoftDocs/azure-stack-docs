@@ -95,13 +95,13 @@ For more information, see [What is Cluster-Aware Updating?](/windows-server/fail
 
 With this release, you can now convert existing fixed provisioned volumes to thin using PowerShell. Thin provisioning improves storage efficiency and simplifies management.
 
-For more information, see [Convert fixed to thin provisioned volumes on your Azure Stack HCI](./index.yml).
+For more information, see [Convert fixed to thin provisioned volumes on your Azure Stack HCI](./manage/thin-provisioning-conversion.md).
 
 ### Single server scale-out
 
 This release supports inline fault domain and resiliency changes to scale out a single server. Azure Stack HCI version 22H2 provides easy scaling options to go from a single server to a two-node cluster, and from a two-node cluster to a three-node cluster.
 
-For more information, see [Scale out single server on your Azure Stack HCI](./index.yml).
+For more information, see [Scale out single server on your Azure Stack HCI](./manage/single-node-scale-out.md).
 
 ### Tag-based segmentation
 
