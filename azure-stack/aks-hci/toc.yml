@@ -1,19 +1,31 @@
-- name: Azure Kubernetes Service on Azure Stack HCI documentation
+- name: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
+  - name: Evaluation guide
+    items:
+      - name: Introduction
+        href: aks-hci-evaluation-guide.md
+      - name: 1 - Evaluate AKS on Azure Stack HCI
+        href: aks-hci-evaluation-guide-1.md
+      - name: 2a - Deploy with Windows Admin Center
+        href: aks-hci-evaluation-guide-2a.md
+      - name: 2b - Deploy with PowerShell
+        href: aks-hci-evaluation-guide-2b.md
+      - name: 3 - Explore the environment
+        href: aks-hci-evaluation-guide-3.md
 - name: Quickstarts
   expanded: true
   items:
-    - name: Deploy AKS on Azure Stack HCI
+    - name: Deploy AKS on Azure Stack HCI and Windows Server
       items:
         - name: Use PowerShell
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS on Azure Stack HCI
+            - name: Set up AKS on Azure Stack HCI and Windows Server
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
@@ -51,10 +63,13 @@
     href: system-requirements.md
   - name: Security
     items:
-      - name: Security for AKS on Azure Stack HCI
+      - name: Security for AKS on Azure Stack HCI and Windows Server
         href: concepts-security.md
       - name: Container security
         href: container-security.md
+      - name: Update certificates
+        href: certificates-update-after-sixty-days.md
+
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -77,13 +92,11 @@
     href: concepts-support.md
 - name: How-to guides
   items: 
-    - name: Evaluate on an Azure VM
-      href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Install Azure Kubernetes Service host
       items:
           - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
-    - name: Upgrade the AKS on Azure Stack HCI host
+    - name: Upgrade the AKS on Azure Stack HCI and Windows Server host
       items:
           - name: Use PowerShell
             href: update-akshci-host-powershell.md
@@ -99,13 +112,13 @@
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
-          - name: Stop an AKS on Azure Stack HCI cluster
+          - name: Stop an AKS on Azure Stack HCI and Windows Server cluster
             href: stop-start-cluster.md
-          - name: Restart, remove, or reinstall AKS on Azure Stack HCI
+          - name: Restart, remove, or reinstall AKS on Azure Stack HCI and Windows Server
             href: restart-cluster.md
           - name: Back up and restore workload clusters using Velero
             href: backup-workload-cluster.md
-          - name: Deploy a container image from ACR to AKS on Azure Stack HCI
+          - name: Deploy a container image from ACR to AKS on Azure Stack HCI and Windows Server
             href: deploy-azure-container-registry.md
           - name: Use node pools
             href: use-node-pools.md
@@ -119,20 +132,26 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Az CLI commands
+          - name: Az PowerShell module CLI commands
             href: /cli/azure/connectedk8s
     - name: Configure networking
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Update noProxy settings
+            href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
+          - name: Use multiple load balancers
+            href: multiple-load-balancers.md
           - name: Configure a custom load balancer
             href: configure-custom-load-balancer.md
           - name: Deploy MetalLB for load balancing
             href: deploy-metallb.md
           - name: Use an ingress controller
             href: create-ingress-controller.md
+          - name: Use software defined networking
+            href: software-defined-networking.md
     - name: Manage storage
       items:
           - name: Use persistent volume
@@ -147,6 +166,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Use Kubernetes RBAC with Azure AD
+            href: kubernetes-rbac-azure-ad.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
@@ -178,7 +199,7 @@
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
-            href: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+            href: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
           - name: Use on-premises monitoring
             href: monitor-logging.md
           - name: View logs to collect and review data
@@ -187,8 +208,6 @@
             href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
-          - name: Use containerd (preview)
-            href: use-containerd-on-windows-aks.md
           - name: Deploy .NET applications
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support
@@ -204,7 +223,7 @@
           - name: Use Bridge to Kubernetes with Visual Studio Code
             href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - name: Use Bridge to Kubernetes with Visual Studio
-            href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+            href: /visualstudio/containers/bridge-to-kubernetes
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
@@ -217,7 +236,7 @@
     href: ssh-connection.md
   - name: How to fix
     items:
-    - name: AKS on Azure Stack HCI issues
+    - name: AKS on Azure Stack HCI and Windows Server issues
       items: 
           - name: Installation
             href: /azure-stack/aks-hci/known-issues-installation
@@ -272,7 +291,7 @@
     href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
-  - name: AKS on Azure Stack HCI roadmap
+  - name: AKS on Azure Stack HCI and Windows Server roadmap
     href: https://aka.ms/aks-hci-roadmap/
   - name: File bugs
     href: https://aka.ms/aks-hci-issues/

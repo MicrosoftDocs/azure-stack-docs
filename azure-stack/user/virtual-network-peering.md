@@ -43,7 +43,7 @@ To enable service chaining, configure user-defined routes that point to virtual 
 
 You can deploy *hub-and-spoke* networks, where the hub virtual network hosts infrastructure components such as a network virtual appliance or VPN gateway. All the spoke virtual networks can then peer with the hub virtual network. Traffic flows through network virtual appliances or VPN gateways in the hub virtual network.
 
-Virtual network peering enables the next hop in a user-defined route to be the IP address of a virtual machine in the peered virtual network. To learn more about user-defined routes, see [User-defined routes overview](/azure/virtual-network/virtual-networks-udr-overview#user-defined). To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Virtual network peering enables the next hop in a user-defined route to be the IP address of a virtual machine in the peered virtual network. To learn more about user-defined routes, see [User-defined routes overview](/azure/virtual-network/virtual-networks-udr-overview#user-defined). To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=/azure/virtual-network/toc.json).
 
 ## Gateways and on-premises connectivity
 
@@ -136,4 +136,4 @@ No. Transitive peering is not supported. You must peer VNet A and VNet C.
 
 - [About Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
 - [User-defined routes overview](/azure/virtual-network/virtual-networks-udr-overview#user-defined)
-- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=/azure/virtual-network/toc.json)

@@ -93,7 +93,7 @@ All new deployments of Azure App Service on Azure Stack Hub will make use of man
 
 - Upgrade fails if SQL Server Always On Cluster has failed over to secondary node.
 
-During upgrade, there's a call to check database existence using the master connection string that fails because the login was on the previous master node.
+During upgrade, there's a call to check database existence using the master connection string that fails because the login was on the previous control plane node.
 
 Take one of the following actions and select retry within the installer.
 

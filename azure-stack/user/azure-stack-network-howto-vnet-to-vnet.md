@@ -2,11 +2,11 @@
 
 title: Connect two virtual networks in the same Azure Stack environment
 description: Learn how to connect two virtual networks within the same Azure Stack Hub environment by using Fortinet FortiGate.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 12/2/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 

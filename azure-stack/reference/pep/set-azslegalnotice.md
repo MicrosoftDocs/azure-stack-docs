@@ -1,11 +1,11 @@
 ---
 title: Set-AzSLegalNotice privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Set-AzSLegalNotice
-author: BryanLa
+author: sethmanheim
 
 ms.topic: reference
 ms.date: 01/04/2022
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 02/19/2021
 ---
