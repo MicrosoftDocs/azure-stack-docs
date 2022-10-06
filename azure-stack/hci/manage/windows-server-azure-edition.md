@@ -14,7 +14,7 @@ ms.date: 10/06/2022
 
 > Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. Azure Stack HCI is the only on-premise platform to run Windows Server Azure Edition with Azure [Automanage](https://learn.microsoft.com/azure/automanage/overview-about). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and Extended network for Azure.
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. Azure Stack HCI is the only on-premise platform to run Windows Server Azure Edition with [Azure Automanage](https://learn.microsoft.com/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
 Learn more about [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
@@ -68,7 +68,7 @@ az vm image list --all --publisher "microsoftwindowsserver" --offer "WindowsServ
 
 This command should return the following example result:
 
-```powershell
+```output
 MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest
 ```
 
@@ -80,15 +80,15 @@ To create an Azure managed disk:
 
 1. Run the following commands in an Azure command prompt to set the parameters of your managed disk. Make sure to replace the items in brackets with relevant values:
 
-    ```powershell
-    $urn = <URN_of_Marketplace_image> #Example: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest"
+    ```azurecli
+        $urn = <URN_of_Marketplace_image> #Example: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest"
     $diskName = <disk_name> #Name for new disk to be created
     $diskRG = <resource_group> #Resource group that contains the new disk
     ```
 
 1. Run the following commands to create the disk and generate a Serial Attached SCSI (SAS) access URL:
 
-    ```powershell
+    ```azurecli
     az disk create -g $diskRG -n $diskName --image-reference $urn
     $sas = az disk grant-access --duration-in-seconds 36000 --access-level Read --name $diskName --resource-group $diskRG
     $diskAccessSAS = ($sas | ConvertFrom-Json)[0].accessSas
