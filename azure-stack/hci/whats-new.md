@@ -107,7 +107,7 @@ For more information, see [Scale out single server on your Azure Stack HCI](./in
 
 In this release, you can secure your application workload virtual machines (VMs) from external and lateral threats with custom tags of your choice. Assign custom tags to classify your VMs, and then apply Network Security Groups (NSGs) based on those tags to restrict communication to and from external and internal sources. For example, to prevent your SQL VMs from communicating with your web server VMs, simply tag the corresponding VMs with *SQL* and *Web* tags. You can then create an NSG to prevent *Web* tag from communicating with *SQL* tag.
 
-<!--For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md)-->.
+For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md).
 
 ## Azure Hybrid Benefit for Azure Stack HCI
 
