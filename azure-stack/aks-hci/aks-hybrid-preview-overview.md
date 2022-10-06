@@ -1,6 +1,6 @@
 ---
-title: Overview of AKS hybrid cluster provisioning from Azure
-description: Overview of AKS hybrid cluster provisioning from Azure
+title: Overview of AKS hybrid cluster provisioning from Azure (preview)
+description: Overview of AKS hybrid cluster provisioning from Azure (preview)
 ms.topic: overview
 ms.date: 10/03/2022
 author: sethmanheim
@@ -11,7 +11,7 @@ ms.reviewer: abha
 # Keyword: 
 ---
 
-# Overview of AKS hybrid clusters provisioned from Azure (preview)
+# Overview of AKS hybrid cluster provisioning from Azure (preview)
 
 Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. Through AKS hybrid cluster provisioning from Azure, you will be able to manage AKS clusters on Azure Stack HCI and Windows Server using Azure. Furthermore, your AKS hybrid clusters managed via Azure are always automatically connected to Azure Arc.
 
@@ -24,7 +24,7 @@ At this time, you can perform the following operations through the Azure portal 
 - [Azure CLI] Delete your AKS hybrid clusters and nodepools 
 - [Local PowerShell] Collect logs for troubleshooting
 
-Through Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioned from Azure:
+Through Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioning from Azure:
 
 - Azure Defender
 - GitOps v2
@@ -43,7 +43,7 @@ The management cluster is created for you when you install AKS on Azure Stack HC
 
 ### Azure Arc Resource Bridge
 
-Azure Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/VSPhere, OpenStack, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as VMs and Kubernetes clusters on-premises through Azure. Think of Azure Arc Resource Bridge as an advanced AKS management cluster that can be configured and managed from Azure.
+Azure Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/vSphere, OpenStack, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as VMs and Kubernetes clusters on-premises through Azure. Think of Azure Arc Resource Bridge as an advanced AKS management cluster that can be configured and managed from Azure.
 Today, you can manage AKS clusters on Azure Stack HCI and Windows Server through PowerShell and Windows Admin Center. This preview feature enables you to manage AKS hybrid clusters through the Azure portal. To use this preview feature, you must install Azure Arc Resource Bridge in your datacenter as a pre-requisite.
 
 ### Arc Kubernetes cluster extensions
@@ -63,9 +63,9 @@ The role of the infrastructure administrator is to set up the platform component
 Apart from the above on-premises work, the admin also assigns permissions to "AAD users" on the Azure subscription to create and access AKS hybrid clusters. 
 The end goal with this preview is that the admin can do the previous operations without having to know a lot about Kubernetes.
 
-### User/Dev role
+### User/Developer role
 
-The role of the user/dev is to create AKS hybrid clusters and run applications on their on-premises Kubernetes clusters. In this preview program, the user will be given pertinent information about creating AKS hybrid clusters, such as subscription, custom location, and AKS hybrid network by the admin. The user will also be given Azure RBAC access to create the cluster by the administrator.
+The role of the user/developer is to create AKS hybrid clusters and run applications on their on-premises Kubernetes clusters. In this preview program, the user will be given pertinent information about creating AKS hybrid clusters, such as subscription, custom location, and AKS hybrid network by the admin. The user will also be given Azure RBAC access to create the cluster by the administrator.
 
 Once the user has the details described in the previous paragraph, they are free to create an AKS on Azure Stack HCI cluster as they see fit - Windows/Linux node pools, Kubernetes versions, etc. The user can then run their containerized applications by downloading the cluster *kubeconfig*.
 
