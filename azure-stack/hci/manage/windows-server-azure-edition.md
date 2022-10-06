@@ -33,7 +33,7 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 ## Deploy the OS
 
-Windows Server Azure Edition can be deployed as a guest VM using either an HCI Marketplace VHD image or an Azure Marketplace VHD image.
+Windows Server Azure Edition can be deployed as a guest VM using either an HCI Marketplace VHD image or an [Azure Marketplace](/marketplace/azure-marketplace-overview.md) VHD image.
 
 ## [HCI marketplace image](#tab/hci)
 
