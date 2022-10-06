@@ -152,7 +152,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
 
     1.  To create a service principal (SPN) using Azure Active Directory (Azure AD), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
     2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-certificate-credential).
-    3.  To assign "Contributor" role to the SPN see [instructions](/azure/active-directory/develop/howto-create-service-principal-portal.md). Make sure to select the "Contributor" role.
+    3.  To assign "Contributor" role to the SPN see [instructions](/azure/active-directory/develop/howto-create-service-principal-portal). Make sure to select the "Contributor" role.
 
 3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
 
