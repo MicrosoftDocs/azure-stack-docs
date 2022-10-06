@@ -52,6 +52,8 @@
     items:
     - name: Deploy on a single server
       href: deploy/single-server.md
+    - name: Single server scale-out
+      href: manage/single-node-scale-out.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Host networking with Network ATC
@@ -142,6 +144,8 @@
       href: manage/manage-smb-multichannel.md
     - name: Storage thin provisioning
       href: manage/thin-provisioning.md
+    - name: Thin provisioning conversion
+      href: manage/thin-provisioning-conversion.md
     - name: Adjustable storage repair speed
       href: manage/storage-repair-speed.md
   - name: Manage clusters 
@@ -200,10 +204,12 @@
       href: manage/sdn-express.md
     - name: Update SDN infrastructure
       href: manage/update-sdn.md       
-    - name: Use Datacenter Firewall
+    - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Use Datacenter Firewall with PowerShell
+    - name: Configure network security groups with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
@@ -294,7 +300,7 @@
     items:
     - name: SDN overview
       href: concepts/software-defined-networking.md
-    - name: Plan a SDN infrastructure
+    - name: Plan an SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
