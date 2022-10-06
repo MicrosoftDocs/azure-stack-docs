@@ -55,8 +55,8 @@ Follow these steps in the Azure portal for your Azure Stack HCI cluster.
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
-      > [!IMPORTANT]
-      > VM names should be in lowercase letters and may use hyphens and numbers.
+        > [!IMPORTANT]
+        > VM names should be in lowercase letters and may use hyphens and numbers.
 
     1. **Custom location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
 
