@@ -100,17 +100,17 @@
     - name: Upgrade
       items:
       - name: Upgrade AKS hybrid host
-      items:
-          - name: Use PowerShell
-            href: update-akshci-host-powershell.md
-          - name: Use Windows Admin Center
-            href: update-akshci-host-windows-admin-center.md
+        items:
+        - name: Use PowerShell
+          href: update-akshci-host-powershell.md
+        - name: Use Windows Admin Center
+          href: update-akshci-host-windows-admin-center.md
       - name: Upgrade Kubernetes version
         items:
-            - name: Use PowerShell
-              href: upgrade.md
-            - name: Use Windows Admin Center
-              href: upgrade-kubernetes.md
+        - name: Use PowerShell
+          href: upgrade.md
+        - name: Use Windows Admin Center
+          href: upgrade-kubernetes.md
     - name: Scale
       items:    
           - name: Scale an AKS cluster
