@@ -1,8 +1,8 @@
 ---
 title: Give an app access to Azure Stack Hub resources
 description: Learn how to give an app access to Azure Stack Hub resources
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 03/18/2022
 ms.lastreviewed: 03/18/2022
@@ -44,11 +44,12 @@ After registering the app you learn how to assign it to a role, limiting its res
 ::: zone-end
 
 ::: zone pivot="state-connected"
+
 ## Manage an Azure AD app
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
-### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
+### Create an app registration that uses a client secret credential
 
 In this section, you register your app in your Azure AD tenant using the Azure portal. In following example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
@@ -115,7 +116,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
     # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
     # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # To use a test certificate, use the New-SelfSignedCertificate cmdlet
-    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
     #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
@@ -175,7 +176,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
     # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # To use a self-signed test certificate, use the New-SelfSignedCertificate cmdlet
-    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
     #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
    
@@ -245,7 +246,7 @@ Update the certificate credential using PowerShell, substituting your own values
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Create a self-signed certificate for testing purposes, using the New-SelfSignedCertificate cmdlet 
-     # See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+     # See https://learn.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
      # In production, use Get-Item to retrieve a managed certificate from the certificate store.
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.

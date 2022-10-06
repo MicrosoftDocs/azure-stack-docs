@@ -1,10 +1,10 @@
 ---
-title: Get-AksHciStorageContainer for AKS on Azure Stack HCI
-author: mattbriggs
+title: Get-AksHciStorageContainer for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Get-AksHciStorageContainer PowerShell command returns the Storage Container name and location for the specified Storage Container
 ms.topic: reference
 ms.date: 3/3/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

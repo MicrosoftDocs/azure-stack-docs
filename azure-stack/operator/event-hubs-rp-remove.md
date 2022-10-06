@@ -1,8 +1,8 @@
 ---
 title: How to uninstall Azure Stack Hub Event Hubs resources
 description: Learn how to uninstall Azure Stack Hub Event Hubs resources.
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 03/08/2022
