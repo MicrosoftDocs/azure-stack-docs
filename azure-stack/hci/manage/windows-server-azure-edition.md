@@ -18,15 +18,15 @@ The Windows Server Azure Edition operating system can be deployed as a guest vir
 
 Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview.md). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch.md), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic.md), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network.md).
 
-Learn more about [Azure Benefits on Azure Stack HCI](azure-benefits.md).
-
 ## Considerations
 
 To use Windows Server Azure Edition on your Azure Stack HCI environment, here are a couple of considerations:
 
 - **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed only on Azure Stack HCI version 21H2 and Azure Stack HCI version 22H2.
 
-- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.  For more information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
+- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.
+
+- **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
 >[!NOTE]
 >While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), this experience is in preview for this Azure Stack HCI release.
@@ -41,8 +41,12 @@ You can provision a Windows Server Azure Edition VM using an HCI Marketplace ima
 
 You do this by following these steps:
 
-1. Deploy [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview.md).
+1. Deploy [Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#azure-arc-resource-bridge-deployment-overview) on your Azure Stack HCI.
+
+1. Learn about how certain [Azure marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
+
 1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure Marketplace OS image.
+
 1. Use the Windows Server Azure Edition HCI gallery OS image to provision a VM.
 
 ## [Azure marketplace image](#tab/azure)
