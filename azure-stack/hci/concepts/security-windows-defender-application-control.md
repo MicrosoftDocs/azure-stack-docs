@@ -319,37 +319,9 @@ This is useful when:
 > * When your application is blocked, WDAC will create a corresponding event. Review the Event log to understand the details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
 > * When your script is blocked because of the embedded script enforcement provided by WDAC, you will receive an error message around "Constrained Language Mode" or "Core Type in this language mode". For more information, see [about_Language_Modes for PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes#constrained-language-constrained-language).
 
-The following PowerShell commands interact with the Orchestrator to enable the selected modes.
+Follow these steps to switch between WDAC policy modes. These PowerShell commands interact with the Orchestrator to enable the selected modes.
 
-> [!WARNING]
-> The Orchestrator will take up to 2 to 3 minutes to switch to the selected mode.
-
-```azurepowershell
-Switch-AsWdacPolicy -Mode Audit
-
-Switch-AsWdacPolicy -Mode Enforced
-
-Get-AsWdacPolicyMode
-  This returns an integer - for example,
-	0 – Not deployed
-	1 – Audit
-	2 - Enforced
-```
-Here is a sample output:
-
-```azurepowershell
-PS C:\temp> Get-AsWdacPolicyMode
-
-2
-
-PS C:\temp> Switch-AsWdacPolicy -Mode Audit
-VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
-a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
-
-PS C:\temp> Get-WDACPolicyMode
-
-1
-```
+[!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
 
 ## Support for OEM extensions
 
