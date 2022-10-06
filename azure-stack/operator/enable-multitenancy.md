@@ -1,10 +1,10 @@
 ---
 title: Configure multi-tenancy in Azure Stack Hub 
 description: Learn how to configure multi-tenancy for guest Azure Active Directory tenants in Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 ms.topic: how-to
 ms.date: 11/05/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: bryanr
 ms.lastreviewed: 11/05/2021
 zone_pivot_groups: management-tool-portal-powershell

@@ -1,10 +1,10 @@
 ---
 title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
-author: mattbriggs
+author: ronmiab
 ms.topic: article
 ms.date: 10/06/2022
-ms.author: mabrigg
+ms.author: robess
 ms.reviewer: waltero
 ms.lastreviewed: 10/06/2022
 
@@ -149,9 +149,11 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
+
     1.  To create a service principal (SPN) using Azure Active Directory (Azure AD), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
     2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](../operator/give-app-access-to-resources.md#manage-an-ad-fs-app).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
+
 3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
 
     ```azurecli

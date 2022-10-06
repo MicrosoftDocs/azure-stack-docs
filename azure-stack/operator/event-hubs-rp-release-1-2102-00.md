@@ -1,8 +1,8 @@
 ---
 title: Event Hubs on Azure Stack Hub 1.2102.0.0 release notes 
 description: Learn about the 1.2102.0.0 release for Event Hubs on Azure Stack Hub, including bug fixes, features, and how to install the update.
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: article
 ms.date: 07/23/2021

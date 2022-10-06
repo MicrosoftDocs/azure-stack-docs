@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 ms.date: 05/17/2021
 ms.topic: article
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
 

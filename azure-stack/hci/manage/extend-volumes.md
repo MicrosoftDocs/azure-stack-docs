@@ -28,6 +28,9 @@ This article explains how to expand volumes on a cluster by using Windows Admin 
 
     On the volumes detail page, the larger storage capacity for the volume is indicated, and the alert on the Dashboard is cleared.
 
+> [!NOTE]
+> If you experince Windows Admin Center (WAC) not (yet) being able to expand your volume (e.g. when trying to expand thin provisioned volumes on HCI) - you may want to use PowerShell to accomplish the task.
+
 ## Expand volumes using PowerShell
 
 ### Capacity in the storage pool

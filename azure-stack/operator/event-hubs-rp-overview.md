@@ -1,8 +1,8 @@
 ---
 title: Event Hubs on Azure Stack Hub operator overview
 description: Learn about the Event Hubs resource provider on Azure Stack Hub. 
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 12/11/2020

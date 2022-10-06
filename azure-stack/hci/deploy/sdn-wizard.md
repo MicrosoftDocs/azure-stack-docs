@@ -109,6 +109,10 @@ If the Network Controller deployment fails or you want to deploy it again, do th
    ```powershell
     Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections
    ```
+1. After removing the registry key, remove the cluster from the Windows Admin Center management, and then add it back.
+
+   > [!NOTE]
+   > If you don't do this step, you may not see the SDN deployment wizard in Windows Admin Center.
 
 1. Run the deployment wizard again.
 
