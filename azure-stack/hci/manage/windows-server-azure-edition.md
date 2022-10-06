@@ -1,6 +1,6 @@
 ---
-title: Windows Server Azure Edition for VMs
-description: Learn about Windows Server Azure Edition for VMs.
+title: Deploy Windows Server Azure Edition VMs
+description: Learn how to deploy Windows Server Azure Edition VMs starting with an image in Azure Stack HCI Marketplace or Azure Marketplace.
 ms.topic: conceptual
 author: dansisson
 ms.author: v-dansisson
@@ -10,11 +10,13 @@ ms.subservice: azure-stack-hci
 ms.date: 10/06/2022
 ---
 
-# Windows Server Azure Edition for VMs
+# Deploy Windows Server Azure Edition VMs
 
-> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. Azure Stack HCI is the only on-premise platform to run Windows Server Azure Edition with [Azure Automanage](https://learn.microsoft.com/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-extended-network).
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure marketplace.
+
+Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](https://learn.microsoft.com/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
 Learn more about [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
