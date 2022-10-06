@@ -1,8 +1,8 @@
 ---
 title: How to manage Event Hubs on Azure Stack Hub
 description: Learn how to manage the Event Hubs resource provider on Azure Stack Hub. 
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 12/09/2019

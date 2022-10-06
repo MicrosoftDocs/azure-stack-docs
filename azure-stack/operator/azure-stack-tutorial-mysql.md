@@ -2,11 +2,11 @@
 title: Create highly available MySQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create a MySQL Server resource provider host computer and highly available MySQL databases with Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 10/07/2019
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2019
 
@@ -21,7 +21,7 @@ ms.lastreviewed: 10/23/2019
 
 As an Azure Stack Hub operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack Hub, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
-This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the master node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack Hub MySQL Hosting Server, and then users can create highly available MySQL databases.
+This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the control plane node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack Hub MySQL Hosting Server, and then users can create highly available MySQL databases.
 
 > [!IMPORTANT]
 > The **MySQL with replication** Azure Stack Marketplace item might not be available for all Azure cloud subscription environments. Verify that the marketplace item is available in your subscription before attempting to follow the rest of this tutorial.

@@ -1,11 +1,11 @@
 ---
-title: Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service on Azure Stack HCI clusters
+title: Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service on Azure Stack HCI and Windows Server clusters
 services: container-service
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2022
-ms.author: mabrigg 
+ms.date: 06/28/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 
@@ -14,18 +14,18 @@ ms.reviewer: scooley
 # Keyword: Helm charts deploy Helm
 ---
 
-# Install existing applications with Helm on Azure Kubernetes Service (AKS) on Azure Stack HCI
+# Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 [Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-This article shows you how to configure and use Helm in a Kubernetes cluster on AKS on Azure Stack HCI 
+This article shows you how to configure and use Helm in a Kubernetes cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. 
 
 ## Before you begin
 
 Verify that you have set up the following requirements:
 
-* An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Linux worker node that's up and running.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
 

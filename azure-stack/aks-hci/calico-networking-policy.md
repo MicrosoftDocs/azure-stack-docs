@@ -1,30 +1,30 @@
 ---
-title: How to - Use Calico network policy to secure pod traffic in Azure Kubernetes Service on Azure Stack HCI
-description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service on Azure Stack HCI.
+title: How to - Use Calico network policy to secure pod traffic in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 ms.topic: how-to
-ms.date: 04/11/2022
+ms.date: 05/26/2022
 ms.custom: fasttrack-edit
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-author: mattbriggs
+author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to use Calico's network policies to secure traffic between pods in my AKS Azure Stack HCI deployment.Yes. 
-# Keyword: secure network traffic using network policies
+# Intent: As an IT Pro, I want to learn how to use Calico's network policies to secure traffic between pods in my AKS Azure Stack HCI deployment.
+# Keyword: secure network traffic, Calico network
 
 ---
 
-# Secure traffic between pods using network policies in AKS on Azure Stack HCI
+# Secure traffic between pods using network policies in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 Use this step-by-step guide to verify and try out basic pod-to-pod connectivity and to use Calico network policies in a cluster. In this guide, you'll learn how to create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then apply a basic network policy to isolate pod traffic.
 
 ## Prerequisites
 
- To deploy AKS on Azure Stack HCI, follow the steps to [install AKS on Azure Stack HCI](./kubernetes-walkthrough-powershell.md).
+ To deploy Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, follow the steps to [install AKS on Azure Stack HCI and Windows Server](./kubernetes-walkthrough-powershell.md).
 
 To use this guide, you will need:
 
-- An AKS on Azure Stack HCI workload cluster.
+- An AKS on Azure Stack HCI and Windows Server workload cluster.
 - At least one Windows worker node deployed in the cluster.
 - At least one Linux worker node deployed in the cluster.
 - The Calico network plug-in enabled when creating the workload cluster. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./reference/ps/new-akshcicluster.md) for instructions.
