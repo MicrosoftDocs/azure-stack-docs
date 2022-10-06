@@ -1,5 +1,5 @@
 ---
-title: Create Azure Stack HCI VM from images in a local share via Azure CLI
+title: Create Azure Stack HCI VM from local share images via Azure CLI
 description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster.
 author: alkohli
 ms.author: alkohli
