@@ -138,13 +138,15 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the [Azure preview portal](https://aka.ms/edgevmmgmt) of your Azure Stack HCI cluster resource, take the following steps:
+You can create a VM image by downloading an image that resides in a local share on your Azure Stack HCI cluster and then use that VM image to deploy a virtual machine.
+
+In the Azure portal of your Azure Stack HCI cluster resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**.
 
-1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Marketplace**.
+1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from a local share**.
 
-   :::image type="content" source="./media/manage-vm-resources/add-image-from-azure-marketplace.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/manage-vm-resources/add-image-from-azure-marketplace.png":::
+   :::image type="content" source="./media/manage-vm-resources/add-vm-from-local-share.png" alt-text="Screenshot showing Add VM image from a local share option." lightbox="./media/manage-vm-resources/add-vm-from-local-share.png":::
 
 1. In the **Create an image** page, on the **Basics** tab, input the following information:
 
@@ -152,35 +154,31 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 
     1. **Resource group.** Create new or select an existing resource group that you'll associate with the VM image.
 
+    1. **Save image as.** Enter a name for your VM image.
+
     1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
 
-    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Stack HCI cluster.
+    1. **OS type.** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
 
-    1. **Save image as.** Enter a name for your VM image.
+    1. **VM generation.** Select the generation for your image.
+
+    1. **Source.** The source of the image should be **Local file share** and is automatically populated.
+
+    1. **Local file share path.** Specify the local share path for the source image on your HCI cluster.
 
 1. Select **Review + Create** to create your VM image.
 
-   :::image type="content" source="./media/manage-vm-resources/create-an-image.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/manage-vm-resources/create-an-image.png":::
+   :::image type="content" source="./media/manage-vm-resources/create-an-image-from-local-share.png" alt-text="Screenshot of the Create an image page showing the fields in the Basics tab." lightbox="./media/manage-vm-resources/create-an-image-from-local-share.png":::
 
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
-        
-   :::image type="content" source="./media/manage-vm-resources/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/manage-vm-resources/create-an-image-create.png":::
-    
-1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download. 
 
-   :::image type="content" source="./media/manage-vm-resources/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/manage-vm-resources/deployment-in-progress.png":::
+   :::image type="content" source="./media/manage-vm-resources/create-an-image-create-button.png" alt-text="Screenshot of the Create an image page with the Create button highlighted." lightbox="./media/manage-vm-resources/create-an-image-create-button.png":::
+
+   An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the custom image and the network bandwidth available for the download.
 
    You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
 
-   To view more details of any image, select the VM image name from the list of VM images.
-
-1. When the image download is complete, the VM image shows up in the list of images, and the **Status** shows as **Available**.
-
-   :::image type="content" source="./media/manage-vm-resources/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/added-vm-image.png":::
-
-   If the download of the VM image fails, the error details are shown in the portal blade.
-
-   :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
+1. When the image download is complete, the VM image shows up in the list of images and the **Status** shows as **Available**. To view more details of any image, select the VM image name from the list of VM images.
 
 ---
 
