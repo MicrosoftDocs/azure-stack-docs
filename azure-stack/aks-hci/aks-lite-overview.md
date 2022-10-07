@@ -22,7 +22,7 @@ Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS)
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
-![Image of AKS on Windows architecture](media/aks-lite/aks-lite-Windows.png)
+![Diagram of AKS on Windows architecture](media/aks-lite/aks-lite-Windows.png)
 
 ### Microsoft-supported Kubernetes platform
 
@@ -49,7 +49,7 @@ Once you have set up on-premises Kubernetes using AKS Lite and created a Kuberne
 
 Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS Lite hybrid options, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition to this, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition to that, AKS on Windows IoT offers interoperability between native Windows applications and containerized Linux workloads.
 
-![Image of AKS on Windows interop](media/aks-lite/aks-lite-windows-arch.png)
+![Diagram of AKS on Windows interop](media/aks-lite/aks-lite-windows-arch.png)
 
 ### Kernel to cloud support  
 
