@@ -60,7 +60,7 @@ Initialize and prepare all the physical host machines for AKS-HCI. See [this art
 
 ### Install the AKS-HCI Powershell module
 
-[See this article](1) for information about installing the AKS-HCI Powershell module.
+[See this article][1] for information about installing the AKS-HCI Powershell module.
 
 > [!NOTE]
 > After completing this step, refresh or reload any opened PowerShell sessions to reload the modules.
@@ -189,7 +189,7 @@ for all Kubernetes services, as well as act as the load balancer for the API ser
 [Troubleshooting SDN \| Microsoft Docs]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
 [how to create and attach VM's to an SDN virtual network]: ../hci/manage/vm.md
 [here]: kubernetes-walkthrough-powershell.md
-[1]: kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module
+[1]: (kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module)
 [2]: kubernetes-walkthrough-powershell.md#register-the-resource-provider-to-your-subscription
 [3]: kubernetes-walkthrough-powershell.md#step-1-prepare-your-machines-for-deployment
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
