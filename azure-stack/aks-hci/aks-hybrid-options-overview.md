@@ -1,5 +1,5 @@
 ---
-title: What are AKS hybrid deployment options?
+title: What are Azure Kubernetes Service hybrid deployment options?
 description: Azure Kubernetes Service hybrid is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 ms.topic: overview
 author: sethmanheim
@@ -30,7 +30,7 @@ For more information about Kubernetes basics, see [Kubernetes core concepts for 
 
 ## Why use AKS hybrid for containerized applications?
 
-If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kuberenetes orchestrator helps with.
+If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kuberenetes orchestrator helps with.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes, essential add-ons, and create Kubernetes clusters to host your workloads.
 
@@ -38,7 +38,7 @@ Here's some of the functionality AKS provides:
 
 ### Native integration with Azure Arc-enabled Kubernetes
 
-With AKS hybrid, you can connect your AKS clusters to Azure Arc while creating the cluster. Once connected to Azure Arc-enabled Kubernetes, you can access your AKS clusters running on-premises via the Azure portal and deploy management services such as GitOps and Azure Policy as well as data services such as SQL Managed Instance and PostgreSQL Hyperscale. For more informtation about Azure Arc-enabled Kubernetes, see the [Azure Arc overview](/azure/azure-arc/kubernetes/overview).
+With AKS hybrid, you can connect your AKS clusters to Azure Arc while creating the cluster. Once connected to Azure Arc-enabled Kubernetes, you can access your AKS clusters running on-premises via the Azure portal and deploy management services such as GitOps and Azure Policy as well as data services such as SQL Managed Instance and PostgreSQL Hyperscale. For more information about Azure Arc-enabled Kubernetes, see the [Azure Arc overview](/azure/azure-arc/kubernetes/overview).
 
 ### Create and manage AKS clusters using Azure portal and Resource Manager templates
 
