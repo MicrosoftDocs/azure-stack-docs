@@ -60,18 +60,18 @@ Initialize and prepare all the physical host machines for AKS-HCI. See [this art
 
 ### Install the AKS-HCI Powershell module
 
-[See this article][1] for information about installing the AKS-HCI Powershell module.
+[See this article](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) for information about installing the AKS-HCI Powershell module.
 
 > [!NOTE]
 > After completing this step, refresh or reload any opened PowerShell sessions to reload the modules.
 
 ### Register the resource provider to your subscription
 
-[See this article][2] for information about how to register the resource provider to your subscription.
+[See this article](kubernetes-walkthrough-powershell.md#register-the-resource-provider-to-your-subscription) for information about how to register the resource provider to your subscription.
 
 ### Prepare your machines for deployment
 
-[See this article][3] for information about how to prepare your machines for deployment.
+[See this article](kubernetes-walkthrough-powershell.md#step-1-prepare-your-machines-for-deployment) for information about how to prepare your machines for deployment.
 
 ### Configure AKS-HCI for installation
 
@@ -126,7 +126,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
 
 The HNVPA logical network will be used as the underlying provider for the AKS-HCI virtual network.
 
-If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information [see this article][4].
+If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information [see this article](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
    | Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                             |
    |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -144,7 +144,7 @@ If you are using static IP address assignment for your Azure Stack HCI cluster n
 
 ### Sign in to Azure and configure registration settings
 
-Follow [the instructions here][5] to configure registration settings.
+Follow [the instructions here](kubernetes-walkthrough-powershell.md#step-4-log-in-to-azure-and-configure-registration-settings) to configure registration settings.
 
 > [!NOTE]
 > If you don't have owner permissions, it's recommended that you use an [Azure service principal][].
@@ -172,7 +172,7 @@ Get-AksHciLogsSdn
 
 If you encounter any issues with the instructions or would simply like to provide feedback, please reach out to us at
 <aks-hci-sdn@microsoft.com>. There are also some self-help resources that [can be found here][Troubleshooting SDN \| Microsoft Docs] for SDN
-[and here][6] for AKS-HCI.
+[and here](known-issues.yml) for AKS-HCI.
 
 ## Next steps
 
@@ -188,15 +188,8 @@ for all Kubernetes services, as well as act as the load balancer for the API ser
 [Software Load Balancer.psd1]: https://github.com/microsoft/SDN/blob/master/SDNExpress/scripts/Sample%20-%20Software%20Load%20Balancer.psd1
 [Troubleshooting SDN \| Microsoft Docs]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
 [how to create and attach VM's to an SDN virtual network]: ../hci/manage/vm.md
-[here]: kubernetes-walkthrough-powershell.md
-[1]: (kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module)
-[2]: kubernetes-walkthrough-powershell.md#register-the-resource-provider-to-your-subscription
-[3]: kubernetes-walkthrough-powershell.md#step-1-prepare-your-machines-for-deployment
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
-[4]: concepts-node-networking.md#microsoft-on-premises-cloud-service
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
-[5]: kubernetes-walkthrough-powershell.md#step-4-log-in-to-azure-and-configure-registration-settings
 [Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal
 [workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
 [deploy your applications]: deploy-windows-application.md
-[6]: known-issues.yml
