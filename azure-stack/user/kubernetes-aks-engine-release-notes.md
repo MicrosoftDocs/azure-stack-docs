@@ -59,7 +59,7 @@ To use AKS engine 0.71.0:
     Modify your API model by following the [Cloud Provider for Azure](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) instructions. Failure to include the new setting will result in a deployment error. 
 
  - **If you're using storage volumes**:  
-    Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions to [upgrade from Kubernetes v1.20 to v1.21](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
+    Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions to [upgrade from Kubernetes v1.20 to v1.21]([https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure](https://learn.microsoft.com/en-us/azure-stack/user/azure-stack-kubernetes-aks-engine-upgrade?view=azs-2206#steps-to-update-cluster-using-storage-volumes)).
 
 ## Download new image and AKS engine
 
