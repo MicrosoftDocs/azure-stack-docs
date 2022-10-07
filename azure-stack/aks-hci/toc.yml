@@ -314,7 +314,7 @@
     href: https://aka.ms/aks-hci-roadmap/
   - name: File bugs
     href: https://aka.ms/aks-hci-issues/
-- name: Azure Kubernetes Service Lite hybrid option
+- name: AKS Lite hybrid option (Preview)
   items:
   - name: Overview
     href: aks-lite-overview.md
