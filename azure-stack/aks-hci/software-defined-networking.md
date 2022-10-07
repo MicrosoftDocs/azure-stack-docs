@@ -60,7 +60,7 @@ Initialize and prepare all the physical host machines for AKS-HCI. See [this art
 
 ### Install the AKS-HCI Powershell module
 
-[See this article][1] for information about installing the AKS-HCI Powershell module.
+[See this article](1) for information about installing the AKS-HCI Powershell module.
 
 > [!NOTE]
 > After completing this step, refresh or reload any opened PowerShell sessions to reload the modules.
