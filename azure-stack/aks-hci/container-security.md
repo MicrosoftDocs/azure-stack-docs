@@ -1,13 +1,13 @@
 ---
 title: Concepts about securing containers in AKS hybrid
-description: Learn some of the methods you can use to implement security for containers in Azure Kubernetes Service (AKS) hybrid deployments.
+description: Learn some methods you can use to implement security for containers in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
-# Intent: As an IT Pro, I want to learn how to secure containers in my AKS hybrid deployment.
+# Intent: As an IT Pro, I want to learn how to secure containers in AKS hybrid.
 # Keyword: container security
 
 ---
@@ -16,7 +16,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities in Azure Kubernetes Service (AKS) hybrid. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. 
+This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities in AKS hybrid. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).<!--PLACEHOLDER: I drafted this AKS hybrid desription because the standard product name expansion doesn't work in this context.-->
 
 Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model. 
 

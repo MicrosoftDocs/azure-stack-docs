@@ -1,14 +1,14 @@
 ---
 title: Kubernetes cluster architecture for AKS hybrid
-description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service (AKS) hybrid features.
+description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS hybrid.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/06/2022
+ms.lastreviewed: 10/07/2022
 ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 05/16/2022
 
-# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features in AKS hybrid in global Azure.
+# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS hybrid.
 # Keyword: Kubernetes cluster architecture
 
 ---
@@ -17,7 +17,7 @@ ms.date: 05/16/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) hybrid is an enterprise-grade Kubernetes container platform for hybrid deployments in Azure and on-premises and edge locations. AKS hybrid includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.<!--Author needs to provide a comparable AKS hybrid description.-->
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
@@ -39,12 +39,12 @@ An Azure Kubernetes Service cluster has the following components:
 
 ![Illustrates the technical architecture of AKS on Azure Stack HCI and Windows Server](.\media\concepts\architecture.png)
 
-## Manage AKS hybrid deployments
+## Manage AKS hybrid
 
-You can manage AKS hybrid deployments using the following management options:
+You can manage AKS hybrid using the following management options:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of AKS clusters.
-- A **PowerShell module**  makes it easy to download, configure, and deploy AKS hybrid. The PowerShell module also supports deploying and configuring other workload clusters and reconfiguring existing ones.
+- A **PowerShell module** makes it easy to download, configure, and deploy AKS hybrid. The PowerShell module also supports deploying and configuring other workload clusters and reconfiguring existing ones.
 
 ## The management cluster
 
@@ -87,7 +87,7 @@ Kubernetes uses *pods* to run an instance of your application. A pod represents 
 
 The Deployment Controller uses the Kubernetes Scheduler to run a given number of replicas on any available node with available resources. This approach of using deployments may be sufficient for stateless applications, but not for applications that require a persistent naming convention or storage. For applications that require a replica to exist on each node (or selected nodes) within a cluster, the Deployment Controller doesn't look at how replicas are distributed across the nodes.
 
-- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an AKS cluster in an AKS hybrid deployment. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an AKS cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
 - *DaemonSets* - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
@@ -95,7 +95,7 @@ The Deployment Controller uses the Kubernetes Scheduler to run a given number of
 
 Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide AKS workload clusters and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
 
-When you create an Azure Kubernetes Service cluster in AKS hybrid:
+When you create an Azure Kubernetes Service cluster on AKS hybrid, the following namespaces are available:
 
 - *default* - This namespace is where pods and deployments are created by default when none is provided. In smaller environments, you can deploy applications directly into the default namespace without creating additional logical separations. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.
 - *kube-system* - This namespace is where core resources exist, such as network features like DNS and proxy, or the Kubernetes dashboard. You typically don't deploy your own applications into this namespace.

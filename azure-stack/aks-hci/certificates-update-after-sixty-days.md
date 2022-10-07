@@ -1,9 +1,9 @@
 ---
 title: Certificates and tokens in AKS hybrid
-description: Learn how to update Azure Kubernetes Service (AKS) certificates in AKS hybrid deployments.
+description: Learn how to update AKS certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 07/06/2022
 ms.reviewer: rbaziwane
@@ -17,11 +17,11 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
+AKS hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).<!--PLACEHOLDER: I drafted this AKS hybrid desription because the standard product name expansion doesn't work in this context.-->
 
 ## Cloud agent
 
-During AKS hybrid deployments, AKS installs agents that are used to perform various functions within the cluster. These agents include:
+When you deploy AKS hybrid, AKS installs agents that are used to perform various functions within the cluster. These agents include:
 
 - Cloud agent: a service that is responsible for the underlying platform orchestration.
 - Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
