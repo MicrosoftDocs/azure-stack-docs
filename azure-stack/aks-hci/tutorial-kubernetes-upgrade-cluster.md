@@ -1,9 +1,9 @@
 ---
-title: Tutorial - Upgrade a cluster in AKS hybrid deployment
-description: In this tutorial, learn how to upgrade an existing cluster in Azure Kubernetes Service (AKS) hybrid to the latest available Kubernetes version.
+title: Tutorial - Upgrade a cluster in AKS hybrid
+description: In this tutorial, learn how to upgrade an existing cluster in AKS hybrid to the latest available Kubernetes version.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -12,11 +12,11 @@ author: sethmanheim
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
-# Tutorial: Upgrade Kubernetes in AKS hybrid deployment
+# Tutorial: Upgrade Kubernetes in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes in Azure Kubernetes Service (AKS) hybrid.
+As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes in when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid).
 
 This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluster. You'll learn how to:
 
@@ -194,7 +194,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Next steps
 
-In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI or a Windows Server cluster. You learned how to:
+In this tutorial, you upgraded Kubernetes in an AKS cluster on AKS hybrid. You learned how to:
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
@@ -203,7 +203,7 @@ In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI or a Wind
 > * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
 
-For more information about AKS hybrid deployments, see [AKS hybrid deployments](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
+For more information about AKS hybrid, see [AKS hybrid overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
 
 <!-- LINKS - external -->
 

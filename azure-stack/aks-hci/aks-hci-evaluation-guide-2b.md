@@ -1,24 +1,24 @@
 ---
-title: Deploy Azure Kubernetes Service (AKS) hybrid using PowerShell
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS hybrid on your Windows Virtual Machine by using PowerShell.
+title: Deploy AKS infrastructure using PowerShell
+description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/05/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-#Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+#Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
 #Keyword: Azure Virtual Machine deployment, Evaluate AKS hybrid in Azure
 ---
 
-# Deploy Azure Kubernetes Service (AKS) hybrid using PowerShell
+# Deploy AKS infrastructure using PowerShell
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy AKS hybrid. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy AKS. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
 > [!NOTE]
-> If you prefer to use Windows Admin Center, see [Deploy AKS hybrid using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
+> If you prefer to use Windows Admin Center, see [Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
 
 ## Architecture
 
@@ -122,7 +122,7 @@ With that created, in the Azure portal, under **Subscriptions**, **Access Contro
 
 ### Register the resource provider to your subscription
 
-Ahead of the registration process, you must enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell script:<!--Branding: "for AKS on Azure Stack HCI integration" - Is this specific to Azure Stack HCI, or does/will it be required for any AKS hybrid deployment?-->
+Ahead of the registration process, you must enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell script:
 
 ```powershell
 # Login to Azure
@@ -405,10 +405,10 @@ You can view your Kubernetes cluster resource on the [Azure portal](https://port
 > [!NOTE]
 > After connecting to the cluster, it can take between five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Kubernetes resource in the Azure portal.
 
-For more information about integrating with Azure Arc, see [Connect an AKS cluster to Azure Arc](connect-to-arc.md).<!--REBRANDING: Article title will change.-->
+For more information about integrating with Azure Arc, see [Connect an AKS cluster to Azure Arc](connect-to-arc.md).
 
 ## Next steps
 
 In this step, you've successfully deployed the AKS management cluster, deployed and scaled a Kubernetes cluster, and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore an AKS deployment on Azure Stack HCI](aks-hci-evaluation-guide-3.md)
+* [Part 3 - Explore AKS on Azure Stack HCI environment](aks-hci-evaluation-guide-3.md)

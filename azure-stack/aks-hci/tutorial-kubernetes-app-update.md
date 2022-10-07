@@ -1,9 +1,9 @@
 ---
-title:  Tutorial - Update an application in Azure Kubernetes Service
+title:  Tutorial - Update an application in AKS hybrid
 description: In this tutorial, learn how to update an existing application deployment with a new version of the application code.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2022
+ms.date: 10/07/2022
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 1/14/2022
@@ -13,9 +13,11 @@ ms.reviewer: jeguan
 # Keyword: update application tutorial container image
 ---
 
-# Tutorial: Update an application in Azure Kubernetes Service
+# Tutorial: Update an application in AKS hybrid
 
-After you deploy an application in Kubernetes in Azure Kubernetes Service (AKS), you can update it by specifying a new container image or image version. You should stage an update so that only a portion of the deployment is updated at the same time. This staged update enables the application to keep running during the update. It also provides a rollback mechanism if a deployment failure occurs.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+After you deploy an application in Kubernetes using Azure Kubernetes Service (AKS) hybrid deployment options (AKS hybrid), you can update it by specifying a new container image or image version. You should stage an update so that only a portion of the deployment is updated at the same time. This staged update enables the application to keep running during the update. It also provides a rollback mechanism if a deployment failure occurs.
 
 This tutorial, part six of seven, describes how to update the sample Azure Vote app. You will learn how to:
 

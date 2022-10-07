@@ -1,36 +1,36 @@
 ---
-title: Prepare Azure Virtual Machine for AKS hybrid deployment
-description: Evaluate AKS hybrid, Step 1 - Prepare an Azure Virtual Machine for your AKS hybrid deployment.
+title: Prepare Azure Virtual Machine for AKS
+description: Evaluate AKS hybrid, Step 1 - Prepare an Azure Virtual Machine to use for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/05/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+# Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Step 1: Prepare Azure Virtual Machine for AKS hybrid deployment
+# Step 1: Prepare Azure Virtual Machine for AKS
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
-In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
+In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
 
 * Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host - this will be automatically configured with the relevant roles and features needed for your evaluation
-* On the Windows Server VM, deploy the AKS hybrid management cluster
-* On the Windows Server VM, deploy the AKS hybrid target clusters, for running workloads
+* On the Windows Server VM, deploy the AKS management cluster
+* On the Windows Server VM, deploy the AKS target clusters, for running workloads
 
 > [!IMPORTANT]
 > The steps outlined in this evaluation guide are specific to running inside an Azure Virtual Machine, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see [Set up an AKS host and deploy a workload cluster using PowerShell](kubernetes-walkthrough-powershell.md).
 
 ## Get an Azure subscription
 
-To evaluate AKS hybrid, you'll need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
+To evaluate AKS, you'll need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
 
-The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS hybrid Host VM run-time efficiently, you can test the scenario well within your subscription limits.
+The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
 The second option would be to sign up for an [Azure free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you credit for the first 30 days, and 12 months of popular services for free.
 
@@ -118,7 +118,7 @@ After clicking the **Deploy to Azure** button, enter the details, which should l
 :::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
 
 > [!NOTE]
-> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
+> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure Hybrid Benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
@@ -293,7 +293,7 @@ If your Azure Virtual Machine fails to deploy successfully, and the error relate
 
 ## Access your Azure Virtual Machine
 
-With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM to start the AKS hybrid deployment.
+With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM to start the AKS deployment.
 
 ### Connect to your Azure Virtual Machine
 
@@ -315,7 +315,7 @@ Now that you're successfully connected to the VM, it's a good idea to ensure you
 2. In the **Updates** window, select **Check for updates**. If any are required, ensure they are downloaded and installed.
 3. Restart if required, and when completed, re-connect your RDP session using the previous steps.
 
-With the OS updated, and back online after any required reboot, you can deploy AKS hybrid.
+With the OS updated, and back online after any required reboot, you can deploy AKS.
 
 ## Troubleshooting
 
@@ -364,7 +364,7 @@ If however, you're having a problem with AKS hybrid outside of this evaluation g
 
 ## Next steps
 
-In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS hybrid infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center, or via PowerShell:
+In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS nfrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center, or via PowerShell:
 
-* [Step 2a - Deploy AKS hybrid using Windows Admin Center](aks-hci-evaluation-guide-2a.md)
-* [Step 2b - Deploy AKS hybrid using PowerShell](aks-hci-evaluation-guide-2b.md)
+* [Step 2a - Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md)
+* [Step 2b - Deploy AKS infrastructure using PowerShell](aks-hci-evaluation-guide-2b.md)

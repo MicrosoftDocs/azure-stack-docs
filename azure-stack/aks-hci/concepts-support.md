@@ -1,9 +1,9 @@
 ---
-title: Tested resource limits, VM sizes, and regions on Azure Stack HCI and Windows Server
-description: Tested resource limits, VM sizes, and regions in AKS on Azure Stack HCI
+title: Tested resource limits, VM sizes, and regions for AKS hybrid
+description: Tested resource limits, VM sizes, and regions for AKS on Azure Stack HCI and Windows Server.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
@@ -13,7 +13,7 @@ ms.custom: references_regions
 
 ---
 
-# Tested resource limits, VM sizes, and regions on Azure Stack HCI and Windows Server
+# Tested resource limits, VM sizes, and regions for AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 

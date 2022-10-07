@@ -1,27 +1,27 @@
 ---
-title: Explore Azure Kubernetes Service (AKS) hybrid environment
-description: Evaluate AKS hybrid, Step 3 - With AKS hybrid deployed in your Azure Virtual Machine, explore other capabilties.
+title: Explore AKS on Azure Stack HCI environment
+description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilties in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/05/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+# Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Explore the AKS hybrid environment
+# Explore the AKS on Azure Stack HCI environment
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With all key components deployed, including the management cluster, along with target clusters, you can now begin to explore some of the additional capabilities of an Azure Kubernetes Service (AKS) hybrid deployment. This section describes some of the key elements, but for more information, see [the product documentation](/azure-stack/aks-hci/).<!--REBRANDING: What will the rebranded landing page be called?-->
+With all key components deployed, including the management cluster, along with target clusters, you can now begin to explore some of the additional capabilities of an Azure Kubernetes Service (AKS) deployment. This section describes some of the key elements, but for more information, see [the product documentation](/azure-stack/aks-hci/).
 
 ## Deploy a simple Linux application
 
 To deploy a containerized application with your cluster up and running, the following steps describe key areas of deployment, testing, and scaling an application.
 
-During the deployment of AKS hybrid, **kubectl** was configured on your Azure Virtual Machine Host. Kubectl provides a number of different ways to manage your Kubernetes clusters and applications.
+During the deployment of AKS, **kubectl** was configured on your Azure Virtual Machine Host. Kubectl provides a number of different ways to manage your Kubernetes clusters and applications.
 
 As part of this guide, you'll deploy an [Azure vote application](https://github.com/Azure-Samples/azure-voting-app-redis). To deploy the application, you'll need a Kubernetes manifest file. A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. The manifest we'll use in this tutorial includes two Kubernetes deployments: one for the sample Azure Vote Python application, and the other for a Redis instance. Two Kubernetes services are also created: an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet.
 
@@ -84,7 +84,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
 
 ## Expose a nested application to the internet
 
-If you've followed all the steps in this guide, you'll have a running AKS hybrid infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploy-a-simple-linux-application), you'll now have an Azure Voting web application running in a container in AKS hybrid. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure Virtual Machine allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
+If you've followed all the steps in this guide, you'll have a running AKS infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploy-a-simple-linux-application), you'll now have an Azure Voting web application running in a container in AKS. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure Virtual Machine allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
 
 > [!NOTE]
 > This is specific to the Azure Virtual Machine nested configuration, and would not be required in a production deployment on-premises.
@@ -131,32 +131,32 @@ This process creates a NAT static mapping that's specific to that external IP an
 
 ## Deploy hybrid end-to-end solutions
 
-Now that you can interact with various aspects of your AKS hybrid deployment, it's a good time to build your knowledge by experimenting with more advanced hybrid solutions that run in AKS hybrid. These hybrid solutions use AKS hybrid capabilities in combination with other Azure services to enable more complex hybrid use cases.
+Now that you can interact with various aspects of AKS on Azure Stack HCI, it's a good time to build your knowledge by experimenting with more advanced hybrid solutions that run on AKS hybrid. These hybrid solutions use AKS hybrid capabilities in combination with other Azure services to enable more complex hybrid use cases.
 
-The following examples demonstrate how to quickly get started developing various hybrid solutions, using AKS hybrid and other services. Each sample solution is self-contained and may require extra Azure resources for its operations.
+The following examples demonstrate how to quickly get started developing various hybrid solutions, using AKS on Azure Stack HCI and other Azure Services. Each sample solution is self-contained and may require extra Azure resources for its operations.
 
 ### AI Video Analytics at the Edge (Vision on Edge)
 
-Vision on Edge (VoE) is an open-source end-to-end solution for AKS hybrid that simplifies the customer journey in creating and deploying vision-based AI analytics at the edge using a combination of various Azure services and open-source software. Vision on Edge takes advantage of:
+Vision on Edge (VoE) is an open-source end-to-end solution for AKS on Azure Stack HCI that simplifies the customer journey in creating and deploying vision-based AI analytics at the edge using a combination of various Azure services and open-source software. Vision on Edge takes advantage of:
 
 * Azure Custom Vision
 * Azure IoT Hub/Azure IoT Edge
 
 To help you to:
 
-* Go from zero to PoC by deploying our pre-built use-case scenarios such as defect detection and people counting in manufacturing and retail industries, respectively, on your own camera feeds
-* Go from PoC to MVP by creating your own custom AI model capable of detecting your desired objects from data gathered from your cameras easily through the VoE UI
+* Go from zero to PoC by deploying our pre-built use-case scenarios such as defect detection and people counting in manufacturing and retail industries, respectively, on your own camera feeds.
+* Go from PoC to MVP by creating your very own custom AI model capable of detecting your desired objects from data gathered from your cameras easily through the VoE UI.
 * Go from MVP to Production by deploying your custom AI solution/model, accelerated to 10+ cameras in parallel.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/voe-box.gif" alt-text="Screenshot of a Vision On Edge box.":::
 
 #### Deployment steps
 
-See [Deploy VisionOnEdge solution on AKS hybrid using a VoE Helm chart](https://github.com/penorouzi/azure-intelligent-edge-patterns/blob/master/factory-ai-vision/Tutorial/K8s_helm_deploy.md) to install VoE on Kubernetes (AKS hybrid) using a VoE Helm chart.
+See [Deploy VisionOnEdge solution on AKS using a VoE Helm chart](https://github.com/penorouzi/azure-intelligent-edge-patterns/blob/master/factory-ai-vision/Tutorial/K8s_helm_deploy.md) to install VoE on Kubernetes (AKS) using a VoE Helm chart.
 
 ### Shutting down the environment
 
-To save costs, you can shut down your AKS hybrid infrastructure, and the Hyper-V host. In order to do so, it's advisable to run the following commands, from the Hyper-V host, to cleanly power down the different components, before powering down the Azure Virtual Machine itself.
+To save costs, you can shut down your AKS infrastructure, and the Hyper-V host. In order to do so, it's advisable to run the following commands, from the Hyper-V host, to cleanly power down the different components, before powering down the Azure Virtual Machine itself.
 
 1. On your Hyper-V host, open **PowerShell as administrator** and run the following command:
 
@@ -195,4 +195,4 @@ In addition to the scenarios covered, there are a number of other useful tutoria
 * [Use Azure Policy to apply cluster configurations at scale](/azure/azure-arc/kubernetes/use-azure-policy)
 * [Enable monitoring of an AKS cluster connected to Azure Arc](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
 
-In addition to these resources, it's certainly worth exploring additional scenarios around Azure Arc, on the [Azure Arc jumpstart website](https://azurearcjumpstart.io). Here, you can explore scenarios around [AKS hybrid clusters, which are Arc enabled](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/), and [Azure Arc-enabled data services](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/).
+In addition to these resources, it's certainly worth exploring additional scenarios around Azure Arc, on the [Azure Arc jumpstart website](https://azurearcjumpstart.io). Here, you can explore scenarios around [AKS clusters, which are Arc-enabled in AKS hybrid](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/), and [Azure Arc-enabled data services](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/).

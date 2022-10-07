@@ -1,14 +1,14 @@
 ---
 title: Deploy applications on AKS hybrid with Helm
-description: Learn how to use Helm to deploy applications on Azure Kubernetes Service (AKS) hybrid deployments.
+description: Learn how to use Helm to deploy applications on AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 
-# Intent: As an IT Pro, I want to learn how to deploy applications on AKS using Helm.
+# Intent: As an IT Pro, I want to learn how to deploy applications on AKS hybrid using Helm.
 # Keyword: Helm, Helm chart, Helm deployment
 
 ---
@@ -19,7 +19,7 @@ ms.reviewer: rbaziwane
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-In this topic, you'll learn how to use Helm to package and deploy applications on Azure Kubernetes Service (AKS) hybrid deployments.
+In this topic, you'll learn how to use Helm to package and deploy applications on AKS when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid).
 
 ## Before you begin
 

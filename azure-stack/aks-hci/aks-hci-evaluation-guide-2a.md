@@ -1,30 +1,30 @@
 ---
-title: Deploy Azure Kubernetes Service (*)AKS) hybrid using Windows Admin Center
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS hybrid on your Windows Virtual Machine by using Windows Admin Center.
+title: Deploy AKS instrastructure using Windows Admin Center
+description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using Windows Admin Center for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/05/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure Virtual Machine.
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Deploy Azure Kubernetes Service (AKS) hybrid using Windows Admin Center
+# Deploy your AKS infrastructure using Windows Admin Center
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) hybrid. You'll first use Windows Admin Center to deploy the AKS management cluster, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS). You'll first use Windows Admin Center to deploy the AKS management cluster, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
 > [!NOTE]
-> If you prefer to use PowerShell, see [Deploy AKS hybrid using PowerShell](aks-hci-evaluation-guide-2b.md).
+> If you prefer to use PowerShell, see [Deploy AKS infrastructure using PowerShell](aks-hci-evaluation-guide-2b.md).
 
 ## Architecture
 
-The following image shows the different layers and interconnections between the different components.
+The following image shows the different layers and interconnections between the different components:
 
-:::image type="content" source="media/aks-hci-evaluation-guide/nested-virt.png" alt-text="Illustration showing the AKS hybrid architecture.":::
+:::image type="content" source="media/aks-hci-evaluation-guide/nested-virt.png" alt-text="Illustration showing architecture of AKS on Azure Stack HCI.":::
 
 You've already deployed the outer box, which represents the Azure Resource Group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage and so on. You've also completed some host configuration.
 
@@ -50,11 +50,11 @@ To give the optimal experience with Windows Admin Center, you should enable **Mi
 
 ## Configure Windows Admin Center
 
-Your Azure Virtual Machine deployment automatically installed Windows Admin Center 2103, however there are some additional configuration steps that must be performed before you can use it to deploy AKS hybrid:
+Your Azure Virtual Machine deployment automatically installed Windows Admin Center 2103, however there are some additional configuration steps that must be performed before you can use it to deploy AKS:
 
 1. Double-click the **Windows Admin Center** shortcut on the desktop.
 2. In Windows Admin Center, you might receive notifications in the top-right corner, indicating that some extensions are updating automatically. Let these updates finish before proceeding. Windows Admin Center may refresh automatically during this process.
-3. Once completed, navigate to **Settings**, then **Extensions**.
+3. Once complete, navigate to **Settings**, then **Extensions**.
 4. Select **Installed extensions** and you should see **Azure Kubernetes Service** listed as installed.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/installed-extensions.png" alt-text="Screenshot of installed extensions in Windows Admin Center.":::
@@ -62,7 +62,7 @@ Your Azure Virtual Machine deployment automatically installed Windows Admin Cent
    > [!NOTE]
    > Ensure that your Azure Kubernetes Service extension is the latest available version. If the **Status** shows **Installed**, then you have the latest version. If the **Status** shows **Update available (1.#.#)**, ensure that you apply this update and refresh before proceeding.
 
-In order to deploy AKS hybrid using Windows Admin Center, connect your Windows Admin Center instance to Azure:
+In order to deploy AKS using Windows Admin Center, connect your Windows Admin Center instance to Azure:
 
 1. Still in **Settings**, under **Gateway**, select **Azure**.
 2. Select **Register**, and in the **Get started with Azure in Windows Admin Center** blade, follow the instructions to **Copy the code**, then select the link to configure device login.
@@ -78,7 +78,7 @@ In order to deploy AKS hybrid using Windows Admin Center, connect your Windows A
 
 ## Validate Azure integration
 
-In order to successfully deploy AKS hyrbrid with Windows Admin Center, additional permissions were applied on the Windows Admin Center Azure AD application that was created when you connected Windows Admin Center to Azure. You can quickly validate those permissions.
+In order to successfully deploy AKS with Windows Admin Center, additional permissions were applied on the Windows Admin Center Azure AD application that was created when you connected Windows Admin Center to Azure. In this step, you can quickly validate those permissions.
 
 1. Still in Windows Admin Center, click the **Settings** gear in the top-right corner.
 2. Under **Gateway**, click **Azure**. You should see your previously registered Azure AD app.
@@ -96,7 +96,7 @@ In order to successfully deploy AKS hyrbrid with Windows Admin Center, additiona
 
 5. Switch back to the **Windows Admin Center** tab and select **Windows Admin Center** in the top-left corner to return to the home page.
 
-   You'll notice that your **AKSHCIHOST001** VM is already under management, so at this point you're ready to deploy the AKS hybrid management cluster onto your Windows Server Hyper-V host.
+   You'll notice that your **AKSHCIHOST001** VM is already under management, so at this point you're ready to deploy the AKS management cluster onto your Windows Server Hyper-V host.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/aks-hci-host.png" alt-text="Screenshot of VM under management in Windows Admin Center.":::
 
@@ -112,7 +112,7 @@ $dhcpState = "Active" # Or Inactive
 Set-DhcpServerv4Scope -ScopeId 192.168.0.0 -State $dhcpState -Verbose
 ```
 
-## Deploy AKS hybrid on management cluster
+## Deploy AKS on management cluster
 
 The next section walks through configuring the AKS management cluster on your single-node Windows Server Hyper-V host.
 
@@ -122,7 +122,7 @@ The next section walks through configuring the AKS management cluster on your si
    :::image type="content" source="media/aks-hci-evaluation-guide/aks-extension.png" alt-text="Screenshot of VM options.":::
 
    > [!NOTE]
-   > This procedure shows an installation of Azure Kubernetes Service Runtime on Windows Server. Terminology may differ slightly depending on the platform you're deploying AKS hybrid on, but the overall deployment experience is the same.
+   > The terminology used refers to the **Azure Kubernetes Service Runtime on Windows Server​​** - the naming differs depending on whether you're running the installation of AKS on a Windows Server Hyper-V platform, or on the newer Azure Stack HCI 21H2 platform. The overall deployment experience is the same regardless of the underlying platform.
 
 1. Select **Set up** to start the deployment process.
 1. Review the prerequisites - your Azure Virtual Machine environment will meet all the prerequisites, so you should be fine to click **Next: System checks**.
@@ -149,9 +149,9 @@ The next section walks through configuring the AKS management cluster on your si
 
    :::image type="content" source="media/aks-hci-evaluation-guide/proxy-settings.png" alt-text="Screenshot of proxy settings in Windows Admin Center.":::
 
-1. On the Azure registration page, your Azure account should be automatically populated. Use the drop-down list to select your preferred subscription. If you are prompted, sign in to Azure with your Azure credentials. Once successfully authenticated, you should see your account, then choose your subscription.
+1. On the Azure registration page, your Azure account should be automatically populated. Use the drop-down to select your preferred subscription. If you are prompted, sign in to Azure with your Azure credentials. Once successfully authenticated, you should see your account, then choose your subscription.
 
-   :::image type="content" source="media/aks-hci-evaluation-guide/aks-registration.png" alt-text="Screenshot of AKS hybrid registration.":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/aks-registration.png" alt-text="Screenshot of AKS on Azure Stack HCI Azure registration.":::
 
    > [!NOTE]
    > No charges will be incurred for using AKS hybrid during the free trial period of 60 days.
@@ -173,7 +173,7 @@ The next section walks through configuring the AKS management cluster on your si
 
 ### Updates and cleanup
 
-For more information about updating, redeploying, or uninstalling AKS hybrid using Windows Admin Center, see [Set up AKS using Windows Admin Center](setup.md).<!--Check topic title. This topic is not in the set I'm rebranding.-->
+For more information about updating, redeploying, or uninstalling AKS using Windows Admin Center, see [Set up AKS using Windows Admin Center](setup.md).
 
 ## Create a Kubernetes cluster (target cluster)
 
@@ -195,7 +195,7 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center:
 Whichever option you chose, you will now be at the start of the **Create Kubernetes cluster** wizard.
 
 1. First review the prerequisites. Your Azure Virtual Machine environment will meet all the prerequisites, so you should be fine to click **Next: Basics**.
-1. On the **Basics** page, choose whether you want to enable a connection to Azure Arc. You can click the link on the page to learn more about Azure Arc. If you want to enable Azure Arc, select the **Enabled** radio button, then use the drop downs to select the **subscription**, **resource group** and **region**. Alternatively, you can create a new resource group, in a specific region, exclusively for the Azure Arc integration resource.
+1. On the **Basics** page, choose whether you want to enable connection to Azure Arc. You can click the link on the page to learn more about Azure Arc. If you want to enable Azure Arc, select the **Enabled** radio button, then use the drop downs to select the **subscription**, **resource group** and **region**. Alternatively, you can create a new resource group, in a specific region, exclusively for the Azure Arc integration resource.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/basics-arc.png" alt-text="Screenshot of enable Azure Arc integration with Windows Admin Center.":::
 
@@ -217,7 +217,7 @@ Whichever option you chose, you will now be at the start of the **Create Kuberne
 
 1. Once your node pools have been defined, click **Next: Authentication**.
 1. For this evaluation, for **AD Authentication** select **Disabled** and then click **Next: Networking**.
-1. On the **Networking** page, review the defaults. For this deployment, you'll deploy this Kubernetes cluster on the existing virtual network that was created when you installed AKS hybrid in the previous steps.
+1. On the **Networking** page, review the defaults. For this deployment, you'll deploy this Kubernetes cluster on the existing virtual network that was created when you installed AKS in the previous steps.
 1. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**.
 1. On the **Review + Create** page, review your chosen settings, then click **Create**.
 
@@ -260,7 +260,7 @@ A *node pool* is a group of nodes, or virtual machines that run your application
 
 Another configuration option that can be applied to a node pool is the concept of *taints*. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. [Learn more about taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS hybrid](use-node-pools.md#specify-a-taint-for-a-node-pool).
+This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS](use-node-pools.md#specify-a-taint-for-a-node-pool).<!--Will title change to "CReate and manage multiple node pools for a clustser in AKS hybrid?-->
 
 In addition to taints, we have recently added support for configuring the maximum number of pods that can run on a node, with the `-nodeMaxPodCount` parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, and the number has to be greater than 50.
 
@@ -302,6 +302,6 @@ dir $env:USERPROFILE\.kube
 
 ## Next steps
 
-In this step, you've successfully deployed the AKS management cluster using Windows Admin Center, optionally enabled connections to Azure Arc, and subsequently, deployed and scaled a Kubernetes cluster that you can move forward with to the next step, in which you can deploy your applications.
+In this step, you've successfully deployed the AKS management cluster using Windows Admin Center, optionally enabled connection to Azure Arc, and subsequently, deployed and scaled a Kubernetes cluster that you can move forward with to the next step, in which you can deploy your applications.
 
-- [Step 3 - Explore AKS hybrid](aks-hci-evaluation-guide-3.md)
+- [Step 3 - Explore AKS on Azure Stack HCI environment](aks-hci-evaluation-guide-3.md)

@@ -1,24 +1,26 @@
 ﻿---
-title: Tutorial - Prepare an application for AKS hybrid deployment 
-description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to Azure Kubernetes Service (AKS) hybrid.
+title: Tutorial - Prepare an application for AKS hybrid 
+description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS hybrid.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS hybrid deployment on Azure Stack HCI.
+# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS on Azure Stack HCI deployment.
 # Keyword: multi-container Kubernetes service
 
 ---
 
-# Tutorial: Prepare an application for AKS hybrid deployment
+# Tutorial: Prepare an application for AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this tutorial, part one of seven, a multi-container application is prepared for use on a Kubernetes cluster in an Azure Kubernetes Service (AKS) hybrid deployment. Existing development tools such as Docker Compose are used to locally build and test an application. You learn how to:
+In this tutorial, part one of seven, a multi-container application is prepared for use on a Kubernetes cluster when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid). Existing development tools such as Docker Compose are used to locally build and test an application. 
+
+You learn how to:
 
 > [!div class="checklist"]
 > * Clone a sample application source from GitHub

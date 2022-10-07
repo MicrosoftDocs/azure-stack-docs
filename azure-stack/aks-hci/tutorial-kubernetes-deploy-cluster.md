@@ -1,9 +1,9 @@
 ---
-title: Deploy a workload cluster in AKS hybrid deployment
+title: Deploy a workload cluster on AKS hybrid
 description: In this tutorial, learn how to create an Azure Kubernetes Service (AKS) cluster and use kubectl to connect to the Kubernetes master node.
 services: 
 ms.topic: tutorial
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -18,10 +18,12 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) cluster is deployed on an AKS hybrid deployment. You'll learn how to:
+Kubernetes provides a distributed platform for containerized applications. 
+
+In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) cluster is deployed on AKS hybrid. You'll learn how to:
 
 > [!div class="checklist"]
-> * Deploy an AKS cluster
+> * Deploy an AKS cluster on Azure Stack HCI
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
@@ -35,7 +37,7 @@ This tutorial uses the AksHci PowerShell module.
 
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
-## Install the Azure Kubernetes Service host
+## Install the Azure Kubernetes Service Host
 
 First, you must configure your registration settings.
 
@@ -108,7 +110,7 @@ Name                  : mycluster
 ```
 
 > [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster, and then you run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name.<!--What constitutes "new"? Should this be an AKS hybrid release reference?-->
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster, and then you run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name.
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 
