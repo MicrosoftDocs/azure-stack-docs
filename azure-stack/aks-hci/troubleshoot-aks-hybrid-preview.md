@@ -10,7 +10,7 @@ ms.reviewer: abha
 # Intent: As an IT Pro, I want to learn how to create and manage AKS hybrid clusters on-premises from Azure
 ---
 
-# Limitations and known issues
+# Troubleshooting and known issues
 
 ## KVA timeout error
 
