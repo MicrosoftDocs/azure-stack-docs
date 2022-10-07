@@ -18,8 +18,6 @@ ms.reviewer: anpaul
 In this quickstart, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network leveraging our SDN [Software Load
 Balancer][] (SLB) for all AKS-HCI load balancing scenarios.
 
-:::image type="content" source="media/software-defined-networking/architecture-diagram-for-sdn-on-aks.png" alt-text="Image showing architecture of SDNon AKS":::
-
 ## Limitations
 
 The following features are out of scope and not supported for this GA release:
