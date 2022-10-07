@@ -12,13 +12,13 @@ ms.custom: template-overview
 
 # AKS Lite hybrid option (preview)
 
-Azure Kubernetes Service Lite hybrid option is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. AKS Lite makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
+Azure Kubernetes Service Lite hybrid option is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Lite makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
+
+## Key features of AKS hybrid options for Windows
 
 AKS Lite is a Microsoft-supported Kubernetes platform, and includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. It is intended for static, pre-defined configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management.
 
 Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), each machine with AKS Lite has a VM with restricted RAM, Storage, and physical CPU cores according to a static allocation assigned at install time. This enables traditional Windows apps to run side-by-side (i.e. interoperable) alongside the AKS Lite VMs.
-
-## Key features of AKS hybrid options for Windows
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
