@@ -1,22 +1,24 @@
 ---
-title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: In this Azure Kubernetes Service on Azure Stack HCI and Windows Server tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
+title: Deploy applications in AKS hybrid deployment
+description: In this Azure Kubernetes Service (AKS) hybrid tutorial, learn how to deploy a multi-container application to an AKS cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 06/06/2022
+ms.date: 10/06/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want step-by-step instructions on how to deploy an application into a Kubernetes cluster so that the cluster manage the availability and connectivity.
+# Intent: As an IT Pro, I want step-by-step instructions on how to deploy an application into a Kubernetes cluster so that the cluster manages the availability and connectivity.
 # Keyword: deploy apps
 
 ---
 
-# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Tutorial: Deploy applications in AKS hybrid deployment
 
-You can build and deploy your own apps and services into a Kubernetes cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+You can build and deploy your own apps and services into a Kubernetes cluster in an Azure Kubernetes Service (AKS) hybrid deployment. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster in AKS.
 
 You will learn how to:
 
@@ -31,11 +33,11 @@ This quickstart assumes a basic understanding of Kubernetes concepts.
 
 ## Before you begin
 
-Previous tutorials described how to package an application into a container image, and then upload the image to the Azure Container Registry and create a Kubernetes cluster.
+Previous tutorials described how to package an application into a container image, and then upload the image to the Azure Container Registry, and create a Kubernetes cluster.
 
 To complete this tutorial, you will need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 - Create container images][aks-tutorial-prepare-application.md].
 
-This tutorial requires Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install it or upgrade, see [Install Azure CLI][azure-cli-install].
+This tutorial requires Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade Azure CLI, see [Install Azure CLI][azure-cli-install].
 
 ## Update the manifest file
 
@@ -79,7 +81,7 @@ To deploy your application, use the [kubectl apply][kubectl-apply] command. This
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-The following example output shows the resources successfully created in the AKS on Azure Stack HCI and Windows Server cluster:
+The following example output shows the resources successfully created in the AKS cluster:
 
 ```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -92,7 +94,7 @@ service "azure-vote-front" created
 
 ## Test the application
 
-When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete.
+When the application runs, the Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete.
 
 To monitor progress, use the [kubectl get service][kubectl-get] command with the `--watch` argument.
 
@@ -120,10 +122,10 @@ If the application didn't load, it might be due to an authorization problem with
 
 ## Next steps
 
-In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in AKS on Azure Stack HCI and Windows Server. You learned how to:
+In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in an AKS hybrid deployment. You learned how to:
 
 > [!div class="checklist"]
-> * Update a Kubernetes manifest files
+> * Update a Kubernetes manifest file
 > * Run an application in Kubernetes
 > * Test the application
 

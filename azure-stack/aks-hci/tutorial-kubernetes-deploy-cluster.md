@@ -1,25 +1,27 @@
 ---
-title: Deploy deploy a workload cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: In this tutorial, learn how to create an AKS on Azure Stack HCI and Windows Server cluster and to use kubectl to connect to the Kubernetes master node.
+title: Deploy a workload cluster in AKS hybrid deployment
+description: In this tutorial, learn how to create an Azure Kubernetes Service (AKS) cluster and use kubectl to connect to the Kubernetes master node.
 services: 
 ms.topic: tutorial
-ms.date: 04/22/2022
+ms.date: 10/06/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI and Windows Server cluster and use kubect1 so I can connect to the Kubernetes master node.
+# Intent: As an IT Pro, I want step-by-step instructions on how to create a workload cluster in AKS and use kubect1 so I can connect to the Kubernetes master node.
 # Keyword: deploy a workload cluster
 
 ---
 
-# Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Tutorial: Deploy a workload cluster on AKS hybrid
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster is deployed in AKS on Azure Stack HCI and Windows Server. You'll learn how to:
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) cluster is deployed on an AKS hybrid deployment. You'll learn how to:
 
 > [!div class="checklist"]
-> * Deploy an AKS cluster on Azure Stack HCI 
+> * Deploy an AKS cluster
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
@@ -33,7 +35,7 @@ This tutorial uses the AksHci PowerShell module.
 
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
-## Install the Azure Kubernetes Service Host
+## Install the Azure Kubernetes Service host
 
 First, you must configure your registration settings.
 
@@ -42,7 +44,7 @@ Set-AksHciRegistration -subscription mysubscription -resourceGroupName myresourc
 ```
 **You must customize these values according to your Azure subscription and resource group name.**
 
-Then, run the following command to ensure that all requirements on each physical node are met to install Azure Kubernetes service on Azure Stack HCI.
+Then, run the following command to ensure that all requirements on each physical node are met to install AKS on Azure Stack HCI.
 
 ```powershell
 Initialize-AksHciNode
@@ -73,7 +75,7 @@ Then, configure your deployment with the following command.
 Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
-Now, you are ready to install the AKS on Azure Stack HCI and Windows Server host.
+Now, you are ready to install the AKS host.
 
 ```powershell
 Install-AksHCi
@@ -81,7 +83,7 @@ Install-AksHCi
 
 ## Create a Kubernetes cluster
 
-Create a Kubernetes cluster using the command [New-AksHciCluster](./reference/ps/new-akshcicluster.md). The following example creates a cluster named *mycluster* with the one Linux node pool called *linuxnodepool* with a node count of 1.
+Create a Kubernetes cluster using the command [New-AksHciCluster](./reference/ps/new-akshcicluster.md). The following example creates a cluster named *mycluster* with one Linux node pool called *linuxnodepool*, which has a node count of 1.
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1
@@ -106,7 +108,7 @@ Name                  : mycluster
 ```
 
 > [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster, and then you run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name.<!--What constitutes "new"? Should this be an AKS hybrid release reference?-->
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 
