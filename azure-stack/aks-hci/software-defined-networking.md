@@ -180,23 +180,23 @@ Next, you can create [workload clusters][] and [deploy your applications][]. All
 SDN virtual network that was provided during installation. The SDN Software load balancer will also be used as the external load balancer
 for all Kubernetes services, as well as act as the load balancer for the API server on Kubernetes control-plane(s).
 
-[Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
-[Azure Kubernetes Service on Azure Stack HCI requirements]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/system-requirements
-[Plan a Software Defined Network infrastructure]: https://docs.microsoft.com/en-us/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
-[SDN Express]: https://docs.microsoft.com/en-us/azure-stack/hci/manage/sdn-express
-[Windows Admin Center]: https://docs.microsoft.com/en-us/azure-stack/hci/deploy/sdn-wizard
+[Software Load Balancer]: ../hci/concepts/software-load-balancer.md
+[Azure Kubernetes Service on Azure Stack HCI requirements]: system-requirements.md
+[Plan a Software Defined Network infrastructure]: ../hci/concepts/plan-software-defined-networking-infrastructure.md
+[SDN Express]: ../hci/manage/sdn-express.md
+[Windows Admin Center]: ../hci/deploy/sdn-wizard.md
 [Software Load Balancer.psd1]: https://github.com/microsoft/SDN/blob/master/SDNExpress/scripts/Sample%20-%20Software%20Load%20Balancer.psd1
-[Troubleshooting SDN \| Microsoft Docs]: https://docs.microsoft.com/en-us/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
-[how to create and attach VM's to an SDN virtual network]: https://docs.microsoft.com/en-us/azure-stack/hci/manage/vm
-[here]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell
-[1]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell#install-the-akshci-powershell-module
-[2]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell#register-the-resource-provider-to-your-subscription
-[3]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-1-prepare-your-machines-for-deployment
-[New-AksHciNetworkSetting]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/reference/ps/new-akshcinetworksetting
-[4]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/concepts-node-networking#microsoft-on-premises-cloud-service
-[Set-AksHciConfig]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/reference/ps/set-akshciconfig
-[5]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-4-log-in-to-azure-and-configure-registration-settings
-[Azure service principal]: https://learn.microsoft.com/en-us/azure-stack/aks-hci/reference/ps/set-akshciregistration#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal
-[workload clusters]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-6-create-a-kubernetes-cluster
-[deploy your applications]: https://docs.microsoft.com/en-us/azure-stack/aks-hci/deploy-windows-application
-[6]: /azure-stack/aks-hci/known-issues
+[Troubleshooting SDN \| Microsoft Docs]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
+[how to create and attach VM's to an SDN virtual network]: ../hci/manage/vm.md
+[here]: kubernetes-walkthrough-powershell.md
+[1]: kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module
+[2]: kubernetes-walkthrough-powershell.md#register-the-resource-provider-to-your-subscription
+[3]: kubernetes-walkthrough-powershell.md#step-1-prepare-your-machines-for-deployment
+[New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
+[4]: concepts-node-networking.md#microsoft-on-premises-cloud-service
+[Set-AksHciConfig]: reference/ps/set-akshciconfig.md
+[5]: kubernetes-walkthrough-powershell.md#step-4-log-in-to-azure-and-configure-registration-settings
+[Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal
+[workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
+[deploy your applications]: deploy-windows-application.md
+[6]: known-issues.yml
