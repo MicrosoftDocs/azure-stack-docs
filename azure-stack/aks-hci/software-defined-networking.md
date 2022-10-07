@@ -91,7 +91,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
    | Parameter                               | Description                                                                                    |
    |-----------------------------------------|------------------------------------------------------------------------------------------------|
    | **-name**                                   | Name of virtual network in AKS-HCI (must be lowercase).                                        |
-   | **–vswitchName**                            | Name of external vSwitch on the HCI servers. Use same vSwitch that was used for SDN deployment. |
+   | **-vswitchName**                            | Name of external vSwitch on the HCI servers. Use same vSwitch that was used for SDN deployment. |
    | **-k8sNodeIpPoolStart** <br /> **-k8sNodeIpPoolEnd** | IP start/end range of SDN virtual network.                                                      |
    | **-ipAddressPrefix**                        | Virtual network subnet in CIDR notation.                                                        |
    | **-gateway** <br /> **-dnsServers**                  | Gateway and DNS server of the SDN virtual network.                                              |
@@ -104,11 +104,11 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
    $VipPool = New-AksHciVipPoolSetting -name "PublicVIP" -vipPoolStart "10.127.132.16" -vipPoolEnd "10.127.132.23
    ```
 
-| Parameter     | Description                                                                                                                                      |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **-name**         | The "PublicVIP" logical network that you provided when configuring SDN Load Balancers.                                                    |
-| **–vipPoolStart** | IP start range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network. |
-| **-vipPoolEnd**   | IP end range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network.   |
+   | Parameter     | Description                                                                                                                                      |
+   |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+   | **-name**         | The "PublicVIP" logical network that you provided when configuring SDN Load Balancers.                                                    |
+   | **-vipPoolStart** | IP start range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network. |
+   | **-vipPoolEnd**   | IP end range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network.   |
 
 3. In the same PowerShell window used in Step 2, create the AKS-HCI configuration for SDN by providing references to the targeted SDN networks, as well as passing in the network settings ($vnet, $vipPool) we have defined:
 
@@ -132,12 +132,12 @@ If you are using static IP address assignment for your Azure Stack HCI cluster n
    |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
    | **–imageDir**                         | The path to where AKS HCI stores its VHD images. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                                      |
    | **–workingDir**                       | The path to where small files for the module are stored. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                              |
-   | **–cloudConfigLocation**              | The path to the directory where cloud agent configuration is stored. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                               |
-   | **–vnet**                             | Name of `AksHciNetworkSetting` variable created in the previous step                                                                                                                                                                                                                                                                                                      |
-   | **–useNetworkController**             | Enable integration with SDN.                                                                                                                                                                                                                                                                                                                                             |
-   | **–networkControllerFqdnOrIpAddress** | Network controller FQDN. You can get the FQDN by executing `Get-NetworkController` on the Network Controller VM and using the `RestName` parameter.                                                                                                                                                                                                                         |
-   | **–networkControllerLbSubnetRef**     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing the `Get-NetworkControllerLogicalSubnet` cmdlet. When using this cmdlet, use `PublicVIP` as the `LogicalNetworkId`. Note that the `VipPoolStart` and `vipPoolEnd` parameters in the `New-AksHciVipPoolSetting` cmdlet must be part of the subnet referenced here. |
-   | **–networkControllerLnetRef**         | Normally, this would be "/logicalnetworks/HNVPA".                                                                                                                                                                                                                                                                                                                        |
+   | **-cloudConfigLocation**              | The path to the directory where cloud agent configuration is stored. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                               |
+   | **-vnet**                             | Name of `AksHciNetworkSetting` variable created in the previous step                                                                                                                                                                                                                                                                                                      |
+   | **-useNetworkController**             | Enable integration with SDN.                                                                                                                                                                                                                                                                                                                                             |
+   | **-networkControllerFqdnOrIpAddress** | Network controller FQDN. You can get the FQDN by executing `Get-NetworkController` on the Network Controller VM and using the `RestName` parameter.                                                                                                                                                                                                                         |
+   | **-networkControllerLbSubnetRef**     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing the `Get-NetworkControllerLogicalSubnet` cmdlet. When using this cmdlet, use `PublicVIP` as the `LogicalNetworkId`. Note that the `VipPoolStart` and `vipPoolEnd` parameters in the `New-AksHciVipPoolSetting` cmdlet must be part of the subnet referenced here. |
+   | **-networkControllerLnetRef**         | Normally, this would be "/logicalnetworks/HNVPA".                                                                                                                                                                                                                                                                                                                        |
    | **-vipPool**                          | VIP pool used as the front end IPs for load balancing.                                                                                                                                                                                                                                                                                                                   |
 
    For more details about these parameters, see [Set-AksHciConfig][].
@@ -171,7 +171,7 @@ Get-AksHciLogsSdn
 ### Feedback/issues
 
 If you encounter any issues with the instructions or would simply like to provide feedback, please reach out to us at
-<aks-hci-sdn@microsoft.com>. There are also some self-help resources that [can be found here][Troubleshooting SDN \| Microsoft Docs] for SDN
+<aks-hci-sdn@microsoft.com>. There are also some self-help resources that [can be found here][Troubleshooting SDN] for SDN
 [and here](known-issues.yml) for AKS-HCI.
 
 ## Next steps
@@ -186,7 +186,7 @@ for all Kubernetes services, as well as act as the load balancer for the API ser
 [SDN Express]: ../hci/manage/sdn-express.md
 [Windows Admin Center]: ../hci/deploy/sdn-wizard.md
 [Software Load Balancer.psd1]: https://github.com/microsoft/SDN/blob/master/SDNExpress/scripts/Sample%20-%20Software%20Load%20Balancer.psd1
-[Troubleshooting SDN \| Microsoft Docs]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
+[Troubleshooting SDN]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
 [how to create and attach VM's to an SDN virtual network]: ../hci/manage/vm.md
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
