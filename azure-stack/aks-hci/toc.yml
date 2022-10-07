@@ -241,10 +241,10 @@
   items:
   - name: Overview
     href: aks-hybrid-preview-overview.md
-  - name: Quickstart - deploy an AKS hybrid cluster on an Azure VM
-    href: aks-hybrid-preview-azure-vm.md
   - name: System requirements
     href: aks-hybrid-preview-requirements.md
+  - name: Quickstart - deploy an AKS hybrid cluster on an Azure VM
+    href: aks-hybrid-preview-azure-vm.md
   - name: How-to - Install Azure Resource Bridge on Windows Server
     href: deploy-arc-resource-bridge-windows-server.md
   - name: How-to - Configure networking for AKS hybrid clusters
