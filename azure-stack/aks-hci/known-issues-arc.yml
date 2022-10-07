@@ -54,12 +54,12 @@ sections:
           
           If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) and try connecting again. If the above scenario doesn't apply to you,  [open a support issue](./help-support.md) on AKS on Azure Stack HCI.
       - question: | 
-          Error: 'Secrets "sh.helm.release.v1.azure-arc.v1" not found'.
+          Error: 'Secrets "sh.helm.release.v1.azure-arc.v1" not found'
 
         answer: | 
           This error indicates that your Kubernetes API server could not be reached. 
           
-          Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the [Azure portal](https://portal.azure.com) to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -a` to confirm that the namespace, `azure-arc`, does not exist on your cluster.
+          Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the [Azure portal](https://portal.azure.com) to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -A` to confirm that the namespace, `azure-arc`, does not exist on your cluster.
           
       - question: | 
           Error: 'Error while updating agents for enabling features'.

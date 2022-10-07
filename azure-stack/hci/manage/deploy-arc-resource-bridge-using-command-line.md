@@ -90,7 +90,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       ```PowerShell
       $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP  
 
-      Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP 
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP 
 
       Install-Moc
       ```
@@ -100,7 +100,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       ```PowerShell
       $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
 
-      Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable
 
       Install-Moc
       ```
@@ -144,7 +144,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_group="<pre-created resource group in Azure>"
    $subscription="subscription ID in Azure"
-   $Location="<Azure Region - Available regions include 'eastus', 'eastus2euap' and 'westeurope'>"
+   $Location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
    $customloc_name="<name of the custom location, such as <HCIClusterName>-cl>"
    ```
    where:
@@ -153,7 +153,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    | ----- | ----------- |
    | **resource_group** | Name of the pre-created resource group in Azure. |
    | **subscription** | Subscription ID in Azure. |
-   | **Location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **eastus2euap**, or **westeurope**. |
+   | **Location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
    | **customloc_name** | Name of the custom location, such as HCIClusterName-cl. |
 
    > [!TIP]
