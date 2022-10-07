@@ -13,9 +13,9 @@ ms.reviewer: anpaul
 
 ---
 
-# QuickStart: Deploy Microsoft Software Defined Networking (SDN) with Azure Kubernetes Service on HCI (AKS-HCI)
+# Deploy Microsoft Software Defined Networking (SDN) with Azure Kubernetes Service on HCI (AKS-HCI)
 
-In this quickstart, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network leveraging our SDN [Software Load
+In this article, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network leveraging our SDN [Software Load
 Balancer][] (SLB) for all AKS-HCI load balancing scenarios.
 
 ## Limitations
