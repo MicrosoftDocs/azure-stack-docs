@@ -44,11 +44,12 @@ After registering the app you learn how to assign it to a role, limiting its res
 ::: zone-end
 
 ::: zone pivot="state-connected"
+
 ## Manage an Azure AD app
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
-### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
+### Create an app registration that uses a client secret credential
 
 In this section, you register your app in your Azure AD tenant using the Azure portal. In following example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
