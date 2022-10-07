@@ -1,9 +1,9 @@
 ---
-title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to update AKS certificates on Azure Stack HCI and Windows Server
+title: Certificates and tokens in AKS hybrid
+description: Learn how to update Azure Kubernetes Service (AKS) certificates in AKS hybrid deployments.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/06/2022
+ms.date: 10/06/2022
 ms.author: sethm 
 ms.lastreviewed: 07/06/2022
 ms.reviewer: rbaziwane
@@ -13,20 +13,22 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Update certificates
+# Update certificates in AKS hybrid
 
-Azure Kubernetes Service (AKS) on Windows Server and Azure Stack HCI uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+Azure Kubernetes Service (AKS) hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
 ## Cloud agent
 
-When you deploy AKS on Windows Server and Azure Stack HCI, it installs agents that are used to perform various functions within the cluster. These agents include:
+During AKS hybrid deployments, AKS installs agents that are used to perform various functions within the cluster. These agents include:
 
 - Cloud agent: a service that is responsible for the underlying platform orchestration.
 - Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
 - Key Management System (KMS) pod: a service responsible for key management.
 - Other services - cloud operator, certificate manager, etc.
 
-The cloud agent service in Azure Kubernetes Service on Azure Stack HCI and Windows Server is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
+The cloud agent service in AKS hybrid is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
 
 To communicate with the cloud agent, clients require certificates to be provisioned in order to secure this communication. Each client requires an identity to be associated with it, which defines the Role Based Access Control (RBAC) rules associated with the client. Each identity consists of two entities:
 
@@ -37,7 +39,7 @@ Each entity is valid for a specific period (the default is 90 days), at the end 
 
 ## Certificate types
 
-There are two types of certificates used in AKS:
+There are two types of certificates used in AKS hybrid:
 
 - Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
 - Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 60 to 90 days.
@@ -50,7 +52,7 @@ Starting with the May 2022 update, customers who are unable to update within the
 
 ## Update management cluster certificates and tokens
 
-To update tokens and certificates for all clients in the  management cluster, including NodeAgent, KVA, KMS, CloudOperator, CSI, CertManager, CAPH, and CloudProvider, open a new PowerShell window and run the following cmdlet:
+To update tokens and certificates for all clients in the management cluster, including NodeAgent, KVA, KMS, CloudOperator, CSI, CertManager, CAPH, and CloudProvider, open a new PowerShell window and run the following cmdlet:
 
 ```powershell
 Update-AksHciCertificates
@@ -77,6 +79,6 @@ Invoke-AksHciRotateCACertificate
 
 ## Next steps
 
-- [Security concepts in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
+- [Security concepts in AKS hybrid](concepts-security.md)
 - [Secure communication with certificates](secure-communication.md)
-- [Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server](/azure-stack/aks-hci/certificates-update-after-sixty-days)
+- [Certificates and tokens in AKS hybrid](/azure-stack/aks-hci/certificates-update-after-sixty-days)
