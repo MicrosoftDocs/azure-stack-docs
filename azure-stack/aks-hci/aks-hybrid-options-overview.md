@@ -14,7 +14,7 @@ ms.date: 09/20/2022
 ---
 # What are AKS hybrid deployment options?
 
-Azure Kubernetes Service (AKS) simplifies managing, deploying and maintaining a Kubernetes cluster on-premises, making it quicker to get started hosting Linux and Windows containers in your datacenter. As a hosted Kubernetes service, AKS handles critical day-to-day management, such as easy upgrades and automatic certificate rotations so you can focus on running and developing containerized workloads. AKS hybrid also natively connects to Azure Arc, so you have a single control plane to manage all your AKS clusters running anywhere - on Azure and on-premises.
+AKS hybrid deployment options simplify simplifies managing, deploying and maintaining a Kubernetes cluster on-premises, making it quicker to get started hosting Linux and Windows containers in your datacenter. As a hosted Kubernetes service, AKS hybrid handles critical day-to-day management, such as easy upgrades and automatic certificate rotations so you can focus on running and developing containerized workloads. AKS hybrid also natively connects to Azure Arc, so you have a single Azure control plane to manage all your AKS clusters running anywhere - on Azure and on-premises.
 
 You can create an AKS cluster using:
 
