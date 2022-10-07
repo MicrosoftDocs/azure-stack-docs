@@ -10,9 +10,11 @@ ms.date: 09/29/2022
 ---
 
 
-# Prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters
+# System requirements for AKS hybrid cluster provisioing from Azure (preview)
 
 > Applies to: Windows Server 2019, 2022
+
+This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioing from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
 
 ## Minimum resource requirements
 
