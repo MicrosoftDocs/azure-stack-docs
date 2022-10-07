@@ -101,6 +101,36 @@ With AKS engine version 0.60.1 and above you can upgrade your cluster VMs from U
 2. Locate the sections for `masterProfile` and `agentPoolProfiles`, within those sections change the value of `distro` to `aks-ubuntu-18.04`.
 2. Save the `api-model.json` file and use the `api-model.json` file in your` aks-engin upgrade` command as you would in the [Steps to upgrade to a newer Kubernetes version](#steps-to-upgrade-to-a-newer-kubernetes-version)
 
+ ## If you're using storage volumes and not yet on AKSe v0.70.0  
+    Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions below.
+    
+#### Use the cloud-controller-manager implementation of the Azure cloud provider
+
+Also referred to as `out-of-tree`, cloud-provider-azure code development is carried out in its own [code repository](https://github.com/kubernetes-sigs/cloud-provider-azure/releases), according to a separate release velocity than upstream Kubernetes. The cloud-controller-manager implementation of cloud-provider-azure produces many runtime optimizations that optimize cluster behavior for running at scale.
+
+To use cloud-controller-manager, set `orchestratorProfile.kubernetesConfig.useCloudControllerManager` to `true` in the API Model:
+
+```json
+{
+  "apiVersion": "vlabs",
+  "properties": {
+    "orchestratorProfile": {
+      "kubernetesConfig": {
+        "useCloudControllerManager": true,
+        ....
+      }
+      ...
+    },
+    ...
+  }
+  ...
+}
+```
+
+#### Use the AzureDisk CSI driver with cloud-controller-manager
+
+The AzureDisk volume plugin that works with in-tree cloud provider are not supported with cloud-controller-manager (See [kubernetes/kubernetes#71018](https://github.com/kubernetes/kubernetes/issues/71018) for explanations). Hence to use cloud-controller-manager, AzureDisk CSI driver should **always** be used for persistent volumes. Kubernetes cluster created by AKS Engine will **not** include AzureDisk CSI driver by default, thus users need to manually install AzureDisk CSI driver after cluster creation. The steps to install AzureDisk CSI driver can be found in the section [*Azure Disk CSI Driver*](#azure-disk-csi-driver).
+
 ## Forcing an upgrade
 
 There may be conditions where you may want to force an upgrade of your cluster. For example, on day one you deploy a cluster in a disconnected environment using the latest Kubernetes version. The following day Ubuntu releases a patch to a vulnerability for which Microsoft generates a new **AKS Base Image**. You can apply the new image by forcing an upgrade using the same Kubernetes version you already deployed.
