@@ -12,7 +12,7 @@ ms.reviewer: abha
 # Keyword: AKS setup PowerShell 
 ---
 
-# Quickstart - Using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
+# Quickstart: Using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
 
 In this quickstart, you'll learn how to use Azure CLI to test creating AKS hybrid clusters on-premises.
 
