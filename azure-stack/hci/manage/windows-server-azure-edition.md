@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/06/2022
+ms.date: 10/07/2022
 ---
 
 # Deploy Windows Server Azure Edition VMs
