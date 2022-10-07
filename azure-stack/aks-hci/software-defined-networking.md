@@ -92,7 +92,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
    |-----------------------------------------|------------------------------------------------------------------------------------------------|
    | `-name`                                   | Name of virtual network in AKS-HCI (must be lowercase).                                        |
    | `-vswitchName`                            | Name of external vSwitch on the HCI servers. Use same vSwitch that was used for SDN deployment. |
-   | `-k8sNodeIpPoolStart` <br /> `-k8sNodeIpPoolEnd | IP start/end range of SDN virtual network.                                                      |
+   | `-k8sNodeIpPoolStart` <br /> `-k8sNodeIpPoolEnd` | IP start/end range of SDN virtual network.                                                      |
    | `-ipAddressPrefix`                        | Virtual network subnet in CIDR notation.                                                        |
    | `-gateway` <br /> `-dnsServers`                  | Gateway and DNS server of the SDN virtual network.                                              |
 
