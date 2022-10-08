@@ -6,12 +6,12 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/04/2022
+ms.date: 10/08/2022
 ---
 
-# What's new in Azure Stack HCI, version 22H2 (preview)
+# What's new in Azure Stack HCI, version 22H2 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2 
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
 
@@ -114,6 +114,8 @@ For more information, see [Configure network security groups with Windows Admin 
 Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance, We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
 
 If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
+
+For more information, see [Deploy Windows Server Azure Edition for VMs](./manage/windows-server-azure-edition.md). 
 
 ## Azure Arc VM changes and Azure Marketplace
 
