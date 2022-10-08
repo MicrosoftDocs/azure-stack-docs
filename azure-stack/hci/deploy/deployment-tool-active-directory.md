@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Stack HCI version 22H2 (preview) deplo
 description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 09/22/2022
+ms.date: 10/08/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -72,7 +72,7 @@ To prepare and configure Active Directory, follow these steps:
 1. Run the following command from the folder where the *AsHciADArtifactsPreCreationTool.ps1* script is located:
 
     ```powershell
-    .\AsHciADArtifactsPreCreationTool.ps1 -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=Hci001,DC=contoso,DC=com" -AsHciPhysicalNodeList @("server1") -DomainFQDN "contoso.com" -AsHciClusterName "cluster_name" -AsHciDeploymentPrefix "Hci001"
+    .\AsHciADArtifactsPreCreationTool.ps1 -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("server1") -DomainFQDN "ASZ1PLab.nttest.microsoft.com" -AsHciClusterName "docspro2cluster" -AsHciDeploymentPrefix "docspro2"
     ```
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
@@ -82,9 +82,9 @@ To prepare and configure Active Directory, follow these steps:
     ```    
     PS C:\temp> .\AsHciADArtifactsPreCreationTool.ps1 `
         -AsHciDeploymentUserCredential (get-credential) `
-        -AsHciOUName "OU=HCI001,DC=contoso,DC=com"`
+        -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=microsoft,DC=com"`
         -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") `
-        -DomainFQDN "HCI001.contoso.com" `
+        -DomainFQDN "ASZ1PLab.nttest.microsoft.com" `
         -AsHciClusterName "docspro2cluster" `
         -AsHciDeploymentPrefix "docspro2"
 
