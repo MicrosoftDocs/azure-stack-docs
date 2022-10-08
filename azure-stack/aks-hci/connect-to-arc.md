@@ -3,12 +3,12 @@ title: Connect an Azure Kubernetes Service cluster to Azure Arc
 description: Connect an Azure Kubernetes Service (AKS) cluster to Kubernetes.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 09/30/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Service cluster to Kubernetes so I can extend those capabilities to my Kubernetes clusters.
+# Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Servce cluster to Kubernetes so I can extend those capabilities to my Kubernetes clusters.
 # Keyword: AKS cluster HCI cluster
 ---
 
@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 > Applies to: Azure Kubernetes Service,AKS
 
-When an Azure Kubernetes Service (AKS) cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
+When an Azure Kubernetes Service (AKS) cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
 
 * Management services - Configurations (GitOps), Azure Monitor for containers, Azure Policy (Gatekeeper)
 * Data Services - SQL Managed Instance, PostgreSQL Hyperscale
@@ -95,7 +95,7 @@ Make sure the service principal used in the command above has the "Owner", "Cont
 
 ## Verify the connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have opened the portal in your browser, navigate to the resource group and the AKS<!--Azure Arc-enabled Kubernetes--> resource that's based on the resource name and resource group name inputs used in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.<!--REBRANDING: Please verify resource label in the Azure Portal. Is the "Arc-enabled Kubernetes" baked in?-->
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have opened the portal in your browser, navigate to the resource group and the AKS<!--Azure Arc-enabled Kubernetes--> resource that's based on the resource name and resource group name inputs used in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.<!--Can "AKS" be switched in, or does "Azure Arc" need to make an appearance to clarify which resource?-->
 
 > [!NOTE]
 > After connecting the cluster, it may take a maximum of around five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the AKS<!--Azure Arc-enabled Kubernetes--> resource in Azure portal.

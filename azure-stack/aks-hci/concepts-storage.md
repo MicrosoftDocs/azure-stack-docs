@@ -1,27 +1,29 @@
 ---
-title: Concepts - Storage options for applications in Azure Kubernetes Service (AKS)
-description: Storage options for applications in Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server.
+title: Concepts - Storage options for applications in AKS hybrid
+description: Storage options for applications in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/04/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS so that I can optimize how to best to store and retrieve data.
+# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS hybrid so that I can optimize how to best to store and retrieve data.
 # Keyword: storage options PV claims
 
 ---
 
-# Storage options for applications in Azure Kubernetes Service (AKS)
+# Storage options for applications in AKS hybrid
 
-Applications that run in AKS deployments on Azure Stack HCI or Windows Server may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). 
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+Applications that run in AKS deployments using Azure Kubernetes Service (AKS) hybrid deployment options (AKS hybrid) may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). 
 
 Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
 
 ![Architectural storage image showing a cluster master and node](media/storage-architecture.png)
 
-This article introduces the core concepts that provide storage to your applications in AKS on Azure Stack HCI, including:
+This article introduces the core concepts that provide storage to your applications in AKS hybrid, including:
 - Volumes 
 - Persistent volumes 
 - Storage classes 
@@ -48,12 +50,12 @@ A persistent volume can be statically created by a cluster administrator, or dyn
 ## Storage classes
 To define different tiers (and location) of storage you can create a StorageClass. The StorageClass also defines the _reclaimPolicy_. This reclaimPolicy controls the behavior of the underlying storage resource when the pod is deleted and the persistent volume may no longer be required. The underlying storage resource can be deleted or retained for use with a future pod. 
 
-In AKS<!-- on Azure Stack HCI-->, the _default_ storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size. 
+In AKS hybrid,<!--Please verify that this applies to all AKS hybrid deployment options.--> the _default_ storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size. 
 
 If no StorageClass is specified for a persistent volume, the default StorageClass is used. When requesting persistent volumes, make sure they use the appropriate storage you need. You can create a StorageClass for additional needs. 
 
 ## Persistent volume claims 
-A PersistentVolumeClaim requests either ReadWriteOnce or ReadWriteMany storage of a particular StorageClass and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS<!-- on Azure Stack HCI--> if there is no existing resource to fulfill the claim based on the defined StorageClass. The pod definition includes the volume mount once the volume has been connected to the pod. 
+A PersistentVolumeClaim requests either ReadWriteOnce or ReadWriteMany storage of a particular StorageClass and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS hybrid<!-- on Azure Stack HCI--> if there is no existing resource to fulfill the claim based on the defined StorageClass. The pod definition includes the volume mount once the volume has been connected to the pod. 
 
 A PersistentVolume is bound to a PersistentVolumeClaim once an available storage resource has been assigned to the pod requesting it. There is a 1:1 mapping of persistent volumes to claims. 
 
@@ -105,4 +107,4 @@ volumeMounts:
 
 ## Next steps
 
-- [Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md).<!--Revisit link text after target title is reviewed.-->
+- [Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md).<!--Revisit link text after target title is rebranded.-->

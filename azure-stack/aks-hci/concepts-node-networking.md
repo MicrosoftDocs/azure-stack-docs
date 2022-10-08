@@ -1,20 +1,22 @@
 ---
-title: Node virtual machine networking in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn about virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI, including static IP and DHCP networking and load balancers.
+title: Node virtual machine networking in AKS hybrid
+description: Learn about virtual machine networking in AKS hybrid, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 10/04/2022
+ms.date: 10/-7/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn about virtual machine networking in AKS on Azure Stack HCI and Windows Server
+# Intent: As an IT Pro, I want to learn about virtual machine networking in AKS hybrid.
 # Keyword: virtual machine networking
 
 ---
-# Network concepts for deploying Azure Kubernetes Service nodes on Azure Stack HCI
+# Network concepts for deploying AKS nodes in AKS hybrid
 
-You can choose between two IP address assignment models for your Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server networking architecture.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+You can choose between two IP address assignment models for your networking architecture for AKS hybrid. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).<!--PLACEHOLDER: I drafted this AKS hybrid desription because the standard product name expansion doesn't work in this context.-->
 
 - **Static IP networking**  
     The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
@@ -23,11 +25,11 @@ You can choose between two IP address assignment models for your Azure Kubernete
     The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
 > [!NOTE]  
-> The virtual networking architecture defined here for AKS deployments on Azure Stack HCI and Windows Server could be different from the underlying physical networking architecture in a data center.
+> The virtual networking architecture defined here for AKS hybrid could be different from the underlying physical networking architecture in a data center.
 
 ## Virtual IP pool
 
-A Virtual IP (VIP) pool is set of IP addresses that are mandatory for any AKS deployment on Azure Stack HCI or Windows Server. The VIP pool is a range of reserved IP addresses used to allocate IP addresses to the Kubernetes cluster API server. It guarantees that your applications on Kubernetes services are always reachable. Keep in mind that regardless of the virtual networking model *and* the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
+A Virtual IP (VIP) pool is set of IP addresses that are mandatory for any deployment in AKS hybrid. The VIP pool is a range of reserved IP addresses used to allocate IP addresses to the Kubernetes cluster API server. It guarantees that your applications on Kubernetes services are always reachable. Keep in mind that regardless of the virtual networking model *and* the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
 
 The number of IP addresses in the VIP pool depends on the number of workload clusters and Kubernetes services planned for your deployment.
 
@@ -38,7 +40,7 @@ Depending on your networking model, the VIP pool definition will differ in the f
 
 ## Kubernetes node VM IP pool
 
-Kubernetes nodes are deployed as specialized virtual machines in an AKS hybrid deployment. AKS allocates IP addresses to these virtual machines to enable communication between Kubernetes nodes.
+Kubernetes nodes are deployed as specialized virtual machines in AKS hybrid. AKS allocates IP addresses to these virtual machines to enable communication between Kubernetes nodes.
 
 - Static IP - You must specify a Kubernetes node VM IP pool range. The number of IP addresses in this range depends on the total number of Kubernetes nodes you plan to use to deploy across your AKS host and workload Kubernetes clusters. Keep in mind that updates will consume one to three additional IP addresses during the update.
 - DHCP - You do not need to specify a Kubernetes node VM pool, as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network.
@@ -50,7 +52,7 @@ This networking model creates a virtual network that allocates IP addresses from
 Specify the following parameters while defining a virtual network with static IP configurations:
 
 > [!Important]
-> This version of AKS does not allow any network configuration changes once the AKS host or the workload cluster has been deployed. In order to change the networking settings, you must start fresh by removing the workload cluster(s) and then uninstalling AKS.
+> This version of AKS does not allow any network configuration changes once the AKS host or the workload cluster has been deployed. In order to change the networking settings, you must start fresh by removing the workload cluster(s) and uninstalling AKS.
 
 - Name: The name of your virtual network.
 - Address prefix: The IP address prefix to use for your subnet.
@@ -85,8 +87,8 @@ You must specify the following parameters while defining a virtual network with 
 
 Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Azure Stack HCI and Windows Server-based SDDC to be managed in the cloud. MOC consists of:
 
-- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.
-- A `node agent` running on every Azure Stack HCI physical node. 
+- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.<!--This has to be specific to Azure Stack HCI?-->
+- A `node agent` running on every Azure Stack HCI physical node.<!--Samme question here.-->
 
 To enable communication with MOC, you need to provide the IP Address CIDR that will be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
@@ -101,10 +103,10 @@ The choice of an IP address for the MOC service depends on the underlying networ
 
 ## Compare network models
 
-Both DHCP and Static IP provide network connectivity for your AKS hybrid deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
+Both DHCP and Static IP provide network connectivity on your AKS on Azure Stack HCI and Windows Server deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:<!--Not convinced this can be generalized.-->
 
 **DHCP**
-    - Does not guarantee long-lived IP addresses for some resource types in an AKS deployment.
+    - Does not guarantee long-lived IP addresses for some resource types in an AKS deployment.<!--Branding guidance is to not refer to an "AKS hybrid deployment." Will "AKS deployment" suffice? Throughout this section.-->
     - Supports expansion of reserved DHCP IP addresses if your deployment gets bigger than you initially anticipated.
 
 **Static IP**
@@ -144,11 +146,11 @@ Additionally, you should reserve the following number of IP addresses for your V
 | Kubernetes Services  |  1 per service  |
 | Application Services | 1 per service planned |
 
-As you can see, the number of required IP addresses is variable depending on the architecture of your AKS deploymennt on Azure Stack HCI or Windows Server, and the number of services you run on your Kubernetes cluster. We recommend reserving a minimum of 256 IP addresses (/24 subnet) for your deployment.
+As you can see, the number of required IP addresses is variable depending on the architecture of your AKS deployment, and the number of services you run on your Kubernetes cluster. We recommend reserving a minimum of 256 IP addresses (/24 subnet) for your deployment.
 
 ### Walk through an example deployment
 
-Jane is an IT administrator just starting with AKS. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI <!--and Windows Server--> cluster.<!--Example is HCI/Windows Server agnostic; commit to one or the other.--> She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI <!--and Windows Server--> cluster.<!--Example need to commit to either Azure Stack HCI or Windows Server.--> She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes
@@ -201,7 +203,7 @@ Ingress controllers work at layer 7, and are able to use more intelligent rules 
 ![Diagram showing Ingress traffic flow in an AKS cluster on Azure Stack HCI](media/net/aks-ingress.png)
 
 ## Next steps
-This article covers some of the networking concepts for deploying AKS nodes on Azure Stack HCI. For more information on concepts in AKS hybrid deployments, see the following articles:
+This article covers some of the networking concepts for deploying AKS nodes on Azure Stack HCI. For more information, see the following articles:
 
 - [Container networking concepts](./concepts-container-networking.md)
 - [Cluster and workloads](./kubernetes-concepts.md)
