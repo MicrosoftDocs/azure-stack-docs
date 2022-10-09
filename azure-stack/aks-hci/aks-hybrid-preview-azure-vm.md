@@ -26,7 +26,7 @@ Before you begin, make sure you meet the following requirements:
 
 Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
 
-```cli
+```azcli
 az account set -s <Azure subscription ID>
 az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess
 az feature register --namespace Microsoft.ResourceConnector --name appliance-ppauto
@@ -34,7 +34,7 @@ az feature register --namespace Microsoft.HybridConnectivity --name hiddenPrevie
 ```
 Check if the above features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. 
 
-```cli
+```azcli
 az account set -s <Azure subscription ID>
 az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table
 az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table
@@ -53,7 +53,7 @@ Microsoft.HybridConnectivity/hiddenPreviewAccess      Registered
 
 Once your features have been registered, run the following command to register the Azure providers required for this preview:
 
-```cli
+```azcli
 az provider register --namespace Microsoft.Kubernetes --wait 
 az provider register --namespace Microsoft.ExtendedLocation --wait
 az provider register --namespace Microsoft.ResourceConnector --wait
@@ -101,12 +101,12 @@ Exit
 
 ## Step 4: Install Az CLI extensions on the Azure VM
 
-```cli
+```azcli
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
-az extension add -n k8s-extension 
-az extension add -n customlocation
-az extension add -n arcappliance
-az extension add --source "https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.1.4-py3-none-any.whl" --yes
+az extension add -n k8s-extension --upgrade
+az extension add -n customlocation --upgrade
+az extension add -n arcappliance --upgrade
+az extension add -n hybridaks --upgrade
 ```
 
 ## Step 5: Install pre-requisite PowerShell repositories
@@ -151,20 +151,20 @@ az extension add --source "https://hybridaksstorage.z13.web.core.windows.net/Hyb
    Exit 
    ```
 
-## Step 6: Install AKS on Windows Server management cluster 
+## Step 6: Install the AKS on Windows Server management cluster 
 
 1. Open a new PowerShell admin window and run the following command:
 
    ```PowerShell
-   $vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -   k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
-   Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -Verbose 
+   $vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
+   Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version '1.0.13.10907' -cloudServiceIP "192.168.0.4"  
    ```
  
 2. Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
 
    ```PowerShell
    $sub = <Azure subscription>
-   $rgName = "aksh-hybrid-preview-azurevm"
+   $rgName = <Azure resource group>
 
    #Use device authentication to login to Azure. Follow the steps you see on the screen
    Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rg -UseDeviceAuthentication
