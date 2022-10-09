@@ -173,6 +173,7 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ```powershell
 New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
 ```
+---
 
 #### Sample output
 
