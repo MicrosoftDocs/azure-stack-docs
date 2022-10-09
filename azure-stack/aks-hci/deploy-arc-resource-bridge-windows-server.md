@@ -15,8 +15,7 @@ ms.date: 09/29/2022
 
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
-### Step 1: Install AKS on Windows Server using PowerShell 
-
+### Step 1: Install August release of AKS host management cluster 
 At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](/kubernetes-walkthrough-powershell). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
 
 You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
@@ -33,7 +32,7 @@ If you face an issue installing AKS on Windows Server or Azure Stack HCI, review
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
 
-Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortunately, we have automated the process of creating this YAML file for you. Before running the PowerShell command that will generate these YAML files, make sure you have the following parameters ready:
+Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file for you. Before running the PowerShell command that will generate these YAML files, make sure you have the following parameters ready:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
@@ -80,8 +79,13 @@ Installing Azure Arc Resource Bridge requires you to create a YAML file. Fortuna
 
 #### Generate YAML file for static IP based Azure Arc Resource Bridge without VLAN
 
+### [Windows Server](#tab/powershell)
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP
+```
+### [Azure Stack HCI](#tab/powershell)
+```powershell
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP
 ```
 
 #### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN and proxy settings without authentication
