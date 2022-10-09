@@ -126,7 +126,7 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
 ```
 ---
 
@@ -156,7 +156,7 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
 ```
 ---
 
@@ -171,7 +171,7 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
 ```
 
 #### Sample output
@@ -194,6 +194,7 @@ HCI login file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir\kva
 Generating ARC HCI configuration files...
 Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
 ```
+---
 
 ## Step 3: Install Azure Arc Resource Bridge
 
