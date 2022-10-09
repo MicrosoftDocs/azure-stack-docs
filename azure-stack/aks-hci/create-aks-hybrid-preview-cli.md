@@ -95,9 +95,9 @@ Two [Kubernetes Services](/aks-hci/concepts-container-networking#kubernetes-serv
 
 Create a file named `azure-vote.yaml` and copy in the following manifest.
 
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
+```yaml
+apiVersion: apps/v1
+kind: Deployment
     metadata:
       name: azure-vote-back
     spec:
@@ -181,22 +181,22 @@ Create a file named `azure-vote.yaml` and copy in the following manifest.
       - port: 80
       selector:
         app: azure-vote-front
-    ```
+```
 
 Deploy the application using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the name of your YAML manifest:
 
-    ```console
-    kubectl apply -f azure-vote.yaml --kubeconfig .\aks-hybrid-kube-config
-    ```
-    
- The following example resembles output showing the successfully created deployments and services:
+```
+kubectl apply -f azure-vote.yaml --kubeconfig .\aks-hybrid-kube-config
+```
 
-    ```output
-    deployment "azure-vote-back" created
-    service "azure-vote-back" created
-    deployment "azure-vote-front" created
-    service "azure-vote-front" created
-    ```
+The following example resembles output showing the successfully created deployments and services:
+
+```output
+deployment "azure-vote-back" created
+service "azure-vote-back" created
+deployment "azure-vote-front" created
+service "azure-vote-front" created
+```
 
 ## Test the application
 
