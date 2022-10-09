@@ -62,82 +62,37 @@ az provider register --namespace Microsoft.HybridConnectivity --wait
 ```
 
 ## Step 2: Create an Azure VM and deploy Windows Server on the Azure VM
-In this step, you will create an Azure VM and deploy Windows Server on it. Run the following command using Azure CLI. Remember to login to Azure and set your Azure subscription as the default context.
+To keep things, we'll show you how to deploy your VM via an Azure Resource Manager template. The **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this in a new tab, hold CTRL when you click the button.
 
-```cli
-# Adjust any parameters you want to change
-$rgName = "aks-hybrid-preview-azure-vm"
-$location = "eastus" # To check available locations, run Get-AzLocation 
-$timeStamp = (Get-Date).ToString("MM-dd-HHmmss")
-$deploymentName = ("AksHciDeploy_" + "$timeStamp")
-$vmName = "AKSHCIHost004"
-$vmSize = "Standard_E16s_v4"
-$vmGeneration = "Generation 2" 
-$domainName = "akshci.local"
-$dataDiskType = "StandardSSD_LRS"
-$dataDiskSize = "32"
-$enableDHCP = "Enabled" # you have to enable DHCP for this preview
-$customRdpPort = "3389" # Between 0 and 65535 #
-$autoShutdownStatus = "Enabled" # Or Disabled #
-$autoShutdownTime = "00:00"
-$autoShutdownTimeZone = "Pacific Standard Time"
-$existingWindowsServerLicense = "No"
-```
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Deploy to Azure")
 
-You also need to supply a username and password to login to your Azure VM:
+After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Review and Create**.
 
-```cli
-$adminUsername = <user-name to login to your Azure VM>
-$adminPassword = ConvertTo-SecureString '<password to login to your Azure VM>' -AsPlainText -Force
-```
+:::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
 
-### Create the Azure Resource Group
+> [!NOTE]
+> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
-Sign in to Azure and run the following command to create an Azure resource group. You can skip this step if you already have a resource group.
+The custom template will be validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM will be created.
 
-```cli
-az account set -s <Azure subscription ID>
-az group create --name $rgName  --location $location
-```
+:::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
 
-### Deploy the Resource Manager for the Azure VM
+### Access your Azure VM
+With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM, using Remote Desktop.
 
-```AzurePowerShell
-New-AzresourceGroupDeployment -resourceGroupName $rgName -Name $deploymentName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/aks-hci/main/eval/json/akshcihost.json" `
-    -virtualMachineName $vmName `
-    -virtualMachineSize $vmSize `
-    -virtualMachineGeneration $vmGeneration `
-    -domainName $domainName `
-    -dataDiskType $dataDiskType `
-    -dataDiskSize $dataDiskSize `
-    -adminUsername $adminUsername `
-    -adminPassword $adminPassword `
-    -enableDHCP $enableDHCP `
-    -customRdpPort $customRdpPort `
-    -autoShutdownStatus $autoShutdownStatus `
-    -autoShutdownTime $autoShutdownTime `
-    -autoShutdownTimeZone $autoShutdownTimeZone `
-    -alreadyHaveAWindowsServerLicense $existingWindowsServerLicense `
-    -Verbose
-```
+If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
-### Get the connection details of the newly created Azure VM
+:::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure":::
 
-```AzurePowerShell
-$getIp = Get-AzPublicIpAddress -Name "AKSHCILabPubIp" -resourceGroupName $rgName
-$getIp | Select-Object Name,IpAddress,@{label='FQDN';expression={$_.DnsSettings.Fqdn}}
-```
+In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
-### RDP into the Azure VM
+:::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine":::
 
-RDP into the VM you just deployed in the previous step, then using PowerShell in Admin mode, run the following commands. You can find RDP instructions when you click on the virtual machine resource on the Azure portal.
+Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Windows Server VM.
 
-You passed the username and password to access the Azure VM when you created the VM using the previous script. Refer to the script and the `adminUsername` and `adminPassword` values.
+## Step 3: Install Azure CLI on the Azure VM
 
-## Step 3: Install AZ CLI on the Azure VM
-
-RDP into the Azure VM and run the following command:
+Once you've logged into the Azure VM, run the following command to install Az CLI.
 
 ```PowerShell
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
