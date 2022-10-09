@@ -239,7 +239,7 @@ az arcappliance deploy hci --config-file $configFilePath --outfile $workingDir\c
 ```
 
 Once you've deployed Arc Resource Bridge, run the following command to connect it to Azure.
-```
+```azurecli
 az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDir\config
 ```
 
