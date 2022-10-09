@@ -57,7 +57,7 @@ New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddres
 | -----------| ------------ |
 | $clustervnetname | The name of your virtual network for AKS hybrid clusters |
 | $vswitchname | The name of your VM switch |
-| $vipPoolStart | The start IP address of the VIP pool. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. Make sure your VIP poo is in the same subnet as the DHCP server but excluded from the DHCP scope. |
+| $vipPoolStart | The start IP address of the VIP pool. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. Make sure your VIP pool is in the same subnet as the DHCP server but excluded from the DHCP scope. |
 | $vipPoolEnd | The end IP address of the VIP pool. |
 | $appliancekubeconfig | The location where you stored Arc Resource Bridge's kubeconfig |
 
@@ -81,7 +81,7 @@ Once you've created the on-premises network, run the following command to connec
 | $clustervnetname | The name of your on-premises virtual network for AKS hybrid clusters. |
 | $customlocationID  | ARM ID of the custom location you created on top of Azure Arc Resource Bridge. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 
-```powershell
+```azurecli
 az hybridaks vnet create -n <Name of your Azure connected AKS hybrid vnet> -g $resource_group --custom-location $customlocationID --moc-vnet-name $clustervnetname
 ```
 
