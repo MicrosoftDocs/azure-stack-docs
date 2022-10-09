@@ -225,6 +225,7 @@ az account set -s $subscriptionid
 az arcappliance validate hci --config-file $configFilePath
 ```
 
+```
 az arcappliance prepare hci --config-file $configFilePath
 az arcappliance deploy hci --config-file $configFilePath --outfile $workingDir\config
 az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDir\config
@@ -232,7 +233,7 @@ az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDi
 
 This command may take up to 10 minutess to finish. To check the status of your deployment, run the following command:
 
-``` cli
+```azurecli
 # check the status == Running 
 az arcappliance show --resource-group $resourceGroup --name $arcAppName --query "status" -o tsv
 ```
