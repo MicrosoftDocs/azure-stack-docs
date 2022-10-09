@@ -189,7 +189,7 @@ Create a file named `azure-vote.yaml` and copy in the following manifest.
 
 Deploy the application using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the name of your YAML manifest:
 
-```kubectl
+```azurecli
 kubectl apply -f azure-vote.yaml --kubeconfig .\aks-hybrid-kube-config
 ```
 
