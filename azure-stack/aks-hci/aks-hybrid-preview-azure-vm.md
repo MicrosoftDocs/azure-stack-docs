@@ -24,7 +24,7 @@ Before you begin, make sure you meet the following requirements:
 
 ## Step 1: Register your Azure subscription for features and providers
 
-Register the fllowing Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
+Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
 
 ```cli
 az account set -s <Azure subscription ID>
@@ -51,7 +51,7 @@ Name                                                  RegistrationState
 Microsoft.HybridConnectivity/hiddenPreviewAccess      Registered
 ```
 
-Once your features have been registered, run the following command to registe Azure providers required for this preview:
+Once your features have been registered, run the following command to register the Azure providers required for this preview:
 
 ```cli
 az provider register --namespace Microsoft.Kubernetes --wait 
@@ -96,6 +96,7 @@ $adminPassword = ConvertTo-SecureString '<password to login to your Azure VM>' -
 Sign in to Azure and run the following command to create an Azure resource group. You can skip this step if you already have a resource group.
 
 ```cli
+az account set -s <Azure subscription ID>
 az group create --name $rgName  --location $location
 ```
 
