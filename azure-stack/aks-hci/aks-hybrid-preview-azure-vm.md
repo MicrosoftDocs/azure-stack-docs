@@ -26,7 +26,7 @@ Before you begin, make sure you meet the following requirements:
 
 Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
 
-```azcli
+```azurecli
 az account set -s <Azure subscription ID>
 az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess
 az feature register --namespace Microsoft.ResourceConnector --name appliance-ppauto
@@ -34,7 +34,7 @@ az feature register --namespace Microsoft.HybridConnectivity --name hiddenPrevie
 ```
 Check if the above features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. 
 
-```azcli
+```azurecli
 az account set -s <Azure subscription ID>
 az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table
 az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table
@@ -53,7 +53,7 @@ Microsoft.HybridConnectivity/hiddenPreviewAccess      Registered
 
 Once your features have been registered, run the following command to register the Azure providers required for this preview:
 
-```azcli
+```azurecli
 az provider register --namespace Microsoft.Kubernetes --wait 
 az provider register --namespace Microsoft.ExtendedLocation --wait
 az provider register --namespace Microsoft.ResourceConnector --wait
@@ -101,7 +101,7 @@ Exit
 
 ## Step 4: Install Az CLI extensions on the Azure VM
 
-```azcli
+```azurecli
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
@@ -111,7 +111,7 @@ az extension add -n hybridaks --upgrade
 
 ## Step 5: Install pre-requisite PowerShell repositories
 
-1. Open a new PowerShell admin window and run the following command:
+1. Close all open PowerShell windows on your Azure VM and open a fresh new PowerShell admin window and run the following command:
 
    ```PowerShell
    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
@@ -175,17 +175,27 @@ az extension add -n hybridaks --upgrade
    ```PowerShell
    Install-AksHci 
    ```
+   
+### Validate AKS on Windows Server version
+Make sure your AKS on Azure Stack HCI version is the following version. 
+
+Expected Output:
+
+```output
+1.0.13.10907
+```
+Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the [troubleshooting section](/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
 
 ## Step 7: Generate pre-requisite YAML files needed to deploy Azure Arc Resource Bridge
 
 ```PowerShell
-$subscriptionId = <your subscription ID>
-$tenantId = <your tenant ID>
+$subscriptionId = <Azure subscription ID>
+$tenantId = <Azure tenant ID>
+$resourceGroup = <Azure resource group>
+$location="eastus"
 ```
 
 ```PowerShell
-$resourceGroup = "aks-hybrid-preview-azurevm"
-$location="eastus"
 $workingDir = "V:\AKS-HCI\WorkDir"
 $arcAppName="arc-resource-bridge"
 $configFilePath= $workingDir + "\hci-appliance.yaml"
@@ -209,13 +219,12 @@ Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
 
 ## Step 8: Deploy Azure Arc Resource Bridge
 
-> [!NOTE]
-> Here you will be switching to AZ CLI, please continue to run this from the PS ISE or VS Code inside the Azure VM. 
-
 ```cli
 az login -t $tenantid --use-device-code
 az account set -s $subscriptionid
 az arcappliance validate hci --config-file $configFilePath
+```
+
 az arcappliance prepare hci --config-file $configFilePath
 az arcappliance deploy hci --config-file $configFilePath --outfile $workingDir\config
 az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDir\config
