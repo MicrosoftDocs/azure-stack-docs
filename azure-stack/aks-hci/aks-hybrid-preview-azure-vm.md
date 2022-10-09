@@ -111,7 +111,7 @@ az extension add -n hybridaks --upgrade
 
 ## Step 5: Install pre-requisite PowerShell repositories
 
-1. Close all open PowerShell windows on your Azure VM and open a fresh new PowerShell admin window and run the following command:
+Close all open PowerShell windows on your Azure VM and open a fresh new PowerShell admin window and run the following command:
 
    ```PowerShell
    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
@@ -120,28 +120,28 @@ az extension add -n hybridaks --upgrade
    Exit 
    ```
 
-2. Open a new PowerShell admin window and run the following command:
+Open a new PowerShell admin window and run the following command:
 
    ```PowerShell
    Install-Module -Name AksHci -Repository PSGallery -AcceptLicense -Force 
    Exit 
    ```
 
-3. Open a new PowerShell admin window and run the following command:
+Open a new PowerShell admin window and run the following command:
 
    ```PowerShell
    Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force 
    Exit 
    ```
 
-4. Open a new PowerShell admin window and run the following command:
+Open a new PowerShell admin window and run the following command:
 
    ```PowerShell
    Initialize-AksHciNode 
    Exit 
    ```
 
-5. Open a new PowerShell admin window and run the following command:
+Open a new PowerShell admin window and run the following command:
 
    ```PowerShell
    New-Item -Path "V:\" -Name "AKS-HCI" -ItemType "directory" -Force 
@@ -153,32 +153,32 @@ az extension add -n hybridaks --upgrade
 
 ## Step 6: Install the AKS on Windows Server management cluster 
 
-1. Open a new PowerShell admin window and run the following command:
+Open a new PowerShell admin window and run the following command:
 
-   ```PowerShell
-   $vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
-   Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version '1.0.13.10907' -cloudServiceIP "192.168.0.4"  
-   ```
- 
-2. Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
+```PowerShell
+$vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
 
-   ```PowerShell
-   $sub = <Azure subscription>
-   $rgName = <Azure resource group>
+Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version '1.0.13.10907' -cloudServiceIP "192.168.0.4"  
+```
 
-   #Use device authentication to login to Azure. Follow the steps you see on the screen
-   Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rg -UseDeviceAuthentication
-   ```
+Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
 
-3. Run the following command to install AKS on Windows Server host:
+```PowerShell
+$sub = <Azure subscription>
+$rgName = <Azure resource group>
 
-   ```PowerShell
-   Install-AksHci 
-   ```
+#Use device authentication to login to Azure. Follow the steps you see on the screen
+Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rg -UseDeviceAuthentication
+```
+   
+Run the following command to install AKS on Windows Server host:
+```PowerShell
+Install-AksHci 
+```
    
 ### Validate AKS on Windows Server version
-Make sure your AKS on Azure Stack HCI version is the following version. 
 
+Make sure your AKS on Windows Server version is the following. 
 Expected Output:
 
 ```output
@@ -203,15 +203,14 @@ $arcExtnName = "aks-hybrid-ext"
 $customLocationName="azurevm-customlocation"
 ```
 
-Create the Azure Arc Resource Bridge YAML files:
-
+Generate the Azure Arc Resource Bridge YAML files:
 ```PowerShell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT"-gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11 " -k8snodeippoolend "192.168.0.11" -controlPlaneIP “192.168.0.161”
 ```
 
 Sample output:
 
-```shell
+```output
 HCI login file successfully generated in 'V:\AKS-HCI\WorkingDir\kvatoken.tok'
 Generating ARC HCI configuration files...
 Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
@@ -219,23 +218,37 @@ Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
 
 ## Step 8: Deploy Azure Arc Resource Bridge
 
-```cli
+Once you've generated the YAML files, run the following command to validate the generated YAML files.
+```azurecli
 az login -t $tenantid --use-device-code
 az account set -s $subscriptionid
 az arcappliance validate hci --config-file $configFilePath
 ```
 
-```
+After you've validated the YAML files, run the following command to download the VHD image for deploying Arc Resource Bridge.
+
+```azurecli
 az arcappliance prepare hci --config-file $configFilePath
+```
+After you've downloaded the VHD image for deploying Arc Resource Bridge, you can now run the following command to deploy Arc Resource Bridge.
+
+```azurecli
 az arcappliance deploy hci --config-file $configFilePath --outfile $workingDir\config
+```
+
+Once you've deployed Arc Resource Bridge, run the following command to connect it to Azure.
+```
 az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDir\config
 ```
 
-This command may take up to 10 minutess to finish. To check the status of your deployment, run the following command:
+Connecting Arc Resource Bridge to Azure may take up to 10 minutess to finish. To check the status of your deployment, run the following command. The Arc Resource Bridge must be in `Running` state.
 
 ```azurecli
-# check the status == Running 
 az arcappliance show --resource-group $resourceGroup --name $arcAppName --query "status" -o tsv
+```
+Expected output:
+```output
+Running
 ```
 
 ## Step 9: Install the AKS hybrid extension on the Arc Resource Bridge
