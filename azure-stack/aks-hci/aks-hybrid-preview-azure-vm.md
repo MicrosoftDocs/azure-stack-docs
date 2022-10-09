@@ -1,6 +1,6 @@
 ---
-title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
-description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
+title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
+description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
 author: sethmanheim
 ms.topic: quickstart
 ms.date: 07/11/2022
@@ -24,26 +24,49 @@ Before you begin, make sure you meet the following requirements:
 
 ## Step 1: Register your Azure subscription for features and providers
 
-Register the Azure providers and Azure features on your Azure subscription. You can use the Azure shell in the Azure portal to complete this operation: 
+Register the fllowing Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
 
 ```cli
-az feature register --namespace Microsoft.HybridContainerService
-az feature register --namespace Microsoft.ResourceConnector 
+az account set -s <Azure subscription ID>
+az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess
+az feature register --namespace Microsoft.ResourceConnector --name appliance-ppauto
 az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess
+```
+Check if the above features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. 
 
-az provider register --namespace Microsoft.Kubernetes
-az provider register --namespace Microsoft.KubernetesConfiguration
-az provider register --namespace Microsoft.ExtendedLocation
-az provider register --namespace Microsoft.ResourceConnector
-az provider register --namespace Microsoft.HybridContainerService
-az provider register --namespace Microsoft.HybridConnectivity
+```cli
+az account set -s <Azure subscription ID>
+az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table
+az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table
+```
+Expected output:
+
+```output
+Name                                                  RegistrationState
+----------------------------------------------------  -------------------
+Microsoft.HybridContainerService/hiddenPreviewAccess  Registered
+
+Name                                                  RegistrationState
+------------------------------------------------      -------------------
+Microsoft.HybridConnectivity/hiddenPreviewAccess      Registered
+```
+
+Once your features have been registered, run the following command to registe Azure providers required for this preview:
+
+```cli
+az provider register --namespace Microsoft.Kubernetes --wait 
+az provider register --namespace Microsoft.ExtendedLocation --wait
+az provider register --namespace Microsoft.ResourceConnector --wait
+az provider register --namespace Microsoft.HybridContainerService --wait
+az provider register --namespace Microsoft.HybridConnectivity --wait
 ```
 
 ## Step 2: Create an Azure VM and deploy Windows Server on the Azure VM
+In this step, you will create an Azure VM and deploy Windows Server on it. Run the following command using Azure CLI. Remember to login to Azure and set your Azure subscription as the default context.
 
-```PowerShell
+```cli
 # Adjust any parameters you want to change
-$rgName = "aks-hybrid-preview-azurevm"
+$rgName = "aks-hybrid-preview-azure-vm"
 $location = "eastus" # To check available locations, run Get-AzLocation 
 $timeStamp = (Get-Date).ToString("MM-dd-HHmmss")
 $deploymentName = ("AksHciDeploy_" + "$timeStamp")
@@ -63,17 +86,17 @@ $existingWindowsServerLicense = "No"
 
 You also need to supply a username and password to login to your Azure VM:
 
-```PowerShell
+```cli
 $adminUsername = <user-name to login to your Azure VM>
 $adminPassword = ConvertTo-SecureString '<password to login to your Azure VM>' -AsPlainText -Force
 ```
 
 ### Create the Azure Resource Group
 
-Sign in to Azure and run the following command:
+Sign in to Azure and run the following command to create an Azure resource group. You can skip this step if you already have a resource group.
 
-```AzurePowerShell
-New-AzresourceGroup -Name $rgName -Location  $location -Verbose
+```cli
+az group create --name $rgName  --location $location
 ```
 
 ### Deploy the Resource Manager for the Azure VM
