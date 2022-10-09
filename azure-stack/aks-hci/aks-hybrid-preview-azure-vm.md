@@ -205,7 +205,7 @@ $customLocationName="azurevm-customlocation"
 
 Generate the Azure Arc Resource Bridge YAML files:
 ```PowerShell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT"-gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11 " -k8snodeippoolend "192.168.0.11" -controlPlaneIP “192.168.0.161”
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
 ```
 
 Sample output:
@@ -241,7 +241,7 @@ Once you've deployed Arc Resource Bridge, run the following command to connect i
 az arcappliance create hci --config-file $configFilePath --kubeconfig $workingDir\config
 ```
 
-Connecting Arc Resource Bridge to Azure may take up to 10 minutess to finish. To check the status of your deployment, run the following command. The Arc Resource Bridge must be in `Running` state.
+Connecting Arc Resource Bridge to Azure may take up to 10 minutes to finish. To check the status of your deployment, run the following command. The Arc Resource Bridge must be in `Running` state.
 
 ```azurecli
 az arcappliance show --resource-group $resourceGroup --name $arcAppName --query "status" -o tsv
@@ -253,35 +253,46 @@ Running
 
 ## Step 9: Install the AKS hybrid extension on the Arc Resource Bridge
 
-To install the extension, run the following command:
+To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
-```cli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.0.23 --config Microsoft.CustomLocation.ServiceAccount="default"
+```azurecli
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.0.24 --config Microsoft.CustomLocation.ServiceAccount="default"
 ```
 
-Once you have created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
+Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
 
-```cli
+```azurecli
 az k8s-extension show --resource-group $resourceGroup --cluster-name $arcAppName --cluster-type appliances --name $arcExtnName --query "provisioningState" -o tsv
 ```
+Expected output:
+```output
+Succeeded
+```
 
-## Step 10: Install a custom location on top of the Azure Arc Resource Bridge
+## Step 10: Create a Custom Location on top of the Azure Arc Resource Bridge
 
-```cli
+Run the following commands to create a Custom Location on top of the Arc Resource Bridge. You will choose this Custom Location when creating the AKS hybrid cluster through Az CLI or through the Azure Portal.
+
+```azurecli
 $ArcApplianceResourceId=az arcappliance show --resource-group $resourceGroup --name $arcAppName --query id -o tsv
 $ClusterExtensionResourceId=az k8s-extension show --resource-group $resourceGroup --cluster-name $arcAppName --cluster-type appliances --name $arcExtnName --query id -o tsv
 ```
 
-To create a custom location, run the following command:
+To create a Custom Location, run the following command:
 
-```cli
+```azurecli
 az customlocation create --name $customLocationName --namespace "default" --host-resource-id $ArcApplianceResourceId --cluster-extension-ids $ClusterExtensionResourceId --resource-group $resourceGroup 
 ```
 
-Once you create the custom location on top of the Arc Resource Bridge, run the following command to check if the custom location provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
+Once you create the Custom Location on top of the Arc Resource Bridge, run the following command to check if the Custom Location provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
 
-```cli
+```azurecli
 az customlocation show --name $customLocationName --resource-group $resourceGroup --query "provisioningState" -o tsv
+```
+
+Expected output:
+```output
+Succeeded
 ```
 
 ## Step 11: Create a local network for AKS hybrid clusters and connect it to Azure
@@ -294,7 +305,7 @@ New-KvaVirtualNetwork -name hybridaks-vnet -vSwitchName "InternalNAT" -gateway "
 
 Once you've created the local network, connect it to Azure by running the following command:
 
-```cli
+```azurecli
 $clid = az customlocation show --name $customLocationName --resource-group $resourceGroup --query "id" -o tsv
 az hybridaks vnet create -n "azvnet" -g $resourceGroup --custom-location $clId --moc-vnet-name "hybridaks-vnet"
 $vnetId = az hybridaks vnet show -n "azvnet" -g $resourceGroup --query id -o tsv
@@ -302,47 +313,69 @@ $vnetId = az hybridaks vnet show -n "azvnet" -g $resourceGroup --query id -o tsv
 
 ## Step 12: Download the Kubernetes VHD image to your Azure VM
 
-Run the following command to download the Kubernetes VHD image to your Azure VM:
+Run the following command to download the Kubernetes VHD image for your AKS hybrid clusters to your Azure VM:
 
 ```PowerShell
 Add-KvaGalleryImage -kubernetesVersion 1.21.9
 ```
 
-## Step 13: Create an Azure AD group and add yourself to it
+## Step 13: Create an Azure AD group and add Azure AD members to it
+In order to connect to the AKS hybrid cluster from anywhere, you need to create an Azure AD group and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Azure AD group. If you do not add yourself, you will not be able to access the AKS hybrid cluster using `kubectl`.
 
-```cli
-az ad group create --display-name aad-group --mail-nickname aad-group
-$objectId = az ad signed-in-user show --query Id
-az ad group member add --group aad-group --member-id $objectId
-$aadGroupId =$(az ad group show --display-name aad-group --query Id -o tsv)
-```
+To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You will need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
 
-## Step 14:	Create an AKS hybrid cluster using Az CLI
+## Step 14:	Create an AKS hybrid cluster using Azure CLI
 
-Note that the following create command can take about 10-15mins to complete:
+Run the following command to create an AKS hybrid cluster using Azure CLI. 
 
-```cli
-az hybridaks create --name "test-cluster" --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "v1.21.9" --aad-admin-group-object-ids $aadGroupId --generate-ssh-keys
+```azurecli
+az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "v1.21.9" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
 ```
 
 ### Add a Linux nodepool to the AKS hybrid cluster
 
-```cli
-az hybridaks nodepool add -n "test-nodepool" --resource-group $resourceGroup --cluster-name "test-cluster"
+```azurecli
+az hybridaks nodepool add -n <nodepool name> --resource-group $resourceGroup --cluster-name <aks hybrid cluster name>
 ```
 
-## Step 15: Get the AAD based kubeconfig to connect to your AKS hybrid cluster
+## Step 15: Connect to your AKS hybrid cluster using `kubectl`
 
-Keep the following command running for as long as you want to remain connected to your AKS hybrid cluster:
-
-```cli
+In order to connect to your AKS hybrid cluster using `kubectl`, run the following command. 
+```azurecli
 az hybridaks proxy --resource-group $resourceGroup --name “test-cluster” --file .\target-config
 ```
+Let this command run for as long as you want to access your cluster. If this command times out, close the PowerShell window, open a fresh one and run the command again. 
 
 ### List the pods of the provisioned cluster using the kubeconfig
 
-```shell
+In a different command line window, run the following command pointing to the kubeconfig you downloaded in the previous step.
+```
 kubectl get pods -A --kubeconfig .\target-config
+```
+
+Expected Output:
+```output
+NAME                                              READY   STATUS      RESTARTS   AGE
+akshci-telemetry-initial-h6xr9                    0/1     Completed   0          48s
+calico-kube-controllers-5477b8df74-8sxbq          1/1     Running     0          9h
+calico-node-6hhwb                                 1/1     Running     0          8h
+calico-node-tmqmh                                 1/1     Running     0          9h
+calico-patch-99pc8                                1/1     Running     0          9h
+calico-patch-z4pn2                                1/1     Running     0          8h
+calicoctl                                         1/1     Running     0          9h
+certificate-controller-manager-7c7cb9746c-ppdt7   1/1     Running     0          9h
+coredns-7489c675f5-84xcz                          1/1     Running     0          9h
+coredns-7489c675f5-qbfjn                          1/1     Running     0          9h
+csi-akshcicsi-controller-5f6bff6dc8-j4dzx         5/5     Running     0          9h
+csi-akshcicsi-node-jjzxg                          3/3     Running     0          8h
+csi-akshcicsi-node-pj2sp                          3/3     Running     0          9h
+etcd-moc-l1hj0nllpvs                              1/1     Running     0          9h
+kube-apiserver-moc-l1hj0nllpvs                    1/1     Running     0          9h
+kube-controller-manager-moc-l1hj0nllpvs           1/1     Running     0          9h
+kube-proxy-8jhdl                                  1/1     Running     0          9h
+kube-proxy-lsk6f                                  1/1     Running     0          8h
+kube-scheduler-moc-l1hj0nllpvs                    1/1     Running     0          9h
+moc-cloud-controller-manager-5fbb78df68-6d7b5     1/1     Running     0          9h
 ```
 
 ## Next steps
