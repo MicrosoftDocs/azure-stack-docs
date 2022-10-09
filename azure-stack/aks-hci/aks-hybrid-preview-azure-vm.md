@@ -14,13 +14,15 @@ ms.reviewer: abha
 
 # Quickstart: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
 
-In this quickstart, you'll learn how to use Azure CLI to test creating AKS hybrid clusters on-premises.
+In this quickstart, you'll learn how to use Azure CLI to test creating AKS hybrid clusters on-premises. You can use this quickstart to run a quick proof of concept on an Azure VM, or if you do not have a Windows Server or Azure Stack HCI cluster.
+
+If you do have a Windows Server or Azure Stack HCI cluster, follow this detailed guide to [get started with deploying AKS hybrid clusters from Azure](aks-hybrid-preview-requirements.md).
 
 ## Before you begin
 
 Before you begin, make sure you meet the following requirements:
 - Have access to an Azure subscription.
-- Make sure you’re an owner on the Azure subscription. 
+- You’re an owner on the Azure subscription. 
 
 ## Step 1: Register your Azure subscription for features and providers
 
@@ -78,7 +80,7 @@ The custom template will be validated, and if all of your entries are correct, y
 :::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
 
 ### Access your Azure VM
-With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM, using Remote Desktop.
+With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM using Remote Desktop.
 
 If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
@@ -88,7 +90,7 @@ In the **Overview** blade for your VM, at the top of the blade, select **Connect
 
 :::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine":::
 
-Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Windows Server VM.
+Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Azure VM.
 
 ## Step 3: Install Azure CLI on the Azure VM
 
@@ -380,6 +382,6 @@ moc-cloud-controller-manager-5fbb78df68-6d7b5     1/1     Running     0         
 
 ## Next steps
 
-Once you've finished quickly trying out this feature in an Azure VM, you can take a look at the following documents related to the preview:
+Once you've finished quickly trying out this preview in an Azure VM, you can take a look at the following documents related to the preview:
 
 - [Review requirements to get started with AKS hybrid cluster provisioning through Azure in your datacenter](aks-hybrid-preview-requirements.md)
