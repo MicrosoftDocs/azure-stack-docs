@@ -17,26 +17,19 @@ Follow these steps to install Arc Resource Bridge on Windows Server through comm
 
 ### Step 1: Install AKS on Windows Server using PowerShell 
 
-Follow [this quickstart to install](kubernetes-walkthrough-powershell.md) AKS on Windows Server management cluster. Since you will be running preview software beside your AKS on Windows Server setup, we do not recommend running AKS on Windows Server and this private preview in your production environment. We highly recommend installing the AKS management cluster only if using Azure Arc Resource Bridge behind a proxy. 
+At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](/kubernetes-walkthrough-powershell). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
 
-If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, please file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
-
-To check if you have successfully installed AKS on Windows Server, run the following command:
-
-```powershell
+You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
+```PowerShell
 Get-AksHciVersion
 ```
 
-Make sure your AKS on Windows Server version is the following version:
-
 Expected Output:
-
-```shell
-1.0.12.10727
+```
+1.0.13.10907
 ```
 
-> [!NOTE]
-> Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the AKS on Windows Server [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+If you face an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
 
