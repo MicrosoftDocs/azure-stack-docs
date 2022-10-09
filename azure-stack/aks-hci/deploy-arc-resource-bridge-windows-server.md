@@ -199,40 +199,38 @@ Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
 
 ## Step 3: Install Azure Arc Resource Bridge
 
-Once you have generated the required YAML files in step 2, you can now proceed with deploying Azure Arc Resource Bridge.
+Once you have generated the required YAML files in step 2, you can now proceed with deploying Azure Arc Resource Bridge. Make sure you login to any one of the nodes in your Azure Stack HCI or Windows Server cluster to run the following commands. We do not support using remote desktop.
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $configfile | The `New-ArcHciAksConfigFiles` command generates a YAML file that will be used to deploy Azure Arc Resource Bridge. You need to pass the full path of this YAML file to validate and prepare for the Azure Arc Resource Bridge deployment. You can find the YAML file in the workDirectory location. |
-| $appliancekubeconfig | The location where you want to store Azure Arc Resource Bridge's kubeconfig. I recommend storing it in the WorkDir shared cluster volume location. You will need this kubeconfig file in later steps and to generate logs. |
+| $configfile | You need to pass the full path of the YAML file generated in Step 2. The default name of the YAML file is hci-appliance.yaml, and you can find the YAML file in the $workDirectory location. |
+| $appliancekubeconfig | The location where you want to store Azure Arc Resource Bridge's kubeconfig. We recommend storing it in the WorkDir shared cluster volume location. You will need this kubeconfig file in later steps and to generate logs. |
 
-Example input:
+Example input for $configfile and $appliancekubeconfig:
 
 ```powershell
 $configfile = $workDirectory+"\hci-appliance.yaml"
 $appliancekubeconfig = $workDirectory+"\applianceconfig"
 ```
 
-Run the following commands on any one of the nodes of your Windows Server cluster to validate the YAML file and then download the Azure Arc Resource Bridge VHD:
+Run the following commands on any one of the nodes of your Windows Server or Azure Stack HCI cluster to validate the YAML file and then download the Azure Arc Resource Bridge VHD image. Make sure you sign in to Azure before running these commands:
 
 ```azurecli
 az arcappliance validate hci --config-file $configfile
 az arcappliance prepare hci --config-file $configfile
 ```
 
-Run the following command on any one of the nodes of your Windows Server cluster to create the on-prem Azure Arc Resource Bridge resource:
+Once you've validated the YAML file and downloaded the Arc Resource Bridge VHD image, run the following command on any one of the nodes of your Windows Server or Azure Stack HCI cluster to deploy the Arc Resource Bridge on your physical cluster.
 
 ```azurecli
 az arcappliance deploy hci --config-file $configfile --outfile $appliancekubeconfig
 ```
 
-Run the following command on any one of the nodes of your Windows Server cluster to connect the on-prem Azure Arc Resource Bridge resource to Azure. Make sure you sign in to Azure before running this command:
+Run the following command on any one of the nodes of your Windows Server or Azure Stack HCI cluster to connect the deployed Arc Resource Bridge to Azure. 
 
 ```azurecli
 az arcappliance create hci --config-file $configfile --kubeconfig $appliancekubeconfig
 ```
-
-With the `az arcappliance create` command, you're finished deploying the appliance.
 
 Before proceeding to the next step, run the following command to check if the Azure Arc Resource Bridge status says **Running**. It might not say **Running** at first. This operation takes time. Try again after a few minutes:
 
@@ -240,24 +238,24 @@ Before proceeding to the next step, run the following command to check if the Az
 az arcappliance show --resource-group $resourceGroup --name $resourceName --query "status" -o tsv
 ```
 
-## Step 4: Installing the AKS hybrid and VM extensions on the Azure Arc Resource Bridge 
+## Step 4: Installing the AKS hybrid extension on the Azure Arc Resource Bridge 
 
 To install the AKS hybrid extension, run the following command:
 
 ```azurecli
-az account set -s <subscription from #1>
+az account set -s <subscription ID>
 
-az k8s-extension create --resource-group <azure resource group> --cluster-name <arc appliance name> --cluster-type appliances --name <akshci cluster extension name> --extension-type Microsoft.HybridAKSOperator --version 0.0.23 --config Microsoft.CustomLocation.ServiceAccount="default"   
+az k8s-extension create --resource-group <azure resource group> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid cluster extension name> --extension-type Microsoft.HybridAKSOperator --version 0.0.24 --config Microsoft.CustomLocation.ServiceAccount="default"   
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
 | resource-group |  A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.  |
 | cluster-name  |  The name of your Azure Arc Resource Bridge. |
-| name  |  Name of your AKS-HCI cluster extension on top of Azure Arc Resource Bridge  |
+| name  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge  |
 | cluster-type  | Must be *appliances*. Do not change this value.  |
 | extension-type  |  Must be *Microsoft.HybridAKSOperator*. Do not change this value. |
-| version | Must be *0.0.23*. Do not change this value. |
+| version | Must be *0.0.24*. Do not change this value. |
 | config  | Must be *config Microsoft.CustomLocation.ServiceAccount="default"*. Do not change this value. |
 
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes.
@@ -266,30 +264,32 @@ Once you have created the AKS hybrid extension on top of the Azure Arc Resource 
 az k8s-extension show --resource-group <resource group name> --cluster-name <azure arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query "provisioningState" -o tsv
 ```
 
-## Step 4: Installing a custom location on top of the VM and AKS hybrid extensions on the Azure Arc Resource Bridge
+## Step 4: Create a Custom Location on top of the Azure Arc Resource Bridge
 
-First, collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the AKS hybrid extension in PowerShell variables:
+Run the following commands to create a Custom Location on top of the Arc Resource Bridge. You will choose this Custom Location when creating the AKS hybrid cluster through Az CLI or through the Azure Portal.
+
+Collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the AKS hybrid extension in variables:
 
 ```azurecli
-$ArcResourceBridgeId=az arcappliance show --resource-group <resource group name> --name <arc appliance name> --query id -o tsv
-$AKSClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc appliance name> --cluster-type appliances --name <aks hybrid extension name> --query id -o tsv
+$ArcResourceBridgeId=az arcappliance show --resource-group <resource group name> --name <arc resource bridge name> --query id -o tsv
+$AKSClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query id -o tsv
 ```
   
-You can then create the custom location for your Windows Server cluster that has the AKS hybrid extension installed on it:
+You can then create the Custom Location for your Windows Server or Azure Stack HCI cluster that has the AKS hybrid extension installed on it:
 
 ```azurecli
-az customlocation create --name <customlocation name> --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId, $VMClusterExtensionResourceId --resource-group <resource group name>
+az customlocation create --name <customlocation name> --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group <resource group name>
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
 | resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge.  |
 | namespace  |  Must be *default*. Do not change this value. |
-| name  |  Name of your AKS on Windows Server custom location |
-| host-resource-id  | ARM ID of the Azure Arc Resource Bridge. You can get the ARM ID using `az arcappliance show --resource-group <resource group name> --name <azure arc resource bridge name> --query id -o tsv`.  |
-| cluster-extension-ids   | ARM ID of the AKS extension on top of Resource Bridge. You can get the ARM ID using `az k8s-extension show --resource-group <resource group name> --cluster-name <arc appliance name> --cluster-type appliances --name <AKS/VM extension name> --query id -o tsv`. |
+| name  |  Name of your Windows Server or Azure Stack HCI Custom Location |
+| host-resource-id  | ARM ID of the Azure Arc Resource Bridge. |
+| cluster-extension-ids   | ARM ID of the AKS hybrid extension on top of Resource Bridge. |
 
-Once you create the custom location on top of the Azure Arc Resource Bridge, run the following command to check if the custom location provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes.
+Once you create the Custom Location on top of the Azure Arc Resource Bridge, run the following command to check if the Custom Location provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes.
 
 ```azurecli
 az customlocation show --name <custom location name> --resource-group <resource group name> --query "provisioningState" -o tsv
