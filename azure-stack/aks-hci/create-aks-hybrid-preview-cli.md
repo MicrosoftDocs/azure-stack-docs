@@ -96,8 +96,8 @@ Two [Kubernetes Services](/aks-hci/concepts-container-networking#kubernetes-serv
 Create a file named `azure-vote.yaml` and copy in the following manifest.
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
       name: azure-vote-back
     spec:
