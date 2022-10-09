@@ -14,7 +14,7 @@ ms.date: 09/29/2022
 
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
 
-## Minimum resource requirements
+## Minimum compute resource requirements
 
 Azure Arc Resource Bridge has the following resource requirements:
   - A cluster shared volume with at least 50 GB of space
@@ -133,6 +133,18 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 
-## Next steps
+## AKS host management cluster pre-requisite 
+At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](/kubernetes-walkthrough-powershell). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster. 
 
+You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
+```PowerShell
+Get-AksHciVersion
+```
+
+Expected Output:
+```
+1.0.13.10907
+```
+
+## Next steps
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
