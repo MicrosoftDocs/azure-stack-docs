@@ -87,38 +87,88 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ```powershell
 New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP
 ```
+---
 
 #### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN and proxy settings without authentication
 
+### [Windows Server](#tab/powershell)
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
 ```
 
+### [Azure Stack HCI](#tab/shell)
+```powershell
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
+```
+---
+
 #### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN and proxy settings with certificate based authentication
 
+### [Windows Server](#tab/powershell)
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
 ```
 
+### [Azure Stack HCI](#tab/shell)
+```powershell
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
+```
+---
+
 #### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN and proxy settings with username/password based authentication
+
+### [Windows Server](#tab/powershell)
 
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
 ```
 
+### [Azure Stack HCI](#tab/shell)
+
+```powershell
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
+```
+---
+
 #### Generate YAML file for static IP based Azure Arc Resource Bridge with VLAN
+
+### [Windows Server](#tab/powershell)
 
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -vlanID $vlanid
 ```
 
+### [Azure Stack HCI](#tab/shell)
+
+```powershell
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -vlanID $vlanid
+```
+---
+
 #### Generate YAML file for DHCP based Azure Arc Resource Bridge without VLAN
+
+### [Windows Server](#tab/powershell)
 
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
 ```
 
+### [Azure Stack HCI](#tab/shell)
+
+```powershell
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
+```
+---
+
 #### Generate YAML file for DHCP based Azure Arc Resource Bridge with VLAN
+
+### [Windows Server](#tab/powershell)
+
+```powershell
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
+```
+
+### [Azure Stack HCI](#tab/shell)
 
 ```powershell
 New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
@@ -126,7 +176,20 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 
 #### Sample output
 
-```shell
+### [Windows Server](#tab/powershell)
+```output
+HCI login file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir\kvatoken.tok'
+Generating ARC HCI configuration files...
+Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
+```
+
+### [Azure Stack HCI](#tab/shell)
+```output
+MOC config file successfully generated in 'V:\AKS-HCI\WorkDir\hci-config.json'
+Cloud agent service FQDN/IP: 'AKSHCIHost001.akshci.local'
+HCI login file successfully generated in 'V:\AKS-HCI\WorkDir\kvatoken.tok'
+Generating ARC HCI configuration files...
+Config file successfully generated in 'V:\AKS-HCI\WorkDir'
 HCI login file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir\kvatoken.tok'
 Generating ARC HCI configuration files...
 Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
