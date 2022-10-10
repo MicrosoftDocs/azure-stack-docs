@@ -56,7 +56,7 @@ You can select to use server memory to cache frequent reads and specify the maxi
 
 ## Change cluster settings
 
-There are several general settings that can be applied to your cluster. Here's where you can set and manage access points, node shutdown behavior, traffic encryption, VM load balancing, and cluster witness.
+There are several general settings that can be applied to your cluster. Here's where you can set and manage access points, node shutdown behavior, VM load balancing, and cluster witness.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 2. Under **Tools**, select **Settings**.
@@ -68,14 +68,6 @@ There are several general settings that can be applied to your cluster. Here's w
 - To control node shutdown behavior, select **Node shutdown behavior** and ensure the checkbox is enabled. This setting moves any virtual machines from the node first to allow graceful node shutdown.
 
     :::image type="content" source="media/manage-cluster/2022/node-shutdown-behavior.png" alt-text="cluster Node shutdown behavior screen" lightbox="media/manage-cluster/2022/node-shutdown-behavior.png":::
-
-- To encrypt SMB connections, used to send data between cluster nodes, select **Cluster traffic encryption**. Then select **Encrypt** from the dropdown boxes for the following:
-
-   - **Core traffic** - encrypts traffic sent over NetFT (cluster virtual adapter) on port 3343
-   
-   - **Storage traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
-
-    :::image type="content" source="media/manage-cluster/2022/cluster-traffic-encryption.png" alt-text="cluster Cluster traffic encryption screen" lightbox="media/manage-cluster/2022/cluster-traffic-encryption.png":::
 
 - To automatically load-balance virtual machines, across the cluster, select **Virtual machine load balancing** and do the following:
 
