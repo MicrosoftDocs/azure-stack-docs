@@ -62,15 +62,14 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 
 1. When Azure Hybrid Benefit successfully activates for your cluster, the Azure Stack HCI host fee is waived for the cluster.
 
-> [!IMPORTANT]
-> Windows Server subscription is a way to get unlimited virtualization rights on your cluster through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no additional cost.
+    > [!IMPORTANT]
+    > Windows Server subscription is a way to get unlimited virtualization rights on your cluster through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no additional cost.
 
 1. To enable Windows Server subscription at no additional cost, under the Windows Server subscription add-on feature in the same **Configuration** pane, select **Activate benefit**.
 
 1. In the **Activate Azure Hybrid Benefit** pane on right, check details and select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
-
 
 ## Maintain compliance for Azure Hybrid Benefit
 
@@ -89,7 +88,7 @@ You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, P
     - Activated - indicates Azure Hybrid Benefit is activated
     - Not activated - indicates Azure Hybrid Benefit isn't activated
 
-You can navigate to **Cost Analysis** > **Cost by Resource** > **Cost by Resource**. Expand your Azure Stack HCI resource to check that the meter is under **Software Assurance**. 
+You can navigate to **Cost Analysis** > **Cost by Resource** > **Cost by Resource**. Expand your Azure Stack HCI resource to check that the meter is under **Software Assurance**.
 
 # [PowerShell](#tab/powershell)
 
@@ -106,6 +105,8 @@ az login
 az extension add --name resource-graph
 az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where name == ' clustername' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
+
+---
 
 ### List all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription
 
@@ -125,6 +126,8 @@ az login
 az extension add --name resource-graph
 az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled'"
 ```
+
+---
 
 ## Troubleshoot Azure Hybrid Benefit for Azure Stack HCI
 

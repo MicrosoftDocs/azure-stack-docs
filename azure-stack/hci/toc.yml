@@ -66,6 +66,8 @@
       href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
+    - name: Deploy Azure Benefits
+      href: ./manage/azure-benefits.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
@@ -74,8 +76,6 @@
       href: deploy/sql-server.md
     - name: Trusted enterprise virtualization
       href: deploy/trusted-enterprise-virtualization.md
-  - name: Deploy Azure Benefits
-    href: ./manage/azure-benefits.md
   - name: Deploy and manage Azure Stack HCI clusters in VMM
     href: deploy/deploy-manage-azure-stack-hci.md
 - name: Manage
