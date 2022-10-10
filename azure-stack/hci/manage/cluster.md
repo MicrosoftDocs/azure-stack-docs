@@ -42,9 +42,9 @@ You can select to use server memory to cache frequent reads and specify the maxi
 
 - To change your in-memory cache name select **In-memory cache** and enter the new name.
 
-   :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster//2022/in-memory-cache.png":::
+   :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/2022/in-memory-cache.png":::
 
-- You can change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters.
+- You can change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters as well.
 
      - **Cache State** - enable or disable persistent cache
      
@@ -52,7 +52,7 @@ You can select to use server memory to cache frequent reads and specify the maxi
      
      - **Cache mode for SSD** - change the cache for SSD drives
 
-    :::image type="content" source="media/manage-cluster/2022/storage-spaces-and-pools.png" alt-text="cluster Storage Spaces and pools screen" lightbox="media/manage-cluster//2022/storage-spaces-and-pools.png":::
+    :::image type="content" source="media/manage-cluster/2022/storage-spaces-and-pools.png" alt-text="cluster Storage Spaces and pools screen" lightbox="media/manage-cluster/2022/storage-spaces-and-pools.png":::
 
 ## Change cluster settings
 
