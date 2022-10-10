@@ -54,23 +54,5 @@ Note: Running Windows Server containers on AKS requires a Windows Server license
 
 If you enable hyper-threading on your physical computer, AKS will also enable hyper-threading on the worker nodes. If you enable hyper-threading, it will effectively halve the number of virtual cores needed in each worker node.
 
-![Pricing for A K S is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
-
-## Azure Hybrid Benefit for AKS
-
-AKS deployed on Azure Stack HCI and Windows Server 2019/2022 is now included at no additional cost for Azure Hybrid Benefit customers with Windows Server Datacenter and Standard with Software Assurance (SA) licenses. For more information, see [Azure Hybrid Benefit for Windows Server](https://aka.ms/ahb-aks).
-
-## A comparison of AKS pricing
-
-Use the table below to compare pricing for AKS.
-
-| Workload cluster configuration                           | AKS \*with\* hyper-threading (most common   scenario)    | AKS without hyper-threading                          | AKS in Azure                                             |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| -2 Worker Nodes -1  x (2 vCPU VM with Linux) -1 x (8 vCPU VM with Windows) -10 vCPUs Total | ~US $120 per month*                                          | ~US $240 per month*                                          | ~US $350 per month*                                          |
-| -4 Worker Nodes -2 x (4 vCPU VM with Linux) -2 x (4 vCPU  VM with Windows) -16 vCPUs Total | ~US $192 per month*                                          | ~US $384 per month*                                          | ~US $561 per month*                                          |
-| Other information                                        | Includes Azure Arc  enabled Kubernetes. Does not include the cost of hardware, hypervisor, or  Windows Server licenses. | Includes Azure Arc  enabled Kubernetes. Does not include the cost of hardware, hypervisor, or  Windows Server licenses. | Includes  Arc-enabled Kubernetes and the underlying infrastructure. Does not include  the cost of running Windows Server on Azure. |
-
-* Price assumes hyper-threading is available and enabled on physical systems.
-
-* Price assumes that systems are running for the entire month.
+![Pricing for AKS is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
 

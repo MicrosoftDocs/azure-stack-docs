@@ -93,7 +93,7 @@
   - name: Billing
     items:
       - name: Pricing details
-        href: concepts-billing-pricingdetails.md
+        href: pricing.md
 - name: How-to guides
   items: 
     - name: Install Azure Kubernetes Service host
