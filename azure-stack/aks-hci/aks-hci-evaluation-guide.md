@@ -27,7 +27,7 @@ You'll learn how to:
 
 ## Version
 
-This guide has been tested and validated with the **July 2022 release** of AKS.<!--Verify release that was tested? Was it an AKS hybrid release?-->
+This guide has been tested and validated with the **July 2022 release** of AKS.
 
 > [!NOTE]
 > The user interface is subject to updates and changes, so some of the screen shots in this guide may differ from what you actually see.
