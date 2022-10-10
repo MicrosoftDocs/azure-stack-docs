@@ -22,13 +22,13 @@ Balancer][] (SLB) for all AKS-HCI load balancing scenarios.
 
 The following features are out of scope and not supported for this GA release:
 
-- Attaching pods and containers to a SDN virtual network.
+- Attaching pods and containers to an SDN virtual network.
   - Pods will use Flannel or Calico (default) as the network provider.
 - Network policy enforcement using the SDN Network Security Groups.
-  - The SDN Network Security Groups can still be configured outside of AKS-HCI using SDN tools (REST/Powershell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects will not configure them.
+  - The SDN Network Security Groups can still be configured outside of AKS-HCI using SDN tools (REST/PowerShell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects will not configure them.
 - Attaching AKS-HCI VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
-- Physical host to AKS-HCI VM connectivity: VM NICs will be joined to a SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
+- Physical host to AKS-HCI VM connectivity: VM NICs will be joined to an SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
 
 ## Prerequisites
 
@@ -56,9 +56,9 @@ It is important that SDN is healthy before proceeding. If you are deploying SDN 
 
 Initialize and prepare all the physical host machines for AKS-HCI. See [this article][] for the most up-to-date instructions.
 
-### Install the AKS-HCI Powershell module
+### Install the AKS-HCI PowerShell module
 
-[See this article](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) for information about installing the AKS-HCI Powershell module.
+[See this article](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) for information about installing the AKS-HCI PowerShell module.
 
 > [!NOTE]
 > After completing this step, refresh or reload any opened PowerShell sessions to reload the modules.
