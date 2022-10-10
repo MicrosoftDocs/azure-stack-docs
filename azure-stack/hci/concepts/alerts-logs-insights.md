@@ -18,27 +18,26 @@ For Azure Stack HCI, customers can set up alerts using pre-existing sample Log q
 1. From **Azure Portal** navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
 
-4. Select **Load to Editor** to open the query workspace. *Is there a specific sample log to choose before continuing with this step?*
+4. Select **Load to Editor** to open the query workspace. 
 5. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
 6. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
-*Are there any specifics to mention that might be beneficial for customers after getting their results?*
+Once the information is populated you can analyze the logs and set up alerts on the results.
 
 ## Set up alerts using Insights
 
-Alerts can be set up using Azure Insights workbooks if the Insights function has been configured, via the Azure portal, for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](https://learn.microsoft.com/azure-stack/hci/manage/monitor-hci-single) to enable Insights monitoring for your cluster before setting up alerts.
+Alerts can be set up using Azure Insights workbooks if the Insights function has been configured, via the Azure portal, for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single) to enable Insights monitoring for your cluster before setting up alerts.
 
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
 
 1. Navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
-2. Once the workbook is loaded, select the **Cluster Health** tab to see all the health faults for your clusters.
-3. *Is there anything else important customers would need to know or do before going to the next step?*
-4. Select the blue icon, *what is this called*, highlighted above to edit the query. *Why would customers need to do perform this step?*
-5. After the query loads, select the **+ New alert rule** option. *Why would customers need to perform this step, what more should be known before performing this step or after?*
+2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example select **Servers** to view the health of servers within your cluster.
+3. Select the blue icon, **Logs view**, highlighted above to view and edit the query.
+4. After the query loads, select the **+ New alert rule** option.
 
 From the alerts interface you can set up alert rules and send notifications.
 
-        :::image type="content" source="media/alerts-logs-insights/Insights3.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/Insights3.png":::
+:::image type="content" source="media/alerts-logs-insights/Insights3.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/Insights3.png":::
 
-To learn more about setting up alerts, see [Create Azure Monitor alert rules](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+To learn more about setting up alerts, see [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
