@@ -22,7 +22,7 @@ Before you begin, make sure you meet the following requirements:
 
 IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](/concepts-node-networking#minimum-ip-address-reservations-for-an-aks-on-azure-stack-hci-deployment).
 
-## Choose between Static IP [recommended] and DHCP based networks.
+## Choose between Static IP [recommended] and DHCP based networks
 
 You can choose between Static IP and DHCP based networks for your AKS hybrid clusters. Run the following commands from any one node on your physical cluster.
 
