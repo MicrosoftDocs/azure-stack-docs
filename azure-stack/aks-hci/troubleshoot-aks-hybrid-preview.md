@@ -53,13 +53,13 @@ Make sure the infrastructure administrator downloaded the Kubernetes VHD image u
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
 The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This issue will be fixed in an upcoming release.
 
-If none of the above reasons apply to you, open a [support ticket](/help-support) so that we can help you identify the issue.
+If none of the above reasons apply to you, open a [support ticket](help-support.md) so that we can help you identify the issue.
 
 ## After a period of time, `az hybridaks proxy` times out and doesn't respond to kubectl commands anymore
 If this happens to you, close all open command line windows and start a fresh `az hybridaks proxy` session. You should be able to regain access to your AKS hybrid cluster via kubectl.
 
 ## When Azure Arc Resource Bridge is stopped, `az hybridaks` calls complete without errors as if they are successful but I don't see any AKS hybrid clusters on-premises
-We strongly recommend to never stop Azure Arc Resource Bridge as this could lead to unexpected failures. If you have stopped your Arc Resource Bridge, restart it immediately. If you see unexpected issues, [contact support](/help-support) and let them know that you stopped Arc Resource Bridge.
+We strongly recommend to never stop Azure Arc Resource Bridge as this could lead to unexpected failures. If you have stopped your Arc Resource Bridge, restart it immediately. If you see unexpected issues, [contact support](help-support.md) and let them know that you stopped Arc Resource Bridge.
 
 ## When `az hybridaks create` fails the Azure resources on the Azure portal are not deleted
 If your `az hybridaks create` command has failed, delete all corresponding Azure resources like AKS hybrid cluster and node pools and then retry the operation. If you try the same command again without deleting the Azure resources first, it might lead to unexpected failures.
