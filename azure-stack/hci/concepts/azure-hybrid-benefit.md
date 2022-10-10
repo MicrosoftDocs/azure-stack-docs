@@ -119,6 +119,7 @@ Install-Module -Name Az.ResourceGraph
 Connect-AzAccount -Environment $EnvironmentName -Subscription $subId
 Search-AzGraph -Query "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled'"
 ```
+
 # [Azure CLI](#tab/azurecli)
 
 ```azurecli
