@@ -2,7 +2,7 @@
 title: Node virtual machine networking in AKS hybrid
 description: Learn about virtual machine networking in AKS hybrid, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 10/-7/2022
+ms.date: 10/10/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
