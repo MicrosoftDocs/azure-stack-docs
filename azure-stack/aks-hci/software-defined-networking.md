@@ -78,7 +78,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
 1. Configure the AKS-HCI network settings for SDN; for example, using:
    1. SDN Virtual network "10.20.0.0/24" (10.20.0.0 – 10.20.0.255). A virtualized network, and you can use any IP subnet. This subnet does not need to exist on your physical network.
    2. vSwitch name "External". The external vSwitch on the HCI servers. Ensure that you use the same vSwitch that was used for SDN deployment.
-   3. Gateway "10.20.0.1". This is the gateway for your virtual network.
+   3. Gateway "10.20.0.1". This address is the gateway for your virtual network.
    4. DNS Server "10.127.130.7". The DNS server for your virtual network.
 
    ```powershell
@@ -108,7 +108,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
    | `-vipPoolStart` | IP start range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network. |
    | `-vipPoolEnd`   | IP end range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network.   |
 
-3. In the same PowerShell window used in Step 2, create the AKS-HCI configuration for SDN by providing references to the targeted SDN networks, as well as passing in the network settings ($vnet, $vipPool) we have defined:
+3. In the same PowerShell window used in Step 2, create the AKS-HCI configuration for SDN by providing references to the targeted SDN networks, and supply the network settings ($vnet, $vipPool) we have defined:
 
    ```powershell
    Set-AksHciConfig 
@@ -124,13 +124,13 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
 
    The HNVPA logical network will be used as the underlying provider for the AKS-HCI virtual network.
 
-   If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information [see this article](concepts-node-networking.md#microsoft-on-premises-cloud-service).
+   If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This parameter is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information, [see this article](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
       | Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                             |
       |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      | `–imageDir`                         | The path to where AKS HCI stores its VHD images. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                                      |
-      | `–workingDir`                       | The path to where small files for the module are stored. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                              |
-      | `-cloudConfigLocation`              | The path to the directory where cloud agent configuration is stored. This must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                               |
+      | `–imageDir`                         | The path to where AKS HCI stores its VHD images. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                                      |
+      | `–workingDir`                       | The path to where small files for the module are stored. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                              |
+      | `-cloudConfigLocation`              | The path to the directory where cloud agent configuration is stored. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                               |
       | `-vnet`                             | Name of `AksHciNetworkSetting` variable created in the previous step                                                                                                                                                                                                                                                                                                      |
       | `-useNetworkController`             | Enable integration with SDN.                                                                                                                                                                                                                                                                                                                                             |
       | `-networkControllerFqdnOrIpAddress` | Network controller FQDN. You can get the FQDN by executing `Get-NetworkController` on the Network Controller VM and using the `RestName` parameter.                                                                                                                                                                                                                         |
@@ -176,7 +176,7 @@ If you encounter any issues with the instructions or would simply like to provid
 
 Next, you can create [workload clusters][] and [deploy your applications][]. All AKS-HCI VM NICs will seamlessly get attached to the
 SDN virtual network that was provided during installation. The SDN Software load balancer will also be used as the external load balancer
-for all Kubernetes services, as well as act as the load balancer for the API server on Kubernetes control-plane(s).
+for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: ../hci/concepts/software-load-balancer.md
 [Azure Kubernetes Service on Azure Stack HCI requirements]: system-requirements.md
