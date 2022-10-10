@@ -1,6 +1,6 @@
 ---
-title: Create and access AKS hybrid clusters provisioned from Azure using Az CLI
-description: Create and access AKS hybrid clusters provisioned from Azure using Az CLI
+title: Create AKS hybrid clusters from the Azure Portal
+description: Create AKS hybrid clusters from the Azure Portal
 author: abha
 ms.author: abha
 ms.topic: how-to
@@ -26,7 +26,6 @@ In this how-to guide, you'll
 
 - In order to connect to the AKS hybrid cluster from anywhere, you need to create an **Azure AD group** and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Azure AD group.** If you do not add yourself, you will not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Azure AD groups and adding users, read [create Azure AD groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
-
 ## Create an AKS cluster
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
@@ -39,7 +38,7 @@ In this how-to guide, you'll
 
     - **Project details**:
         * Select an Azure **Subscription**. This Azure subscription is where your infrastructure administrator has deployed the Arc Resource Bridge, AKS hybrid extension and Custom Location.
-        * Select or create an Azure **Resource group**, such as *myResourceGroup*.
+        * Select an Azure **Resource group**, such as *myResourceGroup*.
     - **Cluster details**:
         * Enter a **Kubernetes cluster name**, such as *myAKSHybridCluster*.
         * Select a Custom Location where you want to deploy the AKS hybrid cluster. Make sure your infrastructure administrator has given you Contributor access on a Custom Location.
@@ -61,19 +60,19 @@ In this how-to guide, you'll
         
 7. At the bottom of the screen, click **Next: Access**.
 
-7. On the **Access** page, configure the following options:
+8. On the **Access** page, configure the following options:
 
-    - The default value for Kubernetes cluster authentication is **Local accounts with Kubernetes RBAC**. This option requires you to login to your on-premises infrastructure to manage the  Managed identities provide an identity for applications to use when connecting to resources that support Azure Active Directory (Azure AD) authentication. For more details about managed identities, see [What are managed identities for Azure resources?](../../active-directory/managed-identities-azure-resources/overview.md).
-    - The Kubernetes role-based access control (RBAC) option is the default value to provide more fine-grained control over access to the Kubernetes resources deployed in your AKS cluster.
+    - The default value for Kubernetes cluster authentication is **Local accounts with Kubernetes RBAC**. This option requires you to have direct line of sight to your on-premises infrastructure, to access the AKS hybrid cluster using `kubectl`.
+    - Select Azure AD authentication with Kubernetes RBAC. This option lets you choose one or more Azure AD groups. All members of the chosen Azure AD groups will have cluster administrator access by default to the AKS hybrid cluster. This options also enables you to connect to the AKS hybrid from anywhere, without requiring line of sight to the on-premises infrastructure. Make sure to add yourself to the Azure AD group. If you do not add yourself, you will not be able to access the AKS hybrid cluster using kubectl. 
+    - Choose 1 or more Azure AD groups and then at the bottom of the screen, click Next: Networking
+    
+9. On the **Networking** page, select an AKS hybrid vnet. The Kubernetes nodes and services in your AKS hybrid cluster will get IP addresses and networking configurations from this vnet. Make sure your infrastructure administrator has given you Contributor access on an AKS hybrid vnet.
 
-    By default, *Basic* networking is used, and [Container insights](../../azure-monitor/containers/container-insights-overview.md) is enabled.
+10. Click **Review + create**. When you navigate to the **Review + create** tab, Azure runs validation on the settings that you have chosen. If validation passes, you can proceed to create the AKS hybrid cluster by selecting **Create**. If validation fails, then it indicates which settings need to be modified.
 
-8. Click **Review + create**. When you navigate to the **Review + create** tab, Azure runs validation on the settings that you have chosen. If validation passes, you can proceed to create the AKS cluster by selecting **Create**. If validation fails, then it indicates which settings need to be modified.
-
-9. It takes a few minutes to create the AKS cluster. When your deployment is complete, navigate to your resource by either:
+11. It takes a few minutes to create the AKS cluster. When your deployment is complete, navigate to your resource by either:
     * Selecting **Go to resource**, or
-    * Browsing to the AKS cluster resource group and selecting the AKS resource. In this example you browse for *myResourceGroup* and select the resource *myAKSCluster*.
+    * Browsing to the AKS hybrid cluster resource group and selecting the AKShybrid resource.
 
 ## Next steps
-
 - [Troubleshoot and known issues with AKS hybrid cluster provisioning from Azure](troubleshoot-aks-hybrid-preview.md)
