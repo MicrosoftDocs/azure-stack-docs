@@ -35,6 +35,8 @@ This article describes the following topics:
 The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions. These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
 
 - East US
+- South Central US
+- Canada Central
 - West Europe
 - Southeast Asia
 - Australia East
