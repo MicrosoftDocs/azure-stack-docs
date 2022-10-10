@@ -107,4 +107,4 @@ volumeMounts:
 
 ## Next steps
 
-- [Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md).<!--Revisit link text after target title is rebranded.-->
+- [Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md).
