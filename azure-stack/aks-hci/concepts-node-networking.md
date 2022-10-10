@@ -16,7 +16,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can choose between two IP address assignment models for your networking architecture for AKS hybrid. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).<!--PLACEHOLDER: I drafted this AKS hybrid desription because the standard product name expansion doesn't work in this context.-->
+You can choose between two IP address assignment models for your networking architecture for AKS hybrid. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).
 
 - **Static IP networking**  
     The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
@@ -103,10 +103,9 @@ The choice of an IP address for the MOC service depends on the underlying networ
 
 ## Compare network models
 
-Both DHCP and Static IP provide network connectivity on your AKS on Azure Stack HCI and Windows Server deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:<!--Not convinced this can be generalized.-->
-
+Both DHCP and Static IP provide network connectivity on your AKS on Azure Stack HCI and Windows Server deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
 **DHCP**
-    - Does not guarantee long-lived IP addresses for some resource types in an AKS deployment.<!--Branding guidance is to not refer to an "AKS hybrid deployment." Will "AKS deployment" suffice? Throughout this section.-->
+    - Does not guarantee long-lived IP addresses for some resource types in an AKS deployment.
     - Supports expansion of reserved DHCP IP addresses if your deployment gets bigger than you initially anticipated.
 
 **Static IP**
@@ -150,7 +149,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ### Walk through an example deployment
 
-Jane is an IT administrator just starting with AKS. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI <!--and Windows Server--> cluster.<!--Example need to commit to either Azure Stack HCI or Windows Server.--> She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI  cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes
