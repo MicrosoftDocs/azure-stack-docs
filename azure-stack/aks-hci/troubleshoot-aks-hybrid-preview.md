@@ -42,16 +42,16 @@ Uninstalling the AKS host management cluster will also uninstall Azure Arc Resou
 If you see the AKS hybrid cluster resource come up on Azure but if you do not see any VMs/Kubernetes cluster on-premises, it is possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
 
 ### You used an uppercase character for your AKS hybrid cluster name
-For this preview, you cannot use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will timeout and fail silently. This will be fixed in an upcoming release.
+For this preview, you cannot use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will timeout and fail silently. This issue will be fixed in an upcoming release.
 
 ### The AKS hybrid vnet you used ran out of IP addresses
 If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it is not possible to edit an AKS hybrid vnet once it has been created.
 
 ### The infrastructure administrator did not download the Kubernetes VHD image using `Add-KvaGalleryImage`
-Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator did not download the Kubernetes VHD image, the AKS hybrid cluster create call will timeout and fail silently. This will be fixed in an upcoming release.
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator did not download the Kubernetes VHD image, the AKS hybrid cluster create call will timeout and fail silently. This issue will be fixed in an upcoming release.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
-The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This will be fixed in an upcoming release.
+The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This issue will be fixed in an upcoming release.
 
 If none of the above reasons apply to you, open a [support ticket](/help-support) so that we can help you identify the issue.
 
@@ -65,7 +65,7 @@ We strongly recommend to never stop Azure Arc Resource Bridge as this could lead
 If your `az hybridaks create` command has failed, delete all corresponding Azure resources like AKS hybrid cluster and node pools and then retry the operation. If you try the same command again without deleting the Azure resources first, it might lead to unexpected failures.
 
 ## Default node pool name cannot be changed
-For this preview, we do not allow changing the name of the default node pool. This will be added in an upcoming release.
+For this preview, we do not allow changing the name of the default node pool. This option will be added in an upcoming release.
 
 ## How to get the certificate based admin kubeconfig of AKS hybrid cluster provisioned through Azure
 
