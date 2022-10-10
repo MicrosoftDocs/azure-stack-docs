@@ -96,7 +96,7 @@ Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. The
 
    For more details about these parameters, see [New-AksHciNetworkSetting][].
 
-2. In the same PowerShell window used in Step 1, create an AKS-HCI VIP pool to inform AKS of our IPs that can be used from our SDN Load Balancing Logical Network:
+2. In the same PowerShell window you used in Step 1, create an AKS-HCI VIP pool to inform AKS of our IPs that can be used from our SDN Load Balancing Logical Network:
 
    ```powershell
    $VipPool = New-AksHciVipPoolSetting -name "PublicVIP" -vipPoolStart "10.127.132.16" -vipPoolEnd "10.127.132.23
