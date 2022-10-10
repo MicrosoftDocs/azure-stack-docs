@@ -17,7 +17,7 @@ In this how-to guide, you'll
 - While creating the cluster, you will provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access
 - Access the AKS hybrid cluster using `kubectl` and your Azure AD identity
 - Run a sample multi-container application with a web front-end and a Redis instance in the AKS hybrid cluster
-- Install Azure Defender for containers on your AKS hybrid cluster
+
 
 ## Before you begin
 
