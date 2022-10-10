@@ -32,30 +32,30 @@ AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI
 - Step 1: Deploy AKS host management cluster 
 - Step 2: Deploy Arc Resource Bridge 
 
-If Azure Arc Resource Bridge is already deployed, you cannot deploy the AKS management cluster. Uninstall Azure Arc Resource Bridge before installing AKS host management cluster. You must uninstall in the following order:
+If Azure Arc Resource Bridge is already deployed, you can't deploy the AKS management cluster. Uninstall Azure Arc Resource Bridge before installing AKS host management cluster. You must uninstall in the following order:
 - Step 1: Uninstall Arc Resource Bridge
 - Step 2: Uninstall the AKS host management cluster
 
 Uninstalling the AKS host management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
-## I can see the AKS hybrid cluster resource object on the Azure portal but I do not see any VMs/Kubernetes cluster on my on-premises infrastructure OR my AKS hybrid cluster create call has timed out.
-If you see the AKS hybrid cluster resource come up on Azure but if you do not see any VMs/Kubernetes cluster on-premises, it is possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
+## I can see the AKS hybrid cluster resource object on the Azure portal but I don't see any VMs/Kubernetes cluster on my on-premises infrastructure OR my AKS hybrid cluster create call has timed out.
+If you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, its possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
 
 ### You used an uppercase character for your AKS hybrid cluster name
-For this preview, you cannot use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will timeout and fail silently. This issue will be fixed in an upcoming release.
+For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### The AKS hybrid vnet you used ran out of IP addresses
-If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it is not possible to edit an AKS hybrid vnet once it has been created.
+If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, its not possible to edit an AKS hybrid vnet once it has been created.
 
-### The infrastructure administrator did not download the Kubernetes VHD image using `Add-KvaGalleryImage`
-Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator did not download the Kubernetes VHD image, the AKS hybrid cluster create call will timeout and fail silently. This issue will be fixed in an upcoming release.
+### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-KvaGalleryImage`
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
 The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This issue will be fixed in an upcoming release.
 
 If none of the above reasons apply to you, open a [support ticket](/help-support) so that we can help you identify the issue.
 
-## After a period of time, `az hybridaks proxy` times out and does not respond to kubectl commands anymore
+## After a period of time, `az hybridaks proxy` times out and doesn't respond to kubectl commands anymore
 If this happens to you, close all open command line windows and start a fresh `az hybridaks proxy` session. You should be able to regain access to your AKS hybrid cluster via kubectl.
 
 ## When Azure Arc Resource Bridge is stopped, `az hybridaks` calls complete without errors as if they are successful but I don't see any AKS hybrid clusters on-premises
@@ -64,8 +64,8 @@ We strongly recommend to never stop Azure Arc Resource Bridge as this could lead
 ## When `az hybridaks create` fails the Azure resources on the Azure portal are not deleted
 If your `az hybridaks create` command has failed, delete all corresponding Azure resources like AKS hybrid cluster and node pools and then retry the operation. If you try the same command again without deleting the Azure resources first, it might lead to unexpected failures.
 
-## Default node pool name cannot be changed
-For this preview, we do not allow changing the name of the default node pool. This option will be added in an upcoming release.
+## Default node pool name can't be changed
+For this preview, we don't allow changing the name of the default node pool. This option will be added in an upcoming release.
 
 ## How to get the certificate based admin kubeconfig of AKS hybrid cluster provisioned through Azure
 
