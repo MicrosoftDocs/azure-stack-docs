@@ -10,11 +10,13 @@ ms.date: 09/29/2022
 ---
 
 
-# Prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters
+# System requirements for AKS hybrid cluster provisioing from Azure (preview)
 
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
 
-## Minimum compute resource requirements
+This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioing from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
+
+## Minimum resource requirements
 
 Azure Arc Resource Bridge has the following resource requirements:
   - A cluster shared volume with at least 50 GB of space
