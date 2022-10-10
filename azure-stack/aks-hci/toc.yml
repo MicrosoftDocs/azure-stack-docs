@@ -270,9 +270,9 @@
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
 - name: AKS Lite hybrid option (preview)
-      items:
-      - name: Overview
-        href: aks-lite-overview.md
+  items:
+  - name: Overview
+    href: aks-lite-overview.md
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
