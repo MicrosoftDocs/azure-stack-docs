@@ -24,29 +24,50 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
 
 ## Issues with using Remote Desktop
 
-Deploying Azure Arc Resource Bridge through command line must be performed with line of sight to the on-premises infrastructure. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI or Windows Server cluster. To connect on each node of the Azure Stack HCI or Windows Server cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
+Deploying Azure Arc Resource Bridge through command line must be performed with line of sight to the on-premises infrastructure. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI or Windows Server cluster.
 
 ## Issues with using AKS-HCI and Azure Arc Resource Bridge
 
-AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster must be enabled in the following deployment order:
-    1. Deploy AKS management cluster 
-    2. Deploy Arc Resource Bridge 
+AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster must be enabled in the following deployment order
+- Step 1: Deploy AKS host management cluster 
+- Step 2: Deploy Arc Resource Bridge 
 
-If Azure Arc Resource Bridge is already deployed, you cannot deploy the AKS management cluster. Uninstall Azure Arc Resource Bridge before installing AKS-HCI. You must uninstall these in the following order:
-    1. Uninstall Arc Resource Bridge
-    2. Uninstall the AKS management cluster
+If Azure Arc Resource Bridge is already deployed, you can't deploy the AKS management cluster. Uninstall Azure Arc Resource Bridge before installing AKS host management cluster. You must uninstall in the following order:
+- Step 1: Uninstall Arc Resource Bridge
+- Step 2: Uninstall the AKS host management cluster
 
-Uninstalling the AKS management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
+Uninstalling the AKS host management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
-## How to collect logs
+## I can see the AKS hybrid cluster resource object on the Azure portal but I don't see any VMs/Kubernetes cluster on my on-premises infrastructure OR my AKS hybrid cluster create call has timed out.
+If you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
 
-Sign in to the Azure Stack HCI or Windows Server cluster and collect logs using the following command: 
+### You used an uppercase character for your AKS hybrid cluster name
+For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
-```powershell
-Get-ArcHciLogs
-```
+### The AKS hybrid vnet you used ran out of IP addresses
+If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it's not possible to edit an AKS hybrid vnet once it has been created.
 
-## How to get cert-based admin kubeconfig of AKS hybrid cluster provisioned through Azure
+### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-KvaGalleryImage`
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
+
+### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
+The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This issue will be fixed in an upcoming release.
+
+If none of the above reasons apply to you, open a [support ticket](help-support.md) so that we can help you identify the issue.
+
+## After a period of time, `az hybridaks proxy` times out and doesn't respond to kubectl commands anymore
+If this happens to you, close all open command line windows and start a fresh `az hybridaks proxy` session. You should be able to regain access to your AKS hybrid cluster via kubectl.
+
+## When Azure Arc Resource Bridge is stopped, `az hybridaks` calls complete without errors as if they are successful but I don't see any AKS hybrid clusters on-premises
+We strongly recommend to never stop Azure Arc Resource Bridge as this could lead to unexpected failures. If you have stopped your Arc Resource Bridge, restart it immediately. If you see unexpected issues, [contact support](help-support.md) and let them know that you stopped Arc Resource Bridge.
+
+## When `az hybridaks create` fails the Azure resources on the Azure portal are not deleted
+If your `az hybridaks create` command has failed, delete all corresponding Azure resources like AKS hybrid cluster and node pools and then retry the operation. If you try the same command again without deleting the Azure resources first, it might lead to unexpected failures.
+
+## Default node pool name can't be changed
+For this preview, we don't allow changing the name of the default node pool. This option will be added in an upcoming release.
+
+## How to get the certificate based admin kubeconfig of AKS hybrid cluster provisioned through Azure
 
 To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to the Azure Stack HCI or Windows Server cluster and then run the following command:
 
