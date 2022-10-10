@@ -87,8 +87,8 @@ You must specify the following parameters while defining a virtual network with 
 
 Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Azure Stack HCI and Windows Server-based SDDC to be managed in the cloud. MOC consists of:
 
-- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.<!--This has to be specific to Azure Stack HCI?-->
-- A `node agent` running on every Azure Stack HCI physical node.<!--Samme question here.-->
+- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.
+- A `node agent` running on every Azure Stack HCI physical node.
 
 To enable communication with MOC, you need to provide the IP Address CIDR that will be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
