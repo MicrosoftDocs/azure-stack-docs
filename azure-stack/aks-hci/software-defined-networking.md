@@ -15,7 +15,7 @@ ms.reviewer: anpaul
 
 # Deploy Microsoft Software Defined Networking (SDN) with Azure Kubernetes Service on HCI (AKS-HCI)
 
-In this article, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network leveraging our SDN [Software Load
+In this article, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load
 Balancer][] (SLB) for all AKS-HCI load balancing scenarios.
 
 ## Limitations
@@ -28,7 +28,7 @@ The following features are out of scope and not supported for this GA release:
   - The SDN Network Security Groups can still be configured outside of AKS-HCI using SDN tools (REST/Powershell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects will not configure them.
 - Attaching AKS-HCI VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
-- Physical host to AKS-HCI VM connectivity: VM NICs will be joined to a SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
+- Physical host to AKS-HCI VM connectivity: VM NICs will be joined to a SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
 
 ## Prerequisites
 
@@ -76,10 +76,10 @@ Initialize and prepare all the physical host machines for AKS-HCI. See [this art
 Choose one of your Azure Stack HCI Servers to drive the creation of AKS-HCI. There are 3 steps that need to be done prior to installation:
 
 1. Configure the AKS-HCI network settings for SDN; for example, using:
-   1. SDN Virtual network "10.20.0.0/24" (10.20.0.0 – 10.20.0.255). This is a completely virtualized network, and you can use any IP subnet. This subnet does not need to exist on your physical network.
-   2. vSwitch name "External". This is the external vSwitch on the HCI servers. Ensure that you use the same vSwitch that was used for SDN deployment.
+   1. SDN Virtual network "10.20.0.0/24" (10.20.0.0 – 10.20.0.255). A virtualized network, and you can use any IP subnet. This subnet does not need to exist on your physical network.
+   2. vSwitch name "External". The external vSwitch on the HCI servers. Ensure that you use the same vSwitch that was used for SDN deployment.
    3. Gateway "10.20.0.1". This is the gateway for your virtual network.
-   4. DNS Server "10.127.130.7". This is the DNS server for your virtual network.
+   4. DNS Server "10.127.130.7". The DNS server for your virtual network.
 
    ```powershell
    $vnet = New-AksHciNetworkSetting –name "myvnet" –vswitchName "External" -k8sNodeIpPoolStart "10.20.0.2" -k8sNodeIpPoolEnd "10.20.0.255"
