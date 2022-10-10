@@ -247,6 +247,8 @@
     items:
     - name: Azure CLI
       href: create-aks-hybrid-preview-cli.md
+    - name: Azure portal
+      href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
   
