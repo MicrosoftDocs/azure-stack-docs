@@ -98,6 +98,8 @@
       items:
           - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+    - name: Use offline download
+      href: offline-download.md
     - name: Upgrade the AKS on Azure Stack HCI and Windows Server host
       items:
           - name: Use PowerShell
