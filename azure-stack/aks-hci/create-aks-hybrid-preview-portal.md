@@ -14,7 +14,7 @@ ms.date: 09/29/2022
 In this how-to guide, you'll
 
 - Create an AKS hybrid cluster using Azure Portal. The cluster will be Azure Arc-connected by default
-- While creating the cluster, you will provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access
+- While creating the cluster, you'll provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access
 
 
 ## Before you begin
@@ -24,13 +24,13 @@ In this how-to guide, you'll
     - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you "Contributor" access to the custom location. This is a required parameter to create AKS hybrid clusters. 
     - **AKS hybrid vnet ID** - Azure Resource Manager ID of the Azure hybridaks vnet. Your infrastructure admin should give you "Contributor" access to an AKS hybrid vnet. This is a required parameter to create AKS hybrid clusters. 
 
-- In order to connect to the AKS hybrid cluster from anywhere, you need to create an **Azure AD group** and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Azure AD group.** If you do not add yourself, you will not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Azure AD groups and adding users, read [create Azure AD groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+- In order to connect to the AKS hybrid cluster from anywhere, you need to create an **Azure AD group** and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Azure AD group.** If you do not add yourself, you'll not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Azure AD groups and adding users, read [create Azure AD groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ## Create an AKS cluster
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure Portal](https://portal.azure.com).
 
-2. On the Azure portal search bar, type "Azure Arc Kubernetes clusters"
+2. On the Azure Portal search bar, type "Azure Arc Kubernetes clusters"
 
 3. Select **Add** > **Create an AKS hybrid cluster (preview)**.
 
@@ -63,8 +63,8 @@ In this how-to guide, you'll
 8. On the **Access** page, configure the following options:
 
     - The default value for Kubernetes cluster authentication is **Local accounts with Kubernetes RBAC**. This option requires you to have direct line of sight to your on-premises infrastructure, to access the AKS hybrid cluster using `kubectl`.
-    - Select Azure AD authentication with Kubernetes RBAC. This option lets you choose one or more Azure AD groups. All members of the chosen Azure AD groups will have cluster administrator access by default to the AKS hybrid cluster. This options also enables you to connect to the AKS hybrid from anywhere, without requiring line of sight to the on-premises infrastructure. Make sure to add yourself to the Azure AD group. If you do not add yourself, you will not be able to access the AKS hybrid cluster using kubectl. 
-    - Choose 1 or more Azure AD groups and then at the bottom of the screen, click Next: Networking
+    - Select Azure AD authentication with Kubernetes RBAC. This option lets you choose one or more Azure AD groups. All members of the chosen Azure AD groups will have cluster administrator access by default to the AKS hybrid cluster. This option also enables you to connect to the AKS hybrid from anywhere, without requiring line of sight to the on-premises infrastructure. Make sure to add yourself to the Azure AD group. If you do not add yourself, you'll not be able to access the AKS hybrid cluster using kubectl. 
+    - Choose one or more Azure AD groups and then at the bottom of the screen, click Next: Networking
     
 9. On the **Networking** page, select an AKS hybrid vnet. The Kubernetes nodes and services in your AKS hybrid cluster will get IP addresses and networking configurations from this vnet. Make sure your infrastructure administrator has given you Contributor access on an AKS hybrid vnet.
 
