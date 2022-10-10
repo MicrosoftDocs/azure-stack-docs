@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Network ATC overview 
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 21H2 and later
 
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
 
@@ -34,12 +34,14 @@ An individual physical adapter can only be included in one intent. By default, a
 - Management - adapters are used for management access to nodes
 - Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
 - Storage - adapters are used for SMB traffic including Storage Spaces Direct
+- Stretch - adapters are set up in a similar manner as a storage intent with the exception of RDMA not used for stretch adapters. 
 
 Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
 
 - Management: Can be defined in a maximum of one intent
 - Compute: Unlimited
 - Storage: Can be defined in a maximum of one intent
+- Stretch: Can be defined in a maximum of one intent
 
 **Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults.
 
