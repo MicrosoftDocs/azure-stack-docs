@@ -10,7 +10,7 @@ ms.date: 10/06/2022
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
 
 Windows Admin Center can be used to manage your Azure Stack HCI clusters. Specifically, you'll be using the Cluster Manager feature in Windows Admin Center to manage your clusters.
 
@@ -140,10 +140,15 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/2022/storage-migration.png":::
 
-## Azure Stack HCI registration settings
+## Azure Stack HCI
 
 There are several Azure Stack HCI settings that you can apply to your cluster.
 
+- To change how often log data is collected from your cluster, if monitoring capabilities are enabled, select **Monitoring data**.
+
+    :::image type="content" source="media/manage-cluster/2022/monitoring-data.png" alt-text="cluster Monitoring data screen" lightbox="media/manage-cluster/2022/monitoring-data.png":::
+
+    For information on how to enable log collection, see [How do I enable log collection in Azure](../manage/monitor-hci-single.md)
 - To change the Service Health data level, navigate to the Azure Stack HCI cluster in **Azure Portal**. Select **Settings**, then **Configuration**, and **Service Health data**.
 
     :::image type="content" source="media/manage-cluster/2022/service-health-data.png" alt-text="cluster Service health data screen" lightbox="media/manage-cluster/2022/service-health-data.png":::
