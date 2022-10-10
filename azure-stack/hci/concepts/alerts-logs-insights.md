@@ -6,7 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/28/2022
+ms.date: 10/10/2022
 ---
 
 # Azure Stack HCI cluster alerts
@@ -15,9 +15,9 @@ For Azure Stack HCI, customers can set up alerts using pre-existing sample Log q
 
 ## Set up alerts using sample Log queries
 
-1. Navigate to **Azure Monitor > Logs**.
+1. From **Azure Portal** navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
-3. *Are there specific sample logs to mention in this document?*
+
 4. Select **Load to Editor** to open the query workspace. *Is there a specific sample log to choose before continuing with this step?*
 5. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
 6. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
@@ -38,5 +38,7 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 5. After the query loads, select the **+ New alert rule** option. *Why would customers need to perform this step, what more should be known before performing this step or after?*
 
 From the alerts interface you can set up alert rules and send notifications.
+
+        :::image type="content" source="media/alerts-logs-insights/Insights3.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/Insights3.png":::
 
 To learn more about setting up alerts, see [Create Azure Monitor alert rules](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
