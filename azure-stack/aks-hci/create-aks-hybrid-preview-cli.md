@@ -17,7 +17,7 @@ In this how-to guide, you'll
 - While creating the cluster, you will provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access
 - Access the AKS hybrid cluster using `kubectl` and your Azure AD identity
 - Run a sample multi-container application with a web front-end and a Redis instance in the AKS hybrid cluster
-- Install Azure Defender for containers on your AKS hybrid cluster
+
 
 ## Before you begin
 
@@ -42,7 +42,7 @@ az extension add -n hybridaks --upgrade
 
 ## Create an AKS hybrid cluster
 
-Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set)] command.
+Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) command.
 
 ```azurecli
 az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys 
@@ -52,13 +52,16 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Connect to the AKS hybrid cluster
 
-Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set)] command. This command downloads the kubeconfig of your AKS hybrid cluster to your local machine and opens a proxy connection channel to your on-premises AKS hybrid cluster. The channel is open for as long as this command is running. Let this command run for as long as you want to access your cluster. If this command times out, close the CLI window, open a fresh one and run the command again. 
+Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set)] command. 
+
+This command downloads the kubeconfig of your AKS hybrid cluster to your local machine and opens a proxy connection channel to your on-premises AKS hybrid cluster. The channel is open for as long as this command is running. Let this command run for as long as you want to access your cluster. If this command times out, close the CLI window, open a fresh one and run the command again. 
 
 ```azurecli
 az hybridaks proxy --name <aks-hybrid cluster name> --resource-group <Azure resource group> --file .\aks-hybrid-kube-config
 ```
 
 Expected output:
+
 ```output
 Proxy is listening on port 47011
 Merged "aks-workload" as current context in .\aks-hybrid-kube-config
@@ -73,6 +76,7 @@ kubectl get nodes -A --kubeconfig .\aks-hybrid-kube-config
 ```
 
 The following output example shows the node created in the previous steps. Make sure the node status is *Ready*:
+
 ```output
 NAME              STATUS   ROLES                  AGE     VERSION
 moc-l36ivj6mjx0   Ready    control-plane,master   6m25s   v1.21.9
@@ -185,7 +189,7 @@ Create a file named `azure-vote.yaml` and copy in the following manifest.
 
 Deploy the application using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the name of your YAML manifest:
 
-```
+```azurecli
 kubectl apply -f azure-vote.yaml --kubeconfig .\aks-hybrid-kube-config
 ```
 
@@ -228,7 +232,7 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 Run the `az hybridaks delete` command to clean up the AKS hybrid cluster you created.
 
 ```azurecli
-az hybridaks delete --resource-group <resource group name> --name <akshci cluster name>
+az hybridaks delete --resource-group <resource group name> --name <aks hybrid cluster name>
 ```
 
 ## Next steps
