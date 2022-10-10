@@ -42,7 +42,7 @@ Following are the prerequisites for activating Azure Hybrid Benefit for your Azu
 - Make sure that all servers in your cluster must be online and registered with Azure.
 - Make sure that your cluster meets these licensing prerequisites:
     - Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1).
-- Make sure you have permission to write to the Azure Stack HCI resource. This is included if you are assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription.
+- Make sure you have permission to write to the Azure Stack HCI resource. This is included if you're assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription.
 
 
 ### Activate Azure Hybrid Benefit
@@ -108,9 +108,13 @@ az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'|
 
 ---
 
-### List all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription
+## List all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription
 
 You can list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription using PowerShell and Azure CLI.
+
+# [Azure portal](#tab/azureportal)
+
+Use PowerShell or Azure CLI to list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription.
 
 # [PowerShell](#tab/powershell)
 
@@ -135,9 +139,11 @@ az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' 
 This section describes the errors that you may get when activating Azure Hybrid Benefit for Azure Stack HCI.
 
 **Error**
+
 *Failed to activate Azure Hybrid Benefit. We couldn’t find your Software Assurance contract.*
 
 **Suggested solution**
+
 This error can occur if you've a new Software Assurance contract or if you've set up this Azure subscription recently, but your information isn't updated in the portal yet. If you get this error, reach out to us at AHBonHCI@microsoft.com and share the following information:
 
 - Customer/organization name - the name of your Software Assurance contract.
