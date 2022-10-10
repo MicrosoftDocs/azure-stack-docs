@@ -14,8 +14,8 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Use Azure Benefits
-    href: ./manage/azure-benefits.md
+  - name: Use Azure Hybrid Benefit
+    href: concepts/azure-hybrid-benefit.md
   - name: Evaluate Azure Stack HCI
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
@@ -74,6 +74,8 @@
       href: deploy/sql-server.md
     - name: Trusted enterprise virtualization
       href: deploy/trusted-enterprise-virtualization.md
+  - name: Deploy Azure Benefits
+    href: ./manage/azure-benefits.md
   - name: Deploy and manage Azure Stack HCI clusters in VMM
     href: deploy/deploy-manage-azure-stack-hci.md
 - name: Manage
