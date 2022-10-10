@@ -205,7 +205,3 @@ In this tutorial, you upgraded Kubernetes in an AKS cluster on AKS hybrid. You l
 
 For more information about AKS hybrid, see [AKS hybrid overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
 
-<!-- LINKS - external -->
-
-
-<!-- LINKS - internal -->
