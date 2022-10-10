@@ -39,13 +39,13 @@ If Azure Arc Resource Bridge is already deployed, you can't deploy the AKS manag
 Uninstalling the AKS host management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
 ## I can see the AKS hybrid cluster resource object on the Azure portal but I don't see any VMs/Kubernetes cluster on my on-premises infrastructure OR my AKS hybrid cluster create call has timed out.
-If you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, its possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
+If you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
 
 ### You used an uppercase character for your AKS hybrid cluster name
 For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### The AKS hybrid vnet you used ran out of IP addresses
-If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, its not possible to edit an AKS hybrid vnet once it has been created.
+If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it's not possible to edit an AKS hybrid vnet once it has been created.
 
 ### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-KvaGalleryImage`
 Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
