@@ -4,6 +4,8 @@
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
+  - name: AKS hybrid deployment options
+    href: aks-hybrid-options-overview.md
   - name: Evaluation guide
     items:
       - name: Introduction
@@ -241,11 +243,14 @@
     href: deploy-arc-resource-bridge-windows-server.md
   - name: Configure networking for AKS hybrid preview clusters
     href: create-aks-hybrid-preview-networks.md
-  - name: Create AKS hybrid preview clusters using Azure CLI
-    href: create-aks-hybrid-preview-cli.md
+  - name: Provision AKS hybrid clusters from Azure
+    items:
+    - name: Azure CLI
+      href: create-aks-hybrid-preview-cli.md
+    - name: Azure portal
+      href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
-  
   
 - name: Troubleshooting
   items:
@@ -314,3 +319,9 @@
     href: https://aka.ms/aks-hci-roadmap/
   - name: File bugs
     href: https://aka.ms/aks-hci-issues/
+- name: AKS Lite hybrid option (preview)
+  items:
+  - name: Overview
+    href: aks-lite-overview.md
+
+
