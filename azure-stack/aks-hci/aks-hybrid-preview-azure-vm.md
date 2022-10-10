@@ -70,25 +70,25 @@ To keep things, we'll show you how to deploy your VM via an Azure Resource Manag
 
 After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Review and Create**.
 
-:::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
+:::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure.":::
 
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM will be created.
 
-:::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
+:::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed.":::
 
 ### Access your Azure VM
 With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM using Remote Desktop.
 
 If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
-:::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure":::
+:::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure.":::
 
 In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
-:::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine":::
+:::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine.":::
 
 Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Azure VM.
 
@@ -273,7 +273,7 @@ Succeeded
 
 ## Step 10: Create a Custom Location on top of the Azure Arc Resource Bridge
 
-Run the following commands to create a Custom Location on top of the Arc Resource Bridge. You will choose this Custom Location when creating the AKS hybrid cluster through Az CLI or through the Azure Portal.
+Run the following commands to create a Custom Location on top of the Arc Resource Bridge. You will choose this Custom Location when creating the AKS hybrid cluster through Az CLI or through the Azure portal.
 
 ```azurecli
 $ArcApplianceResourceId=az arcappliance show --resource-group $resourceGroup --name $arcAppName --query id -o tsv
