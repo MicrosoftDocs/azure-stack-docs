@@ -4,6 +4,8 @@
   items:
   - name: Azure Kubernetes Service hybrid deployment options
     href: overview.md
+  - name: AKS hybrid deployment options
+    href: aks-hybrid-options-overview.md
   - name: Evaluation guide
     items:
       - name: Introduction
@@ -243,14 +245,20 @@
     href: aks-hybrid-preview-overview.md
   - name: System requirements
     href: aks-hybrid-preview-requirements.md
-  - name: Quickstart - deploy an AKS hybrid cluster on an Azure VM
+  - name: Quickly deploy an AKS hybrid cluster on an Azure VM
     href: aks-hybrid-preview-azure-vm.md
-  - name: How-to - Install Azure Resource Bridge on Windows Server
-    href: deploy-arc-resource-bridge-windows-server.md
-  - name: How-to - Configure networking for AKS hybrid clusters
-    href: create-aks-hybrid-preview-networks.md
-  - name: How-to - Create AKS hybrid clusters using Azure CLI
-    href: create-aks-hybrid-preview-cli.md
+  - name: How-to
+    items:
+     - name: Install Azure Resource Bridge on Windows Server
+       href: deploy-arc-resource-bridge-windows-server.md
+     - name: Configure networking for AKS hybrid clusters
+       href: create-aks-hybrid-preview-networks.md
+     - name: Provision AKS hybrid clusters from Azure
+       items:
+       - name: Azure CLI
+         href: create-aks-hybrid-preview-cli.md
+       - name: Azure portal
+         href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
   
@@ -314,10 +322,11 @@
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
-  - name: AKS roadmap
-    href: https://github.com/Azure/AKS/projects/1
-  - name: AKS hybrid roadmap
-    href: https://aka.ms/AKS-hybrid-roadmap
-  - name: Pricing
-    href: pricing.md
-  
+  - name: AKS on Azure Stack HCI and Windows Server roadmap
+    href: https://aka.ms/aks-hci-roadmap/
+  - name: File bugs
+    href: https://aka.ms/aks-hci-issues/
+- name: AKS Lite hybrid option (preview)
+  items:
+  - name: Overview
+    href: aks-lite-overview.md
