@@ -70,7 +70,7 @@ This guide assumes you do not have multiple server-class pieces of hardware runn
 In this configuration, you'll take advantage of the nested virtualization support provided within certain Azure Virtual Machine sizes.
 
 * First, you will deploy a single Azure Virtual Machine running Windows Server 2019 Datacenter. Inside this VM, you'll have all the necessary roles and features configured, so you can quickly proceed to deploying AKS hybrid.
-* Next, you'll deploy the AKS hybrid management cluster, and then worker node clusters, all within a single Azure Virtual Machine.<!--Is "hybrid" needed in the management cluster label?-->
+* Next, you'll deploy the AKS hybrid management cluster, and then worker node clusters, all within a single Azure Virtual Machine.
 
 > [!IMPORTANT]
 > The steps outlined in this evaluation guide are specific to running inside an Azure Virtual Machine, running a single Windows Server 2019 or 2022 OS without a configured domain environment. If you plan to use these steps in an alternate environment, such as a nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If this is the case, please refer to the [AKS hybrid overview](overview.md).
