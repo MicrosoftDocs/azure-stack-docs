@@ -33,9 +33,9 @@ Windows Server or Azure Stack HCI infrastructure admin:
 | -- | ----- | ----- | ------- |
 | 1 | Do you have an Azure subscription?  | The Azure Arc Resource Bridge, Custom Location, and all AKS hybrid clusters will be deployed in this Azure subscription. |  Make sure you have your Azure subscription ID. |
 | 2 | Do you have a recent version of Az CLI installed on all nodes in your physical cluster? | Required to run the Az commands. You need to install Az CLI on all physical nodes in your Windows Server cluster. Follow this link to [install Az CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can upgrade to the latest version by running `az upgrade`. | Verify that you have Az CLI by running `az -v`. |
-| 3 | Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription. | `az account set -s <subscriptionID from step 1>` <br> `az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess` <br> `az feature register --namespace Microsoft.ResourceConnector --name appliance-ppauto` <br>`az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess`| Check if the features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. <br> `az account set -s <subscriptionID from #1>` <br> `az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table` <br> `az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table` |
+| 3 | Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription. | `az account set -s <subscriptionID from step 1>` <br> `az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess` <br>`az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess`| Check if the features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. <br> `az account set -s <subscriptionID from #1>` <br> `az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table` <br> `az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table` |
 | 4 | Have you registered all the right providers on your subscription? Make sure you login to Azure first. You only need to do this operation once per Azure subscription.  | Wait till the features in the previous step have been registered before proceeding with this step. You need to register the following providers to use this preview: <br> `az account set -s <subscriptionID from step #1>` <br> `az provider register --namespace Microsoft.Kubernetes --wait` <br> `az provider register --namespace Microsoft.ExtendedLocation --wait` <br> `az provider register --namespace Microsoft.ResourceConnector --wait` <br> `az provider register --namespace Microsoft.HybridContainerService --wait`  <br> `az provider register --namespace Microsoft.HybridConnectivity --wait ` | If the status shows *registering*, try again after some time. <br> `az account set -s <subscriptionID from step #1>` <br> `az provider show --namespace Microsoft.Kubernetes -o table` <br> `az provider show --namespace Microsoft.ExtendedLocation -o table` <br> `az provider show --namespace Microsoft.ResourceConnector -o table` <br> `az provider show --namespace Microsoft.HybridContainerService -o table` <br> `az provider show --namespace Microsoft.HybridConnectivity -o table` | 
-| 5 | Did you install the Az CLI extensions on all nodes in your physical cluster? | `az extension add --name k8s-extension` <br> `az extension add --name customlocation` <br> `az extension add --name arcappliance` <br> `az extension add --name hybridaks` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.40.0` <br> `core                              2.40.0` <br> `telemetry                          1.0.8` <br> Extensions: <br>` arcappliance                      0.2.27` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.2.0` <br> `k8s-extension                      1.3.5` |
+| 5 | Did you install the Az CLI extensions on all nodes in your physical cluster? | `az extension add --name k8s-extension` <br> `az extension add --name customlocation` <br> `az extension add --name arcappliance` <br> `az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl ` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.40.0` <br> `core                              2.40.0` <br> `telemetry                          1.0.8` <br> Extensions: <br>` arcappliance                      0.2.27` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.2.0` <br> `k8s-extension                      1.3.5` |
 
 ## PowerShell module prerequisites
 
@@ -45,7 +45,7 @@ Windows Server admin:
 
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
-| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery` | Confirm that the AksHci module version is `1.1.39` by running the following command: `Get-Command -Module AksHci` |
+| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 1.1.39` | Confirm that the AksHci module version is `1.1.39` by running the following command: `Get-Command -Module AksHci` |
 | 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense` | Confirm that the ArcHci module version is `0.2.11` by running the following command: `Get-Command -Module ArcHci` |
 
 ## Networking prerequisites
@@ -59,7 +59,7 @@ Windows Server admin in consultation with the datacenter network admin:
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a static IP subnet? | This subnet will be used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge. | The IP address prefix of your subnet. For example - "172.16.0.0/16" |
-| 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 3 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.10" |
+| 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 4 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.0.10" |
 | 3 | Do you have a gateway? | The IP address of the default gateway of the subnet you provided above.  | The IP address of your gateway. For example - "172.16.0.1" |
 | 4 | Do you have one or more DNS servers? | Along with gateway, this is required for creating a network with a static IP. A minimum of one and a maximum of three DNS servers can be provided.  | The IP address(es) of your DNS servers. For example - "172.16.0.2" |
 | 5 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that the Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. This will be required to install the Azure Arc Resource Bridge. |
@@ -80,8 +80,8 @@ Windows Server admin in consultation with the datacenter network admin:
 
 | Prerequisite |  Item  |  Details 
 | -- | ----- | ------- |
-| 1 | HTTP URL and port information |  Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
-| 2 | HTTPS URL and port information | Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
+| 1 | HTTP URL and port information |  Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
+| 2 | HTTPS URL and port information | Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTPS URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
 | 3 | [Optional] Valid credentials for authentication to the proxy server | You can either use a PowerShell credential object containing the username and password to authenticate against the proxy server or a filename or certificate string of a PFX formatted client certificate used to authenticate against the proxy server. |
 
 #### Noproxy settings
@@ -134,19 +134,8 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
-
-## AKS host management cluster pre-requisite 
-At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](/kubernetes-walkthrough-powershell). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster. 
-
-You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
-```PowerShell
-Get-AksHciVersion
-```
-
-Expected Output:
-```
-1.0.13.10907
-```
+| https\://hybridaks.azurecr.io | 443 | Container image | Required for accessing the HybridAKS operator image |
+| aka.ms | 443 | az extensions | Required to download Az CLI extensions like `hybridaks`
 
 ## Next steps
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)

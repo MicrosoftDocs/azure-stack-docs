@@ -31,7 +31,6 @@ Register the following Azure providers on your Azure subscription. Make sure you
 ```azurecli
 az account set -s <Azure subscription ID>
 az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess
-az feature register --namespace Microsoft.ResourceConnector --name appliance-ppauto
 az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess
 ```
 Check if the above features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. 
@@ -64,7 +63,7 @@ az provider register --namespace Microsoft.HybridConnectivity --wait
 ```
 
 ## Step 2: Create an Azure VM and deploy Windows Server on the Azure VM
-To keep things, we'll show you how to deploy your VM via an Azure Resource Manager template. The **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this in a new tab, hold CTRL when you click the button.
+To keep things simple, we'll show you how to deploy your VM via an Azure Resource Manager template. The **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this in a new tab, hold CTRL when you click the button.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Deploy to Azure")
 
@@ -108,7 +107,7 @@ $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
 az extension add -n arcappliance --upgrade
-az extension add -n hybridaks --upgrade
+az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl
 ```
 
 ## Step 5: Install pre-requisite PowerShell repositories
@@ -160,7 +159,7 @@ Open a new PowerShell admin window and run the following command:
 ```PowerShell
 $vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
 
-Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version '1.0.13.10907' -cloudServiceIP "192.168.0.4"  
+Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version "1.0.13.10907" -cloudServiceIP "192.168.0.4"  
 ```
 
 Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
@@ -207,7 +206,7 @@ $customLocationName="azurevm-customlocation"
 
 Generate the Azure Arc Resource Bridge YAML files:
 ```PowerShell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
 ```
 
 Sample output:
@@ -220,9 +219,8 @@ Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
 
 ## Step 8: Deploy Azure Arc Resource Bridge
 
-Once you've generated the YAML files, run the following command to validate the generated YAML files.
+Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to log in to Azure before running these commands.
 ```azurecli
-az login -t $tenantid --use-device-code
 az account set -s $subscriptionid
 az arcappliance validate hci --config-file $configFilePath
 ```
@@ -258,7 +256,7 @@ Running
 To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
 ```azurecli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.0.24 --config Microsoft.CustomLocation.ServiceAccount="default"
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.1.0 --config Microsoft.CustomLocation.ServiceAccount="default"
 ```
 
 Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
@@ -340,11 +338,11 @@ az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $r
 az hybridaks nodepool add -n <nodepool name> --resource-group $resourceGroup --cluster-name <aks hybrid cluster name>
 ```
 
-## Step 15: Connect to your AKS hybrid cluster using `kubectl`
+## Step 15: Connect to your AKS hybrid cluster using `kubectl` and Azure AD
 
 In order to connect to your AKS hybrid cluster using `kubectl`, run the following command. 
 ```azurecli
-az hybridaks proxy --resource-group $resourceGroup --name “test-cluster” --file .\target-config
+az hybridaks proxy --resource-group $resourceGroup --name <aks-hybrid cluster name> --file .\target-config
 ```
 Let this command run for as long as you want to access your cluster. If this command times out, close the PowerShell window, open a fresh one and run the command again. 
 
