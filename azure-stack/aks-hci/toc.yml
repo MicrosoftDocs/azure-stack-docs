@@ -93,6 +93,14 @@
         href: concepts-vertical-node-pool-scaling.md
   - name: Node auto-repair
     href: node-repair.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md
+  - name: Resource limits
+    href: concepts-support.md
+  - name: Billing
+    items:
+      - name: Pricing details
+        href: pricing.md
 - name: How-to guides
   items: 
     - name: Install
@@ -331,6 +339,12 @@
     href: ./reference/ps/index.md
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+  - name: Pricing
+    href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
+  - name: Support policies
+    href: support-policies.md
+  - name: Get support
+    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI and Windows Server roadmap
