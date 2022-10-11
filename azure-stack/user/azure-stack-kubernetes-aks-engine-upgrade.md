@@ -101,7 +101,7 @@ With AKS engine version 0.60.1 and above you can upgrade your cluster VMs from U
 2. Locate the sections for `masterProfile` and `agentPoolProfiles`, within those sections change the value of `distro` to `aks-ubuntu-18.04`.
 2. Save the `api-model.json` file and use the `api-model.json` file in your` aks-engin upgrade` command as you would in the [Steps to upgrade to a newer Kubernetes version](#steps-to-upgrade-to-a-newer-kubernetes-version)
 
-## Steps to update cluster if you're using storage volumes
+## Steps to upgrade cluster if you're using storage volumes with AKS Engine v0.70.0 and later
 > [!NOTE]  
 > Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions below.
     
