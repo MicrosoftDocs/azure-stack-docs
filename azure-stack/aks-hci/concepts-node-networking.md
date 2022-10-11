@@ -120,7 +120,7 @@ The following table compares IP address allocation for resources between static 
 | Kubernetes nodes (on virtual machines) | Assigned using Kubernetes node IP pool | Assigned dynamically |
 | Kubernetes services | Assigned statically using VIP pool | Assigned statically using VIP pool |
 | HAProxy load balancer VM | Assigned using Kubernetes node IP pool | Assigned dynamically |
-| Microsoft On-Premise Cloud Service | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes |
+| Microsoft On-Premises Cloud Service | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes |
 | VIP pool | Mandatory | Mandatory |
 | Kubernetes node VM IP pool | Mandatory | Not Supported |
 
