@@ -11,7 +11,7 @@ ms.date: 10/10/2022
 
 # Azure Hybrid Benefit for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2 (preview), 21H2, and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
 This article describes what is Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 
@@ -36,7 +36,7 @@ Following are the prerequisites for activating Azure Hybrid Benefit for your Azu
 
 - Make sure your Azure Stack HCI cluster is installed with the following:
 
-    - Version 22H2 (preview) or later; or
+    - Version 22H2 or later; or
     - Version 21H2 with at least the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later
     
 - Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) with Azure
