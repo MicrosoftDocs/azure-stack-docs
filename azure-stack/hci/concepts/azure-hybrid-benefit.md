@@ -19,12 +19,12 @@ This article describes Azure Hybrid Benefit and how to use it for Azure Stack HC
 
 ## What is Azure Hybrid Benefit for Azure Stack HCI?
 
-If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for your Azure Stack HCI cluster. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-ahb-for-azure-stack-hci).
+If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for your Azure Stack HCI cluster. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-azure-stack-hci).
 
 This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for AKS on Azure Stack HCI. For more information, see [Azure Hybrid Benefits for AKS on Azure Stack HCI](/windows-server/get-started/azure-hybrid-benefit#getting-ahb-for-aks).
+> You can maximize cost savings by also using Azure Hybrid Benefit for AKS on Azure Stack HCI. For more information, see [Azure Hybrid Benefits for AKS on Azure Stack HCI](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
 
 ## Activate Azure Hybrid Benefit for Azure Stack HCI
 
