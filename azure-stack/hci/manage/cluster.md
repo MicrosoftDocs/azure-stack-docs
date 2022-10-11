@@ -18,7 +18,7 @@ Windows Admin Center can be used to manage your Azure Stack HCI clusters. Specif
 
 The cluster dashboard displays information regarding cluster health and performance.
 
-   :::image type="content" source="media/manage-cluster/2022/dashboard2.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/2022/dashboard2.png":::
+   :::image type="content" source="media/manage-cluster/2022/dashboard.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/2022/dashboard.png":::
 
 To view this information, select the cluster name under **All connections**. Then under **Tools**, on the left, select **Dashboard**. You can view the following details:
 
@@ -79,7 +79,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
      For information on how load-balance virtual machines works, see [Virtual Machine Load Balancing overview](/windows-server/failover-clustering/vm-load-balancing-overview).
 
-    :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
+:::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
 
 - To choose a quorum witness type select **Witness**. Then for **Witness type** select one of the following:
 
@@ -91,7 +91,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
     For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
-    :::image type="content" source="media/manage-cluster/2022/witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/2022/witness.png":::
+:::image type="content" source="media/manage-cluster/2022/witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/2022/witness.png":::
 
 - To use affinity rules to control virtual machine placement, across host servers and sites, select **Affinity rules**. Then select **Create rule**. For detailed information on how set up rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
 
@@ -110,7 +110,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
 
-    :::image type="content" source="media/manage-cluster/2022/general.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/2022/general.png":::
+:::image type="content" source="media/manage-cluster/2022/general.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/2022/general.png":::
 
 - To allow redirection of local devices and resources from virtual machines select **Enhanced Session Mode**. Note, Enhanced Session Mode connections require a supported guest operating system.
 
@@ -128,7 +128,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - Enable the **Use any network** checkbox to use any available network on a node to perform the migration
 
-    :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
+:::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
 - To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number. The default value is 1.
 
