@@ -364,7 +364,7 @@ If however, you're having a problem with AKS hybrid outside of this evaluation g
 
 ## Next steps
 
-In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS nfrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center, or via PowerShell:
+In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center, or via PowerShell:
 
 * [Step 2a - Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md)
 * [Step 2b - Deploy AKS infrastructure using PowerShell](aks-hci-evaluation-guide-2b.md)
