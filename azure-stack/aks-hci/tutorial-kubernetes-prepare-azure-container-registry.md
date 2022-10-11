@@ -1,6 +1,6 @@
 ---
 title: Tutorial - Create container registry to use in AKS hybrid
-description: In this tutorial, you will learn how to create an Azure Container Registry instance and upload a sample application container image.
+description: In this tutorial, learn how to create an Azure Container Registry instance and upload a sample application container image.
 services: container-service
 ms.topic: tutorial
 ms.date: 10/07/2022
