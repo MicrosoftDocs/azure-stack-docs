@@ -32,6 +32,9 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
 
 1. Navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
+
+:::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
+
 2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example select **Servers** to view the health of servers within your cluster.
 3. Select the blue icon, **Logs view**, highlighted above to view and edit the query.
 4. After the query loads, select the **+ New alert rule** option.
