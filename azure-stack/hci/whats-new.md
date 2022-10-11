@@ -125,7 +125,7 @@ You can now use the Azure portal or the Azure CLI to easily add and manage VM im
 
 For more information, see:
 
-  - [Create VM image using an Azure marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
+  - [Create VM image using an Azure Marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
   - [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
   - [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
 
