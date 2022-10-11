@@ -17,7 +17,7 @@ ms.reviewer: lahirisl
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Security in AKS hybrid involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS). This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in AKS hybrid involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS). This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
 AKS hybrid applies various security measures to secure its infrastructure. The following diagram highlights these measures.
