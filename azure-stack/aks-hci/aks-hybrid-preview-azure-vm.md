@@ -206,7 +206,7 @@ $customLocationName="azurevm-customlocation"
 
 Generate the Azure Arc Resource Bridge YAML files:
 ```PowerShell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
 ```
 
 Sample output:
@@ -219,9 +219,8 @@ Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
 
 ## Step 8: Deploy Azure Arc Resource Bridge
 
-Once you've generated the YAML files, run the following command to validate the generated YAML files.
+Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to log in to Azure before running these commands.
 ```azurecli
-az login -t $tenantid --use-device-code
 az account set -s $subscriptionid
 az arcappliance validate hci --config-file $configFilePath
 ```
@@ -343,7 +342,7 @@ az hybridaks nodepool add -n <nodepool name> --resource-group $resourceGroup --c
 
 In order to connect to your AKS hybrid cluster using `kubectl`, run the following command. 
 ```azurecli
-az hybridaks proxy --resource-group $resourceGroup --name “test-cluster” --file .\target-config
+az hybridaks proxy --resource-group $resourceGroup --name <aks-hybrid cluster name> --file .\target-config
 ```
 Let this command run for as long as you want to access your cluster. If this command times out, close the PowerShell window, open a fresh one and run the command again. 
 
