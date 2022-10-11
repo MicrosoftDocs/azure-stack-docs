@@ -32,15 +32,16 @@ To view this information, select the cluster name under **All connections**. The
 - Total cluster storage usage for the cluster
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
+- Azure Stack HCI registration and Arc-enabled statuses
 
 ## Change storage settings
 
 You can select to use server memory to cache frequent reads and specify the maximum memory to be used per server. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
-2. Under **Tools**, select **Settings** at the bottom.
+2. Under **Tools**, select **Settings**.
 
-- To change your in-memory cache name select **In-memory cache** and enter the new name.
+- To change your in-memory cache select **In-memory cache** and set the memory per server to cache reads. Note, writes cannot be cached in memory.
 
    :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/2022/in-memory-cache.png":::
 
@@ -56,7 +57,7 @@ You can select to use server memory to cache frequent reads and specify the maxi
 
 ## Change cluster settings
 
-There are several general settings that can be applied to your cluster. Here's where you can set and manage access points, node shutdown behavior, VM load balancing, and cluster witness.
+There are several general settings that can be applied to your cluster. Here's where you can view properties, node shutdown behavior, VM load balancing, cluster witness, and affinity rules.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 2. Under **Tools**, select **Settings**.
@@ -128,7 +129,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
-- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then select a number.
+- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then select a number. The default value is 1.
 
     :::image type="content" source="media/manage-cluster/2022/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/2022/storage-migration.png":::
 
@@ -140,7 +141,8 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/monitoring-data.png" alt-text="cluster Monitoring data screen" lightbox="media/manage-cluster/2022/monitoring-data.png":::
 
-    For information on how to enable log collection, see [How do I enable log collection in Azure](../manage/monitor-hci-single.md)
+    For information on how to enable log collection, see [How do I enable log collection in Azure](../manage/monitor-hci-single.md).
+
 - To change the Service Health data level, navigate to the Azure Stack HCI cluster in **Azure Portal**. Select **Settings**, then **Configuration**, and **Service Health data**.
 
     :::image type="content" source="media/manage-cluster/2022/service-health-data.png" alt-text="cluster Service health data screen" lightbox="media/manage-cluster/2022/service-health-data.png":::
