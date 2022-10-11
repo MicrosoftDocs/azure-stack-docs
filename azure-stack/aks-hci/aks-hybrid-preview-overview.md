@@ -66,5 +66,5 @@ Once the operator has the required access, they are free to create AKS hybrid cl
 
 ## Next steps
 
-[Quickly test AKS hybrid cluster provisioning from Azure on an Azure VM](aks-hybrid-preview-azure-vm.md)
-[Review preview requirements if you have an Azure Stack HCI or Windows Server cluster](aks-hybrid-preview-requirements.md)
+- [Quickly test AKS hybrid cluster provisioning from Azure on an Azure VM](aks-hybrid-preview-azure-vm.md)
+- [Review preview requirements if you have an Azure Stack HCI or Windows Server cluster](aks-hybrid-preview-requirements.md)
