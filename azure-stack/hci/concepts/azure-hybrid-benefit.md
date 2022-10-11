@@ -13,9 +13,9 @@ ms.date: 10/10/2022
 
 > Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
-This article describes what is Azure Hybrid Benefit and how to use it for Azure Stack HCI.
+This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 
-[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premise licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
+[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
 
 ## What is Azure Hybrid Benefit for Azure Stack HCI?
 
@@ -32,7 +32,7 @@ You can activate Azure Hybrid Benefit for your Azure Stack HCI cluster using the
 
 ### Prerequisites
 
-Following are the prerequisites for activating Azure Hybrid Benefit for your Azure Stack HCI cluster:
+The following prerequisites are required to activate Azure Hybrid Benefit for your Azure Stack HCI cluster:
 
 - Make sure your Azure Stack HCI cluster is installed with the following:
 
@@ -53,7 +53,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 1. Go to your Azure Stack HCI cluster resource page.
 1. Under **Settings**, select **Configuration**.
 1. Under **Azure Hybrid Benefit**, select the **Activate** link.
-1. In the **Activate Azure Hybrid Benefit** pane on right, confirm the designated cluster and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
+1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, confirm the designated cluster and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
 
     > [!NOTE]
     > You can't deactivate Azure Hybrid Benefit for your cluster after activation. Proceed after you have confirmed the changes.
@@ -67,7 +67,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 
 1. To enable Windows Server subscription at no additional cost, under the Windows Server subscription add-on feature in the same **Configuration** pane, select **Activate benefit**.
 
-1. In the **Activate Azure Hybrid Benefit** pane on right, check details and select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
+1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
@@ -156,7 +156,7 @@ This section answers questions you may have about Azure Hybrid Benefit for Azure
 
 ### How does licensing work for Azure Hybrid Benefit?
 
-To know more about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
+For more information about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
 
 ### Can I opt-in to Azure Hybrid Benefit for an existing cluster?
 
@@ -172,7 +172,7 @@ Consult your Account Manager or licensing partner.
 
 ### When would the new pricing benefit for Azure Hybrid Benefit take effect?
 
-Pricing benefit to Azure Stack HCI host fees would take effect immediately upon activation of Azure Hybrid Benefit for your cluster. Pricing benefit for Windows Server subscription would take effect immediately after you activate both Azure Hybrid Benefit and Windows Server subscription.
+The pricing benefit for Azure Stack HCI host fees takes effect immediately upon activation of Azure Hybrid Benefit for your cluster. The pricing benefit for Windows Server subscription takes effect immediately after you activate both Azure Hybrid Benefit and Windows Server subscription.
 
 ## Next steps
 
