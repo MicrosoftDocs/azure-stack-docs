@@ -21,7 +21,7 @@ With all key components deployed, including the management cluster, along with t
 
 To deploy a containerized application with your cluster up and running, the following steps describe key areas of deployment, testing, and scaling an application.
 
-During the deployment of AKS, **kubectl** was configured on your Azure Virtual Machine Host. Kubectl provides a number of different ways to manage your Kubernetes clusters and applications.
+During the deployment of AKS, **kubectl** was configured on your Azure Virtual Machine Host. Kubectl provides many different ways to manage your Kubernetes clusters and applications.
 
 As part of this guide, you'll deploy an [Azure vote application](https://github.com/Azure-Samples/azure-voting-app-redis). To deploy the application, you'll need a Kubernetes manifest file. A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. The manifest we'll use in this tutorial includes two Kubernetes deployments: one for the sample Azure Vote Python application, and the other for a Redis instance. Two Kubernetes services are also created: an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet.
 
@@ -33,7 +33,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
    kubectl get nodes
    ```
 
-   If you followed the steps in this evaluation guide, your output should look similar to this, with 2 Linux worker nodes and 3 control plane nodes.
+   If you followed the steps in this evaluation guide, your output should look similar to this image, with 2 Linux worker nodes and 3 control plane nodes.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/get-nodes.png" alt-text="Output from the kubectl get nodes command.":::
 
@@ -58,7 +58,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
 
    In this case, you can see that the service has been allocated the **192.168.0.152** IP address.
 
-4. Open Microsoft Edge and after accepting the defaults, you should be able to navigate to that IP address. Note that it may take a few minutes to start.
+4. Open Microsoft Edge and after accepting the defaults, you should be able to navigate to that IP address. It may take a few minutes to start.
 
    :::image type="content" source="media/aks-hci-evaluation-guide/azure-vote-app.png" alt-text="Screenshot of the Azure Vote App in an Edge browser.":::
 
@@ -74,7 +74,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
    kubectl scale --replicas=5 deployment/azure-vote-front
    ```
 
-7. Run **kubectl get pods** again to verify that additional pods have been created. After a minute or so, the additional pods are available in your cluster:
+7. Run **kubectl get pods** again to verify that more pods have been created. After a minute or so, the new pods are available in your cluster:
 
    ```powershell
    kubectl get pods -n default
@@ -102,13 +102,13 @@ This example, using the [previously deployed simple Linux application](#deploy-a
    :::image type="content" source="media/aks-hci-evaluation-guide/new-security-rule.png" alt-text="Screenshot showing how to add and inbound security rule in Azure.":::
 
    > [!NOTE]
-   > If you want to expose multiple ports, you can create additional rules, or specify a range of ports within the same rule. You can also be more specific about the source traffic type, source port, and destination traffic type.
+   > If you want to expose multiple ports, you can create more rules, or specify a range of ports within the same rule. You can also be more specific about the source traffic type, source port, and destination traffic type.
 
 6. With the network security group rule created, make a note of the NIC Public IP on the **Networking** blade. Then connect to your Azure Virtual Machine using your existing RDP information.
 
 ### Add a new NAT static mapping
 
-With the network security group rule configured, there are some additional steps required to route the incoming traffic to the containerized application.
+With the network security group rule configured, there are some more steps required to route the incoming traffic to the containerized application.
 
 1. Inside the Azure Virtual Machine, in an administrative PowerShell console, you'll need to retrieve the external IP and port of your deployed application, by running the following command (in this case, the app front end name is "azure-vote-front"):
 
