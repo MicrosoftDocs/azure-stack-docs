@@ -15,11 +15,11 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
+With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
-In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
+In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure. At a high level, these steps consist of the following tasks:
 
-* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host - this will be automatically configured with the relevant roles and features needed for your evaluation
+* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host - the VM will be automatically configured with the relevant roles and features needed for your evaluation
 * On the Windows Server VM, deploy the AKS management cluster
 * On the Windows Server VM, deploy the AKS target clusters, for running workloads
 
