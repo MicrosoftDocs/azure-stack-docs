@@ -59,7 +59,7 @@ Windows Server admin in consultation with the datacenter network admin:
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a static IP subnet? | This subnet will be used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge. | The IP address prefix of your subnet. For example - "172.16.0.0/16" |
-| 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 4 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.10" |
+| 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 4 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.0.10" |
 | 3 | Do you have a gateway? | The IP address of the default gateway of the subnet you provided above.  | The IP address of your gateway. For example - "172.16.0.1" |
 | 4 | Do you have one or more DNS servers? | Along with gateway, this is required for creating a network with a static IP. A minimum of one and a maximum of three DNS servers can be provided.  | The IP address(es) of your DNS servers. For example - "172.16.0.2" |
 | 5 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that the Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. This will be required to install the Azure Arc Resource Bridge. |
