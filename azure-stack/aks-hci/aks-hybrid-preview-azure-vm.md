@@ -159,7 +159,7 @@ Open a new PowerShell admin window and run the following command:
 ```PowerShell
 $vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
 
-Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version '1.0.13.10907' -cloudServiceIP "192.168.0.4"  
+Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -version "1.0.13.10907" -cloudServiceIP "192.168.0.4"  
 ```
 
 Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
@@ -257,7 +257,7 @@ Running
 To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
 ```azurecli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.0.24 --config Microsoft.CustomLocation.ServiceAccount="default"
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.1.0 --config Microsoft.CustomLocation.ServiceAccount="default"
 ```
 
 Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
