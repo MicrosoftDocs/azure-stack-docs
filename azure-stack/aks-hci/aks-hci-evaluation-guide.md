@@ -34,7 +34,7 @@ This guide has been tested and validated with the **July 2022 release** of AKS.
 
 ## What is AKS hybrid?
 
-AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrud is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
+AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrid is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
 
 To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before completing your evaluation. This guide also provides references to available documents that can help build your knowledge of AKS hybrid.
 
@@ -90,7 +90,7 @@ The following figure shows the general flow:
 
 **[Step 2a - Deploy AKS hybrid with Windows Admin Center](aks-hci-evaluation-guide-2a.md) and [Step 2b - Deploy AKS hybrid with PowerShell](aks-hci-evaluation-guide-2b.md):** In this step, you will use either Windows Admin Center or PowerShell to deploy AKS hybrid. First, you will deploy the necessary management cluster, and then a target cluster for running workloads.
 
-**[Step 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md):** With your deployment completed, you're now ready to explore many of the aspects ofn AKS hybrid. This includes experimenting with various provided hybrid solutions that can help you get started in using your AKS hybrid cluster. We'll also provide links to further scenarios and resources to continue your evaluation.
+**[Step 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md):** With your deployment completed, you're now ready to explore many of the aspects of AKS hybrid. This includes experimenting with various provided hybrid solutions that can help you get started in using your AKS hybrid cluster. We'll also provide links to further scenarios and resources to continue your evaluation.
 
 <!-- ### Fully automated deployment
 
