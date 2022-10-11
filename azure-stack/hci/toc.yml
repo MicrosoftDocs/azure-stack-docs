@@ -14,7 +14,7 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Use Azure Hybrid Benefit
+  - name: Save with Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit.md
   - name: Evaluate Azure Stack HCI
     href: guided-quick-deploy-eval.yml    
