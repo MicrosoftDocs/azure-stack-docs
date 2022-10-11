@@ -42,7 +42,7 @@ You can select to use server memory to cache frequent reads and specify the maxi
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 2. Under **Tools**, select **Settings**.
 
-- To change your in-memory cache select **In-memory cache** and set the memory per server to cache reads. Note, writes cannot be cached in memory.
+- To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory.
 
    :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/2022/in-memory-cache.png":::
 
@@ -104,7 +104,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 2. Under **Tools** select **Settings**.
 
-- To set virtual hard disk and virtual machine paths select **General** and then use the following settings:
+- To set virtual hard disk and virtual machine paths, select **General** and then use the following settings:
 
    - **Virtual Hard Disks Path** - specify the default folder for storing virtual hard disk files.
 
@@ -130,7 +130,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
-- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then specify a number. The default value is 1.
+- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number. The default value is 1.
 
     :::image type="content" source="media/manage-cluster/2022/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/2022/storage-migration.png":::
 
