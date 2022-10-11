@@ -18,7 +18,7 @@ Windows Admin Center can be used to manage your Azure Stack HCI clusters. Specif
 
 The cluster dashboard displays information regarding cluster health and performance.
 
-   :::image type="content" source="media/manage-cluster/2022/dashboard.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/2022/dashboard.png":::
+   :::image type="content" source="media/manage-cluster/2022/dashboard2.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/2022/dashboard2.png":::
 
 To view this information, select the cluster name under **All connections**. Then under **Tools**, on the left, select **Dashboard**. You can view the following details:
 
@@ -159,7 +159,7 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/azure-benefits.png" alt-text="cluster Azure benefits screen" lightbox="media/manage-cluster/2022/azure-benefits.png":::
 
-- To opt-in as a customer to install the next version of the Azure Stack HCI OS, before it's officially release, select **Join the preview channel**. For more information on this program, see [Join the Azure Stack HCI preview channel](../manage/preview-channel.md).
+- To opt-in as a customer to install the next version of the Azure Stack HCI OS, before it's officially released, select **Join the preview channel**. For more information on this program, see [Join the Azure Stack HCI preview channel](../manage/preview-channel.md).
 
     :::image type="content" source="media/manage-cluster/2022/join-the-preview-channel.png" alt-text="cluster Join the preview channel screen" lightbox="media/manage-cluster/2022/join-the-preview-channel.png":::
 
