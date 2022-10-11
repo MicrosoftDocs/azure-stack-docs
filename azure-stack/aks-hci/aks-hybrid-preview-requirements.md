@@ -134,7 +134,8 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
-| https://hybridaks.azurecr.io | 443 | Container image | Required for accessing the HybridAKS operator image |
+| https\://hybridaks.azurecr.io | 443 | Container image | Required for accessing the HybridAKS operator image |
+| aka.ms | 443 | az extensions | Required to download Az CLI extensions like `hybridaks`
 
 ## Next steps
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
