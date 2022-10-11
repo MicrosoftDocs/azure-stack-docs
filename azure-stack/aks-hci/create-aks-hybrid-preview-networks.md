@@ -97,11 +97,19 @@ If someone other than you will be creating the AKS hybrid clusters, use the foll
 
 ## Download the Kubernetes VHD file
 
-Run the following command to download the Linux VHD file specific for a Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.21.9:
+Run the following command to download the VHD file specific for `v1.21.9` Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.21.9:
 
+### [For Linux nodes](#tab/linux-vhd)
 ```powershell
 Add-KvaGalleryImage -kubernetesVersion 1.21.9
 ```
+
+### [For Windows nodes](#tab/windows-vhd)
+```powershell
+Add-KvaGalleryImage -kubernetesVersion 1.21.9 -imageType Windows
+```
+
+---
 
 ## Give the end user the following details
 
