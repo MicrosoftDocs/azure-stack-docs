@@ -32,7 +32,8 @@ To view this information, select the cluster name under **All connections**. The
 - Total cluster storage usage for the cluster
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
-- Azure Stack HCI registration and Arc-enabled statuses
+- Azure Stack HCI registration
+- Arc-enabled statuses
 
 ## Change storage settings
 
