@@ -19,5 +19,5 @@ To set up multiple administrators, please upgrade to the September release or la
 
 ## Next steps
 
-- [Read more about Azure Stack HCI and Windows Server access controls](https://learn.microsoft.com/windows-server/manage/windows-admin-center/plan/user-access-options#available-roles)
+- [Read more about Azure Stack HCI and Windows Server access controls](/windows-server/manage/windows-admin-center/plan/user-access-options#available-roles)
 - [Container networking concepts](./concepts-container-networking.md)
