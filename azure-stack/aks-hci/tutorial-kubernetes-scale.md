@@ -28,7 +28,7 @@ In later tutorials, the Azure Vote application is updated to a new version.
 
 ## Before you begin
 
-Previous tutorials described how to package an application into a container image, upload the image to Azure Container Registry, and create an AKS cluster. The application was then deployed to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 - Prepare an aplication for AKS hybrid](tutorial-kubernetes-prepare-application.md).
+Previous tutorials described how to package an application into a container image, upload the image to Azure Container Registry, and create an AKS cluster. The application was then deployed to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 - Prepare an application for AKS hybrid](tutorial-kubernetes-prepare-application.md).
 
 
 ## Manually scale pods
