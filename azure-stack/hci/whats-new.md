@@ -115,7 +115,7 @@ Azure Hybrid Benefit program enables customers to significantly reduce the costs
 
 If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
 
-For more information, see [Deploy Windows Server Azure Edition for VMs](./manage/windows-server-azure-edition.md). 
+For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit.md).
 
 ## Azure Arc VM changes and Azure Marketplace
 
@@ -166,6 +166,13 @@ In summary, version 22H2 provides:
 
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
 
+## Change in default behavior of NetBIOS name resolution
+
+With this release, NetBIOS name resolution has been placed in “learning mode” where NetBIOS is used only as a fallback after mDNS and LLMNR queries fail. This means devices will typically stop using NetBIOS name resolution unless it's manually re-enabled because mDNS will most frequently answer first. Read the blog about [aligning on mDNS](https://techcommunity.microsoft.com/t5/networking-blog/aligning-on-mdns-ramping-down-netbios-name-resolution-and-llmnr/ba-p/3290816).
+
+If this causes connectivity issues, you can restore the previous NetBIOS name resolution functionality by enabling the “Configure NetBIOS settings” Group Policy, and selecting one of the allow or learning modes. You can find this Group Policy in Local Group Policy Editor, under **Computer Configuration** > **Administrative Templates** > **Network** > **DNS Client**. 
+
+:::image type="content" source="./media/whats-new/netbios-group-policy.png" alt-text="Screenshot showing Configure NetBIOS settings." lightbox="./media/whats-new/netbios-group-policy.png" :::
 
 ## Next steps
 
