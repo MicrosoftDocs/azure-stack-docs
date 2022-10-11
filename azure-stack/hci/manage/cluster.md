@@ -130,7 +130,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
-- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then select a number. The default value is 1.
+- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then specify a number. The default value is 1.
 
     :::image type="content" source="media/manage-cluster/2022/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/2022/storage-migration.png":::
 
