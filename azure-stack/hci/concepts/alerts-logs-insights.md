@@ -38,6 +38,6 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 
 From the alerts interface you can set up alert rules and send notifications.
 
-:::image type="content" source="media/alerts-logs-insights/Insights3.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/Insights3.png":::
+:::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="cluster Create an alert rule screen" lightbox="media/alerts-logs-insights/create-alert-rule.png":::
 
 To learn more about setting up alerts, see [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
