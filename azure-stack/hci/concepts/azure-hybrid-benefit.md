@@ -19,7 +19,7 @@ This article describes what is Azure Hybrid Benefit and how to use it for Azure 
 
 ## What is Azure Hybrid Benefit for Azure Stack HCI?
 
-If you have [Windows Server Datacenter licenses]((https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2)) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for your Azure Stack HCI cluster. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-ahb-for-azure-stack-hci).
+If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for your Azure Stack HCI cluster. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-ahb-for-azure-stack-hci).
 
 This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
@@ -39,7 +39,7 @@ Following are the prerequisites for activating Azure Hybrid Benefit for your Azu
     - Version 22H2 (preview) or later; or
     - Version 21H2 with at least the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later
     
-- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure#register-a-cluster-using-windows-admin-center) with Azure
+- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) with Azure
 
 - Make sure that your cluster has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1)
 
@@ -156,7 +156,7 @@ This section answers questions you may have about Azure Hybrid Benefit for Azure
 
 ### How does licensing work for Azure Hybrid Benefit?
 
-To know more about licensing, see [Azure Hybrid Benefit for Windows Server](https://learn.microsoft.com/windows-server/get-started/azure-hybrid-benefit).
+To know more about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
 
 ### Can I opt-in to Azure Hybrid Benefit for an existing cluster?
 
