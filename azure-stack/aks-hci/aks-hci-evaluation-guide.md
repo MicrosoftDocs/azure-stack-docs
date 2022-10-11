@@ -40,13 +40,13 @@ To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before co
 
 ## Who should read this guide?
 
-This evaluation guide demonstrates how to create a sand-boxed, isolated AKS hybrid deployment by using [*nested virtualization*](../hci/concepts/nested-virtualization.md). This guide provides a solid foundation that will allow you to explore additional AKS hybrid deployment scenarios in the future.
+This evaluation guide demonstrates how to create a sand-boxed, isolated AKS hybrid deployment by using [*nested virtualization*](../hci/concepts/nested-virtualization.md). This guide provides a solid foundation that will allow you to explore other AKS hybrid deployment scenarios in the future.
 
 ## Evaluate AKS hybrid using nested virtualization
 
 Keep in mind that server-class hardware is required in order to test, validate, and evaluate this technology. If you have multiple server-class pieces of spare hardware (ideally hardware validated for Azure Stack HCI), you can perform a more real-world evaluation of AKS hybrid. For more information, see the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog). If you don't have spare hardware, consider using [nested virtualization](../hci/concepts/nested-virtualization.md) as an alternative for evaluation.
 
-At a high level, nested virtualization allows a virtualization platform (i.e., Hyper-V, or VMware ESXi) to run virtual machines that run a virtualization platform. The following image shows this architectural view:
+At a high level, nested virtualization allows a virtualization platform (that is, Hyper-V, or VMware ESXi) to run virtual machines that run a virtualization platform. The following image shows this architectural view:
 
 :::image type="content" source="media/aks-hci-evaluation-guide/nested-virt.png" alt-text="Diagram of nested virtualization architecture.":::
 
