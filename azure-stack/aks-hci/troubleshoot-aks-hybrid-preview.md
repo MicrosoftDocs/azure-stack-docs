@@ -39,7 +39,7 @@ If Azure Arc Resource Bridge is already deployed, you can't deploy the AKS manag
 Uninstalling the AKS host management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
 ## my AKS hybrid cluster create call has timed out 
-If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons -
+If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons:
 
 ### You are not running the August release of AKS host management cluster
 You can verify if the AKS host management cluster has been successfully deployed on the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by running the following command on any one node in your physical cluster:
