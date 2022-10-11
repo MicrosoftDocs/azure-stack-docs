@@ -14,8 +14,8 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Use Azure Benefits
-    href: ./manage/azure-benefits.md
+  - name: Save with Azure Hybrid Benefit
+    href: concepts/azure-hybrid-benefit.md
   - name: Evaluate Azure Stack HCI
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
@@ -66,6 +66,8 @@
       href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
+    - name: Deploy Azure Benefits
+      href: ./manage/azure-benefits.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
