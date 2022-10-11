@@ -3,14 +3,14 @@ title: Validate deployment for Azure Stack HCI version 22H2 (preview)
 description: Learn how to validate deployment for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 10/08/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Validate deployment for Azure Stack HCI version 22H2 (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 Once your deployment has successfully completed, you should verify and validate your deployment:
 
@@ -61,6 +61,16 @@ After deployment, you can validate that your cluster exists and is registered in
 1. On the **Overview** page for the cluster resource, view the **Server** information.  
 
     :::image type="content" source="media/deployment-tool/validate/validate-deployment.png" alt-text="Screenshot of Azure portal." lightbox="media/deployment-tool/validate/validate-deployment.png":::
+
+## Validate cluster quorum settings
+
+The cluster quorum should be configured to match the number of nodes in your cluster. For more details, [Configure the cluster quorum](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
+
+Run the following command to validate the cluster quorum configuration.
+
+```azurepowershell
+Get-ClusterQuorum
+```
 
 ## Next steps
 

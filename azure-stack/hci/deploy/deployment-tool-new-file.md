@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Deploy Azure Stack HCI version 22H2 interactively (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2 
 
 After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
@@ -23,10 +23,10 @@ You can deploy both single-node and multi-node clusters using this procedure.
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md).
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- [Install version 22H2](deployment-tool-install-os.md) on each server.
+- [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
 
 
 ## Set up the deployment tool
