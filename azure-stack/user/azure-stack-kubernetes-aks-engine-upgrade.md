@@ -130,7 +130,7 @@ To use cloud-controller-manager, set `orchestratorProfile.kubernetesConfig.useCl
 
 #### Use the AzureDisk CSI driver with cloud-controller-manager
 
-The AzureDisk volume plugin that works with in-tree cloud provider are not supported with cloud-controller-manager (See [kubernetes/kubernetes#71018](https://github.com/kubernetes/kubernetes/issues/71018) for explanations). Hence to use cloud-controller-manager, AzureDisk CSI driver should **always** be used for persistent volumes. Kubernetes cluster created by AKS Engine will **not** include AzureDisk CSI driver by default, thus users need to manually install AzureDisk CSI driver after cluster creation. The steps to install AzureDisk CSI driver can be found in the section [*Azure Disk CSI Driver*](#azure-disk-csi-driver).
+The AzureDisk volume plugin that works with in-tree cloud provider are not supported with cloud-controller-manager (See [kubernetes/kubernetes#71018](https://github.com/kubernetes/kubernetes/issues/71018) for explanations). Hence to use cloud-controller-manager, AzureDisk CSI driver should **always** be used for persistent volumes. Kubernetes cluster created by AKS Engine will **not** include AzureDisk CSI driver by default, thus users need to manually install AzureDisk CSI driver after cluster creation or cluster upgrade to Kubernetes v1.21.* and above. The steps to install AzureDisk CSI driver can be found in the section [*Azure Disk CSI Driver*](#azure-disk-csi-driver).
 
 ## Forcing an upgrade
 
