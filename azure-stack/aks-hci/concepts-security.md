@@ -17,14 +17,14 @@ ms.reviewer: lahirisl
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Security in AKS hybrid involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).<!--PLACEHOLDER: I drafted this AKS hybrid desription because the standard product name expansion doesn't work in this context.--> This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in AKS hybrid involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS). This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
 AKS hybrid applies various security measures to secure its infrastructure. The following diagram highlights these measures.
 
 ![Illustration showing the infrastructure security of Azure Kubernetes Service on Azure Stack HCI.](.\media\concepts\security-infrastructure.png)
 
-The table below describes the security hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS hybrid deployment, see [Clusters and workloads](./kubernetes-concepts.md).<!--Illustration is specific to AKS on Azure Stack HCI.-->
+The table below describes the security hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS hybrid deployment, see [Clusters and workloads](./kubernetes-concepts.md).
 
 | Security aspect |  Description  |
 | ------  | --------|
@@ -34,7 +34,7 @@ The table below describes the security hardening aspects of AKS on Azure Stack H
 | 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. [Calico](./calico-networking-policy.md) supports both Windows and Linux containers and is an open-source product that is supported as-is.   |
  5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS on Azure Stack HCI offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
  6 | Communication with the API server from Windows client machines is secured using AD credentials for users.  |
- 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.<!--Illustration is specific to AKS on Azure Stack HCI.-->  |
+ 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.  |
 
 ## Application security
 The table below describes the different application security options available in AKS hybrid.
