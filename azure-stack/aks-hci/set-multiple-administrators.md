@@ -13,9 +13,9 @@ ms.reviewer: scooley
 
 # Set up multiple administrators
 
-Starting with the September release of Azure Kubernetes Service (AKS) on Azure Stack HCI, administrative right have merged with the local **Administrators** user group.
+Starting with the September release of Azure Kubernetes Service (AKS) on Azure Stack HCI, administrative rights have merged with the local **Administrators** user group.
 
-To set up multiple administrators, please upgrade to the September release or later.
+To set up multiple administrators, upgrade to the September release or later.
 
 ## Next steps
 
