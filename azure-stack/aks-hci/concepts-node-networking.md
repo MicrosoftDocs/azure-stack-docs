@@ -16,7 +16,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can choose between two IP address assignment models for your networking architecture for AKS hybrid. AKS hybrid supports hyrid deployment options for Azure Kubernetes Service (AKS).
+You can choose between two IP address assignment models for your networking architecture for AKS hybrid. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
 - **Static IP networking**  
     The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
@@ -134,8 +134,8 @@ At a minimum, you should reserve the following number of IP addresses for your d
 
 | Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host |  1 IP |  NA  |  2 IP |  NA  |
-| Workload cluster  |  1 IP per node  | 1 IP per node |  5 IP  |  1 IP |
+| AKS Host |  One IP |  NA  |  Two IP |  NA  |
+| Workload cluster  |  One IP per node  | One IP per node |  5 IP  |  One IP |
 
 Additionally, you should reserve the following number of IP addresses for your VIP pool:
 
