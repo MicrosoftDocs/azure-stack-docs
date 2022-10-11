@@ -1,5 +1,5 @@
 ---
-title: Deploy AKS instrastructure using Windows Admin Center
+title: Deploy AKS infrastructure using Windows Admin Center
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using Windows Admin Center for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
@@ -260,7 +260,7 @@ A *node pool* is a group of nodes, or virtual machines that run your application
 
 Another configuration option that can be applied to a node pool is the concept of *taints*. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. [Learn more about taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS](use-node-pools.md#specify-a-taint-for-a-node-pool).<!--Will title change to "CReate and manage multiple node pools for a clustser in AKS hybrid?-->
+This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS](use-node-pools.md#specify-a-taint-for-a-node-pool).
 
 In addition to taints, we have recently added support for configuring the maximum number of pods that can run on a node, with the `-nodeMaxPodCount` parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, and the number has to be greater than 50.
 
