@@ -78,7 +78,7 @@ To simplify the network configuration for application workloads, AKS hybrid assi
 
 - **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in an AKS on Azure Stack HCI deployment has a HAProxy load balancer deployed and configured as a specialized virtual machine.
 
-- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster or Windows Server cluster. The networking model followed by your Azure Stack HCI or Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
+- **Microsoft On-premises Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster or Windows Server cluster. The networking model followed by your Azure Stack HCI or Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
 
 ## Kubernetes networks
 
