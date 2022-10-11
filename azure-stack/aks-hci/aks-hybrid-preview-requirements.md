@@ -80,8 +80,8 @@ Windows Server admin in consultation with the datacenter network admin:
 
 | Prerequisite |  Item  |  Details 
 | -- | ----- | ------- |
-| 1 | HTTP URL and port information |  Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
-| 2 | HTTPS URL and port information | Check with your admin if your Windows Server network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
+| 1 | HTTP URL and port information |  Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
+| 2 | HTTPS URL and port information | Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTPS URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
 | 3 | [Optional] Valid credentials for authentication to the proxy server | You can either use a PowerShell credential object containing the username and password to authenticate against the proxy server or a filename or certificate string of a PFX formatted client certificate used to authenticate against the proxy server. |
 
 #### Noproxy settings
@@ -134,6 +134,7 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
+| https://hybridaks.azurecr.io | 443 | Container image | Required for accessing the HybridAKS operator image |
 
 ## Next steps
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
