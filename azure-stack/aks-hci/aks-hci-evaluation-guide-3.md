@@ -1,6 +1,6 @@
 ---
 title: Explore AKS on Azure Stack HCI environment
-description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilties in AKS hybrid.
+description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilities in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 10/07/2022
