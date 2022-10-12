@@ -132,7 +132,7 @@ Use the following steps to deploy and configure Velero:
       --plugins velero/velero-plugin-for-microsoft-azure:v1.3.0 \
       --bucket $BLOB_CONTAINER \
       --secret-file ./credentials-velero \
-      --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
+      --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_NAME[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
       --use-restic
    ```
 
