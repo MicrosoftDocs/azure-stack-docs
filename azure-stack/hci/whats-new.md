@@ -6,12 +6,12 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/30/2022
+ms.date: 10/08/2022
 ---
 
-# What's new in Azure Stack HCI, version 22H2 (preview)
+# What's new in Azure Stack HCI, version 22H2 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2 
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
 
@@ -87,9 +87,72 @@ In version 22H2, the Hyper-V live migration is faster and more reliable for swit
 
 ### Cluster-Aware Updating (CAU) improvements
 
-With this release, cluster-aware updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-aware updating also supports single-node deployments.
+With this release, cluster-aware updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-aware updating also supports single server deployments.
 
 For more information, see [What is Cluster-Aware Updating?](/windows-server/failover-clustering/cluster-aware-updating)
+
+### Thin provisioning conversion
+
+With this release, you can now convert existing fixed provisioned volumes to thin using PowerShell. Thin provisioning improves storage efficiency and simplifies management.
+
+For more information, see [Convert fixed to thin provisioned volumes on your Azure Stack HCI](./manage/thin-provisioning-conversion.md).
+
+### Single server scale-out
+
+This release supports inline fault domain and resiliency changes to scale out a single server. Azure Stack HCI version 22H2 provides easy scaling options to go from a single server to a two-node cluster, and from a two-node cluster to a three-node cluster.
+
+For more information, see [Scale out single server on your Azure Stack HCI](./manage/single-node-scale-out.md).
+
+### Tag-based segmentation
+
+In this release, you can secure your application workload virtual machines (VMs) from external and lateral threats with custom tags of your choice. Assign custom tags to classify your VMs, and then apply Network Security Groups (NSGs) based on those tags to restrict communication to and from external and internal sources. For example, to prevent your SQL VMs from communicating with your web server VMs, simply tag the corresponding VMs with *SQL* and *Web* tags. You can then create an NSG to prevent *Web* tag from communicating with *SQL* tag.
+
+For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md).
+
+## Azure Hybrid Benefit for Azure Stack HCI
+
+Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance, We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
+
+If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
+
+For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit.md).
+
+## New deployment tool
+
+With this release, you'll be able to use a brand new deployment tool for a first-time installation of Azure Stack HCI, version 22H2. This tool provides an interactive, guided experience that helps you provide deployment inputs and create a *config* file. You can then use this *config* file to deploy and register the Azure Stack HCI cluster. If you have an existing config file, you can import the file in the deployment and then deploy the cluster. You can also deploy the cluster using PowerShell. 
+
+For more information on this new deployment tool and the associated deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
+
+## Azure Arc VM changes and Azure Marketplace
+
+With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
+
+You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
+
+For more information, see:
+
+  - [Create VM image using an Azure Marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
+  - [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
+  - [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
+
+
+## Windows Server 2022 Datacenter Azure Edition VMs on Azure Stack HCI
+
+Beginning this release, you can run Windows Server Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
+
+
+## New Azure Stack HCI Environment Checker tool
+
+Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that will let you validate your:
+
+- Internet connectivity.
+- Hardware.
+- Network infrastructure for valid IP ranges provided by customers for deployment.
+- Active Directory (Adprep tool is run prior to deployment).
+
+The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
+
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
 
 ## New security capabilities
 
@@ -109,32 +172,13 @@ In summary, version 22H2 provides:
 
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
 
+## Change in default behavior of NetBIOS name resolution
 
-## New deployment tool
+With this release, NetBIOS name resolution has been placed in “learning mode” where NetBIOS is used only as a fallback after mDNS and LLMNR queries fail. This means devices will typically stop using NetBIOS name resolution unless it's manually re-enabled because mDNS will most frequently answer first. Read the blog about [aligning on mDNS](https://techcommunity.microsoft.com/t5/networking-blog/aligning-on-mdns-ramping-down-netbios-name-resolution-and-llmnr/ba-p/3290816).
 
-With this release, you'll be able to use a brand new deployment tool for a first-time installation of Azure Stack HCI, version 22H2. This tool provides an interactive, guided experience that helps you provide deployment inputs and create a *config* file. You can then use this *config* file to deploy and register the Azure Stack HCI cluster. If you have an existing config file, you can import the file in the deployment and then deploy the cluster. You can also deploy the cluster using PowerShell. 
+If this causes connectivity issues, you can restore the previous NetBIOS name resolution functionality by enabling the “Configure NetBIOS settings” Group Policy, and selecting one of the allow or learning modes. You can find this Group Policy in Local Group Policy Editor, under **Computer Configuration** > **Administrative Templates** > **Network** > **DNS Client**. 
 
-For more information on this new deployment tool and the associated deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
-
-## Azure Arc VM changes and Azure Marketplace
-
-With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
-
-You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
-
-## New Azure Stack HCI Environment Checker tool
-
-Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that will let you validate your:
-
-- Internet connectivity.
-- Hardware.
-- Network infrastructure for valid IP ranges provided by customers for deployment.
-- Active Directory (Adprep tool is run prior to deployment).
-
-The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file. 
-
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
-
+:::image type="content" source="./media/whats-new/netbios-group-policy.png" alt-text="Screenshot showing Configure NetBIOS settings." lightbox="./media/whats-new/netbios-group-policy.png" :::
 
 ## Next steps
 

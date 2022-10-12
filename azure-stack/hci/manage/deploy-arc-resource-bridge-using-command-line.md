@@ -3,24 +3,24 @@ title: Deploy Azure Arc Resource Bridge using command line
 description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using command line.
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 07/06/2022
+ms.date: 10/06/2022
 ms.author: v-mandhiman
-ms.reviewer: JasonGerend
+ms.reviewer: alkohli
 ---
 
-# Deploy Azure Arc Resource Bridge using command line
+# Deploy Azure Arc Resource Bridge using Azure CLI
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
 To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
 
-You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
+You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or Azure Command line interface (CLI).
 
-This article describes how to use command line to deploy Azure Arc Resource Bridge, which includes:
+This article describes how to use Azure CLI to deploy Azure Arc Resource Bridge, which includes:
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
-- [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
+- [Creating virtual network](#create-virtual-network)
 
 To deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
@@ -191,7 +191,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
    
-   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
+   1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
@@ -203,7 +203,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       >```
       > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
    
-   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
+   1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
@@ -224,7 +224,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
-   1. Build the Azure ARM resource and on-prem appliance VM for Arc Resource Bridge:
+   1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
@@ -236,7 +236,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       >```
       > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
 
-   1. Create the connection between the Azure ARM resource and on-prem appliance VM of Arc Resource Bridge:
+   1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
@@ -269,11 +269,17 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
 Now you can navigate to the resource group in Azure and see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster.
 
-## Create virtual network and gallery image
+## Create virtual network 
 
-Now that the custom location is available, you can create or add virtual networks and gallery images for the custom location associated with the Azure Stack HCI cluster.
+Now that the custom location is available, you can create or add virtual networks for the custom location associated with the Azure Stack HCI cluster.
 
-1. Create or add a network switch for VMs. Make sure you have an external vmswitch deployed on all hosts of the Azure Stack HCI cluster.
+1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. Run the following command to get the name of the VM switch and provide this name in the subsequent step.
+
+    ```azurecli
+    Get-VmSwitch
+    ```
+
+1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
 
    ```azurecli
    $vlan-id=<vLAN identifier for Arc VMs>   
@@ -290,26 +296,9 @@ Now that the custom location is available, you can create or add virtual network
    | **vlan-id** | vLAN identifier for Arc VMs. |
    | **vnetName** | Name of the virtual network. |
 
-1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
-   
-   Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
-
-   ```azurecli
-   $galleryImageName=<gallery image name>
-   $galleryImageSourcePath=<path to the source gallery image>
-   $osType="<Windows/Linux>"
-   az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
-   ```
-   
-   where:
-
-   | Parameter | Description |
-   | ----- | ----------- |
-   | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
-   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\ClusterStorage\Volume01\OSImages\winos.vhdx". |
-   | **osType** | The OS type. This can be "Windows" or "Linux"; for example, "Windows". |
-
 ## Next steps
 
-- [Go to the Azure portal to create VMs](https://portal.azure.com/#home)
-- [Manage virtual machines in Azure portal](manage-virtual-machines-in-azure-portal.md)
+- Create a VM image
+    - [Starting from an Azure Marketplace image](./virtual-machine-image-azure-marketplace.md).
+    - [Starting from an image in Azure Storage account](./virtual-machine-image-storage-account.md).
+    - [Starting from an image in local share on your Azure Stack HCI](./virtual-machine-image-local-share.md).
