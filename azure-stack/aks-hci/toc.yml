@@ -1,8 +1,10 @@
-- name: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
+- name: Azure Kubernetes Service (AKS) hybrid deployment options
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  - name: AKS hybrid deployment options
+    href: aks-hybrid-options-overview.md
+  - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
   - name: Evaluation guide
     items:
@@ -16,10 +18,16 @@
         href: aks-hci-evaluation-guide-2b.md
       - name: 3 - Explore the environment
         href: aks-hci-evaluation-guide-3.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md
+  - name: Quotas and resource limits
+    href: concepts-support.md
+- name: System requirements
+  href: system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
-    - name: Deploy AKS on Azure Stack HCI and Windows Server
+    - name: Deploy an AKS cluster
       items:
         - name: Use PowerShell
           href: kubernetes-walkthrough-powershell.md
@@ -59,17 +67,14 @@
   items:
   - name: Clusters and workloads
     href: kubernetes-concepts.md
-  - name: System requirements
-    href: system-requirements.md
   - name: Security
     items:
-      - name: Security for AKS on Azure Stack HCI and Windows Server
+      - name: Security for AKS hybrid
         href: concepts-security.md
       - name: Container security
         href: container-security.md
       - name: Update certificates
         href: certificates-update-after-sixty-days.md
-
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -80,22 +85,30 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
-  - name: Cluster autoscaler
-    href: concepts-cluster-autoscaling.md
-  - name: Vertical node autoscaling
-    href: concepts-vertical-node-pool-scaling.md
+  - name: Scale
+    items:
+      - name: Cluster autoscaler
+        href: concepts-cluster-autoscaling.md
+      - name: Vertical node autoscaling
+        href: concepts-vertical-node-pool-scaling.md
   - name: Node auto-repair
     href: node-repair.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
   - name: Resource limits
     href: concepts-support.md
+  - name: Billing
+    items:
+      - name: Pricing details
+        href: pricing.md
 - name: How-to guides
   items: 
-    - name: Install Azure Kubernetes Service host
+    - name: Install
       items:
-          - name: With prestaged cluster service objects and DNS records
+          - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+    - name: Use offline download
+      href: offline-download.md
     - name: Upgrade the AKS on Azure Stack HCI and Windows Server host
       items:
           - name: Use PowerShell
@@ -104,37 +117,63 @@
             href: update-akshci-host-windows-admin-center.md
     - name: Upgrade the Kubernetes version
       items:
-          - name: Use PowerShell
-            href: upgrade.md
-          - name: Use Windows Admin Center
-            href: upgrade-kubernetes.md
-    - name: Cluster operations
+      - name: Upgrade AKS hybrid host
+        items:
+        - name: Use PowerShell
+          href: update-akshci-host-powershell.md
+        - name: Use Windows Admin Center
+          href: update-akshci-host-windows-admin-center.md
+      - name: Upgrade Kubernetes version
+        items:
+        - name: Use PowerShell
+          href: upgrade.md
+        - name: Use Windows Admin Center
+          href: upgrade-kubernetes.md
+    - name: Scale
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
-          - name: Stop an AKS on Azure Stack HCI and Windows Server cluster
-            href: stop-start-cluster.md
-          - name: Restart, remove, or reinstall AKS on Azure Stack HCI and Windows Server
-            href: restart-cluster.md
-          - name: Back up and restore workload clusters using Velero
-            href: backup-workload-cluster.md
-          - name: Deploy a container image from ACR to AKS on Azure Stack HCI and Windows Server
-            href: deploy-azure-container-registry.md
-          - name: Use node pools
-            href: use-node-pools.md
-          - name: Use autoscaling
+          - name: Use autoscaler
             items:
-            - name: Work with cluster autoscaling
+            - name: Use PowerShell
               href: work-with-horizontal-autoscaler.md
             - name: Use autoscaler profiles
               href: work-with-autoscaler-profiles.md
+    - name: Cluster and workloads
+      items:
+            - name: Cluster operations
+              items:
+                - name: Deploy a container image from Azure Container Registry
+                  href: deploy-azure-container-registry.md
+                - name: Create and manage node pools
+                  href: use-node-pools.md
+            - name: Manage workloads
+              items:
+                  - name: Create and delete pods
+                    href: create-pods.md
+                  - name: Create deployments
+                    href: create-deployments.md
+                  - name: Create a DaemonSet
+                    href: create-daemonsets.md
+                  - name: Create a ReplicaSet
+                    href: create-replicasets.md
+                  - name: Create a StatefulSet
+                    href: create-statefulset.md
+    - name: Restart, stop, restore
+      items:    
+            - name: Restart, remove, or reinstall AKS
+              href: restart-cluster.md
+            - name: Stop and start an AKS cluster
+              href: stop-start-cluster.md
+            - name: Back up or restore workload clusters using Velero
+              href: backup-workload-cluster.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
           - name: Az PowerShell module CLI commands
             href: /cli/azure/connectedk8s
-    - name: Configure networking
+    - name: Networking
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
@@ -152,7 +191,7 @@
             href: create-ingress-controller.md
           - name: Use software defined networking
             href: software-defined-networking.md
-    - name: Manage storage
+    - name: Storage
       items:
           - name: Use persistent volume
             href: persistent-volume.md
@@ -178,24 +217,6 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
-    - name: Helper scripts
-      items: 
-          - name: Set up multiple administrators
-            href: set-multiple-administrators.md
-          - name: Remove old PowerShell modules
-            href: https://github.com/Azure/aks-hci/issues/130
-    - name: Manage workloads
-      items:
-          - name: Create and delete pods
-            href: create-pods.md
-          - name: Create deployments
-            href: create-deployments.md
-          - name: Create a DaemonSet
-            href: create-daemonsets.md
-          - name: Create a ReplicaSet
-            href: create-replicasets.md
-          - name: Create a StatefulSet
-            href: create-statefulset.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -228,48 +249,83 @@
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
             href: deploy-linux-application.md
+    - name: Helper scripts
+      items: 
+          - name: Set up multiple administrators
+            href: set-multiple-administrators.md
+          - name: Remove old PowerShell modules
+            href: https://github.com/Azure/aks-hci/issues/130
+- name: AKS hybrid cluster provisioning from Azure (preview)
+  items:
+  - name: Overview
+    href: aks-hybrid-preview-overview.md
+  - name: System requirements
+    href: aks-hybrid-preview-requirements.md
+  - name: Quickly deploy an AKS hybrid cluster on an Azure VM
+    href: aks-hybrid-preview-azure-vm.md
+  - name: How-to
+    items:
+     - name: Install Azure Resource Bridge on Windows Server
+       href: deploy-arc-resource-bridge-windows-server.md
+     - name: Configure networking for AKS hybrid clusters
+       href: create-aks-hybrid-preview-networks.md
+     - name: Provision AKS hybrid clusters from Azure
+       items:
+       - name: Azure CLI
+         href: create-aks-hybrid-preview-cli.md
+       - name: Azure portal
+         href: create-aks-hybrid-preview-portal.md
+  - name: Troubleshooting and known issues 
+    href: troubleshoot-aks-hybrid-preview.md
+- name: AKS Lite hybrid option (preview)
+  items:
+  - name: Overview
+    href: aks-lite-overview.md
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
     href: troubleshoot-overview.md
-  - name: Connect to nodes with SSH
-    href: ssh-connection.md
-  - name: How to fix
+  - name: Azure Arc enabled Kubernetes
+    href: /azure-stack/aks-hci/known-issues-arc
+  - name: Install
+    href: /azure-stack/aks-hci/known-issues-installation
+  - name: Upgrade 
+    href: /azure-stack/aks-hci/known-issues-upgrade 
+  - name: Workload and clusters
+    items: 
+    - name: Kubernetes clusters
+      href: /azure-stack/aks-hci/known-issues-workload-clusters
+    - name: Connect to nodes with SSH
+      href: ssh-connection.md
+  - name: Networking
+    href: /azure-stack/aks-hci/known-issues-networking
+  - name: Security
+    href: /azure-stack/aks-hci/known-issues-security
+  - name: Storage
+    href: /azure-stack/aks-hci/known-issues-storage  
+  - name: Windows Admin Center
+    href: /azure-stack/aks-hci/known-issues-windows-admin-center
+  - name: Uninstall
+    href: /azure-stack/aks-hci/known-issues-uninstall
+  - name: Other
+    href: /azure-stack/aks-hci/known-issues
+  - name: Azure Stack HCI issues
     items:
-    - name: AKS on Azure Stack HCI and Windows Server issues
-      items: 
-          - name: Installation
-            href: /azure-stack/aks-hci/known-issues-installation
-          - name: Upgrade 
-            href: /azure-stack/aks-hci/known-issues-upgrade 
-          - name: Windows Admin Center
-            href: /azure-stack/aks-hci/known-issues-windows-admin-center
-          - name: Azure Arc enabled Kubernetes
-            href: /azure-stack/aks-hci/known-issues-arc
-          - name: Uninstall
-            href: /azure-stack/aks-hci/known-issues-uninstall
-          - name: Kubernetes clusters
-            href: /azure-stack/aks-hci/known-issues-workload-clusters
-          - name: Networking
-            href: /azure-stack/aks-hci/known-issues-networking
-          - name: Security
-            href: /azure-stack/aks-hci/known-issues-security
-          - name: Storage
-            href: /azure-stack/aks-hci/known-issues-storage
-          - name: Other
-            href: /azure-stack/aks-hci/known-issues
-    - name: Azure Stack HCI issues
-      items:
-          - name: Cluster validation reporting in Azure Stack HCI
-            href: ../hci/manage/validate-qos.md
-          - name: CredSSP in Azure Stack HCI
-            href: ../hci/manage/troubleshoot-credssp.md
-
-- name: Related
+        - name: Cluster validation reporting in Azure Stack HCI
+          href: ../hci/manage/validate-qos.md
+        - name: CredSSP in Azure Stack HCI
+          href: ../hci/manage/troubleshoot-credssp.md
+  - name: Support policies
+    href: support-policies.md
+  - name: Get support
+    href: help-support.md
+  - name: File bugs
+    href: https://aka.ms/aks-hci-issues/
+- name: Reference
   items:
   - name: Azure Stack HCI
     href: ../hci/index.yml
-  - name: Windows Admin Center
+  - name: Windows Admin Center (WAC)
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure hybrid cloud
     href: /hybrid
@@ -279,12 +335,12 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
-  - name: AksHci PowerShell
+  - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
-    href: pricing.md
+    href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Support policies
     href: support-policies.md
   - name: Get support
@@ -295,3 +351,4 @@
     href: https://aka.ms/aks-hci-roadmap/
   - name: File bugs
     href: https://aka.ms/aks-hci-issues/
+

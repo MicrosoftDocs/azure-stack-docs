@@ -1,20 +1,22 @@
 ---
-title: Concepts about securing containers in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn some of the methods you can use to implement security for containers in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Concepts about securing containers in AKS hybrid
+description: Learn some methods you can use to implement security for containers in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/30/2021
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
-# Intent: As an IT Pro, I want to learn how to secure containers in my AKS deployment.
+# Intent: As an IT Pro, I want to learn how to secure containers in AKS hybrid.
 # Keyword: container security
 
 ---
 
-# Container security
+# Container security in AKS hybrid
 
-This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. 
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities in AKS hybrid. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
 Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model. 
 

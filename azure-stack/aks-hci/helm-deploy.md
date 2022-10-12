@@ -1,29 +1,32 @@
 ---
-title: Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to use Helm to deploy applications on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Deploy applications on AKS hybrid with Helm
+description: Learn how to use Helm to deploy applications on AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/18/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 
-# Intent: As an IT Pro, I want to learn how to deploy applications using Helm on AKS.
+# Intent: As an IT Pro, I want to learn how to deploy applications on AKS hybrid using Helm.
 # Keyword: Helm, Helm chart, Helm deployment
 
 ---
 
-# Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Deploy applications on AKS hybrid with Helm
+
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-In this topic, you'll learn how to use Helm to package and deploy an application on AKS on Azure Stack HCI and Windows Server. 
+In this topic, you'll learn how to use Helm to package and deploy applications on AKS when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid).
 
 ## Before you begin
+
 Verify that you have the following requirements set up:
 
-* An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* An [AKS cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
+* You have configured your local `kubectl` environment to point to your AKS cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * An available container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 
@@ -55,6 +58,7 @@ ENTRYPOINT ["dotnet", "MyMicroservice.dll"]
 ```
 
 ## Build and push the sample application to a container registry
+
 Navigate to the application folder and use the Dockerfile to build and push an image using the following command:
 
 ```Console
@@ -79,6 +83,7 @@ docker push acr.azurecr.io/mymicroservice:0.1.0
 ```
 
 ## Create your Helm chart
+
 Now that you have the sample application ready, the next step is to generate a Helm chart using the `helm create` command as shown below:
 
 ```Console
@@ -108,6 +113,7 @@ service:
 ```
 
 Navigate to the *mymicroserviceapp/templates/deployment.yaml* file to configure health checks. Kubernetes uses health checks to manage your application deployments. Replace the path of both `liveness` and `readiness` probes to `path: /weatherforecast` as shown in the example below:
+
 ```yml
 ...
  livenessProbe:
@@ -133,6 +139,7 @@ Starting from the *charts\mymicroserviceapp* directory in the solution directory
 ```yml
 helm upgrade --install mymicroserviceapp . --namespace=local --set mymicroserviceapp.image.tag="0.1.0" 
 ```
+
 This command creates (or upgrades) an existing release using the name _mymicroserviceapp_ in the `local` namespace in the Kubernetes cluster and should produce an output similar to this:
 
 ```output
@@ -167,6 +174,7 @@ replicaset.apps/mymicroserviceapp-7849f949df   1         1         1       101s
 ```
 
 ## Test your deployment
+
 The application deploys with a service and a node port, so you can call the API from outside the cluster. To do this, send a request to: http://$NODE_IP:$NODE_PORT:
 
 ```console
@@ -197,6 +205,7 @@ RawContentLength  : 494
 ```
 
 ## Clean up the cluster
+
 The final step is to clean up the cluster. To delete Kubernetes deployment resources, run the following command: 
 
 ```console
@@ -209,4 +218,5 @@ You should get an output similar to the following:
 release "mymicroserviceapp" uninstalled
 ```
 ## Next steps
-- [Connect your clusters to Azure Arc for Kubernetes](./connect-to-arc.md).
+
+- [Connect your AKS clusters to Azure Arc](./connect-to-arc.md).
