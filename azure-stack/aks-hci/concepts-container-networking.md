@@ -1,25 +1,27 @@
 ---
-title: Concepts - Container networking in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
-description: Learn about container networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Concepts - Container networking in AKS hybrid
+description: Learn about container networking in AKS hybrid.
 ms.topic: conceptual
-ms.date: 05/26/2022
+ms.date: 10/04/2022
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn about the advantages of using container networking in AKS.
+# Intent: As an IT Pro, I want to learn about the advantages of using container networking in AKS hybrid.
 # Keyword: Container applications networking
 
 ---
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications.
 
 More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
 
-This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI:
+This article introduces the core concepts that provide networking to your applications in AKS hybrid:
 
 - Kubernetes Services
 - Ingress controller
@@ -66,17 +68,17 @@ When you create an AKS cluster, we also create and configure an underlying `HAPr
 
 ## IP address resources 
 
-To simplify the network configuration for application workloads, AKS on Azure Stack HCI assigns IP addresses to the following objects in a deployment:
+To simplify the network configuration for application workloads, AKS hybrid assigns IP addresses to the following objects in a deployment:
 
 - **Kubernetes cluster API server** - The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. Static IP addresses are always allocated to API servers irrespective of the underlying networking model.
 
-- **Kubernetes nodes (virtual machines)** - A Kubernetes cluster consists of a set of worker machines, called nodes, and the nodes host containerized applications. In addition to the control plane nodes, every cluster has at least one worker node. For an AKS on Azure Stack HCI cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines in Azure Stack HCI, for more information, see [Node networking concepts](concepts-node-networking.md).
+- **Kubernetes nodes (virtual machines)** - A Kubernetes cluster consists of a set of worker machines, called nodes, and the nodes host containerized applications. In addition to the control plane nodes, every cluster has at least one worker node. For an AKS cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines in Azure Stack HCI, for more information, see [Node networking concepts](concepts-node-networking.md).
 
 - **Kubernetes services** - In Kubernetes, *Services* logically group pod IP addresses to allow for direct access via a single IP address or DNS name on a specific port. Services can also distribute traffic using a *load balancer*. Static IP addresses are always allocated to Kubernetes services irrespective of the underlying networking model.
 
-- **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in AKS on Azure Stack HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
+- **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in an AKS on Azure Stack HCI deployment has a HAProxy load balancer deployed and configured as a specialized virtual machine.
 
-- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI and Windows Server cluster. The networking model followed by your Azure Stack HCI and Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
+- **Microsoft On-premises Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster or Windows Server cluster. The networking model followed by your Azure Stack HCI or Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
 
 ## Kubernetes networks
 
