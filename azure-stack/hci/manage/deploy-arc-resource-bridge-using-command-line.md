@@ -296,6 +296,17 @@ Now that the custom location is available, you can create or add virtual network
    | **vlan-id** | vLAN identifier for Arc VMs. |
    | **vnetName** | Name of the virtual network. |
 
+1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
+   
+   Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
+
+   ```azurecli
+   $galleryImageName=<gallery image name>
+   $galleryImageSourcePath=<path to the source gallery image>
+   $osType="<Windows/Linux>"
+   az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
+   ```
+   
 ## Next steps
 
 - Create a VM image

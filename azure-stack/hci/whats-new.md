@@ -117,6 +117,12 @@ If you have Windows Server Datacenter licenses with active Software Assurance, u
 
 For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit.md).
 
+## New deployment tool
+
+With this release, you'll be able to use a brand new deployment tool for a first-time installation of Azure Stack HCI, version 22H2. This tool provides an interactive, guided experience that helps you provide deployment inputs and create a *config* file. You can then use this *config* file to deploy and register the Azure Stack HCI cluster. If you have an existing config file, you can import the file in the deployment and then deploy the cluster. You can also deploy the cluster using PowerShell. 
+
+For more information on this new deployment tool and the associated deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
+
 ## Azure Arc VM changes and Azure Marketplace
 
 With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
@@ -146,7 +152,7 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
 
 ## New security capabilities
 
@@ -176,5 +182,6 @@ If this causes connectivity issues, you can restore the previous NetBIOS name re
 
 ## Next steps
 
-- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
-- [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md)
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847).
+- [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md).
+- [Review the Deployment overview](./deploy/deployment-tool-introduction.md).
