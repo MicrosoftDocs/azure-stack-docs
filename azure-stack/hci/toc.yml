@@ -52,6 +52,8 @@
     items:
     - name: Deploy on a single server
       href: deploy/single-server.md
+    - name: Single server scale-out
+      href: manage/single-node-scale-out.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Host networking with Network ATC
@@ -100,6 +102,8 @@
       href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
+    - name: Windows Server Azure Edition
+      href: manage/windows-server-azure-edition.md
   - name: Manage Azure Arc-enabled VMs (preview)
     items:
     - name: Set up Azure Arc-enabled VMs
@@ -108,7 +112,15 @@
       href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Deploy Arc Resource Bridge using Windows Admin Center
       href: manage/deploy-arc-resource-bridge-using-wac.md
-    - name: Manage Arc-enabled VMs in Azure portal
+    - name: Create VM images
+      items:
+      - name: Using Azure Marketplace images
+        href: manage/virtual-machine-image-azure-marketplace.md
+      - name: Using images in  Azure Storage account
+        href: manage/virtual-machine-image-storage-account.md
+      - name: Using images in local share 
+        href: manage/virtual-machine-image-local-share.md
+    - name: Deploy Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
     - name: Uninstall Azure Arc Resource Bridge
       href: manage/uninstall-arc-resource-bridge.md
@@ -136,6 +148,8 @@
       href: manage/manage-smb-multichannel.md
     - name: Storage thin provisioning
       href: manage/thin-provisioning.md
+    - name: Thin provisioning conversion
+      href: manage/thin-provisioning-conversion.md
     - name: Adjustable storage repair speed
       href: manage/storage-repair-speed.md
   - name: Manage clusters 
