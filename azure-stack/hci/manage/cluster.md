@@ -33,11 +33,11 @@ To view this information, select the cluster name under **All connections**. The
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
 - Azure Stack HCI registration
-- Arc-enabled statuses
+- Arc-enabled servers
 
 ## Change storage settings
 
-There are currently two storage settings that can assist customers with server memory and Storage Spaces Direct options. To access these components, follow the steps below:
+There are currently two storage settings that can be applied to your cluster. To access these components, follow the steps below:
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 
@@ -158,7 +158,7 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/resource-bridge.png" alt-text="cluster Resource bridge screen" lightbox="media/manage-cluster/2022/resource-bridge.png":::
 
-- To allow users to create and manage their own VMs on your cluster, select **Azure Arc VM setup for Azure Stack HCI**. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md)
+- To provision VMs on your Azure Stack HCI cluster from the Azure portal, select **Azure Arc VM setup for Azure Stack HCI**. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md)
 
     :::image type="content" source="media/manage-cluster/2022/azure-arc-vm.png" alt-text="cluster Azure Arc VM screen" lightbox="media/manage-cluster/2022/azure-arc-vm.png":::
 
@@ -174,22 +174,12 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/join-the-preview-channel.png" alt-text="cluster Join the preview channel screen" lightbox="media/manage-cluster/2022/join-the-preview-channel.png":::
 
-## Add or remove a server from the cluster
-
-To add or remove a server from the cluster, see [Add or remove servers for a cluster](add-cluster.md).
-
-## Register the cluster with Azure
-
-To register or unregister your cluster with Azure, see [Register a cluster with Azure](../deploy/register-with-azure.md).
-
-## Remove (destroy) the cluster
-
-Before you destroy a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-windows-admin-center).
-
-You use PowerShell to destroy a cluster and its resources. For more information, see [Remove (destroy) a cluster](cluster-powershell.md#remove-a-cluster).
-
 ## Next steps
 
 For more detailed information, see also:
 
 - [Manage clusters with PowerShell](cluster-powershell.md).
+- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters.md)
+- [Register a cluster with Azure](../deploy/register-with-azure.md)
+- [Unregister Azure Stack HCI](../deploy/register-with-azure.md#unregister-azure-stack-hci-using-windows-admin-center)
+- [Remove (destroy) a cluster](cluster-powershell.md#remove-a-cluster)
