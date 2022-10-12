@@ -150,11 +150,11 @@ You can [download this free tool here](https://www.powershellgallery.com/package
 
 ## New security capabilities
 
-For new installations, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
+For new installations with supplememtal package, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
 
 In summary, version 22H2 provides:
 
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. 
+- A tailored security baseline with ~300 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. 
 
     The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
