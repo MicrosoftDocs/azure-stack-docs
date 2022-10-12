@@ -111,8 +111,8 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
 - To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. 
 
-    >[Note!]
-    >Enhanced Session Mode connections require a supported guest operating system.
+    > [!NOTE]
+    > Enhanced Session Mode connections require a supported guest operating system.
 
     :::image type="content" source="media/manage-cluster/2022/enhanced-session-mode.png" alt-text="cluster Hyper-V Enhanced Session Mode screen" lightbox="media/manage-cluster/2022/enhanced-session-mode.png":::
 
