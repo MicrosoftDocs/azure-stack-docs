@@ -334,7 +334,7 @@
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS roadmap
-    href: aka.ms/k8sroadmap
+    href: https://aka.ms/k8sroadmap
   - name: AKS hybrid deployment options roadmap
     href: https://aka.ms/AKS-hybrid-roadmap
 
