@@ -128,7 +128,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - Enable the **Use any network** checkbox to use any available network on a node to perform the migration
 
- :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
+   :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
 - To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number. The default value is 1.
 
