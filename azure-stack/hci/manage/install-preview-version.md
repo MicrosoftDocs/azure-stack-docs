@@ -1,5 +1,5 @@
 ---
-title: Install an Azure Stack HCI, 22H2
+title: Install Azure Stack HCI, version 22H2
 description: How to install feature updates using Windows Admin Center or Windows PowerShell.
 author: ronmiab
 ms.author: robess
