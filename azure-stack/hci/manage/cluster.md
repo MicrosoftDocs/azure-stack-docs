@@ -41,7 +41,7 @@ There are currently two storage settings that can be applied to your cluster. To
 
    :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/2022/in-memory-cache.png":::
 
-- You can change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters as well.
+- To change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters as well.
 
      - **Cache State** - enable or disable persistent cache
      
