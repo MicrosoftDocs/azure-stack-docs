@@ -113,11 +113,11 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/enhanced-session-mode.png" alt-text="cluster Hyper-V Enhanced Session Mode screen" lightbox="media/manage-cluster/2022/enhanced-session-mode.png":::
 
-- To allow virtual machines, to span physical NUMA nodes select **NUMA Spanning**. Non-uniform memory architecture (NUMA) spanning can provide a virtual machine with more memory than what is available on a single NUMA node.
+- To allow virtual machines to span physical NUMA nodes, select **NUMA Spanning**. Non-uniform memory architecture (NUMA) spanning can provide a virtual machine with more memory than what is available on a single NUMA node.
 
     :::image type="content" source="media/manage-cluster/2022/numa-spanning.png" alt-text="cluster NUMA Spanning screen" lightbox="media/manage-cluster/2022/numa-spanning.png":::
 
-- To specify the number of VMs that can be simultaneously moved while running (live migrated) select **Live Migration**. Next, input a number and specify the following details:
+- To specify the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Next, input a number and specify the following details:
 
    - For **Authentication Protocol** select either **CredSSP** or **Kerberos**.
 
