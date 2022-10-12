@@ -16,7 +16,9 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Kubernetes Service hybrid deployment options?
+          - text: What is AKS hybrid deployment options?
+            url: aks-hybrid-options-overview.md
+          - text: What is AKS on Azure Stack HCI and Windows Server?
             url: overview.md
       - linkListType: concept
         links:
