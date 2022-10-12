@@ -41,7 +41,7 @@ There are currently two storage settings that can assist customers with server m
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 
-2. Under **Tools**, select **Settings**.
+2. Under **Tools**, select **Settings**
 
 - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
