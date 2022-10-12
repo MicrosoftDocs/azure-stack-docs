@@ -37,7 +37,7 @@ To view this information, select the cluster name under **All connections**. The
 
 ## Change storage settings
 
-There are currently two storage settings that can assist customers with server memory and Storage Spaces Direct options. To access these components follow the steps below:
+There are currently two storage settings that can assist customers with server memory and Storage Spaces Direct options. To access these components, follow the steps below:
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 
@@ -158,15 +158,15 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/resource-bridge.png" alt-text="cluster Resource bridge screen" lightbox="media/manage-cluster/2022/resource-bridge.png":::
 
-- To allow users to create and manage their own VMs on your cluster select Azure Arc VM setup for Azure Stack HCI. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md)
+- To allow users to create and manage their own VMs on your cluster, select **Azure Arc VM setup for Azure Stack HCI**. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md)
 
     :::image type="content" source="media/manage-cluster/2022/azure-arc-vm.png" alt-text="cluster Azure Arc VM screen" lightbox="media/manage-cluster/2022/azure-arc-vm.png":::
 
-- To automatically activate all Windows Server VMs running on your cluster utilize Activate Windows Server VMs. To learn more, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../manage/vm-activate.md)
+- To automatically activate all Windows Server VMs running on your cluster, utilize **Activate Windows Server VMs**. For more detail, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../manage/vm-activate.md)
 
     :::image type="content" source="media/manage-cluster/2022/activate-windows-server-vms.png" alt-text="cluster Activate Windows Server VMs screen" lightbox="media/manage-cluster/2022/activate-windows-server-vms.png":::
 
-- To utilize Azure-exclusive workloads on Azure Stack HCI that can work outside of the cloud select **Azure benefits**. To learn more, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
+- To utilize Azure-exclusive workloads, on Azure Stack HCI that can work outside of the cloud, select **Azure benefits**. For more detail, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
 
     :::image type="content" source="media/manage-cluster/2022/azure-benefits.png" alt-text="cluster Azure benefits screen" lightbox="media/manage-cluster/2022/azure-benefits.png":::
 
