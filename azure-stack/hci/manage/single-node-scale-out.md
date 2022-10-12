@@ -3,14 +3,14 @@ title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/05/2022
+ms.date: 10/12/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Single server scale-out for your Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 Azure Stack HCI version 22H2 supports inline fault domain and resiliency changes for single-server cluster scale-out. This article describes how you can scale out your Azure Stack HCI cluster.
 
