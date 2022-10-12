@@ -40,6 +40,7 @@ To view this information, select the cluster name under **All connections**. The
 There are currently two storage settings that can assist customers with server memory and Storage Spaces Direct options. To access these components follow the steps below:
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+
 2. Under **Tools**, select **Settings**.
 
 - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
@@ -61,6 +62,7 @@ There are currently two storage settings that can assist customers with server m
 There are several general settings that can be applied to your cluster. Here's where you can view properties, node shutdown behavior, VM load balancing, cluster witness, and affinity rules.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+
 2. Under **Tools**, select **Settings**.
 
 - To access comprehensive cluster, operating system and hardware related information, select **Properties**.
@@ -102,6 +104,7 @@ There are several general settings that can be applied to your cluster. Here's w
 There are several Hyper-V host settings that can be applied to your cluster.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+
 2. Under **Tools** select **Settings**.
 
 - To set virtual hard disk and virtual machine paths, select **General** and then use the following settings:
@@ -188,6 +191,5 @@ You use PowerShell to destroy a cluster and its resources. For more information,
 ## Next steps
 
 For more detailed information, see also:
-
 
 - [Manage clusters with PowerShell](cluster-powershell.md).
