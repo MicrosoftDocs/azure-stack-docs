@@ -65,6 +65,17 @@ The output shows the available versions this AKS on Azure Stack HCI and Windows 
 ```output
 1.0.2.10723
 ```
+#### Versioning
+Using the version 1.0.2.10723 as an example, the following is how version numbers are constructed for releases of AKS on Azure Stack HCI and Windows Server.
+
+| Value | Meaning                                                                                             |
+| ----- | --------------------------------------------------------------------------------------------------- |
+| 1     | Major version: +1 for each release with a large breaking change                                     |
+| 0     | Minor version: +1 for each release after the latest major version with a major functionality change |
+| 2     | Feature & patch updates: +1 for each regular (typically monthly) release after the latest major version |
+| 1     | Build type: Always 1 for public-facing builds                                                       |
+| 0723  | Build creation date: Build creation date in mmdd format                                             |
+
 
 ### Initiate the AKS on Azure Stack HCI and Windows Server update
 

@@ -1,36 +1,74 @@
 ---
-title: Manage virtual machines in the Azure portal
-description: Learn how to view your cluster in the Azure portal and manage virtual machines.
+title: Create Arc-enabled virtual machines on Azure Stack HCI
+description: Learn how to view your cluster in the Azure portal and create Arc-enabled virtual machines on your Azure Stack HCI.
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/23/2022
+ms.date: 10/05/2022
 ---
 
-# View your cluster in Azure portal and manage virtual machines
+# Use VM images to create Arc-enabled virtual machines on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to:Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in the [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters). The cluster resource page provides links to view and access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in the Azure portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on the Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create and manage VMs on this Azure Stack HCI cluster.
+This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal or the Azure CLI.
 
-For VM management from the Virtual Machines blade in the Azure portal, perform the following steps:
 
-1. From your browser, go to the [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines). You'll see a unified browsing experience for Azure and Arc VMs.
+## About Azure Stack HCI cluster resource
 
-1. Select **Add**, and then select **Azure Arc machine** from the drop-down.
+You can use the [Azure Stack HCI cluster resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
 
-1. Select the Azure subscription and resource group where you want to deploy the VM.
+- You can create and manage Arc VM resources such as VM images, disks, network interfaces.
+- You can use this page to view and access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster.
+- You can also use this page to provision and manage Arc-enabled VMs.
 
-1. Provide the VM name and then select a custom location that your administrator has shared with you.
+The procedure to create Arc VMs is described in the next section.
 
-   > [!IMPORTANT]
-   > Names for all entities of a VM should be in lower case and may use "-" and numbers.
-   
-1. Select an image from the image gallery for the VM you'll create.
+## Prerequisites
 
-1. If you selected a Windows image, provide a username and password for the administrator account. For Linux VMs, provide SSH keys.
+Before you begin, make sure that you have:
+
+- Access to an Azure subscription with **Owner** or **Contributor** access.
+- Access to a resource group where you want to provision the VM.
+- Access to one or more VM images on your Azure Stack HCI cluster. These VM images could be created by one of the following procedures:
+    - [VM image starting from an image in Azure marketplace](./virtual-machine-image-azure-marketplace.md).
+    - [VM image starting from an image in Azure Storage account](./virtual-machine-image-storage-account.md).
+    - [VM image starting from an image in local share on your cluster](./virtual-machine-image-local-share.md).
+- Make sure that you have a custom location for your Azure Stack HCI cluster that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Stack HCI cluster.
+
+## Create Arc-enabled VMs
+
+Follow these steps in the Azure portal for your Azure Stack HCI cluster.
+
+1. Go to **Resources (Preview) > Virtual machines**.
+1. From the top command bar, select **+ Create VM**.
+
+   :::image type="content" source="./media/manage-vm-resources/select-create-vm.png" alt-text="Screenshot of select + Create VM." lightbox="./media/manage-vm-resources/select-create-vm.png":::
+
+1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters:
+
+    1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
+
+    1. **Resource group** – Create new or choose an existing resource group where you will deploy all the resources associated with your VM.
+
+    1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
+    
+        > [!IMPORTANT]
+        > VM names should be in lowercase letters and may use hyphens and numbers.
+
+    1. **Custom location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
+
+    1. **Image** – Select the marketplace or customer managed image to create the VM image. If you selected a Windows image, provide a username and password for the administrator account. For Linux VMs, provide SSH keys.
+
+    1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
+
+    1. **Memory** – Specify the memory in GB for the VM you intend to create.
+
+    1. **Memory type** – Specify the memory type as static or dynamic.
+
+   :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
 
 1. **(Optional)** Create new or add more disks to the VM by providing a name and size. You can also choose the disk type to be static or dynamic.
 
