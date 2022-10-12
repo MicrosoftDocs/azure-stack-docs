@@ -147,7 +147,7 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. 
 
 ## Change in default behavior of NetBIOS name resolution
 
