@@ -149,24 +149,6 @@ The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI
 
 You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
 
-<!--## New security capabilities
-
-For new installations, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
-
-In summary, version 22H2 provides:
-
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. 
-
-    The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
-
-- Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
-
-- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities.
-
-- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes.
-
-- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.-->
-
 ## Change in default behavior of NetBIOS name resolution
 
 With this release, NetBIOS name resolution has been placed in “learning mode” where NetBIOS is used only as a fallback after mDNS and LLMNR queries fail. This means devices will typically stop using NetBIOS name resolution unless it's manually re-enabled because mDNS will most frequently answer first. Read the blog about [aligning on mDNS](https://techcommunity.microsoft.com/t5/networking-blog/aligning-on-mdns-ramping-down-netbios-name-resolution-and-llmnr/ba-p/3290816).
