@@ -110,7 +110,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
 
- :::image type="content" source="media/manage-cluster/2022/general.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/2022/general.png":::
+   :::image type="content" source="media/manage-cluster/2022/general.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/2022/general.png":::
 
 - To allow redirection of local devices and resources from virtual machines select **Enhanced Session Mode**. Note, Enhanced Session Mode connections require a supported guest operating system.
 
