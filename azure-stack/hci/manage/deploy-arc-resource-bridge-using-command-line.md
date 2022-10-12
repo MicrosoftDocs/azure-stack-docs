@@ -178,7 +178,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
       ```
    
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
@@ -214,7 +214,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
       ```
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
