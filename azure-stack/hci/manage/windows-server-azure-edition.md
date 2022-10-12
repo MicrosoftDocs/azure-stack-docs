@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/07/2022
+ms.date: 10/12/2022
 ---
 
 # Deploy Windows Server Azure Edition VMs
@@ -16,7 +16,7 @@ ms.date: 10/07/2022
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure marketplace.
 
-Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](https://learn.microsoft.com/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-extended-network).
+Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
 ## Considerations
 
@@ -145,9 +145,9 @@ There are a few important differences using Hotpatch with Azure Edition guest VM
 
 These differences include the following limitations for this preview release:
 
-- Hotpatch configuration is not available using Azure Update Manager.
-- Hotpatch cannot be disabled.
-- Automatic Patching orchestration is not available.
+- Hotpatch configuration isn't available using Azure Update Manager.
+- Hotpatch can't be disabled.
+- Automatic Patching orchestration isn't available.
 - Orchestration must be performed manually, such as by using Windows Update with Sconfig.
 
 ## Next steps
