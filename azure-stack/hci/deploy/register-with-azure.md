@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 07/29/2022
+ms.date: 10/12/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
@@ -151,11 +151,19 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
    > [!IMPORTANT]
    > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
 
-2. Open Windows Admin Center and do the following:
-   1. Select the cluster connection.
-   2. Select **Settings** from the bottom of the **Tools** menu on the left.
-   3. Select **Azure Stack HCI registration**. If your cluster has not yet been registered with Azure, then **Registration status** shows **Not registered**. Select **Register** to proceed.
-   4. Select **Register this cluster** from the Windows Admin Center dashboard.
+2. Open Windows Admin Center and do one of the following:
+   - Option 1
+      1. Select the cluster connection.
+      1. Select **Dashboard** from the **Tools** menu on the left.
+      1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
+      1. Select **Register** to proceed.
+   - Option 2
+      1. Select the cluster connection.
+      1. Select **Azure Arc** from the **Tools** menu on the left.
+      1. Select **Overview** within the **Azure Arc** section.
+      1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
+      1. Select the **Azure Stack HCI registration** tile.
+      1. Select **Register** to proceed.
 
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
