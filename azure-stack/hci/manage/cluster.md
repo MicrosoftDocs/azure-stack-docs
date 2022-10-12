@@ -53,13 +53,13 @@ There are currently two storage settings that can be applied to your cluster. To
 
 ## Change cluster settings
 
-There are several general settings that can be applied to your cluster. Here's where you can view properties, node shutdown behavior, VM load balancing, cluster witness, and affinity rules.
+There are several general settings that can be applied to your cluster. Here you can view properties, node shutdown behavior, VM load balancing, cluster witness, and affinity rules.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 
 2. Under **Tools**, select **Settings**.
 
-- To access comprehensive cluster, operating system and hardware related information, select **Properties**.
+- To access comprehensive cluster, operating system, and hardware related information, select **Properties**.
 
     :::image type="content" source="media/manage-cluster/2022/properties.png" alt-text="Active/active stretched cluster scenario" lightbox="media/manage-cluster/2022/properties.png":::
 
@@ -77,7 +77,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
   :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
 
-- To choose a quorum witness type select **Witness**. Then for **Witness type** select one of the following:
+- To choose a quorum witness type, select **Witness**. Then for **Witness type** choose one of the following:
 
    - **Cloud witness** - to use an Azure cloud resource as witness
 
@@ -103,13 +103,16 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
 - To set virtual hard disk and virtual machine paths, select **General** and then use the following settings:
 
-   - **Virtual Hard Disks Path** - specify the default folder for storing virtual hard disk files.
+   - **Virtual Hard Disks Path** - specify the default folder for storing virtual hard disk files
 
-   - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
+   - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files
 
    :::image type="content" source="media/manage-cluster/2022/general.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/2022/general.png":::
 
-- To allow redirection of local devices and resources from virtual machines select **Enhanced Session Mode**. Note, Enhanced Session Mode connections require a supported guest operating system.
+- To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. 
+
+    >[Note!]
+    >Enhanced Session Mode connections require a supported guest operating system.
 
     :::image type="content" source="media/manage-cluster/2022/enhanced-session-mode.png" alt-text="cluster Hyper-V Enhanced Session Mode screen" lightbox="media/manage-cluster/2022/enhanced-session-mode.png":::
 
@@ -119,9 +122,9 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
 - To specify the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Next, input a number and specify the following details:
 
-   - For **Authentication Protocol** select either **CredSSP** or **Kerberos**.
+   - For **Authentication Protocol** select either **CredSSP** or **Kerberos**
 
-   - For **Performance Options** select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
+   - For **Performance Options** select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection
 
    - Enable the **Use any network** checkbox to use any available network on a node to perform the migration
 
@@ -135,11 +138,9 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
 There are several Azure Stack HCI settings that you can apply to your cluster.
 
-- To change how often log data is collected from your cluster, if monitoring capabilities are enabled, select **Monitoring data**.
+- To change how often log data is collected from your cluster, if monitoring capabilities are enabled, select **Monitoring data**. For information on how to enable log collection, see [How do I enable log collection in Azure](../manage/monitor-hci-single.md).
 
     :::image type="content" source="media/manage-cluster/2022/monitoring-data.png" alt-text="cluster Monitoring data screen" lightbox="media/manage-cluster/2022/monitoring-data.png":::
-
-    For information on how to enable log collection, see [How do I enable log collection in Azure](../manage/monitor-hci-single.md).
 
 - To change the Service Health data level, navigate to the Azure Stack HCI cluster in **Azure Portal**. Select **Settings**, then **Configuration**, and **Service Health data**.
 
@@ -148,7 +149,7 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
     > [!NOTE]
     > This change can only be performed from Azure Portal. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
 
-- To enable VM provisioning, through the Azure Portal on HCI a resource bridge is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
+- To enable VM provisioning through the Azure Portal on HCI, a resource bridge is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
 
     :::image type="content" source="media/manage-cluster/2022/resource-bridge.png" alt-text="cluster Resource bridge screen" lightbox="media/manage-cluster/2022/resource-bridge.png":::
 
