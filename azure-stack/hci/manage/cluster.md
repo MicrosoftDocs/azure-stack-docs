@@ -79,7 +79,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
      For information on how load-balance virtual machines works, see [Virtual Machine Load Balancing overview](/windows-server/failover-clustering/vm-load-balancing-overview).
 
-    :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
+  :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
 
 - To choose a quorum witness type select **Witness**. Then for **Witness type** select one of the following:
 
