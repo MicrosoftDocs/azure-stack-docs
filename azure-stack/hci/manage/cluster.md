@@ -91,7 +91,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
     For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
- :::image type="content" source="media/manage-cluster/2022/witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/2022/witness.png":::
+  :::image type="content" source="media/manage-cluster/2022/witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/2022/witness.png":::
 
 - To use affinity rules to control virtual machine placement, across host servers and sites, select **Affinity rules**. Then select **Create rule**. For detailed information on how set up rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
 
