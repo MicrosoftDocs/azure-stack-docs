@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 04/28/2022
+ms.date: 10/11/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -232,7 +232,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
-- [Remote support](/manage/get-remote-support#configure-proxy-settings)
+- [Remote support](../manage/get-remote-support.md#configure-proxy-settings)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/network-requirements)
 - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
 

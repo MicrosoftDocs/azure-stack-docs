@@ -3,9 +3,9 @@ title: Set up multiple administrators on AKS hybrid
 description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS hybrid
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/07/2022
+ms.date: 10/11/2022
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 10/11/2022
 ms.reviewer: scooley
 # Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS hybrid.
 # Keyword: administrator setup register users Microsoft on Cloud (MOC) service 
@@ -54,4 +54,5 @@ mocctl.exe security login --loginpath $loginFile --identity  # login to new iden
 
 ## Next steps
 
+- [Read more about Azure Stack HCI and Windows Server access controls](/windows-server/manage/windows-admin-center/plan/user-access-options#available-roles)
 - [Container networking concepts](./concepts-container-networking.md)
