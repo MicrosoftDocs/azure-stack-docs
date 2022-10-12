@@ -11,7 +11,7 @@ ms.date: 08/11/2022
 
 # Join the Azure Stack HCI preview channel
 
-> Applies to: Azure Stack HCI, version 22H2 Preview
+> Applies to: Azure Stack HCI, version 22H2
 
 The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. It's intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are available via Windows Update using Windows Admin Center or PowerShell.
 
@@ -26,7 +26,7 @@ The Azure Stack HCI release preview channel is an opt-in program that lets custo
 Before joining the preview channel, make sure that all servers in the cluster are online and that the cluster is [registered with Azure](../deploy/register-with-azure.md).
 
    > [!IMPORTANT]
-   > You must be running 21H2 to be offered the 22H2 Preview.
+   > You must be running version 21H2 to be offered version 22H2.
 
 1. Make sure you have the latest version of Windows Admin Center installed on a management PC or server.
 

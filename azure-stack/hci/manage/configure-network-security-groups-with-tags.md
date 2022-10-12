@@ -1,6 +1,6 @@
 ---
-title: Configure network security groups with tags in Windows Admin Center (preview)
-description: Learn how to configure network security groups with tags in Windows Admin Center (preview).
+title: Configure network security groups with tags in Windows Admin Center
+description: Learn how to configure network security groups with tags in Windows Admin Center.
 ms.author: v-mandhiman
 ms.reviewer: anpaul
 ms.topic: article
@@ -8,14 +8,11 @@ author: ManikaDhiman
 ms.date: 09/22/2022
 ---
 
-# Configure network security groups with tags in Windows Admin Center (preview)
+# Configure network security groups with tags in Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
-
-> [!IMPORTANT]
-> The network security tags feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
