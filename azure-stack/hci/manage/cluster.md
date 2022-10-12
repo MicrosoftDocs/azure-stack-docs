@@ -20,20 +20,14 @@ The cluster dashboard displays information regarding cluster health and performa
 
    :::image type="content" source="media/manage-cluster/2022/dashboard.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/2022/dashboard.png":::
 
-To view this information, select the cluster name under **All connections**. Then under **Tools**, on the left, select **Dashboard**. You can view the following details:
+To view this information, select the cluster name under **All connections**. Then under **Tools**, on the left, select **Dashboard**. You can view the following details and more:
 
 - Cluster event alerts
-- List of the servers joined to the cluster
-- List of virtual machines running on the cluster
-- List of disk drives available on the cluster
-- List of volumes available on the cluster
-- Total cluster CPU usage for the cluster
-- Total cluster memory usage for the cluster
-- Total cluster storage usage for the cluster
+- List of servers joined, virtual machines running, and disk drives and volumes available on the cluster
+- Total CPU, memory, and storage usage for the cluster
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
-- Azure Stack HCI registration
-- Arc-enabled servers
+- Azure Stack HCI registration and Arc enabled servers
 
 ## Change storage settings
 
