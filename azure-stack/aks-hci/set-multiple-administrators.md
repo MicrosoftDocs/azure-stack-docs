@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Starting with the September release of Azure Kubernetes Service (AKS) on Azure Stack HCI, administrative rights have merged with the local **Administrators** user group.
+Beginning with the September release of Azure Kubernetes Service (AKS) on Azure Stack HCI, administrative rights have merged with the local **Administrators** user group.
 
 To set up multiple administrators, upgrade to the September release or later.
 
