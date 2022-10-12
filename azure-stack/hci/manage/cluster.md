@@ -37,12 +37,12 @@ To view this information, select the cluster name under **All connections**. The
 
 ## Change storage settings
 
-You can select to use server memory to cache frequent reads and specify the maximum memory to be used per server. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
+There are currently two storage settings that can assist customers with server memory and Storage Spaces Direct options. To access these components follow the steps below:
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 2. Under **Tools**, select **Settings**.
 
-- To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory.
+- To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
    :::image type="content" source="media/manage-cluster/2022/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/2022/in-memory-cache.png":::
 
@@ -79,7 +79,7 @@ There are several general settings that can be applied to your cluster. Here's w
 
      For information on how load-balance virtual machines works, see [Virtual Machine Load Balancing overview](/windows-server/failover-clustering/vm-load-balancing-overview).
 
- :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
+    :::image type="content" source="media/manage-cluster/2022/vm-load-balancing.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/2022/vm-load-balancing.png":::
 
 - To choose a quorum witness type select **Witness**. Then for **Witness type** select one of the following:
 
@@ -120,7 +120,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/numa-spanning.png" alt-text="cluster NUMA Spanning screen" lightbox="media/manage-cluster/2022/numa-spanning.png":::
 
-- To specify the number of VMs that can be simultaneously moved while running (live migrated) select **Live Migration**. Next, select a number and specify the following details:
+- To specify the number of VMs that can be simultaneously moved while running (live migrated) select **Live Migration**. Next, input a number and specify the following details:
 
    - For **Authentication Protocol** select either **CredSSP** or **Kerberos**.
 
