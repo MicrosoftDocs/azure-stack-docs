@@ -60,9 +60,9 @@ Use the following steps to deploy and configure Velero:
    To create the storage account, run the following command:
 
    ```azurecli
-   AZURE_STORAGE_ACCOUNT_ID="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
+   AZURE_STORAGE_ACCOUNT_NAME="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
    az storage account create \
-      --name $AZURE_STORAGE_ACCOUNT_ID \
+      --name $AZURE_STORAGE_ACCOUNT_NAME \
       --resource-group $AZURE_BACKUP_RESOURCE_GROUP \
       --sku Standard_GRS \
       --encryption-services blob \
@@ -75,7 +75,7 @@ Use the following steps to deploy and configure Velero:
    
    ```azurecli
    BLOB_CONTAINER=velero
-   az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_ID
+   az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_NAME
    ```
 
 3. [Set permissions for Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#set-permissions-for-velero) and create a service principal.
