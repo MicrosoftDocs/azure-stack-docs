@@ -4,7 +4,7 @@
   items:
   - name: AKS hybrid deployment options
     href: aks-hybrid-options-overview.md
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
   - name: Evaluation guide
     items:
