@@ -2,10 +2,10 @@
 title: Overview of AKS hybrid cluster provisioning from Azure (preview)
 description: Overview of AKS hybrid cluster provisioning from Azure (preview)
 ms.topic: overview
-ms.date: 10/03/2022
+ms.date: 10/12/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/03/2022
+ms.lastreviewed: 10/12/2022
 ms.reviewer: abha
 # Intent: As an IT Pro, I want to learn how to create and manage AKS hybrid clusters on-premises from Azure
 # Keyword: 
@@ -13,16 +13,16 @@ ms.reviewer: abha
 
 # Overview of AKS hybrid cluster provisioning from Azure (preview)
 
-Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and ARM templates to create and manage your AKS hybrid clusters running on Azure Stack HCI and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Azure AD identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We’ve also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
+Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS hybrid clusters running on Azure Stack HCI and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Azure AD identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We’ve also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
 
 We continue to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed AKS using Azure, you’ll feel right at home managing AKS hybrid clusters on Windows Server or Azure Stack HCI with familiar Azure portal or Azure CLI management experiences. 
 
 You’ll also be able to deploy applications at scale using GitOps in both AKS and AKS hybrid clusters. GitOps applies development practices like version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation. 
 
-At this time, you can perform the following operations through the Azure portal, Azure CLI and ARM templates:
+At this time, you can perform the following operations through the Azure portal, Azure CLI and Resource Manager templates:
 
 - Create/list/show AKS hybrid preview clusters
-- Give users access to ARM resources like AKS hybrid clusters, nodepools and vnet object through Azure RBAC 
+- Give users access to Azure Resource Manager resources like AKS hybrid clusters, nodepools and vnet object through Azure RBAC 
 - Access the AKS hybrid cluster using kubectl and your Azure AD identity
 - Add/list/show Linux and Windows nodepools on your AKS hybrid cluster
 - Delete your AKS hybrid clusters and nodepools 
