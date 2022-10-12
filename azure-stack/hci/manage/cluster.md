@@ -120,7 +120,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/2022/numa-spanning.png" alt-text="cluster NUMA Spanning screen" lightbox="media/manage-cluster/2022/numa-spanning.png":::
 
-- To specify the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Next, input a number and specify the following details:
+- To specify the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Note, the default value is 1. To change the default, input a new number and specify the following details:
 
    - For **Authentication Protocol** select either **CredSSP** or **Kerberos**
 
@@ -130,7 +130,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    :::image type="content" source="media/manage-cluster/2022/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/2022/live-migration.png":::
 
-- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number. The default value is 1.
+- To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number.
 
     :::image type="content" source="media/manage-cluster/2022/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/2022/storage-migration.png":::
 
