@@ -16,7 +16,7 @@ ms.date: 10/12/2022
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure marketplace.
 
-Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](https://learn.microsoft.com/azure/automanage/automanage-hotpatch), [SMB over QUIC](https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](https://learn.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-extended-network).
+Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
 ## Considerations
 
@@ -33,7 +33,7 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 ## Deploy the OS
 
-Windows Server Azure Edition can be deployed as a guest VM using either an HCI Marketplace VHD image or an [Azure Marketplace](https://learn.microsoft.com/marketplace/azure-marketplace-overview) VHD image.
+Windows Server Azure Edition can be deployed as a guest VM using either an HCI Marketplace VHD image or an [Azure Marketplace](/marketplace/azure-marketplace-overview) VHD image.
 
 ## [HCI marketplace image](#tab/hci)
 
@@ -55,13 +55,13 @@ You can provision a Windows Server Azure Edition VM using an Azure Marketplace i
 
 You can run the commands below from the Azure Portal using either the Azure Cloud shell or locally using the Azure CLI.
 
-**Using Azure Cloud shell:** Make sure you're connected to Azure and are running [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/overview) in either a command prompt or in a bash environment.
+**Using Azure Cloud shell:** Make sure you're connected to Azure and are running [Azure Cloud Shell](/azure/cloud-shell/overview) in either a command prompt or in a bash environment.
 
-**Using Azure CLI locally:** Run the [az login](https://learn.microsoft.com/cli/azure/reference-index?#az-login) command to sign into Azure. Follow any other prompts to finish signing in.
+**Using Azure CLI locally:** Run the [az login](/cli/azure/reference-index?#az-login) command to sign into Azure. Follow any other prompts to finish signing in.
 
-If this is your first time using Azure CLI, install any required extensions as described in [Use extensions with the Azure CLI](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview).
+If this is your first time using Azure CLI, install any required extensions as described in [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-Run the [az version](https://learn.microsoft.com/cli/azure/reference-index?#az-version) command to make sure your client is up to date. If it's out of date, run the [az upgrade](https://learn.microsoft.com/cli/azure/reference-index?#az-upgrade) command to upgrade to the latest version.
+Run the [az version](/cli/azure/reference-index?#az-version) command to make sure your client is up to date. If it's out of date, run the [az upgrade](/cli/azure/reference-index?#az-upgrade) command to upgrade to the latest version.
 
 ### 1. Download OS image
 
@@ -105,9 +105,9 @@ Next, you'll need to export the VHD you created from the managed disk to your Az
 
 To export the VHD:
 
-1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](https://learn.microsoft.com/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure Marketplace at this URL.
+1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure Marketplace at this URL.
 
-1. Download the VHD image. The process may take several minutes. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](https://learn.microsoft.com/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
+1. Download the VHD image. The process may take several minutes. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
 
     ```powershell
     azcopy copy "$sas" "destination_path_on_cluster" --check-md5 NoCheck
@@ -152,4 +152,4 @@ These differences include the following limitations for this preview release:
 
 ## Next steps
 
-Learn more about [Azure Automanage for Windows Server](https://learn.microsoft.com/azure/automanage/automanage-windows-server-services-overview).
+Learn more about [Azure Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview).
