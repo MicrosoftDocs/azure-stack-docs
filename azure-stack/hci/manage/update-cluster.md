@@ -4,17 +4,17 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/18/2022
+ms.date: 10/13/2022
 ---
 
 # Update Azure Stack HCI clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI, version 21H2 has entered General Availability (GA) and is available as a feature update. To update your cluster to version 21H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center). If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI clusters, don't attempt to upgrade to version 21H2 without first installing [System Center 2022](/system-center/). Don't upgrade your cluster using Windows Admin Center or PowerShell if you intend to continue to manage it using Virtual Machine Manager.
+   > Azure Stack HCI, version 22H2 has entered General Availability (GA) and is available as a feature update. To update your cluster to version 22H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center). If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI clusters, don't attempt to upgrade to version 21H2 without first installing [System Center 2022](/system-center/). Don't upgrade your cluster using Windows Admin Center or PowerShell if you intend to continue to manage it using Virtual Machine Manager.
 
 This topic focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
