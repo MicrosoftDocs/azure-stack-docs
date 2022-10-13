@@ -149,13 +149,6 @@ The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI
 
 You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. 
 
-## Change in default behavior of NetBIOS name resolution
-
-With this release, NetBIOS name resolution has been placed in “learning mode” where NetBIOS is used only as a fallback after mDNS and LLMNR queries fail. This means devices will typically stop using NetBIOS name resolution unless it's manually re-enabled because mDNS will most frequently answer first. Read the blog about [aligning on mDNS](https://techcommunity.microsoft.com/t5/networking-blog/aligning-on-mdns-ramping-down-netbios-name-resolution-and-llmnr/ba-p/3290816).
-
-If this causes connectivity issues, you can restore the previous NetBIOS name resolution functionality by enabling the “Configure NetBIOS settings” Group Policy, and selecting one of the allow or learning modes. You can find this Group Policy in Local Group Policy Editor, under **Computer Configuration** > **Administrative Templates** > **Network** > **DNS Client**. 
-
-:::image type="content" source="./media/whats-new/netbios-group-policy.png" alt-text="Screenshot showing Configure NetBIOS settings." lightbox="./media/whats-new/netbios-group-policy.png" :::
 
 ## Next steps
 
