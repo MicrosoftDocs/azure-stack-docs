@@ -49,11 +49,11 @@ There are currently two storage settings that can be applied to your cluster. To
 
     - To change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters as well.
 
-    - **Cache State** - enable or disable persistent cache
+        - **Cache State** - enable or disable persistent cache
 
-    - **Cache mode for HDD** - change the cache mode for HDD drives
+        - **Cache mode for HDD** - change the cache mode for HDD drives
 
-    - **Cache mode for SSD** - change the cache for SSD drives
+        - **Cache mode for SSD** - change the cache for SSD drives
 
         :::image type="content" source="media/manage-cluster/storage-spaces-and-pools.png" alt-text="cluster Storage Spaces and pools screen" lightbox="media/manage-cluster/storage-spaces-and-pools.png":::
 
