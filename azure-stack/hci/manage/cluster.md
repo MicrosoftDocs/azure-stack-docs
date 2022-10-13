@@ -16,7 +16,7 @@ This article details how Windows Admin Center can be used to manage your Azure S
 
 ## View the cluster dashboard
 
-The **Cluster Manager Dashboard** displays overview information about the cluster, such as cluster health and performance.
+The **Cluster Manager Dashboard** or **cluster dashboard** displays overview information about the cluster, such as cluster health and performance.
 
    :::image type="content" source="media/manage-cluster/dashboard.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/dashboard.png":::
 
@@ -125,7 +125,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
         :::image type="content" source="media/manage-cluster/numa-spanning.png" alt-text="cluster NUMA Spanning screen" lightbox="media/manage-cluster/numa-spanning.png":::
 
-     - To specify the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Note, the default value is 1. To change the default, input a new number and specify the following details:
+     - To indicate the number of VMs that can be moved simultaneously, while running (live migrated), select **Live Migration**. Note, the default value is 1. To change the default, input a new number and specify the following details:
 
          - For **Authentication Protocol** select either **CredSSP** or **Kerberos**
 
@@ -135,7 +135,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
         :::image type="content" source="media/manage-cluster/live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/live-migration.png":::
 
-     - To specify the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number.
+     - To indicate the number of storage migrations that can be performed at the same time, select **Storage Migration** and then input a number.
 
         :::image type="content" source="media/manage-cluster/storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/storage-migration.png":::
 
@@ -156,9 +156,9 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
           :::image type="content" source="media/manage-cluster/service-health-data.png" alt-text="cluster Service health data screen" lightbox="media/manage-cluster/service-health-data.png":::
 
           > [!NOTE]
-          > This change can only be performed from Azure Portal. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
+          > This change can only be performed from **Azure Portal**. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
 
-     - To enable VM provisioning through the Azure Portal on HCI, a resource bridge is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
+     - To enable VM provisioning through the Azure Portal on HCI, a **Resource Bridge** is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
 
         :::image type="content" source="media/manage-cluster/resource-bridge.png" alt-text="cluster Resource bridge screen" lightbox="media/manage-cluster/resource-bridge.png":::
 
