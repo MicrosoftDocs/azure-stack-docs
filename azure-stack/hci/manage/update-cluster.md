@@ -9,7 +9,7 @@ ms.date: 10/13/2022
 
 # Update Azure Stack HCI clusters
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2 and 20H2
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
