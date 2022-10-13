@@ -42,9 +42,9 @@ There are currently two storage settings that can be applied to your cluster. To
 
 2. In the **Cluster Manager** view, you'll see **Tools** on the left, and select **Settings**.
 
- - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
+     - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
-   :::image type="content" source="media/manage-cluster/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/in-memory-cache.png":::
+       :::image type="content" source="media/manage-cluster/in-memory-cache.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/in-memory-cache.png":::
 
  - To change the Storage pool friendly name that Storage Spaces Direct uses, adjust Storage Spaces Direct settings, and more by selecting **Storage Spaces and pools**. This setting is applicable for stretched clusters as well.
 
