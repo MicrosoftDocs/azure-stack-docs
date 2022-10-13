@@ -45,17 +45,17 @@ You do this by following these steps:
 
 1. Learn about how certain [Azure marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
 
-1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure Marketplace OS image.
+1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure marketplace OS image.
 
 1. Use the Windows Server Azure Edition HCI gallery OS image to provision a VM.
 
 ## [Azure marketplace image](#tab/azure)
 
-You can provision a Windows Server Azure Edition VM using an Azure Marketplace image using the process described below.
+You can provision a Windows Server Azure Edition VM using an Azure marketplace image using the process described below.
 
-You can run the commands below from the Azure Portal using either the Azure Cloud shell or locally using the Azure CLI.
+You can run the commands below from the Azure portal using either the Azure Cloud Shell or locally using the Azure CLI.
 
-**Using Azure Cloud shell:** Make sure you're connected to Azure and are running [Azure Cloud Shell](/azure/cloud-shell/overview) in either a command prompt or in a bash environment.
+**Using Azure Cloud Shell:** Make sure you're connected to Azure and are running [Azure Cloud Shell](/azure/cloud-shell/overview) in either a command prompt or in a bash environment.
 
 **Using Azure CLI locally:** Run the [az login](/cli/azure/reference-index?#az-login) command to sign into Azure. Follow any other prompts to finish signing in.
 
@@ -65,7 +65,7 @@ Run the [az version](/cli/azure/reference-index?#az-version) command to make sur
 
 ### 1. Download OS image
 
-You can find Windows Server Azure Edition images that are available to download by using the search function in Azure Marketplace in the Azure portal. The example query below has search criteria for Windows Server 2022 Azure Edition Core:
+You can find Windows Server Azure Edition images that are available to download by using the search function in Azure marketplace in the Azure portal. The example query below has search criteria for Windows Server 2022 Azure Edition Core:
 
 ```powershell
 az vm image list --all --publisher "microsoftwindowsserver" --offer "WindowsServer" --sku "2022-datacenter-azure-edition-core"
@@ -79,7 +79,7 @@ MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest
 
 ### 2. Create a new Azure managed disk
 
-Next, you'll create an Azure managed disk from the image you downloaded from Azure Marketplace.
+Next, you'll create an Azure managed disk from the image you downloaded from Azure marketplace.
 
 To create an Azure managed disk:
 
@@ -105,7 +105,7 @@ Next, you'll need to export the VHD you created from the managed disk to your Az
 
 To export the VHD:
 
-1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure Marketplace at this URL.
+1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure marketplace at this URL.
 
 1. Download the VHD image. The process may take several minutes. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
 
@@ -148,7 +148,7 @@ These differences include the following limitations for this preview release:
 - Hotpatch configuration isn't available using Azure Update Manager.
 - Hotpatch can't be disabled.
 - Automatic Patching orchestration isn't available.
-- Orchestration must be performed manually, such as by using Windows Update with Sconfig.
+- Orchestration must be performed manually, such as by using Windows Update with SConfig.
 
 ## Next steps
 
