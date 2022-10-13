@@ -333,53 +333,11 @@
 - name: Preview channel
   items:
   - name: Join preview channel
-    href: manage/preview-channel.md
-  - name: What's new in version 22H2
-    href: whats-new.md
-  - name: View known issues in version 22H2
-    href: known-issues-22h2.md
-  - name: Update version 21H2
-    items:
-    - name: Update to version 22H2
-      href: manage/install-preview-version.md
-    - name: Run post update steps
-      href: manage/preview-post-installation.md
-  - name: Plan for version 22H2
-    items:
-    - name: Review security
-      items: 
-      - name: Use Windows Defender Application Control 
-        href: concepts/security-windows-defender-application-control.md
-      - name: Review security baseline, drift control
-        href: concepts/secure-baseline.md
-      - name: Understand BitLocker encryption
-        href: concepts/security-bitlocker.md
-    - name: Assess environment readiness
-      href: manage/use-environment-checker.md
-  - name: Deploy version 22H2 
-    items:
-    - name: Deployment overview
-      href: deploy/deployment-tool-introduction.md
-    - name: Review prerequisites
-      href: deploy/deployment-tool-prerequisites.md
-    - name: View deployment checklist
-      href: deploy/deployment-tool-checklist.md
-    - name: Prepare Active Directory
-      href: deploy/deployment-tool-active-directory.md
-    - name: Install version 22H2 operating system
-      href: deploy/deployment-tool-install-os.md
-    - name: Deploy interactively
-      href: deploy/deployment-tool-new-file.md
-    - name: Deploy using a config file
-      href: deploy/deployment-tool-existing-file.md
-    - name: Deploy using PowerShell
-      href: deploy/deployment-tool-powershell.md
-    - name: Validate deployment
-      href: deploy/deployment-tool-validate.md
-    - name: Collect logs 
-      href: manage/collect-logs.md
-    - name: Troubleshoot issues
-      href: deploy/deployment-tool-troubleshoot.md
+    href: manage/preview-channel.md    
+  - name: Update to version 22H2
+    href: manage/install-preview-version.md
+  - name: Run post update steps
+    href: manage/preview-post-installation.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
