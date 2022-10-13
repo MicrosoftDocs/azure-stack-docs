@@ -153,10 +153,10 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
  - To change the Service Health data level, navigate to the Azure Stack HCI cluster in **Azure Portal**. Select **Settings**, then **Configuration**, and **Service Health data**.
 
-    :::image type="content" source="media/manage-cluster/service-health-data.png" alt-text="cluster Service health data screen" lightbox="media/manage-cluster/service-health-data.png":::
+      :::image type="content" source="media/manage-cluster/service-health-data.png" alt-text="cluster Service health data screen" lightbox="media/manage-cluster/service-health-data.png":::
 
-    > [!NOTE]
-    > This change can only be performed from Azure Portal. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
+      > [!NOTE]
+      > This change can only be performed from Azure Portal. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
 
  - To enable VM provisioning through the Azure Portal on HCI, a resource bridge is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
 
