@@ -21,7 +21,7 @@ Azure Stack HCI, version 22H2 is the latest version of the operating system avai
 
 Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI, version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI, version 22H2 operating system](./manage/install-preview-version.md).
 
-You can join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
+You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
 The following sections briefly describe the various OS-related features and enhancements in Azure Stack HCI, version 22H2.
 
