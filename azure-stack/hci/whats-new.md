@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/08/2022
+ms.date: 10/12/2022
 ---
 
 # What's new in Azure Stack HCI, version 22H2 
@@ -117,11 +117,6 @@ If you have Windows Server Datacenter licenses with active Software Assurance, u
 
 For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit.md).
 
-## New deployment tool
-
-With this release, you'll be able to use a brand new deployment tool for a first-time installation of Azure Stack HCI, version 22H2. This tool provides an interactive, guided experience that helps you provide deployment inputs and create a *config* file. You can then use this *config* file to deploy and register the Azure Stack HCI cluster. If you have an existing config file, you can import the file in the deployment and then deploy the cluster. You can also deploy the cluster using PowerShell. 
-
-For more information on this new deployment tool and the associated deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
 
 ## Azure Arc VM changes and Azure Marketplace
 
@@ -152,36 +147,11 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use Environment Checker to assess deployment readiness](./manage/use-environment-checker.md). 
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. 
 
-## New security capabilities
-
-For new installations, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
-
-In summary, version 22H2 provides:
-
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. 
-
-    The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
-
-- Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
-
-- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities.
-
-- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes.
-
-- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
-
-## Change in default behavior of NetBIOS name resolution
-
-With this release, NetBIOS name resolution has been placed in “learning mode” where NetBIOS is used only as a fallback after mDNS and LLMNR queries fail. This means devices will typically stop using NetBIOS name resolution unless it's manually re-enabled because mDNS will most frequently answer first. Read the blog about [aligning on mDNS](https://techcommunity.microsoft.com/t5/networking-blog/aligning-on-mdns-ramping-down-netbios-name-resolution-and-llmnr/ba-p/3290816).
-
-If this causes connectivity issues, you can restore the previous NetBIOS name resolution functionality by enabling the “Configure NetBIOS settings” Group Policy, and selecting one of the allow or learning modes. You can find this Group Policy in Local Group Policy Editor, under **Computer Configuration** > **Administrative Templates** > **Network** > **DNS Client**. 
-
-:::image type="content" source="./media/whats-new/netbios-group-policy.png" alt-text="Screenshot showing Configure NetBIOS settings." lightbox="./media/whats-new/netbios-group-policy.png" :::
 
 ## Next steps
 
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847).
 - [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md).
-- [Review the Deployment overview](./deploy/deployment-tool-introduction.md).
+
