@@ -6,12 +6,12 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2022
+ms.date: 10/14/2022
 ---
 
 # Azure Stack HCI cluster alerts
 
-This article describes how customers can set up alerts for Azure Stack HCI, customers can set up alerts using pre-existing sample Log queries. To utilize this function, customers will need to enable Logs and associate a Log analytics workspace with their Azure Stack HCI cluster prior to setting up alerts using Logs. Additionally, customers can configure Insights for monitoring their cluster and setting up alerts.
+This article describes how customers can set up alerts for Azure Stack HCI, using pre-existing sample Log queries. To utilize this function, customers will need to enable Logs and associate a Log analytics workspace with their Azure Stack HCI cluster prior to setting up alerts using Logs. Additionally, you'll see how customers can configure Insights for monitoring their cluster and setting up alerts.
 
 ## Set up alerts using sample Log queries
 
@@ -20,6 +20,10 @@ This article describes how customers can set up alerts for Azure Stack HCI, cust
 3. Select **Load to Editor** to open the query workspace. 
 4. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
 5. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
+
+    :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Cluster Arm Id query screen" lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
+
+6. Select **Run**.
 
 Once the information is populated you can analyze the logs and set up alerts on the results.
 
