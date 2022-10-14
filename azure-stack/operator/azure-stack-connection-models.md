@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub integrated systems connection models 
 description: Determine connection models and other deployment planning decisions for Azure Stack Hub integrated systems.
-author: BryanLa
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
 

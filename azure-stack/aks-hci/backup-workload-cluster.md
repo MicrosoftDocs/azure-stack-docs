@@ -1,21 +1,21 @@
 ---
-title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI
-description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI.
-author: mattbriggs
+title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server
+description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI and Windows Server.
+author: sethmanheim
 ms.topic: how-to
-ms.date: 04/01/2022
-ms.author: mabrigg 
+ms.date: 05/16/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 
 # Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
-# Keyword: workload cluster backup
+# Keyword: workload cluster backup restore Velero Azure Blob 
 
 ---
 
 # Perform workload cluster backup or restore using Velero and Azure Blob storage
 
-You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
+You can create a workload cluster backup or restore from a backup on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
@@ -60,9 +60,9 @@ Use the following steps to deploy and configure Velero:
    To create the storage account, run the following command:
 
    ```azurecli
-   AZURE_STORAGE_ACCOUNT_ID="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
+   AZURE_STORAGE_ACCOUNT_NAME="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
    az storage account create \
-      --name $AZURE_STORAGE_ACCOUNT_ID \
+      --name $AZURE_STORAGE_ACCOUNT_NAME \
       --resource-group $AZURE_BACKUP_RESOURCE_GROUP \
       --sku Standard_GRS \
       --encryption-services blob \
@@ -75,7 +75,7 @@ Use the following steps to deploy and configure Velero:
    
    ```azurecli
    BLOB_CONTAINER=velero
-   az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_ID
+   az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_NAME
    ```
 
 3. [Set permissions for Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#set-permissions-for-velero) and create a service principal.
@@ -124,7 +124,7 @@ Use the following steps to deploy and configure Velero:
 
    Install Velero, including all the prerequisites, on the cluster, and then start the deployment. The deployment creates a namespace called `velero` and places a deployment named `velero` in it.
 
-   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI doesn't support volume snapshots.
+   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI and Windows Server doesn't support volume snapshots.
 
    ```powershell
    velero install \
@@ -132,7 +132,7 @@ Use the following steps to deploy and configure Velero:
       --plugins velero/velero-plugin-for-microsoft-azure:v1.3.0 \
       --bucket $BLOB_CONTAINER \
       --secret-file ./credentials-velero \
-      --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
+      --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_NAME[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
       --use-restic
    ```
 
@@ -140,7 +140,7 @@ Use the following steps to deploy and configure Velero:
 
    ```powershell
    kubectl -n velero get pods
-   kubectl logs deployment/velero -n Velero
+   kubectl logs deployment/velero -n velero
    ```
 
 ## Use Velero to create a workload cluster backup

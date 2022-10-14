@@ -1,10 +1,10 @@
 ---
-title: Uninstall-AksHciMonitoring for AKS on Azure Stack HCI
-author: mattbriggs
+title: Uninstall-AksHciMonitoring for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Uninstall-AksHciMonitoring PowerShell command removes Prometheus-based monitoring solution.
 ms.topic: reference
 ms.date: 06/22/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Uninstall-AksHciMonitoring
 
 ## Synopsis
-Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI deployment.
+Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Uninstall-AksHciMonitoring -name <String>
 ```
 
 ## Description
-Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI deployment.
+Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment.
 
 ## Examples
 

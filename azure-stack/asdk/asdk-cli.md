@@ -1,10 +1,10 @@
 ---
 title: Setting up certificates for Azure CLI on the Azure Stack Development Kit (ASDK)? | Microsoft Docs
 description: Learn about setting up certificates for Azure CLI on the Azure Stack Development Kit Azure Stack Development Kit.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 11/5/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: raymondl
 ms.lastreviewed: 11/5/2021
 

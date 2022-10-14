@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
-  description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
+  title: Common issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Common known issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-title: Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI
+title: Resolve general issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
-  This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
+  This article describes some common known issues with Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
@@ -14,6 +14,10 @@ sections:
           When running AksHci PowerShell cmdlets, an 'Unable to Load DLL' error appears.
 
         answer: | 
+          Antivirus software may be causing this error by blocking the execution of PowerShell binaries that are required to perform cluster operations. An example of a similar error is shown below:
+          
+          [ ![Deployment: Connecting to remote server localhost failed.](media/known-issues/get-akshcicluster-error.png) ](media/known-issues/get-akshcicluster-error.png#lightbox)
+          
           To resolve this issue, verify the following processes and folders (which are required to perform AKS on Azure Stack HCI cluster operations) are excluded from the antivirus software:
           
           Processes:
@@ -40,54 +44,50 @@ sections:
           - C:\Program Files\WindowsPowerShell\Modules\PackageManagement\
           - C:\Program Files\AksHci\
           - C:\AksHci\
-          Antivirus software may be causing this error by blocking the execution of PowerShell binaries that are required to perform cluster operations. An example of a similar error is shown below:
-          
-          [ ![Deployment: Connecting to remote server localhost failed.](media/known-issues/get-akshcicluster-error.png) ](media/known-issues/get-akshcicluster-error.png#lightbox)
-          
       - question: | 
           Running Remove-AksHciCluster results in the error: 'Error: unable to delete group clustergroup-spdb:...'.
 
         answer: | 
-          To resolve this issue, restart CloudAgent.
           When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the following error occurs because there may be a deadlock:
           
           `Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded`
           
+          To resolve this issue, restart CloudAgent.
       - question: | 
           Error: invalid_client. The provided client secret keys are expired.
 
         answer: | 
-          Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
           This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. 
           
+          Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
       - question: | 
           Insufficient privileges to complete the operation.
 
         answer: | 
-          Review the privilege requirements here - [Azure Requirements for AKS on Azure Stack HCI clusters](/azure-stack/aks-hci/system-requirements#azure-requirements).
           This error usually occurs when the service principal (SPN) or your Azure credentials (username and password) used to connect your AKS on Azure Stack HCI cluster don't have sufficient privileges in the Azure subscription to perform the operation.
           
+          Review the privilege requirements here - [Azure Requirements for AKS on Azure Stack HCI clusters](/azure-stack/aks-hci/system-requirements#azure-requirements).
       - question: | 
           Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'.
 
         answer: | 
-          If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.
           XXX
           
+          If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.
       - question: | 
           Transport: Error while dialing dial unix /var/run/moc-kms-plugin/kmsPlugin.sock: connect: no such file or directory.
 
         answer: | 
-          Run [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to fix this issue.
           This error happens when the KMS plugin on your AKS-HCI target cluster has stopped running, because of an expired KMS plugin token. 
           
+          Run [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to fix this issue.
       - question: | 
           In a workload cluster with static IP, all pods in a node are stuck in a 'ContainerCreating' state.
 
         answer: | 
-          To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
           In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a `Connection timed out` error.
           
+          To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
   
 
 additionalContent: |
@@ -98,6 +98,6 @@ additionalContent: |
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
   - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
   
-  If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+  If you continue to run into problems when you're using AKS on Azure Stack HCI and Windows Server, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
   
     

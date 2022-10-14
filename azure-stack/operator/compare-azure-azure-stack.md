@@ -2,11 +2,11 @@
 title: Differences between global Azure, Azure Stack Hub, Azure Stack HCI
 titleSuffix: Azure Stack Hub 
 description: Learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
 
