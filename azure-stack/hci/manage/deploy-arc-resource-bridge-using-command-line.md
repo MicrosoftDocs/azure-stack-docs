@@ -90,7 +90,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       ```PowerShell
       $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP  
 
-      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP 
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
 
       Install-Moc
       ```
@@ -100,7 +100,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       ```PowerShell
       $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
 
-      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -createAutoConfigContainers $false
 
       Install-Moc
       ```
