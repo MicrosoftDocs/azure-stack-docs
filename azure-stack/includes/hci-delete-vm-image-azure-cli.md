@@ -36,7 +36,7 @@ PS C:\Users\azcli> $mktplaceImage = "marketplacetest04"
 PS C:\Users\azcli> az azurestackhci image delete --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> az azurestackhci galleryimage show --name $mktplaceImage --resource-group $resource_group
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest04' under resource group 'mkclus90-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
