@@ -4,11 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-<<<<<<< HEAD
 ms.date: 10/13/2022
-=======
-ms.date: 08/08/2022
->>>>>>> 9c61bc668bce0b2711bd55dbd1c328a4764079d0
 ---
 
 # Update Azure Stack HCI clusters
