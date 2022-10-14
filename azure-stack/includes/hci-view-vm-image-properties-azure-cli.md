@@ -28,12 +28,12 @@ Follow these steps to use Azure CLI to view properties of an image:
 
     1.	Run the following command to view the properties.
 
-        ```az azurestackhci image show --id $mktplaceImageID```
+        ```az azurestackhci galleryimage show --id $mktplaceImageID```
 
         Here's a sample output for this command:
 
         ```
-        PS C:\Users\azcli> az azurestackhci image show --id $mktplaceImageID
+        PS C:\Users\azcli> az azurestackhci galleryimage show --id $mktplaceImageID
         Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
@@ -80,13 +80,13 @@ Follow these steps to use Azure CLI to view properties of an image:
     1. Run the following command to view the properties:
     
         ```azurecli
-        az azurestackhci image show --name $MktplaceImage --resource-group $Resource_Group
+        az azurestackhci galleryimage show --name $MktplaceImage --resource-group $Resource_Group
         ```
     	
         Here's a sample output:
 
          ```azurecli
-         PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
+         PS C:\Users\azcli> az azurestackhci galleryimage show --name $mktplaceImage --resource-group $resource_group
          Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
          {
             "extendedLocation": {
