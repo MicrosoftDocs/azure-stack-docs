@@ -22,39 +22,55 @@ Converting from fixed to thin provisioned volumes returns any unused storage bac
 
 :::image type="content" source="media/thin-provisioning-conversion/fixed-to-thin-provisioning.png" alt-text="Diagram showing both fixed and thin provisioned volumes." lightbox="media/thin-provisioning-conversion/fixed-to-thin-provisioning.png":::
 
-The following conversion scenarios are *not* supported:
-
-- Scaling down, such as converting a three-way mirror to a two-way mirror.
-- Scaling from or to a mirror-accelerated parity volume.
-- Scaling from a nested two-way mirror or a nested mirror-accelerated parity volume.
-
 ## Use PowerShell to convert volumes
 
 Use PowerShell to convert from fixed to thin provisioning as follows:
 
 1. Run PowerShell as Administrator.
-1. Check the volume's allocated size, size, and provisioning type. Run the following command:
+1. Check the volume's allocated size, size, and provisioning type.
+
+    **For a non-tiered volume**, run the following command:
 
     ```powershell
-    Get-VirtualDisk -FriendlyName <name> | FL AllocatedSize, Size, ProvisioningType
+    Get-VirtualDisk -FriendlyName <volume_name> | FL AllocatedSize, Size, ProvisioningType
     ```
 
     Here is a sample output for the preceding command:
 
     ```powershell
-    PS C:\> New-Volume -FriendlyName DemoVolume -size 5TB -ProvisioningType Fixed
+    PS C:\> New-Volume -FriendlyName NonTierVol -Size 5TB -ProvisioningType Fixed
 
     DriveLetter  FriendlyName  FileSystemType  DriveType  HealthStatus  OperationalStatus
     -----------  ------------  --------------  ---------  ------------  -----------------
-                 DemoVolume    CSVFS_ReFS      Fixed      Healthy       OK
+                 NonTierVol    CSVFS_ReFS      Fixed      Healthy       OK
 
-    PS C:\> Get-VirtualDisk -FriendlyName DemoVolume | FL AllocatedSize, Size, ProvisioningType
+    PS C:\> Get-VirtualDisk -FriendlyName NonTierVol | FL AllocatedSize, Size, ProvisioningType
 
     Allocated Size   : 5497558138880
     Size             : 5497558138880
     ProvisioningType : Fixed
     ```
+    
+    **For a tiered volume**, run the following command:
+    
+    ```powershell
+    Get-StorageTier -FriendlyName <volume_name*> | FL AllocatedSize, Size, ProvisioningType
+   ```
+   
+   Here is a sample output for the preceding command:
 
+   ```powershell
+   PS C:\> Get-StorageTier -FriendlyName TierVol* | FL AllocatedSize, Size, ProvisioningType
+   
+   AllocatedSize    : 80530636800
+   Size             : 80530636800
+   ProvisioningType : Fixed
+   
+   AllocatedSize    : 26843545600
+   Size             : 26843545600
+   ProvisioningType : Fixed
+   ```
+    
 1. Convert the volume from fixed to thin provisioned as follows:
 
     **For a non-tiered volume**, run the following command:
@@ -62,40 +78,44 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
    ```powershell
     Set-VirtualDisk -FriendlyName <volume_name> -ProvisioningType Thin 
    ```
-
-    **For a mirror-tiered volume**, run the following command:
-
+    
+    **For a tiered volume**, run the following command:
+    
    ```powershell
-    Get-StorageTier <mirror_tier> | Set-StorageTier -ProvisioningType Thin
-   ```
-
-    **For a parity-tiered volume**, run the following command:
-
-   ```powershell
-    Get-StorageTier <parity_tier> | Set-StorageTier -ProvisioningType Thin
+    Get-StorageTier <volume_name*> | Set-StorageTier -ProvisioningType Thin
    ```
 
 1. Remount the volume for the change to take effect. A remount is needed as Resilient File System (ReFS) only recognizes the provisioning type at mount time.
 
-    **For single-server clusters**, complete the following steps:
+    **For single-server clusters**, complete the following steps. Workloads may experience minor interruptions, it is recommended to do this operation during maintenance hours.
 
     1. Get the cluster shared volume (CSV) name:
 
-       ```powershell
+        ```powershell
         Get-ClusterSharedVolume
         ```
 
     1. Next, take the volume offline:
 
-       ```powershell
+        ```powershell
         Stop-ClusterResource -Name <name>
         ```
+        
+        Here is a sample output for the preceding command:
 
+        ```powershell
+        PS C:\> Stop-ClusterResource -Name "Cluster Virtual Disk (TierVol)"
+        
+        Name                           State   Node
+        ----                           -----   ----
+        Cluster Virtual Disk (TierVol) Offline NodeA
+        ```
+    
     1. Then bring the volume back online:
 
        ```powershell
         Start-ClusterResource -Name <name>
-        ```
+       ```
 
     **For two-node and larger clusters**, do the following:
 
@@ -110,17 +130,32 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
        ```powershell
         Move-ClusterSharedVolume -Name <name> -Node <new_node>
         ```
+        Here is a sample output for the preceding command:
 
+        ```powershell
+        PS C:\> Get-ClusterSharedVolume
+        
+        Name                               State  Node
+        ----                               -----  ----
+        Cluster Virtual Disk (NonTierVol)  Online NodeA
+        Cluster Virtual Disk (TierVol)     Online NodeB
+        
+        PS C:\> Move-ClusterSharedVolume -Name "Cluster Virtual Disk (TierVol)" -Node NodeA
+        
+        Name                           State         Node
+        ----                           -----         ----
+        Cluster Virtual Disk (TierVol) Online        NodeA
+    
     1. Then move the CSV back to its original node:
 
        ```powershell
         Move-ClusterSharedVolume -Name <name> -Node <original_node>
         ```
 
-1. (Optional) Space reclamation after fixed to thin conversion occurs naturally over time. To speed up the process, run slab consolidation using the following command:
+1. (Optional) Space reclamation after fixed to thin conversion occurs naturally over time. To speed up the process, run slab consolidation from the node that the volume resides using the following command:
 
     ```powershell
-    Get-Volume -FriendlyName <name > | Optimize-Volume -SlabConsolidate
+    Get-Volume -FriendlyName <name> | Optimize-Volume -SlabConsolidate
     ```
     
     > [!NOTE]
@@ -128,9 +163,16 @@ Use PowerShell to convert from fixed to thin provisioning as follows:
 
 1. Confirm that `ProvisioningType` is set to `Thin` and `AllocatedSize` is less than the volume size (`Size`):
 
+    **For a non-tiered volume**, run the following command:
+    
     ```powershell
-    Get-VirtualDisk -FriendlyName <name> | FL AllocatedSize, Size, ProvisioningType
+    Get-VirtualDisk -FriendlyName <volume_name> | FL AllocatedSize, Size, ProvisioningType
     ```
+    **For a tiered volume**, run the following command:
+
+   ```powershell
+    Get-StorageTier -FriendlyName <volume_name*> | FL AllocatedSize, Size, ProvisioningType
+   ```
 
 ## Next steps
 

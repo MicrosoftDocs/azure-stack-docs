@@ -191,7 +191,7 @@ If however, you're having a problem with AKS hybrid outside of this evaluation g
 
 In addition to the scenarios covered, there are a number of other useful tutorials that you can follow to help grow your knowledge around Kubernetes, including tutorials that cover using GitOps, and Azure Policy.
 
-* [Deploy configurations using GitOps on an AKS cluster, which is Arc-enabled](/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster")
+* [Deploy configurations using GitOps on an AKS cluster, which is Arc-enabled](/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)
 * [Use Azure Policy to apply cluster configurations at scale](/azure/azure-arc/kubernetes/use-azure-policy)
 * [Enable monitoring of an AKS cluster connected to Azure Arc](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
 
