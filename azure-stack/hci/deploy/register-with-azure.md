@@ -170,7 +170,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select the Azure region from the drop-down menu. Select **Use existing resource group** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is `<clustername>-<GUID>-Arc-Infra-RG`. Then select **Register**.
 
-   :::image type="content" source="media/register-with-azure/arc-registration-flyout.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register/arc-registration-flyout.png":::
+   :::image type="content" source="media/register-with-azure/arc-registration-flyout.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register-with-azure/arc-registration-flyout.png":::
 
 ## View registration and Arc-enabled servers status using Windows Admin Center
 
