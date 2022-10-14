@@ -1,10 +1,10 @@
 ---
 title: Identity architecture for Azure Stack Hub 
 description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
-author: BryanLa
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/21/2022
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/21/2022
 

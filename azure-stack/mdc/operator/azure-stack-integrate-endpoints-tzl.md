@@ -1,6 +1,6 @@
 ---
 title: Publish Azure Stack Hub services in your datacenter - MDC
-description: Learn how to publish Azure Stack Hub services in your datacenter.
+description: Learn how to publish Azure Stack Hub services in your datacenter using a modular data center structure.
 author: sethmanheim
 ms.topic: article
 ms.date: 03/02/2021

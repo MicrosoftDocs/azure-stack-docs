@@ -31,18 +31,29 @@ For issues related to Arc VM management, you can generate logs from the cluster 
 
 ```PowerShell
 $csv_path="<input-from-admin>"
-$resourcebridgevmip="<input-from-admin>"
-Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
+$VMIP="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP
 ```
 
 **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
-**$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
+
+**$VMIP** is the IP address of the Arc Resource Bridge virtual machine.
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
+## KVA timeout error
+
+Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
+
+- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
+- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
+- The host isn't able to reach $controlPlaneIP or $VMIP.
+
+To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
+ 
 ## Limitations and known issues
 
-- Resource name must be unique for an Azure Stack HCI cluster and must contain only lower case alphabets, numbers, and hyphens.
+- Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
 - Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
 - Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster must be enabled in the following deployment order:
 
@@ -52,8 +63,6 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
     > [!NOTE]
     > If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
-    While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-    **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
 
 - You must uninstall these in the following order:
 
@@ -63,7 +72,6 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
-- If only Arc Resource Bridge needs to be uninstalled, skip the step **uninstall-moc** for Azure Kubernetes Service to continue running on the cluster.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.
@@ -72,6 +80,8 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
 - If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
 - Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
 - Support for Arc Resource Bridge & Arc VM Management is currently available only in English language.
+- Adding a server to an HCI cluster does not install Arc components automatically.
+- Naming convention for Azure resources such as virtual networks, gallery images, custom location, Arc Resource Bridge etc. should follow [these guidelines](/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Next steps
 

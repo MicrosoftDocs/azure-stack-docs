@@ -153,6 +153,8 @@
           href: troubleshoot-vm-known-issues.md
         - name: VM update and management
           href: vm-update-management.md
+        - name: Azure Instance Metadata Service - public preview
+          href: instance-metadata-service.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
         - name: Migrate VMs

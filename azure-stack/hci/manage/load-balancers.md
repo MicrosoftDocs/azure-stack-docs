@@ -21,9 +21,9 @@ In this topic, learn how to manage Software Load Balancer (SLB) policies using W
 
 You can create three types of SLBs:
 
-- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Stack HCI cluster. The backend servers for this type of load balancer can belong to a SDN virtual network.
+- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Stack HCI cluster. The backend servers for this type of load balancer can belong to an SDN virtual network.
 
-- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in an HCI cluster. Before you create a public IP load balancer, you need to create a public IP address. The backend servers for this type of load balancer can belong to a SDN logical network (traditional VLAN network) or an SDN virtual network.
+- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in an HCI cluster. Before you create a public IP load balancer, you need to create a public IP address. The backend servers for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
 
 - **IP Address SLB** – This is similar to the Public IP SLB. The difference between Public IP SLB and IP Address SLB is that the Public IP SLB creates a public IP resource that is then added to the load balancer. This is useful if you want to reserve that IP address for future use without it going back into the pool. The IP Address SLB assigns the IP address directly to the load balancer without creating a public IP resource. If you delete the load balancer, the IP address is returned to the pool.
 
@@ -40,7 +40,7 @@ To create an SLB, complete the following steps in Windows Admin Center:
 1. If **Type** is **Internal**, select a virtual network, a network subnet, and a Private IP address from the virtual network subnet. This IP address is the internal load-balanced IP that will be visible to internal clients.
 1. If **Type** is **IP Address**, you can select if the load balancer will be used for external load balancing (Public VIP) or internal load balancing (Private VIP).
     - If you select **Public VIP**, select a public SDN logical network, logical network subnet, and a public VIP IP address from that subnet.  
-    - If you select **Private VIP**, select a SDN logical network, logical network subnet, and a private VIP IP address from that subnet.
+    - If you select **Private VIP**, select an SDN logical network, logical network subnet, and a private VIP IP address from that subnet.
 1. Click **Create** to create the load balancer.
 
 ## Create a Public IP Address SLB

@@ -3,7 +3,7 @@ title: Deploy Azure Arc Resource Bridge using Windows Admin Center
 description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 03/24/2022
+ms.date: 06/06/2022
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
@@ -55,9 +55,9 @@ These extensions come pre-installed with Windows Admin Center versions 2110.2 an
 
 ## Set up Arc Resource Bridge and create custom location
 
-To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, select **Settings** when connected to a cluster and navigate to **Azure Arc VM setup for Azure Stack HCI**.
+To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, in Windows Admin Center select the **Settings** option on the lower left-hand side when connected to a cluster, and then navigate to **Azure Arc VM setup for Azure Stack HCI**.
 
-If you’ve already set up AKS-HCI on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge through Windows Admin Center. Use the command line instructions for Arc Resource Bridge deployment instead. For information about the command line deployment, see [Deploy Arc Resource Bridge using command line](deploy-arc-resource-bridge-using-wac.md).
+If you've already set up AKS-HCI on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge through Windows Admin Center. Use the command line instructions for Arc Resource Bridge deployment instead. For information about the command line deployment, see [Deploy Arc Resource Bridge using command line](deploy-arc-resource-bridge-using-command-line.md).
 
 If an Arc Resource Bridge is not detected, a button is displayed to deploy Resource Bridge.
 

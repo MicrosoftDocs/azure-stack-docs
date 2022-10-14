@@ -1,25 +1,26 @@
 ---
-title: Overview of RAS Gateway in Azure Stack HCI and Windows Server
-description: Use this topic to learn about RAS Gateway for Software Defined Networking in Azure Stack HCI and Windows Server.
+title: RAS Gateway for Software Defined Networking
+description: Learn about Remote Access Service (RAS) Gateway for Software Defined Networking in Azure Stack HCI and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/02/2021
+ms.date: 05/24/2022
+ms.custom: kr2b-contr-experiment
 ---
-# What is RAS Gateway for Software Defined Networking?
+# What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Remote Access Service (RAS) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
+RAS Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
 RAS Gateway requires [Network Controller](network-controller-overview.md), which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
 
   > [!NOTE]
   > Multitenancy is the ability of a cloud infrastructure to support the virtual machine (VM) workloads of multiple tenants, yet isolate them from each other, while all of the workloads run on the same infrastructure. The multiple workloads of an individual tenant can interconnect and be managed remotely, but these systems do not interconnect with the workloads of other tenants, nor can other tenants remotely manage them.
 
-## RAS Gateway features
+## Features
 
 RAS Gateway offers a number of features for virtual private network (VPN), tunneling, forwarding, and dynamic routing.
 
