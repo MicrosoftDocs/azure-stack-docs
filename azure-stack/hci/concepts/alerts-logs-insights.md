@@ -17,7 +17,10 @@ This article describes how customers can set up alerts for Azure Stack HCI, usin
 
 1. From **Azure Portal** navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
-3. Select **Load to Editor** to open the query workspace. 
+
+    :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Cluster Arm Id query screen" lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
+
+3. Select **Load to Editor** to open the query workspace.
 4. Set the **scope** to **Log analytics workspace** for logs linked to the cluster.
 5. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
