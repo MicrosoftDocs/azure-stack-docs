@@ -3,7 +3,7 @@ title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/12/2022
+ms.date: 10/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -46,7 +46,7 @@ Complete the following steps to correctly set fault domains after adding a node:
     Enable-ClusterStorageSpacesDirect -Verbose
     ```
 
-1. Remove storage tiers that are no longer applicable by running the following command. See the [Storage tier summary table](/azure-stack/hci/manage/create-volumes.md#storage-tier-summary-table) for more information.
+1. Remove storage tiers that are no longer applicable by running the following command. See the [Storage tier summary table](/azure-stack/hci/manage/create-volumes#storage-tier-summary-table) for more information.
 
     ```powershell
     Remove-StorageTier -FriendlyName <tier_name>
