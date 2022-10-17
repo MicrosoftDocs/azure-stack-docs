@@ -4,19 +4,19 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 08/08/2022
+ms.date: 10/13/2022
 ---
 
 # Update Azure Stack HCI clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
 This article describes how to install, monitor, and troubleshoot updates on multi-node clusters. To update single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters).
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example, to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center; it can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI, version 21H2 has entered general availability (GA) and is available as a feature update. To update your cluster to version 21H2 and access new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
+   > Azure Stack HCI, version 22H2 has entered general availability (GA) and is available as a feature update. To update your cluster to version 22H2 and access new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
    >
    > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrades](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 (original release) to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
    >
@@ -74,7 +74,7 @@ Follow these steps to install updates:
 
     When the cluster nodes are not connected to Windows Update after installing the latest quality updates and the setup media has been copied to a share that is accessible to the cluster nodes:
 
-    > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ ‘WuConnected’=’false’;’PathToSetupMedia’=’\some\path\’; ’UpdateClusterFunctionalLevel’=’true’; } -Force`
+    > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force`
 
 8. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
 

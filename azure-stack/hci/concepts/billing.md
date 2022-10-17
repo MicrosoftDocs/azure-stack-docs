@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/11/2021
+ms.date: 10/12/2022
 ---
 
 # Azure Stack HCI billing and payment
@@ -18,7 +18,7 @@ Azure Stack HCI is an Azure service that goes on your Azure subscription bill ju
 No traditional on-premises software license is required for Azure Stack HCI, although guest virtual machines (VMs) may require individual operating system licensing - see [Activate Windows Server VMs](../manage/vm-activate.md).
 
 > [!TIP]
-> You can get cost savings with Azure Hybrid Benefit if you have Windows Server Datacenter licenses with active Software Assurance. For more information about Azure Hybrid Benefit, see [Azure Hybrid Benefit for Azure Stack HCI](/concepts/azure-hybrid-benefit.md).
+> You can get cost savings with Azure Hybrid Benefit if you have Windows Server Datacenter licenses with active Software Assurance. For more information about Azure Hybrid Benefit, see [Azure Hybrid Benefit for Azure Stack HCI](azure-hybrid-benefit.md).
 
 ## What does Azure Stack HCI charge for?
 
@@ -30,7 +30,7 @@ The pricing model is different from a usage-based or consumption-based billing t
 
 - It's simple: There's no minimum, no maximum, and no math with memory, storage, or network ingress/egress.
 - It rewards customers who run their virtualization infrastructure more efficiently, with higher virtual-to-physical density.
-- It’s easy to figure out how much your on-premises Azure Stack HCI deployment will cost, and costs scale predictably from the network edge to the data center.
+- It's easy to figure out how much your on-premises Azure Stack HCI deployment will cost, and costs scale predictably from the network edge to the data center.
 
 ## How the number of processor cores is assessed
 
@@ -41,7 +41,7 @@ To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 ## FAQ
 
 - If I already have an Azure subscription, can I use it for Azure Stack HCI? **Yes**
-- If my organization’s finance department already approved spending on Azure, does that cover Azure Stack HCI? **Yes**
+- If my organization's finance department already approved spending on Azure, does that cover Azure Stack HCI? **Yes**
 - If I have an Azure commitment to spend, can I use that toward Azure Stack HCI? **Yes**
 - If I have Azure credits (e.g. for students, or awarded as a prize) can I use that toward Azure Stack HCI? **Yes**
 - If my organization negotiated an Enterprise Agreement discount, does that apply to Azure Stack HCI? **Yes**
