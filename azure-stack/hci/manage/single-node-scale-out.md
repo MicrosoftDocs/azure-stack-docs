@@ -3,20 +3,20 @@ title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/05/2022
+ms.date: 10/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Single server scale-out for your Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 Azure Stack HCI version 22H2 supports inline fault domain and resiliency changes for single-server cluster scale-out. This article describes how you can scale out your Azure Stack HCI cluster.
 
 ## About single server cluster scale-out
 
-Azure Stack HCI version 22H2 provides easy scaling options to go from a single-node cluster to a two-node cluster, and from a two-node cluster to a three-node cluster. The following diagram shows how a single server can be scaled out to a multi-node cluster on your Azure Stack HCI.
+Azure Stack HCI version 22H2 provides easy scaling options to go from a single-server cluster to a two-node cluster, and from a two-node cluster to a three-node cluster. The following diagram shows how a single server can be scaled out to a multi-node cluster on your Azure Stack HCI.
 
 :::image type="content" source="media/single-node-scale-out/single-node-scale-out.png" alt-text="Diagram showing a single-server cluster to multi-node cluster scale-out." lightbox="media/single-node-scale-out/single-node-scale-out.png":::
 
@@ -31,7 +31,7 @@ Complete the following steps to correctly set fault domains after adding a node:
 1. Change the fault domain type of the storage pool:
 
     ```powershell
-    Get-StoragePool -FriendlyName <name> | Set-StoragePool -FaultDomainAwarenessDefault StorageScaleUnit
+    Get-StoragePool -FriendlyName <s2d*> | Set-StoragePool -FaultDomainAwarenessDefault StorageScaleUnit
     ```
 
 1. Remove the **Cluster Performance History** volume:
@@ -46,7 +46,7 @@ Complete the following steps to correctly set fault domains after adding a node:
     Enable-ClusterStorageSpacesDirect -Verbose
     ```
 
-1. Remove storage tiers that are no longer applicable by running the following command. See the [Storage tier summary table](/azure-stack/hci/manage/create-volumes.md#storage-tier-summary-table) for more information.
+1. Remove storage tiers that are no longer applicable by running the following command. See the [Storage tier summary table](/azure-stack/hci/manage/create-volumes#storage-tier-summary-table) for more information.
 
     ```powershell
     Remove-StorageTier -FriendlyName <tier_name>
@@ -57,21 +57,42 @@ Complete the following steps to correctly set fault domains after adding a node:
     **For a non-tiered volume**, run the following command:
 
     ```powershell
-    Set-VirtualDisk – FriendlyName <name> -FaultDomainAwareness StorageScaleUnit
+    Set-VirtualDisk –FriendlyName <name> -FaultDomainAwareness StorageScaleUnit
     ```
+    
+    To check the progress of this change, run the following commands:
+    
+    ```powershell
+    Get-VirtualDisk -FriendlyName <volume_name> | FL FaultDomainAwareness
+    Get-StorageJob
+    ```
+    
+    Here is sample output from the previous commands: 
+    
+    ```powershell
+    PS C:\> Get-VirtualDisk -FriendlyName DemoVol | FL FaultDomainAwareness
 
-    **For a mirror-tiered volume**, run the following command:
+    FaultDomainAwareness : StorageScaleUnit
+
+    PS C:\> Get-StorageJob
+
+    Name              IsBackgroundTask ElapsedTime JobState  PercentComplete BytesProcessed BytesTotal
+    ----              ---------------- ----------- --------  --------------- -------------- ----------
+    S2DPool-Rebalance True             00:00:10    Running   0                          0 B     512 MB
+    ```
+    
+    **For a tiered volume**, run the following command:
 
     ```powershell
-    Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -FaultDomainAwareness StorageScaleUnit
+    Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -FaultDomainAwareness StorageScaleUnit
     ```
-
-    **For a parity-tiered volume**, run the following command:
-
+    
+    To check the fault domain awareness of storage tiers, run the following command: 
+    
     ```powershell
-    Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -FaultDomainAwareness StorageScaleUnit
+    Get-StorageTier -FriendlyName <volume_name*> | FL FriendlyName, FaultDomainAwareness
     ```
-
+    
     > [!NOTE]
     > The prior commands don't work for changing from `StorageScaleUnit` to `PhysicalDisk`, or from `StorageScaleUnit` to `Node` or `Chassis` types.
 
@@ -98,30 +119,16 @@ To remain as a two-way mirror, no action is required. To convert a two-way mirro
 Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 4
 ```
 
-Then, to move the cluster shared volume:
+**For a tiered volume**, run the following command:
 
 ```powershell
-Move-ClusterSharedVolume -name <name> -node <node>
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 4
 ```
 
-A remount is needed as Resilient File System (ReFS) only recognizes provisioning type at mount time.
-
-**For a mirror-tiered volume**, run the following command:
+Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.
 
 ```powershell
-Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -NumberfOfDataCopies 4
-```
-
-**For a parity-tiered volume**, run the following command:
-
-```powershell
-Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -NumberfOfDataCopies 4
-```
-
-Then, to move the cluster shared volume for tiered volumes:
-
-```powershell
-Move-ClusterSharedVolume -name <name> -node <node>
+Move-ClusterSharedVolume -Name <name> -Node <node>
 ```
 
 ### Two-node to three-node+ cluster
@@ -142,30 +149,16 @@ The following scenarios are not supported:
 Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 3
 ```
 
-Then, to move the cluster shared volume:
+**For a tiered volume**, run the following command:
 
 ```powershell
-Move-ClusterSharedVolume -name <name> -node <node>
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 3
 ```
 
-A remount is needed as ReFS only recognizes provisioning type at mount time.
-
-**For a mirror-tiered volume**, run the following command:
+Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.
 
 ```powershell
-Get-StorageTier -FriendlyName <mirror_tier> | Set-StorageTier -NumberfOfDataCopies 3
-```
-
-**For a parity-tiered volume**, run the following command:
-
-```powershell
-Get-StorageTier -FriendlyName <parity_tier> | Set-StorageTier -NumberfOfDataCopies 3
-```
-
-Then, to move the cluster shared volume for tiered volumes:
-
-```powershell
-Move-ClusterSharedVolume -name <name> -node <node>
+Move-ClusterSharedVolume -Name <name> -Node <node>
 ```
 
 ## Next steps

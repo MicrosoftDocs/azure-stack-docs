@@ -1,6 +1,20 @@
 {
   "docsets_to_publish": [
     {
+      "docset_name": "AKS-Hybrid",
+      "build_source_folder": "AKS-Hybrid",
+      "build_output_subfolder": "AKS-Hybrid",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
       "docset_name": "AzureStack",
       "build_source_folder": "azure-stack",
       "build_output_subfolder": "AzureStack",
@@ -27,7 +41,6 @@
   "git_repository_branch_open_to_public_contributors": "main",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
-  "contribution_branch_mappings": {},
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
@@ -46,7 +59,7 @@
       "url": "https://github.com/MicrosoftDocs/edge-modules",
       "branch": "main",
       "branch_mapping": {}
-  }
+    }
   ],
   "branch_target_mapping": {
     "live": [
@@ -58,15 +71,14 @@
       "PDF"
     ]
   },
-  "need_generate_pdf_url_template": true,
   "targets": {
     "Pdf": {
       "template_folder": "_themes.pdf"
     }
   },
-  "docs_build_engine": {
-    "name": "docfx_v3"
-  },
+  "docs_build_engine": {},
+  "contribution_branch_mappings": {},
+  "need_generate_pdf_url_template": true,
   "redirection_files": [
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json"

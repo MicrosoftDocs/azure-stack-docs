@@ -93,10 +93,6 @@
         href: concepts-vertical-node-pool-scaling.md
   - name: Node auto-repair
     href: node-repair.md
-  - name: Supported Kubernetes versions
-    href: supported-kubernetes-versions.md
-  - name: Resource limits
-    href: concepts-support.md
   - name: Billing
     items:
       - name: Pricing details
@@ -109,13 +105,7 @@
             href: prestage-cluster-service-host-create.md
     - name: Use offline download
       href: offline-download.md
-    - name: Upgrade the AKS on Azure Stack HCI and Windows Server host
-      items:
-          - name: Use PowerShell
-            href: update-akshci-host-powershell.md
-          - name: Use Windows Admin Center
-            href: update-akshci-host-windows-admin-center.md
-    - name: Upgrade the Kubernetes version
+    - name: Upgrade
       items:
       - name: Upgrade AKS hybrid host
         items:
@@ -320,7 +310,7 @@
   - name: Get support
     href: help-support.md
   - name: File bugs
-    href: https://aka.ms/aks-hci-issues/
+    href: https://aka.ms/AKS-hybrid-issues
 - name: Reference
   items:
   - name: Azure Stack HCI
@@ -334,21 +324,17 @@
 - name: Resources
   items:
   - name: Release notes
-    href: https://aka.ms/aks-hci-relnotes/
+    href: https://aka.ms/AKS-hybrid-Releasenotes
   - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
-  - name: Support policies
-    href: support-policies.md
-  - name: Get support
-    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
-  - name: AKS on Azure Stack HCI and Windows Server roadmap
-    href: https://aka.ms/aks-hci-roadmap/
-  - name: File bugs
-    href: https://aka.ms/aks-hci-issues/
+  - name: AKS roadmap
+    href: https://aka.ms/k8sroadmap
+  - name: AKS hybrid deployment options roadmap
+    href: https://aka.ms/AKS-hybrid-roadmap
 
