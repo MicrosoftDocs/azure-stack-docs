@@ -37,7 +37,7 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
 
-1. From Azure Portal, navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
+1. From Azure Portal, navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights.
 
     :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Monitor Azure Stack HCI preview screen" lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
 
