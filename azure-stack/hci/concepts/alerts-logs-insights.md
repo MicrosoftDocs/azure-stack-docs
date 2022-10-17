@@ -6,12 +6,12 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/14/2022
+ms.date: 10/17/2022
 ---
 
 # Azure Stack HCI cluster alerts
 
-This article describes how customers can set up alerts for Azure Stack HCI, using pre-existing sample Log queries. To utilize this function, customers will need to enable Logs and associate a Log analytics workspace with their Azure Stack HCI cluster prior to setting up alerts using Logs. Additionally, you'll see how customers can configure Insights for monitoring their cluster and setting up alerts.
+This article describes how customers can set up alerts for Azure Stack HCI, using pre-existing sample Log queries. To utilize the sample queries mentioned for setting up alerts, customers will first need to enable Logs, and then associate a Log analytics workspace with their Azure Stack HCI cluster. Additionally, you'll see how customers can configure Azure Insights for monitoring their cluster and setting up alerts.
 
 ## Set up alerts using sample Log queries
 
@@ -28,7 +28,7 @@ This article describes how customers can set up alerts for Azure Stack HCI, usin
 
 6. Select **Run**.
 
-Once the information is populated you can analyze the logs and set up alerts on the results.
+Once the information is populated, you can analyze the logs and set up alerts on the results.
 
 ## Set up alerts using Insights
 
@@ -37,11 +37,11 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
 
-1. From Azure Portal navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
+1. From Azure Portal, navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights workbook.
 
     :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Monitor Azure Stack HCI preview screen" lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
 
-2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example select **Servers** to view the health of servers within your cluster.
+2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers within your cluster.
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Resource health screen" lightbox="media/alerts-logs-insights/health-faults.png":::
 
