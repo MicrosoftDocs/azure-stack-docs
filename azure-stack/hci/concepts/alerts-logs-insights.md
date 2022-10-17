@@ -11,7 +11,7 @@ ms.date: 10/17/2022
 
 # Azure Stack HCI cluster alerts
 
-This article describes how customers can set up alerts for Azure Stack HCI, using pre-existing sample Log queries such as average node CPU, available memory, available volume capacity and more. To utilize the sample queries, customers will first need to enable Logs, and then associate a Log analytics workspace with their Azure Stack HCI cluster. Additionally, you'll see how customers can configure Azure Insights for monitoring their cluster and setting up alerts.
+This article describes how customers can set up alerts for Azure Stack HCI clusters, using pre-existing sample Log queries such as average node CPU, available memory, available volume capacity and more. To utilize the sample queries, customers will first need to enable Logs, and then associate a Log analytics workspace with their Azure Stack HCI clusters. Additionally, you'll see how customers can configure Azure Insights for monitoring their clusters and setting up alerts.
 
 ## Set up alerts using sample Log queries
 
@@ -32,7 +32,7 @@ Once the information is populated, you can analyze the logs and set up alerts on
 
 ## Set up alerts using Insights
 
-Alerts can be set up using Azure Insights workbooks if the Insights function has been configured, via the Azure portal, for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md) to enable Insights monitoring for your cluster before setting up alerts.
+Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Insights function has been configured for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md) to enable Insights monitoring for before setting up alerts.
 
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
