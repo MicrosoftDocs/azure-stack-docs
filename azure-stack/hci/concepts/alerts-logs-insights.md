@@ -45,7 +45,7 @@ Alerts can be set up using Azure Insights workbooks if the Insights function has
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Resource health screen" lightbox="media/alerts-logs-insights/health-faults.png":::
 
-3. Select the blue **Logs view** icon, highlighted above on the bottom right, to view and edit the query.
+3. Select the blue **Logs view** icon, highlighted above on the far right, to view and edit the query.
 4. After the query loads, select the **+ New alert rule** option.
 
     :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="cluster New alert rule screen" lightbox="media/alerts-logs-insights/new-alert-rule.png":::
