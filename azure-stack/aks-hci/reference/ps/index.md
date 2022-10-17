@@ -21,9 +21,11 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI and Window
 | [Add-AksHciGmsaCredentialSpec](./add-akshcigmsacredentialspec.md) | Adds a credentials spec for gMSA deployments on a cluster. |
 | [Add-AksHciNode](./add-akshcinode.md) | Add a new physical node to a deployment. |
 | [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) | Disables the Arc connection on an AKS on Azure Stack HCI and Windows Server cluster.|
+| [Disable-AksHciOfflineDownload](disable-akshciofflinedownload.md) | Disables offline downloading to get the AKS on Azure Stack HCI images. |
 | [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI and Windows Server from a preview channel back to the stable channel. |
 | [Get-AksHciAutoScalerProfile](./get-akshciautoscalerprofile.md) | Retrieve a list of available autoscaler configuration profiles in the system or a specific autoscaler configuration profile and its settings. |
 | [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI and Windows Server cluster. |
+| [Enable-AksHciOfflineDownload](enable-akshciofflinedownload.md) | Enables offline downloading to get the AKS on Azure Stack HCI images.
 | [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI and Windows Server to a preview channel. |
 | [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment. |
 | [Get-AksHciCluster](./get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
@@ -37,6 +39,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI and Window
 | [Get-AksHciNodePool](./get-akshcinodepool.md) | List the node pools in a Kubernetes cluster. |
 | [Get-AksHciProxySetting](./get-akshciproxysetting.md) | Retrieve a list or an individual proxy settings object. |
 | [Get-AksHciRegistration](./get-akshciregistration.md) | Get registration information for the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment. |
+  [Get-AksHciRelease](get-akshcirelease.md) | Downloads the install and upgrade bits to a local share that was configured in [Enable-AksHciOfflineDownload](enable-akshciofflinedownload.md). |
 | [Get-AksHciContainerStorage](./get-akshcistoragecontainer.md) | Get the information of the specified storage container. |
 | [Get-AksHciUpdates](./get-akshciupdates.md) | List available updates for Azure Kubernetes Service on Azure Stack HCI and Windows Server. |
 | [Get-AksHciVersion](./get-akshciversion.md) | Get the current version of Azure Kubernetes Service on Azure Stack HCI and Windows Server. |
@@ -71,6 +74,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI and Window
 | [Set-AksHciCluster](./set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [Set-AksHciConfig](./set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
 | [Set-AksHciNodePool](./set-akshcinodepool.md) | Scale a node pool within a Kubernetes cluster. |
+| [Set-AksHciOffsiteConfig](set-akshcioffsiteconfig.md) | Sets the offsite configuration to get the AKS on HCI images with offline downloading at an offsite location. |
 | [Set-AksHciRegistration](./set-akshciregistration.md) | Register Azure Kubernetes Service on Azure Stack HCI and Windows Server with Azure. |
 | [Sync-AksHciBilling](./sync-akshcibilling.md) | Manually trigger a billing records sync. |
 | [Uninstall-AksHci](./uninstall-akshci.md) | Remove Azure Kubernetes Service on Azure Stack HCI and Windows Server. |

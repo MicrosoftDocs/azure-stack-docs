@@ -9,7 +9,7 @@ ms.lastreviewed: 10/03/2022
 ms.reviewer: jeguan
 ---
 
-# Disable-AksHciOfflinedownload
+# Disable-AksHciOfflineDownload
 
 ## Synopsis
 
@@ -18,7 +18,7 @@ Disables offline downloading to get the AKS on Azure Stack HCI images.
 ## Syntax
 
 ```powershell
-Disable-AksHciOfflinedownload  -stagingShare
+Disable-AksHciOfflinedownload
 ```
 
 ## Description
@@ -28,7 +28,7 @@ Disables offline downloading to get the AKS on Azure Stack HCI images.
 ## Examples
 
 ```PowerShell
-Disable-AksHciOfflinedownload -stagingShare
+Disable-AksHciOfflinedownload
 ```
 
 ## Next steps
