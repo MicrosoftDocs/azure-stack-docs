@@ -183,7 +183,10 @@ You can grant Microsoft support one of the following access levels for remote su
 - **Diagnostics:** To view diagnostic info and logs
 - **Diagnostics and repair:** To view diagnostic info and logs in addition to perform software repairs
 
-The following section list the allowed diagnostic commands that Microsoft support can execute during a remote support session.
+The following section lists the allowed diagnostic commands that Microsoft support can execute during a remote support session.
+
+> [!NOTE]
+> Support for the repair commands will be available at a later date.
 
 ### Access level: Diagnostics
 
@@ -211,10 +214,6 @@ Get-VMHost
 Get-VMSwitch
 Get-Volume
 ```
-
-### Access level: Diagnostics and Repair
-
-Support for the repair commands will be available at a later date.
 
 ## Remote support terms and conditions
 
