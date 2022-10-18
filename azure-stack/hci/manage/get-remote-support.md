@@ -217,7 +217,7 @@ Get-Volume
 The **Diagnostics and Repair** access level includes the following repair commands in addition to the commands listed in the [Access level: Diagnostics](#access-level-diagnostics) section.
 
 > [!NOTE]
-> These repair commands will be available in a later release.
+> Support for these repair commands will be available at a later date.
 
 ```powershell
 Add-AzStackHCIVMAttestation 
