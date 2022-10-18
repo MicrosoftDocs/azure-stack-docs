@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/27/2022
+ms.date: 10/19/2022
 ---
 
 # Azure Stack HCI network deployment patterns
@@ -21,11 +21,11 @@ The article includes five different deployment patterns. Depending on your needs
 
 Use the following table to directly go to a pattern and its content.
 
-### Single-node deployment pattern
+### Single-server deployment pattern
 
-**Go to [storage switchless, single TOR switch](single-node-switchless.md)**
+**Go to [single server deployment](single-node-switchless.md)**
 
-![Diagram showing single-node storage switchless, single TOR switch](media/plan-deployment/single-node-switchless.png)
+![Diagram showing single-server deployment pattern](media/plan-deployment/single-server-switchless.png)
 
 ### Two-node deployment patterns
 

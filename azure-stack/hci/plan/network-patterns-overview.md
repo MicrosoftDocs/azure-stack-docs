@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/28/2022
+ms.date: 10/19/2022
 ---
 
 # Network reference patterns overview for Azure Stack HCI
@@ -16,15 +16,15 @@ ms.date: 09/28/2022
 
 In this article, you'll gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 
-A deployment consists of singe or two-node systems that connect to one or two Top of Rack (TOR) switches. This environment has the following characteristics:
+A deployment consists of single-server or two-node systems that connect to one or two Top of Rack (TOR) switches. This environment has the following characteristics:
 
-- Two storage ports dedicated for storage traffic intent. The RDMA NIC is optional for single-node deployments.
+- Two storage ports dedicated for storage traffic intent. The RDMA NIC is optional for single-server deployments.
 
 - One or two ports dedicated to management and compute traffic intents.
 
 - One optional BMC for OOB management.
 
-A single-node deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
+A single-server deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
 
 ## Switchless advantages and disadvantages
 

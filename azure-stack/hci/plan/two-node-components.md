@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 10/19/2022
 ---
 
 # Review two-node storage reference pattern components for Azure Stack HCI
@@ -34,7 +34,7 @@ The following table lists all the components running on VMs for two-node network
 
 #### Network Controller VM
 
-The Network Controller VM is deployed by default unless it's explicitly opt-out. If Network Controller VM isn't deployed, the default access network access policies won't be available. Additionally, it's needed if you have any of the following requirements:
+The Network Controller VM is deployed optionally. If Network Controller VM isn't deployed, the default access network access policies won't be available. Additionally, it's needed if you have any of the following requirements:
 
 - Create and manage virtual networks. Connect virtual machines (VMs) to virtual network subnets.
 
@@ -43,10 +43,6 @@ The Network Controller VM is deployed by default unless it's explicitly opt-out.
 - Attach virtual appliances to your virtual networks.
 
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
-
-#### Tenant VMs
-
-Tenant VMs...
 
 ### Optional components
 
@@ -66,21 +62,17 @@ The SDN Gateway VM is used for routing network traffic between a virtual network
 
 - Create Layer 3 connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
-#### OEM management VM
-
-The OEM managememt VM...
-
 ## Host service and agent components
 
 The following components run as services or agents on the host server:
 
-**ARC host agent**: Description here
+**ARC host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
 
-**NC host agent**: Description here
+**Network Controller host agent**: Allows Network Controller to manage the goal state of the data plane, and to receive notification of events as the configuration of the data plane changes.
 
-**Monitor host agent**: ALM managed agent used for emitting observability (telemetry and diagnostics) pipeline data that upload to Geneva (Azure Storage).
+**Monitor host agent**: ALM-managed agent used for emitting observability (telemetry and diagnostics) pipeline data that upload to Geneva (Azure Storage).
 
-**SLB host agent**: Description here
+**Software Load Balancer host agent**: Listens for policy updates from the Network Controller. In addition, this agent programs agent rules into the SDN-enabled Hyper-V virtual switches that are configured on the local computer.
 
 ## Next steps
 

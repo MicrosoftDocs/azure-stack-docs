@@ -1,32 +1,32 @@
 ---
 title: Azure Stack HCI single node storage deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI single-node storage network reference pattern.
+description: Plan to deploy an Azure Stack HCI single-server storage network reference pattern.
 ms.topic: conceptual
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 10/19/2022
 ---
 
-# Review single-node storage deployment network reference pattern for Azure Stack HCI
+# Review single-server storage deployment network reference pattern for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
 
-In this article, you'll learn about the single-node storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+In this article, you'll learn about the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
 For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
 ## Introduction
 
-Single-node deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](/azure-stack/hci/manage/azure-benefits.md).
+Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](/azure-stack/hci/manage/azure-benefits.md).
 
 It also supports the same workloads, such as Azure Virtual Desktop (AVD) and Azure Kubernetes Service (AKS) on Azure Stack HCI, and is supported and billed the same way.
 
 ## Scenarios
 
-Use the single-node storage pattern in the following scenarios:
+Use the single-server storage pattern in the following scenarios:
 
 - **Facilities that can tolerate lower level of resiliency**. Consider implementing this pattern whenever your location or service provided by this pattern can tolerate a lower level of resiliency without impacting your business.
 
@@ -45,9 +45,9 @@ As illustrated in the diagram below, this pattern has the following physical net
 - Two disconnected RDMA NICs that are only used if add a second server to your cluster for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.
 
-:::image type="content" source="media/single-node-switchless/physical-connectivity-layout.png" alt-text="Diagram showing single-node physical connectivity layout" lightbox="media/single-node-switchless/physical-connectivity-layout.png":::
+:::image type="content" source="media/single-server-switchless/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout" lightbox="media/single-server-switchless/physical-connectivity-layout.png":::
 
-The following table lists some guidelines for a single-node deployment:
+The following table lists some guidelines for a single-server deployment:
 
 |Network|Management & compute|Storage|BMC|
 |--|--|--|--|
@@ -58,9 +58,9 @@ The following table lists some guidelines for a single-node deployment:
 
 ## Network ATC intents
 
-The single-node pattern uses only one Network ATC intent for management and compute traffic. The RDMA network interfaces are optional and disconnected.
+The single-server pattern uses only one Network ATC intent for management and compute traffic. The RDMA network interfaces are optional and disconnected.
 
-:::image type="content" source="media/single-node-switchless/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-node switchless pattern" lightbox="media/single-node-switchless/network-atc.png":::
+:::image type="content" source="media/single-server-switchless/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-server switchless pattern" lightbox="media/single-server-switchless/network-atc.png":::
 
 ### Management and compute intent
 
@@ -98,7 +98,7 @@ For more information, see [Deploy host networking: Compute and management intent
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/single-node-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-node switchless logical connectivity layout" lightbox="media/single-node-switchless/logical-connectivity-layout.png":::
+:::image type="content" source="media/single-server-switchless/logical-connectivity-layout.png" alt-text="Diagram showing single-server switchless logical connectivity layout" lightbox="media/single-server-switchless/logical-connectivity-layout.png":::
 
 ### Storage network VLANs
 

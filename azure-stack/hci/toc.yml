@@ -40,7 +40,7 @@
       href: plan/choose-network-pattern.md
     - name: Single-node deployments
       items:
-      - name: Single switch
+      - name: Single-server deployment
         href: plan/single-node-switchless.md
       - name: Pattern components
         href: plan/single-node-components.md
