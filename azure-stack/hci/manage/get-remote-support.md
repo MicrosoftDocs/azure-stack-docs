@@ -183,7 +183,7 @@ You can grant Microsoft support one of the following access levels for remote su
 - **Diagnostics:** To view diagnostic info and logs
 - **Diagnostics and repair:** To view diagnostic info and logs in addition to perform software repairs
 
-The following sections list the allowed diagnostic or repair commands that Microsoft support can execute during a remote support session.
+The following section list the allowed diagnostic commands that Microsoft support can execute during a remote support session.
 
 ### Access level: Diagnostics
 
@@ -191,10 +191,6 @@ The **Diagnostics** access level includes the following commands that Microsoft 
 
 ```powershell
 Get-AzureStackHCI
-Get-VHD
-Get-VM
-Get-VMHost
-Get-VMSwitch
 Get-Cluster
 Get-ClusterGroup
 Get-ClusterNode
@@ -208,29 +204,17 @@ Get-StorageEnclosure
 Get-StorageJob
 Get-StorageNode
 Get-StorageSubsystem
+Get-VHD
 Get-VirtualDisk
+Get-VM
+Get-VMHost
+Get-VMSwitch
 Get-Volume
 ```
 
 ### Access level: Diagnostics and Repair
 
-The **Diagnostics and Repair** access level includes the following repair commands in addition to the commands listed in the [Access level: Diagnostics](#access-level-diagnostics) section.
-
-> [!NOTE]
-> Support for these repair commands will be available at a later date.
-
-```powershell
-Add-AzStackHCIVMAttestation 
-Disable-AzStackHCIAttestation 
-Enable-AzStackHCIAttestation 
-Remove-AzStackHCIVMAttestation 
-Remove-AzureStackHCIRegistration 
-Remove-AzureStackHCIRegistrationCertificate 
-Set-AzureStackHCIRegistration 
-Set-AzureStackHCIRegistrationCertificate 
-Sync-AzureStackHCI 
-Update-AzureStackHCIRegistrationCertificate
-```
+Support for the repair commands will be available at a later date.
 
 ## Remote support terms and conditions
 
