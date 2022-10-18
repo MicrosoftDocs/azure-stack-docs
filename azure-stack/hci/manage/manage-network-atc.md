@@ -45,7 +45,9 @@ In this task, you will add additional nodes to the cluster and observe how a con
 <summary> <strong> <b> 21H2 </b></strong></summary>
 <br>
     
+    ```powershell
     Get-NetIntentStatus -ClusterName HCI01
+    ```
     
 </details>
 
@@ -54,7 +56,9 @@ In this task, you will add additional nodes to the cluster and observe how a con
 <br>
 
     
-    Get-NetIntentStatus 
+    ```powershell
+    Get-NetIntentStatus
+    ``` 
     
 </details>
 
@@ -73,7 +77,9 @@ In this task, you will add additional nodes to the cluster and observe how a con
 <summary> <strong> <b> 21H2 </b></strong></summary>
 <br>
 
+    ```powershell
     Get-NetIntentStatus -ClusterName HCI01
+    ```
     
 </details>
 
@@ -81,8 +87,9 @@ In this task, you will add additional nodes to the cluster and observe how a con
 <summary> <strong> <b> 22H2 </b></strong></summary>
 <br>
 
-    
+    ```powershell
     Get-NetIntentStatus
+    ```
     
 </details>
 </div>
@@ -126,14 +133,15 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     Get-NetAdapter -Name pNIC03, pNIC04 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
     ```
 
-1. Run the following command to update the intent to include the old and new network adapters. 
+2. Run the following command to update the intent to include the old and new network adapters. 
 <div style="padding-left: 30px;">
 
 <details>
 <summary> <strong> <b> 21H2 </b></strong></summary>
 <br>
-    
+    ```powershell
      Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
+    ```
 
 </details>
 
@@ -141,42 +149,92 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
 <summary> <strong> <b> 22H2 </b></strong></summary>
 <br>
     
+     ```powershell
      Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
+     ```
     
 
 </details>
 
 </div>
 
-1. Check that the net adapters were successfully added to the intent.
+3. Check that the net adapters were successfully added to the intent.
 <div style="padding-left: 30px;">
 
 <details>
 <summary> <strong> <b> 21H2 </b></strong></summary>
 <br>
-    
-    Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
+    ```powershell
+        Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
+    ```
 </details>
 
 <details>
 <summary> <strong> <b> 22H2 </b></strong></summary>
 <br>
-    
-    Get-NetIntent -Name Cluster_Compute 
+    ```powershell
+        Get-NetIntent -Name Cluster_Compute 
+
+    ```
 </details>
     
 </div>
 
 ## Global overrides and cluster network settings
-> Applies to Azure Stack HCI, version after (and including) 22H2. 
+> Applies to Azure Stack HCI, version 22H2 and later. 
 
 Global overrides and cluster network settings is a new feature Network ATC is introducing in version 22H2 (and later versions). Network ATC mainly consists of 2 kinds of global overrides: Proxy Confirguartions, and Cluster Network Features. 
 
 ### Cluster Network Features 
 
 In this section we go over the set of new Cluster Network Features that we are releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, as well as managing live migrations. <br> 
+Below is a table of the Cluster Network Features Network ATC configures, and their default values: 
 
-To add a GlobalOverride with Network ATC,
+<!-- | Cluster Network Setting | Default (range of possible values)|
+| --- | ----------- |
+| EnableNetworkNaming  | $true ($false) |
+| EnableLiveMigrationNetworkSelection | $true ($false) |
+| EnableVirtualMachineMigrationPerformance | $true ($false) |
+| VirtualMachineMigrationPerformanceOption | Default will always be calculated (SMB,TCP, Compression) |
+| MaximumVirtualMachineMigrations  | 1 (1-10) |
+| MaximumSMBMigrationBandwidthInGbps  | Default will always be calculated | -->
+
+
+
+###### Cluster Network Naming  
+
+Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there is no way for clustering to know how you intended to use the networks – until now!
+
+Once you define your configuration through Network ATC, we now understand how the subnets are going to be used and can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
+
+In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
+
+:::image type="content" source="media/network-atc/Cluster Network Naming.png" alt-text="Fully converged intent" lightbox="media/network-atc/Cluster Network Naming.png":::
+
+###### Live Migration Network Selection 
+This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
+
+###### EnableVirtualMachineMigrationPerformanceSelection
+This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled ($true) and results in the system automatically determining the best live migration transport, eg: SMB, Compression, TCP. <br>
+If disabled: 
+1. Live migration transport selection uses the transport specified in VirtualMachineMigrationPerformanceOption override value.
+1. If the VirtualMachineMigrationPerformanceOption override value is not specified, Network ATC will revert to behavior when Network ATC was absent.
+1. If null, but VirtualMachineMigrationPerformanceOption is configured, configure this option to $false and use the option specified in the VirtualMachineMigrationPerformanceOption override
+
+
+###### VirtualMachineMigrationPerformanceOption
+Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system will use the selection logic outlined in this spec to determine the best transport.
+
+###### Maximum Concurrent Virtual Machine Migrations 
+Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through ten. 
+
+###### MaximumSMBMigrationBandwidthInGbps
+This value enforces a specific bandwidth limit (in Gbps) on SMB-transported live migration traffic to prevent consumption of the SMB traffic class. This value is only usable if the live migration transport is SMB. Default value will be calculated.
+
+#### Customize Cluster Network Settings  
+
+
+Cluster Network Features work through their defined defaults. Since disabling cluster network features does not land you in an unsupported scenario, Network ATC has an option for a globaloverride. You can use the global override to adjust properties and make cluster network feature properties customized to your needs. To add a GlobalOverride with Network ATC,
 ```powershell
 $clusterOverride = New-NetIntentGlobalClusterOverrides
 
@@ -198,27 +256,6 @@ To remove the GlobalClusterOverride, run the following:
 Remove-NetIntent -GlobalOverrides $clusterOverride
 ```
 
-Cluster Network Features work through their defined defaults. Since disabling cluster network features does not land you in an unsupported scenario, Network ATC has an option for a globaloverride. Customers can use the global override to adjust properties and make cluster network feature properties customized to their needs. Below is a table of the Cluster Network Features Network ATC configures, and their default values: 
-
-| Cluster Network Setting | Default (range of possible values)|
-| --- | ----------- |
-| EnableNetworkNaming  | $true ($false) |
-| EnableLiveMigrationNetworkSelection | $true ($false) |
-| EnableVirtualMachineMigrationPerformance | $true ($false) |
-| VirtualMachineMigrationPerformanceOption | Default will always be calculated (SMB,TCP, Compression) |
-| MaximumVirtualMachineMigrations  | 1 (1-10) |
-| MaximumSMBMigrationBandwidthInGbps  | Default will always be calculated |
-
-
-#### Cluster Network Naming  
-
-Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there is no way for clustering to know how you intended to use the networks – until now!
-
-Once you define your configuration through Network ATC, we now understand how the subnets are going to be used and can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
-
-In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
-
-:::image type="content" source="media/network-atc/Cluster Network Naming.png" alt-text="Fully converged intent" lightbox="media/network-atc/Cluster Network Naming.png":::
 
 ### Proxy Configurations 
 
@@ -226,19 +263,32 @@ Proxy is unlike the existing ATC overrides because it is not tied to a specific 
 
 The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
 <br><br> 
-Default Parameter Set:
-|  Name | Type | Default | Required | Description |
+###### Default Parameter Set
+
+ProxyServer: The ProxyServer parameter will take strings as inputs which represent the URL of the proxy server to use for https traffic. ProxyServer is a required paramter when setting up Proxy. <br>
+ProxyBypass: The ProxyBypass paramterer takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use <code> local </code> <br>
+AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. <br>
+
+<!-- |  Name | Type | Default | Required | Description |
 | --- | ----------- | ------- | ----- | ------ | 
 | ProxyServer  | String | Null | True | String with the URL of the proxy server to use for https traffic.  | 
 | ProxyBypass  | String | Null | False | A list of sites that should be visited bypassing the proxy (use <code> local </code> to bypass all short name hosts).  | 
-| AutoDetect  | Switch | False | False | Whether Web Proxy Auto-Discovery (WPAD) should be enabled | 
+| AutoDetect  | Switch | False | False | Whether Web Proxy Auto-Discovery (WPAD) should be enabled |  -->
 
 
-AutoDetect Parameter Set:
-|  Name | Type | Default | Required | Description |
+###### AutoDetect Parameter Set:
+AutoConfigUrl: The AutoConfigUrl paramter takes a string with the URL of the proxy server to use for http and/or https traffic as input. For both traffic classes, use a semi-colon to separate. This is a required parameter. 
+<br>
+AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. <br>
+
+<!-- |  Name | Type | Default | Required | Description |
 | --- | ----------- | ------- | ----- | ------ | 
 | AutoConfigUrl  | String | Null | True | String with the URL of the proxy server to use for http and/or https traffic. For both, separate the two with a semicolon. | 
-| AutoDetect  | Switch | False | False | Whether Web Proxy Auto-Discovery (WPAD) should be enabled  | 
+| AutoDetect  | Switch | False | False | Whether Web Proxy Auto-Discovery (WPAD) should be enabled  |  -->
+
+
+##### Setting-up Proxy
+
 
 You can set your proxy configurations in the following ways: 
 
