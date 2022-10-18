@@ -14,8 +14,8 @@ ms.reviewer: alkohli
 
 Use the following checking to gather this information ahead of the actual deployment of your Azure Stack HCI cluster.
 
-> [!NOTE]
-> This release supports one Azure Stack HCI deployment per Active Directory domain.
+<!-->> [!NOTE]
+> This release supports one Azure Stack HCI deployment per Active Directory domain.-->
 
 ## Pre-deployment checklist
 
@@ -23,7 +23,7 @@ Use the following checking to gather this information ahead of the actual deploy
 |--|--|
 |Server names|Unique name for each server you wish to deploy.|
 |Active Directory cluster name|Name of your cluster in Active Directory.|
-Active directory object prefix|Name of the object prefix for the Active Directory domain.|
+Active Directory object prefix|Name of the object prefix for the Active Directory domain.|
 Active directory OU|Name of the organizational unit (OU) for the Active Directory domain.|
 |Active Directory FQDN|Fully-qualified domain name (FQDN) for the Active Directory domain.|
 |Active Directory credentials|Username and password for the deployment user pre-created in the Active directory account.|
