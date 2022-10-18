@@ -38,29 +38,20 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 
 2. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC will auto detect cluster name from version 22H2 and later.
-
-<div style="padding-left: 30px;">
-
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
-<br>
-    
+  # [21H2](#tab/tab-id)
     ```powershell
     Get-NetIntentStatus -ClusterName HCI01
     ```
     
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
-<br>
 
+  # [22H2](#tab/tab-id)
     
     ```powershell
     Get-NetIntentStatus
     ``` 
     
-</details>
+  ---
 
 
 
