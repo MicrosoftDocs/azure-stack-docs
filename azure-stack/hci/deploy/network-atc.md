@@ -310,6 +310,17 @@ The default IP Address for each adapter on each node in the storage intent will 
 
 The IP Addresses and subnets are consistent with the VLANs assigned to the adapters. 
 
+To override Automatic Storage IP Addressing, create a storage override and pass the override when creating an intent: 
+
+```powershell
+$storageOverride = new-NetIntentStorageOverrides
+$storageOverride.EnableAutomaticIPGeneration = $false
+```
+
+```powershell
+Add-NetIntent -Name Storage_Compute -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -StorageOverrides $storageoverride
+```
+
 #### Cluster Network Settings 
 
 Version 22H2 and later, Network ATC configures a set of Cluster Network Features by default. The defaults are listed below: 
