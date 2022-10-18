@@ -78,7 +78,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - A maximum of 16 nodes supported per cluster. 
 
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. Network ATC, after version 22H2, will confirm symmetric properties for adapters on the node, and across the cluster before deploying an intent. Asymmetric adapters will lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
 - Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
 
@@ -253,7 +253,10 @@ Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
 
 This section lists some of the key default values used by Network ATC.
 
-### Default VLANs
+### 21H2 Default Values 
+
+#### Default VLANs 
+
 
 The following default VLANs are used. These VLANs must be available on the physical network for proper operation.
 
@@ -291,6 +294,36 @@ The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 71
 
 > [!NOTE]
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
+
+### 22H2 Default Values 
+
+#### Automatic Storage IP Addressing 
+If you choose the <code> -Storage</code> intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster. 
+
+The default IP Address for each adapter on each node in the storage intent will be set up as follows: 
+
+|Adapter|IP Address and Subnet|VLAN|
+|--|--|--|
+|pNIC1|10.71.1.X |711|
+|pNIC2|10.71.2.X |712|
+|pNIC3|10.71.3.X |713|
+
+The IP Addresses and subnets are consistent with the VLANs assigned to the adapters. 
+
+#### Cluster Network Settings 
+
+Version 22H2 and later, Network ATC configures a set of Cluster Network Features by default. The defaults are listed below: 
+
+|Property|Default|
+|--|--|
+|EnableNetworkNaming | $true|
+|EnableLiveMigrationNetworkSelection | $true|
+|EnableVirtualMachineMigrationPerformance | $true|
+|VirtualMachineMigrationPerformanceOption | Default will be always calculated: SMB, TCP or Compression|
+|MaximumVirtualMachineMigrations | 1 |
+|MaximumSMBMigrationBandwidthInGbps  | Default will be calculated based on set-up |
+
+
 
 ### Default Data Center Bridging (DCB) configuration
 

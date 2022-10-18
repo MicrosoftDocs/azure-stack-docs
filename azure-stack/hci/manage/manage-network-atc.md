@@ -214,7 +214,7 @@ In the picture below, you can see the storage intent was applied to this set of 
 ###### Live Migration Network Selection 
 This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
 
-###### EnableVirtualMachineMigrationPerformanceSelection
+###### Enable Virtual Machine Migration: Performance Selection
 This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled ($true) and results in the system automatically determining the best live migration transport, eg: SMB, Compression, TCP. <br>
 If disabled: 
 1. Live migration transport selection uses the transport specified in VirtualMachineMigrationPerformanceOption override value.
@@ -222,13 +222,13 @@ If disabled:
 1. If null, but VirtualMachineMigrationPerformanceOption is configured, configure this option to $false and use the option specified in the VirtualMachineMigrationPerformanceOption override
 
 
-###### VirtualMachineMigrationPerformanceOption
+###### Virtual Machine Migration Performance Option
 Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system will use the selection logic outlined in this spec to determine the best transport.
 
 ###### Maximum Concurrent Virtual Machine Migrations 
 Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through ten. 
 
-###### MaximumSMBMigrationBandwidthInGbps
+###### Maximum SMB Migration Bandwidth
 This value enforces a specific bandwidth limit (in Gbps) on SMB-transported live migration traffic to prevent consumption of the SMB traffic class. This value is only usable if the live migration transport is SMB. Default value will be calculated.
 
 #### Customize Cluster Network Settings  
