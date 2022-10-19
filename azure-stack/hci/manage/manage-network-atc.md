@@ -54,8 +54,8 @@ In this task, you will add additional nodes to the cluster and observe how a con
    ---
 
 
-    > [!NOTE]
-    > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
+   > [!NOTE]
+   > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
 
   
