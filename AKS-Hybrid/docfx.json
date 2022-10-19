@@ -79,7 +79,7 @@
       },
       "ms.subservice": {
         "aks-hci/**/*.md": "aks-hci"
-      },
+      }
     },
     "template": [],
     "dest": "AKS-Hybrid"
