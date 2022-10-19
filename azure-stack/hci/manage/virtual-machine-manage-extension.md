@@ -120,7 +120,7 @@ Follow these steps to verify that guest management is enabled using the Azure CL
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources** > **Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview)** > **Virtual machines**.
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension. 
 
@@ -143,7 +143,7 @@ Follow these steps in Azure CLI to add a VM extension.
 
 Follow these steps in Azure portal to add a VM extension.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
 
 1. Select your VM and go to **Settings > Extensions**.
  
@@ -180,7 +180,7 @@ Follow these steps in Azure CLI to remove a VM extension.
 
 Follow these steps in Azure portal to remove a VM extension.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
