@@ -54,9 +54,11 @@ In this task, you will add additional nodes to the cluster and observe how a con
    ---
 
 
+    > [!NOTE]
+    > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
 
-  >[!NOTE] If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
+  
 
 
 
@@ -176,7 +178,7 @@ Once you define your configuration through Network ATC, we now understand how th
 
 In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
 
-:::image type="content" source="media/network-atc/Cluster Network Naming.png" alt-text="Fully converged intent" lightbox="media/network-atc/Cluster Network Naming.png":::
+:::image type="content" source="media/network-atc/Cluster Network Naming.png" alt-text="Cluster Network Selection Screenshot" lightbox="media/network-atc/Cluster Network Naming.png":::
 
 ###### Live Migration Network Selection 
 This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
@@ -208,7 +210,8 @@ $clusterOverride = New-NetIntentGlobalClusterOverrides
 ```
 The 'clusterOverride' variable has the following properties: 
 
-:::image type="content" source="media/network-atc/ClusterOverride.png" alt-text="Fully converged intent" lightbox="media/network-atc/ClusterOverride.png"::: 
+
+:::image type="content" source="media/network-atc/ClusterOverride.png" alt-text="Cluster Override Object" lightbox="media/network-atc/ClusterOverride.png"::: 
 <br>
 Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command: 
 ```powershell
