@@ -107,46 +107,42 @@ For simplicity we only demonstrate two physical adapters per SET team, however i
 For this intent, compute, storage, and management networks are deployed and managed across all cluster nodes.
 
 :::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent" lightbox="media/network-atc/network-atc-2-full-converge.png":::
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
 
-</details>
-
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -AdapterName pNIC01, pNIC02
 ```
 
-</details>
+---
 
 ### Converged compute and storage intent; separate management intent
 
 Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02; Compute and storage are on different adapters.
 
 :::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC03, pNIC04
 ```
-</details>
+---
 
 ### Fully disaggregated intent
 
@@ -154,25 +150,23 @@ For this intent, compute, storage, and management networks are all managed on di
 
 :::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute -Compute -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
 ```
-</details>
+---
 
 ### Storage-only intent
 
@@ -180,19 +174,18 @@ For this intent, only storage is managed. Management and compute adapters are no
 
 :::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+# [22H2](#tab/22H2)
+
 ```powershell
 Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
 ```
-</details>
+---
 
 ### Compute and management intent
 
@@ -200,21 +193,19 @@ For this intent, compute and management networks are managed, but not storage.
 
 :::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC01, pNIC02
 ```
-</details>
+---
 
 ### Multiple compute (switch) intent
 
@@ -222,23 +213,21 @@ For this intent, multiple compute switches are managed.
 
 :::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
 ```
-</details>
+
 
 ## Default Network ATC values
 
@@ -265,28 +254,42 @@ The following default VLANs are used. These VLANs must be available on the physi
 |Future Use|719|
 
 Consider the following command:
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
+
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
+
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Cluster_ComputeStorage -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
-</details>
+---
 
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
 > [!NOTE]
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
 
+### Default Data Center Bridging (DCB) configuration
+
+Network ATC establishes the following priorities and bandwidth reservations. This configuration should also be configured on the physical network.
+
+|Policy|Use|Default Priority|Default Bandwidth Reservation|
+|--|--|--|--|
+|Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
+|SMB_Direct|RDMA Storage Traffic|3|50%|
+|Default|All other traffic types|0|Remainder|
+
+> [!NOTE]
+> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
+
 ### 22H2 Default Values 
+
+This section covers additional default values that Network ATC will be setting in versions 22H2 and later. 
 
 #### Automatic Storage IP Addressing 
 If you choose the <code> -Storage</code> intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster. 
@@ -327,18 +330,7 @@ Version 22H2 and later, Network ATC configures a set of Cluster Network Features
 
 
 
-### Default Data Center Bridging (DCB) configuration
 
-Network ATC establishes the following priorities and bandwidth reservations. This configuration should also be configured on the physical network.
-
-|Policy|Use|Default Priority|Default Bandwidth Reservation|
-|--|--|--|--|
-|Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
-|SMB_Direct|RDMA Storage Traffic|3|50%|
-|Default|All other traffic types|0|Remainder|
-
-> [!NOTE]
-> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
 ## Next steps
 
