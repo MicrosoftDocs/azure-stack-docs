@@ -25,11 +25,7 @@ This article guides you through the requirements, best practices, and deployment
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
 ## Requirements and best practices
-<br>
-<details>
-<summary> <strong> <b> Version 21H2 </b></strong></summary>
-<br>
-<div style="padding-left: 30px;">
+# [21H2](#tab/21H2)
 
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
@@ -61,13 +57,10 @@ The following are requirements and best practices for using Network ATC in Azure
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
-</div>
-</details>
 
-<details>
-<summary> <strong> <b> Version 22H2 </b></strong></summary>
-<br>
-<div style="padding-left: 30px;">
+
+# [22H2](#tab/22H2)
+
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
 - Supported on Azure Stack HCI, version 22H2.
@@ -89,10 +82,8 @@ The following are requirements and best practices for using Network ATC in Azure
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
-</div>
-</details>
 
-
+--- 
 
 > [!IMPORTANT]
 > Updated: Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
