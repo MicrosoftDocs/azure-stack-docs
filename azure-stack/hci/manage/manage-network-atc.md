@@ -39,19 +39,19 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 2. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC will auto detect cluster name from version 22H2 and later.
 
-   # [21H2](#tab/21H2)
-   ```powershell
-   Get-NetIntentStatus -ClusterName HCI01
-   ```
+    # [21H2](#tab/21H2)
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01
+    ```
     
 
 
-   # [22H2](#tab/22H2)
-   ```powershell
-   Get-NetIntentStatus
-   ``` 
+    # [22H2](#tab/22H2)
+    ```powershell
+    Get-NetIntentStatus
+    ``` 
     
-   ---
+    ---
 
 
     > [!NOTE]
@@ -179,7 +179,7 @@ Once you define your configuration through Network ATC, we now understand how th
 
 In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
 
-:::image type="content" source="media/manage-network-atc/cluster-network-naming.png" alt-text="Screenshot of Cluster Network Selection" lightbox="media/network-atc/Cluster Network Naming.png":::
+:::image type="content" source="media/manage-network-atc/cluster-network-naming.png" alt-text="Screenshot of Cluster Network Selection" lightbox="media/manage-network-atc/cluster-network-naming.png":::
 
 ###### Live migration network selection 
 This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
@@ -213,7 +213,7 @@ $clusterOverride = New-NetIntentGlobalClusterOverrides
 The 'clusterOverride' variable has the following properties: 
 
 
-:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object" lightbox="media/network-atc/ClusterOverride.png"::: 
+:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object" lightbox="media/manage-network-atc/cluster-override.png"::: 
 
 
 Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command: 
