@@ -186,7 +186,7 @@ Follow these steps in Azure portal to remove a VM extension.
  
 1. From the list of extensions on your VM, choose the **Custom Script Extension for Windows - Azure arc**. From the top command bar, select **Uninstall** to remove the extension.
 
-  :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
+  :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
 
 The extension should take a couple minutes for removal.  
 
