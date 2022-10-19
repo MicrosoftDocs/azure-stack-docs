@@ -44,7 +44,7 @@ This evaluation guide demonstrates how to create a sand-boxed, isolated AKS hybr
 
 ## Evaluate AKS hybrid using nested virtualization
 
-Keep in mind that server-class hardware is required in order to test, validate, and evaluate this technology. If you have multiple server-class pieces of spare hardware (ideally hardware validated for Azure Stack HCI), you can perform a more real-world evaluation of AKS hybrid. For more information, see the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog). If you don't have spare hardware, consider using [nested virtualization](../hci/concepts/nested-virtualization.md) as an alternative for evaluation.
+Keep in mind that server-class hardware is required in order to test, validate, and evaluate this technology. If you have multiple server-class pieces of spare hardware (ideally hardware validated for Azure Stack HCI), you can perform a more real-world evaluation of AKS hybrid. For more information, see the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog). If you don't have spare hardware, consider using [nested virtualization](/hci/concepts/nested-virtualization) as an alternative for evaluation.
 
 At a high level, nested virtualization allows a virtualization platform (that is, Hyper-V, or VMware ESXi) to run virtual machines that run a virtualization platform. The following image shows this architectural view:
 
@@ -63,7 +63,7 @@ The first virtualized layer is running a nested operating system with Hyper-V en
 
 ## Deployment overview
 
-This guide assumes you do not have multiple server-class pieces of hardware running Azure Stack HCI 21H2 or Windows Server 2019/2022; instead it describes how to deploy AKS hybrid inside an Azure Virtual Machine using [nested virtualization](../hci/concepts/nested-virtualization.md).
+This guide assumes you do not have multiple server-class pieces of hardware running Azure Stack HCI 21H2 or Windows Server 2019/2022; instead it describes how to deploy AKS hybrid inside an Azure Virtual Machine using [nested virtualization](/hci/concepts/nested-virtualization).
 
 :::image type="content" source="media/aks-hci-evaluation-guide/deployment-overview.png" alt-text="Illustration of the AKS hybrid infrastructure.":::<!--Remove "AZURE STACK HCI" from top label.-->
 
