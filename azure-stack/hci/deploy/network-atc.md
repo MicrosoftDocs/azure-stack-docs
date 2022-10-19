@@ -213,7 +213,7 @@ For this intent, multiple compute switches are managed.
 
 :::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
 
-# [21H2](#tab/21H2_code)
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
@@ -221,13 +221,13 @@ Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pN
 ```
 
 
-# [22H2](#tab/22H2_code)
+# [22H2](#tab/22H2)
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
 ```
-
+---
 
 ## Default Network ATC values
 
