@@ -447,7 +447,7 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 1. Retry the configuration. This step is only performed to expedite the remediation. Network ATC will automatically remediate this configuration.
 
     ```powershell
-    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage
+    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage -NodeName Node01
     ```
 
 1. Verify that the consistency check has completed:
