@@ -42,7 +42,11 @@
     "globalMetadata": {
       "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "manager":"femila",
+      "ms.service": "azure-stack",
+      "recommendations": true
+
     },
     "fileMetadata": {
       "titleSuffix": {
