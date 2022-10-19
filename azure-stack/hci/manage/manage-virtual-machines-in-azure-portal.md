@@ -67,6 +67,12 @@ Follow these steps in the Azure portal for your Azure Stack HCI cluster.
     1. **Memory** – Specify the memory in GB for the VM you intend to create.
 
     1. **Memory type** – Specify the memory type as static or dynamic.
+    
+    1. **Enable guest management** - By default, guest management is enabled. You can install extensions on VMs where the guest management is enabled.
+    
+        > [NOTE!]
+        > - You can't enable guest management via Azure portal if the Arc VM is already created.
+        > - Add atleast one network interface through the Networking tab to complete setting up guest management.
 
    :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
 
@@ -80,5 +86,6 @@ Follow these steps in the Azure portal for your Azure Stack HCI cluster.
 
 ## Next steps
 
+- [Install and manage VM extensions](./virtual-machine-manage-extension.md)
 - [Troubleshoot](troubleshoot-arc-enabled-vms.md)
 - [FAQs](faqs-arc-enabled-vms.md)
