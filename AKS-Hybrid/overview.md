@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an on-pr
 
 To get started with on-premises Kubernetes using AKS, [set upAKS on Azure Stack HCI and Windows Server](setup.md).
 
-Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).  If you're using Azure Stack Hub, see [AKS engine on Azure Stack Hub](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
+Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).  If you're using Azure Stack Hub, see [AKS engine on Azure Stack Hub](../azure-stack/user/azure-stack-kubernetes-aks-engine-overview.md).
 
 The following sections discuss some of the reasons to use AKS on Azure Stack HCI and Windows Server, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).  For a background on how Kubernetes works in AKS on Azure Stack HCI and Windows Server, see [Kubernetes core concepts](kubernetes-concepts.md) and for a background on Kubernetes, see [Kubernetes.io](https://kubernetes.io).
 
