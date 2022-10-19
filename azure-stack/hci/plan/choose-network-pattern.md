@@ -23,7 +23,7 @@ Use the following table to directly go to a pattern and its content.
 
 ### Single-server deployment pattern
 
-**Go to [single server deployment](single-node-switchless.md)**
+**Go to [single server deployment](single-server-switchless.md)**
 
 ![Diagram showing single-server deployment pattern](media/plan-deployment/single-server-switchless.png)
 

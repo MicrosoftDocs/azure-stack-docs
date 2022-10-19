@@ -80,4 +80,4 @@ The following components run as services or agents on the host server:
 
 ## Next steps
 
-Learn about [single-server IP requirements](single-node-ip-requirements.md).
+Learn about [single-server IP requirements](single-server-ip-requirements.md).

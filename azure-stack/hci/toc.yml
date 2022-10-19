@@ -38,14 +38,14 @@
       href: plan/network-patterns-overview.md
     - name: Choose network reference pattern
       href: plan/choose-network-pattern.md
-    - name: Single-node deployments
+    - name: Single-server deployment
       items:
       - name: Single-server deployment
-        href: plan/single-node-switchless.md
+        href: plan/single-server-switchless.md
       - name: Pattern components
-        href: plan/single-node-components.md
+        href: plan/single-server-components.md
       - name: Pattern IP requirements
-        href: plan/single-node-ip-requirements.md
+        href: plan/single-server-ip-requirements.md
     - name: Two-node deployments
       items:
       - name: Storage switchless, single switch
