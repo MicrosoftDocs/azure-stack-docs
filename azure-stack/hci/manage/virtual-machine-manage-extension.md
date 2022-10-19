@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/18/2022
+ms.date: 10/19/2022
 ---
 
 # Install and manage Custom Script Extension on Azure Stack HCI virtual machines (preview)
@@ -135,11 +135,11 @@ Follow these steps to verify that guest management is enabled using the Azure po
 
 After the guest management enablement is verified, you can now install the VM extension.
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 Follow these steps in Azure CLI to add a VM extension.
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 Follow these steps in Azure portal to add a VM extension.
 
@@ -156,17 +156,18 @@ Follow these steps in Azure portal to add a VM extension.
     1. (Optional) Enter the arguments for the extension. 
  
 The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension. 
+
 ---
 
 ## Delete VM extension
 
 You may want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 Follow these steps in Azure CLI to remove a VM extension.
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 Follow these steps in Azure portal to remove a VM extension.
 
