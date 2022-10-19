@@ -13,12 +13,12 @@ ms.date: 10/18/2022
 
 > Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-The Custom Script Extension downloads and runs scripts or commands on Azure Arc-enabled virtual machines running on your Azure Stack HCI. This article describes how to install custom script extensions on Arc-enabled virtual machines running on your Azure Stack HCI cluster via the Azure portal and Azure Command Line Interface (CLI). 
+The Custom Script Extension downloads and runs scripts or commands on Azure Arc-enabled virtual machines (VMs) running on your Azure Stack HCI. This article describes how to install and manage custom script extensions on Arc-enabled VMs running on your Azure Stack HCI cluster via the Azure portal and Azure Command Line Interface (CLI). 
 
 ## About Custom Script Extension
 
-The Custom Script Extension is useful for post-deployment configuration, software installation, or any other configuration/management task such as applying updates or running antivirus scan. You can download scripts from Azure Storage or another accessible internet location, or you can provide scripts or commands to the extension runtime.
-The Custom Script Extension integrates with Azure Resource Manager templates. You can also run it by using Azure CLI, PowerShell, or the Azure Virtual Machines REST API.
+The Custom Script Extension is useful for post-deployment configuration, software installation, or any other configuration or management task such as applying updates or running antivirus scan. You can download scripts from Azure Storage or another accessible internet location, or you can provide scripts or commands to the extension runtime.
+The Custom Script Extension integrates with the Azure Resource Manager templates. You can also run it by using Azure CLI or via the Azure portal.
 
 
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ The Custom Script Extension for Windows will run on the following operating syst
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
+Before you install and manage Custom Script Extension, make sure that the following prerequisites are completed.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -60,7 +60,7 @@ Before you begin, make sure that:
 
 ## Verify guest management is enabled
 
-Azure guest management on your Azure Arc-enabled virtual machine (VM) allows you to run post-deployment configurations, management capabilities such as governance, monitoring, update management and security features on your machine. You must verify that guest management is enabled on your VMs before you install VM extensions. 
+Azure guest management on your Azure Arc-enabled VMs helps you with the post-deployment configurations, and management tasks such as governance, monitoring, updates and security features on your VMs. You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -125,21 +125,6 @@ Follow these steps to verify that guest management is enabled using the Azure po
 
 ---
 
-## List VM extensions
-
-After the guest management enablement is verified, view the list of available VM extensions to choose an extension to install.
-
-# [Azure CLI](#tab/azurecli)
-
-[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
-
-
-# [Azure portal](#tab/azureportal)
-
-[!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
-
----
-
 
 ## Add VM extension
 
@@ -154,7 +139,6 @@ Follow these steps in Azure CLI to add a VM extension.
 Follow these steps in Azure portal to add a VM extension.
 
 ---
-
 
 ## Delete VM extension
 
