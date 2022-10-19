@@ -59,7 +59,7 @@ Before you begin, make sure that:
 
 Before you begin, make sure that:
 
-- You’ve access to an Arc-enabled Azure Stack HCI VM that has guest management enabled. Currently, guest management is supported only on Windows VMs. For more information on how to create an Arc-enabled VM, see [Deploy Arc-enabled VMs on your Azure Stack HCI cluster](./manage-virtual-machines-in-azure-portal.md). 
+- You’ve access to an Arc-enabled Azure Stack HCI VM that has guest management enabled. Currently, guest management is supported only on Windows VMs. For more information on how to create an Arc-enabled VM, see [Deploy Arc-enabled VMs on your Azure Stack HCI cluster](./manage-virtual-machines-in-azure-portal.md).
 
 ---
 
@@ -124,16 +124,16 @@ Follow these steps to verify that guest management is enabled using the Azure po
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension. 
 
-1. In the **Overview** blade, under **Properties > Configuration**, verify that the guest management shows as enabled. 
+1. In the **Overview** blade, under **Properties > Configuration**, verify that the **Guest management** shows as **Enabled**.
 
-   :::image type="content" source="./media/manage-vm-resources/add-image-from-azure-marketplace.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/manage-vm-resources/add-image-from-azure-marketplace.png":::
+   :::image type="content" source="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png":::
 
 ---
 
 
 ## Add VM extension
 
-After the guest management enablement is verified, you can now install the VM extension.
+After the guest management enablement is verified, you can now add the VM extension.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -145,17 +145,26 @@ Follow these steps in Azure portal to add a VM extension.
 
 1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
-1. Select your VM and select **Extensions**.
+1. Select your VM and go to **Settings > Extensions**.
  
-1. From the right-pane, select **+ Add**. Choose **Custom Script Extension for Windows - Azure arc**. 
+1. From the top of the command bar in the right-pane, select **+ Add**.
+
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
+
+1. In the **Install extension**, choose **Custom Script Extension for Windows - Azure arc**.
+
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
 
 1. In the **Configure Custom Script Extension for Windows - Azure Arc extension**, on the **Create** tab, input the following parameters.
 
-    1. Provide a storage account for your extension.
-    1. Browse to the path to script file that you want to execute at runtime.
-    1. (Optional) Enter the arguments for the extension. 
- 
-The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension. 
+    1. Provide a storage account for your extension. (Should this be a prerequisite? If so, need details.)
+    1. Browse to the script file that you want to execute at runtime. (Are only PS scripts supported?)
+    1. (Optional) Enter the arguments to execute with the script at runtime. (More info, are these the arguments that can be passed for the script?)
+    1. Select **Review + Create**.
+
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
+
+The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
 
 ---
 
@@ -170,6 +179,16 @@ Follow these steps in Azure CLI to remove a VM extension.
 ### [Azure portal](#tab/azureportal)
 
 Follow these steps in Azure portal to remove a VM extension.
+
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+
+1. Select your VM and select **Extensions**.
+ 
+1. From the list of extensions on your VM, choose the **Custom Script Extension for Windows - Azure arc**. From the top command bar, select **Uninstall** to remove the extension.
+
+  :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
+
+The extension should take a couple minutes for removal.  
 
 ---
 
