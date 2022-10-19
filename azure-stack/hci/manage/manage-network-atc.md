@@ -51,66 +51,56 @@ In this task, you will add additional nodes to the cluster and observe how a con
    Get-NetIntentStatus
    ``` 
     
-  ---
+   ---
 
 
 
 
-[NOTE] If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
+  >[!NOTE] If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
-</div>
+
 
 
 3. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. Note that this may take a similar amount of time to provision as the original node.
-<div style="padding-left: 30px;">
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
-<br>
-
+    # [21H2](#tab/21H2)
     ```powershell
     Get-NetIntentStatus -ClusterName HCI01
     ```
     
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
-<br>
 
+
+    # [22H2](#tab/22H2)
     ```powershell
     Get-NetIntentStatus
     ```
-    
-</details>
-</div>
-<div style="padding-left: 30px;">
+    ---
 
-You can also add several nodes to the cluster at once.
-</div>
+
+
+
+    You can also add several nodes to the cluster at once.
+
 
 ## Modify default VLANs for storage or management systems
 
 You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
 
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
-<br>
 
+   # [21H2](#tab/21H2)
    ``` powershell
    Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
    ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
-<br>
 
+
+   # [22H2](#tab/22H2)
    ``` powershell
    Add-NetIntent -Name MyIntent -StorageVLANs 101, 102 -ManagementVLAN 10
    ```
-</details>
+   ---
 
 ## Add or remove network adapters from an intent
 
