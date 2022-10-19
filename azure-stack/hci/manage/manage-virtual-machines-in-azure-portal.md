@@ -28,15 +28,24 @@ The procedure to create Arc VMs is described in the next section.
 
 ## Prerequisites
 
-Before you begin, make sure that you have:
+Before you create an Azure Arc-enabled VM, make sure that the following prerequisites are completed.
 
-- Access to an Azure subscription with **Owner** or **Contributor** access.
-- Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Stack HCI cluster. These VM images could be created by one of the following procedures:
-    - [VM image starting from an image in Azure marketplace](./virtual-machine-image-azure-marketplace.md).
-    - [VM image starting from an image in Azure Storage account](./virtual-machine-image-storage-account.md).
-    - [VM image starting from an image in local share on your cluster](./virtual-machine-image-local-share.md).
-- Make sure that you have a custom location for your Azure Stack HCI cluster that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Stack HCI cluster.
+### [Azure CLI](#tab/azurecli)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
+
+    - Running PowerShell 5.0 or later.
+    - Running the latest version of `az` CLI.
+        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
+        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+
+### [Azure portal](#tab/azureportal)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+---
 
 ## Create Arc-enabled VMs
 
@@ -49,9 +58,8 @@ Follow these steps in the Azure CLI to create an Arc-enabled VM on your Azure St
 1. To create an Arc-enabled VM with guest management enabled, run the following command:
 
     ```azurecli
-    az azurestackhci virtualmachine create --name $vmname  –resource-group $resourcegroup --image-reference $imageref --vm-size “Default” --extended-location name=$customLocation type=”CustomLocation” --nic-id $nicid --admin-username $username --admin-password $password --provision-vm-agent true --allow-password-authentication true
+    az azurestackhci virtualmachine Create --Name $vmname  –Resource-Group $resourcegroup --Image-Reference $imageref --Vm-size "Default" --Extended-Location Name=$customLocation type="CustomLocation" --Nic-Id $nicid --Admin-Username $username --Admin-Password $password --Provision-Vm-agent true --Allow-Password-Authentication true
     ```
-    
 
 ### [Azure portal](#tab/azureportal)
 
