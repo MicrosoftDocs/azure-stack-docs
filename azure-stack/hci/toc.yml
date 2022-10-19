@@ -122,6 +122,8 @@
         href: manage/virtual-machine-image-local-share.md
     - name: Deploy Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
+    - name: Manage Custom Script Extension 
+      href: manage/virtual-machine-manage-extension.md
     - name: Uninstall Azure Arc Resource Bridge
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
