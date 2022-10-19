@@ -232,7 +232,7 @@ Remove-NetIntent -GlobalOverrides $clusterOverride
 
 ### Proxy configurations 
 
-Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing a new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
+Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
 
 The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
 
