@@ -4,7 +4,7 @@ description: Azure Kubernetes Service on Azure Stack HCI and Windows Server is a
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 03/16/2022
+ms.lastreviewed: 10/16/2022
 ms.reviewer: leslielin
 ms.date: 06/06/2022
 
