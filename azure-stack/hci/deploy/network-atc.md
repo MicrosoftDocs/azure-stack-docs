@@ -12,13 +12,6 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version after (and including) 21H2. 
 
-<!-- <details>
-<summary> <strong> <b> Applies to: Azure Stack HCI, version 21H2 </b></strong></summary>
-<br>
-<div style="padding-left: 30px;">
-Test text 
-</div>
-</details> -->
 
 This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md). 
 
@@ -233,7 +226,7 @@ Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
 
 This section lists some of the key default values used by Network ATC.
 
-### 21H2 Default Values 
+### 21H2 default values 
 
 #### Default VLANs 
 
@@ -287,12 +280,12 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
-### 22H2 Default Values 
+### 22H2 default values 
 
 This section covers additional default values that Network ATC will be setting in versions 22H2 and later. 
 
-#### Automatic Storage IP Addressing 
-If you choose the <code> -Storage</code> intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster. 
+#### Automatic storage IP addressing 
+If you choose the `-Storage` intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster. 
 
 The default IP Address for each adapter on each node in the storage intent will be set up as follows: 
 
@@ -315,7 +308,7 @@ $storageOverride.EnableAutomaticIPGeneration = $false
 Add-NetIntent -Name Storage_Compute -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -StorageOverrides $storageoverride
 ```
 
-#### Cluster Network Settings 
+#### Cluster network settings 
 
 Version 22H2 and later, Network ATC configures a set of Cluster Network Features by default. The defaults are listed below: 
 

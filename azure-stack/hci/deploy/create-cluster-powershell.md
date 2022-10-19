@@ -387,7 +387,7 @@ $siteoverride.Name = "A"
 $siteoverride.StorageVLAN = 711
 $siteoverride.StretchVLAN = 25
 ```
-Finally, run <code> $siteOverride</code> to make sure all your properties are set in the desired manner. 
+Finally, run `$siteOverride` to make sure all your properties are set in the desired manner. 
 
 And finally, to add one or more siteOverrides to your intent, run: 
 ```powershell
