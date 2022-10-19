@@ -19,25 +19,6 @@
           "ThirdPartyNotices.md",
           "SECURITY.md"
         ]
-      },
-      {
-        "group": "version-ash",
-        "src" : "user",
-        "dest" : "user",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
       }
     ],
     "resource": [
