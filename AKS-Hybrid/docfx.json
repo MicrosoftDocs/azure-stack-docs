@@ -72,13 +72,13 @@
     "fileMetadata": {
       "titleSuffix": {
         "**/*.md": "AKS hybrid",
-        "aks-hci/**/*.md": "AKS hybrid",
+        "aks-hci/**/*.md": "AKS hybrid"
       },
       "feedback_product_url": {
-        "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7",
+        "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
       },
       "ms.subservice": {
-        "aks-hci/**/*.md": "aks-hci",
+        "aks-hci/**/*.md": "aks-hci"
       },
     },
     "template": [],
