@@ -24,7 +24,7 @@ The Custom Script Extension integrates with Azure Resource Manager templates. Yo
 > [!IMPORTANT]
 > This feature on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
 
-## Supported OS for Custom Script Extension on Windows
+## Supported OS for extension on Windows
 
 The Custom Script Extension for Windows will run on the following operating systems (OS). Other versions may work but haven't been tested in-house on VMs running on Azure Stack HCI.
 
