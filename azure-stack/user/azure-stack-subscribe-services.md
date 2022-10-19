@@ -7,7 +7,7 @@ ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 11/13/2019
+ms.lastreviewed: 10/19/2022
 
 # Intent: As an Azure Stack user, I want an example showing me how to create a subscription with an offer and then test it.
 # Keyword: create subscription azure stack
