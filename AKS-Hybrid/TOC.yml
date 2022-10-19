@@ -302,9 +302,9 @@
   - name: Azure Stack HCI issues
     items:
         - name: Cluster validation reporting in Azure Stack HCI
-          href: ../hci/manage/validate-qos.md
+          href: /hci/manage/validate-qos
         - name: CredSSP in Azure Stack HCI
-          href: ../hci/manage/troubleshoot-credssp.md
+          href: /hci/manage/troubleshoot-credssp
   - name: Support policies
     href: support-policies.md
   - name: Get support
@@ -314,7 +314,7 @@
 - name: Reference
   items:
   - name: Azure Stack HCI
-    href: ../hci/index.yml
+    href: /hci/index
   - name: Windows Admin Center (WAC)
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure hybrid cloud

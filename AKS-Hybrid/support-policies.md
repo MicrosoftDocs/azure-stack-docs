@@ -41,7 +41,7 @@ If your cluster falls behind more than 60 days (2 versions), you'll have to upgr
 
 AKS on Azure Stack HCI and Windows Server follow their specific platform version support timeframes; that is, AKS is not supported on unsupported versions of those products. For more information, see their support policies:
 
-* [Azure Stack HCI supported versions information](../hci/release-information.md#azure-stack-hci-release-summary)
+* [Azure Stack HCI supported versions information](/hci/release-information#azure-stack-hci-release-summary)
 * [Windows Server 2019 Datacenter and above supported versions](/windows-server/get-started/windows-server-release-info#windows-server-current-versions-by-servicing-option)
 
 ## Managed features in AKS on Azure Stack HCI and Windows Server
