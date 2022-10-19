@@ -40,7 +40,7 @@ To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before co
 
 ## Who should read this guide?
 
-This evaluation guide demonstrates how to create a sand-boxed, isolated AKS hybrid deployment by using [*nested virtualization*](../hci/concepts/nested-virtualization.md). This guide provides a solid foundation that will allow you to explore other AKS hybrid deployment scenarios in the future.
+This evaluation guide demonstrates how to create a sand-boxed, isolated AKS hybrid deployment by using [*nested virtualization*](/hci/concepts/nested-virtualization). This guide provides a solid foundation that will allow you to explore other AKS hybrid deployment scenarios in the future.
 
 ## Evaluate AKS hybrid using nested virtualization
 
