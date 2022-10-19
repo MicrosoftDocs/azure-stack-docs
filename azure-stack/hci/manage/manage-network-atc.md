@@ -115,51 +115,37 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     ```
 
 2. Run the following command to update the intent to include the old and new network adapters. 
-<div style="padding-left: 30px;">
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
-<br>
+    # [21H2](#tab/21H2)
     ```powershell
      Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
     ```
 
-</details>
-
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
-<br>
-    
+    # [22H2](#tab/22H2)    
      ```powershell
      Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
      ```
-    
+
+    ---
 
 </details>
 
-</div>
+
 
 3. Check that the net adapters were successfully added to the intent.
-<div style="padding-left: 30px;">
 
-<details>
-<summary> <strong> <b> 21H2 </b></strong></summary>
-<br>
+    # [21H2](#tab/21H2)
     ```powershell
         Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
     ```
-</details>
 
-<details>
-<summary> <strong> <b> 22H2 </b></strong></summary>
-<br>
+
+    # [22H2](#tab/22H2)
     ```powershell
         Get-NetIntent -Name Cluster_Compute 
 
     ```
-</details>
-    
-</div>
+    ---
 
 ## Global overrides and cluster network settings
 > Applies to Azure Stack HCI, version 22H2 and later. 
@@ -243,12 +229,15 @@ Remove-NetIntent -GlobalOverrides $clusterOverride
 Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing a new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
 
 The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
-<br><br> 
+
 ###### Default Parameter Set
 
-ProxyServer: The ProxyServer parameter will take strings as inputs which represent the URL of the proxy server to use for https traffic. ProxyServer is a required paramter when setting up Proxy. <br>
-ProxyBypass: The ProxyBypass paramterer takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use <code> local </code> <br>
-AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. <br>
+ProxyServer: The ProxyServer parameter will take strings as inputs which represent the URL of the proxy server to use for https traffic. ProxyServer is a required paramter when setting up Proxy. 
+
+ProxyBypass: The ProxyBypass paramterer takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use `local`  
+
+AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
+
 
 <!-- |  Name | Type | Default | Required | Description |
 | --- | ----------- | ------- | ----- | ------ | 
