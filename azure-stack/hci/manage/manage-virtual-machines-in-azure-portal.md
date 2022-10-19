@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/05/2022
+ms.date: 10/19/2022
 ---
 
 # Use VM images to create Arc-enabled virtual machines on Azure Stack HCI
@@ -47,7 +47,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 ---
 
-## Create Arc-enabled VMs
+## Create Arc-enabled VM
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -58,7 +58,7 @@ Follow these steps in the Azure CLI to create an Arc-enabled VM on your Azure St
 1. To create an Arc-enabled VM with guest management enabled, run the following command:
 
     ```azurecli
-    az azurestackhci virtualmachine Create --Name $vmname  –Resource-Group $resourcegroup --Image-Reference $imageref --Vm-size "Default" --Extended-Location Name=$customLocation type="CustomLocation" --Nic-Id $nicid --Admin-Username $username --Admin-Password $password --Provision-Vm-agent true --Allow-Password-Authentication true
+    az azurestackhci virtualmachine Create --Name $vmname  –Resource-Group $resourcegroup --Image-Reference $imageref --Vm-Size "Default" --Extended-Location Name=$customLocation type="CustomLocation" --Nic-Id $nicid --Admin-Username $username --Admin-Password $password --Provision-Vm-agent true --Allow-Password-Authentication true
     ```
 
 ### [Azure portal](#tab/azureportal)
@@ -95,7 +95,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
     
         > [NOTE!]
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
-        > - Add atleast one network interface through the Networking tab to complete setting up guest management.
+        > - Add atleast one network interface through the **Networking** tab to complete guest management setup.
 
    :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
 
