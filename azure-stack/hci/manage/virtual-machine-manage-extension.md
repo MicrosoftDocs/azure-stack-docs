@@ -149,11 +149,11 @@ Follow these steps in Azure portal to add a VM extension.
  
 1. From the top of the command bar in the right-pane, select **+ Add**.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
 
 1. In the **Install extension**, choose **Custom Script Extension for Windows - Azure arc**.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing the Custom Script Extension selected in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
 
 1. In the **Configure Custom Script Extension for Windows - Azure Arc extension**, on the **Create** tab, input the following parameters.
 
@@ -162,7 +162,7 @@ Follow these steps in Azure portal to add a VM extension.
     1. (Optional) Enter the arguments to execute with the script at runtime. (More info, are these the arguments that can be passed for the script?)
     1. Select **Review + Create**.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing configuration of Custom Script Extension installation in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
 
 The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
 
