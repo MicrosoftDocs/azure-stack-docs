@@ -6,18 +6,20 @@ ms.author: v-mandhiman
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/22/2022
+ms.date: 10/20/2022
 ---
 
 # Collect diagnostic logs (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution. The article also provides information on known issue with log collection and the associated workaround.
+This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution.
 
 ## Collect logs via PowerShell
 
 Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+
+The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
 Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
@@ -27,9 +29,9 @@ Send-DiagnosticData [[-FilterByRole] <string[]>] [[-FromDate] <datetime>] [[-ToD
 
 where: 
 
-- `FromDate` and `ToDate` parameters collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past one hour by default. 
+- `FromDate` and `ToDate` parameters collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past one hour by default.
 
-- `FilterByRole` parameter collects and sends diagnostic logs for each role. Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles. This list of roles may change in a future release.
+- `FilterByRole` parameter collects logs for each role. Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles. This list of roles may change in a future release.
 
   - DeploymentLogs
   - BareMetal
@@ -132,42 +134,6 @@ To get a history of log collections for the last 90 days, enter:
    Error
    PS C:\CloudDeployment\logs>
    ```
-
-## Additional considerations on diagnostics logs
-
-- The policy mode of Windows Defender Application Control (WDAC) must be set to audit to run the `Send-DiagnosticData` cmdlet successfully. If it's set to enforced, switch the policy mode to audit before running the `Send-DiagnosticData` cmdlet. See [Known issue with log collection](#known-issue-with-log-collection).
-
-- The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
-
-- When you run the `Send-DiagnosticData` cmdlet, the logs are temporarily copied locally. This copy is parsed and sent to Microsoft and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
-
-- When you run the `Send-DiagnosticData` cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
-
-## Known issue with log collection
-
-This release comes with WDAC enabled and enforced by default, which limits the applications and the code that you can run on the core platform. As a result, when you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
-
-### Workaround
-
-As a workaround, switch the default policy mode of WDAC from enforced to audit before running the `Send-DiagnosticData` cmdlet. After collecting logs, switch the WDAC policy mode back to enforced. For instructions on how to switch policy modes, see [Switch between WDAC policy modes](#switch-between-wdac-policy-modes).
-
-### Switch between WDAC policy modes
-
-[!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
-
-After switching the policy mode to audit, run these cmdlets:
-
-1. Run `Send-DiagnosticData` to collect logs.
-
-   ```powershell
-   Send-DiagnosticData -Verbose
-   ```
-
-1. After log collection is complete, run the following cmdlet to switch WDAC policy mode back to the default enforced mode.
-
-    ```powershell
-    Switch-AsWdacPolicy -Mode Enforced
-    ```
 
 ## Next steps
 
