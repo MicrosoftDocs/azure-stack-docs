@@ -42,8 +42,8 @@
     "globalMetadata": {
       "_op_documentIdPathDepotMapping": {
         "./": { 
-          "depot_name": "MSDN.AzureStack", 
-          "folder_relative_path_in_docset": "aks-hci/" 
+          "depot_name": "Azure.azure-documents", 
+          "folder_relative_path_in_docset": "articles/azure-stack/aks-hci/" 
         }
       },
       "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
