@@ -116,13 +116,13 @@
       items:
       - name: Using Azure Marketplace images
         href: manage/virtual-machine-image-azure-marketplace.md
-      - name: Using images in  Azure Storage account
+      - name: Using images in Azure Storage account
         href: manage/virtual-machine-image-storage-account.md
       - name: Using images in local share 
         href: manage/virtual-machine-image-local-share.md
     - name: Deploy Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Manage Custom Script Extension 
+    - name: Manage VM extensions 
       href: manage/virtual-machine-manage-extension.md
     - name: Uninstall Azure Arc Resource Bridge
       href: manage/uninstall-arc-resource-bridge.md
