@@ -338,6 +338,8 @@
     href: manage/install-preview-version.md
   - name: Run post update steps
     href: manage/preview-post-installation.md
+  - name: View known issues in version 22H2
+    href: known-issues-22h2.md
   - name: Plan for version 22H2
     items:
     - name: Review security
