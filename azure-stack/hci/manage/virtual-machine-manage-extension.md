@@ -13,7 +13,7 @@ ms.date: 10/20/2022
 
 > Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-Azure guest management on your Azure Arc-enabled VMs on Azure Stack HCI helps you with the post-deployment configurations, and management tasks such as governance, monitoring, updates and security features on your VMs. The VM extensions are useful for post-deployment configuration, software installation, or any other management task such as applying updates or running antivirus scans. This article describes how to install and manage VM extensions on Arc-enabled VMs running on your Azure Stack HCI cluster via the Azure portal and Azure Command Line Interface (CLI).
+ The VM extensions on your Azure Arc-enabled VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc-enabled VMs. This article describes how to install and manage VM extensions on your Azure Stack HCI via the Azure portal and Azure Command Line Interface (CLI).
 
 
 > [!IMPORTANT]
@@ -61,6 +61,8 @@ Before you begin, make sure that:
 ---
 
 ## Verify guest management is enabled
+
+To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
