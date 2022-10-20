@@ -620,6 +620,7 @@
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusternetwork",
           "redirect_document_id": false
       },
+      {
           "source_path": "azure-stack/aks-hci/reference/ps/get-akshciclusternetwork.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusternetwork",
           "redirect_document_id": false
