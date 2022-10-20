@@ -176,7 +176,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
      ```
 
-   - For requesting a certificate outside of a deployment certificate.
+   - For a certificate outside of a deployment certificate.
 
         ```powershell
         New-AzsHubAzureContainerRegistryCertificateSigningRequest  -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
