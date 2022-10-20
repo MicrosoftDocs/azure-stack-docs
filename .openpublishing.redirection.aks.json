@@ -536,6 +536,11 @@
         "redirect_document_id": false
       },    
       {
+        "source_path": "azure-stack/aks-hci/reference/ps/add-akshcigmsacredentialspec.md",
+        "redirect_url": "/azure/aks/hybrid/reference/ps/add-akshcigmsacredentialspec",
+        "redirect_document_id": false
+      },    
+      {
           "source_path": "azure-stack/aks-hci/add-akshcinode.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/add-akshcinode",
           "redirect_document_id": false
@@ -551,6 +556,11 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/disable-akshciarcconnection.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshciarcconnection",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/reference/ps/disable-akshciofflinedownload.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshciofflinedownload",
           "redirect_document_id": false
@@ -558,6 +568,11 @@
       {
           "source_path": "azure-stack/aks-hci/reference/ps/disable-akshcipreview.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshcipreview",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/enable-akshciarcconnection.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/enable-akshciarcconnection",
           "redirect_document_id": false
       },
       {
@@ -581,8 +596,18 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcibillingstatus.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcibillingstatus",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/reference/ps/get-akshciautoscalerprofile.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciautoscalerprofile",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcicluster.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcicluster",
           "redirect_document_id": false
       },
       {
@@ -595,8 +620,17 @@
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusternetwork",
           "redirect_document_id": false
       },
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciclusternetwork.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusternetwork",
+          "redirect_document_id": false
+      },
       {
           "source_path": "azure-stack/aks-hci/get-akshciclusterupdates.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusterupdates",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciclusterupdates.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciclusterupdates",
           "redirect_document_id": false
       },
@@ -606,7 +640,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciconfig.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciconfig",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/get-akshcicredential.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcicredential",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcicredential.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcicredential",
           "redirect_document_id": false
       },
@@ -616,7 +660,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcieventlog.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcieventlog",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/get-akshcikubernetesversion.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcikubernetesversion",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcikubernetesversion.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcikubernetesversion",
           "redirect_document_id": false
       },
@@ -626,7 +680,17 @@
           "redirect_document_id": false
       },
       {
+        "source_path": "azure-stack/aks-hci/reference/ps/get-akshcilogs.md",
+        "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcilogs",
+        "redirect_document_id": false
+    },
+    {
           "source_path": "azure-stack/aks-hci/get-akshcinodepool.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcinodepool",
+          "redirect_document_id": false
+      },
+    {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcinodepool.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcinodepool",
           "redirect_document_id": false
       },
@@ -636,7 +700,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciproxysetting.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciproxysetting",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/get-akshciregistration.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciregistration",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciregistration.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciregistration",
           "redirect_document_id": false
       },
@@ -651,7 +725,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcistoragecontainer.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcistoragecontainer",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/get-akshciupdates.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciupdates",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciupdates.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciupdates",
           "redirect_document_id": false
       },
@@ -661,12 +745,27 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshciversion.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshciversion",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/get-akshcivmsize.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcivmsize",
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/get-akshcivmsize.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/get-akshcivmsize",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/initialize-akshcinode.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/initialize-akshcinode",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/initialize-akshcinode.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/initialize-akshcinode",
           "redirect_document_id": false
       },
@@ -681,7 +780,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshci.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshci",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/install-akshciadauth.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshciadauth",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshciadauth.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshciadauth",
           "redirect_document_id": false
       },
@@ -691,7 +800,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshcicsinfs.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcicsinfs",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/install-akshcicsismb.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcicsismb",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshcicsismb.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcicsismb",
           "redirect_document_id": false
       },
@@ -701,7 +820,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshcigmsawebhook.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcigmsawebhook",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/install-akshcimonitoring.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcimonitoring",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/install-akshcimonitoring.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/install-akshcimonitoring",
           "redirect_document_id": false
       },
@@ -721,12 +850,27 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshcicluster.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcicluster",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/new-akshciclusternetwork.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshciclusternetwork",
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshciclusternetwork.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshciclusternetwork",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/new-akshcinetworksetting.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcinetworksetting",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshcinetworksetting.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcinetworksetting",
           "redirect_document_id": false
       },
@@ -741,12 +885,27 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshcinodepool.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcinodepool",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/new-akshciproxysetting.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshciproxysetting",
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshciproxysetting.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshciproxysetting",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/new-akshcistoragecontainer.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcistoragecontainer",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/new-akshcistoragecontainer.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/new-akshcistoragecontainer",
           "redirect_document_id": false
       },
@@ -761,7 +920,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/remove-akshcicluster.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcicluster",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/remove-akshciclusternetwork.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshciclusternetwork",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/remove-akshciclusternetwork.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshciclusternetwork",
           "redirect_document_id": false
       },
@@ -776,7 +945,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/remove-akshcinode.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcinode",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/remove-akshcinodepool.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcinodepool",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/remove-akshcinodepool.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcinodepool",
           "redirect_document_id": false
       },
@@ -786,7 +965,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/repair-akshcicerts.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/repair-akshcicerts",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/repair-akshciclustercerts.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/repair-akshciclustercerts",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/repair-akshciclustercerts.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/repair-akshciclustercerts",
           "redirect_document_id": false
       },
@@ -799,9 +988,14 @@
         "source_path": "azure-stack/aks-hci/reference/ps/set-akshciautoscalerprofile.md",
         "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshciautoscalerprofile",
         "redirect_document_id": false
-    },
-    {
+      },
+      {
           "source_path": "azure-stack/aks-hci/set-akshcicluster.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshcicluster",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/set-akshcicluster.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshcicluster",
           "redirect_document_id": false
       },
@@ -811,7 +1005,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/set-akshciconfig.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshciconfig",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/set-akshcinodepool.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshcinodepool",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/set-akshcinodepool.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshcinodepool",
           "redirect_document_id": false
       },
@@ -826,7 +1030,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/set-akshciregistration.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/set-akshciregistration",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/sync-akshcibilling.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/sync-akshcibilling",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/sync-akshcibilling.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/sync-akshcibilling",
           "redirect_document_id": false
       },
@@ -836,7 +1050,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshci.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshci",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/uninstall-akshciadauth.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshciadauth",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshciadauth.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshciadauth",
           "redirect_document_id": false
       },
@@ -846,7 +1070,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshcicsinfs.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcicsinfs",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/uninstall-akshcicsismb.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcicsismb",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshcicsismb.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcicsismb",
           "redirect_document_id": false
       },
@@ -856,12 +1090,27 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshcigmsawebhook.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcigmsawebhook",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/uninstall-akshcimonitoring.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcimonitoring",
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/uninstall-akshcimonitoring.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/uninstall-akshcimonitoring",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/update-akshci.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/update-akshci",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/update-akshci.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/update-akshci",
           "redirect_document_id": false
       },
@@ -876,7 +1125,17 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/update-akshcicluster.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/update-akshcicluster",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/akshci.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/akshci.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/",
           "redirect_document_id": false
       },
