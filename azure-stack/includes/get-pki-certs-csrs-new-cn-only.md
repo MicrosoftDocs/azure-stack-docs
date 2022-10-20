@@ -36,7 +36,7 @@ ms.lastreviewed: 04/29/2022
       New-AzsCertificateSigningRequest -CertificateType Deployment -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
 
-   - For requesting a certificate outside of a deployment certificate.
+   - For a certificate outside of a deployment certificate.
 
       ```powershell
       New-AzsHubAzureContainerRegistryCertificateSigningRequest  -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
