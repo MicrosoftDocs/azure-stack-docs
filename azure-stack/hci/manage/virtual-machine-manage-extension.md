@@ -1,46 +1,43 @@
 ---
-title: Install, manage Custom Script Extension on Arc-enabled VMs on Azure Stack HCI
-description: Learn how to install and manage Custom Script Extension on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal and Azure CLI.
+title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI
+description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal and Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2022
+ms.date: 10/20/2022
 ---
 
-# Install and manage Custom Script Extension on Azure Stack HCI virtual machines (preview)
+# Manage VM extensions on Azure Stack HCI virtual machines (preview)
 
 > Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-The Custom Script Extension downloads and runs scripts or commands on Azure Arc-enabled virtual machines (VMs) running on your Azure Stack HCI. This article describes how to install and manage custom script extensions on Arc-enabled VMs running on your Azure Stack HCI cluster via the Azure portal and Azure Command Line Interface (CLI). 
-
-<!--## About Custom Script Extension
-
-The Custom Script Extension is useful for post-deployment configuration, software installation, or any other management task such as applying updates or running antivirus scan. You can provide scripts or commands to the extension at runtime.
-
-You can  manage these VM extensions via one of the following methods:
-
-- The Azure portal.
-- The Azure CLI.
-- Azure Resource Manager templates.-->
+Azure guest management on your Azure Arc-enabled VMs on Azure Stack HCI helps you with the post-deployment configurations, and management tasks such as governance, monitoring, updates and security features on your VMs. The VM extensions are useful for post-deployment configuration, software installation, or any other management task such as applying updates or running antivirus scans. This article describes how to install and manage VM extensions on Arc-enabled VMs running on your Azure Stack HCI cluster via the Azure portal and Azure Command Line Interface (CLI).
 
 
 > [!IMPORTANT]
 > This feature on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
 
-## Supported OS for extension
+## Supported VM extensions
 
-The Custom Script Extension for Windows will run on the following operating systems (OS). Other versions may work but haven't been tested in-house on VMs running on Azure Stack HCI.
+The following VM extensions are supported on Azure Stack HCI VMs. 
 
-| Distribution        | Version |
-|---------------------|---------|
-| Windows Server 2022 | Core    |
-| Windows Server 2019 | Core    |
+### Supported extension on Windows
+
+| Extension       | Publisher  | Type               |
+|---------------------|--------------|------------|
+| Custom Script Extension | Microsoft.Compute    ||
+
+### Supported extension on Linux
+
+| Extension       |Publisher | Type  |
+|---------------------|--------------|------------|
+| Custom Script Extension | Microsoft.Compute      ||
 
 ## Prerequisites
 
-Before you install and manage Custom Script Extension, make sure that the following prerequisites are completed.
+Before you install and manage VM extensions, make sure that the following prerequisites are completed.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -65,7 +62,7 @@ Before you begin, make sure that:
 
 ## Verify guest management is enabled
 
-Azure guest management on your Azure Arc-enabled VMs helps you with the post-deployment configurations, and management tasks such as governance, monitoring, updates and security features on your VMs. You must verify that guest management is enabled on your VMs before you install VM extensions.
+You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -130,7 +127,6 @@ Follow these steps to verify that guest management is enabled using the Azure po
 
 ---
 
-
 ## Add VM extension
 
 After the guest management enablement is verified, you can now add the VM extension.
@@ -151,13 +147,14 @@ Follow these steps in Azure portal to add a VM extension.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
 
-1. In the **Install extension**, choose **Custom Script Extension for Windows - Azure arc**.
+1. In the **Install extension**, choose from the available extensions. In this example, we will deploy the **Custom Script Extension for Windows - Azure arc**.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing the Custom Script Extension selected in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
 
-1. In the **Configure Custom Script Extension for Windows - Azure Arc extension**, on the **Create** tab, input the following parameters.
+1. Provide the parameters to configure the selected VM extension. 
+    For example, if you choose Custom Script Extension, on the **Create** tab, input the following parameters.
 
-    1. Provide a storage account for your extension. (Should this be a prerequisite? If so, need details.)
+    1. Provide a storage account for your extension. (Should this be a prerequisite? If so, need details.) Will this be for each VM extension you will install?
     1. Browse to the script file that you want to execute at runtime. (Are only PS scripts supported?)
     1. (Optional) Enter the arguments to execute with the script at runtime. (More info, are these the arguments that can be passed for the script?)
     1. Select **Review + Create**.
@@ -165,6 +162,21 @@ Follow these steps in Azure portal to add a VM extension.
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing configuration of Custom Script Extension installation in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
 
 The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
+
+---
+
+
+## List installed extensions
+
+You can get a list of all the VM extensions installed on your Azure Stack HCI cluster.
+
+### [Azure CLI](#tab/azurecli)
+
+Follow these steps in Azure CLI to list the installed VM extensions.
+
+### [Azure portal](#tab/azureportal)
+
+Follow these steps in Azure portal to list the installed VM extensions.
 
 ---
 
@@ -184,9 +196,11 @@ Follow these steps in Azure portal to remove a VM extension.
 
 1. Select your VM and select **Extensions**.
  
-1. From the list of extensions on your VM, choose the **Custom Script Extension for Windows - Azure arc**. From the top command bar, select **Uninstall** to remove the extension.
+1. From the list of extensions on your VM, choose the extension you wish to remove. From the top command bar, select **Uninstall** to remove the extension.
 
-  :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
+    In this example, **Custom Script Extension for Windows - Azure arc** is selected.
+
+    :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
 
 The extension should take a couple minutes for removal.  
 
@@ -196,4 +210,4 @@ The extension should take a couple minutes for removal.
 
 Learn how to:
 
-- Troubleshoot [Custom Script Extension issues](/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks).
+- Troubleshoot [VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions).
