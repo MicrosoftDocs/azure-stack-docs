@@ -40,6 +40,12 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "_op_documentIdPathDepotMapping": {
+        "./": { 
+          "depot_name": "MSDN.AzureStack", 
+          "folder_relative_path_in_docset": "aks-hci/" 
+        }
+      },
       "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
       "extendBreadcrumb": true,
       "feedback_system": "None"
