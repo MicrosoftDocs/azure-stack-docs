@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 10/20/2022
 ms.reviewer: fiseraci
 ms.author: sethm
-ms.lastreviewed: 01/19/2021
+ms.lastreviewed: 10/20/2022
 monikerRange: '>=azs-1803'
 
 # Intent: As an Azure Stack Hub operator, I want to rotate secrets in Azure Stack Hub.
@@ -56,7 +56,11 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
-3. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems, but will continue to alert if the Azure Stack Hub system becomes unreachable.
+3. [Generate certificate signing requests for Azure Stack Hub](../operator/azure-stack-get-pki-certs.md).
+
+4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
+
+5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems, but will continue to alert if the Azure Stack Hub system becomes unreachable.
 
 ::: moniker range=">=azs-1811"
 ## Rotate external secrets
@@ -116,64 +120,8 @@ Prior to rotation of external secrets:
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the fileshare with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The fileshare must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to your network fileshare, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure under the network fileshare MUST begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All remaining subdirectories are contained within the preceding structure. For example:
-    - Fileshare = **\\\\\<IPAddress>\\\<ShareName>**
-    - Certificates root folder within fileshare = **\\\\\<IPAddress>\\\<ShareName>\Certificates**
-    - Full path to certificates folder for Azure AD provider = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
-    - Full path to certificates folder for ADFS provider = **\\\\\<IPAddress>\\\<ShareName>\Certificates\ADFS**
-  
-    > [!IMPORTANT]
-    > When you run `Start-SecretRotation` later, you pass the path to the certificates root folder. The cmdlet will validate the folder structure, and throw the following error if its not compliant:
-    >
-    > ```powershell
-    > Cannot bind argument to parameter 'Path' because it is null.
-    > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
-    > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
-    > + PSComputerName        : xxx.xxx.xxx.xxx
-    > ```
-
-7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\\\<IdentityProvider>** folder created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
-
-    Here's an example of a folder structure for the Azure AD Identity Provider:
-    ```powershell
-        <ShareName>
-            │
-            └───Certificates
-                  └───AAD
-                      ├───ACSBlob
-                      │       <CertName>.pfx
-                      │
-                      ├───ACSQueue
-                      │       <CertName>.pfx
-                      │
-                      ├───ACSTable
-                      │       <CertName>.pfx
-                      │
-                      ├───Admin Extension Host
-                      │       <CertName>.pfx
-                      │
-                      ├───Admin Portal
-                      │       <CertName>.pfx
-                      │
-                      ├───ARM Admin
-                      │       <CertName>.pfx
-                      │
-                      ├───ARM Public
-                      │       <CertName>.pfx
-                      │
-                      ├───KeyVault
-                      │       <CertName>.pfx
-                      │
-                      ├───KeyVaultInternal
-                      │       <CertName>.pfx
-                      │
-                      ├───Public Extension Host
-                      │       <CertName>.pfx
-                      │
-                      └───Public Portal
-                              <CertName>.pfx
-
-    ```
+6. Create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure under the network fileshare MUST begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder.
+7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\\\<IdentityProvider>** folder created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>.
 
 ### Rotation
 
