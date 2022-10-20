@@ -941,6 +941,11 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/remove-akshcigmsacredentialspec.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcigmsacredentialspec",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/remove-akshcinode.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/remove-akshcinode",
           "redirect_document_id": false
@@ -982,6 +987,11 @@
       },
       {
           "source_path": "azure-stack/aks-hci/restart-akshci.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/restart-akshci",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/restart-akshci.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/restart-akshci",
           "redirect_document_id": false
       },
@@ -1128,6 +1138,11 @@
       {
           "source_path": "azure-stack/aks-hci/reference/ps/update-akshcicluster.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/update-akshcicluster",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "azure-stack/aks-hci/reference/ps/update-akshciclustercertificates.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/update-akshciclustercertificates",
           "redirect_document_id": false
       },
       {
