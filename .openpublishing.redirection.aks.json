@@ -546,11 +546,6 @@
           "redirect_document_id": false
       },
       {
-          "source_path": "azure-stack/aks-hci/disable-akshciarcconnection.md",
-          "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshciarcconnection",
-          "redirect_document_id": false
-      },
-      {
           "source_path": "azure-stack/aks-hci/reference/ps/disable-akshciofflinedownload.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshciofflinedownload",
           "redirect_document_id": false
@@ -953,17 +948,17 @@
       {
         "source_path": "azure-stack/aks-hci/certificates-and-tokens.md",
         "redirect_url": "/azure/aks/hybrid/certificates-update-after-sixty-days",
-        "redirect_document_id": true
+        "redirect_document_id": false
       },
       {
         "source_path": "azure-stack/aks-hci/use-containerd-on-windows-aks.md",
-        "redirect_url": "/azure/aks/hybrid/",
-        "redirect_document_id": true
+        "redirect_url": "/azure/aks/hybrid",
+        "redirect_document_id": false
       },    
       {
         "source_path": "azure-stack/aks-hci/kubernetes-walkthrough-powershell-proxy.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-walkthrough-powershell",
-        "redirect_document_id": true
+        "redirect_document_id": false
       }   
     ]
   }
