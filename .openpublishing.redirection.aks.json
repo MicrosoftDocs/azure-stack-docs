@@ -541,6 +541,11 @@
           "redirect_document_id": false
       },
       {
+          "source_path": "azure-stack/aks-hci/reference/ps/add-akshcinode.md",
+          "redirect_url": "/azure/aks/hybrid/reference/ps/add-akshcinode",
+          "redirect_document_id": false
+      },
+      {
           "source_path": "azure-stack/aks-hci/disable-akshciarcconnection.md",
           "redirect_url": "/azure/aks/hybrid/reference/ps/disable-akshciarcconnection",
           "redirect_document_id": false
