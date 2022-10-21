@@ -30,7 +30,7 @@ You can attach default policies to a VM in two ways:
 - When creating a VM. You'll need to attach the VM to a logical network (traditional vLAN network) or a SDN virtual network.
 - After the VM is created.
 
-### Create and attach networks 
+### Create and attach networks
 
 Depending on the type of network you want to attach your VM to, steps may be different.
 
@@ -125,8 +125,8 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PS cmdl
             NSG and attach it to the VM or you can attach any existing
             NSG to the VM.
 
-![](./media//media/image5.png){width="6.920208880139983in"
-height="3.9082502187226598in"}
+
+:::image type="content" source="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)":::
 
 ## Upgrade from 21H2
 
