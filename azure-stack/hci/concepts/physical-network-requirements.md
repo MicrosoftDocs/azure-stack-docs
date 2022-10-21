@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 08/24/2022
+ms.date: 10/21/2022
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -21,10 +21,12 @@ This article discusses physical (fabric) network considerations and requirements
 
 Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies). Select **Download Specifications, Windows Server 2022**, open the ZIP file, open **Devices and Components WHCP Requirements for Windows Server 2022.pdf**, then see the **Device.Network.Switch.AzureStackHCI** section.
+
 > [!IMPORTANT]
 > While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.
 
-The following vendors (in alphabetical order) have confirmed that their switches support the Azure Stack HCI requirements:
+When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support the Azure Stack HCI requirements:
 
 # [20H2 & 21H2](#tab/20-21H2)
 
@@ -32,7 +34,7 @@ The following vendors (in alphabetical order) have confirmed that their switches
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
 | -----  | -----  | -----  | -----   | -----   |
 | Arista Networks <br><br>*EOS version of 4.26.2F or later is required* |[7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) |
-| Dell   | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) |
+| Dell <br><br>*SmartFabric version of OS10.5.2.4 or OS10.5.3.4  is required.*  | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) |
 | Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
 | Lenovo | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
 | NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
@@ -43,6 +45,7 @@ The following vendors (in alphabetical order) have confirmed that their switches
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
 | -----  | -----  | -----  | -----   | -----   |
 | Arista Networks <br><br>*EOS version of 4.26.2F or later is required* |[7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) |
+| Dell <br><br>*SmartFabric version of 10.5.4 or later is required*  | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) |
 | Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
 | NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
 
@@ -50,6 +53,8 @@ The following vendors (in alphabetical order) have confirmed that their switches
 
 > [!IMPORTANT]
 > We update this list as we're informed of changes by network switch vendors.
+
+If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 ## Network switch requirements
 
@@ -68,13 +73,13 @@ Ethernet switches must comply with the IEEE 802.1Q specification that defines VL
 
 ### Standard: IEEE 802.1Qbb
 
-Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. At least one of these traffic classes must provide lossless communication.
+Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
 
 ### Standard: IEEE 802.1Qaz
 
 Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. We recommend that you do not configure ingress rates. However, if your device allows ingress QoS rates to be defined, we recommend that they match the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, we recommend that you do not configure ingress rates. However, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
@@ -88,10 +93,7 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 
 ### Custom TLV requirements
 
-LLDP allows organizations to define their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version:
-
-> [!IMPORTANT]
-> Later OS versions may define additional TLV requirements
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version:
 
 |Version required|Organization|TLV Subtype|
 |-----|-----|-----|
@@ -153,7 +155,7 @@ Border Gateway Protocol (BGP) is a standard routing protocol used to exchange ro
 ### DHCP Relay Agent 
 *New Requirement in 22H2*
 
-The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) and [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
 |Version required|Requirement|
 |-----|-----|
@@ -163,40 +165,41 @@ The DHCP relay agent is any TCP/IP host which is used to forward requests and re
 
 ---
 
-
 ## Network traffic and architecture
 
-Azure Stack HCI can function in various data center architectures including 2-tier (Spine-Leaf) and 3-tier (Core-Aggregation-Access). This section refers to concepts from the Spine-Leaf topology that is commonly used with workloads in hyper-converged infrastructure such as Azure Stack HCI.
+This section is predominantly for network administrators.
+
+Azure Stack HCI can function in various data center architectures including 2-tier (Spine-Leaf) and 3-tier (Core-Aggregation-Access). This section refers more to concepts from the Spine-Leaf topology that is commonly used with workloads in hyper-converged infrastructure such as Azure Stack HCI.
 
 ## Network models
 
-Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are predominantly North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is predominantly East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
+Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
-> We highly recommend that all cluster nodes in the same cluster site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+> We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 ### North-South traffic for Azure Stack HCI
 
 North-South traffic has the following characteristics:
 
-- Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch
-- Traffic leaves the physical rack or crosses a Layer-3 boundary (IP)
-- Includes [management traffic](host-network-requirements.md#network-traffic-types), [compute](host-network-requirements.md#network-traffic-types), and inter-site stretched cluster traffic
-- Uses an Ethernet switch for connectivity to the physical network
+- Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch.
+- Traffic leaves the physical rack or crosses a Layer-3 boundary (IP).
+- Includes management (PowerShell, Windows Admin Center), compute (VM), and inter-site stretched cluster traffic.
+- Uses an Ethernet switch for connectivity to the physical network.
 
 ### East-West traffic for Azure Stack HCI
 
 East-West traffic has the following characteristics:
 
-- Traffic remains within the ToR switches and Layer-2 boundary (VLAN)
-- Includes [storage traffic](host-network-requirements.md#network-traffic-types) or Live Migration traffic between nodes in the same cluster and same cluster site.
+- Traffic remains within the ToR switches and Layer-2 boundary (VLAN).
+- Includes storage traffic or Live Migration traffic between nodes in the same cluster and (if using a stretched cluster) within the same site.
 - May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 ## Using switches
 
 North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Stack HCI, the most important aspect is the proper sizing of the network fabric.
 
-It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network. Non-blocking in this context means that the switch has the ability to forward traffic for all ports at full advertised port-speed simultaneously.
+It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
 Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. Also see [Host network requirements](host-network-requirements.md).
 
@@ -226,10 +229,10 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 ### Disadvantages of switchless connections
 
 - More planning is required for IP and subnet addressing schemes.
-- Provides only local storage access. Management traffic, storage replica traffic, and other traffic requiring North-South access cannot use these adapters.
+- Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access cannot use these adapters.
 - As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
 - Doesn't scale well beyond three-node clusters. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
-- Cluster expansion is complex, requiring downtime to make hardware and software configuration changes.
+- Cluster expansion is complex, requiring hardware and software configuration changes.
 
 ## Next steps
 

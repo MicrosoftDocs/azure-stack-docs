@@ -15,7 +15,7 @@ ms.reviewer: kerimha
 This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
-> Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Stack HCI is not supported.
+> Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Stack HCI is not supported. However, Hyper-V replica is valid and supported between HCI systems. You can't replicate a VM to another volume in the same cluster, only to another HCI system.
 
 If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](#migrating-older-vms).
 
