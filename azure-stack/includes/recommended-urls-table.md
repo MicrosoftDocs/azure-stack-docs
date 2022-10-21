@@ -31,7 +31,7 @@ ms.lastreviewed: 04/19/2022
 | Azure Kubernetes Service | login.microsoftonline.com  | 443  | Used for logging into Azure when running Set-AksHciRegistration. |
 | Azure Kubernetes Service | login.windows.net   | 443  | Used for logging into Azure when running Set-AksHciRegistration. |
 | Azure Kubernetes Service | management.azure.com | 443  | Used for logging into Azure when running Set-AksHciRegistration. |
-| Azure Kubernetes Service | www.microsoft.com   | 443  | Used for logging into Azure when running Set-AksHciRegistration.   |
+| Azure Kubernetes Service | www\.microsoft.com   | 443  | Used for logging into Azure when running Set-AksHciRegistration.   |
 | Azure Kubernetes Service | msft.sts.microsoft.com  | 443  | Used for logging into Azure when running Set-AksHciRegistration. |
 | Azure Kubernetes Service | graph.windows.net    | 443  | Used for logging into Azure when running Set-AksHciRegistration.  |
 | Azure Kubernetes Service | ecpacr.azurecr.io   | 443  | Required to pull container images when running Install-AksHci.   |
