@@ -5,14 +5,14 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 10/20/2022
+ms.date: 10/21/2022
 ---
 
 # Use default network access policies on virtual machines on your Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 22H1
 
-Default network policies can be used to protect internal assets on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on your Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access.
+Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on your Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access.
 
 This article describes how to enable these default network policies and assign these to VMs running on your Azure Stack HCI.
 
@@ -66,114 +66,68 @@ Azure Stack HCI 22H2 release*
 
 ### Apply default network policies
 
-When you create a VM through Windows Admin Center, you'll see a *Security Level* setting. 
+When you create a VM through Windows Admin Center, you'll see a **Security level** setting.
 
 :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies/security-level-1.png":::
 
 You have three options:
 
-- *No protection* - Choose this option if you don't want to enforce any network access policies to your VM. This is not recommended.
+- **No protection** - Choose this option if you don't want to enforce any network access policies to your VM. This is not recommended.
 
-- *Open some ports* - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH or RDP as per your requirements.
+- **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH or RDP as per your requirements.
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies/security-level-1.png":::
 
-- *Use existing NSG* - Choose this option to apply custom policies. You'll specify a Network Security Group (NSG) that you have already created.
+- **Use existing NSG** - Choose this option to apply custom policies. You'll specify a Network Security Group (NSG) that you have already created.
 
 
 ## VMs created outside of Windows Admin Center
 
-If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PS cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you will see two issues:
+If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you will see two issues:
 
-1. The VMs might not have network connectivity: This will happen since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state. To unblock the port, you must execute the below commands from an elevated Powershell prompt on the Hyper-V host where the VM is located:
+- The VMs may not have network connectivity. This will happen since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state. 
 
-    a.  *Install-Script -Name SetVMPortProfile*
+    To unblock the port, run the following commands from a PowerShell session on a Hyper-V host where the VM is located:
 
-        i.  Accept all prompts to install from Powershell Gallery
+    1. Run PowerShell as an administrator.
+    1. Download and install the PowerShell Script from the gallery. Run the following command: 
+    
+        ```azurepowershell
+        Install-Script -Name SetVMPortProfile
+        ```
 
-    b.  *SetVMPortProfile.ps1 -VMName \<Name of VM whose port has to be
+        Accept all prompts to install from Powershell Gallery
+
+    1. Specify the ports to be unblocked on the VM.
+    
+        ```azurepowershell
+        SetVMPortProfile.ps1 -VMName \<Name of VM whose port has to be
         unblocked\> -VMNetworkAdapterName \<Name of the adapter in the
         VM\> -ProfileId "00000000-0000-0000-0000-000000000000"
-        -ProfileData 2*
+        -ProfileData 2
+        ```
 
-1. Since this VM was created outside Windows Admin Center, the default policies for the VM will not get applied and the Network Settings for the VM will not display correctly. To rectify this issue, you must do the following:
+- The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
 
-    a.  In Windows Admin Center, create a logical network. Create a
-        subnet under the logical network and provide the VLAN ID that
-        the VM is connected to.
-
-    b.  Under **Tools**, scroll down to the **Networking** area, and
-        select **Virtual machines**
-
-    c.  Select the **Inventory** tab, select a VM, and then
-        select **Settings**
-
-    d.  On the **Settings** page, select **Networks**
-
-    e.  For Isolation Mode, select Logical Network.
-
-    f.  Select the Logical Network and Logical Subnet that you created
-        above
-
-    g.  For Security Level, you have two options:
-
-        i.  No Protection: Choose this if you do not want any network
-            access policies for your VMs
-
-        ii. Use existing NSG: Choose this if you want to apply network
-            access policies for your VMs. You can either create a new
-            NSG and attach it to the VM or you can attach any existing
-            NSG to the VM.
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
 
 :::image type="content" source="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)":::
 
 ## Upgrade from 21H2
 
-If you have upgraded from 21H2 version and do not have Network Controller installed on the 21H2 version, ignore this section.
+> [!NOTE]
+> Skip this section, if you upgraded from Azure Stack HCI 21H2 version and didn't have the Network Controller installed.
 
-If you had Network Controller installed on 21H2 and also had workload VMs on your HCI cluster, those VMs would be in one of the 4 isolation modes in VM Network Settings:
+If you had Network Controller installed on 21H2 version and also had workload VMs on your cluster, those VMs would be in one of the following 4 isolation modes in VM (in Network Settings):
 
-1. Default (None): Since this mode no longer exists after you move to 22H2, The Isolation Mode in the VM Network Settings page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct Network settings in WAC and apply default policies, you must do the following:
+1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The Isolation Mode in the VM Network Settings page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
 
-    a.  In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide no VLAN ID or subnet prefix.
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
-    b.  Under **Tools**, scroll down to the **Networking** area, and select **Virtual machines**
+1. **VLAN**: Since this mode no longer exists in 22H2, the **Isolation mode** in the VM **Network Settings** page on Windows Admin Center will be blank. The VM will continue to have same level of network connectivity as before upgrading to 22H2. 
 
-    c.  Select the **Inventory** tab, select the VM, and then select **Settings**
-
-    d.  On the **Settings** page, select **Networks**
-
-    e.  For Isolation Mode, select Logical Network.
-
-    f.  Select the Logical Network and Logical Subnet that you created above
-
-    g.  For Security Level, you have two options:
-
-        i.  No Protection: Choose this if you do not want any network access policies for your VMs
-
-        ii. Use existing NSG: Choose this if you want to apply network access policies for your VMs. You can either create a new NSG and attach it to the VM or you can attach any existing NSG to the VM
-
-
-1. VLAN: Since this mode no longer exists after you move to 22H2, The Isolation Mode in the VM Network Settings page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct Network settings in WAC and apply default policies, you must do the following:
-
-    a.  In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide the VLAN ID that the VM is connected to.
-
-    b.  Under **Tools**, scroll down to the **Networking** area, and select **Virtual machines**
-
-    c.  Select the **Inventory** tab, select the VM, and then select **Settings**
-
-    d.  On the **Settings** page, select **Networks**
-
-    e.  For Isolation Mode, select Logical Network.
-
-    f.  Select the Logical Network and Logical Subnet that you created above
-
-    g.  For Security Level, you have two options:
-
-        i.  No Protection: Choose this if you do not want any network access policies for your VMs
-
-        ii. Use existing NSG: Choose this if you want to apply network access policies for your VMs. You can either create a new NSG and attach it to the VM or you can attach any existing NSG to the VM
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
 1. Logical Network: The Network Settings page for the VM remains unchanged w.r.t 21H2.
 
