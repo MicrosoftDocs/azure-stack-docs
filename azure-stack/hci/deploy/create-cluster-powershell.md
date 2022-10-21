@@ -9,7 +9,7 @@ ms.reviewer: stevenek
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2 and 20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -358,11 +358,41 @@ Specifying a preferred Site for stretched clusters has the following benefits:
 - **Cold start** - during a cold start, virtual machines are placed in the preferred site
 
 - **Quorum voting**
-  - Using a dynamic quorum, weighting is decreased from the passive (replicated) site first to ensure that the preferred site survives if all other things are equal. In addition, server nodes are pruned from the passive site first during regrouping after events such as an asymmetric network connectivity failures.
+  - Using a dynamic quorum, weighting is decreased from the passive (replicated) site first to ensure that the preferred site survives if all other things are equal. In addition, server nodes are pruned from the passive site first during regrouping after events such as asymmetric network connectivity failures.
 
   - During a quorum split of two sites, if the cluster witness cannot be contacted, the preferred site is automatically elected to win. The server nodes in the passive site then drop out of cluster membership. This allows the cluster to survive a simultaneous 50% loss of votes.
 
 The preferred site can also be configured at the cluster role or group level. In this case, a different preferred site can be configured for each virtual machine group. This enables a site to be active and preferred for specific virtual machines.
+
+### Step 5.4: Set-up Stretch Clustering with Network ATC
+
+After version 22H2, you can use Network ATC to set up Stretch clustering. Network ATC adds Stretch as an intent type from version 22H2. To deploy an intent with Stretch clustering with Network ATC, run the following command: 
+
+```powershell
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01", "pNIC02"
+```
+A stretch intent can also be combined with other intents, when deploying with Network ATC. 
+
+#### SiteOverrides
+
+Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent deployed with Network ATC. Network ATC will handle this using SiteOverrides. To create a SiteOverride, run: 
+
+```powershell
+ $siteOverride = New-NetIntentSiteOverrides
+```
+Once you have created a siteOverride, you can set any property for the siteOverride. The list of properties you can set for a particular siteOverride is: Name, StorageVlan, StretchVlan and ManagementVlan. For eg: 
+
+```powershell
+$siteoverride.Name = "A"
+$siteoverride.StorageVLAN = 711
+$siteoverride.StretchVLAN = 25
+```
+Finally, run `$siteOverride` to make sure all your properties are set in the desired manner. 
+
+And finally, to add one or more siteOverrides to your intent, run: 
+```powershell
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteoverride
+```
 
 ## Step 6: Enable Storage Spaces Direct
 
