@@ -43,7 +43,7 @@ $TenantID = "TenantID"
 $TenantSubscriptionId = "Tenant Subscription ID"
 
 $tenantSubscriptionSettings = @{
-    TenantSubscriptionId = $tenantSubscriptionId
+    TenantSubscriptionId = [string]$tenantSubscriptionId
 }
 
 # Add environment & authenticate
@@ -71,7 +71,7 @@ $TenantID = "TenantID"
 $TenantSubscriptionId = "Tenant Subscription ID"
 
 $tenantSubscriptionSettings = @{
-    TenantSubscriptionId = $tenantSubscriptionId
+    TenantSubscriptionId = [string]$tenantSubscriptionId
 }
 
 #Add environment & authenticate
