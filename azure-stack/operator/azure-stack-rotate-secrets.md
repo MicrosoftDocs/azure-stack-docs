@@ -281,7 +281,7 @@ $pep = New-PSSession -ComputerName <ip address> -ConfigurationName PrivilegedEnd
  
 $stampInfo = Invoke-Command -Session $pep -ScriptBlock { Get-AzureStackStampInformation }
 
-$rootCert = $stampInfo.RootCACertificates| Sort-Object -Property NotAfter | Select-Object -First 1
+$rootCert = $stampInfo.RootCACertificates| Sort-Object -Property NotAfter | Select-Object -Last 1
 "The Azure Stack Hub Root Certificate expires on {0}" -f $rootCert.NotAfter.ToString("D") | Write-Host -ForegroundColor Cyan
 ```
 

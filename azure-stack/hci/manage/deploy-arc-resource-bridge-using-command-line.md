@@ -62,7 +62,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    $vlanID="<vLAN-ID>" (Optional)
    $VMIP="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
    $DNSServers="<comma separated list of DNS servers>" (required only for static IP configurations)
-   $IPAddressPrefix="<subnet mask for the IP address>" (required only for static IP configurations)
+   $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
    $cloudServiceIP="<IP-address>" (required only for static IP configurations)
    ```
@@ -77,7 +77,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **vlanID** | (Optional) vLAN identifier. |
    | **VMIP** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify this parameter, the Arc Resource Bridge will get an IP address from DHCP. The IP address given from DHCP must be reserved for Arc Resource Bridge. |
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250,192.168.250.255". |
-   | **IPAddressPrefix** | (Required only for static IP configurations) The PrefixLength specifies the subnet mask for the IP address. The IP address prefix needs to be entered in CIDR format. For example: "192.168.0.0/16". |
+   | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
    | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
