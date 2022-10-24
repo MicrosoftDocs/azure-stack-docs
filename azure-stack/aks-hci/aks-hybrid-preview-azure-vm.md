@@ -107,7 +107,7 @@ $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
 az extension add -n arcappliance --upgrade
-az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl
+az extension add -n hybridaks --upgrade
 ```
 
 ## Step 5: Install pre-requisite PowerShell repositories
@@ -169,7 +169,7 @@ $sub = <Azure subscription>
 $rgName = <Azure resource group>
 
 #Use device authentication to login to Azure. Follow the steps you see on the screen
-Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rg -UseDeviceAuthentication
+Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rgName -UseDeviceAuthentication
 ```
    
 Run the following command to install AKS on Windows Server host:
@@ -191,9 +191,8 @@ Do not proceed if you have any errors! If you face an issue installing AKS on Wi
 
 ```PowerShell
 $subscriptionId = <Azure subscription ID>
-$tenantId = <Azure tenant ID>
 $resourceGroup = <Azure resource group>
-$location="eastus"
+$location=<Azure location. Can be "eastus" or "westeurope">
 ```
 
 ```PowerShell
