@@ -58,7 +58,7 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 3. [Generate certificate signing requests for Azure Stack Hub](../operator/azure-stack-get-pki-certs.md#generate-csrs-for-renewal-certificates).
 
-4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
+4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md?view=azs-2209&tabs=omit-cn&pivots=csr-type-renewal).
 
 5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators, using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems. However, alerts will continue to come if the Azure Stack Hub system becomes unreachable.
 
