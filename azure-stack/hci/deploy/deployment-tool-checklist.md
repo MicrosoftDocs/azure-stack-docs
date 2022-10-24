@@ -25,11 +25,10 @@ Active Directory Object prefix|Name of the object prefix for the Active Director
 Active directory OU|Name of the organizational unit (OU) for the Active Directory domain.|
 |Active Directory FQDN|Fully-qualified domain name (FQDN) for the Active Directory domain.|
 |Active Directory credentials|Username and password for the deployment user pre-created in the Active directory account.|
-|IPv4 network range subnet for management network intent|A subnet IPv4 range with a minimum of one IP Address for the cluster used for the management network. Each host must have an IPv4 address configured from this network.|
+|IPv4 network range subnet for management network intent|A subnet IPv4 range with a minimum of 6 available IPs used for the management network intent. These IPs are used for infrastructure services such as clustering.|
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.|
 |DNS Server|A DNS Server that resolves Active Directory.|
-|Time server|IP address of the Network Protocol Time (NTP) time server used to synchronize the server time with that of Azure.|
-|Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
+|Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an owner on this subscription to manage access to Azure resources.|
 
 ## Next steps
 

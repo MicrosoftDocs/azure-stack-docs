@@ -50,6 +50,10 @@ The following network topologies were tested and validated for this release:
 
 - Two physical servers with direct (switchless) storage network connections to redundant L3 switches.
 
+- Four physical servers with storage network connections to an L2-switch.
+
+- Four physical server with storage network connections to redundant L3 switches. 
+
 <!---- Two physical servers deployed using a switched storage network and redundant L3 switches.
 
 - Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.--->

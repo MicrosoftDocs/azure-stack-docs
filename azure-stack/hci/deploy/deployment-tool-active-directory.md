@@ -1,18 +1,18 @@
 ---
-title: Prepare Active Directory for Azure Stack HCI version 22H2 (preview) deployment
-description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 (preview)
+title: Prepare Active Directory for Azure Stack HCI version 22H2 deployment
+description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 before you deploy the solution.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/18/2022
+ms.date: 10/24/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Prepare Active Directory for Azure Stack HCI version 22H2 deployment (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
-These articles describe how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI 22H2 version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
+These articles describe how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI, version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
 
 ## Prerequisites
 
@@ -20,32 +20,36 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
-- Download the script to prepare Active Directory from [GitHub repository](https://github.com/Azure/AzureStack-Tools/tree/master/HCI/AsHciADArtifactsPreCreationTool.ps1) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
+- Install the PowerShell module to prepare Active Directory. Run the following command:
+    ```azurepowershell
+    Install-module HCIAdObjectPreCreation -Repository PSGallery
+    ```    
+    You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module.
+- Obtain the local administrative access to the Active Directory domain server.
 
-<!-->> [!NOTE]
-> In this preview release, only one Azure Stack HCI deployment per Active Directory domain is supported.--> 
 
-## Active Directory preparation script
+## Active Directory preparation module
 
-The *AsHciADArtifactsPreCreationTool.ps1* script is used to prepare Active Directory. The following parameters can be provided with the script:
+The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. The following parameters can be provided with the module:
 
 |Parameter|Required |Description|
 |--|--|--|
-|`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
+|`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there's no conflict of settings.|
 |`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
 |`-AsHciClusterName`|No |The name for the new cluster AD object.|
-|`-AsHciDeploymentPrefix`|Yes |The prefix used for all AD objects created for the Azure Stack HCI deployment.|
+|`-AsHciDeploymentPrefix`|Yes |The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
+|`-Deploy`|No |Select this scenario if this is a brand new deployment instead of an upgrade of an existing system.   |
+|`-Upgrade`|No |Select this scenario if this is an upgrade of an existing system instead of a brand new deployment.  |
 
 ## Prepare Active Directory
 
-When preparing Active Directory, you need local administrative access to the Active Directory domain server.
 
-Also, a dedicated Organizational Unit (OU) should be created to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
+When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
 
 >[!NOTE]
-In this release, only the Active Directory prepared via the provided script is supported.
+> In this release, only the Active Directory prepared via the provided module is supported.
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -68,11 +72,11 @@ To prepare and configure Active Directory, follow these steps:
 
     ```
 
-1. Run the following command from the folder where the *AsHciADArtifactsPreCreationTool.ps1* script is located.
+1. Run the following command to create the dedicated OU.
 
     ```powershell
-    .\AsHciADArtifactsPreCreationTool.ps1 -AsHciDeploymentUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name that will used for deployment>" -AsHciDeploymentPrefix "docspro2"
-    ```
+    New-HciAdObjectsPreCreation -Deploy  -AsHciDeploymentUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
+
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
 
