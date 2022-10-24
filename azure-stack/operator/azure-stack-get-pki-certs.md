@@ -164,6 +164,9 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
 
      # EventHubs
      New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
+
+     # Azure Container Registry
+     New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
      ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
