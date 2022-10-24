@@ -25,7 +25,10 @@ ms.lastreviewed: 04/29/2022
 
       # EventHubs
       New-AzsCertificateSigningRequest -CertificateType EventHubs -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
-      ```
+
+      # Azure Container Registry
+      New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
+     ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.
 
@@ -34,10 +37,4 @@ ms.lastreviewed: 04/29/2022
 
       ```powershell
       New-AzsCertificateSigningRequest -CertificateType Deployment -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-      ```
-
-   - For a certificate outside of a deployment certificate.
-
-      ```powershell
-      New-AzsHubAzureContainerRegistryCertificateSigningRequest  -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
       ```

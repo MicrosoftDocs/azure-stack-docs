@@ -121,7 +121,6 @@ Complete the final steps:
 ::: zone-end
 
 
-
 ::: zone pivot="csr-type-renewal"
 - Your system's region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and pick the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
    - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
@@ -132,7 +131,7 @@ Complete the final steps:
 
 This section covers preparation of CSRs for renewal of existing Azure Stack Hub PKI certificates.
 
-### Generate CSRs 
+### Generate CSRs
 
 1. Open a PowerShell session on the machine where you installed the Readiness Checker tool.
 1. Declare the following variables:

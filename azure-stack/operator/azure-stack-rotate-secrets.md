@@ -120,8 +120,8 @@ Prior to rotation of external secrets:
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the fileshare with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The fileshare must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure under the network fileshare MUST begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder.
-7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\\\<IdentityProvider>** folder created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>.
+6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create another folder named `AAD` or `ADFS`, such as ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider your Hub uses. Note, don't create any other folders besides the certificates folder and the identity provider sub-folder.
+7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider can be either `AAD` or `ADFS`. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>.
 
 ### Rotation
 

@@ -25,6 +25,9 @@ ms.lastreviewed: 04/29/2022
 
       # EventHubs
       New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+      
+      # Azure Container Registry
+      New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
       ```
 
    - For a **low-privilege environment**, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
@@ -40,10 +43,4 @@ ms.lastreviewed: 04/29/2022
 
       ```powershell  
       New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-      ```
-
-   - For a certificate outside of a deployment certificate.
-
-      ```powershell
-      New-AzsHubAzureContainerRegistryCertificateSigningRequest  -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
       ```
