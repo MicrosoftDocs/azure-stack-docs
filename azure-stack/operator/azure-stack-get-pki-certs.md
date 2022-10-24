@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/20/2022
+ms.date: 10/24/2022
 ms.author: sethm
 ms.reviewer: ppacent
-ms.lastreviewed: 10/20/2022
+ms.lastreviewed: 10/24/2022
 zone_pivot_groups: csr-cert-type
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
@@ -149,11 +149,20 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
 
 1. Generate CSRs by completing one or more of the following:
 
-   - For a **production environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
+   - For a **production environment**, the first script will generate CSRs for deployment certificates:
 
      ```powershell  
      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
      ```
+
+   - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
+
+      ```powershell
+      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry
+      ```
+
+   - The third script will generate CSRs for any optional PaaS services you've installed:
+
 
      ```powershell  
      # App Services
@@ -169,7 +178,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
      New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
      ```
 
-   - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
+   - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.
 
       > [!IMPORTANT]
       > We do *not* recommend using this approach for production environments.
@@ -177,12 +186,6 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
      ```powershell  
      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
      ```
-
-   - For a certificate outside of a deployment certificate.
-
-        ```powershell
-        New-AzsHubAzureContainerRegistryCertificateSigningRequest  -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
-        ```
 
 1. Review the output:
 

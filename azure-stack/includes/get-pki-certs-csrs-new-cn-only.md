@@ -16,7 +16,7 @@ ms.lastreviewed: 10/24/2022
       New-AzsCertificateSigningRequest -CertificateType Deployment -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
 
-   - The second script using the `-IncludeContainerRegistry` will generate a container registry CSR at the same time as CSRs for deployment certificates:
+   - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
 
       ```powershell
       New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry

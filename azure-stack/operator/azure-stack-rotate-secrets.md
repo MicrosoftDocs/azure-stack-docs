@@ -56,7 +56,7 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
-3. [Generate certificate signing requests for Azure Stack Hub](https://learn.microsoft.com/azure-stack/operator/azure-stack-get-pki-certs?view=azs-2206&tabs=omit-cn&pivots=csr-type-renewal).
+3. [Generate certificate signing requests for Azure Stack Hub](../operator/azure-stack-get-pki-certs?view=azs-2206&tabs=omit-cn&pivots=csr-type-renewal).
 
 4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
 
