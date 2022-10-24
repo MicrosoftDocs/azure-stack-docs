@@ -56,9 +56,9 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
-3. [Generate certificate signing requests for Azure Stack Hub](../operator/azure-stack-get-pki-certs.md#generate-csrs-for-renewal-certificates).
+3. [Generate certificate signing requests for Azure Stack Hub](https://learn.microsoft.com/azure-stack/operator/azure-stack-get-pki-certs?view=azs-2206&tabs=omit-cn&pivots=csr-type-renewal).
 
-4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md?view=azs-2209&tabs=omit-cn&pivots=csr-type-renewal).
+4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
 
 5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators, using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems. However, alerts will continue to come if the Azure Stack Hub system becomes unreachable.
 

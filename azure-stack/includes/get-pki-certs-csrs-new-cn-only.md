@@ -10,11 +10,19 @@ ms.lastreviewed: 10/24/2022
 
 1. Generate CSRs by completing one of the following:
 
-   - For a **production deployment environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
+   - For a **production deployment environment**, the first script will generate CSRs for deployment certificates:
 
       ```powershell
       New-AzsCertificateSigningRequest -CertificateType Deployment -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
+
+   - The second script using the `-IncludeContainerRegistry` will generate a container registry CSR at the same time as CSRs for deployment certificates:
+
+      ```powershell
+      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry
+      ```
+
+   - The third script will generate CSRs for any optional PaaS services you've installed:
 
       ```powershell
       # App Services
