@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 09/23/2022
+ms.date: 10/24/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -42,7 +42,7 @@ Refer to the [Before You Get Started documentation](azure-stack-app-service-befo
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 2022 H1:
 
-- Ensure your Azure Stack Hub is updated to 2108 and Hotfix nnnn is applied.
+- Ensure your **Azure Stack Hub** is updated to **1.2108.2.127** or **1.2206.2.52**.
 
 - Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
 

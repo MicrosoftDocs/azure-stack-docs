@@ -4,7 +4,7 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: sethmanheim
 
 ms.topic: article
-ms.date: 8/30/2022
+ms.date: 10/24/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019

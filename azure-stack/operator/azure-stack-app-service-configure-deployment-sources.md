@@ -3,7 +3,7 @@ title: Configure App Services deployment sources - Azure Stack Hub
 description: Learn how to configure deployment sources (Git, GitHub, BitBucket, DropBox, and OneDrive) for App Services on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/31/2022
+ms.date: 10/24/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019

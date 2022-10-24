@@ -4,8 +4,8 @@ description: Learn how to deploy App Service in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/08/2022
-ms.author: sethm
+ms.date: 10/24/2022
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 12/09/2021
 zone_pivot_groups: state-connected-disconnected
