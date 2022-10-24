@@ -45,7 +45,7 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 ## Prerequisites
 
-1. It's highly recommended that you're running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you're running 2008, make sure you've installed the latest hotfix available for 2008.
+1. It's highly recommended that you're running a supported version of Azure Stack Hub and that you apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you're running 2008, make sure you've installed the latest hotfix available for 2008.
 
     ::: moniker range="<azs-1811"  
     >[!IMPORTANT]
@@ -60,7 +60,7 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
 
-5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems, but will continue to alert if the Azure Stack Hub system becomes unreachable.
+5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators, using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems. However, alerts will continue to come if the Azure Stack Hub system becomes unreachable.
 
 ::: moniker range=">=azs-1811"
 ## Rotate external secrets
@@ -131,7 +131,7 @@ Complete the following steps to rotate external secrets:
 
    - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as a parameter in the next step.  
    - Runs [Invoke-Command](/powershell/module/microsoft.powershell.core/Invoke-Command), passing the PEP session variable as the `-Session` parameter.  
-   - Runs `Start-SecretRotation` in the PEP session, using the following parameters. See the [Start-SecretRotation](#reference-start-secretrotation-cmdlet) reference for additional details:  
+   - Runs `Start-SecretRotation` in the PEP session, using the following parameters. For more information, see the [Start-SecretRotation](#reference-start-secretrotation-cmdlet) reference:  
 
      | Parameter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Variable | Description |
      | --------- | -------- | ----------- |
@@ -250,7 +250,7 @@ The baseboard management controller monitors the physical state of your servers.
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
-3. After opening a privileged endpoint session, run one of the PowerShell scripts below, which use Invoke-Command to run Set-BmcCredential. If you use the optional -BypassBMCUpdate parameter with Set-BMCCredential, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.Pass your privileged endpoint session variable as a parameter.
+3. After opening a privileged endpoint session, run one of the PowerShell scripts below, which use Invoke-Command to run Set-BmcCredential. If you use the optional -BypassBMCUpdate parameter with Set-BMCCredential, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated. Pass your privileged endpoint session variable as a parameter.
 
     Here's an example PowerShell script that will prompt for user name and password: 
 
