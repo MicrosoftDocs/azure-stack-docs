@@ -1,9 +1,9 @@
 ﻿---
-title: Tutorial - Prepare an application in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS on Azure Stack HCI .
+title: Tutorial - Prepare an application for AKS hybrid 
+description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS hybrid.
 services: container-service
 ms.topic: tutorial
-ms.date: 05/17/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,9 +14,13 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Prepare an application for Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Tutorial: Prepare an application for AKS hybrid
 
-In this tutorial, part one of seven, a multi-container application is prepared for use in Kubernetes on a cluster using AKS on Azure Stack HCI and Windows Server. Existing development tools such as Docker Compose are used to locally build and test an application. You learn how to:
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+In this tutorial, part one of seven, a multi-container application is prepared for use on a Kubernetes cluster when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid). Existing development tools such as Docker Compose are used to locally build and test an application. 
+
+You learn how to:
 
 > [!div class="checklist"]
 > * Clone a sample application source from GitHub
@@ -27,7 +31,7 @@ Once completed, the following application runs in your local development environ
 
 :::image type="content" source="./media/azure-vote-local.png" alt-text="This image shows the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
 
-In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an Azure Kubernetes Service on Azure Stack HCI cluster.
+In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an AKS cluster.
 
 ## Before you begin
 
@@ -36,7 +40,7 @@ This tutorial assumes a basic understanding of core Docker concepts such as cont
 To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on [Windows][docker-for-windows].
 
 > [!NOTE]
-> Azure Kubernetes Service on Azure Stack HCI does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
+> AKS hybrid does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
 
 ## Get application code
 

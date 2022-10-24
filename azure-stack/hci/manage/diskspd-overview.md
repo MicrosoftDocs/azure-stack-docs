@@ -111,7 +111,7 @@ You generate the test file under the unified namespace that the Cluster Shared V
 
 As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
-- [VM sizes](/azure/virtual-machines/sizes-general?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [VM sizes](/azure/virtual-machines/sizes-general?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 ## Understand the output

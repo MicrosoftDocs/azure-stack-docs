@@ -1,20 +1,22 @@
 ---
-title: Tutorial - Upgrade a cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: In this tutorial, learn how to upgrade an existing cluster to the latest available Kubernetes version.
+title: Tutorial - Upgrade a cluster in AKS hybrid
+description: In this tutorial, learn how to upgrade an existing cluster in AKS hybrid to the latest available Kubernetes version.
 services: container-service
 ms.topic: tutorial
-ms.date: 05/19/2022
+ms.date: 10/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
-# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS on Azure Stack HCI and Windows Server cluster to the latest Kubernetes version.
+# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS cluster to the latest Kubernetes version.
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
-# Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Tutorial: Upgrade Kubernetes in AKS hybrid
 
-As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes in when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid).
 
 This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluster. You'll learn how to:
 
@@ -29,9 +31,9 @@ This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluste
 ## What are the available update options?
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
-- [Update the AKS on Azure Stack HCI and Windows Server host](update-akshci-host-powershell.md) to the latest version.
-- Update an AKS on Azure Stack HCI and Windows Server workload cluster to a new Kubernetes version.
-- Update the AKS on Azure Stack HCI and Windows Server container hosts to a newer version of the operating system.
+- [Update the AKS host](update-akshci-host-powershell.md) to the latest version.
+- Update an AKS workload cluster to a new Kubernetes version.
+- Update the AKS container hosts to a newer version of the operating system.
 - Combined update of operating system and Kubernetes version.
 
 All updates are performed in a rolling flow in order to avoid outages in workload availability. When a _new_ Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the _old_ node to the _new_ node.  Once this is completed successfully, the _old_ node is decommissioned and removed from the cluster.
@@ -40,11 +42,11 @@ The examples in this tutorial assume that the workload cluster, `mycluster`, is 
 
 ## Before you begin
 
-In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create an AKS cluster. Then you deployed the application to the AKS on Azure Stack HCI and Windows Server cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create an AKS cluster. Then you deployed the application to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 ## Update the Kubernetes version of a workload cluster
 
-You must upgrade the PowerShell modules and the AKS on Azure Stack HCI and Windows Server host first before updating the Kubernetes version.
+You must upgrade the PowerShell modules and the AKS host first, before updating the Kubernetes version.
 
 > [!Important]
 > Updating a workload cluster to a newer version of Kubernetes works *only* if the target Kubernetes version is supported by the current operating system version. To check for the supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdates` command.
@@ -108,7 +110,7 @@ Use the following steps to update the Kubernetes version:
 ## Update the operating system version only
 
 > [!Important]
-> You can update a workload cluster to a newer version of the operating system without changing the Kubernetes version, but it works only if the new operating system version does not require a different Kubernetes version.
+> You can update a workload cluster to a newer version of the operating system without changing the Kubernetes version, but that works only if the new operating system version does not require a different Kubernetes version.
 
 ### Update only the operating system: Example
 
@@ -145,7 +147,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 1. To get all available workload cluster updates, run the following command:
 
    ```powershell 
-   PS C:\> Get-AksHciClusterUpgrades -name mycluster
+   PS C:\> Get-AksHciClusterUpdates -name mycluster
    ```
 
    ```output
@@ -158,7 +160,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 2. To initiate the workload cluster update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1
+   PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
    ```
 
 ## Validate an upgrade
@@ -192,7 +194,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Next steps
 
-In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI and Windows Server cluster. You learned how to:
+In this tutorial, you upgraded Kubernetes in an AKS cluster on AKS hybrid. You learned how to:
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
@@ -201,9 +203,5 @@ In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI and Windo
 > * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
 
-For more information on AKS on Azure Stack HCI and Windows Server, see the [AKS on Azure Stack HCI and Windows Server overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
+For more information about AKS hybrid, see [AKS hybrid overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
 
-<!-- LINKS - external -->
-
-
-<!-- LINKS - internal -->

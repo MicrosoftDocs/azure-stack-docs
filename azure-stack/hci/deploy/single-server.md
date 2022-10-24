@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
-ms.lastreviewed: 05/18/2022
-ms.date: 05/24/2022
+ms.lastreviewed: 10/03/2022
+ms.date: 10/03/2022
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -15,13 +15,13 @@ ms.date: 05/24/2022
 
 This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 
-Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
+Note that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 ## Prerequisites
 
 - A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server once it has been configured.
+- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server once it has been deployed.
 
 ## Deploy on a single server
 
@@ -29,7 +29,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
 2. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-3. Install the required roles and features using the following command.
+3. Install the required roles and features using the following command, then reboot before continuing.
 
    ```powershell
    Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
@@ -46,6 +46,9 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    ```powershell
    Enable-ClusterStorageSpacesDirect -CacheState Disabled 
    ```
+   
+   > [!Note]
+   > The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
 
 5. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 6. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers.

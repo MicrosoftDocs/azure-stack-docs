@@ -2084,24 +2084,16 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
-    If you do not have the extension host requirements met, the `Test-AzureStack` output displays the following message: 
+    If you do not have the extension host requirements met, the `Test-AzureStack` output displays the following message:
   
-    `To proceed with installation of the 1811 update, you will need to import 
-    the SSL certificates required for Extension Host, which simplifies network 
-    integration and increases the security posture of Azure Stack. Refer to this 
-    link to prepare for Extension Host:
-    https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare`
+    `To proceed with installation of the 1811 update, you will need to import the SSL certificates required for Extension Host, which simplifies network integration and increases the security posture of Azure Stack. Refer to this link to prepare for Extension Host: https://learn.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare`
 
 - The Azure Stack 1811 update requires that you have properly imported the mandatory extension host certificates into your Azure Stack environment. To proceed with installation of the 1811 update, you must import the SSL certificates required for the extension host. To import the certificates, see [this section](../azure-stack-extension-host-prepare.md#import-extension-host-certificates).
 
-    If you ignore every warning and still choose to install the 1811 update, the update will fail in approximately 1 hour with the following message:   
- 
-    `The required SSL certificates for the Extension Host have not been found.
-    The Azure Stack update will halt. Refer to this link to prepare for 
-    Extension Host: https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare,
-    then resume the update.
-    Exception: The Certificate path does not exist: [certificate path here]` 
- 
+    If you ignore every warning and still choose to install the 1811 update, the update will fail in approximately 1 hour with the following message:
+
+    `The required SSL certificates for the Extension Host have not been found. The Azure Stack update will halt. Refer to this link to prepare for Extension Host: https://learn.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare, then resume the update. Exception: The Certificate path does not exist: [certificate path here]`
+
     Once you have properly imported the mandatory extension host certificates, you can resume the 1811 update from the Administrator portal. While Microsoft advises Azure Stack operators to schedule a maintenance window during the update process, a failure due to the missing extension host certificates should not impact existing workloads or services.  
 
     During the installation of this update, the Azure Stack user portal is unavailable while the extension host is being configured. The configuration of the extension host can take up to 5 hours. During that time, you can check the status of an update, or resume a failed update installation using [Azure Stack Administrator PowerShell or the privileged endpoint](../azure-stack-monitor-update.md).
@@ -4419,7 +4411,7 @@ The Azure Stack 1802 update build number is **20180302.1**.
 
 ### Post-update steps
 After the installation of 1802, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](../azure-stack-servicing-policy.md). 
-- Azure Stack hotfix **1.0.180302.4**. [KB 4131152 - Existing Virtual Machine Scale Sets may become unusable]( https://support.microsoft.com/help/4131152) 
+- Azure Stack hotfix **1.0.180302.4**. [KB 4131152 - Existing Virtual Machine Scale Sets may become unusable](https://support.microsoft.com/help/4131152) 
 
   This fix also resolves the issues detailed in  [KB 4103348 - Network Controller API service crashes when you try to install an Azure Stack update](https://support.microsoft.com/help/4103348).
 

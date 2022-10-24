@@ -74,13 +74,15 @@ To renew REST certificate, complete the following steps:
    > [!NOTE]
    > If the certificate is already expired, don't use these steps.
 
-1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM. For information about how to a create new certificate or issue it from a Certification Authority, see [Manage certificates for Software Defined Networking](/windows-server/networking/sdn/security/sdn-manage-certs).
+1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM. For information about how to create a new certificate or issue it from a Certification Authority, see [Manage certificates for Software Defined Networking](/windows-server/networking/sdn/security/sdn-manage-certs).
 
 1. Assign the new certificate to a variable:
 
    ```powershell
    \$cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
    ```
+
+1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
 
 1. Provide Read and Allow permissions for NT Authority/Network Service on the certificate:
    
@@ -95,8 +97,6 @@ To renew REST certificate, complete the following steps:
    $privKeyAcl.AddAccessRule($accessRule)
    Set-Acl $privKeyCertFile.FullName $privKeyAcl
    ```
-
-1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
 
 1. [(Only for self-signed certificate) Copy the certificate public key to all the hosts and Software Load Balancer VMs](#copy-the-certificate-public-key-to-all-the-hosts-and-software-load-balancer-vms-only-for-self-signed-certificate).
 

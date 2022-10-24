@@ -41,9 +41,19 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
+## KVA timeout error
+
+Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
+
+- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
+- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
+- The host isn't able to reach $controlPlaneIP or $VMIP.
+
+To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
+ 
 ## Limitations and known issues
 
-- Resource name must be unique for an Azure Stack HCI cluster and must contain only lower case alphabets, numbers, and hyphens.
+- Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
 - Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
 - Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster must be enabled in the following deployment order:
 

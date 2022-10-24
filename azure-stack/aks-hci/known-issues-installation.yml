@@ -71,6 +71,15 @@ sections:
           To resolve this issue, you will need to manually clean up the cluster role. You can remove the resource from the fail-over cluster manager by running the following PowerShell cmdlet: `Remove-ClusterResource -name <resource name>`.
           
       - question: | 
+          Error: Install-AksHci fails with 'GetRelease error returned by API call: File download error: Hash mismatch.'
+
+        answer: | 
+          The `Install-AksHci` cmdlet fails with 'GetRelease error returned by API call: File download error: Hash mismatch.'
+          
+          1. Open PowerShell and run `Uninstall-AksHci`.
+          2. Retry an installation.
+          3. If the issue persists, use the `-concurrentDownloads` parameter with [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and set it to a number lower than the default 10 before retrying an installation. Reducing the number of concurrent downloads may help sensitive networks complete large file downloads successfully. This parameter is a preview feature.
+      - question: | 
           After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing.
 
         answer: | 
@@ -78,7 +87,7 @@ sections:
           
           To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](/azure-stack/aks-hci/known-issues-workload-clusters#the-api-server-isn-t-responsive-after-several-days-).
       - question: | 
-          Install-AksHci timed out with the error 'Waiting for API server'.
+          Install-AksHci timed out with the error ''.
 
         answer: | 
           After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following error message:
@@ -401,6 +410,37 @@ sections:
                 ```powershell
                 Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
                 ```
+      - question: | 
+          Error: 'Install-Moc failed. Exception [This typically indicates an issue happened while registering the resource name as a computer object 
+          with the domain controller and/or the DNS server. Please check if the Cluster Computer Object has permissions to create 
+          Computer Object in domain controller. Please check the domain controller and DNS logs for related error messages.'
+
+        answer: | 
+          This typically indicates that the Cluster Name Object (CNO) representing your underlying failover cluster in Active Directory 
+          Domain Services (AD DS) does not have permissions to create a Virtual Computer Object (VCO) in the Organizational Unit (OU) 
+          or in the container where the cluster resides.
+          
+          If you are not a domain administrator, you can ask one to 
+          [grant the CNO permissions to the OU](/windows-server/failover-clustering/prestage-cluster-adds#grant-the-cno-permissions-to-the-ou)
+          or [prestage a VCO for the cloud agent generic cluster service](./prestage-cluster-service-host-create.md).
+          
+          If you are a domain administrator, it is still possible that your OU or container does not have the required permissions. 
+          For example, Enforcement mode, introduced in [KB5008383](https://prod.support.services.microsoft.com/topic/kb5008383-active-directory-permissions-updates-cve-2021-42291-536d5555-ffba-4248-a60e-d6cbc849cde1?), 
+          may be enabled in Active Directory. Try the following before attempting a reinstall.
+          
+          1. Navigate to **Active Directory Users and Computers**.
+          2. Right-click on the OU or container where the cluster resides.
+          3. Select **Delegate Control…** to open the **Delegation of Control Wizard**.
+          4. Click **Next** > Click **Add...** to open the **Select Users, Computers, or Groups** window.
+          5. Select your choice of group or users to whom you want to delegate control > Click **OK**.
+          6. Select **Create a custom task to delegate** > Click **Next** to move on to the **Active Directory Object Type** page.
+          7. Select **Only the following objects in the folder** > Select **Computer objects** > Select **Create selected objects in this folder** and **Delete selected objects in this folder** > Click **Next** to move on to the **Permissions** page.
+          8. Select **Create all Child Objects** and **Delete All Child Objects** from the list of permissions > Click **Next** > **Finish**
+          
+          If a reinstall fails, retry the above with the following changes to Steps 7 and 8:
+          * Step 7: Select **This folder, existing objects in this folder, and creation of new objects in this folder** > Click **Next**.
+          * Step 8: Select **Read**, **Write**, **Create All Child Objects**, and **Delete All Child Objects** from the list of permissions > Click **Next** > Click **Finish**.
+          
       - question: | 
           Error: Install-AksHci fails with 'Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10'.
 

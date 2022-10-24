@@ -19,9 +19,6 @@ The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernete
 
 With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
-> [!NOTE]  
-> AKS on Azure Stack HCI and Windows Server preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and it's recommended that you do not use these features in production scenarios. AKS on Azure Stack HCI and Windows Server preview features are partially covered by customer support on a best-effort basis.
-
 ## Before you begin
 
 - You need to have an Azure account and subscription.

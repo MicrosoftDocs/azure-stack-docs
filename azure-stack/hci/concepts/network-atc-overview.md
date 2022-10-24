@@ -1,7 +1,7 @@
 ---
 title: Network ATC overview 
 description: This topic introduces Network ATC for Azure Stack HCI.
-author: jpeddicord
+author: dcuomo
 ms.topic: how-to
 ms.date: 04/22/2022
 ms.author: jgerend 
@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Network ATC overview 
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 21H2 and later
 
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
 
@@ -34,18 +34,14 @@ An individual physical adapter can only be included in one intent. By default, a
 - Management - adapters are used for management access to nodes
 - Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
 - Storage - adapters are used for SMB traffic including Storage Spaces Direct
+- Stretch - adapters are set up in a similar manner as a storage intent with the exception of RDMA not used for stretch adapters. 
 
 Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
 
 - Management: Can be defined in a maximum of one intent
 - Compute: Unlimited
 - Storage: Can be defined in a maximum of one intent
-
-**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have an intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
-
-- *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can be copied to a cluster from a node that is not a member of that cluster, or from one cluster to another cluster.
-
-- *Cluster mode*: Intents are applied to all cluster nodes. This is the recommended deployment mode and is required when a server is a member of a failover cluster.
+- Stretch: Can be defined in a maximum of one intent
 
 **Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults.
 
