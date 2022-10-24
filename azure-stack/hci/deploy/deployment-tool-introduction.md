@@ -1,18 +1,24 @@
 ---
-title: Azure Stack HCI version 22H2 (preview) deployment overview
-description: Learn to deploy Azure Stack HCI version 22H2 using the new deployment tool
+title: Azure Stack HCI version 22H2 deployment overview
+description: Learn about the deployment methods for Azure Stack HCI, version 22H2 using the supplemental package.
 author: dansisson
-ms.topic: how-to
-ms.date: 08/29/2022
+ms.topic: overview
+ms.date: 10/24/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Azure Stack HCI version 22H2 deployment overview (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
-This set of articles describes how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
+This set of articles describes how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods. 
+
+You can deploy version 22H2 using one of the following methods:  
+
+- Using a new config file interactively. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
+- Using an existing config file. You can import an existing config file to start deployment.
+- Using config file via PowerShell. You can start deployment using PowerShell cmdlets.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -31,12 +37,12 @@ Follow this process sequence to deploy Azure Stack HCI version 22H2 in your envi
 - After deployment, [validate deployment](deployment-tool-validate.md).
 - If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).
 
-## Validated configurations
+## Validated network topologies
 
-The following cluster configurations were tested and validated for this release:
+The following network topologies were tested and validated for this release:
 
 > [!IMPORTANT]
-> We recommend that you use one of the validated cluster configurations for optimum results.
+> We recommend that you use one of the validated network topologies for optimum results.
 
 - A single physical server connected to a network switch. This is sometimes referred to as a single-node cluster.
 
