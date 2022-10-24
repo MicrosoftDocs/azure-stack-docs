@@ -28,7 +28,7 @@ ms.lastreviewed: 04/29/2022
 
       # Azure Container Registry
       New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
-     ```
+      ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.
 
