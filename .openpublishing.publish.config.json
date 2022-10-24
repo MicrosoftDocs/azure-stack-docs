@@ -81,6 +81,7 @@
   "need_generate_pdf_url_template": true,
   "redirection_files": [
     ".openpublishing.redirection.json",
-    ".openpublishing.redirection.pep.json"
+    ".openpublishing.redirection.pep.json",
+    ".openpublishing.redirection.aks.json"
   ]
 }

@@ -49,7 +49,7 @@ You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure
 
 ### Improvements to Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 
-We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](../aks-hci/overview.md).
+We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](/azure/aks/hybrid/overview).
 
 ## New Azure management and governance capabilities
 
