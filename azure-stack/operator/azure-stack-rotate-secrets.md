@@ -36,7 +36,7 @@ When secrets are nearing expiration, the following alerts are generated in the a
 >
 > **It's *critical* that you complete secret rotation if you receive these notifications. Failure to do so can cause the loss of workloads and possible Azure Stack Hub redeployment at your own expense!**
 
-For more information on alert monitoring and remediation, refer to [Monitor health and alerts in Azure Stack Hub](azure-stack-monitor-health.md).
+For more information on alert monitoring and remediation, see [Monitor health and alerts in Azure Stack Hub](azure-stack-monitor-health.md).
 
 ::: moniker range="<azs-1811"  
 > [!NOTE]
@@ -45,7 +45,7 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 
 ## Prerequisites
 
-1. It's highly recommended that you are running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you are running 2008, make sure you have installed the latest hotfix available for 2008.
+1. It's highly recommended that you're running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you're running 2008, make sure you've installed the latest hotfix available for 2008.
 
     ::: moniker range="<azs-1811"  
     >[!IMPORTANT]
@@ -120,7 +120,7 @@ Prior to rotation of external secrets:
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the fileshare with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The fileshare must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create another folder named `AAD` or `ADFS`, such as ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider your Hub uses. Note, don't create any other folders besides the certificates folder and the identity provider sub-folder.
+6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create a subfolder named `AAD` or `ADFS`, depending on your identity provider your Hub uses. For example, ***.\Certificates\AAD*** or ***.\Certificates\ADFS***. No other folders besides the certificates folder and the identity provider subfolder should be created here.
 7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider can be either `AAD` or `ADFS`. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>.
 
 ### Rotation
