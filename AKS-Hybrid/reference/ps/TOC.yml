@@ -8,7 +8,7 @@
     href: add-akshcinode.md
   - name: Disable-AksHciArcConnection
     href: disable-akshciarcconnection.md
-  - name: Disable-AksHciOfflineDownload
+  - name: Disable-AksHciOfflinedownload
     href: disable-akshciofflinedownload.md
   - name: Disable-AksHciPreview
     href: disable-akshcipreview.md
