@@ -54,6 +54,8 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
     :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="cluster Create alert rule screen" lightbox="media/alerts-logs-insights/create-alert-rule.png":::
 
-To learn more about setting up alerts, see [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+To learn more about setting up alert rules, see next steps.
 
 ## Next steps
+
+[Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule)
