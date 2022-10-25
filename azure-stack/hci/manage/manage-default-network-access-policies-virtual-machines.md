@@ -104,10 +104,8 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerSh
     1. Specify the ports to be unblocked on the VM.
     
         ```azurepowershell
-        SetVMPortProfile.ps1 -VMName \<Name of VM whose port has to be
-        unblocked\> -VMNetworkAdapterName \<Name of the adapter in the
-        VM\> -ProfileId "00000000-0000-0000-0000-000000000000"
-        -ProfileData 2
+        SetVMPortProfile.ps1 -VMName \<Name of VM whose port has to be unblocked\> -VMNetworkAdapterName \<Name of the adapter in the
+        VM\> -ProfileId "00000000-0000-0000-0000-000000000000" -ProfileData 2
         ```
 
 - The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
@@ -124,9 +122,9 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerSh
 > [!NOTE]
 > Skip this section, if you upgraded from Azure Stack HCI 21H2 version and didn't have the Network Controller installed.
 
-If you had Network Controller installed on 21H2 version and also had workload VMs on your cluster, those VMs would be in one of the following 4 isolation modes in VM (in Network Settings):
+If you had Network Controller installed on 21H2 version and also had workload VMs on your cluster, those VMs would be in one of the following 4 isolation modes in VM (in **Network Settings**):
 
-1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The **Isolation Mode** in the VM **Network Settings** page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
+1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The **Isolation Mode** in the VM **Network Settings** page on Windows Admin Center will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
 
     1. In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide the VLAN ID for network to which the VM is connected.
 
