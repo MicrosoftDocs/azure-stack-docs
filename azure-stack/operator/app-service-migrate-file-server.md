@@ -95,7 +95,7 @@ In addition to copying the file share contents, you must also reset permissions 
       ```
    This command will inspect the Virtual Machine Scale Sets associated and perform corresponding actions, including adding back the instances of the custom worker tiers
 
-1. in the same, or a new, administrative PowerShell session run **net start webfarmservice**.
+1. In the same, or a new, administrative PowerShell session, run the command **net start webfarmservice**.
 
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
@@ -109,7 +109,7 @@ If the credentials have changed, you must update the file share credentials to c
 1. In the Azure Stack admin portal, navigate to the **ControllersNSG** Network Security Group.
 
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
-1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
+1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default the resource group is named in with the format, AppService.\<region\> and connect to **CN0-VM**.
 1. Launch the **Web Cloud Management Console**.
 
 1. Check in the **Web Cloud Management Console -> Web Cloud**, verify that both **Controllers** are **Ready**.
@@ -121,7 +121,7 @@ If the credentials have changed, you must update the file share credentials to c
 1. Once you have completed updating the credentials, you must **restart CN0-VM**.
 1. Wait for **CN0-VM** and verify the role is marked as **Ready** in the Admin Portal -> App Service -> Roles
 1. Restart CN1-VM and verify the role is marked as **Ready**
-1. Once both controllers are marked as Ready, Repair all other Role instances.  Recommend working through each role type i.e. Management, Front End etc methodically one set at a time.
+1. Once both controllers are marked as Ready, Repair all other Role instances.  Recommend working through each role type that is. Management, Front End etc., methodically one set at a time.
 1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
 
 1. Modify the **Inbound_Rdp_3389** rule to deny access.

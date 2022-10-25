@@ -95,7 +95,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
    ```powershell
    Restore-AppServiceRoles
    ```
-1. in the same, or a new, administrative PowerShell session, run **net start webfarmservice**
+1. In the same, or a new, administrative PowerShell session, run the command **net start webfarmservice**.
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
