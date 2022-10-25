@@ -6,7 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2022
+ms.date: 10/25/2022
 ---
 
 # Azure Stack HCI cluster alerts
@@ -53,8 +53,6 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 5. From the alerts interface you can set up alert rules and send notifications.
 
     :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="cluster Create alert rule screen" lightbox="media/alerts-logs-insights/create-alert-rule.png":::
-
-To learn more about setting up alert rules, see next steps.
 
 ## Next steps
 
