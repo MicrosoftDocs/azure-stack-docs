@@ -57,7 +57,7 @@ The following network topologies were tested and validated for this release:
 <!---- Two physical servers deployed using a switched storage network and redundant L3 switches.
 
 - Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.--->
-
+s
 **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch.
 
 :::image type="content" source="media/deployment-tool/introduction/deployment-topology-1.png" alt-text="Diagram that shows a switched storage network with single switch configuration." lightbox="media/deployment-tool/introduction/deployment-topology-1.png":::
