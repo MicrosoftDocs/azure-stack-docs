@@ -3,9 +3,9 @@ title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster 
 description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 07/11/2022
+ms.date: 10/25/2022
 ms.author: sethm 
-ms.lastreviewed: 05/02/2022
+ms.lastreviewed: 10/25/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to use Az CLI to test creating AKS hybrid clusters on-premises
@@ -22,7 +22,7 @@ If you do have a Windows Server or Azure Stack HCI cluster, follow this detailed
 
 Before you begin, make sure you meet the following requirements:
 - Have access to an Azure subscription.
-- Make sure you’re an owner of the Azure subscription. 
+- Make sure you're an owner of the Azure subscription. 
 
 ## Step 1: Register your Azure subscription for features and providers
 
@@ -107,7 +107,7 @@ $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
 az extension add -n arcappliance --upgrade
-az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl
+az extension add -n hybridaks --upgrade
 ```
 
 ## Step 5: Install pre-requisite PowerShell repositories
@@ -169,7 +169,7 @@ $sub = <Azure subscription>
 $rgName = <Azure resource group>
 
 #Use device authentication to login to Azure. Follow the steps you see on the screen
-Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rg -UseDeviceAuthentication
+Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rgName -UseDeviceAuthentication
 ```
    
 Run the following command to install AKS on Windows Server host:
@@ -191,9 +191,8 @@ Do not proceed if you have any errors! If you face an issue installing AKS on Wi
 
 ```PowerShell
 $subscriptionId = <Azure subscription ID>
-$tenantId = <Azure tenant ID>
 $resourceGroup = <Azure resource group>
-$location="eastus"
+$location=<Azure location. Can be "eastus" or "westeurope">
 ```
 
 ```PowerShell
@@ -324,7 +323,7 @@ In order to connect to the AKS hybrid cluster from anywhere, you need to create 
 
 To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You will need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
 
-## Step 14:	Create an AKS hybrid cluster using Azure CLI
+## Step 14:    Create an AKS hybrid cluster using Azure CLI
 
 Run the following command to create an AKS hybrid cluster using Azure CLI. 
 
