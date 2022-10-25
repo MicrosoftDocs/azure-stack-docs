@@ -11,7 +11,7 @@ ms.lastreviewed: 04/19/2022
 
 |Service |  URL | Port | Notes |
 |   :---|  :---| :---| :---|
-| Azure Stack HCI | login.microsoftonline.com  | 443  | For Active Directory Authority and used for authentication, token fetch, and alidation.|
+| Azure Stack HCI | login.microsoftonline.com  | 443  | For Active Directory Authority and used for authentication, token fetch, and validation.|
 | Azure Stack HCI  | graph.windows.net  | 443  | For Graph and used for authentication, token fetch, and validation.   |
 | Azure Stack HCI  | management.azure.com  | 443  | For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. |
 | Azure Stack HCI | dp.stackhci.azure.com | 443  | For Dataplane that pushes up diagnostics data and used in the Portal pipeline and pushes billing data.    |
