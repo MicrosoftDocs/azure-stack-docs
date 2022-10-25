@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 10/25/2022
 ms.author: sethm
 ms.reviewer: ppacent
-ms.lastreviewed: 10/24/2022
+ms.lastreviewed: 10/25/2022
 zone_pivot_groups: csr-cert-type
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
@@ -16,7 +16,7 @@ zone_pivot_groups: csr-cert-type
 
 # Generate certificate signing requests for Azure Stack Hub
 
-You use the Azure Stack Hub Readiness Checker tool to create certificate signing requests (CSRs) that are suitable for an Azure Stack Hub deployment, or for renewal of certificates for an existing deployment. It's important to request, generate, and validate certificates with enough lead time to test them before they're deployed. 
+You use the Azure Stack Hub Readiness Checker tool to create certificate signing requests (CSRs) that are suitable for an Azure Stack Hub deployment, or for renewal of certificates for an existing deployment. It's important to request, generate, and validate certificates with enough lead time to test them before they're deployed.
 
 The tool is used to request the following certificates, based on the **Choose a CSR certificate scenario** selector at the top of this article:
 
@@ -50,13 +50,14 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
 1. Declare the following variables:
 
     > [!NOTE]  
-    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In the following example, the portal would be `portal.east.azurestack.contoso.com`. 
+    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In the following example, the portal would be `portal.east.azurestack.contoso.com`.
 
     ```powershell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR" # An existing output directory
     $IdentitySystem = "AAD"                     # Use "AAD" for Azure Active Director, "ADFS" for Active Directory Federation Services
     $regionName = 'east'                        # The region name for your Azure Stack Hub deployment
     $externalFQDN = 'azurestack.contoso.com'    # The external FQDN for your Azure Stack Hub deployment
+    $IncludeContainerRegistry = $true           # $true/$false for Azure Container Registry certificate
     ```
 
 Now generate the CSRs using the same PowerShell session. The instructions are specific to the **Subject** format that you select below:
@@ -81,7 +82,7 @@ Now generate the CSRs using the same PowerShell session. The instructions are sp
 # [Subject with CN](#tab/add-cn)
 
 > [!NOTE]  
-> The CN you specify will be configured on every certificate request. 
+> The CN you specify will be configured on every certificate request.
 
 1. Declare a subject, for example:
 
@@ -145,6 +146,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     $externalFQDN = 'azurestack.contoso.com'                        # The external FQDN for your Azure Stack Hub deployment    
     $stampEndpoint = "$regionName.$externalFQDN"
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"   # Declare the path to an existing output directory
+    $IncludeContainerRegistry = $true                               # $true/$false include Azure Container Registry certificate
     ```
 
 1. Generate CSRs by completing one or more of the following:
