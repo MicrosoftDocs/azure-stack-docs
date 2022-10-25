@@ -125,7 +125,7 @@ Now that you've verified the system settings, follow these steps:
 
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
 
-   :::image type="content" source="media/setup/dashboard.png" alt-text="Screenshot showing Kubernetes dashboard.":::
+   :::image type="content" source="media/setup/dashboard.png" alt-text="Screenshot showing Kubernetes dashboard." lightbox="media/setup/dashboard.png":::
 
 ## Next steps
 
