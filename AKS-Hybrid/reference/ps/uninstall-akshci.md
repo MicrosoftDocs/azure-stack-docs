@@ -18,7 +18,7 @@ Removes Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 ## Syntax
 
 ```powershell
-Uninstall-AksHci [-skipConfigCleanup]
+Uninstall-AksHci
 ```
 
 ## Description
@@ -33,22 +33,6 @@ If PowerShell commands are run on a cluster where Windows Admin Center was previ
 Uninstall-AksHci
 ```
 
-## Parameters
-
-### -skipConfigCleanup
-Skips removal of the configurations after uninstall. If you use this flag, your old configuration will be retained.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

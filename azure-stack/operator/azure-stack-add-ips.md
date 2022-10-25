@@ -4,9 +4,8 @@ description: Learn how to add public IP addresses to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 10/21/2022
 ms.author: sethm
-ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
 
 # Intent: As an Azure Stack operator, I want to add public IP addresses to my Azure Stack network.
@@ -34,7 +33,7 @@ At a high level, the process of adding a new public IP address block to Azure St
 The first thing you'll need to do is to obtain the address block you want to add to Azure Stack Hub. Depending on where you obtain your address block from, consider what the lead time is and manage this against the rate at which you're consuming public IP addresses in Azure Stack Hub.
 
 > [!IMPORTANT]
-> Azure Stack Hub will accept any address block that you provide if it's a valid address block and doesn't overlap with an existing address range in Azure Stack Hub. Please make sure you obtain a valid address block that's routable and non-overlapping with the external network to which Azure Stack Hub is connected. After you add the range to Azure Stack Hub, you can't remove it.
+> Azure Stack Hub will accept any address block that you provide if it's a valid address block and doesn't overlap with an existing address range in Azure Stack Hub. Please make sure you obtain a valid address block that's routable and non-overlapping with the external network to which Azure Stack Hub is connected. After you add the range to Azure Stack Hub, you cannot remove it without the assistance of Microsoft Support. Only IP pools specified post deployment can be removed. The IP pool range specified during deployment cannot be modified or removed; a redeployment of the stamp is required if the original IP pool range needs to be changed.
 
 ## Add the IP address range to Azure Stack Hub
 
