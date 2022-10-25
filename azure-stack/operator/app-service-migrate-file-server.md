@@ -1,11 +1,11 @@
 ---
-title: Migrate File Server  
-description: Migrate File Server.
+title: Migrate file share  
+description: Document detailing how to migrate the Azure App Service on Azure Stack Hub tenant content file share.
 author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 10/25/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -14,7 +14,7 @@ ms.lastreviewed:
 # Keyword: Notdone: keyword noun phrase
 
 ---
-# Migrate File Share
+# Migrate file share
 
 This article provides instructions on how to migrate to the new file server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider content file share.
 
@@ -31,11 +31,11 @@ Use the admin portal to back up App Service secrets by following these steps:
 
 3. Select **Download Secrets**.
 
-   ![Download secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/download-secrets.png)
+   ![Screenshot that shows how to download secrets in Azure Stack Hub administrator portal.](./media/app-service-back-up/download-secrets.png)
 
 4. When secrets are ready for downloading, click **Save** and store the App Service secrets (**SystemSecrets.JSON**) file in a safe location. 
 
-   ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/save-secrets.png)
+   ![Screenshot that shows how to save secrets in Azure Stack Hub administrator portal.](./media/app-service-back-up/save-secrets.png)
 
 > [!NOTE]
 > Repeat these steps every time the App Service secrets are rotated.
@@ -126,3 +126,6 @@ If the credentials have changed, you must update the file share credentials to c
 
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
 
+## Next steps
+[Backup App Service on Azure Stack Hub](app-service-back-up.md)
+[Restore App Service on Azure Stack Hub](app-service-recover.md)

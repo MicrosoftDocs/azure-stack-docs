@@ -1,6 +1,6 @@
 ---
-title: Migrate SQL Server  
-description: Migrate SQL Server.
+title: Migrate SQL server  
+description: Document listing how to migrate the Azure App Service on Azure Stack Hub resource provider SQL server.
 author: apwestgarth
 manager: stefsch
 
@@ -17,7 +17,7 @@ ms.lastreviewed:
 
 ---
 
-# Migrate SQL Server
+# Migrate SQL server
 
 This article describes how to migrate to the new SQL Server infrastructure for hosting the Azure App Service on Azure Stack Hub Resource Provider databases - appservice_hosting and appservice_metrics.
 
@@ -99,3 +99,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 1. Repeat the previous step for all other controllers.
 1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
+
+## Next steps
+[Backup App Service on Azure Stack Hub](app-service-back-up.md)
+[Restore App Service on Azure Stack Hub](app-service-recover.md)
