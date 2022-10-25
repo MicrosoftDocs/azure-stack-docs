@@ -43,7 +43,7 @@ Use the administration portal to back up app service secrets by following these 
 ## Back up the App Service databases from the current server
 
 
-To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely regularly. However, any method of ensuring regular SQL database backups are created can be used.
+To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely regularly. However, any methods of ensuring regular SQL database backups are created can be used.
 
 To manually back up these databases while logged into the SQL Server, use the following PowerShell commands:
 
