@@ -126,7 +126,7 @@ Prior to rotation of external secrets:
     Here's an example of a folder structure for the Azure AD Identity Provider:
 
     ```powershell
-           <ShareName>
+        <ShareName>
             │
             └───Certificates
                   └───AAD
@@ -136,18 +136,14 @@ Prior to rotation of external secrets:
                       ├───ACSQueue
                       │       <CertName>.pfx
                       │
-                      ├───ACSTable
-                      │       <CertName>.pfx
-                      │
-                      ├───Admin Extension Host
-                      │       <CertName>.pfx
-                      │
                       ├───Admin Portal
                       │       <CertName>.pfx
-                      |
-                      |
+                      │
+                      ├───ARM Admin
+                      │       <CertName>.pfx
+                      │
                       └───Public Portal
-                              <CertName>.pfx 
+                              <CertName>.pfx
     ```
 
 ### Rotation
