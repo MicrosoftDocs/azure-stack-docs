@@ -56,4 +56,4 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
 ## Next steps
 
-[Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule)
+- [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule)
