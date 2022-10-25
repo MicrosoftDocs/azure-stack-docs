@@ -375,7 +375,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: ../aks-hci/overview.md
+    href: /aks-hybrid/overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
