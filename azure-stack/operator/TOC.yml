@@ -424,14 +424,18 @@
           href: app-service-recover.md
         - name: Remove App Service
           href: app-service-remove.md
+        - name: Migrate File Server
+          href: app-service-migrate-file-server.md
+        - name: Migrate SQL Server
+          href: app-service-migrate-sql-server.md
       - name: Release notes
         items:
+        - name: 2022 H1 release notes [September 2022]
+          href: app-service-release-notes-2022-h1.md
         - name: 2021 Q3 release notes [December 2021]
           href: app-service-release-notes-2021-Q3.md
         - name: 2021 Q1 release notes [June 2021]
           href: app-service-release-notes-2021-Q1.md
-        - name: 2020 Q3 release notes [September 2020]
-          href: app-service-release-notes-2020-Q3.md
     - name: Azure Container Registry
       items:
       - name: Overview
