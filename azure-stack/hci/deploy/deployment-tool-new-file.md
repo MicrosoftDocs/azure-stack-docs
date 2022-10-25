@@ -10,11 +10,11 @@ ms.reviewer: alkohli
 
 # Deploy Azure Stack HCI version 22H2 interactively (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 
+> Applies to: Azure Stack HCI, version 22H2
 
 After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
-You can deploy both single-node and multi-node clusters using this procedure.
+You can deploy both single server and multi-node clusters using this procedure.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -35,7 +35,7 @@ Before you begin, make sure you've done the following:
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
 
-1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
+1. In the deployment UX, select the first server listed for the cluster to act as a staging server during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
@@ -160,7 +160,7 @@ If you want to use an existing configuration file you have previously created, s
     1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
-    1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
+
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
@@ -189,7 +189,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time. 
+1. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time. 
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
 
