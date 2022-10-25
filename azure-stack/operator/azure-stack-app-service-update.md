@@ -333,5 +333,3 @@ Prepare for other admin operations for Azure App Service on Azure Stack Hub:
 [8]: ./media/azure-stack-app-service-update/app-service-exe-advanced-complete-offline.png
 [9]: ./media/azure-stack-app-service-update/azure-app-service-22h1-upgrade-connection-details.png
 [10]: ./media/azure-stack-app-service-update/azure-app-service-22h1-upgrade-farm-status-check.png
-[11]: ./media/azure-stack-app-service-update/azure-app-service-22h1-upgrade-sku-screen.png
-
