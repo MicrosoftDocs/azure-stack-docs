@@ -114,9 +114,9 @@ Complete the final steps:
     Certreq.exe output: CertReq: Request Created
     ```
 
-1. If the `-LowPrivilege` parameter was used, an .inf file was generated in the `C:\Users\username\Documents\AzureStackCSR` subdirectory. For example: 
+1. If the `-LowPrivilege` parameter was used, an .inf file was generated in the `C:\Users\username\Documents\AzureStackCSR` subdirectory. For example:
 
-    `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf` 
+    `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf`
 
     Copy the file to a system where elevation is allowed, then sign each request with `certreq` by using the following syntax: `certreq -new <example.inf> <example.req>`. Then complete the rest of the process on that elevated system, because it requires matching the new certificate that's signed by the CA with its private key, which is generated on the elevated system.
 ::: zone-end
@@ -139,7 +139,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
 
     > [!NOTE]  
     >
-    > The Readiness Checker uses `stampEndpoint` plus a prepended string to find existing certificates. For example, `portal.east.azurestack.contoso.com` is used for deployment certificates, `sso.appservices.east.azurestack.contoso.com` for app services certificates, etc. 
+    > The Readiness Checker uses `stampEndpoint` plus a prepended string to find existing certificates. For example, `portal.east.azurestack.contoso.com` is used for deployment certificates, `sso.appservices.east.azurestack.contoso.com` for app services certificates, etc.
 
     ```powershell
     $regionName = 'east'                                            # The region name for your Azure Stack Hub deployment
@@ -160,7 +160,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
    - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
 
       ```powershell
-      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry
+      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry -$IncludeContainerRegistry
       ```
 
    - The third script will generate CSRs for any optional PaaS services you've installed:
@@ -177,7 +177,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
      New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
 
      # Azure Container Registry
-     New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
+     New-AzsHubAzureContainerRegistryCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory 
      ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.

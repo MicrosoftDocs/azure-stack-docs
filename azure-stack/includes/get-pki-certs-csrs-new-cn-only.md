@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/24/2022
+ms.date: 10/25/2022
 ms.reviewer: sethm
-ms.lastreviewed: 10/24/2022
+ms.lastreviewed: 10/25/2022
 ---
 
 1. Generate CSRs by completing one of the following:
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/24/2022
    - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
 
       ```powershell
-      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry
+      New-AzsHubDeploymentCertificateSigningRequest -CertificateType AppServices -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory -IncludeContainerRegistry
       ```
 
    - The third script will generate CSRs for any optional PaaS services you've installed:
@@ -35,7 +35,7 @@ ms.lastreviewed: 10/24/2022
       New-AzsCertificateSigningRequest -CertificateType EventHubs -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
 
       # Azure Container Registry
-      New-AzsHubAzureContainerRegistryCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
+      New-AzsHubAzureContainerRegistryCertificateSigningRequest -CertificateType AzureContainerRegistry -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory 
       ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.
