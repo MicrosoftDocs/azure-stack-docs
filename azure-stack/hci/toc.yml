@@ -214,6 +214,8 @@
       href: manage/use-datacenter-firewall-powershell.md
     - name: Configure network security groups with tags
       href: manage/configure-network-security-groups-with-tags.md
+    - name: Manage default network access policies
+      href: manage/manage-default-network-access-policies.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
