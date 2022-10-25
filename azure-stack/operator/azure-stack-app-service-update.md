@@ -4,7 +4,7 @@ description: Learn how to update Azure App Service on Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 10/2/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2020
@@ -76,11 +76,11 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
     
     1. **NEW**: Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
 
-      ![Azure App Service Installation Detected][9]
+      ![Screenshot showing Azure App Service on Azure Stack Hub installation detected.][9]
 
 1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
 
-    ![Azure App Service Pre-Upgrade Status Check][10]
+    ![Screenshot showing Azure App Service on Azure Stack Hub pre-upgrade status check.][10]
 
 1. The Platform Image and SKU screen gives Administrators the opportunity to choose the correct [Windows 2022 Platform](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace) image to be used to deploy the new role instances.
     1. **Select** the correct Platform Image
@@ -183,11 +183,11 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 1. Run appservice.exe as an administrator
 
-    ![Azure App Service Installer][6]
+    ![Screenshot that shows the Azure App Service on Azure Stack Hub installer.][6]
 
 2. Select **Advanced** > **Create offline package**
 
-    ![Azure App Service Installer Advanced][7]
+    ![Screenshot showing the Azure App Service on Azure Stack Hub installer advanced options.][7]
 
 3. The Azure App Service installer creates an offline upgrade package and displays the path to it.  You can select **Open folder** to open the folder in your file explorer.
 
@@ -202,11 +202,11 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 1. Run appservice.exe as an administrator.
 
-    ![Azure App Service Installer][6]
+    ![Screenshot that shows the Azure App Service on Azure Stack Hub installer.][6]
 
 1. Select **Advanced** > **Complete offline installation or upgrade**.
 
-    ![Azure App Service Installer Advanced][7]
+    ![Screenshot showing the Azure App Service on Azure Stack Hub installer advanced options.][7]
 
 1. Browse to the location of the offline upgrade package you previously created and then select **Next**.
 
@@ -216,7 +216,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 1. Make sure that the Azure Stack Hub Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Hub Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, select **Next**.
 
-    ![Azure Stack Hub Cloud Information][2]
+    ![Screenshot showing Azure Stack Hub Cloud Information.][2]
 
 1. On the next page:
 
@@ -236,11 +236,11 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
    1. **NEW**: Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
 
-      ![Azure App Service Installation Detected][9]
+      ![Screenshot showing Azure App Service on Azure Stack Hub installation detected.][9]
 
 1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
 
-    ![Azure App Service Pre-Upgrade Status Check][10]
+    ![Screenshot showing Azure App Service on Azure Stack Hub pre-upgrade status check.][10]
 
 1. The Platform Image and SKU screen gives Administrators the opportunity to choose the correct [Windows 2022 Platform](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace) image to be used to deploy the new role instances.
     1. **Select** the correct Platform Image
@@ -251,7 +251,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
    1. If the configurations are correct, select the check box.
    1. To start the upgrade, select **Next**.
 
-       ![Azure App Service Upgrade Summary][4]
+       ![Screenshot showing Azure App Service on Azure Stack Hub upgrade summary.][4]
 
 > [!NOTE]
 > Upgrading to 2022.H1 can take a considerable amount of time dependent on the number of role instances deployed within the App Service on Azure Stack Hub Resource Provider deployment.
@@ -261,17 +261,17 @@ To upgrade App Service in a disconnected environment, you must first create an o
     1. Track the upgrade progress. The duration of the upgrade of App Service on Azure Stack Hub varies dependent on number of role instances deployed.
     1. After the upgrade successfully completes, select **Exit**.
 
-        ![Azure App Service Upgrade Progress][5]
+        ![Screenshot showing Azure App Service on Azure Stack Hub upgrade progress.][5]
 
 # [Previous Versions](#tab/previous)
 
 1. Run appservice.exe as an administrator.
 
-    ![Azure App Service Installer][6]
+    ![Screenshot showing the Azure App Service on Azure Stack Hub installer.][6]
 
 2. Select **Advanced** > **Complete offline installation or upgrade**.
 
-    ![Azure App Service Installer Advanced][7]
+    ![Screenshot showing the Azure App Service on Azure Stack Hub installer advanced options.][7]
 
 3. Browse to the location of the offline upgrade package you previously created and then select **Next**.
 
@@ -281,7 +281,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 6. Make sure that the Azure Stack Hub Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Hub Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, select **Next**.
 
-    ![Azure Stack Hub Cloud Information][2]
+    ![Screenshot showing the Azure Stack Hub Cloud information.][2]
 
 7. On the next page:
 
@@ -299,19 +299,19 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
    1. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
 
-      ![Azure App Service Installation Detected][3]
+      !Screenshot showing details of detected installation of Azure App Service on Azure Stack Hub.][3]
 8. On the summary page:
    1. Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
    2. If the configurations are correct, select the check box.
    3. To start the upgrade, select **Next**.
 
-       ![Azure App Service Upgrade Summary][4]
+       ![Screenshot showing Azure App Service on Azure Stack Hub upgrade summary.][4]
 
 9. Upgrade progress page:
     1. Track the upgrade progress. The duration of the upgrade of App Service on Azure Stack Hub varies dependent on number of role instances deployed.
     2. After the upgrade successfully completes, select **Exit**.
 
-        ![Azure App Service Upgrade Progress][5]
+        ![Screenshot of installer showing Azure App Service on Azure Stack Hub upgrade progress.][5]
 ::: zone-end
 
 ## Next steps
