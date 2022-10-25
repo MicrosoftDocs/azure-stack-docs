@@ -41,7 +41,7 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
     :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Monitor Azure Stack HCI preview screen" lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
 
-2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers within your cluster.
+2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers in your cluster.
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Resource health screen" lightbox="media/alerts-logs-insights/health-faults.png":::
 
