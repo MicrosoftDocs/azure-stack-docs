@@ -11,7 +11,7 @@ ms.date: 10/25/2022
 
 # Azure Stack HCI cluster alerts
 
-This article describes how customers can set up alerts for Azure Stack HCI clusters, using pre-existing sample Log queries such as average node CPU, available memory, available volume capacity and more. To utilize the sample queries, customers will first need to enable Logs, and then associate a Log analytics workspace with their Azure Stack HCI clusters. Additionally, you'll see how customers can configure Azure Insights for monitoring their clusters and setting up alerts.
+This article describes how to set up alerts for Azure Stack HCI clusters, using pre-existing sample log queries such as average node CPU, available memory, available volume capacity and more. To use the sample queries, you must first enable logs, and then associate a log analytics workspace with your Azure Stack HCI clusters. Additionally, you'll see how to configure Azure Insights for monitoring clusters and setting up alerts.
 
 ## Set up alerts using sample Log queries
 
