@@ -160,7 +160,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
    - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
 
       ```powershell
-      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry -$IncludeContainerRegistry
+      New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -IncludeContainerRegistry $IncludeContainerRegistry
       ```
 
    - The third script will generate CSRs for any optional PaaS services you've installed:
