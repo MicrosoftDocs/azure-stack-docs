@@ -10,7 +10,7 @@ ms.date: 10/21/2022
 
 # Use default network access policies on virtual machines on your Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 22H1
+> Applies to: Azure Stack HCI, version 22H2 and version 22H1
 
 Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on your Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access.
 
@@ -38,17 +38,13 @@ Depending on the type of network you want to attach your VM to, steps may be dif
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 
-
-
 The steps to attach a VM to the physical network are different depending on whether you are using Azure Stack HCI version 22H2 or 21H2.
 
 ### [version 22H2](#tab/version-22h2)
 
 With 22H2, if you have Network Controller installed, that option is no longer available. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
-Here is an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed.
-
-Example: Suppose you want to connect your VM to VLAN 5. Follow these steps: 
+Here is an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we will demonstrate how to connect your VM to VLAN 5: 
 
 1. Create a logical network with any name. Ensure that Network Virtualization is disabled.
 
@@ -56,20 +52,15 @@ Example: Suppose you want to connect your VM to VLAN 5. Follow these steps:
 
 1. Apply the changes.
 
-1. When creating a VM, attach it to the logical network and logical network subnet created above. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
+1. When creating a VM, attach it to the logical network and logical network subnet created earlier. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
     ![Screenshot showing how to attach VM directly to VLAN.](./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png)
-    
-    *Figure: Attach VM to a Logical Network (representing the VLAN) with
-    Azure Stack HCI 22H2 release*
 
 ### [version 21H2](#tab/version-21h2)
 
 In 21H2, you may be attaching your VM directly to a VLAN through Windows Admin Center. <!-- is there a procedure for 21H2?-->
 
 ![Screenshot showing how to attach VM directly to VLAN.](./media/manage-default-network-access-policies-virtual-machines/attach-vm-direct-vlan-1.png)
-
-*Figure: Attach VM directly to a VLAN with Azure Stack HCI 21H2 release*
 
 ---
 
@@ -118,6 +109,8 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerSh
 
 - The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
 
+    1. In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide no VLAN ID or subnet prefix.
+
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
     ![Screenshot showing how to enable default network to VLAN.](./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)
@@ -130,11 +123,15 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerSh
 
 If you had Network Controller installed on 21H2 version and also had workload VMs on your cluster, those VMs would be in one of the following 4 isolation modes in VM (in Network Settings):
 
-1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The Isolation Mode in the VM Network Settings page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
+1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The **Isolation Mode** in the VM **Network Settings** page on WAC will be blank. Note that the VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
+
+    1. In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide the VLAN ID for which the VM is connected.
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
-1. **VLAN**: Since this mode no longer exists in 22H2, the **Isolation mode** in the VM **Network Settings** page on Windows Admin Center will be blank. The VM will continue to have same level of network connectivity as before upgrading to 22H2. 
+1. **VLAN**: Since this mode no longer exists in 22H2, the **Isolation mode** in the VM **Network Settings** page on Windows Admin Center will be blank. The VM will continue to have same level of network connectivity as before upgrading to 22H2.
+
+    1. In Windows Admin Center, create a logical network. Create a subnet under the logical network and provide no VLAN ID or subnet prefix.
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
