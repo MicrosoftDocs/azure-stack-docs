@@ -30,7 +30,7 @@ Before getting started, make sure you've satisfied all the prerequisites on the 
 
 The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center is natively available as part of the Windows Admin Center MSI. You can [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) either on a Windows 10 machine or on a server. If you have already installed Windows Admin Center, make sure your version is `2103.2` or later. You can check your Windows Admin Center version by clicking on the question mark on the top right hand corner.
 
-![Checks that you have the latest version of Windows Admin Center](.\media\setup\check-wac-version.png)
+:::image type="content" source="media/setup/check-wac-version.png" alt-text="Screenshot showing check for WAC version.":::
 
 ## Set up an Azure Kubernetes Service (AKS) host
 
@@ -93,7 +93,7 @@ Now that you've verified the system settings, follow these steps:
 
     If you've been granted permissions, you'll see the permissions in _green_ under **Status** as shown below:
 
-     ![Illustrates that status is granted for the Windows Admin Center gateway.](.\media\setup\access-granted.png#lightbox)
+     :::image type="content" source="media/setup/access-granted.png" alt-text="Screenshot showing access granted." lightbox="media/setup/access-granted.png":::
 
    If you haven't been granted permissions, you may need the Azure subscription owner to manually grant admin consent.  
 
@@ -111,7 +111,8 @@ Now that you've verified the system settings, follow these steps:
    Once permissions are correct, select **Grant admin consent for <_user_>** and then select **Yes** to confirm them. You can revoke permissions at any time as needed.
 
    When you're done, your permissions may look something like this:  
-   ![Illustrates the current status for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
+
+   :::image type="content" source="media/setup/wac-api-permissions.png" alt-text="Screenshot showing permissions." lightbox="media/setup/wac-api-permissions.png":::
 
    When you're finished, select **Next**.
 
@@ -124,7 +125,7 @@ Now that you've verified the system settings, follow these steps:
 
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
 
-   ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+   :::image type="content" source="media/setup/dashboard.png" alt-text="Screenshot showing Kubernetes dashboard.":::
 
 ## Next steps
 
