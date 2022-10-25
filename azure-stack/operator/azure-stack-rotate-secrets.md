@@ -144,6 +144,8 @@ Prior to rotation of external secrets:
                       │
                       ├───Admin Portal
                       │       <CertName>.pfx         
+                      └───Public Portal
+                              <CertName>.pfx 
     ```
 
 ### Rotation
