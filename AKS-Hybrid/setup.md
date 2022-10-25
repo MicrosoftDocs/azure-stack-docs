@@ -3,7 +3,7 @@ title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 06/28/2022
+ms.date: 10/25/2022
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
@@ -60,26 +60,26 @@ Now that you've verified the system settings, follow these steps:
    * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
    * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management.
 
-       You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. 
+       You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP.
        You can use Cloudagent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few extra fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses
       * **Gateway**, the gateway through which packets will be routed outside the machine
-      * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
+      * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses.
       * **Kubernetes node IP pool start**, the pool start range for IP addresses used by Kubernetes clusters
       * **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters
    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section.
 
    The following image represents an example of a DHCP host configuration:
 
-   [ ![Screenshot that illustrates a DHCP configuration on the Host Configuration page.](.\media\setup\host-configuration-dhcp.png) ](.\media\setup\host-configuration-dhcp.png#lightbox)
+   [![Screenshot that illustrates a DHCP configuration on the Host Configuration page.](.\media\setup\host-configuration-dhcp.png)](.\media\setup\host-configuration-dhcp.png#lightbox)
 
    The following image represents an example of a static IP host configuration:
 
-   [ ![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png) ](.\media\setup\host-configuration-static.png#lightbox)
+   [![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png)](.\media\setup\host-configuration-static.png#lightbox)
 
    (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependent on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
-   [ ![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png) ](.\media\setup\proxy-settings-host-configuration.png)
+   [![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png)
 
    Select **Next** after you're finished.
 
