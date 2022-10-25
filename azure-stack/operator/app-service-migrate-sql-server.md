@@ -34,11 +34,11 @@ Use the administration portal to back up app service secrets by following these 
 
 3. Select **Download Secrets**.
 
-   ![Download secrets in Azure Stack Hub administrator portal](./media/app-service-migrate-sql-server/download-secrets.png)
+   ![Screenshot that shows how to download secrets in Azure Stack Hub administrator portal.](./media/app-service-migrate-sql-server/download-secrets.png)
 
 4. When secrets are ready for downloading, click **Save** and store the App Service secrets (**SystemSecrets.JSON**) file in a safe location. 
 
-   ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-migrate-sql-server/save-secrets.png)
+   ![Screenshot that shows how to save secrets in Azure Stack Hub administrator portal.](./media/app-service-migrate-sql-server/save-secrets.png)
 
 ## Back up the App Service databases from the current server
 
