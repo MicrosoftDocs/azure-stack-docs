@@ -79,7 +79,7 @@ This section covers rotation of certificates used to secure external-facing serv
 
 - Administrator portal
 - Public portal
-- Administrator Azure Resource Manager
+- Administrator Azure Resource Manage    r
 - Global Azure Resource Manager
 - Administrator Key Vault
 - Key Vault
@@ -123,9 +123,9 @@ Prior to rotation of external secrets:
 6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create a subfolder named `AAD` or `ADFS`, depending on the identity provider your Hub uses. For example, ***.\Certificates\AAD*** or ***.\Certificates\ADFS***. No other folders besides the certificates folder and the identity provider subfolder should be created here.
 7. Copy the new set of replacement external certificates created in step #2, to the **.\Certificates\\\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider subfolder must either be `AAD` or `ADFS`. Please ensure that the subject alternative names (SANs) of your replacement external certificates follow the `cert.<regionName>.<externalFQDN>` format specified in [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md#mandatory-certificates).
 
-Here's an example of a folder structure for the Azure AD Identity Provider:
+    Here's an example of a folder structure for the Azure AD Identity Provider:
 
-```powershell
+    ```powershell
            <ShareName>
             │
             └───Certificates
@@ -143,8 +143,8 @@ Here's an example of a folder structure for the Azure AD Identity Provider:
                       │       <CertName>.pfx
                       │
                       ├───Admin Portal
-                      │       <CertName>.pfx                 
-```
+                      │       <CertName>.pfx         
+    ```
 
 ### Rotation
 
