@@ -323,7 +323,7 @@ In order to connect to the AKS hybrid cluster from anywhere, you need to create 
 
 To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You will need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
 
-## Step 14:    Create an AKS hybrid cluster using Azure CLI
+## Step 14: Create an AKS hybrid cluster using Azure CLI
 
 Run the following command to create an AKS hybrid cluster using Azure CLI. 
 
