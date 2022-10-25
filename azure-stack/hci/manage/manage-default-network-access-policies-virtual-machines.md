@@ -77,7 +77,7 @@ In 21H2, you may be attaching your VM directly to a VLAN through Windows Admin C
 
 When you create a VM through Windows Admin Center, you'll see a **Security level** setting.
 
-:::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies/security-level-2.png":::
+:::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png":::
 
 You have three options:
 
@@ -85,7 +85,7 @@ You have three options:
 
 - **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH or RDP as per your requirements.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies/security-level-2.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png":::
 
 - **Use existing NSG** - Choose this option to apply custom policies. You'll specify a Network Security Group (NSG) that you have already created.
 
