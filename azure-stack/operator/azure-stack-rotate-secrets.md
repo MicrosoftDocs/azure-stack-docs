@@ -97,7 +97,7 @@ Prior to rotation of external secrets:
 1. Run the **[`Test-AzureStack`](azure-stack-diagnostic-test.md)** PowerShell cmdlet using the `-group SecretRotationReadiness` parameter, to confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
    - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
-   - Generate a certificate signing request (CSR) to submit to your Certificate Authority (CA). Use the steps outlined in [Generate certificate signing requests](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare PKI certificates](azure-stack-prepare-pki-certs.md). Azure Stack Hub supports secret rotation for external certificates from a new Certificate Authority (CA) in the following contexts:
+   - Generate a certificate signing request (CSR) to submit to your Certificate Authority (CA). Use the steps outlined in [Generate certificate signing requests](../operator/azure-stack-get-pki-certs.md?view=azs-2206&tabs=omit-cn&pivots=csr-type-renewal&preserve-view=true) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare PKI certificates](azure-stack-prepare-pki-certs.md). Azure Stack Hub supports secret rotation for external certificates from a new Certificate Authority (CA) in the following contexts:
 
      |Rotate from CA|Rotate to CA|Azure Stack Hub version support|
      |-----|-----|-----|-----|
@@ -121,7 +121,7 @@ Prior to rotation of external secrets:
 4. Create a fileshare you can access from the ERCS VMs. The fileshare must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
 6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create a subfolder named `AAD` or `ADFS`, depending on the identity provider your Hub uses. For example, ***.\Certificates\AAD*** or ***.\Certificates\ADFS***. No other folders besides the certificates folder and the identity provider subfolder should be created here.
-7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\\\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider can be either `AAD` or `ADFS`. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>.
+7. Copy the new set of replacement external certificates created in step #2, to the **.\Certificates\\\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider subfolder must either be `AAD` or `ADFS`. Please ensure that the subject alternative names (SANs) of your replacement external certificates follow the `cert.<regionName>.<externalFQDN>` format for specified in [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md).
 
 ### Rotation
 
