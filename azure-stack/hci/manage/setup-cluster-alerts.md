@@ -15,7 +15,7 @@ This article describes how to set up alerts for Azure Stack HCI clusters, using 
 
 ## Set up alerts using sample Log queries
 
-1. From **Azure Portal** navigate to **Azure Monitor > Logs**.
+1. From the [Azure portal](https://portal.azure.com), navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
 
     :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Azure Monitor Logs screen" lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
