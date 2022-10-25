@@ -186,7 +186,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
       > We do *not* recommend using this approach for production environments.
 
      ```powershell  
-     New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
+     New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
      ```
 
 1. Review the output:
