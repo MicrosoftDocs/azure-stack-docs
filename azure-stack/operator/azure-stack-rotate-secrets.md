@@ -143,7 +143,8 @@ Prior to rotation of external secrets:
                       │       <CertName>.pfx
                       │
                       ├───Admin Portal
-                      │       <CertName>.pfx         
+                      │       <CertName>.pfx
+                      |
                       └───Public Portal
                               <CertName>.pfx 
     ```
