@@ -38,16 +38,17 @@ Depending on the type of network you want to attach your VM to, steps may be dif
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 
-> [!NOTE]
-> If you were using Azure Stack HCI 21H2 and were attaching your VMs to physical networks there, you will see a change in experience. In 21H2, you might have been attaching your VM directly to a VLAN through Windows Admin Center.
 
-:::image type="content" source="(./media/manage-default-network-access-policies-virtual-machines/attach-vm-direct-vlan-1.png)" alt-text="Screenshot showing how to attach VM directly to VLAN." lightbox="(./media/manage-default-network-access-policies-virtual-machines/attach-vm-direct-vlan-1.png)":::
 
-*Figure: Attach VM directly to a VLAN with Azure Stack HCI 21H2 release*
+The steps to attach a VM to the physical network are different depending on whether you are using Azure Stack HCI version 22H2 or 21H2.
+
+### [version 22H2](#tab/version-22h2)
 
 With 22H2, if you have Network Controller installed, that option is no longer available. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
-Example: Suppose you want to connect your VM to VLAN 5. To do this in 22H2 with Network Controller installed, you should do the following:
+Here is an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed.
+
+Example: Suppose you want to connect your VM to VLAN 5. Follow these steps: 
 
 1. Create a logical network with any name. Ensure that Network Virtualization is disabled.
 
@@ -55,14 +56,22 @@ Example: Suppose you want to connect your VM to VLAN 5. To do this in 22H2 with 
 
 1. Apply the changes.
 
-1. When creating a VM, attach it to the logical network and logical network subnet created above.
+1. When creating a VM, attach it to the logical network and logical network subnet created above. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
-Instructions to create a logical network are provided [here](https://docs.microsoft.com/en-us/azure-stack/hci/manage/tenant-logical-networks).
+    ![Screenshot showing how to attach VM directly to VLAN.](./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png)
+    
+    *Figure: Attach VM to a Logical Network (representing the VLAN) with
+    Azure Stack HCI 22H2 release*
 
-:::image type="content" source="(./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png)" alt-text="Screenshot showing how to attach VM directly to VLAN." lightbox="(./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png)":::
+### [version 21H2](#tab/version-21h2)
 
-*Figure: Attach VM to a Logical Network (representing the VLAN) with
-Azure Stack HCI 22H2 release*
+In 21H2, you may be attaching your VM directly to a VLAN through Windows Admin Center. <!-- is there a procedure for 21H2?-->
+
+![Screenshot showing how to attach VM directly to VLAN.](./media/manage-default-network-access-policies-virtual-machines/attach-vm-direct-vlan-1.png)
+
+*Figure: Attach VM directly to a VLAN with Azure Stack HCI 21H2 release*
+
+---
 
 ### Apply default network policies
 
@@ -111,8 +120,8 @@ If you are using alternate mechanisms (for example, Hyper-V UI or New-VM PowerSh
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
+    ![Screenshot showing how to enable default network to VLAN.](./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)
 
-:::image type="content" source="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="(./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)":::
 
 ## Upgrade from 21H2
 
@@ -129,9 +138,9 @@ If you had Network Controller installed on 21H2 version and also had workload VM
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
-1. Logical Network: The Network Settings page for the VM remains unchanged w.r.t 21H2.
+1. **Logical Network**: The Network Settings page for the VM remains the same as in 21H2.
 
-1. Virtual Network: The Network Settings page for the VM remains unchanged w.r.t 21H2.
+1. **Virtual Network**: The Network Settings page for the VM remains the same as in 21H2.
 
 ## Next steps
 
