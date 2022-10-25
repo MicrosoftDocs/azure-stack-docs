@@ -25,7 +25,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 The App Service on Azure Stack Hub 2022 H1 build number is **98.0.1.699**
 
-## What's New?
+## What's new?
 
 Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azure Stack Hub
 
