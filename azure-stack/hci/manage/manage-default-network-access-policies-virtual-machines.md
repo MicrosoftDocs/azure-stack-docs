@@ -1,6 +1,6 @@
 ---
-title: Enable, assign default network policies on Azure Stack HCI VMs
-description: Learn how to enable and assign default network policies on VMs running on your Azure Stack HCI via the Windows Admin Center.
+title: Enable, assign default network access policies on Azure Stack HCI VMs
+description: Learn how to enable and assign default network access policies on VMs running on your Azure Stack HCI via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
@@ -74,15 +74,15 @@ You have three options:
 
 - **No protection** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks thereby posing a security risk. This option isn't recommended.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png" alt-text="Screenshot showing the No protection option selected for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png":::
 
 - **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH or RDP as per your requirements.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs specified during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png":::
 
 - **Use existing NSG** - Choose this option to apply custom policies. You'll specify a Network Security Group (NSG) that you've already created.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png" alt-text="Screenshot showing the ports that can be opened on VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png" alt-text="Screenshot showing the existing network security group selected during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png":::
 
 ## VMs created outside of Windows Admin Center
 
