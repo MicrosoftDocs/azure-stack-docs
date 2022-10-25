@@ -60,7 +60,10 @@ For more information on alert monitoring and remediation, see [Monitor health an
 
 4. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).
 
-5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators, using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems. However, alerts will continue to come if the Azure Stack Hub system becomes unreachable.
+5. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md).
+
+    > [!NOTE]
+    > For operators, using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems. However, alerts will continue to come if the Azure Stack Hub system becomes unreachable.
 
 ::: moniker range=">=azs-1811"
 ## Rotate external secrets
@@ -73,13 +76,13 @@ For more information on alert monitoring and remediation, see [Monitor health an
 >    - [Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md)
 >    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
-> - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential). 
+> - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential).
 
 This section covers rotation of certificates used to secure external-facing services. These certificates are provided by the Azure Stack Hub Operator, for the following services:
 
 - Administrator portal
 - Public portal
-- Administrator Azure Resource Manage    r
+- Administrator Azure Resource Manager
 - Global Azure Resource Manager
 - Administrator Key Vault
 - Key Vault
@@ -88,7 +91,7 @@ This section covers rotation of certificates used to secure external-facing serv
 - ADFS<sup>*</sup>
 - Graph<sup>*</sup>
 
-<sup>*</sup>Applicable when using Active Directory Federated Services (AD FS).
+<sup>*</sup>Applicable when using Active Directory Federated Services (ADFS).
 
 ### Preparation
 
