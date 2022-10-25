@@ -32,7 +32,7 @@ Once the information is populated, you can analyze the logs and set up alerts on
 
 ## Set up alerts using Insights
 
-Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Insights function has been configured for your clusters. If your clusters aren't monitored, see the following [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md) to enable Insights monitoring for before setting up alerts.
+Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Insights function has been configured for your clusters. If your clusters aren't monitored, see [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md) to enable Insights monitoring before setting up alerts.
 
 > [!IMPORTANT]
 > It could take 15 minutes to collect these logs and is not a recommended method for high severity alerts.
