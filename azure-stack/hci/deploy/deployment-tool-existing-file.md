@@ -80,8 +80,8 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 },
                 "TimeZone": "Pacific Standard Time",
                 "NamingPrefix": "AD_object_prefix",
-                "DomainFQDN": "AD_FQDM",
-                "ExternalDomainFQDN": "AD_FQDM",
+                "DomainFQDN": "AD_FQDN",
+                "ExternalDomainFQDN": "AD_FQDN",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",

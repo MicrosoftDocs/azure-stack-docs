@@ -25,7 +25,7 @@ Before you begin, make sure you've done the following:
     Install-module HCIAdObjectPreCreation -Repository PSGallery
     ```    
     You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module.
-- Obtain the local administrative access to the Active Directory domain server.
+- Obtain domain administrator access to the Active Directory domain server.
 
 
 ## Active Directory preparation module
@@ -53,7 +53,7 @@ When you prepare Active Directory, you create a dedicated Organizational Unit (O
 
 To prepare and configure Active Directory, follow these steps:
 
-1. Sign in to a computer that is joined to your Active Directory domain as a local administrator.
+1. Sign in to a computer that is joined to your Active Directory domain as a domain administrator.
 1. Run PowerShell as administrator.
 1. Create a [Microsoft Key Distribution Service root key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords. Run the following command.
 
@@ -85,9 +85,9 @@ To prepare and configure Active Directory, follow these steps:
     ```    
     PS C:\temp> .\AsHciADArtifactsPreCreationTool.ps1 `
         -AsHciDeploymentUserCredential (get-credential) `
-        -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=microsoft,DC=com"`
+        -AsHciOUName "OU=oudocs,DC=HCI1PLab,DC=nttest,DC=microsoft,DC=com"`
         -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") `
-        -DomainFQDN "ASZ1PLab.nttest.microsoft.com" `
+        -DomainFQDN "HCI1PLab.nttest.microsoft.com" `
         -AsHciClusterName "docspro2cluster" `
         -AsHciDeploymentPrefix "docspro2"
 
@@ -101,7 +101,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : None
     AccessControlType     : Allow
-    IdentityReference     : HCI001\docspro2cluster$
+    IdentityReference     : HCI1PLab\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -112,7 +112,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : ObjectAceTypePresent
     AccessControlType     : Allow
-    IdentityReference     : HCI001\docspro2cluster$
+    IdentityReference     : HCI1PLab\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None

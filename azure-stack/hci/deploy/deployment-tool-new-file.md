@@ -144,7 +144,7 @@ If you want to use an existing configuration file you have previously created, s
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
     
-    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-configurations)
+    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-network-topologies)
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png":::
 
@@ -171,7 +171,26 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
+    The deployment tool configures your storge according to best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the Lifecycle Manager and one or multiple data volumes for your use.
+
+    If the resiliency configuration for data volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
+
+    > [!IMPORTANT]
+    > Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
+
+    Here is a table summarizing the expected resiliency configuration against the number of nodes in your cluster.
+
+   | # Node         | Volume resiliency   | # Infrastructure volumes  | # Customer volumes  |
+    |---------------|---------------------|---------------------------|---------------------|
+    | Single node   | Two-way mirror      | 1                         | 1                   |
+    | Two node      | Two-way mirror      | 2                         | 2                   |
+    | Three node +  | Three-way mirror    | 3                         | 1 per node          |
+
+    Select **Next** to continue.
+
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage.png":::
+
+    
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 

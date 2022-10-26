@@ -89,19 +89,40 @@ You can use [Sconfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)t
 
 1. Set the local administrator credentials to be identical across all servers.
 
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use Sconfig to run driver installation apps. After completed, restart your servers again.
+1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use *Sconfig* to run driver installation apps. After the install is complete, restart your servers again.
 
 ## Install required Windows Roles 
 
-Skip this step if deploying via the PowerShell. This step is required only if deploying via the deployment tool.
+Skip this step if deployment is via the PowerShell. This step is required only if you deploy via the deployment tool.
 
-Install Hyper-V role. Run the following command: 
 
-```azurepowershell
-Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
-```
+1. Install the Hyper-V role. Run the following command: 
 
-Your servers will restart and this will take a few minutes.
+    ```azurepowershell
+    Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
+    ```
+
+    Your servers will restart and this will take a few minutes.
+
+1. After the servers have restarted, use the option 15 in *Sconfig* to launch the PowerShell session. Use of *Sconfig* enables Internet Control Message Protocol (ICMP) response.
+
+1. Skip this step if you are deploying a single server. 
+    1. For a multi-node cluster, go to the first server of your cluster. Run the following command:
+
+        ```azurepowershell
+        Set-Item Wsman:\Localhost\Client\TrustedHosts -Value *
+        ```
+    1. On all other subsequent nodes (excluding the first server), run the following command :
+
+        ```azurepowershell
+        winrm quickconfig
+        ```
+
+    1. Finally, enable ICMP response. This command is required for the other nodes to access the first node. 
+    
+        ```azurepowershell
+        netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow
+        ```
 
 ## Next steps
 
