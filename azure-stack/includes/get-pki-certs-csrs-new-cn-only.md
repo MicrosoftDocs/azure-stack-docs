@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.reviewer: sethm
-ms.lastreviewed: 10/25/2022
+ms.lastreviewed: 10/26/2022
 ---
 
 1. Generate CSRs by completing one of the following:
