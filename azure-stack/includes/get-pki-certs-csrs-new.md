@@ -19,7 +19,7 @@ ms.lastreviewed: 10/25/2022
    - The second script, if desired, uses the `-IncludeContainerRegistry` and will generate a CSR for Azure Container Registry at the same time as CSRs for deployment certificates:
 
       ```powershell
-      New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -IncludeContainerRegistry $IncludeContainerRegistry
+      New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -IncludeContainerRegistry
       ```
 
    - The third script will generate CSRs for any optional PaaS services you've installed:
