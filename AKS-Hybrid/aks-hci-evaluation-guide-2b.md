@@ -213,7 +213,7 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
 
    This command takes a few moments to complete, but once done, you should see confirmation that the configuration has been saved.
 
-   For information about some of the other parameters that you can use when defining your configuration, see [Explore the AKS on Azure Stack HCI environment](/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-3-configure-your-deployment).
+   For information about some of the other parameters that you can use when defining your configuration, see [Explore the AKS hybrid environment](/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-3-configure-your-deployment).
 
    If you make a mistake, run **Set-AksHciConfig** without any parameters, and that will reset your configuration.
 
@@ -413,4 +413,4 @@ For more information about integrating with Azure Arc, see [Connect an AKS clust
 
 In this step, you've successfully deployed the AKS management cluster, deployed and scaled a Kubernetes cluster, and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore AKS on Azure Stack HCI environment](aks-hci-evaluation-guide-3.md)
+* [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).

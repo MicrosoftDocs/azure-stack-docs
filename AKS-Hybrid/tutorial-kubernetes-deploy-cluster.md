@@ -1,9 +1,9 @@
 ---
-title: Deploy a workload cluster in AKS hybrid
+title: Deploy a workload cluster on AKS hybrid
 description: In this tutorial, learn how to create an Azure Kubernetes Service (AKS) cluster and use kubectl to connect to the Kubernetes master node in AKS hybrid.
 services: 
 ms.topic: tutorial
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Deploy a workload cluster in AKS hybrid
+# Tutorial: Deploy a workload cluster on AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 

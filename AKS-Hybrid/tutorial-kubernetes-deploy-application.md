@@ -3,7 +3,7 @@ title: Deploy applications in AKS hybrid
 description: In this AKS hybrid tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -18,7 +18,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can build and deploy your own apps and services into a Kubernetes cluster when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid). Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. 
+You can build and deploy your own apps and services into a Kubernetes cluster when you're using Azure Kubernetes Service hybrid deployment options ("AKS hybrid"). Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. 
 
 This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster in AKS. You'll learn how to:
 
