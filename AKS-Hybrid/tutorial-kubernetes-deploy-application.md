@@ -3,7 +3,7 @@ title: Deploy applications in AKS hybrid
 description: In this AKS hybrid tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/07/2022
+ms.date: 10/25/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Deploy applications in AKS hybrid deployment
+# Tutorial: Deploy applications in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
