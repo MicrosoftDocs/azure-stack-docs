@@ -11,22 +11,24 @@ ms.reviewer: oadeniji
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Deploy your AKS infrastructure using Windows Admin Center
+# Deploy AKS infrastructure using Windows Admin Center
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS). You'll first use Windows Admin Center to deploy the AKS management cluster, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your AKS hybrid evaluation. You'll use Windows Admin Center to deploy the AKS management cluster, and then deploy a target cluster on which you can test deployment of a workload.
+
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 > [!NOTE]
 > If you prefer to use PowerShell, see [Deploy AKS infrastructure using PowerShell](aks-hci-evaluation-guide-2b.md).
 
 ## Architecture
 
-The following image shows the different layers and interconnections between the different components:
+The following image showcases the different layers and interconnections between the different components:
 
 :::image type="content" source="media/aks-hci-evaluation-guide/nested-virt.png" alt-text="Illustration showing architecture of AKS on Azure Stack HCI.":::
 
-You've already deployed the outer box, which represents the Azure Resource Group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage and so on. You've also completed some host configuration.
+You've already deployed the outer box, which represents the Azure resource group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage, and so on. You've also completed some host configuration.
 
 In this section, you'll first install and configure Windows Admin Center. You'll use Windows Admin Center to deploy the management cluster. This provides the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right-hand side of the diagram. These target, or workload clusters contain worker nodes and are where application workloads run. These nodes are managed by a management cluster. To learn more about the building blocks of the Kubernetes infrastructure, see [Kubernetes cluster architecture](kubernetes-concepts.md).
 
@@ -100,7 +102,7 @@ In order to successfully deploy AKS with Windows Admin Center, additional permis
 
    :::image type="content" source="media/aks-hci-evaluation-guide/aks-hci-host.png" alt-text="Screenshot of VM under management in Windows Admin Center.":::
 
-## Optional - enable/disable DHCP
+## Optional - Enable/disable DHCP
 
 Static IP configurations are supported for deployment of the management cluster and workload clusters. When you deployed your Azure Virtual Machine, DHCP was installed and configured automatically for you, but you had the chance to control whether it was enabled or disabled on your Windows Server host OS. If you want to adjust DHCP now, make changes to the **$dhcpState** below and run the following PowerShell command as administrator:
 
@@ -122,12 +124,12 @@ The next section walks through configuring the AKS management cluster on your si
    :::image type="content" source="media/aks-hci-evaluation-guide/aks-extension.png" alt-text="Screenshot of VM options.":::
 
    > [!NOTE]
-   > The terminology used refers to the **Azure Kubernetes Service Runtime on Windows Server​​** - the naming differs depending on whether you're running the installation of AKS on a Windows Server Hyper-V platform, or on the newer Azure Stack HCI 21H2 platform. The overall deployment experience is the same regardless of the underlying platform.
+   > The terminology used refers to the **Azure Kubernetes Service Runtime on Windows Server​​**. The naming differs depending on whether you're running the installation of AKS on a Windows Server Hyper-V platform, or on the newer Azure Stack HCI 21H2 platform. The overall deployment experience is the same regardless of the underlying platform.
 
 1. Select **Set up** to start the deployment process.
-1. Review the prerequisites - your Azure Virtual Machine environment will meet all the prerequisites, so you should be fine to click **Next: System checks**.
-1. On the **System checks** page, enter the password for your **azureuser** account and when successfully validated, select the **Install** button to install the required PowerShell modules.
-1. During the system checks stage, Windows Admin Center will begin to validate its own configuration, and the configuration of your target nodes, which in this case, is the Windows Server Hyper-V host (running in your Azure Virtual Machine). Windows Admin Center validates memory, storage, networking, roles and features and more. If you've followed the guide correctly, you'll find you'll pass all the checks and can proceed.
+1. Review the prerequisites. Your Azure Virtual Machine environment will meet all the prerequisites, so you should be fine to click **Next: System checks**.
+1. On the **System checks** page, enter the password for your **azureuser** account and, when your account has been successfully validated, select the **Install** button to install the required PowerShell modules.
+1. During the system checks stage, Windows Admin Center will begin to validate its own configuration, and the configuration of your target nodes, which in this case, is the Windows Server Hyper-V host (running in your Azure Virtual Machine). Windows Admin Center validates memory, storage, networking, roles and features, and more. If you've followed the guide correctly, you'll find you'll pass all the checks and can proceed.
 1. Once validated, select **Next: Credential delegation**.
 1. On the **Credential delegation** page, read the information about **CredSSP**, then click **Enable**. Once enabled, click **Next: Host configuration**.
 1. On the **Host configuration** page, under **Host details**, select your **V:**, and leave the other settings with their defaults.
