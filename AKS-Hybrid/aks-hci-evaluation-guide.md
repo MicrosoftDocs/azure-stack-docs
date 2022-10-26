@@ -3,7 +3,7 @@ title: Azure Kubernetes Service hybrid (AKS hybrid) evaluation guide
 description: Evaluate Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji

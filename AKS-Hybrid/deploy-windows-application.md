@@ -3,7 +3,7 @@ title: Deploy a Windows .NET application in AKS hybrid
 description: Learn how to deploy a Windows.NET application to your Azure Kubernetes Service (AKS) cluster using a custom image stored in Azure Container Registry in AKS hybrid.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster in AKS hybrid, and then test and scale your application. You will also learn how to join a Windows node to an Active Directory domain.
+In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS)cluster in AKS hybrid, and then test and scale your application. You will also learn how to join a Windows node to an Active Directory domain.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
@@ -28,7 +28,7 @@ This tutorial assumes a basic understanding of Kubernetes concepts. For more inf
 Make sure you've met the following requirements:
 
 * An [Azure Kubernetes Service cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node is up and running. 
-* You have a **kubeconfig** file to access the cluster.
+* You have a kubeconfig file to access the cluster.
 * The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) is installed.
 
 When you do the procedures:
@@ -132,7 +132,7 @@ To see the sample app in action, open a web browser to the external IP address o
 
 ![Screenshot of the home page for the ASP.NET sample application for Windows deployed on an AKS cluster.](media/deploy-windows-application/asp-net-sample-app.png)
 
-If the connection times out when you try to load the page, verify whether the sample app is ready by running the `kubectl get pods --watch` command. Sometimes, the external IP address is available before the Windows container has started.
+If the connection times out when you try to load the page, verify whether the sample app is ready by running the `kubectl get pods --watch` command. Sometimes, the external IP address is available before the Windows container starts.
 
 ## Scale application pods
 
@@ -142,7 +142,7 @@ We have created a single replica of the application front end. To see the number
 kubectl get pods -n default
 ```
 
-To change the number of pods in the *sample* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to *3*:
+To change the number of pods in the *sample* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 3:
 
 ```console
 kubectl scale --replicas=3 deployment/sample

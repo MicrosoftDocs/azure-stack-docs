@@ -4,7 +4,7 @@ description: Learn how to use the Helm packaging tool to deploy containers on Az
 services: container-service
 author: sethmanheim
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -91,9 +91,9 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ### Run Helm charts
 
-To install charts with Helm, use the [helm install][helm-install-command] command, and specify a release name and the name of the chart to install. To see a Helm chart installation in action, install a basic **nginx** deployment using a Helm chart.
+To install charts with Helm, use the [helm install][helm-install-command] command, and specify a release name and the name of the chart to install. To see a Helm chart installation in action, install a basic nginx deployment using a Helm chart.
 
-The command below is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you're running commands inside a PowerShell console, you'll see the command includes the backtick ( ` ) to allow line continuation.
+The command below is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you're running commands in a PowerShell console, you'll see the command includes the backtick ( ` ) to allow line continuation.
 
 ```console
 helm install my-nginx-ingress ingress-nginx/ingress-nginx \

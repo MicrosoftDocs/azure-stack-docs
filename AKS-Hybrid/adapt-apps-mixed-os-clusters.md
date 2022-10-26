@@ -3,7 +3,7 @@ title: Adapt applications for use in mixed-OS Kubernetes clusters in AKS hybrid
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS hybrid are scheduled on the correct worker node operating system.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha

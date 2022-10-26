@@ -2,7 +2,7 @@
 title: Concepts - Get support for AKS hybrid
 description: Learn about how to get support and open a support request for AKS hybrid.
 ms.topic: conceptual
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -44,15 +44,15 @@ If you encounter an issue with AKS hybrid, this article describes the steps you 
  
 7. Select the appropriate **Problem** type from the dropdown menu for your issue (for example, Kubernetes), and then select the **Next: Solutions** button at the bottom left of the screen:
 
-    ![Screenshot showing how to select the Kubernetes problem type on the Basics pane for a support request.](media/support/basics-problem-type.png)
+    ![Screenshot showing how to select the Kubernetes problem type on the Basics tab for a support request.](media/support/basics-problem-type.png)
 
 8. Review the provided **Recommended Article(s)** to determine if they address your issue. If not, select the **Next: Details** button at the bottom left of the screen. 
 
-    ![Screenshot showing Recommended Articles on the Solutions pane for a support request.](media/support/solutions-page.png)
+    ![Screenshot showing Recommended Articles on the Solutions tab for a support request.](media/support/solutions-page.png)
 
 9. If the solutions are not applicable, complete the remainder of the information on the **Details** page.
 
-    ![Screenshot showing the Details pane for a support request.](media/support/service-request-details.png)
+    ![Screenshot showing the Details tab for a support request.](media/support/service-request-details.png)
 
     Then, select **Review + create** at the bottom of the support request to review and create the request for support:
 
@@ -60,4 +60,4 @@ If you encounter an issue with AKS hybrid, this article describes the steps you 
 
 ## Next steps
 
-- Review [Support policies for AKS hybrid](./support-policies.md).
+- [Review support policies for AKS hybrid](./support-policies.md).

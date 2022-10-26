@@ -3,7 +3,7 @@ title: Prepare Azure Virtual Machine for AKS hybrid
 description: Evaluate AKS hybrid, Step 1 - Prepare an Azure Virtual Machine to use for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji

@@ -3,7 +3,7 @@ title: Connect with SSH to Azure Kubernetes Service nodes in AKS hybrid
 description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/25/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha

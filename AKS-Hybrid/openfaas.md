@@ -3,7 +3,7 @@ title: Use OpenFaaS with AKS hybrid
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS hybrid.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-[OpenFaaS][open-faas] is a framework for building serverless functions through the use of containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on Kubernetes cluster running on AKS hybrid.
+[OpenFaaS][open-faas] is a framework for building serverless functions through the use of containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on a Kubernetes cluster running on AKS hybrid.
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -115,7 +115,7 @@ To test the OpenFaaS system, browse to the external IP address on port 8080 - `h
 
 Set `$OPENFAAS_URL` to the External-IP found above.
 
-Log in with your console. Note, if you're running commands in Git Bash on Windows, you may need to use `faas-cli` instead of `./faas-cli` in the command below.
+Log in with your console. If you're running commands in GitBash on Windows, you may need to use `faas-cli` instead of `./faas-cli` in the command below.
 
 ```console
 export OPENFAAS_URL=http://192.168.0.152:8080
@@ -128,7 +128,7 @@ Now that OpenFaaS is operational, create a function using the OpenFaaS portal.
 
 Click **Deploy New Function**, and search for **Figlet**. Select the Figlet function, and click **Deploy**.
 
-![Screenshot shows the Deploy A New Function dialog box in Open F A A S, with the text figlet on the search line.](media/container-service-serverless/figlet.png)
+![Screenshot shows the Deploy A New Function dialog box in Open F A A S, with "figlet" typed in the search line.](media/container-service-serverless/figlet.png)
 
 Use `curl` to invoke the function. Replace the IP address in the following example with that of your OpenFaaS gateway.
 

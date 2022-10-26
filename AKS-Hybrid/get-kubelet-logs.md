@@ -1,18 +1,18 @@
 ---
 title: Get Kubelet logs in AKS hybrid
-description: Learn about how to get Kubelet logs for the Azure Kubernetes Service (aks) in AKS hybrid.
+description: Learn about how to get Kubelet logs for the Azure Kubernetes Service (AKS) in an AKS hybrid deployment.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to obtain Kubelet logs in order to troubleshoot problems with my AKS in AKS hybrid.  
+# Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS hybrid.  
 # Keyword: kubelet logs cluster nodes troubleshooting
 
 ---
 
-# Get kubelet logs from cluster nodes on Azure Kubernetes Service in AKS hybrid
+# Get kubelet logs from cluster nodes in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 

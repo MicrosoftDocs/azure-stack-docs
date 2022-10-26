@@ -3,7 +3,7 @@ title: Deploy a Linux app in AKS hybrid
 description: In this tutorial, you deploy a multi-container Linux app to your Azure Kubernetes Service (AKS) cluster in AKS hybrid using a custom image stored in Azure Container Registry (ACR).
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 06/27/2022
 ms.reviewer: abha

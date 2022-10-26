@@ -3,15 +3,15 @@ title: Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kube
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) cluster in AKS hybrid.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 01/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 10/24/2022
+ms.date: 10/26/2022
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
 
-# Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service cluster in AKS hybrid
+# Deploy Java app with Open Liberty or WebSphere Liberty on Azure Kubernetes Service cluster in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -24,7 +24,7 @@ This article demonstrates how to:
 
 The Open Liberty Operator simplifies the deployment and management of applications running on Kubernetes clusters. With Open Liberty Operator, you can also perform more advanced operations, such as gathering traces and dumps. 
 
-For more information about Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details about IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
+For more information on Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details about IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
 
 This article is divided into two main parts.
 
