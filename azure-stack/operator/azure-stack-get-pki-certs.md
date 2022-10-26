@@ -57,7 +57,6 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
     $IdentitySystem = "AAD"                     # Use "AAD" for Azure Active Director, "ADFS" for Active Directory Federation Services
     $regionName = 'east'                        # The region name for your Azure Stack Hub deployment
     $externalFQDN = 'azurestack.contoso.com'    # The external FQDN for your Azure Stack Hub deployment
-    $IncludeContainerRegistry = $true           # $true/$false for Azure Container Registry certificate
     ```
 
 Now generate the CSRs using the same PowerShell session. The instructions are specific to the **Subject** format that you select below:
@@ -146,7 +145,6 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     $externalFQDN = 'azurestack.contoso.com'                        # The external FQDN for your Azure Stack Hub deployment    
     $stampEndpoint = "$regionName.$externalFQDN"
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"   # Declare the path to an existing output directory
-    $IncludeContainerRegistry = $true                               # $true/$false include Azure Container Registry certificate
     ```
 
 1. Generate CSRs by completing one or more of the following:
