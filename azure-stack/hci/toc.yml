@@ -170,7 +170,7 @@
         href: manage/kernel-soft-reboot.md
     - name: Monitoring
       items:
-      - name: Set up alerts Azure Stack HCI systems
+      - name: Set up alerts for Azure Stack HCI systems
         href: manage/setup-hci-system-alerts
       - name: Monitor a single cluster using the Azure portal (preview)
         href: manage/monitor-hci-single.md      
