@@ -276,29 +276,29 @@
   - name: Troubleshooting overview
     href: troubleshoot-overview.md
   - name: Azure Arc enabled Kubernetes
-    href: /azure-stack/aks-hci/known-issues-arc
+    href: /azure/aks/hybrid/known-issues-arc
   - name: Install
-    href: /azure-stack/aks-hci/known-issues-installation
+    href: /azure/aks/hybrid/known-issues-installation
   - name: Upgrade 
-    href: /azure-stack/aks-hci/known-issues-upgrade 
+    href: /azure/aks/hybrid/known-issues-upgrade 
   - name: Workload and clusters
     items: 
     - name: Kubernetes clusters
-      href: /azure-stack/aks-hci/known-issues-workload-clusters
+      href: /azure/aks/hybrid/known-issues-workload-clusters
     - name: Connect to nodes with SSH
       href: ssh-connection.md
   - name: Networking
-    href: /azure-stack/aks-hci/known-issues-networking
+    href: /azure/aks/hybrid/known-issues-networking
   - name: Security
-    href: /azure-stack/aks-hci/known-issues-security
+    href: /azure/aks/hybrid/known-issues-security
   - name: Storage
-    href: /azure-stack/aks-hci/known-issues-storage  
+    href: /azure/aks/hybrid/known-issues-storage  
   - name: Windows Admin Center
-    href: /azure-stack/aks-hci/known-issues-windows-admin-center
+    href: /azure/aks/hybrid/known-issues-windows-admin-center
   - name: Uninstall
-    href: /azure-stack/aks-hci/known-issues-uninstall
+    href: /azure/aks/hybrid/known-issues-uninstall
   - name: Other
-    href: /azure-stack/aks-hci/known-issues
+    href: /azure/aks/hybrid/known-issues
   - name: Azure Stack HCI issues
     items:
         - name: Cluster validation reporting in Azure Stack HCI
