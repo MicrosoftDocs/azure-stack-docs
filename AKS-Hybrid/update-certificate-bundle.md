@@ -46,3 +46,5 @@ Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
 ```
 
 ## Next steps
+
+[AKS hybrid deployment options](aks-hybrid-options-overview.md)
