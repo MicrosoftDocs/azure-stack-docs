@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) disk drivers in AKS hybrid
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 10/27/2022
 ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -42,7 +42,7 @@ In AKS hybrid, the `default` storage class is created by default and uses CSV to
 
 To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses them.<!--"them" or "it"? It's not clear what this refers to.--> A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
 
-## Create custom storage class for a disk
+## Create custom storage class for disks
 
 The default storage class is suitable for most common scenarios. However, in some cases, you may want to create your own storage class that stores PVs at a particular location mapped to a specific performance tier.
 
@@ -119,4 +119,4 @@ Creating a custom storage class is a two-step process:
 
 ## Next steps
 
-[Use the file Container Storage Interface drivers](./container-storage-interface-files.md)
+- [Use the file Container Storage Interface drivers](./container-storage-interface-files.md).

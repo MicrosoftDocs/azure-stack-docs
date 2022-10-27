@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) file drivers in AKS hybrid
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 10/27/2022
 ms.author: sethm 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -113,4 +113,4 @@ Uninstall-AksHciCsiNFS -clusterName <clustername>
 
 ## Next steps
 
-[Use the disk Container Storage Interface drivers](./container-storage-interface-disks.md)
+- [Use the disk Container Storage Interface drivers](./container-storage-interface-disks.md).
