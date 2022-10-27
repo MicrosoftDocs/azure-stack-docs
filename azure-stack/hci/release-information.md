@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2022
+ms.date: 10/25/2022
 ---
 
 # Azure Stack HCI release information
@@ -29,6 +29,16 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
 | 20H2        | 2020-12-10            | 17784.1408        | Initial release          |
 
+## Azure Stack HCI, version 22H2 (OS build 20349)
+
+The following are the available updates for Azure Stack HCI, version 22H2.
+
+All dates are listed in ISO 8601 format: *YYYY-MM-DD*
+
+| **OS build** | **Availability date** | **KB article**                                           |
+|:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1194   | 2022-10-25            | [KB 5018485](https://support.microsoft.com/topic/513988dc-4a9f-40ca-b089-e4c7703ad06e)  |
+
 ## Azure Stack HCI, version 21H2 (OS build 20348)
 
 The following are the available updates for Azure Stack HCI, version 21H2.
@@ -37,6 +47,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1194   | 2022-10-25            | [KB 5018485](https://support.microsoft.com/topic/bec5c23c-8d6e-4413-a010-24bf3d506f61)  |
 | 20348.1131   | 2022-10-17            | [KB 5020436](https://support.microsoft.com/topic/c83f50da-9017-4755-93fe-00ddf27147da)  |
 | 20348.1129   | 2022-10-11            | [KB 5018421](https://support.microsoft.com/topic/5173f8dc-29de-48ad-9763-9239f5257d62)  |
 | 20348.1070   | 2022-09-20            | [KB 5017381](https://support.microsoft.com/topic/b58ee96f-7ddb-4cfe-870e-5047cf2dd52d)  |
@@ -139,6 +150,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 For information about what's included in each version of Azure Stack HCI, see the release notes:
 
+- [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
 - [Release notes for Azure Stack HCI, version 20H2](https://support.microsoft.com/help/4595086/)
 - [Release notes for Azure Stack HCI, version 20H2 preview releases](preview-release-notes.md)

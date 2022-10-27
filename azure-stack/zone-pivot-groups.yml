@@ -8,6 +8,14 @@ groups:
     title: Connected
   - id: state-disconnected
     title: Disconnected
+- id: version-2022h1-previous
+  title: App Service on Azure Stack Hub Version
+  prompt: Choose version
+  pivots:
+  - id: version-2022h1
+    title: App Service on Azure Stack Hub 2022 H1
+  - id: version-previous
+    title: Previous versions
 - id: management-tool-portal-powershell
   title: Management tool
   prompt: Choose a management tool
