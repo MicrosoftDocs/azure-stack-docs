@@ -139,7 +139,7 @@ Skip this step if deployment is via the PowerShell. This step is required only i
 1. Install the Hyper-V role. Run the following command: 
 
     ```azurepowershell
-    Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
+    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
     ```
 
     Your servers will restart and this will take a few minutes.
