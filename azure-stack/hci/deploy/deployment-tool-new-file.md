@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 interactively via the supplemental package
-description: Learn how to deploy Azure Stack HCI version 22H2 interactively using a new configuration file via the supplemental package.
+title: Deploy Azure Stack HCI version 22H2 interactively via the supplemental package (preview)
+description: Learn how to deploy Azure Stack HCI version 22H2 interactively using a new configuration file via the supplemental package (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/25/2022

@@ -1,5 +1,5 @@
----
-title: Prepare Active Directory for Azure Stack HCI version 22H2 deployment
+--- 
+title: Prepare Active Directory for Azure Stack HCI version 22H2 deployment (preview) 
 description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 before you deploy the solution.
 author: dansisson
 ms.topic: how-to
