@@ -64,7 +64,7 @@ The cluster registration completes before the deployment is complete. Follow the
 
 ## Validate deployment is complete
 
-After the registration completes, more configuration is needed before the deployment is complete. Once the deployment is complete, remotely connect to the first server via PowerShell. 
+After the registration completes, more configuration is needed before the deployment is complete. Once the deployment is complete, remotely connect to the first server via PowerShell.
 
 Follow these steps to verify that the deployment completed successfully:
 
@@ -74,7 +74,7 @@ Follow these steps to verify that the deployment completed successfully:
     ```azurepowershell
     ([xml](gc C:\ecestore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84)) | Select-Xml -XPath "//Action/Steps/Step" | ForEach-Object { $_.Node } | Select-Object FullStepIndex, Status, Name, StartTimeUtc, EndTimeUtc, @{Name="Durration";Expression={new-timespan -Start $_.StartTimeUtc -End $_.EndTimeUtc } } | ft -AutoSize
     ```
-    Here's a sample output of the above command: 
+    Here's a sample output of the above command:
 
     ```output
     [10.57.51.224]: PS C:\Users\SetupUser\Documents> ([xml](gc C:\ecestore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84)) | Select-Xml -XPath "//Action/Steps/Step" | ForEach-Object { $_.Node } | Select-Object FullStepIndex, Status, Name, StartTimeUtc, EndTimeUtc, @{Name="Durration";Expression={new-timespan -Start $_.StartTimeUtc -End $_.EndTimeUtc } } | ft -AutoSize

@@ -18,13 +18,16 @@ These articles describe how to prepare your Active Directory (AD) environment  b
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Install the PowerShell module to prepare Active Directory. Run the following command:
     ```azurepowershell
     Install-module HCIAdObjectPreCreation -Repository PSGallery
     ```    
-    You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module.
+    You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
+    ```azurepowershell
+    Import-Module .\AsHciADArtifactsPreCreationTool.psm1
+    ```
 - Obtain domain administrator access to the Active Directory domain server.
 
 
@@ -45,11 +48,11 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 ## Prepare Active Directory
 
-
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
 
 >[!NOTE]
 > In this release, only the Active Directory prepared via the provided module is supported.
+
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -75,7 +78,7 @@ To prepare and configure Active Directory, follow these steps:
 1. Run the following command to create the dedicated OU.
 
     ```powershell
-    New-HciAdObjectsPreCreation -Deploy  -AsHciDeploymentUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
+    New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
 
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
@@ -83,41 +86,36 @@ To prepare and configure Active Directory, follow these steps:
     Here is a sample output from a successful completion of the script:
 
     ```    
-    PS C:\temp> .\AsHciADArtifactsPreCreationTool.ps1 `
-        -AsHciDeploymentUserCredential (get-credential) `
-        -AsHciOUName "OU=oudocs,DC=HCI1PLab,DC=nttest,DC=microsoft,DC=com"`
-        -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") `
-        -DomainFQDN "HCI1PLab.nttest.microsoft.com" `
-        -AsHciClusterName "docspro2cluster" `
-        -AsHciDeploymentPrefix "docspro2"
-
+    PS C:\temp> New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") -DomainFQDN "ASZ1PLab.nttest.microsoft.com" -AsHciClusterName "docspro2cluster" -AsHciDeploymentPrefix "docspro2"
+    
     cmdlet Get-Credential at command pipeline position 1
     Supply values for the following parameters:
     Credential
-
+    
     ActiveDirectoryRights : ReadProperty
     InheritanceType       : All
     ObjectType            : 00000000-0000-0000-0000-000000000000
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : None
     AccessControlType     : Allow
-    IdentityReference     : HCI1PLab\docspro2cluster$
+    IdentityReference     : ASZ1PLAB\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
-
+    
     ActiveDirectoryRights : CreateChild
     InheritanceType       : All
     ObjectType            : bf967a86-0de6-11d0-a285-00aa003049e2
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : ObjectAceTypePresent
     AccessControlType     : Allow
-    IdentityReference     : HCI1PLab\docspro2cluster$
+    IdentityReference     : ASZ1PLAB\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
-
+    
     PS C:\temp>
+
     ```
 
 1. Verify that the OU and the corresponding **Computers** and **Users** objects are created.  If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
@@ -134,6 +132,11 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-tool/active-directory/active-directory-3.png":::
 
+
+> [!NOTE]
+> To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
+
+
 ## Next steps
 
-[Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server in your cluster.
+[Install Azure Stack HCI version 22H2 operating system](deployment-tool-install-os.md) on each server in your cluster.
