@@ -6,7 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/27/2022
+ms.date: 10/28/2022
 ---
 
 # Set up alerts for Azure Stack HCI systems
@@ -20,13 +20,13 @@ This article describes how to set up alerts for Azure Stack HCI systems, using p
 1. From the [Azure portal](https://portal.azure.com), navigate to **Azure Monitor > Logs**.
 2. Select **`+ Add filter`** to add a filter for **Resource type** and choose **Azure Stack HCI**. Here you'll get a populated list of sample logs for Azure Stack HCI.
 
-    :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Azure Monitor Logs screen" lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
+    :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
 
 3. Select **Load to Editor** to open the query workspace.
-4. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource, for example.
+4. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
 5. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
-    :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Cluster Arm Id query screen" lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
+    :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm Id query." lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
 
 6. Select **Run**.
 
@@ -41,20 +41,20 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
 1. From Azure portal, navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights.
 
-    :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Monitor Azure Stack HCI preview screen" lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
+    :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Screenshot of Azure Stack HCI monitoring screen and resources setup for alerts." lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
 
 2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers in your cluster.
 
-    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Resource health screen" lightbox="media/alerts-logs-insights/health-faults.png":::
+    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the the monitored resource and their health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
 3. Select the blue **Logs view** icon, highlighted above on the far right, to view and edit the query.
 4. After the query loads, select the **+ New alert rule** option.
 
-    :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="cluster New alert rule screen" lightbox="media/alerts-logs-insights/new-alert-rule.png":::
+    :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
 
 5. From the alerts interface you can set up alert rules and send notifications.
 
-    :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="cluster Create alert rule screen" lightbox="media/alerts-logs-insights/create-alert-rule.png":::
+    :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
 
 ## Next steps
 
