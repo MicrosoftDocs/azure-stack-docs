@@ -171,7 +171,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
-    The deployment tool configures your storge according to best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the Lifecycle Manager and one or multiple data volumes for your use.
+    The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the Lifecycle Manager and one or multiple data volumes for your use.
 
     If the resiliency configuration for data volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
 

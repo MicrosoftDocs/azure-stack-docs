@@ -40,33 +40,6 @@ The *Cloud* folder included with the installation contains the following files:
 
 ## Boot and install the OS
 
-<!--You can configure boot from a VHDX file one of two ways:
-
-**Native boot** – Follow the steps to [configure native boot from a VHDX or VHD file](/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu) using the *ServerHCI.vhdx* file. This step requires a bootable WinPE image.
-
-**BCD boot** - Boot configuration data (BCD) allows multiple boot entries and requires you to first install a Windows OS on the physical boot drive, which becomes the first boot entry. You then configure the VHDX boot, which becomes the second boot entry using the *ServerHCI.vhdx* file. 
-
-If using BCD boot, complete the following steps:
-
-1. Copy the *ServerHCI.vhdx* file to the physical boot drive of your server.
-1. Run the following command as administrator to attach the VHDX file, select a volume, and assign a drive letter:
-
-    ```powershell
-    Diskpart
-    Select vdisk file=c:\ServerHCI.vhdx
-    Attach vdisk
-    List volume
-    Select volume 4
-    Assign letter=v
-    exit
-    ```
-
-1. Add a boot entry and run the following command:
-
-    ```Bcdboot v:\windows```
-
-An alternative to setting up multiple BCD entries manually is to use the [Azure Stack Development Kit installer](https://github.com/Azure/AzureStack-Tools/tree/master/Deployment).-->
-
 To install the Azure Stack HCI operating system, follow these steps:
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
@@ -96,14 +69,14 @@ To install the Azure Stack HCI operating system, follow these steps:
 
 1. The **Installing Azure Stack HCI** page displays to show status on the process.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="Screenshot of the status page of the Install Azure Stack HCI wizard.":::
 
     > [!NOTE]
     > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
 
 1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, and press **Enter**.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="Screenshot of the change password prompt.":::
 
 1. At the **Enter new credential** for Administrator prompt, enter a new password. Enter the password again to confirm it, and then press **Enter**.
 1. At the **Your password has been changed** confirmation prompt, press Enter.
@@ -112,7 +85,7 @@ To install the Azure Stack HCI operating system, follow these steps:
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use *SConfig*, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The *SConfig* tool opens automatically when you log on to the server.
 
-:::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
+:::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
 
 ## Configure the OS using SConfig
