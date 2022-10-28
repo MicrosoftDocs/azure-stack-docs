@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that 
 
 ## Pricing details
 
-Azure pricing for running workloads on AKS is based on US currency list pricing in the East US region with:
+Azure pricing for running workloads on AKS is based on US currency list pricing with:
 
 - Pay-as-you-go pricing
 - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)
