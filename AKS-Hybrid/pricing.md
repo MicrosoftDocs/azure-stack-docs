@@ -1,11 +1,11 @@
 ---
 
-title: Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server pricing details
-description: Detailed pricing information for AKS on Azure Stack HCI and Windows Server 
+title: Azure Kubernetes Service (AKS) hybrid pricing details
+description: Detailed pricing information for AKS hybrid 
 ms.topic: conceptual
 author: baziwane
 ms.author: rbaziwane 
-ms.lastreviewed: 10/04/2022
+ms.lastreviewed: 10/28/2022
 ms.reviewer: sethm
 ms.date: 10/04/2022
 
@@ -15,22 +15,22 @@ ms.date: 10/04/2022
 ---
 
 
-# Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server pricing details
+# Azure Kubernetes Service (AKS) hybrid pricing details
 
-Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure Subscription which can be obtained for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
+Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
 
 ## Pricing details
 
-Azure Pricing for running workloads on AKS is based on US currency list pricing in the East US region with:
+Azure pricing for running workloads on AKS is based on US currency list pricing in the East US region with:
 
-- pay-as-you-go pricing
+- Pay-as-you-go pricing
 - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)
-- standard HDD
-- no uptime SLA (included in the support level)
+- Standard HDD
+- No uptime SLA (included in the support level)
 
-In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage. 
+In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
 
-For detailed pricing information, visit the [Azure portal](https://portal.azure.com/) page. The list price for AKS on Azure Stack HCI or Windows Server includes the following:
+For detailed pricing information, see the [Azure portal](https://portal.azure.com/) page. The list price for AKS hybrid includes the following:
 
 - Includes Kubernetes control plane and load balancer nodes:
   - The Arc-enabled AKS management cluster usage is *not* charged
@@ -55,4 +55,3 @@ Note: Running Windows Server containers on AKS requires a Windows Server license
 If you enable hyper-threading on your physical computer, AKS will also enable hyper-threading on the worker nodes. If you enable hyper-threading, it will effectively halve the number of virtual cores needed in each worker node.
 
 ![Pricing for AKS is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
-
