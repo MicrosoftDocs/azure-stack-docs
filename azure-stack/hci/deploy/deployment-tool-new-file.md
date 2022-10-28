@@ -123,7 +123,7 @@ If you want to use an existing configuration file you have previously created, s
 1. On **step 1.5 Specify Active Directory details**, enter the following:
     1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
-    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
+    1. For **OU**, provide the full distinguished name of the organizational unit (including the domain components) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
@@ -133,13 +133,13 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
 
-    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to  difference in the overall speed. 
+    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to a difference in the overall speed. 
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png" alt-text="Screenshot of the Deployment step 2.1 network adapters page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png":::
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported.
+    When defining the network intents, for this preview release, only the following sets of network intents are supported.
 
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
@@ -148,7 +148,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png":::
 
-1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure you enter the correct network details.
+1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure that you enter the correct network details.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png" alt-text="Screenshot of the Deployment step 2.3 storage network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png":::
 
