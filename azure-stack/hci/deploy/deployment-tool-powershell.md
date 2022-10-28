@@ -1,16 +1,16 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview) 
-description: Learn how to deploy Azure Stack HCI version 22H2 using Windows PowerShell (preview) 
+description: Learn how to deploy Azure Stack HCI version 22H2 using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 09/26/2022
+ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Deploy Azure Stack HCI version 22H2 using PowerShell (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 In this article, learn how to deploy Azure Stack HCI, version 22H2 using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
@@ -41,11 +41,11 @@ Before you begin, make sure you have done the following:
 
 1. Sign in to the staging server using local administrator credentials.
 
-1. Copy the config file to the staging server by using the following command:
+1. Copy the *config* file to the staging server by using the following command:
 
-```powershell
-Copy-Item -path <Path for you source file> -destination C:\setup\config.json
-```
+    ```powershell
+    Copy-Item -path <Path for you source file> -destination C:\setup\config.json
+    ```
 
 ## Set up the deployment tool
 
@@ -62,7 +62,7 @@ The following parameters are required to set up and run the deployment tool prop
 
 Use this procedure to deploy a multiple-node cluster or a single-server using PowerShell.
 
-1. Log on to the first (staging) server using local administrative credentials.
+1. Sign in to the first (staging) server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 

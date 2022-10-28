@@ -1,5 +1,5 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 (preview) using a configuration file
+title: Deploy Azure Stack HCI version 22H2 using a configuration file (preview) 
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Deploy Azure Stack HCI version 22H2 using a configuration file (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses a configuration file that you manually create beforehand using a text editor.
 
@@ -80,8 +80,8 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 },
                 "TimeZone": "Pacific Standard Time",
                 "NamingPrefix": "AD_object_prefix",
-                "DomainFQDN": "AD_FQDM",
-                "ExternalDomainFQDN": "AD_FQDM",
+                "DomainFQDN": "AD_FQDN",
+                "ExternalDomainFQDN": "AD_FQDN",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",

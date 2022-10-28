@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 09/02/2022
+ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -32,9 +32,6 @@ To rerun the deployment if there is a failure, follow these steps:
     
     This command should restart the deployment in verbose mode.
 
-
-> [!NOTE]
-> Depending on which step the deployment fails, you may have to use `Set-ExecutionPolicy bypass`.
 
 ## Reset deployment
 

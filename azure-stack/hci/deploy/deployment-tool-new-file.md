@@ -1,20 +1,20 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 (preview) interactively
-description: Learn how to deploy Azure Stack HCI version 22H2 (preview) interactively using a new configuration file
+title: Deploy Azure Stack HCI version 22H2 interactively via the supplemental package (preview)
+description: Learn how to deploy Azure Stack HCI version 22H2 interactively using a new configuration file via the supplemental package (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 09/22/2022
+ms.date: 10/25/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
 # Deploy Azure Stack HCI version 22H2 interactively (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 
+> Applies to: Azure Stack HCI, version 22H2
 
 After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
-You can deploy both single-node and multi-node clusters using this procedure.
+You can deploy both single server and multi-node clusters using this procedure.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -35,7 +35,7 @@ Before you begin, make sure you've done the following:
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
 
-1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
+1. In the deployment UX, select the first server listed for the cluster to act as a staging server during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
@@ -123,7 +123,7 @@ If you want to use an existing configuration file you have previously created, s
 1. On **step 1.5 Specify Active Directory details**, enter the following:
     1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
-    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
+    1. For **OU**, provide the full distinguished name of the organizational unit (including the domain components) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
@@ -133,22 +133,22 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
 
-    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to  difference in the overall speed. 
+    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to a difference in the overall speed. 
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png" alt-text="Screenshot of the Deployment step 2.1 network adapters page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png":::
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported.
+    When defining the network intents, for this preview release, only the following sets of network intents are supported.
 
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
     
-    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-configurations)
+    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-network-topologies)
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png":::
 
-1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure you enter the correct network details.
+1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure that you enter the correct network details.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png" alt-text="Screenshot of the Deployment step 2.3 storage network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png":::
 
@@ -160,7 +160,7 @@ If you want to use an existing configuration file you have previously created, s
     1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
-    1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
+
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
@@ -171,7 +171,26 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
+    The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the Lifecycle Manager and one or multiple data volumes for your use.
+
+    If the resiliency configuration for data volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
+
+    > [!IMPORTANT]
+    > Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
+
+    Here is a table summarizing the expected resiliency configuration against the number of nodes in your cluster.
+
+   | # Node         | Volume resiliency   | # Infrastructure volumes  | # Customer volumes  |
+    |---------------|---------------------|---------------------------|---------------------|
+    | Single node   | Two-way mirror      | 1                         | 1                   |
+    | Two node      | Two-way mirror      | 2                         | 2                   |
+    | Three node +  | Three-way mirror    | 3                         | 1 per node          |
+
+    Select **Next** to continue.
+
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage.png":::
+
+    
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
@@ -189,7 +208,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time. 
+1. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time. 
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
 
