@@ -45,7 +45,7 @@ To install the Azure Stack HCI operating system, follow these steps:
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="The language page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard.":::
 
 1. On the **Applicable notices and license terms** page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 1. On the **Which type of installation do you want?** page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
@@ -53,7 +53,7 @@ To install the Azure Stack HCI operating system, follow these steps:
     > [!NOTE]
     > Upgrade installations are not supported in this release of the operating system.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="The installation type option page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the installation type option page of the Install Azure Stack HCI wizard.":::
 
 1. On the **Where do you want to install Azure Stack HCI?** page, make sure that a special disk partition layout is created:
 
@@ -65,7 +65,7 @@ To install the Azure Stack HCI operating system, follow these steps:
     Confirm the OS installation in the boot partition, and then select **Next**.
     
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="Screenshot of the drive location page of the Install Azure Stack HCI wizard.":::
 
 1. The **Installing Azure Stack HCI** page displays to show status on the process.
 
@@ -81,7 +81,7 @@ To install the Azure Stack HCI operating system, follow these steps:
 1. At the **Enter new credential** for Administrator prompt, enter a new password. Enter the password again to confirm it, and then press **Enter**.
 1. At the **Your password has been changed** confirmation prompt, press Enter.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt":::
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use *SConfig*, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The *SConfig* tool opens automatically when you log on to the server.
 
