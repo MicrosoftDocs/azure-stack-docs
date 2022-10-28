@@ -20,7 +20,7 @@ Review the [security considerations](/manage/preview-channel.md) and [assess env
 
 ## Software requirements
 
-You must set up the version 22H2 operating system to boot from a VHDX image file using the instructions in [Deploy Azure Stack HCI, version 22H2 OS](./deployment-tool-install-os.md).
+You must set up the version 22H2 operating system using the instructions in [Deploy Azure Stack HCI, version 22H2 OS](./deployment-tool-install-os.md).
 
 ## Hardware requirements
 
