@@ -68,12 +68,13 @@ For more information on alert monitoring and remediation, see [Monitor health an
 > [!Important]
 > External secret rotation for:
 > - **Non-certificate secrets such as secure keys and strings** must be done manually by the administrator. This includes user and administrator account passwords, and [network switch passwords](azure-stack-customer-defined.md).
-> - **Value-add resource provider (RP) secrets** is covered under seperate guidance:
+> - **Value-add resource provider (RP) secrets** is covered under separate guidance:
 >    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
 >    - [Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md)
 >    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
-> - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential).
+> - **Baseboard management controller (BMC) credentials** is a manual process, [covered later in this article](#update-the-bmc-credential).
+> - **Azure Container Registry** external certificates is a manual process, [covered later in this article](../operator/azure-stack-rotate-secrets.md#preparation).
 
 This section covers rotation of certificates used to secure external-facing services. These certificates are provided by the Azure Stack Hub Operator, for the following services:
 
@@ -85,10 +86,13 @@ This section covers rotation of certificates used to secure external-facing serv
 - Key Vault
 - Admin Extension Host
 - ACS (including blob, table, and queue storage)
-- ADFS<sup>*</sup>
-- Graph<sup>*</sup>
+- ADFS<sup>1</sup>
+- Graph<sup>1</sup>
+- Container Registry<sup>2</sup>
 
-<sup>*</sup>Applicable when using Active Directory Federated Services (ADFS).
+<sup>1</sup>Applicable when using Active Directory Federated Services (ADFS).
+
+<sup>2</sup>Applicable when using Azure Container Registry (ACR).
 
 ### Preparation
 
@@ -151,6 +155,9 @@ Prior to rotation of external secrets:
                       ├───ARM Public
                       │       <CertName>.pfx
                       │
+                      ├───Container Registry*
+                      │       <CertName>.pfx
+                      │
                       ├───KeyVault
                       │       <CertName>.pfx
                       │
@@ -162,8 +169,12 @@ Prior to rotation of external secrets:
                       │
                       └───Public Portal
                               <CertName>.pfx
-
     ```
+
+<sup>*</sup>Applicable when using Azure Container Registry (ACR) for AAD and ADFS.
+
+>[!NOTE]
+> If you are rotating external Container Registry certificates you must manually create a **`Container Registry`** subfolder in the identity provider subfolder. Additionally, you must store the corresponding .pfx certificate within this manually created subfolder.
 
 ### Rotation
 
