@@ -7,7 +7,6 @@ author: sethmanheim
 ms.topic: article
 ms.date: 10/28/2022
 ms.author: sethm
-ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
