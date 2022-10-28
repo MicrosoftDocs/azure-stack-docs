@@ -38,7 +38,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |Parameter|Required |Description|
 |--|--|--|
 |`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
-|`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there's no conflict of settings.|
+|`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked to ensure there's no conflict of settings.|
 |`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
 |`-AsHciClusterName`|No |The name for the new cluster AD object.|
@@ -128,7 +128,7 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-tool/active-directory/active-directory-2.png":::
 
-1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one security group in local domain  with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
+1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
 
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-tool/active-directory/active-directory-3.png":::
 
