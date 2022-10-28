@@ -139,11 +139,11 @@ This is the recommended option for configuring host networking. For more informa
 1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
 
 1. On **2.2 Define intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the dropdown list. You can add the **Management** and **Storage** intent types to exactly one intent, while the **Compute** intent type can be added to one or more intents.
+    - For **Traffic types**, select a traffic type from the dropdown list. You can add the **Management** and **Storage** intent types to exactly one intent while the **Compute** intent type can be added to one or more intents. See [Network ATC traffic types](https://learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types) in the [Host Network Requirements for Azure Stack HCI](https://learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types) article.
     - For **Intent name**, enter a friendly name for the intent.
-    - For **Network adapters**, select an adapter from the dropdown list.
+    - For **Network adapters**, select an adapter from the dropdown list.  
     - (Optional) Click **Select another adapter for this traffic** if needed.
-    
+
     For more information and examples about network intents, see [Example intents](network-atc.md#example-intents) in the [Deploy host networking with Network ATC](network-atc.md) article.
     
 1.  (Optional) After an intent is added, select **Customize network settings** to modify its network settings. When finished, select **Save**.
