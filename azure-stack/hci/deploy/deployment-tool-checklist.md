@@ -20,11 +20,11 @@ Use the following checklist to gather this information ahead of the actual deplo
 |Component|What is needed|
 |--|--|
 |Server names|Unique name for each server you wish to deploy.|
-|Active Directory Cluster name|Name of your cluster in Active Directory.|
-Active Directory Object prefix|Name of the object prefix for the Active Directory domain.|
-Active directory OU|Name of the organizational unit (OU) for the Active Directory domain.|
+|Active Directory Cluster name|The name for the new cluster AD object. This name is also used for the name of the cluster during deployment.|
+Active Directory Object prefix|The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
+Active directory OU|A new organizational unit (OU) to store all the objects for the Azure Stack HCI deployment.|
 |Active Directory FQDN|Fully-qualified domain name (FQDN) for the Active Directory domain.|
-|Active Directory credentials|Username and password for the deployment user pre-created in the Active directory account.|
+|Active Directory deployment user credential|A new username and password that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |IPv4 network range subnet for management network intent|A subnet used for management network intent. You need a minimum of 6 available, contiguous IPs in this subnet. These IPs are used for infrastructure services such as clustering.|
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.<br> We recommend that you use the default 712 and 711 subnets for VLAN IDs.|
 |DNS Server|A DNS Server that resolves Active Directory.|

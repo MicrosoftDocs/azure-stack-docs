@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Stack HCI version 22H2 deployment (pre
 description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 before you deploy the solution.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -37,7 +37,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 |Parameter|Required |Description|
 |--|--|--|
-|`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
+|`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked to ensure there's no conflict of settings.|
 |`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
