@@ -30,7 +30,7 @@ Azure pricing for running workloads on AKS is based on US currency list pricing 
 
 In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
 
-For detailed pricing information, see the [Azure portal](https://portal.azure.com/) page. The list price for AKS hybrid includes the following:
+For detailed pricing information, see the [AKS hybrid pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/#overview) page. The list price for AKS hybrid includes the following:
 
 - Includes Kubernetes control plane and load balancer nodes:
   - The Arc-enabled AKS management cluster usage is *not* charged
