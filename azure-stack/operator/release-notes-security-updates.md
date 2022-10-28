@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/06/2022
+ms.date: 10/28/2022
 ms.author: sethm
 ms.reviewer: carlosm
 ms.lastreviewed: 07/06/2022
@@ -18,8 +18,8 @@ ms.lastreviewed: 07/06/2022
 
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
-::: moniker range="azs-2209"
-## 2209 update
+::: moniker range="azs-2210"
+## 2210 update
 
 Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
 

@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/24/2022
+ms.date: 10/28/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -49,29 +49,29 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2209"
-## 2209 build reference
+::: moniker range="azs-2210"
+## 2210 build reference
 
-The Azure Stack Hub 2209 update build number is **1.2209.x.xx**.
+The Azure Stack Hub 2210 update build number is **1.2210.x.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2209 update build type is **Full**.
+The Azure Stack Hub 2210 update build type is **Full**.
 
-The 2209 update has the following expected runtimes based on our internal testing:
+The 2210 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2209 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2210 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- Starting with Azure Stack Hub 2209, [Emergency VM Access (EVA)](../user/emergency-vm-access.md) is released to general availability.
+- Starting with Azure Stack Hub 2210, [Emergency VM Access (EVA)](../user/emergency-vm-access.md) is released to general availability.
 
 <!-- ### Improvements -->
 
@@ -98,19 +98,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2209 update
+### Hotfix prerequisites: before applying the 2210 update
 
-The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
+The 2210 release of Azure Stack Hub must be applied on the 2206 release with the following hotfixes:
 
 - [Azure Stack Hub hotfix 1.2206.2.38](hotfix-1-2206-2-38.md)
 
-### After successfully applying the 2209 update
+### After successfully applying the 2210 update
 
-When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2209, if any hotfixes for 2209 are subsequently released, you should install them:
+After the installation of 2210, if any hotfixes for 2210 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2209.
+- No Azure Stack Hub hotfix for 2210.
 ::: moniker-end
 
 ::: moniker range="azs-2206"

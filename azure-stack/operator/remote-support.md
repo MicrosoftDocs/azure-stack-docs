@@ -17,6 +17,8 @@ ms.lastreviewed: 04/19/2022
 
 > [!IMPORTANT]
 > Remote support is in public preview and only available in the following versions:
+>
+> - 2206
 > - 2108
 > - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
