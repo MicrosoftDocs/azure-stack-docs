@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
-ms.date: 10/21/2022
+ms.date: 10/28/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling
