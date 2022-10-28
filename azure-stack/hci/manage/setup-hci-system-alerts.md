@@ -45,7 +45,7 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
 2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers in your cluster.
 
-    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the the monitored resource and their health." lightbox="media/alerts-logs-insights/health-faults.png":::
+    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
 3. Select the blue **Logs view** icon, highlighted above on the far right, to view and edit the query.
 4. After the query loads, select the **+ New alert rule** option.
