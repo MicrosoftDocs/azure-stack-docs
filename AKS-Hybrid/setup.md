@@ -3,7 +3,7 @@ title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 06/28/2022
+ms.date: 10/25/2022
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
@@ -30,7 +30,7 @@ Before getting started, make sure you've satisfied all the prerequisites on the 
 
 The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center is natively available as part of the Windows Admin Center MSI. You can [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) either on a Windows 10 machine or on a server. If you have already installed Windows Admin Center, make sure your version is `2103.2` or later. You can check your Windows Admin Center version by clicking on the question mark on the top right hand corner.
 
-![Checks that you have the latest version of Windows Admin Center](.\media\setup\check-wac-version.png)
+:::image type="content" source="media/setup/check-wac-version.png" alt-text="Screenshot showing check for WAC version.":::
 
 ## Set up an Azure Kubernetes Service (AKS) host
 
@@ -60,26 +60,26 @@ Now that you've verified the system settings, follow these steps:
    * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
    * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management.
 
-       You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. 
+       You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP.
        You can use Cloudagent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few extra fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses
       * **Gateway**, the gateway through which packets will be routed outside the machine
-      * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
+      * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses.
       * **Kubernetes node IP pool start**, the pool start range for IP addresses used by Kubernetes clusters
       * **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters
    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section.
 
    The following image represents an example of a DHCP host configuration:
 
-   [ ![Screenshot that illustrates a DHCP configuration on the Host Configuration page.](.\media\setup\host-configuration-dhcp.png) ](.\media\setup\host-configuration-dhcp.png#lightbox)
+   [![Screenshot that illustrates a DHCP configuration on the Host Configuration page.](.\media\setup\host-configuration-dhcp.png)](.\media\setup\host-configuration-dhcp.png#lightbox)
 
    The following image represents an example of a static IP host configuration:
 
-   [ ![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png) ](.\media\setup\host-configuration-static.png#lightbox)
+   [![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png)](.\media\setup\host-configuration-static.png#lightbox)
 
    (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependent on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
-   [ ![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png) ](.\media\setup\proxy-settings-host-configuration.png)
+   [![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png#lightbox)
 
    Select **Next** after you're finished.
 
@@ -93,7 +93,7 @@ Now that you've verified the system settings, follow these steps:
 
     If you've been granted permissions, you'll see the permissions in _green_ under **Status** as shown below:
 
-     ![Illustrates that status is granted for the Windows Admin Center gateway.](.\media\setup\access-granted.png#lightbox)
+     :::image type="content" source="media/setup/access-granted.png" alt-text="Screenshot showing access granted." lightbox="media/setup/access-granted.png":::
 
    If you haven't been granted permissions, you may need the Azure subscription owner to manually grant admin consent.  
 
@@ -111,7 +111,8 @@ Now that you've verified the system settings, follow these steps:
    Once permissions are correct, select **Grant admin consent for <_user_>** and then select **Yes** to confirm them. You can revoke permissions at any time as needed.
 
    When you're done, your permissions may look something like this:  
-   ![Illustrates the current status for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
+
+   :::image type="content" source="media/setup/wac-api-permissions.png" alt-text="Screenshot showing permissions." lightbox="media/setup/wac-api-permissions.png":::
 
    When you're finished, select **Next**.
 
@@ -124,7 +125,7 @@ Now that you've verified the system settings, follow these steps:
 
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
 
-   ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+   :::image type="content" source="media/setup/dashboard.png" alt-text="Screenshot showing Kubernetes dashboard." lightbox="media/setup/dashboard.png":::
 
 ## Next steps
 
