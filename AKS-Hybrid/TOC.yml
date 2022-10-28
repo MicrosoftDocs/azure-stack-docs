@@ -288,7 +288,7 @@
     - name: Connect to nodes with SSH
       href: ssh-connection.md
   - name: Networking
-    href: /azure/aks/hybrid/known-issues-networking
+    href: known-issues-networking.yml
   - name: Security
     href: /azure/aks/hybrid/known-issues-security
   - name: Storage
