@@ -41,11 +41,11 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 
 1. From Azure portal, navigate to **Azure Monitor > Azure Stack HCI Insights (preview)**. Here you'll access the Insights.
 
-    :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Screenshot of Azure Stack HCI monitoring screen and resources setup for alerts." lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
+    :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Screenshot of Azure Stack HCI monitoring screen and the resources that are set up for alerts." lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
 
 2. Once the workbook is loaded, select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers in your cluster.
 
-    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
+    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
 3. Select the blue **Logs view** icon, highlighted above on the far right, to view and edit the query.
 4. After the query loads, select the **+ New alert rule** option.
