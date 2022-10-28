@@ -67,7 +67,11 @@ The following network topologies were tested and validated for this release:
 
 - Four physical servers with storage network connections to an L2-switch.
 
-- Four physical servers with storage network connections to redundant L3 switches. 
+    :::image type="content" source="media/deployment-tool/introduction/four-node-non-converged-redundant-l2-switches-1.png" alt-text="Diagram that shows 4 nodes deployed using a non converged network with storage network connections to L2 network switch." lightbox="media/deployment-tool/introduction/four-node-non-converged-redundant-l2-switches-1.png":::
+
+- Four physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.
+
+    :::image type="content" source="media/deployment-tool/introduction/four-node-fully-converged-redundant-l3-switches-1.png" alt-text="Diagram that shows 4 nodes deployed using a fully converged network with storage network connections to redundant L3 network switches." lightbox="media/deployment-tool/introduction/four-node-fully-converged-redundant-l3-switches-1.png":::
 
 <!---- Two physical servers deployed using a switched storage network and redundant L3 switches.
 
