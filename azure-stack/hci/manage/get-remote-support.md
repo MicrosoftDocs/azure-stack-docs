@@ -38,6 +38,7 @@ Remote support gives you the ability to:
 
 Before you begin using remote support, you must:
 
+- [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request)
 - [Create a KDS root key](#create-a-kds-root-key)
 - [Install the Az.StackHCI PowerShell module](#install-powershell-module)
 - [Configure proxy settings](#configure-proxy-settings)
