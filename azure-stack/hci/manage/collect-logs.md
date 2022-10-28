@@ -11,7 +11,7 @@ ms.date: 10/20/2022
 
 # Collect diagnostic logs (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution.
 
