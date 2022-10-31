@@ -147,7 +147,7 @@ sections:
                  Enter-PSSession -computer localhost -credential (Get-Credential)
               ``` 
           
-           For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](/hci/manage/troubleshoot-credssp).
+           For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](../hci/manage/troubleshoot-credssp.md).
            
       - question: | 
           A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center.
@@ -236,7 +236,7 @@ sections:
         answer: | 
           The AKS host cluster deployment fails at system checks with a WinRM service error.
           
-          Try applying the solutions suggested in the [Manual troubleshooting](/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+          Try applying the solutions suggested in the [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
           
           ![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
           
