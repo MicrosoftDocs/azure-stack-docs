@@ -12,13 +12,13 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2
 
-These articles describe how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI, version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
+These articles describe how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI, version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
 
 ## Prerequisites
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments for Azure Stack HCI version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Install the PowerShell module to prepare Active Directory. Run the following command:
     ```azurepowershell
@@ -38,7 +38,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |Parameter|Required |Description|
 |--|--|--|
 |`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
-|`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked to ensure there's no conflict of settings.|
+|`-AsHciOUName`|Yes |A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names). |
 |`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
 |`-AsHciClusterName`|No |The name for the new cluster AD object.|

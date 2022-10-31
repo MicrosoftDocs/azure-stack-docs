@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 using a configuration file (preview)
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 09/27/2022
+ms.date: 10/31/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -36,12 +36,11 @@ Before you begin, make sure you have done the following:
 Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively.
 
 ```json
-"Version": "3.0.0.0",
+{
+    "Version": "3.0.0.0",
     "ScaleUnits": [
         {
             "DeploymentData": {
-                "CompanyName": "company_name",
-                "RegionName": "company_region",
                 "SecuritySettings": {
                     "SecurityModeSealed": true,
                     "SecuredCoreEnforced": true,
@@ -65,7 +64,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "EpisodicDataUpload": true
                 },
                 "Cluster": {
-                    "Name": "cluster_name",
+                    "Name": "v-cluster",
                     "StaticAddress": [
                         ""
                     ]
@@ -74,77 +73,48 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "ConfigurationMode": "Express"
                 },
                 "OptionalServices": {
-                    "VirtualSwitchName": "vSwitch_name",
+                    "VirtualSwitchName": "vSwitch",
                     "CSVPath": "C:\\clusterStorage\\Volume1",
-                    "ARBRegion": "eastus_region"
+                    "ARBRegion": "eastus"
                 },
                 "TimeZone": "Pacific Standard Time",
-                "NamingPrefix": "AD_object_prefix",
-                "DomainFQDN": "AD_FQDN",
-                "ExternalDomainFQDN": "AD_FQDN",
+                "NamingPrefix": "HCI002",
+                "DomainFQDN": "contoso.com",
+                "ExternalDomainFQDN": "contoso.com",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",
-                        "SubnetMask": "255.255.252.0",
-                        "Gateway": "10.126.64.1",
+                        "SubnetMask": "255.255.255.0",
+                        "Gateway": "10.0.50.1",
                         "IPPools": [
                             {
-                                "StartingAddress": "10.126.64.10",
-                                "EndingAddress": "10.126.64.74"
+                                "StartingAddress": "10.0.50.52",
+                                "EndingAddress": "10.0.50.59"
                             }
                         ],
                         "DNSServers": [
-                            "10.57.53.56"
+                            "10.0.50.10"
                         ]
                     }
                 ],
                 "PhysicalNodes": [
                     {
-                        "Name": "Server1",
-                        "IPv4Address": "Server1_IP_address"
-                    },
-                    {
-                        "Name": "Server2",
-                        "IPv4Address": "Server2_IP_address"
+                        "Name": "node11",
+                        "IPv4Address": "10.0.50.51"
                     }
                 ],
                 "HostNetwork": {
                     "Intents": [
                         {
-                            "Name": "Compute_Management",
+                            "Name": "Compute_Management_Storage",
                             "TrafficType": [
                                 "Compute",
-                                "Management"
-                            ],
-                            "Adapter": [
-                                "Port2"
-                            ],
-                            "OverrideVirtualSwitchConfiguration": false,
-                            "VirtualSwitchConfigurationOverrides": {
-                                "EnableIov": "",
-                                "LoadBalancingAlgorithm": ""
-                            },
-                            "OverrideQoSPolicy": false,
-                            "QoSPolicyOverrides": {
-                                "PriorityValue8021Action_Cluster": "",
-                                "PriorityValue8021Action_SMB": "",
-                                "BandwidthPercentage_SMB": ""
-                            },
-                            "OverrideAdapterProperty": false,
-                            "AdapterPropertyOverrides": {
-                                "JumboPacket": "",
-                                "NetworkDirect": "",
-                                "NetworkDirectTechnology": ""
-                            }
-                        },
-                        {
-                            "Name": "Storage",
-                            "TrafficType": [
+                                "Management",
                                 "Storage"
                             ],
                             "Adapter": [
-                                "Port3",
-                                "Port4"
+                                "Ethernet",
+                                "Ethernet 2"
                             ],
                             "OverrideVirtualSwitchConfiguration": false,
                             "VirtualSwitchConfigurationOverrides": {
@@ -167,29 +137,21 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     ],
                     "StorageNetworks": [
                         {
-                            "Name": "Storage1_Network",
-                            "NetworkAdapterName": "Adapter_Port3",
+                            "Name": "Storage1Network",
+                            "NetworkAdapterName": "Ethernet",
                             "VlanId": 711
                         },
                         {
-                            "Name": "Storage2_Network",
-                            "NetworkAdapterName": "Adapter_Port4",
+                            "Name": "Storage2Network",
+                            "NetworkAdapterName": "Ethernet 2",
                             "VlanId": 712
                         }
                     ]
                 },
-                "SDNIntegration": {
-                    "NetworkController": {
-                        "Enabled": true,
-                        "MacAddressPoolStart": "06-EC-00-00-00-01",
-                        "MacAddressPoolStop": "06-EC-00-00-FF-FF"
-                    }
-                },
-                "ADOUPath": "AD_OU_name",
+                "ADOUPath": "OU=HCI002,DC=contoso,DC=com",
                 "DNSForwarder": [
-                    "10.57.53.56"
-                ],
-                "TimeServer": "NTP_server_IP_address"
+                    "10.0.50.10"
+                ]
             }
         }
     ]
