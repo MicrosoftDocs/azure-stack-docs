@@ -14,7 +14,7 @@ sections:
           Error 'Certificate expired - Unable to connect to the server: x509'
 
         answer: | 
-          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command errors with the following error:
+          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command displays the following error:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
