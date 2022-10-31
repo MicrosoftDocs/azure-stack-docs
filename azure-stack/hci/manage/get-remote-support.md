@@ -9,7 +9,7 @@ ms.date: 07/22/2022
 
 # Get remote support for Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 > [!IMPORTANT]
 > Remote support for Azure Stack HCI is currently in preview.
