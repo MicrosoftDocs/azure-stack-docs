@@ -282,18 +282,18 @@ Now that the custom location is available, you can create or add virtual network
 1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
 
    ```azurecli
-   $vlan-id=<vLAN identifier for Arc VMs>   
+   $vlanid=<vLAN identifier for Arc VMs>   
    $vnetName=<user provided name of virtual network>
    New-MocGroup -name "Default_Group" -location "MocLocation"
    New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlan-id
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanid
    ```
 
    where:
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **vlan-id** | vLAN identifier for Arc VMs. |
+   | **vlanid** | vLAN identifier for Arc VMs. |
    | **vnetName** | User provided name of virtual network. |
 
 1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
