@@ -35,6 +35,8 @@ For more information about this role-based NIC qualification, please see this [l
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
+> 
+> For example, it is not supported to connect a NIC certified only for 'Management' to any virtual switch.  This includes when management NICs are part of a Switch Embedded Team (SET), even when that team would only be used for host management traffic.  For this configuration, the NICs would need to be certified for 'Compute Standard' at a minimum.
 
 |Level|Management Role|Compute Role|Storage Role|
 |----|----|----|----|
