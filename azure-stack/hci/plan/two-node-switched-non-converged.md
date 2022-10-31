@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 11/01/2022
 ---
 
 # Review two-node storage switched, non-converged deployment network reference pattern for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
+> Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 

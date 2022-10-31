@@ -1,21 +1,19 @@
 ---
-title: Azure Stack HCI deployment patterns
-description: Azure Stack HCI deployment patterns for single node and two node clusters
+title: Azure Stack HCI deployment network reference patterns
+description: Select a network reference pattern for single-server and two-node Azure Stack HCI deployments.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2022
+ms.date: 11/01/2022
 ---
 
 # Azure Stack HCI network deployment patterns
 
-> > Applies to: Azure Stack HCI, version 21H2; Azure Stack HCI, version 22H2 (preview)
+> > Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI with either one or two physical hosts (nodes).
-
-The article includes five different deployment patterns. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI using either one or two physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
 ## Choose a network reference pattern
 

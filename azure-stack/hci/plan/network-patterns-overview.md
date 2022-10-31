@@ -1,18 +1,18 @@
 ---
-title: Review reference pattern overview for Azure Stack HCI
-description: Learn about network reference patterns for Azure Stack HCI.
+title: Network reference patterns overview for Azure Stack HCI
+description: Learn about the different supported network reference patterns for Azure Stack HCI.
 ms.topic: conceptual
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2022
+ms.date: 11/01/2022
 ---
 
 # Network reference patterns overview for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2 (preview)
+> Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 In this article, you'll gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 
@@ -30,7 +30,7 @@ A single-server deployment features a single TOR switch for northbound/southboun
 
 The following highlights some advantages and disadvantages of using switchless configurations:
 
-- No switch is necessary for East-West traffic, however, a switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs, but is dependent on the number of nodes in the cluster.
+- No switch is necessary for in-cluster (East-West) traffic; however, a switch is required for traffic outside the cluster (North-South). This may result in lower capital expenditure (CAPEX) costs, but is dependent on the number of nodes in the cluster.
 
 - If switchless is used, configuration is limited to the host, which may reduce the potential number of configuration steps needed. However, this value diminishes as the cluster size increases.
 
@@ -47,21 +47,6 @@ The following highlights some advantages and disadvantages of using switchless c
 - Cluster expansion beyond two-nodes is complex, potentially requiring per-node hardware and software configuration changes.
 
 For more information, see [Physical network requirements for Azure Stack HCI]().
-
-## Scenarios
-
-These network reference patterns can be deployed in the following scenarios:
-
-- Retail stores
-- Public sector and government facilities
-- Airline terminals
-- Dev and test lab environments
-- Branch offices with datacenter services
-- Traditional datacenters with multiple small-node systems sharing a single rack. Non-traditional datacenters generally have limited cooling and power systems.
-
-TOR switches can be Layer (L2) devices without Layer 3 (L3) capabilities. VLANs will get trunked to a central switch router where traffic can get routed.
-
-For more information, see [Azure Stack remote offices and branches](/azure/architecture/hybrid/azure-stack-robo.md).
 
 ## Firewall requirements
 
