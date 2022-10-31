@@ -134,7 +134,7 @@ Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 
 ## Delete a node pool
 
-If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The follow example removes the node pool named *windowsnodepool* in the cluster named *mycluster*.
+If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The following example removes the node pool named *windowsnodepool* in the cluster named *mycluster*.
 
 ```powershell
 Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
@@ -201,7 +201,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Then, schedule the pod using the follow command.
+Then, schedule the pod using the following command.
 
 ```powershell
 kubectl apply -f nginx-toleration.yaml
