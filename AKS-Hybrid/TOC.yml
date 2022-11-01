@@ -13,9 +13,9 @@
   - name: Architecture
     items:
     - name: Baseline architecture for AKS on Azure Stack HCI
-      href: architecture-center/docs/example-scenario/hybrid/aks-baseline
+      href: architecture/example-scenario/hybrid/aks-baseline
     - name: Network architecture for AKS on Azure Stack HCI
-      href: architecture-center/docs/example-scenario/hybrid/aks-network
+      href: architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
 - name: Quickstarts
