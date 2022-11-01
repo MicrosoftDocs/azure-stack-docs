@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Troubleshoot Azure Stack HCI version 22H2 deployment (preview) 
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
 For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your deployment.
 
@@ -20,11 +20,31 @@ Also see [Known issues for version 22H2](/manage/preview-channel.md).
 
 To rerun the deployment if there is a failure, follow these steps:
 
-1. Connect to your Active Directory Domain server. Run PowerShell as administrator.
-1. You'll need to clean the Active Directory objects that were created. Identify the A records created for your DNS server. Run the following command to get a list of the A records created for your DNS server: 
+
+
+1. Establish a remote desktop protocol (RDP) connection with the first server of your Azure Stack HCI cluster. Use the *option 15* in the *SConfig* to go to the command line. Change the directory to *C:\clouddeployment\setup*.
+
+1. Run the following command on your first (staging) server:
+ 
+    ```powershell
+    .\Invoke-CloudDeployment.ps1 -Rerun -Verbose
+    ```
+    
+    This command should restart the deployment in verbose mode.
+
+
+## Reset deployment
+
+You may have to reset your deployment if it is in a not recoverable state. For example, if it is an incorrect network configuration, or if rerun doesn't resolve the issue. In these cases, do the following:
+
+1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
+
+1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
+1. You'll need to clean the Active Directory objects that were created. Connect to your Active Directory Domain server. Run PowerShell as administrator.
+1. Identify the `A` records created for your DNS server. Run the following command to get a list of the `A` records created for your DNS server: 
     ```azurepowershell
     Get-DnsServerResourceRecord -ZoneName "<FQDN for your Active Directory Domain Server>"
-    ``` 
+    ```
 
 1. From the list of the records displayed, identify the type `A` records corresponding to the `RecordType` that are associated with your cluster nodes (`RecordData` should have the cluster node IPs).
 1. To remove an `A` record, run the following command:
@@ -120,25 +140,7 @@ To rerun the deployment if there is a failure, follow these steps:
     PS C:\temp>
     ```
 1. Repeat the above steps to remove all the type `A` records. 
-
-1. Establish a remote desktop protocol (RDP) connection with the first server of your Azure Stack HCI cluster. Use the *option 15* in the *SConfig* to go to the command line. Change the directory to *C:\clouddeployment\setup*.
-
-1. Run the following command on your first (staging) server:
- 
-    ```powershell
-    .\Invoke-CloudDeployment.ps1 -Rerun -Verbose
-    ```
-    
-    This command should restart the deployment in verbose mode.
-
-
-## Reset deployment
-
-You may have to reset your deployment if it is in a not recoverable state. For example, if it is an incorrect network configuration, or if rerun doesn't resolve the issue. In these cases, do the following:
-
-1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
-1. Remove the *ServerHCI.vhdx* file and replace it with a new *ServerHCI.vhdx* file that you've downloaded.
-1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
+1. You can now deploy interactively or deploy using an existing config file.
 
 ## Next steps
 
