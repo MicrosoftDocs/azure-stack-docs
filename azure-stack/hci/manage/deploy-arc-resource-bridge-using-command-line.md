@@ -60,7 +60,8 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    $controlPlaneIP="<IP-address>"
    $csv_path="<input-from-admin>"
    $vlanID="<vLAN-ID>" (Optional)
-   $VMIP="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
+   $VMIP_1="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
+   $VMIP_2="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
    $DNSServers="<comma separated list of DNS servers>" (required only for static IP configurations)
    $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
@@ -75,7 +76,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
    | **vlanID** | (Optional) vLAN identifier. |
-   | **VMIP** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify this parameter, the Arc Resource Bridge will get an IP address from DHCP. The IP address given from DHCP must be reserved for Arc Resource Bridge. |
+   | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250,192.168.250.255". |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
@@ -178,7 +179,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
       ```
    
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:

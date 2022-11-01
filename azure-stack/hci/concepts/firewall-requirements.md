@@ -110,7 +110,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Allow Failover Cluster validation   | Allow  | Management system          | Cluster servers        | TCP     | 445    |
 | Allow RPC dynamic port allocation   | Allow  | Management system          | Cluster servers        | TCP     | Minimum of 100 ports<br> above port 5000 |
 | Allow Remote Procedure Call (RPC)   | Allow  | Management system          | Cluster servers        | TCP     | 135    |
-| Allow Cluster Administrator         | Allow  | Management system          | Cluster servers        | TCP     | 137    |
+| Allow Cluster Administrator         | Allow  | Management system          | Cluster servers        | UDP     | 137    |
 | Allow Cluster Service               | Allow  | Management system          | Cluster servers        | UDP     | 3343   |
 | Allow Cluster Service (Required during<br> a server join operation.) | Allow  | Management system  | Cluster servers  | TCP     | 3343 |
 | Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow  | Management system           | Cluster servers  | n/a     | n/a  |
