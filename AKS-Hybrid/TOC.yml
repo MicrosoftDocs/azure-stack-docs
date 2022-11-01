@@ -6,27 +6,33 @@
     href: aks-hybrid-options-overview.md
   - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
-  - name: Evaluation guide
-    items:
-      - name: Introduction
-        href: aks-hci-evaluation-guide.md
-      - name: 1 - Evaluate AKS on Azure Stack HCI
-        href: aks-hci-evaluation-guide-1.md
-      - name: 2a - Deploy with Windows Admin Center
-        href: aks-hci-evaluation-guide-2a.md
-      - name: 2b - Deploy with PowerShell
-        href: aks-hci-evaluation-guide-2b.md
-      - name: 3 - Explore the environment
-        href: aks-hci-evaluation-guide-3.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
   - name: Quotas and resource limits
     href: concepts-support.md
+  - name: Architecture
+    items:
+    - name: Baseline architecture for AKS on Azure Stack HCI
+      href: architecture-center/docs/example-scenario/hybrid/aks-baseline
+    - name: Network architecture for AKS on Azure Stack HCI
+      href: architecture-center/docs/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
+     - name: Evaluation guide
+       items:
+        - name: Introduction
+          href: aks-hci-evaluation-guide.md
+        - name: 1 - Evaluate AKS on Azure Stack HCI
+          href: aks-hci-evaluation-guide-1.md
+        - name: 2a - Deploy with Windows Admin Center
+          href: aks-hci-evaluation-guide-2a.md
+        - name: 2b - Deploy with PowerShell
+          href: aks-hci-evaluation-guide-2b.md
+        - name: 3 - Explore the environment
+          href: aks-hci-evaluation-guide-3.md
     - name: Deploy an AKS cluster
       items:
         - name: Use PowerShell
