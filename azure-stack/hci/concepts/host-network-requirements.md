@@ -65,11 +65,11 @@ Important network adapter capabilities used by Azure Stack HCI include:
 
 ### Dynamic VMMQ
 
-All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requires the use of Switch Embedded Teaming.
+All network adapters with the Compute (Premium) qualification support Dynamic VMMQ. Dynamic VMMQ requires the use of Switch Embedded Teaming.
 
 **Applicable traffic types:** compute
 
-**Certifications required:** Premium
+**Certifications required:** Compute (Premium)
 
 Dynamic VMMQ is an intelligent, receive-side technology. It builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ, to provide three primary improvements:
 
@@ -87,16 +87,16 @@ RDMA enables high-throughput, low-latency networking, using minimal host CPU res
 
 **Applicable traffic types:** host storage
 
-**Certifications required:** Standard
+**Certifications required:** Storage (Standard)
 
-All adapters with Standard or Premium AQ support RDMA. RDMA is the recommended deployment choice for storage workloads in Azure Stack HCI, and can be optionally enabled for storage workloads (using SMB) for VMs. For more information, see the "Guest RDMA" section later in this article.
+All adapters with Storage (Standard) or Storage (Premium) qualification support host-side RDMA. For more information on using RDMA with guest workloads, see the "Guest RDMA" section later in this article.
 
-Azure Stack HCI supports RDMA by using either the Internet Wide Area RDMA Protocol (iWARP) or RDMA over Converged Ethernet (RoCE) protocol implementations.
+Azure Stack HCI supports RDMA with either the Internet Wide Area RDMA Protocol (iWARP) or RDMA over Converged Ethernet (RoCE) protocol implementations.
 
 > [!IMPORTANT]
 > RDMA adapters only work with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
 
-Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer Premium certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to verify RDMA support.
+Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification which require RDMA support.
 
 > [!NOTE]
 > InfiniBand (IB) is not supported with Azure Stack HCI.
@@ -104,12 +104,11 @@ Not all network adapters from vendors support RDMA. The following table lists th
 |NIC vendor|iWARP|RoCE|
 |----|----|----|
 |Broadcom|No|Yes|
-|Chelsio|Yes|No|
 |Intel|Yes|Yes (some models)|
-|Marvell (Qlogic/Cavium)|Yes|Yes|
-|Nvidia (Mellanox)|No|Yes|
+|Marvell (Qlogic)|Yes|Yes|
+|Nvidia|No|Yes|
 
-For more information on deploying RDMA, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
+For more information on deploying RDMA for the host, we highly recommend you use Network ATC. For information on manual deployment see the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
 #### iWARP
 
@@ -117,8 +116,8 @@ iWARP uses Transmission Control Protocol (TCP), and can be optionally enhanced w
 
 Use iWARP if:
 
-- You have little or no network experience, or are uncomfortable managing network switches.
-- You don't control your top-of-rack (ToR) switches.
+- You don't have experience managing RDMA networks.
+- You don't manage or are uncomfortable managing your top-of-rack (ToR) switches.
 - You won't be managing the solution after deployment.
 - You already have deployments that use iWARP.
 - You're unsure which option to choose.
@@ -138,7 +137,7 @@ Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA
 
 **Applicable traffic types:** Guest-based storage
 
-**Certifications required:** Premium
+**Certifications required:** Compute (Premium)
 
  The primary benefits of using Guest RDMA are:
 
@@ -150,16 +149,16 @@ For more information, download the document from the [SDN GitHub repo](https://g
 
 ### SET
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is not dependent on the type of network adapters used.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET requires a Compute (Standard) or Compute (Premium) adapter.
 
 **Applicable traffic types:** compute, storage, and management
 
-**Certifications required:** none (SET is built into the operating system)
+**Certifications required:** Compute (Standard) or Compute (Premium)
 
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO) and Link Aggregation Control Protocol (LACP) teaming technologies commonly used with Windows Server. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 
@@ -168,14 +167,14 @@ SET is important for Azure Stack HCI because it's the only teaming technology th
 - Dynamic VMMQ.
 - Other key Azure Stack HCI features (see [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642)).
 
-Note that SET requires the use of symmetric (identical) adapters. Teaming of asymmetric adapters isn't supported. Symmetric network adapters are those that have the same:
+SET requires the use of symmetric (identical) adapters. Symmetric network adapters are those that have the same:
 
 - make (vendor)
 - model (version)
 - speed (throughput)
 - configuration
 
-The easiest way to identify if adapters are symmetric is if the speeds are the same and the interface descriptions match. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
+In 22H2, Network ATC will automatically detect and inform you if the adapters you've chosen are asymmetric. The easiest way to manually identify if adapters are symmetric is if the speeds and interface descriptions are **exact** matches. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
 
 See the following table for an example of the interface descriptions deviating only by numeral (#):
 
@@ -187,7 +186,7 @@ See the following table for an example of the interface descriptions deviating o
 |NIC4|Network Adapter #4|25 Gbps|
 
 > [!NOTE]
-> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10 Gbps.
+> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10 Gbps. Network ATC makes all the required configurations for SET.
 
 ### RDMA traffic considerations
 
