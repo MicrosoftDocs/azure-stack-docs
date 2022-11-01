@@ -117,7 +117,7 @@ Skip this step if deployment is via the PowerShell. This step is required only i
 
     Your servers will restart and this will take a few minutes.
 
-1. After the servers have restarted, use the option 15 in *SConfig* to launch the PowerShell session. Use of *SConfig* enables Internet Control Message Protocol (ICMP) response.
+1. After the servers have restarted, use the option 15 in *SConfig* to launch the PowerShell session. 
 
 1. Skip this step if you're deploying a single server.
     1. For a multi-node cluster, go to the first server of your cluster. Run the following command:
