@@ -255,10 +255,10 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
     az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
-1. Verify that the extensions are installed. Keep running the following cmdlet until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.
+1. Verify that the extensions are installed. Keep running the following cmdlet until the extension result is **Succeeded**. This operation can take up to five minutes.
 
    ```azurecli
-   az k8s-extension show --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator
+   az k8s-extension show --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --out table --query '[provisioningState]'
    ```
 
 1. Create a custom location for the Azure Stack HCI cluster, where **customloc_name** is the name of the custom location, such as "HCICluster -cl":
@@ -282,18 +282,18 @@ Now that the custom location is available, you can create or add virtual network
 1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
 
    ```azurecli
-   $vlan-id=<vLAN identifier for Arc VMs>   
+   $vlanid=<vLAN identifier for Arc VMs>   
    $vnetName=<user provided name of virtual network>
    New-MocGroup -name "Default_Group" -location "MocLocation"
    New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlan-id
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanid
    ```
 
    where:
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **vlan-id** | vLAN identifier for Arc VMs. |
+   | **vlanid** | vLAN identifier for Arc VMs. |
    | **vnetName** | User provided name of virtual network. |
 
 1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
