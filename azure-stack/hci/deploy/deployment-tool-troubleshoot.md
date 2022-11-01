@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 10/31/2022
+ms.date: 11/01/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
