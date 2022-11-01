@@ -140,7 +140,7 @@ You may have to reset your deployment if it is in a not recoverable state. For e
     PS C:\temp>
     ```
 1. Repeat the above steps to remove all the type `A` records. 
-1. You can now deploy interactively or deploy using an existing config file.
+1. Connect to the first server via remote desktop protocol. You can now [Deploy interactively](./deployment-tool-new-file.md) or [Deploy using an existing config file](./deployment-tool-existing-file.md).
 
 ## Next steps
 
