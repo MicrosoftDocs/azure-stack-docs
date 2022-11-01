@@ -21,8 +21,8 @@
 - name: Quickstarts
   expanded: true
   items:
-     - name: Evaluation guide
-       items:
+    - name: Evaluation guide
+      items:
         - name: Introduction
           href: aks-hci-evaluation-guide.md
         - name: 1 - Evaluate AKS on Azure Stack HCI
