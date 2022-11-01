@@ -41,7 +41,7 @@
     - name: Single-server deployment
       items:
       - name: Single-server deployment
-        href: plan/single-server-switchless.md
+        href: plan/single-server-deployment.md
       - name: Pattern components
         href: plan/single-server-components.md
       - name: Pattern IP requirements

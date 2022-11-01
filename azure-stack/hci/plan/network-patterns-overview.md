@@ -46,7 +46,7 @@ The following highlights some advantages and disadvantages of using switchless c
 
 - Cluster expansion beyond two-nodes is complex, potentially requiring per-node hardware and software configuration changes.
 
-For more information, see [Physical network requirements for Azure Stack HCI]().
+For more information, see [Physical network requirements for Azure Stack HCI](/concepts/physical-network-requirements.md).
 
 ## Firewall requirements
 

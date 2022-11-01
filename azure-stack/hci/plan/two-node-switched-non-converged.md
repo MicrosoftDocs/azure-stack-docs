@@ -66,8 +66,8 @@ As described in the diagram below, this pattern has the following physical netwo
 - Default VLANs:
     - 711 for storage network 1
     - 712 for storage network 2
-- Default subnets: 
-    - 10.71.1.0/24 for storage network 1 
+- Default subnets:
+    - 10.71.1.0/24 for storage network 1
     - 10.71.2.0/24 for storage network 2
 
 Follow these steps to create network intents for this reference pattern:
@@ -84,7 +84,7 @@ Follow these steps to create network intents for this reference pattern:
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/two-node-switched-non-converged/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switched-non-converged/logical-components-layout.png":::
+:::image type="content" source="media/two-node-switched-non-converged/logical-components-layout.png" alt-text="Diagram showing two-node physical connectivity layout" lightbox="media/two-node-switched-non-converged/logical-components-layout.png":::
 
 ### Storage Network VLANs
 
