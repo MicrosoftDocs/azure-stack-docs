@@ -39,7 +39,7 @@ You may have to reset your deployment if it is in a not recoverable state. For e
 
 1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
 
-1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
+1. Connect to the first server via remote desktop protocol (RDP). [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
 1. You'll need to clean the Active Directory objects that were created. Connect to your Active Directory Domain server. Run PowerShell as administrator.
 1. Identify the `A` records created for your DNS server. Run the following command to get a list of the `A` records created for your DNS server: 
     ```azurepowershell
@@ -140,7 +140,7 @@ You may have to reset your deployment if it is in a not recoverable state. For e
     PS C:\temp>
     ```
 1. Repeat the above steps to remove all the type `A` records. 
-1. Connect to the first server via remote desktop protocol. You can now [Deploy interactively](./deployment-tool-new-file.md) or [Deploy using an existing config file](./deployment-tool-existing-file.md).
+1. Connect to the first server. You can now [Deploy interactively](./deployment-tool-new-file.md) or [Deploy using an existing config file](./deployment-tool-existing-file.md).
 
 ## Next steps
 
