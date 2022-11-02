@@ -22,7 +22,7 @@ A deployment consists of single-server or two-node systems that connect to one o
 
 - One or two ports dedicated to management and compute traffic intents.
 
-- One optional BMC for OOB management.
+- One optional Baseboard Management Controller (BMC) for OOB management.
 
 A single-server deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
 

@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2022
+ms.date: 11/02/2022
 ---
 
 # Review SDN considerations for network reference patterns
@@ -20,7 +20,7 @@ In this article, you'll review considerations when deploying Software Defined Ne
 
 When using SDN, you must ensure that the physical switches used in your Azure Stack HCI cluster support a set of capabilities that are documented at [Plan a Software Defined Network infrastructure](/concepts/plan-software-defined-networking-infrastructure.md).
 
-If you are using SDN Software Load Balancers (SLB) or GRE gateways, you must also configure Border Gateway Protocol (BGP) peering with the top of rack (ToR) switches so that the SLB and GRE Virtual IP addresses (VIPs) can be advertised. For more information, see [Switches and routers](/concepts/plan-software-defined-networking-infrastructure.md#switches-and-routers).
+If you are using SDN Software Load Balancers (SLB) or Gateway Generic Routing Encapsulation (GRE) gateways, you must also configure Border Gateway Protocol (BGP) peering with the top of rack (ToR) switches so that the SLB and GRE Virtual IP addresses (VIPs) can be advertised. For more information, see [Switches and routers](/concepts/plan-software-defined-networking-infrastructure.md#switches-and-routers).
 
 ## SDN Network Controller
 

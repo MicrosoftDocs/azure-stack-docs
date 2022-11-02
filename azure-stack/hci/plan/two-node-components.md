@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2022
+ms.date: 11/02/2022
 ---
 
 # Review two-node storage reference pattern components for Azure Stack HCI
@@ -25,7 +25,7 @@ The following table lists all the components running on VMs for two-node network
 |Component|Number of VMs|OS disk size|Data disk size|vCPUs|Memory|
 |--|--|--|--|--|--|
 |Network Controller|1|100 GB|30 GB|4|4 GB|
-|SDN Load Balancers|1|60 GB|30 GB|16|8 GB|
+|SDN Software Load Balancers (SLB)|1|60 GB|30 GB|16|8 GB|
 |SDN Gateways|1|60 GB|30 GB|8|8 GB|
 |OEM Management|OEM defined|OEM defined|OEM defined|OEM defined|OEM defined|
 |**Total**|3 + OEM|270 GB + OEM|90 GB + OEM|32 + OEM|28 GB + OEM|
@@ -70,7 +70,7 @@ The following components run as services or agents on the host server:
 
 **Network Controller host agent**: Allows Network Controller to manage the goal state of the data plane, and to receive notification of events as the configuration of the data plane changes.
 
-**Monitor host agent**: ALM-managed agent used for emitting observability (telemetry and diagnostics) pipeline data that upload to Geneva (Azure Storage).
+**Monitor host agent**: Orchestrator-managed agent used for emitting observability (telemetry and diagnostics) pipeline data that upload to Geneva (Azure Storage).
 
 **Software Load Balancer host agent**: Listens for policy updates from the Network Controller. In addition, this agent programs agent rules into the SDN-enabled Hyper-V virtual switches that are configured on the local computer.
 

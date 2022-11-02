@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2022
+ms.date: 11/02/2022
 ---
 
 # Review single-server storage reference pattern components for Azure Stack HCI
@@ -17,18 +17,6 @@ ms.date: 11/01/2022
 In this article, you'll learn about which network components are deployed for the single-server reference pattern, as shown in the following diagram:
 
 :::image type="content" source="media/single-server-components/components.png" alt-text="Diagram showing components for single-server network pattern" lightbox="media/single-server-components/components.png":::
-
-## Components running on VMs
-
-The following table lists the various components running on virtual machines (VMs) for a single-server network pattern:
-
-|Component|Number of VMs|OS disk size|Data disk size|vCPUs|Memory|
-|--|--|--|--|--|--|
-|Network Controller|1|100 GB|30 GB|4|4 GB|
-|SDN Software Load Balancers|1|60 GB|30 GB|16|8 GB|
-|SDN Gateways|1|60 GB|30 GB|8|8 GB|
-|OEM Management|OEM defined|OEM defined|OEM defined|OEM defined|OEM defined|
-|**Total**|3 + OEM|270 GB + OEM|90 GB + OEM|32 + OEM|28 GB + OEM|
 
 ### Optional components
 
@@ -71,6 +59,18 @@ The following components run as services or agents on the host server:
 **Monitor host agent**: Orchestrator-managed agent used for emitting observability (telemetry and diagnostics) pipeline data that upload to Geneva (Azure Storage).
 
 **Software Load Balancer host agent**: Listens for policy updates from the Network Controller. In addition, this agent programs agent rules into the SDN-enabled Hyper-V virtual switches that are configured on the local computer.
+
+## Components running on VMs
+
+The following table lists the various components running on virtual machines (VMs) for a single-server network pattern:
+
+|Component|Number of VMs|OS disk size|Data disk size|vCPUs|Memory|
+|--|--|--|--|--|--|
+|Network Controller|1|100 GB|30 GB|4|4 GB|
+|SDN Software Load Balancers|1|60 GB|30 GB|16|8 GB|
+|SDN Gateways|1|60 GB|30 GB|8|8 GB|
+|OEM Management|OEM defined|OEM defined|OEM defined|OEM defined|OEM defined|
+|**Total**|3 + OEM|270 GB + OEM|90 GB + OEM|32 + OEM|28 GB + OEM|
 
 ## Next steps
 
