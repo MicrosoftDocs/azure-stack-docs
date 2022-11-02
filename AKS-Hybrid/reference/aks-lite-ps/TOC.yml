@@ -1,0 +1,38 @@
+- name: AKS Lite PowerShell Reference
+  href: index.md
+  expanded: true
+  items:
+  - name: Add-AksIotNode
+    href: Add-AksIotNode.md
+  - name: Get-AksIotClusterJoinData
+    href: Get-AksIotClusterJoinData.md
+  - name: Get-AksIotDeploymentInfo
+    href: Get-AksIotDeploymentInfo.md
+  - name: Get-AksIotEventLog
+    href: Get-AksIotEventLog.md
+  - name: Get-AksIotKubeConfig
+    href: Get-AksIotKubeConfig.md
+  - name: Get-AksIotLinuxNodeAddr
+    href: Get-AksIotLinuxNodeAddr.md
+  - name: Get-AksIotLinuxNodeName
+    href: Get-AksIotLinuxNodeName.md
+  - name: Get-AksIotLogs
+    href: Get-AksIotLogs.md
+  - name: Get-AksIotManagedServiceToken
+    href: Get-AksIotManagedServiceToken.md
+  - name: Invoke-AksIotLinuxNodeCommand
+    href: Invoke-AksIotLinuxNodeCommand.md
+  - name: New-AksIotDeployment
+    href: New-AksIotDeployment.md
+  - name: Remove-AksIotNode
+    href: Remove-AksIotNode.md
+  - name: Set-AksIotArcConnection
+    href: Set-AksIotArcConnection.md
+  - name: Start-AksIotLinuxNode
+    href: Start-AksIotLinuxNode.md
+  - name: Stop-AksIotLinuxNode
+    href: Stop-AksIotLinuxNode.md
+  - name: Test-AksIotLinuxNode
+    href: Test-AksIotLinuxNode.md
+  - name: Test-AksIotNetworkParameters
+    href: Test-AksIotNetworkParameters.md
