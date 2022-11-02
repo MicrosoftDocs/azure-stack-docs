@@ -13,7 +13,7 @@ ms.date: 10/17/2022
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-This article lists the prerequisites for Azure Arc VM management. We recommend that you review the information carefully before you deploy Azure Arc VMs. You can refer back to this information as necessary during the deployment and subsequent operation.
+This article lists the prerequisites for Azure Arc VM management. We recommend that you review the information carefully before you set up Azure Arc VM management. You can refer back to this information as necessary during the deployment and subsequent operation.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 

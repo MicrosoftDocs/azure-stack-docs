@@ -12,11 +12,7 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, versions 22H2 and version 21H2
 
-To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to set up Azure Arc VM management.
-
-You can set up Azure Arc VM management using Windows Admin Center (recommended) or Azure Command-Line Interface (CLI).
-
-This article describes how to use Azure CLI to set up Azure Arc VM management using command line, which includes:
+This article describes how to use Azure Command-Line Interface (CLI) to set up Azure Arc VM management, which includes:
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
@@ -24,7 +20,7 @@ This article describes how to use Azure CLI to set up Azure Arc VM management us
 
 To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
-For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md).
+For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -44,11 +40,11 @@ Before you begin, make sure:
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- To review the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
+- To complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through RDP or console session. Remote PowerShell isn't supported.
+In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through RDP or console session. Remote PowerShell isn't supported.
 
 1. Install the required PowerShell modules by running the following cmdlet as an administrator on all servers of the Azure Stack HCI cluster:
 
@@ -121,8 +117,8 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
       ---
 
-      > [!TIP]
-      > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
+         > [!TIP]
+         > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
 
 1. Update the required extensions.
    
@@ -194,7 +190,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
       ```
       > [!IMPORTANT]
-      > The configuration files are required to perform essential `az arcappliance` CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell

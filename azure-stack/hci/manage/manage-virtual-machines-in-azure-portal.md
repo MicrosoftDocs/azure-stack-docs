@@ -11,7 +11,7 @@ ms.date: 10/05/2022
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI
 
-> Applies to:Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article describes how to create an Arc VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal or the Azure CLI.
 

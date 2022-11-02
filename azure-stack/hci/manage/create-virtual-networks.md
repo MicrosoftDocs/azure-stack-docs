@@ -13,21 +13,19 @@ ms.date: 11/02/2022
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-This article describes how to add virtual network for your Azure Stack HCI. You can create or add virtual networks using Windows Admin Center or PowerShell for the custom location associated with the Azure Stack HCI cluster.
+This article describes how to create or add virtual network for your Azure Stack HCI cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Create virtual networks for custom location
 
-# [Windows Admin Center](#tab/windows-admin-center)
+You can create or add virtual networks using Windows Admin Center or PowerShell for the custom location associated with the Azure Stack HCI cluster.
 
-To create or add virtual networks and images for the custom location associated with the Azure Stack HCI cluster:
+# [Windows Admin Center](#tab/windows-admin-center)
 
 Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** again. On this page, project the vmswitch name that is used for network interfaces during VM provisioning. Also project the OS gallery images that are used for creating VMs through Azure Arc.
 
 # [Azure CLI](#tab/azurecli)
-
-To create or add virtual networks for the custom location associated with the Azure Stack HCI cluster.
 
 1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. Run the following command to get the name of the VM switch and provide this name in the subsequent step.
 
