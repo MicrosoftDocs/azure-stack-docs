@@ -20,7 +20,7 @@ This article describes how to use Azure CLI to set up Azure Arc VM management us
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
-- [Creating virtual network](#create-virtual-network)
+- [Creating virtual network](create-virtual-networks.md)
 
 To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
