@@ -211,6 +211,8 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
       > [!IMPORTANT]
+      > Prepare and deploy can take up to 30 minutes to complete.
+      >
       > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
       >
       >```powershell
@@ -247,6 +249,8 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
       > [!IMPORTANT]
+      > Prepare and deploy can take up to 30 minutes to complete.
+      >
       > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
       >
       >```powershell
