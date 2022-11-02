@@ -22,6 +22,12 @@
     href: supported-kubernetes-versions.md
   - name: Quotas and resource limits
     href: concepts-support.md
+  - name: Architecture
+    items:
+    - name: Baseline architecture for AKS on Azure Stack HCI
+      href: /azure/architecture/example-scenario/hybrid/aks-baseline
+    - name: Network architecture for AKS on Azure Stack HCI
+      href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
 - name: Quickstarts
