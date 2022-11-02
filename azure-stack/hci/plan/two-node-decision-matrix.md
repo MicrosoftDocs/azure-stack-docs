@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 ---
 
 # Review two-node storage reference pattern decision matrix for Azure Stack HCI
 
-> Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [includes](includes/hci-patterns-versions.md)]
 
 Study the two-node storage reference pattern decision matrix to help decide which reference pattern is best suited for your deployment needs:
 

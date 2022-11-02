@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/02/2022
+ms.date: 11/03/2022
 ---
 
 # Review SDN considerations for network reference patterns
 
-> Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [includes](includes/hci-patterns-versions.md)]
 
 In this article, you'll review considerations when deploying Software Defined Networking (SDN) in your Azure Stack HCI cluster.
 

@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 ---
 
 # Review two-node storage switchless, two switches deployment network reference pattern for Azure Stack HCI
 
-> Applies to: Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [includes](includes/hci-patterns-versions.md)]
 
 In this article, you'll learn about the two-node storage switchless with two TOR L3 switches network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
