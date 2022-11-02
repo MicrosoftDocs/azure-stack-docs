@@ -1,6 +1,6 @@
 ---
-title: Create Arc-enabled virtual machines on Azure Stack HCI
-description: Learn how to view your cluster in the Azure portal and create Arc-enabled virtual machines on your Azure Stack HCI.
+title: Create Arc virtual machines on Azure Stack HCI
+description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI.
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -9,12 +9,11 @@ ms.subservice: azure-stack-hci
 ms.date: 10/05/2022
 ---
 
-# Use VM images to create Arc-enabled virtual machines on Azure Stack HCI
+# Use VM images to create Arc virtual machines on Azure Stack HCI
 
 > Applies to:Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal or the Azure CLI.
-
+This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal or the Azure CLI.
 
 ## About Azure Stack HCI cluster resource
 
@@ -22,7 +21,7 @@ You can use the [Azure Stack HCI cluster resource page](https://portal.azure.com
 
 - You can create and manage Arc VM resources such as VM images, disks, network interfaces.
 - You can use this page to view and access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster.
-- You can also use this page to provision and manage Arc-enabled VMs.
+- You can also use this page to provision and manage Arc VMs.
 
 The procedure to create Arc VMs is described in the next section.
 
@@ -38,7 +37,7 @@ Before you begin, make sure that you have:
     - [VM image starting from an image in local share on your cluster](./virtual-machine-image-local-share.md).
 - Make sure that you have a custom location for your Azure Stack HCI cluster that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Stack HCI cluster.
 
-## Create Arc-enabled VMs
+## Create Arc VMs
 
 Follow these steps in the Azure portal for your Azure Stack HCI cluster.
 

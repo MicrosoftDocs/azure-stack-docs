@@ -1,6 +1,6 @@
 ---
-title: Uninstall Azure Arc Resource Bridge 
-description: Learn how to uninstall Azure Arc Resource Bridge
+title: Uninstall Azure Arc VM management 
+description: Learn how to uninstall Azure Arc VM management.
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.subservice: azure-stack-hci
 ms.date: 03/23/2022
 ---
 
-# Uninstall Azure Arc Resource Bridge
+# Uninstall Azure Arc VM management
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article describes how to uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-enabled Azure Stack HCI cluster.
+This article describes how to uninstall Azure Arc VM management on an Azure Arc-enabled Azure Stack HCI cluster.
 
-Perform the following steps to uninstall Azure Arc Resource Bridge:
+Perform the following steps to uninstall Azure Arc VM management:
 
 1. Remove the virtual network:
 

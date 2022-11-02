@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Arc Resource Bridge using Windows Admin Center
-description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using Windows Admin Center
+title: Set up Azure Arc VM management using Windows Admin Center
+description: Learn how to set up Azure Arc VM management using Windows Admin Center.
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 06/06/2022
@@ -8,15 +8,15 @@ ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
-# Deploy Azure Arc Resource Bridge using Windows Admin Center
+# Set up Azure Arc VM management using Windows Admin Center
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to set up Azure Arc VM management.
 
-You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
+You can set up Azure Arc VM management using Windows Admin Center (recommended) or Azure Command-Line Interface (CLI).
 
-This article describes how to use Windows Admin Center to deploy Azure Arc Resource Bridge, which includes:
+This article describes how to use Windows Admin Center to set up Azure Arc VM management, which includes:
 
 - [Setting up Windows Admin Center](#set-up-windows-admin-center)
 
@@ -24,17 +24,13 @@ This article describes how to use Windows Admin Center to deploy Azure Arc Resou
 
 - [Projecting virtual network and images](#project-virtual-network-and-images)
 
-If you want to deploy Azure Arc Resource Bridge using command line, see [Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line](deploy-arc-resource-bridge-using-command-line.md).
+If you want to set up Azure Arc VM management using command line, see [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
 
-For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
+For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)..
 
-## Before you begin
+## Prerequisites
 
-Before you begin the Azure Arc Resource Bridge deployment, plan out and configure your physical and host network infrastructure. Reference the following sections:
-
-- [Prerequisites for deploying Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#prerequisites-for-deploying-azure-arc-resource-bridge)
-- [Network port requirements](azure-arc-enabled-virtual-machines.md#network-port-requirements)
-- [Firewall URL exceptions](azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Set up Windows Admin Center
 

@@ -69,7 +69,7 @@ Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azur
 
 ### Arc-enabled VM management on Azure Stack HCI (preview)
 
-Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux VMs running on Azure Stack HCI clusters. For more information about managing Arc-enabled VMs, see [Manage Arc-enabled VMs](manage/azure-arc-enabled-virtual-machines.md).
+Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux VMs running on Azure Stack HCI clusters. For more information about managing Arc VMs, see [Manage Arc VMs](manage/azure-arc-vm-management-overview.md).
  
 ### Multi-cluster monitoring in the Azure portal (preview)
 

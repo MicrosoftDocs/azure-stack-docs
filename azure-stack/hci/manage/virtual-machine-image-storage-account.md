@@ -239,4 +239,4 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 ## Next steps
 
-Use VM images to [Create Arc-enabled VMs](./manage-virtual-machines-in-azure-portal.md).
+Use VM images to [Create Arc VMs](./manage-virtual-machines-in-azure-portal.md).

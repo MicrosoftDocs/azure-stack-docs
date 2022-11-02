@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Arc Resource Bridge using command line
-description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using command line.
+title: Set up Azure Arc VM management using command line
+description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line.
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 10/06/2022
@@ -8,35 +8,45 @@ ms.author: v-mandhiman
 ms.reviewer: alkohli
 ---
 
-# Deploy Azure Arc Resource Bridge using Azure CLI
+# Set up Azure Arc VM management using command line
 
-> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and version 21H2
 
-To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to set up Azure Arc VM management.
 
-You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or Azure Command line interface (CLI).
+You can set up Azure Arc VM management using Windows Admin Center (recommended) or Azure Command-Line Interface (CLI).
 
-This article describes how to use Azure CLI to deploy Azure Arc Resource Bridge, which includes:
+This article describes how to use Azure CLI to set up Azure Arc VM management using command line, which includes:
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
 - [Creating virtual network](#create-virtual-network)
 
-To deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
+To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
-For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
+For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md).
 
-## Before you begin
+## Prerequisites
 
-Before you begin the Azure Arc Resource Bridge deployment, plan out and configure your physical and host network infrastructure. Reference the following sections:
+Before you begin, make sure:
 
-- [Prerequisites for deploying Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#prerequisites-for-deploying-azure-arc-resource-bridge)
-- [Network port requirements](azure-arc-enabled-virtual-machines.md#network-port-requirements)
-- [Firewall URL exceptions](azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+- The latest version of Azure CLI is installed. You must install this on all servers in your Azure Stack HCI cluster.
+
+  - To install Azure CLI on each server in a cluster, use Remote Desktop Protocol (RDP) connection.
+
+  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows).
+
+    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
+
+    - When you're prompted, install the Azure CLI extension on first use. For more information about extensions, see [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
+
+    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
+
+- To review the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote PowerShell isn't supported.
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through RDP or console session. Remote PowerShell isn't supported.
 
 1. Install the required PowerShell modules by running the following cmdlet as an administrator on all servers of the Azure Stack HCI cluster:
 
@@ -181,7 +191,9 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
       ```
-   
+      > [!IMPORTANT]
+      > The configuration files are required to perform essential `az arcappliance` CLI commands. Make sure you store these files in a secure and safe location for future use.
+
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
@@ -217,6 +229,9 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
       ```
+      > [!IMPORTANT]
+      > The configuration files are required to perform essential `az arcappliance` CLI commands. Make sure you store these files in a secure and safe location for future use.
+
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
