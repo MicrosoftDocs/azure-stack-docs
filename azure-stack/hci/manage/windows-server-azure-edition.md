@@ -41,7 +41,7 @@ You can provision a Windows Server Azure Edition VM using an HCI Marketplace ima
 
 You do this by following these steps:
 
-1. Deploy [Arc Resource Bridge](azure-arc-vm-management-overview.md#azure-arc-vm-management-deployment-workflow) on your Azure Stack HCI.
+1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#azure-arc-vm-management-deployment-workflow) on your Azure Stack HCI.
 
 1. Learn about how certain [Azure marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
 

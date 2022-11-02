@@ -99,12 +99,6 @@ If the deployment is successful, the wizard automatically navigates to the Arc R
 > [!IMPORTANT]
 > Even after successful deployment of the Azure Arc Resource Bridge, Windows Admin Center may not be able to detect the status of the Resource Bridge and may display an error instead of the dashboard. This error does not indicate any issues with your deployment and the operations conducted through the Azure portal should work normally.
 
-## Project virtual network and images
-
-Now that the custom location is available, you can create or add virtual networks and images for the custom location associated with the Azure Stack HCI cluster.
-
-Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** again. On this page, project the vmswitch name that is used for network interfaces during VM provisioning. Also project the OS gallery images that are used for creating VMs through Azure Arc.
-
 ## Next steps
 
 - [Go to the Azure portal to create VMs](https://portal.azure.com/#home)

@@ -285,44 +285,6 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
 Now you can navigate to the resource group in Azure and see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster.
 
-## Create virtual network 
-
-Now that the custom location is available, you can create or add virtual networks for the custom location associated with the Azure Stack HCI cluster.
-
-1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. Run the following command to get the name of the VM switch and provide this name in the subsequent step.
-
-    ```azurecli
-    Get-VmSwitch
-    ```
-
-1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
-
-   ```azurecli
-   $vlanid=<vLAN identifier for Arc VMs>   
-   $vnetName=<user provided name of virtual network>
-   New-MocGroup -name "Default_Group" -location "MocLocation"
-   New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanid
-   ```
-
-   where:
-
-   | Parameter | Description |
-   | ----- | ----------- |
-   | **vlanid** | vLAN identifier for Arc VMs. |
-   | **vnetName** | User provided name of virtual network. |
-
-1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
-   
-   Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
-
-   ```azurecli
-   $galleryImageName=<gallery image name>
-   $galleryImageSourcePath=<path to the source gallery image>
-   $osType="<Windows/Linux>"
-   az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
-   ```
-   
 ## Next steps
 
 - Create a VM image
