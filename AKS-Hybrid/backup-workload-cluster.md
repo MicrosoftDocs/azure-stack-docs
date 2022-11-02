@@ -3,7 +3,7 @@ title: Perform workload cluster backup or restore using Velero and Azure Blob st
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/3/2022
+ms.date: 11/02/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
