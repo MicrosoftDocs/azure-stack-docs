@@ -22,7 +22,7 @@ This article describes how to use Windows Admin Center to set up Azure Arc VM ma
 
 - [Setting up Arc Resource Bridge and creating custom location](#set-up-arc-resource-bridge-and-create-custom-location)
 
-- [Projecting virtual network and images](#project-virtual-network-and-images)
+- [Projecting virtual network and images](create-virtual-networks.md)
 
 If you want to set up Azure Arc VM management using command line, see [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
 

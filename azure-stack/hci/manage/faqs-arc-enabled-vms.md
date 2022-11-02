@@ -8,9 +8,9 @@ ms.author: v-mandhiman
 ms.reviewer: ksurjan
 ---
 
-# Azure Arc-enabled VMs on Azure Stack HCI FAQs
+# Azure Arc VM management FAQs
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article answers some frequently asked questions (FAQs) about Azure Arc VMs running on Azure Stack HCI clusters.
 
