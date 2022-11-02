@@ -25,16 +25,6 @@ This article describes how to use Container Storage Interface (CSI) drivers for 
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]
 
-<!--REPLACES THIS TEXT: The disk and file Container Storage Interface (CSI) drivers in AKS hybrid are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant. 
-
-The CSI is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By adopting and using CSI, AKS hybrid can write, deploy, and iterate plug-ins to expose new storage systems or improve existing ones in Kubernetes without having to touch the core Kubernetes code and wait for its release cycles.
-
-The CSI storage driver support in AKS hybrid allows you to use:
-
-- AKS hybrid disks to create a Kubernetes *DataDisk* resource. These disks are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. To learn more, see [using disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md). 
-
-- AKS hybrid files to mount an SMB or NFS share to pods. These files are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification. This topic covers how to use the AKS hybrid files Container Storage Interface (CSI) drivers.-->
-
 ## Use files persistent volumes using _ReadWriteMany_ CSI drivers
 
 If multiple nodes need concurrent access to the same storage volumes in AKS hybrid, you can use CSI drivers for files to mount SMB or NFS shares as *ReadWriteMany*. The SMB or NFS shares must be provisioned in advance.
