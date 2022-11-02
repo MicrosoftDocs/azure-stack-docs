@@ -19,8 +19,7 @@ To find answers to frequently asked questions about Arc VMs on Azure Stack HCI, 
 
 To troubleshoot issues with your Arc VMs or to know existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
 
-> [!IMPORTANT]
-> Azure Arc VM management is currently in preview. This preview is provided without a service level agreement, and Microsoft doesn't recommend using it for production workloads. Certain features might not be supported or might have constrained capabilities. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Benefits of Azure Arc VM management
 

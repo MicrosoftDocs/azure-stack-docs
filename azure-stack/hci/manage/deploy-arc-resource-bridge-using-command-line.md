@@ -26,6 +26,8 @@ To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure 
 
 For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md).
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Prerequisites
 
 Before you begin, make sure:

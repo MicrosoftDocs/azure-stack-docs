@@ -15,8 +15,7 @@ ms.date: 10/05/2022
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-> [!IMPORTANT]
-> The Azure Marketplace on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 

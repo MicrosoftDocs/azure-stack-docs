@@ -15,6 +15,8 @@ ms.date: 11/02/2022
 
 This article describes how to add virtual network for your Azure Stack HCI. You can create or add virtual networks using Windows Admin Center or PowerShell for the custom location associated with the Azure Stack HCI cluster.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Create virtual networks for custom location
 
 # [Windows Admin Center](#tab/windows-admin-center)

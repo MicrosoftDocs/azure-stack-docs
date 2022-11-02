@@ -116,7 +116,7 @@
         href: manage/deploy-arc-resource-bridge-using-wac.md
       - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Manage Arv VM resources
+    - name: Manage Arc VM resources
       items:
       - name: Create virtual networks
         href: manage/create-virtual-networks.md

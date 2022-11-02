@@ -28,6 +28,8 @@ If you want to set up Azure Arc VM management using command line, see [Set up Az
 
 For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)..
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Prerequisites
 
 Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).

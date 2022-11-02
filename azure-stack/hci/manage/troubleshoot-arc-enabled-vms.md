@@ -14,6 +14,8 @@ ms.reviewer: JasonGerend
 
 This article provides guidance on how to debug issues that you might encounter when using Azure Arc virtual machines (VMs). It also describes the limitations and known issues that currently exist.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Troubleshoot and debug
 
 See the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, contact Microsoft support.
