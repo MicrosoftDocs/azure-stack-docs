@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 10/20/2022
 ms.reviewer: mikek
-ms.date: 06/28/2022
+ms.date: 11/02/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
@@ -211,7 +211,7 @@ spec:
         image: redis:3.2-alpine
 ```
 
-Open a PowerShell window, and load the credentials for your target cluster. In the example, the clustser is named 'mycluster'.
+Open a PowerShell window, and load the credentials for your target cluster. In the example, the cluster is named 'mycluster'.
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -270,7 +270,7 @@ Here are some different ways to debug issues related to the autoscaler:
   kubectl --kubeconfig ~\.kube\config get configmap cluster-autoscaler-status -o yaml
   ```
 
-- The cluster autoscaler logs events on the cluster autoscaler status configmap when it scales a cluster's node pool. These can be viewed by running this command against the target cluster:
+- The cluster autoscaler logs events on the cluster autoscaler status `configmap` when it scales a cluster's node pool. These can be viewed by running this command against the target cluster:
  
   ```powershell
   kubectl --kubeconfig ~\.kube\config describe configmap cluster-autoscaler-status

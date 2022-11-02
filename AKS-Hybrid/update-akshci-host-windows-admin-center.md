@@ -2,7 +2,7 @@
 title: Concepts - Updating Azure Kubernetes Service host in AKS hybrid using Windows Admin Center
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service host in AKS hybrid.
 ms.topic: conceptual
-ms.date: 10/20/2022
+ms.date: 11/02/2022
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -43,7 +43,7 @@ We recommend that you update workload clusters immediately after updating the AK
 
 ## Update the AKS host
 
-To update the AKS host byusing Windows Admin Center, follow these steps:
+To update the AKS host by using Windows Admin Center, follow these steps:
 
 1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.82.0. You do not need to complete this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.82.0 of the AKS extension installed before proceeding to the next step.
 

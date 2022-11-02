@@ -3,7 +3,7 @@ title: Deploy from a private container registry to on-premises Kubernetes using 
 description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 11/02/2022
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
@@ -99,7 +99,7 @@ To use the Docker CLI to access your container registry, type the following comm
 docker login <REGISTRY_NAME>.azurecr.io -u <appId> -p <password>
 ```
 
-In either option, the command should return a *sign in Succeeded* message once completed.
+In either option, the command should return a "*sign in Succeeded*" message once completed.
 
 ## Push an image to the ACR
 

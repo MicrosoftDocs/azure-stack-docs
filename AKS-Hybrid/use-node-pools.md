@@ -3,7 +3,7 @@ title: Use multiple node pools in AKS hybrid
 description: Learn how to create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 services: 
 ms.topic: article
-ms.date: 10/20/2022
+ms.date: 11/02/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -139,7 +139,7 @@ Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 
 ## Delete a node pool
 
-If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The follow example removes the node pool named *windowsnodepool* from the *mycluster* cluster.
+If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The following example removes the node pool named *windowsnodepool* from the *mycluster* cluster.
 
 ```powershell
 Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
@@ -206,7 +206,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Then, schedule the pod using the follow command.
+Then, schedule the pod using the following command.
 
 ```powershell
 kubectl apply -f nginx-toleration.yaml

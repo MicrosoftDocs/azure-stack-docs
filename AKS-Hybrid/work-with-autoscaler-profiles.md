@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mikek
-ms.date: 10/20/2022
+ms.date: 11/02/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: configure cluster autoscaling
@@ -37,8 +37,8 @@ The default profile consists of the default values below. You can update the fol
 
 | Setting | Description | Default value |
 | --- | --- | --- |
-| min-node-Count | The minimum node count the node pool this profile is assigned can scale down to. | 0 |
-| max-node-Count | The maximum node count the node pool this profile is assigned to can scale up to. | 1 |
+| min-node-Count | The minimum node count that the node pool to which this profile is assigned can scale down to. | 0 |
+| max-node-Count | The maximum node count that the node pool to which this profile is assigned can scale up to. | 1 |
 | scan-interval | How often cluster is reevaluated for scale up or down. | 10 seconds |
 | scale-downdelay-afteradd | How long after scale up that scale down evaluation resumes. | 10 minutes |
 | scale-downdelay-afterdelete | How long after node deletion that scale down evaluation resumes. | scaninterval |
