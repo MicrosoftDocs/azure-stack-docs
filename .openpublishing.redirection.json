@@ -947,6 +947,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/known-issues-22H2.md",
+      "redirect_url": "/azure-stack/hci/known-issues",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/deploy/cluster-set.md",
       "redirect_url": "/windows-server/failover-clustering/cluster-set",
       "redirect_document_id": false
