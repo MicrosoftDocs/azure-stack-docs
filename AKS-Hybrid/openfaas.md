@@ -3,7 +3,7 @@ title: Use OpenFaaS with AKS hybrid
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS hybrid.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2022
+ms.date: 11/01/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-[OpenFaaS][open-faas] is a framework for building serverless functions through the use of containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on a Kubernetes cluster running on AKS hybrid.
+[OpenFaaS][open-faas] is a framework for building serverless functions by using containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on a Kubernetes cluster running on AKS hybrid.
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -27,7 +27,7 @@ In order to complete the steps within this article, make sure you have the follo
 * An [AKS cluster](./setup.md) with at least one Linux worker node that's up and running.
 * Your local `kubectl` environment is configured to point to your AKS cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites are installed.
-* [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands if you prefer this to PowerShell.
+* [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands if you prefer Azure CLI to PowerShell.
 * Git command-line tools are installed on your system.
 * The `OpenFaaS` CLI is installed. For installation options, see the [OpenFaaS CLI documentation][open-faas-cli].
 
@@ -130,7 +130,7 @@ Click **Deploy New Function**, and search for **Figlet**. Select the Figlet func
 
 ![Screenshot shows the Deploy A New Function dialog box in Open F A A S, with "figlet" typed in the search line.](media/container-service-serverless/figlet.png)
 
-Use `curl` to invoke the function. Replace the IP address in the following example with that of your OpenFaaS gateway.
+Use `curl` to invoke the function. Replace the IP address in the following example with the address of your OpenFaaS gateway.
 
 ```console
 curl -X POST http://192.168.0.152:8080/function/figlet -d "Hello Azure"
@@ -149,7 +149,7 @@ Output:
 
 ### Clean up resources
 
-When you deploy a Helm chart, a number of Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command, and specify your release name, as found in the previous `helm list` command.
+When you deploy a Helm chart, many Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command, and specify your release name, as found in the previous `helm list` command.
 
 ```console
 helm uninstall openfaas

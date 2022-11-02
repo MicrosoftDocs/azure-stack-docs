@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 10/26/2022
+ms.date: 11/01/2022
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
@@ -95,7 +95,7 @@ To deploy and run your Liberty application on the AKS cluster, you first need to
 1. Clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
 1. Change directory to `javaee-app-simple-cluster` of your local clone.
 1. Run `mvn clean package` to package the application.
-1. Run `mvn liberty:dev` to test the application. You should see `The defaultServer server is ready to run a smarter planet.` in the command output if the command was succesful. Use `CTRL-C` to stop the application.
+1. Run `mvn liberty:dev` to test the application. You should see `The defaultServer server is ready to run a smarter planet.` in the command output if the command was successful. Use `CTRL-C` to stop the application.
 1. Run one of the following commands to build the application image and push it to the ACR instance.
    * Build with the Open Liberty base image if you prefer to use Open Liberty as a lightweight open source Java™ runtime:
 

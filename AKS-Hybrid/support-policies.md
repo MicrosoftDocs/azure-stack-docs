@@ -3,7 +3,7 @@ title: Support policies for AKS hybrid
 description: Learn about AKS hybrid support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 10/26/2022
+ms.date: 01/11/2022
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 03/30/2022
@@ -152,7 +152,7 @@ AKS hybrid manages the lifecycle and operations of agent node images on your beh
 
 For workload-specific configurations or packages, you should use [Kubernetes `daemon sets`](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
-Using Kubernetes privileged `daemon sets` and init containers enables you to tune/modify or install third-party software on cluster agent nodes. For example, you can add custom security scanning software or update `sysctl` settings.
+When you use Kubernetes privileged `daemon sets` and init containers, you can tune/modify or install third-party software on cluster agent nodes. For example, you can add custom security scanning software or update `sysctl` settings.
 
 While this path is recommended if the above requirements apply, AKS hybrid engineering and support can't help with troubleshooting or diagnosing modifications that render the node unavailable because of a custom-deployed `daemon set`.
 
@@ -180,7 +180,7 @@ If your Azure subscription is suspended or deleted, your cluster will be out of 
 
 ## Unsupported alpha and beta Kubernetes features
 
-AKS hybris only supports stable and beta features within the upstream Kubernetes project. Unless otherwise documented, AKS hybrid doesn't support any alpha feature that is available in the upstream Kubernetes project.
+AKS hybrid only supports stable and beta features within the upstream Kubernetes project. Unless otherwise documented, AKS hybrid doesn't support any alpha feature that is available in the upstream Kubernetes project.
 
 ## Preview features or feature flags
 

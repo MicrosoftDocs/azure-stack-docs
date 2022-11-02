@@ -3,7 +3,7 @@ title: Deploy a Windows .NET application in AKS hybrid
 description: Learn how to deploy a Windows.NET application to your Azure Kubernetes Service (AKS) cluster using a custom image stored in Azure Container Registry in AKS hybrid.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 10/26/2022
+ms.date: 11/01/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS)cluster in AKS hybrid, and then test and scale your application. You will also learn how to join a Windows node to an Active Directory domain.
+In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS hybrid, and then test and scale your application. You'll also learn how to join a Windows node to an Active Directory domain.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
@@ -136,7 +136,7 @@ If the connection times out when you try to load the page, verify whether the sa
 
 ## Scale application pods
 
-We have created a single replica of the application front end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
+We've created a single replica of the application front end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
 
 ```console
 kubectl get pods -n default
@@ -148,7 +148,7 @@ To change the number of pods in the *sample* deployment, use the `kubectl scale`
 kubectl scale --replicas=3 deployment/sample
 ```
 
-Run `kubectl get pods` again to verify that additional pods were created. After a minute or so, the additional pods are available in your cluster.
+Run `kubectl get pods` again to verify that the pods were created. After a minute or so, the additional pods are available in your cluster.
 
 ```console
 kubectl get pods -n default
