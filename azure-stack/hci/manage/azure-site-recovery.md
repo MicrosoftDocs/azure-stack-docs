@@ -47,9 +47,9 @@ Completing setup for the replication component alone is sufficient to protect yo
 6. Enter the required information:
 
    - **Subscription:** The Azure subscription you want to use for replication of VMs on this host.
+   - **Resource Group:** The Resource group Azure Site Recovery vault will be located.
+   - **Recovery Service Vault:** Choose a name for the Azure Site Recovery vault for protected VMs on this host.
    - **Location:** The Azure region where the Azure Site Recovery resources should be created.
-   - **Storage Account:** The storage account where replicated VM workloads on this host will be saved.
-   - **Vault:** Choose a name for the Azure Site Recovery vault for protected VMs on this host.
 
 7. Select **Setup ASR**.
 8. Wait until you see the notification: **Site Recovery Setting Completed**.
