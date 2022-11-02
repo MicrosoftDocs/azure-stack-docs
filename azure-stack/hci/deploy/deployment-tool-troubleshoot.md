@@ -1,26 +1,27 @@
 ---
-title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
-description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
+title: Troubleshoot Azure Stack HCI deployment (preview)
+description: Learn to troubleshoot the Azure Stack HCI deployment (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 11/01/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Troubleshoot Azure Stack HCI version 22H2 deployment (preview) 
+# Troubleshoot Azure Stack HCI deployment (preview)
 
 > Applies to: Azure Stack HCI, version 22H2
 
-For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your deployment.
+This article provides guidance on how to rerun and reset deployment if you encounter issues during the Azure Stack HCI deployment.
 
-Also see [Known issues for version 22H2](/manage/preview-channel.md).
+Also see [Known issues](../known-issues.md).
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Rerun deployment
 
 To rerun the deployment if there is a failure, follow these steps:
-
-
 
 1. Establish a remote desktop protocol (RDP) connection with the first server of your Azure Stack HCI cluster. Use the *option 15* in the *SConfig* to go to the command line. Change the directory to *C:\clouddeployment\setup*.
 
@@ -145,4 +146,4 @@ You may have to reset your deployment if it is in a not recoverable state. For e
 ## Next steps
 
 - [Collect log data](/manage/collect-logs.md) from your deployment.
-- View [known issues](../known-issues-22h2.md) for Azure Stack HCI version 22H2.
+- View [known issues](../known-issues.md).

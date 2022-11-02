@@ -5,21 +5,23 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
 ms.date: 09/23/2022
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
 ---
-<!-- To do:
- -- call out CIP before using acro -->
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
 
-Applies to: Azure Stack HCI, version 22H2 (preview)
+Applies to: Azure Stack HCI, version 22H2
 
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI, version 22H2.
 
 WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
 
-## WDAC is enabled by default
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
-This release comes with WDAC enabled and enforced by default. We're providing a base policy in a multiple-policy format CIP file.
+## Review WDAC base policy
+
+This release comes with WDAC enabled and enforced by default. We're providing a base policy in a multiple-policy format code integrity policy (.cip) file.
 
 Base policy details are as follows:
 
@@ -302,7 +304,7 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 </SiPolicy>
 ```
 
-## Switching between WDAC policy modes
+## Switch WDAC policy modes
 
 As a customer you can decide to have WDAC enabled during deployment or after deployment. In case you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell. Future releases will provide a UI-based control with Windows Admin Center.  
 
@@ -310,9 +312,9 @@ Connect to one of the cluster nodes and use the cmdlets below to switch between 
 
 This is useful when:
 
-1. You started with default recommended settings and now you need to install or run new software, usually third party software, in the node to later create a supplemental policy.
-1. You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
-1. Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
+- You started with default recommended settings and now you need to install or run new software, usually third party software, in the node to later create a supplemental policy.
+- You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
+- Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
 
 > [!NOTE]
 >
@@ -420,4 +422,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
- > * [Install an Azure Stack HCI, 22H2 (preview)](../manage/install-preview-version.md?tabs=windows-admin-center).
+ > * [Install Azure Stack HCI, version 22H2](../manage/install-preview-version.md?tabs=windows-admin-center).

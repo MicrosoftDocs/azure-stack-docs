@@ -1,21 +1,23 @@
 ---
 title: Deployment checklist for Azure Stack HCI version 22H2 via the supplemental package (preview) 
-description: Follow the pre-deployment checklist for deploying Azure Stack HCI version 22H2 (preview).
+description: Complete the deployment checklist prior to deploying Azure Stack HCI (preview).
 author: dansisson
 ms.topic: article
 ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Get the checklist for deploying Azure Stack HCI version 22H2 using the supplemental package (preview)
+# Get the checklist for deploying Azure Stack HCI using the supplemental package (preview)
 
 > Applies to: Azure Stack HCI, version 22H2
 
-Use the following checklist to gather this information ahead of the actual deployment of your Azure Stack HCI cluster.
+Use the following checklist to gather the required information ahead of the actual deployment of your Azure Stack HCI cluster.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Pre-deployment checklist
+## Deployment checklist
 
 |Component|What is needed|
 |--|--|
@@ -32,7 +34,5 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 |Outbound connectivity| Run the [Environment checker](../manage/use-environment-checker.md) to ensure that your environment meets the outbound network connectivity requirements for firewall rules.|
 
 ## Next steps
-
-After reviewing the pre-deployment checklist, you are ready to prepare your Active Directory environment:
 
 Prepare your [Active Directory](deployment-tool-active-directory.md) environment.

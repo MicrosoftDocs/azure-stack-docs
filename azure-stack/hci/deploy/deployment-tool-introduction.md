@@ -1,27 +1,27 @@
 ---
-title: Azure Stack HCI version 22H2 deployment overview (preview)
-description: Learn about the deployment methods for Azure Stack HCI, version 22H2 using the supplemental package (preview).
+title: Azure Stack HCI deployment overview (preview)
+description: Learn about the deployment methods for Azure Stack HCI using the supplemental package (preview).
 author: dansisson
 ms.topic: overview
 ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Azure Stack HCI version 22H2 deployment overview (preview)
+# Azure Stack HCI deployment overview (preview)
 
 > Applies to: Azure Stack HCI, version 22H2
 
-This set of articles describes how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods.
+This set of articles describes how to deploy Azure Stack HCI using a new deployment tool and methods.
 
-You can deploy version 22H2 using a new or existing *config* file interactively or via PowerShell.
+You can deploy Azure Stack HCI using a new or existing *config* file interactively or via PowerShell.
 
-> [!IMPORTANT]
- > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About deployment methods
 
-You can deploy version 22H2 using one of the following methods:
+You can deploy Azure Stack HCI using one of the following methods:
 
 - **Interactive**:  Deploy using a new config file interactively. The interactive flow provides a guided, step-by-step experience that helps you create a new configuration file which is then used to deploy and register the cluster. This method should be used when you deploy 22H2 for the first time and is recommended for most customers.
  
@@ -32,10 +32,10 @@ You can deploy version 22H2 using one of the following methods:
 
 ## Deployment sequence
 
-Follow this process sequence to deploy Azure Stack HCI version 22H2 in your environment:
+Follow this process sequence to deploy Azure Stack HCI in your environment:
 
 - Select one of the [validated network topologies](#validated-network-topologies) to deploy.
-- Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI version 22H2.
+- Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI.
 - Follow the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
@@ -91,4 +91,4 @@ The following network topologies were tested and validated for this release:
 
 ## Next steps
 
-Read the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
+Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI.

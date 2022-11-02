@@ -140,4 +140,4 @@ To get a history of log collections for the last 90 days, enter:
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues-22h2.md)
+- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues.md)

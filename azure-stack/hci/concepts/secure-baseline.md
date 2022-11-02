@@ -1,5 +1,5 @@
 ---
-title: Security baseline settings on Azure Stack HCI
+title: Security baseline settings on Azure Stack HCI (preview)
 description: See the default secure baseline settings available.
 author: meaghanlewis
 ms.author: mosagie
@@ -11,9 +11,11 @@ ms.date: 09/06/2022
 
 # Security baseline for Azure Stack HCI (preview)
 
-Applies to: Azure Stack HCI, version 22H2 (preview)
+Applies to: Azure Stack HCI, version 22H2
 
-This article describes the security baseline settings associated with your Azure Stack HCI. Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
+This article describes the security baseline settings associated with your Azure Stack HCI cluster. Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Benefits of the security baseline
 
@@ -25,7 +27,7 @@ The security baseline on Azure Stack HCI:
 
 ## View the settings
 
-You can find and download the complete list of settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase)
+You can find and download the complete list of settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase).
 
 ## Next steps
 
