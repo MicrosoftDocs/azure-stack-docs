@@ -3,7 +3,7 @@ title: Explore the AKS hybrid environment
 description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilities in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/25/2022
+ms.date: 11/01/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -114,7 +114,7 @@ This example, using the [previously deployed simple Linux application](#deploy-a
 
 With the network security group rule configured, there are some more steps required to route the incoming traffic to the containerized application.
 
-1. Inside the Azure Virtual Machine, in an administrative PowerShell console, you'll need to retrieve the external IP and port of your deployed application, by running the following command (in this case, the app front end name is "azure-vote-front"):
+1. Inside the Azure Virtual Machine, you'll need to retrieve the external IP and port of your deployed application. Open an administrative PowerShell window, and run the following command. In this case, the app front end name is "azure-vote-front".
 
    ```powershell
    kubectl get service azure-vote-front
@@ -131,7 +131,7 @@ With the network security group rule configured, there are some more steps requi
 
 4. The NAT static mapping should be successfully created, and you can now test the access of your application from outside of the Azure Virtual Machine. You should try to access the web application using the Azure Virtual Machine public IP address that you [noted previously](#add-an-inbound-rule-to-your-nsg).
 
-This process creates a NAT static mapping that's specific to that external IP and the port of that specific Kubernetes service you have deployed in the environment. You must repeat the process for additional applications. For more information, see PowerShell [NetNat](/powershell/module/netnat) commands.
+This process creates a NAT static mapping that's specific to that external IP and the port of that specific Kubernetes service you have deployed in the environment. You must repeat the process for other applications. For more information, see PowerShell [NetNat](/powershell/module/netnat) commands.
 
 ## Deploy hybrid end-to-end solutions
 
