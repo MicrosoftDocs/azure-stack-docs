@@ -10,20 +10,20 @@ ms.date: 11/02/2022
 
 >Applies to: Azure Stack HCI, version 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Windows Admin Center streamlines the process of replicating your virtual machines on your Hyper-V servers or clusters, making it easier to leverage the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
+Windows Admin Center streamlines the process of replicating your virtual machines on your Hyper-V servers or clusters, making it easier to use the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
 
-Use the following information to configure replication settings and create a recovery plan from within the Azure portal, enabling Windows Admin Center to start VM replication and protect your VMs.
+Use the following information to configure replication settings and create a recovery plan from within the Azure portal. The plan enables Windows Admin Center to start VM replication and protect your VMs.
 
 > [!IMPORTANT]
 > If you're using an Azure Stack HCI cluster, it's strongly recommended that you manually install the Azure Site Recovery (ASR) agents on each node of your cluster. For more information, see [Set up disaster recovery of on-premises Azure Stack HCI VMs to Azure](/azure/site-recovery/hyper-v-azure-tutorial).
 
 ## What is Azure Site Recovery and how does it work with Windows Admin Center?
 
-*Azure Site Recovery* is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected in case of a disaster. For more information about Azure Site Recovery, see [Learn more about Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+*Azure Site Recovery* is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected if there's a disaster. For more information about Azure Site Recovery, see [Learn more about Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
-Azure Site Recovery consists of two components: **replication** and **failover**. The replication portion protects your VMs in case of disaster by replicating the target VM's VHD to an Azure storage account. You can then failover these VMs and run them in Azure in the event of a disaster. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
+Azure Site Recovery consists of two components: **replication** and **failover**. The replication portion protects your VMs in case of disaster by replicating the target VM's VHD to an Azure storage account. You can then fail over these VMs and run them in Azure in the event of a disaster. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
 
-Completing setup for the replication component alone is sufficient to protect your VM in the case of disaster. However, you won't be able to start the VM in Azure until you configure the failover portion. You can set up the failover portion when you want to failover to an Azure VM - this isn't required as part of the initial setup. If the host server goes down and you haven't yet configured the failover component, you can configure it at that time and access the workloads of the protected VM. However, it's a good practice to configure the failover related settings before a disaster.
+Completing setup for the replication component alone is sufficient to protect your VM in the case of disaster. However, you won't be able to start the VM in Azure until you configure the failover portion. You can set up the failover portion when you want to fail over to an Azure VM - this isn't required as part of the initial setup. If the host server goes down and you haven't yet configured the failover component, you can configure it at that time and access the workloads of the protected VM. However, it's a good practice to configure the failover-related settings before a disaster.
 
 ## Prerequisites and planning
 
@@ -78,7 +78,7 @@ Although you don't need to complete this step when starting VM replication (the 
 
 ## Step 4: Create Recovery Plans
 
-*Recovery Plan* is a feature in Azure Site Recovery that lets you failover and recover an entire application comprising a collection of VMs. While it is possible to recover protected VMs individually, by adding the VMs comprising an application to a recovery plan, you'll be able to failover the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application. Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate additional steps to be performed as part of the recovery process. Once you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal and create recovery plans for these VMs. [Learn more about recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
+*Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application comprising a collection of VMs. While it is possible to recover protected VMs individually, by adding the VMs comprising an application to a recovery plan, you'll be able to fail over the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application. Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate additional steps to be performed as part of the recovery process. Once you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal and create recovery plans for these VMs. [Learn more about recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Monitoring replicated VMs in Azure
 
@@ -90,7 +90,7 @@ To see all servers that are registered to the vault, go to **Recovery Services V
 
 ## Known issue
 
-When registering Azure Site Recovery with a cluster, if a node fails to install Azure Site Recovery or register to the Azure Site Recovery service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault** > **Jobs** > **Site Recovery Jobs**.
+When you register Azure Site Recovery with a cluster, if a node fails to install Azure Site Recovery or register to the Azure Site Recovery service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault** > **Jobs** > **Site Recovery Jobs**.
 
 ## Next steps
 
