@@ -818,7 +818,7 @@
     },
     { 
       "source_path": "azure-stack/hci/known-issues.md", 
-      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_url": "/azure-stack/hci/hci-known-issues", 
       "redirect_document_id": false 
     },
     { 
