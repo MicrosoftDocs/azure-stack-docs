@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article provides guidance on how to rerun and reset deployment if you encounter issues during the Azure Stack HCI deployment.
 
-Also see [Known issues](../known-issues.md).
+Also see [Known issues](../hci-known-issues.md).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -146,4 +146,4 @@ You may have to reset your deployment if it is in a not recoverable state. For e
 ## Next steps
 
 - [Collect log data](/manage/collect-logs.md) from your deployment.
-- View [known issues](../known-issues.md).
+- View [known issues](../hci-known-issues.md).
