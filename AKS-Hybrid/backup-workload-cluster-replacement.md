@@ -45,19 +45,20 @@ This section describes how to use Velero and Azure Blob storage. If you don't wa
    choco install velero   
    ```
 
-1. (Optional) Change to the Azure subscription you want to create your backups in.
+1. (Optional) Change to the Azure subscription you want to use for the backups.
 
-   By default, Velero will store backups in the same Subscription as your VMs and disks and will not allow you to restore backups to a Resource Group in a different Subscription. To enable backups/restore across Subscriptions you will need to specify the Subscription ID to backup to. This step is optional and you may skip it if you are already in the subscription that you want to create your backups with.
+   By default, Velero stores backups in the same Azure subscription as your VMs and disks, and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify the Subscription ID to use for your backups. You can skip this step if you're already in the subscription you want to create your backups with.
 
-   1. Switch to the subscription the backups should be created in.
+   1. Switch to the subscription you want to use for your backups.<!--Are they running a command here? if so, what command?-->
    1. Find the Subscription ID by name.
       
       ```azurecli
       $AZURE_BACKUP_SUBSCRIPTION_NAME="<NAME_OF_TARGET_SUBSCRIPTION>"
       $AZURE_BACKUP_SUBSCRIPTION_ID=$(az account list --query="[?name=='$AZURE_BACKUP_SUBSCRIPTION_NAME'].id | [0]" -o tsv)
       ```
+<!--Check the style for parameter placeholders in Azure CLI code snippets.-->
 
-   1. Change the subscription:
+   1. Change the subscription:<!--Step is not specific enough. They're resetting the subscription associated with this account, or they are using a different subscription for the time being?-->
    
       ```azurecli
       az account set -s $AZURE_BACKUP_SUBSCRIPTION_ID
