@@ -447,20 +447,20 @@ You can further scope down the permissions required to perform HCI registration 
 
    ```json
    {
-   "Name": "Azure Stack HCI registration role",
-   "Id": null,
-   "IsCustom": true,
-   "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
-   "Actions": [
-     "Microsoft.Resources/subscriptions/resourceGroups/read",
-     "Microsoft.AzureStackHCI/clusters/*",
-     "Microsoft.Authorization/roleAssignments/write"
-   ],
-   "NotActions": [
-   ],
-    "AssignableScopes": [
+     "Name": "Azure Stack HCI registration role",
+     "Id": null,
+     "IsCustom": true,
+     "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+     "Actions": [
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.AzureStackHCI/clusters/*",
+       "Microsoft.Authorization/roleAssignments/write"
+      ],
+      "NotActions": [
+      ],
+   "AssignableScopes": [
       "/subscriptions/<subscriptionId>"
-    ]
+     ]
    }
    ```
 
