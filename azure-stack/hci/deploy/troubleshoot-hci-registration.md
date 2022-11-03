@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 07/27/2022
+ms.date: 11/03/2022
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -256,7 +256,13 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
    Install-Module -Name Az.StackHCI 
    ```
 
-4. Run the repair registration cmdlet:
+4. Verify that the output shows the status as disabled for each node:
+
+   ```powershell
+   Get-AzureStackHCIArcIntegration
+   ```
+
+5. Run the repair registration cmdlet:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration
@@ -291,6 +297,26 @@ Azure AD token generation fails with a time error if the local node time is too 
 **Remediation action**:
 
 Ensure the time is synchronized to a known and accurate time source.
+
+## Unable to acquire token for tenant with error
+
+**Failure state explanation**:
+
+If the user account used for registration is part of multiple Azure AD tenants, you must specify '-TenantId' during cluster registration and un-registration, otherwise it will fail with the error "Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant, please rerun 'Connect-AzAccount' with additional parameter '-TenantId'."
+
+**Remediation action**:
+
+- For cluster registration, specify the '-TenantId' parameter:
+
+   ```powershell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -TenantId <Tenant_ID>
+   ```
+
+- For unregistration, specify the '-TenantId' parameter:
+
+   ```powershell
+   Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantId <Tenant_ID>
+   ```
 
 ## Next steps
 
