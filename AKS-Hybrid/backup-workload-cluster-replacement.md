@@ -103,7 +103,7 @@ Because the storage account is used for DNS, it must be created with a globally 
 
    If you'll be using Velero to back up multiple clusters with multiple blob containers, it may be desirable to create a unique username for each cluster instead of the name ‘velero’.
 
-   1. Create a service principal. Azure Active Directory (AAD) will generate a secret for you.
+   1. Create a service principal. Azure Active Directory (Azure AD) will generate a secret for you.
 
       ```azurecli
       $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
@@ -118,7 +118,7 @@ Because the storage account is used for DNS, it must be created with a globally 
       ```
 
       > [!NOTE]
-      > Ensure that the value for `--name` is unique in AAD and doesn't conflict with other service principals or app registrations.
+      > Ensure that the value for `--name` is unique in Azure AD and doesn't conflict with other service principals or app registrations.
 
    **For custom role:**
 
