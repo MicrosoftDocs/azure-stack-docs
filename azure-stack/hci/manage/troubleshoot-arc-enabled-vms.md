@@ -41,6 +41,20 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
+## Appliance prepare command error
+
+While running the `az arcapplicance prepare` command, it fails with the following **Permission denied** error. 
+
+`Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
+
+Here's an example:
+
+:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error" lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
+
+**Cause:** Your PowerShell session may not have permissions to write in the current folder, for example `C:\ClusterStorage` in the screenshot above.
+
+**Resolution:** Go to your home directory and rerun the `az arcapplicance prepare` command.
+
 ## KVA timeout error
 
 Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
