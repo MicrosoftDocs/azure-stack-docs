@@ -19,7 +19,9 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 <!--This article applies to Azure Stack HCI, version 22H2, which maps to software version number **10.2208.0.29**. The Azure Stack HCI, version 21H2 existing software deployments can be updated to this release. This release also supports brand new software installation using a deployment tool. For more information, see [What's new in 22H2](whats-new.md).-->
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
+
+## Known issues in Azure Stack HCI supplemental package
 
 Here are the known issues in Azure Stack HCI supplemental package:
 
