@@ -47,7 +47,7 @@ If your PowerShell session doesn't have write permissions in the folder from whe
 
 **Error:** `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
 
-Here's an example when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
+Here's an example output when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
 
 :::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error" lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
 
