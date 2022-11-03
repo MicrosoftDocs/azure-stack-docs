@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 09/27/2022
+ms.date: 11/03/2022
 ---
 
 
@@ -21,4 +21,5 @@ ms.date: 09/27/2022
 - For custom images in a local share on your Azure Stack HCI, you'll have the following extra prerequisites:
     - You should have a VHD/VHDX uploaded to a local share on your Azure Stack HCI cluster.
     - The VHDX image must be Gen 2 type and secure boot enabled.
+    - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options?view=windows-11#oobe).
     - The image should reside on a Cluster Shared Volume available to all the servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
