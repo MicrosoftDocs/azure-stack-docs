@@ -43,7 +43,7 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
 
 ## Premission denied error when running the arcappliance prepare command
 
-If your PowerShell session doesn't have permissions to write in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
+If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
 
 **Error:** `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
 
