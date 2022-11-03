@@ -26,12 +26,12 @@ You can either use Azure Blob storage or MinIO storage with Velero. Velero and A
 
 ## Prerequisites
 
-- [Install the Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli).
+- [Install the Azure CLI](/cli/azure/install-azure-cli).
 - [Install Chocolatey](https://chocolatey.org/install), which you'll' use to install the [Velero client](https://community.chocolatey.org/packages/velero), including the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob storage
 
-This section describes how to use Velero and Azure Blob storage. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](install-velero-with-minio-storage).
+This section describes how to use Velero and Azure Blob storage. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
 
 1. Open PowerShell as an administrator.
 
@@ -67,7 +67,7 @@ This section describes how to use Velero and Azure Blob storage. If you don't wa
 
 Velero requires a storage account and blob container in which to store backups. The example below shows the storage account created in a new Velero_Backups resource group.
 
-Because the storage account is used for DNS, it must be created with a globally unique ID. In the sample script below, we're generating a random name using `uuidgen`, but you can come up with this name in any way that you'd like, following the [Azure naming rules for storage accounts](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-name). The storage account is created with encryption at rest capabilities (Microsoft managed keys) and is configured to only allow access via HTTPS.
+Because the storage account is used for DNS, it must be created with a globally unique ID. In the sample script below, we're generating a random name using `uuidgen`, but you can come up with this name in any way that you'd like, following the [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name). The storage account is created with encryption at rest capabilities (Microsoft managed keys) and is configured to only allow access via HTTPS.
 
 1. Create a resource group for the backup storage account. Change directories to your preferred location, and run the following commands:
 
@@ -217,7 +217,7 @@ Install Velero, including all prerequisites, on the cluster, and start the deplo
 
 ## Install Velero with MinIO storage
 
-This section will show you how to use Velero with MinIO storage. If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](set-up-velero-to-use-azure-blob-storage).
+This section will show you how to use Velero with MinIO storage. If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage).
 
 MinIO is an object storage solution. If you do not want your backups stored in Azure Blob, you can deploy Velero with MinIO as storage.
 
@@ -428,7 +428,7 @@ On the cluster that you want to restore the backup to (*destination cluster*):
 
    `velero backup describe <BACKUP-NAME>`
 
-1. After you confirm that the right backup (<BACKUP-NAME>) is present, you can restore all objects in the backup by running this command: 
+1. After you confirm that the right backup (`BACKUP-NAME`) is present, you can restore all objects in the backup by running this command: 
 
    `velero restore create --from-backup <BACKUP-NAME>`
 
