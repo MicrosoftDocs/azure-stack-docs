@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # View known issues in Azure Stack HCI supplemental package (preview)
 
-> Applies to: Azure Stack HCI supplemental package 
+> Applies to: Azure Stack HCI supplemental package
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI supplemental package.
 
