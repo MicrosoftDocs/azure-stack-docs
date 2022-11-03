@@ -302,7 +302,7 @@ Ensure the time is synchronized to a known and accurate time source.
 
 **Failure state explanation**:
 
-If the user account used for registration is part of multiple Azure AD tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it will fail with the error "Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`."
+If the user account used for registration is part of multiple Azure AD tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it will fail with the error **Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`.**
 
 **Remediation action**:
 
