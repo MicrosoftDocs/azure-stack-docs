@@ -41,9 +41,9 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
-## Appliance prepare command error
+## Permission denied to run the arcappliance prepare command
 
-While running the `az arcapplicance prepare` command, it fails with the following **Permission denied** error. 
+**Error description:** The `az arcapplicance prepare` command fails with the following error:
 
 `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
 
