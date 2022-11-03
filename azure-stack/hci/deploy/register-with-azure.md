@@ -458,9 +458,9 @@ You can further scope down the permissions required to perform HCI registration 
       ],
       "NotActions": [
       ],
-   "AssignableScopes": [
-      "/subscriptions/<subscriptionId>"
-     ]
+      "AssignableScopes": [
+         "/subscriptions/<subscriptionId>"
+      ]
    }
    ```
 
