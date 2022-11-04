@@ -62,6 +62,10 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
     1. **Memory** – Specify the memory in GB for the VM you intend to create.
 
     1. **Memory type** – Specify the memory type as static or dynamic.
+
+       :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
+    
+    1. **Administrator account**: Specify the username and the password for the administrator account on the VM. 
     
     1. **Enable guest management** - Select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
     
@@ -69,17 +73,21 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
         > - Add atleast one network interface through the **Networking** tab to complete guest management setup.
 
-   :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
+       :::image type="content" source="./media/manage-vm-resources/create-arc-vm-1.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
 
 1. **(Optional)** Create new or add more disks to the VM by providing a name and size. You can also choose the disk type to be static or dynamic.
 
 1. **(Optional)** Create or add network interface (NIC) cards for the VM by providing a name for the network interface. Then select the network and choose static or dynamic IP addresses.
 
+    If you enabled guest management, you must add at least one network interface.
+
+   :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
+
+
 1. **(Optional)** Add tags to the VM resource if necessary.
 
 1. Review all the properties, and then select **Create**. It should take a few minutes to provision the VM.
 
----
 
 ## Next steps
 

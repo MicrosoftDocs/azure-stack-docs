@@ -18,7 +18,6 @@ This article describes how to install and manage VM extensions on your Azure Sta
 The VM extensions on your Azure Arc-enabled VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc-enabled VMs.
 
 
-
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 
@@ -75,6 +74,8 @@ Follow these steps in Azure portal to add a VM extension.
 
 1. Provide the parameters to configure the selected VM extension. 
     For example, if you choose Custom Script Extension, on the **Create** tab, input the script file and the arguments that you want to execute at runtime.
+
+    Make sure that the script to execute is uploaded in an Azure Storage account and the VM can reach the storage account.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing configuration of Custom Script Extension installation in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
 
