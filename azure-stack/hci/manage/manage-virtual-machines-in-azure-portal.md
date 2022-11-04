@@ -13,7 +13,7 @@ ms.date: 11/04/2022
 
 > Applies to:Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal.
+This article describes how to create an Arc-enabled VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal.
 
 
 ## About Azure Stack HCI cluster resource
@@ -46,7 +46,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
 
     1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
 
-    1. **Resource group** – Create new or choose an existing resource group where you will deploy all the resources associated with your VM.
+    1. **Resource group** – Create new or choose an existing resource group where you'll deploy all the resources associated with your VM.
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     

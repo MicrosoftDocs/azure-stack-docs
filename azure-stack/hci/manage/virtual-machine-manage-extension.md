@@ -68,7 +68,7 @@ Follow these steps in Azure portal to add a VM extension.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
 
-1. In the **Install extension**, choose from the available extensions. In this example, we will deploy the **Custom Script Extension for Windows - Azure arc**.
+1. In the **Install extension**, choose from the available extensions. In this example, we'll deploy the **Custom Script Extension for Windows - Azure arc**.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing the Custom Script Extension selected in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
 
