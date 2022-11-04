@@ -3,10 +3,10 @@ title: Support policies for Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows Server support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 06/06/2022
-author: sethmanheim
-ms.author: sethm
-ms.lastreviewed: 03/30/2022
+ms.date: 11/04/2022
+author: mikekkostersitz
+ms.author: mikek
+ms.lastreviewed: 11/04/2022
 ms.reviewer: mikek
 
 # Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
@@ -19,6 +19,31 @@ ms.reviewer: mikek
 This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server). 
 
 This article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
+
+## Azure Stack HCI
+
+An internet connection for the underlying Azure Stack HCI platform that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure Stack HCI Azure connectivity requirements](https://learn.microsoft.com/azure-stack/hci/concepts/firewall-requirements) for more information. After 30 days Azure Stack HCI will prevent the creation of new virtual machines.
+
+> [!NOTE]
+> When running on Windows Server 2019 or Windows Server 2022 the underlying platform does not have the 30 day recurring connection requirement.
+
+## AKS hybrid
+
+The management cluster in AKS hybrid has to be able to connect to Azure via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days to maintain day 2 operations such as upgrade, node pool scaling.
+
+> [!IMPORTANT] 
+> Workloads will continue to run and work as expected until the management cluster and or Azure Stack HCI are reconnecting and synchronizing to Azure. Once re-connected all day 2 operations should recover and continue as expected.
+> Also keep in mind the supportability limits below.
+
+> [!NOTE]
+> Be aware that the start/end of the 30 day period might be different from the validity period on AKS hybrid and Azure Stack HCI.
+
+> [!IMPORTANT]
+> Manually stopping or de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC vor prolonged times > 30 days and outside of regular maintenance procedures renders the cluster out of support.
+> An AKS cluster not updated within 60 days of the release of the latest AKS hybrid version will have to be updated to a supported version to be eligible for support.
+> AKS hybrid clusters not upgraded to a supported version within 90 days are out of support and will require manual intervention to get current. Contact support for help if needed.
+> AKS hybrid versions older than 180 days will be removed from the Microsoft servers. At that point clusters running this version will not be able to update Kubernetes or OS versions within the removed version and will have to be upgraded to the latest release. In some cases this can also mean a full re-deployment if the system is not in an otherwise healthy state.
+> If your Azure subscription is suspended or deleted, your cluster will be out of support after 60 days, unless the subscription is re-instated.
 
 ## Service updates and releases
 
@@ -140,6 +165,7 @@ Microsoft provides patches and new images for your image nodes monthly, but does
 Similarly, AKS on Azure Stack HCI and Windows Server regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible to keep your clusters' kubernetes version updated and according to the [AKS on Azure Stack HCI and Windows Server Kubernetes Support Version Policy](supported-kubernetes-versions.md).
 
 #### User customization of agent nodes
+
 > [!NOTE]
 > AKS on Azure Stack HCI and Windows Server agent nodes appear in Hyper-V as regular virtual machine resources. These virtual machines are deployed with a custom OS image and supported/managed Kubernetes components. You cannot change the base OS image or do any direct customizations to these nodes using the Hyper-V APIs or resources. Any custom changes that are not done via the AKS on Azure Stack HCI and Windows Server API will not persist through an upgrade, scale, update or reboot and may render the cluster unsupported.
 > Avoid performing changes to the agent nodes unless Microsoft Support directs you to make changes.
@@ -166,14 +192,6 @@ Although you can sign in to and change agent nodes, doing this operation is disc
 
 You may only customize the network settings using AKS on Azure Stack HCI and Windows Server defined subnets. You may not customize network settings at the NIC level of the agent nodes. AKS on Azure Stack HCI and Windows Server has egress requirements to specific endpoints, to control egress and ensure the necessary connectivity, see [System Requirements](./system-requirements.md).
 
-## Stopped or disconnected clusters
-
-As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC will render the cluster out of support.
-
-Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
-
-If your Azure subscription is suspended or deleted, your cluster will be out of support after 60 days.
-
 ## Unsupported alpha and beta Kubernetes features
 
 AKS on Azure Stack HCI and Windows Server only supports stable and beta features within the upstream Kubernetes project. Unless otherwise documented, AKS on Azure Stack HCI and Windows Server doesn't support any alpha feature that is available in the upstream Kubernetes project.
@@ -199,3 +217,10 @@ When a technical support issue is root-caused by one or more upstream bugs, AKS 
   * The issue, including links to upstream bugs.
   * The workaround and details about an upgrade or another persistence of the solution.
   * Rough timelines for the issue's inclusion, based on the upstream release cadence.
+
+## Next steps
+
+See the following articles:
+
+* [Open a support ticket](help-support.md)
+* [Learn more about resource limits and scaling](concepts-support.md)
