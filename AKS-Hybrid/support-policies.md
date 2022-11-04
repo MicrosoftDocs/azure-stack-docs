@@ -3,7 +3,7 @@ title: Support policies for AKS hybrid
 description: Learn about AKS hybrid support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 11/0/2022
+ms.date: 11/04/2022
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 03/30/2022
