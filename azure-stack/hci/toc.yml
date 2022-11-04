@@ -172,6 +172,8 @@
         href: manage/kernel-soft-reboot.md
     - name: Monitoring
       items:
+      - name: Set up alerts for Azure Stack HCI systems
+        href: manage/setup-hci-system-alerts.md
       - name: Monitor a single cluster using the Azure portal (preview)
         href: manage/monitor-hci-single.md      
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
@@ -377,7 +379,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: ../aks-hci/overview.md
+    href: /azure/aks/hybrid/overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
