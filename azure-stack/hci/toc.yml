@@ -118,8 +118,6 @@
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
-      - name: Create virtual networks
-        href: manage/create-virtual-networks.md
       - name: Create VM images
         items:
         - name: Using Azure Marketplace images
@@ -128,6 +126,8 @@
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+      - name: Create virtual networks
+        href: manage/create-virtual-networks.md
     - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
     - name: Uninstall Azure Arc VM management
