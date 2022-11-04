@@ -3,7 +3,7 @@ title: Deploy MetalLB for load balancing in AKS hybrid
 description: Learn how to deploy MetalLB for load balancing for Azure Kubernetes Service in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/20/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
@@ -15,20 +15,22 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-<!--REWORK NEEDED.-->
+This article describes how to use [MetalLB](https://metallb.org/) to provide load balancing services for a workload cluster in AKS hybrid. AKS hybrid allows you to configure custom load balancers for your workload clusters. MetalLB is an example.
 
-In the November update of Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, we added support to allow users to configure custom load balancers for their workload clusters. Previously, users didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI and Windows Server.<!--1) Reference to Nov 2021 release? Can't retroactively rebrand that release to "AKS hybrid," I assume. Wondering if news of the introduction of the feature is no longer timely and could go. Then rework the lead - along these lines: "In AKS hybrid, you can configure custom load balancers for your workload clusters. This article explains how this feature works and includes an example of how to use [MetalLB](https://metallb.org/) for load balancing services in a workload cluster." 2) Follow with standard AKS hybrid description: "Azure Kubernetes Service hybrid deployment options ("AKS hybrid") offer a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads" - in a separate paragraph. 3) Break out an "Overview" section for the feature explanation. Additional juggling would be needed.-->
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+
+## Overview
+
+In the November update of AKS hybrid, we added support to allow users to configure custom load balancers for their workload clusters.
 
 The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability for requests to the Kubernetes API server, and load balances Kubernetes services of *type=LoadBalancer*.
 
-The added support for configuring a custom load balancer shifts the task of ensuring high availability of the API server requests to [*kube-vip*](https://kube-vip.io/), which is then automatically deployed in each worker node. 
+The added support for configuring a custom load balancer shifts the task of ensuring high availability of the API server requests to [*kube-vip*](https://kube-vip.io/), which is then automatically deployed in each worker node.
 
-Providing users with the flexibility to deploy custom load balancing configurations is important because it:<!--List reads like Marketing. Tone it down, or remove it?-->
+Providing users with the flexibility to deploy custom load balancing configurations is important because it: 
 
 - Guarantees that AKS hybrid works alongside existing deployments such as Software Defined Network (SDN) deployments that use Software Load Balancers.
 - Enhances the platform with additional flexibility, unlocking a myriad of potential use cases.
-
-This article explains how this feature works and includes an example of how to use [MetalLB](https://metallb.org/) for load balancing services in a workload cluster.
 
 ## Before you begin
 
@@ -112,4 +114,4 @@ service/poemfinder-app   LoadBalancer   10.100.14.70   10.193.2.150   80:32737/T
 
 ## Next steps
 
-- Learn more about [Network concepts for deploying AKS nodes in AKS hybrid](./concepts-node-networking.md).
+- Learn more about [Network concepts for deploying AKS nodes in AKS hybrid](./concepts-node-networking.md)

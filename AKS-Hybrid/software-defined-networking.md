@@ -3,7 +3,7 @@ title: How to use AKS hybrid with SDN and virtual networking infrastructure (Pub
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/18/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -18,7 +18,7 @@ ms.reviewer: anpaul
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 In this article, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load
-Balancer][] (SLB) for all AKS hybrid load balancing scenarios. Azure Kubernetes Service hybrid deployment options ("AKS hybrid") offer a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
+Balancer][] (SLB) for all AKS hybrid load balancing scenarios. Azure Kubernetes Service hybrid deployment options ("AKS hybrid") offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 ## Limitations
 
@@ -58,11 +58,11 @@ It is important that SDN is healthy before proceeding. If you are deploying SDN 
 
 ## Steps to install AKS-HCI
 
-Initialize and prepare all the physical host machines for AKS hybrid. See [this article][] for the most up-to-date instructions.<!--Please supply article reference.-->
+Initialize and prepare all the physical host machines for AKS hybrid. See [Deploy an AKS host](prestage-cluster-service-host-create.md) for the most up-to-date instructions.
 
 ### Install the AKS-HCI PowerShell module
 
-[See this article](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) for information about installing the AKS-HCI PowerShell module.
+See [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) for information about installing the AKS-HCI PowerShell module.
 
 > [!NOTE]
 > After completing this step, refresh or reload any opened PowerShell sessions to reload the modules.
@@ -128,7 +128,7 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
 
    The HNVPA logical network will be used as the underlying provider for the AKS hybrid virtual network.
 
-   If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This parameter is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information, [see this article](concepts-node-networking.md#microsoft-on-premises-cloud-service).
+   If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This parameter is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information, see [Microsoft On-premises Cloud service](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
       | Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                             |
       |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

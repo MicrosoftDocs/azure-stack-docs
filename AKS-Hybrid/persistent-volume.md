@@ -3,7 +3,7 @@ title: Use a persistent volume with AKS hybrid
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/20/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -21,7 +21,7 @@ This article describes how to provision, use, and delete persistent volumes that
 
 A *persistent volume* represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycles.
 
-While you can provision a persistent volume for **both** Windows and Linux nodes, this article describes how to create a persistent volume for use in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+While you can provision a persistent volume for both Windows and Linux nodes, this article describes how to create a persistent volume for use in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## Before you begin
 
@@ -48,7 +48,8 @@ spec:
 ```
 
 To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
-```
+
+```bash
 kubectl create -f pvc-akshci-csi.yaml 
 ```
 
@@ -63,7 +64,7 @@ persistentvolumeclaim/pvc-akshci-csi created
 
 To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx. 
 
-In the YAML definition below, *mountPath* is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory *mnt* created in *C:\\* and the subdirectory *akshciscsi* created inside *mnt*.
+In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**.
 
 
 ```yaml

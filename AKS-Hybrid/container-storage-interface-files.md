@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) file drivers in AKS hybrid
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/27/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use Container Storage Interface (CSI) drivers for files to mount Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS hybrid.<!--New lead, to describe the scope of the article and distinguish this article from "Use the AKS hybrid disk Container Storage Interface (CSI) drivers." Current intros, identical, will run under "Overview" title.-->
+This article describes how to use Container Storage Interface (CSI) drivers for files to mount Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS hybrid.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
@@ -103,4 +103,4 @@ Uninstall-AksHciCsiNFS -clusterName <clustername>
 
 ## Next steps
 
-- [Use the disk Container Storage Interface drivers](./container-storage-interface-disks.md).
+- [Use the disk Container Storage Interface drivers](./container-storage-interface-disks.md)

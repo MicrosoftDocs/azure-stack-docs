@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) disk drivers in AKS hybrid
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/02/2022
+ms.date: 11/04/2022
 ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS hybrid.<!--New lead, to describe the scope of the article and distinguish this article from "Use the AKS hybrid file Container Storage Interface (CSI) drivers." Current intros, identical, will run under "Overview" title, inserted by an Include file.-->
+This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS hybrid.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
@@ -29,7 +29,7 @@ A *storage class* is used to define how a unit of storage is dynamically created
 
 In AKS hybrid, the `default` storage class is created by default and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
 
-To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses them.<!--"them" or "it"? It's not clear what this refers to.--> A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
+To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses it. A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
 
 ## Create custom storage class for disks
 
@@ -104,8 +104,8 @@ Creating a custom storage class is a two-step process:
       ```console
        $ kubectl apply -f sc-aks-hci-disk-custom.yaml
        storageclass.storage.k8s.io/aks-hci-disk-custom created
-      ``` 
+      ```
 
 ## Next steps
 
-- [Use the file Container Storage Interface drivers](./container-storage-interface-files.md).
+- [Use the file Container Storage Interface drivers](./container-storage-interface-files.md)

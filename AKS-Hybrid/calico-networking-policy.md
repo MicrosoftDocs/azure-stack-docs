@@ -2,7 +2,7 @@
 title: How to - Use Calico network policy to secure pod traffic in AKS hybrid 
 description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service deployments in AKS hybrid.
 ms.topic: how-to
-ms.date: 10/24/2022
+ms.date: 11/04/2022
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -203,7 +203,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
     kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}'
     ```
 
-3. Log in to the _busybox_ pod and try to reach the _porter_ pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
+3. Sign in in to the _busybox_ pod and try to reach the _porter_ pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
 
     ```powershell
     kubectl exec --namespace calico-demo busybox -- nc -vz <porter_ip> 80

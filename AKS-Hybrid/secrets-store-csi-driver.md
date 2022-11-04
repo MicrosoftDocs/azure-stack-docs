@@ -2,7 +2,7 @@
 title: Kubernetes Secrets Store CSI Driver integration with AKS hybrid
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS hybrid.
 ms.topic: how-to
-ms.date: 10/20/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
@@ -82,7 +82,7 @@ Check your running pods to make sure the Secrets Store CSI Driver and the Azure 
   kubectl get pods -l app=csi-secrets-store-provider-azure -n kube-system
   ```
 
-  **Example Output**
+  **Example output**
   
   ```
   NAME                                         READY   STATUS    RESTARTS   AGE
@@ -109,13 +109,13 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the outputs when running the following commands. You'll use both the Client Secret and Client ID in the next steps.
 
-Provide the Client Secret by running the following command:
+Provide the client secret by running the following command:
 
 ```azurecli
 az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id> --name http://secrets-store-test --query 'password' -otsv
 ```
 
-Provides the Client ID by running the following command:
+Provides the client ID by running the following command:
 
 ```azurecli
 az ad sp show --id http://secrets-store-test --query 'appId' -otsv

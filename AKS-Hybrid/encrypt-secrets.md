@@ -3,7 +3,7 @@ title: Encrypt etcd secrets for Azure Kubernetes Service clusters in AKS hybrid
 description: Learn how to encrypt etcd secrets in AKS hybrid
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
@@ -40,5 +40,5 @@ To simplify application deployment on Kubernetes clusters, review the [documenta
 ## Next steps
 
 In this how-to guide, you learned how to monitor and troubleshoot the encryption of etcd secrets for management and workload clusters. Next, you can:
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
