@@ -34,7 +34,7 @@ Before you begin, make sure that you have:
 - Access to an Azure subscription with **Owner** or **Contributor** access.
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Stack HCI cluster. These VM images could be created by one of the following procedures:
-    - [VM image starting from an image in Azure marketplace](./virtual-machine-image-azure-marketplace.md).
+    - [VM image starting from an image in Azure Marketplace](./virtual-machine-image-azure-marketplace.md).
     - [VM image starting from an image in Azure Storage account](./virtual-machine-image-storage-account.md).
     - [VM image starting from an image in local share on your cluster](./virtual-machine-image-local-share.md).
 - Make sure that you have a custom location for your Azure Stack HCI cluster that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Stack HCI cluster.
@@ -61,7 +61,7 @@ Follow these steps in the Azure portal for your Azure Stack HCI cluster.
 
     1. **Custom location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
 
-    1. **Image** – Select the marketplace or customer managed image to create the VM image. If you selected a Windows image, provide a username and password for the administrator account. For Linux VMs, provide SSH keys.
+    1. **Image** – Select the Marketplace or customer managed image to create the VM image. If you selected a Windows image, provide a username and password for the administrator account. For Linux VMs, provide SSH keys.
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 

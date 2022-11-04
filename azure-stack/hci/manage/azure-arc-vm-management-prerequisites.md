@@ -49,13 +49,6 @@ The Azure requirements include:
     
   - To read, modify, and delete the Arc resource bridge, you must have the Contributor role for the resource group.
 
-### Supported regions
-
-Arc VM management currently supports the following Azure regions:
-
-- East US
-- West Europe
-
 ## Networking requirements
 
 The network requirements include:
