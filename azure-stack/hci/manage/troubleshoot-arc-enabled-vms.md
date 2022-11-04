@@ -41,7 +41,7 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
-## Premission denied error when running the arcappliance prepare command
+## Permission denied error when running the arcappliance prepare command
 
 If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
 
@@ -49,7 +49,7 @@ If your PowerShell session doesn't have write permissions in the folder from whe
 
 Here's an example output when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
 
-:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error" lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
+:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error." lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
 
 **Resolution:** Go to your home directory and rerun the `az arcapplicance prepare` command.
 
