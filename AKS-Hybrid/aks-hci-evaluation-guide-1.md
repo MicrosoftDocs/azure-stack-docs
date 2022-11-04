@@ -11,7 +11,7 @@ ms.reviewer: oadeniji
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Step 1: Prepare Azure Virtual Machine for AKS hybrid
+# Prepare Azure Virtual Machine for AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
