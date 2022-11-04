@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/05/2022
+ms.date: 11/03/2022
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
