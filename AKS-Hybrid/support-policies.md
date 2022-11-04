@@ -31,19 +31,24 @@ An internet connection for the underlying Azure Stack HCI platform that can conn
 
 The management cluster in AKS hybrid has to be able to connect to Azure via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days to maintain day 2 operations such as upgrade, node pool scaling.
 
-> [!IMPORTANT] 
-> Workloads will continue to run and work as expected until the management cluster and or Azure Stack HCI are reconnecting and synchronizing to Azure. Once re-connected all day 2 operations should recover and continue as expected.
-> Also keep in mind the supportability limits below.
+If the management cluster is disconnected within the 30 day period, workloads will continue to run and work as expected until the management cluster and or Azure Stack HCI are reconnecting and synchronizing to Azure. Once re-connected all day 2 operations should recover and continue as expected.
 
 > [!NOTE]
 > Be aware that the start/end of the 30 day period might be different from the validity period on AKS hybrid and Azure Stack HCI.
 
-> [!IMPORTANT]
-> Manually stopping or de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC vor prolonged times > 30 days and outside of regular maintenance procedures renders the cluster out of support.
-> An AKS cluster not updated within 60 days of the release of the latest AKS hybrid version will have to be updated to a supported version to be eligible for support.
-> AKS hybrid clusters not upgraded to a supported version within 90 days are out of support and will require manual intervention to get current. Contact support for help if needed.
-> AKS hybrid versions older than 180 days will be removed from the Microsoft servers. At that point clusters running this version will not be able to update Kubernetes or OS versions within the removed version and will have to be upgraded to the latest release. In some cases this can also mean a full re-deployment if the system is not in an otherwise healthy state.
-> If your Azure subscription is suspended or deleted, your cluster will be out of support after 60 days, unless the subscription is re-instated.
+
+Manually stopping or de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC vor prolonged times > 30 days and outside of regular maintenance procedures renders the cluster out of support.
+
+### Updating an out of support cluster
+
+* An AKS hybrid cluster not updated within 60 days of the release of the latest AKS hybrid version will have to be updated to a supported version to be eligible for support.
+* AKS hybrid clusters not upgraded to a supported version within 90 days are out of support and will require manual intervention to get current. Contact support for help if needed. See [How to get support](help-support.md) for the process.
+* AKS hybrid versions older than 180 days will be removed from the Microsoft servers. At that point AKS hybrid clusters using this version will not be able to update Kubernetes or OS versions and will have to be upgraded to the latest release. In some cases this can also mean a full re-deployment if the system is not in a healthy state.
+
+### Deleted or suspended subscription
+
+If your Azure subscription is suspended or deleted, your AKS hybrid cluster(s) will be out of support after 60 days, unless the subscription is re-instated before the 60 day limit is reached. All other limitations above also apply.
+Once the subscription is deleted the cluster connection to Azure cannot be recovered and Azure Stack HCI and AKS hybrid will have to be re-deployed to be able to reconnect to Azure.
 
 ## Service updates and releases
 
