@@ -104,27 +104,33 @@
       href: manage/attach-gpu-to-linux-vm.md
     - name: Windows Server Azure Edition
       href: manage/windows-server-azure-edition.md
-  - name: Manage Azure Arc-enabled VMs (preview)
+  - name: Manage Azure Arc VMs
     items:
-    - name: Set up Azure Arc-enabled VMs
-      href: manage/azure-arc-enabled-virtual-machines.md
-    - name: Deploy Arc Resource Bridge using command line
-      href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Deploy Arc Resource Bridge using Windows Admin Center
-      href: manage/deploy-arc-resource-bridge-using-wac.md
-    - name: Create VM images
+    - name: What is Azure Arc VM management?
+      href: manage/azure-arc-vm-management-overview.md
+    - name: Review prerequisites
+      href: manage/azure-arc-vm-management-prerequisites.md
+    - name: Set up Arc VM management
       items:
-      - name: Using Azure Marketplace images
-        href: manage/virtual-machine-image-azure-marketplace.md
-      - name: Using images in Azure Storage account
-        href: manage/virtual-machine-image-storage-account.md
-      - name: Using images in local share 
-        href: manage/virtual-machine-image-local-share.md
-    - name: Deploy Arc-enabled VMs in Azure portal
+      - name: Set up using Windows Admin Center (recommended)
+        href: manage/deploy-arc-resource-bridge-using-wac.md
+      - name: Set up using command line
+        href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Manage Arc VM resources
+      items:
+      - name: Create VM images
+        items:
+        - name: Using Azure Marketplace images
+          href: manage/virtual-machine-image-azure-marketplace.md
+        - name: Using images in Azure Storage account
+          href: manage/virtual-machine-image-storage-account.md
+        - name: Using images in local share 
+          href: manage/virtual-machine-image-local-share.md
+      - name: Create virtual networks
+        href: manage/create-virtual-networks.md
+    - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Manage VM extensions 
-      href: manage/virtual-machine-manage-extension.md
-    - name: Uninstall Azure Arc Resource Bridge
+    - name: Uninstall Azure Arc VM management
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
