@@ -273,7 +273,7 @@
          href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
-- name: AKS Lite hybrid option (preview)
+- name: AKS lite hybrid option (preview)
   items:
   - name: Overview
     href: aks-lite-overview.md
