@@ -238,4 +238,4 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 ## Next steps
 
-[Create virtual networks](./create-virtual-networks.md).
+- [Create virtual networks](./create-virtual-networks.md)
