@@ -6,14 +6,14 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2022
+ms.date: 11/04/2022
 ---
 
 # Use VM images to create Arc-enabled virtual machines on Azure Stack HCI
 
 > Applies to:Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
 
-This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal or the Azure CLI.
+This article describes how to create an Arc-enabled VM starting with the VM images that you have created on your Azure Stack HCI cluster. You can create Arc-enabled VMs using the Azure portal.
 
 
 ## About Azure Stack HCI cluster resource
@@ -30,38 +30,10 @@ The procedure to create Arc VMs is described in the next section.
 
 Before you create an Azure Arc-enabled VM, make sure that the following prerequisites are completed.
 
-### [Azure CLI](#tab/azurecli)
-
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
-
-### [Azure portal](#tab/azureportal)
-
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
-
----
 
 ## Create Arc-enabled VM
-
-### [Azure CLI](#tab/azurecli)
-
-Follow these steps in the Azure CLI to create an Arc-enabled VM on your Azure Stack HCI cluster.
-
-1. Run PowerShell as administrator.
-
-1. To create an Arc-enabled VM with guest management enabled, run the following command:
-
-    ```azurecli
-    az azurestackhci virtualmachine Create --Name $vmname  –Resource-Group $resourcegroup --Image-Reference $imageref --Vm-Size "Default" --Extended-Location Name=$customLocation type="CustomLocation" --Nic-Id $nicid --Admin-Username $username --Admin-Password $password --Provision-Vm-agent true --Allow-Password-Authentication true
-    ```
-
-### [Azure portal](#tab/azureportal)
 
 Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure Stack HCI cluster.
 
@@ -91,7 +63,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
 
     1. **Memory type** – Specify the memory type as static or dynamic.
     
-    1. **Enable guest management** - By default, guest management is enabled. You can install extensions on VMs where the guest management is enabled.
+    1. **Enable guest management** - Select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
     
         > [NOTE!]
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
