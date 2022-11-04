@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-  description: Get help to troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+  title: Troubleshoot security and identity issues and errors in AKS hybrid
+  description: Get help to troubleshoot security and identity issues and errors in AKS hybrid.
 
-title: Fix security and identity known issues and errors
+title: Fix security and identity known issues and errors in AKS hybrid
 summary: |
-  Use this topic to help you troubleshoot and resolve security and identity-related issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+  Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS hybrid.
   
 sections:
   - name: Single section - ignored
@@ -14,7 +14,7 @@ sections:
           Error 'Certificate expired - Unable to connect to the server: x509'
 
         answer: | 
-          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command errors with the following error:
+          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command displays the following error:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
@@ -25,30 +25,30 @@ sections:
           
           1. Install AksHci.
           2. Install target cluster.
-          3. Turn off cluster(vms) for more than 4 days.
+          3. Turn off the cluster (VMs) for more than 4 days.
           4. Turn the cluster on again.
           
           ### Expected behavior
           
-          The target cluster should be unreachable. Any `kubectl` command run against the target cluster should return with an error message similar to the following:
+          The target cluster is unreachable. Any `kubectl` command run against the target cluster returns an error message similar to the following one:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
-          1. Run the following command to renew the generate certificate manually:
-             `Update-AksHciClusterCertificates  -Name my-workload-cluster -fixKubeletCredentials`
+          1. Run the following command to generate certificates manually:
+             `Update-AksHciClusterCertificates  -Name my-workload-cluster -fixKubeltCredentials`
           2. Generate new credentials:
              `Get-AksHciCredential -name <clustername>`
-          3. Wait a few minutes, then try the `kubectl` command for the cluster to be available again.
+          3. Wait a few minutes, and then try the `kubectl` command again to see whether the cluster is available.
           
           > [!NOTE]  
-          > There is a known bug in AksHci version 1.0.14.x and earlier. If the control plane VM has the name pattern other than `-control-plane-`, the `Update-AksHciClusterCertificates` command may not work. You must update the certificate by logging into the control plane VM:
+          > There is a known bug in AksHci version 1.0.14.x and earlier. If the control plane VM has a name pattern other than `-control-plane-`, the `Update-AksHciClusterCertificates` command may not work. You must update the certificate by logging into the control plane VM:
           >
-          > 1. Find the ip address of the target cluster control plane VM.
-          > 2. Issue the following command:
+          > 1. Find the IP address of the target cluster control plane VM.
+          > 2. Run the following command:
           >    `ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip>`
           > 3. List the cert tattoo files:
           >    `sudo ls /etc/kubernetes/pki/cert-tattoo-*`
-          > 4. Generate certificates using each file listed in the previous command:
+          > 4. Generate certificates using each file listed by the previous command:
           >    `sudo /usr/bin/cert-tattoo-provision CreateCertsWithAltNames <absolute-path-of-cert-tattoo-file>`
       - question: | 
           Authentication handshake failed: x509: certificate signed by unknown authority
@@ -56,11 +56,11 @@ sections:
         answer: | 
           You may see this error when deploying a new AKS cluster or adding a node pool to an existing cluster.
           
-          1. Check that the user who has run the command is the same user that installed AKS on Azure Stack or Windows Server. For more information on granting access to multiple users, see [Set up multiple administrators](set-multiple-administrators.md)
+          1. Check that the user who has run the command is the same user that installed AKS on Azure Stack or Windows Server. For more information on granting access to multiple users, see [Set up multiple administrators](set-multiple-administrators.md).
           2. If the user is the same and the error persists, follow the below steps to resolve the issue:
-            - Delete old management appliance certificate by removing `$env:UserProfile.wssd\kvactl\cloudconfig`
+            - Delete old management appliance certificate by removing `$env:UserProfile.wssd\kvactl\cloudconfig`.
             - Run `Repair-AksHciCerts`.
-            - Run `Get-AksHciCluster` to check that it's fixed
+            - Run `Get-AksHciCluster` to check that it's fixed.
           
       - question: | 
           KMS pod fails and the KMS pod logs contain errors
@@ -75,7 +75,7 @@ sections:
           
           Look in the KMS pod logs for errors by running the following command:
           
-          `Kubectl logs <kmspod-name> -n kube-system`
+          `kubectl logs <kmspod-name> -n kube-system`
           
           If the logs return an error regarding an invalid token in the management cluster KMS pod, run the following command:
           
@@ -89,9 +89,9 @@ sections:
           Error 'System.Collections.Hashtable.generic_non_zero 1 [Error: Certificate has expired: Expired]'
 
         answer: | 
-          The **Mocctl** certificate expires if it's not used for more than 60 days. AKS-HCI uses the `mocctl` command line tool to communicate with MocStack for performing Moc-related operations. The certificate used by the `mocclt` command to communicate with cloudagent expires in 60 days. The `mocctl` command renews the certificate automatically when it's used close to its expiry (after ~42 days). If the command is not used frequently, the certificate expires.
+          The **mocctl** certificate expires if it's not used for more than 60 days. AKS hybrid uses the `mocctl` command-line tool to communicate with MocStack for performing Moc-related operations. The certificate that the `mocclt` command uses to communicate with cloudagent expires in 60 days. The `mocctl` command renews the certificate automatically when it's used close to its expiration (after ~42 days). If the command is not used frequently, the certificate expires.
           
-          To reproduce the behavior, install AKS-HCI, and no operation involving the `mocctl` command is performed for 60 days.
+          To reproduce the behavior, install AKS hybrid, and no operation involving the `mocctl` command is performed for 60 days.
           
           To fix the issue, log in again once the certificate expires. Execute the following PowerShell command to log in:
           
@@ -102,7 +102,7 @@ sections:
           Delete KVA certificate if expired after 60 days.
 
         answer: | 
-          KVA certificate expires after 60 day if no upgrade is performed.
+          KVA certificate expires after 60 days if no upgrade is performed.
           
           `Update-AksHci` and any command involving `kvactl` will throw the following error.
           
@@ -136,6 +136,6 @@ additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
-  - [storage known issues](/azure-stack/aks-hci/known-issues-storage)
+  - [Storage known issues](/azure-stack/aks-hci/known-issues-storage)
   
     
