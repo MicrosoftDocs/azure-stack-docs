@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 10/21/2022
 ms.reviewer: abha
 ms.topic: how-to
-ms.date: 05/12/2022
+ms.date: 11/04/2022
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
 # Keyword: Kubernetes role-based access control 
@@ -90,7 +90,7 @@ Configure the AKS cluster to allow your Azure AD group to access the cluster. If
    Get-AksHciCredential -name <name-of-your-cluster>
    ```
 
-2. Create a namespace in the AKS cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named **dev**.
+2. Create a namespace in the AKS cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named **dev**:
 
    ```bash  
    kubectl create namespace dev

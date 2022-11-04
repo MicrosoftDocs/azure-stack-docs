@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/02/2022
+ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -31,7 +31,7 @@ AD integration uses AD _kubeconfig_, which is distinct from the certificate-base
 
 Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
-> [!Note] 
+> [!NOTE] 
 > Currently, AD SSO connectivity is only supported for workload clusters. 
 
 This document will guide you through the following steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
@@ -136,7 +136,7 @@ Open PowerShell as an administrator and run the following command:
 
 ### Step 5: Copy kubeconfig and other files to the client machine
 
-You should copy the three files listed below from the AKS workload cluster to your client machine:<!--Please verify the cluster type, here and in bullet 2.-->
+You should copy the three files listed below from the AKS workload cluster to your client machine:
 
 - Copy the AD _kubeconfig_ file created in the previous step to $env:USERPROFILE\.kube\config.
 
@@ -159,7 +159,7 @@ When you create or edit other AD group RBAC entries, the subject name should hav
 
 Here are two examples:
 
-**Example 1**
+### Example 1
 
 ```bash
 apiVersion: rbac.authorization.k8s.io/v1 
@@ -176,11 +176,11 @@ apiVersion: rbac.authorization.k8s.io/v1
    name: "microsoft:activedirectory:CONTOSO\Bob" 
 ```
 
-**Example 2**
+### Example 2
 
 The example below shows how to create a custom role and role binding for a [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) with an AD group. In the example, "SREGroup" is a pre-existing group in the Contoso Active Directory. When users are added to the AD group, they're immediately granted privileges.
 
-```bash
+```yml
 kind: Role 
  apiVersion: rbac.authorization.k8s.io/v1 
  metadata: 
@@ -228,7 +228,7 @@ When the password is changed for the API server account, you must uninstall the 
 
 Every time you change the password, you must rename the current keytab (_current.keytab_) to _previous.keytab_.  Then, make sure you name the new password _current.keytab_.
 
-> [!Important] 
+> [!IMPORTANT] 
 > The files must be named _current.keytab_ and _previous.keytab_, respectively. The existing role bindings are not affected by this change.
 
 ### Uninstall and reinstall AD authentication
@@ -247,7 +247,7 @@ To reinstall AD authentication, open PowerShell as an administrator and run the 
 Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
-> [!Note] 
+> [!NOTE] 
 > To avoid downtime if the clients have cached tickets, the `-previousKeytab` parameter is required only when you change the password.
 
 ## Create the API server AD account and the keytab file
