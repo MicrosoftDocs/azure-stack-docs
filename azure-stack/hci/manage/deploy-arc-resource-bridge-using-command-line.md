@@ -75,12 +75,12 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
    | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
-   | **vlanID** | (Optional) vLAN identifier. |
+   | **vlanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
    | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
-   | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250,192.168.250.255". |
+   | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: <br>- For a list of DNS servers: `@("192.168.250.250","192.168.250.255")`<br>- For a single DNS server: `"192.168.250.250"` |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
-   | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
+   | **cloudServiceIP** | (Required only for static IP configurations) The Arc Resource Bridge requires a cloud agent to run on the host. This cloud agent is installed as a [Failover Cluster generic service](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005). cloudServiceIP is the IP address of the Failover Cluster generic service hosting the cloud agent. This IP address must match the IP address of the network that is used for all client access and cluster communications. |
 
 1. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
@@ -165,10 +165,12 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```azurecli
    az login --use-device-code
    az account set --subscription $subscription
-   az provider register --namespace Microsoft.KubernetesConfiguration
-   az provider register --namespace Microsoft.ExtendedLocation
-   az provider register --namespace Microsoft.ResourceConnector
-   az provider register --namespace Microsoft.AzureStackHCI
+   az provider register --namespace Microsoft.Kubernetes --wait
+   az provider register --namespace Microsoft.KubernetesConfiguration --wait
+   az provider register --namespace Microsoft.ExtendedLocation --wait
+   az provider register --namespace Microsoft.ResourceConnector --wait
+   az provider register --namespace Microsoft.AzureStackHCI --wait
+   az provider register --namespace Microsoft.HybridConnectivity --wait
    ```
 
 1. Run the following cmdlets based on your networking configurations:
