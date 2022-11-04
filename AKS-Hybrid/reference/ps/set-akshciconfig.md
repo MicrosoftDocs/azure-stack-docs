@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 10/03/2022
+ms.date: 11/04/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/03/2022
+ms.lastreviewed: 11/03/2022
 ms.reviewer: jeguan
 
 ---
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 
 ### -workingDir
 
-This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`.
 
 ```yaml
 Type: System.String

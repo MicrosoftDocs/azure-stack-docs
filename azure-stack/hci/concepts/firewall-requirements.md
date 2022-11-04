@@ -74,6 +74,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 - [Azure Arc Resource Bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
+- [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
 - [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
