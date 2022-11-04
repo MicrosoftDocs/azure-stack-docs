@@ -40,7 +40,7 @@ AKS hybrid generates and uses the following Certificate Authorities (CAs) and ce
 
 Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
-- The certificates are stored in */etc/kubernetes/pki*.
+- The certificates are stored in **/etc/kubernetes/pki**.
 - The keys are RSA 4096, EcdsaCurve: P384 
 
 > [!NOTE]

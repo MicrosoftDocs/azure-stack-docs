@@ -29,7 +29,7 @@ Verify you have the following requirements ready:
 
 * An AKS cluster with at least one Linux worker node that is up and running.
 * A kubeconfig file to access the cluster.
-* The **AksHci** PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci)<!--I'm assuming the module name will remain AksHci.-->
+* The **AksHci** PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci).
 
 When you do the tutorial procedures:
 * Run the commands in a PowerShell window opened with administrative privileges.
