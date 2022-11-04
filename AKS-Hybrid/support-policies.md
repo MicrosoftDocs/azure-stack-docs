@@ -22,7 +22,7 @@ This article also details management cluster node management, control plane comp
 
 ## Azure Stack HCI
 
-An internet connection for the underlying Azure Stack HCI platform that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure Stack HCI Azure connectivity requirements](https://learn.microsoft.com/azure-stack/hci/concepts/firewall-requirements) for more information. After 30 days Azure Stack HCI will prevent the creation of new virtual machines.
+An internet connection for the underlying Azure Stack HCI platform that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure Stack HCI Azure connectivity requirements](/azure-stack/hci/concepts/firewall-requirements) for more information. After 30 days Azure Stack HCI will prevent the creation of new virtual machines.
 
 > [!NOTE]
 > When running on Windows Server 2019 or Windows Server 2022 the underlying platform does not have the 30 day recurring connection requirement.
