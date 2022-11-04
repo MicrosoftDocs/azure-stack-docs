@@ -3,7 +3,7 @@ title: Deploy a Linux app in AKS hybrid
 description: In this tutorial, you deploy a multi-container Linux app to your Azure Kubernetes Service (AKS) cluster in AKS hybrid using a custom image stored in Azure Container Registry (ACR).
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 10/26/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 06/27/2022
 ms.reviewer: abha
@@ -29,10 +29,10 @@ Verify you have the following requirements ready:
 
 * An AKS cluster with at least one Linux worker node that is up and running.
 * A kubeconfig file to access the cluster.
-* The AksHci PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci)<!--I'm assuming the module name will remain AksHci.-->
+* The **AksHci** PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci)<!--I'm assuming the module name will remain AksHci.-->
 
 When you do the tutorial procedures:
-* Run the commands in a PowerShell administrative window.
+* Run the commands in a PowerShell window opened with administrative privileges.
 * Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 > [!NOTE]  
@@ -155,14 +155,14 @@ To monitor progress, use the `kubectl get service` command with the `--watch` ar
 kubectl get service azure-vote-front --watch
 ```
 
-Initially, the *EXTERNAL-IP* for the *azure-vote-front* service is shown as *pending*.
+Initially, the **EXTERNAL-IP** for the **azure-vote-front** service is shown as **pending**.
 
 ```output
 NAME               TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27      <pending>     80:30572/TCP   22m
 ```
 
-When the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service.
+When the **EXTERNAL-IP** address changes from **pending** to an actual public IP address, use **CTRL-C** to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
@@ -189,7 +189,7 @@ azure-vote-back-6bdcb87f89-g2pqg    1/1       Running   0          25m
 azure-vote-front-84c8bf64fc-cdq86   1/1       Running   0          25m
 ```
 
-To change the number of pods in the *azure-vote-front* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 5.
+To change the number of pods in the **azure-vote-front** deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 5.
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front

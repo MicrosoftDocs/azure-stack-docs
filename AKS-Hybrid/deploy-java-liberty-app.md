@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
@@ -28,7 +28,7 @@ For more information on Open Liberty, see [the Open Liberty project page](https:
 
 This article is divided into two main parts.
 
-**Part 1** focuses on deploying the necessary artifacts in Azure. This includes a resource group and Azure Container Registry (ACR). To perform these tasks, you can either utilize [Azure Cloud Shell](/azure/cloud-shell/quickstart) (easiest), which includes the latest version of Azure CLI, **or** you can utilize a local system with the following tools installed:
+**Part 1** focuses on deploying the necessary artifacts in Azure. This includes a resource group and Azure Container Registry (ACR). To perform these tasks, you can use either [Azure Cloud Shell](/azure/cloud-shell/quickstart) (easiest), which includes the latest version of Azure CLI, **or** a local system with the following tools installed:
 
 * Prepare a local machine with Unix-like operating system installed (for example, Ubuntu, macOS, Windows Subsystem for Linux).
 * Install Azure CLI following the guidance above.
@@ -130,7 +130,7 @@ Back in your console, to verify the connection to your cluster, use the [kubectl
 kubectl get nodes
 ```
 
-The following example output shows the single node created in the previous steps. Make sure the status of the node is *Ready*:
+The following example output shows the single node created in the previous steps. Make sure the status of the node is **Ready**:
 
 ```output
 NAME                                STATUS   ROLES   AGE     VERSION

@@ -3,7 +3,7 @@ title: Deploy AKS infrastructure using Windows Admin Center
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using Windows Admin Center for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -237,7 +237,7 @@ Whichever option you chose, you will now be at the start of the **Create Kuberne
 
 ## Scale your Kubernetes cluster (target cluster)
 
-Next, you'll scale your Kubernetes cluster to add another Linux worker node. This task has to be performed with **PowerShell**:
+Next, you'll scale your Kubernetes cluster to add another Linux worker node. This task has to be performed with PowerShell:
 
 1. Open PowerShell as Administrator and run the following command to import the new modules, and list their functions:
 

@@ -40,7 +40,7 @@ AKS hybrid generates and uses the following Certificate Authorities (CAs) and ce
 
 Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
-- The certificates are stored at */etc/kubernetes/pki*.
+- The certificates are stored in */etc/kubernetes/pki*.
 - The keys are RSA 4096, EcdsaCurve: P384 
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Refer to the following scripts and documentation for logging and monitoring:
 
 ### Renew certificates for worker nodes
 
-For worker nodes, failed certificate renewals are logged by the *certificate-renewal-worker* pod. If the certificate renewal continues to fail on a worker node, and the certificates expire, the node will be removed, and a new worker node will be created in its place. 
+For worker nodes, failed certificate renewals are logged by the *certificate-renewal-worker* pod. If the certificate renewal continues to fail on a worker node, and the certificates expire, the node is removed, and a new worker node is created in its place. 
 
 Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-worker*: 
 
@@ -133,7 +133,7 @@ kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificat
 
 ### Renew certificates for control plane nodes
 
-For control plane nodes, failed certificate renewals are logged by the *certificate-renewal-controller* pod. If certificates expire on a control plane node, the node may eventually become unreachable by other nodes. If all control plane nodes enter this state, the cluster will become inoperable because of a TLS failure. To confirm whether the cluster has entered this state, try to access the cluster using `kubectl`, and then verify whether the connection fails with an error message related to expired x509 certificates. 
+For control plane nodes, failed certificate renewals are logged by the **certificate-renewal-controller** pod. If certificates expire on a control plane node, the node may eventually become unreachable by other nodes. If all control plane nodes enter this state, the cluster will become inoperable because of a TLS failure. To confirm whether the cluster has entered this state, try to access the cluster using `kubectl`, and then verify whether the connection fails with an error message related to expired x509 certificates. 
 
 Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-controller*:
 

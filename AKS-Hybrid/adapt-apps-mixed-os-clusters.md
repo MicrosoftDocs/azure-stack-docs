@@ -3,7 +3,7 @@ title: Adapt applications for use in mixed-OS Kubernetes clusters in AKS hybrid
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS hybrid are scheduled on the correct worker node operating system.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -24,7 +24,7 @@ This how-to guide assumes a basic understanding of Kubernetes concepts. For more
 
 ## Node selectors
 
-A **node selector** is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` for Windows or Linux, as shown in the examples below. 
+A *node selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` for Windows or Linux, as shown in the examples below. 
 
 ```yaml
 kubernetes.io/os = Windows

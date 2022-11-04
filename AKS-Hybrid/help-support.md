@@ -2,7 +2,7 @@
 title: Concepts - Get support for AKS hybrid
 description: Learn about how to get support and open a support request for AKS hybrid.
 ms.topic: conceptual
-ms.date: 10/26/2022
+ms.date: 11/03/2022
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -16,7 +16,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-If you encounter an issue with AKS hybrid, this article describes the steps you need to run to open a support request.
+If you encounter an issue with AKS hybrid, this article describes how to open a support request.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 

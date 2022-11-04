@@ -3,7 +3,7 @@ title: Support policies for AKS hybrid
 description: Learn about AKS hybrid support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 01/11/2022
+ms.date: 11/0/2022
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 03/30/2022
@@ -24,8 +24,8 @@ This article also details management cluster node management, control plane comp
 
 ## Service updates and releases
 
-* For release information, see [AKS hybrid release notes](https://github.com/Azure/aks-hci/releases).<!--Verify release notes title. Older release notes will have the earlier product name?-->
-* For information on features in preview, see [AKS hybrid preview features](https://github.com/Azure/aks-hci/tree/main/preview).<!--Verify topic title.-->
+* For release information, see [AKS hybrid release notes](https://github.com/Azure/aks-hci/releases).
+* For information on features in preview, see [AKS hybrid preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
 ## Supported version policy
 
@@ -48,9 +48,9 @@ AKS on Azure Stack HCI and on Windows Server follow the platform version support
 
 ## Managed features in AKS hybrid
 
-As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options.
+As an AKS on Azure Stack HCI user, you have limited customization and deployment options. However, you don't need to worry about or manage Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options.
 
-By contrast, AKS hybrid provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS hybrid user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+By contrast, AKS hybrid provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS hybrid user, you have limited customization and deployment options. However, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
 
 With AKS hybrid, you get a partially managed control plane. The *control plane* contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
 
@@ -92,7 +92,7 @@ Microsoft provides technical support for the following features and components:
 
 * Issues about networking, network access, and functionality. Issues could include DNS resolution, packet loss, and routing. Microsoft supports various networking scenarios:
 
-  * Basic installation support for Flannel and Calico CNI. These CNIs are community driven and supported. CSS provides only basic installation and configuration support.
+  * Basic installation support for Flannel and Calico CNI. These CNIs are community driven and supported. Microsoft Support provides only basic installation and configuration support.
 
   * Connectivity to other Azure services and applications
 
@@ -145,7 +145,7 @@ Similarly, AKS hybrid regularly releases new Kubernetes patches and minor versio
 #### User customization of agent nodes
 
 > [!NOTE]
-> AKS hybrid agent nodes appear in Hyper-V as regular virtual machine resources. These virtual machines are deployed with a custom OS image and supported and managed Kubernetes components. You cannot change the base OS image or do any direct customizations to these nodes using the Hyper-V APIs or resources. Any custom changes that are not done via the AKS on Azure Stack HCI and Windows Server API<!--Verify the API name.--> will not persist through an upgrade, scale, update, or reboot and may render the cluster unsupported.
+> AKS hybrid agent nodes appear in Hyper-V as regular virtual machine resources. These virtual machines are deployed with a custom OS image and supported and managed Kubernetes components. You cannot change the base OS image or do any direct customizations to these nodes using the Hyper-V APIs or resources. Any custom changes that are not done via the AKS on Azure Stack HCI and Windows Server API will not persist through an upgrade, scale, update, or reboot and may render the cluster unsupported.
 > Avoid performing changes to the agent nodes unless Microsoft Support directs you to make changes.
 
 AKS hybrid manages the lifecycle and operations of agent node images on your behalf. Modifying the resources associated with the agent nodes is **not supported**. For example, customizing a virtual machine's network settings by manually changing configurations through the Hyper-V API or tools is not supported.
@@ -197,7 +197,7 @@ Given the speed of development in the upstream Kubernetes project, bugs invariab
 When a technical support issue is root-caused by one or more upstream bugs, AKS hybrid support and engineering teams will:
 
 * Identify and link the upstream bugs with any supporting details to help explain why this issue affects your cluster or workload. Customers receive links to the required repositories so they can watch the issues and see when a new release will provide fixes.
-* Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue](https://github.com/Azure/aks-hci/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue) will be filed in the AKS on Azure Stack HCI and Windows Server repository.<!--Verify repo name.--> The known-issue filing explains:
+* Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue](https://github.com/Azure/aks-hci/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue) will be filed in the AKS on Azure Stack HCI and Windows Server repository. The known-issue filing explains:
   * The issue, including links to upstream bugs.
   * The workaround and details about an upgrade or another persistence of the solution.
   * Rough timelines for the issue's inclusion, based on the upstream release cadence.

@@ -3,7 +3,7 @@ title: Deploy AKS infrastructure using PowerShell
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -116,7 +116,7 @@ Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```
 
-Output from the script includes the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI. Make a note of those, and store it safely.
+Output from the script includes the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI. Make a note of those, and store the note safely.
 
 With that created, in the Azure portal, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
