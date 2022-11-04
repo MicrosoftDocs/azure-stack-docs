@@ -18,9 +18,9 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
+This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS hybrid.
 
-This article shows you how to configure and use Helm in a Kubernetes cluster in AKS hybrid.
+[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
