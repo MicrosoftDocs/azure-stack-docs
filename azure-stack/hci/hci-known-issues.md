@@ -1,6 +1,6 @@
 ---
-title: Known issues in Azure Stack HCI supplemental package (preview)
-description: Read about the known issues in Azure Stack HCI supplemental package
+title: Known issues in Azure Stack HCI (preview)
+description: Read about the known issues in Azure Stack HCI (preview).
 author: alkohli
 ms.topic: conceptual
 ms.date: 10/08/2022
@@ -9,9 +9,9 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI supplemental package (preview)
+# View known issues in Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI supplemental package
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI supplemental package.
 

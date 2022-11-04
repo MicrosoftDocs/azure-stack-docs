@@ -1,6 +1,6 @@
 --- 
-title: Prepare Active Directory for Azure Stack HCI deployment (preview) 
-description: Learn to prepare Active Directory for deploying Azure Stack HCI.
+title: Prepare Active Directory for new Azure Stack HCI deployments (preview) 
+description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/27/2022
@@ -9,9 +9,9 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for Azure Stack HCI deployment (preview)
+# Prepare Active Directory for new Azure Stack HCI deployment (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
 These articles describe how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 
@@ -21,7 +21,7 @@ These articles describe how to prepare your Active Directory (AD) environment be
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Install the PowerShell module to prepare Active Directory. Run the following command:
 
@@ -55,7 +55,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
 
->[!NOTE]
+> [!NOTE]
 > In this release, only the Active Directory prepared via the provided module is supported.
 
 To prepare and configure Active Directory, follow these steps:

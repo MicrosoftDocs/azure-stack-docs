@@ -348,7 +348,7 @@
       items: 
       - name: Use Windows Defender Application Control 
         href: concepts/security-windows-defender-application-control.md
-      - name: Review security baseline
+      - name: Review security baseline settings
         href: concepts/secure-baseline.md
       - name: Understand BitLocker encryption
         href: concepts/security-bitlocker.md

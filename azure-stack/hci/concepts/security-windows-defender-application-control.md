@@ -1,6 +1,6 @@
 ---
 title: Windows Defender Application Control for Azure Stack HCI (preview)
-description: This topic provides guidance on Windows Defender Application Control for Azure Stack HCI (preview).
+description: This article provides guidance on Windows Defender Application Control for Azure Stack HCI (preview).
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
@@ -11,9 +11,9 @@ ms.subservice: azure-stack-hci
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
 
-Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
-This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI, version 22H2.
+This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI.
 
 WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
 
@@ -306,13 +306,13 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 
 ## Switch WDAC policy modes
 
-As a customer you can decide to have WDAC enabled during deployment or after deployment. In case you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell. Future releases will provide a UI-based control with Windows Admin Center.  
+You can decide to have WDAC enabled during deployment or after deployment. If you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell.  
 
 Connect to one of the cluster nodes and use the cmdlets below to switch between nodes.
 
 This is useful when:
 
-- You started with default recommended settings and now you need to install or run new software, usually third party software, in the node to later create a supplemental policy.
+- You started with the default recommended settings. You need to install or run new third party software. You can switch your policy modes to create a supplemental policy.
 - You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
 - Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
 

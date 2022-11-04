@@ -1,6 +1,6 @@
 ---
-title: Prerequisites to deploy Azure Stack HCI via supplemental package (preview)
-description: Learn about the prerequisites for deploying Azure Stack HCI (preview).
+title: Prerequisites to deploy Azure Stack HCI (preview)
+description: Learn about the prerequisites to deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: conceptual
 ms.date: 10/24/2022
@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Review deployment prerequisites for Azure Stack HCI via the supplemental package (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
 This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI using the supplemental package.
 

@@ -1,6 +1,6 @@
 ---
 title: BitLocker encryption on Azure Stack HCI (preview)
-description: Learn how to get your BitLocker recovery keys.
+description: Learn how to get your BitLocker recovery keys (preview).
 author: meaghanlewis
 ms.author: mosagie
 ms.topic: conceptual
@@ -11,9 +11,9 @@ ms.date: 09/06/2022
 
 # BitLocker encryption for Azure Stack HCI (preview)
 
-Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
-This article describes the BitLocker encryption enabled on Azure Stack HCI and the procedure to retrieve your BitLocker keys if the system needs to be restored.
+This article describes the BitLocker encryption enabled on Azure Stack HCI and the procedure to retrieve your BitLocker keys if the system needs to be restored. BitLocker encryption is available only for new deployments using the supplemental package.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 

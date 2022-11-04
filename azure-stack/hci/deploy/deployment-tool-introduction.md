@@ -11,9 +11,9 @@ ms.subservice: azure-stack-hci
 
 # Azure Stack HCI deployment overview (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
-This set of articles describes how to deploy Azure Stack HCI using a new deployment tool and methods.
+This article is the first in the series of deployment articles that describe how to deploy Azure Stack HCI using a new deployment tool and methods.
 
 You can deploy Azure Stack HCI using a new or existing *config* file interactively or via PowerShell.
 
@@ -23,7 +23,7 @@ You can deploy Azure Stack HCI using a new or existing *config* file interactive
 
 You can deploy Azure Stack HCI using one of the following methods:
 
-- **Interactive**:  Deploy using a new config file interactively. The interactive flow provides a guided, step-by-step experience that helps you create a new configuration file which is then used to deploy and register the cluster. This method should be used when you deploy 22H2 for the first time and is recommended for most customers.
+- **Interactive**:  Deploy using a new config file interactively. The interactive flow provides a guided, step-by-step experience that helps you create a new configuration file which is then used to deploy and register the cluster. This method should be used when you deploy for the first time and is recommended for most customers.
  
 - **Existing configuration**: Deploy using this option if you already have a configuration file from a prior deployment. This option is  recommended when deploying multiple systems.  
 
