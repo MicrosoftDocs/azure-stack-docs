@@ -63,7 +63,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
 
     1. **Memory type** – Specify the memory type as static or dynamic.
 
-       :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
+       :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot 1 of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
     
     1. **Administrator account**: Specify the username and the password for the administrator account on the VM. 
     
@@ -73,7 +73,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
         > - Add atleast one network interface through the **Networking** tab to complete guest management setup.
 
-       :::image type="content" source="./media/manage-vm-resources/create-arc-vm-1.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
+       :::image type="content" source="./media/manage-vm-resources/create-arc-vm-1.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
 
 1. **(Optional)** Create new or add more disks to the VM by providing a name and size. You can also choose the disk type to be static or dynamic.
 
@@ -81,7 +81,7 @@ Follow these steps in the Azure portal to create an Arc-enabled VM on your Azure
 
     If you enabled guest management, you must add at least one network interface.
 
-   :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
+   :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
 
 
 1. **(Optional)** Add tags to the VM resource if necessary.
