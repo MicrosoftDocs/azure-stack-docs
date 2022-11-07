@@ -138,6 +138,6 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
    Remove-AksIotNode
    ```
 
-> [!NOTE]:
+> [!NOTE]
 > If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS-IoT network objects using `hnsdiag delete networks <ID>`.
 
