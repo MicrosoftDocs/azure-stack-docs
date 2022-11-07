@@ -1,35 +1,40 @@
 --- 
-title: Prepare Active Directory for Azure Stack HCI version 22H2 deployment (preview) 
-description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 before you deploy the solution.
+title: Prepare Active Directory for new Azure Stack HCI deployments (preview) 
+description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for Azure Stack HCI version 22H2 deployment (preview)
+# Prepare Active Directory for new Azure Stack HCI deployment (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-These articles describe how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI, version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
+This article describes how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Install the PowerShell module to prepare Active Directory. Run the following command:
+
     ```azurepowershell
     Install-module HCIAdObjectPreCreation -Repository PSGallery
     ```    
+
     You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
+
     ```azurepowershell
     Import-Module .\AsHciADArtifactsPreCreationTool.psm1
     ```
 - Obtain domain administrator access to the Active Directory domain server.
-
 
 ## Active Directory preparation module
 
@@ -50,9 +55,8 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
 
->[!NOTE]
+> [!NOTE]
 > In this release, only the Active Directory prepared via the provided module is supported.
-
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -79,7 +83,6 @@ To prepare and configure Active Directory, follow these steps:
 
     ```powershell
     New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
-
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
 
@@ -132,10 +135,8 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-tool/active-directory/active-directory-3.png":::
 
-
 > [!NOTE]
 > To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
-
 
 ## Next steps
 

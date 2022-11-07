@@ -1,16 +1,17 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 using a configuration file (preview) 
-description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
+title: Deploy Azure Stack HCI using an existing configuration file (preview) 
+description: Learn how to deploy Azure Stack HCI using an existing configuration file (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 11/07/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Deploy Azure Stack HCI version 22H2 using a configuration file (preview) 
+# Deploy Azure Stack HCI using an existing configuration file (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses a configuration file that you manually create beforehand using a text editor.
 
@@ -18,18 +19,16 @@ The deployment tool wizard uses your file and further provides an interactive, g
 
 You can deploy both single-node and multi-node clusters using this procedure.
 
-> [!IMPORTANT]
- > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
 Before you begin, make sure you have done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md).
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2](deployment-tool-install-os.md) on each server.
-
 
 ## Create the configuration file
 
@@ -163,13 +162,11 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in your cluster.
 
-
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
-
 
 1. Run the following command to install the deployment tool:
 
@@ -228,7 +225,6 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
     1. Select an **Azure region** from the dropdown or leave the field empty to use the default.import the existing configuration file you created by selecting **Browse** or dragging the file to the page.
 
-
 1. On step **1.3 Review deployment setting**, review the settings stored in the configuration file.
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-review.png" alt-text="Screenshot of the Deployment step 1.3 review settings page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-review.png":::
@@ -252,5 +248,5 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
 ## Next steps
 
-- [Validate deployment](deployment-tool-validate.md)
-- If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md)
+- [Validate deployment](deployment-tool-validate.md).
+- If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).

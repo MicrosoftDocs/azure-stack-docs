@@ -340,15 +340,15 @@
     href: manage/install-preview-version.md
   - name: Run post update steps
     href: manage/preview-post-installation.md
-  - name: View known issues in version 22H2
-    href: known-issues-22h2.md
+  - name: View known issues
+    href: hci-known-issues.md
   - name: Plan for version 22H2
     items:
     - name: Review security
       items: 
       - name: Use Windows Defender Application Control 
         href: concepts/security-windows-defender-application-control.md
-      - name: Review security baseline, drift control
+      - name: Review security baseline settings
         href: concepts/secure-baseline.md
       - name: Understand BitLocker encryption
         href: concepts/security-bitlocker.md
@@ -364,7 +364,7 @@
       href: deploy/deployment-tool-checklist.md
     - name: Prepare Active Directory
       href: deploy/deployment-tool-active-directory.md
-    - name: Install version 22H2 operating system
+    - name: Install the operating system
       href: deploy/deployment-tool-install-os.md
     - name: Deploy interactively
       href: deploy/deployment-tool-new-file.md

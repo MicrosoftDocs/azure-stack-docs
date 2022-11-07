@@ -1,18 +1,21 @@
 ---
-title: Validate deployment for Azure Stack HCI version 22H2 (preview)
-description: Learn how to validate deployment for Azure Stack HCI version 22H2 (preview)
+title: Validate deployment for Azure Stack HCI (preview)
+description: Learn how to validate deployment for Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Validate deployment for Azure Stack HCI version 22H2 (preview)
+# Validate Azure Stack HCI deployment (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-Once your deployment has successfully completed, you should verify and validate your deployment:
+Once your deployment has successfully completed, you should verify and validate your deployment.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Validate registration in Azure portal
 
@@ -31,6 +34,7 @@ The cluster registration completes before the deployment is complete. Follow the
     ```powershell
     Get-AzureStackHCI 
     ```
+
     Here is a sample output:
 
     ```powershell
@@ -62,7 +66,7 @@ The cluster registration completes before the deployment is complete. Follow the
 
     :::image type="content" source="media/deployment-tool/validate/validate-deployment.png" alt-text="Screenshot of Azure portal." lightbox="media/deployment-tool/validate/validate-deployment.png":::
 
-## Validate deployment is complete
+## Validate deployment status
 
 After the registration completes, more configuration is needed before the deployment is complete. Once the deployment is complete, remotely connect to the first server via PowerShell.
 
@@ -74,6 +78,7 @@ Follow these steps to verify that the deployment completed successfully:
     ```azurepowershell
     ([xml](gc C:\ecestore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84)) | Select-Xml -XPath "//Action/Steps/Step" | ForEach-Object { $_.Node } | Select-Object FullStepIndex, Status, Name, StartTimeUtc, EndTimeUtc, @{Name="Durration";Expression={new-timespan -Start $_.StartTimeUtc -End $_.EndTimeUtc } } | ft -AutoSize
     ```
+
     Here's a sample output of the above command:
 
     ```output

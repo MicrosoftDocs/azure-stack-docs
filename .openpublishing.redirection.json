@@ -818,7 +818,7 @@
     },
     { 
       "source_path": "azure-stack/hci/known-issues.md", 
-      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_url": "/azure-stack/hci/hci-known-issues", 
       "redirect_document_id": false 
     },
     { 
@@ -944,6 +944,11 @@
     {
       "source_path": "azure-stack/hci/concepts/sdn-manage-certs.md",
       "redirect_url": "/azure-stack/hci/manage/sdn-manage-certs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/known-issues-22h2.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues",
       "redirect_document_id": false
     },
     {

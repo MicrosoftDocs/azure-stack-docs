@@ -11,7 +11,7 @@ ms.date: 10/20/2022
 
 # Collect diagnostic logs (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution.
 
@@ -140,4 +140,4 @@ To get a history of log collections for the last 90 days, enter:
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues-22h2.md)
+- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues.md)

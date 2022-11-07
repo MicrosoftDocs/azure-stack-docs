@@ -1,29 +1,29 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview) 
-description: Learn how to deploy Azure Stack HCI version 22H2 using PowerShell cmdlets (preview).
+title: Deploy Azure Stack HCI using PowerShell (preview) 
+description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/27/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Deploy Azure Stack HCI version 22H2 using PowerShell (preview) 
+# Deploy Azure Stack HCI using PowerShell (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-In this article, learn how to deploy Azure Stack HCI, version 22H2 using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
+In this article, learn how to deploy Azure Stack HCI using PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
 You will use a configuration file you have created before you begin. For more information, see the [sample configuration file](deployment-tool-existing-file.md).
 
-> [!IMPORTANT]
- > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
 Before you begin, make sure you have done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md).
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
@@ -57,10 +57,9 @@ The following parameters are required to set up and run the deployment tool prop
 |`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
 
-
 ## Deploy a cluster
 
-Use this procedure to deploy a multiple-node cluster or a single-server using PowerShell.
+Follow these steps to deploy a multiple-node cluster or a single-server using PowerShell:
 
 1. Sign in to the first (staging) server using local administrative credentials.
 
@@ -93,7 +92,7 @@ Use this procedure to deploy a multiple-node cluster or a single-server using Po
     .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred
     ```
 
-
 ## Next steps
 
-[Validate deployment](deployment-tool-validate.md)
+- [Validate deployment](deployment-tool-validate.md).
+- If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).

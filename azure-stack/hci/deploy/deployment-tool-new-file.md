@@ -1,23 +1,23 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 interactively via the supplemental package (preview)
-description: Learn how to deploy Azure Stack HCI version 22H2 interactively using a new configuration file via the supplemental package (preview).
+title: Deploy Azure Stack HCI interactively via a new configuration file (preview)
+description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
 ms.date: 10/25/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
 ---
 
-# Deploy Azure Stack HCI version 22H2 interactively (preview) 
+# Deploy Azure Stack HCI interactively (preview)
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
 You can deploy both single server and multi-node clusters using this procedure.
 
-> [!IMPORTANT]
- > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -28,12 +28,10 @@ Before you begin, make sure you've done the following:
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
 
-
 ## Set up the deployment tool
 
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
-
 
 1. In the deployment UX, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -50,7 +48,6 @@ Before you begin, make sure you've done the following:
     ```
 
     This step takes several minutes to complete.
-
 
 ## Run the deployment tool
 
@@ -93,7 +90,6 @@ If you want to use an existing configuration file you have previously created, s
 
     1. Select an **Azure region** from the dropdown or leave the field empty to use the default.
 
-
 1. On step **1.2 Configure privacy**, set the privacy settings as they apply to your organization.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-privacy.png" alt-text="Screenshot of the Deployment step 1.1 Configure privacy page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-privacy.png":::
@@ -127,7 +123,6 @@ If you want to use an existing configuration file you have previously created, s
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
-
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
@@ -164,7 +159,6 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
-
 1. On step **3.1 Create cluster**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
@@ -190,12 +184,9 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage.png":::
 
-    
-
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/new-file/deployment-step-5-add-services.png":::
-
 
 1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
 
@@ -208,7 +199,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time. 
+1. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
 
