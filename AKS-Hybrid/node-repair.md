@@ -3,7 +3,7 @@ title: Node auto-repair in AKS hybrid
 description: Learn about automatic node repair of Windows and Linux nodes in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/19/2022
+ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
@@ -16,7 +16,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-To help minimize service disruptions for clusters, AKS hybrid continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. In this topic, you'll learn how AKS hybrid checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. You'll also learn how to manually check node health.
+To help minimize service disruptions for clusters, AKS hybrid continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. In this article, you'll learn how AKS hybrid checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. You'll also learn how to manually check node health.
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 

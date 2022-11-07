@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 10/20/2022
 ms.reviewer: mikek
-ms.date: 11/02/2022
+ms.date: 11/07/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
@@ -88,16 +88,15 @@ Prerequisites:
 We'll make use of the [Kubernetes Horizontal Pod Autoscaler Walkthrough example](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) to show how the Horizontal Pod Autoscaler works.
 
 For the Horizontal Pod Autoscaler to work, you must deploy the Metrics Server component in your target cluster.
-For information, see [Kubernetes Metrics Server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).<!--They're going to have a hard time finding the right document in the repo.-->
 
-To deploy the metrics server to a target cluster called *mycluster*, do the following steps:
+To deploy the metrics server to a target cluster called `mycluster`, run the following commands:
 
 ```powershell
 Get-AksHciCredential -name mycluster
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
-After the Kubernetes Metrics Server is deployed, next, deploy an application to the node pool, which you will use to scale. We'll use a test application from the Kubernetes community website for this.
+After the Kubernetes Metrics Server is deployed, next, deploy an application to the node pool, which you will use to scale. We'll use a test application from the Kubernetes community website for this example.
 
 ```powershell  
 kubectl apply -f https://k8s.io/examples/application/php-apache.yaml
@@ -107,7 +106,7 @@ service/php-apache created
 
 This creates a deployment of an Apache web server-based PHP application that will return an "OK" message to a calling client.
 
-Next, we'll configure the Horizontal Pod Autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50 percent, and scale from 1 to 50 pods.
+Next, configure the Horizontal Pod Autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50 percent, and scale from 1 to 50 pods.
 
 ```powershell
 kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
@@ -123,7 +122,7 @@ NAME         REFERENCE                     TARGET    MINPODS   MAXPODS   REPLICA
 php-apache   Deployment/php-apache/scale   0% / 50%  1         10        1          18s
 ```
 
-Last, but not least, let's increase the load on the web server to see it scale out. Open a new PowerShell window, and run the following command:
+Finally, increase the load on the web server to see it scale out. Open a new PowerShell window, and run the following command:
 
 ```powershell
 kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
@@ -138,14 +137,14 @@ NAME         REFERENCE                     TARGET      MINPODS   MAXPODS   REPLI
 php-apache   Deployment/php-apache/scale   305% / 50%  1         10        1          3m
 ```
 
-In this example, the number of pods changes from 1 to 7, as shown below:<!--Is this an extension of the data returned from the original command?In that case, leave a single code block, and explain the change in the command introduction.-->
+In this example, the number of pods changes from 1 to 7, as shown below:
 
 ```powershell
 NAME         REFERENCE                     TARGET      MINPODS   MAXPODS   REPLICAS   AGE
 php-apache   Deployment/php-apache/scale   305% / 50%  1         10        7          3m
 ```
 
-If this isn't enough to trigger the node autoscaler because all the pods fit on one node, open more PowerShell windows and run more load generator commands. Make sure to change the name of the pod you're creating each time you run the command. For example, use *load-generator-2* instead of *load-generator*, as shown below.
+If this isn't enough to trigger the node autoscaler because all the pods fit on one node, open more PowerShell windows and run more load generator commands. Make sure to change the name of the pod you're creating each time you run the command. For example, use `load-generator-2` instead of `load-generator`, as shown in the following command.
 
 ```powershell
 kubectl run -i --tty load-generator-2 --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
@@ -162,9 +161,9 @@ moc-lorl4323d02   Ready    <none>                   9m   v1.22.4
 moc-lorl43bc3c3   Ready    <none>                   2m   v1.22.4
 ```
 
-To watch a scale-down, press CTRL-C to end the load generator pods and close the PowerShell windows associated with them. After about 30 minutes, you should see the number of pods go down. About 30 minutes later, the nodes will be deprovisioned as well.
+To watch a scale-down, press CTRL-C to end the load generator pods and close the PowerShell windows associated with them. After about 30 minutes, you should see the number of pods go down. About 30 minutes later, the nodes will be deprovisioned.
 
-To read more about the Kubernetes Horizontal Pod Autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+For more information about the Kubernetes Horizontal Pod Autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 ### Node affinity rules
 
@@ -211,7 +210,7 @@ spec:
         image: redis:3.2-alpine
 ```
 
-Open a PowerShell window, and load the credentials for your target cluster. In the example, the cluster is named 'mycluster'.
+Open a PowerShell window, and load the credentials for your target cluster. In the example, the cluster is named `mycluster`.
 
 ```powershell
 Get-AksHciCredential -name mycluster

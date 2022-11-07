@@ -1,12 +1,12 @@
 ---
 title: Use the autoscaler profile to configure cluster autoscaling in AKS hybrid
-description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server
+description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Azure Stack HCI.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mikek
-ms.date: 11/02/2022
+ms.date: 11/07/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: configure cluster autoscaling
@@ -60,7 +60,7 @@ The default profile consists of the default values below. You can update the fol
 
 You can change settings in the cluster autoscaler profile using the cmdlet [Set-AksHciAutoScalerConfig](work-with-horizontal-autoscaler.md#change-an-existing-akshciautoscalerconfig-profile-object).
 
-The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it doesn't enforce them after updating the min or max counts.> For example, setting a min count of five when the current node count is three won't immediately scale the pool up to five. 
+The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it doesn't enforce them after updating the min or max counts. For example, setting a minimum count of 5 when the current node count is 3 won't immediately scale the pool up to 5.
 
 If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require two new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. 
 
@@ -92,5 +92,5 @@ kvactl.exe autoscalerprofile create --profileconfig .\def-new.yaml --kubeconfig 
 
 ## Next steps
 
-- [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md).
-- [Learn about cluster autoscaling](concepts-cluster-autoscaling.md).
+- [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md)
+- [Learn about cluster autoscaling](concepts-cluster-autoscaling.md)

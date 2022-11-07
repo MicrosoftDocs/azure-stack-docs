@@ -3,7 +3,7 @@ title: Restart, remove, or reinstall Azure Kubernetes Service
 description: Learn how to restart, remove, or reinstall Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: article
-ms.date: 10/21/2022
+ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -21,7 +21,6 @@ After deploying Azure Kubernetes Service in AKS hybrid, you can restart, remove,
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
-<!--Do you think that, after establishing that the product is "AKS hybrid," we might forgo "hybrid" throughout the install instructions and just refer to "AKS"?-->
 
 ## Restart AKS hybrid
 
@@ -37,7 +36,7 @@ Restart-AksHci
 
 To remove Azure Kubernetes Service, run the following [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) again when you reinstall. 
 
-If your clusters have Arc enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
+If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
 
 ```powershell
 Uninstall-AksHci

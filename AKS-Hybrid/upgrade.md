@@ -2,7 +2,7 @@
 title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS hybrid using PowerShell
 description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS hybrid using PowerShell
 ms.topic: article
-ms.date: 10/20/2022
+ms.date: 11/07/2022
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -15,7 +15,8 @@ ms.reviewer: jeguan
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Two types of updates are available for an Azure Kubernetes Service (AKS) workload cluster in AKS hybrid: 
+Two types of updates are available for an Azure Kubernetes Service (AKS) workload cluster in AKS hybrid:
+
 - Update the Kubernetes version of an AKS cluster.
 - Update the operating system version of an AKS cluster without updating the Kubernetes version.
 
@@ -26,10 +27,11 @@ Two types of updates are available for an Azure Kubernetes Service (AKS) workloa
 
 We recommend updating an AKS workload cluster at least once every 60 days. New Kubernetes version updates are available every 30 days. To avoid outages in workload availability, rolling updates are performed. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
-> [!Important]
+> [!IMPORTANT]
 > Updating the Azure Kubernetes Service on the AKS host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information on updating the AKS host, see [Update the AKS host on Azure Stack HCI](./update-akshci-host-powershell.md). 
 
 ## Get available Kubernetes versions
+
 Use the `Get-AksHciKubernetesVersion` command to check for supported Kubernetes versions.
 
 ```powershell
@@ -88,5 +90,5 @@ Update-AksHciCluster -name myCluster -operatingSystem
 ## Next steps
 
 In this article, you learned how to update AKS workload clusters in AKS hybrid. Next, you can:
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
