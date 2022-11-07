@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 09/06/2022
 ---
 
-# Security baseline setting for Azure Stack HCI (preview)
+# Security baseline settings for Azure Stack HCI (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
 
