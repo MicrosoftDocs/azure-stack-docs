@@ -1,9 +1,9 @@
 ---
 title: Back up and restore target clusters using Velero
-description: Learn how to back up and restore workload clusters using Velero in AKS hybrid.
+description: Learn how to back up and restore workload clusters to Azure Blob storage or MinIO using Velero in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/03/2022
+ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
