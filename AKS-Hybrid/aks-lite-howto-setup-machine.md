@@ -16,15 +16,15 @@ In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. 
 
 - Hardware requirements:
 
-> [!IMPORTANT]
-> The minimum setup required to run the latest version of AKS is a single machine with the following specs:
+  > [!IMPORTANT]
+  > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
 
-| Specs | Requirement |
-| ---------- | --------- |
-| Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
-| CPU | 2 logical processors, clock speed at least 1.8 GHz |
-| Disk space | At least 14 GB free |
-| Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
+  | Specs | Requirement |
+  | ---------- | --------- |
+  | Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
+  | CPU | 2 logical processors, clock speed at least 1.8 GHz |
+  | Disk space | At least 14 GB free |
+  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
 
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
@@ -46,8 +46,8 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
    ![uninstall](media/aks-lite/aks-lite-uninstall.png)
 
-> [!NOTE]
-> In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
+  > [!NOTE]
+  > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
 
 5. Double-click the **AksIot-k8s.msi** or **AksIot-k3s.msi** file to install the latest version.
 
