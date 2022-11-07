@@ -3,7 +3,7 @@ title: New-AksHciCluster for AKS on Azure Stack HCI and Windows Server
 author: sethmanheim
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
-ms.date: 03/16/2022
+ms.date: 10/27/2022
 ms.author: sethm
 ms.lastreviewed: 
 ms.reviewer: mikek
@@ -14,6 +14,7 @@ ms.reviewer: mikek
 # New-AksHciCluster
 
 ## Synopsis
+
 Create a new managed Kubernetes cluster.
 
 ## Syntax
@@ -128,7 +129,7 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSi
 ### New AKS-HCI cluster with a Windows node pool
 
 ```powershell
-New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType Windows -osSku Windows2022
 ```
 
 ### New AKS-HCI cluster with a Linux node pool and taints
@@ -172,6 +173,7 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAd
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
 ```
+
 ### New AKS-HCI cluster with autoscaler enabled and the default autoscaler configuration profile
 
 ```powershell
@@ -187,6 +189,7 @@ New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName
 ## Parameters
 
 ### -name
+
 The name of your Kubernetes cluster. Do not include hyphens in cluster names, or the cluster creation may fail.
 
 ```yaml

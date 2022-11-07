@@ -3,7 +3,7 @@ title: Deploy AKS infrastructure using PowerShell
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 10/27/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -328,7 +328,7 @@ Get-AksHciNodePool -clusterName akshciclus001
 1. Scale your Kubernetes cluster to add a Windows Node Pool and worker node. Note, this triggers the download and extraction of a Windows container host image, which takes a few minutes.
 
    ```powershell
-   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType windows
+   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType Windows -osSku Windows2022
    ```
 
 2. Next, scale your Kubernetes cluster to have 2 Linux worker nodes:

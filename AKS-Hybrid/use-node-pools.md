@@ -3,7 +3,7 @@ title: Use multiple node pools in  Azure Kubernetes Service on Azure Stack HCI a
 description: Learn how to create and manage multiple node pools for a cluster in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 services: 
 ms.topic: article
-ms.date: 04/13/2022
+ms.date: 10/27/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: sethmanheim
 
 # Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
 
-In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. 
+In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications.
 
 > [!NOTE]
 > This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for create/update/delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create/scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 
@@ -47,7 +47,7 @@ New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osTy
 The cluster named *mycluster* created in the previous step has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command. the following example creates Windows node pool named *windowsnodepool* with one node. Make sure that the name of the node pool is not the same name as another existing node pool.
 
 ```powershell
-New-AksHciNodePool -clusterName mycluster -name windowsnodepool -count 1 -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -count 1 -osType Windows -osSku Windows2022
 ```
 
 ## Get configuration information of a node pool
@@ -134,7 +134,7 @@ Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 
 ## Delete a node pool
 
-If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The follow example removes the node pool named *windowsnodepool* in the cluster named *mycluster*.
+If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The following example removes the node pool named *windowsnodepool* in the cluster named *mycluster*.
 
 ```powershell
 Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
@@ -201,7 +201,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Then, schedule the pod using the follow command.
+Then, schedule the pod using the following command.
 
 ```powershell
 kubectl apply -f nginx-toleration.yaml
