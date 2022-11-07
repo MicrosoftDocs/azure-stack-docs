@@ -4,7 +4,7 @@ description: High-level concepts about AKS on Windows
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 10/05/2022
+ms.date: 11/07/2022
 ms.custom: template-concept
 ---
 
