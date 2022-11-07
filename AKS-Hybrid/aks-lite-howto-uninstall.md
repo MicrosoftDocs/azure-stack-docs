@@ -53,7 +53,7 @@ If you encounter any issues uninstalling AKS-IoT, try [downloading this troubles
 
 ## Uninstall Azure CLI
 
-See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest&tabs=azure-powershell#uninstall).
+See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows&tabs=azure-powershell#uninstall).
 
 ## Next steps
 
