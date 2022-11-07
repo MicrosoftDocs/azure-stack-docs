@@ -63,7 +63,7 @@ kubectl get pods --all-namespaces -o wide
 
 ![all pods running](media/aks-lite/all-pods-running.png)
 
-## Next steps
+## Deploy application
 
 Deploy your application. Alternatively, deploy [sample applications](/docs/deploying-workloads.md) to test your deployment. Once you've deployed your application, [connect your cluster to Azure Arc](/docs/connect-to-arc.md).
 
