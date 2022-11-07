@@ -3,7 +3,7 @@ title: View logs to collect and review data on AKS hybrid
 description: Learn how to view logs to collect and review data for my Azure Kubernetes Services (AKS) deployment in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/03/2022
+ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -38,7 +38,7 @@ Use the following parameters with `Get-AksHciLogs` to view logs and collect data
 - `Get-AksHciLogs -DownloadSdkLogs`: Get the download logs that are generated from downloading the binaries and images that AKS hybrid uses.
 - `Get-AksHciLogs -BillingRecords`: Get billing records. The output is generally a text document located in the *\akshcilogs* folder of your working directory. It's similar to the following output:
 
-  ![Image of a billing log created by running the Get-AksHciLogs command with the -BillingRecords parameter.](.\media\logs\billing-records.png)
+  ![Screenshot showing a billing log created by running the Get-AksHciLogs command with the -BillingRecords parameter.](.\media\logs\billing-records.png)
 
 ## Microsoft On-premises Cloud
 
@@ -51,13 +51,13 @@ Microsoft On-premises Cloud includes the following components:
 
 `Get-MocConfig` is a useful debugging tool that provides information such as the cloud configuration, node configuration, certification location of the node and the Microsoft On-premises Cloud. Output from running `Get-MocConfig` is similar to the following example output.
 
-![Image of example output from running the Get-Moc-Config command for an Azure Stack HCI SDDC.](.\media\logs\get-moc-config.png)
+![Screenshot showing example output from running the Get-Moc-Config command for an Azure Stack HCI SDDC.](.\media\logs\get-moc-config.png)
 
 ## Kubernetes Virtual Appliance
 
 Kubernetes Virtual Appliance (KVA) is a virtual machine image file that consists of a pre-configured operating system environment and a single application. The purpose of the KVA is to simplify delivery and operation of an application. Consequently, only necessary operating system components are included. The **Get-kvaConfig** command provides some important details that could help in debugging issues with misconfiguration, as shown in the following example output.
 
-![Image of example output from the Get-Kva-Config command, which retrieves a Kubernetes Virtual Appliance configuration.](.\media\logs\get-kva-config.png)
+![Screenshot showing example output from the Get-Kva-Config command, which retrieves a Kubernetes Virtual Appliance configuration.](.\media\logs\get-kva-config.png)
 
 ## Kubectl commands
 

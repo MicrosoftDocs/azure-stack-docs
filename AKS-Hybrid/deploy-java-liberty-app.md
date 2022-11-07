@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 11/03/2022
+ms.date: 11/07/2022
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
@@ -222,7 +222,7 @@ Once the **EXTERNAL-IP** address changes from **pending** to an actual public IP
 
 Open a web browser to the external IP address of your service (`192.168.0.152` for the above example) to see the application home page. You should see the pod name of your application replicas displayed at the top-left of the page. Wait for a few minutes, and refresh the page to see a different pod name displayed as a result of load balancing provided by the AKS cluster.
 
-![Screehshot of a Java liberty application successfully deployed on AKS.](.\media\deploy-java-app/deploy-succeeded.png)
+![Screenshot of a Java liberty application successfully deployed on AKS.](.\media\deploy-java-app/deploy-succeeded.png)
 
 >[!NOTE]
 > Currently, the application is not using HTTPS. You should [enable TLS with your own certificates](/azure/aks/ingress-own-tls).
