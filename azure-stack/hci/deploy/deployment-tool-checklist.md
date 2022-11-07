@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Get the deployment checklist for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 Use the following checklist to gather the required information ahead of the actual deployment of your Azure Stack HCI cluster.
 

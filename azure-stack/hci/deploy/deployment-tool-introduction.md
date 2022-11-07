@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI deployment overview (preview)
-description: Learn about the deployment methods for Azure Stack HCI using the supplemental package (preview).
+description: Learn about the deployment methods for Azure Stack HCI (preview).
 author: dansisson
 ms.topic: overview
 ms.date: 10/27/2022
@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Azure Stack HCI deployment overview (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article is the first in the series of deployment articles that describe how to deploy Azure Stack HCI using a new deployment tool and methods.
 

@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Deploy Azure Stack HCI using PowerShell (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 In this article, learn how to deploy Azure Stack HCI using PowerShell. Before you begin the deployment, make sure to first install the operating system.
 

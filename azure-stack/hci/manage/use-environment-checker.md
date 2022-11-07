@@ -11,7 +11,7 @@ ms.date: 08/19/2022
 
 # Assess your environment for deployment readiness (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 

@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Validate Azure Stack HCI deployment (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 Once your deployment has successfully completed, you should verify and validate your deployment.
 

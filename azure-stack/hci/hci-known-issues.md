@@ -11,9 +11,9 @@ ms.subservice: azure-stack-hci
 
 # View known issues in Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI supplemental package.
+This article identifies the critical known issues and their workarounds in Azure Stack HCI.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 

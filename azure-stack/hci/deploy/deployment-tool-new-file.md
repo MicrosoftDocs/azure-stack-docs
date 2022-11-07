@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Deploy Azure Stack HCI interactively (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 

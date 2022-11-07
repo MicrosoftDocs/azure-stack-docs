@@ -11,9 +11,9 @@ ms.date: 09/06/2022
 
 # Security baseline settings for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes the security baseline settings associated with your Azure Stack HCI cluster. These security settings are available only for new deployments using the supplemental package. Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
+This article describes the security baseline settings associated with your Azure Stack HCI cluster. Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 

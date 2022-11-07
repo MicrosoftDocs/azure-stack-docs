@@ -9,4 +9,4 @@ ms.reviewer: alkohli
 ms.lastreviewed: 11/02/2022
 ---
 
-> Applies to: Azure Stack HCI, version 22H2 and later
+> Applies to: Azure Stack HCI, Supplemental Package

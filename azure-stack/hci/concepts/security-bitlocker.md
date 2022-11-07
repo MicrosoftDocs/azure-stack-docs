@@ -11,9 +11,9 @@ ms.date: 09/06/2022
 
 # BitLocker encryption for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes the BitLocker encryption enabled on Azure Stack HCI and the procedure to retrieve your BitLocker keys if the system needs to be restored. BitLocker encryption is available only for new deployments using the supplemental package.
+This article describes the BitLocker encryption enabled on Azure Stack HCI and the procedure to retrieve your BitLocker keys if the system needs to be restored.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 

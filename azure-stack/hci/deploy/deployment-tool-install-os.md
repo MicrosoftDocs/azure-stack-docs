@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Install the Azure Stack HCI, version 22H2 operating system (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 The Azure Stack HCI, version 22H2 operating system (OS) is installed locally on each server in your cluster using a USB drive or other media that can boot from a VHDX file.
 

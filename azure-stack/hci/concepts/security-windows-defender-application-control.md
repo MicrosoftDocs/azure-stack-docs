@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI.
 

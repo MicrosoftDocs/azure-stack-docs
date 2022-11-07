@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Prepare Active Directory for new Azure Stack HCI deployment (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 

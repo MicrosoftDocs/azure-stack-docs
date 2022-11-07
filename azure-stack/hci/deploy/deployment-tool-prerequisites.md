@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Review deployment prerequisites for Azure Stack HCI via the supplemental package (preview)
+# Review deployment prerequisites for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-and-later.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI using the supplemental package.
+This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
