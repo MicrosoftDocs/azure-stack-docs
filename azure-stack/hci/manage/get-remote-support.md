@@ -9,7 +9,7 @@ ms.date: 07/22/2022
 
 # Get remote support for Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 > [!IMPORTANT]
 > Remote support for Azure Stack HCI is currently in preview.
@@ -38,12 +38,17 @@ Remote support gives you the ability to:
 
 Before you begin using remote support, you must:
 
+- [Submit a support request](#submit-a-support-request)
 - [Create a KDS root key](#create-a-kds-root-key)
 - [Install the Az.StackHCI PowerShell module](#install-powershell-module)
 - [Configure proxy settings](#configure-proxy-settings)
 - [Install JEA configurations](#install-jea-configurations-before-azure-registration)
 - [Install Remote Support extension](#grant-remote-support-access)
 - [Grant remote support access](#grant-remote-support-access)
+
+### Submit a support request
+
+Microsoft support can access your device only after a support request is submitted. For information about how to create and manage support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Create a KDS root key
 

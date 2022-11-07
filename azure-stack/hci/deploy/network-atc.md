@@ -70,7 +70,17 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
-- When running the 22H2 Azure Stack HCI OS, each node will come with Network ATC pre-installed, along with all it's required modules. So you do not need to run an installation command. 
+- Each node must have the following Azure Stack HCI features installed:
+
+  - Network ATC
+  - Data Center Bridging (DCB)
+  - Failover Clustering
+  - Hyper-V
+   Here's an example of installing the required features via PowerShell:
+   
+   ```powershell
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   ```
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 

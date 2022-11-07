@@ -22,6 +22,12 @@
     href: supported-kubernetes-versions.md
   - name: Quotas and resource limits
     href: concepts-support.md
+  - name: Architecture
+    items:
+    - name: Baseline architecture for AKS on Azure Stack HCI
+      href: /azure/architecture/example-scenario/hybrid/aks-baseline
+    - name: Network architecture for AKS on Azure Stack HCI
+      href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
 - name: Quickstarts
@@ -269,7 +275,7 @@
          href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
-- name: AKS Lite hybrid option (preview)
+- name: AKS lite hybrid option (preview)
   items:
   - name: Overview
     href: aks-lite-overview.md
