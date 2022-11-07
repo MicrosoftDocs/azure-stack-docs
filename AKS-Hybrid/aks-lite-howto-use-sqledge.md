@@ -52,7 +52,7 @@ We must also allow this to run as the root user. In order to do so, SSH into the
 kubectl get pods -n sqledge
 ```
 
-Then copy the full pod name which looks something like: **sqledge-deployment-<pod id>**. Then run:
+Then copy the full pod name which looks something like: **sqledge-deployment-pod id**. Then run:
 
 ```powershell
 kubectl exec -it <sqledge-deployment-pod> -n sqledge --bash
