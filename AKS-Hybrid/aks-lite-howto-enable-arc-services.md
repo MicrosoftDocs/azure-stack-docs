@@ -273,7 +273,7 @@ Find the built-in policy definitions for managing your cluster using the Azure p
 
 10. Select **Review + create**.
 
-![Azure policy management](media/aks-lite/azure_policy_management.png)
+   ![Azure policy management](media/aks-lite/azure_policy_management.png)
 
 ### Policy evaluation
 
