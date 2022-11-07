@@ -10,6 +10,8 @@ ms.custom: template-how-to
 
 # Uninstall an AKS cluster on Windows
 
+Follow the steps in this article to uninstall AKS lite.
+
 ## Disconnect your cluster from Arc
 
 If you have connected your cluster to Arc, it is recommended that you disconnect it before uninstalling your cluster.
