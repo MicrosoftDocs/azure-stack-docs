@@ -10,6 +10,8 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
+This article describes how to scale out your AKS lite application to multiple nodes.
+
 ## Scaling workload nodes
 
 > [!IMPORTANT]
