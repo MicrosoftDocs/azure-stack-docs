@@ -128,7 +128,7 @@ Now that OpenFaaS is operational, create a function using the OpenFaaS portal.
 
 Click **Deploy New Function**, and search for **Figlet**. Select the Figlet function, and click **Deploy**.
 
-![Screenshot shows the Deploy A New Function dialog box in Open F A A S, with "figlet" typed in the search line.](media/container-service-serverless/figlet.png)
+![Screenshot shows the Deploy A New Function dialog box in OpenFAAS, with "figlet" typed in the search line.](media/container-service-serverless/figlet.png)
 
 Use `curl` to invoke the function. Replace the IP address in the following example with the address of your OpenFaaS gateway.
 
