@@ -1,24 +1,24 @@
 ---
 title: Deploy an application
-description: This article describes how you can deploy a containerized application to a K8S cluster #Required; article description that is displayed in search results. 
+description: This article describes how to deploy a containerized application to a Kubernetes cluster. 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/05/2022
+ms.date: 11/05/2022
 ms.custom: template-how-to
 ---
 
 # Deploy an application
 
-This article walks through the steps needed to deploy a containerized application on your Kubernetes cluster.
+This article describes how to deploy a containerized application on your Kubernetes cluster.
 
 ## Prerequisites
 
 - Set up your [single machine](aks-lite-howto-single-node-deployment.md) or [multi-machine](aks-lite-howto-multi-node-deployment.md) Kubernetes cluster.
 - Package your application into a container image, and then upload the image to the Azure Container Registry. Review these steps to [create container image of your application](tutorial-kubernetes-prepare-application.md).
-- Since AKS on Windows enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular OS.
+- Since AKS on Windows enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS).
 
-If your cluster is single-OS, then this step could be omitted; but for best practice, label each deployment file with node selectors.
+If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors.
 
 ```yaml
 nodeSelector:
@@ -58,9 +58,7 @@ To deploy your application, use the [kubectl apply][kubectl-apply] command. This
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Verify that sample pods are running
-
-Wait a few minutes for the pods to be in the `running` state.
+Wait a few minutes for the pods to be in the **running** state.
 
 ```bash
 kubectl get pods -o wide
@@ -76,20 +74,20 @@ To monitor progress, use the [kubectl get service][kubectl-get] command with the
 kubectl get service azure-vote-front --watch
 ```
 
-Initially the *EXTERNAL-IP* for the *azure-vote-front* service is shown as *pending*:
+Initially, the **EXTERNAL-IP** for the **azure-vote-front** service is shown as **pending**:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-When the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
+When the **EXTERNAL-IP** address changes from **pending** to an actual public IP address, use **CTRL-C** to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 > [!IMPORTANT]
-> If you deployed our Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksIotLinuxNodeAddr`), then append the external port (ex. 192.168.1.12:31458)
+> If you deployed your Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksIotLinuxNodeAddr`), then append the external port (for example, **192.168.1.12:31458**).
 
 To see the application in action, open a web browser to the external IP address of your service:
 
