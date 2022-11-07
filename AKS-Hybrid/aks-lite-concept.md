@@ -10,6 +10,8 @@ ms.custom: template-concept
 
 # AKS on Windows key concepts
 
+This article discussed some important concepts in AKS lite.
+
 ## AKS on Windows workload types
 
 When deploying AKS-IoT nodes you should specify the `-WorkloadType` parameter. This parameter indicates the types of workloads can run on this machine, and will tell AKS-IoT to create the corresponding VM. The possible values are “Linux”, “Windows”, or “LinuxAndWindows”. In this release, "Linux" is the only supported workload type.
