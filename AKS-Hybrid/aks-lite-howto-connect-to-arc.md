@@ -4,7 +4,7 @@ description: Connect your AKS on Windows clusters to Arc
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 110705/2022
+ms.date: 11/07/2022
 ms.custom: template-how-to
 ---
 
