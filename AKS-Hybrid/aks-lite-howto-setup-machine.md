@@ -49,7 +49,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 > [!NOTE]
 > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
 
-5. Double-click the **AksIot-<k8s or k3s>.msi** file to install the latest version.
+5. Double-click the **AksIot-k8s.msi** or **AksIot-k3s.msi** file to install the latest version.
 
 6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you will find the **LaunchPrompt.cmd** script. Run this script to make sure you have downloaded the proper modules for AKS-IoT.
 
