@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2022
+ms.date: 11/07/2022
 ---
 
 # Review two-node storage reference pattern IP requirements for Azure Stack HCI
@@ -15,6 +15,15 @@ ms.date: 11/03/2022
 [!INCLUDE [includes](includes/hci-patterns-versions.md)]
 
 In this article, learn about the IP requirements for deploying a two-node network reference pattern in your environment.
+
+## Deployments without microsegmentation and QoS enabled
+
+|Network|IP component|Network ATC intent|Network routing|Subnet properties|Required IPs|
+|--|--|--|--|--|--|
+|Storage 1|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|2|
+|Storage 2|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|2|
+|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for OEM VM (optional)|Management|Connected (outbound internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|2 required<br>1 optional|
+|**Total**|||||6 required,<br>1 optional for OEM VM.|
 
 ## Deployments with microsegmentation and QoS enabled
 
@@ -24,15 +33,6 @@ In this article, learn about the IP requirements for deploying a two-node networ
 |Storage 2|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|2|
 |Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)|Management|Connected (outbound internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|5 required<br>1 optional|
 |**Total**|||||9 minimum.<br>10 maximum.|
-
-## Deployments without microsegmentation and QoS enabled
-
-|Network|IP component|Network ATC intent|Network routing|Subnet properties|Required IPs|
-|--|--|--|--|--|--|
-|Storage 1|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|2|
-|Storage 2|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|2|
-|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)|Management|Connected (outbound internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|4 required<br>1 optional|
-|**Total**|||||8 minimum<br>9 maximum|
 
 ## Deployments with SDN optional services
 

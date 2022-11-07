@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 11/07/2022
 ---
 
 ### OOB network
@@ -60,17 +60,11 @@ Microsegmentation involves creating granular network policies between applicatio
 
 Default network access policies and microsegmentation are realized as five-tuple stateful (source address prefix, source port, destination address prefix, destination port, and protocol) firewall rules on Azure Stack HCI clusters. Firewall rules are also known as Network Security Groups (NSGs). These policies are enforced at the vSwitch port of each VM. The policies are pushed through the management layer, and the SDN Network Controller distributes them to all applicable hosts. These policies are available for VMs on traditional VLAN networks and on SDN overlay networks.
 
-> [!NOTE]
-> These capabilities are enabled by default when deploying Azure Stack HCI and Network Controller VMs.
-
 For more information, see [What is Datacenter Firewall?](/azure-stack/hci/concepts/datacenter-firewall-overview).
  
 ### QoS for VM network adapters
 
 You can configure Quality of Service (QoS) for a VM network adapter to limit bandwidth on a virtual interface to prevent a high-traffic VM from contending with other VM network traffic. You can also configure QoS to reserve a specific amount of bandwidth for a VM to ensure that the VM can send traffic regardless of other traffic on the network. This can be applied to VMs attached to traditional VLAN networks as well as VMs attached to SDN overlay networks.
-
-> [!NOTE]
-> This network isolation option is enabled by default when deploying Azure Stack HCI and Network Controller VMs.
 
 For more information, see [Configure QoS for a VM network adapter](/windows-server/networking/sdn/manage/configure-qos-for-tenant-vm-network-adapter).
 

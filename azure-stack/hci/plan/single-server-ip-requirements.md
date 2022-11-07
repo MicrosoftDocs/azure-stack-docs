@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2022
+ms.date: 11/07/2022
 ---
 
 # Review single-server storage reference pattern IP requirements for Azure Stack HCI
@@ -24,8 +24,8 @@ The following table lists network attributes for deployments without microsegmen
 |--|--|--|--|--|--|
 |Storage 1|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|1 optional if connected to switch.|
 |Storage 2|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|1 optional if connected to switch.|
-|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)|Management|Outbound connected (internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|3 required,<br>1 optional|
-|**Total**|||||3 required.<br>2 optional for storage,<br>1 optional for OEM VM.|
+|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for OEM VM (optional)|Management|Outbound connected (internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|2 required,<br>1 optional.|
+|**Total**|||||2 required.<br>2 optional for storage,<br>1 optional for OEM VM.|
 
 ## (Optional) Deployments with microsegmentation and QoS enabled
 
