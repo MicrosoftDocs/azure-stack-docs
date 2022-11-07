@@ -3,7 +3,7 @@ title: Use OpenFaaS with AKS hybrid
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS hybrid.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/01/2022
+ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -11,13 +11,13 @@ ms.reviewer: scooley
 # Keyword: OpenFaaS serverless functions
 ---
 
-# Use OpenFaaS on AKS hybrid
+# Use OpenFaaS with AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 [OpenFaaS][open-faas] is a framework for building serverless functions by using containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on a Kubernetes cluster running on AKS hybrid.
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 ## Prerequisites
 
