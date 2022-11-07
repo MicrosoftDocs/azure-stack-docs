@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 using a configuration file (preview)
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 10/31/2022
+ms.date: 11/07/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -246,7 +246,7 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png" alt-text="Screenshot of the Deploy cluster page." lightbox="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near real-time.
+1. It can take up to 1.5 hours for the deployment to complete. You can monitor your deployment progress and the details in near real-time.
 
     :::image type="content" source="media/deployment-tool/config-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/config-file/deployment-progress.png":::
 
