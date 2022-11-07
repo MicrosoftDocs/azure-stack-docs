@@ -37,6 +37,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1247   | 2022-11-08            | [KB 5019081](https://support.microsoft.com/topic/d53a4cf1-0987-4ab7-a529-23f7136f4083)  |
 | 20349.1194   | 2022-10-25            | [KB 5018485](https://support.microsoft.com/topic/513988dc-4a9f-40ca-b089-e4c7703ad06e)  |
 
 ## Azure Stack HCI, version 21H2 (OS build 20348)
@@ -47,6 +48,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1247   | 2022-11-08            | [KB 5019081](https://support.microsoft.com/topic/4e51dca6-695b-4578-abf2-852cacea2d77)  |
 | 20348.1194   | 2022-10-25            | [KB 5018485](https://support.microsoft.com/topic/bec5c23c-8d6e-4413-a010-24bf3d506f61)  |
 | 20348.1131   | 2022-10-17            | [KB 5020436](https://support.microsoft.com/topic/c83f50da-9017-4755-93fe-00ddf27147da)  |
 | 20348.1129   | 2022-10-11            | [KB 5018421](https://support.microsoft.com/topic/5173f8dc-29de-48ad-9763-9239f5257d62)  |
@@ -83,6 +85,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.2977  | 2022-11-08            | [KB 5019962](https://support.microsoft.com/topic/2d804dac-9348-45ff-8ec6-be705b4bfb0a) |
+| 17784.2968  | 2022-11-08            | [KB 5020804](https://support.microsoft.com/topic/900e466d-0d05-46c2-a677-2869c6c5aa1b) |
 | 17784.2868  | 2022-10-17            | [KB 5020446](https://support.microsoft.com/topic/a41ef2b1-823f-4453-b0e8-1029d7d95f74) |
 | 17784.2866  | 2022-10-11            | [KB 5018415](https://support.microsoft.com/topic/e4f8c98f-bee4-4641-b2aa-a51995d2e6d1) |
 | 17784.2791  | 2022-09-20            | [KB 5017382](https://support.microsoft.com/topic/fe9ea9f6-c708-4d3f-9556-c8712d822e18) |
