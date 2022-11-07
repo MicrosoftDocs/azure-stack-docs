@@ -14,7 +14,7 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 ## Prerequisites
 
-- Set up your primary and secondary machines as described in the [setup article](aks-lite-howto-setup-machine.md).
+Set up your primary and secondary machines as described in the [setup article](aks-lite-howto-setup-machine.md).
 
 ## Understand your network configuration
 
