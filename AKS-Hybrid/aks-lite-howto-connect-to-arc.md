@@ -119,7 +119,7 @@ az upgrade
 
     This step may take a while to complete, and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`," but if you navigate to your resource group on the Azure portal, you should see your cluster as a resource. When the PowerShell command is finished running, click on your cluster.
 
-![cluster in azure portal](media/aks-lite/cluster-in-az-portal.png)
+   ![cluster in azure portal](media/aks-lite/cluster-in-az-portal.png)
 
 ## Step 3: View cluster resources
 
