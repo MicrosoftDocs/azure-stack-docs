@@ -35,7 +35,7 @@ Now, go to your cluster in the Azure portal and select **GitOps**. Next, create 
 | Namespace | `ingress-nginx` |
 | Scope | Cluster |
 | Source kind | Git repository |
-| Repository URL | /<URL of your fork/>|
+| Repository URL | \<URL of your fork\>|
 | Reference type | Branch |
 | Branch | main |
 | Repository type | Public |
@@ -61,7 +61,7 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 | Namespace | `hello-arc` |
 | Scope | Namespace |
 | Source kind | Git Repository |
-| Repository URL | /<URL of your fork/>|
+| Repository URL | \<URL of your fork\>|
 | Reference type | Branch |
 | Branch | main |
 | Repository type | Public |
