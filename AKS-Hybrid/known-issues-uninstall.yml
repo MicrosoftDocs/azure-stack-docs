@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot issues when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-  description: Get help to troubleshoot issues and errors when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+  title: Troubleshoot issues when uninstalling AKS hybrid.
+  description: Get help to troubleshoot issues and errors when uninstalling AKS hybrid.
 
-title: Fix known issues and errors when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Fix known issues and errors when uninstalling AKS hybrid
 summary: |
-  Use this topic to help you troubleshoot and resolve issues when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+  Use this topic to help you troubleshoot and resolve issues when uninstalling AKS hybrid.
   
 sections:
   - name: Single section - ignored
@@ -77,7 +77,7 @@ sections:
           Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'.
 
         answer: | 
-          If may encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md).
+          You may encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md).
           
           Check to make sure you have used the correct information for removing the cluster.
       - question: | 
@@ -93,4 +93,5 @@ additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
+  
     

@@ -34,7 +34,7 @@ kubectl get nodes
 To create a pod, run the following command. In this example, a pod is created using an nginx image.  
 
 ```powershell
-kubectl run nginx -image=nginx --restart=Never
+kubectl run nginx --image=nginx --restart=Never
 ```
 
 When you set the parameter `-restart=Never`, Kubernetes creates a single pod instead of creating a deployment.
