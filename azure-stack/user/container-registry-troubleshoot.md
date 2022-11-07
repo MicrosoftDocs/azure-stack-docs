@@ -45,9 +45,9 @@ To troubleshoot quota-related issues, refer to the text below.
 
 There are three cases in which you might encounter quota-related issues with ACR on Azure Stack Hub:
 
-1. When your number of container registries has exceeded the quota set by your Azure Stack Hub operator
-2. When the size of one (or more) of your container registries has exceeded the quota set by your Azure Stack Hub operator
-3. When the storage capacity of your Azure Stack Hub stamp has been exceeded
+- When your number of container registries has exceeded the quota set by your Azure Stack Hub operator
+- When the size of one (or more) of your container registries has exceeded the quota set by your Azure Stack Hub operator
+- When the storage capacity of your Azure Stack Hub stamp has been exceeded
 
 In any of these three cases, you will receive an error saying that a quota has been exceeeded or an error saying that some operation is disallowed. To resolve the error, you should contact your Azure Stack Hub operator, who can increase quotas and/or reconfigure stamps.
 
