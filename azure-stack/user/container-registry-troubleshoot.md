@@ -41,6 +41,16 @@ To troubleshoot login issues,  refer to  [Troubleshoot login to registry](/azure
 
 To troubleshoot potential network issues, refer to [Troubleshoot network issues with registry](/azure/container-registry/container-registry-troubleshoot-access)
 
+To troubleshoot quota-related issues, refer to the text below.
+
+There are three cases in which you might encounter quota-related issues with ACR on Azure Stack Hub:
+
+- When your number of container registries has exceeded the quota set by your Azure Stack Hub operator
+- When the size of one (or more) of your container registries has exceeded the quota set by your Azure Stack Hub operator
+- When the storage capacity of your Azure Stack Hub stamp has been exceeded
+
+In any of these three cases, you will receive an error saying that a quota has been exceeeded or an error saying that some operation is disallowed. To resolve the error, you should contact your Azure Stack Hub operator, who can increase quotas and/or reconfigure stamps.
+
 ## Find your registry Resource ID for support
 
 You may need to use the resource ID for our container registry to help resolve issues. You may need to provide the ID to your cloud operator or to Microsoft support. This article walks you through the steps to get your resource ID.
