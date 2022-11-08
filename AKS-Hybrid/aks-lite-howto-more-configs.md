@@ -156,7 +156,7 @@ az ad sp create-for-RBAC --name "arc-test-sp-name" --scope /subscriptions/<YOUR 
 
 When completed, it will give you the appId and password of the service principal.
 
-![Service Principal creation](media/aks-lite//sp-creation.png)
+![Screenshot showing results of service principal creation.](media/aks-lite//sp-creation.png)
 
 #### Create a PSCredential object with service principal
 
@@ -174,7 +174,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 > [!IMPORTANT]
 > If you already have Azure CLI installed, run `az upgrade` to ensure your `azure-cli` and `extensions` are up-to-date.
 
-![azure cli version](media/aks-lite/azure-cli-version.png)
+![Screenshot showing Azure CLI version check.](media/aks-lite/azure-cli-version.png)
 
 1. In your browser, sign in to the Azure portal with your credentials.
 2. Run the following command to use your JSON configuration and the credential for the service principal you created earlier to connect your cluster to Arc:
@@ -185,25 +185,25 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 
 3. This step may take a while. When the powershell command is finished running, navigate to your resource group in the Azure portal and select your cluster. You should see its status as **Connected**.
 
-    ![cluster in azure portal](media/aks-lite/cluster-connected.png)
+    ![Screenshot showing cluster in Azure portal.](media/aks-lite/cluster-connected.png)
 
 ### Step 4: View cluster resources
 
 1. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
 
-    ![kubernetes resources preview](media/aks-lite/kubernetes-resources-preview.png)
+    ![Screenshot showing kubernetes resources preview.](media/aks-lite/kubernetes-resources-preview.png)
 
 2. To view your Kubernetes resources, you need a bearer token.
 
-    ![bearer token required](media/aks-lite/bearer-token-required.png)
+    ![Screenshot showing bearer token required.](media/aks-lite/bearer-token-required.png)
 
 3. In your PowerShell window, run `Get-AksIotManagedServiceToken`, copy the full string, and paste it into the Azure portal.
 
-    ![paste token in portal](media/aks-lite/bearer-token-in-portal.png)
+    ![Screenshot showing paste token in portal.](media/aks-lite/bearer-token-in-portal.png)
 
 4. Now you can view resources on your cluster. The following image shows the **Workloads** blade, showing the same as `kubectl get pods --all-namespaces`:
 
-    ![all pods shown in arc](media/aks-lite/all-pods-in-arc.png)
+    ![Screenshot showing results of all pods shown in Arc.](media/aks-lite/all-pods-in-arc.png)
 
 ### Disconnect from Arc
 
