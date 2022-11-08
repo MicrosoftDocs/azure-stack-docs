@@ -30,7 +30,7 @@ The secondary machine added in this example has an IP of **192.168.1.11** and a 
 Test-AksIotSetup -targetMachine 192.168.1.11 -targetUser "aksiot"
 ```
 
-![diagnostic](media/aks-lite/diagnostic-test.png)
+![Screenshot of results of diagnostic check.](media/aks-lite/diagnostic-test.png)
 
 ### Step 2: Scaling to a secondary machine
 
