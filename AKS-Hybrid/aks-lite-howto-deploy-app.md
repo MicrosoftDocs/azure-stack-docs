@@ -64,7 +64,7 @@ Wait a few minutes for the pods to be in the **running** state.
 kubectl get pods -o wide
 ```
 
-![linux pods running](media/aks-lite/linux-pods-running.png)
+![Screenshot of results showing linux pods running.](media/aks-lite/linux-pods-running.png)
 
 ## Test your application
 
@@ -91,7 +91,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 To see the application in action, open a web browser to the external IP address of your service:
 
-:::image type="content" source="./media/azure-vote.png" alt-text="Screenshot showing the container image Azure Voting App running in an AKS cluster opened in a local web browser" lightbox="./media/azure-vote.png":::
+:::image type="content" source="./media/azure-vote.png" alt-text="Screenshot showing the container image Azure Voting App running in an AKS cluster opened in a local web browser." lightbox="./media/azure-vote.png":::
 
 If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=/azure/container-registry/breadcrumb/toc.json&toc=/azure/container-registry/toc.json).
 
