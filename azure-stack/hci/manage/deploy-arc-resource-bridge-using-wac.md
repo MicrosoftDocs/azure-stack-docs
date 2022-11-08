@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Arc Resource Bridge using Windows Admin Center
-description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using Windows Admin Center
+title: Set up Azure Arc VM management using Windows Admin Center
+description: Learn how to set up Azure Arc VM management using Windows Admin Center.
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 06/06/2022
@@ -8,37 +8,33 @@ ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
-# Deploy Azure Arc Resource Bridge using Windows Admin Center
+# Set up Azure Arc VM management using Windows Admin Center
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+You can set up Azure Arc VM management using Windows Admin Center (recommended) or Azure Command-Line Interface (CLI).
 
-You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
-
-This article describes how to use Windows Admin Center to deploy Azure Arc Resource Bridge, which includes:
+This article describes how to use Windows Admin Center to set up Azure Arc VM management, which includes:
 
 - [Setting up Windows Admin Center](#set-up-windows-admin-center)
 
 - [Setting up Arc Resource Bridge and creating custom location](#set-up-arc-resource-bridge-and-create-custom-location)
 
-- [Projecting virtual network and images](#project-virtual-network-and-images)
+- [Projecting virtual network and images](create-virtual-networks.md)
 
-If you want to deploy Azure Arc Resource Bridge using command line, see [Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line](deploy-arc-resource-bridge-using-command-line.md).
+To set up Azure Arc VM management using command line, see [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
 
-For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
+For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
 
-## Before you begin
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
-Before you begin the Azure Arc Resource Bridge deployment, plan out and configure your physical and host network infrastructure. Reference the following sections:
+## Prerequisites
 
-- [Prerequisites for deploying Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#prerequisites-for-deploying-azure-arc-resource-bridge)
-- [Network port requirements](azure-arc-enabled-virtual-machines.md#network-port-requirements)
-- [Firewall URL exceptions](azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Set up Windows Admin Center
 
-The deployment for Arc Resource Bridge is natively available as part of the Windows Admin Center MSI. For Azure Arc Resource Bridge deployment, you must install Windows Admin Center 2110.2 or later on a Windows 10 machine or on a server. You can the version by clicking the question mark icon on the top right corner of the Windows Admin Center screen.
+The deployment for Arc Resource Bridge is natively available as part of the Windows Admin Center MSI. For Azure Arc Resource Bridge deployment, you must install Windows Admin Center 2110.2 or later on a Windows 10 machine or on a server. You can check the version by clicking the question mark icon on the top right corner of the Windows Admin Center screen.
 
 Also ensure that the latest version of the following extensions are installed:
 
@@ -57,11 +53,12 @@ These extensions come pre-installed with Windows Admin Center versions 2110.2 an
 
 To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, in Windows Admin Center select the **Settings** option on the lower left-hand side when connected to a cluster, and then navigate to **Azure Arc VM setup for Azure Stack HCI**.
 
-If you've already set up AKS-HCI on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge through Windows Admin Center. Use the command line instructions for Arc Resource Bridge deployment instead. For information about the command line deployment, see [Deploy Arc Resource Bridge using command line](deploy-arc-resource-bridge-using-command-line.md).
-
 If an Arc Resource Bridge is not detected, a button is displayed to deploy Resource Bridge.
 
  :::image type="content" source="media/manage-azure-arc-vm/deploy-resource-bridge-button.png" alt-text="[Windows Admin Center Deploy Resource Bridge button screenshot":::
+
+> [!IMPORTANT]
+> If you've already set up AKS-HCI on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge using Windows Admin Center. Use the command line instructions instead for deploying [Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md).
 
 Perform the following steps to deploy Azure Arc Resource Bridge:
 
@@ -102,12 +99,6 @@ If the deployment is successful, the wizard automatically navigates to the Arc R
 
 > [!IMPORTANT]
 > Even after successful deployment of the Azure Arc Resource Bridge, Windows Admin Center may not be able to detect the status of the Resource Bridge and may display an error instead of the dashboard. This error does not indicate any issues with your deployment and the operations conducted through the Azure portal should work normally.
-
-## Project virtual network and images
-
-Now that the custom location is available, you can create or add virtual networks and images for the custom location associated with the Azure Stack HCI cluster.
-
-Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** again. On this page, project the vmswitch name that is used for network interfaces during VM provisioning. Also project the OS gallery images that are used for creating VMs through Azure Arc.
 
 ## Next steps
 
