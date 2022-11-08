@@ -23,7 +23,7 @@ The Azure Stack HCI release preview channel is an opt-in program that lets custo
 
 ## How to join the preview channel
 
-Before joining the preview channel, make sure that all servers in the cluster are online and that the cluster is [registered with Azure](../deploy/register-with-azure.md).
+Before joining the preview channel, make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md).
 
    > [!IMPORTANT]
    > You can't skip versions. For example, if you're running Azure Stack HCI, version 21H2, you must update to Azure Stack HCI, version 22H2 before installing a newer preview version.

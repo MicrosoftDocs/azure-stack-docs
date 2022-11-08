@@ -73,7 +73,7 @@ To install a preview version using PowerShell, follow these steps.
    Set-PreviewChannel
    ```
 
-   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server wasn't already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
+   This cmdlet will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server wasn't already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
 
 5. Check for the feature update:
 
@@ -99,4 +99,4 @@ To install a preview version using PowerShell, follow these steps.
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Post Installation for preview version](../manage/preview-post-installation.md)
+> [Post Installation tasks](../manage/preview-post-installation.md)

@@ -348,7 +348,7 @@
     href: manage/preview-channel.md    
   - name: Install a preview version
     href: manage/install-preview-version.md
-  - name: Run post update steps
+  - name: Post installation tasks
     href: manage/preview-post-installation.md
 - name: Reference
   items:
