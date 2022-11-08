@@ -37,7 +37,7 @@ In this how-to guide, you'll
 Run the following command to install the AKS hybrid extension:
 
 ```azurecli
-az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl
+az extension add -n hybridaks
 ```
 
 ## Create an AKS hybrid cluster
