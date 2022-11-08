@@ -27,7 +27,7 @@ There are three key networking concepts for AKS-IoT that align with those for Ku
 - **Service IP range**: The Service IP range is a pool of reserved IP addresses used for allocating IP addresses to the Kubernetes services (your Kubernetes services/workloads) for your applications to be reachable.
 - **VM IP**: In AKS-IoT, Kubernetes nodes are deployed as specialized virtual machines, which need IP addresses. You must assign free IPs to these VMs.
 
-![networking diagram](media/aks-lite/networking-single.png)
+![Conceptual diagram showing networking architecture.](media/aks-lite/networking-single.png)
 
 ## External and internal switches
 
