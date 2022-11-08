@@ -61,7 +61,7 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-![all pods running](media/aks-lite/all-pods-running.png)
+![Screenshot of results showing all pods running.](media/aks-lite/all-pods-running.png)
 
 ## Deploy application
 
