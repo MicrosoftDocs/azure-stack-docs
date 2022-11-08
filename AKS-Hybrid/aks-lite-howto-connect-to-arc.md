@@ -119,25 +119,25 @@ az upgrade
 
     This step may take a while to complete, and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`," but if you navigate to your resource group on the Azure portal, you should see your cluster as a resource. When the PowerShell command is finished running, click on your cluster.
 
-   ![cluster in azure portal](media/aks-lite/cluster-in-az-portal.png)
+   ![Screenshot showing cluster overview in Azure portal.](media/aks-lite/cluster-in-az-portal.png)
 
 ## Step 3: View cluster resources
 
 1. On the left panel, click on the **Namespaces** blade under **Kubernetes resources (preview)**
 
-    ![kubernetes resources preview](media/aks-lite/kubernetes-resources-preview.png)
+    ![Screenshot showing Kubernetes resources preview.](media/aks-lite/kubernetes-resources-preview.png)
 
 2. To view your Kubernetes resources, you need a bearer token:
 
-    ![bearer token required](media/aks-lite/bearer-token-required.png)
+    ![Screenshot showing bearer token required.](media/aks-lite/bearer-token-required.png)
 
 3. Go to your **servicetoken.txt** file, copy the full string, and paste it into Azure portal:
 
-    ![paste token in portal](media/aks-lite/bearer-token-in-portal.png)
+    ![Screenshot showing paste token field in Azure portal.](media/aks-lite/bearer-token-in-portal.png)
 
 4. Now you can see resources on your cluster. The following image shows the **Workloads** blade, with the same name as `kubectl get pods --all-namespaces`
 
-    ![all pods shown in arc](media/aks-lite/all-pods-in-arc.png)
+    ![Screenshot showing all pods in Arc.](media/aks-lite/all-pods-in-arc.png)
 
 ## Use GitOps with Arc-enabled Kubernetes
 
