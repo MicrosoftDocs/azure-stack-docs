@@ -70,7 +70,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    $vlanID="<vLAN-ID>" (Optional)
    $VMIP_1="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
    $VMIP_2="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
-   $DNSServers="<comma separated list of DNS servers>" (required only for static IP configurations)
+   $DNSServers="<comma separated list of DNS servers. For example: @("192.168.250.250","192.168.250.255") for a list of DNS servers. Or "192.168.250.250" for a single DNS server>" (required only for static IP configurations)
    $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
    $cloudServiceIP="<IP-address>" (required only for static IP configurations)
