@@ -34,17 +34,17 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
 1. On your machine, navigate to the [Github releases page](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)**, depending on which Kubernetes distribution you want to use.
 
-   ![AKS on Windows release page](media/aks-lite/aks-lite-release-assets.png)
+   ![Scrrenshot showing AKS on Windows GitHub releases](media/aks-lite/aks-lite-release-assets.png)
 
 2. In the upper left-hand corner of the releases page, navigate to the **Code** tab and click on the green **Code** button to download the repository as a **.zip** file:  
 
-   ![repository download](media/aks-lite/aks-lite-download-zip.png)
+   ![Screenshot showing GitHub repository.](media/aks-lite/aks-lite-download-zip.png)
 
 3. Extract the GitHub **.zip** file and move the MSI and all the other files to the extracted folder. This will be your working directory.
 
 4. Before you install, make sure you remove any existing AKS-IoT clusters and uninstall any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
 
-   ![uninstall](media/aks-lite/aks-lite-uninstall.png)
+   ![Screenshot showing install/uninstall options.](media/aks-lite/aks-lite-uninstall.png)
 
   > [!NOTE]
   > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
@@ -61,7 +61,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
     You should see the following output with version showing v0.4.222:
 
-    ![aksiot modules installed](media/aks-lite/aks-lite-modules-installed.png)
+    ![Screenshot of installed PowerShell modules.](media/aks-lite/aks-lite-modules-installed.png)
 
     See the [AKS-IoT Powershell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
 
