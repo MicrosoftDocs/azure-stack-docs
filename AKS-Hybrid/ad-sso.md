@@ -192,6 +192,7 @@ rules:
   - cronjobs
   verbs: ["*"]
 apiVersion: rbac.authorization.k8s.io/v1
+---
 kind: RoleBinding
 metadata:
   name: ad-user-cluster-admin
