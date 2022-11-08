@@ -52,7 +52,7 @@ Note that the output should be `1.0.13.10907` for the August release. Expected O
 ```
 1.0.13.10907
 ```
-If you see a value other than the one listed above, we recommend you uninstall the AKS host management cluster and start again. You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing in `-version '1.0.13.10907'` parameter to the [`Set-AksHciConfig`](/aks-hci/reference/ps/set-akshciconfig.md) command.
+If you see a value other than the one listed above, we recommend you uninstall the AKS host management cluster and start again. You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing in `-version '1.0.13.10907'` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
 
 ### You are not running the September release of Arc Resource Bridge
 We currently *do not support running the [October release](https://github.com/Azure/ArcResourceBridge/releases)* of Arc Resource Bridge. You can verify your Arc Resource Bridge version is not the October version by running the following command:
