@@ -38,11 +38,13 @@ Depending on the type of network you want to attach your VM to, steps may be dif
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 
-The steps to attach a VM to the physical network are different depending on whether you're using Azure Stack HCI version 22H2 or 21H2.
 
-#### Attach VM to a VLAN
+#### Attach VM to a logical network
 
-In 22H2, you can no longer connect a VM directly to a VLAN. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
+After you have created a logical network in Windows Admin Center, you can create a VM in Windows Admin Center and attach it to the logical network. As part of VM creation, select the **Isolation Mode** as **Logical Network**, select the appropriate **Logical Subnet** under the Logical Network, and provide an IP address for the VM.
+
+> [!NOTE]
+> Unlike in 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
 Here's an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we'll demonstrate how to connect your VM to VLAN 5:
 
