@@ -1,9 +1,9 @@
 ---
-title: Adapt applications for use in mixed-OS Kubernetes clusters
-description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
+title: Adapt applications for use in mixed-OS Kubernetes clusters in AKS hybrid
+description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS hybrid are scheduled on the correct worker node operating system.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/31/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -12,17 +12,19 @@ ms.reviewer: abha
 # Keyword: Node Selector mixed-OS clusters taints tolerations
 
 ---
-# Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations
+# Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations in AKS hybrid
 
-> Applies to: Azure Stack HCI and Windows Server
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
+AKS hybrid enables you to run Kubernetes clusters with both Linux and Windows nodes, but you'll need to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
-This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
-## Node Selector
+This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
-A *Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the following examples:
+## Node selectors
+
+A *Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
 
 ```yaml
 kubernetes.io/os = Windows
@@ -34,19 +36,23 @@ or,
 kubernetes.io/os = Linux
 ```
 
-For more information on nodeSelectors, visit [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/).
+For more information on nodeSelectors, visit [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/). 
 
 ## Taints and tolerations
 
-*Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" not to accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
+**Taints** and **tolerations** work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" not to accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in AKS on Azure Stack HCI and Windows Server can be tainted when created in the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
+Windows OS nodes in AKS hybrid can be tainted when created with the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example taints Windows nodes.
 
-If you are also creating a new cluster, run the following command to create a Windows node pool with a taint. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example that uses the `New-AksHciNodePool` command.
+### Apply taint to new cluster
+
+If you are also creating a new cluster, run the following command to create a Windows node pool with a taint. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example, which uses the `New-AksHciNodePool` command.
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName taintnp -nodeCount 1 -osType Windows -osSku Windows2022 -taints sku=Windows:NoSchedule
 ```
+
+### Add tainted node pool to existing cluster
 
 To add a tainted node pool to an existing cluster, run the following command:
 
@@ -74,6 +80,8 @@ Phase        : Deployed
 Taints       : {sku=Windows:NoSchedule}
 ```
 
+### Specify toleration for pod
+
 You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the `kubectl` taint line shown above. The result is that a pod with the toleration will be able to schedule onto the tainted nodes.
 
 ```yaml
@@ -84,22 +92,23 @@ tolerations:
   effect: NoSchedule
 ```
 
-The steps in this section will work well if you are in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won't have access to the pod spec unless you want to download the chart and edit it. If you deploy these Helm charts to a mixed cluster environment with both Linux and Windows worker nodes, your application pods will fail with the error **ImagePullBackOff**, for example:
 
-```Output
+The steps in this section will work well if you are in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won't have access to the pod spec unless you want to download the chart and edit it. If you deploy these Helm charts to a mixed cluster environment with both Linux and Windows worker nodes, your application pods will fail with the error "ImagePullBackOff", for example:
+
+```powershell
 C:\>kubectl get pods
 NAMESPACE              NAME                                                    READY   STATUS              RESTARTS   AGE
 default                nginx-deployment-558fc78868-795dp                       0/1     ImagePullBackOff    0          6m24s
 default                nginx-deployment-6b474476c4-gpb77                       0/1     ImagePullBackOff    0          11m
 ```
 
-In this instance, you should look at using [taints](https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints) to help. Windows Server nodes can be tainted with the following key-value pair: `node.kubernetes.io/os=windows:NoSchedule`.
+In this instance, you should look at using [taints](https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints) to help with this:
+Windows Server nodes can be tainted with the following key-value pair: node.kubernetes.io/os=windows:NoSchedule
 
-For more information about taints and tolerations, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+For more information on taints and tolerations, visit [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). 
 
 ## Next steps
 
 In this how-to guide, you learned how to add node selectors or taints and tolerations to your Kubernetes clusters using kubectl. Next, you can:
-
-- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md)
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
