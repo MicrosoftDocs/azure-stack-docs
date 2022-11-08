@@ -463,7 +463,7 @@ kubectl delete crds -l component=velero
 ## Additional notes
 
 <!--Let's integrate these two points in the topic and eliminate the "Additional notes" catchall.-->
-- Velero on Windows: Velero doesn't officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [`Restic` integration](https://velero.io/docs/v1.6/restic/), and backups of stateful applications or persistent volumes, aren't supported.<!--This should be in the overview?-->
+- Velero on Windows: Velero doesn't officially support Windows. During testing, the Velero team was able to back up only stateless Windows applications. [`Restic` integration](https://velero.io/docs/v1.6/restic/), and backups of stateful applications or persistent volumes, aren't supported.<!--This should be in the overview?-->
 
 - Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:<!--The list of commands is useful. Is the help output the best presentation?-->
 
