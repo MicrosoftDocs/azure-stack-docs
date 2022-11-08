@@ -3,7 +3,7 @@ title: Tutorial - Scale an application in AKS hybrid
 description: In this tutorial, learn how to scale nodes and pods in Kubernetes.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/07/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -25,6 +25,8 @@ This tutorial, part five of seven, describes how to scale out the pods in the ap
 > * Manually scale Kubernetes pods that run your application
 
 In later tutorials, the Azure Vote application is updated to a new version.
+
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 ## Before you begin
 
