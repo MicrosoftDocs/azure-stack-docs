@@ -33,7 +33,7 @@ You can either use Azure Blob storage or MinIO storage with Velero. Velero and A
 Complete these prerequisites before you begin your Velero deployment:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
-- [Install Chocolatey](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
+- [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob storage
 
@@ -238,7 +238,7 @@ If you don't want to use Azure Blob storage for your backups, you can deploy Vel
 
 If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage).
 
-1. Install the Velero CLI by running the following command. (You'll need to [Install Chocolately](https://chocolatey.org/install) if you haven't already.)
+1. Install the Velero CLI by running the following command. (You'll need to [Install `Chocolately`](https://chocolatey.org/install) if you haven't already.)
 
    ```powershell
    choco install velero
@@ -346,7 +346,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log into the IP address in a browser, or use the MinIO client. <!--Final two sentences seem misplaced. They install the client in the following step.-->Make sure you create a bucket in minio. This bucket will be used in Velero installation.
+   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. <!--Final two sentences seem misplaced. They install the client in the following step.-->Make sure you create a bucket in minio. This bucket will be used in Velero installation.
 
    1. Install the MinIO client, and browse through the MinIO files.
 
