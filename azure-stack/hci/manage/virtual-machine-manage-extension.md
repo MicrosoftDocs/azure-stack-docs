@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/04/2022
+ms.date: 11/07/2022
 ---
 
 # Manage VM extensions on Azure Stack HCI virtual machines (preview)
 
-> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article describes how to install and manage VM extensions on your Azure Stack HCI via the Azure portal.
 
@@ -27,7 +27,7 @@ The following VM extensions are supported on Azure Stack HCI VMs.
 
 | Extension       | Publisher  | Type               |
 |---------------------|--------------|------------|
-| Custom Script Extension | Microsoft.Compute    ||
+| Custom Script Extension | Microsoft.Compute    |CustomScriptExtension|
 
 
 ## Prerequisites

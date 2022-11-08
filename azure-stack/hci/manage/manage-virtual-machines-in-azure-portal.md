@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/04/2022
+ms.date: 11/07/2022
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI
@@ -79,7 +79,8 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
 1. **(Optional)** Create or add network interface (NIC) cards for the VM by providing a name for the network interface. Then select the network and choose static or dynamic IP addresses.
 
-    If you enabled guest management, you must add at least one network interface.
+    > [!NOTE]
+    > If you enabled guest management, you must add at least one network interface.
 
    :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
 
