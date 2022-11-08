@@ -42,10 +42,12 @@ The following are requirements and best practices for using Network ATC in Azure
   - Data Center Bridging (DCB)
   - Failover Clustering
   - Hyper-V
+  - Network HUD
+  
    Here's an example of installing the required features via PowerShell:
    
    ```powershell
-   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, NetworkHUD, Failover-Clustering -IncludeManagementTools
    ```
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
