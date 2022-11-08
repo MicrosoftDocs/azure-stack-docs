@@ -33,7 +33,7 @@ You can either use Azure Blob storage or MinIO storage with Velero. Velero and A
 Complete these prerequisites before you begin your Velero deployment:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
-- [Install Chocolatey](https://chocolatey.org/install), which you'll' use to install the [Velero client](https://community.chocolatey.org/packages/velero), including the Velero CLI, on a Windows machine.
+- [Install Chocolatey](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob storage
 
@@ -41,7 +41,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
 1. Open PowerShell as an administrator.
 
-1. Log in to Azure. Run the following command to log in to Azure using Azure CLI:
+1. Log in to Azure using the Azure CLI:
 
    `az login --use-device-code`
 
@@ -51,126 +51,137 @@ This section describes how to install Velero and use Azure Blob storage for back
    choco install velero   
    ```
 
-1. (Optional) Change to the Azure subscription you want to use for the backups.
+1. If needed, change to the Azure subscription you want to use for the backups. You can skip this step if you're already in the subscription you want to create your backups with.
 
-   By default, Velero stores backups in the same Azure subscription as your VMs and disks, and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify the Subscription ID to use for your backups. You can skip this step if you're already in the subscription you want to create your backups with.
+   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify a subscription to use for your backups. 
 
-   1. Switch to the subscription you want to use for your backups.<!--Are they running a command here? if so, what command?-->
-   1. Find the subscription ID by name.<!--What does "by name" mean?-->
-      
+   Switch to the subscription the backups should be created in:
+
+   1. Use the subscription name to find the subscription ID:
+
       ```azurecli
       $AZURE_BACKUP_SUBSCRIPTION_NAME="<NAME_OF_TARGET_SUBSCRIPTION>"
       $AZURE_BACKUP_SUBSCRIPTION_ID=$(az account list --query="[?name=='$AZURE_BACKUP_SUBSCRIPTION_NAME'].id | [0]" -o tsv)
       ```
 
-   1. Change the subscription associated with your Azure account:<!--Verify that this is the intended meaning.-->
-   
+   1. Then change the subscription:
+
       ```azurecli
       az account set -s $AZURE_BACKUP_SUBSCRIPTION_ID
       ```
 
-### Create Azure storage account and blob container
+1. Create an Azure storage account and blob container
 
-When you use Azure Blob Storage, Velero requires a storage account and a blob container to store backups. The following example shows the storage account created in a new **Velero_Backups** resource group.
+   When you use Azure Blob storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new `Velero_Backups` resource group.
 
-Because the storage account is used for DNS, the account must be created with a globally unique ID. The sample script uses `uuidgen` to generate a random name. You can use any method that you like to come up with a name, as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name). The storage account is created with encryption at rest capabilities (Microsoft managed keys) and is configured to only allow access via HTTPS connections.<!--Hyphenate "encryption-at-rest" - all or part?-->
+   The storage account needs to be created with a globally unique ID since this is used in DNS. The sample script uses `uuidgen` to randomly generate a unique name. You can use any method as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name).
 
-1. Create a resource group for the backup storage account. Change directories to your preferred location, and run the following commands:
+   The storage account is created with encryption at rest capabilities (Microsoft managed keys)<!--managed keys reference seems like a non sequitur--> and is configured to only allow access via HTTPS connections.<!--Hyphenate "encryption-at-rest" - all or part?-->
 
-   ```azurecli
-   $AZURE_BACKUP_RESOURCE_GROUP="Velero_Backups"
-   az group create -n $AZURE_BACKUP_RESOURCE_GROUP --location WestUS
-   Create the storage account.
-   $AZURE_STORAGE_ACCOUNT_ID="<NAME_OF_ACCOUNT_TO_ASSIGN>"
-
-   az storage account create --name $AZURE_STORAGE_ACCOUNT_ID --resource-group $AZURE_BACKUP_RESOURCE_GROUP --sku Standard_GRS --encryption-services blob --https-only true --kind BlobStorage --access-tier Hot
-   ```
-
-1. Create a blob container. The example creates a blob container named **velero**. Feel free to use a different name, preferably unique to a single Kubernetes cluster.
-
-   ```azurecli
-   $BLOB_CONTAINER="velero"
-   az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_ID
-   ```
-
-### Create service principal
-
-ADD INTRO SENTENCE.
-
-1. Get the subscription ID and tenant ID for your Azure account.
-
-   ```azurecli
-   $AZURE_SUBSCRIPTION_ID=(az account list --query '[?isDefault].id' -o tsv)
-   $AZURE_TENANT_ID=(az account list --query '[?isDefault].tenantId' -o tsv) 
-   ```
-
-1. Create a service principal. You can create a service principal with the Contributor role or a custom role. 
-
-   The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role. If you need a less permissive role, use a custom role.
-
-   **Use Contributor role:**
-
-   If you'll be using Velero to back up multiple clusters with multiple blob containers, you may want to create a unique username for each cluster instead of using the name **velero**.
-
-   1. Create a service principal with the Contributor role. Azure Active Directory (Azure AD) will generate a secret for you.
+   1. Create a resource group for the backup storage account. Change directories to your preferred location, if needed, and run the following commands:
 
       ```azurecli
-      $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
+      $AZURE_BACKUP_RESOURCE_GROUP="Velero_Backups"
+      az group create -n $AZURE_BACKUP_RESOURCE_GROUP --location WestUS
+      ```
+     
+   1. Create the storage account.
+      
+      ```azurecli
+      $AZURE_STORAGE_ACCOUNT_ID="<NAME_OF_ACCOUNT_TO_ASSIGN>"
+
+      az storage account create --name $AZURE_STORAGE_ACCOUNT_ID --resource-group $AZURE_BACKUP_RESOURCE_GROUP --sku Standard_GRS --encryption-services blob --https-only true --kind BlobStorage --access-tier Hot
       ```
 
-      > [!IMPORTANT]
-      > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
-
-      If you're using different subscriptions for your Velero backup files and your workload clusters, provide both subscription IDs, as in the following example:<!--RECASTING/RENUMBERING: This looks isn't optional. It's an alternate command if they're using different subscriptions for backups and the cluster.-->
+   1. Create a blob container. The example uses a blob container named `velero`. You can use a different name, preferably unique to a single Kubernetes cluster.
 
       ```azurecli
-      $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID)
+      $BLOB_CONTAINER="velero"
+      az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_ID
       ```
+
+1. Create service principal
+
+   1. Get the subscription ID and tenant ID for your Azure account.
+
+      ```azurecli
+      $AZURE_SUBSCRIPTION_ID=(az account list --query '[?isDefault].id' -o tsv)
+      $AZURE_TENANT_ID=(az account list --query '[?isDefault].tenantId' -o tsv) 
+      ```
+
+   1. Create a service principal. 
+
+      You can create a service principal with the Contributor role or a custom role:
+
+      - **Contributor role:** The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role. 
+      - If you need a less permissive role, use a custom role.
+
+      **Use Contributor role:**
+
+      If you'll be using Velero to back up multiple clusters with multiple blob containers, you may want to create a unique username for each cluster instead of using the name **velero**.
+
+      1. Create a service principal with the Contributor role. Azure Active Directory (Azure AD) will generate a secret for you.
+
+         ```azurecli
+         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
+         ```
+
+         Make sure `--name` is unique in Azure Active Directory (AD) and doesn't conflict with other service principals or app registrations.<!--REVISIT order of indented paragraphs.-->
+
+         If you're using different subscriptions for your Velero backup files and your workload clusters, provide both subscription IDs, as in the following example:
+
+         ```azurecli
+         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID)
+         ```
+
+         > [!IMPORTANT]
+          > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
+
 
       > [!NOTE]
       > Ensure that the value for `--name` is unique in Azure AD and doesn't conflict with other service principals or app registrations.
 
-   **For custom role:**
+      **Use a custom role:**
 
-   If you want to enable the minimum resource provider actions, create a custom role, and assign that role to the service principal.
+      If you want to enable the minimum resource provider actions, create a custom role, and assign that role to the service principal.
 
-   1. Create a file *azure-role.json* with following contents. Substitute your own custom role name and subscription ID in the file.
+      1. Create a file named `azure-role.json` with following contents. Substitute your own custom role name and subscription ID.
 
-      ```json
-      {
-          "Name": <CUSTOM_ROLE_NAME>,
-          "Id": null,
-          "IsCustom": true,
-          "Description": "Velero related permissions to perform backups, restores and deletions",
-          "Actions": [
-              "Microsoft.Compute/disks/read",
-              "Microsoft.Compute/disks/write",
-              "Microsoft.Compute/disks/endGetAccess/action",
-              "Microsoft.Compute/disks/beginGetAccess/action",
-              "Microsoft.Compute/snapshots/read",
-              "Microsoft.Compute/snapshots/write",
-              "Microsoft.Compute/snapshots/delete",
-              "Microsoft.Storage/storageAccounts/listkeys/action",
-              "Microsoft.Storage/storageAccounts/regeneratekey/action"
-          ],
-          "NotActions": [],
-          "AssignableScopes": [
-            "<SUBSCRIPTION_ID>"
-          ]
-      }
-      ```
+         ```json
+         {
+             "Name": <CUSTOM_ROLE_NAME>,
+             "Id": null,
+             "IsCustom": true,
+             "Description": "Velero related permissions to perform backups, restores and deletions",
+             "Actions": [
+                 "Microsoft.Compute/disks/read",
+                 "Microsoft.Compute/disks/write",
+                 "Microsoft.Compute/disks/endGetAccess/action",
+                 "Microsoft.Compute/disks/beginGetAccess/action",
+                 "Microsoft.Compute/snapshots/read",
+                 "Microsoft.Compute/snapshots/write",
+                 "Microsoft.Compute/snapshots/delete",
+                 "Microsoft.Storage/storageAccounts/listkeys/action",
+                 "Microsoft.Storage/storageAccounts/regeneratekey/action"
+             ],
+             "NotActions": [],
+             "AssignableScopes": [
+               "<SUBSCRIPTION_ID>"
+             ]
+         }
+         ```
 
-   1. Create the custom role and service principal by running this command:
+      1. Create the custom role and service principal by running this command:
 
-      ```azurecli
-      az role definition create --role-definition azure-role.json
+         ```azurecli
+         az role definition create --role-definition azure-role.json
 
-      $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "<CUSTOM_ROLE>" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
-      ```
+         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "<CUSTOM_ROLE>" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
+         ```
 
       For more info about creating custom roles, see [Velero plugins for Microsoft Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#specify-role).
 
-1. After you create the service principal, find out the service principal name, and assign that name to the **AZURE_CLIENT_ID** variable.
+1. After you create the service principal, get the service principal name, and assign that name to the **AZURE_CLIENT_ID** variable.
 
    ```azurecli
    $AZURE_CLIENT_ID=(az ad sp list --display-name "velero" --query '[0].appId' -o tsv)
@@ -182,7 +193,7 @@ ADD INTRO SENTENCE.
    az ad sp show --id $AZURE_CLIENT_ID
    ```
 
-1. Create a file that contains all the variables required for the Velero installation. The command looks like the following one:
+1. Create a file that contains all the variables required for the Velero installation. The commands will look like the following ones:
 
    ```
    _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
@@ -194,43 +205,42 @@ ADD INTRO SENTENCE.
    ```
 
    > [!IMPORTANT]
-   > You should delete this file after you install Velero. The client secret is in plaintext, which could pose a security risk.
+   > Delete this file after you install Velero. The client secret is in plaintext, which could pose a security risk.<!--Find a better way to word the security risk.-->
 
-   Before proceeding, verify that the file is properly formatted:
+   Before proceeding, verify that the file is properly formatted. (The file name extension doesn't matter.)
    - Remove any extra spaces or tabs.
    - Make sure the variable names are correct.
-   - The file name extension doesn't matter.
 
-### Install and start Velero
+1. **Install and start Velero.**
 
-Install Velero, including all prerequisites,<!--Meaning? They should complete prerequisites before they install, or the installation includes things that are required in order to perform the install?--> on the cluster, and start the deployment. This procedure creates a namespace called *velero* and adds a deployment named *velero* to the namespace.
+   Install Velero, including all prerequisites<!--Meaning? Requirement?-->, on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
 
-1. Install Velero using the `velero install` command. You'll need to make some adjustments to the example command below.
+   1. Install Velero using the `velero install` command. You'll need to make some adjustments to the example command below.<!--Stopped here, reviewing source.-->
 
-   ```powershell
-   velero install --provider azure --plugins velero/velero-plugin-for-microsoft-azure:v1.5.0 --bucket $BLOB_CONTAINER --secret-file ./credentials-velero.txt --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID --use-restic
-   ```
+      ```powershell
+      velero install --provider azure --plugins velero/velero-plugin-for-microsoft-azure:v1.5.0 --bucket $BLOB_CONTAINER --secret-file ./credentials-velero.txt --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID --use-restic
+      ```
 
-   Before you run this command, review and adjust the following variables as needed:
+      Before you run this command, review and adjust the following variables as needed:
 
-   - The command installs the Microsoft Azure plugin, which must be compatible with the Velero CLI version you're using. The example command uses Microsoft Azure plugin version 1.5.0 because we've installed the latest Velero CLI version, 1.9.0. To find out which version of the Microsoft Azure plugin to install with your Valero CLI version, see the [compatibility matrix](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#compatibility).
+      - The command installs the Microsoft Azure plugin, which must be compatible with the Velero CLI version you're using. The example command uses Microsoft Azure plugin version 1.5.0 because we've installed the latest Velero CLI version, 1.9.0. To find out which version of the Microsoft Azure plugin to install with your Valero CLI version, see the [compatibility matrix](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#compatibility).
 
-   - Be sure to include `--use-restic` to enable backup of Kubernetes volumes at the file system level using Restic. Restic can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, Restic is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
+      - Be sure to include `--use-restic` to enable backup of Kubernetes volumes at the file system level using Restic. Restic can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, Restic is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
 
-   - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include that variable if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId`: the *credentials-velero.txt* file will provide that information.
+      - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include that variable if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId`: the *credentials-velero.txt* file will provide that information.
 
-1. Check whether the Velero service is running properly by running the following commands: 
+   1. Check whether the Velero service is running properly by running the following commands: 
 
-   ```powershell
-   kubectl -n velero get pods
-   kubectl logs deployment/velero -n velero
-   ```
+      ```powershell
+      kubectl -n velero get pods
+      kubectl logs deployment/velero -n velero
+      ```
 
 ## Install Velero with MinIO storage
 
 This section will show you how to use Velero with MinIO storage. If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage).
 
-MinIO is an object storage solution. If you do not want your backups stored in Azure Blob, you can deploy Velero with MinIO as storage.
+MinIO is an object storage solution. If you don't want to use Azure Blob storage for your backups, you can deploy Velero with MinIO as storage.<!--REORG SECTION INTRO.-->
 
 1. Install the Velero CLI by running the following command. You'll need to [Install Chocolately](https://chocolatey.org/install) if you haven't already.
 
