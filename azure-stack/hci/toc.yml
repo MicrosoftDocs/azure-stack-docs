@@ -346,7 +346,7 @@
   items:
   - name: Join preview channel
     href: manage/preview-channel.md    
-  - name: Update to version 22H2
+  - name: Install a preview version
     href: manage/install-preview-version.md
   - name: Run post update steps
     href: manage/preview-post-installation.md
