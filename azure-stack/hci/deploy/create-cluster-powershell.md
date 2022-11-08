@@ -120,12 +120,13 @@ The next step is to install required Windows roles and features on every server 
 - RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - NetworkATC
+- NetworkHUD
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -133,16 +134,13 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist -IncludeAllSubFeature -IncludeManagementTools
 }
 ```
-
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
 
 Next, restart all the servers:
 
@@ -240,11 +238,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 Microsoft recommends using [Network ATC](./network-atc.md) to deploy host networking if you're running Azure Stack HCI version 21H2 or newer. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-Network ATC can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
-
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes
+Network ATC can automate the deployment of your intended networking configuration if you specify one or more intent types for your adapters. For more information on specific intent types, please see: [Network Traffic Types](https://learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types)
 
 ### Step 4.1: Review physical adapters
 
@@ -270,10 +264,7 @@ Run the following command to add the storage and compute intent types to pNIC01 
 Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName $ClusterName -AdapterName pNIC01, pNIC02
 ```
 
-The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
-- the adapters specified
-- adapters report status 'Up'
-- adapters ready to be teamed to create the specified vSwitch
+The command should immediately return after some initial verification.
 
 ### Step 4.3: Validate intent deployment
 
@@ -292,12 +283,6 @@ Get-NetIntentStatus -ClusterName $ClusterName -Name Cluster_ComputeStorage
 Note the status parameter that shows Provisioning, Validating, Success, Failure.
 
 Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
- 
-Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage.
-
-```powershell
-Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
-```
 
 > [!NOTE]
 > At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
