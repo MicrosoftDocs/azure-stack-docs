@@ -195,8 +195,8 @@ rules:
   - jobs
   - cronjobs
   verbs: ["*"]
-apiVersion: rbac.authorization.k8s.io/v1
 ---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ad-user-cluster-admin
@@ -206,9 +206,9 @@ roleRef:
   kind: Role
   name: sre-user-full-access
 subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: User
-  name: "microsoft:activedirectory:CONTOSO\SREGroup" 
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: "microsoft:activedirectory:CONTOSO\SREGroup" 
 ```
 
 Before you apply the YAML file, the **group and user names** should always be converted to SIDs using the command:
