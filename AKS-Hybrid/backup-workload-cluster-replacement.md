@@ -21,9 +21,9 @@ This article describes how to install and use Velero to back up and restore work
 
 [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
-[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, the infrastructure administrator can use a Velero backup to restore its contents and internal API objects to a new cluster.
+[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, the infrastructure administrator can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-You can either use Azure Blob storage or MinIO storage with Velero. Velero and Azure Blob storage will store your backups in Azure Blob. If you do not want your backups to be stored in Azure, you can use Velero and MinIO. This document will show you both methods: Velero + Azure Blob and Velero + MinIO.
+You can either use Azure Blob storage or MinIO storage with Velero. Velero and Azure Blob storage will store your backups in Azure Blob. If you don't want your backups to be stored in Azure, you can use Velero and MinIO. This document will show you both methods: Velero + Azure Blob and Velero + MinIO.
 
 > [NOTE!]
 > Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.
@@ -225,7 +225,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You need only include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId`: the *credentials-velero.txt* file will provide that information.
 
-   1. After you install Valero, check whether the Velero service is running properly by running the following commands:
+   1. After you install Valero, check whether the Velero service is running properly by using the following commands:
 
       ```powershell
       kubectl -n velero get pods
@@ -340,7 +340,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl create -f mino-service.yaml
       ```
 
-   1. Get the MinIO pod's external IP address by running the following command. You will use this address to install Velero.<!--Show returned data?-->
+   1. Get the MinIO pod's external IP address by running the following command. You'll use this address to install Velero.<!--Show returned data?-->
 
       ```powershell
       kubectl get svc
@@ -429,13 +429,13 @@ Use the Velero `backup create` command to create backups to your chosen storage.
 
   `velero backup describe <BACKUP-NAME>`
 
-If you're using Azure Blob storage for your backups, you can view your backup in your Azure storage account under the `blob/container` that your created.
+If you're using Azure Blob storage for your backups, you can view your backup in your Azure storage account under the `blob/container` that you created.
 
 <!--What if they're using MinIO?-->
 
 ## Restore a cluster
 
-To restore a cluster, you must create a new cluster to restore the old cluster to. You cannot restore a cluster backup to an existing cluster.
+To restore a cluster, you must create a new cluster to restore the old cluster to. You can't restore a cluster backup to an existing cluster.
 
 The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes.
 
@@ -463,7 +463,7 @@ kubectl delete crds -l component=velero
 ## Additional notes
 
 <!--Let's integrate these two points in the topic and eliminate the "Additional notes" catchall.-->
-- Velero on Windows: Velero doesn't officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes aren't supported.<!--This should be in the overview?-->
+- Velero on Windows: Velero doesn't officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [`Restic` integration](https://velero.io/docs/v1.6/restic/), and backups of stateful applications or persistent volumes, aren't supported.<!--This should be in the overview?-->
 
 - Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:<!--The list of commands is useful. Is the help output the best presentation?-->
 
