@@ -107,7 +107,7 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-![all pods running](media/aks-lite/all-pods-running.png)
+![Screenshot of results showing all pods running.](media/aks-lite/all-pods-running.png)
 
 ## Deploy secondary machines
 
@@ -125,7 +125,7 @@ Prepare the secondary machines (these are machines that you will scale to). Conn
 6. Restart your PC to install Hyper-V. Then run `New-AksIoTPC -Node` again to continue the bootstrap.
 7. Open **LaunchPrompt.cmd** again and it should all be green except for **AksIot Module**. You do not need **AksIot Module** for secondary machines.
 
-   ![secondary machine prepped](media/aks-lite/secondary-machine-prepped.png)
+   ![Screenshot of Windows Explorer showing secondary machine prepped.](media/aks-lite/secondary-machine-prepped.png)
 
 ## Next steps
 
