@@ -13,65 +13,76 @@ ms.lastreviewed: 10/04/2022
 
 # Set-AksIotArcConnection
 
-## SYNOPSIS
+## Synopsis
+
 Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc for
 Kubernetes.
 
-## SYNTAX
+## Syntax
 
 ### fromJsonConfigFile (Default)
-```
+
+```powershell
 Set-AksIotArcConnection [-Credential <PSCredential>] [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
-```
+
+```powershell
 Set-AksIotArcConnection [-ClusterName <String>] -TenantId <String> -SubscriptionId <String>
  -ResourceGroupName <String> -Location <String> [-Credential <PSCredential>] [-SkipAzConnect]
  [-Connect <Boolean>] [<CommonParameters>]
 ```
 
 ### fromJsonConfigString
-```
+
+```powershell
 Set-AksIotArcConnection [-Credential <PSCredential>] -JsonConfigString <String> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc for
 Kubernetes.
-Running this modules requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
+Running this module requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
 as well as an up to date helm version in the binary path.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
+### Example 1
+
 ```
 Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $true
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+
+```powershell
 Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $false
 ```
 
-### EXAMPLE 3
-```
+### Example 3
+
+```powershell
 -ResourceGroupName testResourceGroup -Location testLocation
 ```
 
-### EXAMPLE 4
-```
+### Example 4
+
+```powershell
 -ResourceGroupName testResourceGroup -Location testLocation -Credential <PSCredential>
 ```
 
-### EXAMPLE 5
+### Example 5
+
 ```
 Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -SkipAzConnect
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -ClusterName
+
 Name of the cluster in Azure Arc for Kubernetes.
 By default, the cluster will be named
 '\<hostname\>-aksiot'.
@@ -89,6 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
+
 Tenant ID for Azure.
 This is a required parameter when authenticating with a service principal (either
 through the service principal name parameter or via the credential object)
@@ -106,6 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 Subscription ID for Azure
 
 ```yaml
@@ -121,6 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 Azure resource group for the connected cluster
 
 ```yaml
@@ -136,6 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+
 Name of the Azure location where the resource group lives.
 
 ```yaml
@@ -151,6 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
+
 Credential object for the Azure service principal to use for the connection.
 When not provided, an interactive login prompt that allows AD authentication will appear.
 
@@ -167,6 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipAzConnect
+
 When supplying this switch the commandlet will assume the Az connection has already been established.
 This means, there already exists an Az Context.
 No credential object or service principal name may be
@@ -185,6 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -Connect
+
 This boolean toggles between connecting and disconnecting the cluster.
 By default, the cluster will be connected.
 
@@ -201,6 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigString
+
 Input parameters based on a JSON string.
 No other parameters may be specified.
 
@@ -217,6 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigFilePath
+
 Input parameters based on a JSON file.
 No other parameters may be specified.
 
@@ -233,12 +253,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

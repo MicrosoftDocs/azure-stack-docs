@@ -12,31 +12,31 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotEventLog
 
-## SYNOPSIS
+## Synopsis
 Collects event logs from the deployment.
 
-## SYNTAX
+## Syntax
 
 ```
 Get-AksIotEventLog [[-OutputPath] <String>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
 The Get-AksIotEventLog cmdlet gets the event log from the AksIot deployment
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
+### Example 1
 ```
 Get-AksIotEventLog
 ```
 
-### EXAMPLE 2
+### Example 2
 ```
 Get-AksIotEventLog -OutputPath ~/Desktop
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -OutputPath
 Optional parameter allowing to change the path to which the zipped log folder will be stored
@@ -56,10 +56,6 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

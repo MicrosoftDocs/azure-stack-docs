@@ -63,5 +63,6 @@ AKS Lite is currently in private preview.
 
 ## Next steps
 
-- Enroll for private preview by emailing projecthaven@microsoft.com
-- [Ignite blog](https://aka.ms/aks-lite-ignite-blog)
+- Explore [quickstart](./aks-lite-quickstart.md) 
+- Contact product team by emailing projecthaven@microsoft.com
+- Read [Ignite blog](https://aka.ms/aks-lite-ignite-blog)

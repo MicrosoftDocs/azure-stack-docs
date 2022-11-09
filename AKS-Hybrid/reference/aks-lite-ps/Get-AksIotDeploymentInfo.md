@@ -12,35 +12,20 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotDeploymentInfo
 
-## SYNOPSIS
+## Synopsis
 Gets AksIot deployment information.
 
-## SYNTAX
+## Syntax
 
 ```
 Get-AksIotDeploymentInfo
 ```
 
-## DESCRIPTION
+## Description
 Gets AksIot deployment information.
 The function returns networking and node information of the local
 AksIot deployment.
 
-## EXAMPLES
+## Next steps
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
-
-## PARAMETERS
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

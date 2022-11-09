@@ -14,37 +14,35 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
 ## Prerequisites
 
-- Hardware requirements:
+- **Hardware requirements**:
 
-> [!IMPORTANT]
-> The minimum setup required to run the latest version of AKS is a single machine with the following specs:
-
-| Specs | Requirement |
-| ---------- | --------- |
-| Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
-| CPU | 2 logical processors, clock speed at least 1.8 GHz |
-| Disk Space | At least 14 GB free |
-| Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
-
-This is your primary machine.
+    > [!IMPORTANT]
+    > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
+    
+    | Specs | Requirement |
+    | ---------- | --------- |
+    | Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
+    | CPU | 2 logical processors, clock speed at least 1.8 GHz |
+    | Disk Space | At least 14 GB free |
+    | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
+    
+    This is your primary machine.
 
 - **OS requirements** : Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or Windows 11 [here](https://www.microsoft.com/software-download/windows11).
 
 ## Set up your primary machine
 
-1. On your primary machine, navigate to the [Github releases](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)** file, depending on which Kubernetes distribution you want to use.
+1. On your primary machine, navigate to the [GitHub releases](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)** file, depending on which Kubernetes distribution you want to use.
 
- ![AKS on Windows release page](media/aks-lite/aks-lite-release-assets.png)
+ ![Screenshot of release assets needed.](media/aks-lite/aks-lite-release-assets.png)
 
 2. In the upper left-hand corner of the releases page, navigate to the **Code** tab, and select the green **Code** button to download the repository as a **.zip** file.  
-
-    ![repository download](media/aks-lite/aks-lite-download-zip.png)
 
 3. Extract the GitHub **.zip** file and move the MSI and all the other files in to the extracted folder. This will be your working directory.
 
 4. Before you install, make sure you have removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, please reboot your system before proceeding.
 
-    ![uninstall](media/aks-lite/aks-lite-uninstall.png)
+    ![Screenshot of Add and remove program.](media/aks-lite/aks-lite-uninstall.png)
 
 > [!NOTE]
 > This release supports both k8s and k3s. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
@@ -61,9 +59,9 @@ This is your primary machine.
 
     You should see the output below with version showing v0.4.222.
 
-    ![aksiot modules installed](media/aks-lite/aks-lite-modules-installed.png)
+    ![Screenshot of AKS lite module cmdlets.](media/aks-lite/aks-lite-modules-installed.png)
 
-    See the [AKS-IoT Powershell cmdlets](./reference/aks-lite-ps/index.md) for a full list of supported commands.
+    See the [AKS-IoT PowerShell cmdlets](./reference/aks-lite-ps/index.md) for a full list of supported commands.
 
 ## Create a single-node Kubernetes cluster
 
@@ -89,7 +87,7 @@ Create a Kubernetes node(s) on your machine on a private network, making it easy
    kubectl get pods -A -o wide
    ```
 
-   ![all pods running](media/aks-lite/all-pods-running.png)
+   ![Screenshot of all pods running. ](media/aks-lite/all-pods-running.png)
 
 ## Deploy a sample application
 
@@ -107,7 +105,7 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
    kubectl get pods -o wide
    ```
 
-   ![linux pods running](media/aks-lite/linux-pods-running.png)
+   ![Screenshot of linux pods running.](media/aks-lite/linux-pods-running.png)
 
 3. Verify that your service is up
 
@@ -118,11 +116,11 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
    kubectl get services
    ```
 
-   ![linux svc running](media/aks-lite/linux-svc-running.png)
+   ![Screenshot of Linux svc running.](media/aks-lite/linux-svc-running.png)
 
-4. Viee your running Linux sample. To do so, open a web browser and navigate to the external IP of your application.
+4. View your running Linux sample. To do so, open a web browser and navigate to the external IP of your application.
 
-   ![linux app running](media/aks-lite/linux-app-up.png)
+   ![Screenshot of linux app running.](media/aks-lite/linux-app-up.png)
 
 ## Clean up resources
 

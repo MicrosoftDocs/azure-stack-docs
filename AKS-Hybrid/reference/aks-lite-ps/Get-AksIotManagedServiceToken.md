@@ -13,34 +13,27 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotManagedServiceToken
 
-## SYNOPSIS
+## Synopsis
+
 Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
-## SYNTAX
+## Syntax
 
-```
-Get-AksIotManagedServiceToken
-```
-
-## DESCRIPTION
-Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
-This commandlet can only be successfully triggered when a control plane node is running on this deployment.
-
-## EXAMPLES
-
-### Example 1
 ```powershell
 Get-AksIotManagedServiceToken
 ```
 
-{{ Add example description here }}
+## Description
 
-## PARAMETERS
+Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
+This commandlet can only be successfully triggered when a control plane node is running on this deployment.
 
-## INPUTS
+## ExamplesA
 
-## OUTPUTS
+```powershell
+Get-AksIotManagedServiceToken
+```
 
-## NOTES
+## Next steps
 
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

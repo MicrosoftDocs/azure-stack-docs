@@ -12,36 +12,29 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksIotLinuxNode
 
-## SYNOPSIS
+## Synopsis
+
 Checks whether the Linux VM was created.
 
-## SYNTAX
+## Syntax
 
 ```
 Test-AksIotLinuxNode [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 The Test-AksIotLinuxNode cmdlet is an exposed function to verify whether the Linux VM was created.
 It returns true if the virtual machine was created or false if not.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
 ```
 Test-AksIotLinuxNode
 ```
 
-## PARAMETERS
+## Parameters
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### Boolean
-## NOTES
-
-## RELATED LINKS

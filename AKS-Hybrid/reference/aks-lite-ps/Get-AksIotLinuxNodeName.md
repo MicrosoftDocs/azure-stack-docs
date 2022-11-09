@@ -12,35 +12,28 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotLinuxNodeName
 
-## SYNOPSIS
+## Synopsis
 Gets the Linux VM's hostname
 
-## SYNTAX
+## Syntax
 
 ```
 Get-AksIotLinuxNodeName [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
 The Get-AksIotLinuxNodeName queries the Linux virtual machine's current hostname from wssdagent.
 
-## EXAMPLES
-
-### EXAMPLE 1
+## Examples
 ```
 Get-AksIotLinuxNodeName
 ```
 
-## PARAMETERS
+## Parameters
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-### String
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

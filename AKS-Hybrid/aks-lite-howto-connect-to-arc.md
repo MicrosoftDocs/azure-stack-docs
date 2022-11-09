@@ -24,18 +24,11 @@ Make sure to perform these steps on your primary machine.
 
 ## Step 1: Configure your Azure environment
 
-In your **Bootstrap** folder (inside the Github respository folder downloaded as .zip and extracted), open **aide-userconfig.json** or **aksiot-userconfig.json** (in earlier released versions).
+In your **tools** folder (inside the GitHub repository folder downloaded as .zip and extracted), open **aide-userconfig.json**. 
 
 ```cmd
 notepad.exe aide-userconfig.json
 ```
-
-or (in earlier released versions)
-
-```cmd
-notepad.exe aksiot-userconfig.json
-```
-
 In the parameters under `"Azure"`, enter the appropriate information:
 
 ```powershell

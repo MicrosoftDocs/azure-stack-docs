@@ -109,24 +109,6 @@ kubectl get pods --all-namespaces -o wide
 
 ![Screenshot of results showing all pods running.](media/aks-lite/all-pods-running.png)
 
-## Deploy secondary machines
-
-Prepare the secondary machines (these are machines that you will scale to). Connect them to the same network, then execute these steps on each of your secondary machines:
-
-> [!TIP]
-> In step 4, make sure to add the `-Node` flag to set up secondary machines.
-
-1. On your secondary machine, download the **Source code (zip)** from the [GitHub releases page](https://github.com/Azure/AKS-IoT-preview/releases). Navigate to **bootstrap** and you should see the bootstrap scripts.
-2. Retrieve the latest preview build from the releases page. It should look similar to **aks-lite-ps-*.zip**.
-3. Move the bootstrap and the preview build zip into a workspace folder. Your workspace folder should look similar to:
-   ![aksiot workspace](media/aks-lite/aks-lite-workspace.png)
-4. Double-click on **LaunchPrompt.cmd** to start the LaunchPrompt. This displays an admin PowerShell window. The first time you run **LaunchPrompt.cmd**, you are missing items and seeing a lot of red.
-5. Run `New-AksIoTPC -Node`. This enables Hyper-V and sets up policy and remote access settings. 
-6. Restart your PC to install Hyper-V. Then run `New-AksIoTPC -Node` again to continue the bootstrap.
-7. Open **LaunchPrompt.cmd** again and it should all be green except for **AksIot Module**. You do not need **AksIot Module** for secondary machines.
-
-   ![Screenshot of Windows Explorer showing secondary machine prepped.](media/aks-lite/secondary-machine-prepped.png)
-
 ## Next steps
 
 - [Deploy your application](aks-lite-howto-deploy-app.md).

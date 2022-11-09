@@ -12,32 +12,26 @@ ms.lastreviewed: 10/04/2022
 
 # Stop-AksIotLinuxNode
 
-## SYNOPSIS
+## Synopsis
 Stops the Linux node VM if it's currently started.
 
-## SYNTAX
+## Syntax
 
 ```
 Stop-AksIotLinuxNode
 ```
 
-## DESCRIPTION
+## Description
 The Stop-AksIotLinuxNode cmdlet stops the virtual machine.
 No action is taken if the virtual machine is already stopped
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
+
 ```
 Stop-AksIotLinuxNode
 ```
 
-## PARAMETERS
+## Next steps
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

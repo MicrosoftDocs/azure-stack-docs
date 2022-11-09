@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Arc-enabled services on an AKS on Windows cluster
 
-Now that you have an Arc-enabled with AKS cluster you can attach and configure Kubernetes clusters running anywhere. Through Azure Arc, you can access Azure services for on-premise Kubernetes deployments just like you would with AKS on Azure.
+Now that you have an Arc-enabled with AKS cluster you can attach and configure Kubernetes clusters running anywhere. Through Azure Arc, you can access Azure services for on-premises Kubernetes deployments just like you would with AKS on Azure.
 
 ## Using Azure Monitor with Arc enabled AKS on Windows cluster
 
@@ -122,7 +122,7 @@ To configure Prometheus metrics scraping, open PowerShell and navigate to the sa
 kubectl apply -f containers-azm-ms-agentconfig.yaml
 ```
 
-Once the config map is applied, you are can view Prometheus metrics in Azure Monitor. These are some resources that show you how to query Prometheus data in Azure Monitor:
+Once the config map is applied, you can view Prometheus metrics in Azure Monitor. These are some resources that show you how to query Prometheus data in Azure Monitor:
 
 - [Query Prometheus metrics data](/azure/azure-monitor/containers/container-insights-log-query#query-prometheus-metrics-data)
 - [Query configuration or scraping errors](/azure/azure-monitor/containers/container-insights-log-query#query-prometheus-metrics-data)

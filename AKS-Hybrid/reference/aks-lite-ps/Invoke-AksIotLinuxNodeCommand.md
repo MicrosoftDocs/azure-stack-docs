@@ -12,30 +12,32 @@ ms.lastreviewed: 10/04/2022
 
 # Invoke-AksIotLinuxNodeCommand
 
-## SYNOPSIS
+## Synopsis
+
 Executes an SSH command on the Linux VM.
 
-## SYNTAX
+## Syntax
 
-```
+```powershell
 Invoke-AksIotLinuxNodeCommand [-Command] <String> [-IgnoreError] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 The Invoke-AksIotLinuxNodeCommand cmdlet executes a Linux command inside the virtual machine and returns the output.
 This cmdlet only works for Linux commands that return a finite output.
 It cannot be used for Linux commands that require user interaction or that run indefinitely.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
-```
+```powershell
 Invoke-AksIotLinuxNodeCommand -Command "sudo ps aux"
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -Command
+
 Command to be executed in the Linux VM
 
 ```yaml
@@ -51,6 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -IgnoreError
+
 Optionally, if this flag is present, ignore errors from the command (don't throw).
 
 ```yaml
@@ -66,13 +69,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-### String - Response from the Linux VM
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

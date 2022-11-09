@@ -18,7 +18,7 @@ Set up your primary machine as described in the [Setup article](aks-lite-howto-s
 
 ## Create a single-node cluster
 
-You can run the `New-AksIotSingleMachineCluster` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can run the command with default parameters or supply your own values. Some of the parameters and their default values as as follows:
+You can run the `New-AksIotSingleMachineCluster` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can run the command with default parameters or supply your own values. Some of the parameters and their default values as follows:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|

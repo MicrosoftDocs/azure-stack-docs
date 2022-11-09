@@ -13,32 +13,32 @@ ms.lastreviewed: 10/04/2022
 
 # Remove-AksIotNode
 
-## SYNOPSIS
+## Synopsis
+
 Removes a local node from an existing cluster.
 
-## SYNTAX
+## Syntax
 
-```
+```powershell
 Remove-AksIotNode [[-WorkloadType] <WorkloadType>] [-Headless] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes a local node from an existing cluster.
 In case the last control-plane node of a cluster is
 removed, remaining worker nodes will be dangling.
 
-## EXAMPLES
+## Examples
 
-### Example 1
 ```powershell
 Remove-AksIotNode -WorkloadType Linux
 ```
 
-{{ Add example description here }}
-
-## PARAMETERS
+## Parameters
 
 ### -WorkloadType
+
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
 'LinuxAndWindows', should be removed.
 When not specified, the 'Linux' node is removed only.
@@ -57,6 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Headless
+
 This parameter is useful for automation without user interaction.
 The default user input will be applied.
 
@@ -73,12 +74,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

@@ -24,15 +24,7 @@ The secondary machine added in this example has an IP of **192.168.1.11** and a 
 > [!TIP]
 > Run diagnostic before scaling. To ensure your other machines are prepped and that your networking configurations are valid, we recommend you run a diagnostic check.
 
-### Step 1: Diagnostic check
-
-```powershell
-Test-AksIotSetup -targetMachine 192.168.1.11 -targetUser "aksiot"
-```
-
-![Screenshot of results of diagnostic check.](media/aks-lite/diagnostic-test.png)
-
-### Step 2: Scaling to a secondary machine
+### Step 1: Scaling to a secondary machine
 
 Run the following commands to scale out to a secondary machine:
 
@@ -48,7 +40,7 @@ New-AksIotNode `
 - `-WorkloadType`: `Linux`, `Windows`, or `LinuxAndWindows`
 - `-ReserveMemoryMb`: The memory reserved for the Windows host using **(XGb/1MB)**.
 
-### Step 3: Verify scaling
+### Step 2: Verify scaling
 
 Confirm that your additional nodes are showing up.
 
@@ -62,7 +54,7 @@ Get-AksIotNode
 kubectl get nodes -o wide
 ```
 
-### Step 4: Remove a machine
+### Step 3: Remove a machine
 
 To remove a machine, run the following cmdlet:
 

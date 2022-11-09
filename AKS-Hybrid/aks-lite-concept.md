@@ -12,14 +12,14 @@ ms.custom: template-concept
 
 This article discussed some important concepts in AKS lite.
 
-## AKS on Windows workload types
+## AKS lite workload types
 
 When deploying AKS-IoT nodes you should specify the `-WorkloadType` parameter. This parameter indicates the types of workloads can run on this machine, and will tell AKS-IoT to create the corresponding VM. The possible values are “Linux”, “Windows”, or “LinuxAndWindows”. In this release, "Linux" is the only supported workload type.
 
 > [!IMPORTANT]
 > Kubernetes control plane components are in Linux, so the first node you deploy must include a Linux node.
 
-## AKS on Windows networking
+## AKS lite networking
 
 There are three key networking concepts for AKS-IoT that align with those for Kubernetes generally. They are described and the chart below shows how to configure them. This guide assumes that you have control over your network and router (i.e. in a home setting). If you are in a corporate environment, we recommend you ask your network administrator for a range of free IP addresses (from the same subnet) that are reachable on the internet, then follow the same steps as below.
 

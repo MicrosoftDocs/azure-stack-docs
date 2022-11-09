@@ -21,7 +21,7 @@ This article describes how to deploy applications to your Arc-enabled AKS-IoT cl
 
 ## Step 1: Fork demo application
 
-Go to the [Azure Arc Jumpstart repository](https://github.com/microsoft/azure-arc-jumpstart-apps) and fork it to your own Github account.
+Go to the [Azure Arc Jumpstart repository](https://github.com/microsoft/azure-arc-jumpstart-apps) and fork it to your own GitHub account.
 
 ## Step 2: Creating configurations
 

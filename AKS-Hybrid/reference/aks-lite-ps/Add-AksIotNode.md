@@ -12,18 +12,21 @@ ms.lastreviewed: 10/04/2022
 
 # Add-AksIotNode
 
-## SYNOPSIS
+## Synopsis
+
 Adds a new AksIot node to the cluster.
 
-## SYNTAX
+## Syntax
 
 ### fromJsonConfigFile (Default)
-```
+
+```powershell
 Add-AksIotNode [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
-```
+
+```powershell
 Add-AksIotNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-LinuxVmMemoryInMB <Int32>]
  [-LinuxVmDataSizeInGB <Int32>] [-WindowsVmCpuCount <Int32>] [-WindowsVmMemoryInMB <Int32>]
  [-LinuxVmIp4Address <String>] [-WindowsVmIp4Address <String>] [-ClusterJoinToken <String>]
@@ -31,11 +34,13 @@ Add-AksIotNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-Linux
 ```
 
 ### fromJsonConfigString
-```
+
+```powershell
 Add-AksIotNode -JsonConfigString <String> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Adds a new AksIot node to the cluster.
 The new node created on this machine joins the cluster to
 which the existing deployment on this machine belongs.
@@ -44,21 +49,24 @@ single machine cluster.
 In a scalable deployment, the existing Linux or Windows node can be
 complemented with the other node type.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
-```
+### Example 1
+
+```powershell
 Add-AksIotNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+
+```powershell
 Add-AksIotNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -WindowsVmIp4Address 192.168.1.3 -clusterjointoken \<token\> -discoverytokenhash \<hash\>
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -WorkloadType
+
 This parameter indicates whether a 'Linux' node or a 'Windows' node should be added.
 
 ```yaml
@@ -75,6 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxVmCpuCount
+
 This parameter specifies the number of vCPUs assigned to the Linux node
 
 ```yaml
@@ -90,6 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxVmMemoryInMB
+
 This parameter specifies the memory in MB to be assigned to the Linux node
 
 ```yaml
@@ -105,6 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxVmDataSizeInGB
+
 This parameter specifies the size of the data partition for the Linux node.
 When application workloads with high disk requirements are to be deployed,
 the size of the data partition can be extended accordingly.
@@ -122,6 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsVmCpuCount
+
 This parameter specifies the number of vCPUs assigned to the Windows node
 
 ```yaml
@@ -137,6 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsVmMemoryInMB
+
 This parameter specifies the memory in MB to be assigned to the Windows node
 
 ```yaml
@@ -152,6 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxVmIp4Address
+
 This parameter specifies the static IP address to assign to the Linux node
 
 ```yaml
@@ -167,6 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsVmIp4Address
+
 This parameter specifies the static IP address to assign to the Windows node
 
 ```yaml
@@ -182,6 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterJoinToken
+
 The cluster join token used for joining the existing cluster.
 The parameter can only be omitted if a control plane node is already deployed
 on this machine in which case the token is acquired from the node.
@@ -199,6 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiscoveryTokenHash
+
 The discovery token hash used for joining an existing cluster.
 The parameter can only be omitted if a control plane node is already deployed
 on this machine in which case the token is acquired from the node.
@@ -216,6 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -ControlPlane
+
 When adding a Linux node, this parameter indicates whether the node will run the control plane.
 
 ```yaml
@@ -231,6 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -Headless
+
 This parameter is useful for automation without user interaction.
 The default user input will be applied.
 
@@ -247,6 +266,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimeoutSeconds
+
 This parameter specifies the maximum wait for a kubernetes node to reach the Ready state
 
 ```yaml
@@ -262,6 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigString
+
 Input parameters based on a JSON string.
 No other parameters may be specified.
 
@@ -278,6 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigFilePath
+
 Input parameters based on a JSON file.
 No other parameters may be specified.
 
@@ -294,12 +316,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

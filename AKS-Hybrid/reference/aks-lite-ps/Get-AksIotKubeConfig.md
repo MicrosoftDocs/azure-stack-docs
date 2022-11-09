@@ -12,33 +12,25 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotKubeConfig
 
-## SYNOPSIS
+## Synopsis
 Pulls the KubeConfig file from the Linux node.
 
-## SYNTAX
+## Syntax
 
 ```
 Get-AksIotKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
 Pulls the KubeConfig file from the Linux node.
 Thus, enables kubectl on the host to access the AksIot
 cluster.
 The function will set the AksIot cluster's kubeconfig file as the
 default kubeconfig file for kubectl.
 
-## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
-
-## PARAMETERS
+## Parameters
 
 ### -KubeConfigPath
 Optional parameter that allows specifying a custom location to output the credential/kubeconfig file to.
@@ -106,10 +98,6 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

@@ -32,14 +32,12 @@ In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. 
 
 You can deploy AKS for the light edge on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
-1. On your machine, navigate to the [Github releases page](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)**, depending on which Kubernetes distribution you want to use.
+1. On your machine, navigate to the [GitHub releases page](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)**, depending on which Kubernetes distribution you want to use.
 
-   ![Scrrenshot showing AKS on Windows GitHub releases](media/aks-lite/aks-lite-release-assets.png)
+   ![Screenshot showing AKS on Windows GitHub releases.](media/aks-lite/aks-lite-release-assets.png)
 
-2. In the upper left-hand corner of the releases page, navigate to the **Code** tab and click on the green **Code** button to download the repository as a **.zip** file:  
-
-   ![Screenshot showing GitHub repository.](media/aks-lite/aks-lite-download-zip.png)
-
+2. In the upper left-hand corner of the releases page, navigate to the **Code** tab and click on the green **Code** button to download the repository as a **.zip** file.
+  
 3. Extract the GitHub **.zip** file and move the MSI and all the other files to the extracted folder. This will be your working directory.
 
 4. Before you install, make sure you remove any existing AKS-IoT clusters and uninstall any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
@@ -63,7 +61,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
     ![Screenshot of installed PowerShell modules.](media/aks-lite/aks-lite-modules-installed.png)
 
-    See the [AKS-IoT Powershell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
+    See the [AKS-IoT PowerShell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
 
 ## Set up your machine for Linux and Windows workloads
 

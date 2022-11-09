@@ -13,32 +13,27 @@ ms.lastreviewed: 10/04/2022
 
 # Start-AksIotLinuxNode
 
-## SYNOPSIS
+## Synopsis
+
 Starts the Linux node VM if it's currently stopped.
 
-## SYNTAX
+## Syntax
 
 ```
 Start-AksIotLinuxNode
 ```
 
-## DESCRIPTION
+## Description
+
 The Start-AksIotLinuxNode cmdlet starts the virtual machine.
 No action is taken if the virtual machine is already started.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
 ```
 Start-AksIotLinuxNode
 ```
 
-## PARAMETERS
+## Next steps
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

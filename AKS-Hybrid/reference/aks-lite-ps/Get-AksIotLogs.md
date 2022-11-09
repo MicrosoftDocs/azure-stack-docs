@@ -12,35 +12,40 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksIotLogs
 
-## SYNOPSIS
+## Synopsis
+
 Collects all the logs from the deployment.
 
-## SYNTAX
+## Syntax
 
-```
+```powershell
 Get-AksIotLogs [[-OutputPath] <String>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 The Get-AksIotLogs cmdlet collects all the logs from the AksIot deployment and installation.
 It compresses them and outputs the bundled logs in the form of a .zip folder, by default in the current
 installation directory.
 
-## EXAMPLES
+## Examples
 
-### EXAMPLE 1
-```
+### Example 1
+
+```powershell
 Get-AksIotLogs
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+
+```powershell
 Get-AksIotLogs -OutputPath ~/Desktop
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -OutputPath
+
 Optional parameter allowing to change the path to which the zipped log folder will be stored
 
 ```yaml
@@ -56,12 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

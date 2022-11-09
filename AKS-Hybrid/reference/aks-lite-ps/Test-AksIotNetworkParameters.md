@@ -12,17 +12,20 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksIotNetworkParameters
 
-## SYNOPSIS
+## Synopsis
+
 Validates AksIot network parameters, useful as a pre-deployment step.
 
-## SYNTAX
+## Syntax
 
 ### fromJsonConfigFile (Default)
+
 ```
 Test-AksIotNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
+
 ```
 Test-AksIotNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address <String>]
  [-WindowsVmIp4Address <String>] [-ControlPlaneEndpointIp <String>] [-ServiceIPRangeStart <String>]
@@ -31,27 +34,27 @@ Test-AksIotNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address 
 ```
 
 ### fromJsonConfigString
+
 ```
 Test-AksIotNetworkParameters -JsonConfigString <String> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Validates AksIot network parameters, useful as a pre-deployment step.
 For a documentation of the
 parameters, see the New-AksIotDeployment commandlet.
 
-## EXAMPLES
+## Examples
 
-### Example 1
 ```powershell
 Test-AksIotNetworkParameters -WorkloadType Linux
 ```
 
-{{ Add example description here }}
-
-## PARAMETERS
+## Parameters
 
 ### -WorkloadType
+
 {{ Fill WorkloadType Description }}
 
 ```yaml
@@ -68,6 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -LinuxVmIp4Address
+
 {{ Fill LinuxVmIp4Address Description }}
 
 ```yaml
@@ -83,6 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsVmIp4Address
+
 {{ Fill WindowsVmIp4Address Description }}
 
 ```yaml
@@ -98,6 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -ControlPlaneEndpointIp
+
 {{ Fill ControlPlaneEndpointIp Description }}
 
 ```yaml
@@ -113,6 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceIPRangeStart
+
 {{ Fill ServiceIPRangeStart Description }}
 
 ```yaml
@@ -128,6 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceIPRangeEnd
+
 {{ Fill ServiceIPRangeEnd Description }}
 
 ```yaml
@@ -143,6 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -Ip4PrefixLength
+
 {{ Fill Ip4PrefixLength Description }}
 
 ```yaml
@@ -158,6 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -Ip4GatewayAddress
+
 {{ Fill Ip4GatewayAddress Description }}
 
 ```yaml
@@ -173,6 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -DnsServers
+
 {{ Fill DnsServers Description }}
 
 ```yaml
@@ -188,6 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipAddressFreeCheck
+
 {{ Fill SkipAddressFreeCheck Description }}
 
 ```yaml
@@ -203,6 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigString
+
 {{ Fill JsonConfigString Description }}
 
 ```yaml
@@ -218,6 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigFilePath
+
 {{ Fill JsonConfigFilePath Description }}
 
 ```yaml
@@ -233,12 +247,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
+## Next steps
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)

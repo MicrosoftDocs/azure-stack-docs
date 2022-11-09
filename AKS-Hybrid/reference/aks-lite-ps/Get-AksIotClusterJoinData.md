@@ -11,16 +11,16 @@ ms.lastreviewed: 10/04/2022
 ---
 # Get-AksIotClusterJoinData
 
-## SYNOPSIS
+## Synopsis
 Pulls the cluster join data from a Linux control plane node.
 
-## SYNTAX
+## Syntax
 
 ```
 Get-AksIotClusterJoinData
 ```
 
-## DESCRIPTION
+## Description
 Pulls the cluster join data from a Linux control plane node.
 This is the control plane endpoint IP and
 port as well as the cluster join token.
@@ -28,21 +28,6 @@ The information returned can be used to add nodes to existing
 clusters.
 A new join token will be generated each time this call is made.
 
-## EXAMPLES
+## Next steps
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
-
-## PARAMETERS
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
+[Akslite PowerShell Reference](./index.md)
