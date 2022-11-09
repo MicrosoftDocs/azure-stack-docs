@@ -8,7 +8,7 @@ ms.author: sethm
 ms.reviewer: JasonGerend
 ---
 
-# Network HUD overview 
+# Network HUD overview
 
 [!INCLUDE [applies-to]( ../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -24,28 +24,28 @@ Diagnosing network issues poses a significant challenge as administrators do not
 
 Network HUD can help:
 
-- Identify misconfiguration on the physical network
-- Identify operational issues with physical hardware (NICs, cabling, physical switch)
-- Identify and optimize your configuration for increased performance
-- Auto-remediate some host issues to increase stability and performance
+- Identify misconfiguration on the physical network.
+- Identify operational issues with physical hardware (NICs, cabling, physical switch).
+- Identify and optimize your configuration for increased performance.
+- Auto-remediate some host issues to increase stability and performance.
 
 Network HUD integrates with existing technologies you’re already using, like:
 
 - Network ATC: Network HUD understands the intent of your adapters, ensuring the adapters are operating as expected.
 
-- Cluster Health: Events from Network HUD are directly integrated with Cluster Health to ensure your existing tools continue to work; no additional dashboards or alerting mechanisms are required.
+- Cluster Health: Events from Network HUD are integrated with Cluster Health to ensure your existing tools continue to work. No other dashboards or alerting mechanisms are required.
 
 ## Terminology
 
-- *Network HUD:* An inbox feature that analyzes and remediates network issues. 
-- *Network HUD Content:* Content that enables Network HUD to perform its analysis. This content is downloaded separately, can run in a disconnected state, and is easily updated.It is important that this content is regularly updated. 
-- *Network HUD Content Detection:* Content detections watch for system and network behavior that indicates an issue is or will occur on your system. These detections are including in the Network HUD Content mentioned earlier.
+- *Network HUD:* An inbox feature that analyzes and remediates network issues.
+- *Network HUD Content:* Content that enables Network HUD to perform its analysis. This content is downloaded separately, can run in a disconnected state, and is easily updated. It's important that this content is updated regularly.<!--Are the updates automatic, or are we telling them it's important to update the content regularly?-->
+- *Network HUD Content Detection:* Content detections watch for system and network behavior that indicates an issue is or will occur on your system. These detections are included in the Network HUD Content.
 
 ## Installation
 
 Installation of Network HUD requires two steps:
 
-1. Install Network HUD:
+1. Install Network HUD:<!--Positioning step: They're doing this on what machine? Administrative PowerShell session?-->
 
    ```PowerShell
    Install-WindowsFeature -Name NetworkHUD 
