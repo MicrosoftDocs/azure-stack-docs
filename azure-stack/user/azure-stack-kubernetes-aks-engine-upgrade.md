@@ -111,13 +111,13 @@ On Azure Stack Hub, starting from Kubernetes v1.21, AKS Engine-based clusters wi
 > **Upgrade considerations:** the process of upgrading a Kubernetes cluster from v1.20 (or lower version) to v1.21 (or greater version) will cause downtime to workloads relying on the `kubernetes.io/azure-disk` in-tree volume provisioner. Before upgrading to Kubernetes v1.21+, it is **highly recommended** to perform a full backup of the application data and validate in a **pre-production environment** that the cluster storage resources (PV and PVC) can be migrated to the a new volume provisioner. Learn how to migrate to the Azure Disk CSI driver [here](#migrate-persistent-storage-to-the-azure-disk-csi-driver).
 
 
-### Volume Provisioners
+### Volume provisioners
 
 The [in-tree volume provisioner](https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/) is only compatible with the in-tree cloud provider. Therefore, a v1.21+ cluster has to include a Container Storage Interface (CSI) Driver if user workloads rely on persistent storage. A few solutions available on Azure Stack Hub are listed [here](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#volume-provisioner-container-storage-interface-drivers-preview).
 
 AKS Engine will **not** enable any CSI driver by default on Azure Stack Hub. For workloads that require a CSI driver, it is possible to either explicitly enable the `azuredisk-csi-driver` [addon](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md#addons) (Linux-only clusters) or use `Helm` to [install the `azuredisk-csi-driver` chart](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#1-install-azure-disk-csi-driver-manually) (Linux and/or Windows clusters).
 
-### Migrate Persistent Storage to the Azure Disk CSI driver
+### Migrate persistent storage to the Azure Disk CSI driver
 
 The process of upgrading an AKS Engine-based cluster from v1.20 (or lower version) to v1.21 (or greater version) will cause downtime to workloads relying on the `kubernetes.io/azure-disk` in-tree volume provisioner as this provisioner is not part of the [Cloud Provider for Azure](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
 
@@ -141,7 +141,7 @@ helm install azuredisk-csi-driver azuredisk-csi-driver/azuredisk-csi-driver \
   --version ${DRIVER_VERSION}
 ```
 
-#### 2. Replace Storage Classes
+#### 2. Replace storage classes
 
 The `kube-addon-manager` will automatically create the Azure Disk CSI driver storage classes (`disk.csi.azure.com`) once the in-tree storage classes (`kubernetes.io/azure-disk`) are manually deleted:
 
@@ -155,7 +155,7 @@ kubectl delete storageclasses ${IN_TREE_SC}
 kubectl get --watch storageclasses
 ```
 
-#### 3. Recreate Persistent Volumes
+#### 3. Recreate persistent volumes
 
 Once the Azure Disk CSI Driver is installed and the storage classes replaced, the next step is to recreate the persistent volumes (PV) and persistent volumes claims (PVC) using the Azure Disk CSI driver (or alternative CSI solution).
 
@@ -169,7 +169,7 @@ This is a multi-step process that can be different depending on how these resour
 
 The following migration [script](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/migratepv.sh) is provided as a template.
 
-> After running the migration script, if the pod is stuck with error "Unable to attach or mount volumes", make sure [Azure Disk CSI Driver was installed](#1-install-azure-disk-csi-driver-manually) and [storage classes were recreated](#2-replace-storage-classes).
+After running the migration script, if the pod is stuck with error "Unable to attach or mount volumes", make sure [Azure Disk CSI Driver was installed](#1-install-azure-disk-csi-driver-manually) and [storage classes were recreated](#2-replace-storage-classes).
 
 
 ## Forcing an upgrade
