@@ -19,7 +19,7 @@ sections:
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
           > [!NOTE]  
-          > This issue is fixed in the September release and later.
+          > This issue is fixed in the September 2022 release and later.
           
           ### To reproduce
           
@@ -61,6 +61,78 @@ sections:
             - Delete old management appliance certificate by removing `$env:UserProfile.wssd\kvactl\cloudconfig`.
             - Run `Repair-AksHciCerts`.
             - Run `Get-AksHciCluster` to check that it's fixed.
+          
+      - question: | 
+          Target cluster pod logs are not accessible - remote error: tls: internal error
+
+        answer: | 
+          The target cluster logs are not accessible. When you try to access pod logs in the target cluster, the following TLS error is displayed:
+          
+          ```shell
+          Error from server: Get "[https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver":](https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver%22:) remote error: tls: internal error
+          ```
+          
+          > [!NOTE]  
+          > This is a known issue in AksHci version 1.0.14.x and earlier. It should be fixed as part of 1.0.14.x (September release and later). Target clusters updated to this version should not experience this issue.
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Install the target cluster.
+          3. Don't upgrade the cluster for 60 days.
+          4. Restart the cluster.
+          
+          ### Expected behavior
+          
+          The target pod logs should not be accessible. Any `kubectl` log command run against the target cluster should return with an error message similar to the following:
+          
+          `Error from server: Get "[https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver":](https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver%22:) remote error: tls: internal error`
+          
+          Run the following command to renew the certificate manager tokens:
+          
+          ```powershell
+          Update-AksHciClusterCertificates  -Name my-workload-cluster -fixcloudcredentials
+          ```
+          
+      - question: | 
+          Cluster controlplane - certificate expired - Unable to connect to the server: x509
+
+        answer: | 
+          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command generates the following error:
+          
+          ```shell
+          certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z
+          ```
+          
+          > [!NOTE]  
+          > This issue is fixed in the September 2022 release and later.
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Install the target cluster.
+          3. Turn off cluster(vms) for more than 4 days.
+          4. Turn the cluster on again.
+          
+          ### Expected behavior
+          
+          The target cluster should be unreachable. Any `kubectl` command run against the target cluster should return with an error message similar to the following:
+          
+          `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
+          
+          1. Run the following command to renew the generated certificate manually:
+          
+             ```powershell
+             Update-AksHciClusterCertificates  -Name my-workload-cluster -fixKubeletCredentials
+             ```
+          
+          2. Generate new credentials:
+          
+             ```powershell
+             Get-AksHciCredential -name <clustername>
+             ```
+          
+          After a few minutes, try the `kubectl`` command again to see if the cluster is now available.
           
       - question: | 
           KMS pod fails and the KMS pod logs contain errors
