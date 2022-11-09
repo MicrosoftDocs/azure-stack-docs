@@ -87,8 +87,8 @@ If you want to use an existing configuration file you have previously created, s
 
     f. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
 
-        > [!NOTE]
-        > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
+    > [!NOTE]
+    > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
 
     g. Select an existing **Azure resource group** from the dropdown to associate with the cluster resource. To create a new resource group, leave the field empty.
 
