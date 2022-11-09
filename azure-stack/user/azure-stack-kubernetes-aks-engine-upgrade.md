@@ -115,17 +115,17 @@ On Azure Stack Hub, starting from Kubernetes v1.21, AKS Engine-based clusters wi
 
 The [in-tree volume provisioner](https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/) is only compatible with the in-tree cloud provider. Therefore, a v1.21+ cluster has to include a Container Storage Interface (CSI) Driver if user workloads rely on persistent storage. A few solutions available on Azure Stack Hub are listed [here](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#volume-provisioner-container-storage-interface-drivers-preview).
 
-AKS Engine will **not** enable any CSI driver by default on Azure Stack Hub. For workloads that require a CSI driver, it is possible to either explicitly enable the `azuredisk-csi-driver` [addon](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md#addons) (Linux-only clusters) or use `Helm` to [install the `azuredisk-csi-driver` chart](#1-install-azure-disk-csi-driver-manually) (Linux and/or Windows clusters).
+AKS Engine will **not** enable any CSI driver by default on Azure Stack Hub. For workloads that require a CSI driver, it is possible to either explicitly enable the `azuredisk-csi-driver` [addon](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md#addons) (Linux-only clusters) or use `Helm` to [install the `azuredisk-csi-driver` chart](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#1-install-azure-disk-csi-driver-manually) (Linux and/or Windows clusters).
 
 ### Migrate Persistent Storage to the Azure Disk CSI driver
 
-The process of upgrading an AKS Engine-based cluster from v1.20 (or lower version) to v1.21 (or greater version) will cause downtime to workloads relying on the `kubernetes.io/azure-disk` in-tree volume provisioner as this provisioner is not part of the [Cloud Provider for Azure](#cloud-provider-for-azure).
+The process of upgrading an AKS Engine-based cluster from v1.20 (or lower version) to v1.21 (or greater version) will cause downtime to workloads relying on the `kubernetes.io/azure-disk` in-tree volume provisioner as this provisioner is not part of the [Cloud Provider for Azure](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
 
 If the data persisted in the underlying Azure disks should be preserved, then the following extra steps are required once the cluster upgrade process is completed:
 
-1. [Install the Azure Disk CSI driver](#1-install-azure-disk-csi-driver-manually).
-1. [Remove the deprecated in-tree storage classes](#2-replace-storage-classes).
-1. [Recreate the persistent volumes and claims](#3-recreate-persistent-volumes).
+1. [Install the Azure Disk CSI driver](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#1-install-azure-disk-csi-driver-manually)
+1. [Remove the deprecated in-tree storage classes](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#2-replace-storage-classes)
+1. [Recreate the persistent volumes and claims](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#3-recreate-persistent-volumes)
 
 #### 1. Install Azure Disk CSI driver manually
 
