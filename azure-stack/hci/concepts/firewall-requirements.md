@@ -53,7 +53,7 @@ The following table provides a list of recommended firewall URLs. If your outbou
 
 ## Firewall requirements for additional Azure services
 
-Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service.
+Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
