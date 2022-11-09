@@ -130,6 +130,8 @@
         href: manage/create-virtual-networks.md
     - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
+    - name: Manage VM extensions
+      href: manage/virtual-machine-manage-extension.md
     - name: Uninstall Azure Arc VM management
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
