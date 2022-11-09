@@ -158,7 +158,7 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 `netsh winhttp show proxy`
 
 > [!IMPORTANT]
-> We don't support authenticated proxies due to security concerns associated with storing a username and password for authentication.
+> We don't support authenticated proxies due to security concerns associated with storing authenticated user credentials.
 
 ### Configure proxy for Azure services
 
