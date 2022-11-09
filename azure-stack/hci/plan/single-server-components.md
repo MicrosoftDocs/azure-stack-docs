@@ -12,7 +12,7 @@ ms.date: 11/09/2022
 
 # Review single-server storage reference pattern components for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-patterns-versions.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
 
 In this article, you'll learn about which network components are deployed for the single-server reference pattern, as shown in the following diagram:
 
