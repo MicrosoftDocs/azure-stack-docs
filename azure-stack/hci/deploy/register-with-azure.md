@@ -239,6 +239,9 @@ After the cluster is registered, you can see `ConnectionStatus` and the `LastCon
 
 If you exceed the maximum period of offline operation, `ConnectionStatus` will show `OutOfPolicy`.
 
+> [!NOTE]
+> BIOS\UEFI Firmware configuration must be the same on each HCI cluster node's hardware. Any nodes with different BIOS configurations compared to the majority may show **ConnectionStatus** as **OutOfPolicy**.
+
 ## Register a cluster using SPN for Arc onboarding
 
 Before registration, make sure the prerequisites are met: the HCI cluster must exist, internet access and firewall ports are configured correctly, and the user registering the cluster has either the "contributor" role assigned for the subscription which is used for the cluster registration, or has the following list of permissions if a custom role is assigned:

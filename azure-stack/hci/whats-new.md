@@ -9,9 +9,9 @@ ms.subservice: azure-stack-hci
 ms.date: 10/12/2022
 ---
 
-# What's new in Azure Stack HCI, version 22H2 
+# What's new in Azure Stack HCI, version 22H2
 
-> Applies to: Azure Stack HCI, version 22H2 
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
 
@@ -152,6 +152,5 @@ You can [download this free tool here](https://www.powershellgallery.com/package
 
 ## Next steps
 
-- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847).
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-ignite-2022/ba-p/3650949).
 - [Install Azure Stack HCI, version 22H2 operating system](./manage/install-preview-version.md).
-
