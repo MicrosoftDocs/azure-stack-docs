@@ -159,7 +159,7 @@ Expected Output:
 ```output
 1.0.13.10907
 ```
-Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the [troubleshooting section](/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
+Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the [troubleshooting section](known-issues.yml). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
 
 ## Step 7: Generate pre-requisite YAML files needed to deploy Azure Arc Resource Bridge
 
