@@ -5,7 +5,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/07/2022
+ms.date: 11/09/2022
 ---
 
 ### OOB network
@@ -27,6 +27,11 @@ The management network supports the following VLAN configurations:
 - **Native VLAN** - you aren't required to supply VLAN IDs. This is required for solution-based installations.
 
 - **Tagged VLAN** - you supply VLAN IDs at the time of deployment.
+tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
+
+Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
+
+For more information, see [What is RAS Gateway for SDN?](/azure-stack/hci/concepts/gateway-overview.md)
 
 The management network supports all traffic used for management of the cluster, including Remote Desktop, Windows Admin Center, and Active Directory.
 
@@ -72,9 +77,6 @@ For more information, see [Configure QoS for a VM network adapter](/windows-serv
 
 Network virtualization provides virtual networks to VMs similar to how server virtualization (hypervisor) provides VMs to the operating system. Network virtualization decouples virtual networks from the physical network infrastructure and removes the constraints of VLAN and hierarchical IP address assignment from VM provisioning. Such flexibility makes it easy for you to move to (Infrastructure-as-a-Service) IaaS clouds and is efficient for hosters and datacenter administrators to manage their infrastructure, and maintaining the necessary multi-tenant isolation, security requirements, and overlapping VM IP addresses.
 
-> [!NOTE]
-> This network isolation option isn't enabled by default when deploying Azure Stack HCI and requires you to explicitly enable it during deployment.
-
 For more information, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
 ## L3 networking services options
@@ -114,8 +116,4 @@ SDN Gateway can be used to:
 
 - Create Layer 3 (L3) connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
-SDN Gateway requires SDN [Network Controller](/azure-stack/hci/concepts/network-controller-overview.md). Network Controller performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
-
-Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
-
-For more information, see [What is RAS Gateway for SDN?](/azure-stack/hci/concepts/gateway-overview.md)
+SDN Gateway requires SDN [Network Controller](/azure-stack/hci/concepts/network-controller-overview.md). Network Controller performs the deployment of gateway pools, configures 
