@@ -104,7 +104,7 @@ With AKS engine version 0.60.1 and above you can upgrade your cluster VMs from U
 ## Steps to upgrade cluster if you're using storage volumes with AKS Engine v0.70.0 and later
 The [Cloud Provider for Azure](https://github.com/kubernetes-sigs/cloud-provider-azure) project (aka `cloud-controller-manager`, out-of-tree cloud provider or external cloud provider) implements the [Kubernetes cloud provider interface](https://github.com/kubernetes/cloud-provider) for Azure clouds. The out-of-tree implementation is the replacement for the deprecated [in-tree implementation](https://github.com/kubernetes/kubernetes/tree/master/staging/src/k8s.io/legacy-cloud-providers/azure).
 
-On Azure Stack Hub, starting from Kubernetes v1.21, AKS Engine-based clusters will exclusively use `cloud-controller-manager`. Hence, to deploy a Kubernetes v1.21+ cluster, it is required to set `orchestratorProfile.kubernetesConfig.useCloudControllerManager` to `true` in the API Model ([example]([/examples/azure-stack/kubernetes-azurestack.json](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json))). AKS Engine's upgrade process will automatically update the `useCloudControllerManager` flag.
+On Azure Stack Hub, starting from Kubernetes v1.21, AKS Engine-based clusters will exclusively use `cloud-controller-manager`. Hence, to deploy a Kubernetes v1.21+ cluster, it is required to set `orchestratorProfile.kubernetesConfig.useCloudControllerManager` to `true` in the API Model ([example](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json)). AKS Engine's upgrade process will automatically update the `useCloudControllerManager` flag.
 
 
 > [!NOTE]  
