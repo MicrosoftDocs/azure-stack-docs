@@ -1,5 +1,5 @@
 ---
-title: Concepts - Upgrade the AKS host in AKS hybrie using PowerShell
+title: Concepts - Upgrade the AKS host in AKS hybrid using PowerShell
 description: Learn about using PowerShell to upgrade the AKS host in AKS hybrid.
 ms.topic: conceptual
 ms.date: 10/18/2022
@@ -76,7 +76,7 @@ The output shows the available versions this AKS host can be updated to.
 
 #### Versioning
 
-Using version 1.0.2.10723 as an example, the following is how version numbers are constructed for AKS hybrid releases.
+Using version 1.0.2.10723 as an example, the following table shows how version numbers are constructed for AKS hybrid releases.
 
 | Value | Meaning                                                                                             |
 | ----- | --------------------------------------------------------------------------------------------------- |
