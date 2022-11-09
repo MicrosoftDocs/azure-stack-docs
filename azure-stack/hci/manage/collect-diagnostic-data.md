@@ -1,10 +1,10 @@
 ---
 title: Collect diagnostic data for Azure Stack HCI and Windows Server clusters
 description: Understanding Storage Spaces Direct diagnostic data collection tools, with specific examples of how to run and use them.
-ms.author: kendownie
+ms.author: sethm
 ms.topic: article
-author: adagashe
-ms.date: 08/11/2021
+author: sethmanheim
+ms.date: 11/09/2022
 ---
 # Collect diagnostic data for clusters
 
