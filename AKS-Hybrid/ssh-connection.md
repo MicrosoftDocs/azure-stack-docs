@@ -1,9 +1,9 @@
 ---
-title: Connect with SSH to Azure Kubernetes Service on Azure Stack HCI and Windows Server nodes
-description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS on Azure Stack HCI and Windows Server.
+title: Connect with SSH to Azure Kubernetes Service nodes in AKS hybrid
+description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/13/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -11,13 +11,18 @@ ms.reviewer: abha
 # Keyword: SSH connection maintenance worker nodes
 ---
 
-# Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting
+# Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting in AKS hybrid
 
-You may need to access Windows or Linux worker nodes in AKS on Azure Stack HCI and Windows Server for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This topic describes how to create a SSH connection to access both Windows and Linux nodes.
+You may need to access Windows or Linux worker nodes in AKS hybrid for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
+
+This article describes how to create an SSH connection to access both Windows and Linux nodes.
+
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 ## Use SSH to connect to Windows worker nodes
+
 To use SSH to sign in to a Windows worker node, run `kubectl get` to obtain the IP address of your node and capture the `EXTERNAL-IP` value.
 
 > [!NOTE]
@@ -38,6 +43,7 @@ ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa administrator@<IP Address of the 
 After you use SSH to connect to the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Use SSH to connect to Linux worker nodes
+
 To use SSH to sign in to a Linux worker node, first run `kubectl get` to obtain the IP address of your node and capture the `EXTERNAL-IP` value.
 
 > [!NOTE]
@@ -58,5 +64,5 @@ ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node
 After you use SSH to connect to the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Next steps
-- [Known issues](/azure-stack/aks-hci/known-issues)
-- [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center)
+- Review [Known issues](/azure-stack/aks-hci/known-issues).
+- Review [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center).
