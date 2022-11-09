@@ -5,21 +5,21 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 11/09/2022
 ms.author: sethm 
-ms.reviewer: JasonGerend
+ms.reviewer: dacuo
 ---
 
 # Network HUD overview
 
 [!INCLUDE [applies-to]( ../../includes/hci-applies-to-22h2-21h2.md)]
 
-Network HUD enables visibility across the network, simplifying operational network diagnostics. It performs real-time analysis of network issues and provides prescriptive alerts or auto-remediation of the issue when possible. In turn, this increases stability and optimizes network performance for workloads running on Azure Stack HCI.
+Network HUD ("heads up display") enables visibility across the network, simplifying operational network diagnostics. It performs real-time analysis of network issues and provides prescriptive alerts or auto-remediation of the issue when possible. These capabilities can increase stability and optimize network performance for workloads running on Azure Stack HCI.
 
-## About Network HUB
+## About Network HUD
 
 Diagnosing network issues poses a significant challenge as administrators do not have visibility across the complete solution. The solution can be divided into several areas:
 
 - Physical Network Switch (ToR), cabling, and NIC
-- Cluster hosts: HCI OS is installed here
+- Cluster hosts: The HCI OS is installed here.
 - Guest workloads (VMs or containers)
 
 Network HUD can help:
@@ -35,17 +35,19 @@ Network HUD integrates with existing technologies you’re already using, like:
 
 - Cluster Health: Events from Network HUD are integrated with Cluster Health to ensure your existing tools continue to work. No other dashboards or alerting mechanisms are required.
 
-## Terminology
+## Definitions
 
-- *Network HUD:* An inbox feature that analyzes and remediates network issues.
-- *Network HUD Content:* Content that enables Network HUD to perform its analysis. This content is downloaded separately, can run in a disconnected state, and is easily updated. It's important that this content is updated regularly.<!--Are the updates automatic, or are we telling them it's important to update the content regularly?-->
-- *Network HUD Content Detection:* Content detections watch for system and network behavior that indicates an issue is or will occur on your system. These detections are included in the Network HUD Content.
+**Network HUD:** An inbox feature that analyzes and remediates network issues.
+
+**Network HUD Content:** Content that enables Network HUD to perform its analysis. This content is downloaded separately, can run in a disconnected state, and is easily updated. It's important that this content is updated regularly.
+
+**Network HUD Content Detection:** Content detections watch for system and network behavior that indicates an issue is or will occur on your system. These detections are included in the Network HUD Content.
 
 ## Installation
 
 Installation of Network HUD requires two steps:
 
-1. Install Network HUD:<!--Positioning step: They're doing this on what machine? Administrative PowerShell session?-->
+1. Install Network HUD:
 
    ```PowerShell
    Install-WindowsFeature -Name NetworkHUD 
@@ -59,5 +61,5 @@ Installation of Network HUD requires two steps:
 
 ## Next steps
 
-- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](/azure-stack/hci/deploy/network-atc).<!--Find this topic.-->
-- Review Network HUD Introduction Blogs.<!--Find out what this refers to and where to find it.-->
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](..\deploy\network-atc.md).
+- Review Network HUD Introduction Blogs.<!--Link to these blog entires - where?-->
