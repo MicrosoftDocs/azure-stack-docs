@@ -162,7 +162,7 @@ Once the Azure Disk CSI Driver is installed and the storage classes replaced, th
 This is a multi-step process that can be different depending on how these resources were initially deployed. The high level steps are:
 
 * Delete the deployment or statefulset that references the PV + PVC pairs to migrate (backup resource definition if necessary).
-* Ensure the PVs' `persistentVolumeReclaimPolicy` property is set to value `Retain` ([example](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers#migrate-in-tree-persistent-volumes)).
+* Ensure the PVs' `persistentVolumeReclaimPolicy` property is set to value `Retain` ([example](/azure/aks/csi-storage-drivers#migrate-in-tree-persistent-volumes)).
 * Delete the PV + PVC pairs to migrate (backup resource definitions if necessary).
 * To migrate, update the PVs' resource definition by removing the `azureDisk` object and adding a `csi` object with reference to the original AzureDisk ([example](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#static-provisioning-bring-your-own-azure-disk)).
 * Recreate, in the following order, the PV resource/s, PVC resource/s (if necessary), and finally the deployment or statefulset.
