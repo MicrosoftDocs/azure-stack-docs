@@ -281,6 +281,8 @@
     items:
     - name: AKS on Windows key concepts
       href: aks-lite-concept.md
+    - name: Deployment options
+      href: aks-lite-deployment-options.md
   - name: How-to
     items:
     - name: Set up machine

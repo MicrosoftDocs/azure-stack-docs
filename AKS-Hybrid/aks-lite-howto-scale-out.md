@@ -42,7 +42,7 @@ New-AksIotNode `
 
 ### Step 2: Verify scaling
 
-Confirm that your additional nodes are showing up.
+Confirm that your other nodes are showing up.
 
 ```powershell
 # Using PS cmdlets
@@ -64,16 +64,14 @@ Remove-AksIotNode -Fqdn 192.168.1.11
 
 ## Scaling control plane nodes
 
-These are the supported control plane scaling scenarios.
-
-The control plane VMs must have the same memory and logical processors, so if all physical machines have the same memory and logical processors, then these will work. If your physical machines have different memory or logical processors, adjust the `-ReservedMemoryMb` and `-ReservedCpu` parameters to create the same control plane VM size across your machines.
+The control plane VMs must have the same memory and logical processors, so if all physical machines have the same memory and logical processors, then scaling will work. If your physical machines have different memory or logical processors, adjust the `-ReservedMemoryMb` and `-ReservedCpu` parameters to create the same control plane VM size across your machines.
 
 > [!IMPORTANT]
 > Control plane scaling is only supported for `-WorkloadType Linux`.
 
-The control plane can only be comprised of 1, 3, or 5 nodes. This can be accomplished in two ways:
+The control plane can only be composed of one, three, or five nodes. This can be accomplished in two ways:
 
-**Option A:** Create 1 node (no high availability) then scale out to 3 or 5:
+**Option A:** Create one node (no high availability) then scale out to three or five:
 
 ```powershell
 # Create one control plane
@@ -86,7 +84,7 @@ New-AksIotNode -Fqdns 'node2','node3' -WorkloadType Linux -ControlPlane
 New-AksIotNode -Fqdns 'node4','node5' -WorkloadType Linux -ControlPlane
 ```
 
-**Option B:** Initially create 3 nodes or 5 nodes.
+**Option B:** Initially create three nodes or five nodes.
 
 ```powershell
 # Three-node control plane

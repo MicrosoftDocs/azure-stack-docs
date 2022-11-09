@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Single machine deployment
 
-You can deploy AKS on the light edge on either a single machine or on multiple machines. In case of a single machine, both the Kubernetes control node and worker node run on the same machine, which is your primary machine. This article describes how to create the Kubernetes control node on your machine on a private network.
+You can deploy AKS on the light edge on either a single machine or on multiple machines. In a simple deployment, both the Kubernetes control node and worker node run on the same machine, which is your primary machine. This article describes how to create the Kubernetes control node on your machine on a private network.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ You can run the `New-AksIotSingleMachineCluster` cmdlet to deploy a single-machi
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| WorkloadType | **Linux** | **Linux** creates the Linux control plane. You cannot specify **Windows** because the control plane node needs to be Linux. Read more about [AKS-IoT workload types](/docs/AKS-IoT-Concepts.md#aks-lite-workload-types). Note that Windows nodes are not supported in this build. | **Linux** |
+| WorkloadType | **Linux** | **Linux** creates the Linux control plane. You can't specify **Windows** because the control plane node needs to be Linux. Read more about [AKS-IoT workload types](/docs/AKS-IoT-Concepts.md#aks-lite-workload-types). Note that Windows nodes aren't supported in this build. | **Linux** |
 | NetworkPlugin | **calico** or **flannel** | CNI plugin choice for the Kubernetes network model. | **flannel** |
 | LinuxVmCpuCount | number | Number of CPU cores reserved for Linux VM/VMs. | 2 |
 | LinuxVmMemoryInMB | number | RAM in MBs reserved for Linux VM/VMs. | 2048 |
@@ -32,7 +32,7 @@ To get a full list of the parameters and their default values, run `Get-Help New
 
 **Example Commands:**
 
-Create a cluster with no service IPs. You cannot create a LoadBalancer service:
+Create a cluster with no service IPs. You can't create a LoadBalancer service:
 
 ```powershell
 New-AksIotSingleMachineCluster
@@ -80,7 +80,7 @@ Remove-AksIotSingleMachineCluster
 
 ## Alternate option: AksIotDeploy(Aide)
 
-We have also included an **AksIotDeploy(Aide)** module to help you automate the installation, deployment and provisioning of AKS-IoT with a simple JSON specification. We have included a sample JSON for quick deployment as well as a template JSON that you can modify to specify your own parameters. This template is designed to support remote deployment scenarios. [Learn more about AksIotDeploy](/bootstrap/Modules/AksIotDeploy/Readme.md).
+We have also included an **AksIotDeploy(Aide)** module to help you automate the installation, deployment and provisioning of AKS-IoT with a simple JSON specification. We've included a sample JSON for quick deployment as well as a template JSON that you can modify to specify your own parameters. This template is designed to support remote deployment scenarios. [Learn more about AksIotDeploy](/bootstrap/Modules/AksIotDeploy/Readme.md).
 
 Otherwise, return to the [deployment guidance homepage](/docs/AKS-IoT-Deployment-Guidance.md).
 

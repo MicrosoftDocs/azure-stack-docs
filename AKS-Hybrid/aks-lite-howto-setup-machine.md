@@ -9,7 +9,7 @@ ms.custom: template-how-to
 ---
 
 # Prepare your machines for AKS
-
+    
 In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this cluster.
 
 ## Prerequisites
@@ -17,12 +17,12 @@ In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. 
 - Hardware requirements:
 
   > [!IMPORTANT]
-  > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
+  > The minimum set up required to run the latest version of AKS is a single machine with the following specs:
 
   | Specs | Requirement |
   | ---------- | --------- |
-  | Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
-  | CPU | 2 logical processors, clock speed at least 1.8 GHz |
+  | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
+  | CPU | Two logical processors, clock speed at least 1.8 GHz |
   | Disk space | At least 14 GB free |
   | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
 
@@ -38,7 +38,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
 2. In the upper left-hand corner of the releases page, navigate to the **Code** tab and click on the green **Code** button to download the repository as a **.zip** file.
   
-3. Extract the GitHub **.zip** file and move the MSI and all the other files to the extracted folder. This will be your working directory.
+3. Extract the GitHub **.zip** file and move the MSI and all the other files to the extracted folder. This folder will be your working directory.
 
 4. Before you install, make sure you remove any existing AKS-IoT clusters and uninstall any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
 

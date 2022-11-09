@@ -48,7 +48,7 @@ Use `LaunchPrompt.cmd` to open an elevated PS window and run `mars` to get an in
 
 ### Add HTTP_PROXY, HTTPS_PROXY, NO_PROXY values to environment
 
-Since this configuration is set in environment variables, it's important to make sure this is consistent on the machine. Add the following settings to `/etc/environment` and `/etc/profile`:
+Since this configuration is set in environment variables, it's important to make sure it is consistent on the machine. Add the following settings to `/etc/environment` and `/etc/profile`:
 
 ```bash
 # /etc/environment sample
@@ -63,7 +63,7 @@ export HTTP_PROXY=http://127.0.0.1:8080
 
 ### Add HTTP_PROXY and other values to container service
 
-Make sure that these environment variables are also set for the container service configuration. The last private preview shipped with docker and containerd inbox, so both services need to be updated. This can be done via a systemd drop-in.
+Make sure that these environment variables are also set for the container service configuration. The last private preview shipped with docker and containerd inbox, so both services need to be updated. Setting the environment variables can be done via a systemd drop-in.
 
 1. Add the following directory: **/etc/systemd/system/containerd.service.d**. Ensure you have the **chmod 0755** mode of access.
 2. In the directory, create a file named **override.conf** with the proxy environment variables set:
@@ -85,7 +85,7 @@ Make sure that these environment variables are also set for the container servic
 
     `systemctl status containerd` indicates whether the drop-ins were imported correctly.
 
-### Re-initialize the cluster
+### Reinitialize the cluster
 
 Now that the environment variables for the HTTP proxy are set consistently, run the following commands to tear down and reinitialize the cluster.
 
@@ -97,7 +97,7 @@ Now that the environment variables for the HTTP proxy are set consistently, run 
 
    `192.168.0.2` is the control plane endpoint, which should match the `-ControlPlaneEndpoint` parameter passed into `New-AksIotSingleNodeCluster` or `New-AksIotCluster` (defaults to the IP address assigned to the VM's eth0).
 
-2. Re-initialize the node using:
+2. Reinitialize the node using:
 
    ```bash
    /var/.eflow/config/kXs/lifecycle-mgmt.sh -i -d k8s -c 192.168.0.2 -n flannel
@@ -105,13 +105,13 @@ Now that the environment variables for the HTTP proxy are set consistently, run 
 
     `192.168.0.2` is the control plane endpoint which should match the control plane endpoint passed into the AKS-Iot PowerShell frontend. `flannel` is the default CNI selected and should match the `-NetworkPlugin` parameter passed into `New-AksIotSingleNodeCluster` or `New-AksIotCluster`.
 
-## Connect to Arc Using Powershell 7 and New API
+## Connect to Arc Using PowerShell 7 and New API
 
 ### Step 1: Install dependencies
 
 First, install [PowerShell 7+](/powershell/scripting/install/installing-powershell-on-windows).
 
-If you do not have chocolatey installed, open PowerShell as administrator and run:
+If you don't have chocolatey installed, open PowerShell as administrator and run:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -141,8 +141,8 @@ Open the **aksiot-userconfig.json** file (default location is **C:\Program Files
 |Connect | bool | When set to **true**, AKS connects your cluster to Arc, and if set to **false**, disconnects your cluster from Arc. |
 |Location | string | The location in which to create your resource group. It's recommended that you use `EastUS`. |
 |ResourceGroupName | string | Name of the Azure resource group to host your Azure resources for AKS-IoT. Create a resource group and enter the name here. |
-|SubscriptionId | string | The ID of your Azure subscription. You can find this value on the Azure portal when you select your subscription. |
-|TenantId | string | Your tenant ID. You can find this value on the Azure portal when you go to **Azure Active Directory**. |
+|SubscriptionId | string | The ID of your Azure subscription. You can find your subscription ID on the Azure portal when you select your subscription. |
+|TenantId | string | Your tenant ID. You can find your Tenant ID on the Azure portal when you go to **Azure Active Directory**. |
 
 #### Create a service principal
 
