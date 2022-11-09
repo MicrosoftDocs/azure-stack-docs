@@ -62,7 +62,7 @@ AKS hybrid fully supports running both Linux-based and Windows-based containers.
 
 ### AKS hybrid supports deploying GPU-enabled nodes
 
-AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see [GPU documentation](https://github.com/Azure/aks-hci/blob/main/preview/GPU/GPU-private-preview-documentation.md).
+AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see [GPU documentation](https://github.com/Azure/aks-hybrid/blob/main/preview/GPU/gpu-preview.md).
 
 ## Azure Kubernetes Service hybrid deployment options
 
