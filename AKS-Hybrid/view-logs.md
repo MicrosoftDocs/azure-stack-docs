@@ -1,9 +1,9 @@
 ---
-title: View logs to collect and review data on AKS hybrid
+title: View logs to collect and review data in AKS hybrid
 description: Learn how to view logs to collect and review data for my Azure Kubernetes Services (AKS) deployment in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -13,7 +13,7 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# View logs to collect and review data on AKS hybrid
+# View logs to collect and review data in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
