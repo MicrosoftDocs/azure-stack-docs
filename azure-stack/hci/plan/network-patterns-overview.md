@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2022
+ms.date: 11/10/2022
 ---
 
 # Network reference patterns overview for Azure Stack HCI
 
-[!INCLUDE [includes](includes/hci-patterns-versions.md)]
+[!INCLUDE [includes](/azure-stack/includes/hci-applies-to-22h2-21h2.md)]
 
 In this article, you'll gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 

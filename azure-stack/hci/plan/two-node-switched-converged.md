@@ -7,12 +7,12 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2022
+ms.date: 11/10/2022
 ---
 
 # Review two-node storage switched, fully-converged deployment network reference pattern for Azure Stack HCI
 
-[!INCLUDE [includes](includes/hci-patterns-versions.md)]
+[!INCLUDE [includes](/azure-stack/includes/hci-applies-to-22h2-21h2.md)]
 
 In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
@@ -89,7 +89,7 @@ The storage network operates in different IP subnets. Each storage network uses 
 
 For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
 
-[!INCLUDE [includes](includes/hci-patterns-two-node-include.md)]
+[!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 
 ## Next steps
 

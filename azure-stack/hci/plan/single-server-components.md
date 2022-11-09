@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/07/2022
+ms.date: 11/09/2022
 ---
 
 # Review single-server storage reference pattern components for Azure Stack HCI
@@ -52,7 +52,7 @@ THe SDN Gateway VM is used to route network traffic between a virtual network an
 
 The following components run as services or agents on the host server:
 
-**ARC host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
+**Arc host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
 
 **Network Controller host agent**: Allows Network Controller to manage the goal state of the data plane, and to receive notification of events as the configuration of the data plane changes.
 
