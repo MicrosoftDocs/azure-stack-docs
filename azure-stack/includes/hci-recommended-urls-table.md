@@ -18,7 +18,6 @@ ms.lastreviewed: 04/19/2022
 | Microsoft Update | go.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | dl.delivery.mp.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | *.windowsupdate.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates. |
-| Microsoft Update | *.update.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | *.update.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | *.download.windowsupdate.com    | 80   | For Microsoft Update, which allows the OS to receive updates.|
 | Cluster Cloud Witness  | *.blob.core.windows.net   | 443  | For firewall access to the Azure blob container, if choosing to use a cloud witness as the cluster witness, which is optional. |
