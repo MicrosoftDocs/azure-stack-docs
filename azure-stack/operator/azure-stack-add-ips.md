@@ -24,7 +24,8 @@ While you can set up multiple IP pools, you won't be able to select which one to
 > The steps in this article apply only to systems that were deployed using the partner toolkit version 1809 or later. Systems that were deployed before version 1809 require the top-of-rack (TOR) switch access control lists (ACLs) to be updated to PERMIT the new public VIP pool range. If you are running older switch configurations, work with your OEM to either add the appropriate PERMIT ACLs for the new public IP pool or reconfigure your switch using the latest partner toolkit to prevent the new public IP addresses from being blocked.
 
 ## Add a public IP address pool
-You can add public IP addresses to your Azure Stack Hub system at any time after the initial deployment of the Azure Stack Hub system. Check out how to [View public IP address consumption](azure-stack-viewing-public-ip-address-consumption.md) to see what the current usage and public IP address availability is on your Azure Stack Hub.
+You can add public IP addresses to your Azure Stack Hub system at any time after the initial deployment of the Azure Stack Hub system. The network size on this subnet for the new Public IP Pool can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts). We recommend that you plan for a /24 network.
+Check out how to [View public IP address consumption](azure-stack-viewing-public-ip-address-consumption.md) to see what the current usage and public IP address availability is on your Azure Stack Hub.
 
 At a high level, the process of adding a new public IP address block to Azure Stack Hub looks like this:
 
