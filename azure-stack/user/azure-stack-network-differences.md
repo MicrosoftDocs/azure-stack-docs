@@ -56,7 +56,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
-|  | Health Probes | Azure originates the Load Balancer Probes from the IP address 168.63.129.16 | Azure Stack Hub Load Balancer health probes source is from the subnet Gateway IP and originates from the host where the Virtual Machine DIP is present. For example, if the subnet range is 10.0.0.0/24, the first IP of the subnet is reserved for the gateway IP, which would be 10.0.0.1 |
+|  | Health Probes | Azure originates the Load Balancer health probes from the IP address 168.63.129.16 | Azure Stack Hub Load Balancer health probes source is from the subnet Gateway IP and originates from the host where the Virtual Machine DIP is present. For example, if the subnet range is 10.0.0.0/24, the first IP of the subnet is reserved for the gateway IP, which would be 10.0.0.1 |
 | Internal Load Balancer | Front end IP | No limit. | Azure Stack Hub provides an IP pool of 127 IPs for the internal load balancer's front end IPs. A small subset of that IP pool (8) is used for its internal infrastructure and 119 are available for users. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
 | | SKU | Azure supports Basic and Standard. | Only Basic is supported. |
