@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using an existing configuration file (preview)
 description: Learn how to deploy Azure Stack HCI using an existing configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 11/09/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -245,6 +245,84 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 1. It can take up to 1.5 hours for the deployment to complete. You can monitor your deployment progress and the details in near real-time.
 
     :::image type="content" source="media/deployment-tool/config-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/config-file/deployment-progress.png":::
+
+## Reference: Configuration file settings
+
+The following table gives descriptions for the settings listed in the configuration file:
+
+|Setting|Description|Modification support?|
+|---|---|---|
+|**SecuritySettings**|Section name||
+|SecurityModeSealed|CARLOS input|No|
+|SecuredCoreEnforced|CARLOS input|No|
+|VBSProtection|By default, Virtualization-based Security (VBS) is enabled. For more information, see Virtualization-based Security (/windows-hardware/design/device-experiences/oem-vbs)|No|
+|HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled. For more information, see  Hypervisor-protected Code Integrity (/windows-hardware/design/device-experiences/oem-hvci-enablement).|Yes|
+|DRTMProtection|By default, Secure Boot is enabled. For more information, see Secure Boot with Dynamic Root of Trust for Measurement (DRTM) (/windows-server/security/secured-core-server#2-advanced-protection)|Yes|
+|KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled. For more information, see Kernel Direct Memory Acc ess protection (/windows-server/security/secured-core-server#2-advanced-protection).|Yes|
+|DriftControlEnforced|When set to true, security baseline is re-applied regularly - Default value = TRUE|Yes|
+|CredentialGuardEnforced|When set to true, Crdeential Guard is enabled - Default value = FALSE (aiming to switch to TRUE)|Yes|
+|SMBSigningEnforced|When set to true, SMB default instance is configured to require signing on client and server service - Default value = TRUE|Yes|
+|SMBClusterEncryption|When set to true, Cluster east-west traffic is encrypted - Default value = FALSE|Yes|
+|SideChannelMitigationEnforced|When set to true, Side Channel mitigations are all enabled - Default value = TRUE|Yes|
+|BitlockerBootVolume|When set to true, BitLocker protection is enabled for the OS volume - Default value = TRUE - TPM Hardware dependent |Yes|
+|BitlockerDataVolumes|When set to true, BitLocker protection is enabled for the cluster shared volumes - Default value = TRUE|Yes|
+|SEDProtectionEnforced|Not in use for 22H2 - Default value = TRUE|Yes|
+|WDACEnforced|When set to true WDAC will be enabled in enforcement mode. Default value - NULL |Yes|
+|**Observability**|Section name||
+|StreamingDataClient|Sending telemetry data to Microsoft.||
+|EULocation|Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides.||
+|EpisodicDataUpload|Proactively collect logs that allow to resolve issue faster.||
+|**Cluster**|Section name||
+|Name|The name that you provided for your cluster when preparing the Active Directory. ||
+|StaticAddress|Future use||
+|**Storage**|Section name||
+|ConfigurationMode|By default, this mode is set to Express and your storage is configured as per the best practices based on the number of nodes in the cluster.||
+|OptionalServices|Section name||
+|VirtualSwitchName|Name of the virtual switch||
+|CSVPath|Path to the cluster shared volumes on your Azure Stack HCI cluster. These volumes are used to...||
+|ARBRegion|Region in which the Azure Arc Resource Bridge should be deployed on your Azure Stack HCI cluster.||
+|NamingPrefix|The prefix used for all AD objects created for the Azure Stack HCI deployment. The prefix must not exceed 8 characters.||
+|DomainFQDN|FQDN for the Active Directory used by your cluster.||
+|ExternalDomainFQDN|FQDN for the Active Directory used by your cluster.||
+|**InfrastructureNetwork**|Section name||
+|VlanId|future use||
+|SubnetMask|Subnet mask that matches the provided IP address space.||
+|Gateway|Default gateway that should be used for the provided IP address space.||
+|IPPools|Range of IP addresses from which addresses are allocated for nodes within a subnet.||
+|StartingAddress|Provide the starting IP for the management network. A minimum of 6 free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.||
+|EndingAddress|Provide the ending IP for the management network. A minimum of 6 free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.||
+|DNSServers| IPv4 address of the DNS servers in your environment. DNS servers are required because they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.||
+|**PhysicalNodes**|Section name||
+|Name|Name of each physical server on your Azure Stack HCI cluster.||
+|IPv4Address|The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.||
+|**HostNetwork**|Section name||
+|Intents|The network intents assigned to the network reference pattern used for the deployment||
+|Name|Name of the network intent that you wish to create||
+|TrafficType|Type of traffic. Examples include compute, storage, and management traffic||
+|Compute|Traffic originating from or destined to a virtual machine (VM).||
+|Management|Traffic used to or from outside the local cluster||
+|Storage|Traffic used by the administrator for management of the cluster like Remote Desktop or Windows Admin Center||
+|Adapter|Name of the network adapter?||
+|Ethernet|Primary ethernet...?||
+|Ethernet2|Secondary ethernet...?||
+|OverrideVirtualSwitchConfigurationOverrides|CRISTIAN input||
+|EnableIov|CRISTIAN input||
+|LoadBalancingAlgortihm|CRISTIAN input||
+|OverrideQoSPolicy|CRISTIAN input||
+|QoSPolicyOverrides|CRISTIAN input||
+|PriorityValue8021Action_Cluster|CRISTIAN input||
+|PriorityValue8021Action_SMB|CRISTIAN input||
+|OverrideAdapterProperty|CRISTIAN input||
+|AdpaterPropertyOverrides|CRISTIAN input||
+|JumboPacket|CRISTIAN input||
+|NetworkDirect|CRISTIAN input||
+|NetworkDirectTechnology|CRISTIAN input||
+|**StorageNetworks**|Section name||
+|Name|Name of the storage network||
+|NetworkAdapterName|Name of the network adapter||
+|VlanID|The Vlan ID is specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.||
+|ADOUPath|The path to the Active Directory Organizational Unit container object||
+|DNSForwarder|Name of the server used to forward DNS queries for external DNS names||
 
 ## Next steps
 
