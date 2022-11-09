@@ -2,7 +2,7 @@
 title: Concepts - Upgrade the AKS host in AKS hybrid using PowerShell
 description: Learn about using PowerShell to upgrade the AKS host in AKS hybrid.
 ms.topic: conceptual
-ms.date: 10/18/2022
+ms.date: 11/08/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
@@ -25,7 +25,7 @@ This article describes how to update the Azure Kubernetes Service host in AKS hy
 
 Updates to the AKS host always include the latest available version. Although you can update the host independently of workload cluster updates, you must always update the host before updating a workload cluster.
 
-To avoid outages and loss of AKS availability, rolling updates are performed. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you successfully remove the resources, the _old_ node is decommissioned and removed from the cluster.
+To avoid outages and loss of AKS availability, rolling updates are performed. When you bring a new node with a newer build into the cluster, resources move from the old node to the new node. When you successfully remove the resources, the old node is decommissioned and removed from the cluster.
 
 > [!Note]  
 > Microsoft recommends upgrading your AKS clusters within 30 days of a new release. If you do not update within this window, you have up to 90 days from your last upgrade before internal certificates and tokens expire. Once the certificates and tokens expire, the cluster is still functional; however, you must call Microsoft Support to upgrade. When you reboot the cluster after the 90-day period, it remains in a non-functional state. For more information about internal certificates and tokens, see [Certificates and tokens](/azure-stack/aks-hci/certificates-update-after-sixty-days).
@@ -43,7 +43,7 @@ We recommend updating AKS workload clusters immediately after updating the AKS h
 
 ### Update the PowerShell modules
 
-Make sure you always have the latest PowerShell modules installed on the AKS nodes by running the following command on all the physical nodes in your AKS deployment.<!--Not sure how to generalize "all the physical Azure Stack HCI nodes" to Windows Server and potentially other deployments of AKS hybrid, will this work in context?-->
+Make sure you always have the latest PowerShell modules installed on the AKS nodes by running the following command on all the physical nodes in your AKS deployment.
 
 > [!Important]
 > You should close all open PowerShell windows and then open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules that are in use and can't be updated.
@@ -107,10 +107,4 @@ The output will show the updated version of the AKS on the AKS host.
 
 ## Next steps
 
-- [Update Kubernetes version of your AKS workload clusters](upgrade.md)
-
-
-<!-- LINKS - external -->
-
-
-<!-- LINKS - internal -->
+- [Upgrade the Kubernetes version of your AKS workload clusters](upgrade.md)
