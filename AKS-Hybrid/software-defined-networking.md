@@ -182,14 +182,14 @@ Next, you can create [workload clusters][] and [deploy your applications][]. All
 SDN virtual network that was provided during installation. The SDN Software load balancer will also be used as the external load balancer
 for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
-[Software Load Balancer]: /hci/concepts/software-load-balancer
+[Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
 [Azure Kubernetes Service on Azure Stack HCI requirements]: system-requirements.md
-[Plan a Software Defined Network infrastructure]: /hci/concepts/plan-software-defined-networking-infrastructure
-[SDN Express]: /hci/manage/sdn-express
-[Windows Admin Center]: /hci/deploy/sdn-wizard
+[Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
+[SDN Express]: /azure-stack/hci/manage/sdn-express
+[Windows Admin Center]: /azure-stack/hci/deploy/sdn-wizard
 [Software Load Balancer.psd1]: https://github.com/microsoft/SDN/blob/master/SDNExpress/scripts/Sample%20-%20Software%20Load%20Balancer.psd1
 [Troubleshooting SDN]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
-[how to create and attach VM's to an SDN virtual network]: /hci/manage/vm
+[how to create and attach VM's to an SDN virtual network]: /azure-stack/hci/manage/vm
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
 [Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal

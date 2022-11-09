@@ -130,6 +130,8 @@
         href: manage/create-virtual-networks.md
     - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
+    - name: Manage VM extensions
+      href: manage/virtual-machine-manage-extension.md
     - name: Uninstall Azure Arc VM management
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
@@ -346,9 +348,9 @@
   items:
   - name: Join preview channel
     href: manage/preview-channel.md    
-  - name: Update to version 22H2
+  - name: Install a preview version
     href: manage/install-preview-version.md
-  - name: Run post update steps
+  - name: Post installation tasks
     href: manage/preview-post-installation.md
   - name: View known issues
     href: hci-known-issues.md
