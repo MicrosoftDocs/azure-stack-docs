@@ -37,11 +37,17 @@ The subsequent sections provide additional details about the firewall requiremen
 
 The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
+
 [!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
 
 ## Recommended firewall URLs
 
 The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
+
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
 [!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
 
