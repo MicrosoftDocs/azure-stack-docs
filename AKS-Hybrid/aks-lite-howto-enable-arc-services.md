@@ -40,7 +40,7 @@ Log Analytics workspace: Azure Monitor Container Insights supports a Log Analyti
 
 From the Azure portal, search for Log Analytics Workspaces and select **Create**. Provide your subscription details, resource group name, and Log Analytics workspace name.
 
-![Screenshot showing log analytics workspace creation.](media/aks-lite/log_analytics_ws.png)
+![Screenshot showing log analytics workspace creation.](media/aks-lite/log-analytics-ws.png)
 
 #### Step 3
 
@@ -80,7 +80,7 @@ Create an extension instance using the portal:
 4. You can now choose the [Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace) you previously created, to send your metrics and logs data to.
 5. Select **Configure** to deploy the Azure Monitor Container Insights cluster extension.
 
-   ![Screenshot showing Azure monitor configuration extension.](media/aks-lite/azure_monitor_extension_onboarding.png)
+   ![Screenshot showing Azure monitor configuration extension.](media/aks-lite/azure-monitor-extension-onboarding.png)
 
 #### Step 5
 
@@ -92,7 +92,7 @@ You can check the status of installation using the Azure portal or CLI. Successf
 2. Select the **Extensions** item under the **Settings** section of the resource blade.
 3. You should see an extension with the name **azuremonitor-containers** listed, with the listed status in the **Install status** column.
 
-   ![Screenshot showing Azure monitor extension.](media/aks-lite/azure_monitor_extension_installed.png)
+   ![Screenshot showing Azure monitor extension.](media/aks-lite/azure-monitor-extension-installed.png)
 
 #### Using Azure CLI
 
@@ -108,7 +108,7 @@ Once the extension is installed, Container insights delivers a comprehensive mon
 
 You can now view the resource usage of your AKS-IoT cluster under **Monitoring  --> Insights.**
 
-![Screenshot showing Azure monitor view metrics.](media/aks-lite/azure_monitor_metrics.png)
+![Screenshot showing Azure monitor view metrics.](media/aks-lite/azure-monitor-metrics.png)
 
 You can [read more about Container Insights features and troubleshooting here](/azure/azure-monitor/containers/container-insights-overview).
 
@@ -254,7 +254,7 @@ Find the built-in policy definitions for managing your cluster using the Azure p
 
 4. Select the policy definition, then select **Assign**:
 
-   ![Screenshot showing Azure policy definitions.](media/aks-lite/azure_policy_definitions.png)
+   ![Screenshot showing Azure policy definitions.](media/aks-lite/azure-policy-definitions.png)
    
 5. Set the **Scope** to the management group, subscription, or resource group of the Kubernetes cluster where the policy assignment applies. When assigning Azure Policy for the Kubernetes definition, the **Scope** must include the cluster resource.
 
@@ -273,7 +273,7 @@ Find the built-in policy definitions for managing your cluster using the Azure p
 
 10. Select **Review + create**.
 
-   ![Screenshot showing Azure policy management.](media/aks-lite/azure_policy_management.png)
+   ![Screenshot showing Azure policy management.](media/aks-lite/azure-policy-management.png)
 
 ### Policy evaluation
 
@@ -283,7 +283,7 @@ You can view the compliance state of your policy on the Azure portal. Select you
 
 You can [read more about using Azure Policy on Arc-enabled Kubernetes here](/azure/governance/policy/concepts/policy-for-kubernetes?toc=/azure/azure-arc/kubernetes/toc.json&bc=/azure/azure-arc/kubernetes/breadcrumb/toc.json#install-azure-policy-extension-for-azure-arc-enabled-kubernetes).
 
-![Screenshot showing Azure policy compliance state.](media/aks-lite/azure_policy_compliance_state.png)
+![Screenshot showing Azure policy compliance state.](media/aks-lite/azure-policy-compliance-state.png)
 
 ### Delete Azure Policy
 

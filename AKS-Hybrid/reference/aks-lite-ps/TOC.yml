@@ -9,7 +9,7 @@
   - name: Get-AksIotDeploymentInfo
     href: get-aksiotdeploymentinfo.md
   - name: Get-AksIotEventLog
-    href: get-aksioteventjog.md
+    href: get-aksioteventlog.md
   - name: Get-AksIotKubeConfig
     href: get-aksiotkubeconfig.md
   - name: Get-AksIotLinuxNodeAddr

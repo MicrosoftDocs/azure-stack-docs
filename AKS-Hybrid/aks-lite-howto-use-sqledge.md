@@ -42,7 +42,7 @@ This will do the following:
 - Create a persistent volume and persistent volume claim (learn more about [PVs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume) and [PVCs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)).
 - Deploy SQL Edge.
 
-   ![Screenshot showing SQL Edge deployment.](media/aks-lite/sqledge_pods.png)
+   ![Screenshot showing SQL Edge deployment.](media/aks-lite/sqledge-pods.png)
 
 ## Step 3: Run SQL
 
