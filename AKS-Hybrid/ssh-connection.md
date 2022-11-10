@@ -13,13 +13,9 @@ ms.reviewer: abha
 
 # Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting in AKS hybrid
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
-
 You may need to access Windows or Linux worker nodes in AKS hybrid for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
 
 This article describes how to create an SSH connection to access both Windows and Linux nodes.
-
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 ## Use SSH to connect to Windows worker nodes
 
