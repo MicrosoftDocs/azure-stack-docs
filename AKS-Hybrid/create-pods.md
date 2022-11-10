@@ -1,9 +1,9 @@
 ---
-title: Create and delete pods in AKS
+title: Create and delete pods in AKS hybrid
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/20/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 ---
 
-# Create and delete pods in Azure Kubernetes Service (AKS)
+# Create and delete pods in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
