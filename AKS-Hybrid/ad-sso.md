@@ -180,34 +180,35 @@ apiVersion: rbac.authorization.k8s.io/v1
 
 The example below shows how to create a custom role and role binding for a [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) with an AD group. In the example, "SREGroup" is a pre-existing group in the Contoso Active Directory. When users are added to the AD group, they're immediately granted privileges.
 
-```yml
-kind: Role 
- apiVersion: rbac.authorization.k8s.io/v1 
- metadata: 
-   name: sre-user-full-access 
-   namespace: sre 
- rules: 
- - apiGroups: ["", "extensions", "apps"] 
-   resources: ["*"] 
-   verbs: ["*"] 
- - apiGroups: ["batch"] 
-   resources: 
-   - jobs 
-   - cronjobs 
-   verbs: ["*"] 
- apiVersion: rbac.authorization.k8s.io/v1 
- kind: RoleBinding 
- namespace: sre 
- metadata: 
-   name: ad-user-cluster-admin 
- roleRef: 
-   apiGroup: rbac.authorization.k8s.io 
-   kind: Role 
-   name: sre-user-full-access 
- subjects: 
- - apiGroup: rbac.authorization.k8s.io 
-   kind: User 
-   name: "microsoft:activedirectory:CONTOSO\SREGroup" 
+```yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sre-user-full-access
+  namespace: sre
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ad-user-cluster-admin
+  namespace: sre
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sre-user-full-access
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: "microsoft:activedirectory:CONTOSO\SREGroup" 
 ```
 
 Before you apply the YAML file, the **group and user names** should always be converted to SIDs using the command:
