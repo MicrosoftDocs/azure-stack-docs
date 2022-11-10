@@ -304,7 +304,7 @@ sections:
       - question: | 
           The `Set-AksHciConfig` cmdlet fails with the error:
 
-`GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+          `GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
 
         answer: | 
           If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value.
