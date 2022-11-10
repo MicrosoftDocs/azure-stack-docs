@@ -70,7 +70,7 @@ To check if storage resync is complete:
 
 1. Connect to the cluster using Windows Admin Center and select **Storage > Volumes**.
 1. Select **Inventory**.
-1. Check the **Status** column for every volume. If it shows **OK**, the storage resync is complete. It's now safe to take other servers in the cluster offline.
+1. Check the **Status** column for every volume. If it shows **OK**, storage resync is complete. It's now safe to take other servers in the cluster offline.
 
 ## Take a server offline using PowerShell
 
