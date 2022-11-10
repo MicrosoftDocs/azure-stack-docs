@@ -52,7 +52,23 @@ Note that the output should be `1.0.13.10907` for the August release. Expected O
 ```
 1.0.13.10907
 ```
-If you see a value other than the one listed above, we recommend you uninstall the AKS host management cluster and start again. You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing in `-version '1.0.13.10907'` parameter to the [`Set-AksHciConfig`](/aks-hci/reference/ps/set-akshciconfig.md) command.
+If you see a value other than the one listed above, we recommend you uninstall the AKS host management cluster and start again. You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing in `-version '1.0.13.10907'` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
+
+### You are not running the September release of Arc Resource Bridge
+We currently *do not support running the [October release](https://github.com/Azure/ArcResourceBridge/releases)* of Arc Resource Bridge. You can verify your Arc Resource Bridge version is not the October version by running the following command:
+
+```azcli
+az arcappliance show -n <name of Arc resource bridge> -g <name of resource group> --query version -o tsv
+```
+
+**Note that the output should be less than `1.0.9`.** 
+
+If you see `1.0.9` as the output, we recommend you uninstall the Arc Resource Bridge and start again. You can pin your Arc Resource Bridge version to an earlier release by using the following set of commands -
+
+```azcli
+az extension remove -n arcappliance
+az extension add -n arcappliance --version 0.2.27
+```
 
 ### You used an uppercase character for your AKS hybrid cluster name
 For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.

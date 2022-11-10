@@ -1,6 +1,6 @@
 ---
-title: Azure Arc-enabled VMs on Azure Stack HCI FAQs
-description: Find answers to the frequently asked questions (FAQs) about Azure Arc-enabled VMs on Azure Stack HCI
+title: Azure Arc VM management FAQs
+description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management
 author: ManikaDhiman
 ms.topic: reference
 ms.date: 03/23/2022
@@ -8,13 +8,13 @@ ms.author: v-mandhiman
 ms.reviewer: ksurjan
 ---
 
-# Azure Arc-enabled VMs on Azure Stack HCI FAQs
+# Azure Arc VM management FAQs
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters.
+This article answers some frequently asked questions (FAQs) about Azure Arc VMs running on Azure Stack HCI clusters.
 
-This article answers some frequently asked questions (FAQs) about Azure Arc-enabled VMs running on Azure Stack HCI clusters.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 
@@ -60,4 +60,4 @@ See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for co
 
 ## Next steps
 
-- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)
+- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)

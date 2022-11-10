@@ -53,7 +53,7 @@ You don't need any other firewall rules if you use Windows Admin Center or Power
 
 Cluster registration requires the Az.StackHCI PowerShell module, which isn't included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
 
-Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
+Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allowlist the URL endpoints in order to download the Arc for Servers agent for registration.
 
 For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
 
@@ -71,9 +71,10 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc Resource Bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md#firewall-url-requirements)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
+- [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
 - [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
