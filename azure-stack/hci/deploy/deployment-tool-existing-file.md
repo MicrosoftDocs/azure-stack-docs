@@ -313,10 +313,10 @@ The following table gives descriptions for the settings listed in the configurat
 |PriorityValue8021Action_Cluster|***NEEDS DESCRIPTION***. Default value is `7` for Network ATC.||
 |PriorityValue8021Action_SMB|***NEEDS DESCRIPTION***. Default value is `3` for Network ATC.||
 |OverrideAdapterProperty|***CRISTIAN input***||
-|AdpaterPropertyOverrides|***CRISTIAN input***||
+|AdapterPropertyOverrides|***CRISTIAN input***||
 |JumboPacket|Jumbo packets allow a single frame going across the network to carry a much bigger payload than normal. Default value is **`__`** for Network ATC.||
 |NetworkDirect|This value must be set to `Enabled` (default) for RDMA to function.||
-|NetworkDirectTechnology|This value must match the RDMA type used. Values are `RoCEv2` (default for Network ATC) or `iWARP`.||
+|NetworkDirectTechnology|This value must match the RDMA type used. Values are `RoCEv2` (default for Network ATC) and `iWARP`.||
 |**StorageNetworks**|Section name||
 |Name|Name of the storage network.||
 |NetworkAdapterName|Name of the storage network adapter.||
