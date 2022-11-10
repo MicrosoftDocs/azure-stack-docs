@@ -9,4 +9,4 @@ ms.lastreviewed: 05/02/2022
 
 ---
 
-> Applies to: AKS on Azure Stack HCI SKU, AKS on Windows Server
+> Applies to: AKS on Azure Stack HCI, AKS on Windows Server
