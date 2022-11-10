@@ -267,7 +267,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          kubectl create -f minio-pvc-storage.yaml
          ```
 
-      1. Create a deployment file, `minio-deployment.yaml` with the followig contents, for starting MinIO. The deployment will use the persistent volume you created earlier.
+      1. Create a deployment file, `minio-deployment.yaml` with the following contents, for starting MinIO. The deployment will use the persistent volume you created earlier.
 
          ```yml
          apiVersion: apps/v1
