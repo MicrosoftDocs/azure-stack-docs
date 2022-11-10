@@ -56,7 +56,7 @@ Installation of Network HUD requires two steps:
 1. Install Network HUD Content:
 
    ```PowerShell
-   Install-Module -Name Az.Network.HUD  
+   Install-Module -Name Az.Network.HUD -Force
    ```
 
 ## Next steps
