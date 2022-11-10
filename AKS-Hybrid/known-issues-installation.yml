@@ -302,6 +302,22 @@ sections:
           To resolve the error, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
           
       - question: | 
+          The `Set-AksHciConfig` cmdlet fails with the error:
+
+`GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+
+        answer: | 
+          If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value.
+          
+          The HTTP proxy URL and HTTPS proxy URL values are both required when configuring AKS with a proxy server, but it's common to need both values to share the same HTTP-prefixed URL.
+          
+          If this might be the case in your environment, try the following mitigation steps:
+          
+          1. Close the PowerShell window and open a new one.
+          2. Run the `New-AksHciNetworkSetting` and `New-AksHciProxySetting` cmdlets again. When running `New-AksHciProxySetting`, set the `-https` parameter with the same HTTP-prefixed URL value that you set for `-http`.
+          3. Run `Set-AksHciConfig` and proceed.
+          
+      - question: | 
           When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment times out at various points.
 
         answer: | 
