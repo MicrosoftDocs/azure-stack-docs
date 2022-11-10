@@ -32,12 +32,14 @@ productDirectory:
   - title: Azure Stack Hub 
     imageSrc: media/index/azure-stack-hub.svg
     links:
-      - url: ./operator/azure-stack-overview.md
+      - url: https://azure.microsoft.com/products/azure-stack/hub/#overview
         text: Azure Stack Hub overview
       - url: ./operator/index.yml
-        text: Azure Stack Hub operator
+        text: Azure Stack Hub Operator documentation
       - url: ./user/index.yml
-        text: Azure Stack Hub user
+        text: Azure Stack Hub User documentation
+      - url: ./asdk/index.yml
+        text: Azure Stack Development Kit 
       - url: https://azure.microsoft.com/products/azure-stack/hub/
         text: Product information and pricing
   - title: Azure Stack HCI
