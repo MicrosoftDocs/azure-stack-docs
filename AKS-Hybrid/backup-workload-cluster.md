@@ -1,5 +1,5 @@
 ---
-title: Back up and restore target clusters using Velero
+title: Back up, restore workload clusters using Velero
 description: Learn how to back up and restore workload clusters to Azure Blob storage or MinIO using Velero in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.reviewer: scooley
 
 ---
 
-# Back up and restore target clusters using Velero in AKS hybrid
+# Back up, restore workload clusters using Velero in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -21,7 +21,7 @@ This article describes how to install and use Velero to back up and restore work
 
 [Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, the infrastructure administrator can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-You can either use Azure Blob storage or MinIO storage with Velero. <!--NOT NEEDED? - Velero and Azure Blob storage will store your backups in Azure Blob.--> If you don't want to store your backups in Azure, you can use Velero and MinIO. This document describes how to [install and configure Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
+You can either use Azure Blob storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This document describes how to [install and configure Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [NOTE!]
 > Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.<!--Moved up from "Additional notes" section-->
@@ -51,7 +51,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
 1. If needed, change to the Azure subscription you want to use for the backups. You can skip this step if you're already in the subscription you want to create your backups with.
 
-   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify a subscription to use for your backups. 
+   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify a subscription to use for your backups.
 
    Switch to the subscription the backups should be created in:
 
@@ -173,7 +173,7 @@ This section describes how to install Velero and use Azure Blob storage for back
          $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "<CUSTOM_ROLE>" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
          ```
 
-      For more info about creating custom roles, see [Velero plugins for Microsoft Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#specify-role).<!--Links to github. Is a public source available?-->
+      For more info about creating custom roles, see [Set permissions for Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#specify-role).
 
 1. Get the service principal name, and assign that name to the **AZURE_CLIENT_ID** variable:
 
@@ -182,7 +182,7 @@ This section describes how to install Velero and use Azure Blob storage for back
    ```
 
    > [!NOTE]
-   > Service principals expire. To find out when your new service principal will expire, run this command: `az ad sp show --id $AZURE_CLIENT_ID`.<!--Suggestion: Convert this to a note. It's not critical path for installing Velero.-->
+   > Service principals expire. To find out when your new service principal will expire, run this command: `az ad sp show --id $AZURE_CLIENT_ID`.
 
 1. Create a file that contains the variables the Velero installation requires. The command looks like the following one:
 
@@ -267,7 +267,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          kubectl create -f minio-pvc-storage.yaml
          ```
 
-      1. Create a deployment file, `minio-deployment.yaml`, for starting MinIO. The deployment will use the persistent volume you created earlier.
+      1. Create a deployment file, `minio-deployment.yaml` with the followig contents, for starting MinIO. The deployment will use the persistent volume you created earlier.
 
          ```yml
          apiVersion: apps/v1
@@ -308,13 +308,15 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                   mountPath: "/storage" 
          ```
 
-      Run the following command to create the deployment:
+      Create the deployment:
 
       ```powershell
       kubectl create -f minio-deployment.yaml
       ```
 
-   1. Create a Kubernetes service, called `minio-service.yaml`, with the parameters in the following example. This service will provide external IP addresses to the MinIO pod.
+   1. Create a Kubernetes service called `minio-service.yaml`. This service will provide external IP addresses to the MinIO pod.
+   
+      Create a YML file with the following settings to configure the service:
 
       ```yml
       apiVersion: v1 
@@ -331,7 +333,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          app: minio 
       ```
 
-      Create the service by running the following command:
+      Create the service:
 
       ```powershell
       kubectl create -f mino-service.yaml
@@ -347,25 +349,25 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
    1. Install the MinIO client, and browse through the MinIO files.
 
-      1. Download the MinIO client:
+      Download the MinIO client:
 
-         ```powershell
-         Invoke-WebRequest -Uri "https://dl.minio.io/client/mc/release/windows-amd64/mc.exe" -OutFile "C:\mc.exe
-         ```
+      ```powershell
+      Invoke-WebRequest -Uri "https://dl.minio.io/client/mc/release/windows-amd64/mc.exe" -OutFile "C:\mc.exe
+      ```
 
-      1. Set an alias:
+      Next, set an alias:
 
-         ```powershell
-         mc alias set minio http://10.10.77.6:9000 "minio_access_key" "minio_secret_key" --api s3v4
-         ```
+      ```powershell
+      mc alias set minio http://10.10.77.6:9000 "minio_access_key" "minio_secret_key" --api s3v4
+      ```
 
-      1. Browse through the MinIO installation:<!--Show command output.-->
+      Finally, browse through the MinIO installation:<!--Why? Are they verifying their installation? Show command output.-->
 
-         ```powershell
-         mc ls minio
-         ```
-   
-   1. Create a bucket to store Velero files. This bucket will be used in the Velero installation.
+      ```powershell
+      mc ls minio
+      ```
+
+   1. Create a bucket to store Velero files. This bucket will be used in the Velero installation.<!--Show the bucket output.-->
 
       ```powershell
       mc mb minio/velero-backup
@@ -380,7 +382,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
         aws_secret_access_key=<minio_secret_key> 
       ```
 
-1. Install Velero by running the following command:  
+1. Install Velero:  
 
    ```azurecli
    velero install --provider aws --bucket velero-backup --secret-file .\minio.credentials --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://10.10.77.6:9000 --plugins velero/velero-plugin-for-aws:v1.1.0 --use-restic
@@ -388,7 +390,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
    Check the bucket name, your MinIO credentials, and the MinIO external IP address before you run this command.
 
-1. To check whether the Velero service is running properly, run these commands:
+1. Check whether the Velero service is running properly:
 
    ```powershell<!--Command output? What are they looking for? Could link to source for log info if needed.-->
    kubectl -n velero get pods
@@ -399,19 +401,19 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
 You can back up or restore all objects in your cluster, or you can filter objects by type, namespace, and/or label.
 
-### Backup examples<!--I don't like this heading.-->
+### Create a backup
 
 Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes.
 
-- Create a basic on-demand backup of all namespaces in your cluster:<!--Can "basic" be removed throughout examples? What's an advanced backup?-->
+- On-demand backup of all namespaces in your cluster:
 
   `velero backup create <BACKUP-NAME> --default-volumes-to-restic`
 
-- Create a basic on-demand backup of a single namespace in your cluster:
+- On-demand backup of a single namespace in your cluster:
 
   `velero backup create <BACKUP-NAME> --include-namespaces <NAMESPACE1> --default-volumes-to-restic`
 
-- Create a basic on-demand backup of multiple selected namespaces in your cluster:
+- On-demand backup of multiple selected namespaces in your cluster:
 
   `velero backup create <BACKUP-NAME> --include-namespaces <NAMESPACE-1>, <NAMESPACE-2> --default-volumes-to-restic`
 
@@ -447,21 +449,11 @@ On the cluster that you want to restore the backup to (`destination cluster`:
 
    `velero restore create --from-backup <BACKUP-NAME>`
 
-## Uninstall Velero
+## Get help with Velero commands
 
-To uninstall Velero from your cluster, and remove all resources created by the Velero installation, run the following commands:
+To see all options associated with a specific Velero command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. 
 
-```azurecli
-kubectl delete namespace/velero clusterrolebinding/velero 
-kubectl delete crds -l component=velero
-```
-
-## Additional notes
-
-<!--Let's integrate these two points in the topic and eliminate the "Additional notes" catchall.-->
-- Velero on Windows: Velero doesn't officially support Windows. During testing, the Velero team was able to back up only stateless Windows applications. [`Restic` integration](https://velero.io/docs/v1.6/restic/), and backups of stateful applications or persistent volumes, aren't supported.<!--This should be in the overview?-->
-
-- Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:<!--The list of commands is useful. Is the help output the best presentation?-->
+For example, to list all options of `velero restore`, run `velero restore --help`, which returns the following information:
 
   ```output
     velero restore [command]
@@ -472,3 +464,16 @@ kubectl delete crds -l component=velero
     get         Get restores
     logs        Get restore logs
   ```
+
+## Uninstall Velero
+
+To uninstall Velero from your cluster, and remove all resources created by the Velero installation, run the following commands:
+
+```azurecli
+kubectl delete namespace/velero clusterrolebinding/velero 
+kubectl delete crds -l component=velero
+```
+
+## Next steps
+
+- TBD
