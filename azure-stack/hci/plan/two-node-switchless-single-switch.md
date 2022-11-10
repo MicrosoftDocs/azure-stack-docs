@@ -38,7 +38,7 @@ As illustrate in the diagram below, this pattern has the following physical netw
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
-:::image type="content" source="media/two-node-switchless-single-switch/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout" lightbox="media/two-node-switchless-single-switch/physical-components-layout.png":::
+:::image type="content" source="media/two-node-switchless-single-switch/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switchless-single-switch/physical-components-layout.png":::
 
 |Networks|Management & compute|Storage|BMC|
 |--|--|--|--|
@@ -88,7 +88,7 @@ Follow these steps to create network intents for this reference pattern:
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/two-node-switchless-single-switch/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-single-switch/logical-components-layout.png":::
+:::image type="content" source="media/two-node-switchless-single-switch/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout." lightbox="media/two-node-switchless-single-switch/logical-components-layout.png":::
 
 ### Storage Network VLANs
 

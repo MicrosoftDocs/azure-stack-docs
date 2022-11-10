@@ -45,7 +45,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 - Two disconnected RDMA NICs that are only used if add a second server to your cluster for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.
 
-:::image type="content" source="media/single-server/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout" lightbox="media/single-server/physical-connectivity-layout.png":::
+:::image type="content" source="media/single-server/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout." lightbox="media/single-server/physical-connectivity-layout.png":::
 
 The following table lists some guidelines for a single-server deployment:
 
@@ -60,7 +60,7 @@ The following table lists some guidelines for a single-server deployment:
 
 The single-server pattern uses only one Network ATC intent for management and compute traffic. The RDMA network interfaces are optional and disconnected.
 
-:::image type="content" source="media/single-server/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-server switchless pattern" lightbox="media/single-server/network-atc.png":::
+:::image type="content" source="media/single-server/network-atc.png" alt-text="Diagram showing Network ATC intents for the single-server switchless pattern." lightbox="media/single-server/network-atc.png":::
 
 ### Management and compute intent
 
@@ -98,7 +98,7 @@ For more information, see [Deploy host networking: Compute and management intent
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/single-server/logical-connectivity-layout.png" alt-text="Diagram showing single-server logical connectivity layout" lightbox="media/single-server/logical-connectivity-layout.png":::
+:::image type="content" source="media/single-server/logical-connectivity-layout.png" alt-text="Diagram showing single-server logical connectivity layout." lightbox="media/single-server/logical-connectivity-layout.png":::
 
 ### Storage network VLANs
 

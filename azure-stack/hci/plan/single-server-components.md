@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/09/2022
+ms.date: 11/10/2022
 ---
 
 # Review single-server storage reference pattern components for Azure Stack HCI
@@ -16,7 +16,7 @@ ms.date: 11/09/2022
 
 In this article, you'll learn about which network components are deployed for the single-server reference pattern, as shown in the following diagram:
 
-:::image type="content" source="media/single-server-components/components.png" alt-text="Diagram showing components for single-server network pattern" lightbox="media/single-server-components/components.png":::
+:::image type="content" source="media/single-server-components/components.png" alt-text="Diagram showing components for single-server network pattern." lightbox="media/single-server-components/components.png":::
 
 ### Optional components
 
@@ -40,7 +40,7 @@ The SDN Software Load Balancer (SLB) VM is used to evenly distribute network tra
 
 #### SDN Gateway VM
 
-THe SDN Gateway VM is used to route network traffic between a virtual network and another network, either local or remote. SDN Gateways can be used to:
+The SDN Gateway VM is used to route network traffic between a virtual network and another network, either local or remote. SDN Gateways can be used to:
 
 - Create secure site-to-site IPsec connections between SDN virtual networks and external networks over the internet.
 

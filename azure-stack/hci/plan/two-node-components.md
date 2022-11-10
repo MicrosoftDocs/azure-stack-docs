@@ -16,7 +16,7 @@ ms.date: 11/10/2022
 
 In this article, you'll learn about which network components get deployed for two-node reference patterns, as shown below:
 
-:::image type="content" source="media/two-node-components/components.png" alt-text="Diagram showing components for the two-node network pattern" lightbox="media/two-node-components/components.png":::
+:::image type="content" source="media/two-node-components/components.png" alt-text="Diagram showing components for the two-node network pattern." lightbox="media/two-node-components/components.png":::
 
 ## VM components
 

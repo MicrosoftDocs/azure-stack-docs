@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI two-node storage switched, fully-converged deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI two-node storage switched, fully-converged network reference pattern.
+title: Azure Stack HCI two-node storage switched, fully converged deployment network reference pattern
+description: Plan to deploy an Azure Stack HCI two-node storage switched, fully converged network reference pattern.
 ms.topic: conceptual
 author: dansisson
 ms.author: v-dansisson
@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.date: 11/10/2022
 ---
 
-# Review two-node storage switched, fully-converged deployment network reference pattern for Azure Stack HCI
+# Review two-node storage switched, fully converged deployment network reference pattern for Azure Stack HCI
 
 [!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -36,7 +36,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 - As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
 
-:::image type="content" source="media/two-node-switched-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout" lightbox="media/two-node-switched-converged/physical-components-layout.png":::
+:::image type="content" source="media/two-node-switched-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switched-converged/physical-components-layout.png":::
 
 |Networks|Management, compute, storage|Storage|BMC|
 |--|--|--|--|
@@ -79,7 +79,7 @@ Follow these steps to create network intents for this reference pattern:
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/two-node-switched-converged/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switched-converged/logical-components-layout.png":::
+:::image type="content" source="media/two-node-switched-converged/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout." lightbox="media/two-node-switched-converged/logical-components-layout.png":::
 
 ### Storage Network VLANs
 

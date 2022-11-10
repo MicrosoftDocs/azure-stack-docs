@@ -23,17 +23,17 @@ Use the following table to directly go to a pattern and its content.
 
 **Go to [single server deployment](single-server-deployment.md)**
 
-![Diagram showing single-server deployment pattern](media/plan-deployment/single-server-deployment.png)
+![Diagram showing single-server deployment pattern.](media/plan-deployment/single-server-deployment.png)
 
 ### Two-node deployment patterns
 
 |Go to [storage switchless, single TOR switch](two-node-switchless-single-switch.md) |Go to [storage switchless, two TOR switches](two-node-switchless-two-switches.md)|
 |---------|---------|
-|![Diagram showing two-node storage switchless with single TOR switch](media/plan-deployment/two-node-switchless-single-switch.png) | ![Diagram showing two-node storage switchless with two TOR switches](media/plan-deployment/two-node-switchless-two-switches.png)|
+|![Diagram showing two-node storage switchless with single TOR switch.](media/plan-deployment/two-node-switchless-single-switch.png) | ![Diagram showing two-node storage switchless with two TOR switches.](media/plan-deployment/two-node-switchless-two-switches.png)|
 
-|Go to [storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [storage switched, fully-converged, two TOR switches](two-node-switched-converged.md)       |
+|Go to [storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [storage switched, fully converged, two TOR switches.](two-node-switched-converged.md)       |
 |---------|---------|
-|![Diagram showing two-node storage switched, non-converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully converged, two TOR switches ](media/plan-deployment/two-node-switched-converged.png)|
+|![Diagram showing two-node storage switched, non-converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully converged, two TOR switches.](media/plan-deployment/two-node-switched-converged.png)|
 
 ## Next steps
 

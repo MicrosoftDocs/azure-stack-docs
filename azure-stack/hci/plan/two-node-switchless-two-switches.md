@@ -42,7 +42,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Two standalone ports|One port|
 
-:::image type="content" source="media/two-node-switchless-two-switches/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/physical-components-layout.png":::
+:::image type="content" source="media/two-node-switchless-two-switches/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switchless-two-switches/physical-components-layout.png":::
 
 ## Network ATC intents
 
@@ -86,7 +86,7 @@ Follow these steps to create network intents for this reference pattern:
 
 As illustrated in the diagram below, this pattern has the following logical network components:
 
-:::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout" lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
+:::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout." lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
 
 ### Storage Network VLANs
 
