@@ -18,7 +18,7 @@ Azure Kubernetes Service lite hybrid option is an on-premises Kubernetes impleme
 
 AKS lite is a Microsoft-supported Kubernetes platform, and includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. It is intended for static, pre-defined configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management.
 
-Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), each machine with AKS lite has a VM with restricted RAM, Storage, and physical CPU cores according to a static allocation assigned at install time. This enables traditional Windows apps to run side-by-side (i.e. interoperable) alongside the AKS lite VMs.
+Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), each machine with AKS lite has a VM with restricted RAM, Storage, and physical CPU cores according to a static allocation assigned at install time. This configuration enables traditional Windows apps to run side-by-side, that is interoperable alongside the AKS lite VMs.
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
@@ -37,7 +37,7 @@ AKS lite simplifies the process of setting up Kubernetes by providing you with P
 
 ### Run Linux and Windows containers
 
-AKS lite fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on AKS you can choose to run Linux containers, Windows containers, or both.
+AKS lite fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on AKS, you can choose to run Linux containers, Windows containers, or both.
 
 ### Azure Arc for management
 
@@ -47,7 +47,7 @@ Once you have set up on-premises Kubernetes using AKS lite and created a Kuberne
 
 ### Interoperable with native Windows application
 
-Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS lite hybrid options, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition to this, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition to that, AKS on Windows IoT offers interoperability between native Windows applications and containerized Linux workloads.
+Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS lite hybrid options, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition, AKS on Windows IoT offers interoperability between native Windows applications and containerized Linux workloads.
 
 ![Diagram of AKS on Windows interop.](media/aks-lite/aks-lite-windows-arch.png)
 
