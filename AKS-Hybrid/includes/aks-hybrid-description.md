@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 11/03/2022
+ms.date: 11/09/2022
 ms.reviewer: abha
 ms.lastreviewed: 10/18/2022
 
@@ -11,4 +11,4 @@ ms.lastreviewed: 10/18/2022
 
 ---
 
-Azure Kubernetes Service hybrid deployment options ("AKS hybrid") offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
+Azure Kubernetes Service hybrid deployment options (AKS hybrid) offer a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
