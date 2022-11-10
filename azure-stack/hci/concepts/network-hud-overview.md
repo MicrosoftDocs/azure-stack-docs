@@ -62,4 +62,3 @@ Installation of Network HUD requires two steps:
 ## Next steps
 
 - Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](..\deploy\network-atc.md).
-- Review Network HUD Introduction Blogs.<!--Link to these blog entires - where?-->
