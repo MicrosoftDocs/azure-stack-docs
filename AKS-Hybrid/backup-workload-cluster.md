@@ -334,19 +334,19 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          app: minio 
       ```
 
-      Run the following command to create the service:
+      Create the service by running the following command:
    
       ```powershell
       kubectl create -f mino-service.yaml
       ```
 
-   1. Get the MinIO pod's external IP address by running the following command. You'll use this address to install Velero.<!--Show returned data?-->
+   1. Get the MinIO pod's external IP address by running the following command. You'll use this address to install Velero.<!--Show sample data.-->
 
       ```powershell
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. <!--Final two sentences seem misplaced. They install the client in the following step.-->Make sure you create a bucket in minio. This bucket will be used in Velero installation.
+   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client.<!--PLACEMENT? They don't install the MinIO client until the next step.--> <!--NOT NEEDED: Make sure you create a bucket in MinIO. This bucket will be used in Velero installation.-->
 
    1. Install the MinIO client, and browse through the MinIO files.
 
@@ -362,7 +362,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          mc alias set minio http://10.10.77.6:9000 "minio_access_key" "minio_secret_key" --api s3v4
          ```
 
-      1. Browse through the Minio installation:
+      1. Browse through the MinIO installation:<!--Show command output.-->
 
          ```powershell
          mc ls minio
@@ -374,7 +374,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       mc mb minio/velero-backup
       ```
 
-   1. Create a MinIO credentials file:
+   1. Create a MinIO credentials file with the following information:
 
       ```yml
       minio.credentials 
@@ -389,21 +389,18 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    velero install --provider aws --bucket velero-backup --secret-file .\minio.credentials --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://10.10.77.6:9000 --plugins velero/velero-plugin-for-aws:v1.1.0 --use-restic
    ```
 
-   Be sure to check:
-   - the bucket name
-   - your MinIO credentials
-   - the MinIO external IP address
+   Check the bucket name, your MinIO credentials, and the MinIO external IP address before you run this command.
 
 1. To check whether the Velero service is running properly, run these commands:
 
-   ```powershell
+   ```powershell<!--Command output? What are they looking for? Could link to source for log info if needed.-->
    kubectl -n velero get pods
    kubectl logs deployment/velero -n Velero
    ```
 
 ## Back up a cluster
 
-You can back up or restore all objects in your cluster, or you can filter objects by type, namespace, and/or label.<!--Equally applicable for Azure Blob storage and MiniIO storage?-->
+You can back up or restore all objects in your cluster, or you can filter objects by type, namespace, and/or label.
 
 ### Backup examples<!--I don't like this heading.-->
 
@@ -443,17 +440,19 @@ On the cluster that you want to restore the backup to (`destination cluster`:
 
 1. Deploy Velero by using the instructions above. Use the same Azure credentials that you used for the source cluster.
 
-1. Make sure the Velero backup object has been created by running `velero get backup`. Velero resources are synchronized with the backup files in cloud storage.
+1. Make sure the Velero backup object was created by running the following command. <!--HOW DOES THIS RELATE TO THE STEP? --Velero resources are synchronized with the backup files in cloud storage.-->
 
-   `velero backup describe <BACKUP-NAME>`<!--Verify: They run this command to describe the current backup?-->
+   `velero backup describe <BACKUP-NAME>`
 
-1. After you confirm that the right backup (`BACKUP-NAME`) is present, restore all objects in the backup by running this command:
+   <!--Command output would be helpful. Or tell them what they are looking for. The command lists the backups that have been stored?-->
+
+1. After you confirm that the right backup (`BACKUP-NAME`) is present, restore all objects in the backup:
 
    `velero restore create --from-backup <BACKUP-NAME>`
 
 ## Uninstall Velero
 
-To completely uninstall Velero from your cluster, and remove all resources created by the Velero installation, use the following commands:
+To uninstall Velero from your cluster, and remove all resources created by the Velero installation, run the following commands:
 
 ```azurecli
 kubectl delete namespace/velero clusterrolebinding/velero 
