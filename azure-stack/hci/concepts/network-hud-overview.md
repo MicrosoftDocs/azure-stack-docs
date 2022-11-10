@@ -16,7 +16,7 @@ Network HUD ("heads up display") enables visibility across the network, simplify
 
 ## About Network HUD
 
-Diagnosing network issues poses a significant challenge as administrators do not have visibility across the complete solution. The solution can be divided into several areas:
+Diagnosing network issues poses a significant challenge as administrators don't have visibility across the complete solution. The solution can be divided into several areas:
 
 - Physical Network Switch (ToR), cabling, and NIC
 - Cluster hosts: The HCI OS is installed here.
