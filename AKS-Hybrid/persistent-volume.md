@@ -1,9 +1,9 @@
 ---
-title: Use a persistent volume with AKS hybrid
+title: Use persistent volumes with AKS hybrid
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 ---
 
-# Use a persistent volume with AKS hybrid
+# Use persistent volumes with AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
