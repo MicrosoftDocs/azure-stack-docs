@@ -1,9 +1,9 @@
 ---
-title: Use a persistent volume with Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Use persistent volumes with AKS hybrid
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/28/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,13 +13,15 @@ ms.reviewer: abha
 
 ---
 
-# Use a persistent volume with Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Use persistent volumes with AKS hybrid
 
-> Applies to: Azure Stack HCI and Windows Server
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can set up a persistent volume on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. A *persistent volume* is the term used to represent a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It is also independent of pod or node lifecycles.
+This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]  
 
-While you can provision a persistent volume for **both** Windows and Linux nodes, this article shows you how to create a persistent volume for use in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+A *persistent volume* represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycles.
+
+While you can provision a persistent volume for both Windows and Linux nodes, this article describes how to create a persistent volume for use in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## Before you begin
 
@@ -44,11 +46,13 @@ spec:
   requests:
    storage: 10Gi
 ```
-To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server):
 
-```
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
+
+```bash
 kubectl create -f pvc-akshci-csi.yaml 
 ```
+
 The following output will show that your persistent volume claim has been created successfully:
 
 **Output:**
@@ -60,7 +64,7 @@ persistentvolumeclaim/pvc-akshci-csi created
 
 To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx. 
 
-In the yaml definition below, *mountPath* is the path to mount a volume inside a container. After a successful pod creation, you will see the subdirectory *mnt* created in *C:\\* and the subdirectory *akshciscsi* created inside *mnt*.
+In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**.
 
 
 ```yaml
@@ -97,7 +101,7 @@ spec:
       kubernetes.io/os: windows 
 ```
 
-To create a pod with the above yaml definition, run:
+To create a pod with the above YAML definition, run:
 ```
 kubectl create -f winwebserver.yaml 
 ```

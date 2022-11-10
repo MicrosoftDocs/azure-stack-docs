@@ -1,9 +1,9 @@
 ---
-title: Use multiple node pools in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to create and manage multiple node pools for a cluster in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Use multiple node pools in AKS hybrid
+description: Learn how to create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 services: 
 ms.topic: article
-ms.date: 04/13/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -12,39 +12,41 @@ author: sethmanheim
 # Keyword: node pools control plane nodes
 ---
 
-# Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
+# Create and manage multiple node pools for a cluster in AKS hybrid
 
-In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. 
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+In AKS hybrid, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage multiple node pools in an AKS cluster in AKS hybrid.
+
+[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
 
 > [!NOTE]
-> This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for create/update/delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create/scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 
-
-This article shows you how to create and manage multiple node pools in an AKS on Azure Stack HCI and Windows Server cluster.
+> This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for create, update, and delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create or scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 
 
 ## Before you begin
 
-We recommend having the latest version 1.1.6 installed. If you already have the PowerShell module installed, run the following command to find the version.
+We recommend that you install version 1.1.6. If you already have the PowerShell module installed, run the following command to find the version:
 
 ```powershell
 Get-Command -Module AksHci
 ```
 
-If you need to update, follow the instructions [here](update-akshci-host-powershell.md).
+If you need to update PowerShell, following the instructions in [Upgrade the AKS host](update-akshci-host-powershell.md).
 
-## Create an AKS on Azure Stack HCI and Windows Server cluster
+## Create an AKS cluster
 
-To get started, create an AKS on Azure Stack HCI and Windows Server cluster with a single node pool. The following example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with 1 node. **If you already have a cluster deployed with an older version of AKS on Azure Stack HCI and Windows Server and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
+To get started, create an AKS cluster with a single node pool. The following example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool*, which has 1 node. **If you already have a cluster deployed with an older version of AKS, and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType linux
 ```
 
 > [!NOTE]
-> The old parameter set for `New-AksHciCluster` will still be supported. However, it will be deprecated in a future relase.
+> The old parameter set for `New-AksHciCluster` is still supported.
 
 ## Add a node pool
 
-The cluster named *mycluster* created in the previous step has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command. the following example creates Windows node pool named *windowsnodepool* with one node. Make sure that the name of the node pool is not the same name as another existing node pool.
+The cluster named `mycluster`*`, created in the previous step, has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command. The following example creates a Windows node pool named **windowsnodepool** with one node. Make sure that the name of the node pool is not the same name as any existing node pool.
 
 ```powershell
 New-AksHciNodePool -clusterName mycluster -name windowsnodepool -count 1 -osType windows
@@ -58,7 +60,8 @@ To see the configuration information of your node pools, use the [Get-AksHciNode
 Get-AksHciNodePool -clusterName mycluster
 ```
 
-Example Output
+Example output:
+
 ```output
 ClusterName  : mycluster
 NodePoolName : linuxnodepool
@@ -77,13 +80,14 @@ VmSize       : Standard_K8S3_v1
 Phase        : Deployed
 ```
 
-To see the configuration information of one specific node pool, use the `-name` parameter in [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md)
+To see the configuration information of one specific node pool, use the `-name` parameter in [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md).
 
 ```powershell
 Get-AksHciNodePool -clusterName mycluster -name linuxnodepool
 ```
 
-Example Output
+Example output:
+
 ```output
 ClusterName  : mycluster
 NodePoolName : linuxnodepool
@@ -98,7 +102,8 @@ Phase        : Deployed
 Get-AksHciNodePool -clusterName mycluster -name windowsnodepool
 ```
 
-Example Output
+Example output:
+
 ```output
 ClusterName  : mycluster
 NodePoolName : windowsnodepool
@@ -110,13 +115,13 @@ Phase        : Deployed
 ```
 
 > [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name.
 
 ## Scale a node pool
 
 You can scale the number of nodes up or down in a node pool.
 
-To scale the number of nodes in a node pool, use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command. The following example scales the number of nodes to 3 in the node pool named *linuxnodepool* in the cluster named *mycluster*.
+To scale the number of nodes in a node pool, use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command. The following example scales the number of nodes to 3 in a node pool named `linuxnodepool` in the `mycluster` cluster.
 
 ```powershell
 Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
@@ -124,9 +129,9 @@ Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 
 ## Scale control plane nodes
 
-The control plane nodes have not changed. The way in which they are created, scaled, and removed remains the same. You will still deploy control plane nodes with the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command with the parameters `controlPlaneNodeCount` and `controlPlaneVmSize` with the default values as 1 and Standard_A4_V2 respectively if no values are given.
+Management of control plane nodes hasn't changed. The way in which they are created, scaled, and removed remains the same. You will still deploy control plane nodes with the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command with the parameters `controlPlaneNodeCount` and `controlPlaneVmSize` with the default values of 1 and Standard_A4_V2, respectively, if you don't provide any values.
 
-You may need to scale the control plane nodes as the workload demand of your applications change. To scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command. The following example scales the control plane nodes to 3 in the existing cluster named *mycluster* that was created in the previous steps.
+You may need to scale the control plane nodes as the workload demand of your applications change. To scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command. The following example scales the control plane nodes to 3 in `mycluster` cluster, which was created in the previous steps.
 
 ```powershell
 Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
@@ -134,7 +139,7 @@ Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 
 ## Delete a node pool
 
-If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The follow example removes the node pool named *windowsnodepool* in the cluster named *mycluster*.
+If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) command. The following example removes the node pool named `windowsnodepool` from the `mycluster` cluster.
 
 ```powershell
 Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
@@ -146,7 +151,7 @@ When creating a node pool, you can add taints to that node pool. When you add a 
 
 ### Setting node pool taints
 
-To create a node pool with a taint, use [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md). Specify the name *taintnp* and use the `-taints` parameter to specify `sku=gpu:noSchedule` for the taint.
+To create a node pool with a taint, use [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md). Specify the name `taintnp`, and use the `-taints` parameter to specify `sku=gpu:noSchedule` for the taint.
 
 ```powershell
 New-AksHciNodePool -clusterName mycluster -name taintnp -count 1 -osType linux -taints sku=gpu:NoSchedule
@@ -155,7 +160,7 @@ New-AksHciNodePool -clusterName mycluster -name taintnp -count 1 -osType linux -
 > [!NOTE]
 > A taint can only be set for node pools during node pool creation.
 
-Run the following command to make sure that the node pool was successfully deployed with the specified taint.
+Run the following command to make sure the node pool was successfully deployed with the specified taint.
 
 ```powershell
 Get-AksHciNodePool -clusterName mycluster -name taintnp
@@ -176,7 +181,7 @@ Taints       : {sku=gpu:NoSchedule}
 
 In the previous step, you applied the *sku=gpu:NoSchedule* taint when you created your node pool. The following basic example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool.
 
-Create a file named `nginx-toleration.yaml` and copy the information in the following example.
+Create a file named `nginx-toleration.yaml`, and copy the information in the following text.
 
 ```yaml
 apiVersion: v1
@@ -201,7 +206,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Then, schedule the pod using the follow command.
+Then, schedule the pod using the following command.
 
 ```powershell
 kubectl apply -f nginx-toleration.yaml

@@ -1,9 +1,9 @@
 ---
-title: Create and delete pods in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to create and delete pods in Azure Kubernetes Service on Azure Stack HCI.
+title: Create and delete pods in AKS hybrid
+description: Learn how to create and delete pods in Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: how-to
-ms.date: 09/08/2021
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,15 +13,17 @@ ms.reviewer: abha
 
 ---
 
-# Create and delete pods
+# Create and delete pods in AKS hybrid
 
-You can create and delete pods when managing your workloads in AKS on Azure Stack HCI and Windows Server.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Kubernetes uses pods to run an instance of your application. A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
+Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+
+A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
 
 ## Create a pod
 
-Before creating a pod, you must [set up an AKS host and create AKS on Azure Stack HCI and Windows Server clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
+Before creating a pod, you must [set up an AKS host and create AKS clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
 
 To make sure you are connected to the Kubernetes cluster, run the following command:
 
@@ -35,7 +37,7 @@ To create a pod, run the following command. In this example, a pod is created us
 kubectl run nginx --image=nginx --restart=Never
 ```
 
-When you set the parameter `-restart=Never`, Kubernetes creates a single pod, instead of creating a deployment.
+When you set the parameter `-restart=Never`, Kubernetes creates a single pod instead of creating a deployment.
 
 To see the status of your pod, run the following command:
 
@@ -85,7 +87,6 @@ spec:
 
 ## Next steps
 
-- [Create a deployment](create-deployments.md)
-- [Create a ReplicaSet](create-replicasets.md)
-- [Create a DaemonSet](create-daemonsets.md)
-
+- [Create a deployment](create-deployments.md).
+- [Create a ReplicaSet](create-replicasets.md).
+- [Create a DaemonSet](create-daemonsets.md).
