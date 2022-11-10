@@ -312,6 +312,8 @@
       href: concepts/host-network-requirements.md
     - name: Network ATC overview
       href: concepts/network-atc-overview.md
+    - name: Network HUD overview
+      href: concepts/network-hud-overview.md
     - name: Firewall requirements
       href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
