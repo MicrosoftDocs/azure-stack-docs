@@ -3,7 +3,7 @@ title: Use multiple node pools in AKS hybrid
 description: Learn how to create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 services: 
 ms.topic: article
-ms.date: 11/07/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -12,7 +12,7 @@ author: sethmanheim
 # Keyword: node pools control plane nodes
 ---
 
-# Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
+# Create and manage multiple node pools for a cluster in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
