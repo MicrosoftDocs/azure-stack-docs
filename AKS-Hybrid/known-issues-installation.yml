@@ -302,14 +302,14 @@ sections:
           To resolve the error, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
           
       - question: | 
-          The `Set-AksHciConfig` cmdlet fails with the error:
-
-          `GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+          Set-AksHciConfig fails with the error "GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake"
 
         answer: | 
-          If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value.
+          The `Set-AksHciConfig` PowerShell cmdlet fails with the error:
           
-          The HTTP proxy URL and HTTPS proxy URL values are both required when configuring AKS with a proxy server, but it's common to need both values to share the same HTTP-prefixed URL.
+          `GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+          
+          If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value. The HTTP proxy URL and HTTPS proxy URL values are both required when configuring AKS with a proxy server, but it's common to need both values to share the same HTTP-prefixed URL.
           
           If this might be the case in your environment, try the following mitigation steps:
           
