@@ -417,8 +417,6 @@ Use the Velero `backup create` command to create backups to your chosen storage.
 
   `velero backup create <BACKUP-NAME> --include-namespaces <NAMESPACE-1>, <NAMESPACE-2> --default-volumes-to-restic`
 
-<!--Add a link to other backup options? Possibly a command that returns a man page?-->
-
 ### Check backup progress
 
 - To check progress of a backup, run this command:
