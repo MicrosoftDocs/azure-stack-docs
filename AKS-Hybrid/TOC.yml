@@ -273,6 +273,10 @@
          href: create-aks-hybrid-preview-portal.md
   - name: Troubleshooting and known issues 
     href: troubleshoot-aks-hybrid-preview.md
+  - name: Reference
+    items:
+      - name: REST API reference
+        href: /rest/api/hybridcontainer/
 - name: AKS lite hybrid option (preview)
   items:
   - name: Overview

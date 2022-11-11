@@ -66,7 +66,11 @@ When the server resumes, any new writes that happened while it was unavailable n
    > [!IMPORTANT]
    > You must wait for re-syncing to complete before taking any other servers in the cluster offline.
 
-To check if resyncing has completed, connect to the server using Windows Admin Center and select **Storage > Volumes** from the **Tools** menu at the left, then select **Volumes** near the top of the page. If the **Health** column for every volume shows **Healthy** and the **Status** column for every volume shows **OK**, then re-syncing has completed, and it's now safe to take other servers in the cluster offline.
+To check if storage resync is complete:
+
+1. Connect to the cluster using Windows Admin Center and select **Storage > Volumes**.
+1. Select **Inventory**.
+1. Check the **Status** column for every volume. If it shows **OK**, storage resync is complete. It's now safe to take other servers in the cluster offline.
 
 ## Take a server offline using PowerShell
 
