@@ -3,7 +3,7 @@ title: Network HUD overview
 description: This topic introduces Network HUD for Azure Stack HCI.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/09/2022
+ms.date: 11/11/2022
 ms.author: sethm 
 ms.reviewer: dacuo
 ---
@@ -56,7 +56,7 @@ Installation of Network HUD requires two steps:
 1. Install Network HUD Content:
 
    ```PowerShell
-   Install-Module -Name Az.Network.HUD -Force
+   Install-Module -Name Az.StackHCI.NetworkHUD -Force
    ```
 
 ## Next steps
