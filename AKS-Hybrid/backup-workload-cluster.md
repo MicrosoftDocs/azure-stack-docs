@@ -72,9 +72,9 @@ This section describes how to install Velero and use Azure Blob storage for back
 
    When you use Azure Blob storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new `Velero_Backups` resource group.
 
-   The storage account needs to be created with a globally unique ID since this is used in DNS.<!--Should this be "Azure DNS"--> The sample script uses `uuidgen` to randomly generate a unique name. You can use any method as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name).
+   The storage account needs to be created with a globally unique ID for DNS. The sample script uses `uuidgen` to randomly generate a unique name. You can use any method as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name).
 
-   The storage account is created with encryption at rest capabilities (Microsoft managed keys)<!--How do managed keys apply. Add a word or two to clarify the relationship.--> and is configured to only allow access via HTTPS connections.
+   The storage account is created with encryption at rest capabilities (using Microsoft managed keys)<!--Link to managed keys overview?--> and is configured to only allow access via HTTPS connections.
 
    1. Create a resource group for the backup storage account. Change directories to your preferred location, if needed, and run the following commands:
 
@@ -112,7 +112,7 @@ This section describes how to install Velero and use Azure Blob storage for back
       You can create a service principal with the Contributor role or use a custom role:
 
       - **Contributor role:** The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role. 
-      - If you need a less permissive role, use a custom role.
+      - **Custom role:** If you need a less permissive role, use a custom role.
 
       **Use Contributor role:**
 
@@ -133,7 +133,7 @@ This section describes how to install Velero and use Azure Blob storage for back
          ```
 
          > [!IMPORTANT]
-          > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
+         > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
 
       **Use a custom role:**
 
@@ -204,7 +204,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
 1. Install and start Velero.
 
-   Install Velero, including all prerequisites<!--Meaning of "including all prerequisites?"? Requirement?-->, on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
+   Install Velero<!--NOT NEEDED? , including all prerequisites,--> on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
 
    1. Install Velero using the following command. You'll need to adjust the example command.
 
@@ -212,7 +212,7 @@ This section describes how to install Velero and use Azure Blob storage for back
       velero install --provider azure --plugins velero/velero-plugin-for-microsoft-azure:v1.5.0 --bucket $BLOB_CONTAINER --secret-file ./credentials-velero.txt --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID --use-restic
       ```
 
-      Review and adjust the following variables as needed:
+      Adjust the following variables as needed:
 
       - The command installs the Microsoft Azure plugin, which must be compatible with the Velero CLI version you're using. The example command uses Microsoft Azure plugin version 1.5.0, which is compatible with the latest Velero CLI version, 1.9.0. To find out which version of the Microsoft Azure plugin to install with your Valero CLI version, see the [compatibility matrix](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#compatibility).
 
@@ -220,7 +220,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You need only include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId`: the *credentials-velero.txt* file will provide that information.
    
-      The Velero service starts automatically on installation.
+      The Velero service starts automatically on installation.<!--Guessing on this. This is normal/default behavior?-->
 
    1. Check whether the Velero service is running properly:<!--What do you mean by "properly"? Command output would be helpful.-->
 
@@ -261,13 +261,13 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                storage: 100Gi 
          ```
 
-         Run this command to create the file:
+        Create the persistent volume by running this command:
 
          ```powershell
          kubectl create -f minio-pvc-storage.yaml
          ```
 
-      1. Create a deployment file, `minio-deployment.yaml` with the following contents, for starting MinIO. The deployment will use the persistent volume you created earlier.
+      1. Create a deployment file, `minio-deployment.yaml`, for starting MinIO. Include the following contents. The deployment will use the persistent volume you just created.
 
          ```yml
          apiVersion: apps/v1
@@ -315,7 +315,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       ```
 
    1. Create a Kubernetes service called `minio-service.yaml`. This service will provide external IP addresses to the MinIO pod.
-   
+
       Create a YML file with the following settings to configure the service:
 
       ```yml
@@ -433,13 +433,13 @@ If you're using Azure Blob storage for your backups, you can view your backup in
 
 To restore a cluster, you must create a new cluster to restore the old cluster to. You can't restore a cluster backup to an existing cluster.
 
-The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes.
+The `restore` command lets you restore all objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. For more backup options, see [Resource filtering](https://velero.io/docs/v1.9/resource-filtering/).
 
-On the cluster that you want to restore the backup to (`destination cluster`:
+On the cluster that you want to restore the backup to (the `destination cluster`):
 
-1. Deploy Velero by using the instructions above. Use the same Azure credentials that you used for the source cluster.
+1. Deploy Velero by using the instructions above. Use the same Azure credentials that you used for the source cluster.<!--Note to me: Any way to provide a link?-->
 
-1. Make sure the Velero backup object was created by running the following command. <!--HOW DOES THIS RELATE TO THE STEP? --Velero resources are synchronized with the backup files in cloud storage.-->
+1. Make sure the Velero backup object was created by running the following command. Velero resources are synchronized with the backup files in cloud storage.
 
    `velero backup describe <BACKUP-NAME>`
 
