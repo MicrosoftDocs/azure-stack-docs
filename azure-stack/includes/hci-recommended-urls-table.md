@@ -17,14 +17,12 @@ ms.lastreviewed: 04/19/2022
 | Microsoft Update | ntservicepack.microsoft.com    | 80   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | go.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | dl.delivery.mp.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
-| Microsoft Update | *.windowsupdate.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates. |
-| Microsoft Update | *.windowsupdate.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates.   |
-| Microsoft Update | *.update.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
-| Microsoft Update | *.update.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates.  |
-| Microsoft Update | *.windowsupdate.com   | 80   | For Microsoft Update, which allows the OS to receive updates.|
+| Microsoft Update | *.windowsupdate.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates. |
+| Microsoft Update | *.update.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates.  |
+| Microsoft Update | *.windowsupdate.com | 80 | For Microsoft Update, which allows the OS to receive updates.|
 | Microsoft Update | *.download.windowsupdate.com    | 80   | For Microsoft Update, which allows the OS to receive updates.|
-| Cluster Cloud Witness  | *.blob.core.windows.net   | 443  | For firewall access to the Azure blob container, if choosing to use a cloud witness as the cluster witness   |
-| Azure Stack HCI  | *.powershellgallery.com   | 443  | To obtain the Az.StackHCI PowerShell module, which is required for cluster registration. |
+| Cluster Cloud Witness  | *.blob.core.windows.net   | 443  | For firewall access to the Azure blob container, if choosing to use a cloud witness as the cluster witness, which is optional. |
+| Azure Stack HCI  | *.powershellgallery.com   | 443  | To obtain the Az.StackHCI PowerShell module, which is required for cluster registration. Alternatively, you can download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1). |
 | Azure Kubernetes Service | msk8s.api.cdp.microsoft.com    | 443  | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS. |
 | Azure Kubernetes Service | msk8s.b.tlu.dl.delivery.mp.microsoft.com  | 80   | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS. |
 | Azure Kubernetes Service | msk8s.f.tlu.dl.delivery.mp.microsoft.com  | 80   | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS. |
