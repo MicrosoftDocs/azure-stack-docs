@@ -17,14 +17,14 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob storage or MinIO storage for the backups in AKS hybrid.
+This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob storage or MinIO storage in AKS hybrid.
 
-[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, the infrastructure administrator can use a Velero backup to restore its contents and internal API objects to a new cluster.
+[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
 You can either use Azure Blob storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This document describes how to [install and configure Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [NOTE!]
-> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.<!--Moved up from "Additional notes" section-->
+> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ Complete these prerequisites before you begin your Velero deployment:
 
 ## Install Velero with Azure Blob storage
 
-This section describes how to install Velero and use Azure Blob storage for backups. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
+The procedures in this section describe how to install Velero and use Azure Blob storage for backups. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
 
 1. Open PowerShell as an administrator.
 
@@ -231,7 +231,7 @@ This section describes how to install Velero and use Azure Blob storage for back
 
 ## Install Velero with MinIO storage
 
-If you don't want to use Azure Blob storage for your backups, you can deploy Velero with [MinIO](https://min.io/) storage. MinIO is an object storage solution. This section describes how to install and use Valero with MinIO.
+The procedures in this section describe how to install Velero and use [MinIO](https://min.io/) storage for backups. If you prefer to use Azure Blob storage for your backups, go to [Install Velero with Azure Blob storage](#install-velero-with-azure-blob-storage).
 
 If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage).
 
