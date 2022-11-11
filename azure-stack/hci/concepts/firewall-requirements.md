@@ -33,41 +33,27 @@ The following sections provide consolidated lists of required and recommended UR
 
 The subsequent sections provide additional details about the firewall requirements of Azure Stack HCI core components, followed by firewall requirements for additional Azure services (optional).
 
-### Required firewall URLs
+## Required firewall URLs
 
 The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
-[!INCLUDE [Required URLs table](../../includes/required-urls-table.md)]
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
-### Recommended firewall URLs
+[!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
+
+## Recommended firewall URLs
 
 The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
-[!INCLUDE [Recommended URLs table](../../includes/recommended-urls-table.md)]
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
-### Cluster creation
+[!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
 
-You don't need any other firewall rules if you use Windows Admin Center or PowerShell to create your Azure Stack HCI cluster.
+## Firewall requirements for additional Azure services
 
-### Cluster registration and billing
-
-Cluster registration requires the Az.StackHCI PowerShell module, which isn't included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
-
-Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allowlist the URL endpoints in order to download the Arc for Servers agent for registration.
-
-For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
-
-### Microsoft Update
-
-If there's a corporate firewall between the Azure Stack HCI operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section to your allowlist.
-
-### Cluster Cloud Witness
-
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `[myblobstorage].blob.core.windows.net`.
-
-### Firewall requirements for additional Azure services (optional)
-
-Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service.
+Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
@@ -161,13 +147,34 @@ Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-w
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
+### Configure proxy for Microsoft Update and Cluster Cloud Witness
+
+You can configure proxy for Microsoft Update and Cluster Cloud Witness automatically with [WinHTTP autoproxy](/windows/win32/winhttp/winhttp-autoproxy-support) or manually by using the `netsh` command-line utility.
+
+To manually configure proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+
+`netsh winhttp set proxy <proxy server name>:<port number>`
+
+To remove the proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+
+`netsh winhttp reset proxy`
+
+To view or verify current WinHTTP proxy configuration, at the command prompt, type:
+
+`netsh winhttp show proxy`
+
+> [!IMPORTANT]
+> We don't support authenticated proxies due to security concerns associated with storing authenticated user credentials.
+
+### Configure proxy for Azure services
+
 Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
 - [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
-- [Azure Monitor Agent](/azure/azure-monitor/agents/.azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
+- [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - To configure proxy server in Windows Admin Center, go to **Settings** > **Proxy**, enter the proxy server address and any relevant bypass or authentication information, and select **Apply**.
