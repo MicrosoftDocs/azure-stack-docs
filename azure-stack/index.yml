@@ -1,11 +1,11 @@
 ### YamlMime:Hub
 title: Azure Stack documentation 
-summary: Azure Stack is a family of products and solutions, including Azure Stack Hub, Azure Stack HCI, Azure Stack Edge, and more. These products allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+summary: Azure Stack is a family of products including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge. These products along with services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
 brand: azure
 
 metadata:
   title: Azure Stack documentation 
-  description: Azure Stack is a family of products and solutions, including Azure Stack Hub, Azure Stack HCI, Azure Stack Edge, and more. These products allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+  description: Azure Stack is a family of products including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge. These products along with services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
   ms.service: azure-stack
   ms.topic: hub-page
   author: sethmanheim
