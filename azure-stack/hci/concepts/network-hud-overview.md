@@ -1,10 +1,10 @@
 ---
 title: Network HUD overview 
 description: This topic introduces Network HUD for Azure Stack HCI.
-author: sethmanheim
+author: dcuomo
 ms.topic: how-to
 ms.date: 11/11/2022
-ms.author: sethm 
+ms.author: dacuo 
 ms.reviewer: dacuo
 ---
 
@@ -12,7 +12,7 @@ ms.reviewer: dacuo
 
 [!INCLUDE [applies-to]( ../../includes/hci-applies-to-22h2-21h2.md)]
 
-Network HUD ("heads up display") enables visibility across the network, simplifying operational network diagnostics. It performs real-time analysis of network issues and provides prescriptive alerts or auto-remediation of the issue when possible. These capabilities can increase stability and optimize network performance for workloads running on Azure Stack HCI.
+Network HUD enables visibility across the network, simplifying operational network diagnostics. It performs real-time analysis of network issues and provides prescriptive alerts or auto-remediation of the issue when possible. These capabilities can increase stability and optimize network performance for workloads running on Azure Stack HCI.
 
 ## About Network HUD
 
@@ -29,7 +29,7 @@ Network HUD can help:
 - Identify and optimize your configuration for increased performance.
 - Auto-remediate some host issues to increase stability and performance.
 
-Network HUD integrates with existing technologies you’re already using, like:
+Network HUD integrates with existing technologies you're already using, like:
 
 - Network ATC: Network HUD understands the intent of your adapters, ensuring the adapters are operating as expected.
 
