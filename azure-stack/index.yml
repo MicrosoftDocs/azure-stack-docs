@@ -60,14 +60,14 @@ productDirectory:
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge.svg
     links:
+      - url: /azure/databox-online/azure-stack-edge-pro-2-overview
+        text: Azure Stack Edge Pro 2 overview
       - url: /azure/databox-online/azure-stack-edge-gpu-overview
         text: Azure Stack Edge Pro GPU overview
       - url: /azure/databox-online/azure-stack-edge-pro-r-overview
         text: Azure Stack Edge Pro R overview
       - url: /azure/databox-online/azure-stack-edge-mini-r-overview
         text: Azure Stack Edge Mini R overview                    
-      - url: /azure/databox-online/data-box-edge-overview
-        text: Azure Stack Edge Pro FPGA overview
       - url: https://azure.microsoft.com/products/azure-stack/edge/
         text: Product information and pricing 
   - title: Azure Kubernetes Service on Azure Stack HCI and Windows Server
