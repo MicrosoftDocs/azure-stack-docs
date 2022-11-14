@@ -37,31 +37,31 @@
   - name: Choose network reference pattern
     href: plan/choose-network-pattern.md
   - name: Single-server deployment
-      items:
-      - name: Single-server deployment
-        href: plan/single-server-deployment.md
-      - name: Pattern components
-        href: plan/single-server-components.md
-      - name: Pattern IP requirements
-        href: plan/single-server-ip-requirements.md
-    - name: Two-node deployments
-      items:
-      - name: Storage switchless, single switch
-        href: plan/two-node-switchless-single-switch.md
-      - name: Storage switchless, two switches
-        href: plan/two-node-switchless-two-switches.md
-      - name: Storage switched, non-converged
-        href: plan/two-node-switched-non-converged.md
-      - name: Storage switched, fully converged
-        href: plan/two-node-switched-converged.md
-      - name: Pattern components
-        href: plan/two-node-components.md
-      - name: Pattern IP requirements
-        href: plan/two-node-ip-requirements.md
-      - name: Decision matrix
-        href: plan/two-node-decision-matrix.md
-    - name: SDN considerations
-      href: plan/network-patterns-sdn-considerations.md
+    items:
+    - name: Single-server deployment
+      href: plan/single-server-deployment.md
+    - name: Pattern components
+      href: plan/single-server-components.md
+    - name: Pattern IP requirements
+      href: plan/single-server-ip-requirements.md
+  - name: Two-node deployments
+    items:
+    - name: Storage switchless, single switch
+      href: plan/two-node-switchless-single-switch.md
+    - name: Storage switchless, two switches
+      href: plan/two-node-switchless-two-switches.md
+    - name: Storage switched, non-converged
+      href: plan/two-node-switched-non-converged.md
+    - name: Storage switched, fully converged
+      href: plan/two-node-switched-converged.md
+    - name: Pattern components
+      href: plan/two-node-components.md
+    - name: Pattern IP requirements
+      href: plan/two-node-ip-requirements.md
+    - name: Decision matrix
+      href: plan/two-node-decision-matrix.md
+  - name: SDN considerations
+    href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
