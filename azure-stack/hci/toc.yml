@@ -64,16 +64,6 @@
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
-  - name: Host networking
-    items:
-    - name: Physical network requirements
-      href: concepts/physical-network-requirements.md
-    - name: Host network requirements
-      href: concepts/host-network-requirements.md
-    - name: Network ATC overview
-      href: concepts/network-atc-overview.md
-    - name: Firewall requirements
-      href: concepts/firewall-requirements.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
