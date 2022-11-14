@@ -156,9 +156,9 @@
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Use Windows Admin Center (recommended)
+      - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Use Azure CLI
+      - name: Set up using Azure CLI
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
