@@ -30,7 +30,7 @@ highlightedContent:
 productDirectory:
   items:
   - title: Azure Stack Hub 
-    imageSrc: media/index/azure-stack-hub.svg
+    imageSrc: media/index/azure-stack-hub-2022.svg
     links:
       - url: https://azure.microsoft.com/products/azure-stack/hub/#overview
         text: Azure Stack Hub overview
@@ -43,7 +43,7 @@ productDirectory:
       - url: https://azure.microsoft.com/products/azure-stack/hub/
         text: Product information and pricing
   - title: Azure Stack HCI
-    imageSrc: media/index/azure-stack-hci.svg
+    imageSrc: media/index/azure-stack-hci-2022.svg
     links:
       - url: ./hci/overview.md
         text: Azure Stack HCI overview
@@ -58,7 +58,7 @@ productDirectory:
       - url: https://azure.microsoft.com/products/azure-stack/hci/
         text: Product information and pricing    
   - title: Azure Stack Edge
-    imageSrc: media/index/azure-stack-edge.svg
+    imageSrc: media/index/azure-stack-edge-2022.svg
     links:
       - url: /azure/databox-online/azure-stack-edge-pro-2-overview
         text: Azure Stack Edge Pro 2 overview
