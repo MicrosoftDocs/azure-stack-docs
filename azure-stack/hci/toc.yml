@@ -32,13 +32,11 @@
     href: deploy/tutorial-private-forest.md
 - name: Plan
   items:
-  - name: Plan networking
-    items:
-    - name: Network reference patterns overview
-      href: plan/network-patterns-overview.md
-    - name: Choose network reference pattern
-      href: plan/choose-network-pattern.md
-    - name: Single-server deployment
+  - name: Network reference patterns overview
+    href: plan/network-patterns-overview.md
+  - name: Choose network reference pattern
+    href: plan/choose-network-pattern.md
+  - name: Single-server deployment
       items:
       - name: Single-server deployment
         href: plan/single-server-deployment.md
