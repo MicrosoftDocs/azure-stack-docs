@@ -48,11 +48,11 @@ productDirectory:
       - url: ./hci/overview.md
         text: Azure Stack HCI overview
       - url: ./hci/whats-new.md
-        text: Azure Stack HCI what's new
+        text: Azure Stack HCI What's New
       - url: https://hcicatalog.azurewebsites.net
-        text: Azure Stack HCI hardware catalog
+        text: Azure Stack HCI Hardware Catalog
       - url: ./hci/guided-quick-deploy-eval.yml
-        text: Azure Stack HCI eval guide
+        text: Azure Stack HCI Eval Guide
       - url: ./hci/manage/preview-channel.md
         text: Join preview channel
       - url: https://azure.microsoft.com/products/azure-stack/hci/
