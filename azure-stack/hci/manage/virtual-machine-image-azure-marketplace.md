@@ -6,17 +6,16 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/05/2022
+ms.date: 11/03/2022
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-> [!IMPORTANT]
-> The Azure Marketplace on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -25,12 +24,7 @@ Before you begin, make sure that the following prerequisites are completed.
 # [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
-- If you're using custom images, you'll have the following extra prerequisites depending on where the custom images are located:
 
-    - You should have a VHD loaded in your Azure Storage account. See how to [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image?tabs=windows#copy-vhd-to-storage-account-using-azcopy). The container and the blob associated with the image must have anonymous read access if using Blob URL to specify as the image path. For more information, see how to [Change the access level for the container in your Storage account](/azure/storage/blobs/anonymous-read-access-configure?tabs=portal#set-the-public-access-level-for-a-container). If you don't want to change the container access, you'll need to use the Blob SAS URI. For more information, see how to [Get the Blob SAS URI](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal).
-    - You should have a VHD/VHDX uploaded to a local share on your Azure Stack HCI cluster.
-    - The VHDX image must be Gen 2 type and secure boot enabled.
-    - The image should reside on a Cluster Shared Volume available to all the servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
 
 - Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
 
@@ -260,4 +254,4 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 ## Next steps
 
-Use VM images to [Create Arc-enabled VMs](./manage-virtual-machines-in-azure-portal.md).
+- [Create virtual networks](./create-virtual-networks.md)

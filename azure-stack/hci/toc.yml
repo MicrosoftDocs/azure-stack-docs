@@ -30,6 +30,38 @@
   items:
   - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
+- name: Plan
+  items:
+  - name: Network reference patterns overview
+    href: plan/network-patterns-overview.md
+  - name: Choose network reference pattern
+    href: plan/choose-network-pattern.md
+  - name: Single-server deployment
+    items:
+    - name: Single-server deployment
+      href: plan/single-server-deployment.md
+    - name: Pattern components
+      href: plan/single-server-components.md
+    - name: Pattern IP requirements
+      href: plan/single-server-ip-requirements.md
+  - name: Two-node deployments
+    items:
+    - name: Storage switchless, single switch
+      href: plan/two-node-switchless-single-switch.md
+    - name: Storage switchless, two switches
+      href: plan/two-node-switchless-two-switches.md
+    - name: Storage switched, non-converged
+      href: plan/two-node-switched-non-converged.md
+    - name: Storage switched, fully converged
+      href: plan/two-node-switched-converged.md
+    - name: Pattern components
+      href: plan/two-node-components.md
+    - name: Pattern IP requirements
+      href: plan/two-node-ip-requirements.md
+    - name: Decision matrix
+      href: plan/two-node-decision-matrix.md
+  - name: SDN considerations
+    href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
@@ -104,25 +136,35 @@
       href: manage/attach-gpu-to-linux-vm.md
     - name: Windows Server Azure Edition
       href: manage/windows-server-azure-edition.md
-  - name: Manage Azure Arc-enabled VMs (preview)
+  - name: Manage Azure Arc VMs
     items:
-    - name: Set up Azure Arc-enabled VMs
-      href: manage/azure-arc-enabled-virtual-machines.md
-    - name: Deploy Arc Resource Bridge using command line
-      href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Deploy Arc Resource Bridge using Windows Admin Center
-      href: manage/deploy-arc-resource-bridge-using-wac.md
-    - name: Create VM images
+    - name: What is Azure Arc VM management?
+      href: manage/azure-arc-vm-management-overview.md
+    - name: Set up Arc VM management
       items:
-      - name: Using Azure Marketplace images
-        href: manage/virtual-machine-image-azure-marketplace.md
-      - name: Using images in  Azure Storage account
-        href: manage/virtual-machine-image-storage-account.md
-      - name: Using images in local share 
-        href: manage/virtual-machine-image-local-share.md
-    - name: Deploy Arc-enabled VMs in Azure portal
+      - name: Review prerequisites
+        href: manage/azure-arc-vm-management-prerequisites.md
+      - name: Set up using Windows Admin Center (recommended)
+        href: manage/deploy-arc-resource-bridge-using-wac.md
+      - name: Set up using Azure CLI
+        href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Manage Arc VM resources
+      items:
+      - name: Create VM images
+        items:
+        - name: Using Azure Marketplace images
+          href: manage/virtual-machine-image-azure-marketplace.md
+        - name: Using images in Azure Storage account
+          href: manage/virtual-machine-image-storage-account.md
+        - name: Using images in local share 
+          href: manage/virtual-machine-image-local-share.md
+      - name: Create virtual networks
+        href: manage/create-virtual-networks.md
+    - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Uninstall Azure Arc Resource Bridge
+    - name: Manage VM extensions
+      href: manage/virtual-machine-manage-extension.md
+    - name: Uninstall Azure Arc VM management
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
@@ -170,6 +212,8 @@
         href: manage/kernel-soft-reboot.md
     - name: Monitoring
       items:
+      - name: Set up alerts for Azure Stack HCI systems
+        href: manage/setup-hci-system-alerts.md
       - name: Monitor a single cluster using the Azure portal (preview)
         href: manage/monitor-hci-single.md      
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
@@ -214,6 +258,8 @@
       href: manage/use-datacenter-firewall-powershell.md
     - name: Configure network security groups with tags
       href: manage/configure-network-security-groups-with-tags.md
+    - name: Manage default network access policies
+      href: manage/manage-default-network-access-policies-virtual-machines.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
@@ -298,6 +344,8 @@
       href: concepts/host-network-requirements.md
     - name: Network ATC overview
       href: concepts/network-atc-overview.md
+    - name: Network HUD overview
+      href: concepts/network-hud-overview.md
     - name: Firewall requirements
       href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
@@ -333,53 +381,11 @@
 - name: Preview channel
   items:
   - name: Join preview channel
-    href: manage/preview-channel.md
-  - name: What's new in version 22H2
-    href: whats-new.md
-  - name: View known issues in version 22H2
-    href: known-issues-22h2.md
-  - name: Update version 21H2
-    items:
-    - name: Update to version 22H2
-      href: manage/install-preview-version.md
-    - name: Run post update steps
-      href: manage/preview-post-installation.md
-  - name: Plan for version 22H2
-    items:
-    - name: Review security
-      items: 
-      - name: Use Windows Defender Application Control 
-        href: concepts/security-windows-defender-application-control.md
-      - name: Review security baseline, drift control
-        href: concepts/secure-baseline.md
-      - name: Understand BitLocker encryption
-        href: concepts/security-bitlocker.md
-    - name: Assess environment readiness
-      href: manage/use-environment-checker.md
-  - name: Deploy version 22H2 
-    items:
-    - name: Deployment overview
-      href: deploy/deployment-tool-introduction.md
-    - name: Review prerequisites
-      href: deploy/deployment-tool-prerequisites.md
-    - name: View deployment checklist
-      href: deploy/deployment-tool-checklist.md
-    - name: Prepare Active Directory
-      href: deploy/deployment-tool-active-directory.md
-    - name: Install version 22H2 operating system
-      href: deploy/deployment-tool-install-os.md
-    - name: Deploy interactively
-      href: deploy/deployment-tool-new-file.md
-    - name: Deploy using a config file
-      href: deploy/deployment-tool-existing-file.md
-    - name: Deploy using PowerShell
-      href: deploy/deployment-tool-powershell.md
-    - name: Validate deployment
-      href: deploy/deployment-tool-validate.md
-    - name: Collect logs 
-      href: manage/collect-logs.md
-    - name: Troubleshoot issues
-      href: deploy/deployment-tool-troubleshoot.md
+    href: manage/preview-channel.md    
+  - name: Install a preview version
+    href: manage/install-preview-version.md
+  - name: Post installation tasks
+    href: manage/preview-post-installation.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -417,7 +423,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: ../aks-hci/overview.md
+    href: /azure/aks/hybrid/overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud

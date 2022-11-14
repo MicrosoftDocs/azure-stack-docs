@@ -116,7 +116,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
 | Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
 | Azure portal > Azure Resource Manager integration for clusters | Yes | No |
-| Azure portal > Arc-enabled VM management (preview) | Yes | No |
+| Azure portal > Arc VM management (preview) | Yes | No |
 | Desktop experience | No | Yes |
 
 <sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.
