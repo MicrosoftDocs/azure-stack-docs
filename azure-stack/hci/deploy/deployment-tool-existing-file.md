@@ -253,8 +253,8 @@ The following table gives descriptions for the settings listed in the configurat
 |Setting|Description|Default|HW/TPM dependent|Can customer modify?|Learn more|
 |---|---|---|---|---|---|
 |**SecuritySettings**|Section name|||||
-|SecurityModeSealed|***CARLOS input***|No||||
-|SecuredCoreEnforced|***CARLOS input***|No||||
+|SecurityModeSealed|***CARLOS input***|||No||
+|SecuredCoreEnforced|***CARLOS input***|||No||
 |VBSProtection|By default, Virtualization-based Security (VBS) is enabled on your Azure HCI cluster.|True|No|No|[Virtualization-based Security](/windows-hardware/design/device-experiences/oem-vbs)|
 |HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster.|True|No|Yes|[Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement)|
 |DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster.|True|Hardware|Yes|[Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection)|
@@ -266,7 +266,7 @@ The following table gives descriptions for the settings listed in the configurat
 |SideChannelMitigationEnforced|When set to `True`, side channel mitigations are all enabled. ***What are side channel mitigations?***|True|No|Yes||
 |BitlockerBootVolume|When set to `True`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This is dependent on the TPM hardware used.|True|TPM|Yes|[BitLocker encryption for Azure Stack HCI]()|
 |BitlockerDataVolumes|When set to `True`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes|True|No|Yes|[BitLocker encryption for Azure Stack HCI]()|
-|SEDProtectionEnforced|Not in use for Azure Stack HCI version 22H2.|True|No|Yes||
+|SEDProtectionEnforced|Not used for Azure Stack HCI version 22H2.|True|No|Yes||
 |WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.|Null|No|Yes|[Windows Defender Application Control]()|
 |**Observability**|Section name|||||
 |StreamingDataClient|Enables telemetry data to be sent to Microsoft.|||||
@@ -274,9 +274,9 @@ The following table gives descriptions for the settings listed in the configurat
 |EpisodicDataUpload|When set to `True`, collects log data to facilitate quicker issue resolution. ***How often?***|||||
 |**Cluster**|Section name|||||
 |Name|The cluster name provided when preparing Active Directory. |||||
-|StaticAddress|Set a static IP address for the cluster rather than using an IP address from the infrastructure IP pool.|||||
+|StaticAddress|Sets the static IP address for the cluster rather than using an IP address from the infrastructure IP pool.|||||
 |**Storage**|Section name|||||
-|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. ***What and where are best practices?***||||[4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](https://review.learn.microsoft.com/en-us/azure-stack/hci/deploy/deployment-tool-new-file?branch=release-asz-aug)|
+|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. ***What and where are best practices?***||||[4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](deployment-tool-new-file.md)|
 |NamingPrefix|The prefix used for all AD objects created for the Azure Stack HCI deployment. The prefix must not exceed eight characters.|||||
 |DomainFQDN|The fully qualified domain name (FQDN) for the Active Directory domain used by your cluster.|||||
 |**InfrastructureNetwork**|Section name|||||
@@ -293,13 +293,13 @@ The following table gives descriptions for the settings listed in the configurat
 |**HostNetwork**|Section name|||||
 |Intents|The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.|||||
 |Name|Name of the network intent you wish to create.|||||
-|TrafficType|Type of traffic. Examples include compute, storage, and management traffic.|||||
+|TrafficType|Type of network traffic. Examples include compute, storage, and management traffic.|||||
 |Adapter|Array of network interfaces used for the network intent.|||||
 |OverrideVirtualSwitchConfigurationOverrides|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False||No||
 |VirtualSwitchConfigurationOverrides|List of virtual switch overrides, as specified by your OEM.|||No||
 |EnableIov|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False||No||
 |LoadBalancingAlgorithm|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|Hyperport||No||
-|OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False||||
+|OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False||No||
 |QoSPolicyOverrides|List of QoS policy overrides as specified by your OEM.|||No||
 |PriorityValue8021Action_Cluster|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|7||No||
 |PriorityValue8021Action_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|3||No||
