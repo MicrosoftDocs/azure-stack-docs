@@ -22,7 +22,7 @@ highlightedContent:
     - title: Azure Stack family announcement
       itemType: overview
       url: http://aka.ms/AzsFamAnnounce
-    - title: Azure Stack family comparison
+    - title: Azure Stack family comparisons
       itemType: overview
       url: ./operator/compare-azure-azure-stack.md
 
