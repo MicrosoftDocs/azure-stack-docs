@@ -19,8 +19,6 @@ ms.reviewer: abha
 
 In this how-to guide, you'll learn how to use PowerShell to configure your AKS host deployment if you have pre-staged cluster service objects and DNS records in AKS hybrid.<!--Adding AKS hybrid reference and ID because it shows up throughout the discussion. Shouldn't it also be identified in the title and description?-->
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 - Make sure you have satisfied all the prerequisites in [system requirements](system-requirements.md). 

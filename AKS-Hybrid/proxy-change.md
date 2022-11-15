@@ -19,8 +19,6 @@ author: sethmanheim
 
 If you need to update the **noProxy** settings of your Azure Kubernetes Service (AKS) deployment in AKS hybrid, you can walk through the steps in this article to add URLs to your **noProxy** list after you've deployed your AKS workload clusters.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Limitations and other details
 
 The following scenarios are **not** supported:

@@ -20,8 +20,6 @@ In this article, you'll learn how to monitor and troubleshoot the encryption of 
 
 A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS hybrid comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Monitor and troubleshoot
 
 To simplify application deployment on Kubernetes clusters, review the [documentation and scripts](https://github.com/microsoft/AKS-HCI-Apps) that are available.
