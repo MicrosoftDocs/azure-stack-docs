@@ -497,7 +497,21 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -skipValidationChecks
 
+Use this flag if you want to skip the validation checks of the environment infrastructure and user configuration input. These checks will highlight potential issues to address before proceeding with the install. We do not recommend using this setting.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)
