@@ -46,14 +46,14 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 ### Estimated upgrade time
 
 The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
-## Instructions to use AKS engine 0.73.0
+## Instructions to use AKS engine 0.70.0 and above
 
 Microsoft upgraded the Azure Cloud Provider in version 0.70.0. The Azure Cloud Provider is a core component shared between AKS Azure and AKS engine on Azure Stack Hub. 
 
 To use AKS engine 0.70.0 and above:
 
  - **If you're attempting to create a new Kubernetes cluster for the first time**:  
-    Use the sample API model provided for version 0.71.0 in the [AKS engine and corresponding image mapping](#aks-engine-and-corresponding-image-mapping) table.  
+    Use the sample API model provided for appropriate version in the [AKS engine and corresponding image mapping](#aks-engine-and-corresponding-image-mapping) table.  
 
  - **If you're creating a new cluster, but want to use your existing API model**:  
     Modify your API model by following the [Cloud Provider for Azure](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) instructions. Failure to include the new setting will result in a deployment error. 
