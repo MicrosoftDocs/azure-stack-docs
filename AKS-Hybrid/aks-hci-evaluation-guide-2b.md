@@ -17,8 +17,6 @@ ms.reviewer: oadeniji
 
 With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 > [!NOTE]
 > If you prefer to use Windows Admin Center, see [Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
 

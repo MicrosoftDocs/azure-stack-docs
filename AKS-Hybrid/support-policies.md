@@ -18,7 +18,7 @@ ms.reviewer: mikek
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides details about technical support policies and limitations for AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+This article provides details about technical support policies and limitations for AKS hybrid.
 
 This article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
 

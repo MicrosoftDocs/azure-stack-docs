@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS hybrid.
 
 A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
 

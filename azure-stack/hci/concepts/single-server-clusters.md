@@ -5,13 +5,13 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: kerimhanif
-ms.lastreviewed: 11/09/2022
-ms.date: 11/09/2022
+ms.lastreviewed: 11/14/2022
+ms.date: 11/14/2022
 ---
 
 # Using Azure Stack HCI on a single server
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article provides an overview of running Azure Stack HCI on a single server, also known as a single-node cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
 

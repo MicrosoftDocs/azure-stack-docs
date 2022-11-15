@@ -18,8 +18,6 @@ author: sethmanheim
 
 In AKS hybrid, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage multiple node pools in an AKS cluster in AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 > [!NOTE]
 > This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for create, update, and delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create or scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 
 
