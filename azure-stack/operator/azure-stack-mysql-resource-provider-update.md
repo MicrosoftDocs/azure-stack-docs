@@ -65,8 +65,12 @@ e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/my
 
 ### Trigger MajorVersionUpgrade
 Run the following script from an elevated PowerShell console to perform major version upgrade. 
+
 > [!NOTE]
 > Make sure the client machine that you run the script on is of OS version no older than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
+
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
 
 ``` powershell
