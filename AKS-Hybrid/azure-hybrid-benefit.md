@@ -27,7 +27,7 @@ To learn more about Software Assurance and with which agreements it is available
 
 This rest of article will walk you through how to activate this benefit for AKS on Azure Stack HCI or Windows Server. 
 
-Tip: You can maximize cost savings by also using Azure Hybrid Benefit for Azure Stack HCI. For more information see [Azure Hybrid Benefit for Azure Stack HCI](https://learn.microsoft.com/en-us/azure-stack/hci/concepts/azure-hybrid-benefit). 
+Tip: You can maximize cost savings by also using Azure Hybrid Benefit for Azure Stack HCI. For more information see [Azure Hybrid Benefit for Azure Stack HCI](https://learn.microsoft.com/azure-stack/hci/concepts/azure-hybrid-benefit). 
 
 
 ## Activate Azure Hybrid Benefit for AKS
