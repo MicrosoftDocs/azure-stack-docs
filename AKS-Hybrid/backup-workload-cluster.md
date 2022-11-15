@@ -212,7 +212,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. Install and start Velero.
 
-   Install Velero on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
+   Install Velero, **PLEASE VERIFY: CAN THIS GO? including all prerequisites**, on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
 
    1. Install Velero using the following command. You'll need to adjust the example command.
 
@@ -228,16 +228,16 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You need only include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId`, and the *credentials-velero.txt* file will provide that information.
 
-      The Velero service starts automatically on installation.<!--VERIFY! Guessing on this. This is normal/default behavior?-->
+      The Velero service starts automatically on installation. **PLEASE VERIFY: By default, Velero Starts automatically upon installation?**
 
-   1. Check whether the Velero service is running properly:<!--What do you mean by "properly"? Command output would be helpful.-->
+   1. Check whether the Velero service is running properly:
 
       ```powershell
       kubectl -n velero get pods
       kubectl logs deployment/velero -n velero
       ```
 
-      **VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, STORED WHERE?, for any installation issues.
+      **PLEASE VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
 
 
 ## Install Velero with MinIO storage
@@ -271,9 +271,6 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
             requests: 
                storage: 100Gi 
          ```
-
-```
-
 
         Create the persistent volume by running this command:
 
@@ -359,7 +356,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client.<!--PLACEMENT? They don't install the MinIO client until the next step.--> <!--NOT NEEDED: Make sure you create a bucket in MinIO. This bucket will be used in Velero installation.-->
+   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. **PLEASE VERIFY: Please review this step. They install the MinIO client in the next step. How does this step related to that one?**
 
    1. Install the MinIO client, and browse through the MinIO files.
 
@@ -411,7 +408,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    kubectl logs deployment/velero -n Velero
    ```
 
-   **VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **STORED WHERE?**, for any installation issues.
+   **PLEASE VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
 
 ## Back up a cluster
 
@@ -499,6 +496,8 @@ kubectl delete crds -l component=velero
 ```
 
 ## Next steps
+
+**PLEASE VERIFY: Are these good links for "Next steps"? None were provided.**
 
 - [Troubleshoot management and workload clusters in AKS hybrid](./known-issues-workload-clusters.yml)
 - [Troubleshoot storage issues in AKS hybrid](./known-issues-storage.yml)
