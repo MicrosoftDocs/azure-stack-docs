@@ -17,8 +17,6 @@ ms.reviewer: rbaziwane
 
 This article describes how to use [MetalLB](https://metallb.org/) to provide load balancing services for a workload cluster in AKS hybrid. AKS hybrid allows you to configure custom load balancers for your workload clusters. MetalLB is an example.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview
 
 In the November update of AKS hybrid, we added support to allow users to configure custom load balancers for their workload clusters.

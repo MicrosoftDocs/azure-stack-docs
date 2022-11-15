@@ -17,8 +17,6 @@ ms.reviewer: abha
 
 This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of CSI in AKS hybrid
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]
@@ -58,20 +56,20 @@ volumeBindingMode: Immediate
 allowVolumeExpansion: true  
 ```
 
-The default storage class stores PVs at the `-imageDir` location specified during the AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or a cost-optimized volume backed by HDDs.
+The default storage class stores PVs at the `-imageDir` location specified during the AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that's backed by high-performing SSDs/NVMe or a cost-optimized volume backed by HDDs.
 
 Creating a custom storage class is a two-step process:
 
 1. Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 
-	```powershell
+    ```powershell
    New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
    ```
    
    Check whether the new storage container is created by running the following [Get-AksHciStorageContainer](./reference/ps/get-akshcistoragecontainer.md) PowerShell command:
 
    ```powershell
-	Get-AksHciStorageContainer -Name "customStorageContainer"
+    Get-AksHciStorageContainer -Name "customStorageContainer"
    ```
 
 2. Create a new custom storage class using the new storage container.
@@ -93,7 +91,7 @@ Creating a custom storage class is a two-step process:
            logicalsectorsize: "4096"
            physicalsectorsize: "4096"
            port: "55000"
-	       fsType: ext4 # refer to the note above to determine when to include this parameter
+           fsType: ext4 # refer to the note above to determine when to include this parameter
           allowVolumeExpansion: true
           reclaimPolicy: Delete
           volumeBindingMode: Immediate

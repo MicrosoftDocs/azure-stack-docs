@@ -15,7 +15,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create, scale, and delete ReplicaSets in AKS hybrid, which are used to ensure that a stable set of replica pods are running at any given time. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]<!--New lead.-->
+This article describes how to create, scale, and delete ReplicaSets in AKS hybrid, which are used to ensure that a stable set of replica pods are running at any given time.
 
 ## Overview of ReplicaSets
 
@@ -45,15 +45,15 @@ metadata:
        replicas: 4
        selector: 
            matchlabels: 
-  	 role: web
+       role: web
         template:
            metadata:
-   	labels:
-       	    role: web
+       labels:
+               role: web
             spec:  
-      	containers:  
-       	    -name: nginx  
-       	    image: nginx
+          containers:  
+               -name: nginx  
+               image: nginx
 ```
 
 After you create a ReplicaSet, you can view the status by running the following command:

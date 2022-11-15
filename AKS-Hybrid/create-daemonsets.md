@@ -19,8 +19,6 @@ ms.reviewer: EkeleAsonye
 
 This article describes how to create and use a Kubernetes _DaemonSet_ in AKS hybrid to ensure that a copy of a pod is always available on every worker node in a cluster. A _DaemonSet_ can be used to improve cluster performance by ensuring an app runs on all the worker nodes and to deploy pods that do maintenance and provide support services for nodes.<!--New intro. Originally, the long discussion of Daemonset objects never led to a description of what the article covers.-->
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of DaemonSets
 
 _DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. 
@@ -55,12 +53,12 @@ metadata:
  spec:  
      template:
            metadata:
-   	 labels:
-       	  app: nginx
+        labels:
+             app: nginx
           spec:  
-      	containers:  
-       	    -name: nginx  
-       	    image: nginx
+          containers:  
+               -name: nginx  
+               image: nginx
 ```
 
 To view the current state of the DaemonSet, use the `kubectl describe` command (for example, `kubectl describe daemonset example-daemon`).
