@@ -15,7 +15,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides an overview of Kubernetes deployments and describes how to create and update deployments in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+This article provides an overview of Kubernetes deployments and describes how to create and update deployments in AKS hybrid.
 
 ## Kubernetes deployments overview
 

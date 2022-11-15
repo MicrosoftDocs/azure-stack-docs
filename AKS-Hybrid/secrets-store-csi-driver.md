@@ -21,8 +21,6 @@ The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernete
 
 With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 - You need to have an Azure account and subscription.

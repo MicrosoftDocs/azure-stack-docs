@@ -18,8 +18,6 @@ author: sethmanheim
 
 If you encounter an issue with AKS hybrid, this article describes how to open a support request.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Go to Help + support in the Azure portal
 
 1. Log into the [Azure portal](https://portal.azure.com).

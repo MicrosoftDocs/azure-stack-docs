@@ -19,8 +19,6 @@ ms.reviewer: abha
 
 This article describes how to monitor your Azure Kubernetes Service (AKS) deployment and collect logging data in AKS hybrid. You'll learn how to set up and access on-premises monitoring using `Prometheus` and `Graphana`, and how to collect and view logs using `Elasticsearch`, `Fluent Bit`, and `Kibana` (EFK).
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 Two types of monitoring and logging solutions are available, as described in the following table. 
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
