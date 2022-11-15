@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI (preview)
 description: Read about the known issues in Azure Stack HCI (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/08/2022
+ms.date: 11/14/2022
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -33,3 +33,4 @@ Here are the known issues in Azure Stack HCI supplemental package:
 |4|Deployment |Renaming the network adapter in the deployment tool and using the **Back** and **Next** buttons causes it to hang.|There's no workaround for this is in the preview release.|
 |5|Arc VM and AKS-HCI workload deployment |In this release, Windows Defender App Control (WDAC) is enabled by default on Azure Stack HCI servers. The following post-deployment scenarios are affected: <br>- Windows Admin Center in Azure portal won't work because WDAC is enabled by default.  <br>- If you are deploying Arc VM or AKS-HCI workloads, you would see an error while importing Arc Resource Bridge PowerShell module. |The workaround is to switch WDAC policy mode to `Audit` instead of `Enforced`. For more information, see [Switch WDAC policy mode](./concepts/security-windows-defender-application-control.md#switch-wdac-policy-modes). <br> After the workload deployment is complete, you can run the cmdlet to switch WDAC policy mode back to the default enforced mode.|
 |6|Deployment |If you have an Azure policy assigned to the Azure subscription that enforces tags, the deployment fails.||
+|7|OS update|After deployment, scanning for OS updates using SConfig or Cluster-Aware Updating may fail to scan Windows Update.|Remove the following registry key before attempting to scan for updates: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SystemCertificates\AuthRoot\`<br>AutoUpdate"RootDirUrl"="C:\\WuCTLFiles"|
