@@ -41,7 +41,9 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. Log in to Azure using the Azure CLI:
 
-   `az login --use-device-code`
+   ```azurecli
+   az login --use-device-code   
+   ```
 
 1. Install the [Velero CLI](https://velero.io/docs/v1.9/basic-install/#install-the-cli) by running the following command:
 
@@ -118,7 +120,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       - **Contributor role:** The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role.
       - **Custom role:** If you need a less permissive role, use a custom role.
 
-      **Assign the Contributor role:**
+      #### Assign the Contributor role
 
       If you'll be using Velero to back up multiple clusters with multiple blob containers, you may want to create a unique username for each cluster instead of using the name `velero`.
 
@@ -141,7 +143,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       > [!IMPORTANT]
       > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
 
-      **Use a custom role:**
+      #### Use a custom role
 
       If you want to enable the minimum resource provider actions, create a custom role, and assign that role to the service principal.
 
@@ -190,7 +192,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
    > [!NOTE]
    > Service principals expire. To find out when your new service principal will expire, run this command: `az ad sp show --id $AZURE_CLIENT_ID`.
 
-1. Create a file that contains the variables the Velero installation requires. The command looks like the following one:
+1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following one:
 
    ```azurecli
    _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
@@ -242,9 +244,9 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 The procedures in this section describe how to install Velero and use [MinIO](https://min.io/) storage for backups. If you prefer to use Azure Blob storage for your backups, go to [Install Velero with Azure Blob storage](#install-velero-with-azure-blob-storage).
 
-If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage).
+If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage).
 
-1. Install the Velero CLI by running the following command. (You'll need to [Install `Chocolately`](https://chocolatey.org/install) if you haven't already.)
+1. Install the Velero CLI by running the following command. [Install `Chocolately`](https://chocolatey.org/install) if you haven't already.
 
    ```powershell
    choco install velero
@@ -269,6 +271,9 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
             requests: 
                storage: 100Gi 
          ```
+
+```
+
 
         Create the persistent volume by running this command:
 
