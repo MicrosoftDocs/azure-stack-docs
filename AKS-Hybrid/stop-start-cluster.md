@@ -19,8 +19,6 @@ ms.reviewer: EkeleAsonye
 
 In AKS hybrid, your workloads may not need to run continuously. To save resource costs, you can stop (or shut down) your Azure Kubernetes Service (AKS) cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 This article assumes you have an existing AKS cluster installed and configured on your machine. If you need to install a cluster, see the AKS hybrid quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md). 
