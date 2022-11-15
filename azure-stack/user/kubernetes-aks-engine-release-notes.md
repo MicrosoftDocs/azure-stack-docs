@@ -16,7 +16,7 @@ ms.lastreviewed: 09/23/2022
 # Release notes for the AKS engine on Azure Stack Hub
 
 ::: moniker range=">=azs-2206"
-*Applies to version v0.71.0 of the AKS engine.*
+*Applies to version v0.73.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
 
@@ -46,11 +46,11 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 ### Estimated upgrade time
 
 The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
-## Instructions to use AKS engine 0.71.0
+## Instructions to use AKS engine 0.73.0
 
 Microsoft upgraded the Azure Cloud Provider in version 0.70.0. The Azure Cloud Provider is a core component shared between AKS Azure and AKS engine on Azure Stack Hub. 
 
-To use AKS engine 0.71.0:
+To use AKS engine 0.70.0 and above:
 
  - **If you're attempting to create a new Kubernetes cluster for the first time**:  
     Use the sample API model provided for version 0.71.0 in the [AKS engine and corresponding image mapping](#aks-engine-and-corresponding-image-mapping) table.  
@@ -149,8 +149,8 @@ In the API Model json file, please specify the release and version values under 
 ## What's new
 
 New features include: 
- - Added support for Kubernetes v1.23.6
- - You can find additional features at [v0.71.0](https://github.com/Azure/aks-engine/releases/tag/v0.71.0). 
+ - Added support for Kubernetes v1.22.15 and v1.23.13
+ - You can find additional features at [v0.73.0](https://github.com/Azure/aks-engine/releases/tag/v0.73.0). 
 
 ## Known issues
 
