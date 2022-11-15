@@ -19,8 +19,6 @@ ms.reviewer: abha
 
 This tutorial describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Azure Kubernetes Service (AKS) cluster in AKS hybrid. You will also learn how to test and scale your app. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
 ## Before you begin

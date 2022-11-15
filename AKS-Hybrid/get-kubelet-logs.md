@@ -18,8 +18,6 @@ ms.reviewer: oadeniji
 
 As part of operating an Azure Kubernetes Service (AKS) cluster in AKS hybrid, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS, and you may also need to get _kubelet_ logs from an AKS node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS hybrid.

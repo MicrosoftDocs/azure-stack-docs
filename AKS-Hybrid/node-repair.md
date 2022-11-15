@@ -18,8 +18,6 @@ ms.reviewer: oadeniji
 
 To help minimize service disruptions for clusters, AKS hybrid continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. In this article, you'll learn how AKS hybrid checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. You'll also learn how to manually check node health.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## How AKS checks for unhealthy nodes
 
 AKS hybrid uses the following rules to determine if a node is unhealthy and needs repair:

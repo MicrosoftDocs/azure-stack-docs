@@ -29,8 +29,6 @@ In this tutorial, part two of seven, you deploy an ACR instance and push a conta
 
 In later tutorials, this ACR instance is integrated with a Kubernetes cluster, and an application is deployed from the image.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 The [previous tutorial](tutorial-kubernetes-prepare-application.md) described how to create a container image for a simple Azure Voting application. If you have not created the Azure Voting app image, return to [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
