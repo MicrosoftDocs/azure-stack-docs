@@ -19,8 +19,6 @@ author: sethmanheim
 
 This article describes how to upgrade the Azure Kubernetes Service (AKS) host core system to the latest version in AKS hybrid. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of AKS host updates
 
 Several types of updates can be made independently or in certain supported combinations:

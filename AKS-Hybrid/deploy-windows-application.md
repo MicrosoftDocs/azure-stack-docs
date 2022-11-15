@@ -19,8 +19,6 @@ ms.reviewer: abha
 
 In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS hybrid, and then test and scale your application. You'll also learn how to join a Windows node to an Active Directory domain.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
 ## Before you begin
