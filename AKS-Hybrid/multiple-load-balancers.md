@@ -19,8 +19,6 @@ ms.topic: how-to
 
 This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS hybrid, and how to scale up or down the load balancer configuration in the target cluster. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 In AKS hybrid, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services. 
 
 You can also use a custom load balancer with AKS hybrid. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).

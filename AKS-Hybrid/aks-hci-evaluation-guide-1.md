@@ -19,8 +19,6 @@ With the introduction of [nested virtualization support in Azure](https://azure.
 
 In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]  
-
 At a high level, these steps consist of the following tasks:
 
 * Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM will be automatically configured with the relevant roles and features needed for your evaluation.

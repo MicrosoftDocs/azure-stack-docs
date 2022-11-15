@@ -17,8 +17,6 @@ ms.reviewer: oadeniji
 
 With all key components deployed for your AKS hybrid evaluation, including the management cluster and target clusters, you can now begin to explore some other capabilities of an Azure Kubernetes Service (AKS) deployment. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 This section describes some of the key elements. For more information, see [AKS hybrid product documentation](/azure-stack/aks-hci/).
 
 ## Deploy a simple Linux application

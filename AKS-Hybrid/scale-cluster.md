@@ -17,8 +17,6 @@ ms.reviewer: jeguan
 
 If the resource needs of your applications change in AKS hybrid, you can manually scale an Azure Kubernetes Service (AKS) cluster to run a different number of control plane nodes and worker nodes. You must scale the control plane nodes and worker nodes separately.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Scale control plane nodes
 
 Use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command to scale the control plane nodes. The following example scales the control plane nodes in a cluster named *mycluster* to a node count of 3. 

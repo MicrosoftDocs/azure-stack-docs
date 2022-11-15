@@ -22,8 +22,6 @@ This article describes how to configure and use Helm to install and manage Kuber
 
 [Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 Verify that you have set up the following requirements:
@@ -150,8 +148,8 @@ helm list
 The following example shows the *my-nginx-ingress* release deployed in the previous step:
 
 ```output
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART               	APP VERSION
-my-nginx-ingress	default  	1       	2021-05-14 17:43:27.1670709 +0000 UTC	deployed	nginx-ingress-3.30.0	0.46.0 
+NAME                NAMESPACE    REVISION    UPDATED                                 STATUS      CHART                   APP VERSION
+my-nginx-ingress    default      1           2021-05-14 17:43:27.1670709 +0000 UTC    deployed    nginx-ingress-3.30.0    0.46.0 
 ```
 
 ### Clean up resources

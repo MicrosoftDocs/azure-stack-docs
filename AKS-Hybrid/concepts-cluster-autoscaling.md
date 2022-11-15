@@ -19,8 +19,6 @@ ms.date: 10/28/2022
 
 You can adjust the number of nodes that run application workloads in AKS hybrid by using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 This article describes the context of the autoscaler in AKS hybrid, and how the autoscaler works. For cluster autoscaling to work effectively, you can also make use of the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal Pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 ## Cluster autoscaling
