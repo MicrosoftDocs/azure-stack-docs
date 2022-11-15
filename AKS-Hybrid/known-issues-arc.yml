@@ -13,6 +13,14 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
+          The following error will occur when you use Azure CLI to activate Azure Hybrid Benfit for AKS:
+
+          Error occured while connecting to the kubernetes cluster:Error: HTTPSConnectionPool(host='', port=6443): Max retries exceeded with url: /version/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x065EDDA8>, 'Connection to <IP address> timed out. (connect timeout=None)'))
+
+        answer: | 
+          You should ignore this error as it occurs after the benefit has been applied, and will have no impact on your cluster. Proceed to verify that the benefit has been successfully applied. This issue will be fixed in a future release.
+
+      - question: | 
           Error: 'A workload cluster with the name 'my-aks-cluster' was not found'.
 
         answer: | 
