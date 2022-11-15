@@ -21,8 +21,6 @@ You can create a workload cluster backup or restore from a backup on Azure Kuber
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Deploy and configure Velero
 
 Use the following steps to deploy and configure Velero:
