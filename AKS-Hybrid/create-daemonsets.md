@@ -50,15 +50,15 @@ metadata:
       labels: 
          app: nginx
       name: example-daemon
- spec:  
-     template:
-           metadata:
-        labels:
-             app: nginx
+spec:  
+  template:
+    metadata:
+    labels:
+       	  app: nginx
           spec:  
-          containers:  
-               -name: nginx  
-               image: nginx
+    containers:  
+        -name: nginx  
+         image: nginx
 ```
 
 To view the current state of the DaemonSet, use the `kubectl describe` command (for example, `kubectl describe daemonset example-daemon`).

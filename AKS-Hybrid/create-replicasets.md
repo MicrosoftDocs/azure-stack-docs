@@ -41,19 +41,19 @@ metadata:
       labels: 
          env: dev
          role: web
- spec:  
-       replicas: 4
-       selector: 
-           matchlabels: 
+spec:  
+   replicas: 4
+   selector: 
+       matchlabels: 
        role: web
         template:
            metadata:
        labels:
-               role: web
-            spec:  
-          containers:  
-               -name: nginx  
-               image: nginx
+           role: web
+spec:  
+      containers:  
+           -name: nginx  
+           image: nginx
 ```
 
 After you create a ReplicaSet, you can view the status by running the following command:
