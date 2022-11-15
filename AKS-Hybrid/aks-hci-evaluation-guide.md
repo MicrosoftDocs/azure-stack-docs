@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This guide demonstrates the basics of how to deploy [AKS hybrid](./overview.md) in an Azure Virtual Machine. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+This guide demonstrates the basics of how to deploy [AKS hybrid](./overview.md) in an Azure Virtual Machine.
 
 You'll learn how to:
 

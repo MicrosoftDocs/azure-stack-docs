@@ -19,8 +19,6 @@ ms.reviewer: aathipsa
 
 Certificates are used to build secure communication between in-cluster components. AKS hybrid provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Certificates and CAs
 
 AKS hybrid generates and uses the following Certificate Authorities (CAs) and certificates.
@@ -153,7 +151,7 @@ To get the logs from the certificate renewal pod:
 kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificate-renewal-controller-2cdmz
 ```
 
-Control plane nodes can’t be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail because of expired certificates, run the following command: 
+Control plane nodes can't be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail because of expired certificates, run the following command: 
 
 ```powershell
 Repair-AksHciClusterCerts -Name mytargetcluster 

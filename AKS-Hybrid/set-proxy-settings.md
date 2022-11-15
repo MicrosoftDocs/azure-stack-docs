@@ -20,8 +20,6 @@ author: sethmanheim
 
 This article describes how to configure proxy settings for Azure Kubernetes Service (AKS) in AKS hybrid. If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps to set up proxy support in AKS using the **AksHci** PowerShell module. The steps are different depending on whether the proxy server requires authentication.<!--I moved the first sentence of the note to the lead to get in a product ID. I think it works better there, and it isn't needed in the note.-->
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 > [!NOTE]
 > If you want to use Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 

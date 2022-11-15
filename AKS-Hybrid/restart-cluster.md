@@ -19,9 +19,6 @@ ms.reviewer: jeguan
 
 After deploying Azure Kubernetes Service in AKS hybrid, you can restart, remove, or reinstall your deployment if necessary.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
-
 ## Restart AKS hybrid
 
 Restarting AKS hybrid removes all of your Kubernetes clusters (if any) and the Azure Kubernetes Service host. The restart process also uninstalls the AKS agents and services from the nodes. Then, it repeats the original install process steps until the host is recreated. The AKS configuration that you configured via [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and the downloaded VHDX images are preserved. The `Set-AksHciConfig` command removes the current VMs and creates new ones.
