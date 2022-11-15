@@ -122,14 +122,7 @@ $MySQLConnector = "Provide the MySQL Connector Uri according to Prerequisites st
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
-. $tempDir\MajorVersionUpgradeMySQLProvider.ps1 `
-  -AzureEnvironment $AzureEnvironment `
-  -AzCredential $AdminCreds `
-  -CloudAdminCredential $CloudAdminCreds `
-  -Privilegedendpoint $privilegedEndpoint `
-  -PfxPassword $PfxPass `
-  -PfxCert $PfxFilePath `
-  -MySQLConnector $MySQLConnector
+. $tempDir\MajorVersionUpgradeMySQLProvider.ps1 -AzureEnvironment $AzureEnvironment -AzCredential $AdminCreds -CloudAdminCredential $CloudAdminCreds -Privilegedendpoint $privilegedEndpoint -PfxPassword $PfxPass -PfxCert $PfxFilePath -MySQLConnector $MySQLConnector
 
 ```
 
@@ -248,14 +241,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-.$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
--VMLocalCredential $vmLocalAdminCreds `
--CloudAdminCredential $cloudAdminCreds `
--PrivilegedEndpoint $privilegedEndpoint `
--AzureEnvironment $AzureEnvironment `
--DefaultSSLCertificatePassword $PfxPass `
--DependencyFilesLocalPath $tempDir\cert `
--AcceptLicense
+.$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint $privilegedEndpoint -AzureEnvironment $AzureEnvironment -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert -AcceptLicense
 ```  
 
 When the resource provider update script finishes, close the current PowerShell session.
