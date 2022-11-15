@@ -19,8 +19,6 @@ ms.date: 11/07/2022
 
 You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters in AKS hybrid. You can also use PowerShell to configure and manage cluster autoscaling.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Create a new AksHciAutoScalerConfig object
 
 To create a new **AksHciAutoScalerConfig** object to pass into the `New-AksHciCluster` or `Set-AksHciCluster` command, use this command:

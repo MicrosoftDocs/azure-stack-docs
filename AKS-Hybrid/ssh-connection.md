@@ -60,5 +60,6 @@ ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node
 After you use SSH to connect to the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Next steps
+
 - Review [Known issues](/azure-stack/aks-hci/known-issues).
 - Review [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center).
