@@ -78,7 +78,7 @@ New versions of these are available with this update:
 
     Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md)
 
--   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine version 0.70.0. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md)#install-in-a-connected-environment. The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+-   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md)#install-in-a-connected-environment. The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
 
 ## Upgrading Kubernetes clusters created with the Ubuntu 16.04 distro
 
@@ -169,6 +169,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.66.1
 -   https://github.com/Azure/aks-engine/releases/tag/v0.67.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.70.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.71.0
 
 ::: moniker-end
 
