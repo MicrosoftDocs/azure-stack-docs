@@ -1,6 +1,6 @@
 ---
 title: Back up, restore workload clusters using Velero
-description: Learn how to back up and restore workload clusters to Azure Blob storage or MinIO using Velero in AKS hybrid.
+description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/15/2022
@@ -17,11 +17,11 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob storage or MinIO storage in [AKS hybrid](.\aks-hybrid-options-overview.md).
+This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob Storage or MinIO storage in [AKS hybrid](.\aks-hybrid-options-overview.md).
 
 [Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-You can either use Azure Blob storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This document describes how to [install and configure Velero to use Azure Blob storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
+You can either use Azure Blob Storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This document describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [NOTE!]
 > Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.
@@ -33,9 +33,9 @@ Complete these prerequisites before you begin your Velero deployment:
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
 - [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
-## Install Velero with Azure Blob storage
+## Install Velero with Azure Blob Storage
 
-The procedures in this section describe how to install Velero and use Azure Blob storage for backups. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
+The procedures in this section describe how to install Velero and use Azure Blob Storage for backups. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
 
 1. Open PowerShell as an administrator.
 
@@ -72,7 +72,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. Create an Azure storage account and blob container.
 
-   When you use Azure Blob storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new `Velero_Backups` resource group.
+   When you use Azure Blob Storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new `Velero_Backups` resource group.
 
    You must create the storage account with a globally unique ID that can be used in DNS. The sample script uses the `uuidgen` app to randomly generate a unique name. You can use any method as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name).
 
@@ -242,7 +242,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 ## Install Velero with MinIO storage
 
-The procedures in this section describe how to install Velero and use [MinIO](https://min.io/) storage for backups. If you prefer to use Azure Blob storage for your backups, go to [Install Velero with Azure Blob storage](#install-velero-with-azure-blob-storage).
+The procedures in this section describe how to install Velero and use [MinIO](https://min.io/) storage for backups. If you prefer to use Azure Blob Storage for your backups, go to [Install Velero with Azure Blob Storage](#install-velero-with-azure-blob-storage).
 
 If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage).
 
@@ -446,7 +446,7 @@ Use the Velero `backup create` command to create backups to your chosen storage.
   velero backup describe <BACKUP-NAME>  
   ```
 
-If you're using Azure Blob storage for your backups, you can view your backup in your Azure storage account under the `blob/container` that you created.
+If you're using Azure Blob Storage for your backups, you can view your backup in your Azure storage account under the `blob/container` that you created.
 
 ## Restore a cluster
 
