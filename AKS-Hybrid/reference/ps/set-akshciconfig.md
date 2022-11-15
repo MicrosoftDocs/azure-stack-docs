@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 11/04/2022
+ms.date: 11/15/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 11/03/2022
+ms.lastreviewed: 11/15/2022
 ms.reviewer: jeguan
 
 ---
@@ -45,6 +45,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-concurrentDownloads <int>]
                  [-skipHostLimitChecks]
                  [-skipRemotingChecks]
+                 [-skipValidationChecks]
                  [-insecure]
                  [-skipUpdates]
                  [-forceDnsReplication]   
@@ -497,6 +498,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -skipValidationChecks
 
 Use this flag if you want to skip the validation checks of the environment infrastructure and user configuration input. These checks will highlight potential issues to address before proceeding with the install. We do not recommend using this setting.
