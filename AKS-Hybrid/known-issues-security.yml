@@ -14,7 +14,7 @@ sections:
           Get-AksHciCredential fails with "cannot find the path specified" error
 
         answer: | 
-          The `Get-AksHciCredential` PowerShell cmdlet fails when executed by a different admin user than the one used for installing AksHci. The command creates a .kube directory and place the config file in it. However, the command fails with the following error:
+          The `Get-AksHciCredential` PowerShell cmdlet fails when executed by a different admin user than the one used for installing AksHci. The command creates a **.kube** directory and places the config file in it. However, the command fails with the following error:
           
           `Error: open C:\Users\<user>\.kube\config: The system cannot find the path specified.`
           
