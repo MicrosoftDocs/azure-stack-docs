@@ -31,7 +31,7 @@ The following features are out of scope and not supported for this GA release:
 - Attaching AKS hybrid VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
 - Physical host to AKS hybrid VM connectivity: VM NICs will be joined to an SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
-- When running SDN integration with AKS hybrid, upgrading to a new AKS release is not supported at this time. Note that new AKS cluster builds are still fully supported.
+- When you run SDN integration with AKS hybrid, upgrading to a new AKS release is not supported at this time. Note that new AKS cluster builds are still fully supported.
 
 ## Prerequisites
 
