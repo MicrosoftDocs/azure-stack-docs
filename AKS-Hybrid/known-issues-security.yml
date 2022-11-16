@@ -11,6 +11,33 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
+          Get-AksHciCredential fails with "cannot find the path specified" error
+
+        answer: | 
+          The `Get-AksHciCredential` PowerShell cmdlet fails when executed by a different admin user than the one used for installing AksHci. The command creates a .kube directory and place the config file in it. However, the command fails with the following error:
+          
+          `Error: open C:\Users\<user>\.kube\config: The system cannot find the path specified.`
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Create a target cluster.
+          3. Sign in to the machine as a different admin user (multi-admin feature).
+          4. Run `Get-AksHciCredential -Name $clusterName`.
+          
+          ### Expected behavior
+          
+          `Get-AksHciCredential` should be able to create a .kube directory in the user's home directory and place the config file in that directory.
+          
+          To work around the issue, create a **.kube** directory in the user's home directory. Use the following command to create the directory:
+          
+          ```shell
+          mkdir "$HOME/.kube"
+          ```
+          
+          After this step, `Get-AksHciCredential` should not fail.
+          
+      - question: | 
           Error 'Certificate expired - Unable to connect to the server: x509'
 
         answer: | 
