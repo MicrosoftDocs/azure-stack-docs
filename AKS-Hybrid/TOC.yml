@@ -203,6 +203,8 @@
             href: ad-sso.md
           - name: Use Kubernetes RBAC with Azure AD
             href: kubernetes-rbac-azure-ad.md
+          - name: Update certificate bundle on container hosts
+            href: update-certificate-bundle.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
