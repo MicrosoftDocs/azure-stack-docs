@@ -117,7 +117,6 @@ Sample Output
 ```json
 I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on HCI or Windows Server. Visit https://aka.ms/ahb-aks for details (y/n)
 ```
-Important: If you are using Azure CLI to activate, ignore the timeout error displayed when you activate the benefit, it is a known issue that occurs when the service attempts to communicate with the cluster. For more details, see the [known issues section.](known-issues-arc.yml)
 
 ### Verify that the benefit is enabled
 
