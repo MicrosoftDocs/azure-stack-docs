@@ -21,9 +21,9 @@ This article describes how to install and use Velero to back up and restore work
 
 [Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-You can either use Azure Blob Storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This document describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
+You can either use Azure Blob Storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
-> [NOTE!]
+> [!NOTE]
 > Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.
 
 ## Prerequisites
@@ -31,7 +31,7 @@ You can either use Azure Blob Storage or MinIO storage with Velero. If you don't
 Complete these prerequisites before you begin your Velero deployment:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
-- [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
+- [Install **Chocolatey**](https://chocolatey.org/install). You can use Chocolatey to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob Storage
 
@@ -53,7 +53,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. If needed, change to the Azure subscription you want to use for the backups.
 
-   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, you'll need to specify a subscription to use for your backups. You can skip this step if you're already in the subscription you want to use for your backups.
+   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backups and restores across subscriptions, specify a subscription to use for your backups. You can skip this step if you're already in the subscription you want to use for your backups.
 
    Switch to the subscription you want to use for your backups:
 
@@ -72,7 +72,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. Create an Azure storage account and blob container.
 
-   When you use Azure Blob Storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new `Velero_Backups` resource group.
+   When you use Azure Blob Storage for backups, Velero requires a storage account and a blob container to store the backups. The following example shows the storage account created in a new **Velero_Backups** resource group.
 
    You must create the storage account with a globally unique ID that can be used in DNS. The sample script uses the `uuidgen` app to randomly generate a unique name. You can use any method as long as the name follows [Azure naming rules for storage accounts](/azure/storage/common/storage-account-overview#storage-account-name).
 
@@ -118,7 +118,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       You can create a service principal with the Contributor role or use a custom role:
 
       - **Contributor role:** The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role.
-      - **Custom role:** If you need a less permissive role, use a custom role.
+      - **Custom role:** If you need a more restrictive role, use a custom role.
 
       Assign the Contributor role:
 
@@ -227,6 +227,9 @@ The procedures in this section describe how to install Velero and use Azure Blob
       - Be sure to include the `--use-restic` parameter, to enable backup of Kubernetes volumes at the file system level using `Restic`. **Restic** can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt* file will provide that information.
+      - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using **Restic**. Restic can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, Restic is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
+
+      - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file will provide that information.
 
       The Velero service starts automatically on installation. **PLEASE VERIFY: By default, Velero Starts automatically upon installation?**
 
