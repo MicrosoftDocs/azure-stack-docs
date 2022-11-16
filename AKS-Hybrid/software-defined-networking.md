@@ -3,7 +3,7 @@ title: How to use AKS hybrid with SDN and virtual networking infrastructure (Pub
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 11/16/2022
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -31,6 +31,7 @@ The following features are out of scope and not supported for this GA release:
 - Attaching AKS hybrid VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
 - Physical host to AKS hybrid VM connectivity: VM NICs will be joined to an SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
+- When running SDN integration with AKS hybrid, upgrading to a new AKS release is not supported at this time. Note that new AKS cluster builds are still fully supported.
 
 ## Prerequisites
 
@@ -38,7 +39,7 @@ The following features are out of scope and not supported for this GA release:
 
 To deploy AKS hybrid with SDN, make sure your environment satisfies the deployment criteria of both AKS hybrid and SDN.
 
-- AKS hybrid requirements: [System requirements for AKS hybrid][]
+- [AKS hybrid requirements][]
 - SDN requirements: [Plan a Software Defined Network infrastructure][]
 
 > [!NOTE]
@@ -183,7 +184,7 @@ SDN virtual network that was provided during installation. The SDN Software load
 for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
-[Azure Kubernetes Service on Azure Stack HCI requirements]: system-requirements.md
+[AKS hybrid requirements]: system-requirements.md
 [Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
 [SDN Express]: /azure-stack/hci/manage/sdn-express
 [Windows Admin Center]: /azure-stack/hci/deploy/sdn-wizard
