@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI deployments (preview)
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 10/27/2022
+ms.date: 11/16/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -86,6 +86,17 @@ To prepare and configure Active Directory, follow these steps:
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
 
+
+    > [!NOTE]
+    > We recommend that you create the new OU at the root level and not as a child. If this is not possible, you must assign the cluster account, the permission to create computer objects for the immediate parent OU. For example, you are planning to create a nested OU with the following components:
+    > - Contoso.com (Domain)
+    > - HCI (Parent OU)
+    > - HCI001 (Child OU)
+    > - Computers (Child OU)
+
+    > You must assign the permission to the HCI001 OU as described in [Step 3: Grant the CNO permissions to the OU](/windows-server/failover-clustering/prestage-cluster-adds#step-3-grant-the-cno-permissions-to-the-ou-or-prestage-vcos-for-clustered-roles).
+
+
     Here is a sample output from a successful completion of the script:
 
     ```    
@@ -137,6 +148,8 @@ To prepare and configure Active Directory, follow these steps:
 
 > [!NOTE]
 > To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
+
+
 
 ## Next steps
 
