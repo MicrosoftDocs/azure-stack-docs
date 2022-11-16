@@ -52,6 +52,7 @@ Prerequisites:
 
 For more information, see also:
 
+- [Deploy cluster virtually with Azure Stack HCI sandbox guide](https://github.com/microsoft/AzStackHCISandbox/blob/main/README.md)
 - [Tutorial: Create a private forest environment for Azure Stack HCI](../deploy/tutorial-private-forest.md)
 - [Evaluate Azure Stack HCI 20H2 using Nested Virtualization](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/README.md)
 - [Create nested Azure Stack HCI 20H2 cluster with Windows Admin Center](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/4_AzSHCICluster.md)
