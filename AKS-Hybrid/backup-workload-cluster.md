@@ -21,7 +21,7 @@ This article describes how to install and use Velero to back up and restore work
 
 [Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
-You can either use Azure Blob Storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
+If you don't want to store your backups in Azure Blob Storage, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [!NOTE]
 > Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The `Restic` integration and backups of stateful applications or persistent volumes were not supported.
@@ -350,7 +350,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl create -f mino-service.yaml
       ```
 
-   1. Get the MinIO pod's external IP address by running the following command. You'll use this address to install Velero.
+   1. Get the MinIO pod's external IP address by running the following command. You'll use that address to install Velero.
 
       ```shell
       kubectl get svc
@@ -416,7 +416,7 @@ You can back up or restore all objects in your cluster, or you can filter object
 
 ### Create a backup
 
-Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes.
+Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes. For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.10.0-rc.1/backup-reference/).
 
 - On-demand backup of all namespaces in your cluster:
 
@@ -436,8 +436,6 @@ Use the Velero `backup create` command to create backups to your chosen storage.
   velero backup create <BACKUP-NAME> --include-namespaces <NAMESPACE-1>, <NAMESPACE-2> --default-volumes-to-restic
   ```
 
-  For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.10.0-rc.1/backup-reference/).
-
 ### Check backup progress
 
 - To check progress of a backup, run this command:
@@ -446,7 +444,7 @@ Use the Velero `backup create` command to create backups to your chosen storage.
   velero backup describe <BACKUP-NAME>
   ```
 
-If you're using Azure Blob Storage for your backups, you can view your backup in your Azure storage account under the **blob/container** that you created.
+- If you're using Azure Blob Storage for your backups, you can view your backup in your Azure storage account under the **blob/container** that you created.
 
 ## Restore a cluster
 
