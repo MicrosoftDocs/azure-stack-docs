@@ -13,7 +13,7 @@ ms.date: 11/03/2022
 
 # Connect and manage Azure Stack HCI registration
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms).
 
