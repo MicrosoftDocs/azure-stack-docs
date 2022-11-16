@@ -237,7 +237,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       kubectl logs deployment/velero -n velero
       ```
 
-      **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
+      **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs,  **STORED WHERE? FILENAME?**, for any installation issues.
 
 
 ## Install Velero with MinIO storage
@@ -272,7 +272,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                storage: 100Gi 
          ```
 
-        Create the persistent volume by running this command:
+         Create the persistent volume by running this command:
 
          ```shell
          kubectl create -f minio-pvc-storage.yaml
@@ -319,11 +319,11 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                   mountPath: "/storage" 
          ```
 
-      Then create the deployment:
+         Then create the deployment:
 
-      ```shell
-      kubectl create -f minio-deployment.yaml
-      ```
+         ```shell
+         kubectl create -f minio-deployment.yaml
+         ```
 
    1. Create a Kubernetes service called **minio-service.yaml**. This service will provide external IP addresses to the MinIO pod.
 
@@ -399,7 +399,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    velero install --provider aws --bucket velero-backup --secret-file .\minio.credentials --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://10.10.77.6:9000 --plugins velero/velero-plugin-for-aws:v1.1.0 --use-restic
    ```
 
-   Before you run this command, check the bucket name, your MinIO credentials, and the MinIO external IP address
+   Before you run this command, check the bucket name, your MinIO credentials, and the MinIO external IP address.
 
 1. Check whether the Velero service is running properly:
 
@@ -408,7 +408,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    kubectl logs deployment/velero -n Velero
    ```
 
-   **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
+   **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **STORED WHERE? FILENAME?**, for any installation issues.
 
 ## Back up a cluster
 
@@ -443,7 +443,7 @@ Use the Velero `backup create` command to create backups to your chosen storage.
 - To check progress of a backup, run this command:
 
   ```powershell
-  velero backup describe <BACKUP-NAME>  
+  velero backup describe <BACKUP-NAME>
   ```
 
 If you're using Azure Blob Storage for your backups, you can view your backup in your Azure storage account under the **blob/container** that you created.
@@ -454,7 +454,7 @@ To restore a cluster, you must create a new cluster to restore the old cluster t
 
 The `restore` command lets you restore all objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. For more backup options, see [Resource filtering](https://velero.io/docs/v1.9/resource-filtering/).
 
-On the cluster that you want to restore the backup to (the `destination cluster`):
+On the cluster that you want to restore the backup to (the *destination cluster*):
 
 1. Deploy Velero by using the instructions above. Use the same Azure credentials that you used for the source cluster.
 
