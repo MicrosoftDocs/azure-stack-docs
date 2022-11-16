@@ -237,7 +237,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       kubectl logs deployment/velero -n velero
       ```
 
-      **PLEASE VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
+      **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
 
 
 ## Install Velero with MinIO storage
@@ -356,7 +356,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. **PLEASE VERIFY: Please review this step. They install the MinIO client in the next step. How does this step related to that one?**
+   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. **PLEASE VERIFY: Please review this step. They install the MinIO client in the next step. How does this step relate to that one? SUGGESTION: If logging in to the IP address in a browser is an alternative to the step that follows, move that alternative to an indented paragraph beneath the main step below; then remove this step.**
 
    1. Install the MinIO client, and browse through the MinIO files.
 
@@ -408,7 +408,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    kubectl logs deployment/velero -n Velero
    ```
 
-   **PLEASE VERIFY.** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
+   **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **VERIFY: STORED WHERE?**, for any installation issues.
 
 ## Back up a cluster
 
