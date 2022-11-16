@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: sethmanheim
   ms.author: sethm
-  ms.date: 11/10/2022
+  ms.date: 11/16/2022
   ms.custom: e2e-hybrid
 
 # highlightedContent section (optional)
@@ -29,19 +29,6 @@ highlightedContent:
 # productDirectory section (optional)
 productDirectory:
   items:
-  - title: Azure Stack Hub 
-    imageSrc: media/index/azure-stack-hub-2022.svg
-    links:
-      - url: https://azure.microsoft.com/products/azure-stack/hub/#overview
-        text: Azure Stack Hub overview
-      - url: ./operator/index.yml
-        text: Azure Stack Hub Operator documentation
-      - url: ./user/index.yml
-        text: Azure Stack Hub User documentation
-      - url: ./asdk/index.yml
-        text: Azure Stack Development Kit 
-      - url: https://azure.microsoft.com/products/azure-stack/hub/
-        text: Product information and pricing
   - title: Azure Stack HCI
     imageSrc: media/index/azure-stack-hci-2022.svg
     links:
@@ -56,7 +43,31 @@ productDirectory:
       - url: ./hci/manage/preview-channel.md
         text: Join preview channel
       - url: https://azure.microsoft.com/products/azure-stack/hci/
-        text: Product information and pricing    
+        text: Product information and pricing
+  - title: Azure Kubernetes Service (AKS) on Azure Stack HCI
+    imageSrc: media/index/kubernetes-services.svg
+    links:
+      - url: /azure/aks/hybrid/overview
+        text: AKS on Azure Stack HCI overview  
+      - url: /azure/aks/hybrid/system-requirements
+        text: System requirements                 
+      - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
+        text: Register for evaluation download 
+      - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
+        text: Product information and pricing
+  - title: Azure Stack Hub 
+    imageSrc: media/index/azure-stack-hub-2022.svg
+    links:
+      - url: https://azure.microsoft.com/products/azure-stack/hub/#overview
+        text: Azure Stack Hub overview
+      - url: ./operator/index.yml
+        text: Azure Stack Hub Operator documentation
+      - url: ./user/index.yml
+        text: Azure Stack Hub User documentation
+      - url: ./asdk/index.yml
+        text: Azure Stack Development Kit 
+      - url: https://azure.microsoft.com/products/azure-stack/hub/
+        text: Product information and pricing            
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge-2022.svg
     links:
@@ -69,17 +80,6 @@ productDirectory:
       - url: /azure/databox-online/azure-stack-edge-mini-r-overview
         text: Azure Stack Edge Mini R overview                    
       - url: https://azure.microsoft.com/products/azure-stack/edge/
-        text: Product information and pricing 
-  - title: Azure Kubernetes Service on Azure Stack HCI and Windows Server
-    imageSrc: media/index/kubernetes-services.svg
-    links:
-      - url: /azure/aks/hybrid/overview
-        text: AKS on Azure Stack HCI overview  
-      - url: /azure/aks/hybrid/system-requirements
-        text: System requirements                 
-      - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
-        text: Register for evaluation download 
-      - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product information and pricing
   - title: Hybrid and multicloud resources
     imageSrc: media/index/hybrid-icon-32.svg
