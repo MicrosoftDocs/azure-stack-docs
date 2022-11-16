@@ -24,14 +24,14 @@ This article describes how to install and use Velero to back up and restore work
 You can either use Azure Blob Storage or MinIO storage with Velero. If you don't want to store your backups in Azure, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [!NOTE]
-> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The Restic integration and backups of stateful applications or persistent volumes were not supported.
+> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The `Restic` integration and backups of stateful applications or persistent volumes were not supported.
 
 ## Prerequisites
 
 Complete these prerequisites before you begin your Velero deployment:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
-- [Install **Chocolatey**](https://chocolatey.org/install). You can use Chocolatey to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
+- [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob Storage
 
@@ -95,7 +95,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       az storage account create --name $AZURE_STORAGE_ACCOUNT_ID --resource-group $AZURE_BACKUP_RESOURCE_GROUP --sku Standard_GRS --encryption-services blob --https-only true --kind BlobStorage --access-tier Hot
       ```
 
-   1. Create a blob container: 
+   1. Create a blob container:
 
       ```azurecli
       $BLOB_CONTAINER="velero"
@@ -192,7 +192,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
    > [!NOTE]
    > Service principals expire. To find out when your new service principal will expire, run this command: `az ad sp show --id $AZURE_CLIENT_ID`.
 
-1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following:
+1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following one:
 
    ```azurecli
    _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
@@ -224,10 +224,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       - The command installs the Microsoft Azure plugin, which must be compatible with the Velero CLI version you're using. The example command uses Microsoft Azure plugin version 1.5.0, which is compatible with the latest Velero CLI version, 1.9.0. To find out which version of the Microsoft Azure plugin to install with your Valero CLI version, see the [compatibility matrix](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#compatibility).
 
-      - Be sure to include the `--use-restic` parameter, to enable backup of Kubernetes volumes at the file system level using `Restic`. **Restic** can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
-
-      - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt* file will provide that information.
-      - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using **Restic**. Restic can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, Restic is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
+      - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using `Restic`. `Restic` can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file will provide that information.
 
@@ -249,7 +246,7 @@ The procedures in this section describe how to install Velero and use [MinIO](ht
 
 If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage).
 
-1. Install the Velero CLI by running the following command. [Install Chocolately](https://chocolatey.org/install) if you haven't already.
+1. Install the Velero CLI by running the following command. [Install `Chocolately`](https://chocolatey.org/install) if you haven't already.
 
    ```powershell
    choco install velero
@@ -281,7 +278,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          kubectl create -f minio-pvc-storage.yaml
          ```
 
-      1. Create a deployment file, **minio-deployment.yaml**, for starting MinIO. Include the following contents. The deployment will use the persistent volume you just created.
+      1. Create a deployment file, **minio-deployment.yaml**, for starting MinIO. Include the following contents. The deployment will use the persistent volume you created.
 
          ```yml
          apiVersion: apps/v1
