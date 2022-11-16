@@ -3,7 +3,7 @@ title: Set up Trust in Azure Kubernetes Service on AKS hybrid
 description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/26/2022
+ms.date: 11/15/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -18,7 +18,7 @@ This scenario uses a modified version of the [noProxy settings](proxy-change.md)
 
 ## Prerequisites and details
 
-- An AKS deployment running the September 2022 release.
+- An AKS deployment running the October 2022 release.
 - The certificates are not immediately available upon running the command; they are deployed on the next update.
 - You can check if there is an update available using the AKS PowerShell module cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
 - Currently there is no command to view, change, or delete scheduled update. Once the update is applied, it is possible to SSH into the container host and see the certs installed, then delete them.
