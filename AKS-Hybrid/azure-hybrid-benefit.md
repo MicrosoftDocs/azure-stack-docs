@@ -126,7 +126,7 @@ Run the following command and check that JSON property `AzureHybridBenefit` is s
 az connectedk8s show -n <management cluster name> -g <resource group> 
 ```
 
-![Pricing for AKS is affected by hyper-threading.](media/concepts/aks-azurehybridbenefit.gif)
+![Demo of activating Azure Hybrid Benefit for AKS.](media/concepts/aks-azurehybridbenefit.gif)
 
 ## Maintain compliance for Azure Hybrid Benefit
 
