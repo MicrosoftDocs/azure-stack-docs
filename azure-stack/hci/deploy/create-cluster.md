@@ -341,7 +341,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 - Clean up any VHD mount points that the wizard created.
 
-- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.
+- Ensure you have at least 50-100GB of free space on your Hyper-V hosts.
 
 ## Next steps
 
