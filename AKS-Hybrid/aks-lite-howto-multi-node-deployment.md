@@ -33,81 +33,77 @@ Refer to the following network chart to configure your environment. You must all
 | DnsServers | A.B.C.1 | IP address of your DNS (typically the router address). To view what DNS your machine uses: **ipconfig /all \| findstr /R "DNS\ Servers"** |
 | LinuxVmIp4Address | A.B.C.x | Specify the IP address your Linux VM will take. |
 
-## Deploy the control plane on the primary machine with an external switch
-
 For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free.
 
-Create an external switch named **aksiotswitch** in Hyper-V Manager. Then run:
+## Deploy the control plane on the primary machine with an external switch
 
-```powershell
-New-AksIotDeployment `
-  -WorkloadType Linux `
-  -NetworkPlugin flannel `
-  -VswitchName aksiotswitch `
-  -Ip4PrefixLength 24 `
-  -Ip4GatewayAddress 192.168.1.1 `
-  -DnsServers 192.168.1.1 `
-  -ControlPlaneEndpointIp 192.168.1.151 `
-  -ServiceIPRangeStart 192.168.1.152 `
-  -ServiceIPRangeEnd 192.168.1.160 `
-  -LinuxVmIp4Address 192.168.1.161
-```
+A full deployment uses an external switch to enable communication across the nodes. You can choose to specify the vswitch details in your configs JSON, if you've already created one on your Hyper-V. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksiotsw-ext` and use that for your deployment.
 
-> [!NOTE]
-> In this release, `New-AksIotDeployment` will automatically get the kube config file and override the old one.
-
-Alternatively, specify all your networking configuration in **aksiot-userconfig.json**, then run `New-AksIotDeployment -JsonConfigFilePath <PATH TO YOUR JSON>`.
-
-The default **aksiot-userconfig.json** file is in **C:\Program Files\AksIot**.
+Before you create your deployment, update the config json and run the following command to validate your network parameters.
 
 ```json
-"DeployOptions": {
-        "ClusterJoinToken": "",
-        "ControlPlane": false,
-        "DiscoveryTokenHash": "",
-        "Headless": false,
-        "JoinCluster": false,
+    "DeployOptions": {
         "NetworkPlugin": "flannel",
         "SingleMachineCluster": false,
         "TimeoutSeconds": 300,
         "WorkloadType": "Linux"
     },
     "EndUser": {
-        "AcceptEula": "query"
+        "AcceptEula": false,
+        "AcceptOptionalTelemetry": false
     },
     "LinuxVm": {
-        "CpuCount": "",
-        "MemoryInMB": "",
-        "DataSizeInGB": "",
-        "Ip4Address": "192.168.1.161"
-    },
-    "WindowsVm": {
-        "CpuCount": "",
-        "MemoryInMB": "",
-        "Ip4Address": ""
+        "CpuCount": 4,
+        "MemoryInMB": 4096,
+        "DataSizeinGB": 20,
+        "Ip4Address": "192.168.1.171"
     },
     "Network": {
-        "VSwitchName": "lightedgeexternalswitch",
-        "ControlPlaneEndpointIp": "192.168.1.151",
-        "ControlPlaneEndpointPort": "",
-        "DnsServers": ["192.168.1.1"],
+        "VSwitch":{
+            "Name": "aksiotswitch",
+            "Type":"External",
+            "AdapterName" : "Ethernet"
+        },
+        "ControlPlaneEndpointIp": "192.168.1.191",
         "Ip4GatewayAddress": "192.168.1.1",
-        "Ip4PrefixLength": "24",
-        "ServiceIPRangeSize": "",
-        "ServiceIPRangeStart": "192.168.1.152",
-        "ServiceIPRangeEnd": "192.168.1.160",
-        "SkipAddressFreeCheck": true
+        "Ip4PrefixLength": 24,
+        "ServiceIPRangeStart": "192.168.1.151",
+        "ServiceIPRangeEnd": "192.168.1.170",
+        "DnsServers": ["192.168.1.1"]
     }
 ```
 
-## Confirm that the installation was successful
+Create a deployment config file using the `New-AksEdgeDeploymentConfig` command.
+
+```powershell
+$jsonString = New-AksEdgeDeploymentConfig .\mydeployconfig.json
+```
+
+As shown above, update the json configuration directly in the file .\mydeployconfig.json and validate your parameters using the `Test-AksEdgeNetworkParameters`.
+
+```powershell
+Test-AksEdgeNetworkParameters -JsonConfigFilePath .\mydeployconfig.json
+```
+
+If `Test-AksEdgeNetworkParameters` returns true, you are all set to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` command
+
+```powershell
+New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
+```
+
+>**NOTE**: In this release, `New-AksEdgeDeployment` will **automatically get the kube config file and override the old one**.
+
+## Validate your deployment
 
 ```powershell
 kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-![Screenshot of results showing all pods running.](media/aks-lite/all-pods-running.png)
+![Diagram showing all pods running](./media/aks-lite/all-pods-running.png)
+
+> [!NOTE]
+This screenshot is for a k3s cluster so the pods will look different for k8s.
 
 ## Next steps
 

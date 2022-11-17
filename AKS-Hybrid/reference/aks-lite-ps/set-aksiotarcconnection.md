@@ -1,7 +1,7 @@
 ---
-title: Set-AksIotArcConnection for AKS Lite
+title: Set-AksEdgeArcConnection for AKS Lite
 author: rcheeran
-description: The Set-AksIotArcConnection  PowerShell command connects or disconnects the AKS on Windows IoT cluster 
+description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS on Windows IoT cluster 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -11,7 +11,7 @@ ms.lastreviewed: 10/04/2022
 ---
 
 
-# Set-AksIotArcConnection
+# Set-AksEdgeArcConnection
 
 ## Synopsis
 
@@ -23,13 +23,13 @@ Kubernetes.
 ### fromJsonConfigFile (Default)
 
 ```powershell
-Set-AksIotArcConnection [-Credential <PSCredential>] [-JsonConfigFilePath <String>] [<CommonParameters>]
+Set-AksEdgeArcConnection [-Credential <PSCredential>] [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
 
 ```powershell
-Set-AksIotArcConnection [-ClusterName <String>] -TenantId <String> -SubscriptionId <String>
+Set-AksEdgeArcConnection [-ClusterName <String>] -TenantId <String> -SubscriptionId <String>
  -ResourceGroupName <String> -Location <String> [-Credential <PSCredential>] [-SkipAzConnect]
  [-Connect <Boolean>] [<CommonParameters>]
 ```
@@ -37,7 +37,7 @@ Set-AksIotArcConnection [-ClusterName <String>] -TenantId <String> -Subscription
 ### fromJsonConfigString
 
 ```powershell
-Set-AksIotArcConnection [-Credential <PSCredential>] -JsonConfigString <String> [<CommonParameters>]
+Set-AksEdgeArcConnection [-Credential <PSCredential>] -JsonConfigString <String> [<CommonParameters>]
 ```
 
 ## Description
@@ -52,13 +52,13 @@ as well as an up to date helm version in the binary path.
 ### Example 1
 
 ```
-Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $true
+Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $true
 ```
 
 ### Example 2
 
 ```powershell
-Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $false
+Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLocation -Connect $false
 ```
 
 ### Example 3
@@ -76,7 +76,7 @@ Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocat
 ### Example 5
 
 ```
-Set-AksIotArcConnection -ResourceGroupName testResourceGroup -Location testLocation -SkipAzConnect
+Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLocation -SkipAzConnect
 ```
 
 ## Parameters

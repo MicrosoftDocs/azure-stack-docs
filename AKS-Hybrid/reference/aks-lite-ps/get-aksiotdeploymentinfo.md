@@ -1,7 +1,7 @@
 ---
-title: Get-AksIotDeploymentInfo for AKS Lite
+title: Get-AksEdgeDeploymentInfo for AKS Lite
 author: rcheeran
-description: The Get-AksIotDeploymentInfo PowerShell command gets AksIot deployment information
+description: The Get-AksEdgeDeploymentInfo PowerShell command gets AksIot deployment information
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Get-AksIotDeploymentInfo
+# Get-AksEdgeDeploymentInfo
 
 ## Synopsis
 Gets AksIot deployment information.
@@ -18,7 +18,7 @@ Gets AksIot deployment information.
 ## Syntax
 
 ```
-Get-AksIotDeploymentInfo
+Get-AksEdgeDeploymentInfo
 ```
 
 ## Description

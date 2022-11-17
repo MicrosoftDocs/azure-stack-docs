@@ -10,95 +10,84 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-This article describes how to scale out your AKS lite application to multiple nodes.
+Now that AKS on Windows IoT is installed on your primary machine, this article describes how you can scale out your cluster to secondary machines to create a multi-node deployment. Remember to specify [workload type](./aks-lite-concept.md) and [reserve enough memory for each node](./aks-lite-concept.md).
 
-## Scaling workload nodes
+## 1. Get cluster configuration from your primary machine
+On your **primary machine** on which you created your full deployment, run the following steps in an elevated PowerShell window. 
 
-> [!IMPORTANT]
-> Make sure you execute the following commands on your primary machine.
-
-Now that AKS on Windows IoT is installed on your primary machine, you can scale out your cluster to secondary machines. Remember to specify [workload type](./aks-lite-concept.md) and [reserve enough memory for the Windows host](./aks-lite-concept.md).
-
-The secondary machine added in this example has an IP of **192.168.1.11** and a hostname of **machine-b**.
-
-> [!TIP]
-> Run diagnostic before scaling. To ensure your other machines are prepped and that your networking configurations are valid, we recommend you run a diagnostic check.
-
-### Step 1: Scaling to a secondary machine
-
-Run the following commands to scale out to a secondary machine:
+- To add Linux-only worker node, specify the `WorkloadType` as Linux and provide an unique IP address for the  Linux node as shown below.
 
 ```powershell
-New-AksIotNode `
-  -Fqdns 192.168.1.11 `
-  -WorkloadType Windows `
-  -ReservedMemoryMb (6Gb/1MB) `
-  -Verbose
+$params = @{
+    WorkloadType = "Linux"
+    LinuxIp = "192.168.1.163"
+    ourFile = ".\LinuxWorkerNodeConfig.json"
+}
+$workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
 ```
 
-- `-Fqdns`: Specifies the IP address or hostname of your secondary machine that you want to scale out to. You must include the same information when removing the machine.
-- `-WorkloadType`: `Linux`, `Windows`, or `LinuxAndWindows`
-- `-ReserveMemoryMb`: The memory reserved for the Windows host using **(XGb/1MB)**.
-
-### Step 2: Verify scaling
-
-Confirm that your other nodes are showing up.
+- To add a Linux control plane node, specify the `WorkloadType` as Linux, set the `ControlPlane` flag as true and provide an unique IP address for the  Linux node as shown below.
 
 ```powershell
-# Using PS cmdlets
-Get-AksIotNode
+$params = @{
+    WorkloadType = "Linux"
+    ControlPlane = $true
+    LinuxIp = "192.168.1.163"
+    ourFile = ".\LinuxWorkerNodeConfig.json"
+}
+$workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
+```
 
-# Or
+- To add a Windows-only worker node, specify the `WorkloadType` as Windows and provide an unique IP address for the  Linux node as shown below.For Windows node only,
 
-# Using kubectl
+```powershell
+$params = @{
+    WorkloadType = "Windows"
+    WindowsIp = "192.168.1.164"
+    ourFile = ".\WindowsWorkerNodeConfig.json"
+}
+$workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
+```
+
+- To add a Linux and Windows worker node, specify the `WorkloadType` as `LinuxAndWindows` and provide an unique IP address for both the Linux and Windows node as shown below.
+
+```powershell
+$params = @{
+    WorkloadType = "LinuxAndWindows"
+    LinuxIp = "192.168.1.163"
+    WindowsIp = "192.168.1.164"
+    ourFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+}
+$workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
+```
+
+This will return a jsonString and also store the json content in the `.\*WorkerNodeConfig.json`.
+This command will export the necessary data for cluster join in the json format.
+
+## 2. Bring up a node on your secondary machine
+
+Now you're ready to bring up clusters on your secondary machines. Note that you **cannot mix different Kubernetes distributions among your clusters**. If the cluster on your primary machine is running `k8s`, you must install the `k8s` msi on the secondary machines as well.
+
+>**NOTE**: The only supported setting is to have an **odd number of control plane nodes**. Therefore, if you would like to scale up/down your control plane, please make sure you have one, three, or five control plane nodes.
+
+We can noe use the `WorkerNodeConfig.json` created in the previous step, to deploy the corresponding node on the secondary machine.
+
+```powershell
+    New-AksEdgeDeployment -JsonConfigFilePath .\WorkerNodeConfig.json
+```
+
+## 3. Validate your cluster setup
+
+On any node in the cluster, run
+```powershell
 kubectl get nodes -o wide
 ```
+You should be able to see all the nodes of the cluster. 
 
-### Step 3: Remove a machine
+![Diagram showing multiple nodes](./media/aks-lite/aks-lite-multi-nodes.png)
 
-To remove a machine, run the following cmdlet:
-
-```powershell
-Remove-AksIotNode -Fqdn 192.168.1.11
-```
-
-## Scaling control plane nodes
-
-The control plane VMs must have the same memory and logical processors, so if all physical machines have the same memory and logical processors, then scaling will work. If your physical machines have different memory or logical processors, adjust the `-ReservedMemoryMb` and `-ReservedCpu` parameters to create the same control plane VM size across your machines.
-
-> [!IMPORTANT]
-> Control plane scaling is only supported for `-WorkloadType Linux`.
-
-The control plane can only be composed of one, three, or five nodes. This can be accomplished in two ways:
-
-**Option A:** Create one node (no high availability) then scale out to three or five:
-
-```powershell
-# Create one control plane
-New-AksIotNode -Fqdns 'node1' -WorkloadType Linux -ControlPlane
-
-# Scale control plane to 3
-New-AksIotNode -Fqdns 'node2','node3' -WorkloadType Linux -ControlPlane
-
-# Scale control plane to 5
-New-AksIotNode -Fqdns 'node4','node5' -WorkloadType Linux -ControlPlane
-```
-
-**Option B:** Initially create three nodes or five nodes.
-
-```powershell
-# Three-node control plane
-New-AksIotNode -Fqdns 'node1','node2','node3' -WorkloadType Linux -ControlPlane
-
-# Five-node control plane
-New-AksIotNode -Fqdns 'node1','node2','node3','node4','node5' -WorkloadType Linux -ControlPlane
-```
-
-> [!NOTE]
-> You must modify `AksIoT-SetupNodes.ps1` with these commands for control plane scaling.
 
 ## Next steps
-
-- [Deploy your application](/docs/deploying-workloads.md) or [connect to Arc](/docs/connect-to-arc.md)
+- [Deploy your application](aks-lite-howto-deploy-app.md) or [connect to Arc](aks-lite-howto-connect-to-arc.md)
 - [Overview](aks-lite-overview.md)
 - [Uninstall AKS cluster](aks-lite-howto-uninstall.md)

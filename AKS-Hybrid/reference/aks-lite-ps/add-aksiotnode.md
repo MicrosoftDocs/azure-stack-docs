@@ -1,7 +1,7 @@
 ---
-title: Add-AksIotNode for AKS Lite
+title: Add-AksEdgeNode for AKS Lite
 author: rcheeran
-description: The Add-AksIotNode PowerShell command Adds a new AksIot node to the cluster..
+description: The Add-AksEdgeNode PowerShell command Adds a new AksIot node to the cluster..
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Add-AksIotNode
+# Add-AksEdgeNode
 
 ## Synopsis
 
@@ -21,13 +21,13 @@ Adds a new AksIot node to the cluster.
 ### fromJsonConfigFile (Default)
 
 ```powershell
-Add-AksIotNode [-JsonConfigFilePath <String>] [<CommonParameters>]
+Add-AksEdgeNode [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
 
 ```powershell
-Add-AksIotNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-LinuxVmMemoryInMB <Int32>]
+Add-AksEdgeNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-LinuxVmMemoryInMB <Int32>]
  [-LinuxVmDataSizeInGB <Int32>] [-WindowsVmCpuCount <Int32>] [-WindowsVmMemoryInMB <Int32>]
  [-LinuxVmIp4Address <String>] [-WindowsVmIp4Address <String>] [-ClusterJoinToken <String>]
  [-DiscoveryTokenHash <String>] [-ControlPlane] [-Headless] [-TimeoutSeconds <Int32>] [<CommonParameters>]
@@ -36,7 +36,7 @@ Add-AksIotNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-Linux
 ### fromJsonConfigString
 
 ```powershell
-Add-AksIotNode -JsonConfigString <String> [<CommonParameters>]
+Add-AksEdgeNode -JsonConfigString <String> [<CommonParameters>]
 ```
 
 ## Description
@@ -54,13 +54,13 @@ complemented with the other node type.
 ### Example 1
 
 ```powershell
-Add-AksIotNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096
+Add-AksEdgeNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096
 ```
 
 ### Example 2
 
 ```powershell
-Add-AksIotNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -WindowsVmIp4Address 192.168.1.3 -clusterjointoken \<token\> -discoverytokenhash \<hash\>
+Add-AksEdgeNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -WindowsVmIp4Address 192.168.1.3 -clusterjointoken \<token\> -discoverytokenhash \<hash\>
 ```
 
 ## Parameters

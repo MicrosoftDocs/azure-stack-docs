@@ -2,37 +2,37 @@
   href: index.md
   expanded: true
   items:
-  - name: Add-AksIotNode
+  - name: Add-AksEdgeNode
     href: add-aksiotnode.md
-  - name: Get-AksIotClusterJoinData
+  - name: Get-AksEdgeClusterJoinData
     href: get-aksiotclusterjoindata.md
-  - name: Get-AksIotDeploymentInfo
+  - name: Get-AksEdgeDeploymentInfo
     href: get-aksiotdeploymentinfo.md
-  - name: Get-AksIotEventLog
+  - name: Get-AksEdgeEventLog
     href: get-aksioteventlog.md
-  - name: Get-AksIotKubeConfig
+  - name: Get-AksEdgeKubeConfig
     href: get-aksiotkubeconfig.md
-  - name: Get-AksIotLinuxNodeAddr
+  - name: Get-AksEdgeLinuxNodeAddr
     href: get-aksiotlinuxnodeaddr.md
-  - name: Get-AksIotLinuxNodeName
+  - name: Get-AksEdgeLinuxNodeName
     href: get-aksiotlinuxnodename.md
-  - name: Get-AksIotLogs
+  - name: Get-AksEdgeLogs
     href: get-aksiotlogs.md
-  - name: Get-AksIotManagedServiceToken
+  - name: Get-AksEdgeManagedServiceToken
     href: get-aksiotmanagedservicetoken.md
-  - name: Invoke-AksIotLinuxNodeCommand
+  - name: Invoke-AksEdgeLinuxNodeCommand
     href: invoke-aksiotlinuxnodecommand.md
-  - name: New-AksIotDeployment
+  - name: New-AksEdgeDeployment
     href: new-aksiotdeployment.md
-  - name: Remove-AksIotNode
+  - name: Remove-AksEdgeNode
     href: remove-aksiotnode.md
-  - name: Set-AksIotArcConnection
+  - name: Set-AksEdgeArcConnection
     href: set-aksiotarcconnection.md
-  - name: Start-AksIotLinuxNode
+  - name: Start-AksEdgeLinuxNode
     href: start-aksiotlinuxnode.md
-  - name: Stop-AksIotLinuxNode
+  - name: Stop-AksEdgeLinuxNode
     href: stop-aksiotlinuxnode.md
-  - name: Test-AksIotLinuxNode
+  - name: Test-AksEdgeLinuxNode
     href: test-aksiotlinuxnode.md
-  - name: Test-AksIotNetworkParameters
+  - name: Test-AksEdgeNetworkParameters
     href: test-aksiotnetworkparameters.md

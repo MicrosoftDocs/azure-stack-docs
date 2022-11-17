@@ -1,7 +1,7 @@
 ---
-title: Remove-AksIotNode for AKS Lite
+title: Remove-AksEdgeNode for AKS Lite
 author: rcheeran
-description: The Remove-AksIotNode PowerShell command removes a local node from an existing cluster.
+description: The Remove-AksEdgeNode PowerShell command removes a local node from an existing cluster.
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -11,7 +11,7 @@ ms.lastreviewed: 10/04/2022
 ---
 
 
-# Remove-AksIotNode
+# Remove-AksEdgeNode
 
 ## Synopsis
 
@@ -20,7 +20,7 @@ Removes a local node from an existing cluster.
 ## Syntax
 
 ```powershell
-Remove-AksIotNode [[-WorkloadType] <WorkloadType>] [-Headless] [<CommonParameters>]
+Remove-AksEdgeNode [[-WorkloadType] <WorkloadType>] [-Headless] [<CommonParameters>]
 ```
 
 ## Description
@@ -32,7 +32,7 @@ removed, remaining worker nodes will be dangling.
 ## Examples
 
 ```powershell
-Remove-AksIotNode -WorkloadType Linux
+Remove-AksEdgeNode -WorkloadType Linux
 ```
 
 ## Parameters

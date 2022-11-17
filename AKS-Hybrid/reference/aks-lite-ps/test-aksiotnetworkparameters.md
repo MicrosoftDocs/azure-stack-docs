@@ -1,7 +1,7 @@
 ---
-title: Test-AksIotNetworkParameters for AKS Lite
+title: Test-AksEdgeNetworkParameters for AKS Lite
 author: rcheeran
-description: The Test-AksIotNetworkParameters PowerShell command validates AksIot network parameters,
+description: The Test-AksEdgeNetworkParameters PowerShell command validates AksIot network parameters,
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Test-AksIotNetworkParameters
+# Test-AksEdgeNetworkParameters
 
 ## Synopsis
 
@@ -21,13 +21,13 @@ Validates AksIot network parameters, useful as a pre-deployment step.
 ### fromJsonConfigFile (Default)
 
 ```
-Test-AksIotNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>]
+Test-AksEdgeNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
 
 ```
-Test-AksIotNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address <String>]
+Test-AksEdgeNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address <String>]
  [-WindowsVmIp4Address <String>] [-ControlPlaneEndpointIp <String>] [-ServiceIPRangeStart <String>]
  [-ServiceIPRangeEnd <String>] [-Ip4PrefixLength <Int32>] [-Ip4GatewayAddress <String>]
  [-DnsServers <String[]>] [-SkipAddressFreeCheck] [<CommonParameters>]
@@ -36,7 +36,7 @@ Test-AksIotNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address 
 ### fromJsonConfigString
 
 ```
-Test-AksIotNetworkParameters -JsonConfigString <String> [<CommonParameters>]
+Test-AksEdgeNetworkParameters -JsonConfigString <String> [<CommonParameters>]
 ```
 
 ## Description
@@ -48,7 +48,7 @@ parameters, see the New-AksIotDeployment commandlet.
 ## Examples
 
 ```powershell
-Test-AksIotNetworkParameters -WorkloadType Linux
+Test-AksEdgeNetworkParameters -WorkloadType Linux
 ```
 
 ## Parameters

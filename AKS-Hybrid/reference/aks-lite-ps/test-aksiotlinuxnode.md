@@ -1,7 +1,7 @@
 ---
-title: Test-AksIotLinuxNode for AKS Lite
+title: Test-AksEdgeNode for AKS Lite
 author: rcheeran
-description: The Test-AksIotLinuxNode PowerShell command checks whether the Linux VM was created
+description: The Test-AksEdgeNode PowerShell command checks whether the Linux VM was created
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,31 +10,50 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Test-AksIotLinuxNode
+# Test-AksEdgeNode
 
 ## Synopsis
 
-Checks whether the Linux VM was created.
+Checks whether the VM was created.
 
 ## Syntax
 
 ```
-Test-AksIotLinuxNode [<CommonParameters>]
+Test-AksEdgeNode [[-WorkloadType] <String>] [<CommonParameters>]
 ```
 
 ## Description
 
-The Test-AksIotLinuxNode cmdlet is an exposed function to verify whether the Linux VM was created.
+The Test-AksEdgeNode cmdlet is an exposed function to verify whether the Linux VM was created.
 It returns true if the virtual machine was created or false if not.
 
 ## Examples
 
 ```
-Test-AksIotLinuxNode
+Test-AksEdgeNode -WorkloadType Windows
 ```
 
 ## Parameters
 
-### CommonParameters
+### -WorkloadType
+{{ Fill WorkloadType Description }}
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: Linux
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## Next steps
+
+[Akslite PowerShell Reference](./index.md)
+

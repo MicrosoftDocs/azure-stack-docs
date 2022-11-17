@@ -9,8 +9,8 @@ ms.custom: template-how-to
 ---
 
 # Prepare your machines for AKS
-    
-In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this cluster.
+
+In this article, you'll learn to set up an Azure Kubernetes Service (AKS) Edge node machine.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ In this article, you'll learn to set up an Azure Kubernetes Service (AKS) host. 
 
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
-## Set up machines
+## Download the installer
 
 You can deploy AKS for the light edge on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
@@ -47,14 +47,14 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
   > [!NOTE]
   > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
 
-5. Double-click the **AksIot-k8s.msi** or **AksIot-k3s.msi** file to install the latest version.
+## Set up your machine as a Linux node
 
-6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you will find the **LaunchPrompt.cmd** script. Run this script to make sure you have downloaded the proper modules for AKS-IoT.
+1. Double-click the **AksIot-k8s.msi** or **AksIot-k3s.msi** file to install the latest version.
 
-7. Make sure your install was successful by running the following command:
+2. Once installation is complete, make sure your install was successful by running the following command:
 
     ```powershell
-    Get-Command -Module AksIot
+    Get-Command -Module AksEdge
     ```
 
     You should see the following output with version showing v0.4.222:
@@ -63,7 +63,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
     See the [AKS-IoT PowerShell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
 
-## Set up your machine for Linux and Windows workloads
+## Set up your machine as a Linux and Windows node
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksIotWindows-v1** files in the same folder.
 
@@ -79,4 +79,5 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 ## Next steps
 
-- Scaling out is not supported for this release. Proceed to [deploy your application](/docs/deploying-workloads.md).
+- Create a [simple deployment](./aks-lite-howto-single-node-deployment.md)
+- Create a [full deployment](./aks-lite-howto-multi-node-deployment.md)

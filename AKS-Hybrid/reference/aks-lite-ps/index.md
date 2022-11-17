@@ -15,71 +15,71 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 ## Module Powershell Commands
 
-### [Add-AksIotNode](./Add-AksIotNode.md)
+### [Add-AksEdgeNode](./Add-AksIotNode.md)
 
 Adds a new AksIot node to the cluster.
 
-### [Get-AksIotClusterJoinData](./Get-AksIotClusterJoinData.md)
+### [Get-AksEdgeClusterJoinData](./Get-AksIotClusterJoinData.md)
 
 Pulls the cluster join data from a Linux control plane node.
 
-### [Get-AksIotDeploymentInfo](./Get-AksIotDeploymentInfo.md)
+### [Get-AksEdgeDeploymentInfo](./Get-AksIotDeploymentInfo.md)
 
 Gets AksIot deployment information.
 
-### [Get-AksIotEventLog](./Get-AksIotEventLog.md)
+### [Get-AksEdgeEventLog](./Get-AksIotEventLog.md)
 
 Collects event logs from the deployment.
 
-### [Get-AksIotKubeConfig](./Get-AksIotKubeConfig.md)
+### [Get-AksEdgeKubeConfig](./Get-AksIotKubeConfig.md)
 
 Pulls the KubeConfig file from the Linux node.
 
-### [Get-AksIotLinuxNodeAddr](./Get-AksIotLinuxNodeAddr.md)
+### [Get-AksEdgeLinuxNodeAddr](./Get-AksIotLinuxNodeAddr.md)
 
 Gets the Linux VM's IP and MAC addresses
 
-### [Get-AksIotLinuxNodeName](./Get-AksIotLinuxNodeName.md)
+### [Get-AksEdgeLinuxNodeName](./Get-AksIotLinuxNodeName.md)
 
 Gets the Linux VM's hostname
 
-### [Get-AksIotLogs](./Get-AksIotLogs.md)
+### [Get-AksEdgeLogs](./Get-AksIotLogs.md)
 
 Collects all the logs from the deployment.
 
-### [Get-AksIotManagedServiceToken](./Get-AksIotManagedServiceToken.md)
+### [Get-AksEdgeManagedServiceToken](./Get-AksIotManagedServiceToken.md)
 
 Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
-### [Invoke-AksIotLinuxNodeCommand](./Invoke-AksIotLinuxNodeCommand.md)
+### [Invoke-AksEdgeLinuxNodeCommand](./Invoke-AksIotLinuxNodeCommand.md)
 
 Executes an SSH command on the Linux VM.
 
-### [New-AksIotDeployment](./New-AksIotDeployment.md)
+### [New-AksEdgeDeployment](./New-AksIotDeployment.md)
 
 Creates a new AksIot deployment on this machine.
 
-### [Remove-AksIotNode](./Remove-AksIotNode.md)
+### [Remove-AksEdgeNode](./Remove-AksIotNode.md)
 
 Removes a local node from an existing cluster.
 
-### [Set-AksIotArcConnection](./Set-AksIotArcConnection.md)
+### [Set-AksEdgeArcConnection](./Set-AksIotArcConnection.md)
 
 Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
 
-### [Start-AksIotLinuxNode](./Start-AksIotLinuxNode.md)
+### [Start-AksEdgeLinuxNode](./Start-AksIotLinuxNode.md)
 
 Starts the Linux node VM if it's currently stopped.
 
-### [Stop-AksIotLinuxNode](./Stop-AksIotLinuxNode.md)
+### [Stop-AksEdgeLinuxNode](./Stop-AksIotLinuxNode.md)
 
 Stops the Linux node VM if it's currently started.
 
-### [Test-AksIotLinuxNode](./Test-AksIotLinuxNode.md)
+### [Test-AksEdgeLinuxNode](./Test-AksIotLinuxNode.md)
 
 Checks whether the Linux VM was created.
 
-### [Test-AksIotNetworkParameters](./Test-AksIotNetworkParameters.md)
+### [Test-AksEdgeNetworkParameters](./Test-AksIotNetworkParameters.md)
 
 Validates AksIot network parameters, useful as a pre-deployment step.
 

@@ -10,7 +10,7 @@ ms.custom: template-quickstart #Required; leave this attribute/value as-is.
 
 # Quickstart: deploy a sample AKS on Windows application
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS) host. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this cluster.
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS) host. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this single-node cluster.
 
 ## Prerequisites
 
@@ -18,14 +18,14 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
     > [!IMPORTANT]
     > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
-    
+
     | Specs | Requirement |
     | ---------- | --------- |
     | Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
     | CPU | 2 logical processors, clock speed at least 1.8 GHz |
     | Disk Space | At least 14 GB free |
-    | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
-    
+    | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019 and 2022 |
+
     This is your primary machine.
 
 - **OS requirements** : Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or Windows 11 [here](https://www.microsoft.com/software-download/windows11).
@@ -36,9 +36,9 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
  ![Screenshot of release assets needed.](media/aks-lite/aks-lite-release-assets.png)
 
-2. In the upper left-hand corner of the releases page, navigate to the **Code** tab, and select the green **Code** button to download the repository as a **.zip** file.  
+2. In this quickstart, we will use a sample Linux application that can be downloaded from [here](https://github.com/parameshbabu/AKS-IoT-preview/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the respository as a .zip
 
-3. Extract the GitHub **.zip** file and move the MSI and all the other files in to the extracted folder. This will be your working directory.
+Extract the GitHub .zip file and move the MSI and all the other files in to the extracted folder for convenience. This will be your working directory.
 
 4. Before you install, make sure you have removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, please reboot your system before proceeding.
 
@@ -54,7 +54,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 7. Make sure your install was successful by running the following command:
 
     ```powershell
-    Get-Command -Module AksIot
+    Get-Command -Module AksEdge
     ```
 
     You should see the output below with version showing v0.4.222.
@@ -67,18 +67,17 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
 Create a Kubernetes node(s) on your machine on a private network, making it easy to get a single machine cluster up and running.
 
-1. Open an elevated PowerShell window or open **LaunchPrompt.cmd** from your **bootstrap** folder.
+1. Open an elevated PowerShell window or open AksEdgePrompt.cmd from your tools folder.
 
-2. This quickstart uses the `New-AksIotDeployment` cmdlet, with default parameters.
+2. This quickstart uses the `New-AksEdgeDeployment` cmdlet, with the default set of parameters
 
    ```powershell
-   New-AksIotDeployment -SingleMachineCluster
+       #create a JSON file with default configuration
+       $jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+        New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
    ```
 
-   To get a full list of the parameters and their default values, run `Get-Help New-AksIotDeployment -full` in your LaunchPrompt.
-
-   > [!NOTE]
-   > In this release, `New-AksIotDeployment` automatically gets the kube config file and overrides the old one.
+   To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window.
 
 3. Confirm that the installation was successful by running:
 
@@ -99,7 +98,7 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
    kubectl apply -f linux-sample.yaml
    ```
 
- 2. Verify that sample pods are running. Wait a few minutes for the pods to be in the **running** state:
+2. Verify that sample pods are running. Wait a few minutes for the pods to be in the **running** state:
 
    ```bash
    kubectl get pods -o wide
@@ -110,7 +109,7 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
 3. Verify that your service is up
 
    > [!IMPORTANT]
-   > This example deployed the Kubernetes cluster without specifying a `-ServiceIPRangeSize` parameter, so we have not allocated IPs for our workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (using the `Get-AksIotLinuxNodeAddr` cmdlet), then append the external port (for example, **192.168.1.12:31458**).
+   > This example deployed the Kubernetes cluster without specifying a `-ServiceIPRangeSize` parameter, so we have not allocated IPs for our workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (using the `Get-AksEdgeNodeAddr` cmdlet), then append the external port (for example, **192.168.1.12:31458**).
 
    ```bash
    kubectl get services
@@ -133,9 +132,8 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
 2. To remove your single machine cluster, run:
 
    ```powershell
-   Remove-AksIotNode
+   Remove-AksEdgeDeployment
    ```
 
 > [!NOTE]
 > If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS-IoT network objects using `hnsdiag delete networks <ID>`.
-
