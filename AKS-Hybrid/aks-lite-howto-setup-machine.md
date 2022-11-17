@@ -10,14 +10,14 @@ ms.custom: template-how-to
 
 # Prepare your machines for AKS
 
-In this article, you'll learn to set up an Azure Kubernetes Service (AKS) Edge node machine.
+In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Edge node machine.
 
 ## Prerequisites
 
 - Hardware requirements:
 
   > [!IMPORTANT]
-  > The minimum set up required to run the latest version of AKS is a single machine with the following specs:
+  > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
 
   | Specs | Requirement |
   | ---------- | --------- |
