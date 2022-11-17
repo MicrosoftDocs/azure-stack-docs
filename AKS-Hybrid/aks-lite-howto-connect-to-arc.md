@@ -25,7 +25,7 @@ Execute the following steps on your primary machine.
 > If you are connecting a multi-node cluster to Arc, enable the Arc connection to the cluster before scaling out to additional nodes.
 
 >[!NOTE]
-> If you are using PowerShell 7 with the new API to connect to Arc, [see this article](/docs/additionalconfigs.md) for the instructions.
+> If you are using PowerShell 7 with the new API to connect to Arc, [see this article](./aks-lite-howto-more-configs.md) for the instructions.
 
 ## 1. Configure your Azure environment
 
