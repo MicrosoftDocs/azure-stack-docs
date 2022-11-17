@@ -40,7 +40,7 @@ This rest of this article describes how to activate this benefit for AKS on Azur
 
 ### Retrieve your management cluster name
 
-You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the (`kvaName`) name:
+You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the `kvaName` name:
 
 ```PowerShell
 Get-AksHciConfig | ConvertTo-Json
@@ -69,7 +69,7 @@ Get-AksHciConfig | ConvertTo-Json
 
 Check that the benefit has not already enabled on your management cluster. If the benefit has already been enabled, you should see the property `AzureHybridBenefit` set to `true`.
 
-```shell
+```powershell
 az login --use-device-code
 
 az account set -s <subscription ID>
@@ -142,7 +142,7 @@ To qualify for the Azure Hybrid Benefit for AKS, you must be running AKS on firs
 
 ### Verify that Azure Hybrid Benefit for AKS is applied to my Microsoft Azure Bill
 
-Visit Cost Management and Billing in the Azure portal to verify that the Azure Hybrid Benefit for AKS has been applied to your Microsoft Azure bill. Please note that billing does not apply in real time. There will be a delay of several hours from the time you've activated Azure Hybrid Benefit before it shows on your bill.
+See Cost Management and Billing in the Azure portal to verify that the Azure Hybrid Benefit for AKS has been applied to your Microsoft Azure bill. Please note that billing does not apply in real time. There will be a delay of several hours from the time you've activated Azure Hybrid Benefit before it shows on your bill.
 
 ### Deactivate Azure Hybrid Benefit for AKS
 
@@ -154,4 +154,4 @@ az connectedk8s update -n <name> -g <group> --azure-hybrid-benefit false
 
 ## Next steps
 
-To learn more, including pricing, visit the [pricing page](pricing.md).
+To learn more, including pricing, see the [pricing page](pricing.md).
