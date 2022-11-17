@@ -13,9 +13,9 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          The following error may occur when you use Azure CLI to activate Azure Hybrid Benfit for AKS:
+          The following error may occur when you use Azure CLI to activate Azure Hybrid Benefit for AKS:
 
-          Error occured while connecting to the kubernetes cluster:Error: HTTPSConnectionPool(host='', port=6443): Max retries exceeded with url: /version/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x065EDDA8>, 'Connection to <IP address> timed out. (connect timeout=None)'))
+          "Error occurred while connecting to the kubernetes cluster:Error: HTTPSConnectionPool(host='', port=6443): Max retries exceeded with url: /version/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x065EDDA8>, 'Connection to <IP address> timed out. (connect timeout=None)'))"
 
         answer: | 
           This issue may occur if you attempt to update connected cluster properties outside Azure Hybrid Benefit. Make sure you are using the latest versions of the Azure CLI and connectedk8s extensions before attempting to activate the benefit.
