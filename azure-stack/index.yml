@@ -53,9 +53,9 @@ productDirectory:
       - url: /azure/aks/hybrid/overview
         text: AKS on Azure Stack HCI overview  
       - url: /azure/aks/hybrid/system-requirements
-        text: System requirements                
+        text: AKS on HCI system requirements                
       - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
-        text: Register for evaluation download 
+        text: AKS on HCI evaluation guide 
       - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product information and pricing
   - title: Azure Stack Hub 
