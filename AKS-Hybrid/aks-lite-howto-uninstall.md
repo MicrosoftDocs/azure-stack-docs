@@ -16,7 +16,7 @@ Follow the steps in this article to uninstall AKS lite.
 
 If you've connected your cluster to Arc, it is recommended to disconnect it before uninstalling your cluster.
 
-In your `AksEdgePrompt.cmd`, run:
+In your **AksEdgePrompt.cmd** file, run:
 
 ```powershell
 Disconnect-ArcIotK8s
@@ -28,13 +28,13 @@ If you're using PowerShell 7 and the new API, you can test the Arc connection st
 Set-AksEdgeArcConnection -connect $false
 ```
 
-You can also manually remove the cluster from Arc using the Azure Portal.
+You can also manually remove the cluster from Arc using the Azure portal.
 
 ## Remove your application from cluster
 
 To clean up, delete all resources using:
 
-```bash
+```powershell
 kubectl delete -f linux-sample.yaml
 ```
 
@@ -46,54 +46,53 @@ To remove the windows node only,
 Remove-AksEdgeNode -workloadType Windows
 ```
 
-To remove your single machine cluster with `Linux` or `LinuxandWindows` workload run:
+To remove your single machine cluster with a `Linux` or `LinuxandWindows` workload run:
 
 ```powershell
 Remove-AksEdgeDeployment
 ```
 
-You can't remove the Linux node alone, you need to remove the deployment if you need to remove linux node.
+You can't remove the Linux node alone, you must remove the deployment if you need to remove Linux node.
 
->**NOTE**:
->If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
+> [!NOTE]
+> If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
 
->**NOTE**: There is a known issue where repeatedly creating a new deployment and removing the node may result in an `error during ConnectToVirtualMachine`. If this occurs, please reboot your system to resolve the error.
+> [!NOTE] There is a known issue in which repeatedly creating a new deployment and removing the node may result in an "error during ConnectToVirtualMachine". If this occurs, reboot your system to resolve the error.
 
 ## Remove nodes on a multi-machine cluster
 
 Before removing a node, make sure to drain the node that you'll be removing with `Set-AksEdgeNodeToDrain`. This ensures the safe de-allocation of the node's resources and that the application pods are gracefully shut down and transferred to other remaining nodes.
 
-Be careful when removing control plane nodes and make sure you've another working control plane node before you do!
+Be careful when removing control plane nodes and make sure you have another working control plane node before doing so.
 
-To remove a `Windows` only node:
+To remove a **Windows** only node:
 
 ```powershell
 Set-AksEdgeNodeToDrain -WorkloadType Windows
 Remove-AksEdgeNode -WorkloadType Windows
 ```
 
-To remove a `Linux` only node:
+To remove a **Linux** only node:
 
 ```powershell
 Set-AksEdgeNodeToDrain -WorkloadType Linux
 Remove-AksEdgeNode -WorkloadType Linux
 ```
 
-To tear down both:
+To remove both:
 
 ```powershell
 Set-AksEdgeNodeToDrain -WorkloadType LinuxAndWindows
 Remove-AksEdgeDeployment
 ```
 
->**NOTE**: There is a known issue where repeatedly creating a new deployment and removing the node may result in an error. If this occurs, please reboot your system to resolve the error.
+> [!NOTE] There is a known issue in which repeatedly creating a new deployment and removing the node can result in an error. If this occurs, reboot your system to resolve the error.
 
 ## Uninstall AKS edge
 
-In your machine, go to `Settings` > `Apps` > `Apps & Features`. Alternatively, you can also go to `Control Panel` > `Uninstall a Program`.
-From there, look for `Azure Kubernetes Service on Windows IoT (Public Preview)`. Click uninstall.
+On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service on Windows IoT (Public Preview)**. Click **Uninstall**.
 
-If you run into any issues uninstalling AKS edge, try downloading this [troubleshooter](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
+If you encounter any issues uninstalling AKS edge, try [downloading this troubleshooting tool](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
 
 ## Uninstall Azure CLI
 
