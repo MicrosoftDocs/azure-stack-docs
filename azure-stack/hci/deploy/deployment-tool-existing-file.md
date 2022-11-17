@@ -245,12 +245,12 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
 The following table gives descriptions for the settings listed in the configuration file:
 
-|Setting|Description|Default|
-|---|---|---|
+|Setting|Description|
+|---|---|
 |**SecuritySettings**|Section name|
 |SecurityModeSealed|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
 |SecuredCoreEnforced|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
-|VBSProtection|By default, Virtualization-based Security (VBS) is enabled on your Azure Stack HCI cluster. For more information, see [Virtualization-based Security](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-vbs).|
+|VBSProtection|By default, Virtualization-based Security (VBS) is enabled on your Azure Stack HCI cluster. For more information, see [Virtualization-based Security](/windows-hardware/design/device-experiences/oem-vbs).|
 |HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster. For more information, see [Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement).|
 |DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).||
 |KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|
