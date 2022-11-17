@@ -75,7 +75,7 @@ NAME          READY   STATUS    RESTARTS   AGE
 volume-test   1/1     Running   0          2m24s
 ```
 
-## Step 4: Test the persistent storage
+## Step 4: Test persistent storage
 
 Final test is to make sure that the storage is persistent, and data will be maintained, even if the application’s pod fails.
 
