@@ -140,9 +140,11 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 - Network infrastructure for valid IP ranges provided by customers for deployment.
 - Active Directory (Adprep tool is run prior to deployment).
 
+While the connectivity validator is available today, the hardware, network infrastructure, and Active Directory validators are coming soon.
+
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing cluster running Azure Stack HCI, version 21H2 or later. 
+To get started and validate your environment's connectivity, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). The tool doesn't need an Azure subscription and will work with your existing cluster running Azure Stack HCI, version 21H2 or later. 
 
 ## Next steps
 
