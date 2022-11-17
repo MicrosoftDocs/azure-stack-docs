@@ -86,7 +86,7 @@ If the application didn't load, it might be due to an authorization problem with
 
 ### 6. Remove application
 
-To clean up, delete all resources using:
+To clean up, delete all resources using the following command:
 
 ```bash
 kubectl delete -f linux-sample.yaml
@@ -94,13 +94,13 @@ kubectl delete -f linux-sample.yaml
 
 ## Deploy a sample Windows application to your cluster
 
-We will be running a sample ASP.NET application based on [Microsoft’s sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). Refer to `win-sample.yaml` in the Public Preview package for the deployment manifest (located in `\samples\others`). Note that in the YAML we specified a `nodeSelector` tagged for Windows. All sample codes and deployment manifest can be found under Samples folder in the GitHub repo.
+This example runs a sample ASP.NET application based on [Microsoft’s sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See **win-sample.yaml** in the public preview package for the deployment manifest (located in **\samples\others**). Note that the YAML specifies a `nodeSelector` tagged for Windows. All sample code and deployment manifests can be found under the **/Samples** folder in the GitHub repo.
 
 ### 1. Deploy the application by specifying the name of your YAML manifest
 
-Make sure you are in the directory of the YAML in your powershell and then run the following command:
+Make sure you are in the directory of the YAML in a PowerShell window, and then run the following command:
 
-```bash
+```powershell
 kubectl apply -f win-sample.yaml
 ```
 
@@ -108,39 +108,39 @@ kubectl apply -f win-sample.yaml
 
 It might take a while for the pod to reach the running status, depending on your internet connection. The ASP.NET image is quite large.
 
-```bash
+```powershell
 kubectl get pods -o wide
 ```
 
-![Screenshot showing Windows pods running](media/aks-lite/win-pods-running.png)
+![Screenshot showing Windows pods running.](media/aks-lite/win-pods-running.png)
 
-### 3. Verify that the “sample” service is up
+### 3. Verify that the **sample** service is up
 
-```bash
+```powershell
 kubectl get services
 ```
 
-![Screenshot showing Windows services running](media/aks-lite/win-svc-running.png)
+![Screenshot showing Windows services running.](media/aks-lite/win-svc-running.png)
 
-Since this sample is deployed as a service of type NodePort, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using:
+Since this sample is deployed as a service of type **NodePort**, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using the following command:
 
 ```bash
 kubectl cluster-info
 ```
 
-![Screenshot showing Windows cluster information](media/aks-lite/win-clusterinfo.png)
+![Screenshot showing Windows cluster information.](media/aks-lite/win-clusterinfo.png)
 
 ### 4. Check out your running Windows sample
 
-Open a web browser and locate the NodePort to access your service.
+Open a web browser and locate the NodePort to access your service:
 
-![Screenshot showing Windows app up](media/aks-lite/win-app-up.png)
+![Screenshot showing Windows app running.](media/aks-lite/win-app-up.png)
 
-### 5. Clean-up
+### 5. Clean up
 
 To clean up, delete all resources using:
 
-```bash
+```powershell
 kubectl delete -f win-sample.yaml
 ```
 
