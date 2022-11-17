@@ -25,6 +25,9 @@ highlightedContent:
     - title: Azure Stack family of products
       itemType: overview
       url: ./operator/compare-azure-azure-stack.md
+    - title: Azure Stack training
+      itemType: learn
+      url: https://learn.microsoft.com/training/modules/intro-to-azure-stack/
 
 # productDirectory section (optional)
 productDirectory:
