@@ -8,15 +8,15 @@ ms.date: 11/17/2022
 ms.custom: template-how-to
 ---
 
-# Local Path Provisioner on AKS lite
+# Local Path Provisioner on AKS Edge
 
-Applications running in Azure Kubernetes Service (AKS) Lite may need to store and retrieve data. Persistent storage solutions allows you to store application data external from the pod running your application and allows you to maintain application data, even if the application’s pod fails.
+Applications running in Azure Kubernetes Service (AKS) Edge may need to store and retrieve data. Persistent storage solutions allow you to store application data external from the pod running your application and allows you to maintain application data, even if the application’s pod fails.
 
 [Local Path Provisioner](https://github.com/rancher/local-path-provisioner) provides a way for the Kubernetes users to utilize the local storage in each node.
 
-AKS Lite **K3S** version comes with Local Path Provisioner out of the box, thisenables the ability to create persistent volume claims out of the box using local storage on the respective node.
+AKS Edge **K3S** version comes with Local Path Provisioner out of the box, this enables the ability to create persistent volume claims out of the box using local storage on the respective node.
 
-In this guide, you will learn to setup local path provisioner storage and deploy a sample container on your AKS-IoT cluster. For more information, please see the official [local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
+In this guide, you'll learn to set up local path provisioner storage and deploy a sample container on your AKS-IoT cluster. For more information, please see the official [local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 ## Step 1: Verify prerequisites
 
@@ -38,7 +38,7 @@ local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsu
 
 ## Step 2: Create a Persistent Volume Claim (PVC)
 
-Once verified that the storage class is available, you need to create a persistent volume claim (PVC). There are multiple configurations available, but in this tutorial we will create a PVC with **ReadWriteOnce** access mode and request **128MB** of storage. In your admin PowerShell window, run the following cmdlet. 
+Once verified that the storage class is available, you need to create a persistent volume claim (PVC). There are multiple configurations available, but in this tutorial we'll create a PVC with **ReadWriteOnce** access mode and request **128MB** of storage. In your admin PowerShell window, run the following cmdlet. 
 
 ```powershell
 kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pvc.yaml
@@ -77,7 +77,7 @@ volume-test   1/1     Running   0          2m24s
 
 ## Step 4: Test the persistent storage
 
-Final test is to make sure that the storage is persistent, and data will be mantained, even if the application’s pod fails.
+Final test is to make sure that the storage is persistent, and data will be maintained, even if the application’s pod fails.
 
 Let's start by writing something to the pod. In your admin PowerShell window, run the following cmdlet. 
 
@@ -97,7 +97,7 @@ Check that the pod was removed and then deploy again the *volume-test* pod.
 kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pod.yaml
 ```
 
-Finally, read the content of the file that was written before. If everything run successfully, you should see the *Hello AKS Edge!* message. 
+Finally, read the content of the file that was written before. If everything runs successfully, you should see the *Hello AKS Edge!* message. 
 
 ```bash
 PS C:\WINDOWS\system32> kubectl exec volume-test -- sh -c "cat /data/test"
