@@ -18,7 +18,7 @@ Azure Kubernetes Service lite hybrid option is an on-premises Kubernetes impleme
 
 ### 1. Simplified Kubernetes experience
 
- Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), AKS lite is intended for static, pre-defined configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS lite cluster can have only one Linux VM which acts as a Control node and Worker node in the Kubernetes cluster. Each machine with AKS lite has a VM with restricted RAM, Storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side, that is interoperable alongside the AKS lite VMs.
+Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), AKS lite is intended for static, pre-defined configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS lite cluster can have only one Linux VM which acts as a control node and worker node in the Kubernetes cluster. Each machine with AKS lite has a VM with restricted RAM, storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side, that is interoperable alongside the AKS lite VMs.
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
@@ -59,7 +59,7 @@ With AKS lite, you get the benefit of having a fully supported stack from kernel
 
 Once your AKS hybrid is connected to Azure Arc, it extends the Azure platform to the edge with core services like governance, monitoring, application, ML and data services. It also helps bring DevOps practices anywhere and build iteratively using GitOps and Flux to seamlessly manage application deployments.
 
-AKS lite is currently in private preview.
+AKS lite is currently in public preview.
 
 ## Next steps
 
