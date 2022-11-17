@@ -4,8 +4,8 @@
   items:
   - name: Add-AksEdgeNode
     href: add-aksiotnode.md
-  - name: Get-AksEdgeClusterJoinData
-    href: get-aksiotclusterjoindata.md
+  - name: Export-AksEdgeWorkerNodeConfig
+    href: export-aksedgeworkernodeconfig.md
   - name: Get-AksEdgeDeploymentInfo
     href: get-aksiotdeploymentinfo.md
   - name: Get-AksEdgeEventLog
@@ -22,17 +22,25 @@
     href: get-aksiotmanagedservicetoken.md
   - name: Invoke-AksEdgeLinuxNodeCommand
     href: invoke-aksiotlinuxnodecommand.md
+  - name: New-AksEdgeDeploymentConfig
+    href: new-aksedgedeploymentconfig.md
   - name: New-AksEdgeDeployment
     href: new-aksiotdeployment.md
+  - name: Remove-AksEdgeDeployment
+    href: remove-aksedgedeployment.md
   - name: Remove-AksEdgeNode
     href: remove-aksiotnode.md
+  - name: Set-AksEdgeNodeToDrain
+    href: set-aksedgenodetodrain.md
   - name: Set-AksEdgeArcConnection
     href: set-aksiotarcconnection.md
-  - name: Start-AksEdgeLinuxNode
+  - name: Start-AksEdgeNode
     href: start-aksiotlinuxnode.md
-  - name: Stop-AksEdgeLinuxNode
+  - name: Stop-AksEdgeNode
     href: stop-aksiotlinuxnode.md
-  - name: Test-AksEdgeLinuxNode
+  - name: Test-AksEdgeDeployment
+    href: test-aksedgedeployment.md
+  - name: Test-AksEdgeNode
     href: test-aksiotlinuxnode.md
   - name: Test-AksEdgeNetworkParameters
     href: test-aksiotnetworkparameters.md

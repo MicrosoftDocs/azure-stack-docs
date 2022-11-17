@@ -15,7 +15,7 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
 ## 1. Get cluster configuration from your primary machine
 On your **primary machine** on which you created your full deployment, run the following steps in an elevated PowerShell window. 
 
-- To add Linux-only worker node, specify the `WorkloadType` as Linux and provide an unique IP address for the  Linux node as shown below.
+- To add Linux-only worker node, specify the `WorkloadType` as Linux and provide a unique IP address for the  Linux node as shown below.
 
 ```powershell
 $params = @{
@@ -26,7 +26,7 @@ $params = @{
 $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
 ```
 
-- To add a Linux control plane node, specify the `WorkloadType` as Linux, set the `ControlPlane` flag as true and provide an unique IP address for the  Linux node as shown below.
+- To add a Linux control plane node, specify the `WorkloadType` as Linux, set the `ControlPlane` flag as true and provide a unique IP address for the  Linux node as shown below.
 
 ```powershell
 $params = @{
@@ -38,7 +38,7 @@ $params = @{
 $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
 ```
 
-- To add a Windows-only worker node, specify the `WorkloadType` as Windows and provide an unique IP address for the  Linux node as shown below.For Windows node only,
+- To add a Windows-only worker node, specify the `WorkloadType` as Windows and provide a unique IP address for the  Linux node as shown below. For Windows node only,
 
 ```powershell
 $params = @{
@@ -49,7 +49,7 @@ $params = @{
 $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
 ```
 
-- To add a Linux and Windows worker node, specify the `WorkloadType` as `LinuxAndWindows` and provide an unique IP address for both the Linux and Windows node as shown below.
+- To add a Linux and Windows worker node, specify the `WorkloadType` as `LinuxAndWindows` and provide a unique IP address for both the Linux and Windows node as shown below.
 
 ```powershell
 $params = @{
@@ -61,16 +61,16 @@ $params = @{
 $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
 ```
 
-This will return a jsonString and also store the json content in the `.\*WorkerNodeConfig.json`.
+This command will return a JSON string and also store the json content in the `.\*WorkerNodeConfig.json`.
 This command will export the necessary data for cluster join in the json format.
 
 ## 2. Bring up a node on your secondary machine
 
-Now you're ready to bring up clusters on your secondary machines. Note that you **cannot mix different Kubernetes distributions among your clusters**. If the cluster on your primary machine is running `k8s`, you must install the `k8s` msi on the secondary machines as well.
+Now you're ready to bring up clusters on your secondary machines. You **cannot mix different Kubernetes distributions among your clusters**. If the cluster on your primary machine is running `k8s`, you must install the `k8s` msi on the secondary machines as well.
 
 >**NOTE**: The only supported setting is to have an **odd number of control plane nodes**. Therefore, if you would like to scale up/down your control plane, please make sure you have one, three, or five control plane nodes.
 
-We can noe use the `WorkerNodeConfig.json` created in the previous step, to deploy the corresponding node on the secondary machine.
+We can now use the `WorkerNodeConfig.json` created in the previous step, to deploy the corresponding node on the secondary machine.
 
 ```powershell
     New-AksEdgeDeployment -JsonConfigFilePath .\WorkerNodeConfig.json

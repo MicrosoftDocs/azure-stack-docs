@@ -1,7 +1,7 @@
 ---
-title: New-AksEdgeDeployment for AKS Lite
+title: New-AksEdgeDeploymentConfig for AKS Lite
 author: rcheeran
-description: The New-AksEdgeDeployment PowerShell command creates a new AksIot deployment 
+description: The New-AksEdgeDeploymentConfig PowerShell command creates the configs needed for as new AksIot deployment 
 ms.topic: reference
 ms.date: 11/17/2022
 ms.author: rcheeran 

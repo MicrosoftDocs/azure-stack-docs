@@ -15,11 +15,11 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 ## Module Powershell Commands
 
-### [Add-AksEdgeNode](./Add-AksIotNode.md)
+### [Add-AksEdgeNode](./add-aksiotNode.md)
 
 Adds a new AksIot node to the cluster.
 
-### [Get-AksEdgeClusterJoinData](./Get-AksIotClusterJoinData.md)
+### [Export-AksEdgeWorkerNodeConfig](./export-aksedgeworkernodeconfig.md)
 
 Pulls the cluster join data from a Linux control plane node.
 
@@ -35,13 +35,13 @@ Collects event logs from the deployment.
 
 Pulls the KubeConfig file from the Linux node.
 
-### [Get-AksEdgeLinuxNodeAddr](./Get-AksIotLinuxNodeAddr.md)
+### [Get-AksEdgeNodeAddr](./Get-AksIotLinuxNodeAddr.md)
 
-Gets the Linux VM's IP and MAC addresses
+Gets the VM's IP and MAC addresses
 
-### [Get-AksEdgeLinuxNodeName](./Get-AksIotLinuxNodeName.md)
+### [Get-AksEdgeNodeName](./Get-AksIotLinuxNodeName.md)
 
-Gets the Linux VM's hostname
+Gets the VM's hostname
 
 ### [Get-AksEdgeLogs](./Get-AksIotLogs.md)
 
@@ -51,31 +51,48 @@ Collects all the logs from the deployment.
 
 Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
-### [Invoke-AksEdgeLinuxNodeCommand](./Invoke-AksIotLinuxNodeCommand.md)
+### [Invoke-AksEdgeNodeCommand](./Invoke-AksIotLinuxNodeCommand.md)
 
 Executes an SSH command on the Linux VM.
+
+### [New-AksEdgeDeploymentConfig](./new-aksedgedeploymentconfig.md)
+
+Creates the configuration file needed for a new AksIot deployment on this machine.
+
 
 ### [New-AksEdgeDeployment](./New-AksIotDeployment.md)
 
 Creates a new AksIot deployment on this machine.
 
+### [Remove-AksEdgeDeployment](./remove-aksedgedeploymentconfig.md)
+
+Removes the deployment from an existing cluster.
+
 ### [Remove-AksEdgeNode](./Remove-AksIotNode.md)
 
 Removes a local node from an existing cluster.
+
+### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
+
+Safely drains a node before your delete the node. 
 
 ### [Set-AksEdgeArcConnection](./Set-AksIotArcConnection.md)
 
 Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
 
-### [Start-AksEdgeLinuxNode](./Start-AksIotLinuxNode.md)
+### [Start-AksEdgeNode](./Start-AksIotLinuxNode.md)
 
-Starts the Linux node VM if it's currently stopped.
+Starts the node VM if it's currently stopped.
 
-### [Stop-AksEdgeLinuxNode](./Stop-AksIotLinuxNode.md)
+### [Stop-AksEdgeNode](./Stop-AksIotLinuxNode.md)
 
-Stops the Linux node VM if it's currently started.
+Stops the node VM if it's currently started.
 
-### [Test-AksEdgeLinuxNode](./Test-AksIotLinuxNode.md)
+### [Test-AksEdgeDeployment](./test-aksedgedeployment.md)
+
+Checks whether the deployment was created.
+
+### [Test-AksEdgeNode](./Test-AksIotLinuxNode.md)
 
 Checks whether the Linux VM was created.
 

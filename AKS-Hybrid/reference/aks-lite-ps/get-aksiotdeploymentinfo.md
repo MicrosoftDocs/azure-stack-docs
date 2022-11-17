@@ -13,7 +13,7 @@ ms.lastreviewed: 10/04/2022
 # Get-AksEdgeDeploymentInfo
 
 ## Synopsis
-Gets AksIot deployment information.
+Gets AksEdge deployment information.
 
 ## Syntax
 

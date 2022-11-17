@@ -62,6 +62,7 @@ Once your AKS hybrid is connected to Azure Arc, it extends the Azure platform to
 AKS lite is currently in private preview.
 
 ## Next steps
-- Explore [quickstart](./aks-lite-quickstart.md) 
+
+- Explore [quickstart](./aks-lite-quickstart.md)
 - Contact product team by emailing projecthaven@microsoft.com
 - Read [Ignite blog](https://aka.ms/aks-lite-ignite-blog)

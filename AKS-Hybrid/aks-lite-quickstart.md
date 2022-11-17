@@ -21,12 +21,12 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
     | Specs | Requirement |
     | ---------- | --------- |
-    | Memory | 4GB at least 2GB free (cluster-only), 8GB (Arc and GitOps) |
+    | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
     | CPU | 2 logical processors, clock speed at least 1.8 GHz |
     | Disk Space | At least 14 GB free |
     | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019 and 2022 |
 
-    This is your primary machine.
+    This machine is your primary machine.
 
 - **OS requirements** : Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or Windows 11 [here](https://www.microsoft.com/software-download/windows11).
 
@@ -36,11 +36,11 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
  ![Screenshot of release assets needed.](media/aks-lite/aks-lite-release-assets.png)
 
-2. In this quickstart, we will use a sample Linux application that can be downloaded from [here](https://github.com/parameshbabu/AKS-IoT-preview/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the respository as a .zip
+2. In this quickstart, we'll use a sample Linux application that can be downloaded from [here](https://github.com/parameshbabu/AKS-IoT-preview/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the repository as a .zip
 
-Extract the GitHub .zip file and move the MSI and all the other files in to the extracted folder for convenience. This will be your working directory.
+Extract the GitHub .zip file and move the MSI and all the other files into the extracted folder for convenience. This will be your working directory.
 
-4. Before you install, make sure you have removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, please reboot your system before proceeding.
+4. Before you install, make sure you've removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
 
     ![Screenshot of Add and remove program.](media/aks-lite/aks-lite-uninstall.png)
 
@@ -49,7 +49,7 @@ Extract the GitHub .zip file and move the MSI and all the other files in to the 
 
 5. Double-click the **AksIot-<k8s** or **k3s>.msi** files to install the latest version.
 
-6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you will find **LaunchPrompt.cmd**. Open this command window to make sure you have downloaded the proper modules for AKS-IoT.
+6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you'll find **AKSEdgePrompt.cmd**. Open this command window to make sure you have downloaded the proper modules for AKS-IoT.
 
 7. Make sure your install was successful by running the following command:
 
@@ -90,7 +90,7 @@ Create a Kubernetes node(s) on your machine on a private network, making it easy
 
 ## Deploy a sample application
 
-This example runs a sample Linux application based on [Microsoft's azure-vote-front image](https://github.com/microsoft/containerregistry). See the **linux-sample.yaml** file in the downloaded package for the deployment manifest. Note that the YAML specifies a `nodeSelector` tagged for Linux. All sample code and the deployment manifest can be found under the **Samples** folder.
+This example runs a sample Linux application based on [Microsoft's azure-vote-front image](https://github.com/microsoft/containerregistry). See the **linux-sample.yaml** file in the downloaded package for the deployment manifest. The YAML specifies a `nodeSelector` tagged for Linux. All sample code and the deployment manifest can be found under the **Samples** folder.
 
 1. Deploy the application using the YAML manifest:
 
