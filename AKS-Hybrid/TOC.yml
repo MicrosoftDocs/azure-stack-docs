@@ -308,7 +308,7 @@
     - name: Enable Arc services
       href: aks-lite-howto-enable-arc-services.md
     - name: Add local storage binding
-      href: aks-lite-howto-use-storage-localpath.md
+      href: aks-lite-howto-use-storage-local-path.md
     - name: Additional configuration
       href: aks-lite-howto-more-configs.md
     - name: Using GitOps with AKS hybrid options
