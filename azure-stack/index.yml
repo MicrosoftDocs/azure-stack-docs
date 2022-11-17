@@ -47,7 +47,7 @@ productDirectory:
         text: Join preview channel
       - url: https://azure.microsoft.com/products/azure-stack/hci/
         text: Product information and pricing
-  - title: Azure Kubernetes Service (AKS) on Azure Stack HCI
+  - title: Azure Kubernetes Service (AKS) hybrid deployment options
     imageSrc: media/index/kubernetes-services.svg
     links:
       - url: /azure/aks/hybrid/overview
