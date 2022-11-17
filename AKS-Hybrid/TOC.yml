@@ -103,6 +103,8 @@
     items:
       - name: Pricing details
         href: pricing.md
+      - name: Azure Hybrid Benefit
+        href: azure-hybrid-benefit.md
 - name: How-to guides
   items: 
     - name: Install
