@@ -485,7 +485,7 @@ You can further scope down the permissions required to perform HCI registration 
 
    If you need to un-register this cluster, add the `Microsoft.Resources/subscriptions/resourceGroups/delete` permission in step 2.
 
-### What are some of the more commonly-used registration and Arc cmdlets?
+### What are some of the more commonly used registration and Arc cmdlets?
 
 - For **Az.StackHCI** PowerShell module cmdlets, see the [HCI PowerShell documentation](/powershell/module/az.stackhci/).  
 - **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.

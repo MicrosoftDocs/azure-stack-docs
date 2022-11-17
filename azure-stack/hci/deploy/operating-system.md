@@ -96,7 +96,7 @@ Another option is to install the Azure Stack HCI operating system over the netwo
 
 ### Manual deployment
 
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the server or servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (SConfig) to prepare the server or servers for clustering. To learn more about the tool, see [Configure a Server Core installation with SConfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
 
 To manually install the Azure Stack HCI operating system:
 
@@ -133,11 +133,11 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
-Now you're ready to use the Server Configuration tool (Sconfig) to perform important tasks. To use Sconfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Sconfig tool opens automatically when you log on to the server.
+Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use SConfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you log on to the server.
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the Welcome to Azure Stack HCI window (Sconfig tool), you can perform the following initial configuration tasks:
+From the Welcome to Azure Stack HCI window (SConfig tool), you can perform the following initial configuration tasks:
 
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.
@@ -147,7 +147,7 @@ From the Welcome to Azure Stack HCI window (Sconfig tool), you can perform the f
 
 For more detail, see [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
+After configuring the operating system as needed with SConfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
 
 > [!NOTE]
 > If you're installing Azure Stack HCI on a single server, you must use PowerShell to create the cluster.

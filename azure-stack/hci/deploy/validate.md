@@ -27,7 +27,7 @@ Cluster validation is intended to catch hardware or configuration problems befor
 This section describes scenarios in which validation is also needed or useful.
 
 - **Validation before the cluster is configured:**
-  - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't yet functioning as a cluster. Running tests in this situation has no affect on availability.
+  - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't yet functioning as a cluster. Running tests in this situation has no effect on availability.
  
   - **Server VMs:** For virtualized servers in a cluster, run cluster validation as you would on any other new cluster. The requirement to run the feature is the same whether you have:
     - A "host cluster" where failover occurs between two physical computers.
@@ -97,7 +97,7 @@ To install and run the Validate-DCB tool:
     > [!NOTE]
     > Selecting RDMA over RoCE on the previous wizard page requires DCB for network reliability on all NICs and switchports.
 
-1. On the Save and Deploy page, in the **Configuration File Path** box, save the configuration file using a .ps1 extension to a location where you can use it again later if needed, and then select **Export** to start running the Validate-DCB tool.
+1. On the Save and Deploy page, in the **Configuration File Path** box, save the configuration file using *.ps1* extension to a location where you can use it again later if needed, and then select **Export** to start running the Validate-DCB tool.
 
    - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page, which includes the ability to use an Azure Automation account to deploy the configuration and then validate it. See [Create an Azure Automation account](/azure/automation/quickstarts/create-azure-automation-account-portal) to get started with Azure Automation.
 
@@ -192,7 +192,8 @@ For more examples and usage information, see the [Test-Cluster](/powershell/modu
 [Test-NetStack](https://github.com/microsoft/Test-NetStack) is a PowerShell-based testing tool available from GitHub that you can use to perform ICMP, TCP, and RDMA traffic testing of networks and identify potential network fabric and host misconfigurations or operational instability. Use Test-NetStack to validate network data paths by testing native, synthetic, and hardware offloaded (RDMA) network data paths for issues with connectivity, packet fragmentation, low throughput, and congestion.
 
 ## Validate replication for Storage Replica
-If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
+
+If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are several events and cmdlets that you can use to get the state of replication.
 
 In the following scenario, we configured Storage Replica by creating replication groups (RGs) for two sites, and then specified the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2), and the destination (replicated) server nodes in Site2 (Server3, Server4).
 
