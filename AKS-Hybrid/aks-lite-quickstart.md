@@ -28,7 +28,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
     This machine is your primary machine.
 
-- **OS requirements** : Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or Windows 11 [here](https://www.microsoft.com/software-download/windows11).
+- **OS requirements**: Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or Windows 11 [here](https://www.microsoft.com/software-download/windows11).
 
 ## Set up your primary machine
 
@@ -72,9 +72,9 @@ Create a Kubernetes node(s) on your machine on a private network, making it easy
 2. This quickstart uses the `New-AksEdgeDeployment` cmdlet, with the default set of parameters
 
    ```powershell
-       #create a JSON file with default configuration
-       $jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
-        New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
+   #create a JSON file with default configuration
+   $jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+   New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
    ```
 
    To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window.
@@ -86,7 +86,7 @@ Create a Kubernetes node(s) on your machine on a private network, making it easy
    kubectl get pods -A -o wide
    ```
 
-   ![Screenshot of all pods running. ](media/aks-lite/all-pods-running.png)
+   ![Screenshot of all pods running.](media/aks-lite/all-pods-running.png)
 
 ## Deploy a sample application
 
