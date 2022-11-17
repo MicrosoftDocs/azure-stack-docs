@@ -1,6 +1,6 @@
 ---
 title: Azure Hybrid Benefit for Azure Kubernetes Service
-description: Actvate Azure Hybrid Benefit for AKS.
+description: Activate Azure Hybrid Benefit for AKS.
 author: baziwane
 ms.author: rbaziwane
 ms.topic: conceptual
