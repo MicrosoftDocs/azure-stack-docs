@@ -302,7 +302,8 @@ The following table gives descriptions for the settings listed in the configurat
 |OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
 |QoSPolicyOverrides|List of QoS policy overrides as specified by your OEM. Do not modify this parameter without OEM validation.|
 |PriorityValue8021Action_Cluster|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
-|PriorityValue8021Action_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.||BandwidthPercentage_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|PriorityValue8021Action_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|BandwidthPercentage_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
 |OverrideAdapterProperty|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
 |AdapterPropertyOverrides|List of adapter property overrides as specified by your OEM. Do not modify this parameter without OEM validation.|
 |JumboPacket|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
