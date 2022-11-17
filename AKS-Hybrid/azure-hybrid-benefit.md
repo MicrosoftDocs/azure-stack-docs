@@ -108,7 +108,7 @@ az connectedk8s show -n <management cluster name> -g <resource group>
 ```
 
 > [!WARNING] 
-> If you have an empty value for the JSON property `distribution`, follow this link to patch your cluster before proceeding with activating Azure Hybrid Benefit for AKS.
+> If you have an empty value for the JSON property `distribution`, [follow this link to patch your cluster](https://github.com/Azure/aks-hybrid/issues/270) before proceeding with activating Azure Hybrid Benefit for AKS.
 
 ### Activate Azure Hybrid Benefit
 
