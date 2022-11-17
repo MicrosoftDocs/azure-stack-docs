@@ -64,7 +64,7 @@ Creates the configuration file needed for a new AksIot deployment on this machin
 
 Creates a new AksIot deployment on this machine.
 
-### [Remove-AksEdgeDeployment](./remove-aksedgedeploymentconfig.md)
+### [Remove-AksEdgeDeployment](./remove-aksedgedeployment.md)
 
 Removes the deployment from an existing cluster.
 

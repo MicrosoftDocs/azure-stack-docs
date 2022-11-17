@@ -14,15 +14,15 @@ Follow the steps in this article to uninstall AKS lite.
 
 ## Disconnect your cluster from Arc
 
-If you have connected your cluster to Arc, it is recommended to disconnect it before uninstalling your cluster.
+If you've connected your cluster to Arc, it is recommended to disconnect it before uninstalling your cluster.
 
-In your `AksEdgePrompt.cmd`, simply run:
+In your `AksEdgePrompt.cmd`, run:
 
 ```powershell
 Disconnect-ArcIotK8s
 ```
 
-If you are using PowerShell 7 and the new API, you can test the Arc connection status using `Test-ArcIotK8sConnection` and disconnect it using:
+If you're using PowerShell 7 and the new API, you can test the Arc connection status using `Test-ArcIotK8sConnection` and disconnect it using:
 
 ```powershell
 Set-AksEdgeArcConnection -connect $false
@@ -46,13 +46,13 @@ To remove the windows node only,
 Remove-AksEdgeNode -workloadType Windows
 ```
 
-To remove your single machine cluster with `Linux` or `LinuxandWindows` workload, simply run:
+To remove your single machine cluster with `Linux` or `LinuxandWindows` workload run:
 
 ```powershell
 Remove-AksEdgeDeployment
 ```
 
-Note that you cannot remove the Linux node alone, you need to remove the deployment if you need to remove linux node.
+You can't remove the Linux node alone, you need to remove the deployment if you need to remove linux node.
 
 >**NOTE**:
 >If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
@@ -61,9 +61,9 @@ Note that you cannot remove the Linux node alone, you need to remove the deploym
 
 ## Remove nodes on a multi-machine cluster
 
-Before removing a node, make sure to drain the node that you will be removing with `Set-AksEdgeNodeToDrain`. This ensures the safe de-allocation of the node's resources - i.e. application pods are gracefully shut down and transferred to other remaining nodes.
+Before removing a node, make sure to drain the node that you'll be removing with `Set-AksEdgeNodeToDrain`. This ensures the safe de-allocation of the node's resources and that the application pods are gracefully shut down and transferred to other remaining nodes.
 
-Please be careful when removing control plane nodes and make sure you have another working control plane node before you do!
+Be careful when removing control plane nodes and make sure you've another working control plane node before you do!
 
 To remove a `Windows` only node:
 
