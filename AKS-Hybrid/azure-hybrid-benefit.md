@@ -4,7 +4,7 @@ description: Actvate Azure Hybrid Benefit for AKS.
 author: baziwane
 ms.author: rbaziwane
 ms.topic: conceptual
-ms.date: 11/10/2022
+ms.date: 11/17/2022
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   
 # Keyword: Azure Hybrid Benefit for AKS
@@ -35,7 +35,7 @@ This rest of this article describes how to activate this benefit for AKS on Azur
 
 ### Prerequisites
 
-1. Make sure you have installed AKS on Azure Stack HCI or Windows Server host. 
+1. Make sure you've installed the AKS on Azure Stack HCI or Windows Server host. 
 2. Make sure you have the latest version of [Az CLI installed](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 
 ### Retrieve your management cluster name
