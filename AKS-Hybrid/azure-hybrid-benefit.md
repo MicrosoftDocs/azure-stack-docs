@@ -154,4 +154,4 @@ az connectedk8s update -n <name> -g <group> --azure-hybrid-benefit false
 
 ## Next steps
 
-To learn more, including pricing, visit the pricing page.
+To learn more, including pricing, visit the [pricing page](pricing.md).
