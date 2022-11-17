@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using an existing configuration file (preview)
 description: Learn how to deploy Azure Stack HCI using an existing configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/14/2022
+ms.date: 11/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -63,7 +63,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "EpisodicDataUpload": true
                 },
                 "Cluster": {
-                    "Name": "v-cluster",
+                    "Name": "cluster_name",
                     "StaticAddress": [
                         ""
                     ]
@@ -72,14 +72,14 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "ConfigurationMode": "Express"
                 },
                 "OptionalServices": {
-                    "VirtualSwitchName": "vSwitch",
-                    "CSVPath": "C:\\clusterStorage\\Volume1",
-                    "ARBRegion": "eastus"
+                    "VirtualSwitchName": "",
+                    "CSVPath": "",
+                    "ARBRegion": ""
                 },
                 "TimeZone": "Pacific Standard Time",
                 "NamingPrefix": "HCI002",
                 "DomainFQDN": "contoso.com",
-                "ExternalDomainFQDN": "contoso.com",
+                "ExternalDomainFQDN": "",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",
@@ -98,7 +98,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 ],
                 "PhysicalNodes": [
                     {
-                        "Name": "node11",
+                        "Name": "node1_name",
                         "IPv4Address": "10.0.50.51"
                     }
                 ],
@@ -112,37 +112,33 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                                 "Storage"
                             ],
                             "Adapter": [
-                                "Ethernet",
-                                "Ethernet 2"
+                                "Ethernet_Name",
+                                "Ethernet2_Name"
                             ],
                             "OverrideVirtualSwitchConfiguration": false,
-                            "VirtualSwitchConfigurationOverrides": {
-                                "EnableIov": "",
-                                "LoadBalancingAlgorithm": ""
-                            },
                             "OverrideQoSPolicy": false,
                             "QoSPolicyOverrides": {
-                                "PriorityValue8021Action_Cluster": "",
-                                "PriorityValue8021Action_SMB": "",
-                                "BandwidthPercentage_SMB": ""
+                                "PriorityValue8021Action_Cluster": "7",
+                                "PriorityValue8021Action_SMB": "3",
+                                "BandwidthPercentage_SMB": "50%"
                             },
                             "OverrideAdapterProperty": false,
                             "AdapterPropertyOverrides": {
                                 "JumboPacket": "",
-                                "NetworkDirect": "",
-                                "NetworkDirectTechnology": ""
+                                "NetworkDirect": "Enabled",
+                                "NetworkDirectTechnology": "iWARP"
                             }
                         }
                     ],
                     "StorageNetworks": [
                         {
-                            "Name": "Storage1Network",
-                            "NetworkAdapterName": "Ethernet",
+                            "Name": "Storage1_Network_Name",
+                            "NetworkAdapterName": "Ethernet_Adapter",
                             "VlanId": 711
                         },
                         {
-                            "Name": "Storage2Network",
-                            "NetworkAdapterName": "Ethernet 2",
+                            "Name": "Storage2_Network_Name",
+                            "NetworkAdapterName": "Ethernet2_Adapter",
                             "VlanId": 712
                         }
                     ]
@@ -253,32 +249,41 @@ The following table gives descriptions for the settings listed in the configurat
 |Setting|Description|Default|
 |---|---|---|
 |**SecuritySettings**|Section name||
-|SecurityModeSealed|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.||
-|SecuredCoreEnforced|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.||
-|VBSProtection|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|True|
-|HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster. For more information, see [Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement).|True|
-|DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).|True|
-|KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|True|
-|DriftControlEnforced|When set to `True`, the security baseline is re-applied regularly.|True|
-|CredentialGuardEnforced|When set to `True`, Credential Guard is enabled. ***What is Credential Guard?***|False|
-|SMBSigningEnforced|When set to `True`, the SMB default instance requires sign in for the client and server services. For more information, see [Overview of Server Message Block signing]().|True|
-|SMBClusterEncryption|When set to `True`, cluster east-west traffic is encrypted. For more information, see [SMB encryption]().|False|
-|SideChannelMitigationEnforced|When set to `True`, side channel mitigations are all enabled. ***What are side channel mitigations?***|True|
-|BitlockerBootVolume|When set to `True`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This is dependent on the TPM hardware used. For more information, see [BitLocker encryption for Azure Stack HCI]().|True|
-|BitlockerDataVolumes|When set to `True`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. For more information, see [BitLocker encryption for Azure Stack HCI]().|True|
-|SEDProtectionEnforced|Not used for Azure Stack HCI version 22H2.|True|
-|WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. For more information, see [Windows Defender Application Control]().|Null|
+|SecurityModeSealed|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|true|
+|SecuredCoreEnforced|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|true|
+|VBSProtection|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|true|
+|HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster. For more information, see [Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement).|true|
+|DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).|true|
+|KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|true|
+|DriftControlEnforced|When set to `true`, the security baseline is re-applied regularly. For more information, see [Security baseline settings for Azure Stack HCI](/concepts/secure-baseline?branch=release-asz-aug)|true|
+|CredentialGuardEnforced|When set to `true`, Credential Guard is enabled.|false|
+|SMBSigningEnforced|When set to `true`, the SMB default instance requires sign in for the client and server services. For more information, see [Overview of Server Message Block signing]().|true|
+|SMBClusterEncryption|When set to `true`, cluster east-west traffic is encrypted. For more information, see [SMB encryption]().|false|
+|SideChannelMitigationEnforced|When set to `true`, side channel mitigations are all enabled.|true|
+|BitlockerBootVolume|When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. For more information, see [BitLocker encryption for Azure Stack HCI]().|true|
+|BitlockerDataVolumes|When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. For more information, see [BitLocker encryption for Azure Stack HCI]().|true|
+|SEDProtectionEnforced|Not used for Azure Stack HCI version 22H2.|true|
+|WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. For more information, see [Windows Defender Application Control]().|true|
 |**Observability**|Section name||
 |StreamingDataClient|Enables telemetry data to be sent to Microsoft.||
-|EULocation|Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `False` results in all data sent to Microsoft to be stored outside of the EU.||
-|EpisodicDataUpload|When set to `True`, collects log data to facilitate quicker issue resolution.||
+|EULocation|Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU.|true|
+|EpisodicDataUpload|When set to `true`, collects log data to facilitate quicker issue resolution.|false|
 |**Cluster**|Section name||
 |Name|The cluster name provided when preparing Active Directory.||
-|StaticAddress|Sets the static IP address for the cluster rather than using an IP address from the infrastructure IP pool.||
+|StaticAddress| This value is not used during deployment and will be removed in future releases.||
 |**Storage**|Section name||
-|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](deployment-tool-new-file.md).||
+|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](deployment-tool-new-file.md).|Express|
+|**OptionalServices**|Section name||
+|VirtualSwitchName| This value is not used during deployment and will be removed in future releases.||
+|CSVPath| This value is not used during deployment and will be removed in future releases.||
+|ARBRegion| This value is not used during deployment and will be removed in future releases.||
+|**ActiveDirectorySettings**|Section name||
+|TimeZone|Your time zone.||
 |NamingPrefix|The prefix used for all AD objects created for the Azure Stack HCI deployment. The prefix must not exceed eight characters.||
 |DomainFQDN|The fully qualified domain name (FQDN) for the Active Directory domain used by your cluster.||
+|ExternalDomainFQDN| This value is not used during deployment and will be removed in future releases.||
+|ADOUPath|The path to the Active Directory Organizational Unit (ADOU) container object prepared for the deployment. Format must be that for a distinguished name (including domain components). For example: "OU=OUName,DC=contoso,DC=com".||
+|DNSForwarder|Name of the server used to forward DNS queries for external DNS names.  This value is not used during deployment and will be removed in future releases.||
 |**InfrastructureNetwork**|Section name||
 |VlanId|future use.||
 |SubnetMask|Subnet mask that matches the provided IP address space.||
@@ -295,25 +300,26 @@ The following table gives descriptions for the settings listed in the configurat
 |Name|Name of the network intent you wish to create.||
 |TrafficType|Type of network traffic. Examples include compute, storage, and management traffic.||
 |Adapter|Array of network interfaces used for the network intent.||
-|OverrideVirtualSwitchConfigurationOverrides|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False|
-|VirtualSwitchConfigurationOverrides|List of virtual switch overrides, as specified by your OEM. Do not modify this parameter without OEM validation.||
-|EnableIov|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False|
-|LoadBalancingAlgorithm|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|Hyperport|
-|OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False|
+|OverrideVirtualSwitchConfigurationOverrides|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|false|
+|OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|false|
 |QoSPolicyOverrides|List of QoS policy overrides as specified by your OEM. Do not modify this parameter without OEM validation.||
 |PriorityValue8021Action_Cluster|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|7|
 |PriorityValue8021Action_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|3|
 |BandwidthPercentage_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|50%|
-|OverrideAdapterProperty|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|False|
+|OverrideAdapterProperty|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|false|
 |AdapterPropertyOverrides|List of adapter property overrides as specified by your OEM. Do not modify this parameter without OEM validation.||
-|JumboPacket|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|???|
-|NetworkDirect|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|Enabled|
-|NetworkDirectTechnology|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|RDMA|
+|JumboPacket|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.||
+|NetworkDirect*|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|Enabled|
+|NetworkDirectTechnology**|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|iWARP|
 |**StorageNetworks**|Section name||
 |Name|Name of the storage network.||
 |NetworkAdapterName|Name of the storage network adapter.||
 |VlanID|ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. Network ATC uses VLANs 711 and 712 for the first two storage networks. Additional storage networks will use the next VLAN ID on the sequence.||
-|ADOUPath|The path to the Active Directory Organizational Unit (ADOU) container object prepared for the deployment. Format must be that for a distinguished name (including domain components). For example: "OU=OUName,DC=contoso,DC=com".||
+
+
+\* Enabled by default on pNICs and storage vNICs; disabled on management vNICs.
+
+\*\* The following order is imposed based on the first supported value: iWARP, RoCEv2, RoCEv1.
 
 ## Next steps
 
