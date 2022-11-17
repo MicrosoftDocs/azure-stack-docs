@@ -1,6 +1,6 @@
 ---
 title: Local Path Provisioner on AKS IoT
-description: Learn how to local path provisioner on AKS IoT.
+description: Learn how to use Local Path Provisioner on AKS IoT.
 author: fcabrera
 ms.author: fcabrera
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.date: 11/17/2022
 ms.custom: template-how-to
 ---
 
-# Local Path Provisioner on AKS Edge
+# Local Path Provisioner on Azure Kubernetes Service Edge
 
 Applications running in Azure Kubernetes Service (AKS) Edge may need to store and retrieve data. Persistent storage solutions allow you to store application data external from the pod running your application and allows you to maintain application data, even if the application’s pod fails.
 
@@ -16,7 +16,7 @@ Applications running in Azure Kubernetes Service (AKS) Edge may need to store an
 
 AKS Edge **K3S** version comes with Local Path Provisioner out of the box, this enables the ability to create persistent volume claims out of the box using local storage on the respective node.
 
-In this guide, you'll learn to set up local path provisioner storage and deploy a sample container on your AKS-IoT cluster. For more information, please see the official [local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
+In this guide, you'll learn to set up Local Path Provisioner storage and deploy a sample container on your AKS-IoT cluster. For more information, please see the official [local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 ## Step 1: Verify prerequisites
 
