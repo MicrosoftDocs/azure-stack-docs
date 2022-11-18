@@ -19,7 +19,7 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
    ```powershell
    $params = @{
        WorkloadType = "Linux"
-       LinuxIp = "192.168.1.163"
+       LinuxIp = "192.168.1.173"
        ourFile = ".\LinuxWorkerNodeConfig.json"
    }
    $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
@@ -31,7 +31,7 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
    $params = @{
        WorkloadType = "Linux"
        ControlPlane = $true
-       LinuxIp = "192.168.1.163"
+       LinuxIp = "192.168.1.173"
        ourFile = ".\LinuxWorkerNodeConfig.json"
    }
    $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
@@ -42,7 +42,7 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
    ```powershell
    $params = @{
        WorkloadType = "Windows"
-       WindowsIp = "192.168.1.164"
+       WindowsIp = "192.168.1.174"
        ourFile = ".\WindowsWorkerNodeConfig.json"
    }
    $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
@@ -53,8 +53,21 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
    ```powershell
    $params = @{
        WorkloadType = "LinuxAndWindows"
-       LinuxIp = "192.168.1.163"
-       WindowsIp = "192.168.1.164"
+       LinuxIp = "192.168.1.173"
+       WindowsIp = "192.168.1.174"
+       ourFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+   }
+   $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
+   ```
+
+- To add a Linux Control plane node and Windows worker node, specify the `WorkloadType` as `LinuxAndWindows`, set the `ControlPlane` flag as true and provide a unique IP address for both the Linux and Windows node as shown below.
+
+   ```powershell
+   $params = @{
+       WorkloadType = "LinuxAndWindows"
+       LinuxIp = "192.168.1.173"
+       ControlPlane = $true
+       WindowsIp = "192.168.1.174"
        ourFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
    }
    $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
