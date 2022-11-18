@@ -472,7 +472,7 @@ Before registration, make sure the [prerequisites](#prerequisites-for-cluster-re
 
 1. Run `Connect-AzAccount -Tenant "<TenantID>" -DeviceCode`.
    - Use the SPN to connect. The SPN you use should have all the required permissions on the subscription(s) [as listed here](#assign-permissions-from-azure-portal).
-1. Assign `$token= Get-AzAccessToken`.
+1. Assign `$token = Get-AzAccessToken`.
 1. Run the following cmdlet:
 
    ```powershell
