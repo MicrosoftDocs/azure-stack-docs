@@ -15,7 +15,7 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 ## Module Powershell Commands
 
-### [Add-AksEdgeNode](./add-aksedgeode.md)
+### [Add-AksEdgeNode](./add-aksedgenode.md)
 
 Adds a new AksIot node to the cluster.
 

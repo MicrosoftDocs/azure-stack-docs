@@ -17,7 +17,7 @@ Pulls the KubeConfig file from the Linux node.
 
 ## Syntax
 
-```
+```powershell
 Get-AksEdgeKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```

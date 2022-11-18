@@ -18,7 +18,7 @@ Checks whether the VM was created.
 
 ## Syntax
 
-```
+```powershell
 Test-AksEdgeNode [[-WorkloadType] <String>] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ It returns true if the virtual machine was created or false if not.
 
 ## Examples
 
-```
+```powershell
 Test-AksEdgeNode -WorkloadType Windows
 ```
 

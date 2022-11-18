@@ -20,8 +20,8 @@
     href: get-aksedgelogs.md
   - name: Get-AksEdgeManagedServiceToken
     href: get-aksedgemanagedservicetoken.md
-  - name: Invoke-AksEdgeLinuxNodeCommand
-    href: invoke-aksedgelinuxnodecommand.md
+  - name: Invoke-AksEdgeNodeCommand
+    href: invoke-aksedgenodecommand.md
   - name: New-AksEdgeDeploymentConfig
     href: new-aksedgedeploymentconfig.md
   - name: New-AksEdgeDeployment

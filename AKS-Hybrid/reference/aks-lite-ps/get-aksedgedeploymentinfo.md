@@ -17,7 +17,7 @@ Gets AksEdge deployment information.
 
 ## Syntax
 
-```
+```powershell
 Get-AksEdgeDeploymentInfo
 ```
 

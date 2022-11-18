@@ -128,7 +128,7 @@ Since this sample is deployed as a service of type **NodePort**, we can get the 
 kubectl cluster-info
 ```
 
-![Screenshot showing Windows cluster information.](media/aks-lite/win-clusterinfo.png)
+![Screenshot showing Windows cluster information.](media/aks-lite/win-cluster-info.png)
 
 ### 4. Check out your running Windows sample
 
