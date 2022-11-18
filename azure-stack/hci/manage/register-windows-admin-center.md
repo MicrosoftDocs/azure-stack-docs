@@ -84,7 +84,7 @@ After Windows Admin Center is registered with Azure, you're ready to [register A
 ### Grant consent to the new Azure application ID
 
 > [!NOTE]
-> This procedure only applies if you an Azure AD admin.
+> This procedure applies only if you an Azure AD admin.
 
 If you are an Azure AD admin, follow these steps to grant consent to a new Azure application ID:
 
@@ -113,13 +113,17 @@ If you are an Azure AD admin, follow these steps to grant consent to a new Azure
 
 ## Unregister Windows Admin Center
 
+When you unregister Windows Admin Center from Azure, it removes the association between Windows Admin Center and the Azure app ID that was provided by your Azure AD admin or created when you registered Windows Admin Center. It doesn't delete the Azure app nor affect any Azure services used by servers or clusters managed by Windows Admin Center.
+
 Follow these steps to unregister Windows Admin Center from Azure:
 
-1. Select the **Settings** gear icon from the top right corner of the page.
+1. Launch Windows Admin Center and select the **Settings** gear icon from the top right corner of the page.
 
-1. From the **Gateway** menu in the left pane, select **Azure**, then **Unregister**, then **Confirm**.
+1. From the **Gateway** menu in the left pane, select **Register**.
 
-This removes the association between Windows Admin Center and the Azure AD app ID that was provided by your Azure AD admin or created when you registered Windows Admin Center. It doesn't delete the Azure AD app nor affect any Azure services used by servers or clusters managed by Windows Admin Center.
+1. From the **Register with Azure** pane, select the **Unregister** button.
+
+1. In the confirmation dialog, select **Confirm**.
 
 ## Next steps
 
