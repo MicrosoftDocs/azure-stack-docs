@@ -3,7 +3,7 @@ title: Azure Stack HCI deployment overview (preview)
 description: Learn about the deployment methods for Azure Stack HCI (preview).
 author: dansisson
 ms.topic: overview
-ms.date: 10/27/2022
+ms.date: 11/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
