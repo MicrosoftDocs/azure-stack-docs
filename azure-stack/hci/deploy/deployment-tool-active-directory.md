@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI deployments (preview)
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 10/27/2022
+ms.date: 11/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,7 +23,7 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
-- Install the PowerShell module to prepare Active Directory. Run the following command:
+- Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/1.0) and run the following command:
 
     ```azurepowershell
     Install-module HCIAdObjectPreCreation -Repository PSGallery
@@ -86,6 +86,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
 
+
     Here is a sample output from a successful completion of the script:
 
     ```    
@@ -137,6 +138,8 @@ To prepare and configure Active Directory, follow these steps:
 
 > [!NOTE]
 > To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
+
+
 
 ## Next steps
 

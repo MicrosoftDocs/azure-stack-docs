@@ -33,7 +33,7 @@ Before you begin, make sure you've done the following:
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
-1. In the deployment UX, select the first server listed for the cluster to act as a staging server during deployment.
+1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
@@ -103,6 +103,9 @@ If you want to use an existing configuration file you have previously created, s
     1. Provide the local administrator credentials. Make sure that the local administrator credentials are identical across all the servers.
 
     1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server.
+    
+        > [!NOTE]
+        > The first server is the staging server from which you are currently running the deployment tool.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png":::
 
@@ -169,7 +172,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
-    The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the Lifecycle Manager and one or multiple data volumes for your use.
+    The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the deployment orchestrator and one or multiple data volumes for your use.
 
     If the resiliency configuration for data volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
 
