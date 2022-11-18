@@ -55,15 +55,15 @@ The following network topologies were tested and validated for this release:
 
 - Two physical servers with direct (switchless) storage network connections to an L2 switch.
 
-    **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch.
+    **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single TOR switch.
     
-    :::image type="content" source="media/deployment-tool/introduction/deployment-topology-1.png" alt-text="Diagram that shows a switched storage network with single switch configuration." lightbox="media/deployment-tool/introduction/deployment-topology-1.png":::
+    :::image type="content" source="../plan/media/plan-deployment/two-node-switchless-single-switch.png" alt-text="Diagram that shows a switched storage network with single switch configuration." lightbox="../plan/media/plan-deployment/two-node-switchless-single-switch.png":::
 
 - Two physical servers with direct (switchless) storage network connections to redundant L3 switches.
 
-    **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant L3 switches.
+    **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant TOR switches.
 
-    :::image type="content" source="media/deployment-tool/introduction/switchless-two-tor-switch.png" alt-text="Diagram that shows a switchless storage network configuration." lightbox="media/deployment-tool/introduction/switchless-two-tor-switch.png":::
+    :::image type="content" source="../plan/media/plan-deployment/two-node-switchless-two-switches.png" alt-text="Diagram that shows a switchless storage network configuration." lightbox="../plan/media/plan-deployment/two-node-switchless-two-switches.png":::
 
 - Four physical servers with storage network connections to an L2-switch.
 
@@ -71,7 +71,7 @@ The following network topologies were tested and validated for this release:
 
     :::image type="content" source="media/deployment-tool/introduction/four-node-non-converged-redundant-l2-switches-1.png" alt-text="Diagram that shows 4 nodes deployed using a non converged network with storage network connections to L2 network switch." lightbox="media/deployment-tool/introduction/four-node-non-converged-redundant-l2-switches-1.png":::
 
-- Four physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.
+- Four physical servers deployed using a fully-converged network for compute, storage, and management and with redundant TOR switches.
 
     **Configuration 4**: The following diagram shows four physical servers using a fully converged network (for compute, management, and storage) and with storage network connections to redundant L3 switches.
 
