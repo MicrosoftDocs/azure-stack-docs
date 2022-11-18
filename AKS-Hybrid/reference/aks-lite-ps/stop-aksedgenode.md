@@ -13,23 +13,23 @@ ms.lastreviewed: 10/04/2022
 # Stop-AksEdgeNode
 
 ## Synopsis
-Stops the Linux node VM if it's currently started.
+Stops the node VM if it's currently started.
 
 ## Syntax
 
-```
+```powershell
 Stop-AksEdgeNode
 ```
 
 ## Description
-The Stop-AksEdgeLinuxNode cmdlet stops the virtual machine.
+The Stop-AksEdgeNode cmdlet stops the virtual machine.
 No action is taken if the virtual machine is already stopped
 
 ## Examples
 
 
-```
-Stop-AksEdgeLinuxNode
+```powershell
+Stop-AksEdgeNode
 ```
 
 ## Next steps

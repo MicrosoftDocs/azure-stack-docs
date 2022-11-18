@@ -57,7 +57,7 @@ You can't remove the Linux node alone, you must remove the deployment if you nee
 > [!NOTE]
 > If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
 
-> [!NOTE] 
+> [!NOTE]
 > There is a known issue in which repeatedly creating a new deployment and removing the node may result in an "error during ConnectToVirtualMachine". If this occurs, reboot your system to resolve the error.
 
 ## Remove nodes on a multi-machine cluster
@@ -87,7 +87,7 @@ Set-AksEdgeNodeToDrain -WorkloadType LinuxAndWindows
 Remove-AksEdgeDeployment
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > There is a known issue in which repeatedly creating a new deployment and removing the node can result in an error. If this occurs, reboot your system to resolve the error.
 
 ## Uninstall AKS edge

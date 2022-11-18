@@ -3,44 +3,44 @@
   expanded: true
   items:
   - name: Add-AksEdgeNode
-    href: add-aksiotnode.md
+    href: add-aksedgenode.md
   - name: Export-AksEdgeWorkerNodeConfig
     href: export-aksedgeworkernodeconfig.md
   - name: Get-AksEdgeDeploymentInfo
-    href: get-aksiotdeploymentinfo.md
+    href: get-aksedgedeploymentinfo.md
   - name: Get-AksEdgeEventLog
-    href: get-aksioteventlog.md
+    href: get-aksedgeeventlog.md
   - name: Get-AksEdgeKubeConfig
-    href: get-aksiotkubeconfig.md
+    href: get-aksedgekubeconfig.md
   - name: Get-AksEdgeLinuxNodeAddr
-    href: get-aksiotlinuxnodeaddr.md
+    href: get-aksedgenodeaddr.md
   - name: Get-AksEdgeLinuxNodeName
-    href: get-aksiotlinuxnodename.md
+    href: get-aksedgenodename.md
   - name: Get-AksEdgeLogs
-    href: get-aksiotlogs.md
+    href: get-aksedgelogs.md
   - name: Get-AksEdgeManagedServiceToken
-    href: get-aksiotmanagedservicetoken.md
+    href: get-aksedgemanagedservicetoken.md
   - name: Invoke-AksEdgeLinuxNodeCommand
-    href: invoke-aksiotlinuxnodecommand.md
+    href: invoke-aksedgelinuxnodecommand.md
   - name: New-AksEdgeDeploymentConfig
     href: new-aksedgedeploymentconfig.md
   - name: New-AksEdgeDeployment
-    href: new-aksiotdeployment.md
+    href: new-aksedgedeployment.md
   - name: Remove-AksEdgeDeployment
     href: remove-aksedgedeployment.md
   - name: Remove-AksEdgeNode
-    href: remove-aksiotnode.md
+    href: remove-aksedgenode.md
   - name: Set-AksEdgeNodeToDrain
     href: set-aksedgenodetodrain.md
   - name: Set-AksEdgeArcConnection
-    href: set-aksiotarcconnection.md
+    href: set-aksedgearcconnection.md
   - name: Start-AksEdgeNode
-    href: start-aksiotlinuxnode.md
+    href: start-aksedgenode.md
   - name: Stop-AksEdgeNode
-    href: stop-aksiotlinuxnode.md
+    href: stop-aksedgenode.md
   - name: Test-AksEdgeDeployment
     href: test-aksedgedeployment.md
   - name: Test-AksEdgeNode
-    href: test-aksiotlinuxnode.md
+    href: test-aksedgenode.md
   - name: Test-AksEdgeNetworkParameters
-    href: test-aksiotnetworkparameters.md
+    href: test-aksedgenetworkparameters.md

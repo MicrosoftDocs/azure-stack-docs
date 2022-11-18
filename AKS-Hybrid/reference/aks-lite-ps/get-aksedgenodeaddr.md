@@ -17,7 +17,7 @@ Gets the Linux VM's IP and MAC addresses
 
 ## Syntax
 
-```
+```powershell
 Get-AksEdgeNodeAddr [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AksEdgeNodeAddr [<CommonParameters>]
 The Get-AksEdgeNodeAddr cmdlet queries the node's primary interface for its current IP & Mac address, which can change over time.
 
 ## Examples
-```
+```powershell
 Get-AksEdgeNodeAddr
 ```
 

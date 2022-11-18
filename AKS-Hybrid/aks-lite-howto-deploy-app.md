@@ -80,7 +80,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 ### 5. Test your application
 
 To see the application in action, open a web browser to the external IP address of your service:
-![linux app running](./media/aks-lite/linux-app-up.png)
+![Screenshot showing Linux apps running](./media/aks-lite/linux-app-up.png)
 
 If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=/azure/container-registry/breadcrumb/toc.json&toc=/azure/container-registry/toc.json).
 

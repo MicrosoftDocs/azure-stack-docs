@@ -20,7 +20,7 @@ Creates a new AksIot deployment on this machine.
 
 ### fromJsonConfigFile (Default)
 
-```
+```powershell
 New-AksEdgeDeployment [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 

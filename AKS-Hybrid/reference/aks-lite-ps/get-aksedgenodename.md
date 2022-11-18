@@ -17,7 +17,7 @@ Gets the Linux VM's hostname
 
 ## Syntax
 
-```
+```powershell
 Get-AksEdgeNodeName [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AksEdgeNodeName [<CommonParameters>]
 The Get-AksEdgeNodeName queries the virtual machine's current hostname from wssdagent.
 
 ## Examples
-```
+```powershell
 Get-AksEdgeNodeName
 ```
 

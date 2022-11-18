@@ -20,7 +20,7 @@ Validates AksIot network parameters, useful as a pre-deployment step.
 
 ### fromJsonConfigFile (Default)
 
-```
+```powershell
 Test-AksEdgeNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Test-AksEdgeNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address
 
 ### fromJsonConfigString
 
-```
+```powershell
 Test-AksEdgeNetworkParameters -JsonConfigString <String> [<CommonParameters>]
 ```
 

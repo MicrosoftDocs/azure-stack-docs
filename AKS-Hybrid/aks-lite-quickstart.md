@@ -38,7 +38,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
 2. In this quickstart, we'll use a sample Linux application that can be downloaded from [here](https://github.com/parameshbabu/AKS-IoT-preview/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the repository as a .zip
 
-Extract the GitHub .zip file and move the MSI and all the other files into the extracted folder for convenience. This will be your working directory.
+3. Extract the GitHub .zip file and move the MSI and all the other files into the extracted folder for convenience. This will be your working directory.
 
 4. Before you install, make sure you've removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
 

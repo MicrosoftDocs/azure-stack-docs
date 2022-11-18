@@ -1,7 +1,7 @@
 ---
-title: Start-AksEdgeLinuxNode for AKS Lite
+title: Start-AksEdgeNode for AKS Lite
 author: rcheeran
-description: The Start-AksEdgeLinuxNode PowerShell command starts the Linux node VM 
+description: The Start-AksEdgeNode PowerShell command starts the Linux node VM 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -11,27 +11,27 @@ ms.lastreviewed: 10/04/2022
 ---
 
 
-# Start-AksEdgeLinuxNode
+# Start-AksEdgeNode
 
 ## Synopsis
 
-Starts the Linux node VM if it's currently stopped.
+Starts the node VM if it's currently stopped.
 
 ## Syntax
 
-```
-Start-AksEdgeLinuxNode
+```powershell
+Start-AksEdgeNode
 ```
 
 ## Description
 
-The Start-AksEdgeLinuxNode cmdlet starts the virtual machine.
+The Start-AksEdgeNode cmdlet starts the virtual machine.
 No action is taken if the virtual machine is already started.
 
 ## Examples
 
-```
-Start-AksEdgeLinuxNode
+```powershell
+Start-AksEdgeNode
 ```
 
 ## Next steps

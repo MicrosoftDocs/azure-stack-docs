@@ -17,7 +17,7 @@ Collects event logs from the deployment.
 
 ## Syntax
 
-```
+```powershell
 Get-AksEdgeEventLog [[-OutputPath] <String>] [<CommonParameters>]
 ```
 
@@ -27,12 +27,12 @@ The Get-AksEdgeEventLog cmdlet gets the event log from the AksIot deployment
 ## Examples
 
 ### Example 1
-```
+```powershell
 Get-AksEdgeEventLog
 ```
 
 ### Example 2
-```
+```powershell
 Get-AksEdgeEventLog -OutputPath ~/Desktop
 ```
 
