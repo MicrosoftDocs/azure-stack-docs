@@ -6,18 +6,6 @@
     href: aks-hybrid-options-overview.md
   - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
-  - name: Evaluation guide
-    items:
-      - name: Introduction
-        href: aks-hci-evaluation-guide.md
-      - name: 1 - Evaluate AKS on Azure Stack HCI
-        href: aks-hci-evaluation-guide-1.md
-      - name: 2a - Deploy with Windows Admin Center
-        href: aks-hci-evaluation-guide-2a.md
-      - name: 2b - Deploy with PowerShell
-        href: aks-hci-evaluation-guide-2b.md
-      - name: 3 - Explore the environment
-        href: aks-hci-evaluation-guide-3.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
   - name: Quotas and resource limits
@@ -33,6 +21,18 @@
 - name: Quickstarts
   expanded: true
   items:
+    - name: Evaluation guide
+      items:
+      - name: Introduction
+        href: aks-hci-evaluation-guide.md
+      - name: 1 - Evaluate AKS on Azure Stack HCI
+        href: aks-hci-evaluation-guide-1.md
+      - name: 2a - Deploy with Windows Admin Center
+        href: aks-hci-evaluation-guide-2a.md
+      - name: 2b - Deploy with PowerShell
+        href: aks-hci-evaluation-guide-2b.md
+      - name: 3 - Explore the environment
+        href: aks-hci-evaluation-guide-3.md
     - name: Deploy an AKS cluster
       items:
         - name: Use PowerShell
@@ -103,6 +103,8 @@
     items:
       - name: Pricing details
         href: pricing.md
+      - name: Azure Hybrid Benefit
+        href: azure-hybrid-benefit.md
 - name: How-to guides
   items: 
     - name: Install
@@ -377,6 +379,8 @@
     href: https://aka.ms/AKS-hybrid-Releasenotes
   - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
+  - name: AKS hybrid Azure CLI
+    xref: /cli/azure/hybridaks?view=azure-cli-latest
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
