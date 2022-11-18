@@ -25,15 +25,15 @@ This release comes with WDAC enabled and enforced by default. We're providing a 
 
 Base policy details are as follows:
 
-> * PolicyGuid    : {A6368F66-E2C9-4AA2-AB79-8743F6597683}
-> * PolicyName    : MS_Base_Policy
-> * PolicyVersion : MS_Base_Policy_1.0.0.0
-> * PolicyScope   : Kernel & User
+* PolicyGuid    : {A6368F66-E2C9-4AA2-AB79-8743F6597683}
+* PolicyName    : MS_Base_Policy
+* PolicyVersion : MS_Base_Policy_1.0.0.0
+* PolicyScope   : Kernel & User
 
 The base policy identifier is always the same across deployments. Customers and partners can build supplemental policies based on the base policy. The base policy is combined with the recommended block rules for drivers and applications documented here:
 
-> * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
-> * [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
+* [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
+* [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
 
 Here's the Microsoft base policy prior to merging with blocked rules:
 
