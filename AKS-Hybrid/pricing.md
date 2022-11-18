@@ -48,7 +48,7 @@ For detailed pricing information, see the [AKS hybrid pricing details](https://a
 
 - If you enable hyper-threading on the physical computer, this will reduce the measured vCPU count by 50 percent.
 
-Note: Running Windows Server containers on AKS requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, Azure Hybrid benefits may apply, hence reducing or eliminating the Windows Server license fees.
+Note: Running Windows Server containers on AKS requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid benefits](azure-hybrid-benefit.md) may apply, hence reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 
