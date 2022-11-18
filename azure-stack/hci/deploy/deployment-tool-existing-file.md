@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using an existing configuration file (preview)
 description: Learn how to deploy Azure Stack HCI using an existing configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 11/17/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -32,7 +32,7 @@ Before you begin, make sure you have done the following:
 
 ## Create the configuration file
 
-Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively.
+Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively. For descriptions of each setting, see the reference section below.
 
 ```json
 {
@@ -63,7 +63,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "EpisodicDataUpload": true
                 },
                 "Cluster": {
-                    "Name": "v-cluster",
+                    "Name": "cluster_name",
                     "StaticAddress": [
                         ""
                     ]
@@ -72,14 +72,13 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                     "ConfigurationMode": "Express"
                 },
                 "OptionalServices": {
-                    "VirtualSwitchName": "vSwitch",
-                    "CSVPath": "C:\\clusterStorage\\Volume1",
-                    "ARBRegion": "eastus"
+                    "VirtualSwitchName": "",
+                    "CSVPath": "",
+                    "ARBRegion": ""
                 },
-                "TimeZone": "Pacific Standard Time",
                 "NamingPrefix": "HCI002",
                 "DomainFQDN": "contoso.com",
-                "ExternalDomainFQDN": "contoso.com",
+                "ExternalDomainFQDN": "",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",
@@ -98,7 +97,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 ],
                 "PhysicalNodes": [
                     {
-                        "Name": "node11",
+                        "Name": "node1_name",
                         "IPv4Address": "10.0.50.51"
                     }
                 ],
@@ -112,37 +111,33 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                                 "Storage"
                             ],
                             "Adapter": [
-                                "Ethernet",
-                                "Ethernet 2"
+                                "Ethernet_Name",
+                                "Ethernet2_Name"
                             ],
                             "OverrideVirtualSwitchConfiguration": false,
-                            "VirtualSwitchConfigurationOverrides": {
-                                "EnableIov": "",
-                                "LoadBalancingAlgorithm": ""
-                            },
                             "OverrideQoSPolicy": false,
                             "QoSPolicyOverrides": {
-                                "PriorityValue8021Action_Cluster": "",
-                                "PriorityValue8021Action_SMB": "",
-                                "BandwidthPercentage_SMB": ""
+                                "PriorityValue8021Action_Cluster": "7",
+                                "PriorityValue8021Action_SMB": "3",
+                                "BandwidthPercentage_SMB": "50%"
                             },
                             "OverrideAdapterProperty": false,
                             "AdapterPropertyOverrides": {
                                 "JumboPacket": "",
-                                "NetworkDirect": "",
-                                "NetworkDirectTechnology": ""
+                                "NetworkDirect": "Enabled",
+                                "NetworkDirectTechnology": "iWARP"
                             }
                         }
                     ],
                     "StorageNetworks": [
                         {
-                            "Name": "Storage1Network",
-                            "NetworkAdapterName": "Ethernet",
+                            "Name": "Storage1_Network_Name",
+                            "NetworkAdapterName": "Ethernet_Adapter",
                             "VlanId": 711
                         },
                         {
-                            "Name": "Storage2Network",
-                            "NetworkAdapterName": "Ethernet 2",
+                            "Name": "Storage2_Network_Name",
+                            "NetworkAdapterName": "Ethernet2_Adapter",
                             "VlanId": 712
                         }
                     ]
@@ -245,6 +240,79 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 1. It can take up to 1.5 hours for the deployment to complete. You can monitor your deployment progress and the details in near real-time.
 
     :::image type="content" source="media/deployment-tool/config-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/config-file/deployment-progress.png":::
+
+## Reference: Configuration file settings
+
+The following table gives descriptions for the settings listed in the configuration file:
+
+|Setting|Description|
+|---|---|
+|**SecuritySettings**|Section name|
+|SecurityModeSealed|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|SecuredCoreEnforced|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|VBSProtection|By default, Virtualization-based Security (VBS) is enabled on your Azure Stack HCI cluster. For more information, see [Virtualization-based Security](/windows-hardware/design/device-experiences/oem-vbs).|
+|HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster. For more information, see [Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement).|
+|DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).|
+|KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|
+|DriftControlEnforced|When set to `true`, the security baseline is re-applied regularly. For more information, see [Security baseline settings for Azure Stack HCI](/concepts/secure-baseline?branch=release-asz-aug)|
+|CredentialGuardEnforced|When set to `true`, Credential Guard is enabled.|
+|SMBSigningEnforced|When set to `true`, the SMB default instance requires sign in for the client and server services. For more information, see [Overview of Server Message Block signing]().|
+|SMBClusterEncryption|When set to `true`, cluster east-west traffic is encrypted. For more information, see [SMB encryption]().|
+|SideChannelMitigationEnforced|When set to `true`, side channel mitigations are all enabled.|
+|BitlockerBootVolume|When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. For more information, see [BitLocker encryption for Azure Stack HCI]().|
+|BitlockerDataVolumes|When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. For more information, see [BitLocker encryption for Azure Stack HCI]().|
+|SEDProtectionEnforced|Not used for Azure Stack HCI version 22H2.|
+|WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. For more information, see [Windows Defender Application Control]().|
+|**Observability**|Section name|
+|StreamingDataClient|Enables telemetry data to be sent to Microsoft.|
+|EULocation|Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU.|
+|EpisodicDataUpload|When set to `true`, collects log data to facilitate quicker issue resolution.|
+|**Cluster**|Section name|
+|Name|The cluster name provided when preparing Active Directory.|
+|StaticAddress| This value is not used during deployment and will be removed in future releases.|
+|**Storage**|Section name|
+|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](deployment-tool-new-file.md).|
+|**OptionalServices**|Section name|
+|VirtualSwitchName| This value is not used during deployment and will be removed in future releases.|
+|CSVPath| This value is not used during deployment and will be removed in future releases.|
+|ARBRegion| This value is not used during deployment and will be removed in future releases.|
+|**ActiveDirectorySettings**|Section name|
+|NamingPrefix|The prefix used for all AD objects created for the Azure Stack HCI deployment. The prefix must not exceed eight characters.|
+|DomainFQDN|The fully qualified domain name (FQDN) for the Active Directory domain used by your cluster.|
+|ExternalDomainFQDN| This value is not used during deployment and will be removed in future releases.|
+|ADOUPath|The path to the Active Directory Organizational Unit (ADOU) container object prepared for the deployment. Format must be that for a distinguished name (including domain components). For example: "OU=OUName,DC=contoso,DC=com".|
+|DNSForwarder|Name of the server used to forward DNS queries for external DNS names. This value is not used during deployment and will be removed in future releases.|
+|**InfrastructureNetwork**|Section name|
+|VlanId|Only supported value in version 2210 is `0`.|
+|SubnetMask|Subnet mask that matches the provided IP address space.|
+|Gateway|Default gateway that should be used for the provided IP address space.|
+|IPPools|Range of IP addresses from which addresses are allocated for nodes within a subnet.|
+|StartingAddress|Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.|
+|EndingAddress|Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.|
+|DNSServers| IPv4 address of the DNS servers in your environment. DNS servers are required as they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.|
+|**PhysicalNodes**|Section name|
+|Name|Name of each physical server on your Azure Stack HCI cluster.|
+|IPv4Address|The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.|
+|**HostNetwork**|Section name|
+|Intents|The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.|
+|Name|Name of the network intent you wish to create.|
+|TrafficType|Type of network traffic. Examples include compute, storage, and management traffic.|
+|Adapter|Array of network interfaces used for the network intent.|
+|OverrideVirtualSwitchConfigurationOverrides|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|OverrideQoSPolicy|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|QoSPolicyOverrides|List of QoS policy overrides as specified by your OEM. Do not modify this parameter without OEM validation.|
+|PriorityValue8021Action_Cluster|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|PriorityValue8021Action_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|BandwidthPercentage_SMB|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|OverrideAdapterProperty|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|AdapterPropertyOverrides|List of adapter property overrides as specified by your OEM. Do not modify this parameter without OEM validation.|
+|JumboPacket|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|NetworkDirect|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|NetworkDirectTechnology|This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.|
+|**StorageNetworks**|Section name|
+|Name|Name of the storage network.|
+|NetworkAdapterName|Name of the storage network adapter.|
+|VlanID|ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. Network ATC uses VLANs 711 and 712 for the first two storage networks. Additional storage networks will use the next VLAN ID on the sequence.|
 
 ## Next steps
 

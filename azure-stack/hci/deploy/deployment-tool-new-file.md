@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 10/25/2022
+ms.date: 11/10/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -69,26 +69,30 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step 1.1 **Provide registration details**, enter the following details to authenticate your cluster with Azure:
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
-
     1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
+
+    1. Under **Authentication**, copy the authentication code for your Azure cloud:
     
-    1. Copy the authentication code.
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-6b-authentication.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - authentication page." lightbox="media/deployment-tool/new-file/deploy-new-step-6b-authentication.png":::
     
-    1. Select **login**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported. 
+    c. Select **Sign in**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported.
+    
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-6c-enter-code.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - copy authentication code page." lightbox="media/deployment-tool/new-file/deploy-new-step-6c-enter-code.png":::
 
-    1. Go back to the deployment screen and provide the Azure registration details.
+    d. Go back to the deployment screen and provide the Azure registration details:
+    
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-6-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-6-registration-details.png":::
 
-    1. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
+    e. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
 
-    1. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
+    f. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
 
-        > [!NOTE]
-        > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
+    > [!NOTE]
+    > Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.
 
-    1. Select an existing **Azure resource group** from the dropdown to associate with the cluster resource. To create a new resource group, leave the field empty.
+    g. Select an existing **Azure resource group** from the dropdown to associate with the cluster resource. To create a new resource group, leave the field empty.
 
-    1. Select an **Azure region** from the dropdown or leave the field empty to use the default.
+    h. Select an **Azure region** from the dropdown or leave the field empty to use the default.
 
 1. On step **1.2 Configure privacy**, set the privacy settings as they apply to your organization.
 

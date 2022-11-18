@@ -19,8 +19,6 @@ ms.date: 11/07/2022
 
 You can use the parameters in the autoscaler profile object to define scale events in AKS hybrid. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool. This article explains how the autoscaler works, describes default autoscaler profile values, and tells how to configure and use a profile definition.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Using profiles
 
 Cluster autoscaler profiles have the following attributes:

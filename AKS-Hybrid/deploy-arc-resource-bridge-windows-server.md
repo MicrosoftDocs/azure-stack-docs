@@ -16,9 +16,9 @@ ms.date: 09/29/2022
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
 ## Step 1: Install August release of AKS host management cluster 
-At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](/kubernetes-walkthrough-powershell). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
+At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
 
-You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing the `-version "1.0.13.10907"` parameter to the [`Set-AksHciConfig`](/aks-hci/reference/ps/set-akshciconfig.md) command.
+You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing the `-version "1.0.13.10907"` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
 
 You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
 ```PowerShell

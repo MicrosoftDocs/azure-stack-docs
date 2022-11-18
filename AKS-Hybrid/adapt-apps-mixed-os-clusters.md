@@ -18,8 +18,6 @@ ms.reviewer: abha
 
 AKS hybrid enables you to run Kubernetes clusters with both Linux and Windows nodes, but you'll need to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
 ## Node selectors
@@ -92,7 +90,7 @@ tolerations:
 
 ### Using taints when you can't access the pod spec
 
-The steps in this section work well if you're in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won’t have access to the pod spec unless you want to download and edit the chart.
+The steps in this section work well if you're in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won't have access to the pod spec unless you want to download and edit the chart.
 
 If you deploy these Helm charts to a mixed cluster environment with both Linux and Windows worker nodes, your application pods will fail with the error "ImagePullBackOff" - for example:
 

@@ -1,9 +1,9 @@
 ---
-title: Connect an Azure Kubernetes Service cluster to Azure Arc
+title: Connect an Azure Kubernetes Service cluster to Azure Arc in AKS hybrid
 description: Connect an Azure Kubernetes Service (AKS) cluster to Kubernetes.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/07/2022
+ms.date: 11/09/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -12,9 +12,9 @@ ms.reviewer: abha
 # Keyword: AKS cluster HCI cluster
 ---
 
-# Connect an Azure Kubernetes Service cluster to Azure Arc
+# Connect an Azure Kubernetes Service cluster to Azure Arc in AKS hybrid
 
-> Applies to: Azure Kubernetes Service,AKS
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 When an Azure Kubernetes Service (AKS) cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
 
@@ -26,7 +26,7 @@ To connect a Kubernetes cluster to Azure, the cluster administrator needs to dep
 
 AKS supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps describe how to connect AKS clusters to Azure Arc. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
+The following steps describe how to connect AKS clusters to Azure Arc in AKS hybrid. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
 
 ## Before you begin
 
