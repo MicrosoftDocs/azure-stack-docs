@@ -73,7 +73,7 @@ Now that AKS on Windows IoT is installed on your primary machine, this article d
    $workernodeConfig = Export-AksEdgeWorkerNodeConfig @params
    ```
 
-This command returns a JSON string and also stores the JSON content in the **.\*WorkerNodeConfig.json** file. This command also exports the necessary data to join a cluster in the JSON format.
+This command returns a JSON string and also stores the JSON content in the **.\WorkerNode.json** file. This command also exports the necessary data to join a cluster in the JSON format.
 
 ## 2. Bring up a node on your secondary machine
 
@@ -82,10 +82,10 @@ Now you're ready to bring up clusters on your secondary machines. You cannot mix
 >[!NOTE]
 > The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
-To deploy the corresponding node on the secondary machine, you can now use the **WorkerNodeConfig.json** file created in the previous step:
+To deploy the corresponding node on the secondary machine, you can now use the **WorkerNode.json** file created in the previous step:
 
 ```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\WorkerNodeConfig.json
+New-AksEdgeDeployment -JsonConfigFilePath .\WorkerNode.json
 ```
 
 ## 3. Validate your cluster setup
