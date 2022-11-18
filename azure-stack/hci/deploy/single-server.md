@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
 ms.lastreviewed: 11/14/2022
-ms.date: 11/14/2022
+ms.date: 11/18/2022
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -69,37 +69,9 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 
 1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md).
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md).
-3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`.
-
-   ```powershell
-   Set-Storagepool -Friendlyname S2D* -FaultDomainAwarenessDefault StorageScaleUnit
-   ```
-
-   > [!NOTE]
-   > After changing the fault-domain awareness, data copies are spread across servers in the cluster, making the 
-      cluster resilient to faults at the entire server level. The volume fault domain is derived from the storage pool's 
-      default settings and the resiliency will remain as two-way mirror unless you change it. This means that any new 
-      volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain 
-      setting and will have a two-way mirror resiliency setting.
-
-4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`.
-
-   ```powershell
-   Stop-ClusterPerformanceHistory -DeleteHistory
-   ```
-
-5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`.
-
-   ```powershell
-   Start-ClusterPerformanceHistory
-   ```
-
-6. To change the fault domain on existing volumes after scale-out, do the following:
-    1. Create a new volume that's thinly provisioned and has the same size as the old volume.
-    2. Migrate all VMs and data from old volume to new volume.
-    3. Delete the old volume.
-
-7. [Set up a cluster witness](../manage/witness.md).
+3. Once the server is added, change the cluster's fault domain awareness from PhysicalDisk to ScaleScaleUnit: [Inline fault domain changes](../manage/single-node-scale-out.md#inline-fault-domain-changes).
+4. [Optional] If additional resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
+5. [Set up a cluster witness](../manage/witness.md).
 
 ## Next steps
 
