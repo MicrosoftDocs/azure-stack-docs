@@ -1,7 +1,7 @@
 ---
-title: New-AksIotDeployment for AKS Lite
+title: New-AksEdgeDeployment for AKS Lite
 author: rcheeran
-description: The New-AksIotDeployment PowerShell command creates a new AksIot deployment 
+description: The New-AksEdgeDeployment PowerShell command creates a new AksIot deployment 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# New-AksIotDeployment
+# New-AksEdgeDeployment
 
 ## Synopsis
 
@@ -20,14 +20,14 @@ Creates a new AksIot deployment on this machine.
 
 ### fromJsonConfigFile (Default)
 
-```
-New-AksIotDeployment [-JsonConfigFilePath <String>] [<CommonParameters>]
+```powershell
+New-AksEdgeDeployment [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
 ### fromParameters
 
 ```
-New-AksIotDeployment [-WorkloadType <WorkloadType>] [-NetworkPlugin <NetworkPlugin>] [-AcceptEula <String>]
+New-AksEdgeDeployment [-WorkloadType <WorkloadType>] [-NetworkPlugin <NetworkPlugin>] [-AcceptEula <String>]
  [-LinuxVmCpuCount <Int32>] [-LinuxVmMemoryInMB <Int32>] [-LinuxVmDataSizeInGB <Int32>]
  [-WindowsVmCpuCount <Int32>] [-WindowsVmMemoryInMB <Int32>] [-VswitchName <String>]
  [-LinuxVmIp4Address <String>] [-WindowsVmIp4Address <String>] [-ControlPlaneEndpointIp <String>]
@@ -40,7 +40,7 @@ New-AksIotDeployment [-WorkloadType <WorkloadType>] [-NetworkPlugin <NetworkPlug
 ### fromJsonConfigString
 
 ```
-New-AksIotDeployment -JsonConfigString <String> [<CommonParameters>]
+New-AksEdgeDeployment -JsonConfigString <String> [<CommonParameters>]
 ```
 
 ## Description
@@ -61,7 +61,7 @@ For a single machine deployment, none of these parameters may be specified.
 ### Example 1
 
 ```
-New-AksIotDeployment `
+New-AksEdgeDeployment `
   -WorkloadType Linux `
   -LinuxVmCpuCount 2 `
   -LinuxVmMemoryInMB 4096 `
@@ -76,7 +76,7 @@ New-AksIotDeployment `
 ### Example 2
 
 ```
-New-AksIotDeployment `
+New-AksEdgeDeployment `
   -WorkloadType Linux `
   -LinuxVmCpuCount 2 `
   -LinuxVmMemoryInMB 4096 `
@@ -94,19 +94,19 @@ New-AksIotDeployment `
 ### Example 3
 
 ```
-New-AksIotDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -vswitchName aksiotswitch -LinuxVmIp4Address 192.168.1.2 -WindowsVmIp4Address 192.168.1.3 -ip4PrefixLength 24 -ip4GatewayAddress 192.168.1.1 -DnsServers "192.168.1.1" -ServiceIPRangeStart 192.168.1.5 -ServiceIPRangeEnd 192.168.1.10 -ControlPlaneEndpointIp 192.168.1.4
+New-AksEdgeDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -vswitchName aksiotswitch -LinuxVmIp4Address 192.168.1.2 -WindowsVmIp4Address 192.168.1.3 -ip4PrefixLength 24 -ip4GatewayAddress 192.168.1.1 -DnsServers "192.168.1.1" -ServiceIPRangeStart 192.168.1.5 -ServiceIPRangeEnd 192.168.1.10 -ControlPlaneEndpointIp 192.168.1.4
 ```
 
 ### Example 4
 
 ```
-New-AksIotDeployment -WorkloadType Linux -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -ServiceIPRangeSize 10 -SingleMachineCluster
+New-AksEdgeDeployment -WorkloadType Linux -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -ServiceIPRangeSize 10 -SingleMachineCluster
 ```
 
 ### Example 5
 
 ```
-New-AksIotDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -SingleMachineCluster
+New-AksEdgeDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -SingleMachineCluster
 ```
 
 ## Parameters

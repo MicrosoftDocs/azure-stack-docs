@@ -2,37 +2,45 @@
   href: index.md
   expanded: true
   items:
-  - name: Add-AksIotNode
-    href: add-aksiotnode.md
-  - name: Get-AksIotClusterJoinData
-    href: get-aksiotclusterjoindata.md
-  - name: Get-AksIotDeploymentInfo
-    href: get-aksiotdeploymentinfo.md
-  - name: Get-AksIotEventLog
-    href: get-aksioteventlog.md
-  - name: Get-AksIotKubeConfig
-    href: get-aksiotkubeconfig.md
-  - name: Get-AksIotLinuxNodeAddr
-    href: get-aksiotlinuxnodeaddr.md
-  - name: Get-AksIotLinuxNodeName
-    href: get-aksiotlinuxnodename.md
-  - name: Get-AksIotLogs
-    href: get-aksiotlogs.md
-  - name: Get-AksIotManagedServiceToken
-    href: get-aksiotmanagedservicetoken.md
-  - name: Invoke-AksIotLinuxNodeCommand
-    href: invoke-aksiotlinuxnodecommand.md
-  - name: New-AksIotDeployment
-    href: new-aksiotdeployment.md
-  - name: Remove-AksIotNode
-    href: remove-aksiotnode.md
-  - name: Set-AksIotArcConnection
-    href: set-aksiotarcconnection.md
-  - name: Start-AksIotLinuxNode
-    href: start-aksiotlinuxnode.md
-  - name: Stop-AksIotLinuxNode
-    href: stop-aksiotlinuxnode.md
-  - name: Test-AksIotLinuxNode
-    href: test-aksiotlinuxnode.md
-  - name: Test-AksIotNetworkParameters
-    href: test-aksiotnetworkparameters.md
+  - name: Add-AksEdgeNode
+    href: add-aksedgenode.md
+  - name: Export-AksEdgeWorkerNodeConfig
+    href: export-aksedgeworkernodeconfig.md
+  - name: Get-AksEdgeDeploymentInfo
+    href: get-aksedgedeploymentinfo.md
+  - name: Get-AksEdgeEventLog
+    href: get-aksedgeeventlog.md
+  - name: Get-AksEdgeKubeConfig
+    href: get-aksedgekubeconfig.md
+  - name: Get-AksEdgeLinuxNodeAddr
+    href: get-aksedgenodeaddr.md
+  - name: Get-AksEdgeLinuxNodeName
+    href: get-aksedgenodename.md
+  - name: Get-AksEdgeLogs
+    href: get-aksedgelogs.md
+  - name: Get-AksEdgeManagedServiceToken
+    href: get-aksedgemanagedservicetoken.md
+  - name: Invoke-AksEdgeNodeCommand
+    href: invoke-aksedgenodecommand.md
+  - name: New-AksEdgeDeploymentConfig
+    href: new-aksedgedeploymentconfig.md
+  - name: New-AksEdgeDeployment
+    href: new-aksedgedeployment.md
+  - name: Remove-AksEdgeDeployment
+    href: remove-aksedgedeployment.md
+  - name: Remove-AksEdgeNode
+    href: remove-aksedgenode.md
+  - name: Set-AksEdgeNodeToDrain
+    href: set-aksedgenodetodrain.md
+  - name: Set-AksEdgeArcConnection
+    href: set-aksedgearcconnection.md
+  - name: Start-AksEdgeNode
+    href: start-aksedgenode.md
+  - name: Stop-AksEdgeNode
+    href: stop-aksedgenode.md
+  - name: Test-AksEdgeDeployment
+    href: test-aksedgedeployment.md
+  - name: Test-AksEdgeNode
+    href: test-aksedgenode.md
+  - name: Test-AksEdgeNetworkParameters
+    href: test-aksedgenetworkparameters.md

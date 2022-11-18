@@ -38,7 +38,7 @@ kubectl apply -f sqledge\ -n sqledge
 
 This will do the following:
 
-- Create a local storage (learn more about [creating local storage on your AKS-IoT cluster here](/docs/additionalconfigs.md)).
+- Create a local storage (learn more about [creating local storage on your AKS-IoT cluster here](./aks-lite-howto-more-configs.md).
 - Create a persistent volume and persistent volume claim (learn more about [PVs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume) and [PVCs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)).
 - Deploy SQL Edge.
 

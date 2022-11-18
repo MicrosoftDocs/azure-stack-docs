@@ -1,7 +1,7 @@
 ---
-title: Get-AksIotLogs for AKS Lite
+title: Get-AksEdgeLogs for AKS Lite
 author: rcheeran
-description: The Get-AksIotLogs PowerShell command collects all the logs from the deployment.
+description: The Get-AksEdgeLogs PowerShell command collects all the logs from the deployment.
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Get-AksIotLogs
+# Get-AksEdgeLogs
 
 ## Synopsis
 
@@ -19,12 +19,12 @@ Collects all the logs from the deployment.
 ## Syntax
 
 ```powershell
-Get-AksIotLogs [[-OutputPath] <String>] [<CommonParameters>]
+Get-AksEdgeLogs [[-OutputPath] <String>] [<CommonParameters>]
 ```
 
 ## Description
 
-The Get-AksIotLogs cmdlet collects all the logs from the AksIot deployment and installation.
+The Get-AksEdgeLogs cmdlet collects all the logs from the AksIot deployment and installation.
 It compresses them and outputs the bundled logs in the form of a .zip folder, by default in the current
 installation directory.
 
@@ -33,13 +33,13 @@ installation directory.
 ### Example 1
 
 ```powershell
-Get-AksIotLogs
+Get-AksEdgeLogs
 ```
 
 ### Example 2
 
 ```powershell
-Get-AksIotLogs -OutputPath ~/Desktop
+Get-AksEdgeLogs -OutputPath ~/Desktop
 ```
 
 ## Parameters

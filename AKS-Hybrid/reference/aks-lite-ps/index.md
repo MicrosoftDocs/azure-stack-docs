@@ -1,5 +1,5 @@
 ---
-title: AKS for light edge commands #Required; page title is displayed in search results. Include the brand.
+title: AKS Edge commands #Required; page title is displayed in search results. Include the brand.
 description: Powershell cmdlets for AKS #Required; article description that is displayed in search results. 
 author: rcheeran #Required; your GitHub user alias, with correct capitalization.
 ms.author: rcheeran #Required; microsoft alias of author; optional team alias.
@@ -15,71 +15,88 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 ## Module Powershell Commands
 
-### [Add-AksIotNode](./Add-AksIotNode.md)
+### [Add-AksEdgeNode](./add-aksedgenode.md)
 
 Adds a new AksIot node to the cluster.
 
-### [Get-AksIotClusterJoinData](./Get-AksIotClusterJoinData.md)
+### [Export-AksEdgeWorkerNodeConfig](./export-aksedgeworkernodeconfig.md)
 
 Pulls the cluster join data from a Linux control plane node.
 
-### [Get-AksIotDeploymentInfo](./Get-AksIotDeploymentInfo.md)
+### [Get-AksEdgeDeploymentInfo](./get-aksedgedeploymentinfo.md)
 
 Gets AksIot deployment information.
 
-### [Get-AksIotEventLog](./Get-AksIotEventLog.md)
+### [Get-AksEdgeEventLog](./get-aksedgeeventlog.md)
 
 Collects event logs from the deployment.
 
-### [Get-AksIotKubeConfig](./Get-AksIotKubeConfig.md)
+### [Get-AksEdgeKubeConfig](./get-aksedgekubeconfig.md)
 
 Pulls the KubeConfig file from the Linux node.
 
-### [Get-AksIotLinuxNodeAddr](./Get-AksIotLinuxNodeAddr.md)
+### [Get-AksEdgeNodeAddr](./get-aksedgenodeaddr.md)
 
-Gets the Linux VM's IP and MAC addresses
+Gets the VM's IP and MAC addresses
 
-### [Get-AksIotLinuxNodeName](./Get-AksIotLinuxNodeName.md)
+### [Get-AksEdgeNodeName](./get-aksedgenodename.md)
 
-Gets the Linux VM's hostname
+Gets the VM's hostname
 
-### [Get-AksIotLogs](./Get-AksIotLogs.md)
+### [Get-AksEdgeLogs](./get-aksedgelogs.md)
 
 Collects all the logs from the deployment.
 
-### [Get-AksIotManagedServiceToken](./Get-AksIotManagedServiceToken.md)
+### [Get-AksEdgeManagedServiceToken](./get-aksedgemanagedservicetoken.md)
 
 Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
-### [Invoke-AksIotLinuxNodeCommand](./Invoke-AksIotLinuxNodeCommand.md)
+### [Invoke-AksEdgeNodeCommand](./invoke-aksedgenodecommand.md)
 
 Executes an SSH command on the Linux VM.
 
-### [New-AksIotDeployment](./New-AksIotDeployment.md)
+### [New-AksEdgeDeploymentConfig](./new-aksedgedeploymentconfig.md)
+
+Creates the configuration file needed for a new AksIot deployment on this machine.
+
+
+### [New-AksEdgeDeployment](./new-aksedgedeployment.md)
 
 Creates a new AksIot deployment on this machine.
 
-### [Remove-AksIotNode](./Remove-AksIotNode.md)
+### [Remove-AksEdgeDeployment](./remove-aksedgedeployment.md)
+
+Removes the deployment from an existing cluster.
+
+### [Remove-AksEdgeNode](./remove-aksedgenode.md)
 
 Removes a local node from an existing cluster.
 
-### [Set-AksIotArcConnection](./Set-AksIotArcConnection.md)
+### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
+
+Safely drains a node before your delete the node. 
+
+### [Set-AksEdgeArcConnection](./set-aksedgearcconnection.md)
 
 Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
 
-### [Start-AksIotLinuxNode](./Start-AksIotLinuxNode.md)
+### [Start-AksEdgeNode](./start-aksedgenode.md)
 
-Starts the Linux node VM if it's currently stopped.
+Starts the node VM if it's currently stopped.
 
-### [Stop-AksIotLinuxNode](./Stop-AksIotLinuxNode.md)
+### [Stop-AksEdgeNode](./stop-aksedgenode.md)
 
-Stops the Linux node VM if it's currently started.
+Stops the node VM if it's currently started.
 
-### [Test-AksIotLinuxNode](./Test-AksIotLinuxNode.md)
+### [Test-AksEdgeDeployment](./test-aksedgedeployment.md)
+
+Checks whether the deployment was created.
+
+### [Test-AksEdgeNode](./test-aksedgenode.md)
 
 Checks whether the Linux VM was created.
 
-### [Test-AksIotNetworkParameters](./Test-AksIotNetworkParameters.md)
+### [Test-AksEdgeNetworkParameters](./test-aksedgenetworkparameters.md)
 
 Validates AksIot network parameters, useful as a pre-deployment step.
 

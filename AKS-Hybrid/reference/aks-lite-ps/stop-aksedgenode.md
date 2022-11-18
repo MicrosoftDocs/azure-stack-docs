@@ -1,7 +1,7 @@
 ---
-title: Stop-AksIotLinuxNode for AKS Lite
+title: Stop-AksEdgeNode for AKS Lite
 author: rcheeran
-description: The Stop-AksIotLinuxNode PowerShell command stops the Linux node VM
+description: The Stop-AksEdgeLinuxNode PowerShell command stops the Linux node VM
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,26 +10,26 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Stop-AksIotLinuxNode
+# Stop-AksEdgeNode
 
 ## Synopsis
-Stops the Linux node VM if it's currently started.
+Stops the node VM if it's currently started.
 
 ## Syntax
 
-```
-Stop-AksIotLinuxNode
+```powershell
+Stop-AksEdgeNode
 ```
 
 ## Description
-The Stop-AksIotLinuxNode cmdlet stops the virtual machine.
+The Stop-AksEdgeNode cmdlet stops the virtual machine.
 No action is taken if the virtual machine is already stopped
 
 ## Examples
 
 
-```
-Stop-AksIotLinuxNode
+```powershell
+Stop-AksEdgeNode
 ```
 
 ## Next steps

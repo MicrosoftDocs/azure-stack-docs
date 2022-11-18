@@ -1,7 +1,7 @@
 ---
-title:  Get-AksIotKubeConfig for AKS Lite
+title:  Get-AksEdgeKubeConfig for AKS Lite
 author: rcheeran
-description: The Get-AksIotKubeConfig  PowerShell command pulls the KubeConfig file from the Linux node.
+description: The Get-AksEdgeKubeConfig  PowerShell command pulls the KubeConfig file from the Linux node.
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,15 +10,15 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Get-AksIotKubeConfig
+# Get-AksEdgeKubeConfig
 
 ## Synopsis
 Pulls the KubeConfig file from the Linux node.
 
 ## Syntax
 
-```
-Get-AksIotKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
+```powershell
+Get-AksEdgeKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

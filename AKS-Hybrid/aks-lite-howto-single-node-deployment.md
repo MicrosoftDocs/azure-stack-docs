@@ -18,74 +18,165 @@ Set up your primary machine as described in the [Setup article](aks-lite-howto-s
 
 ## Create a single-node cluster
 
-You can run the `New-AksIotSingleMachineCluster` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can run the command with default parameters or supply your own values. Some of the parameters and their default values as follows:
+You can run the `New-AksLiteDeployment` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can do so by providing your values in a JSON file. Run the `New-AksEdgeDeploymentConfig` cmdlet to create a sample JSON **mydeplyconfig.json** file with the default parameters and edit this file to provide your own values:
+
+```powershell
+#create a deployconfig file with defaults
+$jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+```
+
+You can edit **mydeployconfig**.json with the parameters you need and pass the JSON config file for deployment. To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window. You can then use this file in your deployment.
+
+```powershell
+New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
+```
+
+Alternatively, you can programmatically edit the json object and pass it as a string
+
+```powershell
+$jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+$jsonObj = $jsonString | ConvertFrom-Json 
+$jsonObj.EndUser.AcceptEula = $true
+$jsonObj.EndUser.AcceptOptionalTelemetry = $true
+$jsonObj.LinuxVm.CpuCount = 4
+$jsonObj.LinuxVm.MemoryInMB = 4096
+$jsonObj.Network.ServiceIpRangeSize = 10
+
+New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
+```
+
+Some of the common parameters and their default values as follows:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| WorkloadType | **Linux** | **Linux** creates the Linux control plane. You can't specify **Windows** because the control plane node needs to be Linux. Read more about [AKS-IoT workload types](/docs/AKS-IoT-Concepts.md#aks-lite-workload-types). Note that Windows nodes aren't supported in this build. | **Linux** |
-| NetworkPlugin | **calico** or **flannel** | CNI plugin choice for the Kubernetes network model. | **flannel** |
-| LinuxVmCpuCount | number | Number of CPU cores reserved for Linux VM/VMs. | 2 |
-| LinuxVmMemoryInMB | number | RAM in MBs reserved for Linux VM/VMs. | 2048 |
-| ServiceIPRangeSize | number | Define a service IP range for your workloads. | 0 |
+| `WorkloadType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-iot-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
+| `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. | `flannel` |
+| `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM/VMs. | `2` |
+| `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM/VMs. | `2048` |
+| `LinuxVm.DataSizeInGB` | number | Size of the data partition. For large applications, we recommend  | `10` |
+| `ServiceIPRangeSize` | number | Defines a service IP range for your workloads. We recommend you reserve some IP range (ServiceIPRangeSize > 0) for your Kubernetes services.| `0` |
 
-To get a full list of the parameters and their default values, run `Get-Help New-AksIotSingleMachineCluster -full` in your LaunchPrompt.
+## Example deployment options
 
-**Example Commands:**
+- **Create a simple cluster without a load balancer**. You can also create a very simple cluster with no service IPs. You cannot create a LoadBalancer service in this approach.
 
-Create a cluster with no service IPs. You can't create a LoadBalancer service:
+   ```powershell
+   New-AksEdgeDeployment -JsonConfigString (New-AksEdgeDeploymentConfig)
+   ```
 
-```powershell
-New-AksIotSingleMachineCluster
-```
+- **Allocate resources to your nodes**. To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
-To connect to Arc and deploy your apps with GitOps, allocate 4 CPUs or more for the `LinuxVmCpuCount` (processing power), 4GB or more for `LinuxVmMemory` (RAM), and assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+   ```json
+       "DeployOptions": {
+           "NetworkPlugin": "flannel",
+           "SingleMachineCluster": true,
+           "WorkloadType": "Linux"
+       },
+       "EndUser": {
+           "AcceptEula": true,
+           "AcceptOptionalTelemetry": true
+       },
+       "LinuxVm": {
+           "CpuCount": 4,
+           "MemoryInMB": 4096
+       },
+       "Network": {
+           "ServiceIPRangeRange": 10
+       }
+   ```
 
-```powershell
-New-AksIotSingleMachineCluster -AcceptEula yes -LinuxVmCpuCount 4 -LinuxVmMemoryInMB 4096 -ServiceIpRangeSize 10
-```
+   ```powershell
+   #create a deployconfig file with defaults
+   $jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+   #Edit mydeployconfig.json with the parameters you need and pass the json config for deployment
+   New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
+   ```
 
-It can take some time for this step to complete.
+   Alternatively, you can programmatically edit the JSON object and pass it as a string:
 
-## Validate cluster
+   ```powershell
+   $jsonString = New-AksEdgeDeploymentConfig -outFile .\mydeployconfig.json
+   $jsonObj = $jsonString | ConvertFrom-Json 
+   $jsonObj.EndUser.AcceptEula = $true
+   $jsonObj.EndUser.AcceptOptionalTelemetry = $true
+   $jsonObj.LinuxVm.CpuCount = 4
+   $jsonObj.LinuxVm.MemoryInMB = 4096
+   $jsonObj.Network.ServiceIpRangeSize = 10
 
-Configure the `kubeconfig` so you can use `kubectl` to connect to your cluster:
+   New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
+   ```
 
-```powershell
-Get-AksIotCredential
-```
+   > [!NOTE]
+   > AKS allocates IP addresses from your internal switch to run your Kubernetes services if you specified a `ServiceIPRangeSize`.
 
-Confirm that the installation was successful by running:
+- **Create a mixed workload cluster**. You can also deploy mixed-workloads clusters. The following example shows how to bring up both Linux and Windows workloads at the same time:
+
+   ```json
+       "DeployOptions": {
+           "NetworkPlugin": "flannel",
+           "SingleMachineCluster": true,
+           "WorkloadType": "LinuxAndWindows"
+       },
+       "EndUser": {
+           "AcceptEula": true,
+           "AcceptOptionalTelemetry": true
+       },
+       "LinuxVm": {
+           "CpuCount": 4,
+           "MemoryInMB": 4096
+       },
+       "WindowsVm": {
+           "CpuCount": 2,
+           "MemoryInMB": 4096
+       },
+       "Network": {
+           "ServiceIPRangeRange": 10
+       }
+   ```
+
+   ```powershell
+   $jsonString = New-AksEdgeDeploymentConfig .\mydeployconfig.json
+   $jsonObj = $jsonString | ConvertFrom-Json 
+   $jsonObj.EndUser.AcceptEula = $true
+   $jsonObj.EndUser.AcceptOptionalTelemetry = $true
+   $jsonObj.DeployOptions.WorkloadType = "LinuxAndWindows"
+   $jsonObj.LinuxVm.CpuCount = 4
+   $jsonObj.LinuxVm.MemoryInMB = 4096
+   $jsonObj.WindowsVm.CpuCount = 2
+   $jsonObj.WindowsVm.MemoryInMB = 4096
+   $jsonObj.Network.ServiceIpRangeSize = 10
+
+   New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
+   ```
+
+## Validate your cluster
+
+Confirm that the deployment was successful by running:
 
 ```powershell
 kubectl get nodes -o wide
-kubectl get pods --all-namespaces -o wide
+kubectl get pods -A -o wide
 ```
 
-![Screenshot of results showing all pods running.](media/aks-lite/all-pods-running.png)
-
-## Deploy application
-
-Deploy your application. Alternatively, deploy [sample applications](/docs/deploying-workloads.md) to test your deployment. Once you've deployed your application, [connect your cluster to Azure Arc](/docs/connect-to-arc.md).
+![Screenshot showing all pods running.](./media/aks-lite/all-pods-running.png)
 
 > [!NOTE]
-> AKS allocates IP addresses from your internal switch to run your Kubernetes services if you specified a **ServiceIPRangeSize**.
+> This screenshot is for a k3s cluster so the pods will look different for k8s.
 
-## Remove single machine cluster
-
-To remove your single machine cluster, run the following cmdlet:
+Optionally, add a Windows node. If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
 
 ```powershell
-Remove-AksIotSingleMachineCluster
+Add-AksEdgeNode -WorkloadType Windows
 ```
 
-## Alternate option: AksIotDeploy(Aide)
+You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
-We have also included an **AksIotDeploy(Aide)** module to help you automate the installation, deployment and provisioning of AKS-IoT with a simple JSON specification. We've included a sample JSON for quick deployment as well as a template JSON that you can modify to specify your own parameters. This template is designed to support remote deployment scenarios. [Learn more about AksIotDeploy](/bootstrap/Modules/AksIotDeploy/Readme.md).
+## Alternate option: AksEdgeDeploy(Aide)
 
-Otherwise, return to the [deployment guidance homepage](/docs/AKS-IoT-Deployment-Guidance.md).
+We have also included AksEdgeDeploy(Aide) module to help you automate the installation, deployment and provisioning of AKS edge with the JSON specification. We have included a sample JSON for quick deployment as well as a template JSON that you can fill out to specify your own parameters. This is designed to support remote deployment scenarios.
 
 ## Next steps
 
-- [Deploy your application](/docs/deploying-workloads.md).
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+* [Deploy your application](./aks-lite-howto-deploy-app.md).
+* [Overview](./aks-lite-overview.md)
+* [Uninstall AKS cluster](./aks-lite-howto-uninstall.md)

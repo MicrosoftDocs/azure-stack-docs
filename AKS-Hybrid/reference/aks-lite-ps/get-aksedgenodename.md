@@ -1,0 +1,51 @@
+---
+title: Get-AksEdgeNodeName for AKS Lite
+author: rcheeran
+description: The Get-AksEdgeNodeName PowerShell command gets the Linux VM's hostname
+ms.topic: reference
+ms.date: 10/04/2022
+ms.author: rcheeran 
+ms.lastreviewed: 10/04/2022
+#ms.reviewer: jeguan
+
+---
+
+# Get-AksEdgeNodeName
+
+## Synopsis
+Gets the Linux VM's hostname
+
+## Syntax
+
+```powershell
+Get-AksEdgeNodeName [<CommonParameters>]
+```
+
+## Description
+The Get-AksEdgeNodeName queries the virtual machine's current hostname from wssdagent.
+
+## Examples
+```powershell
+Get-AksEdgeNodeName
+```
+
+## Parameters
+### -NodeType
+
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+## Next steps
+
+[Akslite PowerShell Reference](./index.md)

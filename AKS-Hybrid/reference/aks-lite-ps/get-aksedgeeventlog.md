@@ -1,7 +1,7 @@
 ---
-title:  Get-AksIotEventLog for AKS Lite
+title:  Get-AksEdgeEventLog for AKS Lite
 author: rcheeran
-description: The Get-AksIotEventLog PowerShell command collects event logs from the deployment.
+description: The Get-AksEdgeEventLog PowerShell command collects event logs from the deployment.
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -10,30 +10,30 @@ ms.lastreviewed: 10/04/2022
 
 ---
 
-# Get-AksIotEventLog
+# Get-AksEdgeEventLog
 
 ## Synopsis
 Collects event logs from the deployment.
 
 ## Syntax
 
-```
-Get-AksIotEventLog [[-OutputPath] <String>] [<CommonParameters>]
+```powershell
+Get-AksEdgeEventLog [[-OutputPath] <String>] [<CommonParameters>]
 ```
 
 ## Description
-The Get-AksIotEventLog cmdlet gets the event log from the AksIot deployment
+The Get-AksEdgeEventLog cmdlet gets the event log from the AksIot deployment
 
 ## Examples
 
 ### Example 1
-```
-Get-AksIotEventLog
+```powershell
+Get-AksEdgeEventLog
 ```
 
 ### Example 2
-```
-Get-AksIotEventLog -OutputPath ~/Desktop
+```powershell
+Get-AksEdgeEventLog -OutputPath ~/Desktop
 ```
 
 ## Parameters
