@@ -4,7 +4,7 @@ description: This article provides guidance on Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 09/23/2022
+ms.date: 11/18/2022
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -25,15 +25,15 @@ This release comes with WDAC enabled and enforced by default. We're providing a 
 
 Base policy details are as follows:
 
-> * PolicyGuid    : {A6368F66-E2C9-4AA2-AB79-8743F6597683}
-> * PolicyName    : MS_Base_Policy
-> * PolicyVersion : MS_Base_Policy_1.0.0.0
-> * PolicyScope   : Kernel & User
+* PolicyGuid    : {A6368F66-E2C9-4AA2-AB79-8743F6597683}
+* PolicyName    : MS_Base_Policy
+* PolicyVersion : MS_Base_Policy_1.0.0.0
+* PolicyScope   : Kernel & User
 
 The base policy identifier is always the same across deployments. Customers and partners can build supplemental policies based on the base policy. The base policy is combined with the recommended block rules for drivers and applications documented here:
 
-> * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
-> * [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
+* [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
+* [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
 
 Here's the Microsoft base policy prior to merging with blocked rules:
 
@@ -308,13 +308,18 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 
 You can decide to have WDAC enabled during deployment or after deployment. If you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell.  
 
-Connect to one of the cluster nodes and use the cmdlets below to switch between nodes.
+Connect to one of the cluster nodes and use the following cmdlets to switch between nodes. In this build release there are 2 cmdlets.
+
+* First cmdlet `Switch-AsWdacPolicy` affects all the nodes in the cluster.
+* Second cmdlet `Switch-ASLocalWDACPolicy` only affects the node from where it is run.
+
+Depending on the use case, you should run a global cluster change or a local node change.
 
 This is useful when:
 
-- You started with the default recommended settings. You need to install or run new third party software. You can switch your policy modes to create a supplemental policy.
-- You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
-- Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
+* You started with the default recommended settings. You need to install or run new third party software. You can switch your policy modes to create a supplemental policy.
+* You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
+* Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
 
 > [!NOTE]
 >
@@ -331,7 +336,7 @@ This release doesn't support partner extensions based on the SBE toolkit because
 
 ## Create a WDAC policy to enable third party software
 
-While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you'll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 > [!NOTE]
 > To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch WDAC back to enforced mode.
@@ -346,7 +351,7 @@ Create a new policy in the Multiple Policy Format as shown below. Then use ```Se
 
 Use the following steps to create a supplemental policy:
 
-1. Before you begin, install the software that will be covered by the supplemental policy into its own directory. It's okay if there are subdirectories. When creating the supplemental policy, you must provide a directory to scan, and you don’t want your supplemental policy to cover all code on the system. In our example, this directory is C:\software\codetoscan.
+1. Before you begin, install the software that will be covered by the supplemental policy into its own directory. It's okay if there are subdirectories. When creating the supplemental policy, you must provide a directory to scan, and you don't want your supplemental policy to cover all code on the system. In our example, this directory is C:\software\codetoscan.
 
 1. Once you have all your software in place, run the following command to create your supplemental policy. Use a unique policy name to help identify it.
 
@@ -413,13 +418,12 @@ Use the following steps to create a supplemental policy:
    Copy-Item -Path c:\wdac\Contoso-supplemental-policy.bin -Destination "C:\Windows\System32\CodeIntegrity\CiPolicies\Active\$($policy.SiPolicy.PolicyId).cip"
    ```
 
-1. To activate the supplemental policy, reboot your system or invoke the code integrity policy refresher tool ```refreshpolicy.exe```. The tool will try to activate all policies in the active policy folder.
+1. To activate the supplemental policy, reboot your system or invoke the code integrity policy refresher tool. The tool will try to activate all policies in the active policy folder:
 
-> [!NOTE]
->
-> * To get the latest version of the `refreshpolicy.exe`, you can download [Refreshed CI Policy](https://www.microsoft.com/download/details.aspx?id=102925).
-> * The `refreshpolicy.exe` resides on your local system at `C:\nugetstore\microsoft.as.infra.security.applicationcontrol[version]\content\policy\`.
+   ```azurepowershell
+   Invoke-WDACRefreshPolicyTool
+   ```
 
 ## Next steps
 
- > * [Install Azure Stack HCI, version 22H2](../manage/install-preview-version.md?tabs=windows-admin-center).
+* [Install Azure Stack HCI, version 22H2](../manage/install-preview-version.md?tabs=windows-admin-center).
