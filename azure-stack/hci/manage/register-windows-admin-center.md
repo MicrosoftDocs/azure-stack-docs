@@ -27,7 +27,7 @@ There are several requirements and things to consider before you begin the regis
 
 - If your network is configured to use a proxy server for internet connection, make sure that you configure the proxy settings on the Windows Admin Center gateway settings. After the proxy settings are configured, to avoid registration failures restart the **ServerManagmentGateway** (Windows Admin Center) service on the server running Windows Admin Center before proceeding with Azure AD registration.
 
-- If you are not an Azure AD admin and you don't have an existing Azure application ID, you will need to contact your Azure AD admin to either provide an existing Azure application ID or [grant consent to the new application ID](#grant-consent-to-the-new-azure-application-id) that you'll create as part of the registration process.
+- If you are not an Azure AD admin and you don't have an existing Azure application ID, you will need to contact your Azure AD admin to either provide an existing Azure application ID or [grant consent to a new application ID](#grant-consent-to-a-new-azure-application-id) that you'll create as part of the registration process.
 
 ## How to register Windows Admin Center with Azure
 
@@ -37,7 +37,7 @@ Follow these steps to register Windows Admin Center with Azure:
 
 1. Select the **Settings** gear icon from the top right corner of the page.
 
-1. In the **Settings** menu in the left pane, go to **Gateway** > **Register**.
+1. From the **Settings** menu in the left pane, go to **Gateway** > **Register**.
 
 1. Select the **Register** button on the center of the page. The registration pane appears on the right of the page.
 
@@ -73,15 +73,15 @@ Follow these steps to register Windows Admin Center with Azure:
    
       - If you're an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD. You may see a **Permissions requested** dialog box. Click **Accept**.
       
-      - If you're not an Azure AD admin and you created a new application ID in the previous step by selecting **Create new**, ask your Azure AD admin to [grant consent to the new Azure application ID](#grant-consent-to-the-new-azure-application-id).
+      - If you're not an Azure AD admin and you created a new application ID in the previous step by selecting **Create new**, ask your Azure AD admin to [grant consent to the new Azure application ID](#grant-consent-to-a-new-azure-application-id).
 
    1. **Step 5. Sign in to Azure.** Select **Sign in** to sign into your Azure account.
       > [!NOTE]
-      > If you get a notice that you need admin approval, it might be because the Azure AD admin must grant permissions in the Azure portal, as described in [Grant consent to the new Azure application ID](#grant-consent-to-the-new-azure-application-id). If they've already done that and you're still getting the notice, try refreshing Windows Admin Center and signing in again by going to **Settings** > **Account**.
+      > If you get a notice that you need admin approval, it might be because the Azure AD admin must grant permissions in the Azure portal, as described in [Grant consent to the new Azure application ID](#grant-consent-to-a-new-azure-application-id). If they've already done that and you're still getting the notice, try refreshing Windows Admin Center and signing in again by going to **Settings** > **Account**.
 
 After Windows Admin Center is registered with Azure, you're ready to [register Azure Stack HCI with Azure](../deploy/register-with-azure.md).
 
-### Grant consent to the new Azure application ID
+## Grant consent to a new Azure application ID
 
 > [!NOTE]
 > This procedure applies only if you an Azure AD admin.
