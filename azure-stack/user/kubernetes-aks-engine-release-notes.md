@@ -151,7 +151,7 @@ In the API Model json file, please specify the release and version values under 
 > **There are [reports](https://bugs.launchpad.net/ubuntu/+source/containerd/+bug/1996678) suggesting that upgrading to the Linux kernel version `5.4.0-1095-azure` may cause issues with `containerd`. AKS Engine's base OS images do not include this kernel version. Instructions on how to disable automatic upgrades until a fix is available can be found [here](/docs/howto/troubleshooting.md#prevent-unattended-upgrades).
 
 > [!Note]  
-> * Starting from Kubernetes v1.21, **only** [Cloud Provider for Azure](https://github.com/Azure/aks-engine/diffs/0?base_sha=2e448dea52bbd7f56f2d945d866e15a0a7dbefc4&branch=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&commentable=true&head_user=jadarsie&name=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&pull_number=5022&qualified_name=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&sha1=2e448dea52bbd7f56f2d945d866e15a0a7dbefc4&sha2=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&short_path=237f6fc&unchanged=expanded&w=false#cloud-provider-for-azure) is supported on Azure Stack Hub.
+> *Starting from Kubernetes v1.21, **only** [Cloud Provider for Azure](https://github.com/Azure/aks-engine/diffs/0?base_sha=2e448dea52bbd7f56f2d945d866e15a0a7dbefc4&branch=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&commentable=true&head_user=jadarsie&name=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&pull_number=5022&qualified_name=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&sha1=2e448dea52bbd7f56f2d945d866e15a0a7dbefc4&sha2=f7945b06ea76b12a420c07a0af76c1613fe1d5d0&short_path=237f6fc&unchanged=expanded&w=false#cloud-provider-for-azure) is supported on Azure Stack Hub.
 
 ## What's new
 
