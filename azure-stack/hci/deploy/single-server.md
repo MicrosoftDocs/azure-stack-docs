@@ -61,7 +61,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
+To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (SConfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Change a single-node to a multi-node cluster (optional)
 
