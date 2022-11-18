@@ -10,7 +10,7 @@ ms.reviewer: shsathee
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
@@ -49,7 +49,7 @@ Before you run the **Create Cluster** wizard in Windows Admin Center, you must c
 - Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
 - Install the Azure Stack HCI operating system on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Obtain an account that's a member of the local Administrators group on each server.
-- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead set up Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
+- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead deploy Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
 - Ensure all servers are in the same time zone as your local domain controller.
 - Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
@@ -248,7 +248,7 @@ Follow these steps to manually configure host networking.
 
 ## Step 3: Clustering
 
-Step 3 of the wizard makes sure everything thus far has been set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
+Step 3 of the wizard makes sure everything thus far is set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
 
 1. On **3.1 Create the cluster**, specify a unique name for the cluster.
 
@@ -341,7 +341,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 - Clean up any VHD mount points that the wizard created.
 
-- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.
+- Ensure you have at least 50-100GB of free space on your Hyper-V hosts.
 
 ## Next steps
 
