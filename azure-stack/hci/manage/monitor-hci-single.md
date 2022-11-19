@@ -20,7 +20,7 @@ ms.date: 06/09/2022
 
 This article explains how to enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights.
 
-If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage. Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#how-do-i-enable-azure-arc-integration).
+If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage. Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
 
 ## Logs capability (preview)
 
@@ -274,7 +274,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 - [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi)
 - [Register your cluster with Azure](../deploy/register-with-azure.md)
-- [Enable Azure Arc integration](../deploy/register-with-azure.md#how-do-i-enable-azure-arc-integration)
+- [Enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration)
 - [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)
