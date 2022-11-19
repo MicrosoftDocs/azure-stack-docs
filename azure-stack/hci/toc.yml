@@ -406,19 +406,19 @@
       href: deploy/deployment-tool-introduction.md
     - name: Review prerequisites
       href: deploy/deployment-tool-prerequisites.md
-    - name: View deployment checklist
+    - name: 0 - View deployment checklist
       href: deploy/deployment-tool-checklist.md
-    - name: Prepare Active Directory
+    - name: 1 - Prepare Active Directory
       href: deploy/deployment-tool-active-directory.md
-    - name: Install the operating system
+    - name: 2 - Install the operating system
       href: deploy/deployment-tool-install-os.md
-    - name: Deploy interactively
+    - name: 3A - Deploy interactively
       href: deploy/deployment-tool-new-file.md
-    - name: Deploy using a config file
+    - name: 3B - Deploy using a config file
       href: deploy/deployment-tool-existing-file.md
-    - name: Deploy using PowerShell
+    - name: 3C - Deploy using PowerShell
       href: deploy/deployment-tool-powershell.md
-    - name: Validate deployment
+    - name: 4 - Validate deployment
       href: deploy/deployment-tool-validate.md
     - name: Collect logs 
       href: manage/collect-logs.md
