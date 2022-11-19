@@ -58,6 +58,59 @@ Installation of Network HUD requires two steps:
    ```PowerShell
    Install-Module -Name Az.StackHCI.NetworkHUD -Force
    ```
+   
+1. Verify Network HUD is running: Network HUD will log an event indicating it has started in the Network HUD Operational log once it verifies prerequisites have been met. If there are errors listed in this log, you must resolve the errors before Network HUD will start.
+
+   ```PowerShell
+   Get-WinEvent -LogName  Microsoft-Windows-Networking-NetworkHUD/Operational
+
+   ProviderName: Microsoft-Windows-Networking-NetworkHUD
+
+   TimeCreated                      Id LevelDisplayName Message
+   -----------                      -- ---------------- -------
+   11/18/2022 4:34:20 PM           105 Information      Network HUD has successfully started.
+   ```
+
+## View Cluster Health Faults
+
+If Network HUD detects a problem, it will throw a cluster health fault which you can view using
+
+   ```PowerShell
+   Get-HealthFault
+   ```
+
+## Network HUD Capabilities
+
+Network HUD can detect the following networking problems. For more information, please see [Network HUD: November 2022 content update](https://techcommunity.microsoft.com/t5/networking-blog/network-hud-november-2022-content-update-has-arrived/ba-p/3676158)
+
+### Network Adapter
+
+#### Disconnections or resets
+
+**Fault Level: Critical**
+Network HUD can detect if your adapter is disconnecting or resetting frequently. Adapters that disconnect or reset frequently can cause poor VM and container performance, or Storage Spaces Direct instability.
+
+#### PCIe Bandwidth Oversubscription
+
+**Fault Level: Critical**
+Network HUD can detect if adapters have enough PCIe bandwidth to satisfy the listed linkspeed of the adapters.
+
+### Drivers
+
+#### Inbox Drivers
+
+**Fault Level: Critical**
+Inbox drivers are not supported for production use. Network HUD will detect if inbox drivers are being used on your adapters.
+
+#### Driver Age
+
+Network HUD will inform you if your drivers begin to age. Old network drivers should be updated for stability and performance benefits.
+
+**Fault Level: Warning**
+Network drivers between six (6) months and one (1) year old will be generate a warning.
+
+**Fault Level: Critical**
+Network drivers older than one (1) year will general a critical health fault.
 
 ## Next steps
 
