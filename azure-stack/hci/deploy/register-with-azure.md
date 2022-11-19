@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/18/2022
+ms.date: 11/21/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
@@ -243,63 +243,41 @@ If you exceed the maximum period of offline operation, `ConnectionStatus` will s
 > [!NOTE]
 > BIOS\UEFI Firmware configuration must be the same on each HCI cluster node's hardware. Any nodes with different BIOS configurations compared to the majority may show **ConnectionStatus** as **OutOfPolicy**.
 
-## Register a cluster using SPN for Arc onboarding
-
-Before registration, make sure the prerequisites are met: the HCI cluster must exist, internet access and firewall ports are configured correctly, and the user registering the cluster has either the "contributor" role assigned for the subscription which is used for the cluster registration, or has the following list of permissions if a custom role is assigned:
-
-- "Microsoft.Resources/subscriptions/resourceGroups/read",
-- "Microsoft.AzureStackHCI/register/action",
-- "Microsoft.AzureStackHCI/Unregister/Action",
-- "Microsoft.AzureStackHCI/clusters/*",
-- "Microsoft.HybridCompute/register/action",
-- "Microsoft.GuestConfiguration/register/action",
-- "Microsoft.HybridConnectivity/register/action"
-
-The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
-
-> [!NOTE]
-> HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
-
-To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of a PowerShell module.
-
-```powershell
-#Connect to subscription
-Connect-AzAccount -TenantId <Tenant_ID> -SubscriptionId <Subscription_ID> -Scope Process
-
-#Create a new application registration
-$app = New-AzADApplication -DisplayName "<unique_name>"
-
-#Create a new SPN corresponding to the application registration
-$sp = New-AzADServicePrincipal -ApplicationId  $app.AppId -Role "Reader" 
-
-#Roles required on SPN for Arc onboarding
-$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
-$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
-
-#Assign roles to the created SPN
-New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
-New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
-
-# Set password validity time. SPN must be updated on the HCI cluster after this timeframe.
-$pwdExpiryInYears = 300
-$start = Get-Date
-$end = $start.AddYears($pwdExpiryInYears)
-$pw = New-AzADSpCredential -ObjectId $sp.Id -StartDate $start -EndDate $end
-$password = ConvertTo-SecureString $pw.SecretText -AsPlainText -Force  
-
-# Create SPN credentials object to be used in the register-azstackhci cmdlet
-$spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password)
-Disconnect-AzAccount -ErrorAction Ignore | Out-Null
-
-# Use the SPN credentials created previously in the register-azstackhci cmdlet
-Register-AzStackHCI   -SubscriptionId < Subscription_ID> -Region <region> -ArcSpnCredential:$spnCred
-```
-
 ## View the cluster and Arc resources in Azure portal
 
 To view the status of the cluster and Arc resources, navigate to the following screen in the Azure portal:
 
 :::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status.png":::
+
+### Enable Azure Arc integration
+
+If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has required permissions as described in [Assign permissions from Azure portal](#assign-permissions-from-azure-portal).
+
+You can take the following actions if:
+
+1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically.
+   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
+1. You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
+
+   > [!NOTE]
+   > Azure Arc integration is only available in Azure Stack HCI, version 21H2 and preview builds. It is not available on Azure Stack HCI, version 20H2.
+
+1. Install the latest version of the `Az.StackHCI` module on your management PC:
+
+   ```PowerShell
+   Install-Module -Name Az.StackHCI
+   ```
+
+1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
+
+   ```PowerShell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id"
+   ```
+
+   > [!IMPORTANT]
+   > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you must specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
+
+1. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this issue, follow the guidelines to [update proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
 
 ## Upgrade Arc agent on cluster servers
 
@@ -479,35 +457,57 @@ Before registration, make sure the [prerequisites](#prerequisites-for-cluster-re
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -ArmAccessToken $token.Token -AccountId $token.UserId
    ```
 
-### How do I enable Azure Arc integration?
+## How do I register a cluster using SPN for Arc onboarding?
 
-If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has required permissions as described in [Assign permissions from Azure portal](#assign-permissions-from-azure-portal).
+Before registration, make sure the prerequisites are met: the HCI cluster must exist, internet access and firewall ports are configured correctly, and the user registering the cluster has either the "contributor" role assigned for the subscription which is used for the cluster registration, or has the following list of permissions if a custom role is assigned:
 
-You can take the following actions if:
+- "Microsoft.Resources/subscriptions/resourceGroups/read",
+- "Microsoft.AzureStackHCI/register/action",
+- "Microsoft.AzureStackHCI/Unregister/Action",
+- "Microsoft.AzureStackHCI/clusters/*",
+- "Microsoft.HybridCompute/register/action",
+- "Microsoft.GuestConfiguration/register/action",
+- "Microsoft.HybridConnectivity/register/action"
 
-1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically.
-   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
-1. You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
+The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
 
-   > [!NOTE]
-   > Azure Arc integration is only available in Azure Stack HCI, version 21H2 and preview builds. It is not available on Azure Stack HCI, version 20H2.
+> [!NOTE]
+> HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
 
-1. Install the latest version of the `Az.StackHCI` module on your management PC:
+To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of a PowerShell module.
 
-   ```PowerShell
-   Install-Module -Name Az.StackHCI
-   ```
+```powershell
+#Connect to subscription
+Connect-AzAccount -TenantId <Tenant_ID> -SubscriptionId <Subscription_ID> -Scope Process
 
-1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
+#Create a new application registration
+$app = New-AzADApplication -DisplayName "<unique_name>"
 
-   ```PowerShell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id"
-   ```
+#Create a new SPN corresponding to the application registration
+$sp = New-AzADServicePrincipal -ApplicationId  $app.AppId -Role "Reader" 
 
-   > [!IMPORTANT]
-   > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you must specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
+#Roles required on SPN for Arc onboarding
+$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
+$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
 
-1. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this issue, follow the guidelines to [update proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
+#Assign roles to the created SPN
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
+
+# Set password validity time. SPN must be updated on the HCI cluster after this timeframe.
+$pwdExpiryInYears = 300
+$start = Get-Date
+$end = $start.AddYears($pwdExpiryInYears)
+$pw = New-AzADSpCredential -ObjectId $sp.Id -StartDate $start -EndDate $end
+$password = ConvertTo-SecureString $pw.SecretText -AsPlainText -Force  
+
+# Create SPN credentials object to be used in the register-azstackhci cmdlet
+$spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password)
+Disconnect-AzAccount -ErrorAction Ignore | Out-Null
+
+# Use the SPN credentials created previously in the register-azstackhci cmdlet
+Register-AzStackHCI   -SubscriptionId < Subscription_ID> -Region <region> -ArcSpnCredential:$spnCred
+```
 
 ### What are some of the more commonly used registration and Arc cmdlets?
 
