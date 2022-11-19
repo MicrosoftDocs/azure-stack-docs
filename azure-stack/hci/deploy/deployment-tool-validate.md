@@ -21,9 +21,8 @@ Once your deployment has successfully completed, you should verify and validate 
 
 The cluster registration completes before the deployment is complete. Follow these steps to validate that your cluster exists and is registered in Azure:
 
-1. Run PowerShell as administrator.
 
-1. Establish a remote PowerShell session with the server node and run the following command:
+1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
 
     ```powershell
     Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server> 
@@ -46,7 +45,7 @@ The cluster registration completes before the deployment is complete. Follow the
     RegistrationStatus : Registered 
     RegistrationDate   : 7/6/2022 1:01:02 AM 
     AzureResourceName  : cluster-c0bca4ca3d654d689c7b624732af3727 
-    AzureResourceUri   : /Subscriptions/5c17413c-1135-479b-a046-847e1ef9fbeb/resourceGroups/ASZRegistrationRG/providers/Microsoft.AzureStackHCI/clusters/cluster-c0bca4ca3d654d689c7b624732af3727
+    AzureResourceUri   : /Subscriptions/<Subscription ID>/resourceGroups/ASZRegistrationRG/providers/Microsoft.AzureStackHCI/clusters/cluster-c0bca4ca3d654d689c7b624732af3727
 
     ConnectionStatus   : Connected
     LastConnected      : 7/6/2022 2:00:02 PM
@@ -56,7 +55,7 @@ The cluster registration completes before the deployment is complete. Follow the
     [100.96.113.220]: PS C:\Users\Administrator\Documents>
     ```
 
-1. Write down the `AzureResourceName` value. You'll need this to do a search in the Azure portal.
+1. Make a note of the `AzureResourceName` value. You'll need this to do a search in the Azure portal.
 
 1. Sign in to the Azure portal. Make sure that you have used the appropriate Azure account ID and password.
 
@@ -75,7 +74,7 @@ Follow these steps to verify that the deployment completed successfully:
 1. Remotely connect to the first server via PowerShell.
 1. Run the following command:
 
-    ```azurepowershell
+    ```powershell
     ([xml](gc C:\ecestore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84)) | Select-Xml -XPath "//Action/Steps/Step" | ForEach-Object { $_.Node } | Select-Object FullStepIndex, Status, Name, StartTimeUtc, EndTimeUtc, @{Name="Durration";Expression={new-timespan -Start $_.StartTimeUtc -End $_.EndTimeUtc } } | ft -AutoSize
     ```
 
@@ -192,10 +191,10 @@ You can host the cluster witness on a file share located on another server. Foll
 
 1. To validate the cluster quorum configuration, run the following command:
 
-    ```azurepowershell
+    ```powershell
     Get-ClusterQuorum
     ```
 
 ## Next steps
 
-If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).
+- If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).

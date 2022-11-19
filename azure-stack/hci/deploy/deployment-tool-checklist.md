@@ -35,4 +35,4 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 
 ## Next steps
 
-Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
+- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.

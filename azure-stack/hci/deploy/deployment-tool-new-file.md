@@ -124,7 +124,7 @@ If you want to use an existing configuration file you have previously created, s
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
 
 1. On **step 1.5 Specify Active Directory details**, enter the following:
-    1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
+    1. Provide your **Active Directory domain** name. For example, this would be the fully qualified domain name in `Contoso.com` format.
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
     1. For **OU**, provide the full distinguished name of the organizational unit (including the domain components) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
@@ -195,7 +195,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/new-file/deployment-step-5-add-services.png":::
 
-1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
+1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch (already populated) used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/new-file/deploy-new-step-5-arc.png":::
 

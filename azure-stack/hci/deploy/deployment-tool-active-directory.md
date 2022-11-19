@@ -143,4 +143,4 @@ To prepare and configure Active Directory, follow these steps:
 
 ## Next steps
 
-[Install Azure Stack HCI version 22H2 operating system](deployment-tool-install-os.md) on each server in your cluster.
+- [Install Azure Stack HCI version 22H2 operating system](deployment-tool-install-os.md) on each server in your cluster.

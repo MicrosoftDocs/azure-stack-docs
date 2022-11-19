@@ -149,4 +149,4 @@ After installing the Azure Stack HCI version 22H2 OS, you're ready to install, c
 - [Deploy using a new configuration file](deployment-tool-new-file.md).
 - [Deploy using an existing configuration file](deployment-tool-existing-file.md).
 
-If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).
+- If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).
