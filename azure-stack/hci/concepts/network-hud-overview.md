@@ -95,6 +95,7 @@ Network HUD can detect if your adapter is disconnecting or resetting frequently.
 #### PCIe Bandwidth Oversubscription
 
 **Fault Level: Critical**
+
 Network HUD can detect if adapters have enough PCIe bandwidth to satisfy the listed linkspeed of the adapters.
 
 > [!VIDEO https://youtu.be/GqOq3oBbRrM]
@@ -104,6 +105,7 @@ Network HUD can detect if adapters have enough PCIe bandwidth to satisfy the lis
 #### Inbox Drivers
 
 **Fault Level: Critical**
+
 Inbox drivers are not supported for production use. Network HUD will detect if inbox drivers are being used on your adapters.
 
 #### Driver Age
@@ -111,9 +113,11 @@ Inbox drivers are not supported for production use. Network HUD will detect if i
 Network HUD will inform you if your drivers begin to age. Old network drivers should be updated for stability and performance benefits.
 
 **Fault Level: Warning**
+
 Network drivers between six (6) months and one (1) year old will be generate a warning.
 
 **Fault Level: Critical**
+
 Network drivers older than one (1) year will general a critical health fault.
 
 ## Next steps
