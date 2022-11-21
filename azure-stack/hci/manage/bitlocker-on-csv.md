@@ -1,11 +1,9 @@
 ---
-ms.assetid: 2f4b6641-0ec2-4b1c-85fb-a1f1d16685c8
 title: Use BitLocker with Cluster Shared Volumes
 description: BitLocker on volumes within a cluster are managed based on how the cluster service "views" the volume to be protected. The volume can be a physical disk resource such as a logical unit number (LUN) on a storage area network (SAN) or network attached storage (NAS).
 ms.topic: article
-manager: femila
-ms.author: inhenkel
-author: IngridAtMicrosoft
+ms.author: sethm
+author: sethmanheim
 ms.date: 10/19/2021
 ---
 
@@ -227,7 +225,7 @@ example, to add BitLocker, Failover Clustering, and the File Server role, the $F
 
 ```powershell
 $ServerList = "Node1", "Node2", "Node3", "Node4" 
-$FeatureList = "BitLocker", “Failover-Clustering”, “FS-FileServer”
+$FeatureList = "BitLocker", "Failover-Clustering", "FS-FileServer"
 ```
 
 ## Provision an encrypted volume
@@ -270,7 +268,7 @@ A dialog box will pop up that says:
 ```powershell
 Suspend-ClusterResource
 
-Are you sure that you want to turn on maintenance for Cluster Shared Volume ‘Cluster Disk 1’? Turning on maintenance will stop all clustered roles that use this volume and will interrupt client access.
+Are you sure that you want to turn on maintenance for Cluster Shared Volume 'Cluster Disk 1'? Turning on maintenance will stop all clustered roles that use this volume and will interrupt client access.
 ```
 
 To continue, press **Yes**.
@@ -375,7 +373,7 @@ A dialog box will pop up
 ```powershell
 Suspend-ClusterResource
 
-Are you sure that you want to turn on maintenance for Cluster Shared Volume ‘Cluster Disk 2’? Turning on maintenance will stop all clustered roles that use this volume and will interrupt client access.
+Are you sure that you want to turn on maintenance for Cluster Shared Volume 'Cluster Disk 2'? Turning on maintenance will stop all clustered roles that use this volume and will interrupt client access.
 ```
 
 To continue, press **Yes**.
