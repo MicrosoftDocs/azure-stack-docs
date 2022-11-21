@@ -49,4 +49,4 @@ Before you begin, make sure that the physical network and the host network where
 
 ## Next steps
 
-Review the [deployment checklist](deployment-tool-checklist.md).
+- Review the [deployment checklist](deployment-tool-checklist.md).

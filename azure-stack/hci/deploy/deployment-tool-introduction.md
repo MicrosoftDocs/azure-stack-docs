@@ -91,4 +91,4 @@ The following network topologies were tested and validated for this release:
 
 ## Next steps
 
-Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI.
+- Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI.

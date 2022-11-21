@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 10/27/2022
+ms.date: 11/19/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,9 +13,8 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-The Azure Stack HCI, version 22H2 operating system (OS) is installed locally on each server in your cluster using a USB drive or other media that can boot from a VHDX file.
-
-The installation includes an OS image and a deployment tool that allows a physical server to boot from a VHDX file. <!--This is different from how Azure Stack HCI has been installed in the past.--> One folder is included with the installation: *Cloud*.
+The Azure Stack HCI, version 22H2 operating system (OS) is installed locally on each server in your cluster.
+The installation includes one *Cloud* folder that contains the deployment tool used to deploy a cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -40,6 +39,12 @@ The *Cloud* folder included with the installation contains the following files:
 ## Boot and install the OS
 
 To install the Azure Stack HCI operating system, follow these steps:
+
+1. The first step is to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+
+1. You'll need to fill out and submit a trial form. On the Azure Stack HCI software download form page, select **Download Azure Stack HCI**. This action downloads an ISO file that you'll use to install the operating system on each server that you want to cluster.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
@@ -104,11 +109,12 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 ## Install required Windows Roles
 
-Skip this step if deployment is via the PowerShell. This step is required only if you deploy via the deployment tool.
+> [!NOTE]
+> Skip this step if deployment is via the PowerShell. This step is required only if you deploy via the deployment tool.
 
 1. Install the Hyper-V role. Run the following command:
 
-    ```azurepowershell
+    ```powershell
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
     ```
 
@@ -120,13 +126,13 @@ Skip this step if deployment is via the PowerShell. This step is required only i
 
     1. For a multi-node cluster, go to the first server of your cluster. Run the following command:
 
-        ```azurepowershell
+        ```powershell
         Set-Item Wsman:\Localhost\Client\TrustedHosts -Value *
         ```
 
     1. On all other subsequent nodes (excluding the first server), run the following command:
 
-        ```azurepowershell
+        ```powershell
         winrm quickconfig
         ```
 
@@ -143,4 +149,4 @@ After installing the Azure Stack HCI version 22H2 OS, you're ready to install, c
 - [Deploy using a new configuration file](deployment-tool-new-file.md).
 - [Deploy using an existing configuration file](deployment-tool-existing-file.md).
 
-If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).
+- If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).

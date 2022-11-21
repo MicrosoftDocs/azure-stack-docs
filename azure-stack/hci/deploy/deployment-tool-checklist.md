@@ -30,9 +30,9 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 |IPv4 network range subnet for management network intent|A subnet used for management network intent. You need an address range for management network with  a minimum of 6 available, contiguous IPs in this subnet. These IPs are used for infrastructure services with the first IP assigned to failover clustering.<br> For more information, see the **Provide management network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.<br> We recommend to use the default VLANS from Network ATC for storage subnets. If you plan to have two storage subnets, Network ATC will use VLANS from 712 and 711 subnets. <br> For more information, see the **Provide storage network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
 |DNS Server|A DNS Server that is used in your environment. The DNS server used must resolve the Active Directory Domain. <br> For more information, see the **Provide management network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
-|Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an owner on this subscription to manage access to Azure resources.|
+|Azure subscription ID|ID for the Azure subscription used to register the cluster. Make sure that you are a user access administrator on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
 |Outbound connectivity| Run the [Environment checker](../manage/use-environment-checker.md) to ensure that your environment meets the outbound network connectivity requirements for firewall rules.|
 
 ## Next steps
 
-Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
+- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
