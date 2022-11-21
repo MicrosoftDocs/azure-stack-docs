@@ -237,8 +237,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       kubectl logs deployment/velero -n velero
       ```
 
-      The Velero pods should be listed. Check the logs for any deployment issues.
-
+      The `get pods` command should show that the Velero pods are running.
 
 ## Install Velero with MinIO storage
 
@@ -408,7 +407,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    kubectl logs deployment/velero -n Velero
    ```
 
-   The Velero pods should be listed. Check the logs for any deployment issues.
+   The `get pods` command should show that the Velero pods are running.
 
 ## Back up a cluster
 
