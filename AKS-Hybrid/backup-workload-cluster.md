@@ -3,7 +3,7 @@ title: Back up, restore workload clusters using Velero
 description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/16/2022
+ms.date: 11/21/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -24,14 +24,14 @@ This article describes how to install and use Velero to back up and restore work
 If you don't want to store your backups in Azure Blob Storage, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
 > [!NOTE]
-> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. The `Restic` integration and backups of stateful applications or persistent volumes were not supported.
+> Velero doesn't officially support Microsoft Windows. In testing, the Velero team was able to back up stateless Windows applications only. `Restic` integration and backups of stateful applications or persistent volumes were not supported.
 
 ## Prerequisites
 
 Complete these prerequisites before you begin your Velero deployment:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
-- [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to install the [Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
+- [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to [install the Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob Storage
 
@@ -212,7 +212,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. Install and start Velero.
 
-   Install Velero, **PLEASE VERIFY: CAN THIS GO? including all prerequisites**, on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
+   Install Velero on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
 
    1. Install Velero using the following command. You'll need to customize the example command.
 
@@ -228,7 +228,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file will provide that information.
 
-      The Velero service starts automatically on installation. **PLEASE VERIFY: By default, Velero Starts automatically upon installation?**
+      The Velero service starts automatically on installation.
 
    1. Check whether the Velero service is running properly:
 
@@ -237,7 +237,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       kubectl logs deployment/velero -n velero
       ```
 
-      **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs,  **STORED WHERE? FILENAME?**, for any installation issues.
+      The Velero pods should be listed. Check the logs for any deployment issues.
 
 
 ## Install Velero with MinIO storage
@@ -356,9 +356,9 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client. **PLEASE VERIFY: Please review this step. They install the MinIO client in the next step. How does this step relate to that one? SUGGESTION: If logging in to the IP address in a browser is an alternative to the step that follows, move that alternative to an indented paragraph beneath the main step below; then remove this step.**
+   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client, as described below.
 
-   1. Install the MinIO client, and browse through the MinIO files.
+      Install the MinIO client, and browse through the MinIO files.
 
       Download the MinIO client:
 
@@ -408,7 +408,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
    kubectl logs deployment/velero -n Velero
    ```
 
-   **PLEASE VERIFY:** The list of pods should include your new Valero installation. You can check the `kubectl` logs, **STORED WHERE? FILENAME?**, for any installation issues.
+   The Velero pods should be listed. Check the logs for any deployment issues.
 
 ## Back up a cluster
 
@@ -494,8 +494,6 @@ kubectl delete crds -l component=velero
 ```
 
 ## Next steps
-
-**PLEASE VERIFY: Are these good links for "Next steps"? None were provided.**
 
 - [Troubleshoot management and workload clusters in AKS hybrid](./known-issues-workload-clusters.yml)
 - [Troubleshoot storage issues in AKS hybrid](./known-issues-storage.yml)
