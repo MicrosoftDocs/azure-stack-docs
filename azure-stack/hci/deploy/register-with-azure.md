@@ -197,7 +197,7 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
 2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your **Tenant ID**.
 
    ```powershell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id"  
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"  
    ```
 
    If the management PC has a GUI, you will get a login prompt, in which you provide the credentials to access the cluster nodes. If the management PC doesn't have a GUI, use the parameter `-credentials <credentials to log in to cluster nodes>` in the **Register-AzStackHCI** cmdlet.
@@ -215,7 +215,7 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
    Using the latest **Az.StackHCI** module and running the **Register-AzStackHCI** cmdlet with Azure Stack HCI 21H2 automatically Arc-enables the nodes by default, and places the Arc for server resources in an automatically generated Arc managed resource group. If you want to specify the name of the Arc for server resource group, use the additional parameter `-ArcServerResourceGroupName <ArcRgName>`. Note that the specified `<ArcRgName>` cannot pre-exist, it must be created by the HCI service. For example:
 
    ```powershell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id" -ResourceGroupName cluster1-rg -ArcServerResourceGroupName <ArcRgName>
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>" -ResourceGroupName cluster1-rg -ArcServerResourceGroupName <ArcRgName>
    ```
 
 3. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, copy the code provided, navigate to microsoft.com/devicelogin on another device (such as your computer or phone), enter the code, and sign in there. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
@@ -271,7 +271,7 @@ You can take the following actions if:
 1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
 
    ```PowerShell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id"
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"
    ```
 
    > [!IMPORTANT]
@@ -331,7 +331,7 @@ Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription 
 If you're running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use the following syntax. Specify your Azure subscription ID and the resource name of the Azure Stack HCI cluster that you want to unregister:
 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
+Unregister-AzStackHCI -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantID "<tenant_id>"
 ```
 
 You're prompted to visit microsoft.com/devicelogin on another device (such as your PC or phone). Enter the code, and sign in there to authenticate with Azure.
@@ -478,7 +478,7 @@ To register the cluster and Arc-enable the servers, run the following PowerShell
 
 ```powershell
 #Connect to subscription
-Connect-AzAccount -TenantId <Tenant_ID> -SubscriptionId <Subscription_ID> -Scope Process
+Connect-AzAccount -TenantId <tenant_id> -SubscriptionId <Subscription_ID> -Scope Process
 
 #Create a new application registration
 $app = New-AzADApplication -DisplayName "<unique_name>"
