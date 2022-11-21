@@ -158,6 +158,8 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
       1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
       1. Select **Register** to proceed.
    - Option 2
+      > [!NOTE]
+      > The Azure Arc dashboard is currently in public preview.
       1. Select the cluster connection.
       1. Select **Azure Arc** from the **Tools** menu on the left.
       1. Select **Overview** within the **Azure Arc** section.
@@ -179,6 +181,9 @@ When you connect to a cluster using Windows Admin Center, you'll see the dashboa
 :::image type="content" source="media/register-with-azure/dashboard-connected.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/register-with-azure/dashboard-connected.png":::
 
 You can get more information by selecting **Azure Arc** from the **Tools** menu on the left.
+
+> [!NOTE]
+> The Azure Arc dashboard is currently in public preview.
 
 :::image type="content" source="media/register-with-azure/overview-connected.png" alt-text="Screenshot that shows selections for getting Azure Stack HCI registration information." lightbox="media/register-with-azure/overview-connected.png":::
 
