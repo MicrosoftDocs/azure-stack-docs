@@ -1,10 +1,10 @@
 ---
 title: Collect diagnostic data for Azure Stack HCI and Windows Server clusters
 description: Understanding Storage Spaces Direct diagnostic data collection tools, with specific examples of how to run and use them.
-ms.author: kendownie
+ms.author: sethm
 ms.topic: article
-author: adagashe
-ms.date: 08/11/2021
+author: sethmanheim
+ms.date: 11/09/2022
 ---
 # Collect diagnostic data for clusters
 
@@ -183,8 +183,8 @@ This report is being continually updated to include more useful information. For
 
 The script runs various log gathering scripts and saves the output as xml files. We collect cluster and health logs, system information (MSInfo32), unfiltered event logs (failover clustering, dis diagnostics, Hyper-V, storage spaces, and more), and storage diagnostics information (operational logs). For the latest information on what information is collected, see the [GitHub README (what we collect)](https://github.com/PowerShell/PrivateCloud.DiagnosticInfo/blob/master/README.md#what-does-the-cmdlet-output-include).
 
-## How to consume XML files from Get-PCStorageDiagnosticInfo
-You can consume the data from the XML files provided in data collected by the `Get-PCStorageDiagnosticInfo` cmdlet. These files have information about the virtual disks, physical disks, basic cluster information, and other PowerShell related outputs.
+## How to consume XML files from Get-SDDCDiagnosticInfo
+You can consume the data from the XML files provided in data collected by the `Get-SDDCDiagnosticInfo` cmdlet. These files have information about the virtual disks, physical disks, basic cluster information, and other PowerShell related outputs.
 
 To see the results of these outputs, open a PowerShell window and run the following steps.
 

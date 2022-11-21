@@ -59,7 +59,7 @@ To use AKS engine 0.71.0:
     Modify your API model by following the [Cloud Provider for Azure](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) instructions. Failure to include the new setting will result in a deployment error. 
 
  - **If you're using storage volumes**:  
-    Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions to [upgrade from Kubernetes v1.20 to v1.21](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
+    Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 only supports CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions to [upgrade while using storage volumes](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
 
 ## Download new image and AKS engine
 
@@ -103,7 +103,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 | 2002                                           | 0.48.0, 0.51.0                 |
 | 2005                                           | 0.48.0, 0.51.0, 0.55.0, 0.55.4 |
 | 2008                                           | 0.55.4, 0.60.1                 |
-| 2102                                           | 0.60.1, 0.63.0, 0.67.0         |
+| 2102                                           | 0.60.1, 0.63.0, 0.67.0, 0.67.3 |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0 |
 | 2206                                           | 0.67.0, 0.67.3, 0.70.0, 0.71.0 |                 |
 

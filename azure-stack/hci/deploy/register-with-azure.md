@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 10/12/2022
+ms.date: 11/14/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
@@ -87,6 +87,8 @@ Some admins may prefer a more restrictive option. In this case, it's possible to
      "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
      "Actions": [
        "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.Resources/subscriptions/resourceGroups/write",
+       "Microsoft.Resources/subscriptions/resourceGroups/delete", 
        "Microsoft.AzureStackHCI/register/action",
        "Microsoft.AzureStackHCI/Unregister/Action",
        "Microsoft.AzureStackHCI/clusters/*",
@@ -121,7 +123,7 @@ The following table explains why these permissions are required:
 
 | Permissions                                                                                                                                                                                | Reason                                                  |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
+| "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.Resources/subscriptions/resourceGroups/write",</br> "Microsoft.Resources/subscriptions/resourceGroups/delete"</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
 | "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
 
 ## Required pre-checks
@@ -259,6 +261,9 @@ After the cluster is registered, you can see `ConnectionStatus` and the `LastCon
 :::image type="content" source="media/register-with-azure/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration.":::
 
 If you exceed the maximum period of offline operation, `ConnectionStatus` will show `OutOfPolicy`.
+
+> [!NOTE]
+> BIOS\UEFI Firmware configuration must be the same on each HCI cluster node's hardware. Any nodes with different BIOS configurations compared to the majority may show **ConnectionStatus** as **OutOfPolicy**.
 
 ## Register a cluster using SPN for Arc onboarding
 
@@ -468,20 +473,20 @@ You can further scope down the permissions required to perform HCI registration 
 
    ```json
    {
-   "Name": "Azure Stack HCI registration role",
-   "Id": null,
-   "IsCustom": true,
-   "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
-   "Actions": [
-     "Microsoft.Resources/subscriptions/resourceGroups/read",
-     "Microsoft.AzureStackHCI/clusters/*",
-     "Microsoft.Authorization/roleAssignments/write"
-   ],
-   "NotActions": [
-   ],
-    "AssignableScopes": [
-      "/subscriptions/<subscriptionId>"
-    ]
+     "Name": "Azure Stack HCI registration role",
+     "Id": null,
+     "IsCustom": true,
+     "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+     "Actions": [
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.AzureStackHCI/clusters/*",
+       "Microsoft.Authorization/roleAssignments/write"
+      ],
+      "NotActions": [
+      ],
+      "AssignableScopes": [
+         "/subscriptions/<subscriptionId>"
+      ]
    }
    ```
 
@@ -499,7 +504,9 @@ You can further scope down the permissions required to perform HCI registration 
    New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<subscriptionid>
    ```
 
-   You can now register clusters in this subscription with more restrictive role permissions.
+   You can now register the cluster in the subscription with more restrictive role permissions, provided you are using an existing resource group for cluster resource.
+
+   If you need to un-register this cluster, add the `Microsoft.Resources/subscriptions/resourceGroups/delete` permission in step 2.
 
 ### What are some of the more commonly-used registration and Arc cmdlets?
 

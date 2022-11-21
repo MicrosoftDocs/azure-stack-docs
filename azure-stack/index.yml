@@ -73,9 +73,9 @@ productDirectory:
   - title: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     imageSrc: media/index/kubernetes-services.svg
     links:
-      - url: ./aks-hci/overview.md
+      - url: /azure/aks/hybrid/overview
         text: AKS on Azure Stack HCI overview  
-      - url: ./aks-hci/system-requirements.md
+      - url: /azure/aks/hybrid/system-requirements
         text: System requirements                 
       - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
         text: Register for evaluation download 

@@ -35,11 +35,23 @@ As a first diagnostic step, run the az acr check-health command to get informati
 
 For more information about running this command, visit this page: [Check registry health](/azure/container-registry/container-registry-check-health)
 
-### Resolve specific issues
+## Troubleshoot specific issues
 
-To troubleshoot login issues,  refer to  [Troubleshoot login to registry](/azure/container-registry/container-registry-troubleshoot-login)
+To troubleshoot login issues,  refer to  [Troubleshoot login to registry](/azure/container-registry/container-registry-troubleshoot-login).
 
-To troubleshoot potential network issues, refer to [Troubleshoot network issues with registry](/azure/container-registry/container-registry-troubleshoot-access)
+To troubleshoot potential network issues, refer to [Troubleshoot network issues with registry](/azure/container-registry/container-registry-troubleshoot-access).
+
+To troubleshoot quota-related issues, refer to the text below.
+
+There are three cases in which you might encounter quota-related issues with ACR on Azure Stack Hub:
+
+- When your number of container registries has exceeded the quota set by your Azure Stack Hub operator
+- When the size of one (or more) of your container registries has exceeded the quota set by your Azure Stack Hub operator<sup>*</sup>
+- When the storage capacity of your Azure Stack Hub stamp has been exceeded
+
+<sup>*</sup>By default, the max size of a container registry is 100 GiB, but your operator may have changed this based on their needs.
+
+In any of these three cases, you will receive an error saying that a quota has been exceeeded or an error saying that some operation is disallowed. To resolve the error, you should contact your Azure Stack Hub operator, who can increase quotas and/or reconfigure stamps. Learn more about how operators manage capacity and quotas for ACR on Azure Stack Hub [here](/azure-stack/operator/container-registries-manage.md).
 
 ## Find your registry Resource ID for support
 
