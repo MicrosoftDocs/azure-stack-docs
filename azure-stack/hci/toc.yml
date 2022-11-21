@@ -136,6 +136,8 @@
       href: manage/attach-gpu-to-linux-vm.md
     - name: Windows Server Azure Edition
       href: manage/windows-server-azure-edition.md
+    - name: Upgrade to Windows Server Azure Edition
+      href: manage/upgrade-vm-windows-server-azure-edition.md
   - name: Manage Azure Arc VMs
     items:
     - name: What is Azure Arc VM management?
