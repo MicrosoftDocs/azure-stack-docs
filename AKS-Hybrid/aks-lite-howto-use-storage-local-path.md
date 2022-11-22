@@ -1,6 +1,6 @@
 ---
-title: Local Path Provisioner on AKS IoT
-description: Learn how to use Local Path Provisioner on AKS IoT.
+title: Local Path Provisioner on AKS Edge
+description: Learn how to use Local Path Provisioner on AKS Edge.
 author: fcabrera
 ms.author: fcabrera
 ms.topic: how-to
@@ -16,7 +16,7 @@ The [Local Path Provisioner](https://github.com/rancher/local-path-provisioner) 
 
 AKS Edge **K3S** version comes with Local Path Provisioner out of the box. This tool enables the ability to create persistent volume claims out of the box using local storage on the respective node.
 
-In this guide, you'll learn how to set up Local Path Provisioner storage and deploy a sample container on your AKS-IoT cluster. For more information, please see [the official local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
+In this guide, you'll learn how to set up Local Path Provisioner storage and deploy a sample container on your AKS Edge cluster. For more information, please see [the official local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 ## Step 1: Verify prerequisites
 
