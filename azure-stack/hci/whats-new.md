@@ -13,7 +13,7 @@ ms.date: 11/15/2022
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. 
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version is a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
 
@@ -22,6 +22,31 @@ Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HC
 You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
+
+## New deployment tool
+
+In this release, you can perform new deployments using Azure Stack HCI, supplemental package which is built using the Azure Stack HCI, version 22H2. You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell. To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
+
+## New security capabilities
+
+For new installations, this release starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
+
+To summarize, this release provides:
+
+- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state.
+
+    The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows). 
+
+    For more information, see [Security baseline settings for Azure Stack HCI](./concepts/secure-baseline.md).
+
+- Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
+
+- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities.
+
+- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
+
+- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
+
 
 ## Network ATC v2 improvements
 
@@ -140,13 +165,14 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 - Network infrastructure for valid IP ranges provided by customers for deployment.
 - Active Directory (Adprep tool is run prior to deployment).
 
-While the connectivity validator is available today, the hardware, network infrastructure, and Active Directory validators are coming soon.
-
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-To get started and validate your environment's connectivity, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). The tool doesn't need an Azure subscription and will work with your existing cluster running Azure Stack HCI, version 21H2 or later. 
+To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). The tool doesn't need an Azure subscription and will work with your existing cluster running Azure Stack HCI, version 21H2 or later.
 
 ## Next steps
 
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-ignite-2022/ba-p/3650949).
-- [Update Azure Stack HCI](./manage/update-cluster.md).
+- For existing Azure Stack HCI deployments, [Update Azure Stack HCI](./manage/update-cluster.md).
+- For new Azure Stack HCI deployments:
+    - Read the [Deployment overview](./deploy/deployment-tool-introduction.md).
+    - Learn how to [Deploy interactively](./deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.

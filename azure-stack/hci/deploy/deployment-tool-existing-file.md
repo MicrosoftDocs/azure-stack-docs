@@ -255,7 +255,7 @@ The following table gives descriptions for the settings listed in the configurat
 |DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).|
 |KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|
 |DriftControlEnforced|When set to `true`, the security baseline is re-applied regularly. For more information, see [Security baseline settings for Azure Stack HCI](../concepts/secure-baseline.md)|
-|CredentialGuardEnforced|When set to `true`, Credential Guard is enabled.|
+|CredentialGuardEnforced|When set to `true`, Credential Guard is enabled. For more information, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage).|
 |SMBSigningEnforced|When set to `true`, the SMB default instance requires sign in for the client and server services. For more information, see [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing).|
 |SMBClusterEncryption|When set to `true`, cluster east-west traffic is encrypted. For more information, see [SMB encryption](/windows-server/storage/file-server/smb-security#smb-encryption).|
 |SideChannelMitigationEnforced|When set to `true`, all the side channel mitigations are enabled.|
