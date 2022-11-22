@@ -1,5 +1,5 @@
 ---
-title: GPU partitioning
+title: Use GPU partitioning on Azure Stack HCI
 description: Learn how to partition GPUs with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -11,13 +11,11 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-# Provision GPU partitioning on your Azure Stack HCI VMs
+# Use GPU partitioning on Azure Stack HCI virtual machines
 
-This article describes how to partition graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
+This article describes how to use the graphics processing units-partitioning (GPU-P) feature on Azure Stack HCI virtual machines (VMs). The GPU-P or GPU virtualization feature enables you to accelerate and scale your GPU-powered workloads, such as virtual desktop infrastructure in a cost-effective manner.
 
-The GPU partitioning (GPU-P) or GPU virtualization feature enables you to accelerate and scale your GPU-powered workloads in a cost-effective manner.
-
-The GPU-P feature uses the Single Root IO Virtualization (SR-IOV) technology, which ensures hardware-backed security boundary with predictable performance for each VM.
+The GPU-P feature uses the Single Root IO Virtualization (SR-IOV) interface, which provides hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
 [!INCLUDE [preview](../../includes/hci-preview.md)
 
@@ -25,7 +23,8 @@ The GPU-P feature uses the Single Root IO Virtualization (SR-IOV) technology, wh
 
 There are several requirements and things to consider before you begin to provision GPU partitioning:
 
-- You must have an Azure Stack HCI cluster of at least two servers, running Azure Stack HCI, version 22H2.
+- You must have an Azure Stack HCI cluster running Azure Stack HCI, version 22H2.
+- You must physically install the same GPU model on every server of the cluster.
 
 - You must install the Nvidia GPU drivers both on the host and the guest VMs. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information, and supported operating systems. The deployment process includes performing a set of actions on both the host machine and the guest machines.
 
@@ -37,6 +36,7 @@ There are several requirements and things to consider before you begin to provis
 ## Workflow
 
 1. Complete the prerequisites.
+1. Install 
 
 1. Check if SR-IOV is enabled in the BIOS of the host machine. If not, enable it to use the GPU-Partitioning feature, as shown below.
 
