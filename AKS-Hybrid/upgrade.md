@@ -20,8 +20,6 @@ Two types of updates are available for an Azure Kubernetes Service (AKS) workloa
 - Update the Kubernetes version of an AKS cluster.
 - Update the operating system version of an AKS cluster without updating the Kubernetes version.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 > [!NOTE]
 > You can also use Windows Admin Center to [upgrade AKS workload clusters](upgrade-kubernetes.md).
 

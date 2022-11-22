@@ -19,8 +19,6 @@ ms.reviewer: sulahiri
 
 You can create a secure connection to your Kubernetes API server in AKS hybrid using Active Directory (AD) single sign-on (SSO) credentials.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of AD in AKS hybrid
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.

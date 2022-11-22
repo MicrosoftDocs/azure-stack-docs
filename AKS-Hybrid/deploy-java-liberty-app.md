@@ -20,8 +20,6 @@ This article demonstrates how to:
 * Build the application Docker image using Open Liberty container images.
 * Deploy the containerized application to an on-premises AKS cluster in AKS hybrid using the Open Liberty Operator.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 The Open Liberty Operator simplifies the deployment and management of applications running on Kubernetes clusters. With Open Liberty Operator, you can also perform more advanced operations, such as gathering traces and dumps. 
 
 For more information on Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details about IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
@@ -97,7 +95,7 @@ To deploy and run your Liberty application on the AKS cluster, you first need to
 1. Run `mvn clean package` to package the application.
 1. Run `mvn liberty:dev` to test the application. You should see `The defaultServer server is ready to run a smarter planet.` in the command output if the command was successful. Use `CTRL-C` to stop the application.
 1. Run one of the following commands to build the application image and push it to the ACR instance.
-   * Build with the Open Liberty base image if you prefer to use Open Liberty as a lightweight open source Java™ runtime:
+   * Build with the Open Liberty base image if you prefer to use Open Liberty as a lightweight open source Java&trade; runtime:
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary Open Liberty base images.

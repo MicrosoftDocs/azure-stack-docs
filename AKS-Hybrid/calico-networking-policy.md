@@ -20,8 +20,6 @@ author: sethmanheim
 
 Use this step-by-step guide to verify and try out basic pod-to-pod connectivity and to use Calico network policies in a cluster in an Azure Kubernetes Server (AKS) deployment. In this guide, you'll learn how to create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then apply a basic network policy to isolate pod traffic in AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Prerequisites
 
  To deploy AKS hybrid, follow the steps to [set up an AKS host](./kubernetes-walkthrough-powershell.md).
@@ -347,7 +345,7 @@ pWebRequest) [Invoke-WebRequest], WebException
 command terminated with exit code 1
 ```
 
-In this demo, we’ve configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod-to-pod traffic.
+In this demo, we've configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod-to-pod traffic.
 
 As the final step, you can clean up all of the demo resources:
 

@@ -19,8 +19,6 @@ author: sethmanheim
 
 This article describes how to update the Azure Kubernetes Service host in AKS hybrid. 
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of AKS host updates
 
 Updates to the AKS host always include the latest available version. Although you can update the host independently of workload cluster updates, you must always update the host before updating a workload cluster.

@@ -29,8 +29,6 @@ In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) cluster
 
 In later tutorials, the Azure Vote application is deployed to the cluster, scaled, and updated.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Before you begin
 
 In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, start at [Tutorial 1 - Create container images](tutorial-kubernetes-prepare-application.md).

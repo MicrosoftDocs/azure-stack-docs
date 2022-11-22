@@ -17,8 +17,6 @@ ms.reviewer: abha
 
 This article describes how to upgrade an Azure Kubernetes Service (AKS) workload cluster to a new Kubernetes version in AKS hybrid. You should [update the AKS hosts](update-akshci-host-windows-admin-center.md) to a new version of the operating system before updating the Kubernetes version.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 > [!NOTE]
 > You can also use PowerShell to [upgrade AKS workload clusters](upgrade.md).
 

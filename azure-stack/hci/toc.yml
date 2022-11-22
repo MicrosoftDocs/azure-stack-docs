@@ -32,48 +32,36 @@
     href: deploy/tutorial-private-forest.md
 - name: Plan
   items:
-  - name: Plan networking
+  - name: Network reference patterns overview
+    href: plan/network-patterns-overview.md
+  - name: Choose network reference pattern
+    href: plan/choose-network-pattern.md
+  - name: Single-server deployment
     items:
-    - name: Network reference patterns overview
-      href: plan/network-patterns-overview.md
-    - name: Choose network reference pattern
-      href: plan/choose-network-pattern.md
     - name: Single-server deployment
-      items:
-      - name: Single-server deployment
-        href: plan/single-server-deployment.md
-      - name: Pattern components
-        href: plan/single-server-components.md
-      - name: Pattern IP requirements
-        href: plan/single-server-ip-requirements.md
-    - name: Two-node deployments
-      items:
-      - name: Storage switchless, single switch
-        href: plan/two-node-switchless-single-switch.md
-      - name: Storage switchless, two switches
-        href: plan/two-node-switchless-two-switches.md
-      - name: Storage switched, non-converged
-        href: plan/two-node-switched-non-converged.md
-      - name: Storage switched, fully converged
-        href: plan/two-node-switched-converged.md
-      - name: Pattern components
-        href: plan/two-node-components.md
-      - name: Pattern IP requirements
-        href: plan/two-node-ip-requirements.md
-      - name: Decision matrix
-        href: plan/two-node-decision-matrix.md
-    - name: SDN considerations
-      href: plan/network-patterns-sdn-considerations.md
-  - name: Host networking
+      href: plan/single-server-deployment.md
+    - name: Pattern components
+      href: plan/single-server-components.md
+    - name: Pattern IP requirements
+      href: plan/single-server-ip-requirements.md
+  - name: Two-node deployments
     items:
-    - name: Physical network requirements
-      href: concepts/physical-network-requirements.md
-    - name: Host network requirements
-      href: concepts/host-network-requirements.md
-    - name: Network ATC overview
-      href: concepts/network-atc-overview.md
-    - name: Firewall requirements
-      href: concepts/firewall-requirements.md
+    - name: Storage switchless, single switch
+      href: plan/two-node-switchless-single-switch.md
+    - name: Storage switchless, two switches
+      href: plan/two-node-switchless-two-switches.md
+    - name: Storage switched, non-converged
+      href: plan/two-node-switched-non-converged.md
+    - name: Storage switched, fully converged
+      href: plan/two-node-switched-converged.md
+    - name: Pattern components
+      href: plan/two-node-components.md
+    - name: Pattern IP requirements
+      href: plan/two-node-ip-requirements.md
+    - name: Decision matrix
+      href: plan/two-node-decision-matrix.md
+  - name: SDN considerations
+    href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
@@ -152,13 +140,13 @@
     items:
     - name: What is Azure Arc VM management?
       href: manage/azure-arc-vm-management-overview.md
-    - name: Review prerequisites
-      href: manage/azure-arc-vm-management-prerequisites.md
     - name: Set up Arc VM management
       items:
+      - name: Review prerequisites
+        href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Set up using command line
+      - name: Set up using Azure CLI
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
