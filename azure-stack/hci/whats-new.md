@@ -25,7 +25,9 @@ The following sections briefly describe the various features and enhancements in
 
 ## New deployment tool
 
-In this release, you can perform new deployments using Azure Stack HCI, supplemental package which is built using the Azure Stack HCI, version 22H2. You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell. To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
+In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package. The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2.
+
+You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell. To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
 
 ## New security capabilities
 
