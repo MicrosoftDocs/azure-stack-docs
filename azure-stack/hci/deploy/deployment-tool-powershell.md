@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/18/2022
+ms.date: 11/22/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -56,6 +56,10 @@ The following parameters are required to set up and run the deployment tool prop
 |`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
 |`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
+|`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to public Azure is supported.|
+|`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
+|`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
+
 
 ## Deploy a cluster
 
@@ -72,6 +76,8 @@ Follow these steps to deploy a multiple-node cluster or a single-server using Po
     ```powershell
     $DeploymentUserCred=Get-Credential
     $LocalAdminCred=Get-Credential
+    $SubscriptionID="<Your subscription ID>"
+    $CloudName="AzureCloud"   
     $SPNAppID = "<Your App ID>"
     $SPNSecret= "<Your SPN Secret>"
     $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
@@ -89,7 +95,7 @@ Follow these steps to deploy a multiple-node cluster or a single-server using Po
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
     ```
 
 ## Next steps

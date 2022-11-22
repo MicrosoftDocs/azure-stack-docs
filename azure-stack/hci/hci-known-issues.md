@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI (preview)
 description: Read about the known issues in Azure Stack HCI (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/17/2022
+ms.date: 11/22/2022
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
