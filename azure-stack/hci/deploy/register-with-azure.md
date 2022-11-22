@@ -13,7 +13,7 @@ ms.date: 11/03/2022
 
 # Connect and manage Azure Stack HCI registration
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms).
 
@@ -485,7 +485,7 @@ You can further scope down the permissions required to perform HCI registration 
 
    If you need to un-register this cluster, add the `Microsoft.Resources/subscriptions/resourceGroups/delete` permission in step 2.
 
-### What are some of the more commonly-used registration and Arc cmdlets?
+### What are some of the more commonly used registration and Arc cmdlets?
 
 - For **Az.StackHCI** PowerShell module cmdlets, see the [HCI PowerShell documentation](/powershell/module/az.stackhci/).  
 - **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.
