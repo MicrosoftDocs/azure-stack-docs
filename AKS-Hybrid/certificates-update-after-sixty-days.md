@@ -3,7 +3,7 @@ title: Certificates and tokens in AKS hybrid
 description: Learn how to update AKS certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/07/2022
+ms.date: 11/18/2022
 ms.author: sethm 
 ms.lastreviewed: 07/06/2022
 ms.reviewer: rbaziwane
@@ -64,17 +64,6 @@ To update tokens and certificates of all clients in a target cluster, including 
 
 ```powershell
 Update-AksHciClusterCertificates -fixCloudCredentials
-```
-
-## Rotate the CA certificates
-
-> [!WARNING]
-> Rotating CA certificates is a disruptive operation and requires minimal downtime, to be planned beforehand. During this operation, all clients lose communication with the cloud agent, so this operation must be used with caution.
-
-To rotate the CA certificates, open a new PowerShell window and run the following cmdlet:
-
-```powershell
-Invoke-AksHciRotateCACertificate
 ```
 
 ## Next steps
