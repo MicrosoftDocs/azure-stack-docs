@@ -134,9 +134,9 @@
       href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
-    - name: Windows Server Azure Edition
+    - name: Deploy Windows Server Azure Edition VMs
       href: manage/windows-server-azure-edition.md
-    - name: Upgrade to Windows Server Azure Edition
+    - name: Upgrade VMs to Windows Server Azure Edition
       href: manage/upgrade-vm-windows-server-azure-edition.md
   - name: Manage Azure Arc VMs
     items:
