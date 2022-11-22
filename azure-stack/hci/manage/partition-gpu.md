@@ -11,79 +11,104 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
+# Provision GPU partitioning on your Azure Stack HCI VMs
+
 This article describes how to partition graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 
-The GPU partitioning (GPU-P) or GPU virtualization feature enables your to accelerate and scale your GPU-powered workloads in a cost-effective manner.
+The GPU partitioning (GPU-P) or GPU virtualization feature enables you to accelerate and scale your GPU-powered workloads in a cost-effective manner.
 
-The GPU-P feature uses the SR-IOV technology, which ensures hardware-backed security boundary with predictable performance for each virtual machine (VM).
+The GPU-P feature uses the Single Root IO Virtualization (SR-IOV) technology, which ensures hardware-backed security boundary with predictable performance for each VM.
 
-Currently, we support only Nvidia A16 and A2 GPUs on the Azure Stack HCI solutions. We recommend that you work with your OEM partners to plan, order and setup the systems for your desired workloads with the appropriate configurations. To take advantage of the GPU virtualization capabilities in Azure Stack HCI, you must install the Nvidia GPU drivers both on the host and the guest VMs. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information and supported operating systems. The deployment steps involve a set of actions you need to take on the host machine, and a set of actions you need to take on the guest machine. 
+[!INCLUDE [preview](../../includes/hci-preview.md)
 
-Once you have installed the host driver on every node of your Azure Stack HCI cluster, you can either use PowerShell \<insert_PS_gallery_link\> or Windows Admin Center (WAC) to setup and manage the virtual machines and GPUs. 
+## Prerequisites
 
-First, check if SR-IOV is enabled in the BIOS of the host machines or not. If not, enable it to use the GPU-Partitioning feature, as shown below. 
+There are several requirements and things to consider before you begin to provision GPU partitioning:
 
-![](./media//media/image1.png){width="3.0555555555555554in"
-height="0.2222222222222222in"}![](./media//media/image1.png){width="3.0555555555555554in"
-height="0.2222222222222222in"}![](./media//media/image1.png){width="3.0555555555555554in"
-height="0.2222222222222222in"}![Graphical user interface Description
-automatically generated](./media//media/image2.png){width="6.5in"
-height="5.445833333333334in"} 
+- You must have an Azure Stack HCI cluster of at least two servers, running Azure Stack HCI, version 22H2.
 
-To confirm that the Microsoft Azure Stack HCI host has GPU adapters that can be partitioned by listing the GPUs that support GPU-P.
+- You must install the Nvidia GPU drivers both on the host and the guest VMs. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information, and supported operating systems. The deployment process includes performing a set of actions on both the host machine and the guest machines.
 
-*PS C:\> Get-VMHostPartitionableGpu* 
+    > [!NOTE]
+    > Currently, we support only Nvidia A16 and A2 GPUs on the Azure Stack HCI solutions. We recommend that you work with your OEM partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations.
 
-We recommend that you create a homogeneous configuration across your cluster for best performance, such as the same GPU model installed across the nodes, and the same partition size across the nodes. To create partitions using PowerShell, 
+- For best performance, we recommend that you create a homogeneous configuration across all servers in your cluster. This includes installing the same GPU model and configuring the same partition size across the servers in the cluster.
 
-*Set-VMHostPartitionableGpu -Name \"gpu-name\" -PartitionCount
-partitions ~~gpu-name~~* 
+## Workflow
 
-*[Or]{.underline}* 
+1. Complete the prerequisites.
 
-*[PS C:\> Get-VMHostPartitionableGpu \| Set-VMHostPartitionableGpu
--PartitionCount partitions]{.underline}* 
+1. Check if SR-IOV is enabled in the BIOS of the host machine. If not, enable it to use the GPU-Partitioning feature, as shown below.
 
-To create partitions using the WAC tool, install the GPU tool extension, go to the GPU partition tab and then click on 'Partition a New GPU'. WAC will by default check for homogeneous configurations and guide you to create the recommended partitions across your cluster. 
+    :::image type="content" source="./media/partition-gpu/enable-gpu-partitioning.png" alt-text="Screenshot to confirm if SR-IOV is enabled in the BIOS of the host machine." lightbox="./media/partition-gpu/enable-gpu-partitioning.png" :::
 
- ![Graphical user interface, application, email Description
-automatically generated](./media//media/image3.jpeg){width="6.5in"
-height="4.69375in"} 
+1. 
+## Create GPU partitions
 
-Once the partitions are created, you can assign a partition to a VM. Today, you can only assign a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU (partition) needs to be on the same host machine. To assign a GPU partition to a VM using PowerShell:
+After you've installed the host driver on every server of your Azure Stack HCI cluster, you can either use PowerShell \<insert_PS_gallery_link\> or Windows Admin Center to set up and manage the VMs and GPUs.
 
-*PS C:\> Add-VMGpuPartitionAdapter --VMName ~~\$vm~~["Name"]{.underline}
-\`* 
+## [Windows Admin Center](#tab/windows-admin-center)
 
-*--MinPartitionVRAM min-ram \`* 
+Follow these steps to create GPU partitions using Windows Admin Center:
 
-*-MaxPartitionVRAM max-ram \`* 
+1. Launch Windows Admin Center.
+1. Install the GPUs extension.
+    1. Select the **Settings** gear icon from the top right corner of the page.
+    1. From the **Settings** menu in the left pane, go to **Gateway** > **Extensions**.
+       The **Available Extensions** tab lists the extensions on the feed that are available for installation.
+    1. Select the **GPUs** extension from the list. Or, use the **Search** box to quickly find the **GPUs** extension from the list and then select it.
+    1. Select **Install**.
+    1. After you installed the extension, it appears under the **Installed extensions** tab.
+1. Select **Cluster Manager** from the top dropdown menu and connect your Azure Stack HCI cluster.
+1. From the **Settings** menu, select **Extensions** > **GPUs**.
+1. In the **GPU** pane, go to the **GPU Partitions** tab and then select **Partition New GPU**.
 
-*-OptimalPartitionVRAM opt-ram \`* 
+    Windows Admin Center by default checks for homogeneous configurations and guides you to create the recommended partitions across every server in your [cluster.](./media/partition-gpu/)
 
-*-MinPartitionEncode min-enc \`* 
+    :::image type="content" source="./media/partition-gpu/partition-new-gpu.png" alt-text="Screenshot to confirm if SR-IOV is enabled in the BIOS of the host machine." lightbox="./media/partition-gpu/partition-new-gpu.png" :::
 
-*-MaxPartitionEncode max-enc \`* 
+1. Once the partitions are created, assign a partition to a VM.
+    > [!NOTE]
+    > Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU (partition) needs to be on the same host machine. To assign a GPU partition to a VM using PowerShell:  
 
-*-OptimalPartitionEncode opt-enc \`* 
+    :::image type="content" source="./media/partition-gpu/add-gpu-prtition-to-vm.png" alt-text="Screenshot of the GPU Partitions in Windows Admin Center." lightbox="./media/partition-gpu/add-gpu-prtition-to-vm.png" :::
 
-*-MinPartitionDecode min-dec \`* 
+## [PowerShell](#tab/powershell)
 
-*-MaxPartitionDecode max-dec \`* 
+1. Run the following command to list the GPUs that support GPU-P in the Azure Stack HCI host machine.
 
-*-OptimalPartitionDecode opt-dec \`* 
+```powershell
+*PS C:\> Get-VMHostPartitionableGpu*
+```
 
-*-MinPartitionCompute min-compute \`* 
+1. Create partitions.
 
-*-MaxPartitionCompute max-compute \`* 
+```powershell
+Set-VMHostPartitionableGpu -Name \"gpu-name\" -PartitionCount
+partitions
+```
 
-*-OptimalPartitionCompute opt-compute* 
+1. After you created a partition, run the following command to assign a partition to a VM.
 
-To assign a GPU partition to a VM using WAC: 
+> [!NOTE]
+> Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU (partition) needs to be on the same host machine. To assign a GPU partition to a VM using PowerShell:  
 
- ![Graphical user interface, text, application Description automatically
-generated](./media//media/image4.jpeg){width="6.5in"
-height="4.68125in"} 
+```powershell
+PS C:> Add-VMGpuPartitionAdapter –VMName $vm "VM-Name" ` 
+
+–MinPartitionVRAM min-ram ` 
+-MaxPartitionVRAM max-ram ` 
+-OptimalPartitionVRAM opt-ram ` 
+-MinPartitionEncode min-enc ` 
+-MaxPartitionEncode max-enc ` 
+-OptimalPartitionEncode opt-enc ` 
+-MinPartitionDecode min-dec ` 
+-MaxPartitionDecode max-dec ` 
+-OptimalPartitionDecode opt-dec ` 
+-MinPartitionCompute min-compute ` 
+-MaxPartitionCompute max-compute ` 
+-OptimalPartitionCompute opt-compute 
+```
 
 Partitions are resolved only when the VM is started. To list the VM and
 GPU assignment, you can run the following command: 
