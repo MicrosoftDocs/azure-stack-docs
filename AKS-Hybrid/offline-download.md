@@ -11,9 +11,6 @@ ms.reviewer: jeguan
 ---
 # Use offline download in AKS on Azure Stack HCI and Windows Server
 
-> [!NOTE]
-> This feature is currently in preview.
-
 If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you will deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
 
 ## Before you begin
