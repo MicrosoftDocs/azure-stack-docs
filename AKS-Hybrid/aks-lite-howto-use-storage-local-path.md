@@ -37,6 +37,9 @@ NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE
 local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsumer   false                  21h
 ```
 
+> [!WARNING]
+> [Busybox](https://hub.docker.com/r/rancher/busybox) image is not maintained by Microsoft and is currently pulled from [Rancher Labs](https://hub.docker.com/u/rancher) repository.  
+
 ## Step 2: Create a Persistent Volume Claim (PVC)
 
 Once verified that the storage class is available, create a persistent volume claim (PVC). There are multiple configurations available, but in this tutorial we'll create a PVC with **ReadWriteOnce** access mode and request **128MB** of storage. In your admin PowerShell window, run the following cmdlet. 
