@@ -312,7 +312,7 @@ The unregistration process automatically cleans up the Azure resource that repre
 
 ### Unregister Azure Stack HCI using PowerShell
 
-with PowerShell, you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
+With PowerShell, you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
 
 You might need to install the latest version of the **Az.StackHCI** module. If you see a prompt that says **Are you sure you want to install the modules from 'PSGallery'?**, answer yes (Y):
 
@@ -341,7 +341,7 @@ You're prompted to visit microsoft.com/devicelogin on another device (such as yo
 If you're running the cmdlet from a management PC, you must also specify the name of a server (node) in the cluster:
 
 ```powershell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantId "<tenant_id>"
 ```
 
 An interactive Azure login window appears. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
@@ -506,7 +506,7 @@ $spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $pa
 Disconnect-AzAccount -ErrorAction Ignore | Out-Null
 
 # Use the SPN credentials created previously in the register-azstackhci cmdlet
-Register-AzStackHCI   -SubscriptionId < Subscription_ID> -Region <region> -ArcSpnCredential:$spnCred
+Register-AzStackHCI -SubscriptionId < Subscription_ID> -Region <region> -ArcSpnCredential:$spnCred
 ```
 
 ### What are some of the more commonly used registration and Arc cmdlets?
