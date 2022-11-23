@@ -320,12 +320,6 @@ You might need to install the latest version of the **Az.StackHCI** module. If y
 Install-Module -Name Az.StackHCI
 ```
 
-To unregister, issue the following command:
-
-```powershell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantId "<tenant_id>"
-```
-
 #### Unregister from cluster-node
 
 If you're running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use the following syntax. Specify your Azure subscription ID and the resource name of the Azure Stack HCI cluster that you want to unregister:
