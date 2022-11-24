@@ -1,6 +1,6 @@
 ---
-title: Uninstall AKS on Windows
-description: Learn how to uninstall AKS IoT. 
+title: Uninstall AKS Edge Essentials
+description: Learn how to uninstall AKS Edge Essentials. 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
@@ -11,18 +11,7 @@ ms.custom: template-how-to
 # Uninstall an AKS cluster
 
 Follow the steps in this article to uninstall AKS lite.
-
-## Disconnect your cluster from Arc
-
-If you've connected your cluster to Arc, it is recommended to disconnect it before uninstalling your cluster.
-
-In your **AksEdgePrompt.cmd** file, run:
-
-```powershell
-Disconnect-ArcIotK8s
-```
-
-If you're using PowerShell 7 and the new API, you can test the Arc connection status using `Test-ArcIotK8sConnection` and disconnect it using:
+If you're using PowerShell 7 and the new API, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
 
 ```powershell
 Set-AksEdgeArcConnection -connect $false
@@ -43,7 +32,7 @@ kubectl delete -f linux-sample.yaml
 To remove the windows node only,
 
 ```powershell
-Remove-AksEdgeNode -workloadType Windows
+Remove-AksEdgeNode -nodeType Windows
 ```
 
 To remove your single machine cluster with a `Linux` or `LinuxandWindows` workload run:
@@ -69,21 +58,21 @@ Be careful when removing control plane nodes and make sure you have another work
 To remove a **Windows** only node:
 
 ```powershell
-Set-AksEdgeNodeToDrain -WorkloadType Windows
-Remove-AksEdgeNode -WorkloadType Windows
+Set-AksEdgeNodeToDrain -NodeType Windows
+Remove-AksEdgeNode -NodeType Windows
 ```
 
 To remove a **Linux** only node:
 
 ```powershell
-Set-AksEdgeNodeToDrain -WorkloadType Linux
-Remove-AksEdgeNode -WorkloadType Linux
+Set-AksEdgeNodeToDrain -NodeType Linux
+Remove-AksEdgeNode -NodeType Linux
 ```
 
 To remove both:
 
 ```powershell
-Set-AksEdgeNodeToDrain -WorkloadType LinuxAndWindows
+Set-AksEdgeNodeToDrain -NodeType LinuxAndWindows
 Remove-AksEdgeDeployment
 ```
 
