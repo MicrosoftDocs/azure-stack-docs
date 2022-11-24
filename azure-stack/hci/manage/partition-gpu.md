@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-This article describes how to use the graphics processing unit-partitioning (GPU-P) feature that allows you to share a single GPU with multiple Azure Stack HCI virtual machines (VMs).
+This article describes how to use the graphics processing unit-partitioning (GPU-P) feature that allows you to share your dedicated GPU with multiple Azure Stack HCI virtual machines (VMs).
 
 The GPU-P feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
@@ -21,7 +21,9 @@ The GPU-P feature uses the [Single Root IO Virtualization (SR-IOV) interface](/w
 
 ## Benefits of GPU partitioning
 
-With the GPU-P or GPU virtualization feature, each VM gets a dedicated fraction of the GPU, instead of the entire GPU. This helps lower the total cost of ownership (TCO) for GPU-powered workloads that can work on a reduced GPU power. GPU-P in VM workloads helps increase the GPU utilization without significantly affecting the performance benefits of GPU.
+With the GPU-P or GPU virtualization feature, each VM gets a dedicated fraction of the GPU, instead of getting a full GPU. This helps lower the total cost of ownership (TCO) for GPU-powered workloads that can work on a reduced GPU power.
+
+For example, for Azure Virtual Desktop on Azure Stack HCI (preview) workload, GPU-P can provide cost-effective VM options that are sized appropriately with dedicated GPU resources for each user. GPU-P in such VM workloads helps increase the GPU utilization without significantly affecting the performance benefits of GPU.
 
 ## Supported guest operating systems
 
@@ -43,20 +45,48 @@ There are several requirements and things to consider before you begin to use th
 
 - If you're using Windows Admin Center to provision GPU-P, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension (insert-version-number). For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [install the GPUs extension](#install-the-gpus-extension).
 
-- You must physically install the GPU of the same make and model on every server of the cluster.
+- You must physically install the GPU of the same make, model, and size on every server of the cluster.
     
     > [!NOTE]
     > Currently, we support only Nvidia A16 and A2 GPUs on the Azure Stack HCI solutions. We recommend that you work with your OEM partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations.
 
-- You must install the Nvidia GPU drivers both on the host and the guest VMs. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information, and supported operating systems. The deployment process includes performing a set of actions on both the host machine and the guest machines.
+- You must install the GPU drivers both on the host and the guest machines. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information, and supported operating systems. The deployment process includes performing a set of actions on both the host machine and the guest machines.
 
-- For best performance, we recommend that you create a homogeneous configuration across all the servers in your cluster. This includes installing the same GPU model and configuring the same partition size across the servers in the cluster.
-
-- Make sure that SR-IOV is enabled in the BIOS of the host machine. If not, you must first enable it to use the GPU-Partitioning feature. Reach out to your system vendor if you are unable to identify the correct setting in your BIOS.
+- Make sure that virtualization support (SR-IOV) is enabled in the BIOS of each server. If not, you must first enable it to use the GPU-Partitioning feature. Reach out to your system vendor if you are unable to identify the correct setting in your BIOS.
   
     The following sample screenshot of the iDRAC9 dashboard shows the BIOS settings that you must enable:
 
     :::image type="content" source="./media/partition-gpu/enable-gpu-partitioning.png" alt-text="Screenshot to confirm if SR-IOV is enabled in the BIOS of the host machine." lightbox="./media/partition-gpu/enable-gpu-partitioning.png" :::
+
+## Additional considerations
+
+Consider the following caveats when using the GPU-P feature:
+
+- For best performance, we recommend that you create a homogeneous configuration across all the servers in your cluster. This includes installing the same make and model of the GPU and configuring the same partition size across the servers in the cluster.
+    - Azure Stack HCI doesn't support mixing GPUs from different vendors in the same cluster. This is because they have different driver and licensing requirements and can lead to unintended consequences.  
+    - Azure Stack HCI doesn't support using different GPU models from different product family from the same vendor in your cluster.
+- You cannot assign a physical GPU as both DDA or partitionable GPU. It can either be assigned as DDA or as partitionable GPU, but not both.
+- You cannot assign multiple partitions to a single VM.
+- Azure Stack HCI auto-assigns the partition to the VMs. You can't chose specific partition for a specific VM.
+-  
+
+## GPU-P provisioing workflow
+
+To use GPU-P on Azure Stack HCI, you need to perform a set of actions on both the host and guest machines.
+
+Here's the high-level summary of the workflow on the host machine:
+
+1. Install the same GPU model across all servers in the cluster.
+1. Install the host driver across all servers in the cluster. Install drivers from your GPU manufacturer inside the VM so that apps in the VM can take advantage of
+the GPU partition assigned to them.
+1. Create the same GPU size partitions on all hosts 
+1. Stop the VM.
+1. Assign one partition to a VM​.
+1. Start the VM.
+
+Here's the high-level summary of the workflow on the guest machine:
+
+1. Install guest driver on
 
 ## Create and assign GPU partitions
 
@@ -80,7 +110,10 @@ Follow these steps to create and assign GPU partitions using Windows Admin Cente
 
     :::image type="content" source="./media/partition-gpu/partition-new-gpu.png" alt-text="Screenshot to confirm if SR-IOV is enabled in the BIOS of the host machine." lightbox="./media/partition-gpu/partition-new-gpu.png" :::
 
-1. Once the partitions are created, assign a partition to a VM.
+1. Once the partitions are created, the VM is force shut down.
+
+1. Assign a partition to a VM.
+    
     > [!NOTE]
     > Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU (partition) needs to be on the same host machine. To assign a GPU partition to a VM using PowerShell:  
 
@@ -90,7 +123,7 @@ Follow these steps to create and assign GPU partitions using Windows Admin Cente
 
 Follow these steps to create and assign GPU partitions using PowerShell:
 
-1. Run the following command to list the GPUs that support GPU-P in the Azure Stack HCI host machine.
+1. Get the host machine’s partitionable GPU.
 
 ```powershell
 *PS C:\> Get-VMHostPartitionableGpu*
@@ -131,7 +164,7 @@ To list the VM and GPU assignment, run the following command:
 
 *PS C:\> Get-VMGpuPartitionAdapter --VMName \$vm* 
 
-The next step will be to start the VM using PowerShell or WAC. Once the VM is up and running, it will show a GPU in device manager. At this time, you can install the guest driver provided but the partner.
+The next step will be to start the VM using PowerShell or WAC. Once the VM is up and running, it will show a GPU in device manager. At this time, you can install the guest driver provided by the partner.
 
 There is no mechanism today to pass the driver to the VM and install the
 driver.  
