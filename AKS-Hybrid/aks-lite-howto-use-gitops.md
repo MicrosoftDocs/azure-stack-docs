@@ -1,6 +1,6 @@
 ---
-title: GitOps with AKS Lite
-description: Learn how to use GitOps with AKS Lite
+title: GitOps with AKS Edge Essentials
+description: Learn how to use GitOps with AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to

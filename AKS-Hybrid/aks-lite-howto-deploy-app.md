@@ -14,7 +14,7 @@ This article describes how to deploy a containerized application on your Kuberne
 
 ## Prerequisites
 
-- Set up your [single machine](aks-lite-howto-single-node-deployment.md) or [multi-machine](aks-lite-howto-multi-node-deployment.md) Kubernetes cluster.
+- Set up your [single machine Kubernetes](aks-lite-howto-single-node-deployment.md) or [full Kubernetes](aks-lite-howto-multi-node-deployment.md) cluster.
 - Package your application into a container image, and then upload the image to the Azure Container Registry. Review these steps to [create container image of your application](tutorial-kubernetes-prepare-application.md).
 - Since AKS on Windows enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS).
 
@@ -34,14 +34,14 @@ nodeSelector:
 
 ### 1. Update the manifest file
 
-In this guide we use a [sample Linux application][sample-application], as described [in this tutorial]. The container image for this application  is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice.  The sample application is a basic voting app consisting of a front and backend. We will be running a sample Linux application based on Microsoft's azure-vote-front image. Refer to linux-sample.yaml in the GitHub repo package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux. All sample codes and deployment manifest can be found under Samples.
+In this guide we use a sample application that is a basic voting app consisting of a front and backend which is based on Microsoft's azure-vote-front image. The container image for this application  is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice.  Refer to linux-sample.yaml in the [GitHub repo](https://github.com/Azure/aks-edge-utils) package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux. All sample codes and deployment manifest can be found under Samples.
 
 ### 2. Deploy the application
 
 To deploy your application, use the [kubectl apply][kubectl-apply] command. This command parses the manifest file and creates the defined Kubernetes objects. Specify the YAML manifest file, as shown in the following example:
 
 ```console
-kubectl apply -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f linux-sample.yaml
 ```
 
 ### 3. Verify the pods
@@ -59,7 +59,7 @@ kubectl get pods -o wide
 To monitor progress, use the [kubectl get service][kubectl-get] command with the `--watch` argument.
 
 ```console
-kubectl get service azure-vote-front --watch
+kubectl get services
 ```
 
 Initially, the **EXTERNAL-IP** for the **azure-vote-front** service is shown as **pending**:
@@ -68,14 +68,14 @@ Initially, the **EXTERNAL-IP** for the **azure-vote-front** service is shown as 
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-When the **EXTERNAL-IP** address changes from **pending** to an actual public IP address, use **CTRL-C** to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
+When the **EXTERNAL-IP** address changes from **pending** to an actual public IP address, you can use the IP address assigned to the service as shown below:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 > [!IMPORTANT]
-> If you deployed your Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksIotLinuxNodeAddr`), then append the external port (for example, **192.168.1.12:31458**).
+> If you deployed your Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksEdgeNodeAddr`), then append the external port (for example, **192.168.1.12:31458**).
 
 ### 5. Test your application
 
@@ -94,7 +94,7 @@ kubectl delete -f linux-sample.yaml
 
 ## Deploy a sample Windows application to your cluster
 
-This example runs a sample ASP.NET application based on [Microsoft’s sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See **win-sample.yaml** in the public preview package for the deployment manifest (located in **\samples\others**). Note that the YAML specifies a `nodeSelector` tagged for Windows. All sample code and deployment manifests can be found under the **/Samples** folder in the GitHub repo.
+This example runs a sample ASP.NET application based on [Microsoft’s sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See **win-sample.yaml** in the public preview package for the deployment manifest (located in **\samples\others**). Note that the YAML specifies a `nodeSelector` tagged for Windows. All sample code and deployment manifests can be found under the **/Samples** folder in the [GitHub repo](https://github.com/Azure/aks-edge-utils).
 
 ### 1. Deploy the application by specifying the name of your YAML manifest
 
@@ -122,10 +122,10 @@ kubectl get services
 
 ![Screenshot showing Windows services running.](media/aks-lite/win-svc-running.png)
 
-Since this sample is deployed as a service of type **NodePort**, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using the following command:
+Since this sample is deployed as a service of type **NodePort**, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using the following `Get-AksEdgeNodeAddr`command
 
-```bash
-kubectl cluster-info
+```powershell
+Get-AksEdgeNodeAddr -NodeType Windows
 ```
 
 ![Screenshot showing Windows cluster information.](media/aks-lite/win-cluster-info.png)
@@ -150,6 +150,6 @@ kubectl delete -f win-sample.yaml
 - [Overview](aks-lite-overview.md)
 - [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
 
-[sample-application]: https://github.com/Azure-Samples/azure-voting-app-redis
+
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
