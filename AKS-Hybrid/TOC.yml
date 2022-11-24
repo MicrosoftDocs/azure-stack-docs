@@ -281,13 +281,13 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS lite hybrid option (preview)
+- name: AKS Edge Essentials hybrid option (preview)
   items:
   - name: Overview
     href: aks-lite-overview.md
   - name: Concepts
     items:
-    - name: AKS on Windows key concepts
+    - name: AKS Edge Essentials key concepts
       href: aks-lite-concept.md
     - name: Deployment options
       href: aks-lite-deployment-options.md
@@ -295,9 +295,9 @@
     items:
     - name: Set up machine
       href: aks-lite-howto-setup-machine.md
-    - name: Single-node deployment
+    - name: Create single machine deployment
       href: aks-lite-howto-single-node-deployment.md
-    - name: Multi-node deployment
+    - name: Create full deployment
       href: aks-lite-howto-multi-node-deployment.md
     - name: Deploy application
       href: aks-lite-howto-deploy-app.md
@@ -313,11 +313,11 @@
       href: aks-lite-howto-use-storage-local-path.md
     - name: Additional configuration
       href: aks-lite-howto-more-configs.md
-    - name: Using GitOps with AKS hybrid options
+    - name: Use GitOps with AKS Edge Essentials
       href: aks-lite-howto-use-gitops.md
-    - name: Using SQL Edge with AKS hybrid options
+    - name: Use SQL Edge with AKS Edge Essentials
       href: aks-lite-howto-use-sqledge.md
-    - name: Uninstall AKS on Windows
+    - name: Uninstall AKS Edge Essentials
       href: aks-lite-howto-uninstall.md
   - name: Resources
     items:

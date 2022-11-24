@@ -56,18 +56,6 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
 1. Double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
 
-2. Once installation is complete, make sure your install was successful by running the following command:
-
-    ```powershell
-    Get-Command -Module AksEdge
-    ```
-
-    You should see the following output with version showing v0.4.222:
-
-    ![Screenshot of installed PowerShell modules.](media/aks-lite/aks-lite-modules-installed.png)
-
-    See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
-
 ## Set up your machine as a Linux and Windows node
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
@@ -81,6 +69,28 @@ In order to configure your MSI installer to include Windows nodes, make sure you
     ```
 
 3. Now you are ready to do mixed deployment.
+ 
+## Check the AKS Edge modules
+Once installation is complete, make sure your install was successful by running the following command:
+
+```powershell
+Get-Command -Module AksEdge
+```
+You should see the following output with version showing v0.4.222:
+
+![Screenshot of installed PowerShell modules.](media/aks-lite/aks-lite-modules-installed.png)
+
+See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-lite-ps/index.md) for a full list of supported commands.
+
+If you don't see the PowerShell module commands, try the following commands to load the modules. 
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+Import-Module AksEdge
+```
+Once this is done, open another PowerShell window and run the following command again. 
+```powershell
+Get-Command -Module AksEdge
+```
 
 ## Next steps
 

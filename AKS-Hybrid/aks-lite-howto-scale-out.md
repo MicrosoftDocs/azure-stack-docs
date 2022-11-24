@@ -24,7 +24,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
-
+![Screenshot showing the creation of config file.](./media/aks-lite/scale-config-file.png)
 - To add a Linux control plane node, specify the `NodeType` as Linux, set the `ControlPlane` flag as true, and provide a unique IP address for the Linux node:
 
    ```powershell
@@ -82,12 +82,18 @@ Now you're ready to bring up clusters on your secondary machines. You cannot mix
 >[!NOTE]
 > The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
+> [!NOTE]
+> In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
+
+![Screenshot of Hyper-v switch manager](./media/aks-lite/hyper-v-external-switch.png)
+
 To deploy the corresponding node on the secondary machine, you can now use the **ScaleConfig.json** file created in the previous step:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\ScaleConfig.json
 ```
-
+>[!NOTE]
+> 
 ## 3. Validate your cluster setup
 
 On any node in the cluster, run the following cmdlet:
@@ -99,6 +105,20 @@ kubectl get nodes -o wide
 You should be able to see all the nodes of the cluster. 
 
 ![Screenshot showing multiple nodes.](./media/aks-lite/aks-lite-multi-nodes.png)
+
+## 4. Add more nodes
+
+Using the **.\ScaleConfig** file as your reference configuration file, you can add more nodes to your Kubernetes cluster. Ensure that you provide IP addresses that are available in your network in the VM block of parameters
+```json
+"LinuxVm": {
+    "CpuCount": 2,
+    "MemoryInMB": 2048,
+    "DataSizeInGB": 10,
+    "Ip4Address": "<provide a free IP address>",
+    "MacAddress": null,
+    "Mtu": 0
+  },
+```
 
 ## Next steps
 
