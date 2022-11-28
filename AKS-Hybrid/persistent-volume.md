@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]  
+This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS hybrid.
 
 A *persistent volume* represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycles.
 

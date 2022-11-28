@@ -21,9 +21,6 @@ Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (
 
 This article describes how to control access using Kubernetes RBAC in an AKS cluster based on Azure AD group membership in AKS hybrid. You'll create a demo group and users in Azure AD. And then you'll create roles and role bindings in the AKS cluster to grant the appropriate permissions to create and view resources.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
-
 ## Prerequisites
 
 Before you set up Kubernetes RBAC using Azure AD identity, you'll need:

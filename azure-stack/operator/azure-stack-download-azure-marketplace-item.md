@@ -123,8 +123,10 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 ## Use the marketplace syndication tool to download marketplace items
 
+Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
+
 > [!IMPORTANT]
-> Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
+> It's recommended that you use **Az** modules instead of **AzureRM**. See the following examples.
 
 ### [Az modules](#tab/az2)
 

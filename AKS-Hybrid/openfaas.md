@@ -17,8 +17,6 @@ ms.reviewer: scooley
 
 [OpenFaaS][open-faas] is a framework for building serverless functions by using containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on a Kubernetes cluster running on AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Prerequisites
 
 In order to complete the steps within this article, make sure you have the following requirements:

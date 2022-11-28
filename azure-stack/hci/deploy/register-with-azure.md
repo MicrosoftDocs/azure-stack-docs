@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/14/2022
+ms.date: 11/28/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms).
 
@@ -93,6 +93,7 @@ Some admins may prefer a more restrictive option. In this case, it's possible to
        "Microsoft.AzureStackHCI/Unregister/Action",
        "Microsoft.AzureStackHCI/clusters/*",
        "Microsoft.Authorization/roleAssignments/write",
+       "Microsoft.Authorization/roleAssignments/read",
        "Microsoft.HybridCompute/register/action",
        "Microsoft.GuestConfiguration/register/action",
        "Microsoft.HybridConnectivity/register/action"
@@ -123,7 +124,7 @@ The following table explains why these permissions are required:
 
 | Permissions                                                                                                                                                                                | Reason                                                  |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.Resources/subscriptions/resourceGroups/write",</br> "Microsoft.Resources/subscriptions/resourceGroups/delete"</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
+| "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.Resources/subscriptions/resourceGroups/write",</br> "Microsoft.Resources/subscriptions/resourceGroups/delete"</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",</br>"Microsoft.Authorization/roleAssignments/read", | To register and unregister the Azure Stack HCI cluster.      |
 | "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
 
 ## Required pre-checks
@@ -216,10 +217,10 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
    >
    > If you see another prompt saying **Are you sure you want to install the modules from 'PSGallery'?** Answer **Yes(Y)**.
 
-2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list.
+2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your **Tenant ID**.
 
    ```powershell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1  
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"  
    ```
 
    If the management PC has a GUI, you will get a login prompt, in which you provide the credentials to access the cluster nodes. If the management PC doesn't have a GUI, use the parameter `-credentials <credentials to log in to cluster nodes>` in the **Register-AzStackHCI** cmdlet.
@@ -237,7 +238,7 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
    Using the latest **Az.StackHCI** module and running the **Register-AzStackHCI** cmdlet with Azure Stack HCI 21H2 automatically Arc-enables the nodes by default, and places the Arc for server resources in an automatically generated Arc managed resource group. If you want to specify the name of the Arc for server resource group, use the additional parameter `-ArcServerResourceGroupName <ArcRgName>`. Note that the specified `<ArcRgName>` cannot pre-exist, it must be created by the HCI service. For example:
 
    ```powershell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -ResourceGroupName cluster1-rg -ArcServerResourceGroupName <ArcRgName>
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>" -ResourceGroupName cluster1-rg -ArcServerResourceGroupName <ArcRgName>
    ```
 
 3. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, copy the code provided, navigate to microsoft.com/devicelogin on another device (such as your computer or phone), enter the code, and sign in there. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
@@ -265,65 +266,13 @@ If you exceed the maximum period of offline operation, `ConnectionStatus` will s
 > [!NOTE]
 > BIOS\UEFI Firmware configuration must be the same on each HCI cluster node's hardware. Any nodes with different BIOS configurations compared to the majority may show **ConnectionStatus** as **OutOfPolicy**.
 
-## Register a cluster using SPN for Arc onboarding
-
-Before registration, make sure the prerequisites are met: the HCI cluster must exist, internet access and firewall ports are configured correctly, and the user registering the cluster has either the "contributor" role assigned for the subscription which is used for the cluster registration, or has the following list of permissions if a custom role is assigned:
-
-- "Microsoft.Resources/subscriptions/resourceGroups/read",
-- "Microsoft.AzureStackHCI/register/action",
-- "Microsoft.AzureStackHCI/Unregister/Action",
-- "Microsoft.AzureStackHCI/clusters/*",
-- "Microsoft.HybridCompute/register/action",
-- "Microsoft.GuestConfiguration/register/action",
-- "Microsoft.HybridConnectivity/register/action"
-
-The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
-
-> [!NOTE]
-> HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
-
-To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of a PowerShell module.
-
-```powershell
-#Connect to subscription
-Connect-AzAccount -TenantId <Tenant_ID> -SubscriptionId <Subscription_ID> -Scope Process
-
-#Create a new application registration
-$app = New-AzADApplication -DisplayName "<unique_name>"
-
-#Create a new SPN corresponding to the application registration
-$sp = New-AzADServicePrincipal -ApplicationId  $app.AppId -Role "Reader" 
-
-#Roles required on SPN for Arc onboarding
-$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
-$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
-
-#Assign roles to the created SPN
-New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
-New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
-
-# Set password validity time. SPN must be updated on the HCI cluster after this timeframe.
-$pwdExpiryInYears = 300
-$start = Get-Date
-$end = $start.AddYears($pwdExpiryInYears)
-$pw = New-AzADSpCredential -ObjectId $sp.Id -StartDate $start -EndDate $end
-$password = ConvertTo-SecureString $pw.SecretText -AsPlainText -Force  
-
-# Create SPN credentials object to be used in the register-azstackhci cmdlet
-$spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password)
-Disconnect-AzAccount -ErrorAction Ignore | Out-Null
-
-# Use the SPN credentials created previously in the register-azstackhci cmdlet
-Register-AzStackHCI   -SubscriptionId < Subscription_ID>  -ArcSpnCredential:$spnCred
-```
-
 ## View the cluster and Arc resources in Azure portal
 
 To view the status of the cluster and Arc resources, navigate to the following screen in the Azure portal:
 
 :::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status.png":::
 
-## Enable Azure Arc integration
+### Enable Azure Arc integration
 
 If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has required permissions as described in [Assign permissions from Azure portal](#assign-permissions-from-azure-portal).
 
@@ -345,7 +294,7 @@ You can take the following actions if:
 1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
 
    ```PowerShell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"
    ```
 
    > [!IMPORTANT]
@@ -386,7 +335,7 @@ The unregistration process automatically cleans up the Azure resource that repre
 
 ### Unregister Azure Stack HCI using PowerShell
 
-with PowerShell, you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
+With PowerShell, you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
 
 You might need to install the latest version of the **Az.StackHCI** module. If you see a prompt that says **Are you sure you want to install the modules from 'PSGallery'?**, answer yes (Y):
 
@@ -399,7 +348,7 @@ Install-Module -Name Az.StackHCI
 If you're running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use the following syntax. Specify your Azure subscription ID and the resource name of the Azure Stack HCI cluster that you want to unregister:
 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
+Unregister-AzStackHCI -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantID "<tenant_id>"
 ```
 
 You're prompted to visit microsoft.com/devicelogin on another device (such as your PC or phone). Enter the code, and sign in there to authenticate with Azure.
@@ -409,7 +358,7 @@ You're prompted to visit microsoft.com/devicelogin on another device (such as yo
 If you're running the cmdlet from a management PC, you must also specify the name of a server (node) in the cluster:
 
 ```powershell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantId "<tenant_id>"
 ```
 
 An interactive Azure login window appears. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
@@ -480,7 +429,8 @@ You can further scope down the permissions required to perform HCI registration 
      "Actions": [
        "Microsoft.Resources/subscriptions/resourceGroups/read",
        "Microsoft.AzureStackHCI/clusters/*",
-       "Microsoft.Authorization/roleAssignments/write"
+       "Microsoft.Authorization/roleAssignments/write",
+       "Microsoft.Authorization/roleAssignments/read"
       ],
       "NotActions": [
       ],
@@ -508,7 +458,75 @@ You can further scope down the permissions required to perform HCI registration 
 
    If you need to un-register this cluster, add the `Microsoft.Resources/subscriptions/resourceGroups/delete` permission in step 2.
 
-### What are some of the more commonly-used registration and Arc cmdlets?
+### How do I register a cluster using SPN?
+
+Before registration, make sure the [prerequisites](#prerequisites-for-cluster-registration) and [prechecks](#required-pre-checks) are met.
+
+> [!NOTE]
+> When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster. This is important to remember if you plan to "Add new server" or "Unregister" in the future.
+
+1. Run `Connect-AzAccount -Tenant "<TenantID>" -DeviceCode`.
+   - Use the SPN to connect. The SPN you use should have all the required permissions on the subscription(s) [as listed here](#assign-permissions-from-azure-portal).
+1. Assign `$token = Get-AzAccessToken`.
+1. Run the following cmdlet:
+
+   ```powershell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -ArmAccessToken $token.Token -AccountId $token.UserId
+   ```
+
+## How do I register a cluster using SPN for Arc onboarding?
+
+Before registration, make sure the prerequisites are met: the HCI cluster must exist, internet access and firewall ports are configured correctly, and the user registering the cluster has either the "contributor" role assigned for the subscription which is used for the cluster registration, or has the following list of permissions if a custom role is assigned:
+
+- "Microsoft.Resources/subscriptions/resourceGroups/read",
+- "Microsoft.AzureStackHCI/register/action",
+- "Microsoft.AzureStackHCI/Unregister/Action",
+- "Microsoft.AzureStackHCI/clusters/*",
+- "Microsoft.HybridCompute/register/action",
+- "Microsoft.GuestConfiguration/register/action",
+- "Microsoft.HybridConnectivity/register/action"
+
+The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
+
+> [!NOTE]
+> HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
+
+To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of a PowerShell module.
+
+```powershell
+#Connect to subscription
+Connect-AzAccount -TenantId <tenant_id> -SubscriptionId <Subscription_ID> -Scope Process
+
+#Create a new application registration
+$app = New-AzADApplication -DisplayName "<unique_name>"
+
+#Create a new SPN corresponding to the application registration
+$sp = New-AzADServicePrincipal -ApplicationId  $app.AppId -Role "Reader" 
+
+#Roles required on SPN for Arc onboarding
+$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
+$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
+
+#Assign roles to the created SPN
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
+
+# Set password validity time. SPN must be updated on the HCI cluster after this timeframe.
+$pwdExpiryInYears = 300
+$start = Get-Date
+$end = $start.AddYears($pwdExpiryInYears)
+$pw = New-AzADSpCredential -ObjectId $sp.Id -StartDate $start -EndDate $end
+$password = ConvertTo-SecureString $pw.SecretText -AsPlainText -Force  
+
+# Create SPN credentials object to be used in the register-azstackhci cmdlet
+$spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password)
+Disconnect-AzAccount -ErrorAction Ignore | Out-Null
+
+# Use the SPN credentials created previously in the register-azstackhci cmdlet
+Register-AzStackHCI -SubscriptionId < Subscription_ID> -Region <region> -ArcSpnCredential:$spnCred
+```
+
+### What are some of the more commonly used registration and Arc cmdlets?
 
 - For **Az.StackHCI** PowerShell module cmdlets, see the [HCI PowerShell documentation](/powershell/module/az.stackhci/).  
 - **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.
@@ -518,7 +536,6 @@ You can further scope down the permissions required to perform HCI registration 
   - The system runs this cmdlet automatically every 12 hours.
   - You should only use this cmdlet when a cluster's internet connection has been unavailable for an extended period.
   - Do not run this cmdlet immediately after server reboot; let the automatic sync happen. Otherwise, it may result in a bad state.
-
 
 ## Next steps
 
