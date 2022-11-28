@@ -71,6 +71,7 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 - **User Access Administrator** role: Required to Arc-enable each server of an Azure Stack HCI cluster.
 - **Contributor** role: Required to register and unregister the Azure Stack HCI cluster.
 
+//IMAGE NOT SHOWING
 :::image type="content" source="media/register-with-azure/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/register-with-azure/access-control.png":::
 
 ### Assign permissions using PowerShell
