@@ -154,28 +154,51 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
    > [!IMPORTANT]
    > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
 
-2. Open Windows Admin Center and do the following:
-   1. Select the cluster connection.
-   2. Select **Settings** from the bottom of the **Tools** menu on the left.
-   3. Select **Azure Stack HCI registration**. If your cluster has not yet been registered with Azure, then **Registration status** shows **Not registered**. Select **Register** to proceed.
-   4. Select **Register this cluster** from the Windows Admin Center dashboard.
+2. Open Windows Admin Center and do one of the following:
+   - Option 1
+      1. Select the cluster connection.
+      1. Select **Dashboard** from the **Tools** menu on the left.
+      1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
+      1. Select **Register** to proceed.
+   - Option 2
+      > [!NOTE]
+      > The Azure Arc dashboard is currently in public preview.
+      1. Select the cluster connection.
+      1. Select **Azure Arc** from the **Tools** menu on the left.
+      1. Select **Overview** within the **Azure Arc** section.
+      1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
+      1. Select the **Azure Stack HCI registration** tile.
+      1. Select **Register** to proceed.
 
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
-3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select **Use existing resource group** to create the Azure Stack HCI cluster resource in an existing resource group. Select the Azure region from the drop-down menu and then click **Register**.
+3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select the Azure region from the drop-down menu. Select **Use existing resource group** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is `<clustername>-<GUID>-Arc-Infra-RG`. Then select **Register**.
 
-   :::image type="content" source="media/register-with-azure/register-with-azure.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register/register-with-azure.png":::
+   :::image type="content" source="media/register-with-azure/arc-registration-flyout.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register-with-azure/arc-registration-flyout.png":::
 
-## View registration status using Windows Admin Center
+## View registration and Arc-enabled servers status using Windows Admin Center
 
-When you connect to a cluster by using Windows Admin Center, you'll see the dashboard, which displays the Azure connection status. **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
+When you connect to a cluster using Windows Admin Center, you'll see the dashboard, which displays the Azure Stack HCI registration and Arc-enabled servers status. For Azure Stack HCI registration, **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day. For Arc-enabled servers, **Connected** means that all physical servers are Arc-enabled and can be managed from the Azure portal.
 
-:::image type="content" source="media/register-with-azure/registration-status.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/register-with-azure/registration-status.png":::
+:::image type="content" source="media/register-with-azure/dashboard-connected.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/register-with-azure/dashboard-connected.png":::
 
-You can get more information by selecting **Settings** at the bottom of the **Tools** menu on the left, and then selecting **Azure Stack HCI registration**.
+You can get more information by selecting **Azure Arc** from the **Tools** menu on the left.
 
-:::image type="content" source="media/register-with-azure/azure-stack-hci-registration.png" alt-text="Screenshot that shows selections for getting Azure Stack H C I registration information." lightbox="media/register-with-azure/azure-stack-hci-registration.png":::
+> [!NOTE]
+> The Azure Arc dashboard is currently in public preview.
+
+:::image type="content" source="media/register-with-azure/overview-connected.png" alt-text="Screenshot that shows selections for getting Azure Stack HCI registration information." lightbox="media/register-with-azure/overview-connected.png":::
+
+On the **Overview** page, you will find high-level status information about Azure Stack HCI registration and Arc-enabled servers. You can click on either tile to be taken to the individual pages.
+
+:::image type="content" source="media/register-with-azure/hci-registration-connected.png" alt-text="Screenshot of status information about registration." lightbox="media/register-with-azure/hci-registration-connected.png":::
+
+On the **Azure Stack HCI registration** page, you can view both the Azure Stack HCI system and server status. This includes the Azure connection status and last Azure sync. You can find **Useful links** to troubleshooting documentation and cluster extensions. You can **Unregister** if needed.
+
+:::image type="content" source="media/register-with-azure/arc-enabled-servers-connected.png" alt-text="Screenshot of servers status." lightbox="media/register-with-azure/arc-enabled-servers-connected.png":::
+
+If your cluster is registered with Azure, but the physical servers are not yet Arc-enabled, you can do so from the **Arc-enabled servers** page. If the physical servers are Arc-enabled, you can view the Azure Arc status and version ID for each server. You can also find **Useful links** to troubleshooting information.
 
 ## Register a cluster using PowerShell
 
