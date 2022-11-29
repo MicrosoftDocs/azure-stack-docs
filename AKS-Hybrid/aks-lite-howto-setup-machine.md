@@ -38,20 +38,17 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 
 You can deploy AKS for the light edge on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
-1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node (Part 1-3) and node tool. 
+1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files. 
 
     | File | Link | 
     | ---- | ---- | 
     | k8s installer | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
     | k3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
-    | Windows node - Part 1 | [aka.ms/aks-edge/windows-zip-1](https://aka.ms/aks-edge/windows-zip-1) |
-    | Windows node - Part 2 | [aka.ms/aks-edge/windows-zip-2](https://aka.ms/aks-edge/windows-zip-2) |
-    | Windows node - Part 3 | [aka.ms/aks-edge/windows-zip-3](https://aka.ms/aks-edge/windows-zip-3) |
-    | Windows node tool | [aka.ms/aks-edge/windows-tool](https://aka.ms/aks-edge/windows-tool) |
+    | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
-2. In addition to the MSI, Microsoft provides a few samples and tools which you can download from this [GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+1. In addition to the MSI, Microsoft provides a few samples and tools which you can download from this [GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
-4. Before you install, make sure you remove any existing AKS Edge Essentials clusters and uninstall any previous versions of AKS Edge. If you have uninstalled a previous version of AKS Edge Essentials, reboot your system before proceeding.
+1. Before you install, make sure you remove any existing AKS Edge Essentials clusters and uninstall any previous versions of AKS Edge. If you have uninstalled a previous version of AKS Edge Essentials, reboot your system before proceeding.
 
    ![Screenshot showing install/uninstall options.](media/aks-lite/aks-lite-uninstall.png)
 
@@ -66,6 +63,8 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 ## Set up your machine as a Linux and Windows node
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
+
+1. Unzip the files of *AksEdgeWindows-<version>.zip* in the same `kXs` MSI folder. 
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer and files.
 
