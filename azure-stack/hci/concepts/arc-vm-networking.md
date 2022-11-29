@@ -44,7 +44,7 @@ A set of three contiguous IP addresses are required for the Arc Resource Bridge 
 > [!NOTE]
 > VM addresses IP-2 and IP-3 are alternated on each update of the Arc Resource Bridge.
 
-### Arc VM networking
+## Arc VM networking
 
 VMs created through Azure Arc get their network configuration from the virtual network created by the Azure Stack HCI administrator. This virtual network consists of the following:
 
