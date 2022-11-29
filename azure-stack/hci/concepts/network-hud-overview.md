@@ -59,7 +59,7 @@ Installation of Network HUD requires two steps:
    Install-Module -Name Az.StackHCI.NetworkHUD -Force
    ```
    
-1. Verify Network HUD is running: Network HUD will log an event indicating it has started in the Network HUD Operational log once it verifies prerequisites have been met. If there are errors listed in this log, you must resolve the errors before Network HUD will start.
+1. Verify Network HUD is running: Network HUD will log an event indicating it has started in the Network HUD operational log once it verifies prerequisites have been met. If there are errors listed in this log, you must resolve the errors before Network HUD will start.
 
    ```PowerShell
    Get-WinEvent -LogName  Microsoft-Windows-Networking-NetworkHUD/Operational
@@ -71,7 +71,7 @@ Installation of Network HUD requires two steps:
    11/18/2022 4:34:20 PM           105 Information      Network HUD has successfully started.
    ```
 
-## View Cluster Health Faults
+## View cluster health faults
 
 If Network HUD detects a problem, it will throw a cluster health fault which you can view using
 
@@ -79,11 +79,11 @@ If Network HUD detects a problem, it will throw a cluster health fault which you
    Get-HealthFault
    ```
 
-## Network HUD Capabilities
+## Network HUD capabilities
 
-Network HUD can detect the following networking problems. For more information, please see [Network HUD: November 2022 content update](https://techcommunity.microsoft.com/t5/networking-blog/network-hud-november-2022-content-update-has-arrived/ba-p/3676158)
+Network HUD can detect the following networking problems. For more information, see [Network HUD: November 2022 content update](https://techcommunity.microsoft.com/t5/networking-blog/network-hud-november-2022-content-update-has-arrived/ba-p/3676158).
 
-### Network Adapter
+### Network adapter
 
 #### Disconnections or resets
 
@@ -92,7 +92,7 @@ Network HUD can detect if your adapter is disconnecting or resetting frequently.
 
 > [!VIDEO https://youtu.be/g1TDW_GnhMQ]
 
-#### PCIe Bandwidth Oversubscription
+#### PCIe bandwidth oversubscription
 
 **Fault Level: Critical**
 
@@ -102,23 +102,23 @@ Network HUD can detect if adapters have enough PCIe bandwidth to satisfy the lis
 
 ### Drivers
 
-#### Inbox Drivers
+#### Inbox drivers
 
 **Fault Level: Critical**
 
-Inbox drivers are not supported for production use. Network HUD will detect if inbox drivers are being used on your adapters.
+Inbox drivers are not supported for production use. Network HUD detects if inbox drivers are being used on your adapters.
 
-#### Driver Age
+#### Driver age
 
 Network HUD will inform you if your drivers begin to age. Old network drivers should be updated for stability and performance benefits.
 
 **Fault Level: Warning**
 
-Network drivers between six (6) months and one (1) year old will be generate a warning.
+Network drivers between six (6) months and one (1) year old generate a warning.
 
 **Fault Level: Critical**
 
-Network drivers older than one (1) year will general a critical health fault.
+Network drivers older than one (1) year generate a critical health fault.
 
 ## Next steps
 
