@@ -53,7 +53,7 @@ Follow these steps to register Windows Admin Center with Azure:
 
       :::image type="content" source="media/register-wac/enter-code.png" alt-text="Copy the unique code, click enter the code, and paste it into the dialog box" lightbox="media/register-wac/enter-code.png":::
 
-      After pasting in the code, an interactive **Sign in** window appears. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
+      After pasting in the code, an interactive **Sign in** window appears. Enter the email address associated with the Azure account you want to use with Windows Admin Center. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
 
       :::image type="content" source="media/register-wac/sign-in.png" alt-text="Sign in to Windows Admin Center using your email or phone number" lightbox="media/register-wac/sign-in.png":::
 
