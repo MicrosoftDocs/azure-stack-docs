@@ -13,7 +13,7 @@ ms.custom: template-how-to
 This section shows how to connect your AKS-IoT cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
 
 > [!IMPORTANT]
-> If you do not have a cluster installed, create a [single node cluster](aks-lite-howto-single-node-deployment.md) and follow the steps to deploy.
+> If you do not have a cluster installed, create a [single node cluster](aks-edge-howto-single-node-deployment.md) and follow the steps to deploy.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Execute the following steps on your primary machine.
 > If you are connecting a multi-node cluster to Arc, enable the Arc connection to the cluster before scaling out to additional nodes.
 
 >[!NOTE]
-> If you are using PowerShell 7 with the new API to connect to Arc, [see this article](./aks-lite-howto-more-configs.md) for the instructions.
+> If you are using PowerShell 7 with the new API to connect to Arc, [see this article](./aks-edge-howto-more-configs.md) for the instructions.
 
 ## 1. Configure your Azure environment
 
@@ -134,25 +134,25 @@ az upgrade
 
    This step can take a while and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`", but if you navigate to your resource group on the Azure portal, you should see your cluster as a resource. When the PowerShell command is finished running, click on your cluster.
 
-   ![Screenshot showing the cluster in azure portal](media/aks-lite/cluster-in-az-portal.png)
+   ![Screenshot showing the cluster in azure portal](media/aks-edge/cluster-in-az-portal.png)
 
 ## 3. View cluster resources
 
 1. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
 
-   ![Kubernetes resources preview.](media/aks-lite/kubernetes-resources-preview.png)
+   ![Kubernetes resources preview.](media/aks-edge/kubernetes-resources-preview.png)
 
 2. To view your Kubernetes resources, you need a bearer token.
 
-   ![Screenshot showing the bearer token required page.](media/aks-lite/bearer-token-required.png)
+   ![Screenshot showing the bearer token required page.](media/aks-edge/bearer-token-required.png)
 
 3. Go to your **../tools/servicetoken.txt** file, copy the full string, and paste it into the Azure portal.
 
-   ![Screenshot showing where to paste token in portal.](media/aks-lite/bearer-token-in-portal.png)
+   ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
 4. Now you can look at resources on your cluster. This is the **Workloads** blade, showing the same as `kubectl get pods --all-namespaces`:
 
-   ![all pods shown in arc](media/aks-lite/all-pods-in-arc.png)
+   ![all pods shown in arc](media/aks-edge/all-pods-in-arc.png)
 
 ## Disconnect from Arc
 
@@ -164,6 +164,6 @@ Disconnect-ArcIotK8s
 
 ## Next steps
 
-- Try other Arc-enabled services as described [here](aks-lite-howto-enable-arc-services.md)
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- Try other Arc-enabled services as described [here](aks-edge-howto-enable-arc-services.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

@@ -14,15 +14,15 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 ## Prerequisites
 
-Set up your primary and secondary machines as described in the [setup article](aks-lite-howto-setup-machine.md).
+Set up your primary and secondary machines as described in the [setup article](aks-edge-howto-setup-machine.md).
 
 ## Understand your network configuration
 
-Refer to the following network chart to configure your environment. You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-lite-concept.md) overview for more details.
+Refer to the following network chart to configure your environment. You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-edge-concept.md) overview for more details.
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
-| NodeType | Linux | Creates the Linux VM to host the control plane components and act as a worker. Read more about [AKS Edge Essentials node types](/aks-lite-concept.md). |
+| NodeType | Linux | Creates the Linux VM to host the control plane components and act as a worker. Read more about [AKS Edge Essentials node types](/aks-edge-concept.md). |
 | VswitchName | string | Name of the external switch used for AKS Edge Essentials. You can create one yourself using Hyper-V manager. If you specify a switch name that does not exist, AKS Edge Essentials creates one for you. |
 | NetworkPlugin | calico or flannel | Name of the Kubernetes network plugin. Defaults to **flannel**. |
 | ControlPlaneEndpointIp | A.B.C.x | A free IP address on your subnet **A.B.C**. The control plane (API server) will get this address. |
@@ -42,7 +42,7 @@ A full deployment uses an external switch to enable communication across the nod
 > [**!NOTE**]
 > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
-![Screenshot of Hyper-v switch manager](./media/aks-lite/hyper-v-external-switch.png)
+![Screenshot of Hyper-v switch manager](./media/aks-edge/hyper-v-external-switch.png)
 Before you create your deployment, you need to create a JSON file with all the configuration parameters. You can create a sampled configuration file using the `New-AksEdgeConfig` command.
 
 ```powershell
@@ -106,10 +106,10 @@ kubectl get pods --all-namespaces -o wide
 > [!NOTE]
 > This screenshot is for a k3s cluster, so the pods will look different for k8s.
 
-![Diagram showing all pods running.](./media/aks-lite/all-pods-running.png)
+![Diagram showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 ## Next steps
 
-- [Deploy your application](aks-lite-howto-deploy-app.md).
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Deploy your application](aks-edge-howto-deploy-app.md).
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

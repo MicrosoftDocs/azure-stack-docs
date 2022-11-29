@@ -27,7 +27,7 @@ Wait for the metrics server pods to reach **running** status. It might take a fe
 kubectl get pods -A
 ```
 
-![Screenshot of results showing metrics pod running.](media/aks-lite/metrics-pod-running.png)
+![Screenshot of results showing metrics pod running.](media/aks-edge/metrics-pod-running.png)
 
 #### Step 2: View your resource consumption
 
@@ -39,11 +39,11 @@ kubectl top nodes
 kubectl top pods -A
 ```
 
-![Screenshot of results showing metrics server installed.](media/aks-lite/metrics-server-installed.png)
+![Screenshot of results showing metrics server installed.](media/aks-edge/metrics-server-installed.png)
 
 If your metrics server fails to display, you may have run into an MTU issue in which the Linux VM's MTU doesn't match that of your network. This can happen on Azure VMs. Run `Invoke-AksIotLinuxVmCommand "sudo ip link set dev eth0 mtu 1300"`.
 
 ## Next steps
 
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

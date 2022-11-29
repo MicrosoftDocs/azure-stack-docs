@@ -91,4 +91,4 @@ See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows&tabs=azure-powers
 
 ## Next steps
 
-[Overview](aks-lite-overview.md)
+[Overview](aks-edge-overview.md)

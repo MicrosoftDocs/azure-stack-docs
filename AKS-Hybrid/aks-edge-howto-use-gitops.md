@@ -51,7 +51,7 @@ Now, go to your cluster in the Azure portal and select **GitOps**. Next, create 
 
 Wait until the `config-nginx` has successfully been created and visible on your Azure portal GitOps before proceeding to create the namespace-level configuration (you can move on to creating the next configuration if the compliance is in pending state).
 
-![Screenshot showing cluster-level configuration.](media/aks-lite/gitops-first-config.png)
+![Screenshot showing cluster-level configuration.](media/aks-edge/gitops-first-config.png)
 
 ### Namespace-level configuration
 
@@ -75,7 +75,7 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 | Prune | Enabled |
 | Force | Not enabled |
 
-![Screenshot showing namespace-level configuration.](media/aks-lite/gitops-second-config.png)
+![Screenshot showing namespace-level configuration.](media/aks-edge/gitops-second-config.png)
 
 Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up.
 
@@ -87,11 +87,11 @@ kubectl get svc -n ingress-nginx
 kubectl get pods -n hello-arc
 ```
 
-![Screenshot showing hello-arc service.](media/aks-lite/hello-arc-pods-up.png)
+![Screenshot showing hello-arc service.](media/aks-edge/hello-arc-pods-up.png)
 
 Open a browser and navigate to your Node IP which is the `external-IP` of your `ingress-nginx-controller`.
 
-![Screenshot of hello-arc application.](media/aks-lite/hello-arc-app-success.png)
+![Screenshot of hello-arc application.](media/aks-edge/hello-arc-app-success.png)
 
 ## Step 3: Update your application using GitOps
 
@@ -102,7 +102,7 @@ Open a browser and navigate to your Node IP which is the `external-IP` of your `
 >[!NOTE]
 > Because we have set the **sync interval** to **1 min** when creating the configurations, Flux will be pulling down changes from GitHub every minute.
 
-![Screenshot showing hello-arc yaml.](media/aks-lite/edit-yaml.png)
+![Screenshot showing hello-arc yaml.](media/aks-edge/edit-yaml.png)
 
 4. Use `kubectl` to see the old pods terminate and new pods come online.
 
@@ -110,16 +110,16 @@ Open a browser and navigate to your Node IP which is the `external-IP` of your `
     kubectl get pods -n hello-arc -w
     ```
 
-    ![Screenshot showing pods rolling update.](media/aks-lite/pods-rolling-update.png)
+    ![Screenshot showing pods rolling update.](media/aks-edge/pods-rolling-update.png)
 
 5. Refresh your application to see this change reflected as a rolling update.
 
-    ![Screenshot showing updated hello-arc application.](media/aks-lite/app-update-success.png)
+    ![Screenshot showing updated hello-arc application.](media/aks-edge/app-update-success.png)
 
 For more information about GitOps, see the [Azure Arc Jumpstart guide](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/microk8s/local_microk8s_gitops_helm/#deploy-gitops-configurations-and-perform-helm-based-gitops-flow-on-microk8s-as-an-azure-arc-connected-cluster).
 
 
 ## Next steps
 
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

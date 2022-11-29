@@ -14,7 +14,7 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisites
 
-Set up your primary machine as described in the [Setup article](aks-lite-howto-setup-machine.md).
+Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
 
 ## Create a single machine cluster
 
@@ -158,7 +158,7 @@ kubectl get nodes -o wide
 kubectl get pods -A -o wide
 ```
 
-![Screenshot showing all pods running.](./media/aks-lite/all-pods-running.png)
+![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 > [!NOTE]
 > This screenshot is for a k3s cluster so the pods will look different for k8s.
@@ -177,6 +177,6 @@ We have also included AksEdgeDeploy(Aide) module in our [GitHub repo](https://gi
 
 ## Next steps
 
-* [Deploy your application](./aks-lite-howto-deploy-app.md).
-* [Overview](./aks-lite-overview.md)
-* [Uninstall AKS cluster](./aks-lite-howto-uninstall.md)
+* [Deploy your application](./aks-edge-howto-deploy-app.md).
+* [Overview](./aks-edge-overview.md)
+* [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
