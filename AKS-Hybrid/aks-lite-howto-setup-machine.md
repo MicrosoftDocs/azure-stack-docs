@@ -64,7 +64,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
 
-1. Unzip the files of *AksEdgeWindows-<version>.zip* in the same `kXs` MSI folder. 
+1. Unzip the files of *AksEdgeWindows-x.xx.x.zip* in the same `kXs` MSI folder. 
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer and files.
 
