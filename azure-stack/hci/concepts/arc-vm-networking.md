@@ -1,5 +1,5 @@
 ---
-title: Networking for Arc VM management on Azure Stack HCI
+title: Arc VM management networking on Azure Stack HCI
 description: Learn the networking concepts for Arc VM management on Azure Stack HCI.
 ms.topic: conceptual
 author: dansisson
@@ -10,14 +10,14 @@ ms.subservice: azure-stack-hci
 ms.date: 11/29/2022
 ---
 
-# Networking for Arc VM management on Azure Stack HCI
+# Arc VM management networking on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes networking concepts and limitations for Arc virtual machine (VM) management on Azure Stack HCI. Networking for Arc VM management on Azure Stack HCI consists of the following:
 
-- Arc VM management setup infrastructure.
-- Arc VMs deployed from the Azure management plane.
+- Network for Arc VM management setup infrastructure
+- Network for Arc VMs deployed from the Azure management plane
 
 See the following network diagram for details:
 
@@ -25,9 +25,9 @@ See the following network diagram for details:
 
 ## Arc VM management infrastructure networking
 
-Setting up Arc VM management on an Azure Stack HCI cluster requires creating and configuring a clustered service (MOC) and an Arc Resource Bridge VM that orchestrates operations on the cluster.
+Setting up Arc VM management infrastructure networking on an Azure Stack HCI cluster requires you to create and configure a clustered service (MOC) and an Arc Resource Bridge VM that orchestrates operations on the cluster.
 
-### Clustered service (MOC)
+### Clustered service
 
 One IP address is required for the clustered service when none of the clustered networks use DHCP allocation. This IP address must be in the same network as the physical hosts of the Azure Stack HCI cluster.
 
@@ -35,24 +35,24 @@ The clustered service also requires an AD object along with a DNS entry. For det
 
 ### Arc Resource Bridge
 
-A set of three contiguous IP addresses are required for the Arc Resource Bridge VM network. These Resource Bridge VM network interfaces can be tagged to a specific vLAN. The three IP addresses are as follows, using the preceding network diagram for IP-1, IP-2, and IP-3:
+A set of three contiguous IP addresses are required for the Arc Resource Bridge VM network. These Arc Resource Bridge VM network interfaces can be tagged to a specific vLAN. The three IP addresses are as follows, using the preceding network diagram example for IP-1, IP-2, and IP-3:
 
-- IP address for the Arc Resource Bridge VM management control plane (IP-1). This is the IP address for the Kubernetes application used for VM management that is running inside the Arc Resource Bridge VM. This IP must be reserved in the VM network.
+- IP address for the Arc Resource Bridge VM management control plane (IP-1). This is the IP address for the Kubernetes application used for VM management that is running on the Arc Resource Bridge VM. This IP must be reserved on the VM network.
 - IP address for the Arc Resource Bridge VM (IP-2) – IP address assigned to the Arc Resource Bridge VM. Can be obtained using DHCP.
 - IP address for Arc Resource Bridge VM updates (IP-3) – IP address assigned to the new Arc Resource Bridge VM when update are performed. Can be obtained using DHCP.
 
 > [!NOTE]
-> VM addresses IP-2 and IP-3 are alternated on each update of the Arc Resource Bridge.
+> VM addresses IP-2 and IP-3 are alternated for each update of the Arc Resource Bridge.
 
 ## Arc VM networking
 
-VMs created through Azure Arc get their network configuration from the virtual network created by the Azure Stack HCI administrator. This virtual network consists of the following:
+VMs created through Azure Arc get their network configuration from the virtual network created on the Azure Stack HCI cluster. This virtual network consists of the following:
 
-- **VM switch** – The virtual switch that is available on every host of the Azure Stack HCI cluster. This is mandatory for creating virtual NICs for the Arc VMs on Azure Stack HCI clusters.
-- **vLAN ID** – The vLAN ID on which the VM traffic is isolated. This is an optional parameter and can be used irrespective of the IP allocation method.
+- **VM switch** – The virtual switch that is available on every host of the Azure Stack HCI cluster. This switch is mandatory for creating virtual NICs for the Arc VMs on the Azure Stack HCI cluster.
+- **vLAN ID** – The vLAN ID on which the VM traffic is isolated. This is an optional parameter and can be used irrespective of the IP allocation method used.
 - **IP allocation method** – Specifies if the virtual network assigns IP addresses to Arc VMs from addresses allocated through a DHCP server or from a pool of static IPs. The possible options for this parameter are `DHCP` and `Static`.
 
-If static IPs are used, the following additional parameters are important:
+If static IPs are used, the following additional parameters are relevant:
 
 |Parameter|Description|Required?|Example|
 |---|---|---|---|
@@ -64,8 +64,8 @@ If static IPs are used, the following additional parameters are important:
 
 ## Current limitations
 
-- Arc VMs are currently not supported with SDN. Arc Resource Bridge can be deployed on a physical network when the Azure Stack HCI cluster is configured with SDN.
-- Only DHCP allocation is supported for Arc VMs.
+- Arc VMs are currently not supported with Software Defined Networking (SDN). The Arc Resource Bridge can be deployed on a physical network when the Azure Stack HCI cluster is configured with SDN.
+- Only DHCP IP allocation is supported for Arc VMs.
 - Only one virtual network can be created per VM switch.
 - Using the Arc Resource Bridge or using Arc VMs behind a network proxy is not supported.
 
