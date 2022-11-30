@@ -14,6 +14,7 @@ ms.reviewer: mikek
 # New-AksHciCluster
 
 ## Synopsis
+
 Create a new managed Kubernetes cluster.
 
 ## Syntax
@@ -29,7 +30,7 @@ New-AksHciCluster -name <String>
                  [-controlPlaneVmSize <VmSize>]
                  [-loadBalancerVmSize <VmSize>]
                  [-loadBalancerSettings <loadBalancer>]
-                 [-vmSize <VmSize>]
+                 [-nodeVmSize <VmSize>]
                  [-taints <Taint>]
                  [-nodeMaxPodCount <int>]
                  [-vnet <Virtual Network>]
@@ -56,10 +57,9 @@ New-AksHciCluster -name mycluster
 > [!NOTE]
 > Do not include hyphens in cluster names, or the cluster creation may fail.
 
-The example above deploys a cluster with one control plane node, a Linux node pool called *mycluster-linux* with a node count of one, and an empty Windows node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+This example deploys a cluster with one control plane node, a Linux node pool called `mycluster-linux` with a node count of 1, and an empty Windows node pool called `mycluster-windows`. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command, or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
-**Output**
-```output
+```shell
 ProvisioningState     : provisioned
 KubernetesVersion     : v1.20.7
 NodePools             : {mycluster-linux, mycluster-windows}
@@ -75,8 +75,7 @@ Name                  : mycluster
 PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1
 ```
 
-**Output**
-```output
+```shell
 ProvisioningState     : provisioned
 KubernetesVersion     : v1.20.7
 NodePools             : nodepool1
@@ -87,9 +86,9 @@ Name                  : mycluster
 ```
 
 > [!NOTE]
-> If you are using the new parameter set as shown in the example above, the `WindowsNodeCount` and `LinuxNodeCount` fields in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
+> If you are using the new parameter set as shown in the example above, the `WindowsNodeCount` and `LinuxNodeCount` fields in the output will not be accurate and always show as `0`. To get an accurate count of your Windows or Linux nodes, use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
 
-The command above deploys a cluster with its default values. The deployed cluster is the same cluster as the second example command deploys.
+This command deploys a cluster with its default values. The deployed cluster is the same cluster as the second example command.
 
 ### New AKS-HCI cluster with a Linux node pool
 
@@ -144,6 +143,7 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAd
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
 ```
+
 ### New AKS-HCI cluster with autoscaler enabled and the default autoscaler configuration profile
 
 ```powershell
@@ -159,6 +159,7 @@ New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName
 ## Parameters
 
 ### -name
+
 The name of your Kubernetes cluster. Do not include hyphens in cluster names, or the cluster creation may fail.
 
 ```yaml
@@ -174,7 +175,8 @@ Accept wildcard characters: False
 ```
 
 ### -kubernetesVersion
-The version of Kubernetes that you want to deploy. The default is the latest version. To get a list of available versions, run [Get-AksHciKubernetesVersion](get-akshcikubernetesversion.md).
+
+Specifies the version of Kubernetes that you want to deploy. The default is the latest version. To get a list of available versions, run [Get-AksHciKubernetesVersion](get-akshcikubernetesversion.md).
 
 ```yaml
 Type: System.String
@@ -189,7 +191,8 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneNodeCount
-The number of nodes in your control plane. Default is one.
+
+The number of nodes in your control plane. Default is 1.
 
 ```yaml
 Type: System.Int32
@@ -204,7 +207,8 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of your control plane VM. Default is Standard_A4_V2. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
+
+The size of your control plane VM. Default is `Standard_A4_V2`. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
 
 ```yaml
 Type: System.String
@@ -219,7 +223,8 @@ Accept wildcard characters: False
 ```
 
 ### -loadBalancerVmSize
-The size of your load balancer VM. Default is Standard_A4_V2. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
+
+The size of your load balancer VM. Default is `Standard_A4_V2`. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
 
 ```yaml
 Type: System.String
@@ -234,6 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -loadBalancerSettings
+
 The load balancer setting object that is created with [New-AksHciLoadBalancerSetting](new-akshciloadbalancersetting.md).
 
 ```yaml
@@ -248,68 +254,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -linuxNodeCount 
-The number of Linux nodes in your Kubernetes cluster. Default is one. **This parameter will be deprecated in a future release.**
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 0. **This parameter will be deprecated in a future release.**
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
-### -linuxNodeVmSize
-The size of your Linux Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release.**
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Standard_K8S3_v1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -windowsNodeVmSize
-The size of your Windows Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release.**
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Standard_K8S3_v1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -taints
+
 The node taints for the node pool. You can't change the node taints after the node pool is created.
 
 ```yaml
@@ -325,7 +271,8 @@ Accept wildcard characters: False
 ```
 
 ### -nodeMaxPodCount
-The maximum number of pods deployable to a node. This number needs to be greater than 50.
+
+The maximum number of pods deployable to a node. This number must be greater than 50.
 
 ```yaml
 Type: System.Int32
@@ -340,7 +287,8 @@ Accept wildcard characters: False
 ```
 
 ### -nodePoolName
-The name of your node pool. **This is a new parameter as part of the new node pool experience.**
+
+The name of your node pool. This is a new parameter as part of the new node pool experience.
 
 ```yaml
 Type: System.String
@@ -355,7 +303,8 @@ Accept wildcard characters: False
 ```
 
 ### -nodeCount
-The number of nodes in your node pool. If the parameter `-nodePoolName` is used, the default value is 1. **This is a new parameter as part of the new node pool experience.**
+
+The number of nodes in your node pool. If the parameter `-nodePoolName` is used, the default value is 1. This is a new parameter as part of the new node pool experience.
 
 ```yaml
 Type: System.Int32
@@ -370,7 +319,8 @@ Accept wildcard characters: False
 ```
 
 ### -nodeVmSize
-The size of the nodes or VMs in your node pool. If the parameter `-nodePoolName` is used, the default value is Standard_K8S3_v1. **This is a new parameter as part of the new node pool experience.**
+
+The size of the nodes or VMs in your node pool. If the parameter `-nodePoolName` is used, the default value is Standard_K8S3_v1. This is a new parameter as part of the new node pool experience.
 
 ```yaml
 Type: System.String
@@ -385,7 +335,8 @@ Accept wildcard characters: False
 ```
 
 ### -osType
-The OS type of the nodes in your node pool. The value must be either *Linux* or *Windows*. If the parameter `-nodePoolName` is used the default value is *Linux*. **This is a new parameter as part of the new node pool experience.**
+
+The OS type of the nodes in your node pool. The value must be either "Linux" or "Windows". If the parameter `-nodePoolName` is used, the default value is "Linux". This is a new parameter as part of the new node pool experience.
 
 ```yaml
 Type: System.String
@@ -400,7 +351,8 @@ Accept wildcard characters: False
 ```
 
 ### -vnet
-The name of the AksHciNetworkSetting object created with [New-AksHciClusterNetwork](new-akshciclusternetwork.md) command.
+
+The name of the `AksHciNetworkSetting` object created with [New-AksHciClusterNetwork](new-akshciclusternetwork.md).
 
 ```yaml
 Type: System.String
@@ -415,6 +367,7 @@ Accept wildcard characters: False
 ```
 
 ### -primaryNetworkPlugin
+
 The network plug-in to be used for your deployment. This parameter uses either `flannel` or `calico`. Calico is available for both Linux and Windows workload clusters.
 
 ```yaml
@@ -430,7 +383,8 @@ Accept wildcard characters: False
 ```
 
 ### -enableADAuth
-Use this flag to enable Active Directory in your Kubernetes cluster.
+
+Enables Active Directory in your Kubernetes cluster.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -445,7 +399,8 @@ Accept wildcard characters: False
 ```
 
 ### -enableMonitoring
-Use this flag to enable Prometheus monitoring.
+
+Enables Prometheus monitoring.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -460,7 +415,25 @@ Accept wildcard characters: False
 ```
 
 ### -enableAutoScaler
-Use this flag to enable the autoscaler
+
+Enables the autoscaler.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableAzureRBAC
+
+Enables Azure RBAC on the cluster.
+
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
@@ -474,7 +447,9 @@ Accept wildcard characters: False
 ```
 
 ### -autoScalerProfileName
-The name of the autoscaler configuration profile
+
+The name of the autoscaler configuration profile.
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -487,51 +462,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-<!-- ### -enableSecretsEncryption
-Use this flag to enable encryption in your Kubernetes secrets.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -enableCsiSmb
-Use this flag to enable an SMB CSI driver during deployment.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -enableCsiNfs
-Use this flag to enable an NFS CSI driver during deployment.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
---->
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)
