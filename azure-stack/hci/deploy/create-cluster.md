@@ -86,8 +86,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 1. Review **1.1 Check the prerequisites** listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
 1. On **1.2 Add servers**, enter your account username using the format **domain\username**. Enter your password, then click **Next**. This account must be a member of the local Administrators group on each server.
-1. Enter the name of the first server you want to add, then click **Add**.
-1. Repeat Step 3 for each server that will be part of the cluster. When you add servers, make sure to use a fully qualified domain name. When you're finished, select **Next**.
+1. Enter the name of the first server you want to add, then click **Add**. When you add servers, make sure to use a fully qualified domain name.
+1. Repeat Step 3 for each server that will be part of the cluster. When you're finished, select **Next**.
 1. If needed, on **1.3 Join a domain​**, specify the domain to join the servers to and the account to use. You can optionally rename the servers if you want. Then click **Next**.
 1. On **1.4 Install features**, review and add features as needed. When finished, click **Next**.
 
