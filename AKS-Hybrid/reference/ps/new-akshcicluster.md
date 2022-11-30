@@ -3,7 +3,7 @@ title: New-AksHciCluster for AKS on Azure Stack HCI and Windows Server
 author: sethmanheim
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
-ms.date: 03/16/2022
+ms.date: 11/30/2022
 ms.author: sethm
 ms.lastreviewed: 
 ms.reviewer: mikek
@@ -17,31 +17,6 @@ ms.reviewer: mikek
 Create a new managed Kubernetes cluster.
 
 ## Syntax
-
-```powershell
-New-AksHciCluster -name <String>
-                 [-nodePoolName <String>]
-                 [-kubernetesVersion <String>]
-                 [-controlPlaneNodeCount <int>]
-                 [-linuxNodeCount <int>]
-                 [-windowsNodeCount <int>]
-                 [-controlPlaneVmSize <VmSize>]
-                 [-loadBalancerVmSize <VmSize>]
-                 [-loadBalancerSettings <loadBalancer>]
-                 [-linuxNodeVmSize <VmSize>]
-                 [-windowsNodeVmSize <VmSize>]
-                 [-taints <Taint>]
-                 [-nodeMaxPodCount <int>]
-                 [-vnet <Virtual Network>]
-                 [-primaryNetworkPlugin <Network Plugin>]   
-                 [-enableAdAuth]
-                 [-enableMonitoring]
-                 [-enableAutoScaler] 
-                 [-autoScalerProfileName]
-```
-
-> [!NOTE]
-> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI and Windows Server is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](../../use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -65,13 +40,6 @@ New-AksHciCluster -name <String>
                  [-enableAzureRBAC] 
                  [-autoScalerProfileName]
 ```
-
-| Parameters to be deprecated | Parameters introduced |
-| -------------------- | ----------------|
-| linuxNodeCount | nodePoolName |
-| windowsNodeCount | nodeCount |
-| linuxNodeVmSize | nodeVmSize |
-| windowsNodeVmSize | osType |
 
 ## Description
 
