@@ -61,7 +61,7 @@ There are several requirements and things to consider before you begin to use th
     
 - You must install the GPU drivers both on the host and the guest machines. See the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\> for detailed deployment steps, licensing information, and supported operating systems. The deployment process includes performing a set of actions on both the host machine and the guest machines.
 
-- You must ensure that the virtualization support (SR-IOV) is enabled in the BIOS of each server in the cluster. If not, you must first enable it to use the GPU-Partitioning feature. Reach out to your system vendor if you are unable to identify the correct setting in your BIOS.
+- You must ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. If not, you must first enable them to use the GPU-P feature. Reach out to your system vendor if you are unable to identify the correct setting in your BIOS.
   
     The following sample screenshot of the iDRAC9 dashboard shows the BIOS settings that you must enable in Dell systems:
 
