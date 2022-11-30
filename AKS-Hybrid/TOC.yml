@@ -307,16 +307,12 @@
       href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
-    - name: Enable Arc services
-      href: aks-edge-howto-enable-arc-services.md
     - name: Add local storage binding
       href: aks-edge-howto-use-storage-local-path.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
-    - name: Use SQL Edge with AKS Edge Essentials
-      href: aks-edge-howto-use-sqledge.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
   - name: Resources

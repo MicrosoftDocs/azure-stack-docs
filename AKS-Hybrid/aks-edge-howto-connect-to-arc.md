@@ -1,6 +1,6 @@
 ---
-title: Arc-connected AKS on Windows
-description: Connect your AKS on Windows clusters to Arc
+title: Arc-connected AKS Edge Essentials
+description: Connect your AKS Edge Essentials clusters to Arc
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
@@ -8,9 +8,9 @@ ms.date: 11/07/2022
 ms.custom: template-how-to
 ---
 
-# Connect your AKS on Windows cluster to Arc
+# Connect your AKS Edge Essentials cluster to Arc
 
-This section shows how to connect your AKS-IoT cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
+This section shows how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
 
 > [!IMPORTANT]
 > If you do not have a cluster installed, create a [single node cluster](aks-edge-howto-single-node-deployment.md) and follow the steps to deploy.
@@ -24,10 +24,16 @@ Execute the following steps on your primary machine.
 >[!IMPORTANT]
 > If you are connecting a multi-node cluster to Arc, enable the Arc connection to the cluster before scaling out to additional nodes.
 
->[!NOTE]
-> If you are using PowerShell 7 with the new API to connect to Arc, [see this article](./aks-edge-howto-more-configs.md) for the instructions.
+There are two approaches to connect your cluster to Arc:
 
-## 1. Configure your Azure environment
+1. Use the helper modules in this GitHub repo to simplify Arc connectivity. The steps for using the helper modules as described on this page.
+2. Use PowerShell 7 with the commands from the AKSEdge module, to connect to Arc, [see this article](./aks-edge-howto-more-configs.md) for the instructions.
+
+## 1. Download the helper modules
+
+Download the helper modules from this [GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+
+## 2. Configure your Azure environment
 
 In your GitHub repo, open the **aide-userconfig.json** file from the **tools** folder.
 
@@ -35,7 +41,7 @@ In your GitHub repo, open the **aide-userconfig.json** file from the **tools** f
 notepad.exe aide-userconfig.json
 ```
 
-There, add the parameters under **Azure**, with the appropriate information.
+There, provide the parameters under **Azure** section, with the appropriate information.
 
 ```json
 "Azure": {
@@ -62,7 +68,7 @@ There, add the parameters under **Azure**, with the appropriate information.
 To set up your Azure subscription and create the necessary resource group and service principal, use the **AksEdgeAzureSetup.ps1** script from the GitHub repo. This script will prompt you to log in with your credentials for setting up your Azure subscription.
 
 ```powershell
-# prompts for interactive login for serviceprincipal creation with minimal privileges
+# prompts for interactive login for service principal creation with minimal privileges
 ..\tools\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
 ```
 
@@ -79,6 +85,8 @@ To reset an already existing service principal, use `-spCredReset`. You should u
 # resets the existing service principal
 ..\tools\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spCredReset
 ```
+
+## 3. Validate your configuration file
 
 Once the JSON has been updated, run `Read-AideUserConfig` to read the updated JSON configuration. You can verify the values using `Get-AideUserConfig`. Alternatively, you can reopen **AksEdgePrompt.cmd** to use the updated JSON configuration.
 
@@ -98,7 +106,7 @@ Get-AideUserConfig
 |`Location` | string | The location in which to create your resource group. Leave this as `EastUS`. |
 |`ClusterName` | string | The name of the cluster for the Arc Connection. The default is `hostname-distribution` (`abc-k8s` or `abc-k3s`). |
 
-## 2. Connect your cluster to Arc
+## 4. Connect your cluster to Arc
 
 > [!IMPORTANT]
 > If you already have Azure CLI installed, run `az upgrade` to ensure your **azure-cli** and extensions are up-to-date.
@@ -136,7 +144,7 @@ az upgrade
 
    ![Screenshot showing the cluster in azure portal](media/aks-edge/cluster-in-az-portal.png)
 
-## 3. View cluster resources
+## 5. View cluster resources
 
 1. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
 
@@ -150,9 +158,13 @@ az upgrade
 
    ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
-4. Now you can look at resources on your cluster. This is the **Workloads** blade, showing the same as `kubectl get pods --all-namespaces`:
+4. Now you can look at resources on your cluster. This is the **Workloads** blade, showing the same as
 
-   ![all pods shown in arc](media/aks-edge/all-pods-in-arc.png)
+```powershell
+kubectl get pods --all-namespaces
+```
+
+![all pods shown in arc](media/aks-edge/all-pods-in-arc.png)
 
 ## Disconnect from Arc
 
@@ -164,6 +176,5 @@ Disconnect-ArcIotK8s
 
 ## Next steps
 
-- Try other Arc-enabled services as described [here](aks-edge-howto-enable-arc-services.md)
 - [Overview](aks-edge-overview.md)
 - [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

@@ -1,6 +1,6 @@
 ---
 title: AKS configuration
-description: Additional configuration for AKS lite
+description: Additional configuration for AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
@@ -8,15 +8,15 @@ ms.date: 11/03/2022
 ms.custom: template-how-to #Required; leave this attribute/value as-is.
 ---
 
-# Additional configuration For AKS lite
+# Additional configuration For AKS Edge Essentials
 
 This article contains instructions to:
 
-1. [Install a default **StorageClass** in AKS-IoT](#install-a-default-storageclass-in-aks-edge).
+1. [Install a default **StorageClass** in AKS Edge Essentials](#install-a-default-storageclass-in-aks-edge-essentials).
 2. [Configure a proxy using a temporary workaround](#configuring-a-proxy).
 3. [Connect to Arc using PowerShell 7 and the new API](#connect-to-arc-using-powershell-7-and-new-api).
 
-## Install a default **StorageClass** in AKS lite
+## Install a default **StorageClass** in AKS Edge Essentials
 
 1. Find the local-storage **StorageClass** using the default YAML from the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#local). Edit the YAML file to [mark the **StorageClass** as the default](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/):
 
