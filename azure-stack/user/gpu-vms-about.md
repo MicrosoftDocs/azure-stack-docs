@@ -117,7 +117,6 @@ The guest driver version must match the Azure Stack Hub version, regardless of t
 
 |     Azure Stack Hub Version    |     AMD Guest driver    |
 |--------------------------------|-------------------------|
-|                                |                         |
 |     2206, 2108, 2102                       |     [21.Q2-1](https://download.microsoft.com/download/4/e/a/4ea28d3f-28e2-4eaa-8ef2-4f7d32882a0b/AMD-Azure-NVv4-Driver-21Q2-1.exe)             |
 
 #### Connected
