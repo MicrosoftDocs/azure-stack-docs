@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 12/01/2022
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
@@ -51,8 +51,8 @@ Before you run the **Create Cluster** wizard in Windows Admin Center, you must c
 - Obtain an account that's a member of the local Administrators group on each server.
 - Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead deploy Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
 - Ensure all servers are in the same time zone as your local domain controller.
-- Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+- Ensure that Windows Admin Center and your domain controller are not installed on the same system. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 - Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 - If you're using an integrated system from a Microsoft hardware partner, install the latest version of vendor extensions on Windows Admin Center to help keep the integrated hardware and firmware up to date. To install them, open Windows Admin Center and click **Settings** (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
@@ -85,26 +85,25 @@ To start the Create Cluster wizard in Windows Admin Center:
 Step 1 of the wizard walks you through making sure all prerequisites are met, adding the server nodes, installing needed features, and then restarting each server if needed.
 
 1. Review **1.1 Check the prerequisites** listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
-1. On **1.2 Add servers**, enter your account username and password, then click **Next**. This account must be a member of the local Administrators group on each server.
+1. On **1.2 Add servers**, enter your account username using the format **domain\username**. Enter your password, then click **Next**. This account must be a member of the local Administrators group on each server.
 1. Enter the name of the first server you want to add, then click **Add**.
-1. Repeat Step 3 for each server that will be part of the cluster. When finished, click **Next**.
+1. Repeat Step 3 for each server that will be part of the cluster. When you add servers, make sure to use a fully qualified domain name. When you're finished, select **Next**.
 1. If needed, on **1.3 Join a domain​**, specify the domain to join the servers to and the account to use. You can optionally rename the servers if you want. Then click **Next**.
 1. On **1.4 Install features**, review and add features as needed. When finished, click **Next**.
 
-    The wizard installs the following required features for you:
+    The wizard lists and installs required features for you, including the following options:
 
-    - BitLocker
+    - Data Deduplication
+    - Hyper-V
+    - BitLocker Drive Encryption
     - Data Center Bridging (for RoCEv2 network adapters)
     - Failover Clustering
-    - File Server
-    - FS-Data-Deduplication module
-    - Hyper-V
-    - RSAT-AD-PowerShell module
-    - NetworkATC
-    - Storage Replica (installed for stretched clusters)
+    - Network ATC
+    - Active Directory module for Windows PowerShell
+    - Hyper-V module for Windows PowerShell
 
 1. On **1.5 Install updates**, click **Install updates** as needed to install any operating system updates. When complete, click **Next**.
-1. On **1.6 Install hardware updates**, click **Get updates** as needed to get available vendor hardware updates.
+1. On **1.6 Install hardware updates**, click **Get updates** as needed to get available vendor hardware updates. If you don't install the updates now, you'll have to manually install the latest networking drivers before you can use Network ATC. Contact your solution vendor for the latest approved drivers.
 
     > [!NOTE]
     > Some extensions require extra configuration on the servers or your network, such as configuring the baseboard management controller (BMC). Consult your vendor's documentation for details.
