@@ -45,23 +45,26 @@ New-AksHciCluster -name <String>
 
 ```powershell
 New-AksHciCluster -name <String>
-                 [-kubernetesVersion <String>]
-                 [-controlPlaneNodeCount <int>]
-                 [-controlPlaneVmSize <VmSize>]
-                 [-loadBalancerVmSize <VmSize>]
                  [-nodePoolName <String>]
                  [-nodeCount <int>]
-                 [-nodeVmSize <VmSize>]
                  [-osType {linux, windows}]
+                 [-kubernetesVersion <String>]
+                 [-controlPlaneNodeCount <int>]
+                 [-nodeCount <int>]
+                 [-controlPlaneVmSize <VmSize>]
+                 [-loadBalancerVmSize <VmSize>]
+                 [-loadBalancerSettings <loadBalancer>]
+                 [-vmSize <VmSize>]
+                 [-taints <Taint>]
+                 [-nodeMaxPodCount <int>]
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
-                 [-enableAutoScaler]
+                 [-enableAutoScaler] 
                  [-enableAzureRBAC] 
                  [-autoScalerProfileName]
 ```
-
 
 | Parameters to be deprecated | Parameters introduced |
 | -------------------- | ----------------|
