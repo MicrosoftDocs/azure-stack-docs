@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/29/2022
+ms.date: 11/30/2022
 ---
 
 # Arc VM management networking on Azure Stack HCI
@@ -56,11 +56,11 @@ If static IPs are used, the following additional parameters are relevant:
 
 |Parameter|Description|Required?|Example|
 |---|---|---|---|
-|IP Pool Start|Start of range of IP addresses|Mandatory|192.16.0.120|
-|IP Pool End|End of range of IP addresses|Mandatory|192.16.0.219|
-|DNS Servers|List of DNS servers|Optional|192.16.0.10, 192.16.0.11|
+|IPPoolStart|Start of range of IP addresses|Mandatory|192.16.0.120|
+|IPPoolEnd|End of range of IP addresses|Mandatory|192.16.0.219|
+|DNSServers|List of DNS servers|Optional|192.16.0.10, 192.16.0.11|
 |Gateway|IP address of gateway|Optional|192.16.0.1|
-|Subnet Mask|Prefix length of the subnet mask|Optional|192.16.0.0/16|
+|SubnetMask|Prefix length of the subnet mask|Optional|192.16.0.0/16|
 
 ## Current limitations
 
