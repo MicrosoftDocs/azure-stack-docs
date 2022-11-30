@@ -124,11 +124,11 @@ The guest driver version must match the Azure Stack Hub version, regardless of t
 
 #### Connected
 
-The PowerShell command in the previous section can be used with the appropriate driver type for AMD. The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
+The PowerShell script in the previous section can be used with the appropriate driver type for AMD. The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
 
 #### Disconnected
 
-Since the extension pulls the driver from a location on the internet, a VM that is disconnected from the external network cannot access it. You can download the driver from the link below and upload to a storage account in your local network accessible to the VM.
+Since the extension pulls the driver from a location on the internet, a VM that is disconnected from the external network cannot access it. You can [download the driver from the previous table](#amd-mi25) and upload to a storage account in your local network that's accessible to the VM.
 
 Add the AMD driver to a storage account and specify the URL to that account in `Settings`. These settings must be used in the **Set-AzureRMVMExtension** cmdlet. For example:
 
