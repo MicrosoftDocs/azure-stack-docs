@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to secondary machines to create a multi-node deployment. Remember to specify the [workload type](./aks-lite-concept.md) and [reserve enough memory for each node](./aks-lite-concept.md).
+Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to secondary machines to create a multi-node deployment. Remember to specify the [workload type](./aks-edge-concept.md) and [reserve enough memory for each node](./aks-edge-concept.md).
 
 ## 1. Get cluster configuration from your primary machine
 
@@ -24,7 +24,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
-![Screenshot showing the creation of config file.](./media/aks-lite/scale-config-file.png)
+![Screenshot showing the creation of config file.](./media/aks-edge/scale-config-file.png)
 - To add a Linux control plane node, specify the `NodeType` as Linux, set the `ControlPlane` flag as true, and provide a unique IP address for the Linux node:
 
    ```powershell
@@ -85,7 +85,7 @@ Now you're ready to bring up clusters on your secondary machines. You cannot mix
 > [!NOTE]
 > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
-![Screenshot of Hyper-v switch manager](./media/aks-lite/hyper-v-external-switch.png)
+![Screenshot of Hyper-v switch manager](./media/aks-edge/hyper-v-external-switch.png)
 
 To deploy the corresponding node on the secondary machine, you can now use the **ScaleConfig.json** file created in the previous step:
 
@@ -104,7 +104,7 @@ kubectl get nodes -o wide
 
 You should be able to see all the nodes of the cluster. 
 
-![Screenshot showing multiple nodes.](./media/aks-lite/aks-lite-multi-nodes.png)
+![Screenshot showing multiple nodes.](./media/aks-edge/aks-edge-multi-nodes.png)
 
 ## 4. Add more nodes
 
@@ -122,6 +122,6 @@ Using the **.\ScaleConfig** file as your reference configuration file, you can a
 
 ## Next steps
 
-- [Deploy your application](aks-lite-howto-deploy-app.md) or [connect to Arc](aks-lite-howto-connect-to-arc.md)
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Deploy your application](aks-edge-howto-deploy-app.md) or [connect to Arc](aks-edge-howto-connect-to-arc.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

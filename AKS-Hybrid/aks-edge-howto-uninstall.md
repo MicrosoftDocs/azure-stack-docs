@@ -8,9 +8,9 @@ ms.date: 11/07/2022
 ms.custom: template-how-to
 ---
 
-# Uninstall an AKS cluster
+# Uninstall an AKS Edge Essentials cluster
 
-Follow the steps in this article to uninstall AKS lite.
+Follow the steps in this article to uninstall AKS Edge Essentials.
 If you're using PowerShell 7 and the new API, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
 
 ```powershell
@@ -81,7 +81,7 @@ Remove-AksEdgeDeployment
 
 ## Uninstall AKS edge
 
-On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service on Windows IoT (Public Preview)**. Click **Uninstall**.
+On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Click **Uninstall**.
 
 If you encounter any issues uninstalling AKS edge, try [downloading this troubleshooting tool](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
 
@@ -91,4 +91,4 @@ See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows&tabs=azure-powers
 
 ## Next steps
 
-[Overview](aks-lite-overview.md)
+[Overview](aks-edge-overview.md)

@@ -122,5 +122,5 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/to
 
 ## Next steps
 
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

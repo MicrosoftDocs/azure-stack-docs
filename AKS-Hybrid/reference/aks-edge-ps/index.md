@@ -11,7 +11,7 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 
 
-# AKS on Windows
+# AKS Edge Essentials 
 
 ## Module Powershell Commands
 
@@ -102,9 +102,9 @@ Validates AksIot network parameters, useful as a pre-deployment step.
 
 ## Next steps
 
-- Try out the [Quickstart](../../aks-lite-quickstart.md)
-- [Overview](../../aks-lite-overview.md)
-- [Uninstall AKS cluster](../../aks-lite-howto-uninstall.md)
+- Try out the [Quickstart](../../aks-edge-quickstart.md)
+- [Overview](../../aks-edge-overview.md)
+- [Uninstall AKS cluster](../../aks-edge-howto-uninstall.md)
 <!--
 Remove all the comments in this template before you sign-off or merge to the 
 main branch.

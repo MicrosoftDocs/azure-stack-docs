@@ -14,7 +14,7 @@ This article describes how to deploy a containerized application on your Kuberne
 
 ## Prerequisites
 
-- Set up your [single machine Kubernetes](aks-lite-howto-single-node-deployment.md) or [full Kubernetes](aks-lite-howto-multi-node-deployment.md) cluster.
+- Set up your [single machine Kubernetes](aks-edge-howto-single-node-deployment.md) or [full Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
 - Package your application into a container image, and then upload the image to the Azure Container Registry. Review these steps to [create container image of your application](tutorial-kubernetes-prepare-application.md).
 - Since AKS on Windows enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS).
 
@@ -52,7 +52,7 @@ Wait a few minutes for the pods to be in the **running** state.
 kubectl get pods -o wide
 ```
 
-![Screenshot of results showing linux pods running.](media/aks-lite/linux-pods-running.png)
+![Screenshot of results showing linux pods running.](media/aks-edge/linux-pods-running.png)
 
 ### 3. Verify the services
 
@@ -80,7 +80,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 ### 5. Test your application
 
 To see the application in action, open a web browser to the external IP address of your service:
-![Screenshot showing Linux apps running](./media/aks-lite/linux-app-up.png)
+![Screenshot showing Linux apps running](./media/aks-edge/linux-app-up.png)
 
 If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=/azure/container-registry/breadcrumb/toc.json&toc=/azure/container-registry/toc.json).
 
@@ -112,7 +112,7 @@ It might take a while for the pod to reach the running status, depending on your
 kubectl get pods -o wide
 ```
 
-![Screenshot showing Windows pods running.](media/aks-lite/win-pods-running.png)
+![Screenshot showing Windows pods running.](media/aks-edge/win-pods-running.png)
 
 ### 3. Verify that the **sample** service is up
 
@@ -120,7 +120,7 @@ kubectl get pods -o wide
 kubectl get services
 ```
 
-![Screenshot showing Windows services running.](media/aks-lite/win-svc-running.png)
+![Screenshot showing Windows services running.](media/aks-edge/win-svc-running.png)
 
 Since this sample is deployed as a service of type **NodePort**, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using the following `Get-AksEdgeNodeAddr`command
 
@@ -128,13 +128,13 @@ Since this sample is deployed as a service of type **NodePort**, we can get the 
 Get-AksEdgeNodeAddr -NodeType Windows
 ```
 
-![Screenshot showing Windows cluster information.](media/aks-lite/win-cluster-info.png)
+![Screenshot showing Windows cluster information.](media/aks-edge/win-cluster-info.png)
 
 ### 4. Check out your running Windows sample
 
 Open a web browser and locate the NodePort to access your service:
 
-![Screenshot showing Windows app running.](media/aks-lite/win-app-up.png)
+![Screenshot showing Windows app running.](media/aks-edge/win-app-up.png)
 
 ### 5. Clean up
 
@@ -146,9 +146,9 @@ kubectl delete -f win-sample.yaml
 
 ## Next steps
 
-- [Connect your cluster to Arc](aks-lite-howto-connect-to-arc.md)
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Connect your cluster to Arc](aks-edge-howto-connect-to-arc.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
 
 
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
