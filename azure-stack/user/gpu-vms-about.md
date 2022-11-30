@@ -123,7 +123,7 @@ The guest driver version must match the Azure Stack Hub version, regardless of t
 
 #### Connected
 
-The PowerShell script in the previous section can be used with the appropriate driver type for AMD. The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
+Use the PowerShell script in the previous section with the appropriate driver type for AMD. The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM, along with steps on how to verify driver installation.
 
 #### Disconnected
 
