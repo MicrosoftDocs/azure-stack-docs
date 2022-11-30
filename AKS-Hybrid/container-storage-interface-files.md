@@ -19,8 +19,6 @@ ms.reviewer: abha
 
 This article describes how to use Container Storage Interface (CSI) drivers for files to mount Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS hybrid.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 ## Overview of CSI in AKS hybrid
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]

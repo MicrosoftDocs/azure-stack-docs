@@ -16,7 +16,7 @@ ms.date: 10/21/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can change the size of the virtual machines in a given node pool to increase the resources available to your node pool in AKS hybrid. [!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
+You can change the size of the virtual machines in a given node pool to increase the resources available to your node pool in AKS hybrid.
 
 To keep up with app demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. In some cases, scaling a cluster horizontally by adding nodes isn't sufficient to meet the demands from your app for more CPU cores or memory. 
 

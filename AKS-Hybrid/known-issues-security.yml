@@ -11,6 +11,33 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
+          Get-AksHciCredential fails with "cannot find the path specified" error
+
+        answer: | 
+          The `Get-AksHciCredential` PowerShell cmdlet fails when executed by a different admin user than the one used for installing AksHci. The command creates a **.kube** directory and places the config file in it. However, the command fails with the following error:
+          
+          `Error: open C:\Users\<user>\.kube\config: The system cannot find the path specified.`
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Create a target cluster.
+          3. Sign in to the machine as a different admin user (multi-admin feature).
+          4. Run `Get-AksHciCredential -Name $clusterName`.
+          
+          ### Expected behavior
+          
+          `Get-AksHciCredential` should be able to create a .kube directory in the user's home directory and place the config file in that directory.
+          
+          To work around the issue, create a **.kube** directory in the user's home directory. Use the following command to create the directory:
+          
+          ```shell
+          mkdir "$HOME/.kube"
+          ```
+          
+          After this step, `Get-AksHciCredential` should not fail.
+          
+      - question: | 
           Error 'Certificate expired - Unable to connect to the server: x509'
 
         answer: | 
@@ -19,7 +46,7 @@ sections:
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
           > [!NOTE]  
-          > This issue is fixed in the September release and later.
+          > This issue is fixed in the September 2022 release and later.
           
           ### To reproduce
           
@@ -28,17 +55,27 @@ sections:
           3. Turn off the cluster (VMs) for more than 4 days.
           4. Turn the cluster on again.
           
-          ### Expected behavior
+          ### Symptoms and mitigation
           
           The target cluster is unreachable. Any `kubectl` command run against the target cluster returns an error message similar to the following one:
           
           `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
           
-          1. Run the following command to generate certificates manually:
-             `Update-AksHciClusterCertificates  -Name my-workload-cluster -fixKubeltCredentials`
+          To fix the issue:
+          
+          1. Run the following command to renew the generated certificate manually:
+          
+             ```powershell
+             Update-AksHciClusterCertificates  -Name my-workload -cluster -fixKubeletCredentials
+             ```
+          
           2. Generate new credentials:
-             `Get-AksHciCredential -name <clustername>`
-          3. Wait a few minutes, and then try the `kubectl` command again to see whether the cluster is available.
+          
+             ```powershell
+             Get-AksHciCredential -name <clustername>
+             ```
+          
+          After a few minutes, try the `kubectl` command again to see if the cluster is now available.
           
           > [!NOTE]  
           > There is a known bug in AksHci version 1.0.14.x and earlier. If the control plane VM has a name pattern other than `-control-plane-`, the `Update-AksHciClusterCertificates` command may not work. You must update the certificate by logging into the control plane VM:
@@ -61,6 +98,84 @@ sections:
             - Delete old management appliance certificate by removing `$env:UserProfile.wssd\kvactl\cloudconfig`.
             - Run `Repair-AksHciCerts`.
             - Run `Get-AksHciCluster` to check that it's fixed.
+          
+      - question: | 
+          Target cluster pod logs are not accessible - remote error: tls: internal error
+
+        answer: | 
+          The target cluster logs are not accessible. When you try to access pod logs in the target cluster, the following TLS error is displayed:
+          
+          `Error from server: Get "[https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver":](https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver%22:) remote error: tls: internal error`
+          
+          > [!NOTE]  
+          > This is a known issue in AksHci version 1.0.14.x and earlier. It is fixed as part of the 1.0.14.x release (September release and later). Target clusters updated to this version should not experience this issue.
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Install the target cluster.
+          3. Don't upgrade the cluster for 60 days.
+          4. Restart the cluster.
+          
+          ### Symptoms and mitigation
+          
+          The target pod logs should not be accessible. Any `kubectl` log command run against the target cluster should return with an error message similar to the following:
+          
+          `Error from server: Get "[https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver":](https://10.0.0.0:10250/containerLogs/kube-system/kube-apiserver-moc-l9iv8xjn3av/kube-apiserver%22:) remote error: tls: internal error`
+          
+          To fix the issue:
+          
+          1. Run the following command to renew the generated certificate manually:
+          
+             ```powershell
+             Update-AksHciClusterCertificates  -Name my-workload -cluster -fixKubeletCredentials
+             ```
+          
+          2. Generate new credentials:
+          
+             ```powershell
+             Get-AksHciCredential -name <clustername>
+             ```
+          
+      - question: | 
+          Cluster controlplane - certificate expired - Unable to connect to the server: x509
+
+        answer: | 
+          The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command generates the following error:
+          
+          `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
+          
+          > [!NOTE]  
+          > This issue is fixed in the September 2022 release and later.
+          
+          ### To reproduce
+          
+          1. Install AksHci.
+          2. Install the target cluster.
+          3. Turn off cluster(vms) for more than 4 days.
+          4. Turn the cluster on again.
+          
+          ### Symptoms and mitigation
+          
+          The target cluster should be unreachable. Any `kubectl` command run against the target cluster should return with an error message similar to the following:
+          
+          `certificate expired - Unable to connect to the server: x509: certificate has expired or is not yet valid: current time 2022-07-26T12:24:15-04:00 is after 2022-07-15T15:01:07Z`
+          
+          To fix the issue:
+          
+          1. Run the following command to renew the generated certificate manually:
+          
+             ```powershell
+             Update-AksHciClusterCertificates  -Name my-workload -cluster -fixKubeletCredentials
+             ```
+          
+          2. Generate new credentials:
+          
+             ```powershell
+             Get-AksHciCredential -name <clustername>
+             ```
+          
+          After a few minutes, try the `kubectl` command again to see if the cluster is now available.
           
       - question: | 
           KMS pod fails and the KMS pod logs contain errors

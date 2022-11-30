@@ -20,8 +20,6 @@ ms.custom: contperf-fy22q3
 
 In this article, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR), which you can run in your own datacenter in AKS hybrid deployments. You'll deploy to your on-premises Kubernetes cluster hosted by AKS. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
 
-[!INCLUDE [aks-hybrid-description](includes/aks-hybrid-description.md)]
-
 The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS hybrid.
 
 If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).

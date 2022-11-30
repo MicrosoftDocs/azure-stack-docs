@@ -97,9 +97,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
       ### [For static IP address](#tab/for-static-ip-address)
 
       ```PowerShell
-      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP  
-
-      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
 
       Install-Moc
       ```
@@ -107,9 +105,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
       ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
       ```PowerShell
-      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
-
-      Set-MocConfig -workingDir $csv_path\ResourceBridge -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -createAutoConfigContainers $false
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -createAutoConfigContainers $false
 
       Install-Moc
       ```
@@ -151,7 +147,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_group="<pre-created resource group in Azure>"
    $subscription="subscription ID in Azure"
-   $Location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
+   $location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
    $customloc_name="<name of the custom location, such as <HCIClusterName>-cl>"
    ```
    where:
@@ -160,7 +156,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    | ----- | ----------- |
    | **resource_group** | Name of the pre-created resource group in Azure. |
    | **subscription** | Subscription ID in Azure. |
-   | **Location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
+   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
    | **customloc_name** | Name of the custom location, such as HCIClusterName-cl. |
 
    > [!TIP]
@@ -187,7 +183,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vLanID $vlanID
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
@@ -227,7 +223,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vLanID $vlanID
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
       > The configuration files are required to perform essential `az arcappliance` CLI commands. Make sure you store these files in a secure and safe location for future use.
@@ -282,7 +278,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 1. Create a custom location for the Azure Stack HCI cluster, where **customloc_name** is the name of the custom location, such as "HCICluster -cl":
 
    ```azurecli
-   az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace hci-vmoperator --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $Location
+   az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace hci-vmoperator --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
    ```
 
 Now you can navigate to the resource group in Azure and see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster.
