@@ -10,10 +10,10 @@ ms.custom: template-how-to
 
 # Remote deployment and CI with GitOps and Flux
 
-This article describes how to deploy applications to your Arc-enabled AKS-IoT cluster. The steps are as follows:
+This article describes how to deploy applications to your Arc-enabled AKS Edge Essentials cluster. The steps are as follows:
 
 1. Point to your GitHub application in the Azure portal.
-2. Push your application to your AKS-IoT cluster by installing GitOps configurations.
+2. Push your application to your AKS Edge Essentials cluster by installing GitOps configurations.
 3. Commit a change to your GitHub application and show that your app updates automatically.
 
 > [!NOTE]

@@ -156,8 +156,6 @@ az ad sp create-for-RBAC --name "arc-test-sp-name" --scope /subscriptions/<YOUR 
 
 When completed, it will give you the appId and password of the service principal.
 
-
-
 #### Create a PSCredential object with service principal
 
 Now create a **PSCredential** object to make it easier for you to connect to Arc:
