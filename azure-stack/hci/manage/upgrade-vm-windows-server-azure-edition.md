@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/22/2022
+ms.date: 12/01/2022
 ---
 
 # Upgrade VMs to Windows Server Azure Edition
@@ -24,11 +24,11 @@ This article describes how to upgrade existing Windows Server virtual machines (
 
 - Review VM compatibility. Windows Server Azure Edition only supports generation 2 VMs with Secure Boot enabled. Using [Windows Admin Center](vm.md#view-vm-details), you can view the generation of a specific VM from the **Inventory** tab, and the Secure Boot configuration in the **Security** section of VM settings.
 
-- For Windows Server 2016 or Windows Server 2019 VMs, follow your typical update procedure to ensure that the latest cumulative update is applied to the VMs.
+- Follow your typical update procedure to ensure that the latest cumulative update is applied to the VMs.
 
 - Consider backing up the VM using your established backup process, or taking a Hyper-V production snapshot. After verifying that the upgrade was successful, you can delete the checkpoint to save disk space.
 
-## Perform the upgrade
+## Perform the upgrade using ISO file
 
 After all the prerequisites are completed, follow these steps:
 
@@ -37,12 +37,25 @@ After all the prerequisites are completed, follow these steps:
     - [Download English ISO](https://aka.ms/AAi4r31)
     - [Download Chinese ISO](https://aka.ms/AAi4bii)
 
-1. Using Windows Admin Center, follow step 6 in [Change VM settings](vm.md#change-vm-settings) to attach the downloaded .iso file to each VM being upgraded.
+1. Using Windows Admin Center, under **Tools**, select **Virtual machines**.
 
-1. Sign in to the VM as a user in the Administrators group.
+1. Click the **Inventory** tab on the right, select the VM being upgraded, then select **Settings**.
 
-1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) and run *setup.exe* on the .iso file.
+1. On the **Settings** page for the VM, select **Disks**.
+
+1. Select the option **Use an existing virtual hard disk or ISO image file**. Browse to the location of the .iso file, then select **Save disk settings**. This will attach the downloaded .iso file to the VM being upgraded.
+
+   :::image type="content" source="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png" alt-text="Screenshot of Screenshot for VM Settings Disk page" lightbox="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png":::
+
+1. Under **Tools**, select **Virtual machines** again.
+
+1. Click the **Inventory** tab on the right, select the checkbox next to the VM being upgraded, then select **Connect**.
+
+1. Sign in to the VM as a user of the local Administrators group.
+
+1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) and then run *setup.exe* on the .iso file.
 
 ## Next steps
 
 - [Enable Hotpatch for Azure Edition Server Core VM](/windows-server/get-started/enable-hotpatch-azure-edition).
+- Learn more about [Windows Server Azure Edition VMs](windows-server-azure-edition.md).
