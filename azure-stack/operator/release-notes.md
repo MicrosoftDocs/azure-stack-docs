@@ -77,6 +77,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
 - Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
 - Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc_a100-v4).
+- This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
 
 <!-- ### Improvements -->
 
