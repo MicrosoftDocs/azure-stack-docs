@@ -321,6 +321,8 @@
       href: aks-lite-howto-uninstall.md
   - name: Resources
     items:
+    - name: Release notes and known issues
+      href: aks-lite-releasenotes-knownissues.md
     - name: AKS Lite Powershell 
       href: ./reference/aks-lite-ps/index.md
     - name: File bugs
