@@ -45,7 +45,7 @@ After all the prerequisites are completed, follow these steps:
 
 1. Select the option **Use an existing virtual hard disk or ISO image file**. Browse to the location of the .iso file, then select **Save disk settings**. This will attach the downloaded .iso file to the VM being upgraded.
 
-   :::image type="content" source="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png" alt-text="Screenshot of Screenshot for VM Settings Disk page" lightbox="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png":::
+   :::image type="content" source="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png" alt-text="Screenshot of Screenshot for VM Settings Disk page." lightbox="media/upgrade-vm-windows-server-azure-edition/vm-settings-iso.png":::
 
 1. Under **Tools**, select **Virtual machines** again.
 
