@@ -21,7 +21,13 @@ You can also manually remove the cluster from Arc using the Azure portal.
 
 ## Remove your application from cluster
 
-To clean up, delete all resources using:
+Delete the applications that your deployed using the following command.
+
+```powershell
+kubectl delete -f ./path-to-your-YAML-file/app.yaml
+```
+
+For example, if you deployed the sample Linux application, you can delete it using:
 
 ```powershell
 kubectl delete -f linux-sample.yaml
@@ -82,6 +88,9 @@ Remove-AksEdgeDeployment
 ## Uninstall AKS edge
 
 On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Click **Uninstall**.
+
+> [!NOTE]
+> You may want to reboot your machine right after the uninstall so that all resources are cleaned and your machine is ready for a new installation in the future.
 
 If you encounter any issues uninstalling AKS edge, try [downloading this troubleshooting tool](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
 

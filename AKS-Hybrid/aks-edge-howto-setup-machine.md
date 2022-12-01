@@ -24,9 +24,14 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
   | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
   | CPU | Two logical processors, clock speed at least 1.8 GHz |
   | Disk space | At least 14 GB free |
-  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
+  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 |
 
-- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command
+    ```powershell
+     Get-WindowsOptionalFeature -Online -FeatureName *hyper*
+    ```
+    You can enable Hyper-V on [Windows 10](/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) and  on [Windows Server](/windows-server/virtualization/hyper-v/get-started/get-started-with-hyper-v-on-windows) as described.
 - If your machine has **power standby** settings turned on, you'll have to turn it off using these commands.
 
     ```bash
@@ -36,7 +41,7 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 
 ## Download the installer
 
-You can deploy AKS for the light edge on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
+You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
 1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files. 
 
