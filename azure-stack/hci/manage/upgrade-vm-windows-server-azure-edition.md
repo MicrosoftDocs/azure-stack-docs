@@ -22,7 +22,7 @@ This article describes how to upgrade existing Windows Server virtual machines (
 
 - Ensure that [Azure Benefits](azure-benefits.md) is enabled and you are licensed to use Windows Server Azure Edition.
 
-- Review VM compatibility. Windows Server Azure Edition only supports generation 2 VMs with Secure Boot enabled. Using [Windows Admin Center](vm.md#view-vm-details), you can view the generation of a specific VM from the **Inventory** tab, and the Secure Boot configuration in the **Security** section of VM settings.
+- Review VM compatibility. Windows Server Azure Edition only supports Generation 2 VMs with Secure Boot enabled. Using [Manage VMs with Windows Admin Center](vm.md#view-vm-details), you can view the generation of a specific VM on its details page, and Secure Boot status in the **Security** section of VM **Settings**.
 
 - Follow your typical update procedure to ensure that the latest cumulative update is applied to the VMs.
 
@@ -32,14 +32,14 @@ This article describes how to upgrade existing Windows Server virtual machines (
 
 After all the prerequisites are completed, follow these steps:
 
-1. Download the Windows Server Azure Edition installer .iso file to a storage location that is accessible to all Azure Stack HCI cluster nodes:
+1. Download the Windows Server Azure Edition installer .iso file to a storage location that is accessible from all Azure Stack HCI cluster nodes:
 
     - [Download English ISO](https://aka.ms/AAi4r31)
     - [Download Chinese ISO](https://aka.ms/AAi4bii)
 
-1. Using Windows Admin Center, under **Tools**, select **Virtual machines**.
+1. In Windows Admin Center, under **Tools**, select **Virtual machines**.
 
-1. Click the **Inventory** tab on the right, select the VM being upgraded, then select **Settings**.
+1. Click the **Inventory** tab on the right, select the VM being upgraded, and then select **Settings**.
 
 1. On the **Settings** page for the VM, select **Disks**.
 
@@ -53,7 +53,7 @@ After all the prerequisites are completed, follow these steps:
 
 1. Sign in to the VM as a user of the local Administrators group.
 
-1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) and then run *setup.exe* on the .iso file.
+1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) and then run *setup.exe* for the .iso file.
 
 ## Next steps
 
