@@ -1,20 +1,25 @@
 ---
-title: "Azure RBAC with Azure AD identity for AKS hybrid (Preview)"
-services: azure-arc
-ms.service: azure-arc
-ms.date: 11/30/2022
+title: "Control access to AKS clusters using Azure RBAC and Azure AD in AKS hybrid (Preview)"
+description: "Use Azure RBAC with Azure AD to control access to AKS clusters in AKS hybrid."
 ms.topic: how-to
-description: "Use Azure RBAC with Azure AD identity for AKS hybrid."
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: sumit.lahiri
+ms.date: 11/30/2022
+ms.last.reviewed: 11/30/2022
+
+# Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
+# Keyword: Kubernetes role-based access control AKS Azure RBAC AD
 ---
 
-# Azure RBAC with Azure AD identity for AKS hybrid (Preview)
+# Control AKS cluster access using Azure RBAC with Azure AD in AKS hybrid (Preview)
 
 This article describes how to set up Azure RBAC on an AKS cluster with Azure Arc enabled so you can use Azure Active Directory (Azure AD) and role assignments to control authorization checks on the cluster in AKS hybrid. Before you begin, you'll need to create an Azure Kubernetes Service (AKS) cluster with Azure Arc enabled. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
 
-For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](conceptual-azure-rbac.md).
+For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
 > [!IMPORTANT]
-> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.<!--Source: azure-rbac.md. Adapt for AKS hybrid.-->
+> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.<!--REVIEW! Source: azure-rbac.md, loosely adapted for AKS hybrid.-->
 
 ## Prerequisites
 
@@ -24,53 +29,57 @@ Before deploying an Azure Arc enabled AKS Hybrid cluster, the following prerequi
 
 Configure the following network, proxy, and/or firewall settings:
 
-   - Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
-   - Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall. 
-     For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
+- Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
+
+- Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall. 
+
+  For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
 ### Create the server app and client app
 
 Register your server app and secret and your client app and secret by performing the following steps:
 
-   > [!NOTE]
-   > These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS hybrid.  
+> [!NOTE]
+> These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS hybrid.  
 
-   To do these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Azure AD. For instructions, see [Assign Azure AD roles to users](/azure/active-directory/roles/manage-roles-portal).
+To do these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Azure AD. For instructions, see [Assign Azure AD roles to users](/azure/active-directory/roles/manage-roles-portal).
 
-   1. [Create a server application and shared secret](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-server-application).
+1. [Create a server application and shared secret](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-server-application).
 
-   1. [Create a role assignment for the server application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-role-assignment-for-the-server-application).
+1. [Create a role assignment for the server application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-role-assignment-for-the-server-application).
 
-   1. [Create a client application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-client-application). You'll refer to the client application when you use `kubectl` to connect within your network.
+1. [Create a client application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-client-application). You'll refer to the client application when you use `kubectl` to connect within your network.
 
 #### Grant permissions for users on the cluster
 
 Assign roles to grant permissions to users of service principal names (SPNs) on the cluster. Use the `az role assignment` command.
 
-   To assign roles on an AKS cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
+To assign roles on an AKS cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
 
-   The following example uses [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) to assign the `Azure Arc Kubernetes Cluster Admin` role to the resource group that will contain the cluster. You can set the scope of the resource group before you create the cluster.
+The following example uses [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) to assign the `Azure Arc Kubernetes Cluster Admin` role to the resource group that will contain the cluster. You can set the scope of the resource group before you create the cluster.
 
-   ```azurecli
-   az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
-   ```
+```azurecli
+az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
+```
 
-   To get the scope ID for the cluster or resource group, run the following commands, and use `"id":property`:
+To get the scope ID for the cluster or resource group, run the following commands, and use `"id":property`:
 
-   ```azurecli
-   az connectedk8s show -g <name of resource group>  
-   az connectedk8s show -n <name of cluster> -g <name of resource group>
-   ```
+```azurecli
+az connectedk8s show -g <name of resource group>  
+az connectedk8s show -n <name of cluster> -g <name of resource group>
+```
 
-   For other examples, see [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true).
+For other examples, see [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true).
 
-   For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clusters, see [Create role assignments for users to access a cluster](azure-rbac.md?tabs=AzureCLI#create-role-assignments-for-users-to-access-the-cluster). For a list of all available built-in roles, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
+For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clusters, see [Create role assignments for users to access a cluster](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-role-assignments-for-users-to-access-the-cluster). For a list of all available built-in roles, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 ## 1. Create an SPN and assign permissions
 
-Follow these steps to create an SPN and assign it permissions <!--MEANING?--to create an Azure RBAC-enabled target cluster in AKS hybrid-->:
+<!--Stopped editing here, 11/30. Edit numbered procedures tomorrow.-->
 
-To set up an automation account to create target clusters that are Azure RBAC-enabled in AKS hybrid, use an Azure service principal.
+To set up an automation account to create target clusters that have Azure RBAC enabled in AKS hybrid, use an Azure service principal.
+
+Follow these steps to create a service principal (SPN) and assign permissions to it:
 
 The command used to do that is: az ad sp create-for-rbac, this command To create a service principal and configure it with the required permission for creating an Azure RBAC-enabled AKS hybrid cluster, use the `az ad sp create-for-rbac` command. For command information, see [az ad sp](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) to the URL).
 
