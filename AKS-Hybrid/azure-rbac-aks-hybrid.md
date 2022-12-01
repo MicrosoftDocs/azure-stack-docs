@@ -14,7 +14,9 @@ ms.last.reviewed: 11/30/2022
 
 # Control AKS cluster access using Azure RBAC with Azure AD in AKS hybrid (Preview)
 
-This article describes how to set up Azure RBAC on an AKS cluster with Azure Arc enabled so you can use Azure Active Directory (Azure AD) and role assignments to control authorization checks on the cluster in AKS hybrid. Before you begin, you'll need to create an Azure Kubernetes Service (AKS) cluster with Azure Arc enabled. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+This article describes how to set up Azure RBAC on an AKS cluster with Azure Arc enabled so you can use Azure Active Directory (Azure AD) and role assignments for authorization in AKS hybrid. Before you begin, you'll need to create an Azure Kubernetes Service (AKS) cluster with Azure Arc enabled. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
 
 For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
@@ -31,7 +33,7 @@ Configure the following network, proxy, and/or firewall settings:
 
 - Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
 
-- Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall. 
+- Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall.
 
   For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
@@ -79,7 +81,7 @@ Use an Azure service principal to configure an automation account with the permi
 
 Creating a target cluster only requires limited privileges on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
-Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest) command in Azure CLI to create the SPN and configure it with the needed permissions.
+Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
 The example command below assigns the **Kubernetes Cluster - Azure Arc Onboarding** to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest) command reference.
 
@@ -144,11 +146,11 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
    New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>"  -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
-This completes the Azure RBAC setup on the AKS cluster.
-
 ## Step 4: Connect to AKS cluster via Azure RBAC
 
-To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
+The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. 
+
+The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
 ### Connect to AKS cluster over Internet using `connectedk8s` proxy method
 
