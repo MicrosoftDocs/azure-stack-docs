@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 11/30/2022
+ms.date: 12/01/2022
 ms.reviewer: unknown
 ms.lastreviewed: 4/28/2021
 
@@ -14,8 +14,6 @@ ms.lastreviewed: 4/28/2021
 ---
 
 # Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
-
-*Applies to: Azure Stack  Hub integrated systems*
 
 This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub integrated system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as artificial intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
@@ -59,6 +57,15 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 | 
 | Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 | 
 | Standard_NC64as_T4_v3 |64 |440 | 4 | 64 | 32 | 8 |
+
+## NC A100 v4
+
+The NC_A100 series VMs are powered by NVIDIA Ampere A100 GPUs, the successor of the Tesla V100 GPUs. You can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others.
+
+|       Size                    |     vCPU  |     Memory: GiB  |     Temp storage (GiB)  |     Max data disks  |     GPU   |     GPU memory GiB  |     Max NICs  |
+|-------------------------------|-----------|------------------|-------------------------|---------------------|-----------|---------------------|---------------|
+|     Standard_NC24ads_A100_v4  |   24      |   220            |   1123                  |   12                |   1       |   80                |   2           |
+|     Standard_NC48ads_A100_v4  |   48      |   440            |   2246                  |   24                |   2       |   160               |   4           |
 
 ## GPU system considerations
 
