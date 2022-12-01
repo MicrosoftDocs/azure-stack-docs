@@ -1,6 +1,6 @@
 ---
-title: "Control access to AKS clusters with Azure RBAC in AKS hybrid (Preview)"
-description: "Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS clusters in AKS hybrid."
+title: "Use Azure RBAC for AKS hybrid clusters (preview)"
+description: "Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS hybrid clusters."
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -12,7 +12,7 @@ ms.last.reviewed: 11/30/2022
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
 ---
 
-# Control AKS cluster access using Azure RBAC with Azure AD in AKS hybrid (Preview)
+# Use Azure RBAC for AKS hybrid clusters (preview)
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -21,7 +21,7 @@ This article describes how to set up Azure RBAC on an AKS cluster with Azure Arc
 For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
 > [!IMPORTANT]
-> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.<!--REVIEW! Source: azure-rbac.md, loosely adapted for AKS hybrid.-->
+> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.
 
 ## Prerequisites
 
@@ -126,7 +126,7 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
 
 1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster.
 
-1. Sign in to Azure by running the following command. using the `connect-azaccount -deviceauth` command. 
+1. Sign in to Azure by running the following command. using the `connect-azaccount -deviceauth` command.
 
    ```powershell
    connect-azaccount -deviceauth
@@ -188,14 +188,12 @@ When you connect to an AKS cluster over a private network, there's no limit the 
 
 To connect to an AKS cluster over a private network, do the following steps:
 
-1. Open a PowerShell window **WHERE? WHAT CREDENTIALS?**.
-
-1. Download the **kubeconfig** file by running the following command:
+1. Download the **kubeconfig** file:
 
    ```powershell
    Get-AksHciCredential -Name <cluster name> -aadauth
    ```
 
-1. Start sending requests to AKS API server by running the `kubectl` `api-server` command. **ADD A COMMAND EXAMPLE?**
+1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You'll be prompted for your Azure AD credentials.
 
    You'll get a warning message. You can ignore it.
