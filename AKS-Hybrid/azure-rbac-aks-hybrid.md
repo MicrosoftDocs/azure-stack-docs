@@ -1,11 +1,11 @@
 ---
-title: "Control access to AKS clusters using Azure RBAC and Azure AD in AKS hybrid (Preview)"
-description: "Use Azure RBAC with Azure AD to control access to AKS clusters in AKS hybrid."
+title: "Control access to AKS clusters with Azure RBAC in AKS hybrid (Preview)"
+description: "Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS clusters in AKS hybrid."
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sumit.lahiri
-ms.date: 11/30/2022
+ms.date: 12/01/2022
 ms.last.reviewed: 11/30/2022
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -35,7 +35,7 @@ Configure the following network, proxy, and/or firewall settings:
 
   For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
-### Create the server app and client app
+#### Create the server app and client app
 
 Register your server app and secret and your client app and secret by performing the following steps:
 
@@ -79,7 +79,7 @@ For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clus
 
 To set up an automation account to create target clusters that have Azure RBAC enabled in AKS hybrid, use an Azure service principal.
 
-Follow these steps to create a service principal (SPN) and assign permissions to it:
+Follow these steps to create a service principal name (SPN) and assign permissions to it:
 
 The command used to do that is: az ad sp create-for-rbac, this command To create a service principal and configure it with the required permission for creating an Azure RBAC-enabled AKS hybrid cluster, use the `az ad sp create-for-rbac` command. For command information, see [az ad sp](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) to the URL).
 
@@ -139,19 +139,19 @@ New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name
 
 This completes the Azure RBAC setup on the AKS cluster.
 
-## Connect to AKS cluster via Azure RBAC
+## 5. Connect to AKS cluster via Azure RBAC
 
-With the Azure RBAC setup complete, Azure RBAC will authenticate connections to the cluster. The procedures in this section describe how to [use the `connectedk8s` proxy method to connect to an AKS cluster from anywhere on the Internet](#connect-to-aks-cluster-from-internet-using-connectedk8s-proxy-method) and how to [connect over a private network](#connect-to-aks-cluster-over-a-private-network).
+To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
-### Connect to AKS cluster from Internet using `connectedk8s` proxy method
+### Connect to AKS cluster over Internet using `connectedk8s` proxy method
 
 Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the Internet. When you use this method, you're limited to 200 groups.
 
-To connect to an AKS cluster using the `connectedk8s` proxy method:
+To connect to an AKS cluster using the `connectedk8s` proxy method, do the following steps:
 
 1. Open an Azure CLI window, and use`az login` to connect to Azure. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
-1. Set the subscription for your account to the subscription you used to create the AKS cluster:<!--VERIFY. Just guessing.-->
+1. Set the subscription for your Azure account to the subscription you used to create the AKS cluster if needed:<!--VERIFY. Just guessing.-->
 
    ```azurecli
    az account set -subscription "<mySubscription>" 
@@ -163,13 +163,13 @@ To connect to an AKS cluster using the `connectedk8s` proxy method:
    az account show
    ```
 
-1. Start the proxy process by running the following command:
+1. Start the proxy process:
 
    ```azurecli
    az connectedk8s proxy -n <cluster name> -g <resource group name>
    ```
 
-1. Make sure authentication is working correctly by sending requests to the cluster. Leaving the terminal that you connected from open, open another tab, and send the requests to the cluster. You should get responses based on your Azure RBAC configuration.
+1. Make sure authentication is working correctly by sending requests to the cluster. Leaving open the terminal that you connected from, open another tab, and send the requests to the cluster. You should get responses based on your Azure RBAC configuration.
 
 1. Press **Ctrl+C** to close the `connectedk8s` proxy connection.
 
