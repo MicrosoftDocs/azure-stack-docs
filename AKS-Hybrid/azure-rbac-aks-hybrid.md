@@ -23,7 +23,7 @@ For more information about using Azure RBAC with Azure Arc-enabled Kubernetes cl
 
 ## Prerequisites
 
-Before deploying an Azure Arc enabled AKS Hybrid cluster, the following prerequisites must be met:
+Before you deploy an AKS cluster with Azure Arc enabled, you must complete the following prerequisites.
 
 #### Prepare your network
 
@@ -73,73 +73,80 @@ For other examples, see [az role assignment](/cli/azure/role/assignment?view=azu
 
 For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clusters, see [Create role assignments for users to access a cluster](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-role-assignments-for-users-to-access-the-cluster). For a list of all available built-in roles, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
-## 1. Create an SPN and assign permissions
+## Step 1: Create an SPN and assign permissions
 
-<!--Stopped editing here, 11/30. Edit numbered procedures tomorrow.-->
+Use an Azure service principal to configure an automation account with the permissions needed to create a target cluster with Azure RBAC enabled. 
 
-To set up an automation account to create target clusters that have Azure RBAC enabled in AKS hybrid, use an Azure service principal.
+Creating a target cluster only requires limited privileges on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
-Follow these steps to create a service principal name (SPN) and assign permissions to it:
+Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
-The command used to do that is: az ad sp create-for-rbac, this command To create a service principal and configure it with the required permission for creating an Azure RBAC-enabled AKS hybrid cluster, use the `az ad sp create-for-rbac` command. For command information, see [az ad sp](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) to the URL).
-
-Creating a target cluster doesn't require high privilege on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
-
-Example (Azure CLI):
+The example command below assigns the **Kubernetes Cluster - Azure Arc Onboarding** to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest) command reference.
 
 ```azurecli
-az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/< OID of the SPN > 
+az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the SPN> 
 ```
+
+In the command output, **Creating 'Kubernetes Cluster - Azure Arc Onboarding' role assignment** appears under the **/subscriptions/my-SPN-OID** scope.
+
+> [!IMPORTANT]
+> The command output for `az ad sp` includes credentials that you must protect. Do not include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 For more information about creating an SPN and assigning it a role, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).
 
-The output of this command will be "Creating 'Kubernetes Cluster - Azure Arc Onboarding' role assignment" under the **/subscriptions/<OID pf the SPN** scope.
+## Step 2: Create the credential object  
 
-The output includes credentials that you must protect. Be sure not to include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).
-
-## 2. Create the credential object  
-
-Open a PowerShell window, and run the following command:
+To create a credential object to use with the SPN, open a PowerShell window, and run the following command:
 
 ```powershell
 $Credential = Get-Credential
 ```
 
-The command prompts for a password.
+This command prompts for a password.
 
-For automation scripts, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3&preserve-view=true to the URL#example-4).
+To automate creation of the credential object, without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3&preserve-view=true#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
 
-## 3. Create Azure RBAC-enabled AKS target cluster using an SPN
+## Step 3: Create Azure RBAC-enabled AKS target cluster using an SPN
 
-Before you can create the AKS target cluster, you must [Create an SPN](/cli/azure/create-an-azure-service-principal-azure-cli).
+To create an AKS target cluster with Azure RBAC enabled using an SPN:
 
-To creata an Azure RBAC-enabled target cluster in AKS hybrid, open a PowerShell window, and run the following command. The command must be executed on the Azure HCI node or Windows server where target you'll deploy the cluster.
+1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/create-an-azure-service-principal-azure-cli) now.
 
-```powershell
-New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>" -subscriptionID "<subscription id>" -tenantId "<tenant id>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
-```
+1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster, and run the following command:
 
-## 4. Create Azure RBAC-enabled AKS target cluster interactively
+   ```powershell
+   New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>" -subscriptionID "<subscription id>" -tenantId "<tenant id>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
+   ```
 
-To create your Azure RBAC-enabled target cluster interactively, run this command in a PowerShell session on the Azure HCI node or Windows server where you'll deploy the cluster:
+### Step 3, Option B: Create Azure RBAC-enabled AKS target cluster interactively
 
-```powershell
-New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>"  -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
-```
+If you prefer to create your Azure RBAC-enabled target cluster interactively, follow these steps:
 
-1. Run this command in PowerShell on the Azure HCI node or Windows server where you'll deploy the cluster.
+1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster.
 
-2. Sign in to Azure via PowerShell using the `connect-azaccount -deviceauth` command. The command prompts for authentication via the device code flow.
+1. Sign in to Azure by running the following command. using the `connect-azaccount -deviceauth` command. 
 
-3. Set subscription context to the subscription where the target cluster will be created by running this command:
+   ```powershell
+   connect-azaccount -deviceauth
+   ```
+
+   The command prompts for authentication via the device code flow.
+
+1. Set the subscription context to the subscription where the target cluster will be created:
 
    ```powershell
    az account set --subscription "subscriptionName"
    ```
 
+1. Create the AKS target cluster, with Azure RBAC enabled:
+
+   ```powershell
+   New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>"  -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
+   ```
+
 This completes the Azure RBAC setup on the AKS cluster.
 
-## 5. Connect to AKS cluster via Azure RBAC
+## Step 4: Connect to AKS cluster via Azure RBAC
 
 To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
