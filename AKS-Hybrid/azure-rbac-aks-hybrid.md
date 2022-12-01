@@ -83,7 +83,7 @@ Creating a target cluster only requires limited privileges on the subscription. 
 
 Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
-The example command below assigns the **Kubernetes Cluster - Azure Arc Onboarding** to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest) command reference.
+The example command below assigns the **Kubernetes Cluster - Azure Arc Onboarding** to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the SPN> 
