@@ -205,6 +205,8 @@
             href: ad-sso.md
           - name: Use Kubernetes RBAC with Azure AD
             href: kubernetes-rbac-azure-ad.md
+          - name: Use Azure RBAC for authorization on AKS clusters
+            href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
           - name: Secrets Store CSI Driver configuration
