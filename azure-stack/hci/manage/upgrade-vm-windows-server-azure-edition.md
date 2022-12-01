@@ -53,7 +53,7 @@ After all the prerequisites are completed, follow these steps:
 
 1. Sign in to the VM as a user of the local Administrators group.
 
-1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) and then run *setup.exe* for the .iso file.
+1. Perform an [in-place upgrade of Windows Server](/windows-server/get-started/perform-in-place-upgrade#perform-the-upgrade) running *setup.exe* on the .iso file that you attached to the VM.
 
 ## Next steps
 
