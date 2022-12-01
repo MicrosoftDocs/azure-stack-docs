@@ -317,7 +317,7 @@
       href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: AKS Edge Powershell 
+    - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: File bugs
       href: https://github.com/Azure/aks-edge-utils/issues

@@ -21,7 +21,7 @@ You can also manually remove the cluster from Arc using the Azure portal.
 
 ## Remove your application from cluster
 
-Delete the applications that your deployed using the following command.
+Delete the applications that you deployed using the following command.
 
 ```powershell
 kubectl delete -f ./path-to-your-YAML-file/app.yaml
