@@ -58,7 +58,7 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 | 
 | Standard_NC64as_T4_v3 |64 |440 | 4 | 64 | 32 | 8 |
 
-## NC A100 v4
+## NC_A100 v4
 
 The NC_A100 series VMs are powered by NVIDIA Ampere A100 GPUs, the successor of the Tesla V100 GPUs. You can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others.
 

@@ -72,11 +72,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - Starting with Azure Stack Hub 2210, [Emergency VM Access (EVA)](../user/emergency-vm-access.md) is released to general availability.
-- Public preview release of the VPN FastPath with new VPN Gateway SKUs.
-- New VPN FastPath documentation for ASH operators (add links here) and ASH users (add links here)
+- Public preview release of the [VPN FastPath](azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
+- New [VPN FastPath documentation for ASH operators](azure-stack-vpn-fast-path-operators.md) and [ASH users](../user/azure-stack-vpn-fast-path-user.md).
 - Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
-- Added support for Nvidia A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
-- Added new VM series for A100. For more details, see here.
+- Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
+- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc-a100-v4).
 
 <!-- ### Improvements -->
 
