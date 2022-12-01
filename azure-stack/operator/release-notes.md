@@ -72,6 +72,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - Starting with Azure Stack Hub 2210, [Emergency VM Access (EVA)](../user/emergency-vm-access.md) is released to general availability.
+- Public preview release of the VPN FastPath with new VPN Gateway SKUs.
+- New VPN FastPath documentation for ASH operators (add links here) and ASH users (add links here)  
 
 <!-- ### Improvements -->
 
