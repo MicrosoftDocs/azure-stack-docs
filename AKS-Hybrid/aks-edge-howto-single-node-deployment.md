@@ -14,7 +14,8 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisites
 
-Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
+- Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
+- From the files downloaded from the GitHub repo, open the **AksEdgePrompt** file from the /tools folder. This will load all the required modules and check prerequisites in your machine.
 
 ## Create a single machine cluster
 
@@ -92,7 +93,7 @@ Some of the common parameters and their default values as follows:
    New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
    ```
 
-   Passing the parameters as a JSON string as mentioned above: 
+   Passing the parameters as a JSON string as mentioned above:
 
    ```powershell
    $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
@@ -177,6 +178,6 @@ We have also included AksEdgeDeploy(Aide) module in our [GitHub repo](https://gi
 
 ## Next steps
 
-* [Deploy your application](./aks-edge-howto-deploy-app.md).
-* [Overview](./aks-edge-overview.md)
-* [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
+- [Deploy your application](./aks-edge-howto-deploy-app.md).
+- [Overview](./aks-edge-overview.md)
+- [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
