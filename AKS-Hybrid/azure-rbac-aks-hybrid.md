@@ -5,8 +5,8 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sumit.lahiri
-ms.date: 12/01/2022
-ms.last.reviewed: 11/30/2022
+ms.date: 12/02/2022
+ms.last.reviewed: 12/01/2022
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -117,7 +117,7 @@ To create an AKS target cluster with Azure RBAC enabled using an SPN:
 1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster, and run the following command:
 
    ```powershell
-   New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>" -subscriptionID "<subscription id>" -tenantId "<tenant id>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
+   New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
 ### Step 3, Option B: Create Azure RBAC-enabled AKS target cluster interactively
