@@ -55,7 +55,7 @@ There are several requirements and things to consider before you begin to use th
 
 - If you're using Windows Admin Center to provision GPU-P, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension <!--insert-version-number-->. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [install the GPUs extension](#install-the-gpus-extension).
 
-- If you're using PowerShell to provision GPU-P, you must run all PowerShell commands as an administrator.
+- If you're using PowerShell to provision GPU-P, you must run all PowerShell commands as the Administrator user.
 
 - You must install the GPU device of the same make, model, and size on every server of the cluster.
     
@@ -104,7 +104,7 @@ Here's the high-level summary of the workflow on the guest machine:
 
 1. Install the guest GPU driver on the VM.
 
-## Check if the GPU is partionable
+## Verify GPU-p driver installation
 
 After you've completed all the [prerequisites](#prerequisites), you must verify if the GPU is partionable.
 
@@ -136,10 +136,16 @@ Proceed further only if the **Assigned status** column shows the status as **Par
 
 Follow these steps to verify the host driver is installed:
 
-1. Connect to a server in your cluster using Remote Desktop Protocol (RDP), and then run the following PowerShell command to verify if the GPU device is installed:
+1. Connect to a server in your cluster using Remote Desktop Protocol (RDP) and run the following PowerShell command to verify if the GPU device is installed:
 
 ```powershell
-Get-PnpDevice | where {$_.friendlyname -like "*nvidia"}
+Get-PnpDevice -FriendlyName "<device-friendly-name>"
+```
+
+For example, to list the NVIDIA A2 GPU devices, enter the following command:
+
+```powershell
+Get-PnpDevice -FriendlyName "NVIDIA A2"
 ```
 
 Here's a sample output:
@@ -150,22 +156,118 @@ Status    Class    FriendlyName
 OK        Display  NVIDIA A2
 ```
 
+For NVIDIA devices, you can also run the nvidia-smi command-line without any argument to list the GPUs on the server.
+
+If the driver is installed, you see an output similar to the following sample:
+
+```powershell
+PS C:\Users> Nvidia-smi
+Wed Nov 30 15:22:36 2022
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 527.27       Driver Version: 527.27       CUDA Version: N/A      |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name            TCC/WDDM | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A2          WDDM  | 00000000:65:00.0 Off |                    0 |
+|  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A2          WDDM  | 00000000:66:00.0 Off |                    0 |
+|  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+```
+
 1. Run the following command to confirm that Azure Stack HCI host has GPU adapters that can be partitioned by listing the GPUs that support GPU-P.
 
 ```powershell
 Get-VMHostPartitionableGpu
 ```
 
-<!--Here's a sample output:-->
+Here's a sample output:
+
+The following sample output shows that there are two GPUs installed with the current partition count configured as 16. Take a note of the Name value from this output.
+
+```powershell
+PS C:\Users> Get-VMHostPartitionableGPU
+
+
+Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-d
+                          c845897dd59}
+ValidPartitionCounts    : {16, 8, 4, 2...}
+PartitionCount          : 16
+TotalVRAM               : 15918030848
+AvailableVRAM           : 15918030848
+MinPartitionVRAM        : 939524096
+MaxPartitionVRAM        : 939524096
+OptimalPartitionVRAM    : 939524096
+TotalEncode             : 36
+AvailableEncode         : 36
+MinPartitionEncode      : 2
+MaxPartitionEncode      : 2
+OptimalPartitionEncode  : 2
+TotalDecode             : 24
+AvailableDecode         : 24
+MinPartitionDecode      : 1
+MaxPartitionDecode      : 1
+OptimalPartitionDecode  : 1
+TotalCompute            : 2048
+AvailableCompute        : 2048
+MinPartitionCompute     : 128
+MaxPartitionCompute     : 128
+OptimalPartitionCompute : 128
+CimSession              : CimSession: .
+ComputerName            : C4P1077002803B
+IsDeleted               : False
+
+Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&5906f5e&0&0010#{064092b3-625e-43bf-9eb5-dc
+                          845897dd59}
+ValidPartitionCounts    : {16, 8, 4, 2...}
+PartitionCount          : 4
+TotalVRAM               : 15918030848
+AvailableVRAM           : 15918030848
+MinPartitionVRAM        : 3825205248
+MaxPartitionVRAM        : 3825205248
+OptimalPartitionVRAM    : 3825205248
+TotalEncode             : 36
+AvailableEncode         : 36
+MinPartitionEncode      : 9
+MaxPartitionEncode      : 9
+OptimalPartitionEncode  : 9
+TotalDecode             : 24
+AvailableDecode         : 24
+MinPartitionDecode      : 6
+MaxPartitionDecode      : 6
+OptimalPartitionDecode  : 6
+TotalCompute            : 2048
+AvailableCompute        : 2048
+MinPartitionCompute     : 512
+MaxPartitionCompute     : 512
+OptimalPartitionCompute : 512
+CimSession              : CimSession: .
+ComputerName            : C4P1077002803B
+IsDeleted               : False
+
+```
 ---
 
-## Configure GPU partitions
+## Configure GPU partition count
 
 After you install the GPU-P driver on the host server, it displays the maximum partition count that the GPU can have. The partition counts can vary for different GPU types depending on their manufacturer setting. After you confirm the installed GPU is partitionable, you can proceed with configuring its partition count.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
-1. Select the **GPU partitions** tab. This tab allows you to configure partitions for the selected GPU, assign partition to VMs or unassign partitions from VMs.
+1. Select the **GPU partitions** tab. Use this tab to configure partition counts for the selected GPU, assign partition to VMs, and unassign partitions from VMs.
     
     This tab displays the inventory of all the GPUs that are currently partitioned and their assignment statuses. You can select a GPU or GPU partition resource to display its details in the bottom section of the page, under **Selected item details**. For example, if you select a GPU, it displays the GPU name, GPU ID, available encoder and decoder, available VRAM, valid partition count, and the current partition count. If you select a GPU partition, it displays the partition ID, VM ID, instance path, partition VRAM, partition encode, and partition decode.
 
@@ -177,9 +279,10 @@ After you install the GPU-P driver on the host server, it displays the maximum p
    The **Configure partition count on GPUs** window is displayed. For each server, it displays the installed GPU name, status, manufacturer, number of partitions, and total VRAM. By default, the number of partitions displays the maximum partition count the GPU comes with.
 
 1. Select a set of homogeneous GPUs. A set of GPUs is called a homogeneous set if all the GPUs across all the servers have the same size, manufacturer, model number, and number of partitions. By default, Windows Admin Center automatically selects a set of homogenous GPUs if it detects one.
-    You may see a warning or an error depending on the GPU selection you make:
+   
+    You may see a warning or an error depending on the selection you make:
 
-    - Warning. If you deselect one or more GPUs from the homogeneous set of GPUs, Windows Admin Center gives a warning but doesn't stop you from proceeding further. Warning indicates you are not selecting all the GPUs and it may result in different partition count, which is not recommended.
+    - Warning. If you deselect one or more GPUs from the homogeneous set of GPUs, Windows Admin Center gives you a warning but doesn't stop you from proceeding further. Warning text indicates that you are not selecting all the GPUs and it may result in different partition count, which is not recommended.
     
     - Warning. If not all the GPUs across all the servers have the same configuration, Windows Admin Center gives a warning. You must manually select the GPUs with the same configuration to proceed further.
     
