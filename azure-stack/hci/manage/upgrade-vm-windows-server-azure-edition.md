@@ -39,7 +39,7 @@ After all the prerequisites are completed, follow these steps:
 
 1. In Windows Admin Center, under **Tools**, select **Virtual machines**.
 
-1. Click the **Inventory** tab on the right, select the VM being upgraded, and then select **Settings**.
+1. Select the **Inventory** tab on the right, select the VM being upgraded, and then select **Settings**.
 
 1. On the **Settings** page for the VM, select **Disks**.
 
@@ -49,7 +49,7 @@ After all the prerequisites are completed, follow these steps:
 
 1. Under **Tools**, select **Virtual machines** again.
 
-1. Click the **Inventory** tab on the right, select the checkbox next to the VM being upgraded, then select **Connect**.
+1. Select the **Inventory** tab on the right, select the checkbox next to the VM being upgraded, then select **Connect**.
 
 1. Sign in to the VM as a user of the local Administrators group.
 
