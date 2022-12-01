@@ -14,7 +14,8 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisites
 
-Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
+- Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
+- From the files downloaded from the GitHub repo, open the **AksEdgePrompt** file from the /tools folder. This will load all the required modules and check prerequisites in your machine.
 
 ## Create a single machine cluster
 
@@ -22,7 +23,7 @@ You can run the `New-AksLiteDeployment` cmdlet to deploy a single-machine AksIot
 
 ```powershell
 #create a deployment configuration file with defaults
-$jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
+New-AksEdgeConfig -outFile .\mydeployconfig.json
 ```
 
 You can edit **mydeployconfig**.json with the parameters you need and pass the JSON config file for deployment. To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window. You can then use this file in your deployment.
@@ -87,12 +88,12 @@ Some of the common parameters and their default values as follows:
 
    ```powershell
    #create a deployment configuration file with defaults
-   $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
+   New-AksEdgeConfig -outFile .\mydeployconfig.json
    #Edit mydeployconfig.json with the parameters you need and pass the json config for deployment
    New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
    ```
 
-   Alternatively, you can programmatically edit the JSON object and pass it as a string:
+   Passing the parameters as a JSON string as mentioned above:
 
    ```powershell
    $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
@@ -177,6 +178,6 @@ We have also included AksEdgeDeploy(Aide) module in our [GitHub repo](https://gi
 
 ## Next steps
 
-* [Deploy your application](./aks-edge-howto-deploy-app.md).
-* [Overview](./aks-edge-overview.md)
-* [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
+- [Deploy your application](./aks-edge-howto-deploy-app.md).
+- [Overview](./aks-edge-overview.md)
+- [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)

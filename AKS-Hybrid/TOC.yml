@@ -317,10 +317,10 @@
       href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: AKS Lite Powershell 
+    - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: File bugs
-      href: https://github.com/Azure/AKS-IoT-preview/issues
+      href: https://github.com/Azure/aks-edge-utils/issues
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview

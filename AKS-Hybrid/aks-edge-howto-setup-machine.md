@@ -24,9 +24,16 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
   | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
   | CPU | Two logical processors, clock speed at least 1.8 GHz |
   | Disk space | At least 14 GB free |
-  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro/Server |
+  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 |
 
-- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro/Server on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command
+
+    ```powershell
+     Get-WindowsOptionalFeature -Online -FeatureName *hyper*
+    ```
+
+    You can enable Hyper-V on [Windows 10](/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) and  on [Windows Server](/windows-server/virtualization/hyper-v/get-started/get-started-with-hyper-v-on-windows) as described.
 - If your machine has **power standby** settings turned on, you'll have to turn it off using these commands.
 
     ```bash
@@ -36,12 +43,12 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 
 ## Download the installer
 
-You can deploy AKS for the light edge on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
+You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
-1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files. 
+1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files.
 
-    | File | Link | 
-    | ---- | ---- | 
+    | File | Link |
+    | ---- | ---- |
     | k8s installer | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
     | k3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
@@ -55,7 +62,6 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
   > [!NOTE]
   > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
 
-
 ## Set up your machine as a Linux node
 
 1. Double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
@@ -64,7 +70,7 @@ You can deploy AKS for the light edge on either a single machine or on multiple 
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
 
-1. Unzip the files of *AksEdgeWindows-x.xx.x.zip* in the same `kXs` MSI folder. 
+1. Unzip the files of *AksEdgeWindows-x.xx.x.zip* in the same `kXs` MSI folder.
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer and files.
 
@@ -75,25 +81,30 @@ In order to configure your MSI installer to include Windows nodes, make sure you
     ```
 
 3. Now you are ready to do mixed deployment.
- 
+
 ## Check the AKS Edge modules
+
 Once installation is complete, make sure your install was successful by running the following command:
 
 ```powershell
 Get-Command -Module AksEdge
 ```
+
 You should see the following output with version showing v0.4.222:
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
 
-If you don't see the PowerShell module commands, try the following commands to load the modules. 
+If you don't see the PowerShell module commands, try the following commands to load the modules.
+
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
 Import-Module AksEdge
 ```
-Once this is done, open another PowerShell window and run the following command again. 
+
+Once this is done, open another PowerShell window and run the following command again.
+
 ```powershell
 Get-Command -Module AksEdge
 ```
