@@ -23,11 +23,13 @@ You can also join the Azure Stack HCI preview channel to test out features for f
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
 
-## New deployment tool
+## New deployment tool (preview)
 
-In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package. The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2.
+In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2. You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell.
 
-You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell. To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
+While we encourage you to try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the supplemental package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
+
+To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md).
 
 ## New security capabilities
 
