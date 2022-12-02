@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. This includes how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
+This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
 
 GPU partitioning allows you to run multiple VMs concurrently on a single shared GPU device.
 
@@ -21,7 +21,7 @@ GPU partitioning allows you to run multiple VMs concurrently on a single shared 
 
 ## About GPU partitioning
 
-Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can share a physical GPU with multiple VMs by using the GPU partitioning feature instead of using a dedicated GPU for each VM. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU. This can help increase GPU utilization without significantly affecting the performance benefits of GPU. This can also help lower the total cost of ownership (TCO) for your GPU devices.
+Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU with multiple VMs. With GPU partitioning, each VM gets a dedicated fraction of the GPU instead of the entire GPU. GPU partitioning can help increase GPU utilization without significantly affecting the performance benefits of a GPU. It can also help lower the total cost of ownership (TCO) for your GPU devices.
 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
@@ -52,7 +52,7 @@ There are several requirements and things to consider before you begin to use th
     
     - Install the GPU drivers on every server of the cluster by following OEM instructions. For NVIDIA GPU drivers, see the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\>.
 
-    - Ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Reach out to your system vendor if you are unable to identify the correct setting in your BIOS.
+    - Ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Reach out to your system vendor if you're unable to identify the correct setting in your BIOS.
 
 - Prerequisites for the VMs:
 
@@ -70,19 +70,23 @@ There are several requirements and things to consider before you begin to use th
 
 Consider the following caveats when using the GPU partitioning feature:
 
-- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster with two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. Also the partition count on each GPU must also match. Azure Stack HCI doesn't support GPU partitioning if your configuration is not homogeneous. Here are some examples of the configurations that Azure Stack HCI doesn't support:
+- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster with two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. The partition count on each GPU must also match. Azure Stack HCI doesn't support GPU partitioning if your configuration isn't homogeneous. Here are some examples of the configurations that Azure Stack HCI doesn't support:
 
-    - Mixing GPUs from different vendors in the same cluster. This is not supported because they have different driver and licensing requirements and can lead to unintended consequences.
+    - Mixing GPUs from different vendors in the same cluster. This isn't supported because they have different driver and licensing requirements, which can lead to unintended consequences.
     
-    - Using different GPU models from different product family from the same vendor in your cluster.
+    - Using different GPU models from different product families from the same vendor in your cluster.
 
-- You cannot assign a physical GPU as both Discrete Device Assignment (DDA) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both. For information about GPU acceleration provided via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
+- You can't assign a physical GPU as both Discrete Device Assignment (DDA) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both. For information about GPU acceleration provided via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
 
 -  You can assign only a single GPU partition to a VM.
 
-- Azure Stack HCI auto-assigns the partition to the VMs. You can't chose specific partition for a specific VM.
+- Azure Stack HCI auto-assigns the partition to the VMs. You can't choose a specific partition for a specific VM.
 
-- Currently, GPU partitioning on Azure Stack HCI doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available in the event of a failure.
+- Currently, GPU partitioning on Azure Stack HCI doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
+
+- We recommend that you use Windows Admin Center to provision GPU partitioning even though you also use PowerShell. Windows Admin Center automatically validates for a homogeneous configuration of your GPUs and provides appropriate warnings and errors to take any corrective action needed.
+
+- If using PowerShell to provision GPU partitioning, you must perform the provisioning steps on each server in the cluster to keep the configuration homogeneous.
 
 ## GPU partitioning workflow
 
@@ -92,7 +96,7 @@ Here's a high-level workflow to provision the GPU partitioning feature:
 1. [Verify GPU partitioning driver installation](#verify-gpu-partitioning-driver-installation).
 1. [Configure partition count](#configure-gpu-partition-count).
 1. [Assign a GPU partition to a VM](#assign-gpu-partition-to-vms).
-1. [If required, unassign a GPU partition from a VM](#unassign-a-partition-from-a-vm).
+1. [If necessary, unassign a GPU partition from a VM](#unassign-a-partition-from-a-vm).
 
 ## Verify GPU partitioning driver installation
 
@@ -118,7 +122,7 @@ Follow these steps to verify if the GPU is installed and partitionable using Win
     
     - **Paravirtualization**. Indicates that the GPU has the partitioned driver capability installed but SR-IOV on the server isn't enabled.
     
-    - **Not assignable**. Indicates that the GPU is not assignable because it's an older PCI-style device or switch port.
+    - **Not assignable**. Indicates that the GPU isn't assignable because it's an older PCI-style device or switch port.
 
         :::image type="content" source="./media/partition-gpu/gpu-tab.png" alt-text="Screenshot of the GPUs tab showing the inventory of the servers and their installed GPU devices." lightbox="./media/partition-gpu/gpu-tab.png" :::
 
@@ -273,25 +277,25 @@ After you install the GPU partitioning driver on the host server, it displays th
 
    The **Configure partition count on GPUs** page is displayed. For each server, it displays the GPU devices installed on them.
 
-1. Select a set of homogeneous GPUs. A set of homogeneous GPUs is the one which has GPUs of the same size, manufacturer, model number, and number of partitions. By default, Windows Admin Center automatically selects a set of homogenous GPUs if it detects one, as shown in the following screenshot:
+1. Select a set of homogeneous GPUs. A set of homogeneous GPUs is the one that has GPUs of the same size, manufacturer, model number, and number of partitions. By default, Windows Admin Center automatically selects a set of homogenous GPUs if it detects one, as shown in the following screenshot:
 
    :::image type="content" source="./media/partition-gpu/configure-partition-count.png" alt-text="Screenshot of the Configure partition count on GPUs showing the inventory of GPUs to configure the partition count." lightbox="./media/partition-gpu/configure-partition-count.png" :::
    
     You may see a warning or an error depending on what selections you make:
 
-    - **Warning.** If you deselect one or more GPUs from the homogeneous set of GPUs, Windows Admin Center gives you a warning but doesn't stop you from proceeding further. Warning text indicates that you are not selecting all the GPUs and it may result in different partition count, which is not recommended.
+    - **Warning.** If you deselect one or more GPUs from the homogeneous set of GPUs, Windows Admin Center gives you a warning, but doesn't stop you from proceeding further. Warning text indicates that you're not selecting all the GPUs and it may result in different partition count, which isn't recommended.
     
         :::image type="content" source="./media/partition-gpu/warning-partial-selection-homogenous-set.png" alt-text="Screenshot showing a warning when all the GPUs within a homogeneous set are not selected." lightbox="./media/partition-gpu/warning-partial-selection-homogenous-set.png" :::
 
     - **Warning.** If not all the GPUs across all the servers have the same configuration, Windows Admin Center gives a warning. You must manually select the GPUs with the same configuration to proceed further.
     
-        :::image type="content" source="./media/partition-gpu/warning-different-configuration.png" alt-text="Screenshot showing an error when you have GPUs with different configurations." lightbox="./media/partition-gpu/warning-different-configuration.png" :::
+        :::image type="content" source="./media/partition-gpu/warning-different-configuration.png" alt-text="Screenshot showing a warning when you have GPUs with different configurations." lightbox="./media/partition-gpu/warning-different-configuration.png" :::
     
-    - **Error.** If you select GPUs with different configurations, Windows Admin Center gives you an error and doesn't let you proceed.
+    - **Error.** If you select GPUs with different configurations, Windows Admin Center gives you an error, and doesn't let you proceed.
     
-        :::image type="content" source="./media/partition-gpu/error-different-configuration.png" alt-text="Screenshot showing an error when you have GPUs with different configurations." lightbox="./media/partition-gpu/error-different-configuration.png" :::
+        :::image type="content" source="./media/partition-gpu/error-different-configuration.png" alt-text="Screenshot showing an error when you select GPUs with different configurations." lightbox="./media/partition-gpu/error-different-configuration.png" :::
     
-    - **Error.** If a GPU for which you are configuring a partition count is already assigned to a VM, selecting that GPU will give you an error. You must first unassign the partition from the VM before proceeding further. See [Unassign a partition from a VM](#unassign-a-partition-from-a-vm).
+    - **Error.** If a GPU for which you're configuring a partition count is already assigned to a VM, selecting that GPU will give you an error. You must first unassign the partition from the VM before proceeding further. See [Unassign a partition from a VM](#unassign-a-partition-from-a-vm).
     
         :::image type="content" source="./media/partition-gpu/error-assigned-partition-selection.png" alt-text="Screenshot showing an error when you select a partition that is already assigned to a VM." lightbox="./media/partition-gpu/error-assigned-partition-selection.png" :::
 
@@ -307,19 +311,19 @@ After you install the GPU partitioning driver on the host server, it displays th
 
 ## [PowerShell](#tab/powershell)
 
-We recommend that you create a homogeneous configuration across your cluster for best performance, such as the same GPU model installed across the nodes, and the same partition size across the nodes.
+Follow these steps to configure GPU partition count in PowerShell:
 
 1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command.
 
 1. Connect to the server whose GPU partition count you want to configure.
 
-1. Run the following command to configure the partition count. Replace `GPU-name` with the **Name** value and `partition-count` with one of the supported counts from the **ValidPartitionCounts**:
+1. Run the following command to configure the partition count. Replace `GPU-name` with the **Name** value and `partition-count` with one of the supported counts from the **ValidPartitionCounts** value:
 
     ```powershell
     Set-VMHostPartitionableGpu -Name "<GPU-name>" -PartitionCount <partition-count>
     ```
 
-    For example, the following command configures the partition count to 4: 
+    For example, the following command configures the partition count to 4:
 
     ```powershell
     PS C:\Users> Set-VMHostPartitionableGpu -Name "\\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}" -PartitionCount 4
