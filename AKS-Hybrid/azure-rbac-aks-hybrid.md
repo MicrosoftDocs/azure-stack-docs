@@ -16,7 +16,7 @@ ms.last.reviewed: 12/01/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to set up Azure RBAC on an AKS cluster with Azure Arc enabled so you can use Azure Active Directory (Azure AD) and role assignments for authorization in AKS hybrid. Before you begin, you'll need to create an Azure Kubernetes Service (AKS) cluster with Azure Arc enabled. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
+This article describes how to set up Azure RBAC on an AKS hybrid cluster to use Azure Active Directory (Azure AD) and Azure role assignments for authorization. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
 
 For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
@@ -25,7 +25,7 @@ For more information about using Azure RBAC with Azure Arc-enabled Kubernetes cl
 
 ## Prerequisites
 
-Before you deploy an AKS cluster with Azure Arc enabled, you must complete the following prerequisites.
+Before you deploy an AKS hybrid cluster with Azure Arc enabled, you must complete the following prerequisites.
 
 ### Prepare your network
 
@@ -52,11 +52,11 @@ To do these steps, you must have the built-in [Application Administrator role](/
 
 1. [Create a client application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-client-application). You'll refer to the client application when you use `kubectl` to connect within your network.
 
-#### Grant permissions for users on the cluster
+### Grant permissions for users on the cluster
 
 Assign roles to grant permissions to users of service principal names (SPNs) on the cluster. Use the `az role assignment` command.
 
-To assign roles on an AKS cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
+To assign roles on an AKS hybrid cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
 
 The following example uses [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) to assign the `Azure Arc Kubernetes Cluster Admin` role to the resource group that will contain the cluster. You can set the scope of the resource group before you create the cluster.
 
@@ -108,9 +108,9 @@ This command prompts for a password.
 
 To automate creation of the credential object, without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3&preserve-view=true#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
 
-## Step 3: Create Azure RBAC-enabled AKS target cluster using an SPN
+## Step 3, Option A: Create Azure RBAC-enabled AKS hybrid target cluster using an SPN
 
-To create an AKS target cluster with Azure RBAC enabled using an SPN:
+To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 
 1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/create-an-azure-service-principal-azure-cli) now.
 
@@ -120,7 +120,7 @@ To create an AKS target cluster with Azure RBAC enabled using an SPN:
    New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
-### Step 3, Option B: Create Azure RBAC-enabled AKS target cluster interactively
+### Step 3, Option B: Create Azure RBAC-enabled AKS hybrid target cluster interactively
 
 If you prefer to create your Azure RBAC-enabled target cluster interactively, follow these steps:
 
@@ -140,27 +140,27 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
    az account set --subscription "subscriptionName"
    ```
 
-1. Create the AKS target cluster, with Azure RBAC enabled:
+1. Create the AKS hybrid target cluster, with Azure RBAC enabled:
 
    ```powershell
    New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>"  -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
-## Step 4: Connect to AKS cluster via Azure RBAC
+## Step 4: Connect to AKS hybrid cluster via Azure RBAC
 
 The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. 
 
 The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
-### Connect to AKS cluster over the internet using the `connectedk8s` proxy method
+### Connect to AKS hybrid cluster over the internet using the `connectedk8s` proxy method
 
 Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the internet. When you use this method, you're limited to 200 groups.
 
-To connect to an AKS cluster using the `connectedk8s` proxy method, do the following steps:
+To connect to an AKS hybrid cluster using the `connectedk8s` proxy method, do the following steps:
 
 1. Open an Azure CLI window, and use`az login` to connect to Azure. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
-1. Set the subscription for your Azure account to the subscription you used to create the AKS cluster if needed:<!--VERIFY. Just guessing.-->
+1. Set the subscription for your Azure account to the subscription you used to create the AKS hybrid cluster if needed:
 
    ```azurecli
    az account set -subscription "<mySubscription>" 
@@ -182,11 +182,11 @@ To connect to an AKS cluster using the `connectedk8s` proxy method, do the follo
 
 1. Press **Ctrl+C** to close the `connectedk8s` proxy connection.
 
-### Connect to AKS cluster over a private network
+### Connect to AKS hybrid cluster over a private network
 
-When you connect to an AKS cluster over a private network, there's no limit the on number of groups you can use.
+When you connect to an AKS hybrid cluster over a private network, there's no limit the on number of groups you can use.
 
-To connect to an AKS cluster over a private network, do the following steps:
+To connect to an AKS hybrid cluster over a private network, do the following steps:
 
 1. Download the **kubeconfig** file:
 
@@ -197,3 +197,7 @@ To connect to an AKS cluster over a private network, do the following steps:
 1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You'll be prompted for your Azure AD credentials.
 
    You'll get a warning message. You can ignore it.
+
+## Next steps
+
+- [Learn more about SPNs](/cli/azure/create-an-azure-service-principal-azure-cli)
