@@ -1,6 +1,6 @@
 ---
-title: "Use Azure RBAC for AKS hybrid clusters (preview)"
-description: "Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS hybrid clusters."
+title: Use Azure RBAC for AKS hybrid clusters (preview)
+description: Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS hybrid clusters.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -27,17 +27,17 @@ For more information about using Azure RBAC with Azure Arc-enabled Kubernetes cl
 
 Before you deploy an AKS cluster with Azure Arc enabled, you must complete the following prerequisites.
 
-#### Prepare your network
+### Prepare your network
 
 Configure the following network, proxy, and/or firewall settings:
 
 - Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
 
-- Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall.
+- Allow the [Graph endpoint](https://graph.microsoft.com) in your proxy or firewall.
 
   For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
-#### Create the server app and client app
+### Create the server app and client app
 
 Register your server app and secret and your client app and secret by performing the following steps:
 
@@ -83,7 +83,7 @@ Creating a target cluster only requires limited privileges on the subscription. 
 
 Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
-The example command below assigns the **Kubernetes Cluster - Azure Arc Onboarding** to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
+The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the SPN> 
@@ -152,9 +152,9 @@ The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC
 
 The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
-### Connect to AKS cluster over Internet using `connectedk8s` proxy method
+### Connect to AKS cluster over the internet using the `connectedk8s` proxy method
 
-Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the Internet. When you use this method, you're limited to 200 groups.
+Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the internet. When you use this method, you're limited to 200 groups.
 
 To connect to an AKS cluster using the `connectedk8s` proxy method, do the following steps:
 
