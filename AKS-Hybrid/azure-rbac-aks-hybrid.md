@@ -37,7 +37,7 @@ Configure the following network, proxy, and/or firewall settings:
 
   For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
-#### Create the server app and client app
+### Create the server app and client app
 
 Register your server app and secret and your client app and secret by performing the following steps:
 
