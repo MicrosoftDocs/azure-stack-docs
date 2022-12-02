@@ -6,26 +6,26 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/15/2022
+ms.date: 12/02/2022
 ---
 
 # What's new in Azure Stack HCI, version 22H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. 
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2.
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version is a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
 
-Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI, version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see [Update Azure Stack HCI](./manage/update-cluster.md).
+Additionally, a preview version of Azure Stack HCI, Supplemental Package, is now available that can be deployed on servers running version 22H2 OS via a new, interactive deployment tool.
 
-You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
+You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system or for new features for the current version in preview. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
-The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2 and in Azure Stack HCI, Supplemental Package.
 
 ## New deployment tool (preview)
 
-In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2. You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell.
+In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2 OS. You can deploy the supplemental package via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell.
 
 When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the supplemental package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
 
@@ -37,7 +37,7 @@ To learn more about the new deployment methods, see [Deployment overview](./depl
 | CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
 | Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
 
-## New security capabilities
+## New security capabilities (preview)
 
 The new installations with Azure Stack HCI, Supplemental Package release start with a *secure-by-default* strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
 
@@ -51,7 +51,7 @@ To summarize, this release provides:
 
 - Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
 
-- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities.
+- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities. For more information, see [What is Secured-core server?](windows-server/security/secured-core-server).
 
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 
