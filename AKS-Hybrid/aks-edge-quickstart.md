@@ -32,24 +32,24 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
 ## Set up your primary machine
 
-1. On your primary machine, navigate to the [GitHub releases](https://github.com/Azure/AKS-IoT-preview/releases) to download the **AksIot-k3s(.msi)** or **AksIot-k8s(.msi)** file, depending on which Kubernetes distribution you want to use.
+1. On your primary machine, navigate to the [GitHub releases](https://github.com/Azure/aks-edge-utils/releases) to download the **AksEdge-k3s(.msi)** or **AksEdge-k8s(.msi)** file, depending on which Kubernetes distribution you want to use.
 
  ![Screenshot of release assets needed.](media/aks-edge/aks-edge-release-assets.png)
 
-2. In this quickstart, we'll use a sample Linux application that can be downloaded from [here](https://github.com/parameshbabu/AKS-IoT-preview/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the repository as a .zip
+2. In this quickstart, we'll use a sample Linux application that can be downloaded from [here](https://github.com/aks-edge-utils/tree/aksedge). In the upper right-hand corner of the main repo page, navigate to the "Code" tab and click on the green Code button to download the repository as a .zip
 
 3. Extract the GitHub .zip file and move the MSI and all the other files into the extracted folder for convenience. This will be your working directory.
 
-4. Before you install, make sure you've removed any existing AKS-IoT clusters and have uninstalled any previous versions of AKS-IoT. If you have uninstalled a previous version of AKS-IoT, reboot your system before proceeding.
+4. Before you install, make sure you've removed any existing AKS Edge clusters and have uninstalled any previous versions of AKS Edge. If you have uninstalled a previous version of AKS Edge, reboot your system before proceeding.
 
     ![Screenshot of Add and remove program.](media/aks-edge/aks-edge-uninstall.png)
 
 > [!NOTE]
 > This release supports both k8s and k3s. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
 
-5. Double-click the **AksIot-<k8s** or **k3s>.msi** files to install the latest version.
+5. Double-click the **AksEdge-<k8s** or **k3s>.msi** files to install the latest version.
 
-6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you'll find **AKSEdgePrompt.cmd**. Open this command window to make sure you have downloaded the proper modules for AKS-IoT.
+6. Once installation is complete, go to your working directory and in the **bootstrap** folder, you'll find **AKSEdgePrompt.cmd**. Open this command window to make sure you have downloaded the proper modules for AKS Edge.
 
 7. Make sure your install was successful by running the following command:
 
@@ -59,9 +59,9 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS)
 
     You should see the output below with version showing v0.4.222.
 
-    ![Screenshot of AKS lite module cmdlets.](media/aks-edge/aks-edge-modules-installed.png)
+    ![Screenshot of AKS Edge module cmdlets.](media/aks-edge/aks-edge-modules-installed.png)
 
-    See the [AKS-IoT PowerShell cmdlets](./reference/aks-edge-ps/index.md) for a full list of supported commands.
+    See the [AKS Edge PowerShell cmdlets](./reference/aks-edge-ps/index.md) for a full list of supported commands.
 
 ## Create a single-node Kubernetes cluster
 
@@ -136,4 +136,4 @@ This example runs a sample Linux application based on [Microsoft's azure-vote-fr
    ```
 
 > [!NOTE]
-> If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS-IoT network objects using `hnsdiag delete networks <ID>`.
+> If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS Edge network objects using `hnsdiag delete networks <ID>`.

@@ -1,5 +1,5 @@
 ---
-title: AKS-IoT Scale
+title: AKS Edge Scale
 description: Learn how to scale out your AKS Edge Essentials applications to multiple nodes. 
 author: rcheeran
 ms.author: rcheeran
@@ -24,7 +24,9 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
+
 ![Screenshot showing the creation of config file.](./media/aks-edge/scale-config-file.png)
+
 - To add a Linux control plane node, specify the `NodeType` as Linux, set the `ControlPlane` flag as true, and provide a unique IP address for the Linux node:
 
    ```powershell
@@ -73,7 +75,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
 
-This command returns a JSON string and also stores the JSON content in the **.\ScaleConfig.json** file. This command also exports the necessary data to join a cluster in the JSON format.
+This command returns a JSON string and also stores the JSON content in the **.\ScaleConfig.json** file. This command also exports the necessary data to join a cluster in the JSON format. Review this configuration file and update necessary sections providing details relevant to the machine you are scaling to. For example, you will need to update the file with the virtual switch information relevant to your target machine.
 
 ## 2. Bring up a node on your secondary machine
 
@@ -92,8 +94,9 @@ To deploy the corresponding node on the secondary machine, you can now use the *
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\ScaleConfig.json
 ```
+
 >[!NOTE]
-> 
+>
 ## 3. Validate your cluster setup
 
 On any node in the cluster, run the following cmdlet:
@@ -102,13 +105,14 @@ On any node in the cluster, run the following cmdlet:
 kubectl get nodes -o wide
 ```
 
-You should be able to see all the nodes of the cluster. 
+You should be able to see all the nodes of the cluster.
 
 ![Screenshot showing multiple nodes.](./media/aks-edge/aks-edge-multi-nodes.png)
 
 ## 4. Add more nodes
 
 Using the **.\ScaleConfig** file as your reference configuration file, you can add more nodes to your Kubernetes cluster. Ensure that you provide IP addresses that are available in your network in the VM block of parameters
+
 ```json
 "LinuxVm": {
     "CpuCount": 2,

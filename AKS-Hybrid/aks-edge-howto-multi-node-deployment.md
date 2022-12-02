@@ -34,11 +34,14 @@ Refer to the following network chart to configure your environment. You must all
 | LinuxVmIp4Address | A.B.C.x | Specify the IP address your Linux VM will take. |
 
 For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free.
+> [**!NOTE**]
+> AKS Edge Essentials currently supports IPv4 addresses only.
 
 You can use the **TestFreeIps.ps1** that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+
 ## Deploy the control plane on the primary machine with an external switch
 
-A full deployment uses an external switch to enable communication across the nodes. You can choose to specify the vswitch details in your configs JSON, if you've already created one on your Hyper-V. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksiotsw-ext` and use that for your deployment.
+A full deployment uses an external switch to enable communication across the nodes. You can choose to specify the vswitch details in your configs JSON, if you've already created one on your Hyper-V. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
 > [**!NOTE**]
 > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
@@ -48,6 +51,7 @@ Before you create your deployment, you need to create a JSON file with all the c
 ```powershell
 $jsonString = New-AksEdgeConfig .\mydeployconfig.json
 ```
+
 You can now update your configuration file `mydeployconfig.json` with the right set of values. Some of the sample values are as shown below:
 
 ```json
@@ -69,7 +73,7 @@ You can now update your configuration file `mydeployconfig.json` with the right 
 },
 "Network": {
     "VSwitch":{
-        "Name": "aksiotsw-ext",
+        "Name": "aksedgesw-ext",
         "Type":"External",
         "AdapterName" : "Ethernet"
     },
@@ -81,6 +85,7 @@ You can now update your configuration file `mydeployconfig.json` with the right 
     "DnsServers": ["192.168.1.1"]
 }
 ```
+
 Please note to provide the right values for the IP address related configuration parameters. After you update the config json and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
 
 ```powershell

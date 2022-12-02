@@ -55,12 +55,10 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 1. In addition to the MSI, Microsoft provides a few samples and tools which you can download from this [GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
-1. Before you install, make sure you remove any existing AKS Edge Essentials clusters and uninstall any previous versions of AKS Edge. If you have uninstalled a previous version of AKS Edge Essentials, reboot your system before proceeding.
+1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
-   ![Screenshot showing install/uninstall options.](media/aks-edge/aks-edge-uninstall.png)
 
-  > [!NOTE]
-  > In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first (i.e. if you have k3s installed, uninstall before installing k8s, and vice-versa).
+In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
 ## Set up your machine as a Linux node
 
@@ -70,9 +68,8 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
 
-1. Unzip the files of *AksEdgeWindows-x.xx.x.zip* in the same `kXs` MSI folder.
 
-1. Open PowerShell as an admin, and navigate to the folder directory with the installer and files.
+1. Open PowerShell as an admin, and navigate to the folder directory with the installer and **AksEdgeWindows-v1** files.
 
 2. In the following command, replace `kXs` with the Kubernetes distribution you have installed and run:
 
@@ -90,24 +87,12 @@ Once installation is complete, make sure your install was successful by running 
 Get-Command -Module AksEdge
 ```
 
-You should see the following output with version showing v0.4.222:
+You should see the following output with version:
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
 
-If you don't see the PowerShell module commands, try the following commands to load the modules.
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-Import-Module AksEdge
-```
-
-Once this is done, open another PowerShell window and run the following command again.
-
-```powershell
-Get-Command -Module AksEdge
-```
 
 ## Next steps
 

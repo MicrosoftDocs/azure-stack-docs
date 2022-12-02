@@ -48,8 +48,8 @@ There, provide the parameters under **Azure** section, with the appropriate info
     "SubscriptionName":"Visual Studio Enterprise Subscription",
     "SubscriptionId": "",
     "TenantId":"",
-    "ResourceGroupName": "aksiotpreview-rg",
-    "ServicePrincipalName" : "aksiot-sp",
+    "ResourceGroupName": "aksedgepreview-rg",
+    "ServicePrincipalName" : "aksedge-sp",
     "Location" : "EastUS",
     "ClusterName": "",
     "Auth": {
@@ -96,7 +96,7 @@ Get-AideUserConfig
 ```
 
 > [!IMPORTANT]
-> Any time you modify **aide-userconfig.json** (or **aksiot-userconfig.json**), run `Read-AideUserConfig` to reload, or close and re-open **AksEdgePrompt.cmd**.
+> Any time you modify **aide-userconfig.json** (or **aksedge-userconfig.json**), run `Read-AideUserConfig` to reload, or close and re-open **AksEdgePrompt.cmd**.
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|

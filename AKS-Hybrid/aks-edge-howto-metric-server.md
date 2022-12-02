@@ -41,7 +41,7 @@ kubectl top pods -A
 
 ![Screenshot of results showing metrics server installed.](media/aks-edge/metrics-server-installed.png)
 
-If your metrics server fails to display, you may have run into an MTU issue in which the Linux VM's MTU doesn't match that of your network. This can happen on Azure VMs. Run `Invoke-AksIotLinuxVmCommand "sudo ip link set dev eth0 mtu 1300"`.
+If your metrics server fails to display, you may have run into an MTU issue in which the Linux VM's MTU doesn't match that of your network. This can happen on Azure VMs. Run `Invoke-AksEdgeLinuxVmCommand "sudo ip link set dev eth0 mtu 1300"`.
 
 ## Next steps
 

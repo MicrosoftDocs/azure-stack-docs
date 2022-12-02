@@ -19,7 +19,7 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Create a single machine cluster
 
-You can run the `New-AksLiteDeployment` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can do so by providing your values in a JSON file. Run the `New-AksEdgeConfig` cmdlet to create a sample JSON **mydeployconfig.json** file with the default parameters and edit this file to provide your own values:
+You can run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AksEdge cluster with a single Linux control-plane node. You can do so by providing your values in a JSON file. Run the `New-AksEdgeConfig` cmdlet to create a sample JSON **mydeployconfig.json** file with the default parameters and edit this file to provide your own values:
 
 ```powershell
 #create a deployment configuration file with defaults
@@ -50,7 +50,7 @@ Some of the common parameters and their default values as follows:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-iot-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
 | `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. | `flannel` |
 | `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM/VMs. | `2` |
 | `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM/VMs. | `2048` |

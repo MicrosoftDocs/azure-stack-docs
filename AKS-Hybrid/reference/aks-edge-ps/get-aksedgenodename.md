@@ -1,5 +1,5 @@
 ---
-title: Get-AksEdgeNodeName for AKS Lite
+title: Get-AksEdgeNodeName for AKS Edge
 author: rcheeran
 description: The Get-AksEdgeNodeName PowerShell command gets the Linux VM's hostname
 ms.topic: reference
@@ -48,4 +48,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

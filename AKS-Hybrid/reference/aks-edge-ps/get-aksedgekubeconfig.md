@@ -1,5 +1,5 @@
 ---
-title:  Get-AksEdgeKubeConfig for AKS Lite
+title:  Get-AksEdgeKubeConfig for AKS Edge
 author: rcheeran
 description: The Get-AksEdgeKubeConfig  PowerShell command pulls the KubeConfig file from the Linux node.
 ms.topic: reference
@@ -24,9 +24,9 @@ Get-AksEdgeKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-Wh
 
 ## Description
 Pulls the KubeConfig file from the Linux node.
-Thus, enables kubectl on the host to access the AksIot
+Thus, enables kubectl on the host to access the AksEdge
 cluster.
-The function will set the AksIot cluster's kubeconfig file as the
+The function will set the AksEdge cluster's kubeconfig file as the
 default kubeconfig file for kubectl.
 
 
@@ -100,4 +100,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

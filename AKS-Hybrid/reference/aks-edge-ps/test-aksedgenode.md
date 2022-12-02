@@ -1,5 +1,5 @@
 ---
-title: Test-AksEdgeNode for AKS Lite
+title: Test-AksEdgeNode for AKS Edge
 author: rcheeran
 description: The Test-AksEdgeNode PowerShell command checks whether the Linux VM was created
 ms.topic: reference
@@ -55,5 +55,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)
 
