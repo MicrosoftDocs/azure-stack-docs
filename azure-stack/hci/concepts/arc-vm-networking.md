@@ -42,7 +42,7 @@ A set of three contiguous IP addresses are required for the Arc Resource Bridge 
 - IP address for Arc Resource Bridge VM updates (IP-3) – IP address assigned to the new Arc Resource Bridge VM when update are performed. Can be obtained using DHCP.
 
 > [!NOTE]
-> VM addresses IP-2 and IP-3 are alternated for each update of the Arc Resource Bridge.
+> IP-2 and IP-3 addresses are alternated for each update of the Arc Resource Bridge.
 
 ## Virtual network for Arc VMs
 
