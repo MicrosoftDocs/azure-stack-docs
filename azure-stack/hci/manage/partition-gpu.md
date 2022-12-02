@@ -21,9 +21,11 @@ GPU partitioning allows you to run multiple VMs concurrently on a single shared 
 
 ## About GPU partitioning
 
-Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU with multiple VMs. With GPU partitioning, each VM gets a dedicated fraction of the GPU instead of the entire GPU. GPU partitioning can help increase GPU utilization without significantly affecting the performance benefits of a GPU. It can also help lower the total cost of ownership (TCO) for your GPU devices.
+Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU.
 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
+
+Sharing a GPU with multiple VMs can help increase GPU utilization without significantly affecting the performance benefits of a GPU. This can in turn help lower the total cost of ownership (TCO) for your GPU devices.
 
 > [!NOTE]
 > Currently, we support only Nvidia A16 and A2 GPUs on the Azure Stack HCI solutions. We recommend that you work with your Original Equipment Manufacturer (OEM) partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations.
@@ -70,11 +72,13 @@ There are several requirements and things to consider before you begin to use th
 
 Consider the following caveats when using the GPU partitioning feature:
 
-- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster with two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. The partition count on each GPU must also match. Azure Stack HCI doesn't support GPU partitioning if your configuration isn't homogeneous. Here are some examples of the configurations that Azure Stack HCI doesn't support:
+- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster of two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. The partition count on each GPU must also match.
 
-    - Mixing GPUs from different vendors in the same cluster. This isn't supported because they have different driver and licensing requirements, which can lead to unintended consequences.
+- Azure Stack HCI doesn't support GPU partitioning if your configuration isn't homogeneous. Here are some examples of unsupported configurations:
+
+    - Mixing GPUs from different vendors in the same cluster.
     
-    - Using different GPU models from different product families from the same vendor in your cluster.
+    - Using different GPU models from different product families from the same vendor in the same cluster.
 
 - You can't assign a physical GPU as both Discrete Device Assignment (DDA) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both. For information about GPU acceleration provided via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
 
@@ -84,9 +88,9 @@ Consider the following caveats when using the GPU partitioning feature:
 
 - Currently, GPU partitioning on Azure Stack HCI doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
 
-- We recommend that you use Windows Admin Center to provision GPU partitioning even though you also use PowerShell. Windows Admin Center automatically validates for a homogeneous configuration of your GPUs and provides appropriate warnings and errors to take any corrective action needed.
+- We recommend that you use Windows Admin Center to provision GPU partitioning even though you also do it via PowerShell. Windows Admin Center automatically validates for a homogeneous configuration of the GPUs across all the servers in your cluster. It provides appropriate warnings and errors to take any corrective action needed.
 
-- If using PowerShell to provision GPU partitioning, you must perform the provisioning steps on each server in the cluster to keep the configuration homogeneous.
+- If using PowerShell to provision GPU partitioning, you must perform the provisioning steps on each server in the cluster. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the servers in your cluster.
 
 ## GPU partitioning workflow
 
@@ -100,11 +104,11 @@ Here's a high-level workflow to provision the GPU partitioning feature:
 
 ## Verify GPU partitioning driver installation
 
-After you've completed all the [prerequisites](#prerequisites), you must verify if the installed GPU is installed and partitionable.
+After you've completed all the [prerequisites](#prerequisites), you must verify if the GPU driver is installed and partitionable.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
-Follow these steps to verify if the GPU is installed and partitionable using Windows Admin Center:
+Follow these steps to verify if the GPU driver is installed and partitionable using Windows Admin Center:
 
 1. Launch Windows Admin Center and make sure the **GPUs** extension is already installed. If not, see [install the GPUs extension](#install-the-gpus-extension) for instructions on how to install it.
 
@@ -116,7 +120,7 @@ Follow these steps to verify if the GPU is installed and partitionable using Win
 
 1. Check the **Assigned status** column for each GPU for all the servers. The **Assigned status** column can have one of these statuses:
     
-    - **Ready for DDA assignment**. Indicates that the GPU is available for DDA assignment. You can't use this GPU for partitioning.
+    - **Ready for DDA assignment**. Indicates that the GPU is available for DDA assignment. You can't use it for GPU partitioning.
     
     - **Partitioned**. Indicates that the GPU is partitionable.
     
@@ -126,7 +130,7 @@ Follow these steps to verify if the GPU is installed and partitionable using Win
 
         :::image type="content" source="./media/partition-gpu/gpu-tab.png" alt-text="Screenshot of the GPUs tab showing the inventory of the servers and their installed GPU devices." lightbox="./media/partition-gpu/gpu-tab.png" :::
 
-1. Proceed further with the next steps in the GPU partitioning workflow only if the **Assigned status** column shows **Partitioned** for the GPUs in all the servers in your cluster.
+1. Proceed further in the GPU partitioning workflow only if the **Assigned status** column shows **Partitioned** for the GPUs in all the servers in your cluster.
 
 ## [PowerShell](#tab/powershell)
 
@@ -152,7 +156,7 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
     OK        Display  NVIDIA A2
     ```
 
-    For NVIDIA GPU devices, you can also run the NVIDIA System Management Interface `nvidia-smi` command-line to list the GPUs on the host server.
+    For NVIDIA GPU devices, you can also run the NVIDIA System Management Interface, `nvidia-smi` to list the GPUs on the host server.
 
     If the driver is installed, you see an output similar to the following sample:
 
@@ -190,11 +194,9 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
     Get-VMHostPartitionableGpu
     ```
 
-1. Note down the **Name** and **ValidPartitionCounts** values from the output. You'll use them later to configure partition count.
+    Note down the **Name** and **ValidPartitionCounts** values from the output of the `Get-VMHostPartitionableGpu` command. You'll use them later to configure partition count.
 
-    Here's a sample output:
-
-    The following sample output shows that there are two GPUs installed. The partition count configured for the first GPU is 16 and for the second GPU is 4.
+    Here's a sample output of the `Get-VMHostPartitionableGpu` command, which shows that two GPUs drivers are installed on this server. The configured partition count for the first GPU is 16 and for the second GPU is 4.
 
     ```powershell
     PS C:\Users> Get-VMHostPartitionableGPU
@@ -259,7 +261,7 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
 
 ## Configure GPU partition count
 
-After you install the GPU partitioning driver on the host server, it displays the maximum partition count that the GPU can have. The number of partitions a GPU can have is specific for each GPU type and is set by its manufacturer. You can't change the valid partition count setting. After you confirm the installed GPU is partitionable, you can change its partition count to any of the valid partition counts.
+After you install the GPU partitioning driver on the host server, it displays the maximum partition count that the GPU can have. The number of partitions a GPU can have is specific for each GPU type and is set by its manufacturer. You can't change the valid partition count setting for a GPU. After you confirm the installed GPU is partitionable, you can configure its partition count to any of the valid partition counts.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
@@ -267,6 +269,8 @@ After you install the GPU partitioning driver on the host server, it displays th
 
     > [!NOTE]
     > If there are no partitionable GPUs available in your cluster or the correct GPU partitioning driver isn't installed, the GPU partitions tab displays the following message:
+    >
+    >
     > *No partitionable GPUs have been found. Please check that you have a GPU with the correct GPU-P driver to proceed.*
 
 1. Select a GPU or a GPU partition to display its details in the bottom section of the page, under **Selected item details**. For example, if you select a GPU, it displays the GPU name, GPU ID, available encoder and decoder, available VRAM, valid partition count, and the current partition count. If you select a GPU partition, it displays the partition ID, VM ID, instance path, partition VRAM, partition encode, and partition decode.
@@ -295,7 +299,7 @@ After you install the GPU partitioning driver on the host server, it displays th
     
         :::image type="content" source="./media/partition-gpu/error-different-configuration.png" alt-text="Screenshot showing an error when you select GPUs with different configurations." lightbox="./media/partition-gpu/error-different-configuration.png" :::
     
-    - **Error.** If a GPU for which you're configuring a partition count is already assigned to a VM, selecting that GPU will give you an error. You must first unassign the partition from the VM before proceeding further. See [Unassign a partition from a VM](#unassign-a-partition-from-a-vm).
+    - **Error.** If you select a GPU partition that is already assigned to a VM, Windows Admin Center gives you an error, and doesn't let you proceed. You must first unassign the partition from the VM before proceeding further. See [Unassign a partition from a VM](#unassign-a-partition-from-a-vm).
     
         :::image type="content" source="./media/partition-gpu/error-assigned-partition-selection.png" alt-text="Screenshot showing an error when you select a partition that is already assigned to a VM." lightbox="./media/partition-gpu/error-assigned-partition-selection.png" :::
 
@@ -307,7 +311,7 @@ After you install the GPU partitioning driver on the host server, it displays th
 
 1. Select **Configure partition count**.
 
-   After the partition count is configured, Windows Admin Center notifies you that the partition count is successfully configured and displays the **GPU partitions** tab again. You can see the new partition count under the **Partition count** column.
+   After the partition count is configured, Windows Admin Center notifies you that the partition count is successfully configured and displays the **GPU partitions** tab again. You can see the new partition count for the GPU partition under the **Partition count** column.
 
 ## [PowerShell](#tab/powershell)
 
@@ -435,6 +439,15 @@ After the partition is assigned, Windows Admin Center notifies you that the part
 Follow these steps to assign GPU partitions using PowerShell:
 
 1. Connect to the server hosting the VM to which you want to assign a GPU partition.
+
+1. Run the following command to configure the cluster VM resource’s default offline action as `force-shutdown` rather than `save`.
+
+    ```powershell
+    Get-ClusterResource -name vmname | Set-ClusterParameter -Name "OfflineAction" -Value 3
+    ```
+    > [!NOTE]
+    > If a failure occurs, you need to shutdown the VM, drain the server, and manually fail over the VM to another server.
+
 1. Run the following command to assign the partition
 
     ```powershell
@@ -533,6 +546,14 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
 
 1. Connect to the server hosting the VM from which you want to unassign the GPU partition.
 
+1. Run the following command to configure the cluster VM resource’s default offline action as `force-shutdown` rather than `save`.
+
+    ```powershell
+    Get-ClusterResource -name vmname | Set-ClusterParameter -Name "OfflineAction" -Value 3
+    ```
+    
+    > [!NOTE]
+    > If a failure occurs, you need to shutdown the VM, drain the server, and manually fail over the VM to another server.
 1. Run the following command to remove the partition:
 
     ```powershell
@@ -563,9 +584,9 @@ Follow these steps to install the **GPU** extension in your Windows Admin Center
     
 1. Select **Install**. After you installed the **GPUs** extension, it appears under the **Installed extensions** tab. Make sure the version of the **GPUs** extension is **2.5.1**.
 
-## Migrate the VM to a different node  
+## Migrate the VM to a different server
 
-In case of a failover, you need to shutdown the VM, drain the node and manually fail it over to another node. We require that the VM cluster resource be set to force-shutdown, like how we configure VMs that use GPU-DDA: Get-ClusterResource -name vmname \| Set-ClusterParameter -Name \"OfflineAction\" -Value 3. 
+If a failure occurs, you need to shutdown the VM, drain the server, and manually fail over the VM to another server. We require that the VM cluster resource be set to force-shutdown, like how we configure VMs that use GPU-DDA: Get-ClusterResource -name vmname \| Set-ClusterParameter -Name \"OfflineAction\" -Value 3.
 
 ## Next steps
 
