@@ -33,7 +33,7 @@ Configure the following network, proxy, and/or firewall settings:
 
 - Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
 
-- Allow the (https://graph.microsoft.com)[https://graph.microsoft.com] endpoint in your proxy or firewall.
+- Allow the [Graph endpoint](https://graph.microsoft.com) in your proxy or firewall.
 
   For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
 
