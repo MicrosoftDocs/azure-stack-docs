@@ -98,7 +98,7 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
       namespace: <secret under namespace other than the default>
    type: Opaque
    stringData:
-      domain: <domain name, for example: akshcitest>
+      domain: <domain name, for example: akshcitest.com>
       username: <domain user who can retrieve the gMSA password>
       password: <password>
    ```
