@@ -108,7 +108,11 @@ This command prompts for a password.
 
 To automate creation of the credential object, without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3&preserve-view=true#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
 
-## Step 3, Option A: Create Azure RBAC-enabled AKS hybrid target cluster using an SPN
+## Step 3: Create an Azure RBAC-enabled AKS hybrid cluster
+
+You can [create an Azure RBAC-enabled cluster using an SPN (Option A)](#option-a-create-azure-rbac-enabled-aks-hybrid-target-cluster-using-an-spn) or [create the cluster interactively (Option B)](#option-b-create-azure-rbac-enabled-aks-hybrid-target-cluster-interactively).
+
+### Option A: Create Azure RBAC-enabled AKS hybrid target cluster using an SPN
 
 To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 
@@ -120,7 +124,7 @@ To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
    New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
-### Step 3, Option B: Create Azure RBAC-enabled AKS hybrid target cluster interactively
+### Option B: Create Azure RBAC-enabled AKS hybrid target cluster interactively
 
 If you prefer to create your Azure RBAC-enabled target cluster interactively, follow these steps:
 
