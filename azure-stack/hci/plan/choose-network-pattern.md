@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 12/02/2022
 ---
 
 # Azure Stack HCI network deployment patterns
@@ -23,17 +23,17 @@ Use the following table to directly go to a pattern and its content.
 
 **Go to [single server deployment](single-server-deployment.md)**
 
-![Diagram showing single-server deployment pattern.](media/plan-deployment/single-server-deployment.png)
+:::image type="content" source="media/plan-deployment/single-server-deployment.png" alt-text="Diagram showing single-server deployment pattern." lightbox="media/plan-deployment/single-server-deployment.png":::
 
 ### Two-node deployment patterns
 
 |Go to [storage switchless, single TOR switch](two-node-switchless-single-switch.md) |Go to [storage switchless, two TOR switches](two-node-switchless-two-switches.md)|
 |---------|---------|
-|![Diagram showing two-node storage switchless with single TOR switch.](media/plan-deployment/two-node-switchless-single-switch.png) | ![Diagram showing two-node storage switchless with two TOR switches.](media/plan-deployment/two-node-switchless-two-switches.png)|
+|:::image type="content" source="media/plan-deployment/two-node-switchless-single-switch.png" alt-text="Diagram showing two-node storage switchless with single TOR switch." lightbox="media/plan-deployment/two-node-switchless-single-switch.png":::|:::image type="content" source="media/plan-deployment/two-node-switchless-two-switches.png" alt-text="Diagram showing two-node storage switchless with two TOR switches." lightbox="media/plan-deployment/two-node-switchless-two-switches.png":::|
 
 |Go to [storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [storage switched, fully converged, two TOR switches.](two-node-switched-converged.md)       |
 |---------|---------|
-|![Diagram showing two-node storage switched, non-converged, two TOR switches ](media/plan-deployment/two-node-switched-non-converged.png)| ![Diagram showing two-node storage switched, fully converged, two TOR switches.](media/plan-deployment/two-node-switched-converged.png)|
+|:::image type="content" source="media/plan-deployment/two-node-switched-non-converged.png" alt-text="Diagram showing two-node storage switched, non-converged, two TOR switches" lightbox="media/plan-deployment/two-node-switched-non-converged.png":::|:::image type="content" source="media/plan-deployment/two-node-switched-converged.png" alt-text="Diagram showing two-node storage switched, fully converged, two TOR switches." lightbox="media/plan-deployment/two-node-switched-converged.png":::|
 
 ## Next steps
 
