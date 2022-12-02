@@ -5,7 +5,7 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/18/2022
+ms.date: 12/02/2022
 ms.author: sethm
 ms.reviwer: jiahan
 ms.lastreviewed: 5/7/2021
@@ -43,7 +43,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|Generally available. |Not yet supported.
-|Immutable Blobs|General available. |API is supported when you use version 2008 or later, Portal is added of support from version 2206.
+|Immutable Blobs|General available. |The API is supported when you use version 2008 or later, the portal is supported from version 2206 and later.
 |Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 |Server-side synchronous copy of data from any URL source|Generally available. |The following APIs are not yet supported:<br>[Put Block From URL](/rest/api/storageservices/put-block-from-url)<br>[Put Page From URL](/rest/api/storageservices/put-page-from-url)<br>[Append Block from URL](/rest/api/storageservices/append-block-from-url)<br>[Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url)<br>[Put Blob From URL](/rest/api/storageservices/put-blob-from-url)|
