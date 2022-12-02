@@ -79,7 +79,7 @@ Azure Stack HCI, Supplemental Package is now in preview. This package deploys on
     
     - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
 
-- **Environment checker tool** - Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that doesn't need an Azure subscription. This tool will let you validate your:
+- **Environment Checker tool** - Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that doesn't need an Azure subscription. This tool will let you validate your:
 
     - Internet connectivity.
     - Hardware.
@@ -88,7 +88,7 @@ Azure Stack HCI, Supplemental Package is now in preview. This package deploys on
     
     The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
     
-    To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). 
+    To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5).
 
 ## Next steps
 
