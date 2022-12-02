@@ -27,7 +27,7 @@ For more information about using Azure RBAC with Azure Arc-enabled Kubernetes cl
 
 Before you deploy an AKS cluster with Azure Arc enabled, you must complete the following prerequisites.
 
-#### Prepare your network
+### Prepare your network
 
 Configure the following network, proxy, and/or firewall settings:
 
