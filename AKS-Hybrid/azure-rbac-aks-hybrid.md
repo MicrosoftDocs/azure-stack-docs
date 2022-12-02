@@ -152,7 +152,7 @@ The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC
 
 The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-cluster-over-a-private-network).
 
-### Connect to AKS cluster over Internet using `connectedk8s` proxy method
+### Connect to AKS cluster over the internet using the `connectedk8s` proxy method
 
 Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the Internet. When you use this method, you're limited to 200 groups.
 
