@@ -138,128 +138,126 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
 
 1. Connect to a server in your cluster using Remote Desktop Protocol (RDP) and run the following PowerShell command to verify if the GPU device is installed:
 
-```powershell
-Get-PnpDevice -FriendlyName "<device-friendly-name>"
-```
+    ```powershell
+    Get-PnpDevice -FriendlyName "<device-friendly-name>"
+    ```
 
-For example, to list the NVIDIA A2 GPU devices, enter the following command:
+    For example, to list the NVIDIA A2 GPU devices, enter the following command:
 
-```powershell
-Get-PnpDevice -FriendlyName "NVIDIA A2"
-```
+    ```powershell
+    Get-PnpDevice -FriendlyName "NVIDIA A2"
+    ```
 
-Here's a sample output:
+    Here's a sample output:
 
-```powershell
-Status    Class    FriendlyName
-------    -----    ------------
-OK        Display  NVIDIA A2
-```
+    ```powershell
+    Status    Class    FriendlyName
+    ------    -----    ------------
+    OK        Display  NVIDIA A2
+    ```
 
-For NVIDIA devices, you can also run the nvidia-smi command-line without any argument to list the GPUs on the host server.
+    For NVIDIA devices, you can also run the nvidia-smi command-line without any argument to list the GPUs on the host server.
 
-If the driver is installed, you see an output similar to the following sample:
+    If the driver is installed, you see an output similar to the following sample:
 
-```powershell
-PS C:\Users> Nvidia-smi
-Wed Nov 30 15:22:36 2022
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 527.27       Driver Version: 527.27       CUDA Version: N/A      |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name            TCC/WDDM | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA A2          WDDM  | 00000000:65:00.0 Off |                    0 |
-|  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-|   1  NVIDIA A2          WDDM  | 00000000:66:00.0 Off |                    0 |
-|  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
+    ```powershell
+    PS C:\Users> Nvidia-smi
+    Wed Nov 30 15:22:36 2022
+    +-----------------------------------------------------------------------------+
+    | NVIDIA-SMI 527.27       Driver Version: 527.27       CUDA Version: N/A      |
+    |-------------------------------+----------------------+----------------------+
+    | GPU  Name            TCC/WDDM | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+    |                               |                      |               MIG M. |
+    |===============================+======================+======================|
+    |   0  NVIDIA A2          WDDM  | 00000000:65:00.0 Off |                    0 |
+    |  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
+    |                               |                      |                  N/A |
+    +-------------------------------+----------------------+----------------------+
+    |   1  NVIDIA A2          WDDM  | 00000000:66:00.0 Off |                    0 |
+    |  0%   24C    P8     5W /  60W |  15192MiB / 15356MiB |      0%      Default |
+    |                               |                      |                  N/A |
+    +-------------------------------+----------------------+----------------------+
 
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
-+-----------------------------------------------------------------------------+
-```
+    +-----------------------------------------------------------------------------+
+    | Processes:                                                                  |
+    |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+    |        ID   ID                                                   Usage      |
+    |=============================================================================|
+    |  No running processes found                                                 |
+    +-----------------------------------------------------------------------------+
+    ```
 
 1. Run the following command to verify that the host server has the required GPU adapters installed by listing the GPUs that support GPU partitioning.
 
-```powershell
-Get-VMHostPartitionableGpu
-```
+    ```powershell
+    Get-VMHostPartitionableGpu
+    ```
 
 1. Note down the **Name** and **ValidPartitionCounts** values from the output. You'll use them later to configure partition count.
 
-Here's a sample output:
+    Here's a sample output:
 
-The following sample output shows that there are two GPUs installed with the current partition count configured as 16.
+    The following sample output shows that there are two GPUs installed with the current partition count configured as 16.
 
-```powershell
-PS C:\Users> Get-VMHostPartitionableGPU
+    ```powershell
+    PS C:\Users> Get-VMHostPartitionableGPU
 
 
-Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-d
-                          c845897dd59}
-ValidPartitionCounts    : {16, 8, 4, 2...}
-PartitionCount          : 16
-TotalVRAM               : 15918030848
-AvailableVRAM           : 15918030848
-MinPartitionVRAM        : 939524096
-MaxPartitionVRAM        : 939524096
-OptimalPartitionVRAM    : 939524096
-TotalEncode             : 36
-AvailableEncode         : 36
-MinPartitionEncode      : 2
-MaxPartitionEncode      : 2
-OptimalPartitionEncode  : 2
-TotalDecode             : 24
-AvailableDecode         : 24
-MinPartitionDecode      : 1
-MaxPartitionDecode      : 1
-OptimalPartitionDecode  : 1
-TotalCompute            : 2048
-AvailableCompute        : 2048
-MinPartitionCompute     : 128
-MaxPartitionCompute     : 128
-OptimalPartitionCompute : 128
-CimSession              : CimSession: .
-ComputerName            : C4P1077002803B
-IsDeleted               : False
+    Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}
+    ValidPartitionCounts    : {16, 8, 4, 2...}
+    PartitionCount          : 16
+    TotalVRAM               : 15918030848
+    AvailableVRAM           : 15918030848
+    MinPartitionVRAM        : 939524096
+    MaxPartitionVRAM        : 939524096
+    OptimalPartitionVRAM    : 939524096
+    TotalEncode             : 36
+    AvailableEncode         : 36
+    MinPartitionEncode      : 2
+    MaxPartitionEncode      : 2
+    OptimalPartitionEncode  : 2
+    TotalDecode             : 24
+    AvailableDecode         : 24
+    MinPartitionDecode      : 1
+    MaxPartitionDecode      : 1
+    OptimalPartitionDecode  : 1
+    TotalCompute            : 2048
+    AvailableCompute        : 2048
+    MinPartitionCompute     : 128
+    MaxPartitionCompute     : 128
+    OptimalPartitionCompute : 128
+    CimSession              : CimSession: .
+    ComputerName            : C4P1077002803B
+    IsDeleted               : False
 
-Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&5906f5e&0&0010#{064092b3-625e-43bf-9eb5-dc
-                          845897dd59}
-ValidPartitionCounts    : {16, 8, 4, 2...}
-PartitionCount          : 4
-TotalVRAM               : 15918030848
-AvailableVRAM           : 15918030848
-MinPartitionVRAM        : 3825205248
-MaxPartitionVRAM        : 3825205248
-OptimalPartitionVRAM    : 3825205248
-TotalEncode             : 36
-AvailableEncode         : 36
-MinPartitionEncode      : 9
-MaxPartitionEncode      : 9
-OptimalPartitionEncode  : 9
-TotalDecode             : 24
-AvailableDecode         : 24
-MinPartitionDecode      : 6
-MaxPartitionDecode      : 6
-OptimalPartitionDecode  : 6
-TotalCompute            : 2048
-AvailableCompute        : 2048
-MinPartitionCompute     : 512
-MaxPartitionCompute     : 512
-OptimalPartitionCompute : 512
-CimSession              : CimSession: .
-ComputerName            : C4P1077002803B
-IsDeleted               : False
-```
+    Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&5906f5e&0&0010#{064092b3-625e-43bf-9eb5-dc845897dd59}
+    ValidPartitionCounts    : {16, 8, 4, 2...}
+    PartitionCount          : 4
+    TotalVRAM               : 15918030848
+    AvailableVRAM           : 15918030848
+    MinPartitionVRAM        : 3825205248
+    MaxPartitionVRAM        : 3825205248
+    OptimalPartitionVRAM    : 3825205248
+    TotalEncode             : 36
+    AvailableEncode         : 36
+    MinPartitionEncode      : 9
+    MaxPartitionEncode      : 9
+    OptimalPartitionEncode  : 9
+    TotalDecode             : 24
+    AvailableDecode         : 24
+    MinPartitionDecode      : 6
+    MaxPartitionDecode      : 6
+    OptimalPartitionDecode  : 6
+    TotalCompute            : 2048
+    AvailableCompute        : 2048
+    MinPartitionCompute     : 512
+    MaxPartitionCompute     : 512
+    OptimalPartitionCompute : 512
+    CimSession              : CimSession: .
+    ComputerName            : C4P1077002803B
+    IsDeleted               : False
+    ```
 
 ---
 
@@ -293,7 +291,6 @@ After you install the GPU partitioning driver on the host server, it displays th
     
         :::image type="content" source="./media/partition-gpu/warning-partial-selection-homogenous-set.png" alt-text="Screenshot showing a warning when all the GPUs within a homogeneous set are not selected." lightbox="./media/partition-gpu/warning-partial-selection-homogenous-set.png" :::
 
-    
     - **Warning.** If not all the GPUs across all the servers have the same configuration, Windows Admin Center gives a warning. You must manually select the GPUs with the same configuration to proceed further.
     
     - **Error.** If you select GPUs with different configurations, Windows Admin Center gives you an error and doesn't let you proceed.
@@ -324,78 +321,77 @@ We recommend that you create a homogeneous configuration across your cluster for
 
 1. Run the following command to configure the partition count. Replace `GPU-name` with the **Name** value and `partition-count` with one of the supported counts from the **ValidPartitionCounts**:
 
-```powershell
-Set-VMHostPartitionableGpu -Name "<GPU-name>" -PartitionCount <partition-count>
-```
+    ```powershell
+    Set-VMHostPartitionableGpu -Name "<GPU-name>" -PartitionCount <partition-count>
+    ```
 
-For example, the following command configures the partition count to 4: 
+    For example, the following command configures the partition count to 4: 
 
-PS C:\Users> Set-VMHostPartitionableGpu -Name "\\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}" -PartitionCount 4
+    ```powershell
+    PS C:\Users> Set-VMHostPartitionableGpu -Name "\\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}" -PartitionCount 4
+    ```
 
-You can run the Get-VMHostPartitionableGpu again to verify if the partition count is set to 4.
+    You can run the `Get-VMHostPartitionableGpu` again to verify if the partition count is set to 4.
 
-Here's a sample output:
+    Here's a sample output:
 
-```powershell
-PS C:\Users> Get-VMHostPartitionableGPU
+    ```powershell
+    PS C:\Users> Get-VMHostPartitionableGPU
 
+    Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}
+    ValidPartitionCounts    : {16, 8, 4, 2...}
+    PartitionCount          : 4
+    TotalVRAM               : 15918030848
+    AvailableVRAM           : 15918030848
+    MinPartitionVRAM        : 3825205248
+    MaxPartitionVRAM        : 3825205248
+    OptimalPartitionVRAM    : 3825205248
+    TotalEncode             : 36
+    AvailableEncode         : 36
+    MinPartitionEncode      : 9
+    MaxPartitionEncode      : 9
+    OptimalPartitionEncode  : 9
+    TotalDecode             : 24
+    AvailableDecode         : 24
+    MinPartitionDecode      : 6
+    MaxPartitionDecode      : 6
+    OptimalPartitionDecode  : 6
+    TotalCompute            : 2048
+    AvailableCompute        : 2048
+    MinPartitionCompute     : 512
+    MaxPartitionCompute     : 512
+    OptimalPartitionCompute : 512
+    CimSession              : CimSession: .
+    ComputerName            : C4P1077002803B
+    IsDeleted               : False
 
-Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-d
-                          c845897dd59}
-ValidPartitionCounts    : {16, 8, 4, 2...}
-PartitionCount          : 4
-TotalVRAM               : 15918030848
-AvailableVRAM           : 15918030848
-MinPartitionVRAM        : 3825205248
-MaxPartitionVRAM        : 3825205248
-OptimalPartitionVRAM    : 3825205248
-TotalEncode             : 36
-AvailableEncode         : 36
-MinPartitionEncode      : 9
-MaxPartitionEncode      : 9
-OptimalPartitionEncode  : 9
-TotalDecode             : 24
-AvailableDecode         : 24
-MinPartitionDecode      : 6
-MaxPartitionDecode      : 6
-OptimalPartitionDecode  : 6
-TotalCompute            : 2048
-AvailableCompute        : 2048
-MinPartitionCompute     : 512
-MaxPartitionCompute     : 512
-OptimalPartitionCompute : 512
-CimSession              : CimSession: .
-ComputerName            : C4P1077002803B
-IsDeleted               : False
-
-Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&5906f5e&0&0010#{064092b3-625e-43bf-9eb5-dc
-                          845897dd59}
-ValidPartitionCounts    : {16, 8, 4, 2...}
-PartitionCount          : 4
-TotalVRAM               : 15918030848
-AvailableVRAM           : 15918030848
-MinPartitionVRAM        : 3825205248
-MaxPartitionVRAM        : 3825205248
-OptimalPartitionVRAM    : 3825205248
-TotalEncode             : 36
-AvailableEncode         : 36
-MinPartitionEncode      : 9
-MaxPartitionEncode      : 9
-OptimalPartitionEncode  : 9
-TotalDecode             : 24
-AvailableDecode         : 24
-MinPartitionDecode      : 6
-MaxPartitionDecode      : 6
-OptimalPartitionDecode  : 6
-TotalCompute            : 2048
-AvailableCompute        : 2048
-MinPartitionCompute     : 512
-MaxPartitionCompute     : 512
-OptimalPartitionCompute : 512
-CimSession              : CimSession: .
-ComputerName            : C4P1077002803B
-IsDeleted               : False
-```
+    Name                    : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&5906f5e&0&0010#{064092b3-625e-43bf-9eb5-dc845897dd59}
+    ValidPartitionCounts    : {16, 8, 4, 2...}
+    PartitionCount          : 4
+    TotalVRAM               : 15918030848
+    AvailableVRAM           : 15918030848
+    MinPartitionVRAM        : 3825205248
+    MaxPartitionVRAM        : 3825205248
+    OptimalPartitionVRAM    : 3825205248
+    TotalEncode             : 36
+    AvailableEncode         : 36
+    MinPartitionEncode      : 9
+    MaxPartitionEncode      : 9
+    OptimalPartitionEncode  : 9
+    TotalDecode             : 24
+    AvailableDecode         : 24
+    MinPartitionDecode      : 6
+    MaxPartitionDecode      : 6
+    OptimalPartitionDecode  : 6
+    TotalCompute            : 2048
+    AvailableCompute        : 2048
+    MinPartitionCompute     : 512
+    MaxPartitionCompute     : 512
+    OptimalPartitionCompute : 512
+    CimSession              : CimSession: .
+    ComputerName            : C4P1077002803B
+    IsDeleted               : False
+    ```
 
 1. To keep the configuration homogeneous, repeat the partition count configuration steps on each server of your cluster.
 
@@ -414,7 +410,7 @@ You must save your workloads before assigning partitions. If your VM is currentl
 
 1. On the **GPU partitions** tab, select **+ Assign partition**.
 
-    :::image type="content" source="./media/partition-gpu/assign-partition.png" alt-text="Screenshot showing the GPU partitions tab with the Assign partition option highlighted." lightbox="./media/partition-gpu/assing-partition.png" :::
+    :::image type="content" source="./media/partition-gpu/assign-partition.png" alt-text="Screenshot showing the GPU partitions tab with the Assign partition option highlighted." lightbox="./media/partition-gpu/assign-partition.png" :::
 
     The **Assign GPU partition to VM** page is displayed.
 
@@ -432,7 +428,7 @@ You must save your workloads before assigning partitions. If your VM is currentl
 
 1. Select **Assign partition**. This assigns partition of the selected VRAM size to the selected VM on the selected host server.
 
-    :::image type="content" source="./media/partition-gpu/assign-gpu-partition.png" alt-text="Screenshot showing the Assign GPU partition to VM page." lightbox="./media/partition-gpu/assing-gpu-partition.png" :::
+    :::image type="content" source="./media/partition-gpu/assign-gpu-partition.png" alt-text="Screenshot showing the Assign GPU partition to VM page." lightbox="./media/partition-gpu/assign-gpu-partition.png" :::
 
 After the partition is assigned, Windows Admin Center notifies you that the partition is successfully assigned and displays the **GPU partitions** tab again. On the **GPU partitions** tab, the VM appears on the GPU partition row under the server it's installed on.
 
@@ -443,59 +439,58 @@ Follow these steps to assign GPU partitions using PowerShell:
 1. Connect to the server hosting the VM to which you want to assign a GPU partition.
 1. Run the following command to assign the partition
 
-```powershell
-Add-VMGpuPartitionAdapter -VMName $VMName
-```
+    ```powershell
+    Add-VMGpuPartitionAdapter -VMName $VMName
+    ```
 
 1. Run the following command to verify if the partition is assigned:
 
-```powershell
-Get-VMGpuPartitionAdapter -VMName $VMName
-```
+    ```powershell
+    Get-VMGpuPartitionAdapter -VMName $VMName
+    ```
 
-For example, run the following commands to assign a partition to the "mytestgpu-vm1" VM:
+    For example, run the following commands to assign a partition to the "mytestgpu-vm1" VM:
 
-```powershell
-PS C:\Users> $VMname = "mytestgpu-vm1"
-PS C:\Users> Add-VMGpuPartitionAdapter -VMName $VMName
-PS C:\Users> Get-VMGpuPartitionAdapter -VMName $VMName
-```
+    ```powershell
+    PS C:\Users> $VMname = "mytestgpu-vm1"
+    PS C:\Users> Add-VMGpuPartitionAdapter -VMName $VMName
+    PS C:\Users> Get-VMGpuPartitionAdapter -VMName $VMName
+    ```
 
-Here's a sample output:
+    Here's a sample output:
 
-```powershell
-InstancePath            : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-d
-                          c845897dd59}
-CurrentPartitionVRAM    : 3825205248
-MinPartitionVRAM        :
-MaxPartitionVRAM        :
-OptimalPartitionVRAM    :
-CurrentPartitionEncode  : 9
-MinPartitionEncode      :
-MaxPartitionEncode      :
-OptimalPartitionEncode  :
-CurrentPartitionDecode  : 6
-MinPartitionDecode      :
-MaxPartitionDecode      :
-OptimalPartitionDecode  :
-CurrentPartitionCompute : 512
-MinPartitionCompute     :
-MaxPartitionCompute     :
-OptimalPartitionCompute :
-PartitionId             : 0
-PartitionVfLuid         : 10-973909323
-Name                    : GPU Partition Settings
-Id                      : Microsoft:711CEE18-60DB-43B4-BE7E-CEDCE5E25DD0\A2B5B4B1-24B6-49B6-97E1-FBAF8BA0AF9B
-VMId                    : 711cee18-60db-43b4-be7e-cedce5e25dd0
-VMName                  : mytestgpu-vm1
-VMSnapshotId            : 00000000-0000-0000-0000-000000000000
-VMSnapshotName          :
-CimSession              : CimSession: .
-ComputerName            : C4P1077002803B
-IsDeleted               : False
-VMCheckpointId          : 00000000-0000-0000-0000-000000000000
-VMCheckpointName        :
-```
+    ```powershell
+    InstancePath            : \\?\PCI#VEN_10DE&DEV_25B6&SUBSYS_157E10DE&REV_A1#4&18416dc3&0&0000#{064092b3-625e-43bf-9eb5-dc845897dd59}
+    CurrentPartitionVRAM    : 3825205248
+    MinPartitionVRAM        :
+    MaxPartitionVRAM        :
+    OptimalPartitionVRAM    :
+    CurrentPartitionEncode  : 9
+    MinPartitionEncode      :
+    MaxPartitionEncode      :
+    OptimalPartitionEncode  :
+    CurrentPartitionDecode  : 6
+    MinPartitionDecode      :
+    MaxPartitionDecode      :
+    OptimalPartitionDecode  :
+    CurrentPartitionCompute : 512
+    MinPartitionCompute     :
+    MaxPartitionCompute     :
+    OptimalPartitionCompute :
+    PartitionId             : 0
+    PartitionVfLuid         : 10-973909323
+    Name                    : GPU Partition Settings
+    Id                      : Microsoft:711CEE18-60DB-43B4-BE7E-CEDCE5E25DD0\A2B5B4B1-24B6-49B6-97E1-FBAF8BA0AF9B
+    VMId                    : 711cee18-60db-43b4-be7e-cedce5e25dd0
+    VMName                  : mytestgpu-vm1
+    VMSnapshotId            : 00000000-0000-0000-0000-000000000000
+    VMSnapshotName          :
+    CimSession              : CimSession: .
+    ComputerName            : C4P1077002803B
+    IsDeleted               : False
+    VMCheckpointId          : 00000000-0000-0000-0000-000000000000
+    VMCheckpointName        :
+    ```
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
@@ -520,7 +515,7 @@ Follow these steps to unassign a partition from a VM:
 
 1. Select **- Unassign partition**.
 
-    :::image type="content" source="./media/partition-gpu/unassign-partition.png" alt-text="Screenshot showing the GPU partitions tab with the Unassign partition option highlighted." lightbox="./media/partition-gpu/unassing-partition.png" :::
+    :::image type="content" source="./media/partition-gpu/unassign-partition.png" alt-text="Screenshot showing the GPU partitions tab with the Unassign partition option highlighted." lightbox="./media/partition-gpu/unassign-partition.png" :::
 
     The **Unassign GPU partition from VM** page is displayed.
 
@@ -542,15 +537,15 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
 
 1. Run the following command to remove the partition:
 
-```powershell
-Remove-VMGpuPartitionAdapter -VMName $VMname
-```
+    ```powershell
+    Remove-VMGpuPartitionAdapter -VMName $VMname
+    ```
 
 1. Run the following command to confirm the partition is removed. If the partition is removed, this command won't return anything.
 
-```powershell
-Get-VMGpuPartitionAdapter -VMName $VMName
-```
+    ```powershell
+    Get-VMGpuPartitionAdapter -VMName $VMName
+    ```
 
 ---
 
