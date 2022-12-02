@@ -154,7 +154,7 @@ The procedures in this section [use the `connectedk8s` proxy method to connect t
 
 ### Connect to AKS cluster over the internet using the `connectedk8s` proxy method
 
-Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the Internet. When you use this method, you're limited to 200 groups.
+Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the internet. When you use this method, you're limited to 200 groups.
 
 To connect to an AKS cluster using the `connectedk8s` proxy method, do the following steps:
 
