@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/30/2022
+ms.date: 12/02/2022
 ---
 
 # Arc VM management networking on Azure Stack HCI
@@ -16,16 +16,16 @@ ms.date: 11/30/2022
 
 This article describes networking concepts and limitations for Arc virtual machine (VM) management on Azure Stack HCI. Networking for Arc VM management on Azure Stack HCI consists of the following:
 
-- Network for Arc VM management setup infrastructure
-- Network for Arc VMs deployed from the Azure management plane
+- Network for Arc VM management
+- Virtual network for Arc VMs
 
 See the following network diagram for details:
 
 :::image type="content" source="./media/arc-vm-management/networking-diagram.png" alt-text="Diagram showing networking for Arc VM management." lightbox="./media/arc-vm-management/networking-diagram.png":::
 
-## Arc VM management infrastructure networking
+## Network for Arc VM management
 
-Setting up Arc VM management infrastructure networking on an Azure Stack HCI cluster requires you to create and configure a clustered service (MOC) and an Arc Resource Bridge VM that orchestrates operations on the cluster.
+Setting up Arc VM management infrastructure networking on an Azure Stack HCI cluster requires you to create and configure a clustered service and an Arc Resource Bridge VM that orchestrates operations on the cluster.
 
 ### Clustered service
 
@@ -44,9 +44,9 @@ A set of three contiguous IP addresses are required for the Arc Resource Bridge 
 > [!NOTE]
 > VM addresses IP-2 and IP-3 are alternated for each update of the Arc Resource Bridge.
 
-## Arc VM networking
+## Virtual network for Arc VMs
 
-VMs created through Azure Arc get their network configuration from the virtual network created on the Azure Stack HCI cluster. This virtual network consists of the following:
+VMs deployed from the Azure Arc management plane get their network configuration from the virtual network created on the Azure Stack HCI cluster. This virtual network consists of the following:
 
 - **VM switch** – The virtual switch that is available on every host of the Azure Stack HCI cluster. This switch is mandatory for creating virtual NICs for the Arc VMs on the Azure Stack HCI cluster.
 - **vLAN ID** – The vLAN ID on which the VM traffic is isolated. This is an optional parameter and can be used irrespective of the IP allocation method used.
