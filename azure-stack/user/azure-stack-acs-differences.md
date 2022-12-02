@@ -37,15 +37,15 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Page blob incremental snapshot copy|Premium and standard Azure page blobs supported. |Not yet supported.
 |Page blob billing|Charges are incurred for unique pages, whether they're in the blob or in the snapshot. Wouldn't incur additional charges for snapshots associated with a blob until base blob being updated.|Charges are incurred for base blob and associated snapshots. Would incur additional charges for each individual snapshot.
 |Storage tiers for blob storage|Hot, cool, and archive storage tiers.|Not yet supported.
-|Soft delete for blob storage|General available. |Not yet supported.
+|Soft delete for blob storage|Generally available. |Not yet supported.
 |Page blob max size|8 TB. |1 TB. 
 |Page blob page size|512 bytes. |4 KB. 
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|Generally available. |Not yet supported.
-|Immutable Blobs|General available. |The API is supported when you use version 2008 or later, the portal is supported from version 2206 and later.
+|Immutable Blobs|Generally available. |The API is supported when you use version 2008 or later, the portal is supported from version 2206 and later.
 |Batch API for Blob Storage|In preview. |Not yet supported.
-|Firewall and virtual network rules for storage|General available. |Not yet supported.|
+|Firewall and virtual network rules for storage|Generally available. |Not yet supported.|
 |Server-side synchronous copy of data from any URL source|Generally available. |The following APIs are not yet supported:<br>[Put Block From URL](/rest/api/storageservices/put-block-from-url)<br>[Put Page From URL](/rest/api/storageservices/put-page-from-url)<br>[Append Block from URL](/rest/api/storageservices/append-block-from-url)<br>[Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url)<br>[Put Blob From URL](/rest/api/storageservices/put-blob-from-url)|
 
 There are also differences with storage metrics:
