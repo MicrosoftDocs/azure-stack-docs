@@ -150,7 +150,7 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
 
 The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. 
 
-The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-hybrid-cluster-over-internet-using-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-hybrid-cluster-over-a-private-network).
+The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-hybrid-cluster-over-the-internet-using-the-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-hybrid-cluster-over-a-private-network).
 
 ### Connect to AKS hybrid cluster over the internet using the `connectedk8s` proxy method
 
