@@ -318,7 +318,7 @@
   - name: Resources
     items:
     - name: Release notes and known issues
-      href: aks-lite-releasenotes-knownissues.md
+      href: aks-edge-releasenotes-knownissues.md
     - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: File bugs

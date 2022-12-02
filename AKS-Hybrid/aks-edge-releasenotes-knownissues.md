@@ -2,15 +2,17 @@
 title: AKS Edge Essentials Release Notes and Known Issues
 description: Release notes and known issues on the latest builds. 
 author: yujinkim-msft
-ms.author: yujinkim-msft
-ms.topic: resources
-ms.date: 11/30/2022
+ms.author: yujinkim
+ms.topic: how-to
+ms.date: 12/01/2022
 ms.custom: template-resources
 ---
 
 
 # Release Notes
-Welcome to the Public Preview of AKS Edge Essentials! This release includes the following features: 
+Welcome to the Public Preview of AKS Edge Essentials! This release includes the following features and known issues. 
+
+## Features
 - K8s distribution 
 - K3s distribution
 - Run Linux containerized workloads 
@@ -23,10 +25,11 @@ Welcome to the Public Preview of AKS Edge Essentials! This release includes the 
 - Run on a Windows device with at least 4GB of total RAM | 
 - Run on a Windows device with at least 17GB of free disk space after MSI installed 
 - Use `calico` or `flannel` network plugins 
-- Offline installation 
- 
+- Offline installation  
 
 ## Known Issues in this Release
+- Private Preview uninstallation: The AksIot event source is not cleaned up upon uninstallation. This will not have an effect on the public preview installation but it is an unwanted remainder that is not removed. To manually clean this, you can run the following in an elevated PS Window: `[System.Diagnostics.EventLog]::DeleteEventSource("AksIot")`
+- Public Preview reinstallation: When you uninstall a public preview MSI and reinstall a public preview MSI, please ensure to reboot the system in between. Otherwise event logging will not work.
 - Scaling `LinuxAndWindows` nodes as control planes may fail to start the Linux VM on k3s. If this occurs, please use k8s as a workaround for now.
 - SSH.exe may hang on the Windows host. If this occurs, please press `Ctrl + C` to break the deployment and rerun the deployment command. 
 - When deploying a `LinuxAndWindows` cluster, it may get stuck on testing the connection after Windows VM creation. To avoid this, please validate that the IP addresses are free before deploying the cluster. 
