@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 12/02/2022
 ---
 
 # Review two-node storage switched, fully converged deployment network reference pattern for Azure Stack HCI
@@ -34,12 +34,12 @@ As described in the diagram below, this pattern has the following physical netwo
 
 - Two teamed network cards handle the management, compute, and RDMA storage traffic connected to the TOR switches. Each NIC is connected to a different TOR switch. SMB multichannel capability provides path aggregation and fault tolerance.
 
-- As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
+- As an option, deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
 
 :::image type="content" source="media/two-node-switched-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switched-converged/physical-components-layout.png":::
 
-|Networks|Management, compute, storage|Storage|BMC|
-|--|--|--|--|
+|Networks|Management, compute, storage|BMC|
+|--|--|--|
 |Link speed|At 10 Gbps|Check with hardware manufacturer|
 |Interface type|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|One port|
