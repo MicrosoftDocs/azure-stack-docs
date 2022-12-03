@@ -1,6 +1,6 @@
 ---
 title: Control plane on two physical hosts deployment model availability scenarios
-description: Recommended architecture for deploying an AKS hybrid cluster on a two-node Azure HCI system
+description: Recommended architecture for deploying an AKS hybrid cluster on a two-node Azure Stack HCI system
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
@@ -17,7 +17,9 @@ Traditional Kubernetes deployments require three physical machines to survive a 
 
 This article describes failure modes<!--Is this a "mode"?--> for an Azure Stack HCI system, their impact on the AKS hybrid cluster, and how AKS can recover from these failures.<!--Work in somewhere: CRUD = Create, Read, Update, and Delete operations.-->
 
-## Terminology  
+## Terminology
+
+The following terminology is used in this article.
 
 | Term | Definition |
 |------|------------|
