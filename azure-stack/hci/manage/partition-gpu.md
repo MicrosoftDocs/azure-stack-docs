@@ -1,6 +1,6 @@
 ---
-title: Share GPU with virtual machines in Azure Stack HCI
-description: Learn how to share a GPU with multiple virtual machines in Azure Stack HCI.
+title: Share GPU with virtual machines on Azure Stack HCI
+description: Learn how to share a GPU with multiple virtual machines on Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
-# Share GPU with virtual machines in Azure Stack HCI
+# Share GPU with virtual machines on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
