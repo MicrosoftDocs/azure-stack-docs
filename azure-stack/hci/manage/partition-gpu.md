@@ -1,10 +1,10 @@
 ---
 title: Share GPU with Azure Stack HCI virtual machines
-description: Learn how to share a GPU with multiple virtual machines running on Azure Stack HCI.
+description: Learn how to share a GPU with multiple virtual machines in Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 12/02/2022
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -13,9 +13,9 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
-
 GPU partitioning allows you to run multiple VMs concurrently on a single shared GPU device.
+
+This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
 
 [!INCLUDE [preview](../../includes/hci-preview.md)]
 
@@ -82,7 +82,7 @@ Consider the following caveats when using the GPU partitioning feature:
 
 - You can't assign a physical GPU as both Discrete Device Assignment (DDA) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both. For information about GPU acceleration provided via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
 
--  You can assign only a single GPU partition to a VM.
+- You can assign only a single GPU partition to a VM.
 
 - Azure Stack HCI auto-assigns the partition to the VMs. You can't choose a specific partition for a specific VM.
 
@@ -261,7 +261,7 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
 
 ## Configure GPU partition count
 
-The number of partitions a GPU can support is configured by its OEM. You can't change the partition count setting for a GPU. After you confirm the installed GPU is partitionable, you can configure its partition count to any of the supported counts.
+Each partitionable GPU comes with a set of valid partition counts that's predefined by its OEM. You can't define the number of partitions a GPU can have. However, you can configure the partition count to any of the valid count from within the supported set.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
