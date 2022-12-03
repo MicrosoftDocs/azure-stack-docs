@@ -291,7 +291,7 @@ Follow these steps to configure partition count via Windows Admin Center:
 
     - **Warning.** If you deselect one or more GPUs from the homogeneous set of GPUs, Windows Admin Center gives you a warning, but doesn't stop you from proceeding further. Warning text indicates that you're not selecting all the GPUs and it may result in different partition count, which isn't recommended.
     
-        :::image type="content" source="./media/partition-gpu/warning-partial-selection-homogenous-set.png" alt-text="Screenshot showing a warning when all the GPUs within a homogeneous set are not selected." lightbox="./media/partition-gpu/warning-partial-selection-homogenous-set.png" :::
+        :::image type="content" source="./media/partition-gpu/warning-partial-selection-homogenous-set.png" alt-text="Screenshot showing a warning when all the GPUs within a homogeneous set aren't selected." lightbox="./media/partition-gpu/warning-partial-selection-homogenous-set.png" :::
 
     - **Warning.** If not all the GPUs across all the servers have the same configuration, Windows Admin Center gives a warning. You must manually select the GPUs with the same configuration to proceed further.
     
@@ -531,7 +531,7 @@ Follow these steps to unassign a partition from a VM:
 
     The **Unassign GPU partition from VM** page is displayed.
 
-1. From **Choose the server** list, select the server which has the GPU partition that you want to unassign.
+1. From **Choose the server** list, select the server that has the GPU partition that you want to unassign.
 
 1. From **Choose virtual machine to unassign partition from** list, search or select the VM to unassign the partition from.
 
