@@ -11,7 +11,7 @@ In this release, you can perform new deployments using the Azure Stack HCI, Supp
 
 When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the supplemental package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
 
-To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md). You can download the Supplemental Package here:  
+To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md). You can download the Supplemental Package here:  
 
 | Azure Stack HCI Supplemental Package component| URL                                             |
 |-----------------------------------------------|-------------------------------------------------|

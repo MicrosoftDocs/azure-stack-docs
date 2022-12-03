@@ -378,7 +378,7 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-- name: Preview channel
+- name: Preview
   items:
   - name: What's in preview
     href: manage/whats-new-preview.md
@@ -404,8 +404,8 @@
           href: concepts/secure-baseline.md
         - name: Understand BitLocker encryption
           href: concepts/security-bitlocker.md
-        - name: Assess environment readiness
-          href: manage/use-environment-checker.md
+      - name: Assess environment readiness
+        href: manage/use-environment-checker.md
     - name: Deploy 
       items:
       - name: Deployment overview
@@ -416,13 +416,13 @@
         href: deploy/deployment-tool-checklist.md
       - name: 1 - Prepare Active Directory
         href: deploy/deployment-tool-active-directory.md
-      - name: 2 - Install the operating system
+      - name: 2 - Install OS
         href: deploy/deployment-tool-install-os.md
       - name: 3A - Deploy interactively
         href: deploy/deployment-tool-new-file.md
-      - name: 3B - Deploy using a config file
+      - name: 3B - Deploy via config file
         href: deploy/deployment-tool-existing-file.md
-      - name: 3C - Deploy using PowerShell
+      - name: 3C - Deploy via PowerShell
         href: deploy/deployment-tool-powershell.md
       - name: 4 - Validate deployment
         href: deploy/deployment-tool-validate.md

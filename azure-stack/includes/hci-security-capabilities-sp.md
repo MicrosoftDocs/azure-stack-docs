@@ -15,12 +15,12 @@ To summarize, this release provides:
 
     The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
-    For more information, see [Security baseline settings for Azure Stack HCI](./concepts/secure-baseline.md).
+    For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md).
 
 - Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
 
 - Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities. For more information, see [What is Secured-core server?](windows-server/security/secured-core-server).
 
-- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
+- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](../hci/concepts/security-bitlocker.md).
 
-- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
+- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](../hci/concepts/security-windows-defender-application-control.md).
