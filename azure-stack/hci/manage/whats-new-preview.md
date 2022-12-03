@@ -23,7 +23,7 @@ This article describes the new features or enhancements that are currently avail
 The Azure Stack HCI release preview channel currently features
 
 
-For more information, see [Join the preview channel]().
+For more information, see [Join the preview channel](./preview-channel.md).
 
 ## Azure Stack HCI, Supplemental Package
 
@@ -43,9 +43,9 @@ Azure Stack HCI, Supplemental Package is now in preview. This package deploys on
 
 ## Next steps
 
-- [Join the preview channel](../manage/preview-channel.md) and [install a preview version of Azure Stack HCI](../manage/install-preview-version.md)
+- [Join the preview channel](./preview-channel.md) and [install a preview version of Azure Stack HCI](./install-preview-version.md)
 
 - For new Azure Stack HCI deployments via supplemental package:
-    - Read the [Deployment overview](./deploy/deployment-tool-introduction.md).
-    - Learn how to [Deploy interactively](./deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.
+    - Read the [Deployment overview](../deploy/deployment-tool-introduction.md).
+    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.
 
