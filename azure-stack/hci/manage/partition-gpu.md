@@ -196,7 +196,7 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
 
     Note down the **Name** and **ValidPartitionCounts** values from the output of the `Get-VMHostPartitionableGpu` command. You'll use them later to configure partition count.
 
-    Here's a sample output of the `Get-VMHostPartitionableGpu` command, which shows that two GPUs drivers are installed on this server. The configured partition count for the first GPU is 16 and for the second GPU is 4.
+    Here's a sample output of the `Get-VMHostPartitionableGpu` command, which shows that two partitionable GPU drivers are installed on this server. The configured partition count for the first GPU is 16 and for the second GPU is 4.
 
     ```powershell
     PS C:\Users> Get-VMHostPartitionableGPU
@@ -261,11 +261,13 @@ Follow these steps to verify if the GPU driver is installed and partitionable us
 
 ## Configure GPU partition count
 
-After you install the GPU partitioning driver on the host server, it displays the maximum partition count that the GPU can have. The number of partitions a GPU can have is specific for each GPU type and is set by its manufacturer. You can't change the valid partition count setting for a GPU. After you confirm the installed GPU is partitionable, you can configure its partition count to any of the valid partition counts.
+The number of partitions a GPU can support is configured by its OEM. You can't change the partition count setting for a GPU. After you confirm the installed GPU is partitionable, you can configure its partition count to any of the supported counts.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
-1. Select the **GPU partitions** tab to configure partition counts. You can also assign partition to VMs and unassign partitions from VMs from this tab.
+Follow these steps to configure partition count via Windows Admin Center:
+
+1. Select the **GPU partitions** tab to configure partition counts. You can also assign partition to VMs and unassign partitions from VMs using this tab.
 
     > [!NOTE]
     > If there are no partitionable GPUs available in your cluster or the correct GPU partitioning driver isn't installed, the GPU partitions tab displays the following message:
@@ -317,7 +319,7 @@ After you install the GPU partitioning driver on the host server, it displays th
 
 Follow these steps to configure GPU partition count in PowerShell:
 
-1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command.
+1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command. See the PowerShell tab in the [Verify GPU partitioning driver installation](#verify-gpu-partitioning-driver-installation) section, above.
 
 1. Connect to the server whose GPU partition count you want to configure.
 
@@ -395,7 +397,7 @@ Follow these steps to configure GPU partition count in PowerShell:
     IsDeleted               : False
     ```
 
-1. To keep the configuration homogeneous, repeat the partition count configuration steps on each server of your cluster.
+1. To keep the configuration homogeneous, repeat the partition count configuration steps on each server in your cluster.
 
 ---
 
@@ -404,11 +406,11 @@ Follow these steps to configure GPU partition count in PowerShell:
 Save your workloads before assigning partition to the VM.
 
 > [!NOTE]
-> Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU (partition) needs to be on the same host machine.
+> Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU partition needs to be on the same host machine.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
-You must save your workloads before assigning partitions. If your VM is currently turned on or running, Windows Admin Center automatically turns it off first, assigns the partition, and then automatically turns it on.
+You must save your workloads before assigning partitions. If your VM is currently turned on or running, Windows Admin Center automatically turns it off, assigns the partition, and then automatically turns it on.
 
 1. On the **GPU partitions** tab, select **+ Assign partition**.
 
@@ -432,11 +434,11 @@ You must save your workloads before assigning partitions. If your VM is currentl
 
     :::image type="content" source="./media/partition-gpu/assign-gpu-partition.png" alt-text="Screenshot showing the Assign GPU partition to VM page." lightbox="./media/partition-gpu/assign-gpu-partition.png" :::
 
-After the partition is assigned, Windows Admin Center notifies you that the partition is successfully assigned and displays the **GPU partitions** tab again. On the **GPU partitions** tab, the VM appears on the GPU partition row under the server it's installed on.
+    After the partition is assigned, Windows Admin Center notifies you that the partition is successfully assigned and displays the **GPU partitions** tab again. On the **GPU partitions** tab, the VM appears on the GPU partition row under the server it's installed on.
 
 ## [PowerShell](#tab/powershell)
 
-Follow these steps to assign GPU partitions using PowerShell:
+Follow these steps to assign GPU partition to a VM using PowerShell:
 
 1. Connect to the server hosting the VM to which you want to assign a GPU partition.
 
@@ -448,7 +450,7 @@ Follow these steps to assign GPU partitions using PowerShell:
     > [!NOTE]
     > If a failure occurs, you need to shutdown the VM, drain the server, and manually fail over the VM to another server.
 
-1. Run the following command to assign the partition
+1. Run the following command to assign the partition.
 
     ```powershell
     Add-VMGpuPartitionAdapter -VMName $VMName
@@ -460,7 +462,7 @@ Follow these steps to assign GPU partitions using PowerShell:
     Get-VMGpuPartitionAdapter -VMName $VMName
     ```
 
-    For example, run the following commands to assign a partition to the "mytestgpu-vm1" VM:
+    For example, run the following commands to first assign a partition to the **mytestgpu-vm1** VM and then verify the assignment:
 
     ```powershell
     PS C:\Users> $VMname = "mytestgpu-vm1"
@@ -505,10 +507,7 @@ Follow these steps to assign GPU partitions using PowerShell:
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
-The next step will be to start the VM using PowerShell or WAC. Once the VM is up and running, it will show a GPU in device manager. At this time, you can install the guest driver provided by the partner.
-
-There is no mechanism today to pass the driver to the VM and install the
-driver.  
+    The next step will be to start the VM using PowerShell or WAC. Once the VM is up and running, it will show a GPU in device manager.
 
 ---
 
@@ -516,9 +515,11 @@ driver.  
 
 You can unassign a GPU partition from the VM if you no longer need it to run your workloads. Unassigning the partition frees up the GPU partition resource, which you can reassign to another VM later.
 
-You must save your workloads before unassigning partitions. If your VM is currently turned on or running, Windows Admin Center automatically turns it off first, unassigns the partition, and then automatically turns it on.
+You must save your workloads before unassigning partitions.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
+
+If your VM is currently turned on or running, Windows Admin Center automatically turns it off first, unassigns the partition, and then automatically turns it on.
 
 Follow these steps to unassign a partition from a VM:
 
@@ -583,10 +584,6 @@ Follow these steps to install the **GPU** extension in your Windows Admin Center
 1. Select the **GPUs** extension from the list. Or, use the **Search** box to quickly find the **GPUs** extension from the list and then select it.
     
 1. Select **Install**. After you installed the **GPUs** extension, it appears under the **Installed extensions** tab. Make sure the version of the **GPUs** extension is **2.5.1**.
-
-## Migrate the VM to a different server
-
-If a failure occurs, you need to shutdown the VM, drain the server, and manually fail over the VM to another server. We require that the VM cluster resource be set to force-shutdown, like how we configure VMs that use GPU-DDA: Get-ClusterResource -name vmname \| Set-ClusterParameter -Name \"OfflineAction\" -Value 3.
 
 ## Next steps
 
