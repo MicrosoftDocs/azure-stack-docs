@@ -11,4 +11,4 @@ Azure Stack HCI Environment Checker is a standalone, PowerShell tool that you ca
 
 For new deployments using the supplemental package, the environment checker automatically validates internet connectivity, hardware, identity and networking on all the nodes of your Azure Stack HCI cluster. The tool also returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). For more information, see [Assess your environment for deployment readiness](./manage/use-environment-checker.md).
+To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). For more information, see [Assess your environment for deployment readiness](../hci/manage/use-environment-checker.md).

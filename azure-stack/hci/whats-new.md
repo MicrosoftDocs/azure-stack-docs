@@ -28,45 +28,15 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 ### New deployment tool (preview)
 
-In this release, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). The new deployment tool can be launched on servers running Azure Stack HCI, version 22H2 OS. You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file or via PowerShell.
-
-When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the supplemental package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
-
-To learn more about the new deployment methods, see [Deployment overview](./deploy/deployment-tool-introduction.md). You can download the Supplemental Package here:  
-
-| Azure Stack HCI Supplemental Package component| URL                                             |
-|-----------------------------------------------|-------------------------------------------------|
-| Bootstrap PowerShell                           | https://go.microsoft.com/fwlink/?linkid=2210545 |
-| CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
-| Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
+[!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
 
 ### New security capabilities (preview)
 
-The new installations with Azure Stack HCI, Supplemental Package release start with a *secure-by-default* strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
-
-To summarize, this release provides:
-
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state.
-
-    The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
-
-    For more information, see [Security baseline settings for Azure Stack HCI](./concepts/secure-baseline.md).
-
-- Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
-
-- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities. For more information, see [What is Secured-core server?](windows-server/security/secured-core-server).
-
-- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
-
-- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
+[!INCLUDE [hci-security-capabilities-sp](../includes/hci-security-capabilities-sp.md)]
 
 ### New Azure Stack HCI Environment Checker tool
 
-Before you deploy your Azure Stack HCI solution, you can use a standalone, PowerShell tool prior to even ordering hardware to validate connectivity readiness.
-
-For new deployments using the supplemental package, the environment checker will now automatically validate internet connectivity, hardware, identity and networking on all the nodes of your Azure Stack HCI cluster. The tool also returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
-
-To get started, you can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5). For more information, see [Assess your environment for deployment readiness](./manage/use-environment-checker.md).
+[!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
 
 ## Azure Stack HCI, version 22
 

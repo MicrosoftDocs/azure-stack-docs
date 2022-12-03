@@ -1,6 +1,6 @@
 ---
 title: What's in Azure Stack HCI, Supplemental Package and preview channel
-description: How to join the Azure Stack HCI preview channel and install feature updates by using Windows PowerShell or Windows Admin Center.
+description: Features and OS versions available via preview channel and supplemental packages.
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
@@ -15,8 +15,8 @@ ms.date: 12/03/2022
 
 This article describes the new features or enhancements that are currently available in the preview for Azure Stack HCI. This includes:
 
-- [What's in the preview channel](#whats-in-the-azure-stack-hci-preview-channel).
-- [What's in the Azure Stack HCI, Supplemental Package](#whats-in-the-azure-stack-hci-supplemental-package).
+- [What's in the preview channel](#azure-stack-hci-preview-channel).
+- [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package).
 
 ## Azure Stack HCI preview channel
 
