@@ -37,6 +37,5 @@ When deploying AKS Edge Essentials nodes you should specify the `-WorkloadType` 
 
 ## Next steps
 
-- Try out the [Quickstart](aks-edge-quickstart.md)
 - [Overview](aks-edge-overview.md)
 - [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

@@ -10,14 +10,11 @@ ms.custom: template-quickstart #Required; leave this attribute/value as-is.
 
 # Quickstart: deploy a sample AKS on Windows application
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS) host. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this single-node cluster.
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service (AKS) Edge Essentials single node cluster. You create an AKS single node cluster on a single machine, and deploy a sample containerized Linux application on this single-node cluster.
 
 ## Prerequisites
 
 - **Hardware requirements**:
-
-    > [!IMPORTANT]
-    > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
 
     | Specs | Requirement |
     | ---------- | --------- |

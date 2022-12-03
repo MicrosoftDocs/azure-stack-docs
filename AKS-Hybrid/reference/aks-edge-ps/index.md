@@ -102,7 +102,6 @@ Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Next steps
 
-- Try out the [Quickstart](../../aks-edge-quickstart.md)
 - [Overview](../../aks-edge-overview.md)
 - [Uninstall AKS cluster](../../aks-edge-howto-uninstall.md)
 <!--

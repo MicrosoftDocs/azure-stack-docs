@@ -15,10 +15,6 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 ## Prerequisites
 
 - Hardware requirements:
-
-  > [!IMPORTANT]
-  > The minimum setup required to run the latest version of AKS is a single machine with the following specs:
-
   | Specs | Requirement |
   | ---------- | --------- |
   | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
@@ -43,7 +39,7 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 
 ## Download the installer
 
-You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines with the worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
+You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines that are either control nodes or worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
 1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files.
 
@@ -79,6 +75,10 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 3. Now you are ready to do mixed deployment.
 
+## Load AKS Edge modules
+AKS edge modules can we loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [Github repo](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd).
+
+ 
 ## Check the AKS Edge modules
 
 Once installation is complete, make sure your install was successful by running the following command:
@@ -87,9 +87,14 @@ Once installation is complete, make sure your install was successful by running 
 Get-Command -Module AksEdge
 ```
 
-You should see the following output with version:
+
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
+
+You should see the following output with version:
+```powershell
+(Get-Module AksEdge -ListAvailable).Version
+```
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
 

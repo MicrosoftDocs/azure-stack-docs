@@ -63,6 +63,6 @@ AKS Edge Essentials is currently in public preview.
 
 ## Next steps
 
-- Explore [quickstart](./aks-edge-quickstart.md)
+- Read about [deployment options](./aks-edge-deployment-options.md)
 - Contact product team by emailing projecthaven@microsoft.com
 - Read [Ignite blog](https://aka.ms/aks-edge-ignite-blog)
