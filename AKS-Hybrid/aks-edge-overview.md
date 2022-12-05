@@ -23,7 +23,7 @@ Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS)
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS Edge Essentials simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
-![Diagram of AKS Edge Essentials architecture.](media/aks-edge/aks-edge-Windows.png)
+:::image type="content" source="media/aks-edge/aks-edge-Windows.png" alt-text="Diagram of AKS Edge Essentials architecture." lightbox="media/aks-edge/aks-edge-Windows.png":::
 
 ### 2. Microsoft-managed Kubernetes platform
 
