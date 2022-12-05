@@ -163,6 +163,27 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 
 `netsh winhttp show proxy`
 
+### Configure Proxy for Node Arc Integration
+
+To allow Arc Integration of the nodes during cluster registration, the proxy server environment variable requires to be set prior to registration to ensure that the proxy setting is applied during the Azure Connected Machine agent installation.  
+
+To set the proxy server environment variable, run the following commands:
+
+```powershell
+# If a proxy server is needed, execute these commands with the proxy URL and port.
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://ProxyServerFQDN:port", "Machine")
+$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+```
+
+To configure the agent, after integration, to stop communicating through a proxy server, run the following commands:
+
+```powershell
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine")
+$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+# For the changes to take effect, the agent services need to be restarted after the proxy environment variable removed.
+Restart-Service -Name himds, ExtensionService, GCArcService
+```
+
 > [!IMPORTANT]
 > We don't support authenticated proxies due to security concerns associated with storing authenticated user credentials.
 
