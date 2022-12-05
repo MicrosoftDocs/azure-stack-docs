@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/01/2022
+ms.date: 12/05/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -78,6 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
 - Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc_a100-v4).
 - This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
+- Added the ability for operators to see virtual machine status information across all user subscriptions in the Azure Stack Hub admin portal.
 
 <!-- ### Improvements -->
 
