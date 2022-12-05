@@ -10,11 +10,9 @@ ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ---
 
-# Share GPU with virtual machines on Azure Stack HCI
+# Partition and share GPU with virtual machines on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
-
-GPU partitioning allows you to partition and share a GPU with multiple VMs on an Azure Stack HCI system.
 
 This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
 
@@ -102,7 +100,7 @@ Here's a high-level workflow to provision the GPU partitioning feature:
 1. [Complete all the prerequisites](#prerequisites).
 1. [Verify GPU partitioning driver installation](#verify-gpu-partitioning-driver-installation).
 1. [Configure partition count](#configure-gpu-partition-count).
-1. [Assign a GPU partition to a VM](#assign-gpu-partition-to-vms).
+1. [Assign GPU partition to a VM](#assign-gpu-partition-to-a-vm).
 1. [If necessary, unassign a GPU partition from a VM](#unassign-a-partition-from-a-vm).
 
 ## Verify GPU partitioning driver installation
@@ -407,7 +405,7 @@ Follow these steps to configure GPU partition count in PowerShell:
 
 ---
 
-## Assign GPU partition to VMs
+## Assign GPU partition to a VM
 
 Save your workloads before assigning partition to the VM.
 
@@ -513,7 +511,7 @@ Follow these steps to assign GPU partition to a VM using PowerShell:
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
-    The next step will be to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it will show a GPU in Device Manager.
+    The next step is to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it will show a GPU in Device Manager.
 
 ---
 
