@@ -39,7 +39,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
 
-- To scale by adding a Windows-only worker node, specify the `NodeType` as Windows and provide a unique IP address for the Linux node:
+- To scale by adding a Windows-only worker node, specify the `NodeType` as Windows and provide a unique IP address for the Windows node:
 
    ```powershell
    $params = @{

@@ -19,14 +19,9 @@ This section shows how to connect your AKS Edge Essentials cluster to [Azure Arc
 
 You need an Azure subscription with either the `Owner` role or a combination of `Contributor` and `User Access Administrator` roles. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left-hand side of the Azure portal, and then clicking on **View my access**. Read the [official Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
 
-Execute the following steps on your primary machine.
-
->[!IMPORTANT]
-> If you are connecting a multi-node cluster to Arc, enable the Arc connection to the cluster before scaling out to additional nodes.
-
 There are two approaches to connect your cluster to Arc:
 
-1. Use the helper modules in this GitHub repo to simplify Arc connectivity. The steps for using the helper modules as described on this page.
+1. Use the helper modules in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools/modules/AksEdgeAzureSetup) to simplify Arc connectivity. The steps for using the helper modules as described on this page.
 2. Use PowerShell 7 with the commands from the AKSEdge module, to connect to Arc, [see this article](./aks-edge-howto-more-configs.md) for the instructions.
 
 ## 1. Download the helper modules
@@ -45,18 +40,16 @@ There, provide the parameters under **Azure** section, with the appropriate info
 
 ```json
 "Azure": {
-    "SubscriptionName":"Visual Studio Enterprise Subscription",
-    "SubscriptionId": "",
-    "TenantId":"",
-    "ResourceGroupName": "aksedgepreview-rg",
-    "ServicePrincipalName" : "aksedge-sp",
-    "Location" : "EastUS",
-    "ClusterName": "",
-    "Auth": {
-        "spId" : "",
-        "password" : ""
-    }
-}
+        "SubscriptionName":"Visual Studio Enterprise Subscription",
+        "ServicePrincipalName" : "aksedge-sp",
+        "ClusterName": "",
+        "Connect": true,
+        "Location" : "EastUS",
+        "ResourceGroupName": "aksedgepreview-rg",
+        "SubscriptionId": "",
+        "TenantId": ""
+    },
+
 ```
 
 >[!NOTE]
