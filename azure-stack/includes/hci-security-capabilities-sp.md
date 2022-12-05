@@ -19,7 +19,7 @@ To summarize, this release provides:
 
 - Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
 
-- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities. For more information, see [What is Secured-core server?](https://learn.microsoft.com/windows-server/security/secured-core-server).
+- Secured-Core Server that achieves higher protection by advancing a combination of hardware, firmware, and driver capabilities. For more information, see [What is Secured-core server?](/windows-server/security/secured-core-server).
 
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](../hci/concepts/security-bitlocker.md).
 
