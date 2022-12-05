@@ -34,7 +34,7 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 [!INCLUDE [hci-security-capabilities-sp](../includes/hci-security-capabilities-sp.md)]
 
-### New Azure Stack HCI Environment Checker tool
+### New Azure Stack HCI Environment Checker tool (preview)
 
 [!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
 
