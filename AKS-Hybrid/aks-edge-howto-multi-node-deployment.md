@@ -88,7 +88,7 @@ Some important configuration parameters to note are:
     > [!NOTE]
     > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
-    ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
+    :::image type="content" source="media/aks-edge/hyper-v-external-switch.png" alt-text="Screenshot of Hyper-v switch manager." lightbox="media/aks-edge/hyper-v-external-switch.png":::
 
 3) **IP addresses**: Provide the correct values for the IP address-related configuration parameters as described in the previous table.
 
@@ -115,7 +115,7 @@ kubectl get pods --all-namespaces -o wide
 
 A screenshot of a k3s cluster is shown as follows:
 
-![Diagram showing all pods running.](./media/aks-edge/all-pods-running.png)
+:::image type="content" source="media/aks-edge/all-pods-running.png" alt-text="Diagram showing all pods running." lightbox="media/aks-edge/all-pods-running.png":::
 
 ## Example configurations for different deployment options
 
