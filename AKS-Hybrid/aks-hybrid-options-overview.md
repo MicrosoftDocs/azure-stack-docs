@@ -30,7 +30,7 @@ For more information about Kubernetes basics, see [Kubernetes core concepts for 
 
 ## Why use AKS hybrid for containerized applications?
 
-If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kuberenetes orchestrator helps with.
+If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kubernetes orchestrator helps with.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes, essential add-ons, and create Kubernetes clusters to host your workloads.
 

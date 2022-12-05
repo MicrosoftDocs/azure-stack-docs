@@ -35,7 +35,7 @@ Refer to the following network chart to configure your environment. You must all
 
 For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only.
 
-You can use the **TestFreeIps.ps1** that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
 
 ## Deploy the control plane on the primary machine with an external switch
 
@@ -85,10 +85,10 @@ Some important configuration parameters to note are
 
 2) **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your AksEdge config JSON file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
 
-    > [**!NOTE**]
+    > [!NOTE]
     > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
-    ![Screenshot of Hyper-v switch manager](./media/aks-edge/hyper-v-external-switch.png)
+    ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
 3) **IP addresses**: Provide the right values for the IP address related configuration parameters as described in the table above. 
 

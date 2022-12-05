@@ -15,6 +15,7 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
 ## Prerequisites
 
 - Hardware requirements:
+
   | Specs | Requirement |
   | ---------- | --------- |
   | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps) |
