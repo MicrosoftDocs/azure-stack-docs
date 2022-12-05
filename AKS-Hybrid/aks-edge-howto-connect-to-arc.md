@@ -50,30 +50,32 @@ There, provide the parameters under **Azure** section, with the appropriate info
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS edge. You can use an existing resource group or if you put a new name, we will create one for you. |
 |`ServicePrincipalName` | string | The name of the Azure Service Principal to use as credentials. AKS uses this Service Principal to connect your cluster to Arc. You can use an existing service principal or if you put a new name, we will create one for you in the next step. |
 |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
-|`Auth` | object | The credentials for your service principal login. If you are using an existing service principal, fill in the credentials here with the ID and password of your service principal. If you are creating a new one, it is important that you leave this BLANK, as it will be automatically filled in the next step. |
+|`Auth` | object | The credentials for your service principal login. If you are using an existing service principal, fill in the credentials here with the ID and password of your service principal. If you are creating a new one, it is important that you leave this **blank**, as it will be automatically filled in the next step. |
 
->[!NOTE]
-> If you want to use an existing service principal instead of creating a new one, specify your service principal ID and password under `Auth`. Read more about configuring the JSON parameters in the README file from the GitHub repo.
 
 To set up your Azure subscription and create the necessary resource group and service principal, use the **AksEdgeAzureSetup.ps1** script from the GitHub repo. This script will prompt you to log in with your credentials for setting up your Azure subscription.
 
 ```powershell
 # creates service principal with Contributor role at resource group level
-..\tools\modules\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spContributorRole
+..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spContributorRole
 ```
 
-If you need to create the service principal with **Contributor** role at the resource group level, you can add the `-spContributorRole` switch.
-
 ```powershell
-# creates service principal without Contributor role
-..\tools\modules\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
+# prompts for interactive login for serviceprincipal creation with minimal privileges
+..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
 ```
 
 To reset an already existing service principal, use `-spCredReset`. You should use reset carefully.
 
 ```powershell
 # resets the existing service principal
-..\tools\modules\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spCredReset
+..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spCredReset
+```
+You can also test your credentials to make sure they are valid.
+
+```powershell
+# test the credentials
+..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup-Test.ps1 .\aide-userconfig.json
 ```
 
 ## 3. Validate your configuration file
