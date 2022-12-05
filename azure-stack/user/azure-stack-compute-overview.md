@@ -124,7 +124,7 @@ The following table shows some of the ways you can get information about a VM:
 
 #### Virtual machine view
 
-Starting with the release of Azure Stack Hub 2210, a new view was added for operators in the Azure Stack Hub admin portal that shows virtual machines across all user subscriptions. This view displays the following information:
+Starting with the 2210 release of Azure Stack Hub, a new view was added for operators in the Azure Stack Hub admin portal that shows virtual machines across all user subscriptions. This view displays the following information:
 
 - VM GUID
 - User subscription
