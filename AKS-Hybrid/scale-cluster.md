@@ -1,8 +1,8 @@
 ---
-title: Scale an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster
-description: Learn how to scale the number of nodes in an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster.
+title: Scale an Azure Kubernetes Service cluster in AKS hybrid
+description: Learn how to scale the number of nodes in an Azure Kubernetes Service (AKS) cluster in AKS hybrid.
 ms.topic: article
-ms.date: 06/06/2022
+ms.date: 10/19/2022
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -11,19 +11,20 @@ ms.reviewer: jeguan
 # Keyword: node count scale clusters control plane nodes
 ---
 
-# Scale the node count in an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster
+# Scale the node count in an Azure Kubernetes Service cluster in AKS hybrid
 
-If the resource needs of your applications change, you can manually scale an Azure Kubernetes Service (AKS) cluster to run a different number of control plane nodes and worker nodes. To do this, you must scale the control plane nodes and worker nodes separately.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-## Scale the control plane nodes
+If the resource needs of your applications change in AKS hybrid, you can manually scale an Azure Kubernetes Service (AKS) cluster to run a different number of control plane nodes and worker nodes. You must scale the control plane nodes and worker nodes separately.
 
-Use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command to scale the control plane nodes. The following example scales the control plane nodes in a cluster named *mycluster* to three nodes. 
+## Scale control plane nodes
 
+Use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command to scale the control plane nodes. The following example scales the control plane nodes in a cluster named *mycluster* to a node count of 3. 
 ```powershell
 Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 ```
 
-## Scale the worker nodes in the node pool
+## Scale worker nodes in a node pool
 
 Use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command to scale the node pool. The following example scales a node pool called *linuxnodepool* in a cluster named *mycluster* to a node count of 3. 
 
@@ -33,6 +34,6 @@ Set-AksHciNodePool -clustername mycluster -name linuxnodepool -count 3
 
 ## Next steps
 
-In this article, you learned how to manually scale an AKS on Azure Stack HCI and Windows Server cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
-- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+In this article, you learned how to manually scale an AKS cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

@@ -1,9 +1,9 @@
 ---
-title: Deploy an  Azure Kubernetes Service host with prestaged cluster service objects and DNS records using PowerShell
+title: Deploy an Azure Kubernetes Service host with prestaged cluster service objects and DNS records using PowerShell
 description: Learn how to set up an AKS host if you have prestaged cluster service objects and DNS records.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/11/2022
+ms.date: 10/20/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,9 +13,11 @@ ms.reviewer: abha
 
 ---
 
-# Deploy an  Azure Kubernetes Service host with prestaged cluster service objects and DNS records using PowerShell 
+# Deploy an Azure Kubernetes Service host with prestaged cluster service objects and DNS records using PowerShell 
 
-In this how-to guide, you'll learn how to use PowerShell to configure your AKS host deployment if you have prestaged cluster service objects and DNS records.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+In this how-to guide, you'll learn how to use PowerShell to configure your AKS host deployment if you have pre-staged cluster service objects and DNS records in AKS hybrid.<!--Adding AKS hybrid reference and ID because it shows up throughout the discussion. Shouldn't it also be identified in the title and description?-->
 
 ## Before you begin
 
@@ -24,18 +26,18 @@ In this how-to guide, you'll learn how to use PowerShell to configure your AKS h
 
 ## Step 1: Prepare your Active Directory and DNS server for deployment
 
-If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you need to pre-create the respective records in Active Directory and DNS.
+If you cannot enable dynamic DNS updates in your DNS environment to allow AKS hybrid to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you need to pre-create the respective records in Active Directory and DNS.
 
-Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
+Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice that doesn't exceed 32 characters). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
 
-The AKS on Azure Stack HCI and Windows Server deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+The AKS deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.<!--Leave out "hybrid" here to avoid "AKS hybrid deployment"?-->
 
 > [!Note] 
-> Once AKS on Azure Stack HCI and Windows Server is deployed, this information cannot be changed.
+> Once AKS is deployed, this information cannot be changed.
 
 ## Step 2: Prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI and Windows Server. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
+Run checks on every physical node to see if all the requirements are satisfied to install AKS hybrid. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
 
 ```powershell
 Initialize-AksHciNode
@@ -76,7 +78,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 5: Start a new deployment
 
-After you've configured your deployment, you must start it. Starting the deployment installs the Azure Kubernetes Service on Azure Stack HCI and Windows Server agents/services and the Azure Kubernetes Service host. To begin the deployment, run the following command:
+After you've configured your deployment, you must start it. Starting the deployment installs the AKS hybrid agents/services and the AKS host. To begin the deployment, run the following command:<!--Agents and services specific to AKS hybrid?-->
 
 ```powershell
 Install-AksHci

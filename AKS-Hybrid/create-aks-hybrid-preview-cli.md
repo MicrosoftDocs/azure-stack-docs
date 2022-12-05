@@ -37,7 +37,7 @@ In this how-to guide, you'll
 Run the following command to install the AKS hybrid extension:
 
 ```azurecli
-az extension add --source https://hybridaksstorage.z13.web.core.windows.net/HybridAKS/CLI/hybridaks-0.2.0-py3-none-any.whl
+az extension add -n hybridaks
 ```
 
 ## Create an AKS hybrid cluster
@@ -85,14 +85,14 @@ moc-lfdr4ssdabk   Ready    <none>                 4m38s   v1.21.9
 
 ## Deploy the application
 
-A [Kubernetes manifest file](/kubernetes-concepts#deployments) defines a cluster's desired state, such as which container images to run.
+A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
-You will use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis.git). This manifest includes two [Kubernetes deployments](/kubernetes-concepts#deployments):
+You will use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis.git). This manifest includes two [Kubernetes deployments](kubernetes-concepts.md#deployments):
 
 * The sample Azure Vote Python applications.
 * A Redis instance.
 
-Two [Kubernetes Services](/aks-hci/concepts-container-networking#kubernetes-services) are also created:
+Two [Kubernetes Services](concepts-container-networking.md#kubernetes-services) are also created:
 
 * An internal service for the Redis instance.
 * An external service to access the Azure Vote application from the internet.

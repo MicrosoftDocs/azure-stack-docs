@@ -3,7 +3,7 @@ title: Deploy AKS infrastructure using PowerShell
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy AKS. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
 > [!NOTE]
 > If you prefer to use Windows Admin Center, see [Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
@@ -28,11 +28,11 @@ The following image showcases the different layers and interconnections between 
 
 You've already deployed the outer box, which represents the Azure Resource Group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage, and so on. You've also completed some host configuration.
 
-In this section, you'll first deploy the management cluster. This cluster provides the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right-hand side of the diagram. These target, or workload clusters, contain worker nodes and are where application workloads run. These nodes are managed by a management cluster. For more information about the building blocks of the Kubernetes infrastructure, see [Kubernetes cluster architecture](kubernetes-concepts.md).
+In this section, you'll first deploy the management cluster. This cluster provides the core orchestration mechanism and interface for deploying and managing one or more target clusters, shown on the diagram's right side. These target clusters, or *workload clusters*, contain worker nodes and are where application workloads run. These nodes are managed by a management cluster. For more information about the building blocks of the Kubernetes infrastructure, see [Kubernetes cluster architecture](kubernetes-concepts.md).
 
 ## Prepare environment
 
-Before you deploy AKS on Azure Stack HCI, you need to prepare your host by downloading the latest PowerShell packages and modules and cleaning up any existing artifacts to ensure you're starting clean. 
+Before you deploy AKS on Azure Stack HCI, you need to prepare your host by downloading the latest PowerShell packages and modules. You'll also clean up any existing artifacts to ensure you're starting clean.
 
 First, install the required PowerShell packages and modules:
 
@@ -55,7 +55,7 @@ First, install the required PowerShell packages and modules:
 
 ## Optional - enable/disable DHCP
 
-Static IP configurations are supported for deployment of the management cluster and workload clusters. When you deployed your Azure Virtual Machine, DHCP was installed and configured automatically for you, but you had the chance to control whether it was enabled or disabled on your Windows Server host OS. If you want to adjust DHCP now, make changes to the following **$dhcpState** and run the following PowerShell command as administrator:
+Static IP configurations are supported for deployment of the management cluster and workload clusters. When you deployed your Azure Virtual Machine, DHCP was installed and configured automatically. However, you could choose to enable or disable DHCP on your Windows Server host OS. If you want to adjust DHCP now, make changes to the following **$dhcpState** and run the following PowerShell command as administrator:
 
 ```powershell
 # Check current DHCP state for Active/Inactive
@@ -71,8 +71,8 @@ Before you download and deploy AKS on Azure Stack HCI, a set of steps is require
 
 Now, because you're deploying this evaluation infrastructure in Azure, the system assumes you already have a valid Azure subscription. To confirm, in order to integrate AKS on Azure Stack HCI with an Azure subscription, you will need the following prerequisites:
 
-- An Azure subscription with at least one of the following:
-  - A user account with the built-in **Owner** role
+- An Azure subscription with either a user account or service principal that provides the required privileges:
+  - A user account with the built-in **Owner** role, or
   - A Service Principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** (Minimum), built-in **Contributer** role, or built-in **Owner** role.
 
 ### Optional - Create a Service Principal
@@ -114,7 +114,7 @@ Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```
 
-From the output of this script, you have the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI, so take a note of those and store them safely.
+Output from the script includes the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI. Make a note of those, and store the note safely.
 
 With that created, in the Azure portal, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
@@ -140,7 +140,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ```
 
-This registration process can take up to 10 minutes, so please be patient. It only needs to be performed once on a particular subscription. To validate the registration process, run the following PowerShell command:
+This registration process can take up to 10 minutes. To verify the registration, run the following PowerShell commands:
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -164,7 +164,7 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
 
    :::image type="content" source="media/aks-hci-evaluation-guide/get-module-functions.png" alt-text="Output of Get-Command":::
 
-   As you can see, there are a number of functions that the module provides, from retrieving information, installing and deploying AKS and Kubernetes clusters, updating and scaling, and cleanup. We'll explore a number of these functions as we move through the steps.
+   As you can see, the module provides a number of functions - retrieving information, installing and deploying AKS and Kubernetes clusters, updating and scaling, and doing cleanup. We'll explore a number of these functions as we move through the steps.
 
 2. Next, it's important to validate your single node to ensure it meets all the requirements to install AKS on Azure Stack HCI. Run the following command in your administrator PowerShell window:
 
@@ -211,7 +211,7 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
 
    This command takes a few moments to complete, but once done, you should see confirmation that the configuration has been saved.
 
-   For information about some of the other parameters that you can use when defining your configuration, see [Explore the AKS on Azure Stack HCI environment](/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-3-configure-your-deployment).
+   For information about some of the other parameters that you can use when defining your configuration, see [Explore the AKS hybrid environment](/azure-stack/aks-hci/kubernetes-walkthrough-powershell#step-3-configure-your-deployment).
 
    If you make a mistake, run **Set-AksHciConfig** without any parameters, and that will reset your configuration.
 
@@ -305,9 +305,9 @@ For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet
 
 A *node pool* is a group of nodes, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
 
-Another configuration option that can be applied to a node pool is the concept of *taints*. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. [Learn more about taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+Another configuration option for a node pool is to apply *taints*. A taint allows you to prevent pods from being placed on specific nodes based on characteristics that you specify. You can specify a taint for a node pool when the cluster and node pool are created. [Learn more about taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS](use-node-pools.md#specify-a-taint-for-a-node-pool).
+This guide doesn't require you to specify a taint. If you do want to explore the commands for adding a taint to a node pool, see [Create and manage multiple node pools for a cluster in AKS](use-node-pools.md#specify-a-taint-for-a-node-pool).
 
 In addition to taints, we have recently added support for configuring the maximum number of pods that can run on a node, with the `-nodeMaxPodCount` parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, and the number has to be greater than 50.
 
@@ -325,7 +325,7 @@ Get-AksHciNodePool -clusterName akshciclus001
 
 ### Continue deployment
 
-1. Scale your Kubernetes cluster to add a Windows Node Pool and worker node. Note, this triggers the download and extraction of a Windows container host image, which takes a few minutes.
+1. Scale your Kubernetes cluster to add a Windows Node Pool and worker node. This process triggers the download and extraction of a Windows container host image, which takes a few minutes.
 
    ```powershell
    New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType windows
@@ -343,7 +343,7 @@ Get-AksHciNodePool -clusterName akshciclus001
    Get-AksHciNodePool -clusterName akshciclus001
    ```
 
-   You can also scale your control plane nodes for this particular cluster; however, it has to be scaled independently from the worker nodes themselves. You can scale the control plane nodes using the following command. Before you run this command however, check that you have an extra 16GB memory left of your AKSHCIHost001 OS - if your host has been deployed with 64GB RAM, you may not have enough capacity for an additional two control plane VMs.
+   You can also scale your control plane nodes for this particular cluster; however, it has to be scaled independently from the worker nodes themselves. You can scale the control plane nodes using the following command. Before you run this command, make sure you have an extra 16GB memory left of your AKSHCIHost001 OS. If your host was deployed with 64GB RAM, you may not have enough capacity to deploy two control plane VMs.
 
    ```powershell
    Set-AksHciCluster –Name akshciclus001 -controlPlaneNodeCount 3
@@ -400,7 +400,7 @@ Enable-AksHciArcConnection -name "akshciclus001"
 
 ### Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [Enable-AksHciArcConnection](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection) PowerShell cmdlet.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). In the portal, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource and resource group you used earlier with the [Enable-AksHciArcConnection](/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection) PowerShell cmdlet.
 
 > [!NOTE]
 > After connecting to the cluster, it can take between five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Kubernetes resource in the Azure portal.
@@ -411,4 +411,4 @@ For more information about integrating with Azure Arc, see [Connect an AKS clust
 
 In this step, you've successfully deployed the AKS management cluster, deployed and scaled a Kubernetes cluster, and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore AKS on Azure Stack HCI environment](aks-hci-evaluation-guide-3.md)
+* [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).

@@ -1,30 +1,32 @@
 ---
-title: Secure communication between control plane nodes for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to secure communication between in-cluster components.
+title: Secure communication with certificates in AKS hybrid
+description: Learn how to secure communication between in-cluster components in Azure Kubernetes Service by provisioning and managing certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/11/2022
+ms.date: 10/26/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
 
-# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI and Windows Server deployment.
+# Intent: As an IT Pro, I want to learn how to use certificates to secure communication between in-cluster components on my AKS deployment.
 # Keyword: control plane nodes secure communication certificate revocation
 
 ---
 
-# Secure communication with certificates  
+# Secure communication with certificates in AKS hybrid
 
-Certificates are used to build secure communication between in-cluster components. Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+Certificates are used to build secure communication between in-cluster components. AKS hybrid provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS hybrid.
 
 ## Certificates and CAs
 
-AKS on Azure Stack HCI and Windows Server generates and uses the following certificates and Certificate Authorities (CAs): 
+AKS hybrid generates and uses the following Certificate Authorities (CAs) and certificates.
 
 **Cluster CA**:
-  - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
-  - Each `kubelet` also creates a Certificate Signing Request (CSR), which is signed by the Cluster CA, for communication from the kubelet to the API server.
-  - The etcd key value store has a certificate signed by the Cluster CA for communication from etcd to the API server. 
+- The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
+- Each `kubelet` also creates a Certificate Signing Request (CSR), which is signed by the Cluster CA, for communication from the `kubelet` to the API server.
+- The etcd key value store has a certificate signed by the Cluster CA for communication from etcd to the API server. 
 
 **etcd CA**:
 - The etcd key value store has an etcd CA that signs certificates to authenticate and authorize data replication between etcd replicas in the cluster.
@@ -34,29 +36,31 @@ AKS on Azure Stack HCI and Windows Server generates and uses the following certi
 
 ### Certificate provisioning 
 
-Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
+Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
-- The certificates are stored at /etc/kubernetes/pki
+- The certificates are stored in **/etc/kubernetes/pki**.
 - The keys are RSA 4096, EcdsaCurve: P384 
 
 > [!NOTE]
-> The root certificates are valid for 10 years. All other non-root certificates are short-lived and valid for four days.
+> The root certificates are valid for 10 years. All other, non-root certificates are short-lived and valid for four days.
 
 ### Certificate renewal and management
 
-Non-root certificates are automatically renewed. All control plane certificates for Kubernetes are managed except for the following certificates:
+Non-root certificates are automatically renewed. All control plane certificates for Kubernetes except the following certificates are managed:
 
 - Kubelet server certificate 
 - Kubeconfig client certificate 
 
-As a best security practice, it's recommended that you use [Active Directory single sign-in](./ad-sso.md) for user authentication.
+As a security best practice, you should use [Active Directory single sign-in](./ad-sso.md) for user authentication.
 
 ## Certificate revocation
-Revocation should be a rare incident and applied at the time of certificate renewal. 
+
+Certificate revocation should be rare, and it should be done at the time of certificate renewal. 
 
 Once you have the serial number of the certificate you would like to revoke, use Kubernetes Custom Resource for defining and persisting revocation information. Each revocation object can consist of one or more revocation entries.  
 
 To perform a revocation, use one of the following:
+
 - Serial number 
 - Group 
 - DNS name 
@@ -65,9 +69,9 @@ To perform a revocation, use one of the following:
 A _notBefore_ time can be specified to revoke only certificates that are issued before a certain timestamp. If a _notBefore_ time is not specified, all existing and future certificates matching the revocation will be revoked. 
 
 > [!NOTE]
-> Revocation for `kubelet` server certificate is currently not available.
+> Revocation of `kubelet` server certificates is currently not available.
 
-As long as the revocation was performed using a serial number, you can use the `Repair-AksHciClusterCerts` PowerShell command described below to get your cluster into a working state. If revocation was performed using other fields, make sure to specify _notBefore_ time so you can recover your cluster using the `Repair-AksHciClusterCerts` command. 
+If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify _notBefore_ time so you can recover your cluster using the `Repair-AksHciClusterCerts` command. 
 
 ```Console
 apiVersion: certificates.microsoft.com/v1 
@@ -96,7 +100,7 @@ spec:
     kind: IP 
 ```
 
-## Troubleshoot and maintenance
+## Troubleshooting and maintenance
 
 Refer to the following scripts and documentation for logging and monitoring:
 
@@ -105,7 +109,7 @@ Refer to the following scripts and documentation for logging and monitoring:
 
 ### Renew certificates for worker nodes
 
-For worker nodes, failed certificate renewals are logged by the *certificate-renewal-worker* pod. If the certificate renewal continues to fail on a worker node and the certificates expire, the node will be removed and a new worker node created in its place. 
+For worker nodes, failed certificate renewals are logged by the *certificate-renewal-worker* pod. If the certificate renewal continues to fail on a worker node, and the certificates expire, the node is removed, and a new worker node is created in its place. 
 
 Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-worker*: 
 
@@ -127,9 +131,10 @@ kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificat
 
 ### Renew certificates for control plane nodes
 
-For control plane nodes, failed certificate renewals are logged by the certificate-renewal-controller pod. If certificates expire on a control plane node, it may eventually become unreachable by other nodes. If all control plane nodes enter this state, the cluster will become inoperable due to a TLS failure. You can confirm whether the cluster has entered this state by trying to access it using `kubectl`, and then verifying that the connection has failed if there's an error message related to expired x509 certificates. 
+For control plane nodes, failed certificate renewals are logged by the **certificate-renewal-controller** pod. If certificates expire on a control plane node, the node may eventually become unreachable by other nodes. If all control plane nodes enter this state, the cluster will become inoperable because of a TLS failure. To confirm whether the cluster has entered this state, try to access the cluster using `kubectl`, and then verify whether the connection fails with an error message related to expired x509 certificates. 
 
 Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-controller*:
+
 ```powershell
 kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system get pods 
 ```
@@ -146,7 +151,7 @@ To get the logs from the certificate renewal pod:
 kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificate-renewal-controller-2cdmz
 ```
 
-Control plane nodes can’t be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail due to expired certificates, run the command as shown below: 
+Control plane nodes can't be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail because of expired certificates, run the following command: 
 
 ```powershell
 Repair-AksHciClusterCerts -Name mytargetcluster 

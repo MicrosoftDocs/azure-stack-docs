@@ -947,6 +947,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/manage/azure-arc-enabled-virtual-machines.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/deploy/cluster-set.md",
       "redirect_url": "/windows-server/failover-clustering/cluster-set",
       "redirect_document_id": false
