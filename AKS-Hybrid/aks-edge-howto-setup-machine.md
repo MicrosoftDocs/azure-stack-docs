@@ -53,7 +53,6 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
-
 In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
 ## Set up your machine as a Linux node
@@ -63,7 +62,6 @@ In this release, both k8s and k3s are supported. We have provided two separate M
 ## Set up your machine as a Linux and Windows node
 
 In order to configure your MSI installer to include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder.
-
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer and **AksEdgeWindows-v1** files.
 
@@ -76,9 +74,9 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 3. Now you are ready to do mixed deployment.
 
 ## Load AKS Edge modules
+
 AKS edge modules can we loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [Github repo](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd).
 
- 
 ## Check the AKS Edge modules
 
 Once installation is complete, make sure your install was successful by running the following command:
@@ -87,17 +85,15 @@ Once installation is complete, make sure your install was successful by running 
 Get-Command -Module AksEdge
 ```
 
-
-
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
 
 You should see the following output with version:
+
 ```powershell
 (Get-Module AksEdge -ListAvailable).Version
 ```
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
-
 
 ## Next steps
 

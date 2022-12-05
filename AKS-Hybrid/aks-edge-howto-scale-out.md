@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to secondary machines to create a multi-node deployment. 
+Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to secondary machines to create a multi-node deployment.
 
 ## 1. Get cluster configuration from your primary machine
 
@@ -82,9 +82,10 @@ This command returns a JSON string and also stores the JSON content in the **.\S
 
 ## 2. Bring up a node on your secondary machine
 
-Now you're ready to bring up clusters on your secondary machines. 
+Now you're ready to bring up clusters on your secondary machines.
 
 Key constraints to consider are
+
 1. You cannot mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **k8s**, you must install the **k8s** msi on the secondary machines as well.
 1. The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 1. Remember to specify the [node type](./aks-edge-concept.md) and [reserve enough memory for each node](./aks-edge-concept.md).
@@ -97,6 +98,7 @@ New-AksEdgeDeployment -JsonConfigFilePath .\ScaleConfig.json
 
 > [!NOTE]
 > In this release, there is a known issue with using a Wi-Fi adapter with your external switch. automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
+
 ## 3. Validate your cluster setup
 
 On any node in the cluster, run the following cmdlet:
@@ -125,6 +127,7 @@ You can generate a new `ScaleConfig` file based on the nodeType required by repe
 ```
 
 ## Add a Windows worker node (optional)
+
 If you would like to add Windows node  to an existing Linux only machine, you can run:
 
 ```powershell
@@ -132,6 +135,7 @@ Add-AksEdgeNode -NodeType Windows
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
+
 ## Next steps
 
 - [Deploy your application](aks-edge-howto-deploy-app.md) or [connect to Arc](aks-edge-howto-connect-to-arc.md)
