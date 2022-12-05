@@ -79,6 +79,5 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 
 
 ## Next steps
-
-- Try out the [Quickstart](aks-edge-quickstart.md)
+- [AKS Edge Essentials Concepts](./aks-edge-concept.md)
 - [Set up your machine](./aks-edge-howto-setup-machine.md)
