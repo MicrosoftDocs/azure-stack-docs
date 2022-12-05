@@ -319,10 +319,10 @@
       href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: Release notes and known issues
-      href: aks-edge-releasenotes-knownissues.md
     - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Release notes and known issues
+      href: https://github.com/Azure/aks-edge-utils/releases
     - name: File bugs
       href: https://github.com/Azure/aks-edge-utils/issues
 - name: Troubleshooting
