@@ -4,7 +4,7 @@ description: Learn how to deploy AKS on a single machine.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
@@ -12,10 +12,9 @@ ms.custom: template-how-to
 
 You can deploy AKS Edge Essentials on either a single machine or on multiple machines. In a single machine Kubernetes deployment, both the Kubernetes control node and worker node run on the same machine. This article describes how to create the Kubernetes control node on your machine on a private network.
 
-## Prerequisites
+## Prerequisite
 
-- Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
-
+Set up your primary machine as described in the [setup article](aks-edge-howto-setup-machine.md).
 
 ## Create a single machine cluster
 
@@ -32,7 +31,7 @@ You can edit **mydeployconfig**.json with the parameters you need and pass the J
 New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
 ```
 
-Alternatively, you can programmatically edit the json object and pass it as a string
+Alternatively, you can programmatically edit the JSON object and pass it as a string:
 
 ```powershell
 $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
@@ -46,7 +45,7 @@ $jsonObj.Network.ServiceIpRangeSize = 10
 New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
 ```
 
-Some of the common parameters and their default values as follows:
+Some of the common parameters and their default values are as follows:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
@@ -59,7 +58,7 @@ Some of the common parameters and their default values as follows:
 
 ## Example deployment options
 
-- **Create a simple cluster without a load balancer**. You can create a very simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You cannot create a LoadBalancer service in this approach.
+- **Create a simple cluster without a load balancer**. You can create a very simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You cannot create a LoadBalancer service in this approach:
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
@@ -93,7 +92,7 @@ Some of the common parameters and their default values as follows:
    New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
    ```
 
-   Passing the parameters as a JSON string as mentioned above:
+   Pass the parameters as a JSON string, as previously mentioned:
 
    ```powershell
    $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
@@ -158,11 +157,14 @@ Confirm that the deployment was successful by running:
 kubectl get nodes -o wide
 kubectl get pods -A -o wide
 ```
-Here is a screenshot showing pods on a K3S cluster. 
+
+The following screenshot shows pods on a K3S cluster:
+
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 ## Add a Windows worker node (optional)
-If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
+
+If you want to add Windows workloads to an existing Linux only single machine cluster, you can run:
 
 ```powershell
 Add-AksEdgeNode -NodeType Windows
@@ -170,9 +172,8 @@ Add-AksEdgeNode -NodeType Windows
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
-
 ## Next steps
 
-- [Deploy your application](./aks-edge-howto-deploy-app.md).
-- [Overview](./aks-edge-overview.md)
-- [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
+- [Deploy your application](aks-edge-howto-deploy-app.md).
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

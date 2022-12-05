@@ -4,7 +4,7 @@ description: Learn how to use Local Path Provisioner on AKS Edge.
 author: fcabrera
 ms.author: fcabrera
 ms.topic: how-to
-ms.date: 11/17/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
