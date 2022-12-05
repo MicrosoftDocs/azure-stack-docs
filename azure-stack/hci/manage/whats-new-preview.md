@@ -11,7 +11,7 @@ ms.date: 12/03/2022
 
 # What's in preview
 
-> Applies to: Azure Stack HCI, Supplemental Package; Azure Stack HCI preview channel
+[!INCLUDE [hci-applies-to-supplemental-package-22h2](../../includes/hci-applies-to-supplemental-package-22h2.md)]
 
 This article describes the new features or enhancements that are currently available in the preview for Azure Stack HCI. This article includes:
 
@@ -20,7 +20,7 @@ This article describes the new features or enhancements that are currently avail
 
 ## Azure Stack HCI preview channel
 
-The Azure Stack HCI preview channel currently features version 23H2 OS release. For more information, see [Join the preview channel](./preview-channel.md).
+The Azure Stack HCI preview channel features preview versions of Azure Stack HCI OS release. For more information, see [Join the preview channel](./preview-channel.md).
 
 ## Azure Stack HCI, Supplemental Package
 
@@ -30,7 +30,7 @@ Azure Stack HCI, Supplemental Package is now in preview. This package deploys on
 
 [!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
 
-### New security capabilities**
+### New security capabilities
 
 [!INCLUDE [hci-security-capabilities-sp](../../includes/hci-security-capabilities-sp.md)]
 
