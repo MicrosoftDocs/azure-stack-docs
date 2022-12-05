@@ -1,5 +1,5 @@
 ---
-title: Test-AksEdgeDeployment for AKS Lite
+title: Test-AksEdgeDeployment for AKS Edge
 author: rcheeran
 description: The Test-AksEdgeDeployment PowerShell command checks whether the deployment  was created
 ms.topic: reference
@@ -24,5 +24,5 @@ Test-AksEdgeDeployment
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)
 

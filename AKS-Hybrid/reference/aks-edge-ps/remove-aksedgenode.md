@@ -1,5 +1,5 @@
 ---
-title: Remove-AksEdgeNode for AKS Lite
+title: Remove-AksEdgeNode for AKS Edge
 author: rcheeran
 description: The Remove-AksEdgeNode PowerShell command removes a local node from an existing cluster.
 ms.topic: reference
@@ -79,4 +79,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

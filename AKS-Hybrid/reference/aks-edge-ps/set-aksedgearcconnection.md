@@ -1,7 +1,7 @@
 ---
-title: Set-AksEdgeArcConnection for AKS Lite
+title: Set-AksEdgeArcConnection for AKS Edge
 author: rcheeran
-description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS on Windows IoT cluster 
+description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS Edge cluster 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -15,7 +15,7 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc for
+Connects or disconnects the AKS Edge cluster running on this machine to or from Azure Arc for
 Kubernetes.
 
 ## Syntax
@@ -42,7 +42,7 @@ Set-AksEdgeArcConnection [-Credential <PSCredential>] -JsonConfigString <String>
 
 ## Description
 
-Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc for
+Connects or disconnects the AKS on Edge cluster running on this machine to or from Azure Arc for
 Kubernetes.
 Running this module requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
 as well as an up to date helm version in the binary path.
@@ -85,7 +85,7 @@ Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLoca
 
 Name of the cluster in Azure Arc for Kubernetes.
 By default, the cluster will be named
-'\<hostname\>-aksiot'.
+'\<hostname\>-aksedge'.
 
 ```yaml
 Type: String
@@ -258,4 +258,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

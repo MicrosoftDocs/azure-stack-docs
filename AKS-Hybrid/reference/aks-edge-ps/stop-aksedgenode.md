@@ -1,5 +1,5 @@
 ---
-title: Stop-AksEdgeNode for AKS Lite
+title: Stop-AksEdgeNode for AKS Edge
 author: rcheeran
 description: The Stop-AksEdgeLinuxNode PowerShell command stops the Linux node VM
 ms.topic: reference
@@ -34,4 +34,4 @@ Stop-AksEdgeNode
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

@@ -22,5 +22,4 @@ Once you've created your cluster, you can deploy your applications and connect y
 
 ## Next steps
 
-- Try out the [Quickstart](aks-edge-quickstart.md)
 - [Set up your machine](./aks-edge-howto-setup-machine.md)
