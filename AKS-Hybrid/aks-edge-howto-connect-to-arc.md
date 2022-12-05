@@ -12,8 +12,6 @@ ms.custom: template-how-to
 
 This section shows how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
 
-> [!IMPORTANT]
-> If you do not have a cluster installed, create a [single node cluster](aks-edge-howto-single-node-deployment.md) and follow the steps to deploy.
 
 ## Prerequisites
 
@@ -28,7 +26,7 @@ There are two approaches to connect your cluster to Arc:
 
 ## 1. Download the helper modules
 
-You should have already downloaded the helper modules from this [GitHub repo](https://github.com/Azure/aks-edge-utils), but if not, do so now. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+You should have already downloaded the helper modules from this [GitHub repo](https://github.com/Azure/aks-edge-utils), but if not, navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 Read more about all the helper functions [here](https://github.com/Azure/aks-edge-utils/blob/main/tools/modules/AksEdgeDeploy/AksEdge-Arc.md).
 
