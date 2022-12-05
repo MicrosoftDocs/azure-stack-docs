@@ -1,19 +1,20 @@
 ---
-title: Share GPU with virtual machines on Azure Stack HCI
-description: Learn how to share a GPU with multiple virtual machines on Azure Stack HCI.
+title: Partition and share GPU with Azure Stack HCI virtual machines
+description: Learn how to partition and share a GPU with multiple virtual machines on Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
 ms.date: 12/02/2022
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.reviewer: alkohli
 ---
 
 # Share GPU with virtual machines on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-GPU partitioning allows you to run multiple VMs concurrently on a single shared GPU device.
+GPU partitioning allows you to partition and share a GPU with multiple VMs on an Azure Stack HCI system.
 
 This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
 
@@ -21,11 +22,9 @@ This article describes how to use the graphics processing unit (GPU) partitionin
 
 ## About GPU partitioning
 
-Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU.
+Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
-
-Sharing a GPU with multiple VMs can help increase GPU utilization without significantly affecting the performance benefits of a GPU. This can in turn help lower the total cost of ownership (TCO) for your GPU devices.
 
 > [!NOTE]
 > Currently, we support only Nvidia A16 and A2 GPUs on the Azure Stack HCI solutions. We recommend that you work with your Original Equipment Manufacturer (OEM) partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations.
@@ -34,47 +33,51 @@ Sharing a GPU with multiple VMs can help increase GPU utilization without signif
 
 GPU partitioning on Azure Stack HCI supports these guest operating systems:
 
-- Windows Server 2019​
-- Windows Server 2022​
-- Windows 10​
-- Windows 11​
-- Windows 10 Multisession​
-- Windows 11 Multisession
-- Linux Ubuntu 18.04 LTS, 20.04 LTS​
+| Operating System | Version |
+| ---------------- | ------- |
+| Windows          | 10, 11, 10 Multisession​, 11 Multisession |
+| Windows Server   | 2019, 2022 |
+| Linux            | Ubuntu 18.04 LTS, Ubuntu 20.04 LTS​ |
 
 ## Prerequisites
 
 There are several requirements and things to consider before you begin to use the GPU partitioning feature:
 
-- Prerequisites for the host server:
+### Prerequisites for the host server
 
-    - Install Azure Stack HCI, version 22H2 operating system on all the servers in your cluster.
+- Install Azure Stack HCI, version 22H2 operating system on all the servers in your cluster. See [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md).
 
-    - Install the physical GPU device of the same make, model, and size on every server of the cluster. Refer to your OEM-provided documentation when installing the GPU device on your physical servers in the cluster.
+- Install the physical GPU device of the same make, model, and size on every server of the cluster. Refer to your OEM-provided documentation when installing the GPU device on your physical servers in the cluster.
     
-    - Install the GPU drivers on every server of the cluster by following OEM instructions. For NVIDIA GPU drivers, see the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\>.
+- Install the GPU drivers on every server of the cluster by following OEM instructions. For NVIDIA GPU drivers, see the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\>.
 
-    - Ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Reach out to your system vendor if you're unable to identify the correct setting in your BIOS.
+- Ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Reach out to your system vendor if you're unable to identify the correct setting in your BIOS.
 
-- Prerequisites for the VMs:
+### Prerequisites for the VMs
 
-    - Create VM on the server installed with Azure Stack HCI operating system.
+- Create VM on the server installed with Azure Stack HCI operating system. See [Manage VMs with Windows Admin Center](../manage/vm.md) and [Manage VMs with PowerShell](../manage/vm-powershell.md).
 
-    - Install your chosen guest operating system on the VM. See [Supported guest operating systems](#supported-guest-operating-systems) for a list of supported guest operating systems.
+- Install your chosen guest operating system on the VM. See [Supported guest operating systems](#supported-guest-operating-systems) for a list of supported guest operating systems.
 
-    - Install the GPU drivers on the VM by following OEM instructions. For NVIDIA GPU drivers, see the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\>.
+- Install the GPU drivers on the VM by following OEM instructions. For NVIDIA GPU drivers, see the Nvidia vGPU documentation \<insert_hyperlink_to_Nvidia_documentation\>.
 
-- If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.5.1. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [install the GPUs extension](#install-the-gpus-extension).
+### Prerequisites for Windows Admin Center
 
-- If you're using PowerShell to provision GPU partitioning, you must run all PowerShell commands as the Administrator user. See <inser_hyperlink_to_PS_gallery>.
+If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.5.1. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions#installing-an-extension).
+
+After you install the extension, it appears under the **Installed extensions** tab as shown in the following screenshot. Make sure the version of the **GPUs** extension is **2.5.1**.
+
+:::image type="content" source="./media/partition-gpu/gpu-extension.png" alt-text="Screenshot of the Installed extensions tab in Windows Admin Center to verify the GPUs extension is installed." lightbox="./media/partition-gpu/gpu-extension.png" :::
+
+### Prerequisites for PowerShell
+
+If you're using PowerShell to provision GPU partitioning, you must run all PowerShell commands as the Administrator user. See <inser_hyperlink_to_PS_gallery>.
 
 ## GPU partitioning caveats
 
 Consider the following caveats when using the GPU partitioning feature:
 
-- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster of two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. The partition count on each GPU must also match.
-
-- Azure Stack HCI doesn't support GPU partitioning if your configuration isn't homogeneous. Here are some examples of unsupported configurations:
+- For best performance, we recommend that you create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of the GPU, and configuring the same partition count in the GPUs across all the servers in the cluster. For example, in a cluster of two servers with one or more GPUs installed, all the GPUs must have the same make, model, and size. The partition count on each GPU must also match. Azure Stack HCI doesn't support GPU partitioning if your configuration isn't homogeneous. Here are some examples of unsupported configurations:
 
     - Mixing GPUs from different vendors in the same cluster.
     
@@ -88,7 +91,7 @@ Consider the following caveats when using the GPU partitioning feature:
 
 - Currently, GPU partitioning on Azure Stack HCI doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
 
-- We recommend that you use Windows Admin Center to provision GPU partitioning even though you also do it via PowerShell. Windows Admin Center automatically validates for a homogeneous configuration of the GPUs across all the servers in your cluster. It provides appropriate warnings and errors to take any corrective action needed.
+- You can partition your GPU using Windows Admin Center or using PowerShell. We recommend that you use Windows Admin Center to configure and assign GPU partitions. Windows Admin Center automatically validates for a homogeneous configuration of the GPUs across all the servers in your cluster. It provides appropriate warnings and errors to take any corrective action needed.
 
 - If using PowerShell to provision GPU partitioning, you must perform the provisioning steps on each server in the cluster. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the servers in your cluster.
 
@@ -319,6 +322,9 @@ Follow these steps to configure partition count via Windows Admin Center:
 
 Follow these steps to configure GPU partition count in PowerShell:
 
+> [!NOTE]
+> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all the servers in your cluster.
+
 1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command. See the PowerShell tab in the [Verify GPU partitioning driver installation](#verify-gpu-partitioning-driver-installation) section, above.
 
 1. Connect to the server whose GPU partition count you want to configure.
@@ -406,7 +412,7 @@ Follow these steps to configure GPU partition count in PowerShell:
 Save your workloads before assigning partition to the VM.
 
 > [!NOTE]
-> Currently, you can assign only a single GPU partition to a VM. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements. Both the VM and the GPU partition needs to be on the same host machine.
+> Currently, you can assign only a single GPU partition to a VM. Both the VM and the GPU partition need to be on the same host machine. We recommend that you plan ahead and determine the GPU partition size based on your workload performance requirements.
 
 ## [Windows Admin Center](#tab/windows-admin-center)
 
@@ -507,7 +513,7 @@ Follow these steps to assign GPU partition to a VM using PowerShell:
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
-    The next step will be to start the VM using PowerShell or WAC. Once the VM is up and running, it will show a GPU in device manager.
+    The next step will be to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it will show a GPU in Device Manager.
 
 ---
 
@@ -568,22 +574,6 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
     ```
 
 ---
-
-## Install the GPUs extension
-
-The **GPUs** extension in Windows Admin Center allows you to view your partitioned GPU resources across your Azure Stack HCI cluster. It also allows you to configure partition count and assign or unassign GPU partitions from VMs.
-
-Follow these steps to install the **GPU** extension in your Windows Admin Center application:
-
-1. Launch Windows Admin Center.
-
-1. Select the **Settings** gear icon from the top right corner of the page.
-    
-1. From the **Settings** menu in the left pane, go to **Gateway** > **Extensions**. The **Available Extensions** tab lists the extensions on the feed that are available for installation.
-    
-1. Select the **GPUs** extension from the list. Or, use the **Search** box to quickly find the **GPUs** extension from the list and then select it.
-    
-1. Select **Install**. After you installed the **GPUs** extension, it appears under the **Installed extensions** tab. Make sure the version of the **GPUs** extension is **2.5.1**.
 
 ## Next steps
 
