@@ -17,7 +17,7 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 ### [Add-AksEdgeNode](./add-aksedgenode.md)
 
-Adds a new AksIot node to the cluster.
+Adds a new AksEdge node to the cluster.
 
 ### [Export-AksEdgeWorkerNodeConfig](./export-aksedgeworkernodeconfig.md)
 
@@ -25,7 +25,7 @@ Pulls the cluster join data from a Linux control plane node.
 
 ### [Get-AksEdgeDeploymentInfo](./get-aksedgedeploymentinfo.md)
 
-Gets AksIot deployment information.
+Gets AksEdge deployment information.
 
 ### [Get-AksEdgeEventLog](./get-aksedgeeventlog.md)
 
@@ -49,7 +49,7 @@ Collects all the logs from the deployment.
 
 ### [Get-AksEdgeManagedServiceToken](./get-aksedgemanagedservicetoken.md)
 
-Gets the AksIot managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
+Gets the AksEdge managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
 ### [Invoke-AksEdgeNodeCommand](./invoke-aksedgenodecommand.md)
 
@@ -57,12 +57,12 @@ Executes an SSH command on the Linux VM.
 
 ### [New-AksEdgeDeploymentConfig](./new-aksedgedeploymentconfig.md)
 
-Creates the configuration file needed for a new AksIot deployment on this machine.
+Creates the configuration file needed for a new AksEdge deployment on this machine.
 
 
 ### [New-AksEdgeDeployment](./new-aksedgedeployment.md)
 
-Creates a new AksIot deployment on this machine.
+Creates a new AksEdge deployment on this machine.
 
 ### [Remove-AksEdgeDeployment](./remove-aksedgedeployment.md)
 
@@ -78,7 +78,7 @@ Safely drains a node before your delete the node.
 
 ### [Set-AksEdgeArcConnection](./set-aksedgearcconnection.md)
 
-Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
+Connects or disconnects the AKS Edge cluster running on this machine to or from Azure Arc forKubernetes.
 
 ### [Start-AksEdgeNode](./start-aksedgenode.md)
 
@@ -98,11 +98,10 @@ Checks whether the Linux VM was created.
 
 ### [Test-AksEdgeNetworkParameters](./test-aksedgenetworkparameters.md)
 
-Validates AksIot network parameters, useful as a pre-deployment step.
+Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Next steps
 
-- Try out the [Quickstart](../../aks-edge-quickstart.md)
 - [Overview](../../aks-edge-overview.md)
 - [Uninstall AKS cluster](../../aks-edge-howto-uninstall.md)
 <!--

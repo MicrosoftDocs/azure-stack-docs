@@ -16,7 +16,7 @@ This article describes how to deploy a containerized application on your Kuberne
 
 - Set up your [single machine Kubernetes](aks-edge-howto-single-node-deployment.md) or [full Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
 - Package your application into a container image, and then upload the image to the Azure Container Registry. Review these steps to [create container image of your application](tutorial-kubernetes-prepare-application.md).
-- Since AKS on Windows enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS).
+- AKS Edge Essentials enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS).
 
 If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors.
 
@@ -34,8 +34,7 @@ nodeSelector:
 
 ### 1. Update the manifest file
 
-In this guide we use a sample application that is a basic voting app consisting of a front and backend which is based on Microsoft's azure-vote-front image. The container image for this application  is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice.  Refer to linux-sample.yaml in the [GitHub repo](https://github.com/Azure/aks-edge-utils) package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux. All sample codes and deployment manifest can be found under Samples.
-
+In this guide we use a sample application that is a basic voting app consisting of a front and backend which is based on Microsoft's azure-vote-front image. The container image for this application  is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice.  Refer to `\samples\others\linux-sample.yaml` in the [GitHub repo](https://github.com/Azure/aks-edge-utils) package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux. 
 ### 2. Deploy the application
 
 To deploy your application, use the [kubectl apply][kubectl-apply] command. This command parses the manifest file and creates the defined Kubernetes objects. Specify the YAML manifest file, as shown in the following example:
@@ -61,21 +60,11 @@ To monitor progress, use the [kubectl get service][kubectl-get] command with the
 ```console
 kubectl get services
 ```
-
-Initially, the **EXTERNAL-IP** for the **azure-vote-front** service is shown as **pending**:
-
-```output
-azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
-```
-
-When the **EXTERNAL-IP** address changes from **pending** to an actual public IP address, you can use the IP address assigned to the service as shown below:
-
-```output
-azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
-```
+![Screenshot of results showing linux services running.](media/aks-edge/linux-services-running.png)
+Initially, the `EXTERNAL-IP` for the `azure-vote-front` service is shown as `pending`. When the `EXTERNAL-IP` address changes from `pending` to an actual public IP address, you can use the IP address assigned to the service. 
 
 > [!IMPORTANT]
-> If you deployed your Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksEdgeNodeAddr`), then append the external port (for example, **192.168.1.12:31458**).
+> On single machine clusters, if you deployed your Kubernetes cluster without specifying a `-ServiceIPRangeSize`, you will not have allocated IPs for your workload services and you won't have an external IP address. In this case, find the IP address of your Linux VM (`Get-AksEdgeNodeAddr`), then append the external port (for example, **192.168.1.12:31458**).
 
 ### 5. Test your application
 

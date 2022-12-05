@@ -1,7 +1,7 @@
 ---
-title: New-AksEdgeDeploymentConfig for AKS Lite
+title: New-AksEdgeDeploymentConfig for AKS Edge
 author: rcheeran
-description: The New-AksEdgeDeploymentConfig PowerShell command creates the configs needed for as new AksIot deployment 
+description: The New-AksEdgeDeploymentConfig PowerShell command creates the configs needed for as new AksEdge deployment 
 ms.topic: reference
 ms.date: 11/17/2022
 ms.author: rcheeran 
@@ -40,4 +40,4 @@ Accept wildcard characters: False
 ```
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

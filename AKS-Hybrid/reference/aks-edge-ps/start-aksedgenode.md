@@ -1,5 +1,5 @@
 ---
-title: Start-AksEdgeNode for AKS Lite
+title: Start-AksEdgeNode for AKS Edge
 author: rcheeran
 description: The Start-AksEdgeNode PowerShell command starts the Linux node VM 
 ms.topic: reference
@@ -36,4 +36,4 @@ Start-AksEdgeNode
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

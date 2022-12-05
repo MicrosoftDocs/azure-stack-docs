@@ -11,7 +11,16 @@ ms.custom: template-how-to
 # Uninstall an AKS Edge Essentials cluster
 
 Follow the steps in this article to uninstall AKS Edge Essentials.
-If you're using PowerShell 7 and the new API, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
+
+## Disconnect from Arc
+
+If you used the commands from the AKSEdgeDeploy module to connect to Arc, run `Disconnect-ArcIotK8s` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example.
+
+```powershell
+Disconnect-ArcIotK8s
+```
+
+If you're used PowerShell 7 and the `Set-AksEdgeArcConnection` command to connect to Arc, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
 
 ```powershell
 Set-AksEdgeArcConnection -connect $false

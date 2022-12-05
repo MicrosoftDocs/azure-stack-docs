@@ -14,7 +14,7 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 ## Prerequisites
 
-Set up your primary and secondary machines as described in the [setup article](aks-edge-howto-setup-machine.md).
+Set up your machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) page.
 
 ## Understand your network configuration
 
@@ -23,7 +23,7 @@ Refer to the following network chart to configure your environment. You must all
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
 | NodeType | Linux | Creates the Linux VM to host the control plane components and act as a worker. Read more about [AKS Edge Essentials node types](/aks-edge-concept.md). |
-| VswitchName | string | Name of the external switch used for AKS Edge Essentials. You can create one yourself using Hyper-V manager. If you specify a switch name that does not exist, AKS Edge Essentials creates one for you. |
+| VswitchName | string | Name of the external switch used for AKS Edge Essentials. You can create one yourself using Hyper-V manager. If you do not specify a switch name, AKS Edge Essentials creates one for you. |
 | NetworkPlugin | calico or flannel | Name of the Kubernetes network plugin. Defaults to **flannel**. |
 | ControlPlaneEndpointIp | A.B.C.x | A free IP address on your subnet **A.B.C**. The control plane (API server) will get this address. |
 | ServiceIPRangeStart | A.B.C.x | Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C**. |
@@ -33,28 +33,25 @@ Refer to the following network chart to configure your environment. You must all
 | DnsServers | A.B.C.1 | IP address of your DNS (typically the router address). To view what DNS your machine uses: **ipconfig /all \| findstr /R "DNS\ Servers"** |
 | LinuxVmIp4Address | A.B.C.x | Specify the IP address your Linux VM will take. |
 
-For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free.
+For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only.
 
-You can use the **TestFreeIps.ps1** that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+
 ## Deploy the control plane on the primary machine with an external switch
 
-A full deployment uses an external switch to enable communication across the nodes. You can choose to specify the vswitch details in your configs JSON, if you've already created one on your Hyper-V. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksiotsw-ext` and use that for your deployment.
-> [**!NOTE**]
-> In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
-
-![Screenshot of Hyper-v switch manager](./media/aks-edge/hyper-v-external-switch.png)
 Before you create your deployment, you need to create a JSON file with all the configuration parameters. You can create a sampled configuration file using the `New-AksEdgeConfig` command.
 
 ```powershell
 $jsonString = New-AksEdgeConfig .\mydeployconfig.json
 ```
+
 You can now update your configuration file `mydeployconfig.json` with the right set of values. Some of the sample values are as shown below:
 
 ```json
 "DeployOptions": {
     "NetworkPlugin": "flannel",
     "SingleMachineCluster": false,
-    "TimeoutSeconds": 300,
+    "TimeoutSeconds": 900,
     "NodeType": "Linux"
 },
 "EndUser": {
@@ -69,7 +66,7 @@ You can now update your configuration file `mydeployconfig.json` with the right 
 },
 "Network": {
     "VSwitch":{
-        "Name": "aksiotsw-ext",
+        "Name": "aksedgesw-ext",
         "Type":"External",
         "AdapterName" : "Ethernet"
     },
@@ -81,7 +78,21 @@ You can now update your configuration file `mydeployconfig.json` with the right 
     "DnsServers": ["192.168.1.1"]
 }
 ```
-Please note to provide the right values for the IP address related configuration parameters. After you update the config json and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
+
+Some important configuration parameters to note are
+
+1) **SingleMachineCluster** to be set as false for a full deployment.
+
+2) **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your AksEdge config JSON file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
+
+    > [!NOTE]
+    > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
+
+    ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
+
+3) **IP addresses**: Provide the right values for the IP address related configuration parameters as described in the table above. 
+
+After you update the config json and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
 
 ```powershell
 Test-AksEdgeNetworkParameters -JsonConfigFilePath .\mydeployconfig.json
@@ -93,8 +104,7 @@ If `Test-AksEdgeNetworkParameters` returns true, you are ready to create your de
 New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
 ```
 
-> [!NOTE]
-> In this release, `New-AksEdgeDeployment` automatically gets the kube config file and overrides the old one.
+The `New-AksEdgeDeployment` command  automatically gets the kube config file.
 
 ## Validate your deployment
 
@@ -103,10 +113,67 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-> [!NOTE]
-> This screenshot is for a k3s cluster, so the pods will look different for k8s.
-
+A screenshot of a k3s cluster is shown below.
 ![Diagram showing all pods running.](./media/aks-edge/all-pods-running.png)
+
+## Example configurations for different deployment options
+- **Allocate resources to your nodes**. To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+```json
+ "LinuxVm": {
+        "CpuCount": 4,
+        "MemoryInMB": 4096,
+        "DataSizeinGB": 20,
+        "Ip4Address": "192.168.1.171"
+    },
+    "WindowsVm": {
+        "CpuCount": 2,
+        "MemoryInMB": 4096,
+        "DataSizeinGB": 20,
+        "Ip4Address": "192.168.1.172"
+    },
+```
+- **Linux and Windows node** To run both the Linux control plane and the Windows worker node on a machine
+
+```json
+"DeployOptions": {
+    "ControlPlane": false,
+    "Headless": false,
+    "JoinCluster": false,
+    "NetworkPlugin": "flannel",
+    "SingleMachineCluster": false,
+    "TimeoutSeconds": 300,
+    "NodeType": "LinuxAndWindows",
+    "ServerTLSBootstrap": false
+  },
+  "EndUser": {
+    "AcceptEula": false,
+    "AcceptOptionalTelemetry": false
+  },
+  "LinuxVm": {
+    "CpuCount": 2,
+    "MemoryInMB": 2048,
+    "DataSizeInGB": 10,
+    "Ip4Address": "192.168.1.171",
+    "MacAddress": null,
+    "Mtu": 0
+  },
+  "WindowsVm": {
+    "CpuCount": 2,
+    "MemoryInMB": 2048,
+    "Ip4Address": "192.168.1.172",
+    "MacAddress": null,
+    "Mtu": 0
+  },
+```
+
+## Add a Windows worker node (optional)
+If you would like to add Windows workloads to an existing Linux only cluster, you can run:
+
+```powershell
+Add-AksEdgeNode -NodeType Windows
+```
+
+You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
 ## Next steps
 

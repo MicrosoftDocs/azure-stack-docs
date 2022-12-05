@@ -96,7 +96,7 @@ Open a browser and navigate to your Node IP which is the `external-IP` of your `
 ## Step 3: Update your application using GitOps
 
 1. In your fork of the **azure-arc-jumpstart-apps** repository, navigate to **hello-arc > releases > app > hello-arc.yaml**.
-2. Make a change to this YAML file by selecting **Edit**. Change the replicaCount to 5. Change value to "Deploying to AKS on Windows IoT Gitops!"
+2. Make a change to this YAML file by selecting **Edit**. Change the replicaCount to 5. Change value to "Deploying to AKS Edge Essentials Gitops!"
 3. Commit this change.
 
 >[!NOTE]

@@ -37,7 +37,7 @@ This article contains instructions to:
 
 ## Configuring a proxy
 
-The following series of steps is a temporary workaround. We are working on exposing proxy settings as a feature of AKS-IoT.
+The following series of steps is a temporary workaround. We are working on exposing proxy settings as a feature of AKS Edge.
 
 In short, the environment variables `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` are used to drive proxy settings. This article covers places to make modifications to ensure the environment variables are set consistently.
 
@@ -95,7 +95,7 @@ Now that the environment variables for the HTTP proxy are set consistently, run 
    /var/.eflow/config/kXs/lifecycle-mgmt.sh -r -d k8s -c 192.168.0.2
    ```
 
-   `192.168.0.2` is the control plane endpoint, which should match the `-ControlPlaneEndpoint` parameter passed into `New-AksIotSingleNodeCluster` or `New-AksIotCluster` (defaults to the IP address assigned to the VM's eth0).
+   `192.168.0.2` is the control plane endpoint, which should match the `-ControlPlaneEndpoint` parameter passed into `New-AksEdgeSingleNodeCluster` or `New-AksEdgeCluster` (defaults to the IP address assigned to the VM's eth0).
 
 2. Reinitialize the node using:
 
@@ -103,7 +103,7 @@ Now that the environment variables for the HTTP proxy are set consistently, run 
    /var/.eflow/config/kXs/lifecycle-mgmt.sh -i -d k8s -c 192.168.0.2 -n flannel
    ```
 
-    `192.168.0.2` is the control plane endpoint which should match the control plane endpoint passed into the AKS-Iot PowerShell frontend. `flannel` is the default CNI selected and should match the `-NetworkPlugin` parameter passed into `New-AksIotSingleNodeCluster` or `New-AksIotCluster`.
+    `192.168.0.2` is the control plane endpoint which should match the control plane endpoint passed into the AKS Edge PowerShell frontend. `flannel` is the default CNI selected and should match the `-NetworkPlugin` parameter passed into `New-AksEdgeSingleNodeCluster` or `New-AksEdgeCluster`.
 
 ## Connect to Arc Using PowerShell 7 and New API
 
@@ -134,13 +134,13 @@ choco install kubernetes-helm --version=3.6.3
 
 ### Step 2: Configure your Azure environment
 
-Open the **aksiot-userconfig.json** file (default location is **C:\Program Files\AksIot**). Enter the information for the following parameters in order to connect to Arc. You must have created a resource group and service principal. Once the information is filled out, save the JSON and close the file.
+Open the **aksedge-userconfig.json** file (default location is **C:\Program Files\AksEdge**). Enter the information for the following parameters in order to connect to Arc. You must have created a resource group and service principal. Once the information is filled out, save the JSON and close the file.
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
 |Connect | bool | When set to **true**, AKS connects your cluster to Arc, and if set to **false**, disconnects your cluster from Arc. |
 |Location | string | The location in which to create your resource group. It's recommended that you use `EastUS`. |
-|ResourceGroupName | string | Name of the Azure resource group to host your Azure resources for AKS-IoT. Create a resource group and enter the name here. |
+|ResourceGroupName | string | Name of the Azure resource group to host your Azure resources for AKS Edge. Create a resource group and enter the name here. |
 |SubscriptionId | string | The ID of your Azure subscription. You can find your subscription ID on the Azure portal when you select your subscription. |
 |TenantId | string | Your tenant ID. You can find your Tenant ID on the Azure portal when you go to **Azure Active Directory**. |
 
@@ -178,7 +178,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 2. Run the following command to use your JSON configuration and the credential for the service principal you created earlier to connect your cluster to Arc:
 
     ```powershell
-    Set-AksIotArcConnection -credential $credential
+    Set-AksEdgeArcConnection -credential $credential
     ```
 
 3. This step may take a while. When the powershell command is finished running, navigate to your resource group in the Azure portal and select your cluster. You should see its status as **Connected**.
@@ -195,7 +195,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 
     ![Screenshot showing bearer token required.](media/aks-edge/bearer-token-required.png)
 
-3. In your PowerShell window, run `Get-AksIotManagedServiceToken`, copy the full string, and paste it into the Azure portal.
+3. In your PowerShell window, run `Get-AksEdgeManagedServiceToken`, copy the full string, and paste it into the Azure portal.
 
     ![Screenshot showing paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
@@ -208,7 +208,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 Run the following command to disconnect your cluster from Azure Arc:
 
 ```powershell
-Set-AksIotArcConnection -connect $false -credential $credential
+Set-AksEdgeArcConnection -connect $false -credential $credential
 ```
 
 For a complete clean-up, delete the service principal and resource group you created for this evaluation.

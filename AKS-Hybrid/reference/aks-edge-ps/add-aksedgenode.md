@@ -1,7 +1,7 @@
 ---
-title: Add-AksEdgeNode for AKS Lite
+title: Add-AksEdgeNode for AKS Edge
 author: rcheeran
-description: The Add-AksEdgeNode PowerShell command Adds a new AksIot node to the cluster..
+description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster..
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -14,7 +14,7 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Adds a new AksIot node to the cluster.
+Adds a new AksEdge node to the cluster.
 
 ## Syntax
 
@@ -41,7 +41,7 @@ Add-AksEdgeNode -JsonConfigString <String> [<CommonParameters>]
 
 ## Description
 
-Adds a new AksIot node to the cluster.
+Adds a new AksEdge node to the cluster.
 The new node created on this machine joins the cluster to
 which the existing deployment on this machine belongs.
 In case of a single machine deployment, this commandlet can be used to add a Windows node to the
@@ -321,4 +321,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

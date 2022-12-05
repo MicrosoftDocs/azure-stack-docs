@@ -1,7 +1,7 @@
 ---
-title: New-AksEdgeDeployment for AKS Lite
+title: New-AksEdgeDeployment for AKS Edge
 author: rcheeran
-description: The New-AksEdgeDeployment PowerShell command creates a new AksIot deployment 
+description: The New-AksEdgeDeployment PowerShell command creates a new AksEdge deployment 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -14,7 +14,7 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Creates a new AksIot deployment on this machine.
+Creates a new AksEdge deployment on this machine.
 
 ## Syntax
 
@@ -45,7 +45,7 @@ New-AksEdgeDeployment -JsonConfigString <String> [<CommonParameters>]
 
 ## Description
 
-Creates a new AksIot deployment with a Linux node, and optionally a Windows node, on this machine.
+Creates a new AksEdge deployment with a Linux node, and optionally a Windows node, on this machine.
 When the JoinCluster switch is specified, the new deployment will join an existing remote cluster.
 Otherwise, a new cluster will be deployed.
 The new cluster can either be a single machine cluster,
@@ -66,7 +66,7 @@ New-AksEdgeDeployment `
   -LinuxVmCpuCount 2 `
   -LinuxVmMemoryInMB 4096 `
   -LinuxVmDataSizeInGB 4 `
-  -vswitchName aksiotswitch `
+  -vswitchName aksedgeswitch `
   -LinuxVmIp4Address 192.168.1.2 `
   -ip4PrefixLength 24 `
   -ip4GatewayAddress 192.168.1.1 `
@@ -81,7 +81,7 @@ New-AksEdgeDeployment `
   -LinuxVmCpuCount 2 `
   -LinuxVmMemoryInMB 4096 `
   -LinuxVmDataSizeInGB 4 `
-  -vswitchName aksiotswitch `
+  -vswitchName aksedgeswitch `
   -LinuxVmIp4Address 192.168.1.2 `
   -ip4PrefixLength 24 `
   -ip4GatewayAddress 192.168.1.1 `
@@ -94,7 +94,7 @@ New-AksEdgeDeployment `
 ### Example 3
 
 ```
-New-AksEdgeDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -vswitchName aksiotswitch -LinuxVmIp4Address 192.168.1.2 -WindowsVmIp4Address 192.168.1.3 -ip4PrefixLength 24 -ip4GatewayAddress 192.168.1.1 -DnsServers "192.168.1.1" -ServiceIPRangeStart 192.168.1.5 -ServiceIPRangeEnd 192.168.1.10 -ControlPlaneEndpointIp 192.168.1.4
+New-AksEdgeDeployment -WorkloadType LinuxAndWindows -LinuxVmCpuCount 2 -LinuxVmMemoryInMB 4096 -LinuxVmDataSizeInGB 4 -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -vswitchName aksedgeswitch -LinuxVmIp4Address 192.168.1.2 -WindowsVmIp4Address 192.168.1.3 -ip4PrefixLength 24 -ip4GatewayAddress 192.168.1.1 -DnsServers "192.168.1.1" -ServiceIPRangeStart 192.168.1.5 -ServiceIPRangeEnd 192.168.1.10 -ControlPlaneEndpointIp 192.168.1.4
 ```
 
 ### Example 4
@@ -408,7 +408,7 @@ The parameter defines the number of
 IPs reserved for the services and the services will be hosted in this IP range determined internally.
 When this parameter is not specified or 0, the services will be hosted on the Linux VM's IP address with
 the specified port number.
-The VM IP address can be obtained by calling Get-AksIotLinuxNodeAddr.
+The VM IP address can be obtained by calling Get-AksEdgeLinuxNodeAddr.
 
 ```yaml
 Type: Int32
@@ -592,4 +592,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

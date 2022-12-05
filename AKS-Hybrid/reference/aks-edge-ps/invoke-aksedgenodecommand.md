@@ -1,5 +1,5 @@
 ---
-title: Invoke-AksEdgeNodeCommand for AKS Lite
+title: Invoke-AksEdgeNodeCommand for AKS Edge
 author: rcheeran
 description: The Invoke-AksEdgeNodeCommand PowerShell command executes an SSH command on the Linux VM.
 ms.topic: reference
@@ -83,4 +83,4 @@ Accept wildcard characters: False
 ```
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

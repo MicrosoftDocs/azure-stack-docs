@@ -1,5 +1,5 @@
 ---
-title: Export-AksEdgeWorkerNodeConfig for AKS Lite
+title: Export-AksEdgeWorkerNodeConfig for AKS Edge
 author: rcheeran
 description: The Export-AksEdgeWorkerNodeConfig PowerShell command captures the cluster configurations in a JSON file.
 ms.topic: reference
@@ -97,4 +97,4 @@ Accept wildcard characters: False
 ```
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

@@ -1,7 +1,7 @@
 ---
-title: Get-AksEdgeDeploymentInfo for AKS Lite
+title: Get-AksEdgeDeploymentInfo for AKS Edge
 author: rcheeran
-description: The Get-AksEdgeDeploymentInfo PowerShell command gets AksIot deployment information
+description: The Get-AksEdgeDeploymentInfo PowerShell command gets AksEdge deployment information
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -22,10 +22,10 @@ Get-AksEdgeDeploymentInfo
 ```
 
 ## Description
-Gets AksIot deployment information.
+Gets AksEdge deployment information.
 The function returns networking and node information of the local
-AksIot deployment.
+AksEdge deployment.
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

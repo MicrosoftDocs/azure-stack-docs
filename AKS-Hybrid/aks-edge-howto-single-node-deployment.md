@@ -10,16 +10,16 @@ ms.custom: template-how-to
 
 # Single machine deployment
 
-You can deploy AKS Edge Essentials on either a single machine or on multiple machines. In a single machine Kubernetes deployment, both the Kubernetes control node and worker node run on the same machine, which is your primary machine. This article describes how to create the Kubernetes control node on your machine on a private network.
+You can deploy AKS Edge Essentials on either a single machine or on multiple machines. In a single machine Kubernetes deployment, both the Kubernetes control node and worker node run on the same machine. This article describes how to create the Kubernetes control node on your machine on a private network.
 
 ## Prerequisites
 
 - Set up your primary machine as described in the [Setup article](aks-edge-howto-setup-machine.md).
-- From the files downloaded from the GitHub repo, open the **AksEdgePrompt** file from the /tools folder. This will load all the required modules and check prerequisites in your machine.
+
 
 ## Create a single machine cluster
 
-You can run the `New-AksLiteDeployment` cmdlet to deploy a single-machine AksIot cluster with a single Linux control-plane node. You can do so by providing your values in a JSON file. Run the `New-AksEdgeConfig` cmdlet to create a sample JSON **mydeployconfig.json** file with the default parameters and edit this file to provide your own values:
+You can run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node. You can do so by providing your values in the AKSEdgeConfig JSON file. Run the `New-AksEdgeConfig` cmdlet to create a sample JSON **mydeployconfig.json** file with the default parameters and edit this file to provide your own values:
 
 ```powershell
 #create a deployment configuration file with defaults
@@ -50,7 +50,7 @@ Some of the common parameters and their default values as follows:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-iot-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) *| `Linux` |
 | `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. | `flannel` |
 | `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM/VMs. | `2` |
 | `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM/VMs. | `2048` |
@@ -59,7 +59,7 @@ Some of the common parameters and their default values as follows:
 
 ## Example deployment options
 
-- **Create a simple cluster without a load balancer**. You can also create a very simple cluster with no service IPs. You cannot create a LoadBalancer service in this approach.
+- **Create a simple cluster without a load balancer**. You can create a very simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You cannot create a LoadBalancer service in this approach.
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
@@ -158,13 +158,11 @@ Confirm that the deployment was successful by running:
 kubectl get nodes -o wide
 kubectl get pods -A -o wide
 ```
-
+Here is a screenshot showing pods on a K3S cluster. 
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
-> [!NOTE]
-> This screenshot is for a k3s cluster so the pods will look different for k8s.
-
-Optionally, add a Windows node. If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
+## Add a Windows worker node (optional)
+If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
 
 ```powershell
 Add-AksEdgeNode -NodeType Windows
@@ -172,9 +170,6 @@ Add-AksEdgeNode -NodeType Windows
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
-## Alternate option: AksEdgeDeploy(Aide)
-
-We have also included AksEdgeDeploy(Aide) module in our [GitHub repo](https://github.com/Azure/aks-edge-utils) to help you automate the installation, deployment and provisioning of AKS edge with the JSON specification. We have included a sample JSON for quick deployment as well as a template JSON that you can fill out to specify your own parameters. This is designed to support remote deployment scenarios.
 
 ## Next steps
 

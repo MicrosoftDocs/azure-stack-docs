@@ -1,7 +1,7 @@
 ---
-title: Test-AksEdgeNetworkParameters for AKS Lite
+title: Test-AksEdgeNetworkParameters for AKS Edge
 author: rcheeran
-description: The Test-AksEdgeNetworkParameters PowerShell command validates AksIot network parameters,
+description: The Test-AksEdgeNetworkParameters PowerShell command validates AksEdge network parameters,
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -14,7 +14,7 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Validates AksIot network parameters, useful as a pre-deployment step.
+Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Syntax
 
@@ -41,9 +41,9 @@ Test-AksEdgeNetworkParameters -JsonConfigString <String> [<CommonParameters>]
 
 ## Description
 
-Validates AksIot network parameters, useful as a pre-deployment step.
+Validates AksEdge network parameters, useful as a pre-deployment step.
 For a documentation of the
-parameters, see the New-AksIotDeployment commandlet.
+parameters, see the New-AksEdgeDeployment commandlet.
 
 ## Examples
 
@@ -252,4 +252,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

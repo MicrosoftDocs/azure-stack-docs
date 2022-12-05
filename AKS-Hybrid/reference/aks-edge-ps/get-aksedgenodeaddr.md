@@ -1,5 +1,5 @@
 ---
-title: Get-AksEdgeNodeAddr for AKS Lite
+title: Get-AksEdgeNodeAddr for AKS Edge
 author: rcheeran
 description: The Get-AksEdgeNodeAddr PowerShell command gets the Linux VM's IP and MAC addresses
 ms.topic: reference
@@ -47,4 +47,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

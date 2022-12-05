@@ -1,5 +1,5 @@
 ---
-title: Remove-AksEdgeDeployment for AKS Lite
+title: Remove-AksEdgeDeployment for AKS Edge
 author: rcheeran
 description: The Remove-AksEdgeDeployment PowerShell command removes the deployment from an existing cluster.
 ms.topic: reference
@@ -30,4 +30,4 @@ Removes the deployment from an existing cluster.
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)

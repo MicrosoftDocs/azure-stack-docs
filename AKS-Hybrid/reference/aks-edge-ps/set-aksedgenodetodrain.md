@@ -1,5 +1,5 @@
 ---
-title: Set-AksEdgeNodeToDrain for AKS Lite
+title: Set-AksEdgeNodeToDrain for AKS Edge
 author: rcheeran
 description: The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a  node  from an existing cluster.
 ms.topic: reference
@@ -65,4 +65,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Akslite PowerShell Reference](./index.md)
+[Aksedge PowerShell Reference](./index.md)
