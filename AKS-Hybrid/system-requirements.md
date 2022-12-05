@@ -5,8 +5,8 @@ ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 09/27/2022
-ms.reviewer: abha
-ms.date: 05/20/2022
+ms.reviewer: mikek
+ms.date: 11/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -21,7 +21,10 @@ This article covers the requirements for setting up Azure Kubernetes Service on 
 
 ## Active Directory requirements
 
-For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+
+>[!NOTE]
+>Active Directory is not required for single node Azure Stack HCI or Windows Server deployments. 
 
 - Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
@@ -34,6 +37,10 @@ For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to fu
 ## Hardware requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+
+> [!IMPORTANT]
+> The host systems for production deployments must be physical hardware. Nested virtualization is not supported outside of use through the [evaluation guide](aks-hci-evaluation-guide.md).
+> Nested virtualization is characterized as deploying Azure Stack HCI or Windows Server in a virtual machine and installing AKS hybrid in that virtual machine.
 
 ### Maximum supported hardware specifications
 
