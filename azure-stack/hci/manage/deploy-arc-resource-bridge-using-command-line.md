@@ -203,14 +203,14 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
       ```
       > [!IMPORTANT]
-      > Prepare and deploy can take up to 30 minutes to complete.
+      > - The output of the above command is a kubeconfig file. Make sure you store this file in a secure and safe location for future use.
+      >  
+      >  - Prepare and deploy can take up to 30 minutes to complete. If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
       >
-      > If the `deploy` cmdlet fails, clean up the installation and retry the `deploy` cmdlet. Run the following cmdlet to clean up the installation:
-      >
-      >```powershell
-      >az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
-      >```
-      > While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+      >    ```powershell
+      >    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
+      >    ```
+      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
    
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
