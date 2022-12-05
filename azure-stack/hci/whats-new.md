@@ -22,6 +22,8 @@ You can also join the Azure Stack HCI preview channel to test out features for f
 The following sections briefly describe the various features and enhancements in [Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package-preview) and in [Azure Stack HCI, version 22H2](#azure-stack-hci-version-22).
 
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Azure Stack HCI, Supplemental Package (preview)
 
 Azure Stack HCI, Supplemental Package is now available to be deployed on servers running Azure Stack HCI, version 22H2 OS. This package contains a brand new deployment tool that allows for an interactive deployment, new security capabilities, an Azure Stack HCI Environment Checker tool that will validate connectivity, hardware, identity and networking prior to deployment, and a unified log collection experience.
@@ -38,9 +40,9 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 [!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
 
-## Azure Stack HCI, version 22
+## Azure Stack HCI, version 22H2
 
-Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version is a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
 
 ### Network ATC v2 improvements
 
@@ -126,7 +128,7 @@ In this release, you can secure your application workload virtual machines (VMs)
 
 For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md).
 
-## Azure Hybrid Benefit for Azure Stack HCI
+### Azure Hybrid Benefit for Azure Stack HCI
 
 Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
 
