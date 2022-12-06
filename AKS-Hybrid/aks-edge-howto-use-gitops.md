@@ -4,7 +4,7 @@ description: Learn how to use GitOps with AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
@@ -12,7 +12,7 @@ ms.custom: template-how-to
 
 This article describes how to deploy applications to your Arc-enabled AKS Edge Essentials cluster. The steps are as follows:
 
-1. Point to your GitHub application in the Azure portal.
+1. Point to your GitHub application to the Azure portal.
 2. Push your application to your AKS Edge Essentials cluster by installing GitOps configurations.
 3. Commit a change to your GitHub application and show that your app updates automatically.
 
@@ -77,7 +77,7 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 
 ![Screenshot showing namespace-level configuration.](media/aks-edge/gitops-second-config.png)
 
-Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up.
+Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up:
 
 ```bash
 kubectl get svc -n ingress-nginx
@@ -96,15 +96,15 @@ Open a browser and navigate to your Node IP which is the `external-IP` of your `
 ## Step 3: Update your application using GitOps
 
 1. In your fork of the **azure-arc-jumpstart-apps** repository, navigate to **hello-arc > releases > app > hello-arc.yaml**.
-2. Make a change to this YAML file by selecting **Edit**. Change the replicaCount to 5. Change value to "Deploying to AKS Edge Essentials Gitops!"
-3. Commit this change.
+1. Make a change to this YAML file by selecting **Edit**. Change the replicaCount to 5. Change value to "Deploying to AKS Edge Essentials Gitops!"
+1. Commit this change.
 
 >[!NOTE]
-> Because we have set the **sync interval** to **1 min** when creating the configurations, Flux will be pulling down changes from GitHub every minute.
+> Because we have set the **sync interval** to **1 min** when creating the configurations, Flux pulls down changes from GitHub every minute.
 
 ![Screenshot showing hello-arc yaml.](media/aks-edge/edit-yaml.png)
 
-4. Use `kubectl` to see the old pods terminate and new pods come online.
+1. Use `kubectl` to see the old pods terminate and new pods come online.
 
     ```bash
     kubectl get pods -n hello-arc -w
@@ -112,12 +112,11 @@ Open a browser and navigate to your Node IP which is the `external-IP` of your `
 
     ![Screenshot showing pods rolling update.](media/aks-edge/pods-rolling-update.png)
 
-5. Refresh your application to see this change reflected as a rolling update.
+1. Refresh your application to see this change reflected as a rolling update.
 
     ![Screenshot showing updated hello-arc application.](media/aks-edge/app-update-success.png)
 
 For more information about GitOps, see the [Azure Arc Jumpstart guide](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/microk8s/local_microk8s_gitops_helm/#deploy-gitops-configurations-and-perform-helm-based-gitops-flow-on-microk8s-as-an-azure-arc-connected-cluster).
-
 
 ## Next steps
 
