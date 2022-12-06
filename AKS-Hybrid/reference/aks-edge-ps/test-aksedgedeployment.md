@@ -25,4 +25,3 @@ Test-AksEdgeDeployment
 ## Next steps
 
 [AksEdge PowerShell Reference](./index.md)
-

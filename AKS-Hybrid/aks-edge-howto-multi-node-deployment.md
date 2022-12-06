@@ -14,7 +14,7 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 ## Prerequisites
 
-Set up your machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
+Set up your machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) page.
 
 ## Key configuration parameters for a full Kubernetes deployment
 
@@ -45,11 +45,11 @@ Note the following
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-3) **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-edge-concept.md) overview for more details.For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+3) **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-edge-concept.md) overview for more details. For example: In local networks with 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
 
 ## Validate the configuration file
 
-After you update the `aksedge-config.json` file and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
+After you update the `aksedge-config.json` file open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd), this will open a elevated PowerShell window with the modules loaded. Now run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
 
 ```powershell
 Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json

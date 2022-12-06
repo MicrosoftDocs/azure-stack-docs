@@ -33,15 +33,16 @@ Get-AksEdgeNodeName
 ## Parameters
 
 ### -NodeType
-{{ Fill NodeType Description }}
+
+This parameter indicates whether a 'Linux' node or a 'Windows' node should be added.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 0
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

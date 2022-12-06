@@ -14,11 +14,11 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisite
 
-Set up your primary machine as described in the [setup article](aks-edge-howto-setup-machine.md).
+Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) page.
 
 ## Create a single machine cluster
 
-1. The parameters needed to create a single machine cluster are defined in the `aksedge-config.json` file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](./aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the **`singlemachinecluster`** flag, which must be set as `true`.
+1. The parameters needed to create a single machine cluster are defined in the [`aksedge-config.json`](https://github.com/Azure/aks-edge-utils/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](./aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the **`singlemachinecluster`** flag, which must be set as `true`.
 
 2. Open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd), this will open a elevated PowerShell window with the modules loaded.
 3. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node.
@@ -56,7 +56,7 @@ You can create your own configuration file using the `New-AksEdgeConfig` command
 New-AksEdgeConfig -outFile .\mydeployconfig.json
 ```
 
-You can edit mydeployconfig.json with the parameters you need and pass the JSON config file for deployment.  You can then use this file in your deployment.
+You can edit mydeployconfig.json with the parameters you need and pass the JSON config file for deployment.
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
@@ -103,7 +103,7 @@ You can create a simple cluster with no service IPs(`ServiceIPRangeSize` set as 
            "MemoryInMB": 4096
        },
        "Network": {
-           "ServiceIPRangeRange": 10
+           "ServiceIPRangeSize": 10
        }
    ```
 
@@ -147,7 +147,7 @@ You can also deploy mixed-workloads clusters. The following example shows how to
            "MemoryInMB": 4096
        },
        "Network": {
-           "ServiceIPRangeRange": 10
+           "ServiceIPRangeSize": 10
        }
    ```
 
