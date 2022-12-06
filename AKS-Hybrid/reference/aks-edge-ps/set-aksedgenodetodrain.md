@@ -13,8 +13,6 @@ ms.lastreviewed: 11/17/2022
 
 # Set-AksEdgeNodeToDrain
 
-## Synopsis
-
 Drains a local node.
 
 ## Syntax

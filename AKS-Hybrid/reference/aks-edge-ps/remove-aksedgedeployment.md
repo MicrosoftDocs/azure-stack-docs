@@ -13,8 +13,6 @@ ms.lastreviewed: 11/17/2022
 
 # Remove-AksEdgeDeployment
 
-## Synopsis
-
 Removes all nodes on the current machine.
 
 ## Syntax

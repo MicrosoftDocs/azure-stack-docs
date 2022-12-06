@@ -12,7 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Stop-AksEdgeNode
 
-## Synopsis
 Stops the node VM if it's currently started.
 
 ## Syntax

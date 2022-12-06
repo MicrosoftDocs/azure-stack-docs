@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNetworkParameters
 
-## Synopsis
-
 Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Syntax

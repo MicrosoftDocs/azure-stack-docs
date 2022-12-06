@@ -13,8 +13,6 @@ ms.lastreviewed: 10/04/2022
 
 # Remove-AksEdgeNode
 
-## Synopsis
-
 Removes a local node from an existing cluster.
 
 ## Syntax

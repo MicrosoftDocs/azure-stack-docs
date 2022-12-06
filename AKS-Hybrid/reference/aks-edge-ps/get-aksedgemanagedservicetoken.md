@@ -13,8 +13,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeManagedServiceToken
 
-## Synopsis
-
 Gets the AksEdge managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
 ## Syntax

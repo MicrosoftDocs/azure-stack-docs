@@ -13,10 +13,7 @@ ms.lastreviewed: 10/04/2022
 
 # Set-AksEdgeArcConnection
 
-## Synopsis
-
-Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for
-Kubernetes.
+Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for Kubernetes.
 
 ## Syntax
 
@@ -42,10 +39,9 @@ Set-AksEdgeArcConnection [-Credential <PSCredential>] -JsonConfigString <String>
 
 ## Description
 
-Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for
-Kubernetes.
-Running this modules requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
-as well as an up to date helm version in the binary path.
+Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for Kubernetes.
+Running this module requires the latest version of the Az.ConnectedKubernetes and Az.Accounts modules
+as well as the latest helm version in the binary path.
 
 ## Examples
 
@@ -78,8 +74,7 @@ Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLoca
 ### -ClusterName
 
 Name of the cluster in the Azure Arc for Kubernetes cluster projection.
-If no value is specified, the
-local Linux node name will be used.
+If no value is specified, the local Linux node name will be used.
 
 ```yaml
 Type: String
@@ -129,7 +124,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 
-Azure resource group for the connected cluster
+Azure resource group for the connected cluster.
 
 ```yaml
 Type: String

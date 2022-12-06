@@ -12,7 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeNodeName
 
-## Synopsis
 Gets the Linux VM's hostname
 
 ## Syntax

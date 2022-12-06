@@ -12,7 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeDeploymentInfo
 
-## Synopsis
 Gets AksEdge deployment information.
 
 ## Syntax

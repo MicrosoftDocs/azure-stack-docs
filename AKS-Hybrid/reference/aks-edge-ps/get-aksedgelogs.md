@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeLogs
 
-## Synopsis
-
 Collects all the logs from the deployment.
 
 ## Syntax

@@ -12,8 +12,6 @@ ms.lastreviewed: 11/17/2022
 
 # New-AksEdgeConfig
 
-## Synopsis
-
 Creates a JSON file with the configurations.
 
 ## Syntax

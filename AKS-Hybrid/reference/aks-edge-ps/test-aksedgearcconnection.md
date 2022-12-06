@@ -12,9 +12,7 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeArcConnection
 
-## Synopsis
-
-The Test-AksArcConnection commandlet is an exposed function to verify whether the Linux or Windows node is ARC Connected. It returns true if the node is connected or false if its not.
+The Test-AksArcConnection commandlet is an exposed function to verify whether the Linux or Windows node is ARC Connected. It returns true if the node is connected or false if it's not.
 
 ## Syntax
 

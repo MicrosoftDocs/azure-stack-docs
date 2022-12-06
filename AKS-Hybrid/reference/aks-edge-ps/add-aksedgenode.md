@@ -12,13 +12,9 @@ ms.lastreviewed: 10/04/2022
 
 # Add-AksEdgeNode
 
-## Synopsis
-
 Adds a new AksEdge node to the cluster.
 
 ## Syntax
-
-### fromParameters
 
 ```powershell
 Add-AksEdgeNode [-NodeType] <String> [[-CpuCount] <Int32>] [[-MemoryInMB] <Int32>] [[-DataSizeInGB] <Int32>]

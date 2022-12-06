@@ -12,8 +12,6 @@ ms.lastreviewed: 11/17/2022
 
 # New-AksEdgeScaleConfig
 
-## Synopsis
-
 Creates a JSON file with the configurations.
 
 ## Syntax
@@ -28,6 +26,9 @@ Creates a sample configuration file needed to scale to additional nodes on an AK
 
 ## Parameters
 
+### -outFile
+Provide the name of configuration file
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -39,6 +40,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## Next steps
 
 [AksEdge PowerShell Reference](./index.md)

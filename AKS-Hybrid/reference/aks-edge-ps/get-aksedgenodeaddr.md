@@ -12,7 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeNodeAddr
 
-## Synopsis
 Gets the Linux VM's IP and MAC addresses
 
 ## Syntax

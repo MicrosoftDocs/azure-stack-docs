@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNode
 
-## Synopsis
-
 Checks whether the node of NodeType was created.
 
 ## Syntax

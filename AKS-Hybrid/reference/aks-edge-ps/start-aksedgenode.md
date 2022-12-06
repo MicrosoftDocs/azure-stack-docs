@@ -13,8 +13,6 @@ ms.lastreviewed: 10/04/2022
 
 # Start-AksEdgeNode
 
-## Synopsis
-
 Starts the node VM if it's currently stopped.
 
 ## Syntax

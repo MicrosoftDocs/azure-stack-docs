@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Invoke-AksEdgeNodeCommand
 
-## Synopsis
-
 Executes an SSH command on the VM.
 
 ## Syntax

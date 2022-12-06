@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # New-AksEdgeDeployment
 
-## Synopsis
-
 Creates a new AksEdge deployment on this machine.
 
 ## Syntax
