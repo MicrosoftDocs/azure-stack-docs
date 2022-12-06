@@ -92,9 +92,7 @@ Check that the benefit has not already enabled on your management cluster. If th
 
 # [Azure PowerShell](#tab/powershell)
 
-Open a PowerShell window and run the following commands:
-
-```PowerShell 
+```PowerShell
 Connect-AzAccount -Tenant <TenantId> -Subscription <SubscriptionId> -UseDeviceAuthentication
 Set-AzContext -Subscription <Subscription>
 Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> | fl
@@ -171,13 +169,11 @@ I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to
 
 ### Verify that the benefit is enabled
 
-Run the following command and check that JSON property `AzureHybridBenefit` is set to  `True`.
+Run the following command and check that the JSON property `AzureHybridBenefit` is set to  `True`.
 
 # [Azure PowerShell](#tab/powershell)
 
-Open a PowerShell terminal and run the following commands:
-
- ```PowerShell
+```PowerShell
 Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> | fl
 ```
 
