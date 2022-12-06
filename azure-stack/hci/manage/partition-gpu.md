@@ -33,7 +33,7 @@ GPU partitioning on Azure Stack HCI supports these guest operating systems:
 
 | Operating System | Version |
 | ---------------- | ------- |
-| Windows          | 10, 11, 10 Multisession​, 11 Multisession |
+| Windows          | 10, 11, 10 Enterprise multi-session​, 11 Enterprise multi-session |
 | Windows Server   | 2019, 2022 |
 | Linux            | Ubuntu 18.04 LTS, Ubuntu 20.04 LTS​ |
 
