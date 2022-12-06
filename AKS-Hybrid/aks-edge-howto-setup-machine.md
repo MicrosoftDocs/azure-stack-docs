@@ -38,21 +38,24 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
     powercfg /x -standby-timeout-dc 0
     powercfg /hibernate off
     ```
-    Some device firmware may require that `Connected Standby` be disabled to avoid sleep cycling while operating your Kubernetes cluster. If your machine’s firmware requires this, you can disable Connected Standby by following the documentation provided by your device OEM or use the following command to change your registry:
+
+    Some device firmware may require that `Connected Standby` be disabled to avoid sleep cycling while operating your Kubernetes cluster. If your machine’s firmware requires this, you can disable Connected Standby by following the documentation provided by your device OEM, or use the following command to change your registry:
+
     ```bash
     reg add HKLM\System\CurrentControlSet\Control\Power /v PlatformAoAcOverride /t REG_DWORD /d 0
     ```
 
     Note: a reboot is required for this registry key change to take effect.  You can validate that all sleep states are now unavailable, as is required by Kubernetes, by running the following command  
+
     ```bash
     powercfg /a
     ```
-    
+
 ## Download the installer
 
 You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines that are either control nodes or worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
 
-1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you will need the Windows node files.
+1. On your machine, download the **AksEdge-k3s MSI** or **AksEdge-k8s MSI**, depending on which Kubernetes distribution you want to use. Also, if you're creating a Windows worker node, you'll need the Windows node files.
 
     | File | Link |
     | ---- | ---- |
@@ -60,11 +63,11 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
     | k3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
-1. In addition to the MSI, Microsoft provides a few samples and tools which you can download from the [AKS Edge Utils GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+1. In addition to the MSI, Microsoft provides a few samples and tools, which you can download from the [AKS Edge Utils GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
-In this release, both k8s and k3s are supported. We have provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
+In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both k8s and k3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
 ## Set up your machine as a Linux node
 
@@ -82,7 +85,7 @@ In order to configure your MSI installer to include Windows nodes, make sure you
     msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
     ```
 
-3. Now you are ready to do mixed deployment.
+3. Now you're ready to do mixed deployment.
 
 ## Load AKS Edge modules
 

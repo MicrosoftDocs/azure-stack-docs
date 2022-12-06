@@ -15,7 +15,7 @@ ms.lastreviewed: 11/17/2022
 
 ## Synopsis
 
-Removes all nodes in the current machine.
+Removes all nodes on the current machine.
 
 ## Syntax
 
@@ -25,18 +25,15 @@ Remove-AksEdgeDeployment [-Force] [-Headless] [<CommonParameters>]
 
 ## Description
 
-Removes all nodes in the current machine.
-In case the last control-plane node of a cluster is
+Removes all nodes running on the current machine. If the last control-plane node of a cluster is
 removed, remaining worker nodes will be dangling.
 
 ## Parameters
 
 ### -Force
-This parameter enables to continue node removal even in case of errors.
-A confirmation dialogue will be
-displayed because proceeding in error cases can have adverse side effects on the state of the cluster.
-In combination with the headless switch, a node can be force removed without user interaction even in
- case of errors.
+This parameter forcefully removes a node even if there are errors. A confirmation dialogue will be
+displayed because proceeding with error condition can have adverse side effects on the state of the cluster.
+In combination with the headless switch, a node can be forcefully removed without user interaction even if there are errors. 
 
 ```yaml
 Type: SwitchParameter

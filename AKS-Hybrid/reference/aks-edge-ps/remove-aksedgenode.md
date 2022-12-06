@@ -25,7 +25,7 @@ Remove-AksEdgeNode [-NodeType] <String> [-Force] [-Headless] [<CommonParameters>
 
 ## Description
 
-Removes a local node from an existing cluster.This is supported only when Linux and Windows nodes are deployed
+Removes a local node from an existing cluster. This is supported only when Linux and Windows nodes are deployed
 in the same machine.
 To remove the single node deployed, use Remove-AksEdgeDeployment.
 
@@ -55,11 +55,7 @@ Accept wildcard characters: False
 
 ### -Force
 
-This parameter enables to continue node removal even in case of errors.
-A confirmation dialogue will be
-displayed because proceeding in error cases can have adverse side effects on the state of the cluster.
-In combination with the headless switch, a node can be force removed without user interaction even in
- case of errors.
+This parameter forcefully removes a node despite errors. A confirmation dialogue will be displayed because proceeding in error cases can have adverse side effects on the state of the cluster. In combination with the headless switch, a node can be force removed without user interaction even if there are errors.
 
 ```yaml
 Type: SwitchParameter

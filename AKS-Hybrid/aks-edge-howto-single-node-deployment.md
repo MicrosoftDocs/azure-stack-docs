@@ -18,7 +18,7 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Create a single machine cluster
 
-1. The parameters needed to create a single machine cluster are defined in the `aksedge-config.json` file in the downloaded GitHub folder. The details of the configuration parameters are available [placeholder link](TODO). The parameter that defines a single machine cluster is the **`singlemachinecluster`** flag which must be set as `true`.
+1. The parameters needed to create a single machine cluster are defined in the `aksedge-config.json` file in the downloaded GitHub folder. The details of the configuration parameters are available [placeholder link](TODO). The parameter that defines a single machine cluster is the **`singlemachinecluster`** flag, which must be set as `true`.
 
 2. Open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd), this will open a elevated PowerShell window with the modules loaded.
 3. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node.
@@ -30,14 +30,14 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
     To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window.
 
 
-## Single machine deployment options
+## Single machine configuration  parameters
 
-These are the key parameters and their default values applicable for single machine deployment:
+The key parameters and their default values applicable for single machine deployment:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
 |`SingleMachineCluster` |`boolean`| Set this flag as **true** for single machine cluster deployments|`true`
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) *| `Linux` |
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) *| `Linux` |
 | `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. For K8S clusters, only `calico` is supported. | `flannel` |
 | `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM. | `2` |
 | `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM. | `2048` |
@@ -81,7 +81,7 @@ New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
 
 ### Create a simple cluster without a load balancer
 
- You can create a very simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You cannot create a LoadBalancer service in this approach.
+ You can create a simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You can't create a LoadBalancer service in this approach.
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
@@ -89,7 +89,7 @@ New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
 
 ### Allocate resources to your nodes
 
- To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4 GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
    ```json
        "DeployOptions": {
