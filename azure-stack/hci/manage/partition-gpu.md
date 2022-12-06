@@ -323,7 +323,7 @@ Follow these steps to configure GPU partition count in PowerShell:
 > [!NOTE]
 > When using PowerShell, you must manually ensure the GPU configuration is homogenous across all the servers in your cluster.
 
-1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command. See the PowerShell tab in the [Verify GPU partitioning driver installation](#verify-gpu-partitioning-driver-installation) section, above.
+1. Refer to the **Name** and **ValidPartitionCounts** values you noted earlier when you ran the `Get-VMHostPartitionableGpu` command. See the PowerShell tab in the [Verify GPU driver installation](#verify-gpu-driver-installation) section, above.
 
 1. Connect to the server whose GPU partition count you want to configure.
 
