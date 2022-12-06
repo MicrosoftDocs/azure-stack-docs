@@ -20,7 +20,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | `NetworkPlugin` | [`calico`/`flannel`] |  CNI plugin choice for the Kubernetes network model. *For K8s cluster, always use `calico`*. | `flannel` |
 | `Headless` | `boolean` | Flag to suppress any user interaction/prompts and continue. | `false` |
 | `TimeoutSeconds` | `number` | Timeout provided for the kubernetes cluster to complete the bootstrap process. Recommend to use the default value. | `900` |
-| `ServerTLSBootstrap` | `boolean` | Flag to bootstrap Server TLS process in K8s cluster. Not applicable for K3s cluster. See [more info](). | `false` |
+| `ServerTLSBootstrap` | `boolean` | Flag to bootstrap Server TLS process in K8s cluster. Not applicable for K3s cluster. See [more info](./aks-edge-howto-metric-server.md). | `false` |
 
 
 ### Additional Deployment Options for scaling a cluster
@@ -51,7 +51,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 > [!NOTE]
 > If you would like to create a Windows node, add a section in your `aksedge-config.json` to define your Windows VM parameters:
 
-```powershell
+```json
 "LinuxVm": {
         "CpuCount": 4,
         "MemoryInMB": 4096,
