@@ -1,19 +1,19 @@
 ---
 title: AKS configuration
-description: Additional configuration for AKS Edge Essentials
+description: Additional configuration for AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/03/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to #Required; leave this attribute/value as-is.
 ---
 
-# Additional configuration For AKS Edge Essentials
+# Additional configuration for AKS Edge Essentials
 
 This article contains instructions to:
 
 1. [Install a default **StorageClass** in AKS Edge Essentials](#install-a-default-storageclass-in-aks-edge-essentials).
-2. [Configure a proxy using a temporary workaround](#configuring-a-proxy).
+2. [Configure a proxy using a temporary workaround](#configure-a-proxy).
 3. [Connect to Arc using PowerShell 7 and the new API](#connect-to-arc-using-powershell-7-and-new-api).
 
 ## Install a default **StorageClass** in AKS Edge Essentials
@@ -35,11 +35,11 @@ This article contains instructions to:
 
 3. Make sure your PVs reference the local-storage **StorageClass**. For example, `spec.storageClassName: local-storage`.
 
-## Configuring a proxy
+## Configure a proxy
 
 The following series of steps is a temporary workaround. We are working on exposing proxy settings as a feature of AKS Edge.
 
-In short, the environment variables `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` are used to drive proxy settings. This article covers places to make modifications to ensure the environment variables are set consistently.
+In short, the environment variables `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` are used to drive proxy settings. This article describes places to make modifications to ensure the environment variables are set consistently.
 
 > [!NOTE]
 > Make sure to include the pod network in the list of addresses in `NO_PROXY` to ensure pods can properly communicate with one another over the private pod network.
@@ -48,7 +48,7 @@ Use `LaunchPrompt.cmd` to open an elevated PS window and run `mars` to get an in
 
 ### Add HTTP_PROXY, HTTPS_PROXY, NO_PROXY values to environment
 
-Since this configuration is set in environment variables, it's important to make sure it is consistent on the machine. Add the following settings to `/etc/environment` and `/etc/profile`:
+Since this configuration is set in environment variables, it's important to make sure it's consistent on the machine. Add the following settings to `/etc/environment` and `/etc/profile`:
 
 ```bash
 # /etc/environment sample
@@ -105,7 +105,7 @@ Now that the environment variables for the HTTP proxy are set consistently, run 
 
     `192.168.0.2` is the control plane endpoint which should match the control plane endpoint passed into the AKS Edge PowerShell frontend. `flannel` is the default CNI selected and should match the `-NetworkPlugin` parameter passed into `New-AksEdgeSingleNodeCluster` or `New-AksEdgeCluster`.
 
-## Connect to Arc Using PowerShell 7 and New API
+## Connect to Arc using PowerShell 7 and new API
 
 ### Step 1: Install dependencies
 
@@ -117,7 +117,7 @@ If you don't have chocolatey installed, open PowerShell as administrator and run
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-Next, run the following commands as admin to install the dependencies in PowerShell:
+Next, run the following commands as administrator to install the dependencies in PowerShell:
 
 ```powershell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
@@ -154,7 +154,7 @@ In order to create a service principal, run the following command in PowerShell,
 az ad sp create-for-RBAC --name "arc-test-sp-name" --scope /subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<YOUR RESOURCE GROUP NAME> --role owner
 ```
 
-When completed, it will give you the appId and password of the service principal.
+When completed, it will give you the app ID and password of the service principal.
 
 #### Create a PSCredential object with service principal
 

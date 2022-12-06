@@ -4,7 +4,7 @@ description: Learn how to uninstall AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
@@ -20,7 +20,7 @@ If you used the commands from the AKSEdgeDeploy module to connect to Arc, run `D
 Disconnect-ArcIotK8s
 ```
 
-If you're used PowerShell 7 and the `Set-AksEdgeArcConnection` command to connect to Arc, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
+If you used PowerShell 7 and the `Set-AksEdgeArcConnection` command to connect to Arc, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
 
 ```powershell
 Set-AksEdgeArcConnection -connect $false
@@ -44,7 +44,7 @@ kubectl delete -f linux-sample.yaml
 
 ## Remove nodes on a single-machine cluster
 
-To remove the windows node only,
+To remove the Windows node only,
 
 ```powershell
 Remove-AksEdgeNode -nodeType Windows

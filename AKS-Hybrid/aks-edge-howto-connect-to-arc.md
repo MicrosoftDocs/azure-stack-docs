@@ -4,31 +4,30 @@ description: Connect your AKS Edge Essentials clusters to Arc
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
 # Connect your AKS Edge Essentials cluster to Arc
 
-This section shows how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
+This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal.
 
 
 ## Prerequisites
 
-You need an Azure subscription with either the `Owner` role or a combination of `Contributor` and `User Access Administrator` roles. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left-hand side of the Azure portal, and then clicking on **View my access**. Read the [official Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
+You need an Azure subscription with either the `Owner` role or a combination of `Contributor` and `User Access Administrator` roles. You can check your access level by navigating to your subscription, select **Access control (IAM)** on the left-hand side of the Azure portal, and then select **View my access**. Read the [Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
 
 Execute the following steps on your primary machine.
 
 There are two approaches to connect your cluster to Arc:
 
-1. Use the helper modules in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools/modules/AksEdgeAzureSetup) to simplify Arc connectivity. The steps for using the helper modules as described on this page.
-2. Use PowerShell 7 with the commands from the AKSEdge module, to connect to Arc, [see this article](./aks-edge-howto-more-configs.md) for the instructions.
+1. Use the helper modules in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools/modules/AksEdgeAzureSetup) to simplify Arc connectivity. The steps for using the helper modules are described in this article.
+2. Use PowerShell 7 with the commands from the AKSEdge module, to connect to Arc. [See this article](aks-edge-howto-more-configs.md) for instructions.
 
 ## 1. Download the helper modules
 
-You should have already downloaded the helper modules from this [GitHub repo](https://github.com/Azure/aks-edge-utils), but if not, navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+If you did not download the [AKS Edge Utils GitHub repo](https://github.com/Azure/aks-edge-utils) during the [Set up machine](aks-edge-howto-setup-machine.md) step, you can do so now. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
-Read more about all the helper functions [here](https://github.com/Azure/aks-edge-utils/blob/main/tools/modules/AksEdgeDeploy/AksEdge-Arc.md).
 
 ## 2. Configure your Azure environment
 
@@ -61,6 +60,7 @@ To set up your Azure subscription and create the necessary resource group and se
 ```powershell
 # prompts for interactive login for serviceprincipal creation with minimal privileges
 ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
+
 ```
 
 To reset an already existing service principal, use `-spCredReset`. You should use reset carefully.

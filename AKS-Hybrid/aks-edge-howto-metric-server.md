@@ -1,21 +1,20 @@
 ---
 title: Deploy metric server
-description: Steps to deploy metric server
+description: Steps to deploy metric server.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/05/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
 # Metrics server on an AKS Edge Essentials cluster
 
-The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a popular tool to inspect your containers' resource consumption. You can find the YAML file for the metrics server in the /Samples/Other
- folder in the [GitHub Repo](https://github.com/Azure/aks-edge-utils/)
+The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a tool that inspects your containers' resource consumption. You can find the YAML file for the metrics server in the /Samples/Other folder in the [GitHub repo](https://github.com/Azure/aks-edge-utils/).
 
 ## Prerequisites on K8S clusters
 
-- Before you create your deployment, set the parameter `ServerTLSBootstrap` to `true` in your `mydeployconfig`  file as shown in this example
+- Before you create your deployment, set the parameter `ServerTLSBootstrap` to `true` in your `mydeployconfig` file as shown in this example:
 
     ```json
     "DeployOptions": {
@@ -26,7 +25,8 @@ The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a pop
         "SingleMachineCluster": true,
     ```
 
-    If you've already created your cluster, follow the instructions as described [here](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs)
+    If you've already created your cluster, follow the instructions as described [here](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs).
+
 - The CSRs (Certificate Signing Requests) for the kubelet serving certificates can't be automatically approved by the default signer in the kube-controller-manager - kubernetes.io/kubelet-serving. This will require action from the user or a third party controller. The CSRs can be viewed using:
 
     ```bash
