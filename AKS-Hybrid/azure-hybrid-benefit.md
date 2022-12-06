@@ -145,7 +145,7 @@ az connectedk8s show -n <management cluster name> -g <resource group>
 
 ### Activate Azure Hybrid Benefit
 
-To activate the benefit for an AKS cluster, run the following command in PowerShell and set the `azure-hybrid-benefit` property `true`. You will be prompted to confirm compliance with Azure Hybrid Benefit terms before proceeding.
+To activate the benefit for an AKS cluster, run the following command in PowerShell and set the `AzureHybridBenefit` or `azure-hybrid-benefit` property to `true`. You will be prompted to confirm compliance with Azure Hybrid Benefit terms before proceeding.
 
 # [Azure PowerShell](#tab/powershell)
 
