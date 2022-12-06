@@ -22,14 +22,14 @@ Get-AksEdgeKubeConfig [[-KubeConfigPath] <String>] [-NodeType <String>] [-ignore
 ```
 
 ## Description
-Pulls the KubeConfig file from the Linux node. This enables kubectl on the host to access the AksEdge
+Pulls the KubeConfig file from the Linux node so that kubectl on the host to access the AksEdge
 cluster. The function will set the AksEdge cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 
 ## Parameters
 
 ### -KubeConfigPath
-Optional parameter to specify a custom location to output the credential/kubeconfig file. Defaults to the .kube folder under the user's profile folder.
+Optional parameter to specify a custom location to output the credential/kubeconfig file. Defaults to the `.kube` folder under the user's profile folder.
 
 ```yaml
 Type: String
@@ -72,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is'nt run.
 
 ```yaml
 Type: SwitchParameter
