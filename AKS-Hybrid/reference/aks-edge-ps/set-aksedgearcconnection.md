@@ -1,7 +1,7 @@
 ---
 title: Set-AksEdgeArcConnection for AKS Edge
 author: rcheeran
-description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS on Windows IoT cluster 
+description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS Edge cluster 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 

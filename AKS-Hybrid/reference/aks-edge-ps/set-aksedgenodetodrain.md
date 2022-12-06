@@ -26,17 +26,7 @@ Set-AksEdgeNodeToDrain [[-NodeType] <String>] [[-TimeoutSeconds] <Int32>] [<Comm
 ## Description
 
 Drains a local node.
-This is useful for gracefully terminating the pods running on the node,
-for instance, for servicing or removing the node.
-
-## Examples
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+This is useful for gracefully terminating the pods running on the node, for instance, for servicing or removing the node.
 
 ## Parameters
 
@@ -60,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimeoutSeconds
-{{ Fill TimeoutSeconds Description }}
+This parameter is to provide the time out value in seconds. 
 
 ```yaml
 Type: Int32

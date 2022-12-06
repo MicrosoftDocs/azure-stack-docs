@@ -28,9 +28,6 @@ Creates a sample configuration file needed to scale to additional nodes on an AK
 
 ## Parameters
 
-### -outFile
-{{ Fill outFile Description }}
-
 ```yaml
 Type: String
 Parameter Sets: (All)

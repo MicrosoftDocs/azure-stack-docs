@@ -38,7 +38,11 @@ Test-AksEdgeNode -WorkloadType Windows
 ## Parameters
 
 ### -NodeType
-{{ Fill NodeType Description }}
+
+This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
+'LinuxAndWindows', should be drained.
+When not specified, the 'Linux' node is drained only.
+When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml
 Type: String
@@ -51,6 +55,7 @@ Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).

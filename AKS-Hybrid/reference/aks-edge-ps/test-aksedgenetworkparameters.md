@@ -1,7 +1,7 @@
 ---
 title: Test-AksEdgeNetworkParameters for AKS Edge
 author: rcheeran
-description: The Test-AksEdgeNetworkParameters PowerShell command validates AksIot network parameters,
+description: The Test-AksEdgeNetworkParameters PowerShell command validates AKS Edge network parameters,
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -46,7 +46,8 @@ Test-AksEdgeNetworkParameters -WorkloadType Linux
 ## Parameters
 
 ### -JsonConfigString
-{{ Fill JsonConfigString Description }}
+
+Input parameters based on a JSON string.
 
 ```yaml
 Type: String
@@ -61,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -JsonConfigFilePath
-{{ Fill JsonConfigFilePath Description }}
+
+Input parameters based on a JSON file.
 
 ```yaml
 Type: String
