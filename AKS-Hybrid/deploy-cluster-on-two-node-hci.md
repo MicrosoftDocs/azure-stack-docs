@@ -9,7 +9,7 @@ ms.date: 12/06/2022
 
 # Control plane on two physical hosts deployment model availability scenarios
 
-> Applies to: **PLEASE PROVIDE SKU/VERSION SET**
+> Applies to: **PLEASE PROVIDE.**
 
 This article describes the architecture for deploying an AKS hybrid cluster on a two-node Azure Stack HCI cluster and the lower-cost infrastructure affects availability. The article describes failure modes for the Azure Stack HCI system, their impact on the AKS hybrid cluster, and how AKS can recover from these failures.
 
@@ -17,24 +17,24 @@ This article describes the architecture for deploying an AKS hybrid cluster on a
 
 Traditional Kubernetes deployments require three physical machines to survive a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS hybrid can be deployed on a two-node Azure Stack HCI system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Node behavior during failures, updates](#node-behavior-during-failures-updates).
 
-:::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster" border="false" lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" border="false":::
+:::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster" lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" border="false":::
 
 For more information on architecture, cluster deployment strategies, reliability considerations, and cost optimization for AKS on Azure Stack HCI, see [Azure Kubernetes Service (AKS) baseline architecture](/azure/architecture/example-scenario/hybrid/aks-baseline).
 
 ## Terminology
 
-The following terminology is used in this article.
+The following terminology is used in this article:
 
-| Term | Definition |
-|------|------------|
-| Host | Physical ASZ host, which typically sets a quorum for control plane VMs. |  
-| Guest OS | Operating system running inside the control plane virtual machine (VM), load balancer VM, or node pool VMs. |
+| Term                | Definition                                                              |
+|---------------------|-------------------------------------------------------------------------|
+| host                | Physical ASZ host, which typically sets a quorum for control plane VMs. |
+| guest OS            | Operating system running inside the control plane virtual machine (VM), load balancer VM, or node pool VMs. |
 | Failover Clustering | Failover Clustering for Azure Stack HCI provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as failover. |
-| workload cluster | A Kubernetes cluster that is deployed by Azure Kubernetes Service (AKS) to host the containerized end-user application or workload, also known as a *target cluster*. |
+| workload cluster    | A Kubernetes cluster that is deployed by Azure Kubernetes Service (AKS) to host the containerized end-user application or workload, also known as a *target cluster*. |
 | management cluster (AKS host) | Provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters. The management cluster contains a single control plane VM. |
-| load balancer | A single dedicated Linux VM with a load-balancing rule for the API server. |
-| API server | Enables interaction with the Kerberos cluster, providing interaction for management tools such as Windows Admin Center, PowerShell modules, and `kubectl`. |
-| CRUD | Create, Read, Update, and Delete operations. |
+| load balancer       | A single dedicated Linux VM with a load-balancing rule for the API server. |
+| API server          | Enables interaction with the Kerberos cluster, providing interaction for management tools such as Windows Admin Center, PowerShell modules, and `kubectl`. |
+| CRUD                | Create, Read, Update, and Delete operations. |
 
 ## Node behavior during failures, updates
 
