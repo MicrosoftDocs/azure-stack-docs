@@ -50,9 +50,9 @@ To use Azure PowerShell, you can upgrade Azure PowerShell to the latest version 
 
 1. (Optional) If the `Az.Module` installation is not successful and does not work, you must grant additional PowerShell permissions to execute external scripts:
 
-```PowerShell
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
-```
+   ```PowerShell
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
+   ```
 
 # [Azure CLI](#tab/azurecli)
 
