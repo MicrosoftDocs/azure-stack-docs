@@ -293,6 +293,8 @@
       href: aks-edge-concept.md
     - name: Deployment options
       href: aks-edge-deployment-options.md
+    - name: Deployment JSON configuration parameters
+      href: aks-edge-deployment-config-json.md
   - name: How-to
     items:
     - name: Set up machine
@@ -321,6 +323,8 @@
     items:
     - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Release notes and known issues
+      href: https://github.com/Azure/aks-edge-utils/releases
     - name: File bugs
       href: https://github.com/Azure/aks-edge-utils/issues
 - name: Troubleshooting
