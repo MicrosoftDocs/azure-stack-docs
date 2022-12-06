@@ -13,15 +13,15 @@ ms.custom: template-concept
 After you set up your machines and downloaded the [GitHub repo](https://github.com/Azure/aks-edge-utils) with our tools and samples, you can deploy your cluster using our configuration JSON. This article will explain the different parameters  found in the `aksedge-config.json`.
 
 ## Deployment Options
+
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
 | `SingleMachineCluster` | `boolean` | Specify whether this is a single machine cluster. You cannot add new clusters to a single machine cluster. | `true` |
-| `NodeType` | [`Linux`/<br/>`LinuxAndWindows`/<br/>`Windows`] | `Linux` creates the Linux node. `LinuxAndWindows` creates both the nodes. `Windows` only node is supported in Full Kubernetes deployment as a scaling option. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-iot-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
+| `NodeType` | [`Linux`/`LinuxAndWindows`/`Windows`] | `Linux` creates the Linux node. `LinuxAndWindows` creates both the nodes. `Windows` only node is supported in Full Kubernetes deployment as a scaling option. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-iot-workload-types) *(Note: In order to deploy Windows worker node, you need to opt the Windows VHDX into your MSI installer. Learn how to do this [here](/docs/set-up-machines.md).)* | `Linux` |
 | `NetworkPlugin` | [`calico`/`flannel`] |  CNI plugin choice for the Kubernetes network model. *For K8s cluster, always use `calico`*. | `flannel` |
 | `Headless` | `boolean` | Flag to suppress any user interaction/prompts and continue. | `false` |
 | `TimeoutSeconds` | `number` | Timeout provided for the kubernetes cluster to complete the bootstrap process. Recommend to use the default value. | `900` |
 | `ServerTLSBootstrap` | `boolean` | Flag to bootstrap Server TLS process in K8s cluster. Not applicable for K3s cluster. See [more info](./aks-edge-howto-metric-server.md). | `false` |
-
 
 ### Additional Deployment Options for scaling a cluster
 
@@ -81,9 +81,8 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | `DnsServers` | `A.B.C.1` | IP address of your DNS (typically the router address). To view what DNS your machine uses: **ipconfig /all \| findstr /R "DNS\ Servers"** |
 | `InternetDisabled` | `boolean` | Whether your cluster has access to the internet. The default is `false`, meaning your cluster will by default have access to the internet. |
 | `Proxy.Http` | `string` | HttpProxy link. |
-| `Proxy.Https` | `string` | HttpsProxy link. | 
-| `Proxy.No` | `string` | No proxy config for bypassing the proxy. | 
-
+| `Proxy.Https` | `string` | HttpsProxy link. |
+| `Proxy.No` | `string` | No proxy config for bypassing the proxy. |
 
 ## Next steps
 
