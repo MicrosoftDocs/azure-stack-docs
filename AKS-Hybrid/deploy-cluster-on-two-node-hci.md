@@ -29,7 +29,7 @@ The following terminology is used in this article:
 |---------------------|-------------------------------------------------------------------------|
 | host                | Physical ASZ host, which typically sets a quorum for control plane VMs. |
 | guest OS            | Operating system running inside the control plane virtual machine (VM), load balancer VM, or node pool VMs. |
-| Failover Clustering | Failover Clustering for Azure Stack HCI provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as failover. |
+| Failover Clustering | Failover Clustering for Azure Stack HCI provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as *failover*. |
 | workload cluster    | A Kubernetes cluster that is deployed by Azure Kubernetes Service (AKS) to host the containerized end-user application or workload, also known as a *target cluster*. |
 | management cluster (AKS host) | Provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters. The management cluster contains a single control plane VM. |
 | load balancer       | A single dedicated Linux VM with a load-balancing rule for the API server. |
