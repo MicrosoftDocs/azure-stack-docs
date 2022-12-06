@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sumit.lahiri
-ms.date: 12/02/2022
+ms.date: 12/06/2022
 ms.last.reviewed: 12/01/2022
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -18,7 +18,7 @@ ms.last.reviewed: 12/01/2022
 
 This article describes how to set up Azure RBAC on an AKS hybrid cluster to use Azure Active Directory (Azure AD) and Azure role assignments for authorization. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
 
-For more information about using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
+For an overview of using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.
