@@ -37,7 +37,7 @@ The rest of this article describes how to activate this benefit for AKS on Azure
 
 Make sure you have an AKS hybrid cluster deployed on either an Azure Stack HCI or a Windows Server host.
 
-### [Azure PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/powershell)
 
 To use Azure PowerShell, you can upgrade Azure PowerShell to the latest version (make sure to start PowerShell with administrator privileges).
 
@@ -55,9 +55,11 @@ Update-Module Az.ConnectedKubernetes
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
 ```
 
-### [Azure CLI](#tab/shell)
+# [Azure CLI](#tab/azurecli)
 
 Make sure you have the latest version of [Azure CLI installed](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Azure CLI version using `az upgrade`.
+
+---
 
 ### Retrieve your management cluster name
 
@@ -88,7 +90,7 @@ Get-AksHciConfig | ConvertTo-Json
 
 Check that the benefit has not already enabled on your management cluster. If the benefit has already been enabled, you should see the property `AzureHybridBenefit` set to `true`.
 
-### [Azure PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/powershell)
 
 Open a PowerShell window and run the following commands:
 
@@ -98,15 +100,17 @@ Set-AzContext -Subscription <Subscription>
 Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> | fl
 ```
 
-### [Azure CLI](#tab/shell)
+# [Azure CLI](#tab/azurecli)
 
-```cli
+```azurecli
 az login --use-device-code
 
 az account set -s <subscription ID>
 
 az connectedk8s show -n <management cluster name> -g <resource group> 
 ```
+
+---
 
 #### Sample output
 
@@ -142,20 +146,22 @@ az connectedk8s show -n <management cluster name> -g <resource group>
 > If you have an empty value for the JSON property `distribution`, [follow this link to patch your cluster](https://github.com/Azure/aks-hybrid/issues/270) before proceeding with activating Azure Hybrid Benefit for AKS.
 
 ### Activate Azure Hybrid Benefit
- 
+
 To activate the benefit for an AKS cluster, run the following command in PowerShell and set the `azure-hybrid-benefit` property `true`. You will be prompted to confirm compliance with Azure Hybrid Benefit terms before proceeding.
 
-### [Azure PowerShell](#tab/PowerShell)
+# [Azure PowerShell](#tab/powershell)
 
 ```PowerShell
 Update-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> -AzureHybridBenefit True
 ```
 
-### [Azure CLI](#tab/shell)
+# [Azure CLI](#tab/azurecli)
 
-```cli
+```azurecli
 az connectedk8s update -n <name> -g <resource group name> --azure-hybrid-benefit true 
 ```
+
+---
 
 #### Sample output
 
@@ -167,7 +173,7 @@ I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to
 
 Run the following command and check that JSON property `AzureHybridBenefit` is set to  `True`.
 
-### [Azure PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/powershell)
 
 Open a PowerShell terminal and run the following commands:
 
@@ -175,11 +181,13 @@ Open a PowerShell terminal and run the following commands:
 Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> | fl
 ```
 
-### [Azure CLI](#tab/shell)
+# [Azure CLI](#tab/azurecli)
 
-```cli
+```azurecli
 az connectedk8s show -n <management cluster name> -g <resource group> 
 ```
+
+---
 
 ## Maintain compliance for Azure Hybrid Benefit
 
@@ -195,17 +203,19 @@ See **Cost Management and Billing** in the Azure portal to verify that the Azure
 
 Run the following command to deactivate the benefit.
 
-### [Azure PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> -AzureHybridBenefit False
 ```
 
-### [Azure CLI](#tab/shell)
+# [Azure CLI](#tab/azurecli)
 
-```cli
+```azurecli
 az connectedk8s update -n <name> -g <group> --azure-hybrid-benefit false 
 ```
+
+---
 
 ## Next steps
 
