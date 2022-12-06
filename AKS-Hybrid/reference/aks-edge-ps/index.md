@@ -102,13 +102,4 @@ Checks whether the Linux VM was created.
 
 ### [Test-AksEdgeNetworkParameters](./test-aksedgenetworkparameters.md)
 
-Validates AksEdge network parameters, useful as a pre-deployment step.
-
-## Next steps
-
-- [Overview](../../aks-lite-overview.md)
-- [Uninstall AKS cluster](../../aks-lite-howto-uninstall.md)
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
+Validates AksEdge network parameters, useful as a pre-deployment check.

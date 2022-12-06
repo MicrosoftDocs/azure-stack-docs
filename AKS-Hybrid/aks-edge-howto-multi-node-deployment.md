@@ -16,9 +16,9 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 Set up your machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
 
-## Key configuration parameters for a full deployment 
+## Key configuration parameters for a full Kubernetes deployment
 
-The parameters needed to create a single machine cluster are defined in the `aksedge-config.json` file in the downloaded GitHub folder. The details of the configuration parameters are available [placeholder link](TODO).
+The parameters needed to create a full Kubernetes are defined in the `aksedge-config.json` file in the downloaded GitHub folder. The details of the configuration parameters are available [here](./aks-edge-deployment-config-json.md).
 
 | Attribute | Value type      |Default Value|  Description |
 | :------------ |:-----------|:-------|:--------|
@@ -37,11 +37,11 @@ The parameters needed to create a single machine cluster are defined in the `aks
 | LinuxVmIp4Address |IP Address| A.B.C.x | Specify the IP address your Linux VM will take. |
 
 Note the following 
-1.   The parameter that identifies a full deployment is cluster is the **`singlemachinecluster`** flag which must be set as `false`.
+1.   The parameter that identifies a full deployment cluster is the **`singlemachinecluster`** flag which must be set as `false`.
 1. **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your `aksedge-config.json` file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
 
     > [!NOTE]
-    > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
+    > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
@@ -49,10 +49,10 @@ Note the following
 
 ## Validate the configuration file
 
-After you update the config json and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
+After you update the `aksedge-config.json` file and run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet.
 
 ```powershell
-Test-AksEdgeNetworkParameters -JsonConfigFilePath .\mydeployconfig.json
+Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json
 ```
 
 ## Create a full deployment cluster
@@ -60,7 +60,7 @@ Test-AksEdgeNetworkParameters -JsonConfigFilePath .\mydeployconfig.json
 If `Test-AksEdgeNetworkParameters` returns true, you are ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
 
 ```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
+New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
 The `New-AksEdgeDeployment` command  automatically gets the kube config file.
@@ -80,9 +80,7 @@ A screenshot of a k3s cluster is shown below.
 
 ### Create your own configuration file
 
-You can create your own configuration file using the `New-AksEdgeConfig` command. 
-=======
-Before you create your deployment, create a JSON file with all the configuration parameters. You can create a sampled configuration file using the `New-AksEdgeConfig` command.
+You can create your own configuration file using the `New-AksEdgeConfig` command.
 
 ```powershell
 $jsonString = New-AksEdgeConfig .\mydeployconfig.json
@@ -124,48 +122,7 @@ You can now update your configuration file `mydeployconfig.json` with the right 
 
 ### Allocate resources to your nodes
 
-To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
-Some important configuration parameters to note are:
-
-1) **SingleMachineCluster** to be set as false for a full deployment.
-
-2) **External Switch information**: A full deployment uses an external switch to enable communication across the nodes. Specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your AksEdge config JSON file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS Edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
-
-    > [!NOTE]
-    > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
-
-    :::image type="content" source="media/aks-edge/hyper-v-external-switch.png" alt-text="Screenshot of Hyper-v switch manager." lightbox="media/aks-edge/hyper-v-external-switch.png":::
-
-3) **IP addresses**: Provide the correct values for the IP address-related configuration parameters as described in the previous table.
-
-After you update the config JSON, run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet:
-
-```powershell
-Test-AksEdgeNetworkParameters -JsonConfigFilePath .\mydeployconfig.json
-```
-
-If `Test-AksEdgeNetworkParameters` returns true, you are ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
-
-```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
-```
-
-The `New-AksEdgeDeployment` cmdlet automatically gets the kube config file.
-
-## Validate your deployment
-
-```powershell
-kubectl get nodes -o wide
-kubectl get pods --all-namespaces -o wide
-```
-
-A screenshot of a k3s cluster is shown as follows:
-
-:::image type="content" source="media/aks-edge/all-pods-running.png" alt-text="Diagram showing all pods running." lightbox="media/aks-edge/all-pods-running.png":::
-
-## Example configurations for different deployment options
-
-- **Allocate resources to your nodes**. To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM), and assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4 GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
 ```json
  "LinuxVm": {
@@ -180,8 +137,21 @@ A screenshot of a k3s cluster is shown as follows:
         "DataSizeinGB": 20,
         "Ip4Address": "192.168.1.172"
     },
+"Network": {
+    "VSwitch":{
+        "Name": "aksedgesw-ext",
+        "Type":"External",
+        "AdapterName" : "Ethernet"
+    },
+    "ControlPlaneEndpointIp": "192.168.1.191",
+    "Ip4GatewayAddress": "192.168.1.1",
+    "Ip4PrefixLength": 24,
+    "ServiceIpRangeSize":10,
+    "ServiceIPRangeStart": "192.168.1.151",
+    "ServiceIPRangeEnd": "192.168.1.160",
+    "DnsServers": ["192.168.1.1"]
+}
 ```
-
 
 ### Create Linux and Windows node
 
