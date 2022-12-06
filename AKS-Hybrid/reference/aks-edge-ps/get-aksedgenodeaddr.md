@@ -18,7 +18,7 @@ Gets the Linux VM's IP and MAC addresses
 ## Syntax
 
 ```powershell
-Get-AksEdgeNodeAddr [<CommonParameters>]
+Get-AksEdgeNodeAddr [[-NodeType] <String>]
 ```
 
 ## Description
@@ -47,4 +47,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

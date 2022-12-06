@@ -15,27 +15,42 @@ ms.lastreviewed: 11/17/2022
 
 ## Synopsis
 
-The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a  node  from an existing cluster.
+Drains a local node.
 
 ## Syntax
 
 ```powershell
-Set-AksEdgeNodeToDrain [[-WorkloadType] <WorkloadType>] [[-TimeoutSeconds] <Int32>] [<CommonParameters>]
+Set-AksEdgeNodeToDrain [[-NodeType] <String>] [[-TimeoutSeconds] <Int32>] [<CommonParameters>]
 ```
 
-## PARAMETERS
+## Description
 
-### -WorkloadType
+Drains a local node.
+This is useful for gracefully terminating the pods running on the node,
+for instance, for servicing or removing the node.
+
+## Examples
+
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
+
+## Parameters
+
+### -NodeType
+
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
 'LinuxAndWindows', should be drained.
 When not specified, the 'Linux' node is drained only.
 When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml
-Type: WorkloadType
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
 
 Required: False
 Position: 1
@@ -60,9 +75,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

@@ -66,4 +66,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

@@ -11,17 +11,13 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 
 
-# AKS Edge Essentials 
+# AKS Edge Essentials
 
 ## Module Powershell Commands
 
 ### [Add-AksEdgeNode](./add-aksedgenode.md)
 
 Adds a new AksEdge node to the cluster.
-
-### [Export-AksEdgeWorkerNodeConfig](./export-aksedgeworkernodeconfig.md)
-
-Pulls the cluster join data from a Linux control plane node.
 
 ### [Get-AksEdgeDeploymentInfo](./get-aksedgedeploymentinfo.md)
 
@@ -55,12 +51,16 @@ Gets the AksEdge managed service token, for instance for use for Azure ARC for K
 
 Executes an SSH command on the Linux VM.
 
-### [New-AksEdgeDeploymentConfig](./new-aksedgedeploymentconfig.md)
+### [New-AksEdgeConfig](./new-aksedgeconfig.md)
 
 Creates the configuration file needed for a new AksEdge deployment on this machine.
 
 
 ### [New-AksEdgeDeployment](./new-aksedgedeployment.md)
+
+Creates a new AksEdge deployment on this machine.
+
+## [New-AksEdgeScaleConfig](./new-aksedgescaleconfig.md)
 
 Creates a new AksEdge deployment on this machine.
 
@@ -78,7 +78,7 @@ Safely drains a node before your delete the node.
 
 ### [Set-AksEdgeArcConnection](./set-aksedgearcconnection.md)
 
-Connects or disconnects the AKS Edge cluster running on this machine to or from Azure Arc forKubernetes.
+Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
 
 ### [Start-AksEdgeNode](./start-aksedgenode.md)
 
@@ -87,6 +87,10 @@ Starts the node VM if it's currently stopped.
 ### [Stop-AksEdgeNode](./stop-aksedgenode.md)
 
 Stops the node VM if it's currently started.
+
+### [Test-AksEdgeArcConnection](./test-aksedgearcconnection.md)
+
+Checks whether the deployment was created.
 
 ### [Test-AksEdgeDeployment](./test-aksedgedeployment.md)
 
@@ -102,8 +106,8 @@ Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Next steps
 
-- [Overview](../../aks-edge-overview.md)
-- [Uninstall AKS cluster](../../aks-edge-howto-uninstall.md)
+- [Overview](../../aks-lite-overview.md)
+- [Uninstall AKS cluster](../../aks-lite-howto-uninstall.md)
 <!--
 Remove all the comments in this template before you sign-off or merge to the 
 main branch.

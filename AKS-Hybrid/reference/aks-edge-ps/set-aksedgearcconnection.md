@@ -1,7 +1,7 @@
 ---
 title: Set-AksEdgeArcConnection for AKS Edge
 author: rcheeran
-description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS Edge cluster 
+description: The Set-AksEdgeArcConnection  PowerShell command connects or disconnects the AKS on Windows IoT cluster 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -15,7 +15,7 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Connects or disconnects the AKS Edge cluster running on this machine to or from Azure Arc for
+Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for
 Kubernetes.
 
 ## Syntax
@@ -30,8 +30,8 @@ Set-AksEdgeArcConnection [-Credential <PSCredential>] [-JsonConfigFilePath <Stri
 
 ```powershell
 Set-AksEdgeArcConnection [-ClusterName <String>] -TenantId <String> -SubscriptionId <String>
- -ResourceGroupName <String> -Location <String> [-Credential <PSCredential>] [-SkipAzConnect]
- [-Connect <Boolean>] [<CommonParameters>]
+ -ResourceGroupName <String> -Location <String> [-Credential <PSCredential>] [-Connect <Boolean>]
+ [<CommonParameters>]
 ```
 
 ### fromJsonConfigString
@@ -42,9 +42,9 @@ Set-AksEdgeArcConnection [-Credential <PSCredential>] -JsonConfigString <String>
 
 ## Description
 
-Connects or disconnects the AKS on Edge cluster running on this machine to or from Azure Arc for
+Connects or disconnects the AksEdge cluster running on this machine to or from Azure Arc for
 Kubernetes.
-Running this module requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
+Running this modules requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules
 as well as an up to date helm version in the binary path.
 
 ## Examples
@@ -73,19 +73,13 @@ Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLoca
 -ResourceGroupName testResourceGroup -Location testLocation -Credential <PSCredential>
 ```
 
-### Example 5
-
-```
-Set-AksEdgeArcConnection -ResourceGroupName testResourceGroup -Location testLocation -SkipAzConnect
-```
-
 ## Parameters
 
 ### -ClusterName
 
-Name of the cluster in Azure Arc for Kubernetes.
-By default, the cluster will be named
-'\<hostname\>-aksedge'.
+Name of the cluster in the Azure Arc for Kubernetes cluster projection.
+If no value is specified, the
+local Linux node name will be used.
 
 ```yaml
 Type: String
@@ -182,25 +176,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkipAzConnect
-
-When supplying this switch the commandlet will assume the Az connection has already been established.
-This means, there already exists an Az Context.
-No credential object or service principal name may be
-provided in this case.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Connect
 
 This boolean toggles between connecting and disconnecting the cluster.
@@ -254,8 +229,8 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

@@ -1,20 +1,18 @@
-- name: AKS Edge Essentials PowerShell Reference
+- name: AKS Edge PowerShell Reference
   href: index.md
   expanded: true
   items:
   - name: Add-AksEdgeNode
     href: add-aksedgenode.md
-  - name: Export-AksEdgeWorkerNodeConfig
-    href: export-aksedgeworkernodeconfig.md
   - name: Get-AksEdgeDeploymentInfo
     href: get-aksedgedeploymentinfo.md
   - name: Get-AksEdgeEventLog
     href: get-aksedgeeventlog.md
   - name: Get-AksEdgeKubeConfig
     href: get-aksedgekubeconfig.md
-  - name: Get-AksEdgeLinuxNodeAddr
+  - name: Get-AksEdgeNodeAddr
     href: get-aksedgenodeaddr.md
-  - name: Get-AksEdgeLinuxNodeName
+  - name: Get-AksEdgeNodeName
     href: get-aksedgenodename.md
   - name: Get-AksEdgeLogs
     href: get-aksedgelogs.md
@@ -22,10 +20,12 @@
     href: get-aksedgemanagedservicetoken.md
   - name: Invoke-AksEdgeNodeCommand
     href: invoke-aksedgenodecommand.md
-  - name: New-AksEdgeDeploymentConfig
-    href: new-aksedgedeploymentconfig.md
+  - name: New-AksEdgeConfig
+    href: new-aksedgeconfig.md
   - name: New-AksEdgeDeployment
     href: new-aksedgedeployment.md
+  - name: New-AksEdgeScaleConfig
+    href: new-aksedgescaleconfig.md
   - name: Remove-AksEdgeDeployment
     href: remove-aksedgedeployment.md
   - name: Remove-AksEdgeNode
@@ -38,6 +38,8 @@
     href: start-aksedgenode.md
   - name: Stop-AksEdgeNode
     href: stop-aksedgenode.md
+  - name: Test-AksEdgeArcConnection
+    href: test-aksedgearcconnection.md
   - name: Test-AksEdgeDeployment
     href: test-aksedgedeployment.md
   - name: Test-AksEdgeNode

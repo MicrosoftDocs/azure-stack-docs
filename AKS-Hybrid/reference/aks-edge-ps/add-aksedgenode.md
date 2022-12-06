@@ -18,25 +18,11 @@ Adds a new AksEdge node to the cluster.
 
 ## Syntax
 
-### fromJsonConfigFile (Default)
-
-```powershell
-Add-AksEdgeNode [-JsonConfigFilePath <String>] [<CommonParameters>]
-```
-
 ### fromParameters
 
 ```powershell
-Add-AksEdgeNode [-WorkloadType <WorkloadType>] [-LinuxVmCpuCount <Int32>] [-LinuxVmMemoryInMB <Int32>]
- [-LinuxVmDataSizeInGB <Int32>] [-WindowsVmCpuCount <Int32>] [-WindowsVmMemoryInMB <Int32>]
- [-LinuxVmIp4Address <String>] [-WindowsVmIp4Address <String>] [-ClusterJoinToken <String>]
- [-DiscoveryTokenHash <String>] [-ControlPlane] [-Headless] [-TimeoutSeconds <Int32>] [<CommonParameters>]
-```
-
-### fromJsonConfigString
-
-```powershell
-Add-AksEdgeNode -JsonConfigString <String> [<CommonParameters>]
+Add-AksEdgeNode [-NodeType] <String> [[-CpuCount] <Int32>] [[-MemoryInMB] <Int32>] [[-DataSizeInGB] <Int32>]
+ [[-Ip4Address] <String>] [[-MacAddress] <String>] [-ControlPlane] [<CommonParameters>]
 ```
 
 ## Description
@@ -54,179 +40,113 @@ complemented with the other node type.
 ### Example 1
 
 ```powershell
-Add-AksEdgeNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096
+Add-AksEdgeNode -NodeType Windows -CpuCount 2 -MemoryInMB 4096
 ```
 
 ### Example 2
 
 ```powershell
-Add-AksEdgeNode -WorkloadType Windows -WindowsVmCpuCount 2 -WindowsVmMemoryInMB 4096 -WindowsVmIp4Address 192.168.1.3 -clusterjointoken \<token\> -discoverytokenhash \<hash\>
+Add-AksEdgeNode -NodeType Windows -CpuCount 2 -MemoryInMB 4096 `
 ```
+
+-Ip4Address 192.168.1.3
 
 ## Parameters
 
-### -WorkloadType
+### -NodeType
 
 This parameter indicates whether a 'Linux' node or a 'Windows' node should be added.
 
 ```yaml
-Type: WorkloadType
-Parameter Sets: fromParameters
+Type: String
+Parameter Sets: (All)
 Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinuxVmCpuCount
+### -CpuCount
 
-This parameter specifies the number of vCPUs assigned to the Linux node
+This parameter specifies the number of vCPUs assigned to the new node
 
 ```yaml
 Type: Int32
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: 0
+Position: 2
+Default value: 2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinuxVmMemoryInMB
+### -MemoryInMB
 
-This parameter specifies the memory in MB to be assigned to the Linux node
+This parameter specifies the memory in MB to be assigned to the new node
 
 ```yaml
 Type: Int32
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: 0
+Position: 3
+Default value: 2048
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinuxVmDataSizeInGB
+### -DataSizeInGB
 
 This parameter specifies the size of the data partition for the Linux node.
 When application workloads with high disk requirements are to be deployed,
 the size of the data partition can be extended accordingly.
+This is ignored for Windows node.
 
 ```yaml
 Type: Int32
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: 0
+Position: 4
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WindowsVmCpuCount
+### -Ip4Address
 
-This parameter specifies the number of vCPUs assigned to the Windows node
-
-```yaml
-Type: Int32
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsVmMemoryInMB
-
-This parameter specifies the memory in MB to be assigned to the Windows node
-
-```yaml
-Type: Int32
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinuxVmIp4Address
-
-This parameter specifies the static IP address to assign to the Linux node
+This parameter specifies the static IP address to assign to the new node
 
 ```yaml
 Type: String
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WindowsVmIp4Address
+### -MacAddress
 
-This parameter specifies the static IP address to assign to the Windows node
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterJoinToken
-
-The cluster join token used for joining the existing cluster.
-The parameter can only be omitted if a control plane node is already deployed
-on this machine in which case the token is acquired from the node.
+This parameter specifies the MAC address to assign to the new node
 
 ```yaml
 Type: String
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiscoveryTokenHash
-
-The discovery token hash used for joining an existing cluster.
-The parameter can only be omitted if a control plane node is already deployed
-on this machine in which case the token is acquired from the node.
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -234,91 +154,25 @@ Accept wildcard characters: False
 
 ### -ControlPlane
 
-When adding a Linux node, this parameter indicates whether the node will run the control plane.
+This switch parameter specifies if the controlplane role needs to be enabled.
+Applicable only for Linux Node.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: fromParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Headless
-
-This parameter is useful for automation without user interaction.
-The default user input will be applied.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeoutSeconds
-
-This parameter specifies the maximum wait for a kubernetes node to reach the Ready state
-
-```yaml
-Type: Int32
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonConfigString
-
-Input parameters based on a JSON string.
-No other parameters may be specified.
-
-```yaml
-Type: String
-Parameter Sets: fromJsonConfigString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonConfigFilePath
-
-Input parameters based on a JSON file.
-No other parameters may be specified.
-
-```yaml
-Type: String
-Parameter Sets: fromJsonConfigFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: $(Get-DefaultJsonConfigFileLocation)
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

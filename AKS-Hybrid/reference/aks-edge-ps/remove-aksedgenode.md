@@ -20,14 +20,14 @@ Removes a local node from an existing cluster.
 ## Syntax
 
 ```powershell
-Remove-AksEdgeNode [[-WorkloadType] <WorkloadType>] [-Headless] [<CommonParameters>]
+Remove-AksEdgeNode [-NodeType] <String> [-Force] [-Headless] [<CommonParameters>]
 ```
 
 ## Description
 
-Removes a local node from an existing cluster.
-In case the last control-plane node of a cluster is
-removed, remaining worker nodes will be dangling.
+Removes a local node from an existing cluster.This is supported only when Linux and Windows nodes are deployed
+in the same machine.
+To remove the single node deployed, use Remove-AksEdgeDeployment.
 
 ## Examples
 
@@ -37,21 +37,38 @@ Remove-AksEdgeNode -WorkloadType Linux
 
 ## Parameters
 
-### -WorkloadType
+### -NodeType
 
-This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be removed.
-When not specified, the 'Linux' node is removed only.
+This parameter indicates whether the 'Linux' node or the 'Windows' node.
 
 ```yaml
-Type: WorkloadType
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+
+This parameter enables to continue node removal even in case of errors.
+A confirmation dialogue will be
+displayed because proceeding in error cases can have adverse side effects on the state of the cluster.
+In combination with the headless switch, a node can be force removed without user interaction even in
+ case of errors.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
-Position: 1
-Default value: Linux
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -75,8 +92,8 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

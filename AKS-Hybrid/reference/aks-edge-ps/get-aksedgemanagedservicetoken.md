@@ -28,7 +28,7 @@ Get-AksEdgeManagedServiceToken
 Gets the AksEdge managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 This commandlet can only be successfully triggered when a control plane node is running on this deployment.
 
-## ExamplesA
+## Examples
 
 ```powershell
 Get-AksEdgeManagedServiceToken
@@ -36,4 +36,4 @@ Get-AksEdgeManagedServiceToken
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

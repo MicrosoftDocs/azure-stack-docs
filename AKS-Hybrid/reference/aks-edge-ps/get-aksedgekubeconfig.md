@@ -18,7 +18,7 @@ Pulls the KubeConfig file from the Linux node.
 ## Syntax
 
 ```powershell
-Get-AksEdgeKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
+Get-AksEdgeKubeConfig [[-KubeConfigPath] <String>] [-NodeType <String>] [-ignoreError] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: $($env:USERPROFILE+"\.kube")
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -52,10 +52,9 @@ Accept wildcard characters: False
 Optional parameter allowing to get the kubeconfig file alternatively from the Windows node
 
 ```yaml
-Type: WorkloadType
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
 
 Required: False
 Position: Named
@@ -64,6 +63,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ignoreError
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -100,4 +112,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

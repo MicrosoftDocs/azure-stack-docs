@@ -14,12 +14,12 @@ ms.lastreviewed: 10/04/2022
 
 ## Synopsis
 
-Executes an SSH command on the Linux VM.
+Executes an SSH command on the VM.
 
 ## Syntax
 
 ```powershell
-Invoke-AksEdgeNodeCommand [-Command] <String> [-IgnoreError] [<CommonParameters>]
+Invoke-AksEdgeNodeCommand [[-command] <String>] [-ignoreError] [[-NodeType] <String>]
 ```
 
 ## Description
@@ -83,4 +83,4 @@ Accept wildcard characters: False
 ```
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

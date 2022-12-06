@@ -18,20 +18,22 @@ Gets the Linux VM's hostname
 ## Syntax
 
 ```powershell
-Get-AksEdgeNodeName [<CommonParameters>]
+Get-AksEdgeNodeName [[-NodeType] <String>]
 ```
 
 ## Description
 The Get-AksEdgeNodeName queries the virtual machine's current hostname from wssdagent.
 
 ## Examples
+
 ```powershell
 Get-AksEdgeNodeName
 ```
 
 ## Parameters
-### -NodeType
 
+### -NodeType
+{{ Fill NodeType Description }}
 
 ```yaml
 Type: String
@@ -45,7 +47,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

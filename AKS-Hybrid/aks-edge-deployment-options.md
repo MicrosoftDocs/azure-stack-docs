@@ -20,6 +20,14 @@ After you set up your machines, AKS Edge Essentials can be deployed in the follo
   
 Once you've created your cluster, you can deploy your applications and connect your cluster to Arc to enable Arc extensions such as Azure Monitor and Azure Policy. You can also choose to use GitOps to manage your deployments.
 
+## Maximum supported hardware specifications
+
+| Parameter | Permissible limit |
+  | ---------- | --------- |
+  | Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
+  | Maximum number of vCPUs per machine  | 16 vCPUs |
+  | Maximum number of machines per cluster | 15 machines |
+
 ## Next steps
 
 - [Set up your machine](./aks-edge-howto-setup-machine.md)

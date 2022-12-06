@@ -23,7 +23,7 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
   | Disk space | At least 14 GB free |
   | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 |
 
-- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [version 21H2 (OS build 19044)](/windows/release-health/release-information). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11). 
 - Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command
 
     ```powershell
@@ -36,8 +36,18 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
     ```bash
     powercfg /x -standby-timeout-ac 0
     powercfg /x -standby-timeout-dc 0
+    powercfg /hibernate off
+    ```
+    Some device firmware may require that `Connected Standby` be disabled to avoid sleep cycling while operating your Kubernetes cluster. If your machine’s firmware requires this, you can disable Connected Standby by following the documentation provided by your device OEM or use the following command to change your registry:
+    ```bash
+    reg add HKLM\System\CurrentControlSet\Control\Power /v PlatformAoAcOverride /t REG_DWORD /d 0
     ```
 
+    Note: a reboot is required for this registry key change to take effect.  You can validate that all sleep states are now unavailable, as is required by Kubernetes, by running the following command  
+    ```bash
+    powercfg /a
+    ```
+    
 ## Download the installer
 
 You can deploy an AKS Edge Essentials cluster on either a single machine or on multiple machines. In a multi-machine deployment, one of the machines is the primary machine with a Kubernetes control node, and the other machines are secondary machines that are either control nodes or worker nodes. You must install AKS on both the primary and secondary machines as follows. Once AKS is installed, when you create your Kubernetes cluster, you identify one machine as the primary and the rest as secondary machines.
@@ -76,7 +86,7 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 ## Load AKS Edge modules
 
-AKS edge modules can we loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [Github repo](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd).
+AKS edge modules can be loaded by running the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd) file from the `tools` folder in the downloaded GitHub repo.
 
 ## Check the AKS Edge modules
 
@@ -88,7 +98,7 @@ Get-Command -Module AksEdge
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
 
-You should see the following output with version:
+You can get the version of the modules using:
 
 ```powershell
 (Get-Module AksEdge -ListAvailable).Version
