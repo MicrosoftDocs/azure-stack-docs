@@ -4,13 +4,13 @@ description: Learn how to prepare your machines for AKS clusters.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 12/05/2022
 ms.custom: template-how-to
 ---
 
 # Prepare your machines for AKS Edge Essentials
 
-In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Edge node machine.
+This article describes how to set up an Azure Kubernetes Service (AKS) Edge node machine.
 
 ## Prerequisites
 
@@ -30,8 +30,8 @@ In this article, you'll learn how to set up an Azure Kubernetes Service (AKS) Ed
      Get-WindowsOptionalFeature -Online -FeatureName *hyper*
     ```
 
-    You can enable Hyper-V on [Windows 10](/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) and  on [Windows Server](/windows-server/virtualization/hyper-v/get-started/get-started-with-hyper-v-on-windows) as described.
-- If your machine has **power standby** settings turned on, you'll have to turn it off using these commands.
+    You can enable Hyper-V on [Windows 10](/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) and on [Windows Server](/windows-server/virtualization/hyper-v/get-started/get-started-with-hyper-v-on-windows) as described.
+- If your machine has **power standby** settings turned on, you'll have to turn it off using these commands:
 
     ```bash
     powercfg /x -standby-timeout-ac 0
@@ -59,8 +59,8 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
     | File | Link |
     | ---- | ---- |
-    | k8s installer | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
-    | k3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+    | K8s installer | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
+    | K3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
 1. In addition to the MSI, Microsoft provides a few samples and tools, which you can download from the [AKS Edge Utils GitHub repo](https://github.com/Azure/aks-edge-utils).  Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
@@ -93,7 +93,7 @@ AKS edge modules can be loaded by running the [AksEdgePrompt](https://github.com
 
 ## Check the AKS Edge modules
 
-Once installation is complete, make sure your install was successful by running the following command:
+Once installation is complete, make sure it was successful by running the following command:
 
 ```powershell
 Get-Command -Module AksEdge
@@ -111,5 +111,5 @@ See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-
 
 ## Next steps
 
-- Create a [simple deployment](./aks-edge-howto-single-node-deployment.md)
-- Create a [full deployment](./aks-edge-howto-multi-node-deployment.md)
+- Create a [simple deployment](aks-edge-howto-single-node-deployment.md)
+- Create a [full deployment](aks-edge-howto-multi-node-deployment.md)
