@@ -103,7 +103,7 @@ The VMs hosting the Kubernetes nodes might get deleted unexpectedly, the boot di
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
-| **Potential Disruption**<br>**Manual Recovery** | **No Disruption** | **No Disruption** | **No Disruption** |
+| **Potential Disruption**<br>**+**<br>**Manual Recovery** | **No Disruption** | **No Disruption** | **No Disruption** |
 | Existing workloads will continue to run without disruption as long as:<br>- The worker nodes are on separate hosts.<br>- The application has defined at least two replicas with `podAntiAffinity` specified. | Worker nodes can be added.<br>Pod scheduling succeeds if the remaining nodes have enough capacity. | New workload creation will succeed. | The API server remains available in case there's a single worker VM failure. |
 | If Failover Clustering can recover from the error, it tries to restart the control plane VM on a different host. If Failover Clustering can't recover the VM, you must recreate the worker nodes manually. | Not applicable | Not applicable | Not applicable |
 
@@ -113,7 +113,7 @@ The load balancer VM might get deleted unexpectedly, the boot disk might get cor
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
-| Potential disruption, automatic recovery | Disruption, manual recovery | No disruption | Disruption, manual recovery |
+| **Potential Disruption**<br>**+**<br>**Automatic Recovery** | **Disruption**<br>**+**<br>**Manual Recovery** | **No Disruption** | **Disruption**<br>**+**<br>**Manual Recovery** |
 | Existing Workloads will continue to run without disruption as long as:<br>-  The worker nodes are on separate hosts.<br>- The application has defined at least two replicas with `podAntiAffinity` specified.<br><br>If an application has dependency on an external VIP of the API, there will be disruptions. |  Workloads can't be scaled while the load balancer VM is in a Failed state. Adding new worker nodes and scaling pods will not work. | Workload creation will succeed. | The API server remains unavailable while the load balancer VM is down. |
 | If Failover Clustering can recover from the error, it tries to restart the load balancer VM on a different host. If Failover Clustering can't recover the VM, you must rebuild the control plane VM manually. For instructions, see [Back up and restore workload clusters](backup-workload-cluster.md). | If Failover Clustering can recover from the error, it tries to restart the load balancer VM on a different host. If Failover Clustering can't recover the VM, you must rebuild the control plane VM manually. For instructions, see [Back up and restore workload clusters](backup-workload-cluster.md). | Not applicable | If Failover Clustering can recover from the error, it tries to restart the load balancer VM on a different host. If Failover Clustering can't recover the VM, you must rebuild the control plane VM manually. For instructions, see [Back up and restore workload clusters](backup-workload-cluster.md). |
 
