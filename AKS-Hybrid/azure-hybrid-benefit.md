@@ -63,7 +63,7 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 
 ### Retrieve your management cluster name
 
-You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the (`kvaName`) name:
+You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the `kvaName` name:
 
 ```PowerShell
 Get-AksHciConfig | ConvertTo-Json
