@@ -22,7 +22,7 @@ Azure Hybrid Benefit for Azure Kubernetes Service (AKS) is a new benefit that ca
 - Azure Hybrid Benefit for AKS is enabled at the management cluster (or AKS host) level. You don't need to enable the benefit for workload clusters.
 - If you have multiple AKS on Azure Stack HCI or Windows Server deployments, you must enable Azure Hybrid Benefit individually for each deployment.
 - Enabling Azure Hybrid Benefit on an AKS deployment during the trial period does not nullify your trial period. The benefit is activated immediately, but is applied at the end of the trial period.
-- Reinstalling AKS does not automatically reinstate the benefit. You must reactivate this benefit again for this new deployment.
+- Reinstalling AKS does not automatically reinstate the benefit. You must reactivate this benefit for the new deployment.
 
 For more information about Software Assurance and with which agreements it is available, see [Benefits of Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-by-benefits).
 
