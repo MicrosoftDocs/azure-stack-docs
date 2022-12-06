@@ -9,7 +9,7 @@ ms.date: 12/06/2022
 
 # Availability scenarios for Azure Kubernetes Service (AKS) on two-node HCI
 
-[!INCLUDE [applies-to]( ../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to]( ../azure-stack/includes/hci-applies-to-22h2.md)]
 
 This article describes the architecture for deploying an AKS hybrid cluster on a two-node Azure Stack HCI cluster. The article describes various failure scenarios that can occur, and the impact of this AKS architecture on the AKS hybrid cluster and recoverability from these failure scenarios.
 
@@ -94,7 +94,7 @@ The control plane VM of the workload cluster might get deleted unexpectedly, the
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **No Disruption** | **Disruption**<br>**+**<br>**Manual Recovery** | **No Disruption** | **Disruption**<br>**+**<br>**Manual Recovery** |
-| Existing workloads will continue to run without disruption as long as:<br>- The worker nodes are on separate hosts.<br>- The application has defined at least two replicas with `podAntiAffinity` specified.<br><br>If the application has a dependency on an external VIP of the API, there will be disruptions. | Workloads can't be scaled while the control plane VM is in a Failed state. Adding new worker nodes and scaling pods will not work. | New workload creation will succeed. | The API server isn't available when the control plane VM is in a Failed state. |
+| Existing workloads will continue to run without disruption as long as:<br>- The worker nodes are on separate hosts.<br>- The application has defined at least two replicas with `podAntiAffinity` specified.<br><br>If the application has dependency on an external VIP of the API, there will be disruptions. | Workloads can't be scaled while the control plane VM is in a Failed state. Adding new worker nodes and scaling pods will not work. | New workload creation will succeed. | The API server isn't available when the control plane VM is in a Failed state. |
 | Not applicable | If Failover Clustering can recover from the error, it will try to restart the control plane VM on a different host. If Failover Clustering can't recover the VM, the control plane VM must be rebuilt manually. For instructions, see [Back up and restore workload clusters](backup-workload-cluster.md). | Not applicable | If Failover Clustering can recover from the error, it tries to restart the control plane VM on a different host. If Failover Clustering can't recover the VM, the control plane VM must be rebuild manually. For instructions, see [Back up and restore workload clusters](backup-workload-cluster.md). |
 
 ### Node pool (worker nodes) VM failure
