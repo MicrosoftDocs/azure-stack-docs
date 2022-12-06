@@ -1,5 +1,5 @@
 ---
-title: Control plane on two physical hosts deployment model availability scenarios
+title: Control plane on two physical hosts deployment model, availability scenarios in Azure Stack HCI
 description: Recommended architecture for deploying an AKS hybrid cluster on a two-node Azure Stack HCI system
 author: sethmanheim
 ms.author: sethm
@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 12/06/2022
 ---
 
-# Control plane on two physical hosts deployment model availability scenarios
+# Control plane on two physical hosts deployment model, availability scenarios in Azure Stack HCI
 
 > Applies to: **PLEASE PROVIDE.**
 
@@ -15,7 +15,7 @@ This article describes the architecture for deploying an AKS hybrid cluster on a
 
 ## Architecture
 
-Traditional Kubernetes deployments require three physical machines to survive a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS hybrid can be deployed on a two-node Azure Stack HCI system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Node behavior during failures, updates](#node-behavior-during-failures-updates).
+Traditional Kubernetes deployments require three physical machines to survive a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS hybrid can be deployed on a two-node Azure Stack HCI system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Node behavior during updates, failures](#node-behavior-during-updates-failures).
 
 :::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster" lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" border="false":::
 
@@ -36,7 +36,7 @@ The following terminology is used in this article:
 | API server          | Enables interaction with the Kerberos cluster, providing interaction for management tools such as Windows Admin Center, PowerShell modules, and `kubectl`. |
 | CRUD                | Create, Read, Update, and Delete operations. |
 
-## Node behavior during failures, updates
+## Node behavior during updates, failures
 
 The scaled-down architecture in an Azure Stack HCI deployment with two physical nodes involves some availability trade-offs. This section describes node behavior during the following failure modes and during updates:
 
