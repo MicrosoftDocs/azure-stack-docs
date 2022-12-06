@@ -197,7 +197,7 @@ See **Cost Management and Billing** in the Azure portal to verify that the Azure
 
 ### Deactivate Azure Hybrid Benefit for AKS
 
-Run the following command to deactivate the benefit.
+Run the following command to deactivate the benefit:
 
 # [Azure PowerShell](#tab/powershell)
 
