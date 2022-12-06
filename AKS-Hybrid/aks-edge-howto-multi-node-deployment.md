@@ -18,7 +18,7 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 
 ## Key configuration parameters for a full Kubernetes deployment
 
-The parameters needed to create a full Kubernetes are defined in the `aksedge-config.json` file in the downloaded GitHub folder. The details of the configuration parameters are available [here](./aks-edge-deployment-config-json.md).
+The parameters needed to create a full Kubernetes are defined in the `aksedge-config.json` file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](./aks-edge-deployment-config-json.md).
 
 | Attribute | Value type      |Default Value|  Description |
 | :------------ |:-----------|:-------|:--------|
@@ -37,7 +37,7 @@ The parameters needed to create a full Kubernetes are defined in the `aksedge-co
 | LinuxVmIp4Address |IP Address| A.B.C.x | Specify the IP address your Linux VM will take. |
 
 Note the following 
-1.   The parameter that identifies a full deployment cluster is the **`singlemachinecluster`** flag which must be set as `false`.
+1.   The parameter that identifies a full deployment cluster is the **`singlemachinecluster`** flag, which must be set as `false`.
 1. **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your `aksedge-config.json` file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
 
     > [!NOTE]
