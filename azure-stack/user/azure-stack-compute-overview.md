@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub VMs.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 12/05/2022
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/05/2020
@@ -121,6 +121,23 @@ The following table shows some of the ways you can get information about a VM:
 |Azure Stack Hub portal|On the hub menu, click **Virtual Machines** and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
 |Azure PowerShell|Managing VMs is similar in Azure and Azure Stack Hub. For more information about using PowerShell, see the Azure topic [Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes).|
 |Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack Hub. For more information, see [Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp).|
+
+#### Virtual machine view
+
+Starting with the 2210 release of Azure Stack Hub, a new view was added for operators in the Azure Stack Hub admin portal that shows virtual machines across all user subscriptions. This view displays the following information:
+
+- VM GUID
+- User subscription
+- Resource group
+- VM size
+- Status
+- Node
+- Node state
+- Provisioning errors
+
+This new view enables operators to detect the state of virtual machines in the event of fabric failures, and inform subscription owner(s) to take action. For privacy reasons, operators can only see the VM GUID but not the name of the virtual machines. The view is linked to the compute resource provider and is listed as a user resource called **Virtual machines**.
+
+:::image type="content" source="media/azure-stack-compute-overview/vm-status.png" alt-text="Screenshot of vm status output." lightbox="media/azure-stack-compute-overview/vm-status.png":::
 
 ### Connect to your VM
 
