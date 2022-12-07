@@ -15,7 +15,7 @@
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
   - name: Save with Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit.md
+    href: concepts/azure-hybrid-benefit-hci.md
   - name: Evaluate Azure Stack HCI
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
@@ -380,14 +380,58 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-- name: Preview channel
+- name: Preview
   items:
-  - name: Join preview channel
-    href: manage/preview-channel.md    
-  - name: Install a preview version
-    href: manage/install-preview-version.md
-  - name: Post installation tasks
-    href: manage/preview-post-installation.md
+  - name: What's in preview
+    href: manage/whats-new-preview.md
+  - name: Preview channel
+    items:
+    - name: Join preview channel
+      href: manage/preview-channel.md    
+    - name: Install a preview version
+      href: manage/install-preview-version.md
+    - name: Post installation tasks
+      href: manage/preview-post-installation.md
+  - name: Supplemental package
+    items:
+    - name: View known issues
+      href: hci-known-issues.md
+    - name: Plan
+      items:
+      - name: Review security
+        items: 
+        - name: Use Windows Defender Application Control 
+          href: concepts/security-windows-defender-application-control.md
+        - name: Review security baseline settings
+          href: concepts/secure-baseline.md
+        - name: Understand BitLocker encryption
+          href: concepts/security-bitlocker.md
+      - name: Assess environment readiness
+        href: manage/use-environment-checker.md
+    - name: Deploy 
+      items:
+      - name: Deployment overview
+        href: deploy/deployment-tool-introduction.md
+      - name: Review prerequisites
+        href: deploy/deployment-tool-prerequisites.md
+      - name: 0 - View deployment checklist
+        href: deploy/deployment-tool-checklist.md
+      - name: 1 - Prepare Active Directory
+        href: deploy/deployment-tool-active-directory.md
+      - name: 2 - Install OS
+        href: deploy/deployment-tool-install-os.md
+      - name: 3A - Deploy interactively
+        href: deploy/deployment-tool-new-file.md
+      - name: 3B - Deploy via config file
+        href: deploy/deployment-tool-existing-file.md
+      - name: 3C - Deploy via PowerShell
+        href: deploy/deployment-tool-powershell.md
+      - name: 4 - Validate deployment
+        href: deploy/deployment-tool-validate.md
+      - name: Collect logs 
+        href: manage/collect-logs.md
+      - name: Troubleshoot issues
+        href: deploy/deployment-tool-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

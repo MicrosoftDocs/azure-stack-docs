@@ -1,6 +1,6 @@
 ---
-title: Set up Azure Arc VM management using Windows Admin Center
-description: Learn how to set up Azure Arc VM management using Windows Admin Center.
+title: Set up Azure Arc VM management using Windows Admin Center (preview)
+description: Learn how to set up Azure Arc VM management using Windows Admin Center (preview).
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 06/06/2022
@@ -8,7 +8,7 @@ ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
-# Set up Azure Arc VM management using Windows Admin Center
+# Set up Azure Arc VM management using Windows Admin Center (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
@@ -26,7 +26,7 @@ To set up Azure Arc VM management using command line, see [Set up Azure Arc VM m
 
 For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
