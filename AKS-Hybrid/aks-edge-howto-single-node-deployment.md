@@ -33,7 +33,7 @@ The key parameters and their default values applicable for single machine deploy
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
 |`SingleMachineCluster` |`boolean`| Set this flag to `true` for single machine cluster deployments.|`true`
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](aks-edge-concept.md#aks-edge-workload-types) | `Linux` |
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](aks-edge-concept.md#workload-types) | `Linux` |
 | `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. For K8S clusters, only `calico` is supported. | `flannel` |
 | `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM. | `2` |
 | `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM. | `2048` |

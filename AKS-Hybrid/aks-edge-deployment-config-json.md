@@ -17,7 +17,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
 | `SingleMachineCluster` | `boolean` | Specify whether this is a single machine cluster. You cannot add new clusters to a single machine cluster. | `true` |
-| `NodeType` | [`Linux`/`LinuxAndWindows`/`Windows`] | `Linux` creates the Linux node. `LinuxAndWindows` creates both the nodes. `Windows` only node is supported in Full Kubernetes deployment as a scaling option. Read more about [AKS edge workload types](aks-edge-howto-setup-machine.md#aks-iot-workload-types). In order to deploy a Windows worker node, you must opt the Windows VHDX into your MSI installer. [Learn how to do this here](aks-edge-howto-setup-machine.md).) | `Linux` |
+| `NodeType` | [`Linux`/`LinuxAndWindows`/`Windows`] | `Linux` creates the Linux node. `LinuxAndWindows` creates both the nodes. `Windows` only node is supported in Full Kubernetes deployment as a scaling option. Read more about [AKS edge workload types](aks-edge-concept.md#workload-types). In order to deploy a Windows worker node, you must opt the Windows VHDX into your MSI installer. [Learn how to do this here](aks-edge-howto-setup-machine.md).) | `Linux` |
 | `NetworkPlugin` | [`calico`/`flannel`] |  CNI plugin choice for the Kubernetes network model. For K8s cluster, always use `calico`. | `flannel` |
 | `Headless` | `boolean` | Flag to suppress any user interaction/prompts and continue. | `false` |
 | `TimeoutSeconds` | `number` | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `900` |
