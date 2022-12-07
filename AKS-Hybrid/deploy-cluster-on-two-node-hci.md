@@ -19,11 +19,11 @@ Traditional Kubernetes deployments require three physical machines to mitigate a
 
 :::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster" lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" border="false":::
 
-For more information on architecture, cluster deployment strategies, reliability considerations, and cost optimization for AKS on Azure Stack HCI, see [Azure Kubernetes Service (AKS) baseline architecture](/azure/architecture/example-scenario/hybrid/aks-baseline).
+For more information about architecture, cluster deployment strategies, reliability considerations, and cost optimization for AKS on Azure Stack HCI, see [Azure Kubernetes Service (AKS) baseline architecture](/azure/architecture/example-scenario/hybrid/aks-baseline).
 
 ## Terminology
 
-The following terminology is used in this article:
+This article uses the following terminology:
 
 | Term                | Definition                                                                        |
 |---------------------|-----------------------------------------------------------------------------------|
@@ -55,7 +55,7 @@ Updates of Azure Stack HCI and AKS have the following effects.
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **No Disruption** | **No Disruption** | **No Disruption** | **No Disruption** |
-| Cluster Aware Updates on Azure Stack HCI live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this. | Cluster Aware Updates on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster Aware Updates on Azure Stack HCI are migrated to the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster Aware Updates on Azure Stack HCI cluster migrate the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
+| Cluster-aware updates on Azure Stack HCI live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this. | Cluster-aware updates on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster-aware updates on Azure Stack HCI are migrated to the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster-aware updates on Azure Stack HCI cluster migrate the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
 
 ### Hardware failure on host
 
