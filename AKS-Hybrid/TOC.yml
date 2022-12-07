@@ -324,9 +324,9 @@
     - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: Release notes and known issues
-      href: https://github.com/Azure/aks-edge-utils/releases
+      href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
-      href: https://github.com/Azure/aks-edge-utils/issues
+      href: https://github.com/Azure/AKS-Edge/issues
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
