@@ -1,5 +1,5 @@
 ---
-title: About AKS Edge Essentials hybrid options on Windows
+title: About AKS Edge Essentials on Windows
 description: AKS Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 author: rcheeran
 ms.author: rcheeran
@@ -13,7 +13,7 @@ ms.custom: template-overview
 > [!NOTE]
 > AKS Edge Essentials is currently in public preview.
 
-Azure Kubernetes Service Edge Essentials hybrid option is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Edge Essentials includes a Microsoft-supported Kubernetes platform that includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. AKS Edge Essentials makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
+Azure Kubernetes Service Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Edge Essentials includes a Microsoft-supported Kubernetes platform that includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. AKS Edge Essentials makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
 
 ## Key features
 
@@ -50,7 +50,7 @@ Once you have set up on-premises Kubernetes using AKS Edge Essentials and create
 
 ### Interoperable with native Windows applications
 
-Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS Edge Essentials hybrid option, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition, AKS Edge Essentials offers interoperability between native Windows applications and containerized Linux workloads.
+Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS Edge Essentials, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition, AKS Edge Essentials offers interoperability between native Windows applications and containerized Linux workloads.
 
 ![Diagram of AKS Edge Essentials interop.](media/aks-edge/aks-edge-windows-arch.png)
 

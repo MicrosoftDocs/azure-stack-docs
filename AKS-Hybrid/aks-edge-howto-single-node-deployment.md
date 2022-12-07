@@ -14,18 +14,47 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisite
 
-Set up your primary machine as described in the [setup article](aks-edge-howto-setup-machine.md).
+Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
 
 ## Create a single machine cluster
 
-You can run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node. You can do so by providing your values in the AKSEdgeConfig JSON file. Run the `New-AksEdgeConfig` cmdlet to create a sample JSON **mydeployconfig.json** file with the default parameters and edit this file to provide your own values:
+1. The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+1. Open the [AksEdgePrompt](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd) tool. The tool opens an elevated PowerShell window with the modules loaded.
+1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
+
+    ```PowerShell
+    New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
+    ```
+
+## Single machine configuration parameters
+
+The key parameters and their default values applicable for single machine deployment:
+
+| Attribute | Value type      |  Description |  Default value |
+| :------------ |:-----------|:--------|:--------|
+|`SingleMachineCluster` |`boolean`| Set this flag to `true` for single machine cluster deployments.|`true`
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](aks-edge-concept.md#workload-types) | `Linux` |
+| `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. For K8S clusters, only `calico` is supported. | `flannel` |
+| `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM. | `2` |
+| `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM. | `2048` |
+| `LinuxVm.DataSizeInGB` | number | Size of the data partition.  | `10` |
+| `WindowsVm.CpuCount` | number | Number of CPU cores reserved for Windows VM. | `2` |
+| `WindowsVm.MemoryInMB` | number | RAM in MBs reserved for Windows VM. | `2048` |
+| `Network.ServiceIPRangeSize` | number | Defines a service IP range for your workloads. We recommend you reserve some IP range (ServiceIPRangeSize > 0) for your Kubernetes services.| `0` |
+| `Network.InternetDisabled` | boolean | Defines if internet access is available or not.| `false` |
+
+## Example deployment options
+
+### Create your own configuration file
+
+You can create your own configuration file using the `New-AksEdgeConfig` command:
 
 ```powershell
-#create a deployment configuration file with defaults
+# Create a deployment configuration file with defaults
 New-AksEdgeConfig -outFile .\mydeployconfig.json
 ```
 
-You can edit **mydeployconfig**.json with the parameters you need and pass the JSON config file for deployment. To get a full list of the parameters and their default values, run `Get-Help New-AksEdgeDeployment -full` in your PowerShell window. You can then use this file in your deployment.
+You can edit **mydeployconfig.json** with the parameters you need and pass the JSON config file for deployment.
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
@@ -45,26 +74,17 @@ $jsonObj.Network.ServiceIpRangeSize = 10
 New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
 ```
 
-Some of the common parameters and their default values are as follows:
+### Create a simple cluster without a load balancer
 
-| Attribute | Value type      |  Description |  Default value |
-| :------------ |:-----------|:--------|:--------|
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You cannot specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) *| `Linux` |
-| `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. | `flannel` |
-| `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM/VMs. | `2` |
-| `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM/VMs. | `2048` |
-| `LinuxVm.DataSizeInGB` | number | Size of the data partition. For large applications, we recommend  | `10` |
-| `ServiceIPRangeSize` | number | Defines a service IP range for your workloads. We recommend you reserve some IP range (ServiceIPRangeSize > 0) for your Kubernetes services.| `0` |
-
-## Example deployment options
-
-- **Create a simple cluster without a load balancer**. You can create a very simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You cannot create a LoadBalancer service in this approach:
+You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0). You can't create a LoadBalancer service in this approach.
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
    ```
 
-- **Allocate resources to your nodes**. To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+### Allocate resources to your nodes
+
+ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4 GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
    ```json
        "DeployOptions": {
@@ -81,18 +101,14 @@ Some of the common parameters and their default values are as follows:
            "MemoryInMB": 4096
        },
        "Network": {
-           "ServiceIPRangeRange": 10
+           "ServiceIPRangeSize": 10
        }
    ```
 
-   ```powershell
-   #create a deployment configuration file with defaults
-   New-AksEdgeConfig -outFile .\mydeployconfig.json
-   #Edit mydeployconfig.json with the parameters you need and pass the json config for deployment
-   New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
-   ```
+> [!NOTE]
+> AKS allocates IP addresses from your internal switch to run your Kubernetes services if you specified a `ServiceIPRangeSize`.
 
-   Pass the parameters as a JSON string, as previously mentioned:
+You can also choose to pass the parameters as a JSON string, as previously mentioned:
 
    ```powershell
    $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
@@ -106,10 +122,9 @@ Some of the common parameters and their default values are as follows:
    New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
    ```
 
-   > [!NOTE]
-   > AKS allocates IP addresses from your internal switch to run your Kubernetes services if you specified a `ServiceIPRangeSize`.
+### Create a mixed workload cluster
 
-- **Create a mixed workload cluster**. You can also deploy mixed-workloads clusters. The following example shows how to bring up both Linux and Windows workloads at the same time:
+You can also deploy mixed-workloads clusters. The following example shows how to bring up both Linux and Windows workloads at the same time:
 
    ```json
        "DeployOptions": {
@@ -130,7 +145,7 @@ Some of the common parameters and their default values are as follows:
            "MemoryInMB": 4096
        },
        "Network": {
-           "ServiceIPRangeRange": 10
+           "ServiceIPRangeSize": 10
        }
    ```
 
@@ -158,13 +173,12 @@ kubectl get nodes -o wide
 kubectl get pods -A -o wide
 ```
 
-The following screenshot shows pods on a K3S cluster:
-
+Here is a screenshot showing pods on a K3S cluster.
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 ## Add a Windows worker node (optional)
 
-If you want to add Windows workloads to an existing Linux only single machine cluster, you can run:
+If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
 
 ```powershell
 Add-AksEdgeNode -NodeType Windows

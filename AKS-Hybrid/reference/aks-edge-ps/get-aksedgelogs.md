@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeLogs
 
-## Synopsis
-
 Collects all the logs from the deployment.
 
 ## Syntax
@@ -66,4 +64,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

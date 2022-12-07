@@ -12,29 +12,39 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeKubeConfig
 
-## Synopsis
 Pulls the KubeConfig file from the Linux node.
 
 ## Syntax
 
 ```powershell
-Get-AksEdgeKubeConfig [-KubeConfigPath <String>] [-NodeType <WorkloadType>] [-WhatIf] [-Confirm]
+Get-AksEdgeKubeConfig [[-KubeConfigPath] <String>] [-NodeType <String>] [-ignoreError] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## Description
-Pulls the KubeConfig file from the Linux node.
-Thus, enables kubectl on the host to access the AksEdge
-cluster.
-The function will set the AksEdge cluster's kubeconfig file as the
-default kubeconfig file for kubectl.
+Pulls the KubeConfig file from the Linux node so that kubectl on the host to access the AksEdge
+cluster. The function will set the AksEdge cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 
 ## Parameters
 
 ### -KubeConfigPath
-Optional parameter that allows specifying a custom location to output the credential/kubeconfig file to.
-Defaults to the .kube folder under the user's profile folder.
+Optional parameter to specify a custom location to output the credential/kubeconfig file. Defaults to the `.kube` folder under the user's profile folder.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: $($env:USERPROFILE+"\.kube")
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeType
+Optional parameter to get the kubeconfig file alternatively from the Windows node
 
 ```yaml
 Type: String
@@ -43,30 +53,26 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $($env:USERPROFILE+"\.kube")
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeType
-Optional parameter allowing to get the kubeconfig file alternatively from the Windows node
-
-```yaml
-Type: WorkloadType
-Parameter Sets: (All)
-Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
-
-Required: False
-Position: Named
 Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ignoreError
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet isn't run.
 
 ```yaml
 Type: SwitchParameter
@@ -100,4 +106,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)

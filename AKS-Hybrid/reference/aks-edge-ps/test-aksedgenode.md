@@ -12,31 +12,35 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNode
 
-## Synopsis
-
-Checks whether the VM was created.
+Checks whether the node of NodeType was created.
 
 ## Syntax
 
 ```powershell
-Test-AksEdgeNode [[-WorkloadType] <String>] [<CommonParameters>]
+Test-AksEdgeNode [[-NodeType] <String>] [<CommonParameters>]
 ```
 
 ## Description
 
-The Test-AksEdgeNode cmdlet is an exposed function to verify whether the Linux VM was created.
-It returns true if the virtual machine was created or false if not.
+The Test-AksEdgeNode commandlet is an exposed function to verify whether the Linux or Windows node
+was created.
+It returns true if the node was created or false if not.
 
 ## Examples
 
+### Example 1
 ```powershell
 Test-AksEdgeNode -WorkloadType Windows
 ```
 
 ## Parameters
 
-### -WorkloadType
-{{ Fill WorkloadType Description }}
+### -NodeType
+
+This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
+'LinuxAndWindows', should be drained.
+When not specified, the 'Linux' node is drained only.
+When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml
 Type: String
@@ -50,10 +54,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)
 

@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeDeployment
 
-## Synopsis
-
 Checks whether the deployment was created.
 
 ## Syntax
@@ -24,5 +22,4 @@ Test-AksEdgeDeployment
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
-
+[AksEdge PowerShell Reference](./index.md)

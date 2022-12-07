@@ -1,7 +1,7 @@
 ---
 title: Test-AksEdgeNetworkParameters for AKS Edge
 author: rcheeran
-description: The Test-AksEdgeNetworkParameters PowerShell command validates AksEdge network parameters,
+description: The Test-AksEdgeNetworkParameters PowerShell command validates AKS Edge network parameters,
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -12,8 +12,6 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNetworkParameters
 
-## Synopsis
-
 Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ## Syntax
@@ -22,15 +20,6 @@ Validates AksEdge network parameters, useful as a pre-deployment step.
 
 ```powershell
 Test-AksEdgeNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>]
-```
-
-### fromParameters
-
-```
-Test-AksEdgeNetworkParameters [-WorkloadType <WorkloadType>] [-LinuxVmIp4Address <String>]
- [-WindowsVmIp4Address <String>] [-ControlPlaneEndpointIp <String>] [-ServiceIPRangeStart <String>]
- [-ServiceIPRangeEnd <String>] [-Ip4PrefixLength <Int32>] [-Ip4GatewayAddress <String>]
- [-DnsServers <String[]>] [-SkipAddressFreeCheck] [<CommonParameters>]
 ```
 
 ### fromJsonConfigString
@@ -47,176 +36,16 @@ parameters, see the New-AksEdgeDeployment commandlet.
 
 ## Examples
 
+### Example 1
 ```powershell
 Test-AksEdgeNetworkParameters -WorkloadType Linux
 ```
 
 ## Parameters
 
-### -WorkloadType
-
-{{ Fill WorkloadType Description }}
-
-```yaml
-Type: WorkloadType
-Parameter Sets: fromParameters
-Aliases:
-Accepted values: Linux, Windows, LinuxAndWindows
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinuxVmIp4Address
-
-{{ Fill LinuxVmIp4Address Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsVmIp4Address
-
-{{ Fill WindowsVmIp4Address Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ControlPlaneEndpointIp
-
-{{ Fill ControlPlaneEndpointIp Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceIPRangeStart
-
-{{ Fill ServiceIPRangeStart Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceIPRangeEnd
-
-{{ Fill ServiceIPRangeEnd Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Ip4PrefixLength
-
-{{ Fill Ip4PrefixLength Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Ip4GatewayAddress
-
-{{ Fill Ip4GatewayAddress Description }}
-
-```yaml
-Type: String
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsServers
-
-{{ Fill DnsServers Description }}
-
-```yaml
-Type: String[]
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipAddressFreeCheck
-
-{{ Fill SkipAddressFreeCheck Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: fromParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonConfigString
 
-{{ Fill JsonConfigString Description }}
+Input parameters based on a JSON string.
 
 ```yaml
 Type: String
@@ -232,7 +61,7 @@ Accept wildcard characters: False
 
 ### -JsonConfigFilePath
 
-{{ Fill JsonConfigFilePath Description }}
+Input parameters based on a JSON file.
 
 ```yaml
 Type: String
@@ -252,4 +81,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## Next steps
 
-[Aksedge PowerShell Reference](./index.md)
+[AksEdge PowerShell Reference](./index.md)
