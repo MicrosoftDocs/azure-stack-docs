@@ -16,8 +16,6 @@ ms.reviewer: alkohli
 
 This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
 
-[!INCLUDE [preview](../../includes/hci-preview.md)]
-
 ## About GPU partitioning
 
 Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
@@ -47,7 +45,7 @@ There are several requirements and things to consider before you begin to use th
 
 - Install the physical GPU device of the same make, model, and size on every server of the cluster. Refer to your OEM-provided documentation when installing the GPU device on your physical servers in the cluster.
     
-- Install the GPU drivers on every server of the cluster by following OEM instructions. For NVIDIA GPU drivers, see the [Nvidia vGPU documentation](https://docs.nvidia.com/grid/15.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/).
+- Install the GPU drivers on every server of the cluster by following instructions from our GPU Independent Hardware Vendors (IHVs). For NVIDIA GPU drivers, see the [Nvidia vGPU documentation](https://docs.nvidia.com/grid/15.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/).
 
 - Ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Reach out to your system vendor if you're unable to identify the correct setting in your BIOS.
 
@@ -57,13 +55,13 @@ There are several requirements and things to consider before you begin to use th
 
 - Install your chosen guest operating system on the VM. See [Supported guest operating systems](#supported-guest-operating-systems) for a list of supported guest operating systems.
 
-- Install the GPU drivers on the VM by following OEM instructions. For NVIDIA GPU drivers, see the [Nvidia vGPU documentation](https://docs.nvidia.com/grid/15.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/).
+- Install the GPU drivers on the VM by following instructions from our GPU Independent Hardware Vendors (IHVs). For NVIDIA GPU drivers, see the [Nvidia vGPU documentation](https://docs.nvidia.com/grid/15.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/).
 
 ### Prerequisites for Windows Admin Center
 
-If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.5.1. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions#installing-an-extension).
+If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.8.0. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions#installing-an-extension).
 
-After you install the extension, it appears under the **Installed extensions** tab as shown in the following screenshot. Make sure the version of the **GPUs** extension is **2.5.1**.
+After you install the extension, it appears under the **Installed extensions** tab as shown in the following screenshot. Make sure the version of the **GPUs** extension is **2.8.0**.
 
 :::image type="content" source="./media/partition-gpu/gpu-extension.png" alt-text="Screenshot of the Installed extensions tab in Windows Admin Center to verify the GPUs extension is installed." lightbox="./media/partition-gpu/gpu-extension.png" :::
 
