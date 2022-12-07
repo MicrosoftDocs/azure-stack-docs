@@ -149,7 +149,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 > [!WARNING]
 > To register your Azure Stack HCI cluster in Azure China, ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
 
-1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). You must also sign in to your Azure account in Windows Admin Center. Go to **Settings** > **Account** and select **Sign in** under **Azure Account**.
+1. Before beginning the cluster registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). You must also sign in to your Azure account from within Windows Admin Center. To do so, go to **Settings** > **Account**, and then select **Sign in** under **Azure Account**.
 
    > [!IMPORTANT]
    > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
@@ -157,7 +157,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 1. Open Windows Admin Center and do one of the following:
    - Option 1
       1. Select the cluster connection.
-      1. Select **Dashboard** from the **Tools** menu on the left.
+      1. Select **Dashboard** from the **Tools** menu on the left pane.
       1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
       1. Select **Register** to proceed.
    - Option 2
