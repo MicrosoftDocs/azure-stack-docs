@@ -50,16 +50,18 @@ The scaled-down architecture in an Azure Stack HCI deployment with two physical 
 
 ### Updates
 
-Updates of Azure Stack HCI and AKS have the following effects.
+Use the following table to determine the potential impact of Azure Stack HCI and AKS updates on workloads.
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **No Disruption** | **No Disruption** | **No Disruption** | **No Disruption** |
-| Cluster-aware updates on Azure Stack HCI live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this. | Cluster-aware updates on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster-aware updates on Azure Stack HCI are migrated to the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster-aware updates on Azure Stack HCI cluster migrate the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
+| Cluster-Aware Updating on Azure Stack HCI live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
 
 ### Hardware failure on host
 
 The physical host that runs the VMs hosting the Kubernetes nodes might stop functioning because of hardware issues or might become network-partitioned.
+
+Use the following table to determine the potential impact of host hardware failures on workloads.
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
@@ -71,6 +73,8 @@ The physical host that runs the VMs hosting the Kubernetes nodes might stop func
 
 The physical host that runs the VMs hosting the Kubernetes nodes might have a software issue in the operating system and cause a failure.
 
+Use the following table to determine the potential impact of host OS failures on workloads.
+
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **Potential Disruption**<br>**+**<br>**Automatic Recovery** | **Potential Disruption**<br>**+**<br>**Automatic Recovery** | **Potential Disruption**<br>**+**<br>**Automatic Recovery** | **Potential Disruption**<br>**+**<br>**Automatic Recovery** |
@@ -80,6 +84,8 @@ The physical host that runs the VMs hosting the Kubernetes nodes might have a so
 ### Management plane VM failure
 
 The control plane VM of the management cluster might get deleted unexpectedly, the boot disk might get corrupted, or the control plane VM of the management cluster might not boot because of OS issues.
+
+Use the following table to determine the potential impact of failure of the management cluster's control plane VM on workloads.
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
@@ -91,6 +97,8 @@ The control plane VM of the management cluster might get deleted unexpectedly, t
 
 The control plane VM of the workload cluster might get deleted unexpectedly, the boot disk might get corrupted, or the VM might not start because of OS issues.
 
+Use the following table to determine the potential impact of failure of a workload cluster's control plane VM on workloads.
+
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **No Disruption** | **Disruption**<br>**+**<br>**Manual Recovery** | **No Disruption** | **Disruption**<br>**+**<br>**Manual Recovery** |
@@ -101,6 +109,8 @@ The control plane VM of the workload cluster might get deleted unexpectedly, the
 
 The VMs hosting the Kubernetes nodes might get deleted unexpectedly, the boot disk might get corrupted, or the VMs might not boot because of OS issues.
 
+Use the following table to determine the potential impact of failure of a VM within a Kubernetes node pool on workloads.
+
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | **Potential Disruption**<br>**+**<br>**Manual Recovery** | **No Disruption** | **No Disruption** | **No Disruption** |
@@ -110,6 +120,8 @@ The VMs hosting the Kubernetes nodes might get deleted unexpectedly, the boot di
 ### Load balancer VM failure
 
 The load balancer VM might get deleted unexpectedly, the boot disk might get corrupted, or the VM might not boot because of OS issues.
+
+Use the following table to determine the potential impact of a failure of the load balancer VM on workloads.
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
