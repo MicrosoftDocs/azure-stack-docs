@@ -36,16 +36,18 @@ The parameters needed to create a full Kubernetes are defined in the `aksedge-co
 | DnsServers | IP Address|A.B.C.1 | IP address of your DNS (typically the router address). To view what DNS your machine uses: **ipconfig /all \| findstr /R "DNS\ Servers"** |
 | LinuxVmIp4Address |IP Address| A.B.C.x | Specify the IP address your Linux VM will take. |
 
-Note the following 
-1.   The parameter that identifies a full deployment cluster is the **`singlemachinecluster`** flag, which must be set as `false`.
-1. **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your `aksedge-config.json` file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
+Note the following
+
+- The parameter that identifies a full deployment cluster is the **`singlemachinecluster`** flag, which must be set as `false`.
+
+- **External Switch information** - A full deployment uses an external switch to enable communication across the nodes. You need to specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your `aksedge-config.json` file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge will automatically create an external switch named `aksedgesw-ext` and use that for your deployment.
 
     > [!NOTE]
     > In this release, there is a known issue with automatic creation of external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter and then provide the switch details in your configuration JSON as described below.
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-1. **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-edge-concept.md) overview for more details. For example: In local networks with 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
+- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](/aks-edge-concept.md) overview for more details. For example: In local networks with 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use and you can avoid using those IP addresses in your configuration.
 
 ## Validate the configuration file
 
@@ -66,7 +68,6 @@ New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 The `New-AksEdgeDeployment` command  automatically gets the kubeconfig file.
 
 ## Validate your deployment
-
 
 ```powershell
 kubectl get nodes -o wide
