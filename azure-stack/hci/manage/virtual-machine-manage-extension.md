@@ -1,6 +1,6 @@
 ---
-title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI
-description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal.
+title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI (preview)
+description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -17,9 +17,7 @@ This article describes how to install and manage VM extensions on your Azure Sta
 
 The VM extensions on your Azure Arc-enabled VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc-enabled VMs.
 
-
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
-
 
 ## Supported VM extensions on Windows
 

@@ -818,7 +818,7 @@
     },
     { 
       "source_path": "azure-stack/hci/known-issues.md", 
-      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_url": "/azure-stack/hci/hci-known-issues", 
       "redirect_document_id": false 
     },
     { 
@@ -947,8 +947,18 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/known-issues-22h2.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/manage/azure-arc-enabled-virtual-machines.md",
       "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/azure-hybrid-benefit.md",
+      "redirect_url": "/azure-stack/hci/concepts/azure-hybrid-benefit-hci",
       "redirect_document_id": false
     },
     {
@@ -957,4 +967,5 @@
       "redirect_document_id": false
     }
   ]
+  
 }
