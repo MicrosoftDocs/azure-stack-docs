@@ -1,6 +1,6 @@
 ---
-title: Create Azure Stack HCI VM from images in Azure Storage account
-description: Learn how to create Azure Stack HCI VM images using source images from Azure Storage account via Azure portal and Azure CLI.
+title: Create Azure Stack HCI VM from images in Azure Storage account (preview)
+description: Learn how to create Azure Stack HCI VM images using source images from Azure Storage account via Azure portal and Azure CLI (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.date: 10/05/2022
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 

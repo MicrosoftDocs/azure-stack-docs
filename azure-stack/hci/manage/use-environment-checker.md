@@ -425,5 +425,5 @@ For each test, the validator provides a summary of the unique issues and classif
 
 ## Next steps
 
-- Review the deployment checklist
+- [Review the deployment checklist](../deploy/deployment-tool-checklist.md)
 - [Contact Microsoft Support](get-support.md)
