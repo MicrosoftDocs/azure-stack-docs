@@ -23,7 +23,7 @@ Many machine learning or other compute workloads, such as Azure Virtual Desktop 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
 > [!NOTE]
-> Currently, we support only Nvidia A2, A10, A16, A40 GPUs on the Azure Stack HCI solutions. We recommend that you work with your Original Equipment Manufacturer (OEM) partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations.
+> Currently, we support only Nvidia A2, A10, A16, A40 GPUs for GPU partitioning on Azure Stack HCI. We recommend that you work with your Original Equipment Manufacturer (OEM) partners to plan, order, and set up the systems for your desired workloads with the appropriate configurations. However, we support additional GPUs if you want to use GPU acceleration via Discrete Device Assignment (DDA) or GPU passthrough. Reach out to your OEM partners to get a list of GPUs that support DDA. For more information about using GPU acceleration via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
 
 ## Supported guest operating systems
 
@@ -79,7 +79,7 @@ Consider the following caveats when using the GPU partitioning feature:
     
     - Using different GPU models from different product families from the same vendor in the same cluster.
 
-- You can't assign a physical GPU as both Discrete Device Assignment (DDA) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both. For information about GPU acceleration provided via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
+- You can't assign a physical GPU as both [Discrete Device Assignment (DDA)](../manage/use-gpu-with-clustered-vm.md) or partitionable GPU. You can either assign it as DDA or as partitionable GPU, but not both.
 
 - You can assign only a single GPU partition to a VM.
 
