@@ -77,6 +77,7 @@ A screenshot of a Kubernetes cluster is shown below:
 
 ![Diagram showing all pods running.](./media/aks-edge/all-pods-running.png)
 
+
 ## Example configurations for different deployment options
 
 ### Create your own configuration file

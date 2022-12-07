@@ -18,13 +18,19 @@ AKS Edge **K3S** version comes with Local Path Provisioner out of the box. This 
 
 In this guide, you'll learn how to set up Local Path Provisioner storage and deploy a sample container on your AKS Edge cluster. For more information, please see [the official local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
-## Step 1: Verify prerequisites
+## Step 1: Install prerequisites
 
-> [!NOTE]
-> If you are using the **K8S** verison, you must install the the prerequistes. To install all dependencies, use the following:
-> `kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/local-path-storage.yaml`
+If you are using the **K3S** verison, you can skip **Step 1** and move to **Step 2**. If you are using **K8S** you must install the the prerequistes.
+In your admin PowerShell window, run the following cmdlet: 
 
-First, make sure that the **local-path** storage class is available on your node. In your admin PowerShell window, run the following cmdlet: 
+```powershell
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/local-path-storage.yaml
+```
+
+> [!WARNING]
+> [Busybox](https://hub.docker.com/r/rancher/busybox) image is not maintained by Microsoft and is currently pulled from [Rancher Labs](https://hub.docker.com/u/rancher) repository.  
+
+Once deployment is finished, make sure that the **local-path** storage class is available on your node by running the following cmdlet: 
 
 ```powershell
 kubectl get StorageClass
@@ -37,15 +43,12 @@ NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE
 local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsumer   false                  21h
 ```
 
-> [!WARNING]
-> [Busybox](https://hub.docker.com/r/rancher/busybox) image is not maintained by Microsoft and is currently pulled from [Rancher Labs](https://hub.docker.com/u/rancher) repository.  
-
 ## Step 2: Create a Persistent Volume Claim (PVC)
 
-Once verified that the storage class is available, create a persistent volume claim (PVC). There are multiple configurations available, but in this tutorial we'll create a PVC with **ReadWriteOnce** access mode and request **128MB** of storage. In your admin PowerShell window, run the following cmdlet. 
+Second step is to create a persistent volume claim (PVC). There are multiple configurations available, but in this tutorial we'll create a PVC with **ReadWriteOnce** access mode and request **128MB** of storage. In your admin PowerShell window, run the following cmdlet. 
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pvc.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pvc.yaml
 ```
 
 ## Step 3: Deploy sample pod and verify resources
@@ -53,7 +56,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/too
 This step will deploy a sample pod that bounds to the PVC defined in the previous step. To deploy the sample pod, in your admin PowerShell window, run the following cmdlet. 
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pod.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pod.yaml
 ```
 
 If everything is running and correctly attached, you should see something like the following:
@@ -95,13 +98,13 @@ kubectl exec volume-test -- sh -c "echo Hello AKS Edge! > /data/test"
 Now delete the pod to simulate a pod failing, or even a deployment being removed.:
 
 ```powershell
-kubectl delete -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pod.yaml
 ```
 
 Check that the pod was removed and then deploy the **volume-test** pod again:
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pod.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pod.yaml
 ```
 
 Finally, read the content of the file that was previously written. If everything runs successfully, you should see the **Hello AKS Edge!** message. 
@@ -116,8 +119,8 @@ Hello AKS Edge!
 Once you're finished with Local Path Provisioner, go to PowerShell and clean up your workspace by running:
 
 ```powershell
-kubectl delete -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pod.yaml
-kubectl delete -f https://raw.githubusercontent.com/Azure/aks-edge-utils/main/tools/storage/local-path-provisioner/pvc.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pvc.yaml
 ```
 
 ## Next steps

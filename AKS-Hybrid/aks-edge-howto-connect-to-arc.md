@@ -21,12 +21,12 @@ Execute the following steps on your primary machine.
 
 There are two approaches to connect your cluster to Arc:
 
-1. Use the helper modules in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools/modules/AksEdgeAzureSetup) to simplify Arc connectivity. The steps for using the helper modules are described in this article.
+1. Use the helper modules in the [GitHub repo](https://github.com/Azure/AKS-Edge/tree/main/tools/modules/AksEdgeAzureSetup) to simplify Arc connectivity. The steps for using the helper modules are described in this article.
 2. Use PowerShell 7 with the commands from the AKSEdge module, to connect to Arc. [See this article](aks-edge-howto-more-configs.md) for instructions.
 
 ## 1. Download the helper modules
 
-If you did not download the [AKS Edge Utils GitHub repo](https://github.com/Azure/aks-edge-utils) during the [Set up machine](aks-edge-howto-setup-machine.md) step, you can do so now. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+If you did not download the [AKS Edge Utils GitHub repo](https://github.com/Azure/AKS-Edge) during the [Set up machine](aks-edge-howto-setup-machine.md) step, you can do so now. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 
 ## 2. Configure your Azure environment

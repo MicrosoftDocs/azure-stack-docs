@@ -10,7 +10,7 @@ ms.custom: template-concept
 
 # Deployment configuration JSON parameters
 
-After you set up your machines and downloaded the [GitHub repo](https://github.com/Azure/aks-edge-utils) with our tools and samples, you can deploy your cluster using our configuration JSON. This article will explain the different parameters  found in the `aksedge-config.json`.
+After you set up your machines and downloaded the [GitHub repo](https://github.com/Azure/AKS-Edge) with our tools and samples, you can deploy your cluster using our configuration JSON. This article will explain the different parameters  found in the `aksedge-config.json`.
 
 ## Deployment options
 

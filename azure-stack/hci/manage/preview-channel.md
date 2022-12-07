@@ -45,6 +45,7 @@ Before joining the preview channel, make sure that all servers in the cluster ar
 
 Once you've joined the preview channel, you're ready to install Azure Stack HCI using either Windows Admin Center or PowerShell.
 
+
 ## Next steps
 
 > [!div class="nextstepaction"]
