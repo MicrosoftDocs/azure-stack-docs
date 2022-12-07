@@ -1,5 +1,5 @@
 ---
-title: Azure Arc VM management networking on Azure Stack HCI
+title: Understanding Azure Arc VM management networking on Azure Stack HCI
 description: Learn the networking concepts for Azure Arc VM management on Azure Stack HCI.
 ms.topic: conceptual
 author: dansisson
@@ -10,13 +10,13 @@ ms.subservice: azure-stack-hci
 ms.date: 12/07/2022
 ---
 
-# Azure Arc VM management networking on Azure Stack HCI
+# Understanding Azure Arc VM management networking on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes networking concepts for Azure Arc virtual machine (VM) management on Azure Stack HCI.
 
-## About networking for Azure Arc management
+## Introduction to Azure Arc management networking
 
 Networking for Azure Arc VM management on Azure Stack HCI consists of the following:
 
@@ -27,7 +27,7 @@ See the following network diagram for details:
 
 :::image type="content" source="./media/azure-arc-vm-management-networking/networking-diagram.png" alt-text="Diagram showing networking for Arc VM management." lightbox="./media/azure-arc-vm-management-networking/networking-diagram.png":::
 
-## Network for Azure Arc VM management
+## Azure Arc VM management network
 
 To set up Azure Arc VM management infrastructure networking on an Azure Stack HCI cluster, you are required to create and configure the following:
 
@@ -57,7 +57,7 @@ A set of three contiguous IP addresses are required for the Azure Arc Resource B
 > [!NOTE]
 > As an in-place upgrade of the Arc Resource Bridge is not supported, a new VM instance is created for this purpose using address IP-3. In this way, the IP-2 and IP-3 addresses are alternated each time the Arc Resource Bridge VM is updated.
 
-## Virtual network for Azure Arc VMs
+## Azure Arc VM virtuaL network
 
 VMs deployed from the Azure Arc management plane get their network configuration from the virtual network created on the Azure Stack HCI cluster. This virtual network consists of the following:
 
