@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 2/1/2021
 ms.author: sethm
-ms.reviewer: scottnap
+ms.reviewer: cedward
 ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want an introduction to networking in Azure Stack so I can get started.
