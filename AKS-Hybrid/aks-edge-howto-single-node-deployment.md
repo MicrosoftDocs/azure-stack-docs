@@ -18,8 +18,8 @@ Set up your primary machine as described in the [Set up machine](aks-edge-howto-
 
 ## Create a single machine cluster
 
-1. The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/aks-edge-utils/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
-1. Open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd) tool. The tool opens an elevated PowerShell window with the modules loaded.
+1. The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+1. Open the [AksEdgePrompt](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd) tool. The tool opens an elevated PowerShell window with the modules loaded.
 1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
     ```PowerShell
