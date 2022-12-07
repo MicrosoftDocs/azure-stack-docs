@@ -34,7 +34,7 @@ nodeSelector:
 
 ### 1. Update the manifest file
 
-This article uses a sample application that is a basic voting app consisting of a front and back end, which is based on Microsoft's azure-vote-front image. The container image for this application is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice. See `\samples\others\linux-sample.yaml` in the [GitHub repo](https://github.com/Azure/aks-edge-utils) package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux.
+This article uses a sample application that is a basic voting app consisting of a front and back end, which is based on Microsoft's azure-vote-front image. The container image for this application is hosted on Azure Container Registry (ACR). Once you have the container image of your application, you can choose to store your container image in a container registry of your choice. See `\samples\others\linux-sample.yaml` in the [GitHub repo](https://github.com/Azure/AKS-Edge) package for the deployment manifest (located in \samples\others). Note that in the YAML we specified a nodeSelector tagged for Linux.
 
 ### 2. Deploy the application
 
@@ -87,7 +87,7 @@ kubectl delete -f linux-sample.yaml
 
 ## Deploy a sample Windows application to your cluster
 
-This example runs a sample ASP.NET application based on [Microsoft's sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See **win-sample.yaml** in the public preview package for the deployment manifest (located in **\samples\others**). Note that the YAML specifies a `nodeSelector` tagged for Windows. All sample code and deployment manifests can be found under the **/Samples** folder in the [GitHub repo](https://github.com/Azure/aks-edge-utils).
+This example runs a sample ASP.NET application based on [Microsoft's sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See **win-sample.yaml** in the public preview package for the deployment manifest (located in **\samples\others**). Note that the YAML specifies a `nodeSelector` tagged for Windows. All sample code and deployment manifests can be found under the **/Samples** folder in the [GitHub repo](https://github.com/Azure/AKS-Edge).
 
 ### 1. Deploy the application by specifying the name of your YAML manifest
 

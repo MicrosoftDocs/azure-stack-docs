@@ -35,7 +35,7 @@ Refer to the following network chart to configure your environment. You must all
 
 For example: local network is 192.168.1.0/24. 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports only IPv4 addresses.
 
-You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/aks-edge-utils/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/aks-edge-utils/tree/main/tools) to view IPs that are currently in use. You can avoid using those IP addresses in your configuration.
+You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/AKS-Edge/tree/main/tools) to view IPs that are currently in use. You can avoid using those IP addresses in your configuration.
 
 ## Deploy the control plane on the primary machine with an external switch
 

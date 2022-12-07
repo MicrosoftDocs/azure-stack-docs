@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Metrics server on an AKS Edge Essentials cluster
 
-The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a tool that inspects your containers' resource consumption. You can find the YAML file for the metrics server in the /Samples/Other folder in the [GitHub repo](https://github.com/Azure/aks-edge-utils/).
+The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a tool that inspects your containers' resource consumption. You can find the YAML file for the metrics server in the /Samples/Other folder in the [GitHub repo](https://github.com/Azure/AKS-Edge/).
 
 ## Prerequisites on K8S clusters
 
