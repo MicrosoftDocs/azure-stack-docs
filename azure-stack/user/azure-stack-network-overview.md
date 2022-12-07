@@ -37,6 +37,9 @@ Azure Stack Hub provides different kinds of networking capabilities that can be 
 - **Deployment and configuration tools**  
     Use a web-based portal or cross-platform command-line tools to deploy and configure network resources.
 
+## Azure Stack Hub IPv6 support
+
+Azure Stack Hub does not offer support for IPv6 and there are no roadmap items to provide support.
 
 ## Next steps
 
