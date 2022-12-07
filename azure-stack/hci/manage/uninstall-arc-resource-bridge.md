@@ -1,6 +1,6 @@
 ---
-title: Uninstall Azure Arc VM management 
-description: Learn how to uninstall Azure Arc VM management.
+title: Uninstall Azure Arc VM management (preview)
+description: Learn how to uninstall Azure Arc VM management (preview).
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.subservice: azure-stack-hci
 ms.date: 03/23/2022
 ---
 
-# Uninstall Azure Arc VM management
+# Uninstall Azure Arc VM management (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article describes how to uninstall Azure Arc VM management on an Azure Arc-enabled Azure Stack HCI cluster.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## How to uninstall Azure Arc VM management
 

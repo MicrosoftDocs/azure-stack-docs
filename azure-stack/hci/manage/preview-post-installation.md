@@ -13,7 +13,7 @@ ms.date: 11/08/2022
 
 > Applies to: Azure Stack HCI preview channel
 
-This article details how to update the cluster functional level and storage pool after joining the preview channel and installing a preview version of the Azure Stack HCI OS.
+This article details how to update the cluster functional level and storage pool after joining the preview channel and installing the Azure Stack HCI OS.
 
 ## Post installation steps
 
