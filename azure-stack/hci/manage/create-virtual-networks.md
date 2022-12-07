@@ -1,6 +1,6 @@
 ---
-title: Create virtual networks
-description: Learn how to create virtual networks.
+title: Create virtual networks (preview)
+description: Learn how to create virtual networks (preview).
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.subservice: azure-stack-hci
 ms.date: 11/02/2022
 ---
 
-# Create virtual networks
+# Create virtual networks (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article describes how to create or add virtual network for your Azure Stack HCI cluster.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Create virtual networks for custom location
 
