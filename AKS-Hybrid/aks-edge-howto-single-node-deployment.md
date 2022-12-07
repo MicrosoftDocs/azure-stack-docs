@@ -14,49 +14,47 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisite
 
-Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) page.
+Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
 
 ## Create a single machine cluster
 
-1. The parameters needed to create a single machine cluster are defined in the [`aksedge-config.json`](https://github.com/Azure/aks-edge-utils/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](./aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the **`singlemachinecluster`** flag, which must be set as `true`.
-
-2. Open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd), this will open a elevated PowerShell window with the modules loaded.
-3. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node.
+1. The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/aks-edge-utils/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+1. Open the [AksEdgePrompt](https://github.com/Azure/aks-edge-utils/blob/main/tools/AksEdgePrompt.cmd) tool. The tool opens an elevated PowerShell window with the modules loaded.
+1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
     ```PowerShell
     New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
     ```
 
-
-## Single machine configuration  parameters
+## Single machine configuration parameters
 
 The key parameters and their default values applicable for single machine deployment:
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-|`SingleMachineCluster` |`boolean`| Set this flag as **true** for single machine cluster deployments|`true`
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](/docs/AKS-Edge-Concepts.md#aks-edge-workload-types) | `Linux` |
+|`SingleMachineCluster` |`boolean`| Set this flag to `true` for single machine cluster deployments.|`true`
+| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](aks-edge-concept.md#aks-edge-workload-types) | `Linux` |
 | `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. For K8S clusters, only `calico` is supported. | `flannel` |
 | `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM. | `2` |
 | `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM. | `2048` |
-| `LinuxVm.DataSizeInGB` | number | Size of the data partition. For large applications, we recommend  | `10` |
+| `LinuxVm.DataSizeInGB` | number | Size of the data partition.  | `10` |
 | `WindowsVm.CpuCount` | number | Number of CPU cores reserved for Windows VM. | `2` |
 | `WindowsVm.MemoryInMB` | number | RAM in MBs reserved for Windows VM. | `2048` |
 | `Network.ServiceIPRangeSize` | number | Defines a service IP range for your workloads. We recommend you reserve some IP range (ServiceIPRangeSize > 0) for your Kubernetes services.| `0` |
-| `Network.InternetDisabled` | boolean | Defines if Internet access is available or not.| `false` |
+| `Network.InternetDisabled` | boolean | Defines if internet access is available or not.| `false` |
 
 ## Example deployment options
 
 ### Create your own configuration file
 
-You can create your own configuration file using the `New-AksEdgeConfig` command.
+You can create your own configuration file using the `New-AksEdgeConfig` command:
 
 ```powershell
-#create a deployment configuration file with defaults
+# Create a deployment configuration file with defaults
 New-AksEdgeConfig -outFile .\mydeployconfig.json
 ```
 
-You can edit mydeployconfig.json with the parameters you need and pass the JSON config file for deployment.
+You can edit **mydeployconfig.json** with the parameters you need and pass the JSON config file for deployment.
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\mydeployconfig.json
@@ -78,7 +76,7 @@ New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
 
 ### Create a simple cluster without a load balancer
 
-You can create a simple cluster with no service IPs(`ServiceIPRangeSize` set as 0). You can't create a LoadBalancer service in this approach.
+You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0). You can't create a LoadBalancer service in this approach.
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
