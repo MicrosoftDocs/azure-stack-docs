@@ -73,6 +73,8 @@
   items:
   - name: Clusters and workloads
     href: kubernetes-concepts.md
+  - name: Availability with 2-node HCI cluster
+    href: deploy-cluster-on-two-node-hci.md
   - name: Security
     items:
       - name: Security for AKS hybrid
