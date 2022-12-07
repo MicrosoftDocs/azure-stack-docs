@@ -20,6 +20,9 @@ Azure Stack Hub networking has many of the features provided by Azure networking
 
 This article provides an overview of the unique considerations for Azure Stack Hub networking and its features. To learn about high-level differences between Azure Stack Hub and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
+> [!IMPORTANT]
+> Azure Stack Hub does not offer support for IPv6 and there are no roadmap items to provide support.
+
 ## Cheat sheet: Networking differences
 
 | Service | Feature | Azure (global) | Azure Stack Hub |
