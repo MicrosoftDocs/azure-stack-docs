@@ -28,7 +28,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 Watch the video on the high-level features of Azure Stack HCI:
 
-> [!VIDEO https://www.youtube.com/watch?v=2gKx3IySlAY]
+> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
 
 Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
