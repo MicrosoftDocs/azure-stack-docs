@@ -28,7 +28,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 Watch the video on the high-level features of Azure Stack HCI:
 
-> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
+> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
@@ -73,6 +73,10 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Disaster recovery for virtualized workloads       | An Azure Stack HCI stretched cluster provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks.|
 | Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
 | Run Azure services on-premises                    | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview).|
+
+For an in-depth example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo below.
+
+> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
 
 ### Azure integration benefits
 
