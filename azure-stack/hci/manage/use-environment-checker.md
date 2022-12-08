@@ -448,42 +448,44 @@ C:\> Import-Module AzStackHci.EnvironmentChecker
 C:\> Get-SigningRootChain -Uri <Endpoint-URI> | ft subject 
 ```
 
-For example, first run the following commands to verify the certificate information for `https://login.microsoftonline.com`:
+For example, if you want to verify the certificate information for two endpoints, say `https://login.microsoftonline.com` and `https://portal.azure.com`, run the following commands individually for each endpoint:
 
-```powershell
-C:\> Import-Module AzStackHci.EnvironmentChecker 
-C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject
-```
+- For `https://login.microsoftonline.com`:
 
-Here's a sample output:
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker 
+   C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject
+   ```
 
-```powershell
-Subject
--------
-CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
-CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US
-CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
-```
+   Here's a sample output:
 
-Then run the following commands to verify the certificate information for `https://portal.azure.com`
+   ```powershell
+   Subject
+   -------
+   CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
 
-```powershell
-C:\> Import-Module AzStackHci.EnvironmentChecker
-C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
+- For `https://portal.azure.com`:
 
-```
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker
+   C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
 
-Here's are the sample outputs:
+   ```
 
-```powershell
-Subject
--------
-CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
-CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
-CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
-```
+   Here's a sample output:
 
-In the example above, the connectivity validator checks two endpoints: `https://login.microsoftonline.com` and `https://portal.azure.com`. These endpoints are Microsoft’s properties whose SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint, and we only require one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain we are expecting, the other can still satisfy the test, for up to six months while we update the expected values. If part of the chain rotates we only require one certificate to match **Microsoft** or **Digicert**.
+   ```powershell
+   Subject
+   -------
+   CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
+
+In the above example, the connectivity validator checks two endpoints: `https://login.microsoftonline.com` and `https://portal.azure.com`. These endpoints are Microsoft’s properties whose SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint, and we only require one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain we are expecting, the other can still satisfy the test, for up to six months while we update the expected values. If part of the chain rotates we only require one certificate to match **Microsoft** or **Digicert**.
 
 ## Next steps
 
