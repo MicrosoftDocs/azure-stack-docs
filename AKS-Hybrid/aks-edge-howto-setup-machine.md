@@ -91,7 +91,7 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 ## Load AKS Edge modules
 
-AKS edge modules can be loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [Github repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd).
+AKS edge modules can be loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd).
 
 ## Check the AKS Edge modules
 
