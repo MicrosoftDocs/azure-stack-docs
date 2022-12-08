@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to additional machines to create a multi-node deployment. Note that scaling to additional nodes is an **experimental** feature.
+Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to additional machines to create a multi-node deployment. Note that scaling to additional nodes is an experimental feature.
 
 ## Prerequisites
 
