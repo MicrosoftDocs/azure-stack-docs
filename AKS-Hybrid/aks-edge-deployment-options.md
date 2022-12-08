@@ -28,6 +28,16 @@ Once you've created your cluster, you can deploy your applications and connect y
   | Maximum number of vCPUs per machine  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
+## Feature support matrix
+
+||Public preview   |Experimental|
+|------------|-----------|--------|
+|Kubernetes (K8S)|Version : 1.22.6|
+|Kubernetes (K3S)|Version : 1.23.6|
+|Network plugin | Calico on K8S <br> Flannel on K3S | Flannel on K8S <br> Calico on K3S|
+|Configuration|SingleMachine Cluster (Internal Switch)<br>Full Kubernetes (External Switch)|
+|Scaling to additional nodes| |Non-CAPI  on K8S and K3S|
+
 ## Next steps
 
 - [Set up your machine](./aks-edge-howto-setup-machine.md)
