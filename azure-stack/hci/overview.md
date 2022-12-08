@@ -72,7 +72,9 @@ Customers often choose Azure Stack HCI in the following scenarios.
 
 ## Demo of using Microsoft Azure with Azure Stack HCI
 
-For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo. Note, this video includes preview functionality which shows real product functionality, but in a closely controlled environment.
+For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo.
+
+Note, this video includes preview functionality which shows real product functionality, but in a closely controlled environment.
 
 > [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
 
