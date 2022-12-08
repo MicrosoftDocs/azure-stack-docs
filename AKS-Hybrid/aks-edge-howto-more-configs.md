@@ -43,7 +43,7 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ### Step 2: Configure your Azure environment
 
-Follow [Configure your Azure environment](aks-edge-howto-connect-to-arc.md#1-configure-your-azure-environment) steps and note down all the azure parameters including the service principal id and password.
+Follow the steps in [Configure your Azure environment](aks-edge-howto-connect-to-arc.md#1-configure-your-azure-environment) and note all the Azure parameters including the service principal ID and password.
 
 #### Create a PSCredential object with service principal
 
@@ -58,7 +58,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 
 ### Step 3: Connect your cluster to Arc
 
-Connect your cluster to Azure Arc-enabled kubernetes using `Set-AksEdgeArcConnection` function.
+Connect your cluster to Azure Arc-enabled Kubernetes using `Set-AksEdgeArcConnection` function.
 
 ```powershell
 #populate your parameters and $credential from the earlier step.
