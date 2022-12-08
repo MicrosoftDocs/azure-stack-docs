@@ -18,12 +18,12 @@ Set up your primary machine as described in the [Set up machine](aks-edge-howto-
 
 ## 1. Single machine configuration parameters
 
-The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub repo. A detailed description of the configuration parameters is available [here](aks-edge-deployment-config-json.md).
+The parameters needed to create a single machine cluster are defined in the [aksedge-config.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub repo. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
 The key parameters to note for single machine deployment are:
 
-- `DeployOptions.SingleMachineCluster` -   The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
-- The following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
-- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` as 'true' to enable the metrics server.
+- `DeployOptions.SingleMachineCluster` - The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+- The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`, `Network.InternetDisabled`.
+- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` to 'true' to enable the metrics server.
 
 ## 2. Create a single machine cluster
 
