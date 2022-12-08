@@ -27,6 +27,7 @@ With Azure Arc VM management, you can perform various operations from the Azure 
 
 - Create a VM
 - Start, stop, and restart a VM
+- Delete a VM
 - Control access and add Azure tags
 - Add and remove virtual disks and network interfaces
 - Update memory and virtual CPUs for the VM
