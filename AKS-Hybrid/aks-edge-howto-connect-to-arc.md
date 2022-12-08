@@ -24,7 +24,7 @@ There are two approaches to connect your cluster to Arc:
 
 ## 1. Configure your Azure environment
 
-To enable successfull connection to Azure for Azure Arc-enabled servers and Azure Arc-enabled kubernetes, the following configurations are required. 
+To enable successfull connection to Azure for Azure Arc-enabled servers and Azure Arc-enabled kubernetes, the following configurations are required.
 
 * Enable all required Resource Providers in the Azure Subscription such as `Microsoft.HybridCompute`, `Microsoft.GuestConfiguration`, `Microsoft.HybridConnectivity`,
   `Microsoft.Kubernetes`, `Microsoft.KubernetesConfiguration`
@@ -71,6 +71,7 @@ To configure Azure,
     ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
     
     ```
+
 4. Validate that the credentials are ok, using **AksEdgeAzureSetup-Test.ps1**. This script logs into Azure using the new service principal credentials and checks the status of Azure resources.
 
     ```powershell
@@ -140,7 +141,7 @@ To configure Azure,
     ```powershell
     kubectl get pods --all-namespaces
     ```
-    
+
     ![all pods shown in arc](media/aks-edge/all-pods-in-arc.png)
 
 ## Disconnect from Arc
@@ -165,5 +166,5 @@ For a complete clean-up, through the Azure portal, delete the service principal 
 
 ## Next steps
 
-- [Overview](aks-edge-overview.md)
-- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
+* [Overview](aks-edge-overview.md)
+* [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
