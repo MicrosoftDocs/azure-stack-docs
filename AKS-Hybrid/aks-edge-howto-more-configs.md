@@ -10,7 +10,7 @@ ms.custom: template-how-to #Required; leave this attribute/value as-is.
 
 # Additional configuration for AKS Edge Essentials
 
-This article provides alternate way of connecting to Azure Arc using Az Powershell and Powershell 7.
+This article provides alternate way of connecting to Azure Arc using Az PowerShell and PowerShell 7.
 
 ## Connect to Arc using PowerShell 7
 
@@ -20,7 +20,7 @@ First, install [PowerShell 7.2.7](https://github.com/PowerShell/PowerShell/relea
 
 Next, run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
-```powershell
+```PowerShell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
 Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop 
 Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
@@ -29,12 +29,12 @@ Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber
 > [!NOTE]
 > For connecting to Arc, you must install a helm version that is greater than v3.0 but less than v3.7. We recommend installing version 3.6.3.
 
-```powershell
+```PowerShell
 #download helm from web
 Invoke-WebRequest -Uri "https://get.helm.sh/helm-v3.6.3-windows-amd64.zip" -OutFile ".\helm-v3.6.3-windows-amd64.zip"
 ```
 
-```powershell
+```PowerShell
 #Unzip to a local directory
 Expand-Archive "helm-v3.6.3-windows-amd64.zip" C:\helm
 #set helm in the env Path

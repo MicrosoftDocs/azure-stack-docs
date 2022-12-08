@@ -19,8 +19,8 @@ This article describes how to connect your AKS Edge Essentials cluster to [Azure
 
 There are two approaches to connect your cluster to Arc:
 
-1. Use Azure CLI with the commands from the [AKSEdgeDeploy](https://github.com/Azure/AKS-Edge/tree/main/tools/modules/AksEdgeDeploy/README.md) module. This approach is described in this article.
-2. Use PowerShell 7 with the commands from the AKSEdge module. This approach is described in [Connect to Arc using PowerShell 7](aks-edge-howto-more-configs.md).
+- Use Azure CLI with the commands from the [AKSEdgeDeploy](https://github.com/Azure/AKS-Edge/tree/main/tools/modules/AksEdgeDeploy/README.md) module. This approach is described in this article.
+- Use PowerShell 7 with the commands from the AKSEdge module. This approach is described in [Connect to Arc using PowerShell 7](aks-edge-howto-more-configs.md).
 
 ## 1. Configure your Azure environment
 
