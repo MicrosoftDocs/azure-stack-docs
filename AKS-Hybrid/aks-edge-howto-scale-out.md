@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to additional machines to create a multi-node deployment. Please note that scaling to additional nodes is an **experimental** feature.
+Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to additional machines to create a multi-node deployment. Note that scaling to additional nodes is an **experimental** feature.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
 
-- To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux and Windows node as follows:
+- To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux, and Windows node as follows:
 
    ```powershell
    $params = @{
@@ -86,13 +86,13 @@ This command returns a JSON string and also stores the JSON content in the **.\S
 
  The **.\ScaleConfig.json** configuration file includes the configurations from the primary machine. Review and update necessary sections providing details relevant to the machine you are scaling to.
 
-- Verify the `Network.VSwitch.AdapterName` with reference to the secondary machine. If you've created an external switch on your Hyper-V on your secondary machine, you can choose to specify the vswitch details in your **ScaleConfig.json** file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+- Verify the `Network.VSwitch.AdapterName` with reference to the secondary machine. If you've created an external switch on your Hyper-V on your secondary machine, you can choose to specify the vswitch details in your **ScaleConfig.json** file. If you do not create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
     > [!NOTE]
     > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described below.
 
 - Verify the resource configurations for the additional nodes. You can modify these parameters as needed. Ensure to [reserve enough memory for each node](./aks-edge-concept.md#aks-edge-essentials-key-concepts). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
 
-- The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have 1, 3, or 5 control plane nodes.
+- The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
 ## 3. Bring up a node on your secondary machine
 
