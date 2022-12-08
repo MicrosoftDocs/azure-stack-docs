@@ -26,15 +26,14 @@ There are two approaches to connect your cluster to Arc:
 
 To successfully connect to Azure using Azure Arc-enabled servers and Azure Arc-enabled kubernetes, the following configurations are required.
 
-* Enable all required Resource Providers in the Azure Subscription such as `Microsoft.HybridCompute`, `Microsoft.GuestConfiguration`, `Microsoft.HybridConnectivity`,
-  `Microsoft.Kubernetes`, `Microsoft.KubernetesConfiguration`
-* Create and verify a resource group for AKS Edge Essentials Azure resources
-* Create and verify a service principal with access rights to the resource group
+* Enable all required resource providers in the Azure subscription such as **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, and **Microsoft.KubernetesConfiguration**.
+* Create and verify a resource group for AKS Edge Essentials Azure resources.
+* Create and verify a service principal with access rights to the resource group.
 
->[!Note]
-> This is required to be done only once per Azure subscription and need not be repeated for each kubernetes cluster.
+> [!NOTE]
+> This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.
 
-If you already have configured Azure and have the service principal id and password, you can update all the fields in the **aide-userconfig.json** and skip to next step.
+If you already have configured Azure and have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file and skip to next step.
 
 To configure Azure,
 
