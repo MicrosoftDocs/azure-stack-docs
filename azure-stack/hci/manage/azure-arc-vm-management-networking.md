@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/07/2022
+ms.date: 12/08/2022
 ---
 
 # Understanding Azure Arc VM management networking on Azure Stack HCI
@@ -20,19 +20,24 @@ This article describes networking concepts for Azure Arc virtual machine (VM) ma
 
 Networking for Azure Arc VM management on Azure Stack HCI consists of the following:
 
-- Network for Azure Arc VM management
-- Virtual network for Azure Arc VMs
+- Physical network for Azure VM management infrastructure
+- Virtual network for Azure VMs deployed from the Azure management plane.
 
 See the following network diagram for details:
 
 :::image type="content" source="./media/azure-arc-vm-management-networking/networking-diagram.png" alt-text="Diagram showing networking for Arc VM management." lightbox="./media/azure-arc-vm-management-networking/networking-diagram.png":::
 
-## Azure Arc VM management network
+## Arc VM management network infrastructure
 
 To set up Azure Arc VM management infrastructure networking on an Azure Stack HCI cluster, you are required to create and configure the following:
 
 - A cloud agent clustered service.
-- An Azure Arc Resource Bridge VM that orchestrates operations on the cluster.
+- An Arc Resource Bridge VM that orchestrates operations on the cluster.
+
+|Component|Network|IP addresses|Allocation|
+|--|--|--|--|
+|Clustered service|Physical network|CloudserviceIP|DHCP|
+|Arc Resource Bridge VM|Virtual network| ControlPlaneIP, VMIP_1, VMIP_1|DHCP|
 
 The networking requirements for each of the preceding components are discussed in the following sections.  
 
@@ -40,24 +45,24 @@ The networking requirements for each of the preceding components are discussed i
 
 The Arc Resource Bridge requires a cloud agent to run on the host. This cloud agent is installed as a Failover Cluster generic clustered service. For more information, see [Failover cluster networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005).
 
-`Cloudagent IP`, also known as `cloudServiceIP`, is the IP address for this clustered service, which hosts the cloud agent. The IP address is required only for static IP configurations on the underlay network for the physical hosts. The IP address must be in the same network as the physical hosts of the Azure Stack HCI cluster.
+`CloudServiceIP` is the IP address for this clustered service, which hosts the cloud agent. The IP address is required only for static IP configurations on the underlay network for the physical hosts. The IP address must be in the same network as the physical hosts of the Azure Stack HCI cluster.
 
 The clustered service also requires an AD object along with a DNS entry. For details, see [Azure Arc VM management FAQs](/manage/faqs-arc-enabled-vms#my-environment-doesnt-support-dns-or-active-directory-updates-how-can-i-successfully-deploy-arc-resource-bridge).
 
-### Azure Arc Resource Bridge
+### Arc Resource Bridge
 
-A set of three contiguous IP addresses are required for the Azure Arc Resource Bridge VM network. These network interfaces can be tagged to a specific vLAN. The three IP addresses are as follows, using the preceding network diagram example for IP-1, IP-2, and IP-3:
+A set of three contiguous IP addresses are required for the Azure Arc Resource Bridge VM network. These network interfaces can be tagged to a specific vLAN.
 
-- IP address used for the load balancer in the Arc Resource Bridge (**IP-1**). Also known as `controlPlaneIP`, this IP address is specifically used by the Kubernetes management application that is running on the Arc Resource Bridge VM. This IP address needs to be in the same subnet as the DHCP scope for VMs and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address must be reserved on the VM network.
+- IP address used for the Arc Resource Bridge load balancer  (*ControlPlaneIP*). This IP address is used by a Kubernetes management application that is running on the Arc Resource Bridge VM. The IP address needs to be in the same subnet as the DHCP scope for VMs and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign *ControlPlaneIP*, then the IP address must be reserved on the VM network.
 
-- IP address for the Arc Resource Bridge VM (**IP-2**). This is the IP address assigned to the Arc Resource Bridge VM. You can obtain this IP address using DHCP.
+- IP address for the Arc Resource Bridge VM (*VMIP_1*). This is the IP address assigned to the Arc Resource Bridge VM. You can obtain this IP address using DHCP.
 
-- IP address for Arc Resource Bridge VM updates (**IP-3**). This is the IP address assigned to the new Arc Resource Bridge VM instance when an update is performed. You can obtain this IP address using DHCP.
+- IP address for Arc Resource Bridge VM updates (*VMIP_1*). IP address assigned to a new Arc Resource Bridge VM instance when an update is performed. You can obtain this IP address using DHCP.
 
 > [!NOTE]
-> As an in-place upgrade of the Arc Resource Bridge is not supported, a new VM instance is created for this purpose using address IP-3. In this way, the IP-2 and IP-3 addresses are alternated each time the Arc Resource Bridge VM is updated.
+> As an in-place upgrade of the Arc Resource Bridge is not supported, a new VM instance is created for this purpose. As such the two IP addresses *VMIP-1* are alternated each time the Arc Resource Bridge is updated.
 
-## Azure Arc VM virtuaL network
+## Arc VM virtual network
 
 VMs deployed from the Azure Arc management plane get their network configuration from the virtual network created on the Azure Stack HCI cluster. This virtual network consists of the following:
 
