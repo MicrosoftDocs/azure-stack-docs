@@ -10,7 +10,7 @@ ms.custom: template-how-to #Required; leave this attribute/value as-is.
 
 # Additional configuration for AKS Edge Essentials
 
-This article provides alternate way of connecting to Azure Arc using Az PowerShell and PowerShell 7.
+This article provides an alternate way of connecting to Azure Arc using Az PowerShell and PowerShell 7.
 
 ## Connect to Arc using PowerShell 7
 
@@ -18,7 +18,7 @@ This article provides alternate way of connecting to Azure Arc using Az PowerShe
 
 First, install [PowerShell 7.2.7](https://github.com/PowerShell/PowerShell/releases/download/v7.2.7/PowerShell-7.2.7-win-x64.msi).
 
-Next, run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
+Then run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
 ```PowerShell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
@@ -43,7 +43,7 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ### Step 2: Configure your Azure environment
 
-Follow [Configure your Azure environment](aks-edge-howto-connect-to-arc.md#1-configure-your-azure-environment) steps and note down all the azure parameters including the service principal id and password.
+Follow the steps in [Configure your Azure environment](aks-edge-howto-connect-to-arc.md#1-configure-your-azure-environment) and note all the Azure parameters including the service principal ID and password.
 
 #### Create a PSCredential object with service principal
 
@@ -58,7 +58,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username, $p
 
 ### Step 3: Connect your cluster to Arc
 
-Connect your cluster to Azure Arc-enabled kubernetes using `Set-AksEdgeArcConnection` function.
+Connect your cluster to Azure Arc-enabled Kubernetes using `Set-AksEdgeArcConnection` function.
 
 ```powershell
 #populate your parameters and $credential from the earlier step.

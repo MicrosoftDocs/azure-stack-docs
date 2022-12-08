@@ -131,10 +131,10 @@ kubectl delete -f win-sample.yaml
 
 ## Deploying your own applications
 
-The above steps showed how you can deploy our sample applications. To deploy your own application:
+The previous steps showed how you can deploy our sample applications. To deploy your own application:
 
-- Package your application into a container image, and then upload the image to Azure Container Registry or in a container registry of your choice. . Review these steps to [create container image of your application](tutorial-kubernetes-prepare-application.md).
-- AKS Edge Essentials enables mixed-OS clusters, ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS). If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors.
+- Package your application into a container image, and then upload the image to Azure Container Registry or in a container registry of your choice. Review these steps to [create a container image of your application](tutorial-kubernetes-prepare-application.md).
+- AKS Edge Essentials enables mixed-OS clusters. Ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS). If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors:
 
     ```yaml
     nodeSelector:
