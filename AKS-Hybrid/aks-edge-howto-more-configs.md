@@ -10,7 +10,7 @@ ms.custom: template-how-to #Required; leave this attribute/value as-is.
 
 # Additional configuration for AKS Edge Essentials
 
-This article provides alternate way of connecting to Azure Arc using Az Powershell and Powershell 7.
+This article provides an alternate way of connecting to Azure Arc using Az Powershell and Powershell 7.
 
 ## Connect to Arc using PowerShell 7
 
@@ -18,7 +18,7 @@ This article provides alternate way of connecting to Azure Arc using Az Powershe
 
 First, install [PowerShell 7.2.7](https://github.com/PowerShell/PowerShell/releases/download/v7.2.7/PowerShell-7.2.7-win-x64.msi).
 
-Next, run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
+Then run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
 ```powershell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
