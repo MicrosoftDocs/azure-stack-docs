@@ -423,7 +423,7 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
-## Troubleshoot connectivity validation
+## Troubleshoot connectivity validator
 
 This section describes the known issue with connectivity validator and how to troubleshoot it.
 
@@ -485,7 +485,7 @@ For example, if you want to verify the certificate information for two endpoints
    CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
    ```
 
-In the above example, the connectivity validator checks two endpoints: `https://login.microsoftonline.com` and `https://portal.azure.com`. These endpoints are Microsoft’s properties whose SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint, and we only require one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain we are expecting, the other can still satisfy the test, for up to six months while we update the expected values. If part of the chain rotates we only require one certificate to match **Microsoft** or **Digicert**.
+In the example above, the connectivity validator checks two endpoints that are Microsoft’s properties and their SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint and requires only one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain, the test expects the other can still satisfy the test, for up to six months. If part of the chain rotates, the test requires only one certificate to match **Microsoft** or **Digicert**.
 
 ## Next steps
 
