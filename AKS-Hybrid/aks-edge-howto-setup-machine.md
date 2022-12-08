@@ -16,14 +16,14 @@ This article describes how to set up an Azure Kubernetes Service (AKS) Edge node
 
 - Hardware requirements:
 
-  | Specs | Requirement |
-  | ---------- | --------- |
-  | Memory | 4 GB at least 2 GB free (cluster-only), 8 GB (Arc and GitOps). |
-  | CPU | Two logical processors, clock speed at least 1.8 GHz. |
-  | Disk space | At least 14 GB free. |
-  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022. |
-
-- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11). 
+  | Specs | Local cluster | Arc-connected cluster and GitOps|
+  | ---------- | --------- |--------- |
+  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022||
+  | Total physical memory | 4 GB with at least 2 GB free | 8 GB with at least 4 GB free  |
+  | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
+  | Disk space | At least 14 GB free |At least 14 GB free |
+  
+- OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 - Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command:
 
     ```powershell
@@ -63,11 +63,13 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
     | K3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
-1. In addition to the MSI, Microsoft provides a few samples and tools which you can download from the [AKS Edge Utils GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+1. In addition to the MSI, Microsoft provides a few samples and tools which you can download from the [AKS Edge GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
+
+Before you install the MSI, you can review the [feature support](aks-edge-deployment-options.md#feature-support-matrix) to understand the different options available.  
 
 ## Set up your machine as a Linux node
 
@@ -89,7 +91,6 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 ## Load AKS Edge modules
 
-
 AKS edge modules can we loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [Github repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd).
 
 ## Check the AKS Edge modules
@@ -97,16 +98,10 @@ AKS edge modules can we loaded by running the `AksEdgePrompt` file from the `too
 Once installation is complete, make sure it was successful by running the following command:
 
 ```powershell
-Get-Command -Module AksEdge
+Get-Command -Module AKSEdge | Format-Table Name, Version
 ```
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
-
-You can get the version of the modules using:
-
-```powershell
-(Get-Module AksEdge -ListAvailable).Version
-```
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
 

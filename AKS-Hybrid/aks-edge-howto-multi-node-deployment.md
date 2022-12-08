@@ -16,39 +16,23 @@ The AKS cluster can be configured to run on multiple machines to support a distr
 
 Set up your machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
 
-## Key configuration parameters for a full Kubernetes deployment
+## 1. Full Kubernetes deployment configuration parameters
 
-The parameters needed to create a full Kubernetes are defined in the **aksedge-config.json** file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+The parameters needed to create a full Kubernetes are defined in the **aksedge-config.json** file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](aks-edge-deployment-config-json.md). The key parameters to note for a full Kubernetes deployment are:
 
-| Attribute | Value type      |Default Value|  Description |
-| :------------ |:-----------|:-------|:--------|
-|SingleMachineCluster |Boolean| `false`|Set this flag to `false` for full Kubernetes deployments.|
-| NodeType | String | Linux | Creates the VM to host the control plane components and act as a worker. Read more about [AKS Edge Essentials node types](aks-edge-concept.md). |
-| Network.Vswitch.Name | String |aksedge-switch| Name of the external switch used for AKS Edge Essentials. You can create one yourself using Hyper-V manager. If you do not specify a switch name, AKS Edge Essentials creates one for you. |
-|Network.Vswitch.Type| String|External | Type of network switch - External.|
-|Network.Vswitch.Adapter (Required) |String| "Ethernet"| Name of network adapter - Ethernet or Wi-Fi. |
-| NetworkPlugin |String| calico or flannel | Name of the Kubernetes network plugin. Defaults to `flannel`. For Kubernetes clusters, only `calico` is supported.|
-| ControlPlaneEndpointIp |IP Address| A.B.C.x | A free IP address on your subnet **A.B.C**. The control plane (API server) gets this address. |
-| ServiceIPRangeStart |IP Address| A.B.C.x | Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C**. |
-| ServiceIPRangeEnd |IP Address| A.B.C.x | Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C**.  |
-| Ip4PrefixLength |Integer| number | The IP address subnet **A.B.C** prefix length. For example, use **24** if your network is **192.168.1.0/24**. |
-| Ip4GatewayAddress | IP Address|A.B.C.1 | Gateway address; typically the router address. |
-| DnsServers | IP Address|A.B.C.1 | IP address of your DNS (typically the router address). To view what DNS your machine uses, issue the following command: `ipconfig /all \| findstr /R "DNS\ Servers"`. |
-| LinuxVmIp4Address |IP Address| A.B.C.x | Specify the IP address your Linux VM will take. |
-
-Note the following considerations:
-
-- The parameter that identifies a full deployment cluster is the `singlemachinecluster` flag, which must be set to `false`.
-- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the adapter name as `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your **aksedge-config.json** file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+- **DeployOptions.SingleMachineCluster** - The parameter that identifies a full deployment cluster is the `singlemachinecluster` flag, which must be set to `false`.
+- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `Network.VSwitch.AdapterName`  as either `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your **aksedge-config.json** file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
 
     > [!NOTE]
     > In this release, there is a known issue with automatic creation of an external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager, map the switch to the Wi-fi adapter, and then provide the switch details in your configuration JSON as described below.
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, so you can avoid using those IP addresses in your configuration.
+- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, so you can avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, `ServiceIPRangeEnd` and `DnsServers`.
+- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  - `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
+- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` as 'true' to enable the metrics server.
 
-## Validate the configuration file
+## 2. Validate the configuration file
 
 After you update the **aksedge-config.json** file, open the [AksEdgePrompt](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd). This tool opens an elevated PowerShell window with the modules loaded. Now run the following command to validate your network parameters using the `Test-AksEdgeNetworkParameters` cmdlet:
 
@@ -56,7 +40,7 @@ After you update the **aksedge-config.json** file, open the [AksEdgePrompt](http
 Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json
 ```
 
-## Create a full deployment cluster
+## 3. Create a full deployment cluster
 
 If `Test-AksEdgeNetworkParameters` returns true, you are ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
 
@@ -66,7 +50,7 @@ New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 
 The `New-AksEdgeDeployment` cmdlet automatically gets the kubeconfig file.
 
-## Validate your deployment
+## 4. Validate your deployment
 
 ```powershell
 kubectl get nodes -o wide
@@ -77,6 +61,15 @@ A screenshot of a Kubernetes cluster is shown below:
 
 ![Diagram showing all pods running.](./media/aks-edge/all-pods-running.png)
 
+## 5. Add a Windows worker node (optional)
+
+If you want to add Windows workloads to an existing Linux only cluster, you can run:
+
+```powershell
+Add-AksEdgeNode -NodeType Windows
+```
+
+You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
 ## Example configurations for different deployment options
 
@@ -109,7 +102,7 @@ You can now update your configuration file **mydeployconfig.json** with the righ
 },
 "Network": {
     "VSwitch":{
-        "Name": "aksedgesw-ext",
+        "Name": "aksedgeswitch",
         "Type":"External",
         "AdapterName" : "Ethernet"
     },
@@ -141,7 +134,7 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
     },
 "Network": {
     "VSwitch":{
-        "Name": "aksedgesw-ext",
+        "Name": "aksedgeswitch",
         "Type":"External",
         "AdapterName" : "Ethernet"
     },
@@ -190,16 +183,6 @@ To run both the Linux control plane and the Windows worker node on a machine:
     "Mtu": 0
   },
 ```
-
-## Add a Windows worker node (optional)
-
-If you want to add Windows workloads to an existing Linux only cluster, you can run:
-
-```powershell
-Add-AksEdgeNode -NodeType Windows
-```
-
-You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
 ## Next steps
 

@@ -28,9 +28,9 @@ An **external virtual switch** connects to a wired, physical network by binding 
 
 An **internal virtual switch** connects to a network that can be used only by the virtual machines running on the host that has the virtual switch, and between the host and the virtual machines.
 
-## Workload types
+## Node types
 
-When deploying AKS Edge Essentials nodes you should specify the `-WorkloadType` parameter. This parameter indicates the types of workloads can run on this machine, and will tell AKS Edge Essentials to create the corresponding VM. The possible values are "Linux", "Windows", or "LinuxAndWindows". In this release, "Linux" is the only supported workload type.
+When deploying AKS Edge Essentials nodes you should specify the `-NodeType` parameter. This parameter indicates the types of workloads can run on this machine, and will tell AKS Edge Essentials to create the corresponding VM. The possible values are "Linux", "Windows", or "LinuxAndWindows".
 
 > [!IMPORTANT]
 > Kubernetes control plane components are in Linux, so the first node you deploy must include a Linux node.

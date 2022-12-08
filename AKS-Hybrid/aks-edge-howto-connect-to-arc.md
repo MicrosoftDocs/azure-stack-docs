@@ -24,14 +24,15 @@ There are two approaches to connect your cluster to Arc:
 
 ## 1. Configure your Azure environment
 
-To enable successfull connection to Azure for Azure Arc-enabled servers and Azure Arc-enabled kubernetes, the following configurations are required.
+To successfully connect to Azure using Azure Arc-enabled servers and Azure Arc-enabled kubernetes, the following configurations are required.
 
 * Enable all required Resource Providers in the Azure Subscription such as `Microsoft.HybridCompute`, `Microsoft.GuestConfiguration`, `Microsoft.HybridConnectivity`,
   `Microsoft.Kubernetes`, `Microsoft.KubernetesConfiguration`
 * Create and verify a resource group for AKS Edge Essentials Azure resources
 * Create and verify a service principal with access rights to the resource group
 
->[!Note] This is required to be done only once per Azure subscription and need not be repeated for each kubernetes cluster.
+>[!Note]
+> This is required to be done only once per Azure subscription and need not be repeated for each kubernetes cluster.
 
 If you already have configured Azure and have the service principal id and password, you can update all the fields in the **aide-userconfig.json** and skip to next step.
 
@@ -64,7 +65,8 @@ To configure Azure,
     ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spContributorRole
     ```
 
-    >[!Note] You will require ContributorRole to be able to delete the resources within the resource group. Disconnect-AideArc functions will fail without this role assignment.
+    >[!Note]
+    > You will require ContributorRole to be able to delete the resources within the resource group. Disconnect-AideArc functions will fail without this role assignment.
 
     ```powershell
     # prompts for interactive login for serviceprincipal creation with minimal privileges

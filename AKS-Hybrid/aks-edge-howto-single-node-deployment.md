@@ -12,13 +12,21 @@ ms.custom: template-how-to
 
 You can deploy AKS Edge Essentials on either a single machine or on multiple machines. In a single machine Kubernetes deployment, both the Kubernetes control node and worker node run on the same machine. This article describes how to create the Kubernetes control node on your machine on a private network.
 
-## Prerequisite
+## Prerequisites
 
 Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
 
-## Create a single machine cluster
+## 1. Single machine configuration parameters
 
-1. The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub folder. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md). The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+The parameters needed to create a single machine cluster are defined in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file in the downloaded GitHub repo. A detailed description of the configuration parameters is available [here](aks-edge-deployment-config-json.md).
+The key parameters to note for single machine deployment are:
+
+- `DeployOptions.SingleMachineCluster` -   The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
+- The following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
+- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` as 'true' to enable the metrics server.
+
+## 2. Create a single machine cluster
+
 1. Open the [AksEdgePrompt](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd) tool. The tool opens an elevated PowerShell window with the modules loaded.
 1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
@@ -26,22 +34,27 @@ Set up your primary machine as described in the [Set up machine](aks-edge-howto-
     New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
     ```
 
-## Single machine configuration parameters
+## 3. Validate your cluster
 
-The key parameters and their default values applicable for single machine deployment:
+Confirm that the deployment was successful by running:
 
-| Attribute | Value type      |  Description |  Default value |
-| :------------ |:-----------|:--------|:--------|
-|`SingleMachineCluster` |`boolean`| Set this flag to `true` for single machine cluster deployments.|`true`
-| `NodeType` | `Linux` or `LinuxAndWindows` | `Linux` creates the Linux control plane. You can't specify `Windows` because the control plane node needs to be Linux. Read more about [AKS edge workload types](aks-edge-concept.md#workload-types) | `Linux` |
-| `NetworkPlugin` | `calico` or `flannel` | CNI plugin choice for the Kubernetes network model. For K8S clusters, only `calico` is supported. | `flannel` |
-| `LinuxVm.CpuCount` | number | Number of CPU cores reserved for Linux VM. | `2` |
-| `LinuxVm.MemoryInMB` | number | RAM in MBs reserved for Linux VM. | `2048` |
-| `LinuxVm.DataSizeInGB` | number | Size of the data partition.  | `10` |
-| `WindowsVm.CpuCount` | number | Number of CPU cores reserved for Windows VM. | `2` |
-| `WindowsVm.MemoryInMB` | number | RAM in MBs reserved for Windows VM. | `2048` |
-| `Network.ServiceIPRangeSize` | number | Defines a service IP range for your workloads. We recommend you reserve some IP range (ServiceIPRangeSize > 0) for your Kubernetes services.| `0` |
-| `Network.InternetDisabled` | boolean | Defines if internet access is available or not.| `false` |
+```powershell
+kubectl get nodes -o wide
+kubectl get pods -A -o wide
+```
+
+Here is a screenshot showing pods on a K3S cluster.
+![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
+
+## 4. Add a Windows worker node (optional)
+
+If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
+
+```powershell
+Add-AksEdgeNode -NodeType Windows
+```
+
+You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
 ## Example deployment options
 
@@ -163,28 +176,6 @@ You can also deploy mixed-workloads clusters. The following example shows how to
 
    New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
    ```
-
-## Validate your cluster
-
-Confirm that the deployment was successful by running:
-
-```powershell
-kubectl get nodes -o wide
-kubectl get pods -A -o wide
-```
-
-Here is a screenshot showing pods on a K3S cluster.
-![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
-
-## Add a Windows worker node (optional)
-
-If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
-
-```powershell
-Add-AksEdgeNode -NodeType Windows
-```
-
-You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
 ## Next steps
 

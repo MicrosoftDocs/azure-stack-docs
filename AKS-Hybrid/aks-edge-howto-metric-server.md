@@ -14,20 +14,9 @@ The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a too
 
 ## Prerequisites on K8S clusters
 
-- Before you create your deployment, set the parameter `ServerTLSBootstrap` to `true` in your `mydeployconfig` file as shown in this example:
+- On a K8S cluster, before you create your deployment, set the parameter `ServerTLSBootstrap` to `true` in your `aksedge-config.json` file. If you've already created your cluster, follow the instructions as described [here](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs).
 
-    ```json
-    "DeployOptions": {
-        "NetworkPlugin": "flannel",
-        "TimeoutSeconds": 300,
-        "NodeType": "Linux",
-        "ServerTLSBootstrap": true,
-        "SingleMachineCluster": true,
-    ```
-
-    If you've already created your cluster, follow the instructions as described [here](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs).
-
-- The CSRs (Certificate Signing Requests) for the kubelet serving certificates can't be automatically approved by the default signer in the kube-controller-manager - kubernetes.io/kubelet-serving. This will require action from the user or a third party controller. The CSRs can be viewed using:
+- On a K8S clsuter, the CSRs (Certificate Signing Requests) for the kubelet serving certificates can't be automatically approved by the default signer in the kube-controller-manager - kubernetes.io/kubelet-serving. This will require action from the user or a third party controller. The CSRs can be viewed using:
 
     ```bash
         kubectl get csr
