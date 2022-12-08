@@ -43,12 +43,13 @@ kubectl get nodes -o wide
 kubectl get pods -A -o wide
 ```
 
-Here is a screenshot showing pods on a K3S cluster.
+The following image shows pods on a K3S cluster:
+
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 ## 4. Add a Windows worker node (optional)
 
-If you would like to add Windows workloads to an existing Linux only single machine cluster, you can run:
+If you want to add Windows workloads to an existing Linux only single machine cluster, you can run:
 
 ```powershell
 Add-AksEdgeNode -NodeType Windows
