@@ -74,7 +74,7 @@ $parameters = @{
 Set-AksEdgeArcConnection @parameters
 ```
 
-This step may take a while. When the powershell command is finished running, navigate to your resource group in the Azure portal and select your cluster. You should see its status as **Connected**.
+This step may take a while. When the PowerShell command is finished running, navigate to your resource group in the Azure portal and select your cluster. You should see its status as **Connected**.
 
 ![Screenshot showing cluster in Azure portal.](media/aks-edge/cluster-connected.png)
 
