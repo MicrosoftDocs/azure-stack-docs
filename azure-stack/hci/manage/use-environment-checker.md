@@ -423,42 +423,67 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
-## Troubleshoot connectivity issues for Azure Stack HCI
+## Troubleshoot connectivity validation
 
-If SSL inspection is turned on in your Azure Stack HCI system, the connectivity validator fails with the following error:
+This section describes the known issue with connectivity validator and how to troubleshoot it.
 
-This happens because during connectivity validation, the Environment Checker check for SSL inspection before testing any required endpoints.
+### Known issue in connectivity validator
 
-Here's what happens when you run connectivity validator if SSL inspection is turned on:
+The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. The connectivity validator makes an HTTPS call to endpoints and inspects the certificate chain in the response. The check reads the distinguished names (subject) of the certificates in the certificate chain to determine if they are **DigiCert** and **Microsoft** intermediate certificate authority (CA) certificates.
 
-The connectivity validation test makes a HTTPS call to two Microsoft endpoints and inspects the certificate chain in the response. The check reads the distinguished names (subject) of the certificates in the certificate chain to determine if they are **DigiCert** and **Microsoft** intermediate CA certificates. When SSL inspection occurs, a device on the network decrypts the HTTPS call, inspects it and re-encrypts it with its own certificate. Because of the decryption and reencryption, the distinguished names don't match. This is not a supported configuration, and will be detected and blocked during deployment, to prevent any un-wanted tampering/malicious activity over the network.
+If SSL inspection is turned on in your Azure Stack HCI system, a device on the network decrypts the HTTPS call, inspects it, and re-encrypts it with its own certificate. Because of this decryption and re-encryption, the distinguished names (subject) of the certificates no longer match with the ones in the certificate chain. Azure Stack HCI doesn't support this configuration, and when detected, the connectivity validator blocks it during deployment and fails with the following error. This is done to prevent any unwanted tampering or malicious activity over the network.
 
-### Troubleshoot connectivity issues
+:::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
 
-If you want to run the SSL inspection test individually while troubleshooting this scenario on your network, run the following two commands:
+**Workaround**
+
+Turn off SSL inspection on Azure Stack HCI servers and then run the connectivity validator.
+
+**Alternative workaround if you have SSL inspection turned on**
+
+If you receive the certificate validation error message, run the following commands individually for each endpoint to manually check the certificate information:
 
 ```powershell
 C:\> Import-Module AzStackHci.EnvironmentChecker 
-C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject 
- 
-Subject 
-------- 
-CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US 
-CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US 
-CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US 
+C:\> Get-SigningRootChain -Uri <Endpoint-URI> | ft subject 
 ```
+
+For example, first run the following commands to verify the certificate information for `https://login.microsoftonline.com`:
 
 ```powershell
-C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
- 
-Subject 
-------- 
-CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US 
-CN=Microsoft Azure TLS Issuing CA 05, O=Microsoft Corporation, C=US 
-CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US 
+C:\> Import-Module AzStackHci.EnvironmentChecker 
+C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject
 ```
 
-In this inspection test checks two endpoints; these two endpoints are Microsoft’s properties whose SSL certificates have expiry dates 6 months out of phase with each other. The test only requires success from 1 endpoint, and we only require 1 certificate in the chain to be Microsoft or Digicert. The reason for this tolerance is in consideration for certificate rotation. If 1 certificate is rotated out of the chain we are expecting, the other can still satisfy the test, for up to 6 months while we update the expected values.  If part of the chain rotates we only require 1 match Microsoft or Digicert.
+Here's a sample output:
+
+```powershell
+Subject
+-------
+CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US
+CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+```
+
+Then run the following commands to verify the certificate information for `https://portal.azure.com`
+
+```powershell
+C:\> Import-Module AzStackHci.EnvironmentChecker
+C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
+
+```
+
+Here's are the sample outputs:
+
+```powershell
+Subject
+-------
+CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
+CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+```
+
+In the example above, the connectivity validator checks two endpoints: `https://login.microsoftonline.com` and `https://portal.azure.com`. These endpoints are Microsoft’s properties whose SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint, and we only require one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain we are expecting, the other can still satisfy the test, for up to six months while we update the expected values. If part of the chain rotates we only require one certificate to match **Microsoft** or **Digicert**.
 
 ## Next steps
 
