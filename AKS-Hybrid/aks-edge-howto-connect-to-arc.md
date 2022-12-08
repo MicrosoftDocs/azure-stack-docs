@@ -39,7 +39,7 @@ To configure Azure,
 
 1. Specify the required names for the resource group and service principal in the **aide-userconfig.json** file along with your subscription/tenant information.
 
-    In your working folder, open the **aide-userconfig.json** file from the **tools** folder to enter these information.
+    In your working folder, open the **aide-userconfig.json** file from the **tools** folder to enter this information.
 
     ```shell
     notepad.exe aide-userconfig.json
