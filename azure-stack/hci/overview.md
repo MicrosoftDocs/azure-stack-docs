@@ -76,7 +76,7 @@ For an end-to-end example of using Microsoft Azure to manage apps and infrastruc
 
 > [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
 
-Note, this video includes preview functionality. You will see how to deploy Kubernetes, set up GitOps, deploy VMs, use Azure Monitor and drill into a hardware failure, all without leaving the Azure portal.
+Note, this video includes preview functionality which shows real product functionality, but in a closely controlled environment. Using a fictional customer, inspired directly by real customers, you will see how to deploy Kubernetes, set up GitOps, deploy VMs, use Azure Monitor and drill into a hardware failure, all without leaving the Azure portal.
 
 ### Azure integration benefits
 
