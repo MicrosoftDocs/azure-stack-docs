@@ -89,7 +89,6 @@ Make sure to include the following firewall URLs to your allowlist:
 | https\://azurearcfork8sdev.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images
 | https\://adhs.events.data.microsoft.com | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which would mean any Kubernetes control plane |
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
-| gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 
