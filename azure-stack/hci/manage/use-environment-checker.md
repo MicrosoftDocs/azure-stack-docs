@@ -423,23 +423,17 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
-## Troubleshoot connectivity validator
+## Potential failure scenario for connectivity validator
 
-This section describes the known issue with connectivity validator and how to troubleshoot it.
+This section is applicable only to the connectivity validator of the Environment Checker tool. It describes a potential failure scenario for connectivity validator and how to troubleshoot it.
 
-### Known issue in connectivity validator
-
-The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. The connectivity validator makes an HTTPS call to endpoints and inspects the certificate chain in the response. The check reads the distinguished names (subject) of the certificates in the certificate chain to determine if they are **DigiCert** and **Microsoft** intermediate certificate authority (CA) certificates.
-
-If SSL inspection is turned on in your Azure Stack HCI system, a device on the network decrypts the HTTPS call, inspects it, and re-encrypts it with its own certificate. Because of this decryption and re-encryption, the distinguished names (subject) of the certificates no longer match with the ones in the certificate chain. Azure Stack HCI doesn't support this configuration, and when detected, the connectivity validator blocks it during deployment and fails with the following error. This is done to prevent any unwanted tampering or malicious activity over the network.
+The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
 
 :::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
 
 **Workaround**
 
-Turn off SSL inspection on Azure Stack HCI servers and then run the connectivity validator.
-
-**Alternative workaround if you have SSL inspection turned on**
+Work with your network team to turn off SSL inspection for your Azure Stack HCI system. To confirm your SSL inspection is turned off, you can use the following examples. After SSL inspection is turned off, you can run the tool again to check connectivity to all the endpoints.
 
 If you receive the certificate validation error message, run the following commands individually for each endpoint to manually check the certificate information:
 
@@ -484,8 +478,6 @@ For example, if you want to verify the certificate information for two endpoints
    CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
    CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
    ```
-
-In the example above, the connectivity validator checks two endpoints that are Microsoft’s properties and their SSL certificates have expiry dates six months out of phase with each other. The test only requires success from one endpoint and requires only one certificate in the chain to be **Microsoft** or **Digicert**. The reason for this tolerance is in consideration for certificate rotation. If one certificate is rotated out of the chain, the test expects the other can still satisfy the test, for up to six months. If part of the chain rotates, the test requires only one certificate to match **Microsoft** or **Digicert**.
 
 ## Next steps
 
