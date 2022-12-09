@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: sumit.lahiri
 ms.date: 12/07/2022
-ms.last.reviewed: 12/01/2022
+ms.lastreviewed: 12/01/2022
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -64,7 +64,7 @@ The following example uses [az role assignment](/cli/azure/role/assignment?view=
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
 ```
 
-To get the scope ID for the cluster or resource group, run the following commands, and use `"id":property`:
+To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
 
 ```azurecli
 az connectedk8s show -g <name of resource group>  
@@ -110,7 +110,7 @@ To automate creation of the credential object, without requiring manual password
 
 ## Step 3: Create an Azure RBAC-enabled AKS hybrid cluster
 
-You can [create an Azure RBAC-enabled cluster using an SPN (Option A)](#option-a-create-azure-rbac-enabled-aks-hybrid-target-cluster-using-an-spn) or [create the cluster interactively (Option B)](#option-b-create-azure-rbac-enabled-aks-hybrid-target-cluster-interactively).
+You can create an Azure RBAC-enabled cluster using an SPN (Option A) or create the cluster interactively (Option B).
 
 ### Option A: Create Azure RBAC-enabled AKS hybrid target cluster using an SPN
 
@@ -121,7 +121,7 @@ To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster, and run the following command:
 
    ```powershell
-   New-AksHciCluster -name “<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
+   New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
 ### Option B: Create Azure RBAC-enabled AKS hybrid target cluster interactively
@@ -154,7 +154,7 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
 
 The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC will authenticate the connections. 
 
-The procedures in this section [use the `connectedk8s` proxy method to connect to an AKS cluster](#connect-to-aks-hybrid-cluster-over-the-internet-using-the-connectedk8s-proxy-method) and [connect to an AKS cluster over a private network](#connect-to-aks-hybrid-cluster-over-a-private-network).
+The procedures in this section use the `connectedk8s` proxy method to connect to an AKS cluster and connect to an AKS cluster over a private network.
 
 ### Connect to AKS hybrid cluster over the internet using the `connectedk8s` proxy method
 
@@ -162,7 +162,7 @@ Use the `connectedk8s` proxy method to send an authentication/authorization requ
 
 To connect to an AKS hybrid cluster using the `connectedk8s` proxy method, do the following steps:
 
-1. Open an Azure CLI window, and use`az login` to connect to Azure. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
+1. Open an Azure CLI window, and use `az login` to connect to Azure. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Set the subscription for your Azure account to the subscription you used to create the AKS hybrid cluster if needed:
 

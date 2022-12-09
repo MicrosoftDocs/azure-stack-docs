@@ -73,6 +73,8 @@
   items:
   - name: Clusters and workloads
     href: kubernetes-concepts.md
+  - name: Availability with 2-node HCI cluster
+    href: deploy-cluster-on-two-node-hci.md
   - name: Security
     items:
       - name: Security for AKS hybrid
@@ -205,7 +207,7 @@
             href: ad-sso.md
           - name: Use Kubernetes RBAC with Azure AD
             href: kubernetes-rbac-azure-ad.md
-          - name: Use Azure RBAC for authorization on AKS hybrid clusters (Preview)
+          - name: Use Azure RBAC with AKS hybrid clusters (Preview)
             href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
@@ -283,10 +285,50 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS lite hybrid option (preview)
+- name: AKS Edge Essentials (preview)
   items:
   - name: Overview
-    href: aks-lite-overview.md
+    href: aks-edge-overview.md
+  - name: Concepts
+    items:
+    - name: AKS Edge Essentials key concepts
+      href: aks-edge-concept.md
+    - name: Deployment options
+      href: aks-edge-deployment-options.md
+    - name: Deployment JSON configuration parameters
+      href: aks-edge-deployment-config-json.md
+  - name: How-to
+    items:
+    - name: Set up machine
+      href: aks-edge-howto-setup-machine.md
+    - name: Create single machine deployment
+      href: aks-edge-howto-single-node-deployment.md
+    - name: Create full deployment
+      href: aks-edge-howto-multi-node-deployment.md
+    - name: Deploy application
+      href: aks-edge-howto-deploy-app.md
+    - name: Scale out deployment
+      href: aks-edge-howto-scale-out.md
+    - name: Enable metric server
+      href: aks-edge-howto-metric-server.md
+    - name: Connect to Arc
+      href: aks-edge-howto-connect-to-arc.md
+    - name: Add local storage binding
+      href: aks-edge-howto-use-storage-local-path.md
+    - name: Additional configuration
+      href: aks-edge-howto-more-configs.md
+    - name: Use GitOps with AKS Edge Essentials
+      href: aks-edge-howto-use-gitops.md
+    - name: Uninstall AKS Edge Essentials
+      href: aks-edge-howto-uninstall.md
+  - name: Resources
+    items:
+    - name: AKS Edge PowerShell 
+      href: ./reference/aks-edge-ps/index.md
+    - name: Release notes and known issues
+      href: https://github.com/Azure/AKS-Edge/releases
+    - name: File bugs
+      href: https://github.com/Azure/AKS-Edge/issues
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
