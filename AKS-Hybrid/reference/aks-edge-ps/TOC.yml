@@ -1,0 +1,48 @@
+- name: AKS Edge PowerShell Reference
+  href: index.md
+  expanded: true
+  items:
+  - name: Add-AksEdgeNode
+    href: add-aksedgenode.md
+  - name: Get-AksEdgeDeploymentInfo
+    href: get-aksedgedeploymentinfo.md
+  - name: Get-AksEdgeEventLog
+    href: get-aksedgeeventlog.md
+  - name: Get-AksEdgeKubeConfig
+    href: get-aksedgekubeconfig.md
+  - name: Get-AksEdgeNodeAddr
+    href: get-aksedgenodeaddr.md
+  - name: Get-AksEdgeNodeName
+    href: get-aksedgenodename.md
+  - name: Get-AksEdgeLogs
+    href: get-aksedgelogs.md
+  - name: Get-AksEdgeManagedServiceToken
+    href: get-aksedgemanagedservicetoken.md
+  - name: Invoke-AksEdgeNodeCommand
+    href: invoke-aksedgenodecommand.md
+  - name: New-AksEdgeConfig
+    href: new-aksedgeconfig.md
+  - name: New-AksEdgeDeployment
+    href: new-aksedgedeployment.md
+  - name: New-AksEdgeScaleConfig
+    href: new-aksedgescaleconfig.md
+  - name: Remove-AksEdgeDeployment
+    href: remove-aksedgedeployment.md
+  - name: Remove-AksEdgeNode
+    href: remove-aksedgenode.md
+  - name: Set-AksEdgeNodeToDrain
+    href: set-aksedgenodetodrain.md
+  - name: Set-AksEdgeArcConnection
+    href: set-aksedgearcconnection.md
+  - name: Start-AksEdgeNode
+    href: start-aksedgenode.md
+  - name: Stop-AksEdgeNode
+    href: stop-aksedgenode.md
+  - name: Test-AksEdgeArcConnection
+    href: test-aksedgearcconnection.md
+  - name: Test-AksEdgeDeployment
+    href: test-aksedgedeployment.md
+  - name: Test-AksEdgeNode
+    href: test-aksedgenode.md
+  - name: Test-AksEdgeNetworkParameters
+    href: test-aksedgenetworkparameters.md
