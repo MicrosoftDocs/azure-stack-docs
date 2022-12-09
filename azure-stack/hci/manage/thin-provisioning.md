@@ -129,7 +129,7 @@ This section answers frequently asked questions about thin provisioning on Azure
 
 ### Can existing fixed volumes be converted to thin?
 
-Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](../manage/thin-provisioning-conversion.md)
+Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](../manage/thin-provisioning-conversion.md).
 
 ### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
