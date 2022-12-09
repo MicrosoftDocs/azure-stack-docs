@@ -220,8 +220,6 @@ If a test fails, the connectivity validator returns information to help you reso
 
 ### Potential failure scenario for connectivity validator
 
-It describes a potential failure scenario for connectivity validator and how to troubleshoot it.
-
 The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
 
 :::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
