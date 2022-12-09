@@ -13,7 +13,7 @@ ms.date: 07/27/2021
 
 > Applies to: Azure Stack HCI, version 21H2
 
-Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool’s resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
 ## Capacity management: thin vs. fixed provisioned volumes
 
@@ -106,7 +106,7 @@ To create a thinly provisioned volume in Windows Admin Center:
 
 :::image type="content" source="media\thin-provisioning\thin-provisioning-volume-wac.png" alt-text="You can create a thinly provisioned volume in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-volume-wac.png":::
 
-To check a volume’s provisioning type:
+To check a volume's provisioning type:
 
 1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
 1. Select a volume to visit its **Properties** page.
@@ -129,7 +129,7 @@ This section answers frequently asked questions about thin provisioning on Azure
 
 ### Can existing fixed volumes be converted to thin?
 
-No. At this time, converting from a fixed volume to a thin volume is not supported.
+Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](../manage/thin-provisioning-conversion.md)
 
 ### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
