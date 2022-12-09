@@ -6,7 +6,7 @@ ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/27/2021
+ms.date: 12/09/2022
 ---
 
 # Storage thin provisioning in Azure Stack HCI
