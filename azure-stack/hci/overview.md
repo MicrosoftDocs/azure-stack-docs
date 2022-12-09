@@ -70,7 +70,7 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
 | Run Azure services on-premises                    | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview).|
 
-## Demo of using Microsoft Azure with Azure Stack HCI
+#### Demo of using Microsoft Azure with Azure Stack HCI
 
 For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo.
 
@@ -78,7 +78,7 @@ Using a fictional customer, inspired directly by real customers, you will see ho
 
 > [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
 
-Note, this video includes preview functionality which shows real product functionality, but in a closely controlled environment.
+This video includes preview functionality which shows real product functionality, but in a closely controlled environment.
 
 ### Azure integration benefits
 
