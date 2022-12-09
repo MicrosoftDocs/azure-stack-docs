@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/08/2022
+ms.date: 12/0/02022
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
