@@ -69,7 +69,7 @@ After you install the extension, it appears under the **Installed extensions** t
 
 If you're using PowerShell to provision GPU partitioning, you must run all PowerShell commands as the Administrator user. 
 
-For detailed usage about the PowerShell commands, see the [Add-VMGpuPartitionAdapter](/powershell/module/hyper-v/add-vmgpupartitionadapter?view=windowsserver2022-ps), [Get-VMGpuPartitionAdapter](/powershell/module/hyper-v/get-vmgpupartitionadapter?view=windowsserver2022-ps), and [Remove-VMGpuPartitionAdapter](/powershell/module/hyper-v/remove-vmgpupartitionadapter?view=windowsserver2022-ps) reference documentation.
+For detailed usage about the PowerShell commands, see the [Add-VMGpuPartitionAdapter](/powershell/module/hyper-v/add-vmgpupartitionadapter), [Get-VMGpuPartitionAdapter](/powershell/module/hyper-v/get-vmgpupartitionadapter), and [Remove-VMGpuPartitionAdapter](/powershell/module/hyper-v/remove-vmgpupartitionadapter) reference documentation.
 
 ## GPU partitioning caveats
 
