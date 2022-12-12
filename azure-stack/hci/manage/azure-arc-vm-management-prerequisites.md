@@ -56,7 +56,7 @@ The network requirements include:
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
 - If using DHCP, ensure that DHCP server has at least two IP addresses for Resource Bridge VM ($VMIP_1, $VMIP_2). You can have a tagged or untagged DHCP server.
 - Please make sure $VMIP_1 and $VMIP_2 have internet access.
-- An IP address for the load balancer running inside the Resource Bridge ($controlPlaneIP). The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
+- An IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM($controlPlaneIP). The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
 - Please make sure $controlPlaneIP has internet access.
 - The Host must be able to reach the IPs given to the control plane endpoint ($controlPlaneIP) and Arc Resource Bridge VM IPs ($VMIP_1, $VMIP_2). Please work with your network administrator to enable this.
 - An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
@@ -89,7 +89,6 @@ Make sure to include the following firewall URLs to your allowlist:
 | https\://azurearcfork8sdev.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images
 | https\://adhs.events.data.microsoft.com | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which would mean any Kubernetes control plane |
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
-| gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 
