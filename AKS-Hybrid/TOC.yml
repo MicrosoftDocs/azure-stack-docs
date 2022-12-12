@@ -25,7 +25,7 @@
       items:
       - name: Introduction
         href: aks-hci-evaluation-guide.md
-      - name: 1 - Create Azure Virtual Machine for AKS deployment
+      - name: 1 - Create an Azure Virtual Machine for AKS deployment
         href: aks-hci-evaluation-guide-1.md
       - name: 2a - Deploy with Windows Admin Center
         href: aks-hci-evaluation-guide-2a.md
