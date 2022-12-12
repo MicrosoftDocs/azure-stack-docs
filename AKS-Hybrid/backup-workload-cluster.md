@@ -415,7 +415,7 @@ You can back up or restore all objects in your cluster, or you can filter object
 
 ### Create a backup
 
-Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes. For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.8/backup-reference/).
+Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes. For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.10/backup-reference/).
 
 - On-demand backup of all namespaces in your cluster:
 
