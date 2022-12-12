@@ -26,21 +26,7 @@ For an overview of Azure Arc VM management, see [What is Azure Arc VM management
 
 ## Prerequisites
 
-Before you begin, make sure:
-
-- The latest version of Azure CLI is installed. You must install this on all servers in your Azure Stack HCI cluster.
-
-  - To install Azure CLI on each server in a cluster, use Remote Desktop Protocol (RDP) connection.
-
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows).
-
-    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-    - When you're prompted, install the Azure CLI extension on first use. For more information about extensions, see [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
-
-- To complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
+Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Install PowerShell modules and update extensions
 

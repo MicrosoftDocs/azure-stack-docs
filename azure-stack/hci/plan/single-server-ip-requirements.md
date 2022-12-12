@@ -57,4 +57,4 @@ The following table lists network attributes for deployments SDN optional servic
 
 ## Next steps
 
-- [Download Azure Stack HCI](/deploy/operating-system.md)
+- [Download Azure Stack HCI](../deploy/operating-system.md)
