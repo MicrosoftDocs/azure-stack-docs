@@ -19,7 +19,7 @@ This article discusses the security, software, hardware, and networking prerequi
 
 ## Security considerations
 
-Review the [security considerations](/manage/preview-channel.md) and [assess environment readiness](/manage/use-environment-checker.md) for Azure Stack HCI.
+Review the [security considerations](../manage/preview-channel.md) and [assess environment readiness](../manage/use-environment-checker.md) for Azure Stack HCI.
 
 ## Software requirements
 
