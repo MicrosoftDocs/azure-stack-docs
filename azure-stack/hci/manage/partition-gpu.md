@@ -278,7 +278,7 @@ Follow these steps to configure partition count via Windows Admin Center:
 
 1. Select a GPU or a GPU partition to display its details in the bottom section of the page, under **Selected item details**. For example, if you select a GPU, it displays the GPU name, GPU ID, available encoder and decoder, available VRAM, valid partition count, and the current partition count. If you select a GPU partition, it displays the partition ID, VM ID, instance path, partition VRAM, partition encode, and partition decode.
 
-   :::image type="content" source="./media/partition-gpu/gpu-partitions-tab.png" alt-text="Screenshot of the GPU partitions tab showing the inventory of the servers and their installed GPU devices. The bottom section on the page dispays the details of the selected resource." lightbox="./media/partition-gpu/gpu-partitions-tab.png" :::
+   :::image type="content" source="./media/partition-gpu/gpu-partitions-tab.png" alt-text="Screenshot of the GPU partitions tab showing the inventory of the servers and their installed GPU devices. The bottom section on the page displays the details of the selected resource." lightbox="./media/partition-gpu/gpu-partitions-tab.png" :::
 
 1. Select **Configure partition count**.
 
@@ -310,7 +310,7 @@ Follow these steps to configure partition count via Windows Admin Center:
 
     As soon as you select a different partition count, a tooltip appears below the dropdown list, which dynamically displays the size of VRAM that each partition will get. For example, if the total VRAM is 16 GB for 16 partitions in the GPU, changing the partition count from 16 to 8 assigns each partition with 1.85 GB of VRAM.
 
-    :::image type="content" source="./media/partition-gpu/tooltip-about-vram.png" alt-text="Screenshot showing the tooltip that appears when you select a different partition count" lightbox="./media/partition-gpu/tooltip-about-vram.png" :::
+    :::image type="content" source="./media/partition-gpu/tooltip-about-vram.png" alt-text="Screenshot showing the tooltip that appears when you select a different partition count." lightbox="./media/partition-gpu/tooltip-about-vram.png" :::
 
 1. Select **Configure partition count**.
 
