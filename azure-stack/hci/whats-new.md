@@ -100,6 +100,12 @@ All the other commands and steps remain the same. These changes aren't in Wind
 
 For more information, see [Storage Replica overview](/windows-server/storage/storage-replica/storage-replica-overview).
 
+### Partition and share GPU with virtual machines on Azure Stack HCI
+
+With this release, GPU partitioning is now supported on NVIDIA [A2](https://www.nvidia.com/data-center/products/a2/), [A10](https://www.nvidia.com/data-center/products/a10-gpu/), [A16](https://www.nvidia.com/data-center/products/a16-gpu/), and [A40](https://www.nvidia.com/data-center/a40/) GPUs in Azure Stack HCI, enabled with NVIDIA RTX Virtual Workstation (vWS) and NVIDIA Virtual PC (vPC) software. GPU partitioning is implemented using single root I/O virtualization (SR-IOV), which provides a strong, hardware-backed security boundary with predictable performance for each virtual machine.
+
+For more information, see [Partition and share GPU with virtual machines on Azure Stack HCI](../hci/manage/partition-gpu.md).
+
 ### Hyper-V live migration improvements
 
 In Azure Stack HCI, version 22H2, the Hyper-V live migration is faster and more reliable for switchless 2-node and 3-node clusters. Switchless interconnects can cause live migration delays and this release addresses these issues.
@@ -130,7 +136,7 @@ For more information, see [Configure network security groups with Windows Admin 
 
 ### Azure Hybrid Benefit for Azure Stack HCI
 
-Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
+Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), we are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
 
 If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
 
