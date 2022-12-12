@@ -37,6 +37,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1366   | 2022-12-13            | [KB 5021249](https://support.microsoft.com/topic/3815a4c2-a71b-4cb1-9777-a9ef7db8701e)  |
 | 20349.1311   | 2022-11-22            | [KB 5020032](https://support.microsoft.com/topic/c0c2f038-a248-4fac-9c63-45ab4f462424)  |
 | 20349.1251   | 2022-11-17            | [KB 5021656](https://support.microsoft.com/topic/336b8958-d1dd-40b2-a93b-ed1b80003c27)  |
 | 20349.1249   | 2022-11-08            | [KB 5019081](https://support.microsoft.com/topic/d53a4cf1-0987-4ab7-a529-23f7136f4083)  |
@@ -50,6 +51,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1366   | 2022-12-13            | [KB 5021249](https://support.microsoft.com/topic/e6f3210a-c999-4ac8-8fd6-66751febf300)  |
 | 20348.1311   | 2022-11-22            | [KB 5020032](https://support.microsoft.com/topic/96bc003c-a310-445a-af1c-98e977a1a7d3)  |
 | 20348.1251   | 2022-11-17            | [KB 5021656](https://support.microsoft.com/topic/f33facaa-2ccc-4ce2-a374-c5a3e01a6fdd)  |
 | 20348.1249   | 2022-11-08            | [KB 5019081](https://support.microsoft.com/topic/4e51dca6-695b-4578-abf2-852cacea2d77)  |
@@ -89,6 +91,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.3091  | 2022-12-13            | [KB 5021236](https://support.microsoft.com/topic/644e9835-e994-486c-965c-50d96a0782be) |
 | 17784.2977  | 2022-11-08            | [KB 5019962](https://support.microsoft.com/topic/2d804dac-9348-45ff-8ec6-be705b4bfb0a) |
 | 17784.2968  | 2022-11-08            | [KB 5020804](https://support.microsoft.com/topic/900e466d-0d05-46c2-a677-2869c6c5aa1b) |
 | 17784.2868  | 2022-10-17            | [KB 5020446](https://support.microsoft.com/topic/a41ef2b1-823f-4453-b0e8-1029d7d95f74) |
