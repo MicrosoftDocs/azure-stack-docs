@@ -4,9 +4,7 @@ description: Learn how to partition and share a GPU with multiple virtual machin
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 12/02/2022
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.date: 12/12/2022
 ms.reviewer: alkohli
 ---
 
