@@ -10,8 +10,7 @@ metadata:
   ms.date: 12/13/2022
 
 title: Resolve general issues when using AKS hybrid
-summary: |
-  
+summary: | 
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   This article describes some general known issues that occur when using AKS hybrid. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
   
