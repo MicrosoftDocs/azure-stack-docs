@@ -96,7 +96,7 @@ You can load AKS Edge modules by running the **AksEdgePrompt** file from the **t
 
 ![Screenshot showing all pods running.](./media/aks-edge/aksedge-prompt.png)
 
-Alternatively, you can access the AKSEdge PowerShell modules from an elevated Powershell instance as shown:
+Alternatively, you can access the AKSEdge PowerShell modules from an elevated PowerShell instance as shown:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
