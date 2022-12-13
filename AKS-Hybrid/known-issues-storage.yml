@@ -2,6 +2,12 @@
 metadata:
   title: Troubleshoot storage issues and errors in AKS hybrid
   description: Get help to troubleshoot storage issues and errors in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix known issues and errors when managing storage in AKS hybrid
 summary: |

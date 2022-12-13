@@ -2,9 +2,16 @@
 metadata:
   title: Troubleshoot issues when uninstalling AKS hybrid.
   description: Get help to troubleshoot issues and errors when uninstalling AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix known issues and errors when uninstalling AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server** 
   Use this topic to help you troubleshoot and resolve issues when uninstalling AKS hybrid.
   
 sections:
@@ -93,5 +100,4 @@ additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
-  
     

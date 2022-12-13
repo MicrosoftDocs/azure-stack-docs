@@ -2,9 +2,17 @@
 metadata:
   title: Resolve errors when enabling and disabling Azure Arc on AKS workload clusters
   description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
+  
   This article describes errors you may encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) and [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) in AKS hybrid. For issues that are not covered in this article, see [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
   
   You can also [open a support issue](./help-support.md) if none of the workarounds listed below apply to you.
@@ -89,6 +97,14 @@ sections:
           As the error suggests, make sure the cluster name is lowercase and matches the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'.
           
       - question: | 
+          Error: 'addons.msft.microsoft "demo-arc-onboarding" already exists'.
+
+        answer: | 
+          This error usually means that you have already connected your AKS cluster to Arc-enabled Kubernetes.
+          To confirm it's connected, go to the [Azure portal](https://portal.azure.com) and check under the subscription and resource group you provided when running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) (if you've used default values) or [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) (if you haven't used default values). You can also confirm if your AKS on Azure Stack HCI cluster is connected to Azure by running the [az connectedk8s show ](/cli/azure/connectedk8s#az-connectedk8s-show) Azure CLI command. If you do not see your workload cluster, run `Disable-AksHciArcConnection` and try again.
+          
+          
+      - question: | 
           Error: 'autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"...'.
 
         answer: | 
@@ -126,4 +142,4 @@ additionalContent: |
   
   - [Troubleshooting Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting) 
   - [Known issues](/azure-stack/aks-hci/known-issues)
-  
+    

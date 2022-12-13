@@ -2,9 +2,16 @@
 metadata:
   title: Known issues when upgrading AKS hybrid
   description: Known issues when upgrading AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Resolve issues when upgrading AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service (AKS) hybrid deployments to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
   
 sections:

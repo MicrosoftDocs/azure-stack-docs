@@ -2,9 +2,16 @@
 metadata:
   title: Troubleshoot known issues and errors when installing AKS hybrid
   description: Find solutions to known issues and errors when installing AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Resolve issues and errors during an AKS hybrid installation
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   This article describes known issues and errors you may encounter when installing AKS hybrid. You can also review known issues with when [upgrading AKS hybrid](/azure-stack/aks-hci/known-issues-upgrade) and when using [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center).
   
 sections:
@@ -302,12 +309,12 @@ sections:
           To resolve the error, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
           
       - question: | 
-          Set-AksHciConfig fails with the error "GetCatalog error returned by API call: â€¦ proxyconnect tcp: tls: first record does not look like a TLS Handshake"
+          Set-AksHciConfig fails with the error "GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake"
 
         answer: | 
           The `Set-AksHciConfig` PowerShell cmdlet fails with the error:
           
-          `GetCatalog error returned by API call: â€¦ proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+          `GetCatalog error returned by API call: … proxyconnect tcp: tls: first record does not look like a TLS Handshake`
           
           If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value. The HTTP proxy URL and HTTPS proxy URL values are both required when configuring AKS with a proxy server, but it's common to need both values to share the same HTTP-prefixed URL.
           
@@ -442,7 +449,7 @@ sections:
           
           1. Navigate to **Active Directory Users and Computers**.
           2. Right-click on the OU or container where the cluster resides.
-          3. Select **Delegate Controlâ€¦** to open the **Delegation of Control Wizard**.
+          3. Select **Delegate Control…** to open the **Delegation of Control Wizard**.
           4. Click **Next** > Click **Add...** to open the **Select Users, Computers, or Groups** window.
           5. Select your choice of group or users to whom you want to delegate control > Click **OK**.
           6. Select **Create a custom task to delegate** > Click **Next** to move on to the **Active Directory Object Type** page.
@@ -519,5 +526,4 @@ additionalContent: |
   - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
   
   If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-  
     

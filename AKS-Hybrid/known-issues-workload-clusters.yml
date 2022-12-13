@@ -2,9 +2,16 @@
 metadata:
   title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
   description: Get help to troubleshoot Kubernetes workload cluster issues and errors in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS hybrid.
   
 sections:
@@ -247,6 +254,15 @@ sections:
           To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then ensure the nodes have sufficient CPU and memory amounts. You can find more information in [system requirements](system-requirements.md).
           
       - question: | 
+          Cluster auto-scaling fails
+
+        answer: | 
+          Cluster auto-scaling can fail when you use the following Azure policy on your AKS host management cluster: "Kubernetes clusters should not use the default namespace". This happens because the policy, when implemented on the AKS host management cluster, blocks the creation of autoscaler profiles in the default namespace. To fix this issue, choose one of the following options:
+          
+          - Uninstall the Azure Policy extension on the AKS host management cluster. Learn more about [uninstalling Azure Policy extensions here](/azure/governance/policy/concepts/policy-for-kubernetes?toc=%2Fazure%2Fazure-arc%2Fkubernetes%2Ftoc.json&bc=%2Fazure%2Fazure-arc%2Fkubernetes%2Fbreadcrumb%2Ftoc.json#delete-azure-policy-extension).
+          - Change the scope of the Azure policy to exclude AKS host management clusters. Learn more about [Azure Policy scopes here](/azure/governance/policy/concepts/scope).
+          - Set the policy enforcement mode to "Disabled" for the AKS host management cluster. Learn more about [enforcement mode here](/azure/governance/policy/concepts/assignment-structure#enforcement-mode).
+      - question: | 
           When creating a new workload cluster, the error "Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded" occurs.
 
         answer: | 
@@ -324,5 +340,4 @@ additionalContent: |
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
   - [storage known issues](/azure-stack/aks-hci/known-issues-storage)
-  
     

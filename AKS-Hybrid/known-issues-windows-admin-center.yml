@@ -2,6 +2,12 @@
 metadata:
   title: Known issues in Windows Admin Center for AKS hybrid
   description: Known issues in Windows Admin Center for AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix issues in Windows Admin Center
 summary: |
@@ -328,5 +334,4 @@ additionalContent: |
   - [Upgrade known issues](/azure-stack/aks-hci/known-issues-upgrade)
   
   If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-  
     

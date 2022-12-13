@@ -2,9 +2,16 @@
 metadata:
   title: Troubleshoot security and identity issues and errors in AKS hybrid
   description: Get help to troubleshoot security and identity issues and errors in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix security and identity known issues and errors in AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS hybrid.
   
 sections:
@@ -252,5 +259,4 @@ additionalContent: |
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
   - [Storage known issues](/azure-stack/aks-hci/known-issues-storage)
-  
     

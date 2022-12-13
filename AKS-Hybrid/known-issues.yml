@@ -2,9 +2,17 @@
 metadata:
   title: General issues when using AKS hybrid
   description: General known issues when using AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Resolve general issues when using AKS hybrid
 summary: |
+  
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   This article describes some general known issues that occur when using AKS hybrid. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
@@ -99,5 +107,4 @@ additionalContent: |
   - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
   
   If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-  
     
