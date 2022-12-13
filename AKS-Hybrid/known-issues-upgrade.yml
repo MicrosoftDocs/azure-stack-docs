@@ -11,17 +11,16 @@ metadata:
 
 title: Resolve issues when upgrading AKS hybrid
 summary: |
-  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service (AKS) hybrid deployments to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          After a successful upgrade, older versions of PowerShell are not removed.
+          After a successful upgrade, older versions of PowerShell are not removed
 
         answer: | 
-          Older versions of PowerShell are not removed
+          Older versions of PowerShell are not removed.
           
           To work around this issue, you can [run this script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
       - question: | 
@@ -315,7 +314,7 @@ sections:
           ```
           
       - question: | 
-          Upgrade of target cluster gets stuck with one or more nodes in an old Kubernetes version.
+          Upgrade of target cluster gets stuck with one or more nodes in an old Kubernetes version
 
         answer: | 
           After running Update-AksHciCluster, the upgrade process stalls.

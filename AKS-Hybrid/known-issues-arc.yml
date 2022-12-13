@@ -21,15 +21,15 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Error: 'A workload cluster with the name 'my-aks-cluster' was not found'.
+          Error: "A workload cluster with the name 'my-aks-cluster' was not found"
 
         answer: | 
           This error means that you have not created the workload cluster, or you have incorrectly spelled the name of the workload cluster. 
           
-          Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to confirm you have the correct name or that the cluster you want to connect to Arc exists.
+          Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to ensure you have the correct name or that the cluster you want to connect to Arc exists.
           
       - question: | 
-          Error: 'System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set...'
+          Error: "System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set..."
 
         answer: | 
           The following error may occur when you use Windows Admin Center to create a workload cluster and connect it to Arc-enabled Kubernetes:
@@ -42,10 +42,10 @@ sections:
           - Option 2: In PowerShell, check if the cluster has been successfully created by running the [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) command, and then use [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) to connect your cluster to Arc.
           
       - question: | 
-          Enable-AksHciArcConnection fails if Connect-AzAccount is used to log in to Azure.
+          Enable-AksHciArcConnection fails if Connect-AzAccount is used to sign in to Azure
 
         answer: | 
-          When you use [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-6.4.0&preserve-view=true) to log in to Azure, you might end up setting a different subscription as your default context than the one that you gave as an input to [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). When you then run [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md), the command expects the subscription used in `Set-AksHciRegistration`. However, `Enable-AksHciArcConnection` gets the default subscription set using the `Connect-AzAccount`, and therefore, might cause an error. 
+          When you use [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-6.4.0&preserve-view=true) to sign in to Azure, you might set a different subscription as your default context than the one that you gave as an input to [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). When you then run [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md), the command expects the subscription used in `Set-AksHciRegistration`. However, `Enable-AksHciArcConnection` gets the default subscription set using the `Connect-AzAccount`, and therefore, might cause an error.
           
           To prevent this error, follow one of the options below:
           
@@ -63,7 +63,7 @@ sections:
           
           If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md), and try connecting again. If the above scenario doesn't apply to you, [open a support issue](./help-support.md) for AKS on Azure Stack HCI.
       - question: | 
-          Error: 'Secrets "sh.helm.release.v1.azure-arc.v1" not found'
+          Error: "Secrets "sh.helm.release.v1.azure-arc.v1" not found"
 
         answer: | 
           This error indicates that your Kubernetes API server could not be reached. 

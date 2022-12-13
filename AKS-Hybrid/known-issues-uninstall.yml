@@ -18,12 +18,12 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Uninstall-AksHCI is not cleaning up cluster resources ('ownergroup ca-<GUID>').
+          Uninstall-AksHCI does not clean up cluster resources ('ownergroup ca-<GUID>')
 
         answer: | 
           Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. 
           
-          To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
+          To fix this issue, ensure that the user performing the installation has **Full Control** permissions to create/modify/remove Active Directory objects in the Active Directory container in which the server and service objects are created.
       - question: | 
           Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
 
