@@ -51,7 +51,7 @@ There are three cases in which you might encounter quota-related issues with ACR
 
 <sup>*</sup>By default, the max size of a container registry is 100 GiB, but your operator may have changed this based on their needs.
 
-In any of these three cases, you will receive an error saying that a quota has been exceeeded or an error saying that some operation is disallowed. To resolve the error, you should contact your Azure Stack Hub operator, who can increase quotas and/or reconfigure stamps. Learn more about how operators manage capacity and quotas for ACR on Azure Stack Hub [here](/azure-stack/operator/container-registries-manage.md).
+In any of these three cases, you will receive an error saying that a quota has been exceeeded or an error saying that some operation is disallowed. To resolve the error, you should contact your Azure Stack Hub operator, who can increase quotas and/or reconfigure stamps. Learn more about how operators manage capacity and quotas for ACR on Azure Stack Hub [here](../operator/container-registries-manage.md).
 
 ## Find your registry Resource ID for support
 

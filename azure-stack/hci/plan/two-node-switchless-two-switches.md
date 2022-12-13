@@ -70,7 +70,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
     - 10.71.1.0/24 for storage network 1
     - 10.71.2.0/24 for storage network 2
 
-For more information, see [Deploy host networking](/deploy/network-atc.md).
+For more information, see [Deploy host networking](../deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 
@@ -94,7 +94,7 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 

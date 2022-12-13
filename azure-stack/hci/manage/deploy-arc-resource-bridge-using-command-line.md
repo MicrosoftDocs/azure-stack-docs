@@ -26,21 +26,7 @@ For an overview of Azure Arc VM management, see [What is Azure Arc VM management
 
 ## Prerequisites
 
-Before you begin, make sure:
-
-- The latest version of Azure CLI is installed. You must install this on all servers in your Azure Stack HCI cluster.
-
-  - To install Azure CLI on each server in a cluster, use Remote Desktop Protocol (RDP) connection.
-
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows).
-
-    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-    - When you're prompted, install the Azure CLI extension on first use. For more information about extensions, see [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
-
-- To complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
+Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
 ## Install PowerShell modules and update extensions
 
@@ -81,7 +67,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | Parameter | Description |
    | ----- | ----------- |
    | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
-   | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
+   | **controlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
    | **vlanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
    | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
