@@ -1,5 +1,5 @@
 ---
-title: Partition and share GPU with Azure Stack HCI virtual machines
+title: Partition and share GPUs with Azure Stack HCI virtual machines
 description: Learn how to partition and share a GPU with multiple virtual machines on Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -8,7 +8,7 @@ ms.date: 12/12/2022
 ms.reviewer: alkohli
 ---
 
-# Partition and share GPU with virtual machines on Azure Stack HCI
+# Partition and share GPUs with virtual machines on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
@@ -27,11 +27,9 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 GPU partitioning on Azure Stack HCI supports these guest operating systems:
 
-| Operating System | Version |
-| ---------------- | ------- |
-| Windows          | 10, 11, 10 Enterprise multi-session​, 11 Enterprise multi-session |
-| Windows Server   | 2019, 2022 |
-| Linux            | Ubuntu 18.04 LTS, Ubuntu 20.04 LTS​ |
+- Windows 10, Windows 11, Windows 10 Enterprise multi-session​, Windows 11 Enterprise multi-session
+- Windows Server 2019, Windows Server 2022
+- Linux Ubuntu 18.04 LTS, Linux Ubuntu 20.04 LTS​
 
 ## Prerequisites
 
