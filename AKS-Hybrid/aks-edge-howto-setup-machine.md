@@ -23,7 +23,7 @@ This article describes how to set up an Azure Kubernetes Service (AKS) Edge node
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
   | Disk space | At least 14 GB free |At least 14 GB free |
 
-    To better understand the concept of vCPUs read [this](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx)
+    To better understand the concept of vCPUs, [read this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 - Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command:
 
@@ -92,7 +92,7 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 ## Load AKS Edge modules
 
-AKS edge modules can be loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd). This PowerShell script checks for pre-requisites like Hyper-V, system CPU and memory resources and the AKS Edge Essentials program and loads the corresponding PowerShell modules as well and so we recommend that you use the `AksEdgePrompt`.
+You can load AKS Edge modules by running the **AksEdgePrompt** file from the **tools** folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd). This PowerShell script checks for prerequisites such as Hyper-V, system CPU and memory resources, and the AKS Edge Essentials program, and loads the corresponding PowerShell modules. It's recommended that you use the **AksEdgePrompt** tool.
 
 ![Screenshot showing all pods running.](./media/aks-edge/aksedge-prompt.png)
 
