@@ -2,6 +2,12 @@
 metadata:
   title: General issues when using AKS hybrid
   description: General known issues when using AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Resolve general issues when using AKS hybrid
 summary: |
@@ -11,7 +17,7 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          When running AksHci PowerShell cmdlets, an 'Unable to Load DLL' error appears.
+          When running AksHci PowerShell cmdlets, an "Unable to Load DLL" error appears
 
         answer: | 
           Antivirus software may be causing this error by blocking the execution of PowerShell binaries that are required to perform cluster operations. An example of a similar error is shown below:
@@ -54,12 +60,12 @@ sections:
           
           To resolve this issue, restart CloudAgent.
       - question: | 
-          Error: invalid_client. The provided client secret keys are expired.
+          Error: invalid_client. The provided client secret keys are expired
 
         answer: | 
           This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. 
           
-          Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
+          Visit the Azure portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For an example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
       - question: | 
           Insufficient privileges to complete the operation.
 
@@ -99,5 +105,4 @@ additionalContent: |
   - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
   
   If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-  
     

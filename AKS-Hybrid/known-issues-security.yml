@@ -2,6 +2,12 @@
 metadata:
   title: Troubleshoot security and identity issues and errors in AKS hybrid
   description: Get help to troubleshoot security and identity issues and errors in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix security and identity known issues and errors in AKS hybrid
 summary: |
@@ -38,7 +44,7 @@ sections:
           After this step, `Get-AksHciCredential` should not fail.
           
       - question: | 
-          Error 'Certificate expired - Unable to connect to the server: x509'
+          Error "Certificate expired - Unable to connect to the server: x509"
 
         answer: | 
           The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command displays the following error:
@@ -252,5 +258,4 @@ additionalContent: |
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
   - [Storage known issues](/azure-stack/aks-hci/known-issues-storage)
-  
     
