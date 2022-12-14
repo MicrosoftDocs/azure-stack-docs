@@ -189,7 +189,7 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center:
 ### Option 2
 
 1. From your Windows Admin Center landing page (https://akshcihost001), select your **akshcihost001.akshci.local \[Gateway\]** machine.
-2. Then, on the left-hand side, scroll down and under **Extensions**, click **Azure Kubernetes Service**.
+2. Then, on the left-hand side, scroll down and under **Tools**, click **Azure Kubernetes Service**.
 3. In the central pane, select **Add cluster**.
 
 Whichever option you chose, you will now be at the start of the **Create Kubernetes cluster** wizard.

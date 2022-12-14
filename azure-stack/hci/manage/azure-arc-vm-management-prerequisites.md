@@ -59,7 +59,7 @@ The network requirements include:
 - An IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM($controlPlaneIP). The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
 - Please make sure $controlPlaneIP has internet access.
 - The Host must be able to reach the IPs given to the control plane endpoint ($controlPlaneIP) and Arc Resource Bridge VM IPs ($VMIP_1, $VMIP_2). Please work with your network administrator to enable this.
-- An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
+- An IP address for the cloud agent running inside the Resource Bridge ($cloudServiceIP). If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
 
 ## Network port requirements
 
