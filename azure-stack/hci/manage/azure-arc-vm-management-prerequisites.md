@@ -82,6 +82,7 @@ Make sure to include the following firewall URLs to your allowlist:
 | https\://*.his.arc.azure.com | 443 | Azure Arc identity service | Used for identity and access control |
 | https\://*.dp.kubernetesconfiguration.azure.com | 443 | Kubernetes | Used for Azure Arc configuration |
 | https\://*.servicebus.windows.net | 443 | Cluster connect | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall |
+| sts.windows.net | 443 | Secure token service | Used for custom locations |
 | https\://guestnotificationservice.azure.com | 443 | Notification service | Used for guest notification operations |
 | https\://*.dp.prod.appliances.azure.com | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance) | 
 | https\://ecpacr.azurecr.io | 443 | Download agent | Used to download Resource bridge (appliance) container images |
@@ -91,6 +92,10 @@ Make sure to include the following firewall URLs to your allowlist:
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
 | pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
+| msk8s.sf.tlu.dl.delivery.mp.microsoft.com | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
+| msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
+| msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
+
 
 > [!NOTE]
 > We currently do not support proxy configurations.

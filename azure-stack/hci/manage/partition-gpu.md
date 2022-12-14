@@ -1,16 +1,14 @@
 ---
-title: Partition and share GPU with Azure Stack HCI virtual machines
+title: Partition and share GPUs with Azure Stack HCI virtual machines
 description: Learn how to partition and share a GPU with multiple virtual machines on Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 12/02/2022
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.date: 12/12/2022
 ms.reviewer: alkohli
 ---
 
-# Partition and share GPU with virtual machines on Azure Stack HCI
+# Partition and share GPUs with virtual machines on Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
@@ -29,11 +27,9 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 GPU partitioning on Azure Stack HCI supports these guest operating systems:
 
-| Operating System | Version |
-| ---------------- | ------- |
-| Windows          | 10, 11, 10 Enterprise multi-session​, 11 Enterprise multi-session |
-| Windows Server   | 2019, 2022 |
-| Linux            | Ubuntu 18.04 LTS, Ubuntu 20.04 LTS​ |
+- Windows 10, Windows 11, Windows 10 Enterprise multi-session​, Windows 11 Enterprise multi-session
+- Windows Server 2019, Windows Server 2022
+- Linux Ubuntu 18.04 LTS, Linux Ubuntu 20.04 LTS​
 
 ## Prerequisites
 
@@ -67,9 +63,9 @@ After you install the extension, it appears under the **Installed extensions** t
 
 ### Prerequisites for PowerShell
 
-If you're using PowerShell to provision GPU partitioning, you must run all PowerShell commands as the Administrator user. 
+If you're using PowerShell to provision GPU partitioning, you must run all PowerShell commands as the Administrator user.
 
-For detailed usage about the PowerShell commands, see the [Add-VMGpuPartitionAdapter](/powershell/module/hyper-v/add-vmgpupartitionadapter), [Get-VMGpuPartitionAdapter](/powershell/module/hyper-v/get-vmgpupartitionadapter), and [Remove-VMGpuPartitionAdapter](/powershell/module/hyper-v/remove-vmgpupartitionadapter) reference documentation.
+For detailed information on how to use PowerShell commands for GPU partitioning, see the [Add-VMGpuPartitionAdapter](/powershell/module/hyper-v/add-vmgpupartitionadapter), [Get-VMGpuPartitionAdapter](/powershell/module/hyper-v/get-vmgpupartitionadapter), and [Remove-VMGpuPartitionAdapter](/powershell/module/hyper-v/remove-vmgpupartitionadapter) reference documentation.
 
 ## GPU partitioning caveats
 
@@ -575,6 +571,7 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
 
 ## Next steps
 
-For more information on GPUs, see also:
+For more information on GPU and GPU partitioning, see also:
 
 - [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md)
+- [Accelerate your edge workloads with affordable NVIDIA GPU-powered Azure Stack HCI solutions](https://techcommunity.microsoft.com/t5/azure-stack-blog/accelerate-your-edge-workloads-with-affordable-nvidia-gpu/ba-p/3692795) blog
