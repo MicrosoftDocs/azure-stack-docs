@@ -90,9 +90,9 @@ $azsbackupshare = New-Item -Path $shares.FullName -Name "AzSBackups" -ItemType "
 New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\Administrator")  -Name "AzSBackups"
 ```
 
-Next, copy your latest Azure Stack backup files to the newly created share. Make sure to copy the parent folder of `<BackupID>` folder, which is the timestamp of when the backup was taken. The folder structure within the share should be: `\\<ComputerName>\AzSBackups\MASBackup\<TimeStamp>\<BackupID>\`. 
+Next, copy your Azure Stack backup files to the newly created share. Make sure to copy the parent folder of `<BackupID>` folder, which is the timestamp of when the backup was taken. The folder structure within the share should be: `\\<ComputerName>\AzSBackups\`.
 
-Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\BackupDecryptionCert\` and rename the file to `BackupDecryptionCert.pfx`.
+Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Azure AD, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
 
 ## Deploy the ASDK in cloud recovery mode
 
@@ -144,13 +144,21 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
+> [!IMPORTANT]
+> The `$adminpass` on the script below **must be** the password of the default "CloudAdmin" user ? > from the production environment **when the backup was taken**.
+For example:
+>
+>- If you have created additional cloud admins in addition to the default "CloudAdmin" user through PEP. The credentials of any of these additional cloud admins will not work.
+>- If you have changed the default "CloudAdmin" user password through PEP, you will need to use the old password when the backup was taken to restore that particular backup, because backed up certificates and AD are protected by that old CloudAdmin password.
+>- If the you could not remember the old CloudAdmin password but you do remember the new CloudAdmin password, any new backups taken after the password change can be restored using the new password.
+
 #### Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate
 
 ```powershell
 cd C:\CloudDeployment\Setup     
 $adminpass = Read-Host -AsSecureString -Prompt "Local Administrator password"
 $certPass = Read-Host -AsSecureString -Prompt "Password for the external certificate"
-$backupstorecredential = Read-Host -AsSecureString -Prompt "Credential for backup share"
+$backupstorecredential = Get-Credential
 $decryptioncertpassword  = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
 
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass `
