@@ -30,7 +30,7 @@ The management network supports the following VLAN configurations:
 
 The management network supports all traffic used for management of the cluster, including Remote Desktop, Windows Admin Center, and Active Directory.
 
-For more information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
+For more information, see [Plan an SDN infrastructure: Management and HNV Provider](../../concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
 ### Compute VLANs
 
@@ -40,7 +40,7 @@ In some scenarios, you don’t need to use SDN Virtual Networks with Virtual Ext
 
 The Hyper-V Network Virtualization (HNV) Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need for deploying virtual networks using VXLAN encapsulation for another layer of isolation and for network multitenancy.
 
-For more information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
+For more information, see [Plan an SDN infrastructure: Management and HNV Provider](../../concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
 ## Network isolation options
 
@@ -87,15 +87,15 @@ Virtual network peering lets you connect two virtual networks seamlessly. Once p
 - The ability for resources in one virtual network to communicate with resources in a different virtual network.
 - No downtime to resources in either virtual network when creating the peering.
 
-For more information, see [Virtual network peering](/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering.md).
+For more information, see [Virtual network peering](/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering).
 
 ### SDN software load balancer
 
 Cloud Service Providers (CSPs) and enterprises that deploy Software Defined Networking (SDN) can use Software Load Balancer (SLB) to evenly distribute customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to VMs, and outbound NAT services for outbound connectivity.
 
-Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise virtual IP addresses to the physical network.
+Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
-For more information, see [What is SLB for SDN?](/azure-stack/hci/concepts/software-load-balancer.md)
+For more information, see [What is SLB for SDN?](../../concepts/software-load-balancer.md)
 
 ### SDN VPN gateways
 
@@ -107,12 +107,12 @@ SDN Gateway can be used to:
 
 - Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter isn't an encrypted connection.
 
-    For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server.md).
+    For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server).
 
 - Create Layer 3 (L3) connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
-SDN Gateway requires SDN [Network Controller](/azure-stack/hci/concepts/network-controller-overview.md). Network Controller performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
+SDN Gateway requires SDN [Network Controller](../../concepts/network-controller-overview.md). Network Controller performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway if a gateway fails.
 
-Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
+Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
 
-For more information, see [What is RAS Gateway for SDN?](/azure-stack/hci/concepts/gateway-overview.md)
+For more information, see [What is RAS Gateway for SDN?](../../concepts/gateway-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Arc VM management FAQs
-description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management
+title: Azure Arc VM management FAQs (preview)
+description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management (preview).
 author: ManikaDhiman
 ms.topic: reference
 ms.date: 03/23/2022
@@ -8,13 +8,13 @@ ms.author: v-mandhiman
 ms.reviewer: ksurjan
 ---
 
-# Azure Arc VM management FAQs
+# Azure Arc VM management FAQs (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
 This article answers some frequently asked questions (FAQs) about Azure Arc VMs running on Azure Stack HCI clusters.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 

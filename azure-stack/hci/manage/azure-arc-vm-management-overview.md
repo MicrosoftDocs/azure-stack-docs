@@ -1,6 +1,6 @@
 ---
-title: What is Azure Arc VM management?
-description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters.
+title: What is Azure Arc VM management? (preview)
+description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters (preview).
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
@@ -19,7 +19,7 @@ To find answers to frequently asked questions about Arc VMs on Azure Stack HCI, 
 
 To troubleshoot issues with your Arc VMs or to know existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Benefits of Azure Arc VM management
 
@@ -27,6 +27,7 @@ With Azure Arc VM management, you can perform various operations from the Azure 
 
 - Create a VM
 - Start, stop, and restart a VM
+- Delete a VM
 - Control access and add Azure tags
 - Add and remove virtual disks and network interfaces
 - Update memory and virtual CPUs for the VM

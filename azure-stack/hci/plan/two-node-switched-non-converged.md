@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 12/02/2022
 ---
 
 # Review two-node storage switched, non-converged deployment network reference pattern for Azure Stack HCI
@@ -36,7 +36,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 - Two RDMA NICs in standalone configuration. Each NIC is connected to a different TOR switch. SMB multichannel capability provides path aggregation and fault tolerance.
 
-- As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
+- As an option, deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
 
 :::image type="content" source="media/two-node-switched-non-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switched-non-converged/physical-components-layout.png":::
 
@@ -92,7 +92,7 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 
