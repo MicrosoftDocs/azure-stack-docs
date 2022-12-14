@@ -2,6 +2,12 @@
 metadata:
   title: Known issues in Windows Admin Center for AKS hybrid
   description: Known issues in Windows Admin Center for AKS hybrid
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix issues in Windows Admin Center
 summary: |
@@ -11,12 +17,12 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Issues occurred when registering the Windows Admin Center gateway with Azure.
+          Issues occurred when registering the Windows Admin Center gateway with Azure
 
         answer: | 
-          If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure. 
+          If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure.
           
-          To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway to Azure.
+          To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway with Azure.
       - question: | 
           Only the user who set up the AKS host can create clusters.
 
@@ -33,21 +39,21 @@ sections:
           Close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.  
           
       - question: | 
-          The Setup or Cluster Create wizard displays an error about a wrong configuration.
+          The Setup or Cluster Create wizard displays an error about a wrong configuration
 
         answer: | 
           You may receive an error in either wizard about a wrong configuration.
           
-          Perform cluster cleanup operations. These operations might involve removing the `C:\Program Files\AksHci\mocctl.exe` file.
+          Perform cluster cleanup operations. These operations might involve removing the **C:\Program Files\AksHci\mocctl.exe** file.
       - question: | 
-          Networking field names are inconsistent in the Windows Admin Center portal.
+          Networking field names are inconsistent in Windows Admin Center
 
         answer: | 
           There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
           
-          
+          N/A
       - question: | 
-          On Windows Admin Center, the message 'error occurred while creating service principal' appears while installing an AKS host on Azure Stack HCI.
+          On Windows Admin Center, the message "error occurred while creating service principal" appears while installing an AKS host on Azure Stack HCI
 
         answer: | 
           You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign-in pop-up is blocked and causes the service principal error.
@@ -78,27 +84,28 @@ sections:
           Klist purge 
           ```
       - question: | 
-          Incorrect upgrade notification in Windows Admin Center.
+          Incorrect upgrade notification in Windows Admin Center
 
         answer: | 
-          If you receive an incorrect upgrade notification message `Successfully installed AksHci PowerShell module version null`, the upgrade operation is successful even if the notification is misleading.
+          If you receive an incorrect upgrade notification message "Successfully installed AksHci PowerShell module version null," the upgrade operation is successful even if the notification is misleading.
           
           ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
           
           You can safely disregard this message.
       - question: | 
-          Access is denied.
+          Access is denied
 
         answer: | 
-          In Stage 2.1: Basic Step Component, you may encounter this error: `Connecting to remote server *** failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.` when trying to use your credentials for your server node(s).
+          In Stage 2.1: Basic Step Component, you may encounter this error: "Connecting to remote server *** failed with the following error message: Access is denied. For more information, see the about_Remote_Troubleshooting Help topic" when trying to use your credentials for your server node(s).
           
           Make sure that the account/credentials added is an administrative account on the machine. Then verify that PSRemoting is enabled and remote hosts are trusted. You can do this with the following PowerShell commands:
+          
           ```powershell
           Enable-PSRemoting -Force 
           winrm quickconfig 
           ```
           
-          If you are still encountering issues, please follow this [troubleshooting guide](/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.2).
+          If you are still encountering issues, [see this troubleshooting guide](/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.2).
       - question: | 
           Windows Admin Center doesn't have an Arc off-boarding experience.
 
@@ -328,5 +335,4 @@ additionalContent: |
   - [Upgrade known issues](/azure-stack/aks-hci/known-issues-upgrade)
   
   If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-  
     
