@@ -132,7 +132,7 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
-    - name: Partition and share GPU with VMs
+    - name: Partition and share GPUs with VMs
       href: manage/partition-gpu.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
