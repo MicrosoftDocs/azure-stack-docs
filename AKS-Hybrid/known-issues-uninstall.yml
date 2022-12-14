@@ -2,21 +2,28 @@
 metadata:
   title: Troubleshoot issues when uninstalling AKS hybrid.
   description: Get help to troubleshoot issues and errors when uninstalling AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/13/2022
 
 title: Fix known issues and errors when uninstalling AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server** 
   Use this topic to help you troubleshoot and resolve issues when uninstalling AKS hybrid.
   
 sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Uninstall-AksHCI is not cleaning up cluster resources ('ownergroup ca-<GUID>').
+          Uninstall-AksHCI does not clean up cluster resources ('ownergroup ca-<GUID>')
 
         answer: | 
           Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. 
           
-          To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
+          To fix this issue, ensure that the user performing the installation has **Full Control** permissions to create/modify/remove Active Directory objects in the Active Directory container in which the server and service objects are created.
       - question: | 
           Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
 
@@ -93,5 +100,4 @@ additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
-  
     
