@@ -71,7 +71,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | :------------ |:-----------|:--------|
 | `Vswitch.Name` | `string` | Name of the external switch used for AKS Edge Essentials. You can create one yourself using Hyper-V manager. If you specify a switch name that does not exist, AKS Edge Essentials creates one for you. |
 | `Vswitch.Type` | `string` | Only the `External` switch is supported currently. A single machine cluster uses the `Internal` switch by default and is not required to be specified. |
-| `Vswitch.AdapterName` | `string` | NetAdapterName for VSwitch. It is mandatory for a full Kubernetes deployment. |
+| `Vswitch.AdapterName` | `string` | NetAdapterName for VSwitch. It is mandatory for a full Kubernetes deployment. You can run the PowerShell `Get-NetAdapter -Physical` command to view the `Name` column for the adapter of your choice. |
 | `ControlPlaneEndpointIp` | `A.B.C.x` | A free IP address on your subnet **A.B.C**. The control plane (API server) gets this address. |
 | `Ip4GatewayAddress` | `A.B.C.1` | Gateway address; typically the router address. |
 | `Ip4PrefixLength` | `number` | The IP address subnet **A.B.C** prefix length. For example, use **24** if your network is **192.168.1.0/24**. |
