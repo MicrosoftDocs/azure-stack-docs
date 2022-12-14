@@ -14,7 +14,7 @@ ms.lastreviewed: 12/14/2022
 
 # Migrate workloads from AKS on Azure Stack Hub to AKS Engine on Azure Stack Hub
 
-The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine on Hub. This doc will help those of you with workloads on the AKS preview migrate to AKS Engine and outline expected feature differences between the services. To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and the feature comparison table below.  
+The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine on Hub. This doc will help those of you with workloads on the AKS preview migrate to AKS Engine and outline expected feature differences between the services. To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and the following feature comparison table.  
 
 You can have AKS and AKS Engine running at the same time. To minimize application downtime, we recommend deploying and validating workloads on AKS Engine before deleting your AKS clusters.  
 
@@ -24,11 +24,11 @@ Recommended steps to move workloads to AKS Engine:
 
 1. [Deploy a cluster with AKS Engine](azure-stack-kubernetes-aks-engine-deploy-cluster.md).
 
-1. Deploy the workloads you have running on AKS Engine.
+1. Deploy the workloads that are running on AKS Engine.
 
 1. Validate that your workloads are running successfully on AKS Engine. 
 
-1. (Optional) Once the newly deployed workloads have been validated, [delete deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&tabs=windows%2Clinuxcon#delete-cluster).
+1. (Optional) Once the newly deployed workloads have been validated, [delete deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster).
 
 ## Feature comparison
 
@@ -78,7 +78,7 @@ The following table provides an overview of features of AKS in global Azure comp
 
 <sup>1</sup>Discontinued.
 <sup>2</sup>To collect diagnostic logs, the user can log into the VM to gather this information.
-<sup>3</sup>AKS Engine is not a managed service and so these logs do not exist. To collect diagnostic information, see <sup>2</sup>, above.
+<sup>3</sup>AKS Engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log into the VM to gather this information.
 
 ## Next steps
 
