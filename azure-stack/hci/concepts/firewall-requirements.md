@@ -4,12 +4,12 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 04/28/2022
+ms.date: 10/11/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to set up a proxy server and how to use Azure service tags with Microsoft Defender firewall.
 
@@ -33,205 +33,41 @@ The following sections provide consolidated lists of required and recommended UR
 
 The subsequent sections provide additional details about the firewall requirements of Azure Stack HCI core components, followed by firewall requirements for additional Azure services (optional).
 
-### Required firewall URLs
+## Required firewall URLs
 
-This section provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
+The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
-### [Table](#tab/allow-table)
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
-The following table provides a list of required firewall URLs.
+[!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
 
-[!INCLUDE [Required URLs table](../../includes/required-urls-table.md)]
+## Recommended firewall URLs
 
-### [JSON](#tab/allow-json)
+The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
-The following are the required firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
+> [!NOTE]
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
-```json
-[{
-        "URL": "https://login.microsoftonline.com",
-        "Port": "443",
-        "Notes": "(Azure Public) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
-    },
-    {
-        "URL": "https://login.chinacloudapi.cn/",
-        "Port": "443",
-        "Notes": "(Azure China) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
-    },
-    {
-        "URL": "https://login.microsoftonline.us",
-        "Port": "443",
-        "Notes": "(Azure Gov) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
-    },
-    {
-        "URL": "https://graph.windows.net/",
-        "Port": "443",
-        "Notes": "(Azure Public, Azure Gov) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
-    },
-    {
-        "URL": "https://graph.chinacloudapi.cn/",
-        "Port": "443",
-        "Notes": "(Azure China) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
-    },
-    {
-        "URL": "https://management.azure.com/",
-        "Port": "443",
-        "Notes": "(Azure Public) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
-    },
-    {
-        "URL": "https://management.chinacloudapi.cn/",
-        "Port": "443",
-        "Notes": "(Azure China) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
-    },
-    {
-        "URL": "https://management.usgovcloudapi.net/",
-        "Port": "443",
-        "Notes": "(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
-    },
-    {
-        "URL": "https://dp.stackhci.azure.com (Azure Public)",
-        "Port": "443",
-        "Notes": "(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Previously, this URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, you must allowlist the old URL as well."
-    },
-    {
-        "URL": "https://dp.stackhci.azure.cn",
-        "Port": "443",
-        "Notes": "(Azure China) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data."
-    },
-    {
-        "URL": "https://dp.azurestackchi.azure.us",
-        "Port": "443",
-        "Notes": "(Azure Gov) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data."
-     }]
-`````
-----
+[!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
 
-### Recommended firewall URLs
+## Firewall requirements for additional Azure services
 
-This section provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
-
-### [Table](#tab/allow-table)
-
-The following table provides a list of recommended firewall URLs.
-
-[!INCLUDE [Recommended URLs table](../../includes/recommended-urls-table.md)]
-
-### [Json](#tab/allow-json)
-
-The following are the recommended firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
-
-```json
-[{
-        "URL": "http://*.windowsupdate.microsoft.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "https://*.windowsupdate.microsoft.com",
-        "Port": "443",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://*.update.microsoft.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "https://*.update.microsoft.com",
-        "Port": "443",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://*.windowsupdate.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://download.windowsupdate.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "https://download.microsoft.com",
-        "Port": "443",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://*.download.windowsupdate.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://wustat.windows.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://ntservicepack.microsoft.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://go.microsoft.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "http://dl.delivery.mp.microsoft.com",
-        "Port": "80",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "https://dl.delivery.mp.microsoft.com",
-        "Port": "443",
-        "Notes": "For Microsoft Update, which allows the OS to receive updates."
-    },
-    {
-        "URL": "*.blob.core.windows.net",
-        "Port": "443",
-        "Notes": "Alternatively, [myblobstorage].blob.core.windows.net for the blob storage account for the cluster witness. For Cluster Cloud Witness."
-    },
-    {
-        "URL": "*.powershellgallery.com",
-        "Port": "443",
-        "Notes": "Alternatively, download the Az.StackHCI PowerShell module at https://www.powershellgallery.com/packages/Az.StackHCI. For HCI Registration."
-    }]
-```
-----
-
-### Cluster creation
-
-You don't need any other firewall rules if you use Windows Admin Center or PowerShell to create your Azure Stack HCI cluster.
-
-### Cluster registration and billing
-
-Cluster registration requires the Az.StackHCI PowerShell module, which isn't included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
-
-Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
-
-For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
-
-### Microsoft Update
-
-If there's a corporate firewall between the Azure Stack HCI operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section to your allowlist.
-
-### Cluster Cloud Witness
-
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `[myblobstorage].blob.core.windows.net`.
-
-### Firewall requirements for additional Azure services (optional)
-
-Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service.
+Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
-- [Arc for Servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc resource bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
+- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md#firewall-url-requirements)
+- [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
-- [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
+- [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
+- [Azure Virtual Desktop](/azure/firewall/protect-azure-virtual-desktop)
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
+- [Remote support](../manage/get-remote-support.md#configure-proxy-settings)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/network-requirements)
-- [Windows Admin Center in Azure Portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
+- [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#networking-requirements)
 
 ## Firewall requirements for internal rules and ports
 
@@ -261,7 +97,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Allow Failover Cluster validation   | Allow  | Management system          | Cluster servers        | TCP     | 445    |
 | Allow RPC dynamic port allocation   | Allow  | Management system          | Cluster servers        | TCP     | Minimum of 100 ports<br> above port 5000 |
 | Allow Remote Procedure Call (RPC)   | Allow  | Management system          | Cluster servers        | TCP     | 135    |
-| Allow Cluster Administrator         | Allow  | Management system          | Cluster servers        | TCP     | 137    |
+| Allow Cluster Administrator         | Allow  | Management system          | Cluster servers        | UDP     | 137    |
 | Allow Cluster Service               | Allow  | Management system          | Cluster servers        | UDP     | 3343   |
 | Allow Cluster Service (Required during<br> a server join operation.) | Allow  | Management system  | Cluster servers  | TCP     | 3343 |
 | Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow  | Management system           | Cluster servers  | n/a     | n/a  |
@@ -311,12 +147,39 @@ Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-w
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
-Refer to the following articles for information about how to configure proxy servers:
+### Configure proxy for Microsoft Update and Cluster Cloud Witness
 
-- To configure a proxy server on AKS on Azure Stack HCI, see [Configure proxy server settings on AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
-- To configure the HTTPS-PROXY environment correctly with AKS-HCI, see [Set proxy for Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings).
-- To configure a proxy for Arc for Servers, see the "Update or remove proxy settings" section in [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
-- To configure a proxy for Microsoft Monitoring Agent (MMA), see the [Network requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) section in the Log Analytics agent overview article.
+You can configure proxy for Microsoft Update and Cluster Cloud Witness automatically with [WinHTTP autoproxy](/windows/win32/winhttp/winhttp-autoproxy-support) or manually by using the `netsh` command-line utility.
+
+To manually configure proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+
+`netsh winhttp set proxy <proxy server name>:<port number>`
+
+To remove the proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+
+`netsh winhttp reset proxy`
+
+To view or verify current WinHTTP proxy configuration, at the command prompt, type:
+
+`netsh winhttp show proxy`
+
+> [!IMPORTANT]
+> We don't support authenticated proxies due to security concerns associated with storing authenticated user credentials.
+
+### Configure proxy for Azure services
+
+Refer to the following articles for information about how to configure proxy server settings for each Azure service:
+
+- [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
+- [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
+- [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
+- [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
+- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
+- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+- To configure proxy server in Windows Admin Center, go to **Settings** > **Proxy**, enter the proxy server address and any relevant bypass or authentication information, and select **Apply**.
+
+    :::image type="content" source="./media/firewall-requirements/windows-admin-center-proxy.png" alt-text="Screenshot of Windows Admin Center Proxy settings pane." lightbox="./media/firewall-requirements/windows-admin-center-proxy.png":::
 
 ## Update Microsoft Defender firewall
 

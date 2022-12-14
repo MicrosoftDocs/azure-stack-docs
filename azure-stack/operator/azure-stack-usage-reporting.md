@@ -1,13 +1,10 @@
 ---
 title: Report Azure Stack Hub usage data to Azure
-titleSuffix: Azure Stack Hub
 description: Learn how to report Azure Stack Hub usage data to Azure.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-
 ms.topic: article
-ms.date: 10/11/2021
+ms.date: 11/10/2022
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -58,7 +55,7 @@ If you registered your Azure Stack Hub using a CSP subscription, you can view yo
 
 ## View usage - Enterprise Agreement subscriptions
 
-If you registered your Azure Stack Hub using an Enterprise Agreement subscription, you can view your usage and charges in the [EA portal](https://ea.azure.com/). Azure Stack Hub usage is included in the advanced downloads along with Azure usage under the reports section in this portal.
+If you registered your Azure Stack Hub using an Enterprise Agreement subscription, you can view your usage and charges in the [Azure portal cost management and billing overview blade](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview).
 
 ## View usage - other subscriptions
 
