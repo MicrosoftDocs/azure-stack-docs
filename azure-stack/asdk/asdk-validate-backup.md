@@ -90,7 +90,7 @@ $azsbackupshare = New-Item -Path $shares.FullName -Name "AzSBackups" -ItemType "
 New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\Administrator")  -Name "AzSBackups"
 ```
 
-Next, copy your Azure Stack backup files to the newly created share. Make sure to copy everything from the parent folder to the root os the share `\\<ComputerName>\AzSBackups\`.
+Next, copy your Azure Stack backup files to the newly created share. Make sure to copy everything from the parent folder to the root of the share `\\<ComputerName>\AzSBackups\`.
 
 Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Azure AD, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
 
