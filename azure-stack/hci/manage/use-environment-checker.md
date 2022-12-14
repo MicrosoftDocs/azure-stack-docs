@@ -218,6 +218,60 @@ If a test fails, the connectivity validator returns information to help you reso
 
    :::image type="content" source="./media/environment-checker/connectivity-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the connectivity validator." lightbox="./media/environment-checker/connectivity-validator-sample-failed.png":::
 
+### Potential failure scenario for connectivity validator
+
+The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
+
+:::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
+
+**Workaround**
+
+Work with your network team to turn off SSL inspection for your Azure Stack HCI system. To confirm your SSL inspection is turned off, you can use the following examples. After SSL inspection is turned off, you can run the tool again to check connectivity to all the endpoints.
+
+If you receive the certificate validation error message, run the following commands individually for each endpoint to manually check the certificate information:
+
+```powershell
+C:\> Import-Module AzStackHci.EnvironmentChecker 
+C:\> Get-SigningRootChain -Uri <Endpoint-URI> | ft subject 
+```
+
+For example, if you want to verify the certificate information for two endpoints, say `https://login.microsoftonline.com` and `https://portal.azure.com`, run the following commands individually for each endpoint:
+
+- For `https://login.microsoftonline.com`:
+
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker 
+   C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject
+   ```
+
+   Here's a sample output:
+
+   ```powershell
+   Subject
+   -------
+   CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
+
+- For `https://portal.azure.com`:
+
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker
+   C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
+
+   ```
+
+   Here's a sample output:
+
+   ```powershell
+   Subject
+   -------
+   CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
+
 ## [Hardware](#tab/hardware)
 
 The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.

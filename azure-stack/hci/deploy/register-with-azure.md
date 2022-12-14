@@ -1,5 +1,5 @@
 ---
-title: Connect Azure Stack HCI to Azure
+title: Register Azure Stack HCI with Azure
 description: How to register Azure Stack HCI clusters with Azure.
 author: sethmanheim
 ms.author: sethm
@@ -11,7 +11,7 @@ ms.custom: references_regions
 ms.date: 11/28/2022
 ---
 
-# Connect and manage Azure Stack HCI registration
+# Register Azure Stack HCI with Azure
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
@@ -149,15 +149,15 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 > [!WARNING]
 > To register your Azure Stack HCI cluster in Azure China, ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
 
-1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
+1. Before beginning the cluster registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). You must also sign in to your Azure account from within Windows Admin Center. To do so, go to **Settings** > **Account**, and then select **Sign in** under **Azure Account**.
 
    > [!IMPORTANT]
    > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
 
-2. Open Windows Admin Center and do one of the following:
+1. Open Windows Admin Center and do one of the following:
    - Option 1
       1. Select the cluster connection.
-      1. Select **Dashboard** from the **Tools** menu on the left.
+      1. Select **Dashboard** from the **Tools** menu on the left pane.
       1. If your cluster has not yet been registered with Azure, then both the **Azure Stack HCI registration** and **Arc-enabled servers** status show **Not configured**.
       1. Select **Register** to proceed.
    - Option 2
@@ -173,9 +173,19 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
-3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select the Azure region from the drop-down menu. Select **Use existing resource group** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is `<clustername>-<GUID>-Arc-Infra-RG`. Then select **Register**.
+1. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list.
 
-   :::image type="content" source="media/register-with-azure/arc-registration-flyout.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register-with-azure/arc-registration-flyout.png":::
+1. Select the Azure region from the drop-down menu.
+
+1. Select one of the following options to select the Azure Stack HCI resource group:
+
+   - Select **Use existing** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is `<clustername>-<GUID>-Arc-Infra-RG`.
+   
+   - Select **Create new** to create a new resource group.
+
+      :::image type="content" source="media/register-with-azure/arc-registration-flyout.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register-with-azure/arc-registration-flyout.png":::
+
+1. Select **Register**. It takes a few minutes to complete the registration.
 
 ## View registration and Arc-enabled servers status using Windows Admin Center
 
@@ -322,13 +332,19 @@ To automatically update the Arc agent when a new version is available, make sure
 
 ## Unregister Azure Stack HCI
 
-There are two ways to unregister Azure Stack HCI: using Windows Admin Center, or using PowerShell.
+You can unregister Azure Stack HCI using Windows Admin Center or using PowerShell.
+
+The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 ### Unregister Azure Stack HCI using Windows Admin Center
 
-When you're ready to decommission your Azure Stack HCI cluster, connect to the cluster using Windows Admin Center. Select **Settings** at the bottom of the **Tools** menu on the left. Then select **Azure Stack HCI registration**, and select the **Unregister** button.
+Follow these steps to unregister your Azure Stack HCI cluster:
 
-The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
+1. Connect to the cluster using Windows Admin Center.
+
+1. Select **Settings** at the bottom of the **Tools** menu on the left.
+
+1. Select **Azure Stack HCI registration**, and select the **Unregister** button, and then select **Unregister** again.
 
 > [!NOTE]
 > If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.

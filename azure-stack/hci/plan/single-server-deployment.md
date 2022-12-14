@@ -20,7 +20,7 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 ## Introduction
 
-Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](/azure-stack/hci/manage/azure-benefits.md).
+Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](../manage/azure-benefits.md).
 
 It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS hybrid, and is supported and billed the same way.
 
@@ -92,7 +92,7 @@ Follow these steps to create a network intent for this reference pattern:
     Add-NetIntent -Name <management_compute> -Management -Compute -ClusterName <HCI01> -AdapterName <pNIC01, pNIC02>
     ```
 
-For more information, see [Deploy host networking: Compute and management intent](/deploy/network-atc.md#compute-and-management-intent).
+For more information, see [Deploy host networking: Compute and management intent](../deploy/network-atc.md#compute-and-management-intent).
 
 ## Logical network components
 
