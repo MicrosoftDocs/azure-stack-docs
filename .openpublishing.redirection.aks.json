@@ -1236,7 +1236,7 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "azure/aks/hybrid/aks-lite-overview.md",
+        "source_path": "aks/hybrid/aks-lite-overview.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-overview",
         "redirect_document_id": false
       },
