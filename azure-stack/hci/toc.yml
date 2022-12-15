@@ -150,7 +150,7 @@
         href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Set up using Azure CLI
+      - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
