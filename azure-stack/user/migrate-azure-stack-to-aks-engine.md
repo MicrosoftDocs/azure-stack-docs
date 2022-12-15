@@ -3,7 +3,7 @@ title: Migrate workloads from AKS on Azure Stack Hub to AKS Engine on Azure Stac
 description: Learn how to migrate workloads to AKS Engine.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/14/2022
+ms.date: 12/15/2022
 ms.author: sethm
 ms.reviewer: sethm
 ms.lastreviewed: 12/14/2022
