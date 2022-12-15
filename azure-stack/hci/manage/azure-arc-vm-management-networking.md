@@ -85,7 +85,7 @@ At the time of creating a network interface, you assign either a dynamic or a st
 - Azure Arc VMs are currently not supported with Software Defined Networking (SDN). The Azure Arc Resource Bridge can be deployed on a physical network when the Azure Stack HCI cluster is configured with SDN.
 - Only DHCP IP allocation is supported for the virtual network.
 - Only one virtual network can be created per VM switch.
-- Using the Azure Arc Resource Bridge or using Azure Arc VMs behind a network proxy is not supported.
+- Using Azure Arc VMs behind a network proxy is not supported.
 
 ## Next steps
 
