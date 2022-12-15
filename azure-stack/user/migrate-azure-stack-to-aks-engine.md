@@ -69,7 +69,7 @@ The following table provides an overview of features of AKS in global Azure comp
 |                              | Docker image support and private container registry | Yes       | Yes                           | Yes               |
 | Certifications               |                                                     |           |                               |                   |
 |                              | CNCF-certified                                      | Yes       | Yes                           | Yes               |
-| Cluster Lifecycle Management |                                                     |           |                               |                   |
+| Management Interfaces        |                                                     |           |                               |                   |
 |                              | AKS Ux                                              | Yes       | Yes                           | No                |
 |                              | AKS CLI (Windows and Linux)                         | Yes       | Yes                           | No                |
 |                              | AKS API                                             | Yes       | Yes                           | No                |
