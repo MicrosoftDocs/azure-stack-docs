@@ -119,7 +119,6 @@ You can load AKS Edge modules by running the **AksEdgePrompt** file from the **t
 Alternatively, you can access the AKSEdge PowerShell modules from an elevated PowerShell instance as shown:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
 Import-Module AksEdge
 ```
 
