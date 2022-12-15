@@ -34,7 +34,7 @@ To move workloads to AKS Engine, do the following steps:
 
 1. (Optional) After you make sure the workloads are running on AKS Engine, [delete deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster).
 
-## Compare AKS Engine features with AKS
+## Compare features: AKS Engine vs. AKS
 
 The following table compares features of AKS in global Azure with the features available in AKS on Azure Stack Hub and in AKS Engine.
 
