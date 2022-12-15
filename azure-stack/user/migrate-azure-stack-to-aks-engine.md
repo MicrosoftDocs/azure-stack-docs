@@ -14,7 +14,7 @@ ms.lastreviewed: 12/14/2022
 
 # Migrate workloads from AKS on Azure Stack Hub to AKS Engine
 
-This article tells how to migrate existing workloads on the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS Engine on Azure Stack Hub, and summarizes feature differences between the services. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine on Hub.
+This article tells how to migrate existing workloads on the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS Engine on Azure Stack Hub, and summarizes feature differences between the services. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine.
 
 To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and review the [AKS Engine feature comparison](#compare-aks-engine-features-with-aks) in this article.
 
