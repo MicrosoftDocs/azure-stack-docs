@@ -78,7 +78,7 @@ The following table provides an overview of features of AKS in global Azure comp
 
 <sup>1</sup>Discontinued.
 <sup>2</sup>To collect diagnostic logs, the user can log in to the VM to gather this information.
-<sup>3</sup>AKS Engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log into the VM to gather this information.
+<sup>3</sup>AKS Engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log in to the VM to gather this information.
 
 ## Next steps
 
