@@ -16,7 +16,7 @@ ms.lastreviewed: 12/14/2022
 
 This article tells how to migrate existing workloads on the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS Engine on Azure Stack Hub, and summarizes feature differences between the services. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine on Hub.
 
-To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and reiew the [feature comparison table](#compare-aks-engine-features-with-aks) in this article.
+To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and reiew the [feature comparison](#compare-aks-engine-features-with-aks) in this article.
 
 ## Migrate workloads to AKS Engine
 
@@ -74,7 +74,7 @@ The following table compares features of AKS in global Azure with the features a
 | Certifications               |                                                     |           |                               |                   |
 |                              | CNCF-certified                                      | Yes       | Yes                           | Yes               |
 | Management Interfaces        |                                                     |           |                               |                   |
-|                              | AKS portal                                          | Yes       | Yes                           | No                |
+|                              | AKS UX                                              | Yes       | Yes                           | No                |
 |                              | AKS CLI (Windows and Linux)                         | Yes       | Yes                           | No                |
 |                              | AKS API                                             | Yes       | Yes                           | No                |
 |                              | AKS Templates                                       | Yes       | Yes                           | No                |
