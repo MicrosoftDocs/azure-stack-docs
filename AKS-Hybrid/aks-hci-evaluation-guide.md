@@ -1,6 +1,6 @@
 ---
 title: Azure Kubernetes Service hybrid (AKS hybrid) evaluation guide 
-description: Quickstart to evaluate hybrid deployment options for Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
+description: Quickstart - Evaluate hybrid deployment options for Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
 author: sethmanheim
 ms.topic: quickstart
 ms.date: 12/16/2022

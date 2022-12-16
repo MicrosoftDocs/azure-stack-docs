@@ -1,9 +1,9 @@
 ---
 title: Explore the AKS hybrid environment
-description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilities in AKS hybrid.
+description: Quickstart – Evaluate Azure Kubernetes Service hybrid deployment options (AKS hybrid) by deploying simple Linux app and end-to-end hybrid solution. 
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 11/01/2022
+ms.topic: quickstart
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
