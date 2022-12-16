@@ -1,9 +1,9 @@
 ---
 title: Deploy AKS infrastructure using PowerShell
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
+description: Evaluate AKS hybrid, Step 2, Option B - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/03/2022
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
