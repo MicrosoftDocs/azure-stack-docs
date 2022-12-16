@@ -38,7 +38,7 @@ To move workloads to the AKS engine, do the following steps:
 
 The following table compares features of AKS in global Azure with the features available in AKS on Azure Stack Hub and in the AKS engine.
 
-| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview<sup>1</sup> | AKS engine on Azure Stack Hub |
+| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview (1) | AKS engine on Azure Stack Hub |
 |------------------------------|-----------------------------------------------------|-----------|-------------------------------|-------------------|
 | Access Security              |                                                     |           |                               |                   |
 |                              | Kubernetes RBAC                                     | Yes       | Yes                           | Yes               |
@@ -50,8 +50,8 @@ The following table compares features of AKS in global Azure with the features a
 |                              | Monitoring and Remediation of Master Nodes          | Yes       | Yes                           | No                |
 |                              | Cluster Metrics                                     | Yes       | Yes                           | Yes               |  
 |                              | Advisor Recommendations                             | Yes       | No                            | No                |
-|                              | Diagnostic settings                                 | Yes       | Yes                           | No<sup>2</sup>    |
-|                              | Kubernetes Control Plane Logs                       | Yes       | Yes                           | No<sup>3</sup>    |
+|                              | Diagnostic settings                                 | Yes       | Yes                           | No (2)            |
+|                              | Kubernetes Control Plane Logs                       | Yes       | Yes                           | No (3)            |
 |                              | Workbooks                                           | Yes       | No                            | No                |
 | Clusters & Nodes             |                                                     |           |                               |                   |
 |                              | Automatic Node Scaling (Autoscaler)                 | Yes       | No                            | No                |
@@ -80,11 +80,11 @@ The following table compares features of AKS in global Azure with the features a
 |                              | AKS Templates                                       | Yes       | Yes                           | No                |
 |                              | AKS PowerShell                                      | Yes       | No                            | No                |
 
-<sup>1</sup>Discontinued.
+(1) Discontinued.
 
-<sup>2</sup>To collect diagnostic logs, the user can log in to the VM to gather this information.
+(2) To collect diagnostic logs, log in to the VM to gather this information.
 
-<sup>3</sup>The AKS engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log in to the VM to gather this information.
+(3) The AKS engine isn't a managed service, so these logs aren't created. To collect diagnostic information, log in to the VM to gather this information.
 
 ## Next steps
 
