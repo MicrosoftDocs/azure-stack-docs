@@ -262,7 +262,7 @@ The following assumptions are made for this example:
         - If the available bandwidth for Live Migration is >= 5 Gbps, and the network adapters are capable, use RDMA. Use the following cmdlet to do so:
 
             ```Powershell
-            Set-VMHost VirtualMachineMigrationPerformanceOption SMB
+            Set-VMHost -VirtualMachineMigrationPerformanceOption SMB
             ```
 
         - If the available bandwidth for Live Migration is < 5 Gbps, use compression to reduce blackout times. Use the following cmdlet to do so:

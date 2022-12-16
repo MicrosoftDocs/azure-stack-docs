@@ -132,7 +132,7 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
-    - name: Partition and share GPU with VMs
+    - name: Partition and share GPUs with VMs
       href: manage/partition-gpu.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
@@ -144,13 +144,15 @@
     items:
     - name: What is Azure Arc VM management?
       href: manage/azure-arc-vm-management-overview.md
+    - name: Azure Arc VM management networking
+      href: manage/azure-arc-vm-management-networking.md
     - name: Set up Arc VM management
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Set up using Azure CLI
+      - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
@@ -384,7 +386,7 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-  - name: What's in preview
+  - name: What's in preview?
     href: manage/whats-new-preview.md
   - name: Preview channel
     items:

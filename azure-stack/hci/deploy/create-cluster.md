@@ -63,7 +63,7 @@ Before you run the **Create Cluster** wizard in Windows Admin Center, you must c
 
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 
-- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 - If you're using an integrated system from a Microsoft hardware partner, install the latest version of vendor extensions on Windows Admin Center to help keep the integrated hardware and firmware up to date. To install them, open Windows Admin Center and click **Settings** (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
 
