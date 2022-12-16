@@ -1,6 +1,6 @@
 ---
-title: Migrate workloads from AKS on Azure Stack Hub to AKS Engine
-description: Find out how to migrate workloads from AKS on Azure Stack Hub to AKS Engine, and compare supported Azure Kubernetes Service features.
+title: Migrate workloads from AKS on Azure Stack Hub to AKS engine
+description: Find out how to migrate workloads from AKS on Azure Stack Hub to AKS engine, and compare supported Azure Kubernetes Service features.
 author: sethmanheim
 ms.topic: article
 ms.date: 12/15/2022
@@ -12,33 +12,33 @@ ms.lastreviewed: 12/14/2022
 # Keyword: Kubernetes AKS Engine difference
 ---
 
-# Migrate workloads from AKS on Azure Stack Hub to AKS Engine
+# Migrate workloads from AKS on Azure Stack Hub to AKS engine
 
-This article tells how to migrate existing workloads on the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS Engine on Azure Stack Hub, and summarizes feature differences between the services. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS Engine.
+This article tells how to migrate existing workloads in the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to the AKS engine on Azure Stack Hub, and summarizes feature differences between the services. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for the AKS engine.
 
-To learn more about AKS Engine, see the [AKS Engine overview](azure-stack-kubernetes-aks-engine-overview.md) and review the [AKS Engine feature comparison](#compare-aks-engine-features-with-aks) in this article.
+The [AKS engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack Hub. By using the Azure Resource Manager, the AKS engine helps you create and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack Hub. To learn more about the AKS engine, see the [AKS engine overview](azure-stack-kubernetes-aks-engine-overview.md) and review the [AKS engine feature comparison](#compare-aks-engine-features-with-aks) in this article.
 
-## Migrate workloads to AKS Engine
+## Migrate workloads to the AKS engine
 
-You can run AKS and AKS Engine at the same time. To minimize application downtime, you should deploy and validate workloads on AKS Engine before you delete your AKS clusters.  
+You can run AKS and the AKS engine at the same time. To minimize application downtime, you should deploy and validate workloads on the AKS engine before you delete your AKS clusters.
 
-To move workloads to AKS Engine, do the following steps:
+To move workloads to the AKS engine, do the following steps:
 
-1. [Meet the prerequisites for AKS Engine](azure-stack-kubernetes-aks-engine-set-up.md).
+1. Meet the [prerequisites for the AKS engine](azure-stack-kubernetes-aks-engine-set-up.md#prerequisites-for-the-aks-engine).
 
-1. [Deploy a cluster with AKS Engine](azure-stack-kubernetes-aks-engine-deploy-cluster.md).
+1. [Deploy a cluster using the AKS engine](azure-stack-kubernetes-aks-engine-deploy-cluster.md).
 
-1. Deploy your running workloads on AKS Engine.
+1. Deploy your running workloads on the AKS engine.<!--Do they deploy workloads "on the ... engine"? It's a tool, not a service.-->
 
-1. Verify that your newly deployed workloads are running successfully on AKS Engine.
+1. Verify that your newly deployed workloads are running successfully on the AKS engine.
 
-1. (Optional) After you make sure the workloads are running on AKS Engine, [delete deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster).
+1. (Optional) After you make sure the workloads are running on the AKS engine, [delete your deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster).
 
-## Compare features: AKS Engine vs. AKS
+## Compare features: AKS engine vs. AKS preview
 
-The following table compares features of AKS in global Azure with the features available in AKS on Azure Stack Hub and in AKS Engine.
+The following table compares features of AKS in global Azure with the features available in AKS on Azure Stack Hub and in the AKS engine.
 
-| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview<sup>1</sup> | AKS Engine on Azure Stack Hub |
+| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview<sup>1</sup> | AKS engine on Azure Stack Hub |
 |------------------------------|-----------------------------------------------------|-----------|-------------------------------|-------------------|
 | Access Security              |                                                     |           |                               |                   |
 |                              | Kubernetes RBAC                                     | Yes       | Yes                           | Yes               |
@@ -84,8 +84,8 @@ The following table compares features of AKS in global Azure with the features a
 
 <sup>2</sup>To collect diagnostic logs, the user can log in to the VM to gather this information.
 
-<sup>3</sup>AKS Engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log in to the VM to gather this information.
+<sup>3</sup>The AKS engine isn't a managed service, so these logs don't exist. To collect diagnostic information, log in to the VM to gather this information.
 
 ## Next steps
 
-- [Learn more about AKS Engine](azure-stack-kubernetes-aks-engine-overview.md)
+- [Learn more about the AKS engine](azure-stack-kubernetes-aks-engine-overview.md)
