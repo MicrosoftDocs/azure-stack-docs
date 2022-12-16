@@ -1,9 +1,9 @@
 ---
 title: Azure Kubernetes Service hybrid (AKS hybrid) evaluation guide 
-description: Evaluate Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
+description: Quickstart to evaluate hybrid deployment options for Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 11/01/2022
+ms.topic: quickstart
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -20,23 +20,23 @@ This guide demonstrates the basics of how to deploy [AKS hybrid](./overview.md) 
 You'll learn how to:
 
 * Deploy and configure a Windows Server 2019 or 2022 Azure Virtual Machine to host the infrastructure.
-* Use Windows Admin Center or PowerShell to deploy the AKS hybrid management cluster.
-* Deploy the AKS target/workload clusters with Windows Admin Center or PowerShell.
-* Integrate with Azure Arc.
-* Deploy a simple test application and expose the app externally.
+* Deploy an AKS hybrid management cluster using Windows Admin Center or PowerShell.
+* Deploy the AKS target (workload) clusters using Windows Admin Center or PowerShell.
+* Integrate your AKS deployment with Azure Arc.
+* Deploy a simple test application, and expose the app externally.
 
-## Version
+## AKS version
 
 This guide has been tested and validated with the **July 2022 release** of AKS.
 
 > [!NOTE]
-> The user interface is subject to updates and changes, so some of the screen shots in this guide may differ from what you actually see.
+> Azure portal screens for AKS hybrid may change. Some screenshots in the evaluation guide may differ from what you see.<!--Time to get rid of this - after checking all screens?-->
 
 ## What is AKS hybrid?
 
-AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrid is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
+AKS hybrid deployment is an on-premises implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS hybrid is  available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
 
-To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before completing your evaluation. This guide also provides references to available documents that can help build your knowledge of AKS hybrid.
+To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md). This guide also provides references to other articles that can help you build your knowledge of AKS hybrid.
 
 ## Who should read this guide?
 
