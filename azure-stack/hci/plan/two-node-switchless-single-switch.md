@@ -40,7 +40,7 @@ As illustrate in the diagram below, this pattern has the following physical netw
 
 :::image type="content" source="media/two-node-switchless-single-switch/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switchless-single-switch/physical-components-layout.png":::
 
-|Networks|Management & compute|Storage|BMC|
+|Networks|Management and compute|Storage|BMC|
 |--|--|--|--|
 |Link speed|At least 1 Gbps. 10 Gbps recommended|At least 10 Gbps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
@@ -52,7 +52,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 
 :::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
 
-### Management & compute intent
+### Management and compute intent
 
 - Intent Type: Management and compute
 - Intent Mode: Cluster mode
