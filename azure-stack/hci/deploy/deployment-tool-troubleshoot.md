@@ -145,5 +145,5 @@ You may have to reset your deployment if it is in a not recoverable state. For e
 
 ## Next steps
 
-- [Collect log data](/manage/collect-logs.md) from your deployment.
+- [Collect log data](../manage/collect-logs.md) from your deployment.
 - View [known issues](../hci-known-issues.md).
