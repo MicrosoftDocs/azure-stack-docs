@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 12/16/2022
 ms.author: sethm
-ms.reviewer: sethm
+ms.reviewer: summer.smith
 ms.lastreviewed: 12/14/2022
 
 # Intent: As an Azure Stack operator, I need to know how to migrate my existing AKS deployments to AKS Engine and what to expect after the applications are migrated.
