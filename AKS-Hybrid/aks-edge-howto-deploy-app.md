@@ -71,6 +71,7 @@ If the application doesn't load, it might be due to an authorization problem wit
 
 ### 6. Remove application
 
+
 To clean up, delete all resources using the following command:
 
 ```bash
