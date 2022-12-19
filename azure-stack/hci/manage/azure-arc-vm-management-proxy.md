@@ -19,7 +19,7 @@ This article describes how to set up Arc VM management of an Arc Resource Bridge
 > [!NOTE]
 > This procedure is not available using Windows Admin Center. You must set up [Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
 
-## Required proxy information
+## Required information
 
 You will need the following information about the proxy server to set up Arc VM management for an Arc Resource Bridge:
 
