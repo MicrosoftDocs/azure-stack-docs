@@ -1,5 +1,5 @@
 ---
-title: About AKS Edge Essentials on Windows
+title: About AKS Edge Essentials
 description: AKS Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 author: rcheeran
 ms.author: rcheeran
@@ -66,4 +66,4 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 - Read about [deployment options](./aks-edge-deployment-options.md)
 - Contact product team by emailing projecthaven@microsoft.com
-- Read [Ignite blog](https://aka.ms/aks-edge-ignite-blog)
+
