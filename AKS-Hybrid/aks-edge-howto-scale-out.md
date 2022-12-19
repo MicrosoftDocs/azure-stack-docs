@@ -25,7 +25,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $params = @{
        NodeType = "Linux"
        LinuxIp = "192.168.1.173"
-       ourFile = ".\LinuxWorkerNodeConfig.json"
+       outFile = ".\LinuxWorkerNodeConfig.json"
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
@@ -39,7 +39,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        NodeType = "Linux"
        ControlPlane = $true
        LinuxIp = "192.168.1.173"
-       ourFile = ".\LinuxWorkerNodeConfig.json"
+       outFile = ".\LinuxWorkerNodeConfig.json"
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
@@ -50,7 +50,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $params = @{
        NodeType = "Windows"
        WindowsIp = "192.168.1.174"
-       ourFile = ".\WindowsWorkerNodeConfig.json"
+       outFile = ".\WindowsWorkerNodeConfig.json"
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
@@ -62,7 +62,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        NodeType = "LinuxAndWindows"
        LinuxIp = "192.168.1.173"
        WindowsIp = "192.168.1.174"
-       ourFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+       outFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
@@ -75,7 +75,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        LinuxIp = "192.168.1.173"
        ControlPlane = $true
        WindowsIp = "192.168.1.174"
-       ourFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+       outFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
    }
    $workernodeConfig = New-AksEdgeScaleConfig @params
    ```
