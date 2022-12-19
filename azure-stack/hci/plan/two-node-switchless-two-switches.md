@@ -36,7 +36,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
-|Networks|Management & compute|Storage|BMC|
+|Networks|Management and compute|Storage|BMC|
 |--|--|--|--|
 |Link speed|At least 1 GBps. 10 GBps recommended|At least 10 GBps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
@@ -50,7 +50,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 
 :::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
 
-### Management & compute intent
+### Management and compute intent
 
 - Intent Type: Management and Compute
 - Intent Mode: Cluster mode
