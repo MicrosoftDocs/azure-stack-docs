@@ -66,7 +66,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 
 ## Configure Arc Resource Bridge
 
-After authentication is set up, use the command line to configure the Arc Resource Bridge: [Prepare configuration for Azure Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address).
+After authentication is set up, use the command line to configure the Arc Resource Bridge: [Prepare configuration for Azure Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md#proxy).
 
 ## Current limitation
 
