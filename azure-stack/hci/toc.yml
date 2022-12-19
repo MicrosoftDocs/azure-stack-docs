@@ -150,7 +150,7 @@
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using a network proxy
+      - name: Deploy Arc Resource Bridge using a network proxy
         href: manage/azure-arc-vm-management-proxy.md
       - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md

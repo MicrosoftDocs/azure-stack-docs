@@ -1,16 +1,16 @@
 ---
-title: Set up Arc VM management using a network proxy
-description: Set up Arc VM management using a network proxy on Azure Stack HCI.
+title: Deploy Arc Resource Bridge using a network proxy
+description: Learn how to deploy an Arc Resource Bridge using a network proxy on Azure Stack HCI.
 ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/15/2022
+ms.date: 12/19/2022
 ---
 
-# Set up Arc VM management using a network proxy
+# Deploy Arc Resource Bridge using a network proxy
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -21,24 +21,24 @@ This article describes how to set up Arc VM management of an Arc Resource Bridge
 
 ## Required proxy information
 
-You will need the following information about the proxy server to set up Arc VM management:
+You will need the following information about the proxy server to set up Arc VM management for an Arc Resource Bridge:
 
 |Parameter|Description|
 |--|--|
-|proxyServerHTTP|HTTP URL and port for the proxy server, such as http://proxy.corp.contoso.com:8080|
-|proxyServerHTTPS|HTTPS URL and port for the proxy server, such as https://proxy.corp.contoso.com:8443|
-|proxyServerNoProxy|URLs which can bypass proxy, such as<br>Localhost traffic: "*localhost,127.0.0.1*"<br>Private network address space: "*10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8*"<br>URLs in your organizations domain: "*.contoso.com*"|
+|proxyServerHTTP|HTTP URL and port for the proxy server, such as `http://proxy.corp.contoso.com:8080`|
+|proxyServerHTTPS|HTTPS URL and port for the proxy server, such as `https://proxy.corp.contoso.com:8443`|
+|proxyServerNoProxy|URLs which can bypass proxy, such as<br>Localhost traffic: `localhost,127.0.0.1`<br>Private network address space: `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`<br>URLs in your organizations domain: `.contoso.com`|
 |proxyServerUsername|Username for proxy authentication|
 |proxyServerPassword|Password for proxy authentication|
-|certificateFilePath|Cert file name with full path, such as "*C:\Users\Connie\proxycert.crt*"|
+|certificateFilePath|Cert file name with full path, such as `C:\Users\Connie\proxycert.crt`|
 
-## Proxy server authentication methods
+## Proxy authentication
 
-The supported deployment methods are:
+The supported authentication methods for the proxy server are:
 
-- No authentication
-- Using username & password authentication
-- Using certificate based authentication
+- Use no authentication
+- Use username and password-based authentication
+- Use certificate based authentication
 
 ### Use no authentication
 
@@ -48,7 +48,7 @@ In PowerShell, run the following command:
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com"
 ```
 
-### Use username and password-based authentication
+### Use username and password authentication
 
 In PowerShell, run the following command:
 
@@ -64,9 +64,9 @@ In PowerShell, run the following command:
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -certificateFilePath <file_path_to_cert_file> 
 ```
 
-## Continue set up using CLI
+## Configure Arc Resource Bridge
 
-Complete the remaining steps of deployment: [Set up using Command-Line Interface](deploy-arc-resource-bridge-using-command-line.md).
+After authentication is set up, use the command line to configure the Arc Resource Bridge: [Prepare configuration for Azure Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address).
 
 ## Current limitation
 
