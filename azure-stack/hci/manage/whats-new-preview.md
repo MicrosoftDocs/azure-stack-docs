@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 12/05/2022
 ---
 
-# What's in preview (preview)
+# What's in preview for Azure Stack HCI
 
 > Applies to: Azure Stack HCI preview channel and Supplemental Package
 
