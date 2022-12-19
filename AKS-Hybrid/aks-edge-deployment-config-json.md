@@ -36,7 +36,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| `AcceptEula` | `boolean` | Accept or decline the EULA for public preview. | `false` |
+| `AcceptEula` | `boolean` | Accept or decline the [EULA](https://github.com/Azure/AKS-Edge/blob/main/EULA.md) for public preview. | `false` |
 | `AcceptOptionalTelemetry` | `boolean` | Accept only the required telemetry or accept the optional telemetry as well. The default is only the required telemetry. | `false` |
 
 ## VM
