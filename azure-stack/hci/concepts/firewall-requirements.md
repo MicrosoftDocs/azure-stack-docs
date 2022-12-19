@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 12/15/2022
+ms.date: 12/19/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -171,7 +171,7 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
-- - [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
+- [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
 - [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
