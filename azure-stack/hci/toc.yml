@@ -154,7 +154,7 @@
         href: manage/azure-arc-vm-management-proxy.md
       - name: Set up using Windows Admin Center (recommended)
         href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Set up using Azure CLI
+      - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
@@ -388,7 +388,7 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-  - name: What's in preview
+  - name: What's in preview?
     href: manage/whats-new-preview.md
   - name: Preview channel
     items:

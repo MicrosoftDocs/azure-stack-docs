@@ -8,7 +8,6 @@ ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 12/19/2022
----
 
 # Understanding Azure Arc VM management networking on Azure Stack HCI
 
