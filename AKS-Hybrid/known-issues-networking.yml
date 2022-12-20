@@ -90,6 +90,8 @@ sections:
           }
           ```  
           
+          ### To resolve the issue
+           
           If the output for the JSON `distribution` property returns an empty string, follow these instructions to patch your cluster:
           
           1. Copy the following configuration into a file called **patchBody.json**:
