@@ -1,9 +1,9 @@
 ---
-title: Migrate workloads from AKS on Azure Stack Hub to AKS engine
+title: Migrate workloads to AKS engine from AKS on Azure Stack Hub preview
 description: Find out how to migrate workloads from AKS on Azure Stack Hub to a Kubernetes cluster created in AKS engine. Compare supported Azure Kubernetes Service features.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/19/2022
+ms.date: 12/20/2022
 ms.author: sethm
 ms.reviewer: summer.smith
 ms.lastreviewed: 12/14/2022
@@ -12,7 +12,7 @@ ms.lastreviewed: 12/14/2022
 # Keyword: Kubernetes AKS Engine difference
 ---
 
-# Migrate workloads from AKS on Azure Stack Hub to AKS engine
+# Migrate workloads to AKS engine from AKS on Azure Stack Hub preview
 
 This article tells how to migrate existing workloads in the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS engine on Azure Stack Hub, and summarizes AKS feature differences. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS engine.
 
@@ -20,7 +20,7 @@ This article tells how to migrate existing workloads in the Azure Kubernetes Ser
 
 ## Migrate workloads to AKS engine
 
-You can run AKS and AKS engine on Azure Stack Hub at the same time. To minimize application downtime, deploy and validate workloads on AKS engine before you delete your AKS clusters.
+You can run AKS and AKS engine on Azure Stack Hub at the same time. To minimize application downtime, deploy and verify workloads on AKS engine before you delete your AKS clusters.
 
 To move workloads to AKS engine, do the following steps:
 
@@ -36,9 +36,9 @@ To move workloads to AKS engine, do the following steps:
 
 ## Compare features: AKS engine vs. AKS preview
 
-The following table compares AKS features in global Azure with features in AKS on Azure Stack Hub and AKS engine on Azure Stack Hub.
+The following table compares AKS features in global Azure with features in the AKS on Azure Stack Hub preview, which is being deprecated, and AKS engine on Azure Stack Hub.
 
-| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview (1) | AKS engine on Azure Stack Hub |
+| Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview **(1)** | AKS engine on Azure Stack Hub |
 |------------------------------|-----------------------------------------------------|-----------|-------------------------------|-------------------|
 | Access Security              |                                                     |           |                               |                   |
 |                              | Kubernetes RBAC                                     | Yes       | Yes                           | Yes               |
@@ -50,8 +50,8 @@ The following table compares AKS features in global Azure with features in AKS o
 |                              | Monitoring and Remediation of Master Nodes          | Yes       | Yes                           | No                |
 |                              | Cluster Metrics                                     | Yes       | Yes                           | Yes               |  
 |                              | Advisor Recommendations                             | Yes       | No                            | No                |
-|                              | Diagnostic settings                                 | Yes       | Yes                           | No (2)            |
-|                              | Kubernetes Control Plane Logs                       | Yes       | Yes                           | No (3)            |
+|                              | Diagnostic settings                                 | Yes       | Yes                           | No **(2)**        |
+|                              | Kubernetes Control Plane Logs                       | Yes       | Yes                           | No **(3)**        |
 |                              | Workbooks                                           | Yes       | No                            | No                |
 | Clusters & Nodes             |                                                     |           |                               |                   |
 |                              | Automatic Node Scaling (Autoscaler)                 | Yes       | No                            | No                |
@@ -80,11 +80,11 @@ The following table compares AKS features in global Azure with features in AKS o
 |                              | AKS Templates                                       | Yes       | Yes                           | No                |
 |                              | AKS PowerShell                                      | Yes       | No                            | No                |
 
-(1) Discontinued.
+**(1)** Discontinued.
 
-(2) To collect diagnostic logs, log in to the VM to gather this information.
+**(2)** To collect diagnostic logs, log in to the VM to gather this information.
 
-(3) AKS engine isn't a managed service, so these logs aren't created. To collect diagnostic information, log in to the VM to gather this information.
+**(3)** AKS engine isn't a managed service, so these logs aren't created. To collect diagnostic information, log in to the VM to gather this information.
 
 ## Next steps
 
