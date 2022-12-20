@@ -1,6 +1,6 @@
 ---
-title: Migrate workloads to AKS engine from AKS on Azure Stack Hub preview
-description: Find out how to migrate workloads from AKS on Azure Stack Hub to a Kubernetes cluster created in AKS engine. Compare supported Azure Kubernetes Service features.
+title: Migrate workloads to AKS engine from AKS preview on Azure Stack Hub
+description: Find out how to migrate workloads from the AKS preview on Azure Stack Hub to a Kubernetes cluster created in AKS engine. Compare supported Azure Kubernetes Service features.
 author: sethmanheim
 ms.topic: article
 ms.date: 12/20/2022
@@ -8,19 +8,19 @@ ms.author: sethm
 ms.reviewer: summer.smith
 ms.lastreviewed: 12/14/2022
 
-# Intent: As an Azure Stack operator, I need to know how to migrate my existing AKS deployments to Kubernetes clusters created using AKS engine and what to expect after I migrate the applications.
+# Intent: As an Azure Stack operator, I need to know how to migrate my existing deployments in AKS preview to AKS engine and what to expect after I migrate the applications.
 # Keyword: Kubernetes AKS Engine difference
 ---
 
-# Migrate workloads to AKS engine from AKS on Azure Stack Hub preview
+# Migrate workloads to AKS engine from AKS preview on Azure Stack Hub
 
-This article tells how to migrate existing workloads in the Azure Kubernetes Service (AKS) on Azure Stack Hub preview to AKS engine on Azure Stack Hub, and summarizes AKS feature differences. The AKS on Azure Stack Hub preview is being deprecated in favor of extending support for AKS engine.
+This article tells how to migrate existing workloads in the Azure Kubernetes Service (AKS) preview on Azure Stack Hub to AKS engine on Azure Stack Hub, and summarizes AKS feature differences. The AKS preview on Azure Stack Hub is being deprecated in favor of extending support for AKS engine.
 
 [AKS engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack Hub. By using Azure Resource Manager, AKS engine helps you create and maintain clusters running on VMs, virtual networks, and other Azure infrastructure as a service (IaaS) resources in Azure Stack Hub. To learn more about AKS engine, see the [AKS engine overview](azure-stack-kubernetes-aks-engine-overview.md), and review the [AKS engine feature comparison](#compare-features-aks-engine-vs-aks-preview) in this article.
 
 ## Migrate workloads to AKS engine
 
-You can run AKS and AKS engine on Azure Stack Hub at the same time. To minimize application downtime, deploy and verify workloads on AKS engine before you delete your AKS clusters.
+You can run AKS and AKS engine on Azure Stack Hub at the same time. To minimize application downtime, deploy and verify workloads on AKS engine before you delete the AKS clusters you created in the AKS preview.
 
 To move workloads to AKS engine, do the following steps:
 
@@ -32,11 +32,11 @@ To move workloads to AKS engine, do the following steps:
 
 1. Verify that your newly deployed workloads are running successfully on AKS engine.
 
-1. (Optional) [Delete your deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster) after you verify a successful deployment via AKS engine.
+1. (Optional) [Delete your deployed AKS clusters](aks-how-to-use-cli.md?view=azs-2206&preserve-view=true&tabs=windows%2Clinuxcon#delete-cluster) from the AKS preview after you verify a successful deployment via AKS engine.
 
 ## Compare features: AKS engine vs. AKS preview
 
-The following table compares AKS features in global Azure with features in the AKS on Azure Stack Hub preview, which is being deprecated, and AKS engine on Azure Stack Hub.
+The following table compares AKS features in global Azure with features in the AKS preview on Azure Stack Hub, which is being deprecated, and AKS engine on Azure Stack Hub.
 
 | Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS preview **(1)** | AKS engine on Azure Stack Hub |
 |------------------------------|-----------------------------------------------------|-----------|-------------------------------|-------------------|
