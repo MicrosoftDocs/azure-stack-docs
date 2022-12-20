@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 12/13/2022
+  ms.date: 12/20/2022
 
 title: Fix known issues and errors when configuring a network in AKS hybrid
 summary: |
@@ -30,6 +30,92 @@ sections:
           ```
           
           To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
+          
+      - question: | 
+          Arc-connected clusters have empty JSON "distribution" property
+
+        answer: | 
+          Azure Arc for Kubernetes-connected clusters can have the value for the JSON property `distribution` set to an empty string. For AKS hybrid connected clusters, this value is set during initial installation and is never altered for the lifetime of the deployment.
+          
+          ### To reproduce
+          
+          Open an Azure PowerShell window and run the following commands:
+          
+          ```powershell
+          az login
+          az account set --subscription <sub_id>
+          az connectedk8s show -g <rg_name> -n
+          ```
+          
+          The following is example output from this command:
+          
+          ```shell
+          {
+          "agentPublicKeyCertificate": <value>
+          "agentVersion": "1.8.14",
+          "azureHybridBenefit": "NotApplicable",
+          "connectivityStatus": "Connected",
+          "distribution": "",
+          "distributionVersion": null,
+          "id": "/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>",
+          "identity": {
+            "principalId": "<principal id>",
+            "tenantId": "<tenant id>",
+            "type": "SystemAssigned"
+          },
+          "infrastructure": "azure_stack_hci",
+          "kubernetesVersion": "1.23.12",
+          "lastConnectivityTime": "2022-11-04T14:59:59.050000+00:00",
+          "location": "eastus",
+          "managedIdentityCertificateExpirationTime": "2023-02-02T14:24:00+00:00",
+          "miscellaneousProperties": null,
+          "name": "mgmt-cluster",
+          "offering": "AzureStackHCI_AKS_Management",
+          "privateLinkScopeResourceId": null,
+          "privateLinkState": "Disabled",
+          "provisioningState": "Succeeded",
+          "resourceGroup": "<resource group>",
+          "systemData": {
+            "createdAt": "2022-11-04T14:29:17.680060+00:00",
+            "createdBy": "<>",
+            "createdByType": "Application",
+            "lastModifiedAt": "2022-11-04T15:00:01.830067+00:00",
+            "lastModifiedBy": "64b12d6e-6549-484c-8cc6-6281839ba394",
+            "lastModifiedByType": "Application"
+          },
+          "tags": {},
+          "totalCoreCount": 4,
+          "totalNodeCount": 1,
+          "type": "microsoft.kubernetes/connectedclusters"
+          }
+          ```  
+          
+          If the output for the JSON `distribution` property returns an empty string, follow these instructions to patch your cluster:
+          
+          1. Copy the following configuration into a file called **patchBody.json**:
+          
+             ```json
+             {
+                "properties": {
+                  "distribution": "aks_management"
+                }
+             }
+             ```
+          
+             > [!IMPORTANT]
+             > If your cluster is an AKS management cluster, the value should be set to `aks_management`. If it's a workload cluster, it should be set to `aks_workload`.
+          
+          2. From the JSON output you obtained above, copy your connected cluster ID. It should appear as a long string in the following format:
+          
+              `"/subscriptions/<subscription >/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>",`
+          
+          3. Run the following command to patch your cluster. The `<cc_arm_id>` value should be the ID obtained in step 2:
+          
+             ```powershell
+             az rest -m patch -u "<cc_arm_id>?api-version=2022-10-01-preview" -b "@patchBody.json"
+             ```
+          
+          4. Check that your cluster has been successfully patched by running `az connectedk8s show -g <rg_name> -n <cc_name>` to make sure the JSON property `distribution` has been correctly set.
           
       - question: | 
           The WSSDAgent service is stuck while starting and fails to connect to the cloud agent.
