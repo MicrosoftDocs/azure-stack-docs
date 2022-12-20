@@ -53,7 +53,7 @@ sections:
           
           - Option 2: Run `Enable-AksHciArcRegistration` with all parameters, `subscription`, `resource group`, `location`, `tenant`, and `secret`, to connect your cluster to Azure Arc under a different subscription and resource group than the AKS host. You should also run `Enable-AksHciArcRegistration` if you do not have enough permissions to connect your cluster to Azure Arc using your Azure Account (for example, if you are not the subscription owner).
       - question: | 
-          Error: 'Timed out waiting for the condition'.
+          Error: 'Timed out waiting for the condition'
 
         answer: | 
           This error usually points to one of the following issues:
@@ -71,7 +71,7 @@ sections:
           Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the [Azure portal](https://portal.azure.com) to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -A` to confirm that the namespace, `azure-arc`, does not exist on your cluster.
           
       - question: | 
-          Error: 'Error while updating agents for enabling features'.
+          Error: 'Error while updating agents for enabling features'
 
         answer: | 
           If you enable the *custom location* and *cluster connect* features on an AKS cluster that is connected to Azure Arc, you may see the following error: 
@@ -81,7 +81,7 @@ sections:
           This is a known issue with the September release and is fixed in the October release. New AKS clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS hybrid deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
           
       - question: | 
-          Error: 'Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again'.
+          Error: 'Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again'
 
         answer: | 
           This error means that your login credentials to Azure have expired. 
@@ -89,7 +89,7 @@ sections:
           Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. If you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS hybrid.
           
       - question: | 
-          Error: ''My-Cluster' is not a valid cluster name. Names must be lowercase and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$''.
+          Error: ''My-Cluster' is not a valid cluster name. Names must be lowercase and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$''
 
         answer: | 
           This error indicates that the workload cluster does not follow the Kubernetes naming convention. 
@@ -97,7 +97,7 @@ sections:
           As the error suggests, make sure the cluster name is lowercase and matches the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'.
           
       - question: | 
-          Error: 'addons.msft.microsoft "demo-arc-onboarding" already exists'.
+          Error: 'addons.msft.microsoft "demo-arc-onboarding" already exists'
 
         answer: | 
           This error usually means that you have already connected your AKS cluster to Arc-enabled Kubernetes.
@@ -105,7 +105,7 @@ sections:
           
           
       - question: | 
-          Error: 'autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"...'.
+          Error: 'autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"...'
 
         answer: | 
           The error below means that Azure could not find the `connectedCluster` ARM resource associated with your cluster:
@@ -120,7 +120,7 @@ sections:
           
           To resolve this error, as indicated in the error message, see [resolve resource not found errors](/azure/azure-resource-manager/templates/error-not-found).
       - question: | 
-          Error: 'Cluster addons arc uninstall Error: namespaces "azure-arc" not found'.
+          Error: 'Cluster addons arc uninstall Error: namespaces "azure-arc" not found'
 
         answer: | 
           This error usually means that you have already uninstalled Arc agents from your workload cluster, or you have manually deleted the `azure-arc` namespace using the `kubectl` command. 
@@ -128,7 +128,7 @@ sections:
           Go to the [Azure portal](https://portal.azure.com) to confirm that you do not have any leaked resources. For example, verify that you do not see a `connectedCluster` resource in the subscription and resource group.
           
       - question: | 
-          Error: 'Azure subscription is not properly configured'.
+          Error: 'Azure subscription is not properly configured'
 
         answer: | 
           You may encounter this issue if you have not configured your Azure subscription with the Arc-enabled Kubernetes resource providers. We currently check that `Microsoft.Kubernetes` and `Microsoft.KubernetesConfiguration` are configured. 

@@ -18,7 +18,7 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Error "Failed to wait for addon arc-onboarding."
+          Error "Failed to wait for addon arc-onboarding"
 
         answer: | 
           This error message appears after running [Install-AksHci](./reference/ps/install-akshci.md).
@@ -97,7 +97,7 @@ sections:
           To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](/azure-stack/aks-hci/known-issues-workload-clusters#the-api-server-isn-t-responsive-after-several-days).
           
       - question: | 
-          Install-AksHci timed out with the error ''.
+          Install-AksHci timed out with the error ''
 
         answer: | 
           After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following error message:
@@ -162,7 +162,7 @@ sections:
           To resolve this issue, close all open PowerShell windows and then reopen a new PowerShell window.
           
       - question: | 
-          Error: Install-AksHci fails with 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'.
+          Error: Install-AksHci fails with 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'
 
         answer: | 
           The file cannot be accessed because it is being used by another process.
@@ -178,7 +178,7 @@ sections:
           To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md), and use any other valid IP address range for your VIP pool and Kubernetes node pool. Make sure that the values you use are not off by 1 at the start or end of the address range.
           
       - question: | 
-          Install-AksHci failed on a multi-node installation with the error 'Nodes have not reached active state'.
+          Install-AksHci failed on a multi-node installation with the error 'Nodes have not reached active state'
 
         answer: | 
           When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message. However, pinging the cloud agent showed the CloudAgent was reachable.
@@ -195,7 +195,7 @@ sections:
           Test-NetConnection  <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
           ````
       - question: | 
-          The AKS on Azure Stack HCI download package fails with the error: 'msft.sme.aks couldn't load'.
+          The AKS on Azure Stack HCI download package fails with the error: 'msft.sme.aks couldn't load'
 
         answer: | 
           The error stems from an error with download.
@@ -203,7 +203,7 @@ sections:
           If you get this error, you should use the latest version of Microsoft Edge or Google Chrome and try again.
           
       - question: | 
-          When running Set-AksHciRegistration, an error 'Unable to check registered Resource Providers' appears.
+          When running Set-AksHciRegistration, an error 'Unable to check registered Resource Providers' appears
 
         answer: | 
           This error appears after running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) in an AKS on Azure Stack HCI installation. The error indicates the Kubernetes Resource Providers are not registered for the tenant that is currently logged in.
@@ -232,7 +232,7 @@ sections:
           Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
           ```
       - question: | 
-          Install-AksHci hangs in the 'Waiting for azure-arc-onboarding to complete' stage before timing out.
+          Install-AksHci hangs in the 'Waiting for azure-arc-onboarding to complete' stage before timing out
 
         answer: | 
           > [!NOTE]
@@ -267,7 +267,7 @@ sections:
           ```
           
       - question: | 
-          During installation, this error appears: 'unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]'.
+          During installation, this error appears: 'unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]'
 
         answer: | 
           This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
@@ -297,7 +297,7 @@ sections:
           
           If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
       - question: | 
-          After a failed installation, running Install-AksHci does not work.
+          After a failed installation, running Install-AksHci does not work
 
         answer: | 
           This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
@@ -328,7 +328,7 @@ sections:
           3. Run `Set-AksHciConfig` and proceed.
           
       - question: | 
-          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment times out at various points.
+          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment times out at various points
 
         answer: | 
           When you deploy AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
@@ -375,7 +375,7 @@ sections:
           This error usually occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If it still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
           
       - question: | 
-          Moc agent log rotation is failing.
+          Moc agent log rotation is failing
 
         answer: | 
           Moc agents are expected to keep only the last 100 agent logs. They are supposed to delete the older logs. However, the log rotation is not happening and logs keep getting accumulated consuming disk space.
@@ -396,7 +396,7 @@ sections:
           
           These steps start the log rotation only after 100 new logs are generated from the agent restart. If there are already **n** agent logs at the time of restart, log rotation will start only after **n**+100 logs are generated.
       - question: | 
-          Cloud agent may fail to successfully start when using path names with spaces in them.
+          Cloud agent may fail to successfully start when using path names with spaces in them
 
         answer: | 
           When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
@@ -407,7 +407,7 @@ sections:
           
           To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
       - question: | 
-          Error: 'Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]'.
+          Error: 'Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]'
 
         answer: | 
           This error may occur when there's an infrastructure misconfiguration.
@@ -464,7 +464,7 @@ sections:
           * Step 8: Select **Read**, **Write**, **Create All Child Objects**, and **Delete All Child Objects** from the list of permissions > Click **Next** > Click **Finish**.
           
       - question: | 
-          Error: Install-AksHci fails with 'Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10'.
+          Error: Install-AksHci fails with 'Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10'
 
         answer: | 
           You may receive this error when running [Install-AksHci](./reference/ps/install-akshci.md).
@@ -472,21 +472,21 @@ sections:
           You can get more information by running `$error = Install-AksHci` and then `$error[0].Exception.InnerException`. 
           
       - question: | 
-          PowerShell deployment doesn't check for available memory before creating a new workload cluster.
+          PowerShell deployment doesn't check for available memory before creating a new workload cluster
 
         answer: | 
           The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This issue can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
           
           If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
       - question: | 
-          An 'Unable to acquire token' error appears when running Set-AksHciRegistration.
+          An 'Unable to acquire token' error appears when running Set-AksHciRegistration
 
         answer: | 
           This error can occur when you have multiple tenants on your Azure account. 
           
           Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
       - question: | 
-          Error: 'Waiting for pod 'Cloud Operator' to be ready'.
+          Error: 'Waiting for pod 'Cloud Operator' to be ready'
 
         answer: | 
           When attempting to deploy an AKS cluster on an Azure VM, the installation was stuck at `Waiting for pod 'Cloud Operator' to be ready...`, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks for IP or MAC address conflicts found none. The logs didn't show the VIP pool. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
@@ -513,7 +513,7 @@ sections:
           
           After you perform these steps, the container image pull should be unblocked.
       - question: | 
-          Error: 'Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]'.
+          Error: 'Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]'
 
         answer: | 
           This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.

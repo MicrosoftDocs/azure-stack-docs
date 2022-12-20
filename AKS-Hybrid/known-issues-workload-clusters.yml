@@ -40,7 +40,7 @@ sections:
           This is because the PowerShell command to zip a file, 'Compress-Archive', has an output file size limit of 2 GB. 
           
       - question: | 
-          The certificate renewal pod is in a crash loop state.
+          The certificate renewal pod is in a crash loop state
 
         answer: | 
           After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the file location `/etc/Kubernetes/pki`.
@@ -154,7 +154,7 @@ sections:
           This failure causes the system not to recognize that the node is missing, and therefore, a new node won't spin up. 
           
       - question: | 
-          If a management or workload cluster isn't used for more than 60 days, the certificates will expire.
+          If a management or workload cluster isn't used for more than 60 days, the certificates will expire
 
         answer: | 
           If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS hybrid. When an AKS cluster isn't upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional. However, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will remain in a non-functional state.
@@ -165,7 +165,7 @@ sections:
           2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
           3. Repair the workload cluster certificates by [manually rotating the token, and then restart the KMS plug-in and container](#the-api-server-isn-t-responsive-after-several-days-). 
       - question: | 
-          The workload cluster isn't found.
+          The workload cluster isn't found
 
         answer: | 
           The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
@@ -186,7 +186,7 @@ sections:
           
           
       - question: | 
-          New-AksHciCluster times out when creating an AKS cluster with 200 nodes.
+          New-AksHciCluster times out when creating an AKS cluster with 200 nodes
 
         answer: | 
           The deployment of a large cluster may time out after two hours. However, this is a static time-out.
@@ -194,7 +194,7 @@ sections:
           You can ignore this time-out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress.
           
       - question: | 
-          The API server isn't responsive after several days.
+          The API server isn't responsive after several days
 
         answer: | 
           When attempting to bring up an AKS on Azure Stack HCI deployment after a few days, `Kubectl` didn't execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message `rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates`.
@@ -253,7 +253,7 @@ sections:
           
           This issue doesn't occur if the management cluster is deployed using Windows Admin Center as it already has the latest PowerShell modules installed.
       - question: | 
-          When running 'kubectl get pods', pods were stuck in a 'Terminating' state.
+          When running 'kubectl get pods', pods were stuck in a 'Terminating' state
 
         answer: | 
           When you deploy AKS on Azure Stack HCI, and then run `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node is likely experiencing high memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
@@ -270,7 +270,7 @@ sections:
           - Change the scope of the Azure policy to exclude AKS host management clusters. Learn more about [Azure Policy scopes here](/azure/governance/policy/concepts/scope).
           - Set the policy enforcement mode to "Disabled" for the AKS host management cluster. Learn more about [enforcement mode here](/azure/governance/policy/concepts/assignment-structure#enforcement-mode).
       - question: | 
-          When creating a new workload cluster, the error "Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded" occurs.
+          When creating a new workload cluster, the error "Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded" occurs
 
         answer: | 
           This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
@@ -278,14 +278,14 @@ sections:
           To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md).
           
       - question: | 
-          The Windows or Linux node count can't be seen when Get-AksHciCluster is run.
+          The Windows or Linux node count can't be seen when Get-AksHciCluster is run
 
         answer: | 
           If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output will be an empty string or null value.
           
           Null is an expected return for zero nodes.
       - question: | 
-          If a cluster is shut down for more than four days, the cluster will be unreachable.
+          If a cluster is shut down for more than four days, the cluster will be unreachable
 
         answer: | 
           When you shut down a management or workload cluster for more than four days, the certificates expire and the cluster is unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
@@ -296,7 +296,7 @@ sections:
           Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
           ```
       - question: | 
-          Linux and Windows VMs weren't configured as highly available VMs when scaling a workload cluster.
+          Linux and Windows VMs weren't configured as highly available VMs when scaling a workload cluster
 
         answer: | 
           When scaling out a workload cluster, the corresponding Linux and Windows VMs were added as worker nodes, but they weren't configured as highly available VMs. When running the [Get-ClusterGroup](/powershell/module/failoverclusters/get-clustergroup?view=windowsserver2019-ps&preserve-view=true) command, the newly created Linux VM wasn't configured as a Cluster Group.
@@ -306,21 +306,21 @@ sections:
           
           When you scale down a cluster, the high-availability cluster resources are in a failed state while the VMs are removed. The workaround for this issue is to manually remove the failed resources.
       - question: | 
-          Attempt to create new workload clusters failed because the AKS host was turned off for several days.
+          Attempt to create new workload clusters failed because the AKS host was turned off for several days
 
         answer: | 
           An AKS cluster deployed in an Azure VM was previously working fine, but after the AKS host was turned off for several days, the `Kubectl` command didn't work. After running either the `Kubectl get nodes` or `Kubectl get services` command, this error message appeared: `Error from server (InternalError): an error on the server ("") has prevented the request from succeeding`.
           
           This issue occurred because the AKS host was turned off for longer than four days, which caused the certificates to expire. Certificates are frequently rotated in a four-day cycle. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
       - question: | 
-          In a workload cluster with static IP addresses, all pods in a node are stuck in a _ContainerCreating_ state.
+          In a workload cluster with static IP addresses, all pods in a node are stuck in a _ContainerCreating_ state
 
         answer: | 
           In a workload cluster with static IP addresses and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, the connection fails with a `Connection timed out` error.
           
           To resolve this issue, use Hyper-V Manager or Failover Cluster Manager to turn off the VM of that node. After 5 to 10 minutes, the node should have been recreated, with all the pods running.
       - question: | 
-          ContainerD is unable to pull the pause image as 'kubelet' mistakenly collects the image.
+          ContainerD is unable to pull the pause image as 'kubelet' mistakenly collects the image
 
         answer: | 
           When _kubelet_ is under disk pressure, it collects unused container images, which may include pause images, and when this happens, ContainerD can't pull the image. 

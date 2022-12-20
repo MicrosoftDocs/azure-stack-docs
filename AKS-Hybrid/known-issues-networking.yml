@@ -118,7 +118,7 @@ sections:
           4. Check that your cluster has been successfully patched by running `az connectedk8s show -g <rg_name> -n <cc_name>` to make sure the JSON property `distribution` has been correctly set.
           
       - question: | 
-          The WSSDAgent service is stuck while starting and fails to connect to the cloud agent.
+          The WSSDAgent service is stuck while starting and fails to connect to the cloud agent
 
         answer: | 
           Symptoms:
@@ -162,7 +162,7 @@ sections:
           kubectl delete pod pod-name
           ````
       - question: | 
-          Set-AksHciConfig fails with WinRM errors but shows WinRM is configured correctly.
+          Set-AksHciConfig fails with WinRM errors but shows WinRM is configured correctly
 
         answer: | 
           When running [Set-AksHciConfig](./reference/ps/./set-akshciconfig.md), you might encounter the following error:
@@ -203,7 +203,7 @@ sections:
           To resolve the issue, delete one of the clusters and create a new AKS cluster network setting that has a non-overlapping network with the other clusters.
           
       - question: | 
-          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
+          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses
 
         answer: | 
           Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
@@ -227,14 +227,14 @@ sections:
             Get-MocLoadBalancer -Group <groupName> | ConvertTo-Json -depth 10
             ```
       - question: | 
-          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points.
+          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 
         answer: | 
           When you deploy AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
           
           For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
           
-          ```
+          ```shell
           $vnet = New-AksHciNetworkSettingSet-AksHciConfig -vnet $vnetInstall-AksHciVERBOSE: 
           Initializing environmentVERBOSE: [AksHci] Importing ConfigurationVERBOSE: 
           [AksHci] Importing Configuration Completedpowershell : 
