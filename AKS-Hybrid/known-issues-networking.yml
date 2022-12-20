@@ -37,9 +37,7 @@ sections:
         answer: | 
           Azure Arc for Kubernetes-connected clusters can have the value for the JSON property `distribution` set to an empty string. For AKS hybrid connected clusters, this value is set during initial installation and is never altered for the lifetime of the deployment.
           
-          ### To reproduce
-          
-          Open an Azure PowerShell window and run the following commands:
+          To reproduce the issue, open an Azure PowerShell window and run the following commands:
           
           ```powershell
           az login
@@ -91,7 +89,7 @@ sections:
           ```  
           
           ### To resolve the issue
-           
+          
           If the output for the JSON `distribution` property returns an empty string, follow these instructions to patch your cluster:
           
           1. Copy the following configuration into a file called **patchBody.json**:
