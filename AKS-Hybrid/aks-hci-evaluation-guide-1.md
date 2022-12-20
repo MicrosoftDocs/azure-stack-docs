@@ -1,9 +1,9 @@
 ---
-title: Prepare Azure Virtual Machine for AKS hybrid evaluation
+title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: For a low-cost evaluation of Azure Kubernetes Service hybrid deployments (AKS hybrid), prepare an Azure Virtual Machine for your AKS deployment.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/16/2022
+ms.date: 12/2/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -11,7 +11,7 @@ ms.reviewer: oadeniji
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Prepare Azure Virtual Machine for AKS hybrid evaluation
+# Prepare an Azure Virtual Machine for AKS hybrid evaluation
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -19,35 +19,37 @@ The AKS hybrid evaluation guide walks you through the steps to stand up an Azure
 
 With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
-To evaluate AKS hybrid, you'll perform the following tasks:
+In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. 
 
-* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM is configured automatically with the roles and features needed for your evaluation.
-* On the Windows Server VM, deploy an AKS management cluster.
-* Deploy the AKS target clusters for running workloads.
+At a high level, these steps consist of the following tasks:
+
+* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM will be automatically configured with the relevant roles and features needed for your evaluation.
+* On the Windows Server VM, deploy the AKS management cluster.
+* On the Windows Server VM, deploy the AKS target clusters, for running workloads.
 
 > [!IMPORTANT]
-> The steps described in this evaluation guide are specific to an AKS deployment inside an Azure Virtual Machine running a single Windows Server 2019 or Windows Server 2022 operating system, which is not domain-joined. In an alternate environment, such as a nested of physical on-premises deployment, or a domain-joined environment, the steps may differ, and certain procedures may not work. For , see [Set up an AKS host and deploy a workload cluster using PowerShell](kubernetes-walkthrough-powershell.md).<!--Lots more room for saving words.-->
+> The steps outlined in this evaluation guide are specific to running inside an Azure Virtual Machine, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see [Set up an AKS host and deploy a workload cluster using PowerShell](kubernetes-walkthrough-powershell.md).
 
-## Get Azure subscription
+## Get an Azure subscription
 
-To evaluate AKS, you'll need an Azure subscription. If you don't you have two options:
+To evaluate AKS, you'll need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
 
-- If you have a Visual Studio subscription, you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for development and testing. You can provision VMs, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS Host VM runtime efficiently, you can test the scenario well within your subscription limits.
+The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
-- Sign up for an [Azure free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you credit for the first 30 days, and 12 months of popular services for free.
+The second option would be to sign up for an [Azure free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you credit for the first 30 days, and 12 months of popular services for free.
 
-  > [!NOTE]
-  > An Azure free trial subscription provides $200 for your usage, with a maximum VM size capped at 4 vCPUs - not enough to run this sandbox environment. After you sign up for the free trial, you can [upgrade to a pay-as-you-go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) to allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You'll also be able to deploy VMs with greater than 4 vCPUs.
+> [!NOTE]
+> The free trial subscription provides $200 for your usage, however, the largest individual VM you can create is capped at 4 vCPUs, which is not enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
 
-You can use your Azure subscription to integrate with Azure Arc after you complete the deployment.<!--Link to Enable Azure Arc how-to?-->
+You can also use this same Azure subscription to integrate with Azure Arc, once the deployment is completed.
 
-## Choose an Azure Virtual Machine size
+## Azure Virtual Machine size considerations
 
-When you deploy your Azure Virtual Machine, choose a VM size that meets your needs for this evaluation, along with a preferred region.<!--Unless there's an interaction between VM size and region, region is a completely different subject.--> You should choose a VM size with at least 64 GB memory. By default, we recommend you use a Standard_E16s_v4 - a memory-optimized VM size with 16 vCPUs, 128 GB memory, and no temporary SSD storage. Use the default 127 GB OS drive. The Azure Virtual Machine deployment adds 8 more data disks (32 GB each, by default), giving you about 256 GB to deploy AKS on Azure Stack HCI. You can add capacity after you deploy the VM if needed.
+Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure Virtual Machine deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
 
-You can adjust this VM configuration to suit your needs, even after deployment. When you select a VM size, think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside the Azure Virtual Machine. For example, one of the following VM sizes may meet your needs.
+This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure Virtual Machine, and select an Azure Virtual Machine size from there. Some potential examples would be:
 
-### D-series VMs (General purpose) with at least 64 GB memory
+### D-series VMs (General purpose) with at least 64GB memory
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD): GiB | Premium Storage |
 |:--|---|---|---|---|
@@ -57,11 +59,9 @@ You can adjust this VM configuration to suit your needs, even after deployment. 
 | Standard_D16d_v4 | 16 | 64  | 600 | No |
 | Standard_D16ds_v4 | 16 | 64 | 600 | Yes |
 
-The Standard_D16s_v4 VM size costs approximately US $0.77 per hour based on East US region, under a Visual Studio subscription.<!--Normally, we don't cite price information in content. We link instead.-->
+For reference, the Standard_D16s_v4 VM size costs approximately US $0.77 per hour based on East US region, under a Visual Studio subscription.
 
-### E-series VMs (Memory optimized) with at least 64 GB memory
-
-E-series, memory-optimized VMs with at least 64 GB of memory are recommended for AKS on Azure Stack HCI.<!--Moved from H3, which is too long. This would be recommended minimum for production deployments of Azure Stack HCI?-->
+### E-series VMs (Memory optimized - Recommended for AKS on Azure Stack HCI) with at least 64GB memory
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD): GiB | Premium Storage |
 |:--|---|---|---|---|
@@ -75,50 +75,43 @@ E-series, memory-optimized VMs with at least 64 GB of memory are recommended for
 | Standard_E16d_v4 | 16 | 128  | 600 | No |
 | Standard_E16ds_v4 | 16 | 128 | 600 | Yes |
 
-The Standard_E8s_v4 VM size costs approximately US $0.50 per hour based on East US region, under a Visual Studio subscription.
+For reference, the Standard_E8s_v4 VM size costs approximately US $0.50 per hour based on East US region, under a Visual Studio subscription.
 
 Note the following considerations:
 
-- A number of these VM sizes include temporary storage, which offers high performance but doesn't persist through reboots, Azure host migrations, and more. If you'll be running the Azure Virtual Machine for a longer period of time, and shutting down frequently, you should choose a VM size with no temporary storage and make sure your nested VMs are placed on the persistent data drive within the OS.
+* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. It's therefore advisable, that if you are going to be running the Azure Virtual Machine for a period of time, but shutting down frequently, you choose a VM size with no temp storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
+* It's strongly recommended that you choose a VM size that supports premium storage - when running nested virtual machines, increasing the number of available IOPS can have a significant impact on performance, hence, choosing premium storage over Standard HDD or Standard SSD is strongly advised. Refer to the table above to make the most appropriate selection.
+* Please ensure that whichever VM size you choose, it [supports nested virtualization](/azure/virtual-machines/acu) and is [available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
-- We recommend that you choose a VM size that supports premium storage. When you plan to run nested virtual machines, increasing the available IOPs can have a significant impact on performance. So choosing premium storage over Standard HDD or Standard SSD is strongly advised. Refer to the table above to make the most appropriate selection.
+## Deploying the Azure Virtual Machine
 
-* Regardless of its size, the VM should [support nested virtualization](/azure/virtual-machines/acu) and [be available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+The following guidance provides two options for deploying the Azure Virtual Machine. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
-## Deploy an Azure Virtual Machine
+1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
+2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
 
-Use one of two options to deploy an Azure Virtual Machine:
+### Deployment detail
 
-- [Use a custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). You can start the deployment by choosing WHAT OPTION FROM WHAT SCREEN in the Azure portal.
- 
-- [Deploy the ARM template using PowerShell](#option-2---create-the-vm-with-powershell).
- 
-Both options deploy the VM and then automatically configure the host. The deployment takes about 13-15 minutes.
-
-### Deployment detail<!--Move this section so that it doesn't interrupt the procedures. It's conceptual.-->
-
-Both methods automate the deployment so you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
-
-The following deployment steps are automated:
+As part of the deployment, the following steps will be automated for you:
 
 1. A Windows Server 2019 Datacenter or Windows Server 2022 Datacenter VM is deployed in Azure.
 2. 8 x 32 GB (by default) Azure Managed Disks are attached and provisioned with a Simple Storage Space for optimal nested VM performance.
-3. The Hyper-V role and management tools, including Azure Failover Clustering tools, are installed and configured.
-4. An internal virtual switch (vSwitch) is created and NAT-configured to enable outbound networking.
-5. The DNS role and accompanying management tools are installed, and DNS is fully configured.
-6. The DHCP role and accompanying management tools are installed, and DHCP is fully configured. DHCP Scope is enabled.
-7. Windows Admin Center is installed, and pre-installed extensions are updated.
+3. The Hyper-V role and management tools, including Failover Clustering tools, are installed and configured.
+4. An internal vSwitch is created and NAT-configured to enable outbound networking.
+5. The DNS role and accompanying management tools are installed and DNS fully configured.
+6. The DHCP role and accompanying management tools are installed and DHCP fully configured. DHCP Scope is enabled.
+7. Windows Admin Center is installed and pre-installed extensions are updated.
 8. The Microsoft Edge browser is installed.
 
-### Option 1: Create VM with Azure Resource Manager template
+This automated deployment should take about 13-15 minutes.
 
-<!--RECAST AS STANDARD PORTAL PROCEDURE? - STOPPED HERE on 12/16.-->
+### Option 1 - Create the VM with an Azure Resource Manager JSON template
 
-To keep things simple and graphical, we'll show you how to deploy your VM via an Azure Resource Manager JSON template. To simplify things further, we'll use the following buttons.
+To keep things simple and graphical, we'll show you how to deploy your VM via an Azure Resource Manager template. To simplify things further, we'll use the following buttons.
 
 First, the **Visualize** button will launch the ARMVIZ designer view, where you will see a graphic representing the core components of the deployment, including the VM, NIC, disk and more. If you want to open this in a new tab, hold CTRL when you click the button.
 
-[![Visualize your template deployment](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Visualize your template deployment")<!--What's the starting point?-->
+[![Visualize your template deployment](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Visualize your template deployment")
 
 Second, the **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this in a new tab, hold CTRL when you click the button.
 
