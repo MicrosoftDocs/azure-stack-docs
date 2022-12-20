@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 12/13/2022
+  ms.date: 12/20/2022
 
 title: Fix known issues and errors when configuring a network in AKS hybrid
 summary: |
@@ -32,7 +32,93 @@ sections:
           To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
           
       - question: | 
-          The WSSDAgent service is stuck while starting and fails to connect to the cloud agent.
+          Arc-connected clusters have empty JSON "distribution" property
+
+        answer: | 
+          Azure Arc for Kubernetes-connected clusters can have the value for the JSON property `distribution` set to an empty string. For AKS hybrid connected clusters, this value is set during initial installation and is never altered for the lifetime of the deployment.
+          
+          To reproduce the issue, open an Azure PowerShell window and run the following commands:
+          
+          ```powershell
+          az login
+          az account set --subscription <sub_id>
+          az connectedk8s show -g <rg_name> -n
+          ```
+          
+          The following is example output from this command:
+          
+          ```shell
+          {
+          "agentPublicKeyCertificate": <value>
+          "agentVersion": "1.8.14",
+          "azureHybridBenefit": "NotApplicable",
+          "connectivityStatus": "Connected",
+          "distribution": "",
+          "distributionVersion": null,
+          "id": "/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>",
+          "identity": {
+            "principalId": "<principal id>",
+            "tenantId": "<tenant id>",
+            "type": "SystemAssigned"
+          },
+          "infrastructure": "azure_stack_hci",
+          "kubernetesVersion": "1.23.12",
+          "lastConnectivityTime": "2022-11-04T14:59:59.050000+00:00",
+          "location": "eastus",
+          "managedIdentityCertificateExpirationTime": "2023-02-02T14:24:00+00:00",
+          "miscellaneousProperties": null,
+          "name": "mgmt-cluster",
+          "offering": "AzureStackHCI_AKS_Management",
+          "privateLinkScopeResourceId": null,
+          "privateLinkState": "Disabled",
+          "provisioningState": "Succeeded",
+          "resourceGroup": "<resource group>",
+          "systemData": {
+            "createdAt": "2022-11-04T14:29:17.680060+00:00",
+            "createdBy": "<>",
+            "createdByType": "Application",
+            "lastModifiedAt": "2022-11-04T15:00:01.830067+00:00",
+            "lastModifiedBy": "64b12d6e-6549-484c-8cc6-6281839ba394",
+            "lastModifiedByType": "Application"
+          },
+          "tags": {},
+          "totalCoreCount": 4,
+          "totalNodeCount": 1,
+          "type": "microsoft.kubernetes/connectedclusters"
+          }
+          ```  
+          
+          ### To resolve the issue
+          
+          If the output for the JSON `distribution` property returns an empty string, follow these instructions to patch your cluster:
+          
+          1. Copy the following configuration into a file called **patchBody.json**:
+          
+             ```json
+             {
+                "properties": {
+                  "distribution": "aks_management"
+                }
+             }
+             ```
+          
+             > [!IMPORTANT]
+             > If your cluster is an AKS management cluster, the value should be set to `aks_management`. If it's a workload cluster, it should be set to `aks_workload`.
+          
+          2. From the JSON output you obtained above, copy your connected cluster ID. It should appear as a long string in the following format:
+          
+              `"/subscriptions/<subscription >/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>",`
+          
+          3. Run the following command to patch your cluster. The `<cc_arm_id>` value should be the ID obtained in step 2:
+          
+             ```powershell
+             az rest -m patch -u "<cc_arm_id>?api-version=2022-10-01-preview" -b "@patchBody.json"
+             ```
+          
+          4. Check that your cluster has been successfully patched by running `az connectedk8s show -g <rg_name> -n <cc_name>` to make sure the JSON property `distribution` has been correctly set.
+          
+      - question: | 
+          The WSSDAgent service is stuck while starting and fails to connect to the cloud agent
 
         answer: | 
           Symptoms:
@@ -76,7 +162,7 @@ sections:
           kubectl delete pod pod-name
           ````
       - question: | 
-          Set-AksHciConfig fails with WinRM errors but shows WinRM is configured correctly.
+          Set-AksHciConfig fails with WinRM errors but shows WinRM is configured correctly
 
         answer: | 
           When running [Set-AksHciConfig](./reference/ps/./set-akshciconfig.md), you might encounter the following error:
@@ -117,7 +203,7 @@ sections:
           To resolve the issue, delete one of the clusters and create a new AKS cluster network setting that has a non-overlapping network with the other clusters.
           
       - question: | 
-          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
+          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses
 
         answer: | 
           Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
@@ -141,14 +227,14 @@ sections:
             Get-MocLoadBalancer -Group <groupName> | ConvertTo-Json -depth 10
             ```
       - question: | 
-          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points.
+          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 
         answer: | 
           When you deploy AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
           
           For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
           
-          ```
+          ```shell
           $vnet = New-AksHciNetworkSettingSet-AksHciConfig -vnet $vnetInstall-AksHciVERBOSE: 
           Initializing environmentVERBOSE: [AksHci] Importing ConfigurationVERBOSE: 
           [AksHci] Importing Configuration Completedpowershell : 
