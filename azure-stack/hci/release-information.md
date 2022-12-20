@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/15/2022
+ms.date: 12/20/2022
 ---
 
 # Azure Stack HCI release information
