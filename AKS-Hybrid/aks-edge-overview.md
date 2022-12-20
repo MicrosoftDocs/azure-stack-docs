@@ -4,7 +4,7 @@ description: AKS Edge Essentials is an on-premises Kubernetes implementation of 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: overview
-ms.date: 12/12/2022
+ms.date: 12/05/2022
 ms.custom: template-overview
 ---
 
