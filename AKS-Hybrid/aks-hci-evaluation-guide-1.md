@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-The AKS hybrid evaluation guide walks you through the steps to deploy Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. You'll deploy AKS on an Azure Virtual Machine. This is made possible by [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/), which enables you to validate configurations that would otherwise require more hardware, such as running Hyper-V hosts and clusters.
+The AKS hybrid evaluation guide walks you through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. You'll deploy AKS on an Azure Virtual Machine. This is made possible by [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/), which enables you to validate configurations that would otherwise require more hardware, such as running Hyper-V hosts and clusters.
 
 The AKS deployment for your AKS hybrid evaluation consists of the following high-level tasks:
 
