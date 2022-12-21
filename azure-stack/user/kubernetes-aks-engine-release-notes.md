@@ -480,7 +480,7 @@ The estimated time is between 12 to 15 minutes per VM in the cluster. For exampl
 
 Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
-As explained in the documentation for AKS engine on Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components:
+As explained in the documentation for AKS engine on Azure Stack Hub, deploying a Kubernetes cluster requires two main components:
 
 -   The aks-engine binary
 
@@ -658,7 +658,7 @@ You can find the current version and upgrade version in the following table for 
 
 -   Update kubectl to match the version of Kubernetes for the cluster. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
 
--   Updates for the Azure Container Monitor add-on with latest [February 2020 release](https://github.com/microsoft/Docker-Provider/blob/ci_feature_prod/README.md) ([\#2850](https://github.com/Azure/aks-engine/issues/2850)).
+-   Updates for the Azure Container Monitor add-in with latest [February 2020 release](https://github.com/microsoft/Docker-Provider/blob/ci_feature_prod/README.md) ([\#2850](https://github.com/Azure/aks-engine/issues/2850)).
 
 -   Upgrade of `coredns` to version v1.6.6 ([\#2555](https://github.com/Azure/aks-engine/issues/2555)).
 
@@ -684,7 +684,7 @@ Following is a list of some of the bugs fixed as well as the complete set of rel
 
 -   `userAssignedIdentityId` in windows `azure.json` missing quotes ([\#2327](https://github.com/Azure/aks-engine/issues/2327))
 
--   Addons `update config` is upgrade-only ([\#2282](https://github.com/Azure/aks-engine/issues/2282))
+-   Add-ins `update config` is upgrade-only ([\#2282](https://github.com/Azure/aks-engine/issues/2282))
 
 -   Bumping timeout for getting management IP on windows nodes ([\#2284](https://github.com/Azure/aks-engine/issues/2284))
 
