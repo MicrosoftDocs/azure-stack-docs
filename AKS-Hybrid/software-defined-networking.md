@@ -3,7 +3,7 @@ title: How to use AKS hybrid with SDN and virtual networking infrastructure (Pub
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/16/2022
+ms.date: 12/21/2022
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -118,8 +118,8 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
    ```powershell
    Set-AksHciConfig 
    –imageDir "C:\ClusterStorage\Volume1\ImageStore" 
-   –workingDir "C:\ClusterStorage\Volume1\ImageStore"
-   –cloudConfigLocation "C:\ClusterStorage\Volume1\ImageStore" 
+   –workingDir "C:\ClusterStorage\Volume1\WorkDir"
+   –cloudConfigLocation "C:\ClusterStorage\Volume1\Config" 
    –vnet $vnet –useNetworkController
    –NetworkControllerFqdnOrIpAddress "nc.contoso.com" 
    –networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" 
