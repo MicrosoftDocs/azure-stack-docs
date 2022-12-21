@@ -4,7 +4,7 @@ description: This topic contains the support policies for AKS engine on Azure St
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/19/2022
+ms.date: 12/20/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 04/23/2021
@@ -33,7 +33,7 @@ AKS engine version support follows the same pattern established by the rest of t
 
 ## AKS engine supported areas
 
-Microsoft provides technical support for the issues in the following areas:
+Microsoft provides technical support for issues in the following areas:
 
 -  Issues with AKS engine commands: deploy, generate, upgrade, and scale. The tool should be consistent with its behavior on Azure.
 -  Issues with a Kubernetes cluster deployed following the [Overview of AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
@@ -46,12 +46,12 @@ Microsoft provides technical support for the issues in the following areas:
 
 ## AKS engine areas not supported
 
-Microsoft does not provide technical support for the following:
+Microsoft does not provide technical support for the following areas:
 
 -  Using AKS engine on Azure.
 -  Azure Stack Hub Kubernetes Marketplace item.
--  Using the following AKS engine cluster definition options and add-ons.
-    -  Not supported add-ons:  
+-  Using the following AKS engine cluster definition options and add-ins.
+    -  Not supported add-ins:  
             -  Azure AD Pod Identity  
             -  ACI Connector  
             -  Blobfuse Flex Volume  
