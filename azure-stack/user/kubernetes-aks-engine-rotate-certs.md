@@ -1,10 +1,10 @@
 ---
-title: Rotate Kubernetes certificates on Azure Stack Hub  
-description: Learn how to rotate Kubernetes certificates on Azure Stack Hub.
+title: Rotate Kubernetes certificates using AKS engine on Azure Stack Hub  
+description: Learn how to rotate Kubernetes certificates using AKS engine on Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 05/17/2022
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 05/17/2022
@@ -14,7 +14,7 @@ ms.lastreviewed: 05/17/2022
 
 ---
 
-# Rotate Kubernetes certificates on Azure Stack Hub
+# Rotate Kubernetes certificates using AKS engine on Azure Stack Hub
 
 This document provides guidance on how to rotate certificates on an existing AKS Engine cluster and recommendations for using adopting `aks-engine rotate-certs` as a tool.
 
@@ -41,7 +41,7 @@ Review the following considerations before attempting this operation:
 
     If you are rotating the certificates of a cluster in a VNet closed to outside access, you must run `aks-engine rotate-certs` from a host VM that has network access to the control plane, for example, a jumpbox VM that resides in the same VNet as the master VMs.
 
-- If you are using `aks-engine rotate-certs` in production, it is recommended to stage a certificate rotation test on a cluster that was built to the same specifications. That is, the cluster is built with the same cluster configuration, the same version of the AKS engine command-line tool, and the same set of enabled addons as your production cluster before performing the certificate rotation. The AKS engine supports different cluster configurations and the extent of end-to-end testing that the AKS engine team runs cannot practically cover every possible configuration. Therefore, it is recommended that you ensure in a staging environment that your specific cluster configuration works with `aks-engine rotate-certs` before attempting the operation on your production cluster.
+- If you are using `aks-engine rotate-certs` in production, it is recommended to stage a certificate rotation test on a cluster that was built to the same specifications. That is, the cluster is built with the same cluster configuration, the same version of the AKS engine command-line tool, and the same set of enabled addons as your production cluster before performing the certificate rotation. AKS engine supports different cluster configurations and the extent of end-to-end testing that the AKS engine team runs cannot practically cover every possible configuration. Therefore, it is recommended that you ensure in a staging environment that your specific cluster configuration works with `aks-engine rotate-certs` before attempting the operation on your production cluster.
 -  `aks-engine rotate-certs` does **not** guarantee backwards compatibility. If you deployed with aks-engine version 0.60.x, you should prefer executing the certificate rotation process with version 0.60.x.
 -  Fetching a new set of certificates from Key Vault is not supported at this point.
 - Use a reliable network connection. `aks-engine rotate-certs` requires the execution of multiple remote commands, which are subject to potential failures, mostly if the connection to the cluster nodes is not reliable. Running `aks-engine rotate-certs` from a VM running on the target Azure Stack stamp can reduce the occurrence of transient issues.
@@ -107,4 +107,4 @@ For more information on what happens under the hood when running this operation 
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
+- Read about [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  

@@ -4,12 +4,12 @@ description: Learn how to add container storage to Kubernetes in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 3/4/2021
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/4/2021
 
-# Intent: As an Azure Stack Hub user, I would like add storage to a Kubernetes cluster using the AKS engine so that I can store persistent data.
+# Intent: As an Azure Stack Hub user, I would like add storage to a Kubernetes cluster using AKS engine so that I can store persistent data.
 # Keywords: storage AKS engine Kubernetes
 
 ---
@@ -172,4 +172,4 @@ helm repo remove csi-driver-nfs
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
+- Read about [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  

@@ -1,28 +1,28 @@
 ---
-title: Troubleshoot the AKS engine on Azure Stack Hub 
-description: This article contains troubleshooting steps for the AKS engine on Azure Stack Hub. 
+title: Troubleshoot AKS engine on Azure Stack Hub 
+description: This article contains troubleshooting steps for AKS engine on Azure Stack Hub. 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/18/2020
 
-# Intent: As as an Azure Stack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
+# Intent: As as an Azure Stack Hub developer, I want to fix AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
 
 ---
 
-# Troubleshoot the AKS engine on Azure Stack Hub
+# Troubleshoot AKS engine on Azure Stack Hub
 
-You may find an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine. Collect information about your AKS engine, collect Kubernetes logs, and review custom script extension error codes. You can also open a GitHub issue for the AKS engine.
+You may find an issue when deploying or working with AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of AKS engine. Collect information about your AKS engine, collect Kubernetes logs, and review custom script extension error codes. You can also open a GitHub issue for AKS engine.
 
-## Troubleshoot the AKS engine install
+## Troubleshoot AKS engine install
 
-If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
 
-You can find instructions for using GoFish to install the AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
+You can find instructions for using GoFish to install AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
 
 ## Collect node and cluster logs
 
@@ -32,7 +32,7 @@ You can find the instructions on collecting node and cluster logs at [Retrieving
 
 This guide assumes you've already downloaded the [Azure CLI](azure-stack-version-profiles-azurecli2.md) and the [AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
-This guide also assumes that you've deployed a cluster using the AKS engine. For more information, see [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md) .
+This guide also assumes that you've deployed a cluster using AKS engine. For more information, see [Deploy a Kubernetes cluster with AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md) .
 
 ### Retrieving logs
 
@@ -86,7 +86,7 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 

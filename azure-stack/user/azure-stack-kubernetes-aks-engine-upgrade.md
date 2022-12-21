@@ -1,10 +1,10 @@
 ---
-title: Upgrade a Kubernetes cluster on Azure Stack Hub 
-description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub. 
+title: Upgrade a Kubernetes cluster using AKS engine on Azure Stack Hub
+description: Learn how to upgrade a Kubernetes cluster using AKS engine on Azure Stack Hub. 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 3/4/2021
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/4/2021
@@ -15,12 +15,13 @@ ms.lastreviewed: 3/4/2021
 ---
 
 
-# Upgrade a Kubernetes cluster on Azure Stack Hub
+# Upgrade a Kubernetes cluster using AKS engine on Azure Stack Hub
 
-The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
+AKS engine allows you to upgrade the Kubernetes cluster that was originally deployed using the tool on Azure Stack Hub. You can maintain the clusters using AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use AKS engine to apply them.
+
 ## Upgrade a cluster
 
-The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. You can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
+The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. You can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
 Microsoft doesn't manage your cluster. But Microsoft provides the tool and VM image you can use to manage your cluster. 
 
@@ -33,7 +34,7 @@ For a deployed cluster upgrades cover:
 When upgrading a production cluster, consider:
 
 -   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster?
--   Are you using a reliable machine for the client machine to run the AKS engine and from which you are performing upgrade operations?
+-   Are you using a reliable machine for the client machine to run AKS engine and from which you are performing upgrade operations?
 -   Make sure that you have a backup cluster and that it is operational.
 -   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
 -   Make sure that your subscription has enough space for the entire process. The process allocates new VMs during the process.
@@ -83,7 +84,7 @@ The following instructions use the minimum steps to perform the upgrade. If you 
     --identity-system adfs # required if using AD FS
     ```
 
-4.  If for any reason the upgrade operation encounters a failure, you can rerun the upgrade command after addressing the issue. The AKS engine will resume the operation where it failed the previous time.
+4.  If for any reason the upgrade operation encounters a failure, you can rerun the upgrade command after addressing the issue. AKS engine will resume the operation where it failed the previous time.
 
 ## Steps to only upgrade the OS image
 
@@ -193,5 +194,5 @@ For instructions, see [Force upgrade](https://github.com/Azure/aks-engine/blob/m
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
-- [Scale a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-scale.md)
+- Read about the [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
+- [Scale a Kubernetes cluster on Azure Stack Hub using AKS engine](azure-stack-kubernetes-aks-engine-scale.md)
