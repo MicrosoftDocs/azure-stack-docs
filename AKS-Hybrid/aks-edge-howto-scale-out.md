@@ -10,12 +10,14 @@ ms.custom: template-how-to
 
 # Scaling out on multiple nodes
 
-Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to additional machines to create a multi-node deployment. Note that scaling to additional nodes is an experimental feature.
+Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to other secondary machines to create a multi-node deployment. 
+> [!WARNING]
+> Scaling to additional nodes is an experimental feature.
 
 ## Prerequisites
 
 - Set up your [full Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
-- Set up your additional machines as described in the [Set up machine](aks-edge-howto-setup-machine.md) article. You cannot mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **k8s**, you must install the **k8s** msi on the secondary machines as well.
+- Set up your secondary machines as described in the [Set up machine](aks-edge-howto-setup-machine.md) article. You cannot mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **k8s**, you must install the **k8s** msi on the secondary machines as well.
 
 ## 1. Get cluster configuration from your primary machine
 
@@ -90,8 +92,8 @@ This command returns a JSON string and also stores the JSON content in the **.\S
     > [!NOTE]
     > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described below.
 
-- The `DeployOptions.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you are using a K8S cluster change the `NetworkPlugin` to `calico`.
-- Verify the resource configurations for the additional nodes. You can modify these parameters as needed. Ensure to [reserve enough memory for each node](./aks-edge-concept.md#aks-edge-essentials-key-concepts). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
+- The `DeployOptions.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. For a K8S cluster change the `NetworkPlugin` to `calico`.
+- Verify the resource configurations for the secondary nodes. You can modify these parameters as needed. Ensure to [reserve enough memory for each node](./aks-edge-concept.md#aks-edge-essentials-key-concepts). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
 
 - The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
