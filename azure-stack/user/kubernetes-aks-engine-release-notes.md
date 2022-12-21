@@ -108,7 +108,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 
 ## Kubernetes version upgrade path in AKS engine v0.71.0
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version for Azure Stack Hub in the following table. This table applies to the AKS engine cluster in Azure Stack Hub. Don't use the `aks-engine get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.<!--I simplified this paragraph, replaced globally. The extra words and distance between table references make it unclear which table the second sentence refers to.-->
 
 | Current version                                       | Upgrade available     |
 |-------------------------------------------------------|-----------------------|
@@ -122,7 +122,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.22.7                                                | 1.23.6                |
 | 1.22.7, 1.22.15                                       | 1.23.13               |
 
-In the API model .json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API model .json file, please specify the release and version values under the orchestratorProfile section. For example, to deploy Kubernetes 1.17.17, set the following two values. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).<!--Fixing grammar faults and simplifying. Globally replaced.-->
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -257,7 +257,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro is no longer a support
 
 ## Kubernetes version upgrade path in AKS engine v0.67.0
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version for Azure Stack Hub in the following table. This table applies to the AKS engine cluster in Azure Stack Hub. Don't use the `aks-engine get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.
 
 | Current version                                       | Upgrade available     |
 |-------------------------------------------------------|-----------------------|
@@ -268,7 +268,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.19.10                                               | 1.19.15, 1.20.11      |
 | 1.20.6                                                | 1.20.11               |
 
-In the API model .json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API model .json file, please specify the release and version values under the orchestratorProfile section. For example, to deploy Kubernetes 1.17.17, set the following two values. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -378,7 +378,7 @@ New versions of these are available with this update:
 
 ## Kubernetes version upgrade path in AKS engine v0.60.1
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version for Azure Stack Hub in the following table. This table applies to the AKS engine cluster in Azure Stack Hub. Don't use the `aks-engine get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.
 
 | Current version                                       | Upgrade available |
 |-----------------------------------------------------------|-----------------------|
@@ -387,7 +387,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.17.11                                                   | 1.17.17, 1.18.15      |
 | 1.17.17                                                   | 1.18.15               |
 
-In the API model .json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API model .json file, please specify the release and version values under the orchestratorProfile section. For example, to deploy Kubernetes 1.17.17, set the following two values. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -506,7 +506,7 @@ New versions of these are available with this update:
 
 ## Kubernetes version upgrade path in AKS engine v0.55.4
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version for Azure Stack Hub in the following table. This table applies to the AKS engine cluster in Azure Stack Hub. Don't use the `aks-engine get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.
 
 | Current version | Upgrade available |
 | ------------------------- | ----------------------- |
@@ -514,7 +514,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
 | 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
 
-In the API model .json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you're planning to deploy Kubernetes 1.16.14, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API model .json file, please specify the release and version values in the `orchestratorProfile` section. For example, to deploy Kubernetes 1.16.14, set the following two values. must be set. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
 
 ```json  
     -   "orchestratorRelease": "1.16",
@@ -622,7 +622,7 @@ New versions of these are available with this update:
 
 ## Kubernetes version upgrade path
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version for Azure Stack Hub in the following table. This table applies to the AKS engine cluster in Azure Stack Hub. Don't use the `aks-engine get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.
 
 | **Current version** | **Upgrade available** |
 | --------------------| ----------------------|
@@ -633,7 +633,7 @@ You can find the current version and upgrade version in the following table for 
 
 ## What's new 
 
--   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your API model .json file (also known as the *cluster definition file*) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw):
+-   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When you deploy a new cluster, in your API model .json file (also known as the *cluster definition file*), specify both the release version number and the minor version number in the following format. For an example cluster definition file, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
 
     - `"orchestratorRelease": "1.15`,
 
