@@ -22,12 +22,12 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
 - Are you using the correct marketplace items, AKS Base Ubuntu 18.04 Image Distro or AKS Base Windows Server for your version of AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-image-and-aks-engine).
-- Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+- Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 - Are you using a reliable machine to run AKS engine and from which you're performing upgrade operations?
 - If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
 - If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
@@ -37,11 +37,11 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You'll be required to use the AKS engine upgrade command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You'll be required to use the AKS engine `upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
-Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
+Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same `upgrade` command to continue the upgrade process. The `upgrade` command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
 
 ### Estimated upgrade time
 
@@ -109,7 +109,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 
 ## Kubernetes version upgrade path in AKS engine v0.71.0
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
 | Current version                                       | Upgrade available     |
 |-------------------------------------------------------|-----------------------|
@@ -187,12 +187,12 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
 -   Are you using the correct marketplace items, AKS Base Ubuntu 16.04-LTS or 18.04 Image Distro or AKS Base Windows Server for your version of AKS engine? You can find the versions in the section "Download new images and AKS engine".
--   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+-   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 -   Are you using a reliable machine to run AKS engine and from which you're performing upgrade operations?
 -   If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
 -   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
@@ -202,11 +202,11 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You will be required to use AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You will be required to use AKS engine `upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
-Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
+Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same `upgrade` command to continue the upgrade process. The `upgrade` command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
 
 ### Estimated upgrade time
 
@@ -259,7 +259,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro is not longer a suppor
 
 ## Kubernetes version upgrade path in AKS engine v0.67.0
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
 | Current version                                       | Upgrade available     |
 |-------------------------------------------------------|-----------------------|
@@ -322,12 +322,12 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
 -   Are you using the correct marketplace items, AKS Base Ubuntu 16.04-LTS or 18.04 Image Distro or AKS Base Windows Server for your version of AKS engine? You can find the versions in the section "Download new images and AKS engine".
--   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+-   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 -   Are you using a reliable machine to run AKS engine and from which you're performing upgrade operations?
 -   If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
 -   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
@@ -337,11 +337,11 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You will be required to use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You will be required to use the AKS engine `upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
-Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
+Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same `upgrade` command to continue the upgrade process. The `upgrade`* command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
 
 ### Estimated upgrade time
 
@@ -380,7 +380,7 @@ New versions of these are available with this update:
 
 ## Kubernetes version upgrade path in AKS engine v0.60.1
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
 | Current version                                       | Upgrade available |
 |-----------------------------------------------------------|-----------------------|
@@ -444,7 +444,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
@@ -470,7 +470,7 @@ You will be required to use the AKS engine `upgrade` command as described in the
 
 ### Upgrade interruptions
 
-Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
+Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same `upgrade` command to continue the upgrade process. The `upgrade`* command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
 
 ### Estimated upgrade time
 
@@ -508,7 +508,7 @@ New versions of these are available with this update:
 
 ## Kubernetes version upgrade path in AKS engine v0.55.4
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
 | Current version | Upgrade available |
 | ------------------------- | ----------------------- |
@@ -549,7 +549,7 @@ In the API Model json file, please specify the release and version values under 
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
--   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
+-   Running `aks-engine get-versions` will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 ## Reference
@@ -572,13 +572,13 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the information in this article.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the information in this article.
 
 ### Upgrade considerations
 
 -   Are you using the correct marketplace item, AKS Base Ubuntu 16.04-LTS Image Distro for your version of AKS engine? You can find the versions in the section [Download the new AKS base Ubuntu Image and AKS engine versions](#download-new-image-and-aks-engine).
 
--   Are you using the correct cluster specification (apimodel.json) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the "deploy" command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+-   Are you using the correct cluster specification (apimodel.json) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
 -   Are you using a reliable machine to run AKS engine and from which you're performing upgrade operations?
 
@@ -598,7 +598,7 @@ You will be required to use the AKS engine `upgrade` command as described in the
 
 ### Upgrade interruptions
 
-Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
+Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same `upgrade` command to continue the upgrade process. The `upgrade` command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but shouldn't affect the completion of it.
 
 ### Estimated upgrade time
 
@@ -620,11 +620,11 @@ New versions of these are available with this update:
     -   Version: `2020.03.19`
     -   Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md)
 
--   The Kubernetes cluster administrator will need to download the new aks-engine version 0.48.0. See instructions in this the following article, [Install AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the `get-akse.sh` script, follow the same steps outlined in the article [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+-   The Kubernetes cluster administrator will need to download the new aks-engine version 0.48.0. See instructions in this the following article, [Install AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the **get-akse.sh** script, follow the same steps outlined in the article [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
 
 ## Kubernetes version upgrade path
 
-You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine `get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
+You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the `aks-engine get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
 | **Current version** | **Upgrade available** |
 | --------------------| ----------------------|
@@ -635,7 +635,7 @@ You can find the current version and upgrade version in the following table for 
 
 ## What's new 
 
--   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw):
+-   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your API model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw):
 
     - `"orchestratorRelease": "1.15`,
 
@@ -646,17 +646,17 @@ You can find the current version and upgrade version in the following table for 
 
 -   With aks-engine v0.43.1, the default frequency settings for the cloud provider to perform its control loop and other tasks don't work well with Azure Stack Hub Resource Manager threshold limits for incoming requests. This update changes defaults for Azure Stack Hub to reduce the retry load to Azure Stack Hub Resource Manager ([\#2861](https://github.com/Azure/aks-engine/issues/2861)).
 
--   New verification step in aks-engine will result in either execution stopping or displaying warnings if api model json file contains properties not supported by Azure Stack Hub ([\#2717](https://github.com/Azure/aks-engine/issues/2717)).
+-   New verification step in aks-engine will result in either execution stopping or displaying warnings if API model json file contains properties not supported by Azure Stack Hub ([\#2717](https://github.com/Azure/aks-engine/issues/2717)).
 
 -   With a new verification check-in, the aks-engine will validate availability of the version of the AKS base image needed for the version of aks-engine executing ([\#2342](https://github.com/Azure/aks-engine/issues/2342)). This will occur after parsing the api model file and before calling the Azure Stack Hub Resource Manager.
 
--   New aks-engine option "--control-plane-only" in the "upgrade" command allows the user to upgrade operations to target only the master Virtual Machines ([\#2635](https://github.com/Azure/aks-engine/issues/2635)).
+-   New aks-engine option "--control-plane-only" in the `upgrade` command allows the user to upgrade operations to target only the master Virtual Machines ([\#2635](https://github.com/Azure/aks-engine/issues/2635)).
 
 -   Updates to Linux Kernel version 4.15.0-1071-azure for Ubuntu 16.04-LTS. See "[Package: linux-image-4.15.0-1071-azure (4.15.0-1071.76) \[security\]](https://packages.ubuntu.com/xenial/linux-image-4.15.0-1071-azure)" for details.
 
 -   New hyperkube updates to support Kubernetes versions 1.14.8 and 1.15.10.
 
--   Update kubectl to match the version of Kubernetes for the cluster.. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
+-   Update kubectl to match the version of Kubernetes for the cluster. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
 
 -   Updates for the Azure Container Monitor add-on with latest [February 2020 release](https://github.com/microsoft/Docker-Provider/blob/ci_feature_prod/README.md) ([\#2850](https://github.com/Azure/aks-engine/issues/2850)).
 
@@ -672,13 +672,13 @@ You can find the current version and upgrade version in the following table for 
 
 -  Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 
--  Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
+-  Running `aks-engine get-versions` will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
 
 -  Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, please ignore them and use the version table above as the official guide for this update.
 
 ## Reference
 
-Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to 0.48.0, notice that the latter list will include Azure and Azure Stack Hub items
+Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to 0.48.0, notice that the latter list will include Azure and Azure Stack Hub items.
 
 ### Bug fixes
 
