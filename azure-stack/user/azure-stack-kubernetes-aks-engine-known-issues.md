@@ -1,10 +1,10 @@
 ---
-title: Known issues with the AKS engine on Azure Stack Hub 
-description: Learn Known issues using the AKS engine on Azure Stack Hub. 
+title: Known issues with AKS engine on Azure Stack Hub 
+description: Learn known issues using AKS engine on Azure Stack Hub. 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/1/2021
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
@@ -14,9 +14,9 @@ ms.lastreviewed: 11/1/2021
 
 ---
 
-# Known issues with the AKS engine on Azure Stack Hub
+# Known issues with AKS engine on Azure Stack Hub
 
-This topic covers known issues for the AKS engine on Azure Stack Hub.
+This topic covers known issues for AKS engine on Azure Stack Hub.
 
 [!INCLUDE [Expired secret for service principal (SPN) causes cluster to fail](../includes/known-issue-aks-2.md)]
 
@@ -32,7 +32,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 ## Unable to resize cluster VMs with the Compute service
 
 - **Applicable to**: Azure Stack Hub, AKS engine (all)
-- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. The AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, upgrade, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine upgrade` is executed.
+- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, upgrade, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine upgrade` is executed.
 - **Remediation**: To make this work locate the API model for the cluster, change the size there, and then run `aks-engine upgrade`.
 - **Occurrence**: When attempting to resize using the Compute service.
 
