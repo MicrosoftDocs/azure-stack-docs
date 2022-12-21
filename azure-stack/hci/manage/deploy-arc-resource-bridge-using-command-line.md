@@ -14,9 +14,9 @@ ms.reviewer: alkohli
 
 This article describes how to use Azure Command-Line Interface (CLI) to set up Azure Arc VM management, which includes:
 
-- [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
-- [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
-- [Creating virtual network](create-virtual-networks.md)
+- Installing PowerShell modules, Azure CLI extensions, and host agent service
+- Creating a custom location
+- Creating a virtual network
 
 To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
@@ -82,7 +82,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    
         If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [Deploy Arc Resource Bridge using a network proxy](azure-arc-vm-management-proxy.md).
    
-         ### [For static IP address](#tab/for-static-ip-address)
+   ### [For static IP address](#tab/for-static-ip-address-1)
 
       ```PowerShell
       Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
@@ -90,7 +90,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
       Install-Moc
       ```
 
-      ### [For dynamic IP address](#tab/for-dynamic-ip-address)
+   ### [For dynamic IP address](#tab/for-dynamic-ip-address-1)
 
       ```PowerShell
       Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -createAutoConfigContainers $false
@@ -167,7 +167,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
 1. Run the following cmdlets based on your networking configurations:
 
-   ### [For static IP address](#tab/for-static-ip-address)
+   ### [For static IP address](#tab/for-static-ip-address-2)
 
    1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
@@ -207,7 +207,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
 
-   ### [For dynamic IP address](#tab/for-dynamic-ip-address)
+   ### [For dynamic IP address](#tab/for-dynamic-ip-address-2)
 
    1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
