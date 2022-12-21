@@ -4,7 +4,7 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/16/2021
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/16/2021
@@ -13,13 +13,13 @@ ms.lastreviewed: 11/16/2021
 # Keyword: Notdone: keyword noun phrase
 
 ---
-# Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
+# Deploy a Kubernetes cluster with AKS engine on Azure Stack Hub
 
-You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
+You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification
 
-You can specify a cluster specification in a document file using the JSON format called the API model. The AKS engine uses a cluster specification in the API model to create your cluster.
+You can specify a cluster specification in a document file using the JSON format called the API model. AKS engine uses a cluster specification in the API model to create your cluster.
 
 You can find examples of the API model for your OS and AKS engine version number for recent releases at [AKS engine and corresponding image mapping](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping).
 
@@ -100,7 +100,7 @@ This section looks at creating an API model for your cluster.
     If you're deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
 
     > [!NOTE]  
-    > The AKS engine for Azure Stack Hub doesn't allow you to provide your own certificates for the creation of the cluster.
+    > AKS engine for Azure Stack Hub doesn't allow you to provide your own certificates for the creation of the cluster.
 
 9. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
 
@@ -119,7 +119,7 @@ This section looks at creating an API model for your cluster.
 
 ## Add certificate when using ASDK
 
-If you are deploying a cluster on the Azure Stack Development Kit (ASDK) and using Linux, you will need to add the root certificate to the trusted certificate store of the client VM running the AKS engine.
+If you are deploying a cluster on the Azure Stack Development Kit (ASDK) and using Linux, you will need to add the root certificate to the trusted certificate store of the client VM running AKS engine.
 
 1. Find the root certificate in the VM at this directory: `/var/lib/waagent/Certificates.pem.`
 2. Copy the certificate file:
@@ -168,13 +168,13 @@ Proceed to deploy a cluster:
     --identity-system adfs # required if using AD FS
     ```
 
-2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
+2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, AKS engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
 
 3.  Save the AKS engine cluster configuration in a secure, encrypted location.
 
     Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS engine operations.
 
-    The generated `apimodel.json` contains the service principal, secret, and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS engine to perform all other operations. If you lose it, the AKS engine won't be able configure the cluster.
+    The generated `apimodel.json` file contains the service principal, secret, and SSH public key you use in the input API model. THe file also has all the other metadata needed by AKS engine to perform all other operations. If you lose the file, AKS engine won't be able configure the cluster.
 
     The secrets are **unencrypted**. Keep the file in an encrypted, secure place. 
 
@@ -224,7 +224,7 @@ Check your cluster by connect to **kubectl**, getting the info, and then the sta
 
 ## Troubleshoot cluster deployment
 
-When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
+When encountering errors while deploying a Kubernetes cluster using AKS engine, you can check:
 
 1.  Are you using the correct Service Principal credentials (SPN)?
 2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
@@ -252,4 +252,4 @@ Alternatively, you can replace the credentials in the `apimodel.json` and run up
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Troubleshoot the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-troubleshoot.md)
+> [Troubleshoot AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-troubleshoot.md)
