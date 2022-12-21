@@ -134,7 +134,7 @@ sections:
           1. Run the following command to renew the generated certificate manually:
           
              ```powershell
-             Update-AksHciClusterCertificates  -Name my-workload -cluster -fixKubeletCredentials
+             Update-AksHciClusterCertificates  -Name my-workload -fixKubeletCredentials
              ```
           
           2. Generate new credentials:
