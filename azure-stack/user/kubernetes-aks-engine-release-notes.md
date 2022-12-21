@@ -45,7 +45,8 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 ### Estimated upgrade time
 
-The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
+The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take about 5 hours to upgrade.<!--Replaced globally for clarity, style consistency.-->
+
 ## Instructions to use AKS engine 0.70.0 and above
 
 Microsoft upgraded the Azure Cloud Provider in version 0.70.0. The Azure Cloud Provider is a core component shared between AKS Azure and AKS engine on Azure Stack Hub. 
@@ -161,8 +162,8 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
-- AKS Engine v0.67.0 uses the wrong Windows Image when deploying Windows clusters, users should use v0.70.0 to solve this issue.
+-   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
+- AKS Engine v0.67.0 uses the wrong Windows image when deploying Windows clusters. To resolve this issue, users should use v0.70.0.
 
 ## Reference
 
@@ -191,7 +192,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 ### Upgrade considerations
 
 -   Are you using the correct marketplace items, AKS Base Ubuntu 16.04-LTS or 18.04 Image Distro or AKS Base Windows Server for your version of AKS engine? You can find the versions in the section "Download new images and AKS engine".
--   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+-   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. For `deploy` command parameters, see [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 -   Are you using a reliable machine to run AKS engine and from which you're performing upgrade operations?
 -   If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
 -   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
@@ -209,7 +210,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 ### Estimated upgrade time
 
-The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
+ The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take about 5 hours to upgrade.
 
 ## Download new image and AKS engine
 
@@ -298,7 +299,7 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.<!--Rewording to fix grammar faults and simplify the message. Applied globally.-->
 
 ## Reference
 
@@ -343,7 +344,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 ### Estimated upgrade time
 
-The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
+The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take about 5 hours to upgrade.
 
 ## Download new image and AKS engine
 
@@ -422,7 +423,7 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
 
 ## Reference
 
@@ -446,7 +447,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Upgrade considerations
 
--   Are you using the correct marketplace item, AKS Base Ubuntu 16.04-LTS Image Distro for your version of AKS engine? You can find the versions in the section "Download new image and AKS engine".
+-   Are you using the correct marketplace item, AKS Base Ubuntu 16.04-LTS Image Distro for your version of AKS engine? You can find the versions in the "Download new image and AKS engine" section.
 
 -   Are you using the correct cluster specification (**apimodel.json**) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the `deploy` command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
@@ -472,7 +473,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 ### Estimated upgrade time
 
-The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
+The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take about 5 hours to upgrade.
 
 ## Download new image and AKS engine
 
@@ -548,7 +549,7 @@ In the API model .json file, please specify the release and version values in th
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 -   Running `aks-engine get-versions` will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
--   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
 
 ## Reference
 
@@ -600,7 +601,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 ### Estimated upgrade time
 
-The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
+The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take about 5 hours to upgrade.
 
 ## Download new image and AKS engine
 
@@ -672,7 +673,7 @@ You can find the current version and upgrade version for Azure Stack Hub in the 
 
 -  Running `aks-engine get-versions` will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
 
--  Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, please ignore them and use the version table above as the official guide for this update.
+-  Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.e.
 
 ## Reference
 
