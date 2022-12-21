@@ -3,7 +3,7 @@ title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 12/19/2022
+ms.date: 12/21/2022
 ms.author: v-mandhiman
 ms.reviewer: alkohli
 ---
@@ -28,7 +28,7 @@ For an overview of Azure Arc VM management, see [What is Azure Arc VM management
 
 Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
-## Install PowerShell modules and update extensions
+## Install PowerShell modules, Azure CLI extensions, and host agent service
 
 In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through RDP or console session. Remote PowerShell isn't supported.
 
@@ -82,9 +82,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    
         If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [Deploy Arc Resource Bridge using a network proxy](azure-arc-vm-management-proxy.md).
    
-      ## <a id="proxy"></a>
-
-      ### [For static IP address](#tab/for-static-ip-address)
+         ### [For static IP address](#tab/for-static-ip-address)
 
       ```PowerShell
       Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
@@ -164,6 +162,8 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    az provider register --namespace Microsoft.AzureStackHCI --wait
    az provider register --namespace Microsoft.HybridConnectivity --wait
    ```
+
+## <a id="proxy"></a>
 
 1. Run the following cmdlets based on your networking configurations:
 
