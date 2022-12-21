@@ -259,13 +259,13 @@ sections:
           
           To mitigate the issue, there are several options:
           
-          1. Rerun `kubectl logs`. For example, run the following PowerShell command:
+          - Rerun `kubectl logs`. For example, run the following PowerShell command:
           
              ```powershell
              while (1) {kubectl logs <POD_NAME>; sleep 1}
              ```
             
-          1. Restart the `kube-apiserver` container on each of the control planes for a cluster. Restarting the API server does not impact running workloads. To restart the API server, follow these steps:
+          - Restart the `kube-apiserver` container on each of the control planes for a cluster. Restarting the API server does not impact running workloads. To restart the API server, follow these steps:
              1. Get the IP addresses for each control plane in your cluster:
                 
                 ```powershell
@@ -278,7 +278,7 @@ sections:
                 ssh -i (get-akshciconfig).Moc.sshPrivateKey clouduser@<CONTROL_PLANE_IP> 'sudo crictl stop $(sudo crictl ps --name kube-apiserver -o json | jq -r .containers[0].id)'
                 ```
           
-          1. Optionally, but not recommended for production workloads, you can ask `kube-apiserver` not to verify the server certificate of the kubelet:
+          - Optionally, but not recommended for production workloads, you can ask `kube-apiserver` not to verify the server certificate of the kubelet:
           
              ```powershell
              kubectl logs <POD_NAME> --insecure-skip-tls-verify-backend=true
