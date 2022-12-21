@@ -18,7 +18,7 @@ ms.lastreviewed: 11/18/2020
 
 You may find an issue when deploying or working with AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of AKS engine. Collect information about your AKS engine, collect Kubernetes logs, and review custom script extension error codes. You can also open a GitHub issue for AKS engine.
 
-## Troubleshoot AKS engine install
+## Troubleshoot AKS engine installation
 
 If your previous installation steps failed, you can install AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
 
