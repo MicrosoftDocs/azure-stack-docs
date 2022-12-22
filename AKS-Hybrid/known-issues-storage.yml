@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 12/13/2022
+  ms.date: 12/21/2022
 
 title: Fix known issues and errors when managing storage in AKS hybrid
 summary: |
@@ -25,7 +25,7 @@ sections:
           To resolve this issue, [define a custom storage class](container-storage-interface-disks.md) that you can use to provision PVCs.
           
       - question: | 
-          Container storage interface pod stuck in a 'ContainerCreating' state.
+          Container storage interface pod stuck in a 'ContainerCreating' state
 
         answer: | 
           A new Kubernetes workload cluster was created with Kubernetes version 1.16.10 and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
@@ -58,7 +58,7 @@ sections:
           
           Recreate the storage class.
       - question: | 
-          When creating a persistent volume, an attempt to mount the volume fails.
+          When creating a persistent volume, an attempt to mount the volume fails
 
         answer: | 
           After deleting a persistent volume or a persistent volume claim in an AKS hybrid environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, `NewSmbGlobalMapping failed`.
