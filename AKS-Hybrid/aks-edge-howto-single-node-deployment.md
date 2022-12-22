@@ -22,7 +22,8 @@ The parameters needed to create a single machine cluster are defined in the [aks
 The key parameters to note for single machine deployment are:
 
 - `DeployOptions.SingleMachineCluster` - The parameter that defines a single machine cluster is the `singlemachinecluster` flag, which must be set to `true`.
-- The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`, `Network.InternetDisabled`.
+- The `DeployOptions.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you are using a K8S cluster change the CNI to `calico`. 
+- The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`, `Network.InternetDisabled`.
 - In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` to 'true' to enable the metrics server.
 
 ## 2. Create a single machine cluster
