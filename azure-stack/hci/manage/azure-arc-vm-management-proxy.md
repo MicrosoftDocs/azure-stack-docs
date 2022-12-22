@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/21/2022
+ms.date: 12/22/2022
 ---
 
 # Deploy Arc Resource Bridge on Azure Stack HCI using a network proxy
@@ -44,7 +44,7 @@ The supported authentication methods for the proxy server are:
 
 ### Use no authentication
 
-In PowerShell, run the following command as an administrator:
+In the PowerShell of the host computer, run the following command as an administrator:
 
 ```PowerShell
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com"
@@ -52,7 +52,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 
 ### Use username and password authentication
 
-In PowerShell, run the following command as an administrator:
+In the PowerShell of the host computer, run the following command as an administrator:
 
 ```PowerShell
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -proxyServerUsername <username_for_proxy> -proxyServerPassword <password_for_proxy>
@@ -60,7 +60,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 
 ### Use certificate-based authentication
 
-In PowerShell, run the following command as an administrator:
+In the PowerShell of the host computer, run the following command as an administrator:
 
 ```PowerShell
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -certificateFilePath <file_path_to_cert_file> 
@@ -68,7 +68,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 
 ## Configure Arc Resource Bridge
 
-After authentication is set up, use the command line to configure the Arc Resource Bridge: [Prepare configuration for Azure Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md#proxy).
+After authentication is set up, use the command line to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#setup-arc-vm-management).
 
 ## Current limitation
 
