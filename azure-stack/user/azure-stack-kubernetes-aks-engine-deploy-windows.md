@@ -25,8 +25,8 @@ AKS engine is a command-line tool used to deploy and manage your Kubernetes clus
 
 When choosing your client machine, consider:
 
-1. If the client machine should be recoverable in case of a disaster.
-1. How you will connect to the client machine and how the machine will interact with your cluster.
+1. Whether the client machine should be recoverable in a disaster.
+1. How you will connect to the client machine, and how the machine will interact with your cluster?
 
 ## Install in a connected environment
 
@@ -38,7 +38,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
     According to the Chocolatey website: Chocolatey is a package manager for Windows, like apt-get or yum but for Windows. It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your door, err, computer.
 4. Install [Azure CLI](/cli/azure/install-azure-cli-windows). Select the download link, and choose "**Run**". Choose the setup steps as needed.
-5. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Engine must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
+5. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Engine must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command installs the latest version, which may need a VHD image that is not available in your marketplace.
     > [!NOTE]  
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 6. Run the following command from an elevated prompt and include the version number:

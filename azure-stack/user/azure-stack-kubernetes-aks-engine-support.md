@@ -29,7 +29,7 @@ Because customer cluster nodes execute private code and store sensitive data, Mi
 
 ## Version support
 
-AKS engine version support follows the same pattern established by the rest of the Azure Stack Hub support policy, that is support of a version of AKS engine on Azure Stack Hub is based on the n-2 formula. For example, if the latest version of AKS engine is v0.55.0, the set of supported versions are: 0.48.0, 0.51.0, 0.55.0. It's also important to follow the Azure Stack Hub update version and corresponding mapping to the AKS engine supported version; this mapping is maintained in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+AKS engine version support follows the pattern established by the rest of the Azure Stack Hub support policy: support of an AKS engine version on Azure Stack Hub is based on the n-2 formula. For example, if the latest version of AKS engine is v0.55.0, the set of supported versions are: 0.48.0, 0.51.0, 0.55.0. It's also important to follow the Azure Stack Hub update version and corresponding mapping to the AKS engine supported version; this mapping is maintained in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 ## AKS engine supported areas
 
@@ -88,7 +88,7 @@ Microsoft does not provide technical support for the following areas:
 -  Third-party open-source projects that aren't provided as part of the Kubernetes cluster deployed by AKS engine. These projects might include Kubeadm, Kubespray, Native, Istio, Helm, Envoy, or others.
 -  Third-party software. This software can include security scanning tools and networking devices or software.
 -  Issues about multicloud or multivendor build-outs. For example, Microsoft doesn't support issues related to running a federated multipublic cloud vendor solution.
--  Network customizations other than those listed in [AKS engine supported areas](#aks-engine-supported-areas) section.
+-  Network customizations other than those listed in [AKS engine supported areas](#aks-engine-supported-areas).
 -  Production environments should only use highly available Kubernetes clusters, that is, clusters deployed with a minimum of three masters and three agent nodes. Anything less cannot be supported in production deployments.
 
 ##  Security issues and patching

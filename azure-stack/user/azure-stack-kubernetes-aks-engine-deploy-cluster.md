@@ -174,7 +174,7 @@ Proceed to deploy a cluster:
 
     Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS engine operations.
 
-    The generated `apimodel.json` file contains the service principal, secret, and SSH public key you use in the input API model. THe file also has all the other metadata needed by AKS engine to perform all other operations. If you lose the file, AKS engine won't be able configure the cluster.
+    The generated `apimodel.json` file contains the service principal, secret, and SSH public key you use in the input API model. The file also has all the other metadata needed by AKS engine to perform all other operations. If you lose the file, AKS engine won't be able configure the cluster.
 
     The secrets are **unencrypted**. Keep the file in an encrypted, secure place. 
 
@@ -183,8 +183,8 @@ Proceed to deploy a cluster:
 Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
 
 1. Get the `kubeconfig` file to connect to the control plane.
-    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly create cluster in this directory path `/kubeconfig/kubeconfig.json`. You can use add the `/kubeconfig.json` to the `.kube `directory to access your new cluster.  
-    If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the the instructions below to access the cluster from one of the control plane nodes.
+    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly create cluster in this directory path `/kubeconfig/kubeconfig.json`. You can add the `/kubeconfig.json` file to the `.kube `directory to access your new cluster.  
+    If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the instructions below to access the cluster from one of the control plane nodes.
 2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
 3. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new control plane node using a client such as PuTTY or MobaXterm. 

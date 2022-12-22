@@ -24,7 +24,7 @@ AKS engine is a command-line tool used to deploy and manage your Kubernetes clus
 
 When choosing your client machine, consider:
 
-1. If the client machine should be recoverable in case of a disaster.
+1. Whether the client machine should be recoverable in a disaster.
 2. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
@@ -35,7 +35,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 2. Connect to your VM.
 3. Use your package manager to check that you have the following tools installed:
     - `jq` a JSON processor.
-    - `curl` - a tool for transferrring files using a variety of network protocols.
+    - `curl` - a tool for transferring files using a variety of network protocols.
     - `openssh` an ssh client.
     - `tar` a tool used to work with TAR archives.
 4. Install Azure CLI. Packages for Azure CLI are available for most distributions. You can find instructions at [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
@@ -56,7 +56,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
     > [!NOTE]  
-    > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
+    > If your installation method fails, try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
 
 ## Install in a disconnected environment
 

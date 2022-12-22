@@ -677,7 +677,7 @@ You can find the current version and upgrade version for Azure Stack Hub in the 
 
 ## Reference
 
-Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to 0.48.0, notice that the latter list will include Azure and Azure Stack Hub items.
+Following are a list of some of the bugs fixed and the complete set of release notes from version 0.44.0 to version 0.48.0. The release notes include both Azure and Azure Stack Hub.
 
 ### Bug fixes
 
@@ -691,11 +691,11 @@ Following is a list of some of the bugs fixed as well as the complete set of rel
 
 -   Correct defaults order for setting IPAddressCount ([\#2358](https://github.com/Azure/aks-engine/issues/2358))
 
--   Update to use single omsagent yaml for all k8s versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
+-   Update to use single omsagent yaml for all Kubernetes versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
 
 ### Release notes
 
-This is the complete set of release notes for Azure and Azure Stack Hub combined
+This is the complete set of release notes for Azure and Azure Stack Hub combined:
 
 -   https://github.com/Azure/aks-engine/releases/tag/v0.44.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.44.1

@@ -164,11 +164,11 @@ helm repo remove csi-driver-nfs
 ```
 ## Azure Disk CSI Driver limitations on Azure Stack Hub
 
--   Azure Disk IOPS is capped at 2300,  read [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md) for details.
--   Azure Stack Hub doesn't support shared disk, so parameter `maxShares` larger than 1 is not valid in a StorageClass.
--   Azure Stack Hub only supports standard locally redundant (Standard_LRS) and Premium Locally redundant (Premium_LRS) Storage Account types, so only Standard_LRS and Premium_LRS are valid for parameter `skuName` in a `StorageClass`.
+-   Azure Disk IOPS is capped at 2300. For details, see [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md).
+-   Azure Stack Hub doesn't support shared disks, so a `maxShares` value greater than 1 is not valid in a StorageClass.
+-   Azure Stack Hub only supports standard locally redundant (Standard_LRS) and Premium Locally redundant (Premium_LRS) Storage Account types, so only `Standard_LRS` and `Premium_LRS` are valid for the `skuName` parameter in a `StorageClass`.
 -   Azure Stack Hub doesn't support incremental disk snapshot, so only false is valid for parameter `incremental` in a `VolumeSnapshotClass`.
--   For Windows agent nodes, you will need to install Windows CSI Proxy,  refer to [Windows CSI Proxy](https://github.com/kubernetes-csi/csi-proxy). To enable the proxy via AKS engine API model,  refer to [CSI Proxy for Windows](https://github.com/Azure/aks-engine/blob/master/docs/topics/csi-proxy-windows.md).
+-   For Windows agent nodes, you need to install Windows CSI Proxy. For details, see [Windows CSI Proxy](https://github.com/kubernetes-csi/csi-proxy). To enable the proxy via AKS engine API model, see [CSI Proxy for Windows](https://github.com/Azure/aks-engine/blob/master/docs/topics/csi-proxy-windows.md).
 
 ## Next steps
 

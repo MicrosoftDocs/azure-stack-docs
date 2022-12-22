@@ -25,8 +25,8 @@ This topic covers known issues for AKS engine on Azure Stack Hub.
 ## Limit of 50 nodes per subscription
 
 - **Applicable to**: Azure Stack Hub, AKS engine (all)
-- **Description**: When creating clusters, you need to ensure that there are not more than 50 Kubernetes nodes (control plane and agent nodes) deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
-- **Remediation**: Use less then 51 nodes in your subscription.
+- **Description**: When creating clusters, ensure that no more than 50 Kubernetes nodes (control plane and agent nodes) are deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
+- **Remediation**: Use less than 51 nodes in your subscription.
 - **Occurrence**: When attempting to add more than 50 nodes per subscription.
 
 ## Unable to resize cluster VMs with the Compute service
@@ -49,7 +49,7 @@ This topic covers known issues for AKS engine on Azure Stack Hub.
 
 * During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, upgrade of the following kubernetes components requires extra manual steps: **kube-proxy**, **azure-cni-networkmonitor**, **csi-secrets-store**, **kubernetes-dashboard**. The following describes what you may observe and how to work around the issues.
 
-  * In connected environments, it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
+  * In connected environments, this issue isn't obvious. There are no signs in the cluster that the affected components weren't upgraded. Everything appears to work as expected.
   <!-- * In disconnected environments, you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in "Ready" state: -->
 
     ```bash  

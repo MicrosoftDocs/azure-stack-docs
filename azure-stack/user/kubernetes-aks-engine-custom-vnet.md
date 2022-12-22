@@ -65,7 +65,7 @@ When you create a custom virtual network, you specify the IP address space of yo
 
 ## Get the IP address blocks
 
-AKS engine supports deploying into an existing virtual network. When deploying into an existing virtual network, your cluster will use blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space, choosing address blocks outside of the virtual network address space may result in connectivity problems.
+AKS engine supports deploying on an existing virtual network. When deployed on an existing virtual network, your cluster uses blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space, choosing address blocks outside of the virtual network address space may result in connectivity problems.
 
 A minimum of three address blocks are required when setting up a Kubernetes cluster:
 
@@ -74,11 +74,11 @@ A minimum of three address blocks are required when setting up a Kubernetes clus
 - Cluster address block: This is the address block from which pods will get their cluster address. Take into consideration the maximum number of pods you intend to run in your cluster when selecting the address range for this block. As mention earlier, for Azure CNI the cluster and nodes address blocks are the same.
 
 In addition to the address blocks, for control plane nodes you will need to set two more values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
-AKS engine requires a range of up to 16 unused IP addresses when you use multiple control plane nodes. The cluster will use one IP address for each control plane up to five control plane nodes. AKS engine will also require the next 10 IP address after the last control plane node for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the control plane nodes and headroom reservation for a total of 16.
+AKS engine requires a range of up to 16 unused IP addresses when you use multiple control plane nodes. The cluster will use one IP address for each control plane up to five control plane nodes. AKS engine will also require the next 10 IP address after the last control plane node for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the control plane nodes and headroom reservation, for a total of 16.
 When placing your block of IP addresses, the subnet requires the following allocations of the existing IP addresses:
-- The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet
+- The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet.
 - A buffer of 16 IP addresses should be left open.
-- The value of your cluster's first IP should be toward the end of the address space to avoid IP conflicts. If possible, assign to the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
+- The value of your cluster's first IP address should be toward the end of the address space to avoid IP conflicts. If possible, assign the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
 
 For example, for a cluster with three control plane nodes. If you are using a subnet with 256 addresses, for example 10.100.0.0/24, you will need to set your first consecutive static IP address before 239. The following table shows the addresses and considerations:
 
