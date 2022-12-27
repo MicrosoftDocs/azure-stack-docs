@@ -34,7 +34,7 @@ This guide has been tested and validated with the **July 2022 release** of AKS.
 
 ## What is AKS hybrid?
 
-AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrid is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
+AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrid is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2022 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
 
 To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before completing your evaluation. This guide also provides references to available documents that can help build your knowledge of AKS hybrid.
 
