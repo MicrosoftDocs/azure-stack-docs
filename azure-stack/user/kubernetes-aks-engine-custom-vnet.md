@@ -65,7 +65,7 @@ When you create a custom virtual network, you specify the IP address space of yo
 
 ## Get the IP address blocks
 
-AKS engine supports deploying on an existing virtual network. When deployed on an existing virtual network, your cluster uses blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space, choosing address blocks outside of the virtual network address space may result in connectivity problems.
+AKS engine supports deployment on an existing virtual network. When deployed on an existing virtual network, your cluster uses blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space. Choosing address blocks outside of the virtual network address space may result in connectivity problems.
 
 A minimum of three address blocks are required when setting up a Kubernetes cluster:
 
