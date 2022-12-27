@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/22/2022
+ms.date: 12/27/2022
 ---
 
 # Deploy Arc Resource Bridge on Azure Stack HCI using a network proxy
@@ -76,4 +76,4 @@ VMs deployed using Arc VM management currently don't support use of a network pr
 
 ## Next steps
 
-- [What is Azure Arc VM management?](/manage/azure-arc-vm-management-overview)
+- [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md).
