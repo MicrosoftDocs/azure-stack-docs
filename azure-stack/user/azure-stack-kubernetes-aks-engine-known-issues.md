@@ -16,7 +16,7 @@ ms.lastreviewed: 11/1/2021
 
 # Known issues with AKS engine on Azure Stack Hub
 
-This topic covers known issues for AKS engine on Azure Stack Hub.
+This article describes known issues for AKS engine on Azure Stack Hub.
 
 [!INCLUDE [Expired secret for service principal (SPN) causes cluster to fail](../includes/known-issue-aks-2.md)]
 
