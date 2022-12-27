@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2022
+ms.date: 12/15/2022
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -96,9 +96,8 @@ Make sure to include the following firewall URLs to your allowlist:
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
 
-
 > [!NOTE]
-> We currently do not support proxy configurations.
+> Using an Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy is not supported.
 
 ## Next steps
 
