@@ -61,6 +61,8 @@ The network requirements include:
 - The Host must be able to reach the IPs given to the control plane endpoint ($controlPlaneIP) and Arc Resource Bridge VM IPs ($VMIP_1, $VMIP_2). Please work with your network administrator to enable this.
 - An IP address for the cloud agent running inside the Resource Bridge ($cloudServiceIP). If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
 
+Learn more about the [networking concepts related to Arc VM management](azure-arc-vm-management-networking.md).
+
 ## Network port requirements
 
 When you deploy Arc Resource Bridge on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
@@ -101,5 +103,6 @@ Make sure to include the following firewall URLs to your allowlist:
 
 ## Next steps
 
+- [Review proxy configurations for deployment of Arc VM management](azure-arc-vm-management-proxy.md)
 - [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md)
 - [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md)
