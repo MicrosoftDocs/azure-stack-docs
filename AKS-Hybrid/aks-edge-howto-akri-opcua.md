@@ -10,14 +10,14 @@ ms.custom: template-how-to
 
 # Discover OPC UA Servers with Akri
 
-This article describes how you can deploy sample OPC PLC server containers in Azure and discover them by deploying Akri on your AKS Edge cluster. You will also deploy a sample anomaly detection app that uses the Akri broker pods to subscribe to the OPC UA variable. This Akri configuration can be used to monitor a barometer, CO detector, and more; however, for this example, the OPC UA variable will represent the PLC values for temperature of a thermostat and any value outside the range of 70-80 degrees is an anomaly.
+This article describes how you can deploy sample OPC PLC server containers in Azure and discover them by deploying Akri on your AKS Edge cluster. You'll also deploy a sample anomaly detection app that uses the Akri broker pods to subscribe to the OPC UA variable. This Akri configuration can be used to monitor a barometer, CO detector, and more. However, for this example, the OPC UA variable will represent the PLC values for temperature of a thermostat and any value outside the range of 70-80 degrees is an anomaly.
 
 
 ## Prerequisites
 
 - AKS Edge Essentials cluster up and running.
-- Azure subscription and a resource group to deploy OPC PLC servers tp.
-- Akri only works on Linux - please use Linux nodes for this exercise.
+- Azure subscription and a resource group to deploy OPC PLC servers to.
+- Akri only works on Linux: use Linux nodes for this exercise.
 
 
 If at any point in the demo, you want to dive deeper into OPC UA or clarify a term, you can reference the [online OPC UA specifications](https://reference.opcfoundation.org/v104/).
@@ -42,7 +42,7 @@ through](https://github.com/OPCFoundation/Misc-Tools)).
 
 The OPC UA Client certificate will be passed to the OPC UA Monitoring broker as a Kubernetes Secret mounted as a volume.  
 
-Create a Kubernetes Secret, projecting each certificate/crl/private key with the expected key name (i.e. `client_certificate`, `client_key`, `ca_certificate`, and `ca_crl`). Specify the file paths such that they point to the credentials made in the previous section.
+Create a Kubernetes Secret, projecting each certificate/crl/private key with the expected key name (`client_certificate`, `client_key`, `ca_certificate`, and `ca_crl`). Specify the file paths such that they point to the credentials made in the previous section.
 
 ```powershell
 kubectl create secret generic opcua-broker-credentials `
@@ -52,17 +52,17 @@ kubectl create secret generic opcua-broker-credentials `
 --from-file=ca_crl=/path/to/ca/crl/SomeCA\ \[<hash>\].crl
 ```
 
-The certificate is mounted to the volume `credentials` at the `mountPath` /etc/opcua-certs/client-pki, as shown in the [OPC UA Configuration Helm template](https://github.com/project-akri/akri/blob/main/deployment/helm/templates/opcua-configuration.yaml). This is the path where the brokers expect to find the certificates.
+The certificate is mounted to the volume `credentials` at the `mountPath` /etc/opcua-certs/client-pki, as shown in the [OPC UA Configuration Helm template](https://github.com/project-akri/akri/blob/main/deployment/helm/templates/opcua-configuration.yaml). This path is where the brokers expect to find the certificates.
 
 ## Creating OPC UA Servers
 
-Now, we must create some OPC UA PLC Servers to discover. Instead of starting from scratch, we deploy OPC PLC server containers. You can read more about the containers and their parameters [here](https://github.com/Azure-Samples/iot-edge-opc-plc). In this demo we will use the template provided to deploy OPC PLC server container instances to Azure.
+Now, we must create some OPC UA PLC Servers to discover. Instead of starting from scratch, we deploy OPC PLC server containers. You can read more about the containers and their parameters [here](https://github.com/Azure-Samples/iot-edge-opc-plc). In this demo, we'll use the template provided to deploy OPC PLC server container instances to Azure.
 
 1. Go to Azure IoT Edge OPC PLC sample's [README.md](https://github.com/Azure-Samples/iot-edge-opc-plc) and click **Deploy to Azure**.
 
-2. (Optional) If you are using security, this can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](https://learn.microsoft.com/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
+2. (Optional) If you're using security, this method can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](https://learn.microsoft.com/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
 
-   After creating the Azure file share, add the `plc` folder to the file share in the same structure as described above. Then go back to the **Deploy to Azure** page. Click `Edit template`, add the following code inside the "container" section:
+   After creating the Azure file share, add the `plc` folder to the file share in the same structure as described. Then go back to the **Deploy to Azure** page. Click `Edit template`, add the following code inside the "container" section:
    ```
    "volumeMounts": [
                      {
@@ -99,44 +99,40 @@ Now, we must create some OPC UA PLC Servers to discover. Instead of starting fro
 
    You can read more about the parameters on the [README.md](https://github.com/Azure-Samples/iot-edge-opc-plc). 
 
-4. Save the template, and fill in the project and instance details. For `Number of Simulations`, you will want to put `2` in order to run two OPC PLC servers.
+4. Save the template, and fill in the project and instance details. For `Number of Simulations`, put `2` in order to run two OPC PLC servers.
 
 5. Click **Review and Create**, then **Create** to deploy your servers on Azure. 
 
 
-We have now successfully created two OPC UA PLC servers, each with one fast PLC node which generates an **unsigned integer** with **lower bound = 65** and **upper bound = 85** at a **rate of 1**. 
+We've now successfully created two OPC UA PLC servers, each with one fast PLC node, which generates an **unsigned integer** with **lower bound = 65** and **upper bound = 85** at a **rate of 1**. 
 
 
 ## Running Akri
 
 1. Make sure your OPC UA servers are running.
 
-2. Akri depends on `critcl` to track Pod information, and to use it, the Akri Agent must know where the container runtime socket lives. In order to specify this, we set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
+2. Akri depends on `critcl` to track Pod information, and to use it, the Akri Agent must know where the container runtime socket lives. To specify this informatoin, we set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
 
-   If you are using k3s: 
+   If you're using K3s: 
    ```powershell
    $AKRI_HELM_CRICTL_CONFIGURATION="--set kubernetesDistro=k3s"
    ```
-   If you are using k8s:
+   If you're using K8s:
    ```powershell
    $AKRI_HELM_CRICTL_CONFIGURATION="--set kubernetesDistro=k8s"
    ```
 3. In order for Akri to discover the servers properly, we need to specify the correct discovery URLs when installing Akri. 
    
-   Your discovery URLs will look like `opc.tcp://<FQDN>:50000/` and `opc.tcp://<FQDN>:50001/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you will see the FQDN. Copy and paste your FQDN into your discovery URLs for each server.
+   Your discovery URLs will look like `opc.tcp://<FQDN>:50000/` and `opc.tcp://<FQDN>:50001/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you'll see the FQDN. Copy and paste your FQDN into your discovery URLs for each server.
 
    ![Screenshot showing the container instance FQDN in azure portal](media/aks-edge/akri-opcplc-fqdn.png)
 
-4. Now it is time to install Akri using Helm. When installing Akri, we can specify that we want to deploy the OPC UA
-   Discovery Handlers by setting the helm value `opcua.discovery.enabled=true`. 
+4. Now it's time to install Akri using Helm. When installing Akri, we can specify that we want to deploy the OPC UA Discovery Handlers by setting the helm value `opcua.discovery.enabled=true`. 
    
-   In this scenario, we
-   will specify the `Identifier` and `NamespaceIndex` of the NodeID we want the brokers to monitor. In our case that is
-   our temperature variable we made earlier, which has an `Identifier` of `FastUInt1` and `NamespaceIndex`
+   In this scenario, we'll specify the `Identifier` and `NamespaceIndex` of the NodeID we want the brokers to monitor. In our case that is our temperature variable we made earlier, which has an `Identifier` of `FastUInt1` and `NamespaceIndex`
    of `2`. 
    
    If using security, uncomment `--set opcua.configuration.mountCertificates='true'`.
-
     
    ```powershell
    helm repo add akri-helm-charts https://project-akri.github.io/akri/
