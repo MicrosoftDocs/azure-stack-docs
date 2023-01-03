@@ -66,14 +66,10 @@ In a PowerShell window of the host computer, run the following command as an adm
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -certificateFilePath <file_path_to_cert_file> 
 ```
 
-## Configure Arc Resource Bridge
+## Continue setting up Arc VM management
 
-After authentication is set up, use the command line to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).
+After proxy settings have been applied, use the command line to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).
 
 ## Current limitation
 
 VMs deployed using Arc VM management currently don't support use of a network proxy.
-
-## Next steps
-
-- [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md).
