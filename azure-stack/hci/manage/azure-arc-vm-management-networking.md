@@ -68,7 +68,7 @@ VMs deployed using Azure Arc VM management get their network configuration from 
 - **vLAN ID** – The vLAN ID on which the VM traffic is isolated. This is an optional parameter and can be used irrespective of the IP allocation method used.
 - **IP allocation method** – Specifies if the virtual network assigns IP addresses to Azure Arc VMs from addresses allocated through a DHCP server or from a pool of static IPs. The possible options for this parameter are `DHCP` and `Static`.
 
-If the IP allocation method is `static`, the following additional parameters are required:
+If the IP allocation method is `static`, the following additional parameters are relevant:
 
 |Parameter|Description|Required?|Example|
 |---|---|---|---|
