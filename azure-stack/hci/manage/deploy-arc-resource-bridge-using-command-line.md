@@ -3,7 +3,7 @@ title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 10/06/2022
+ms.date: 12/27/2022
 ms.author: v-mandhiman
 ms.reviewer: alkohli
 ---
@@ -14,9 +14,9 @@ ms.reviewer: alkohli
 
 This article describes how to use Azure Command-Line Interface (CLI) to set up Azure Arc VM management, which includes:
 
-- [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
-- [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
-- [Creating virtual network](create-virtual-networks.md)
+- Installing PowerShell modules, Azure CLI extensions, and host agent service
+- Specify Azure subscription information and register resource providers
+- Set up Arc VM management
 
 To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
@@ -28,7 +28,7 @@ For an overview of Azure Arc VM management, see [What is Azure Arc VM management
 
 Before you begin, make sure to complete the [prerequisites for setting up Azure Arc VM management](azure-arc-vm-management-prerequisites.md).
 
-## Install PowerShell modules and update extensions
+## Install PowerShell modules, Azure CLI extensions, and host agent service
 
 In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through RDP or console session. Remote PowerShell isn't supported.
 
@@ -50,47 +50,53 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
 1. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
 
    ```PowerShell
-   $vswitchName="<Switch-Name>"
-   $controlPlaneIP="<IP-address>"
+   $VswitchName="<Switch-Name>"
+   $ControlPlaneIP="<IP-address>"
    $csv_path="<input-from-admin>"
-   $vlanID="<vLAN-ID>" (Optional)
+   $VlanID="<vLAN-ID>" (Optional)
    $VMIP_1="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
    $VMIP_2="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
    $DNSServers="<comma separated list of DNS servers. For example: @("192.168.250.250","192.168.250.255") for a list of DNS servers. Or "192.168.250.250" for a single DNS server>" (required only for static IP configurations)
    $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
-   $cloudServiceIP="<IP-address>" (required only for static IP configurations)
+   $CloudServiceIP="<IP-address>" (required only for static IP configurations)
    ```
 
    where:
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
-   | **controlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
+   | **VswitchName** | Should match the name of the switch on the host. The network served by this switch must be able to provide static IP addresses for the **ControlPlaneIP**.|
+   | **ControlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
-   | **vlanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
+   | **vanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
    | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: <br>- For a list of DNS servers: `@("192.168.250.250","192.168.250.255")`<br>- For a single DNS server: `"192.168.250.250"` |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
-   | **cloudServiceIP** | (Required only for static IP configurations) The Arc Resource Bridge requires a cloud agent to run on the host. This cloud agent is installed as a [Failover Cluster generic service](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005). cloudServiceIP is the IP address of the Failover Cluster generic service hosting the cloud agent. This IP address must match the IP address of the network that is used for all client access and cluster communications. |
+   | **CloudServiceIP** | (Required only for static IP configurations) The Arc Resource Bridge requires a cloud agent to run on the host. This cloud agent is installed as a [Failover Cluster generic service](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005). cloudServiceIP is the IP address of the Failover Cluster generic service hosting the cloud agent. This IP address must match the IP address of the network that is used for all client access and cluster communications. |
 
 1. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-      ### [For static IP address](#tab/for-static-ip-address)
+        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [Deploy Arc Resource Bridge using a network proxy](azure-arc-vm-management-proxy.md). Once completed, return back to this article to set up Arc VM management.
+   
+      ### [For static IP address](#tab/for-static-ip-address-1)
 
       ```PowerShell
+      mkdir $csv_path\ResourceBridge
+      
       Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
 
       Install-Moc
       ```
 
-      ### [For dynamic IP address](#tab/for-dynamic-ip-address)
+      ### [For dynamic IP address](#tab/for-dynamic-ip-address-1)
 
       ```PowerShell
+      mkdir $csv_path\ResourceBridge
+      
       Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -createAutoConfigContainers $false
 
       Install-Moc
@@ -124,26 +130,23 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
      az extension add --upgrade --name azurestackhci
      ```
 
-## Create a custom location by installing Azure Arc Resource Bridge
+## Specify Azure subscription information and register resource providers
 
-To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
-
-1. Run the following cmdlets. Refer to the following table for a description of the parameters.
+1. Provide information for your Azure subscription. Refer to the following table for a description of the parameters.
    
    ```PowerShell
-   $resource_group="<pre-created resource group in Azure>"
    $subscription="subscription ID in Azure"
-   $location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
-   $customloc_name="<name of the custom location, such as <HCIClusterName>-cl>"
+   $resource_group="<pre-created resource group in Azure>"
+   $location="<Azure Region - Available regions include 'eastus', 'westeurope' and 'southeastasia'>"
    ```
+
    where:
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **resource_group** | Name of the pre-created resource group in Azure. |
    | **subscription** | Subscription ID in Azure. |
-   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
-   | **customloc_name** | Name of the custom location, such as HCIClusterName-cl. |
+   | **resource_group** | Name of the pre-created resource group in Azure. |
+   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **westeurope** or **southeastasia**. |
 
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
@@ -159,20 +162,26 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    az provider register --namespace Microsoft.ResourceConnector --wait
    az provider register --namespace Microsoft.AzureStackHCI --wait
    az provider register --namespace Microsoft.HybridConnectivity --wait
+   $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
+   $customloc_name= ((Get-AzureStackHci).AzureResourceName) + "-CL"
    ```
 
-1. Run the following cmdlets based on your networking configurations:
+## Set up Arc VM management
 
-   ### [For static IP address](#tab/for-static-ip-address)
+The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cluster and create a custom location.
+
+1. Run the following cmdlets based on your networking configurations in an elevated PowerShell window:
+
+   ### [For static IP address](#tab/for-static-ip-address-2)
 
    1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
-      $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
-      mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > 
+      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -203,16 +212,16 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
       ```
 
-   ### [For dynamic IP address](#tab/for-dynamic-ip-address)
+   ### [For dynamic IP address](#tab/for-dynamic-ip-address-2)
 
    1. Create the configuration file for Arc Resource Bridge:
       ```PowerShell
-      $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
-      mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
       > The configuration files are required to perform essential `az arcappliance` CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > 
+      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
