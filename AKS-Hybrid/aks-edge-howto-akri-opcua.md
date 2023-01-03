@@ -24,7 +24,7 @@ If at any point in the demo, you want to dive deeper into OPC UA or clarify a te
 
 ## (Optional) Creating X.509 v3 Certificates
 
->[!NOTE]: If security is not desired, skip to [Creating OPC UA Servers](#creating-opc-ua-servers), as each monitoring broker will use an OPC UA Security Policy of None if it cannot find credentials mounted in its pod.
+>[!NOTE]: If security is not desired, skip to **Creating OPC UA Servers**, as each monitoring broker will use an OPC UA Security Policy of None if it cannot find credentials mounted in its pod.
 
 
 ### Generating certificates
@@ -56,14 +56,11 @@ The certificate is mounted to the volume `credentials` at the `mountPath` /etc/o
 
 ## Creating OPC UA Servers
 
-Now, we must create some OPC UA PLC Servers to discover. Instead of starting from scratch, we deploy OPC PLC server containers. You can read more about the containers and their parameters [here](https://github.com/Azure-Samples/iot-edge-opc-plc). In this demo, we provide two ways for you to deploy the containers. The first method is through the deployment YAML we provide that you can deploy to your cluster. The second method is by deploying container instances to Azure through the template provided.
-
-
-### Option 2: Deploying with Azure
+Now, we must create some OPC UA PLC Servers to discover. Instead of starting from scratch, we deploy OPC PLC server containers. You can read more about the containers and their parameters [here](https://github.com/Azure-Samples/iot-edge-opc-plc). In this demo we will use the template provided to deploy OPC PLC server container instances to Azure.
 
 1. Go to Azure IoT Edge OPC PLC sample's [README.md](https://github.com/Azure-Samples/iot-edge-opc-plc) and click **Deploy to Azure**.
 
-2. (Optional) If you are using security, this can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
+2. (Optional) If you are using security, this can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](https://learn.microsoft.com/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
 
    After creating the Azure file share, add the `plc` folder to the file share in the same structure as described above. Then go back to the **Deploy to Azure** page. Click `Edit template`, add the following code inside the "container" section:
    ```
@@ -128,7 +125,7 @@ We have now successfully created two OPC UA PLC servers, each with one fast PLC 
    
    Your discovery URLs will look like `opc.tcp://<FQDN>:50000/` and `opc.tcp://<FQDN>:50001/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you will see the FQDN. Copy and paste your FQDN into your discovery URLs for each server.
 
-   ![Screenshot showing the cluster in azure portal](media/aks-edge/akri-opcplc-fqdn.png)
+   ![Screenshot showing the container instance FQDN in azure portal](media/aks-edge/akri-opcplc-fqdn.png)
 
 4. Now it is time to install Akri using Helm. When installing Akri, we can specify that we want to deploy the OPC UA
    Discovery Handlers by setting the helm value `opcua.discovery.enabled=true`. 
@@ -198,7 +195,7 @@ A sample anomaly detection web application was created for this end-to-end demo.
    ```
 3. Navigate to `http://<NODE IP>:<SERVICE PORT NUM>/`. It takes 3 seconds for the site to load, after which, you should see a log of the temperature values, which updates every few seconds. Note how the values are coming from two different DiscoveryURLs, namely the ones for each of the two OPC UA Servers.
 
-![Screenshot showing the cluster in azure portal](media/aks-edge/akri-anomaly-detection.png)
+![Screenshot showing the anomaly detection app in browser](media/aks-edge/akri-anomaly-detection.png)
 
 ## Clean up
 
@@ -209,11 +206,10 @@ A sample anomaly detection web application was created for this end-to-end demo.
     kubectl delete deployment akri-anomaly-detection-app
    ```
 
-2. Delete the OPC UA Monitoring Configuration and watch the instances, pods, and services be deleted.
+2. Delete the OPC UA Monitoring Configuration.
 
    ```powershell
     kubectl delete akric akri-opcua-monitoring
-    watch kubectl get pods,services,akric,akrii -o wide
    ```
 
 3. Bring down the Akri Agent, Controller, and CRDs.
