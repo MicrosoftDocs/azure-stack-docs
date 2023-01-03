@@ -4,7 +4,7 @@ description: This article describes how to deploy an OPC PLC container and use A
 author: yujinkim-msft
 ms.author: yujinkim
 ms.topic: how-to
-ms.date: 12/08/2022
+ms.date: 01/03/2023
 ms.custom: template-how-to
 ---
 
@@ -24,7 +24,8 @@ If at any point in the demo, you want to dive deeper into OPC UA or clarify a te
 
 ## (Optional) Creating X.509 v3 Certificates
 
->[!NOTE]: If security is not desired, skip to **Creating OPC UA Servers**, as each monitoring broker will use an OPC UA Security Policy of None if it cannot find credentials mounted in its pod.
+> [!NOTE]
+> If security is not desired, skip to **Creating OPC UA Servers**, as each monitoring broker will use an OPC UA Security Policy of None if it cannot find credentials mounted in its pod.
 
 
 ### Generating certificates
@@ -60,7 +61,7 @@ Now, we must create some OPC UA PLC Servers to discover. Instead of starting fro
 
 1. Go to Azure IoT Edge OPC PLC sample's [README.md](https://github.com/Azure-Samples/iot-edge-opc-plc) and click **Deploy to Azure**.
 
-2. (Optional) If you're using security, this method can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](https://learn.microsoft.com/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
+2. (Optional) If you're using security, this method can be a little tricky because it requires mounting the folder containing the certificate to the ACI. Follow these [instructions](/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
 
    After creating the Azure file share, add the `plc` folder to the file share in the same structure as described. Then go back to the **Deploy to Azure** page. Click `Edit template`, add the following code inside the "container" section:
    ```

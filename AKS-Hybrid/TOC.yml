@@ -319,6 +319,8 @@
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
+    - name: Discover OPC UA Servers with Akri
+      href: aks-edge-howto-akri-opcua.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
   - name: Resources
