@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/16/2022
+ms.date: 12/19/2022
 ---
 
 # Understanding Azure Arc VM management networking on Azure Stack HCI
@@ -68,7 +68,7 @@ VMs deployed using Azure Arc VM management get their network configuration from 
 - **vLAN ID** – The vLAN ID on which the VM traffic is isolated. This is an optional parameter and can be used irrespective of the IP allocation method used.
 - **IP allocation method** – Specifies if the virtual network assigns IP addresses to Azure Arc VMs from addresses allocated through a DHCP server or from a pool of static IPs. The possible options for this parameter are `DHCP` and `Static`.
 
-If the IP allocation method is `static`, the following additional parameters are required:
+If the IP allocation method is `static`, the following additional parameters are relevant:
 
 |Parameter|Description|Required?|Example|
 |---|---|---|---|
@@ -85,7 +85,7 @@ At the time of creating a network interface, you assign either a dynamic or a st
 - Azure Arc VMs are currently not supported with Software Defined Networking (SDN). The Azure Arc Resource Bridge can be deployed on a physical network when the Azure Stack HCI cluster is configured with SDN.
 - Only DHCP IP allocation is supported for the virtual network.
 - Only one virtual network can be created per VM switch.
-- Using the Azure Arc Resource Bridge or using Azure Arc VMs behind a network proxy is not supported.
+- Using Azure Arc VMs behind a network proxy server is not supported; however, using an Arc Resource Bridge behind a network proxy is supported.
 
 ## Next steps
 
