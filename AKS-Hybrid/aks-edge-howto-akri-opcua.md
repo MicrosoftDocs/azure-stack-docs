@@ -221,3 +221,6 @@ A sample anomaly detection web application was created for this end-to-end demo.
 
 4. Delete the OPC UA server deployment by navigating to your container instances and select **Delete** in the Azure portal.
 
+## Next steps
+
+[AKS Edge Essentials overview](aks-edge-overview.md)
