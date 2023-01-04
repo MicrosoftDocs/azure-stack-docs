@@ -98,9 +98,6 @@ Make sure to include the following firewall URLs to your allowlist:
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
 
-> [!NOTE]
-> Using an Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy is not supported.
-
 ## Network proxy requirements
 
  If your network requires the use of a proxy server to connect to the internet, this section describes how to set up Arc VM management of an Arc Resource Bridge with a network proxy.
@@ -108,7 +105,7 @@ Make sure to include the following firewall URLs to your allowlist:
 You need to have access to an Azure Stack HCI cluster and also access to a proxy server for your Arc Resource Bridge.
 
 > [!NOTE]
-> VMs deployed using Arc VM management currently don't support use of a network proxy.
+> Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy is not supported.
 
 ### Proxy server details
 
