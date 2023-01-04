@@ -1,9 +1,9 @@
 ---
 title: Concepts about securing containers in AKS hybrid
-description: Learn some methods you can use to implement security for containers in AKS hybrid.
+description: Learn ways to implement security on containers used to package & deploy applications in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/07/2022
+ms.date: 01/04/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -16,19 +16,21 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities in AKS hybrid. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+This article describes various methods for securing the containers that you use to package and deploy applications and avoid introducing security vulnerabilities in AKS hybrid. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
-Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model. 
+Containers provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+
+Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model.
 
 You can also set up continuous container security by securing the container pipeline, the application, and the container deployment environment. Examples for implementing container security are described in this topic.
 
 ## Secure the images
 
-Ensure that images are hosted on a secure and trusted registry to prevent unauthorized access. The images should have a TLS certificate with a trusted root CA, and the registry should use Role Based Access Control (RBAC) with strong authentication. You should include an image scanning solution when designing CI/CD for the container build and delivery. The image scanning solution helps identify Common Vulnerabilities and Exposures (CVEs) and ensures that exploitable images are not deployed without remediation.
+To prevent unauthorized access, host the images on a secure and trusted registry. The images should have a TLS certificate with a trusted root CA, and the registry should use role-based access control (RBAC) with strong authentication. You should include an image scanning solution when designing CI/CD for the container build and delivery. The image scanning solution helps identify Common Vulnerabilities and Exposures (CVEs) and ensures that exploitable images are not deployed without remediation.
 
-## Hardening the host environment
+## Harden the host environment
 
-An important aspect of container security is the need to harden the security of the systems that your containers are running on, and the way they act during runtime. Container security should focus on the entire stack, including your host and the daemons. You should remove services from the host that are non-critical, and you should not deploy non-compliant containers in the environment. By doing this, access to the host can only occur through the containers and control would be centralized to the container daemon, removing the host from the attack surface. These steps are especially helpful when you use proxy servers to access your containers, which could accidentally bypass your container security controls. 
+An important aspect of container security is the need to harden the security of the systems that your containers are running on, and the way they act during runtime. Container security should focus on the entire stack, including your host and the daemons. You should remove services from the host that are non-critical, and you should not deploy non-compliant containers in the environment. By doing this, access to the host can only occur through the containers and control would be centralized to the container daemon, removing the host from the attack surface. These steps are especially helpful when you use proxy servers to access your containers, which could accidentally bypass your container security controls.
 
 ## Limit container resources
 
@@ -40,11 +42,11 @@ A secret is an object containing sensitive information that may need to be passe
 
 ## Practice isolation
 
-Use isolation and do not use a privileged or root user to run the application in a container. You should avoid running containers in privileged mode because doing so could allow an attacker to easily escalate privileges if the container is compromised. Knowing the UID (Unique Identification Code) and GID (Group Identification Code) of the root user in a container can allow an attacker to access and modify the files written by the root on the host machine. It's also necessary to use the principle of least privileges where an application only has access to the secrets it needs. You can create an application user to run the application process. 
+Use isolation, and don't use a privileged user or root user to run the application in a container. You should avoid running containers in privileged mode because doing so could allow an attacker to easily escalate privileges if the container is compromised. Knowing the UID (Unique Identification Code) and GID (Group Identification Code) of the root user in a container can allow an attacker to access and modify the files written by the root on the host machine. It's also necessary to use the principle of least privileges where an application only has access to the secrets it needs. You can create an application user to run the application process.
 
 ## Deploy runtime security monitoring
 
-Since there's still the chance of getting compromised even after taking precautions against attacks on your infrastructure, it's important to continuously monitor and log the application's behavior to prevent and detect malicious activities. Tools, such as [Prometheus](https://github.com/prometheus/prometheus), provide an effective means to monitor your infrastructure.
+Since there's still the chance of getting compromised even after taking precautions against attacks on your infrastructure, it's important to continuously monitor and log the application's behavior to prevent and detect malicious activities. Tools, such as Prometheus, provide an effective means to monitor your infrastructure.
 
 ## Next steps
 
