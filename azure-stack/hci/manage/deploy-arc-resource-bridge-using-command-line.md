@@ -3,7 +3,7 @@ title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 12/27/2022
+ms.date: 1/4/2023
 ms.author: v-mandhiman
 ms.reviewer: alkohli
 ---
@@ -80,7 +80,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [Deploy Arc Resource Bridge using a network proxy](azure-arc-vm-management-proxy.md). Once completed, return back to this article to set up Arc VM management.
+        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
    
       ### [For static IP address](#tab/for-static-ip-address-1)
 
@@ -181,7 +181,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -221,7 +221,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
