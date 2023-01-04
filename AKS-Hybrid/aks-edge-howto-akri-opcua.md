@@ -8,7 +8,7 @@ ms.date: 01/03/2023
 ms.custom: template-how-to
 ---
 
-# Discover OPC UA Servers with Akri
+# Discover OPC UA servers with Akri
 
 This article describes how you can deploy sample OPC PLC server containers in Azure and discover them by deploying Akri on your AKS Edge cluster. You'll also deploy a sample anomaly detection app that uses the Akri broker pods to subscribe to the OPC UA variable. This Akri configuration can be used to monitor a barometer, CO detector, and more. However, for this example, the OPC UA variable will represent the PLC values for temperature of a thermostat and any value outside the range of 70-80 degrees is an anomaly.
 
