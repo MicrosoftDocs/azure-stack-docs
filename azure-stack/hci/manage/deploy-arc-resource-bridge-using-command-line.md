@@ -179,9 +179,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
-      > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -219,9 +219,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
-      > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
