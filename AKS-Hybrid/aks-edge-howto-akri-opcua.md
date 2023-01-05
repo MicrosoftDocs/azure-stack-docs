@@ -60,7 +60,7 @@ Now, create some OPC UA PLC servers to discover. Instead of starting from scratc
 
    After creating the Azure file share, add the `plc` folder to the file share in the same structure as described. Then go back to the **Deploy to Azure** page. Click **Edit template**, and add the following code inside the `container` section:
    
-   ```json
+   ```
    "volumeMounts": [
                      {
                      "name": "filesharevolume",
@@ -71,7 +71,7 @@ Now, create some OPC UA PLC servers to discover. Instead of starting from scratc
    
    Then add the following code inside the `properties` section (same level as `container`):
    
-   ```json
+   ```
    "volumes": [
                   {
                      "name": "filesharevolume",
@@ -81,7 +81,7 @@ Now, create some OPC UA PLC servers to discover. Instead of starting from scratc
                            "storageAccountKey": "<storageAccKey>"
                      }
                   }
-                  ]
+               ]
    ```
    
    Now the folder `plc` should be mounted to `/app/pki`.
@@ -90,13 +90,13 @@ Now, create some OPC UA PLC servers to discover. Instead of starting from scratc
 
    If using security:
    
-   ```json
+   ```
    "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
    ```
    
    If not using security:
    
-   ```json
+   ```
    "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True --ut', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
    ```
 
