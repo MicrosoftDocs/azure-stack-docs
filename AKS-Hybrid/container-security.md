@@ -16,7 +16,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes various methods for securing the containers that you use to package and deploy applications and avoid introducing security vulnerabilities in AKS hybrid. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+This article describes various methods to secure the containers used to package and deploy applications and avoid introducing security vulnerabilities in AKS hybrid. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
 Containers provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
