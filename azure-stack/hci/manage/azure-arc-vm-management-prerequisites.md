@@ -154,7 +154,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 
 ### Continue setting up Arc VM management
 
-After proxy settings have been applied, use the command line to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).
+After proxy settings have been applied, continue with step 1.b. to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).
 
 ## Next steps
 
