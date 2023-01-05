@@ -27,9 +27,9 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $params = @{
        NodeType = "Linux"
        LinuxIp = "192.168.1.173"
-       outFile = ".\LinuxWorkerNodeConfig.json"
+       outFile = ".\LinuxScaleConfig.json"
    }
-   $workernodeConfig = New-AksEdgeScaleConfig @params
+   $scaleConfig = New-AksEdgeScaleConfig @params
    ```
 
     ![Screenshot showing the creation of config file.](./media/aks-edge/scale-config-file.png)
@@ -41,9 +41,9 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        NodeType = "Linux"
        ControlPlane = $true
        LinuxIp = "192.168.1.173"
-       outFile = ".\LinuxWorkerNodeConfig.json"
+       outFile = ".\LinuxScaleConfig.json"
    }
-   $workernodeConfig = New-AksEdgeScaleConfig @params
+   $scaleConfig = New-AksEdgeScaleConfig @params
    ```
 
 - To scale by adding a Windows-only worker node, specify the `NodeType` as "Windows" and provide a unique IP address for the Windows node:
@@ -52,9 +52,9 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
    $params = @{
        NodeType = "Windows"
        WindowsIp = "192.168.1.174"
-       outFile = ".\WindowsWorkerNodeConfig.json"
+       outFile = ".\WindowsScaleConfig.json"
    }
-   $workernodeConfig = New-AksEdgeScaleConfig @params
+   $scaleConfig = New-AksEdgeScaleConfig @params
    ```
 
 - To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux and Windows nodes as follows:
@@ -64,9 +64,9 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        NodeType = "LinuxAndWindows"
        LinuxIp = "192.168.1.173"
        WindowsIp = "192.168.1.174"
-       outFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+       outFile = ".\LinuxAndWindowsScaleConfig.json"
    }
-   $workernodeConfig = New-AksEdgeScaleConfig @params
+   $scaleConfig = New-AksEdgeScaleConfig @params
    ```
 
 - To add a Linux control plane node and Windows worker node, specify the `NodeType` as "LinuxAndWindows", set the `ControlPlane` flag as `true`, and provide a unique IP address for both the Linux and Windows nodes:
@@ -77,16 +77,16 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
        LinuxIp = "192.168.1.173"
        ControlPlane = $true
        WindowsIp = "192.168.1.174"
-       outFile = ".\LinuxAndWindowsWorkerNodeConfig.json"
+       outFile = ".\LinuxAndWindowsScaleConfig.json"
    }
-   $workernodeConfig = New-AksEdgeScaleConfig @params
+   $scaleConfig = New-AksEdgeScaleConfig @params
    ```
 
-This command returns a JSON string and also stores the JSON content in the **.\ScaleConfig.json** file. This command also exports the necessary data to join a cluster in the JSON format.
+This command returns a JSON string and also stores the JSON content in the **.\*ScaleConfig.json** file. This command also exports the necessary data to join a cluster in the JSON format.
 
 ## 2. Validate the configuration parameters
 
- The **.\ScaleConfig.json** configuration file includes the configurations from the primary machine. Review and update necessary sections providing details relevant to the machine you are scaling to.
+ The **.\*ScaleConfig.json** configuration file includes the configurations from the primary machine. Review and update necessary sections providing details relevant to the machine you are scaling to.
 
 - Verify the `Network.VSwitch.AdapterName` with reference to the secondary machine. If you've created an external switch on your Hyper-V on your secondary machine, you can choose to specify the vswitch details in your **ScaleConfig.json** file. If you do not create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
     > [!NOTE]
