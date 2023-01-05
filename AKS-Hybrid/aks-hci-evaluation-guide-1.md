@@ -1,13 +1,13 @@
 ---
-title: Prepare Azure Virtual Machine for AKS hybrid evaluation
-description: Evaluate AKS hybrid, Step 1 - Prepare an Azure Virtual Machine to use for your AKS hybrid evaluation.
+title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
+description: Evaluate AKS hybrid, Step 1 - To keep costs low, prepare an Azure Virtual Machine to deploy Azure Kubernetes Service on.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
+# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 
@@ -15,9 +15,11 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
+In this quickstart, you'll prepare an Azure Virtual Machine to deploy Azure Kubernetes Service (AKS) on to enable low-cost evaluation of AKS hybrid deployment options (AKS hybrid). The evaluation guide describes how to deploy AKS on Azure Stack HCI.
+
 With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
-In this guide, you'll walk through the steps to stand up an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. 
+In this guide, you'll walk through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options.
 
 At a high level, these steps consist of the following tasks:
 

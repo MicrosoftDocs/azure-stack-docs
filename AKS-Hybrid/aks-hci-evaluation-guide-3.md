@@ -1,13 +1,13 @@
 ---
 title: Explore the AKS hybrid environment
-description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilities in AKS hybrid.
+description: Evaluate AKS hybrid, Step 3 - Deploy a simple Linux app and an end-to-end hybrid solution to explore the AKS hybrid environment.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
+# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 
@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With all key components deployed for your AKS hybrid evaluation, including the management cluster and target clusters, you can now begin to explore some other capabilities of an Azure Kubernetes Service (AKS) deployment. 
+To explore the capabilities of Azure Kubernetes Service hybrid deployments (AKS hybrid), you'll deploy a simple Linux application, expose the application over the internet, and then deploy an end-to-end hybrid solution on your test deployment of Azure Kubernetes Service (AKS).
 
 This section describes some of the key elements. For more information, see [AKS hybrid product documentation](/azure-stack/aks-hci/).
 
