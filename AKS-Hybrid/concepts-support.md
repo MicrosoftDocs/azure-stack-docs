@@ -1,9 +1,9 @@
 ---
 title: Tested resource limits, VM sizes, and regions for AKS hybrid
-description: Tested resource limits, VM sizes, and regions for AKS on Azure Stack HCI and Windows Server.
+description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) hybrid deployment options.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
@@ -17,7 +17,7 @@ ms.custom: references_regions
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides information about tested configurations,  resource limits, VM sizes, and regions for Azure Kubernetes Service hybrid deployment options (AKS hybrid). The tests were conducted using the latest release of AKS on Azure Stack HCI.
+This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service hybrid deployment options (AKS hybrid). The tests were conducted using the latest release of AKS on Azure Stack HCI.
 
 ## Maximum specifications
 
