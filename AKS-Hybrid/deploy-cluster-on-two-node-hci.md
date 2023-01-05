@@ -4,7 +4,7 @@ description: Availability scenarios for Azure Kubernetes Service (AKS) on a two-
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 12/20/2022
+ms.date: 01/05/2023
 ---
 
 # Availability scenarios for Azure Kubernetes Service (AKS) on two-node HCI
@@ -17,7 +17,7 @@ This article describes the architecture for deploying an AKS hybrid cluster on a
 
 Traditional Kubernetes deployments require three physical machines to mitigate a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS hybrid can be deployed on a two-node Azure Stack HCI system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Availability scenarios and their impact on two-node AKS cluster](#availability-scenarios-and-their-impact-on-two-node-aks-cluster).
 
-[ ![Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster.](./media/deploy-cluster-on-two-node-hci/hci-two-node-architecture_highres.png) ](./media/deploy-cluster-on-two-node-hci/hci-two-node-architecture_highres.png#lightbox)<!--12/20. Minor cxns - Windows VM icon - expected from artist.-->
+[ ![Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster.](./media/concepts/hci-two-node-architecture.png) ](./media/concepts/hci-two-node-architecture.png#lightbox)
 
 For more information about architecture, cluster deployment strategies, reliability considerations, and cost optimization for AKS on Azure Stack HCI, see [Azure Kubernetes Service (AKS) baseline architecture](/azure/architecture/example-scenario/hybrid/aks-baseline).
 
