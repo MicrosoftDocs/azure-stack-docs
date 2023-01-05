@@ -128,13 +128,15 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
    
 3. In order for Akri to discover the servers properly, specify the correct discovery URLs when installing Akri. 
    
-   Discovery URLs appear as `opc.tcp://<FQDN>:50000/` and `opc.tcp://<FQDN>:50001/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you'll see the FQDN. Copy and paste the FQDN into your discovery URLs for each server.
+   Discovery URLs appear as `opc.tcp://<FQDN>:50000/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you'll see the FQDN. Copy and paste the FQDN into your discovery URLs for each server.
 
    ![Screenshot showing the container instance FQDN in azure portal](media/aks-edge/akri-opcplc-fqdn.png)
 
 4. Install Akri using Helm. When installing Akri, specify that you want to deploy the OPC UA discovery handlers by setting the helm value `opcua.discovery.enabled=true`. 
    
    In this scenario, specify the `Identifier` and `NamespaceIndex` of the NodeID you want the brokers to monitor. In this case, that's the temperature variable created previously, which has an `Identifier` of `FastUInt1` and `NamespaceIndex` of `2`. 
+
+   Make sure to replace the `opcua.configuration.discoveryDetails.discoveryUrls` with the URLs found from the previous step. 
    
    If using security, uncomment `--set opcua.configuration.mountCertificates='true'`.
     
@@ -149,8 +151,8 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
       --set opcua.configuration.brokerPod.image.tag="latest-dev" `
       --set opcua.configuration.brokerProperties.IDENTIFIER='FastUInt1' `
       --set opcua.configuration.brokerProperties.NAMESPACE_INDEX='2' `
-      --set opcua.configuration.discoveryDetails.discoveryUrls[0]="opc.tcp://<HOST IP or FQDN>:50000/" `
-      --set opcua.configuration.discoveryDetails.discoveryUrls[1]="opc.tcp://<HOST IP or FQDN>:50001/" `
+      --set opcua.configuration.discoveryDetails.discoveryUrls[0]="opc.tcp://<FQDN of 1st container instance>:50000/" `
+      --set opcua.configuration.discoveryDetails.discoveryUrls[1]="opc.tcp://<FQDN of 2nd container instance>:50000/" `
       # --set opcua.configuration.mountCertificates='true'
    ```
        
