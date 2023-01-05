@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 01/04/2023
+ms.date: 01/05/2023
 ms.reviewer: kalkeea
 ms.lastreviewed: 01/04/2023
 ---
