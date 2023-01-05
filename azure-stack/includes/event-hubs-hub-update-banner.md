@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.topic: include
 ms.date: 01/05/2023
 ms.reviewer: kalkeea
-ms.lastreviewed: 01/04/2023
+ms.lastreviewed: 01/05/2023
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
 > [!IMPORTANT]
