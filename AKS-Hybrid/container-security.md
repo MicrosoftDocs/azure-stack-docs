@@ -3,7 +3,7 @@ title: Concepts about securing containers in AKS hybrid
 description: Learn ways to implement security on containers used to package & deploy applications in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/04/2023
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -24,11 +24,11 @@ Containers typically run on an abstracted layer on top of the host operating sys
 
 You can also set up continuous container security by securing the container pipeline, the application, and the container deployment environment. Examples for implementing container security are described in this topic.
 
-## Secure the images
+## Secure images
 
 To prevent unauthorized access, host the images on a secure and trusted registry. The images should have a TLS certificate with a trusted root CA, and the registry should use role-based access control (RBAC) with strong authentication. You should include an image scanning solution when designing CI/CD for the container build and delivery. The image scanning solution helps identify Common Vulnerabilities and Exposures (CVEs) and ensures that exploitable images are not deployed without remediation.
 
-## Harden the host environment
+## Harden host environment
 
 An important aspect of container security is the need to harden the security of the systems that your containers are running on, and the way they act during runtime. Container security should focus on the entire stack, including your host and the daemons. You should remove services from the host that are non-critical, and you should not deploy non-compliant containers in the environment. By doing this, access to the host can only occur through the containers and control would be centralized to the container daemon, removing the host from the attack surface. These steps are especially helpful when you use proxy servers to access your containers, which could accidentally bypass your container security controls.
 
@@ -42,11 +42,11 @@ A secret is an object containing sensitive information that may need to be passe
 
 ## Practice isolation
 
-Use isolation, and don't use a privileged user or root user to run the application in a container. You should avoid running containers in privileged mode because doing so could allow an attacker to easily escalate privileges if the container is compromised. Knowing the UID (Unique Identification Code) and GID (Group Identification Code) of the root user in a container can allow an attacker to access and modify the files written by the root on the host machine. It's also necessary to use the principle of least privileges where an application only has access to the secrets it needs. You can create an application user to run the application process.
+Use isolation, and don't use a privileged user or root user to run the application in a container. Avoid running containers in privileged mode because doing so could allow an attacker to easily escalate privileges if the container is compromised. Knowing the UID (Unique Identification Code) and GID (Group Identification Code) of the root user in a container can allow an attacker to access and modify the files written by the root on the host machine. It's also necessary to use the principle of least privileges where an application only has access to the secrets it needs. You can create an application user to run the application process.
 
 ## Deploy runtime security monitoring
 
-Since there's still the chance of getting compromised even after taking precautions against attacks on your infrastructure, it's important to continuously monitor and log the application's behavior to prevent and detect malicious activities. Tools, such as Prometheus, provide an effective means to monitor your infrastructure.
+Since there's still the chance of getting compromised even after taking precautions against attacks on your infrastructure, it's important to continuously monitor and log the application's behavior to prevent and detect malicious activities. Tools such as [Prometheus](https://github.com/prometheus/prometheus) provide an effective means to monitor your infrastructure.
 
 ## Next steps
 
