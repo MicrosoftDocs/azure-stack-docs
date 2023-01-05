@@ -18,11 +18,9 @@ ms.reviewer: EkeleAsonye
 
 This article describes various methods to secure the containers used to package and deploy applications and avoid introducing security vulnerabilities in AKS hybrid. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 
-Containers provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+Containers provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model.
 
-Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model.
-
-You can also set up continuous container security by securing the container pipeline, the application, and the container deployment environment. Examples for implementing container security are described in this topic.
+You can also set up continuous container security by securing the container pipeline, the application, and the container deployment environment. The following sections describe some recommended practices for implementing container security.
 
 ## Secure images
 
@@ -38,7 +36,7 @@ When a container has been compromised, attackers may attempt to use the underlyi
 
 ## Properly secure secrets
 
-A secret is an object containing sensitive information that may need to be passed between the host and the container - for example, passwords, SSL/TLS certificates, SSH private keys, tokens, connection strings, and other data that shouldn't be transmitted in plain text or stored unencrypted. You should keep all secrets out of the images and mount them through the container orchestration engine or an external secrets manager.
+A *secret* is an object containing sensitive information that may need to be passed between the host and the container - for example, passwords, SSL/TLS certificates, SSH private keys, tokens, connection strings, and other data that shouldn't be transmitted in plain text or stored unencrypted. You should keep all secrets out of the images and mount them through the container orchestration engine or an external secrets manager.
 
 ## Practice isolation
 
