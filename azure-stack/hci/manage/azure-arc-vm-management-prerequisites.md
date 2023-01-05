@@ -100,9 +100,7 @@ Make sure to include the following firewall URLs to your allowlist:
 
 ## Network proxy requirements
 
- If your network requires the use of a proxy server to connect to the internet, this section describes how to set up Arc VM management of an Arc Resource Bridge with a network proxy.
-
-You need to have access to an Azure Stack HCI cluster and also access to a proxy server for your Arc Resource Bridge.
+When setting up Arc VM management, if your network requires the use of a proxy server to connect to the internet, this section describes how to create the configuration files with proxy settings. Running these steps alone will not set up Arc VM management. See detailed steps for [setting up Arc VM management](deploy-arc-resource-bridge-using-command-line.md).
 
 > [!NOTE]
 > Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy is not supported.
