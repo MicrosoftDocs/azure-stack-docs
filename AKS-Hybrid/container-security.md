@@ -38,7 +38,7 @@ When a container has been compromised, attackers may attempt to use the underlyi
 
 ## Properly secure secrets
 
-A secret is an object containing sensitive information that may need to be passed between the host and the container. Some examples of secrets include passwords, SSL/TLS certificates, SSH private keys, tokens, connection strings, and other data that should not be transmitted in plain text or stored unencrypted. You should keep all secrets out of the images and mount them through the container orchestration engine or an external secret manager.
+A secret is an object containing sensitive information that may need to be passed between the host and the container - for example, passwords, SSL/TLS certificates, SSH private keys, tokens, connection strings, and other data that shouldn't be transmitted in plain text or stored unencrypted. You should keep all secrets out of the images and mount them through the container orchestration engine or an external secrets manager.
 
 ## Practice isolation
 
@@ -50,5 +50,5 @@ Since there's still the chance of getting compromised even after taking precauti
 
 ## Next steps
 
-- [Encrypt etcd secrets](encrypt-secrets.md) 
+- [Encrypt etcd secrets](encrypt-secrets.md)
 - [Secure communication with certificates](secure-communication.md)
