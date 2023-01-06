@@ -2,13 +2,13 @@
 title: Update noProxy settings, certificates in Azure Kubernetes Service on AKS hybrid
 description: Learn how to update proxy settings and certificates in Azure Kubernetes Service (AKS) on Azure Stack HCI or AKS on Windows Server.
 ms.topic: how-to
-ms.date: 01/05/2023
+ms.date: 01/06/2023
 ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to update the proxy settings.
+# Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates.
 # Keyword: noProxy proxy settings certificate updates
 
 ---
@@ -49,7 +49,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 <!--Can we subdivide along these lines? 1) Make a noProxy list, 2) Bundle your certificates, 3) Apply proxy updates. Make numbered steps in each section.-->
 <!--Their first step is to make a list of URLs to ecxclude from the proxy server? What URLs might the list include? An example list might be helfpul.-->
 
-Before you update your `noProxy` settings, review the [proxy exclusion table](https://learn.microsoft.com/en-us/azure/aks/hybrid/set-proxy-settings#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy) to make sure you exclude the right URLs for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
+Before you update your `noProxy` settings, review the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy) to make sure you exclude the right URLs for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
 
 Once you review the proxy exclusion table, store the updated noProxy URL list in a PowerShell variable:
 
@@ -57,7 +57,7 @@ Once you review the proxy exclusion table, store the updated noProxy URL list in
 $noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
 ```
 
-You can also update your proxy certificate bundle. To learn more about how to update certificates, read [update certificate bundle for your AKS hyrbid deployment](https://learn.microsoft.com/en-us/azure/aks/hybrid/update-certificate-bundle#certificate-format).
+You can also update your proxy certificate bundle. To learn more about how to update certificates, read [update certificate bundle for your AKS hyrbid deployment](update-certificate-bundle.md#certificate-format).
 
 - Specify the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.<!--1) Link to PEM format info. How to export a public certificate in PEM format? 2) Example of a PEM format file?-->
 
