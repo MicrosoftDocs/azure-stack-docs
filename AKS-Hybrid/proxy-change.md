@@ -17,11 +17,11 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this article, learn how to update the proxy settings of your AKS hybrid deployment. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter and update proxy certificates for the deployment, but you can't change HTTP or HTTPS settings.
+In this article, learn how to update proxy settings and certificates for your deployment in AKS hybrid. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter and update proxy certificates for the deployment, but you can't change HTTP or HTTPS settings.
 
 <!--They configure proxy settings when they create the AKS deployment. Link to the procedure.-->
 
-## Current limitations
+## `noProxy` settings you can update
 
 Before you begin, review current limitations to proxy settings updates in AKS hybrid:<!--Ask about "Current." Are changes planned?-->
 
@@ -45,7 +45,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 * At least one update is available for your AKS deployment. Updates to proxy settings and certificates are applied automatically after updates are applied to an AKS deployment. To check for available updates, run the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
 
-## Update proxy settings (`noProxy`), certificates for AKS deployment
+## Update proxy settings, certificates for AKS deployment
 <!--Can we subdivide along these lines? 1) Make a noProxy list, 2) Bundle your certificates, 3) Apply proxy updates. Make numbered steps in each section.-->
 <!--Their first step is to make a list of URLs to ecxclude from the proxy server? What URLs might the list include? An example list might be helfpul.-->
 
