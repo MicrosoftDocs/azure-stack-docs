@@ -8,7 +8,7 @@ ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
 author: sethmanheim
 
-# Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates.
+# Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates for the proxy server.
 # Keyword: noProxy proxy settings certificate updates
 
 ---
@@ -43,58 +43,71 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 * At least one update is available for your AKS deployment. Updates to proxy settings and certificates are applied automatically after updates are applied to an AKS deployment. To check for available updates, run the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
 
-## Update noProxy settings, certificates for AKS deployment
-<!--Can we subdivide along these lines? 1) Make a noProxy list, 2) Bundle your certificates, 3) Apply proxy updates. Make numbered steps in each section.-->
-<!--Their first step is to make a list of URLs to ecxclude from the proxy server? What URLs might the list include? An example list might be helfpul.-->
+## Step 1: Update noProxy settings=
 
-Before you update your `noProxy` settings, review the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy) to make sure you exclude the right URLs for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
+You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To update the `noProxy` settings, you will store a new exclusion list in a PowerShell variable.
 
-Once you review the proxy exclusion table, store the updated noProxy URL list in a PowerShell variable:
+1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
-```powershell  
-$noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
-```
+   Certain exclusions are required for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
 
-You can also update your proxy certificate bundle. To learn more about how to update certificates, read [update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
+1. Store your updated `noProxy` URL list in a PowerShell variable:
 
-- Specify the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.<!--1) Link to PEM format info. How to export a public certificate in PEM format? 2) Example of a PEM format file?-->
+   ```powershell  
+   $noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
+   ```
 
-- It's important to add the certificates to a single .crt file in this order: leaf certificate > intermediate certificate > root certificate. For example, `<.leaf.crt>`, `<intermediate.crt>`, `<root.crt>`.<!--Are they adding multiple certificates (lines), with this order in each line? See format below.-->
+## Step 2: Create proxy certificate bundle
 
-- The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.
+To update certificates for your proxy server, create a new certificate bundle and then pass the path to the file containing the certificate bundle to a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
 
-Create a single certificate bundle for Linux hosts:
+<!--Removing this temporarily. - To learn more about how to update certificates, read [update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
 
-```bash
-cat [leaf].crt  [intermediate].crt [Root].crt >  [your single cert file].crt
-```
+- Specify the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
 
-Store your changes in a PowerShell variable:
+- It's important to add the certificates to a single .crt file in this order: leaf certificate > intermediate certificate > root certificate. For example, `<.leaf.crt>`, `<intermediate.crt>`, `<root.crt>`.
 
-```powershell
-$certFile ="/../[bundle].crt" # path to the bundled .crt file
-```
+- The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.-->
 
-### Update proxy settings
+1. Create a single .crt file with the bundled certificates for Linux hosts. Use the `concatenate` (`cat`) command with the following format:
 
-Before you update the proxy changes, confirm that your PowerShell variables have the right changes:
+   ```bash
+   cat [leaf].crt  [intermediate].crt  [Root].crt > [bundle].crt
+   ```
 
-```PowerShell
-echo $noProxy
-echo $certFile
-```
+   You must concatenate the certificates in the order of: *leaf certificate* > *intermediate certificate* > *root certificate*. For detailed certificate requirements and an example, see [Update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
 
-To update your proxy settings and proxy certificates both, run the following command:
+   > [!NOTE]
+   > The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.
 
-```PowerShell
-Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
-```
+1. Store the path to your updated certificate bundle in a PowerShell variable:
 
-### Apply updated global proxy settings to your AKS hybrid deployment
+   ```powershell
+   $certFile ="/../[certificate-bundle].crt" # path to the bundled .crt file
+   ```
+
+## Step 3: Update proxy settings
+
+The next step is to use the `Set-AksHciProxySetting` command to update your `noProxy` settings and certificates.
+
+1. Before you update the proxy changes, confirm that your PowerShell variables have the right changes:
+
+   ```PowerShell
+   echo $noProxy
+   echo $certFile
+   ```
+
+1. To update your proxy settings and proxy certificates both, run the following command:
+
+   ```PowerShell
+   Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
+   ```
+
+### Step 4: Apply updated global proxy settings to your AKS hybrid deployment
 
 The updates to your global proxy settings and certificate are applied automatically after you update the AKS deployment.
 
-To apply the proxy updates:  
+To apply the proxy updates:
 
 1. Check whether an update is available for your AKS host management cluster by running the following command:
 
