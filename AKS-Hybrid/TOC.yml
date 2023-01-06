@@ -177,7 +177,7 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
-          - name: Update noProxy settings
+          - name: Update proxy settings, certificates
             href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
