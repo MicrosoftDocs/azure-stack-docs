@@ -9,7 +9,7 @@ ms.reviewer: abha
 author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to update the proxy settings.
-# Keyword: noproxy proxy settings certificate updates
+# Keyword: noProxy proxy settings certificate updates
 
 ---
 
@@ -43,7 +43,7 @@ To update proxy settings for an AKS deployment, you must meet the following prer
 
 * At least one update must be available for your AKS deployment. To check whether an update is available, use the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
 
-## Update proxy settings (noproxy, proxy certificates) for AKS deployment
+## Update proxy settings (`noProxy`), certificates for AKS deployment
 
 <!--Their first step is to make a list of URLs to ecxclude from the proxy server? What URLs might the list include? An example list might be helfpul.-->
 
@@ -110,7 +110,7 @@ To check whether workload cluster updates are available, run the following comma
 Get-AksHciClusterUpdates -name mycluster
 ```
 
-If an update is available (either a Kubernetes version or an operating system (OS) image), update your workload clusters one by one by running `Update-AksHciCluster`. Be aware that the following command also updates the Kubernetes version of your AKS workload cluster.
+If an update is available (either a Kubernetes version or an operating system (OS) image), update each of your workload clusters by running `Update-AksHciCluster`. Be aware that the following command also updates the Kubernetes version of your AKS workload cluster.
 
 To update the Kubernetes version and OS version on a workload cluster, run the following command:
 
