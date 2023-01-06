@@ -59,7 +59,7 @@ You may occasionally need to update `noProxy` settings to exclude a private subn
 
 ## Step 2: Create proxy certificate bundle
 
-To update certificates for your proxy server, create a new certificate bundle and then pass the path to the file containing the certificate bundle to a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
+To update certificates for your proxy server, create a new certificate bundle and then store the path to the file in a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
 
 <!--Removing this temporarily. - To learn more about how to update certificates, read [update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
 
@@ -115,13 +115,13 @@ To apply the proxy updates:
    Get-AksHciUpdates
    ```
 
-1. If an update is available, update your AKS host management cluster by running the following command. This command will apply the proxy changes on your AKS host management cluster.
+1. If an update is available, update your AKS host management cluster by running the following command. This command applies the proxy changes on your AKS host management cluster.
 
    ```powershell  
    Update-AksHci
    ```
 
-2. Update all the workload clusters in your AKS hybrid deployment. Proxy changes won't be applied unless you update your workload clusters.
+2. Update all of the workload clusters in your AKS hybrid deployment. Proxy changes won't be applied unless you update your workload clusters.
 
    1. To check whether workload cluster updates are available, run the following command on each of your AKS workload clusters:
 
