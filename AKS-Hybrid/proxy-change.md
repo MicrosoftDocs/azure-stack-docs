@@ -43,7 +43,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 * At least one update is available for your AKS deployment. Updates to proxy settings and certificates are applied automatically after updates are applied to an AKS deployment. To check for available updates, run the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
 
-## Step 1: Update noProxy settings=
+## Step 1: Update noProxy settings
 
 You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To update the `noProxy` settings, you will store a new exclusion list in a PowerShell variable.
 
