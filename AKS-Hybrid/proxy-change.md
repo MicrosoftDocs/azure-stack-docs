@@ -45,7 +45,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 ## Step 1: Update noProxy settings
 
-You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To update the `noProxy` settings, you will store a new exclusion list in a PowerShell variable.
+You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To update the `noProxy` settings, you'll store a new exclusion list in a PowerShell variable.
 
 1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
@@ -129,7 +129,7 @@ To apply the proxy updates:
       Get-AksHciClusterUpdates -name mycluster
       ```
 
-   1. If an update is available (either a Kubernetes version or an updated OS image), update each of your workload clusters by running the the `Update-AksHciCluster` command.
+   1. If an update is available (either a Kubernetes version or an updated OS image), update each of your workload clusters by running the `Update-AksHciCluster` command.
 
       * To update the Kubernetes version and OS version on a workload cluster, run the following command:
 
