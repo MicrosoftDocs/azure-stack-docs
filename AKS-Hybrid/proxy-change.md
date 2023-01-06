@@ -57,7 +57,7 @@ You may occasionally need to update `noProxy` settings to exclude a private subn
    $noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
    ```
 
-## Step 2: Create proxy certificate bundle
+## Step 2: Create a proxy certificate bundle
 
 To update certificates for your proxy server, create a new certificate bundle and then store the path to the file in a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
 
@@ -103,7 +103,7 @@ The next step is to use the `Set-AksHciProxySetting` command to update your `noP
    Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
    ```
 
-### Step 4: Apply updated global proxy settings to your AKS hybrid deployment
+## Step 4: Apply updated proxy settings to your AKS deployment
 
 The updates to your global proxy settings and certificate are applied automatically after you update the AKS deployment.
 
