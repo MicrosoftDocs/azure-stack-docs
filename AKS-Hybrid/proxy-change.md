@@ -13,7 +13,7 @@ author: sethmanheim
 
 ---
 
-# Update proxy settings in AKS hybrid
+# Update proxy server settings, certificates in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
