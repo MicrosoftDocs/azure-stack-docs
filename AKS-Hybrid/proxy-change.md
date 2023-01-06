@@ -69,6 +69,8 @@ To update certificates for your proxy server, create a new certificate bundle an
 
 - The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.-->
 
+To bundle your updated proxy server certificates:
+
 1. Create a single .crt file with the bundled certificates for Linux hosts. Use the `concatenate` (`cat`) command with the following format:
 
    ```bash
