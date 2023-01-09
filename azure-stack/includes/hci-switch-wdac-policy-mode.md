@@ -23,13 +23,13 @@ ms.reviewer: alkohli
 1. Run the following cmdlet to switch the policy mode:
 
    ```powershell
-   Switch-AsWdacPolicy -Mode <PolicyMode>
+   Enable-AsWdacPolicy -Mode <PolicyMode [Audit | Enforced]>
    ```
    
    For example, to switch the policy mode to audit, run:
 
    ```powershell
-   Switch-AsWdacPolicy -Mode Audit
+   Enable-AsWdacPolicy -Mode Audit
    ```
 
    > [!WARNING]
@@ -48,7 +48,7 @@ ms.reviewer: alkohli
 
    2
 
-   PS C:\temp> Switch-AsWdacPolicy -Mode Audit
+   PS C:\temp> Enable-AsWdacPolicy -Mode Audit
    VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
    a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
 

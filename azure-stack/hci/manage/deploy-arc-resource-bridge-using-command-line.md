@@ -55,7 +55,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    $csv_path="<input-from-admin>"
    $VlanID="<vLAN-ID>" (Optional)
    $VMIP_1="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
-   $VMIP_2="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
+   $VMIP_2="<static IP address for upgrading Resource Bridge VM>" (required only for static IP configurations)   
    $DNSServers="<comma separated list of DNS servers. For example: @("192.168.250.250","192.168.250.255") for a list of DNS servers. Or "192.168.250.250" for a single DNS server>" (required only for static IP configurations)
    $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
@@ -70,7 +70,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | **ControlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
    | **vanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
-   | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
+   | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. VMIP_2 will only be used during an upgrade of the Arc Resource Bridge|
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: <br>- For a list of DNS servers: `@("192.168.250.250","192.168.250.255")`<br>- For a single DNS server: `"192.168.250.250"` |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
@@ -181,7 +181,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -221,7 +221,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#proxy-authentication). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
