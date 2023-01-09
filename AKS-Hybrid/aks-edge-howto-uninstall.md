@@ -105,7 +105,7 @@ If you encounter any issues uninstalling AKS edge, try [downloading this trouble
 
 ## Uninstall Azure CLI
 
-See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows&tabs=azure-powershell#uninstall).
+See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows#uninstall).
 
 ## Next steps
 
