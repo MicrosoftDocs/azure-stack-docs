@@ -2,7 +2,7 @@
 title: Update noProxy settings, certificates in Azure Kubernetes Service on AKS hybrid
 description: Learn how to update proxy settings and certificates in Azure Kubernetes Service (AKS) on Azure Stack HCI or AKS on Windows Server.
 ms.topic: how-to
-ms.date: 01/06/2023
+ms.date: 01/09/2023
 ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
@@ -60,14 +60,6 @@ You may occasionally need to update `noProxy` settings to exclude a private subn
 ## Step 2: Create a proxy certificate bundle
 
 To update certificates for your proxy server, create a new certificate bundle and then store the path to the file in a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
-
-<!--Removing this temporarily. - To learn more about how to update certificates, read [update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
-
-- Specify the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
-
-- It's important to add the certificates to a single .crt file in this order: leaf certificate > intermediate certificate > root certificate. For example, `<.leaf.crt>`, `<intermediate.crt>`, `<root.crt>`.
-
-- The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.-->
 
 To bundle your updated proxy server certificates:
 
