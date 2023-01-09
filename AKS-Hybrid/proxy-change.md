@@ -99,7 +99,7 @@ The next step is to use the `Set-AksHciProxySetting` command to update your `noP
    echo $certFile
    ```
 
-1. To update your proxy settings and proxy certificates both, run the following command:
+1. To update both your proxy settings and proxy certificates, run the following command:
 
    ```PowerShell
    Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
