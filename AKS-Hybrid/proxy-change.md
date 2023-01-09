@@ -31,7 +31,7 @@ Before you begin, review current limitations to proxy settings updates in AKS hy
 
 - You can't configure different proxy settings for a specific node pool or workload cluster. By the same token, you can't update proxy settings for a specific node pool or workload cluster.
 
-- **Updates to proxy settings are only applied after you update your entire AKS deployment.** You must update the AKS host management cluster and all AKS hybrid workload clusters. To check whether an update is available, use the AKS PowerShell module cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
+- Updates to proxy settings are only applied after you update your entire AKS deployment. You must update the AKS host management cluster and all AKS hybrid workload clusters. To check whether an update is available, use the AKS PowerShell module cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
 
 ## Prerequisites
 
