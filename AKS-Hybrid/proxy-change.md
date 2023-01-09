@@ -17,7 +17,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this article, learn how to update proxy settings and certificates for your deployment in AKS hybrid. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter to exclude private subnets (for example, contoso.com) from using the proxy server, and you can update proxy certificates for the deployment. You can't change HTTP or HTTPS settings.
+This article describes how to update proxy settings and certificates for your deployment in AKS hybrid. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter to exclude private subnets (for example, contoso.com) from using the proxy server, and you can update proxy certificates for the deployment. You can't change HTTP or HTTPS settings.
 
 For information about the initial proxy server setup, see [Use proxy server settings in AKS hybrid](set-proxy-settings.md).
 
