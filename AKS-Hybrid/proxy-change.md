@@ -77,7 +77,7 @@ To bundle your updated proxy server certificates:
    cat [leaf].crt  [intermediate].crt  [Root].crt > [bundle].crt
    ```
 
-   You must concatenate the certificates in the order of: *leaf certificate* > *intermediate certificate* > *root certificate*. For detailed certificate requirements and an example, see [Update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
+   You must concatenate the certificates in the order of: **leaf certificate > intermediate certificate > root certificate**. For detailed certificate requirements and an example, see [Update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
 
    > [!NOTE]
    > The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.
