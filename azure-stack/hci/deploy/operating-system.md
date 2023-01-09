@@ -6,12 +6,12 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/16/2022
+ms.date: 09/29/2022
 ---
 
 # Deploy the Azure Stack HCI operating system
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
@@ -34,10 +34,13 @@ For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements,
 
 ## Gather information
 
-To prepare for deployment, you'll need to take note of the server names, domain names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
+To prepare for deployment, you'll need to take note of the server names, domain names, computer account names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
 
 - **Server name:** Get familiar with your organization's naming policies for computers, files, paths, and other resources. If you need to provision several servers, each should have a unique name.
 - **Domain name:** Get familiar with your organization's policies for domain naming and domain joining. You'll be joining the servers to your domain, and you'll need to specify the domain name.
+- **Computer account names:** Servers that you want to add as cluster nodes have computer accounts. These computer accounts need to be moved into their own dedicated organizational unit (OU).
+- **Organizational unit (OU):** If not already done so, create a dedicated OU for your computer accounts. Consult your domain administrator about creating an OU. For detailed information, see [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster.md#verify-the-prerequisites).
+
 - **Static IP addresses:** Azure Stack HCI requires static IP addresses for storage and workload (VM) traffic and doesn't support dynamic IP address assignment through DHCP for this high-speed network. You can use DHCP for the management network adapter unless you're using two in a team, in which case again you need to use static IPs. Consult your network administrator about the IP address you should use for each server in the cluster.
 - **RDMA networking:** There are two types of RDMA protocols: iWarp and RoCE. Note which one your network adapters use, and if RoCE, also note the version (v1 or v2). For RoCE, also note the model of your top-of-rack switch.
 - **VLAN ID:** Note the VLAN ID to be used for the network adapters on the servers, if any. You should be able to obtain this from your network administrator.
@@ -96,7 +99,7 @@ Another option is to install the Azure Stack HCI operating system over the netwo
 
 ### Manual deployment
 
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the server or servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (SConfig) to prepare the server or servers for clustering. To learn more about the tool, see [Configure a Server Core installation with SConfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
 
 To manually install the Azure Stack HCI operating system:
 
@@ -133,11 +136,11 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
-Now you're ready to use the Server Configuration tool (Sconfig) to perform important tasks. To use Sconfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Sconfig tool opens automatically when you log on to the server.
+Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use SConfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you log on to the server.
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the Welcome to Azure Stack HCI window (Sconfig tool), you can perform the following initial configuration tasks:
+From the Welcome to Azure Stack HCI window (SConfig tool), you can perform the following initial configuration tasks:
 
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.
@@ -147,7 +150,7 @@ From the Welcome to Azure Stack HCI window (Sconfig tool), you can perform the f
 
 For more detail, see [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
+After configuring the operating system as needed with SConfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
 
 > [!NOTE]
 > If you're installing Azure Stack HCI on a single server, you must use PowerShell to create the cluster.

@@ -4,12 +4,12 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 10/11/2022
+ms.date: 12/19/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to set up a proxy server and how to use Azure service tags with Microsoft Defender firewall.
 
@@ -171,6 +171,7 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
+- [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
 - [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)

@@ -6,18 +6,6 @@
     href: aks-hybrid-options-overview.md
   - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
-  - name: Evaluation guide
-    items:
-      - name: Introduction
-        href: aks-hci-evaluation-guide.md
-      - name: 1 - Evaluate AKS on Azure Stack HCI
-        href: aks-hci-evaluation-guide-1.md
-      - name: 2a - Deploy with Windows Admin Center
-        href: aks-hci-evaluation-guide-2a.md
-      - name: 2b - Deploy with PowerShell
-        href: aks-hci-evaluation-guide-2b.md
-      - name: 3 - Explore the environment
-        href: aks-hci-evaluation-guide-3.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
   - name: Quotas and resource limits
@@ -33,6 +21,18 @@
 - name: Quickstarts
   expanded: true
   items:
+    - name: Evaluation guide
+      items:
+      - name: Introduction
+        href: aks-hci-evaluation-guide.md
+      - name: 1 - Create an Azure Virtual Machine for AKS deployment
+        href: aks-hci-evaluation-guide-1.md
+      - name: 2a - Deploy with Windows Admin Center
+        href: aks-hci-evaluation-guide-2a.md
+      - name: 2b - Deploy with PowerShell
+        href: aks-hci-evaluation-guide-2b.md
+      - name: 3 - Explore the environment
+        href: aks-hci-evaluation-guide-3.md
     - name: Deploy an AKS cluster
       items:
         - name: Use PowerShell
@@ -73,6 +73,8 @@
   items:
   - name: Clusters and workloads
     href: kubernetes-concepts.md
+  - name: Availability with 2-node HCI cluster
+    href: deploy-cluster-on-two-node-hci.md
   - name: Security
     items:
       - name: Security for AKS hybrid
@@ -103,6 +105,8 @@
     items:
       - name: Pricing details
         href: pricing.md
+      - name: Azure Hybrid Benefit
+        href: azure-hybrid-benefit.md
 - name: How-to guides
   items: 
     - name: Install
@@ -203,6 +207,8 @@
             href: ad-sso.md
           - name: Use Kubernetes RBAC with Azure AD
             href: kubernetes-rbac-azure-ad.md
+          - name: Use Azure RBAC with AKS hybrid clusters (Preview)
+            href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
           - name: Secrets Store CSI Driver configuration
@@ -279,48 +285,50 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS lite hybrid option (preview)
+- name: AKS Edge Essentials (preview)
   items:
   - name: Overview
-    href: aks-lite-overview.md
+    href: aks-edge-overview.md
   - name: Concepts
     items:
-    - name: AKS on Windows key concepts
-      href: aks-lite-concept.md
+    - name: AKS Edge Essentials key concepts
+      href: aks-edge-concept.md
     - name: Deployment options
-      href: aks-lite-deployment-options.md
+      href: aks-edge-deployment-options.md
+    - name: Deployment JSON configuration parameters
+      href: aks-edge-deployment-config-json.md
   - name: How-to
     items:
     - name: Set up machine
-      href: aks-lite-howto-setup-machine.md
-    - name: Single-node deployment
-      href: aks-lite-howto-single-node-deployment.md
-    - name: Multi-node deployment
-      href: aks-lite-howto-multi-node-deployment.md
+      href: aks-edge-howto-setup-machine.md
+    - name: Create single machine deployment
+      href: aks-edge-howto-single-node-deployment.md
+    - name: Create full deployment
+      href: aks-edge-howto-multi-node-deployment.md
     - name: Deploy application
-      href: aks-lite-howto-deploy-app.md
+      href: aks-edge-howto-deploy-app.md
     - name: Scale out deployment
-      href: aks-lite-howto-scale-out.md
+      href: aks-edge-howto-scale-out.md
     - name: Enable metric server
-      href: aks-lite-howto-metric-server.md
+      href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
-      href: aks-lite-howto-connect-to-arc.md
-    - name: Enable Arc services
-      href: aks-lite-howto-enable-arc-services.md
+      href: aks-edge-howto-connect-to-arc.md
+    - name: Add local storage binding
+      href: aks-edge-howto-use-storage-local-path.md
     - name: Additional configuration
-      href: aks-lite-howto-more-configs.md
-    - name: Using GitOps with AKS hybrid options
-      href: aks-lite-howto-use-gitops.md
-    - name: Using SQL Edge with AKS hybrid options
-      href: aks-lite-howto-use-sqledge.md
-    - name: Uninstall AKS on Windows
-      href: aks-lite-howto-uninstall.md
+      href: aks-edge-howto-more-configs.md
+    - name: Use GitOps with AKS Edge Essentials
+      href: aks-edge-howto-use-gitops.md
+    - name: Uninstall AKS Edge Essentials
+      href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: AKS Lite Powershell 
-      href: ./reference/aks-lite-ps/index.md
+    - name: AKS Edge PowerShell 
+      href: ./reference/aks-edge-ps/index.md
+    - name: Release notes and known issues
+      href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
-      href: https://github.com/Azure/AKS-IoT-preview/issues
+      href: https://github.com/Azure/AKS-Edge/issues
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
@@ -377,6 +385,8 @@
     href: https://aka.ms/AKS-hybrid-Releasenotes
   - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
+  - name: AKS hybrid Azure CLI
+    xref: /cli/azure/hybridaks?view=azure-cli-latest
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing

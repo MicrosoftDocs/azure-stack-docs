@@ -36,7 +36,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
-|Networks|Management & compute|Storage|BMC|
+|Networks|Management and compute|Storage|BMC|
 |--|--|--|--|
 |Link speed|At least 1 GBps. 10 GBps recommended|At least 10 GBps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
@@ -50,7 +50,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 
 :::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
 
-### Management & compute intent
+### Management and compute intent
 
 - Intent Type: Management and Compute
 - Intent Mode: Cluster mode
@@ -70,7 +70,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
     - 10.71.1.0/24 for storage network 1
     - 10.71.2.0/24 for storage network 2
 
-For more information, see [Deploy host networking](/deploy/network-atc.md).
+For more information, see [Deploy host networking](../deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 
@@ -94,7 +94,7 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if required. In addition, if the default subnet defined by ATC is not usable, you are responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 

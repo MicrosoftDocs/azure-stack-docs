@@ -40,7 +40,7 @@ As illustrate in the diagram below, this pattern has the following physical netw
 
 :::image type="content" source="media/two-node-switchless-single-switch/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switchless-single-switch/physical-components-layout.png":::
 
-|Networks|Management & compute|Storage|BMC|
+|Networks|Management and compute|Storage|BMC|
 |--|--|--|--|
 |Link speed|At least 1 Gbps. 10 Gbps recommended|At least 10 Gbps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
@@ -52,7 +52,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 
 :::image type="content" source="media/two-node-switchless-single-switch/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switchless-single-switch/network-atc.png":::
 
-### Management & compute intent
+### Management and compute intent
 
 - Intent Type: Management and compute
 - Intent Mode: Cluster mode
@@ -72,7 +72,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
     - 10.71.1.0/24 for storage network 1
     - 10.71.2.0/24 for storage network 2
 
-For more information, see [Deploy host networking](/deploy/network-atc.md).
+For more information, see [Deploy host networking](../deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 
@@ -96,7 +96,7 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate on different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnets defined by Network ATC (10.71.1.0/24 and 10.71.2.0/24) aren't usable, you're responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 

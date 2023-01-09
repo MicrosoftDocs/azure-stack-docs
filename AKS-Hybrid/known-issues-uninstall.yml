@@ -2,23 +2,30 @@
 metadata:
   title: Troubleshoot issues when uninstalling AKS hybrid.
   description: Get help to troubleshoot issues and errors when uninstalling AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/21/2022
 
 title: Fix known issues and errors when uninstalling AKS hybrid
 summary: |
+  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server** 
   Use this topic to help you troubleshoot and resolve issues when uninstalling AKS hybrid.
   
 sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Uninstall-AksHCI is not cleaning up cluster resources ('ownergroup ca-<GUID>').
+          Uninstall-AksHCI does not clean up cluster resources ('ownergroup ca-<GUID>')
 
         answer: | 
           Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. 
           
-          To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
+          To fix this issue, ensure that the user performing the installation has **Full Control** permissions to create/modify/remove Active Directory objects in the Active Directory container in which the server and service objects are created.
       - question: | 
-          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
+          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'
 
         answer: | 
           If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays this error, you should ignore it for now as this issue will be fixed.
@@ -39,7 +46,7 @@ sections:
           3. Add the node back to the cluster.
           4. Run `Add-AksHciNode` to register the node with CloudAgent.
       - question: | 
-          Running Remove-AksHciCluster results in the error: 'Error: unable to delete group clustergroup-spdb:...'.
+          Running Remove-AksHciCluster results in the error: 'Error: unable to delete group clustergroup-spdb:...'
 
         answer: | 
           When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the following error occurs because there may be a deadlock:
@@ -48,7 +55,7 @@ sections:
           
           To resolve this issue, restart CloudAgent. 
       - question: | 
-          When using kubectl to delete a node, the associated VM might not be deleted.
+          When using kubectl to delete a node, the associated VM might not be deleted
 
         answer: | 
           You'll see this issue if you follow these steps:
@@ -74,14 +81,14 @@ sections:
           This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
           
       - question: | 
-          Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'.
+          Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'
 
         answer: | 
           You may encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md).
           
           Check to make sure you have used the correct information for removing the cluster.
       - question: | 
-          Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed.
+          Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
 
         answer: | 
           If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. 
@@ -93,5 +100,4 @@ additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
-  
     

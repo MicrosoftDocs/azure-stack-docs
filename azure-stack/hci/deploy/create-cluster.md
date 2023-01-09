@@ -3,14 +3,14 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 12/01/2022
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
@@ -43,19 +43,30 @@ After you're done creating a cluster in the **Create Cluster** wizard, complete 
 Before you run the **Create Cluster** wizard in Windows Admin Center, you must complete the following prerequisites.
 
 > [!WARNING]
-> Running the wizard prior to completing the prerequisites can potentially result in a failure.
+> Running the wizard before completing the prerequisites can result in a failure to create the cluster.
 
 - Review the hardware and related requirements in [System requirements](../concepts/system-requirements.md).  
-- Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
+
+- Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Especially review the [Network Reference patterns](../plan/network-patterns-overview.md), which provide example network designs. Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
+
 - Install the Azure Stack HCI operating system on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
+
 - Obtain an account that's a member of the local Administrators group on each server.
-- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead set up Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
+
+- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead deploy Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
+
 - Ensure all servers are in the same time zone as your local domain controller.
-- Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
+
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+
+- Ensure that Windows Admin Center and your domain controller are not installed on the same system. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
+
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
-- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+
 - If you're using an integrated system from a Microsoft hardware partner, install the latest version of vendor extensions on Windows Admin Center to help keep the integrated hardware and firmware up to date. To install them, open Windows Admin Center and click **Settings** (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
+
 - For stretched clusters, set up your two sites beforehand in Active Directory. Alternatively, the wizard can set them up for you too. For more information about stretched clusters, see the [Stretched clusters overview](../concepts/stretched-clusters.md).
 
 ## Start the Create Cluster wizard
@@ -85,26 +96,25 @@ To start the Create Cluster wizard in Windows Admin Center:
 Step 1 of the wizard walks you through making sure all prerequisites are met, adding the server nodes, installing needed features, and then restarting each server if needed.
 
 1. Review **1.1 Check the prerequisites** listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
-1. On **1.2 Add servers**, enter your account username and password, then click **Next**. This account must be a member of the local Administrators group on each server.
-1. Enter the name of the first server you want to add, then click **Add**.
-1. Repeat Step 3 for each server that will be part of the cluster. When finished, click **Next**.
+1. On **1.2 Add servers**, enter your account username using the format **domain\username**. Enter your password, then click **Next**. This account must be a member of the local Administrators group on each server.
+1. Enter the name of the first server you want to add, then click **Add**. When you add servers, make sure to use a fully qualified domain name.
+1. Repeat Step 3 for each server that will be part of the cluster. When you're finished, select **Next**.
 1. If needed, on **1.3 Join a domain​**, specify the domain to join the servers to and the account to use. You can optionally rename the servers if you want. Then click **Next**.
 1. On **1.4 Install features**, review and add features as needed. When finished, click **Next**.
 
-    The wizard installs the following required features for you:
+    The wizard lists and installs required features for you, including the following options:
 
-    - BitLocker
+    - Data Deduplication
+    - Hyper-V
+    - BitLocker Drive Encryption
     - Data Center Bridging (for RoCEv2 network adapters)
     - Failover Clustering
-    - File Server
-    - FS-Data-Deduplication module
-    - Hyper-V
-    - RSAT-AD-PowerShell module
-    - NetworkATC
-    - Storage Replica (installed for stretched clusters)
+    - Network ATC
+    - Active Directory module for Windows PowerShell
+    - Hyper-V module for Windows PowerShell
 
 1. On **1.5 Install updates**, click **Install updates** as needed to install any operating system updates. When complete, click **Next**.
-1. On **1.6 Install hardware updates**, click **Get updates** as needed to get available vendor hardware updates.
+1. On **1.6 Install hardware updates**, click **Get updates** as needed to get available vendor hardware updates. If you don't install the updates now, we recommend manually installing the latest networking drivers before continuing. Updated drivers are required if you want to use Network ATC to configure host networking.
 
     > [!NOTE]
     > Some extensions require extra configuration on the servers or your network, such as configuring the baseboard management controller (BMC). Consult your vendor's documentation for details.
@@ -144,7 +154,12 @@ This is the recommended option for configuring host networking. For more informa
     - For **Network adapters**, select an adapter from the dropdown list.
     - (Optional) Click **Select another adapter for this traffic** if needed.
     
-    For more information and examples about network intents, see [Example intents](network-atc.md#example-intents) in the [Deploy host networking with Network ATC](network-atc.md) article.
+    For recommended intent configurations, see the network reference pattern that matches your deployment:
+
+    - [Storage switchless, single switch](../plan/two-node-switchless-single-switch.md#network-atc-intents)
+    - [Storage switchless, two switches](../plan/two-node-switchless-two-switches.md#network-atc-intents)
+    - [Storage switched, non-converged](../plan/two-node-switched-non-converged.md#network-atc-intents)
+    - [Storage switched, fully converged](../plan/two-node-switched-converged.md#network-atc-intents)
     
 1.  (Optional) After an intent is added, select **Customize network settings** to modify its network settings. When finished, select **Save**.
 
@@ -155,7 +170,7 @@ This is the recommended option for configuring host networking. For more informa
 1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following or use the default values (recommended):
     - Subnet mask/CIDR
     - VLAN ID
-    - IP address
+    - IP address (this is usually on a private subnet such as 10.71.1.x and 10.71.2.x) 
 
     :::image type="content" source="media/cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Provide network details" lightbox="media/cluster/create-cluster-atc-provide-network.png":::
 
@@ -248,7 +263,7 @@ Follow these steps to manually configure host networking.
 
 ## Step 3: Clustering
 
-Step 3 of the wizard makes sure everything thus far has been set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
+Step 3 of the wizard makes sure everything thus far is set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
 
 1. On **3.1 Create the cluster**, specify a unique name for the cluster.
 
@@ -256,7 +271,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     - Specify one or more static addresses. The IP address must be entered in the following format: IP address/current subnet length. For example: 10.0.0.200/24.
     - Assign address dynamically with DHCP.
 
-1. When finished, select **Create cluster**. This can take a while to complete.
+1. When finished, select **Create cluster**. This can take a while to complete. If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
 
     > [!NOTE]
     > The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
@@ -341,7 +356,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 - Clean up any VHD mount points that the wizard created.
 
-- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.
+- Ensure you have at least 50-100GB of free space on your Hyper-V hosts.
 
 ## Next steps
 

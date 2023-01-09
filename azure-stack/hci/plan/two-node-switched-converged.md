@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 12/02/2022
 ---
 
 # Review two-node storage switched, fully converged deployment network reference pattern for Azure Stack HCI
@@ -34,12 +34,12 @@ As described in the diagram below, this pattern has the following physical netwo
 
 - Two teamed network cards handle the management, compute, and RDMA storage traffic connected to the TOR switches. Each NIC is connected to a different TOR switch. SMB multichannel capability provides path aggregation and fault tolerance.
 
-- As an option, single-node deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
+- As an option, deployments can include a BMC card to enable remote management of the environment. Some solutions might use a headless configuration without a BMC card for security purposes.
 
 :::image type="content" source="media/two-node-switched-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switched-converged/physical-components-layout.png":::
 
-|Networks|Management, compute, storage|Storage|BMC|
-|--|--|--|--|
+|Networks|Management, compute, storage|BMC|
+|--|--|--|
 |Link speed|At 10 Gbps|Check with hardware manufacturer|
 |Interface type|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|One port|
@@ -64,7 +64,7 @@ As described in the diagram below, this pattern has the following physical netwo
 - PA VLAN and vNICs: Network ATC is transparent to PA vNICs and VLAN
 - Compute VLANs and vNICs: Network ATC is transparent to compute VM vNICs and VLANs
 
-For more information, see [Deploy host networking](/deploy/network-atc.md).
+For more information, see [Deploy host networking](../deploy/network-atc.md).
 
 Follow these steps to create network intents for this reference pattern:
 
@@ -87,7 +87,7 @@ The storage intent-based traffic in this pattern shares the physical network ada
 
 The storage network operates in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 

@@ -30,17 +30,3 @@ ms.lastreviewed: 04/19/2022
 | Arc For Servers | *.servicebus.windows.net | 443  | For Windows Admin Center and SSH scenarios |
 | Arc For Servers | *.waconazure.com   | 443  | For Windows Admin Center connectivity   |
 | Arc For Servers | *.blob.core.windows.net | 443  | For download source for Azure Arc-enabled servers extensions  |
-| Arc Resource Bridge | mcr.microsoft.com  | 443  | Used for official Microsoft artifacts such as container images |
-| Arc Resource Bridge | guestnotificationservice.azure.com     | 443  | Used for guest notification operations  |
-| Arc Resource Bridge | ecpacr.azurecr.io  | 443  | Used to download Resource bridge (appliance) container images    |
-| Arc Resource Bridge | azurearcfork8sdev.azurecr.io | 443  | Used to download Azure Arc for Kubernetes container images  |
-| Arc Resource Bridge | adhs.events.data.microsoft.com | 443  | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which would mean any Kubernetes control plane |
-| Arc Resource Bridge | v20.events.data.microsoft.com  | 443  | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host  |
-| Arc Resource Bridge | *.his.arc.azure.com   | 443  | Used for identity and access control |
-| Arc Resource Bridge | *.dp.kubernetesconfiguration.azure.com | 443  | Used for Azure Arc configuration  |
-| Arc Resource Bridge | *.servicebus.windows.net               | 443  | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall  |
-| Arc Resource Bridge | *.dp.prod.appliances.azure.com  | 443  | Used for data plane operations for Resource bridge (appliance)  |
-| Arc Resource Bridge | *.blob.core.windows.net | 443  | Used to download Resource bridge (appliance) images  |
-| Arc Resource Bridge | *.dl.delivery.mp.microsoft.com | 443  | Used to download Resource bridge (appliance) images   |
-| Arc Resource Bridge | *.do.dsp.mp.microsoft.com | 443  | Used to download Resource bridge (appliance) images  |
-| Arc Resource Bridge | *.pypi.org  | 443  | Used to validate Kubernetes and Python versions |
