@@ -56,7 +56,7 @@ You'll need to have the following resources in place in your Azure Stack Hub ins
       - [Git](https://git-scm.com/downloads)
       - [Docker](https://docs.docker.com/get-docker/)
       - [Visual Studio Code](https://code.visualstudio.com/)
-      - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) for Visual Studio Code
+      - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) for Visual Studio Code
       - [Python Extension Pack](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack) for Visual Studio Code
 
 ## Register an IoT Edge device
