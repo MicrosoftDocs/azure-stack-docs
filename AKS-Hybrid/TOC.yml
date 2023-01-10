@@ -386,7 +386,7 @@
   - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
   - name: AKS hybrid Azure CLI
-    xref: /cli/azure/hybridaks?view=azure-cli-latest
+    xref: https://learn.microsoft.com/cli/azure/hybridaks
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
