@@ -33,7 +33,7 @@ kubectl get nodes
 
 The status of the nodes should look similar to the following output.
 
-```shell
+```Output
 NAME              STATUS   ROLES    AGE   VERSION
 moc-l2tlqojhk2d   Ready    master   46h   v1.19.7
 moc-l8h8i6lxk1h   Ready    <none>   46h   v1.19.7
