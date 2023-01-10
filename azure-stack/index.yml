@@ -51,11 +51,11 @@ productDirectory:
     imageSrc: media/index/kubernetes-services.svg
     links:
       - url: /azure/aks/hybrid/overview
-        text: AKS on Azure Stack HCI overview  
+        text: AKS hybrid overview  
       - url: /azure/aks/hybrid/system-requirements
-        text: AKS on HCI System Requirements                
+        text: AKS hybrid system requirements                
       - url: /azure/aks/hybrid/aks-hci-evaluation-guide
-        text: AKS on HCI evaluation guide 
+        text: AKS hybrid evaluation guide 
       - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product information and pricing
   - title: Azure Stack Hub 
