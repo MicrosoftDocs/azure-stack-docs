@@ -1,71 +1,143 @@
 ---
-title: Update noProxy settings in Azure Kubernetes Service on AKS hybrid
-description: Learn how to update noProxy settings in Azure Kubernetes Service (AKS) on Azure Stack HCI or AKS on Windows Server.
+title: Update noProxy settings, certificates in Azure Kubernetes Service on AKS hybrid
+description: Learn how to update proxy settings and certificates in Azure Kubernetes Service (AKS) on Azure Stack HCI or AKS on Windows Server.
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 01/09/2023
 ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to update the NoProxy settings.
-# Keyword: noproxy proxy settings
+# Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates for the proxy server.
+# Keyword: noProxy proxy settings certificate updates
 
 ---
 
-# Update noProxy settings in AKS hybrid
+# Update proxy server settings, certificates in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-If you need to update the **noProxy** settings of your Azure Kubernetes Service (AKS) deployment in AKS hybrid, you can walk through the steps in this article to add URLs to your **noProxy** list after you've deployed your AKS workload clusters.
+This article describes how to update proxy settings and certificates for your deployment in AKS hybrid. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter to exclude private subnets (for example, contoso.com) from using the proxy server, and you can update proxy certificates for the deployment. You can't change HTTP or HTTPS settings.
 
-## Limitations and other details
+For information about the initial proxy server setup, see [Use proxy server settings in AKS hybrid](set-proxy-settings.md).
 
-The following scenarios are **not** supported:
-- Different proxy configurations per node pool/workload cluster.
-- Updating HTTP and HTTPs settings after cluster creation.
-- Updating proxy certificate after cluster creation.
+## Proxy settings you can update
+
+Before you begin, review current limitations to proxy settings updates in AKS hybrid:
+
+- AKS hybrid supports one global proxy configuration per AKS hybrid deployment. When you update the proxy settings, they're updated for the entire AKS hybrid deployment.
+
+- You can only update `noProxy` settings, which are used to exclude a private subnet from using the proxy server, and proxy certificates. HTTP and HTTPs proxy settings can't be updated.
+
+- You can't configure different proxy settings for a specific node pool or workload cluster. By the same token, you can't update proxy settings for a specific node pool or workload cluster.
+
+- Updates to proxy settings are only applied after you update your entire AKS deployment. You must update the AKS host management cluster and all AKS hybrid workload clusters. To check whether an update is available, use the AKS PowerShell module cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
 
 ## Prerequisites
 
-* AKS deployment running the May build.<!--Build ID is too general - 2022? Link to build release notes?-->
-* Latest version of the AksHci PowerShell module. For more information, see [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
-* At least one update available for your workload clusters. You can check if there's an update available using the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
+Before you update proxy settings for an AKS deployment, you must meet the following prerequisites:
 
-## Add URLs to the proxy exclusion list post deployment
+* Your AKS deployment is running the [October 2022 update](https://github.com/Azure/aks-hybrid/releases/tag/AKS-hybrid-2210) or later.
 
-You can use this scenario to change the proxy exclusion list if you have an update available for your Azure Stack HCI and Windows Server management cluster or target clusters.
+* The most recent version of the AksHci PowerShell module is installed. For more information, see [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 
-1. Update proxy settings by using the below command:
+* At least one update is available for your AKS deployment. Updates to proxy settings and certificates are applied automatically after updates are applied to an AKS deployment. To check for available updates, run the [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates) command in the AksHci PowerShell module.
 
-    ```powershell  
-    $noProxy = ".contoso.com"
-    Set-AksHciProxySetting -noProxy $noProxy 
-    ```
+## Step 1: Create a new noProxy exclusion list
 
-2. Check if a management cluster update is possible by running the below command:
+You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To prepare to update the `noProxy` settings, store a new exclusion list in a PowerShell variable.
 
-    ```powershell  
-    Get-AksHciUpdates
-    ```
+1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy). For more information, see [Exclusion list for excluding private subnets from being sent to the proxy](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
-    If an update is available, update the management cluster by running `Update-AksHci`. If an update isn't available, skip this step and proceed to the next step.
+   Certain exclusions are required for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
 
-    ```powershell  
-    Update-AksHci
-    ```
-   
-3. Check if there are workload cluster updates available by running the below command:
+1. Store your updated `noProxy` URL list in a PowerShell variable:
 
-    ```powershell  
-    Get-AksHciClusterUpdates -name mycluster
-    ```
+   ```powershell  
+   $noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
+   ```
 
-    If an update is available (either Kubernetes version or operating system (OS) image), update all of the workload clusters one-by-one by running `Update-AksHciCluster`.
-    
-    ```powershell  
-    Update-AksHciCluster -name cluster-1
-    ```
+## Step 2: Create a proxy certificate bundle
+
+To update certificates for your proxy server, create a new certificate bundle and then store the path to the file in a PowerShell variable. You'll bundle the certificates in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
+
+To bundle your updated proxy server certificates:
+
+1. Create a single .crt file with the bundled certificates for Linux hosts. Use the `concatenate` (`cat`) command with the following format:
+
+   ```bash
+   cat [leaf].crt  [intermediate].crt  [Root].crt > [bundle].crt
+   ```
+
+   You must concatenate the certificates in the order of: **leaf certificate > intermediate certificate > root certificate**. For detailed certificate requirements and an example, see [Update certificate bundle for your AKS hybrid deployment](update-certificate-bundle.md#certificate-format).
+
+   > [!NOTE]
+   > The contents of the certificate file aren't validated. Check carefully to ensure the file contains the right certificates and is in the correct format.
+
+1. Store the path to your updated certificate bundle in a PowerShell variable:
+
+   ```powershell
+   $certFile ="/../[certificate-bundle].crt" # path to the bundled .crt file
+   ```
+
+## Step 3: Update proxy settings
+
+The next step is to use the `Set-AksHciProxySetting` command to update your `noProxy` settings and certificates.
+
+1. Before you update the proxy settings and certificates, confirm that your PowerShell variables have the right changes:
+
+   ```PowerShell
+   echo $noProxy
+   echo $certFile
+   ```
+
+1. To update both your proxy settings and proxy certificates, run the following command:
+
+   ```PowerShell
+   Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
+   ```
+
+## Step 4: Apply updated proxy settings to your AKS deployment
+
+The updates to your global proxy settings and certificate are applied automatically after you update the AKS deployment.
+
+To apply the proxy updates:
+
+1. Check whether an update is available for your AKS host management cluster by running the following command:
+
+   ```powershell  
+   Get-AksHciUpdates
+   ```
+
+1. If an update is available, update your AKS host management cluster by running the following command. This command applies the proxy changes on your AKS host management cluster.
+
+   ```powershell  
+   Update-AksHci
+   ```
+
+2. Update all of the workload clusters in your AKS hybrid deployment. Proxy changes won't be applied unless you update your workload clusters.
+
+   1. To check whether workload cluster updates are available, run the following command on each of your AKS workload clusters:
+
+      ```powershell  
+      Get-AksHciClusterUpdates -name mycluster
+      ```
+
+   1. If an update is available (either a Kubernetes version or an updated OS image), update each of your workload clusters by running the `Update-AksHciCluster` command.
+
+      * To update the Kubernetes version and OS version on a workload cluster, run the following command:
+
+        ```powershell  
+        Update-AksHciCluster -name mycluster
+        ```
+
+      * To update the OS without updating the Kubernetes version, include the  `-operatingSystem` parameter:
+
+        ```powershell  
+        Update-AksHciCluster -name mycluster -operatingSystem
+        ```
+
+        If an OS image-only update isn't available for your workload cluster, you won't be able to apply the proxy changes unless you update the Kubernetes version.
 
 ## Next steps
 
