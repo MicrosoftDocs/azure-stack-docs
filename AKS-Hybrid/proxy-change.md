@@ -45,7 +45,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 ## Step 1: Create a new noProxy exclusion list
 
-You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To update the `noProxy` settings, you can store a new exclusion list in a PowerShell variable.
+You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To prepare to update the `noProxy` settings, store a new exclusion list in a PowerShell variable.
 
 1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
@@ -84,7 +84,7 @@ To bundle your updated proxy server certificates:
 
 The next step is to use the `Set-AksHciProxySetting` command to update your `noProxy` settings and certificates.
 
-1. Before you update the proxy changes, confirm that your PowerShell variables have the right changes:
+1. Before you update the proxy settings and certificates, confirm that your PowerShell variables have the right changes:
 
    ```PowerShell
    echo $noProxy
