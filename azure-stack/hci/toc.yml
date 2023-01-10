@@ -288,6 +288,10 @@
         href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
+    - name: Troubleshoot SDN
+      items:
+      - name: Collect SDN logs
+        href: manage/sdn-log-collection.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
