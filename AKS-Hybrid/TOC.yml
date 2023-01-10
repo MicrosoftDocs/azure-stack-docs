@@ -165,6 +165,8 @@
               href: restart-cluster.md
             - name: Stop and start an AKS cluster
               href: stop-start-cluster.md
+            - name: Restore AKS cluster from disaster
+              href: restore-aks-cluster.md
             - name: Back up or restore workload clusters using Velero
               href: backup-workload-cluster.md
     - name: Use Azure Arc Kubernetes

@@ -3,9 +3,9 @@ title: Node auto-repair in AKS hybrid
 description: Learn about automatic node repair of Windows and Linux nodes in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 01/10/2023
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 01/10/2023
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to automatically repair unhealthy nodes in order to avoid service disruptions.
 # Keyword: unhealthy nodes service disruptions node repair auto-repair
@@ -22,8 +22,8 @@ To help minimize service disruptions for clusters, AKS hybrid continuously monit
 
 AKS hybrid uses the following rules to determine if a node is unhealthy and needs repair:
 
-- The node reports a **NotReady** status on consecutive checks. 
-- The node doesn't report any status within a couple of minutes.
+- The node reports a **NotReady** status on consecutive checks.
+- The node doesn't report any status within 20-30 minutes.
 
 You can manually check the health state of your nodes with `kubectl`, as shown below:
 
@@ -45,7 +45,7 @@ moc-wvt025q406z   Ready    <none>   47h   v1.19.7
 
 ## How automatic repair works
 
-If AKS hybrid identifies an unhealthy node that remains unhealthy for more than a couple of minutes, AKS hybrid takes the following actions:<!--In other concept discussions, the workings of AKS have been described as "AKS does this" instead of repeating "AKS hybrid" each time. Is that appropriate here?-->
+If AKS hybrid identifies an unhealthy node that remains unhealthy for more than a couple of minutes, AKS hybrid takes the following actions:
 
 1. Reboot the node.
 2. If the reboot is unsuccessful, reimage the node.
