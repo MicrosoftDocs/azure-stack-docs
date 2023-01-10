@@ -2,9 +2,9 @@
 title: Process for restoring AKS hybrid cluster from a disaster
 author: baziwane
 ms.topic: how-to
-ms.date: 11/2/2022
+ms.date: 01/10/2023
 ms.author: rbaziwane 
-ms.lastreviewed: 11/02/2022
+ms.lastreviewed: 01/10/2023
 ms.reviewer: SethM
 # Intent: As an IT Pro, I need to learn how to restore AKS hybrid following a disaster.
 # Keyword: Disaster Recovery
@@ -38,18 +38,18 @@ Prepare the cold standby in advance of a disaster by creating a management clust
 
 - Configure required storage 
 
-  - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/container-storage-interface-files) 
+  - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/container-storage-interface-files) 
 
-  - For Local Storage: [Use the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk) 
+  - For Local Storage: [Use the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk) 
 
-  - Workload cluster backups are available: [How to create a backup of a Kubernetes workload cluster](https://learn.microsoft.com/en-us/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup) 
+  - Workload cluster backups are available: [How to create a backup of a Kubernetes workload cluster](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup) 
 
-- An AKS (management cluster) is installed on new hardware OR you can install a new management cluster on new hardware using steps 1-5 of this documentation:  [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/kubernetes-walkthrough-powershell)  
+- An AKS (management cluster) is installed on new hardware OR you can install a new management cluster on new hardware using steps 1-5 of this documentation:  [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/kubernetes-walkthrough-powershell)  
 - An empty workload cluster is required to restore the backups 
 
 #### Instructions:  
 
-- [How to restore a workload cluster from a backup](https://learn.microsoft.com/en-us/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster) 
+- [How to restore a workload cluster from a backup](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster) 
 
 ## Recovering from management cluster corruption
 
@@ -57,19 +57,19 @@ Recovering from a management cluster corruption requires uninstalling AKS and re
 
 ####  Prerequisites:  
 
-- Workload cluster backups: [How to create a backup of a Kubernetes workload cluster](https://learn.microsoft.com/en-us/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup) 
+- Workload cluster backups: [How to create a backup of a Kubernetes workload cluster](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup) 
 
 - Backup of AKS configuration for previous networking, storage, and cluster settings. Cluster settings include sizes and counts of control plane, load balancer and worker node VMs. For example, if your old cluster had 3 `Standard_A2_V2` control plane VMs, you would want to create 3 control plane VMs in the new environment. 
 
 #### Instructions: 
 
-- Uninstall AKS: [Uninstall-AksHci for AKS on Azure Stack HCI and Windows Server - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/reference/ps/uninstall-akshci)  
-- Install a new AKS management cluster using steps 1-5 of this documentation:  [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/kubernetes-walkthrough-powershell) 
+- Uninstall AKS: [Uninstall-AksHci for AKS on Azure Stack HCI and Windows Server - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/reference/ps/uninstall-akshci)  
+- Install a new AKS management cluster using steps 1-5 of this documentation:  [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/kubernetes-walkthrough-powershell) 
 - Create the workload cluster with required node pools using step 6 in the above documentation. You need a separate workload cluster for each workload cluster you are restoring from backup. 
-- You can configure multiple control plane VMs and load balancer VMs during workload cluster creation using this documentation: [New-AksHciCluster for AKS on Azure Stack HCI and Windows Server - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/reference/ps/new-akshcicluster) 
+- You can configure multiple control plane VMs and load balancer VMs during workload cluster creation using this documentation: [New-AksHciCluster for AKS on Azure Stack HCI and Windows Server - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/reference/ps/new-akshcicluster) 
 - Configure required storage 
-  - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/container-storage-interface-files) 
-  - For Local Storage: [Use the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk)
+  - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/container-storage-interface-files) 
+  - For Local Storage: [Use the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk)
 - Restore all workload clusters from backup: How to restore a workload cluster from a backup 
 
 ## Frequently Asked Questions
