@@ -107,3 +107,8 @@ To back up the workload cluster configuration, open a PowerShell terminal and ru
 ``` PowerShell 
 Get-AksHciCluster -name <cluster name> | ConvertTo-Json 
 ```
+
+## Next steps
+
+- [Stop and start an Azure Kubernetes Service cluster in AKS hybrid](stop-start-cluster.md)
+- [Back up, restore workload clusters using Velero in AKS hybrid](backup-workload-cluster.md)
