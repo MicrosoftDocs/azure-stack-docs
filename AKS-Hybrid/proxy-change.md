@@ -37,7 +37,7 @@ Before you begin, review current limitations to proxy settings updates in AKS hy
 
 Before you update proxy settings for an AKS deployment, you must meet the following prerequisites:
 
-* Your AKS deployment is running the [October build](https://github.com/Azure/aks-hybrid/releases/tag/AKS-hybrid-2210) or later.
+* Your AKS deployment is running the [October 2022 release](https://github.com/Azure/aks-hybrid/releases/tag/AKS-hybrid-2210) or later.
 
 * The most recent version of the AksHci PowerShell module is installed. For more information, see [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 
@@ -47,7 +47,7 @@ Before you update proxy settings for an AKS deployment, you must meet the follow
 
 You may occasionally need to update `noProxy` settings to exclude a private subnet from using the proxy server for your AKS deployment. To prepare to update the `noProxy` settings, store a new exclusion list in a PowerShell variable.
 
-1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
+1. Before you update your `noProxy` settings, review the required `noProxy` settings in the [proxy exclusion table](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy). For more information, see [Exclusion list for excluding private subnets from being sent to the proxy](set-proxy-settings.md#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
    Certain exclusions are required for your AKS hybrid deployment to function. Not excluding these URLs may cause failures in your AKS hybrid deployment.
 
