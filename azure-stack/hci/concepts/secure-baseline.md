@@ -13,7 +13,9 @@ ms.date: 01/09/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes the security baseline settings associated with your Azure Stack HCI cluster. Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
+This article describes the security baseline settings associated with your Azure Stack HCI cluster, the associated drift control mechanism, and how to manage the baseline. 
+
+Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -25,19 +27,20 @@ The security baseline on Azure Stack HCI:
 - Reduces the operating expenditure (OPEX) with its built-in drift protection mechanism and consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Improves the security posture by disabling legacy protocols and ciphers.
 
-## Security baseline and drift control
+## About security baseline and drift control
 
-When you deploy Azure Stack HCI version 22H2 via the Supplemental Package, by default, the existing group policies and GPO inheritance are blocked in the Active Directory Organizational Unit (OU). This OU contains the computer objects for your cluster. Blocking the policies ensures that there is no conflict of security settings.
+When you prepare the Active Directory for Azure Stack HCI and create a dedicated organizational unit (OU), by default, the existing group policies and Group Policy Object (GPO) inheritance are blocked. Blocking these policies ensures that there is no conflict of security settings.
 
-As a result, Azure Stack HCI 22H2 provides a new built-in configuration management stack in the operating system and the Security Baseline as well as the Secured-Core settings are established and maintained using this new capability.
+The Azure Stack HCI Supplemental Package deployment then establishes and maintains a new built-in configuration management stack in the operating system, a security baseline, and secured-core settings for your cluster.
 
-You can leverage the default enabled configuration definitions documents for security baseline & secured core setting, monitor, and perform drift protection from desired state during both deployment and run-time. You can disable drift protection during the deployment when you configure the security settings.
+You can monitor and perform drift protection of this default enabled security baseline and secured-core settings during both deployment and runtime. You can also disable the drift protection during the deployment when you configure the security settings.
 
-With the drift protection applied, the security settings are refreshed regularly after every 90 minutes. This refresh interval is the same as that for the group policies and ensures that any changes from the desired state are remediated. This continuous monitoring and auto-remediation allows the customer to have consistent and reliable security posture throughout the lifecycle of the device.
+With the drift protection applied, the security settings are refreshed regularly after every 90 minutes. This refresh interval is the same as that for the group policies and ensures that any changes from the desired state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
-To adjust security hardening as per your requirements, we recommend that you keep a balanced security posture. Use the initial security baseline, stop the drift control, and modify any of the security settings that you defined initially.
 
 ## Modify drift control
+
+To adjust security hardening as per your requirements, we recommend that you keep a balanced security posture. Use the initial security baseline, stop the drift control, and modify any of the security settings that you defined initially.
 
 To disable or enable drift control, follow these steps.
 
@@ -52,20 +55,25 @@ To disable or enable drift control, follow these steps.
     ```azurepowershell
     Enable-ASOSConfigDriftControl
     ```
+1. Repeat this command on all the nodes of your cluster.
+
 
 > [!IMPORTANT]
-> With the drift control enabled, the only way to modify the security baseline settings is via the provided in-box PowerShell cmdlets (link to below table).
-Any other mechanism like manual touch of protected settings using Registry editor, SecEdit (including local policies), System Center Configuration Manager, DSC, or 3 party tools will create a temporary change that will be reverted when the drift protection triggers every 90 minutes.
+> With the drift control enabled, the only way to modify the security baseline settings is via the [PowerShell cmdlets](#enable-commands).
+> 
+> Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration, or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
 
 ## Manage security baseline 
 
-During the new deployment wizards offered by the supplemental package you can enable or disable the drift control mechanism as well as other security features, some of them part of the baseline document.
+When deploying your cluster via the Supplemental Package, you can modify the drift control settings as well as other security settings that constitute the security baseline.
 
-Additionally, the security related components are reflected in the new deployment json file with the different security parameters for deployment purposes.
+<!-- not sure about this text - Will the preceding sentence just take care of this info? Additionally, the security related components are reflected in the new deployment json file with the different security parameters for deployment purposes.-->
 
-The following table describes the security settings that can be configured on your Azure Stack HCI cluster.
+### Configure security during deployment
 
-| Feature Area | Feature     |Description           | Supports drift control |
+The following table describes the security settings that can be configured on your Azure Stack HCI cluster during deployment.
+
+| Feature      | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
 | Governance                 | [Security baseline](secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
@@ -76,7 +84,10 @@ The following table describes the security settings that can be configured on yo
 | Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              | 
 
 
-After deployment you can toggle certain security features using PowerShell while maintaining drift control enabled , to do so, here a comprehensive table:
+
+### Modify security after deployment
+
+Once the deployment is complete, you can also toggle certain security features via while maintaining the drift control. Here is a comprehensive table of the commands used to modify these security features. As noted, some of these features may require a reboot to take effect.
 
 #### Enable commands
 
@@ -103,7 +114,7 @@ After deployment you can toggle certain security features using PowerShell while
 
 ## View the settings
 
-With the drift protection enabled, you can only modify the non-protected security settings. To modify the protected security settings, you need to disable the drift protection. You can find and download the complete list of security settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase).
+With the drift protection enabled, you can only modify the non-protected security settings. To modify the protected security settings that form the baseline, you need to first disable the drift protection. You can find and download the complete list of security settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase).
 
 
 ## Next steps
