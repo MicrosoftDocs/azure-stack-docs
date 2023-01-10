@@ -37,7 +37,7 @@ Before you begin, review current limitations to proxy settings updates in AKS hy
 
 Before you update proxy settings for an AKS deployment, you must meet the following prerequisites:
 
-* Your AKS deployment is running the [October 2022 release](https://github.com/Azure/aks-hybrid/releases/tag/AKS-hybrid-2210) or later.
+* Your AKS deployment is running the [October 2022 update](https://github.com/Azure/aks-hybrid/releases/tag/AKS-hybrid-2210) or later.
 
 * The most recent version of the AksHci PowerShell module is installed. For more information, see [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 
