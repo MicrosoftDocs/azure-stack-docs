@@ -34,9 +34,9 @@ Recovering the state of AKS clusters requires that you have a management cluster
 Prepare the cold standby in advance of a disaster by creating a management cluster and an empty workload cluster. You need an empty workload cluster for each Kubernetes cluster you want to restore from backup. The following prerequisites are required:
 
 - Set up and cluster physical host machines.
-- Configure required storage.
-- For SMB: [Use Container Storage Interface (CSI) file drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-files).
-- For local storage: [Use Container Storage Interface (CSI) disk drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
+- Configure required storage:
+  - For SMB: [Use Container Storage Interface (CSI) file drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-files).
+  - For local storage: [Use Container Storage Interface (CSI) disk drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
 - Workload cluster backups are available: [Back up, restore workload clusters using Velero in AKS hybrid](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
 - An AKS (management cluster) is installed on new hardware, or you can install a new management cluster on new hardware using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Stack HCI clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
 - An empty workload cluster is required to restore the backups. See [Back up, restore workload clusters using Velero in AKS hybrid](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster).
