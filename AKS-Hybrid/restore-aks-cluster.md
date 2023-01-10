@@ -35,11 +35,11 @@ Prepare the cold standby in advance of a disaster by creating a management clust
 
 - Set up and cluster physical host machines.
 - Configure required storage.
-- For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers](/azure/aks/hybrid/container-storage-interface-files).
-- For local storage: [Use the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface (CSI) drivers](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
-- Workload cluster backups are available: [How to create a backup of a Kubernetes workload cluster](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
-- An AKS (management cluster) is installed on new hardware, or you can install a new management cluster on new hardware using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
-- An empty workload cluster is required to restore the backups. See [How to restore a workload cluster from a backup](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster).
+- For SMB: [Use Container Storage Interface (CSI) file drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-files).
+- For local storage: [Use Container Storage Interface (CSI) disk drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
+- Workload cluster backups are available: [Back up, restore workload clusters using Velero in AKS hybrid](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
+- An AKS (management cluster) is installed on new hardware, or you can install a new management cluster on new hardware using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Stack HCI clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
+- An empty workload cluster is required to restore the backups. See [Back up, restore workload clusters using Velero in AKS hybrid](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster).
 
 ## Recover from management cluster corruption
 
@@ -47,18 +47,18 @@ Recovering from a management cluster corruption requires uninstalling AKS and re
 
 ### Prerequisites
 
-- Workload cluster backups: [How to create a backup of a Kubernetes workload cluster](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
+- Workload cluster backups: [Back up, restore workload clusters using Velero in AKS hybrid](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
 - Backup of AKS configuration for previous networking, storage, and cluster settings. Cluster settings include sizes and counts of control plane, load balancer and worker node VMs. For example, if your old cluster had 3 **Standard_A2_V2** control plane VMs, you must create 3 control plane VMs in the new environment.
 
 To recover from management cluster corruption, perform the following steps:
 
-- Uninstall AKS: [Uninstall-AksHci for AKS on Azure Stack HCI](/azure/aks/hybrid/reference/ps/uninstall-akshci).
-- Install a new AKS management cluster using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
+- Uninstall AKS: [Uninstall-AksHci](/azure/aks/hybrid/reference/ps/uninstall-akshci).
+- Install a new AKS management cluster using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on AKS hybrid clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
 - Create the workload cluster with required node pools using step 6 in the above article. You need a separate workload cluster for each workload cluster you are restoring from backup.
-- You can configure multiple control plane VMs and load balancer VMs during workload cluster creation using this article: [New-AksHciCluster for AKS on Azure Stack HCI and Windows Server](/azure/aks/hybrid/reference/ps/new-akshcicluster).
+- You can configure multiple control plane VMs and load balancer VMs during workload cluster creation using this article: [New-AksHciCluster for AKS hybrid](/azure/aks/hybrid/reference/ps/new-akshcicluster).
 - Configure required storage:
-  - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers](/azure/aks/hybrid/container-storage-interface-files).
-  - For local storage: [Use the AKS hybrid disk Container Storage Interface (CSI) drivers](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
+  - For SMB: [Use Container Storage Interface (CSI) file drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-files).
+  - For local storage: [Use Container Storage Interface (CSI) disk drivers in AKS hybrid](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
 - Restore all workload clusters from backup.
 
 ## FAQ
@@ -76,7 +76,7 @@ It is important to note that a management cluster outage has no impact on applic
 | *-csi-volumesnapshotclasses.json.gz  | Files containing 'csi' are the persistent volume snapshots.  |
 | *-csi-volumesnapshotcontents.json.gz | Files containing 'csi' are persistent volumes snapshots.     |
 | *-csi-volumesnapshots.json.gz        | Files containing 'csi' are the persistent volume snapshots.  |
-| *-logs.gz                            | Log output of backup operation. Same data from running: velero backup log \<backupname\>. |
+| *-logs.gz                            | Log output of backup operation. Same data from running: `velero backup log <backupname>`. |
 | *-podvolumebackups.json.gz           | Metadata about the pods and persistent volumes.              |
 | *-resource-list.json.gz              | Resources contained in a backup are listed in this file.     |
 | *-volumesnapshots.json.gz            | Metadata about the pods and persistent volumes.              |
