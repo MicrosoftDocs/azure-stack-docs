@@ -5,37 +5,34 @@ ms.topic: how-to
 ms.date: 01/10/2023
 ms.author: rbaziwane 
 ms.lastreviewed: 01/10/2023
-ms.reviewer: SethM
+ms.reviewer: rbaziwane
 # Intent: As an IT Pro, I need to learn how to restore AKS hybrid following a disaster.
 # Keyword: Disaster Recovery
 ---
 
 # Restore the state of AKS clusters after a disaster
 
-In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It is important to note that a management cluster outage has zero impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) would continue running but you won’t be able to perform day-2 operations i.e., you are unable to create new workload clusters, unable to create or scale a node pool, unable to upgrade Kubernetes versions, etc., until the VM is restored. 
+In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It is important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you won't be able to perform day-2 operations. For example, you cannot create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
 
-Note: The management cluster being a VM that is tracked in windows failover clustering, it is also resilient to host level disruptions. In other words, during a host machine failure windows failover clustering will restart the VM on a healthy host machine.  This document provides guidance on how to perform the following:    
+The management cluster is a VM that's tracked in Windows failover clustering. It is also resilient to host-level disruptions. In other words, during a host machine failure, Windows failover clustering restarts the VM on a healthy host machine. This article provides guidance on how to perform the following tasks:
 
-- Restore the state of AKS onto new hardware (could be a new site).  
-- Recovery from corruption of the management cluster  
+- Restore the state of AKS on new hardware (could be a new site).  
+- Recovery from corruption of the management cluster.
 
-Note that in either scenario above, the management cluster and all the workload clusters will need to be recreated.  
+In either of these scenarios, the management cluster and all the workload clusters must be recreated.  
 
-## Restore the state of AKS onto new hardware (or new site)  
+## Restore the state of AKS on new hardware (or a new site)  
 
-Recovering the state of AKS clusters requires that you have a management cluster available on new hardware or at the new location. 
+Recovering the state of AKS clusters requires that you have a management cluster available on new hardware or at the new location.
 
-#### Important: 
+- AKS supports backing up Kubernetes clusters to Azure Blob Storage and MinIO using Velero. Microsoft recommends backing up Azure Storage because it provides 3 redundant copies of data in the primary storage region.
+- Consider running the backup on a cron job to ensure available backups meet recovery point objectives.  
 
-- AKS supports backing up of Kubernetes clusters to Azure Blob storage and MinIO using Velero. Microsoft recommends backing up Azure storage because it provides 3 redundant copies of data in the primary storage region. 
-- Consider running the backup on a cron job to ensure available backups will meet recovery point objectives.  
+### Prerequisites
 
-#### Prerequisites: 
+Prepare the cold standby in advance of a disaster by creating a management cluster and an empty workload cluster. You need an empty workload cluster for each Kubernetes cluster you want to restore from backup.
 
-Prepare the cold standby in advance of a disaster by creating a management cluster and an empty workload cluster. You need an empty workload cluster for each Kubernetes cluster you want to restore from backup. 
-
-- Physical host machines are already set up and clustered 
-
+- Physical host machines are already set up and clustered.
 - Configure required storage 
 
   - For SMB: [Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers - AKS-HCI | Microsoft Learn](/azure/aks/hybrid/container-storage-interface-files) 
@@ -79,13 +76,13 @@ Recovering from a management cluster corruption requires uninstalling AKS and re
 Each AKS deployment includes a management cluster that is a single standalone VM. For resiliency and high availability, AKS relies on windows failover clustering to recover the VM in the event of a disruption. 
 It is important to note that a management cluster outage has zero impact on applications running in workload clusters. When the management cluster VM goes down, this would only have impact on your ability to perform AKS Day 2 operations such as create new workload clusters, creating or scaling node pools, upgrading Kubernetes versions, etc until the VM is recovered. In cases where you are unable to recover from a management cluster failure, we recommend contacting Microsoft Support. In the future, we are moving towards a completely stateless management cluster where management cluster failure will not be a problem.
 
-### What’s included in a Velero backup?  
+### What's included in a Velero backup?  
 
 | **File  Name**                       | **Content  description**                                     |
 | ------------------------------------ | ------------------------------------------------------------ |
-| *-csi-volumesnapshotclasses.json.gz  | Files containing ‘csi’  are the persistent volume snapshots  |
-| *-csi-volumesnapshotcontents.json.gz | Files containing ‘csi’  are persistent volumes snapshots     |
-| *-csi-volumesnapshots.json.gz        | Files containing ‘csi’  are the persistent volume snapshots  |
+| *-csi-volumesnapshotclasses.json.gz  | Files containing 'csi'  are the persistent volume snapshots  |
+| *-csi-volumesnapshotcontents.json.gz | Files containing 'csi'  are persistent volumes snapshots     |
+| *-csi-volumesnapshots.json.gz        | Files containing 'csi'  are the persistent volume snapshots  |
 | *-logs.gz                            | Log output of backup operation.  Same data from running: velero backup log <backupname> |
 | *-podvolumebackups.json.gz           | Metadata about the  pods and persistent volumes              |
 | *-resource-list.json.gz              | Resources contained in  a backup are listed in this file     |
