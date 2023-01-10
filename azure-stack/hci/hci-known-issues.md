@@ -40,4 +40,4 @@ Here are the known issues in Azure Stack HCI supplemental package:
 
 ## Next steps
 
-- Read the [Deployment overview](./deploy/deployment-tool-introduction.md)
+- Read the [Deployment overview](./deploy/deployment-tool-introduction.md).
