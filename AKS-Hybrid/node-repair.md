@@ -51,7 +51,7 @@ If AKS hybrid identifies an unhealthy node that remains unhealthy for more than 
 2. If the reboot is unsuccessful, reimage the node.
 3. If the reimage is unsuccessful, create and reimage a new node.
 
-Please note that it usually takes 20 to 30 minutes to repair the node. If AKS hybrid finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
+It usually takes 20 to 30 minutes to repair the node. If AKS hybrid finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
 
 ## Next steps
 
