@@ -13,7 +13,7 @@ ms.date: 01/09/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes the security baseline settings associated with your Azure Stack HCI cluster, the associated drift control mechanism, and how to manage the baseline. 
+This article describes the security baseline settings associated with your Azure Stack HCI cluster, the associated drift control mechanism, and baseline management.
 
 Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
 
@@ -31,7 +31,11 @@ The security baseline on Azure Stack HCI:
 
 When you prepare the Active Directory for Azure Stack HCI and create a dedicated organizational unit (OU), by default, the existing group policies and Group Policy Object (GPO) inheritance are blocked. Blocking these policies ensures that there is no conflict of security settings.
 
-The Azure Stack HCI Supplemental Package deployment then establishes and maintains a new built-in configuration management stack in the operating system, a security baseline, and secured-core settings for your cluster.
+The Azure Stack HCI Supplemental Package deployment then establishes and maintains:
+
+- A new built-in configuration management stack in the operating system.
+- A security baseline.
+- Secured-core settings for your cluster.
 
 You can monitor and perform drift protection of this default enabled security baseline and secured-core settings during both deployment and runtime. You can also disable the drift protection during the deployment when you configure the security settings.
 
@@ -40,7 +44,7 @@ With the drift protection applied, the security settings are refreshed regularly
 
 ## Modify drift control
 
-To adjust security hardening as per your requirements, we recommend that you keep a balanced security posture. Use the initial security baseline, stop the drift control, and modify any of the security settings that you defined initially.
+To adjust security hardening as per your requirements, we recommend that you keep a balanced security posture. Use the initial security baseline, stop the drift control, and modify any of the protected security settings that you defined during the deployment.
 
 To disable or enable drift control, follow these steps.
 
@@ -55,25 +59,23 @@ To disable or enable drift control, follow these steps.
     ```azurepowershell
     Enable-ASOSConfigDriftControl
     ```
-1. Repeat this command on all the nodes of your cluster.
+1. If using a multi-node cluster, repeat this command on all the nodes of your cluster.
 
 
 > [!IMPORTANT]
 > With the drift control enabled, the only way to modify the security baseline settings is via the [PowerShell cmdlets](#enable-commands).
 > 
-> Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration, or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
+> Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration (DSC), or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
 
 ## Manage security baseline 
 
-When deploying your cluster via the Supplemental Package, you can modify the drift control settings as well as other security settings that constitute the security baseline.
-
-<!-- not sure about this text - Will the preceding sentence just take care of this info? Additionally, the security related components are reflected in the new deployment json file with the different security parameters for deployment purposes.-->
+When deploying your cluster via the Supplemental Package, you can modify the drift control settings as well as other security settings that constitute the security baseline. The changes that you make to the security settings are also reflected in the *config.json* that you are create using the deployment tool.
 
 ### Configure security during deployment
 
 The following table describes the security settings that can be configured on your Azure Stack HCI cluster during deployment.
 
-| Feature      | Feature     |Description           | Supports drift control? |
+| Feature area | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
 | Governance                 | [Security baseline](secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
@@ -82,7 +84,6 @@ The following table describes the security settings that can be configured on yo
 | Data at-rest encryption    | [BitLocker for data volumes](windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this cluster                               | No                              |
 | Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       | Yes                             |
 | Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              | 
-
 
 
 ### Modify security after deployment
