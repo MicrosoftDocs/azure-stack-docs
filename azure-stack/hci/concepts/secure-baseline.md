@@ -80,8 +80,8 @@ The following table describes the security settings that can be configured on yo
 | Governance                 | [Security baseline](secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
 | Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each server.           | No                              | 
-| Data at-rest encryption    | [BitLocker for OS boot volume](windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each server.                                        | No                              | 
-| Data at-rest encryption    | [BitLocker for data volumes](windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this cluster                               | No                              |
+| Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each server.                                        | No                              | 
+| Data at-rest encryption    | [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this cluster                               | No                              |
 | Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       | Yes                             |
 | Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              | 
 
@@ -90,27 +90,16 @@ The following table describes the security settings that can be configured on yo
 
 Once the deployment is complete, you can also toggle certain security features via while maintaining the drift control. Here is a comprehensive table of the commands used to modify these security features. As noted, some of these features may require a reboot to take effect.
 
-#### Enable commands
+#### Enable and disable commands
 
-| Name                                           | Supports drift control | Reboot to take effect? |
-|------------------------------------------------|------------------------|------------------------|
-| Enable-ASOSConfigCredentialGuardSetting        |                        |                        |
-| Enable-ASOSConfigDRTMSetting                   |                        |                        |
-| Enable-ASOSConfigHVCISetting                   |                        |                        |
-| Enable-ASOSConfigSideChannelMitigationSetting  |                        |                        |
-| Enable-ASOSConfigSMBSigning                    | Yes                    | Yes                    |
-| Enable-ASOSConfigSMBClusterEncryption          | No, cluster setting    | No                     |
-
-#### Disable commands
-
-| Name                                           | Supports drift control | Reboot to take effect? |
-|------------------------------------------------|------------------------|------------------------|
-| Disable-ASOSConfigCredentialGuardSetting       |                        |                        |
-| Disable-ASOSConfigDRTMSetting                  |                        |                        |
-| Disable-ASOSConfigHVCISetting                  |                        |                        |
-| Disable-ASOSConfigSideChannelMitigationSetting |                        |                        |
-| Disable-ASOSConfigSMBSigning                   | Yes                    | Yes                    |
-| Disable-ASOSConfigSMBClusterEncryption         | No, cluster setting    | No                     |
+| Name                                           |Feature     | Supports drift control | Reboot to take effect? |
+|------------------------------------------------|------------|------------|------------------------|
+| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting        |Windows Defender Credential Guard|       |                        |
+| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting                   |Dynamic Root of Trust for Measurement (DRTM)                        |    | |
+| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting                   |Hypervisor-protected Code Integrity (HVCI)      |    |
+| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     |    |                        |
+| Enable-ASOSConfigSMBSigning<br>Disable-ASOSConfigSMBSigning                    |SMB signing                 | Yes| Yes                    |
+| Enable-ASOSConfigSMBClusterEncryption<br>Disable-ASOSConfigSMBClusterEncryption          |SMB cluster encryption      | No, cluster setting    | No                     |
 
 
 ## View the settings
