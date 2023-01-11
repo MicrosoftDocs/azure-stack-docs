@@ -58,9 +58,6 @@ Export the CA root certificate. To export the ASDK root certificate in PEM forma
 
     Write-Host "Exporting certificate"
     Export-Certificate -Type CERT -FilePath root.cer -Cert $root
-
-    Write-Host "Converting certificate to PEM format"
-    certutil -encode root.cer root.pem
     ```
 
 4. Copy the certificate to your local machine.
@@ -125,17 +122,21 @@ To use Azure CLI with the ASDK, you must trust the CA root certificate on your r
 2. Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
     ```powershell
-    $pemFile = "<Fully qualified path to the PEM certificate exported from `
-    your Azure Stack Hub and saved. For example: C:\Users\user1\Downloads\root.pem."
+    $cerFile = "<Fully qualified path to the cer certificate exported from `
+    your Azure Stack Hub and saved. For example: C:\Users\user1\Downloads\root.cer"
     $pythonCertStore = <result from step 4>
 
+    $cerDir = Split-Path -Parent $cerFile
+    $pemFile = "$cerDir\root.pem"
+    Write-Host "Converting certificate to PEM format at $pemFile"
+    certutil -encode $cerFile $pemFile
     $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $root.Import($pemFile)
 
     Write-Host "Extracting required information from the cert file"
-    $md5Hash    = (Get-FileHash -Path $pemFile -Algorithm MD5).Hash.ToLower()
-    $sha1Hash   = (Get-FileHash -Path $pemFile -Algorithm SHA1).Hash.ToLower()
-    $sha256Hash = (Get-FileHash -Path $pemFile -Algorithm SHA256).Hash.ToLower()
+    $md5Hash    = (Get-FileHash -Path $cerFile -Algorithm MD5).Hash.ToLower()
+    $sha1Hash   = (Get-FileHash -Path $cerFile -Algorithm SHA1).Hash.ToLower()
+    $sha256Hash = (Get-FileHash -Path $cerFile -Algorithm SHA256).Hash.ToLower()
 
     $issuerEntry  = [string]::Format("# Issuer: {0}", $root.Issuer)
     $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
