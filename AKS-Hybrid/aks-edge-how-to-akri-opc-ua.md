@@ -16,7 +16,7 @@ This article describes how you can deploy sample OPC PLC server containers in Az
 
 This demo will help you get started using Akri to discover OPC UA servers and utilize them via a broker that contains an OPC UA Client. Specifically, an Akri configuration called **OPC UA Monitoring** was created for this scenario. This configuration shows how you can use Akri to detect anomaly values of a specific OPC UA variable. To do so, the OPC UA clients in the brokers will subscribe to that variable and serve its value over gRPC for an anomaly detection web application to consume. You can use this configuration to monitor a barometer, CO detector, and more. However, for this example, the OPC UA variable will represent the PLC (programmable logic controller) values for the temperature of a thermostat. Any value outside the range of 70-80 degrees is an anomaly.
 
-![OPC UA Akri Demo Diagram](media/aks-edge/opcua-demo-diagram.svg)
+[ ![Diagram that shows the flow of Akri OPC UA demo.](media/aks-edge/opc-ua-demo-diagram.svg) ](media/aks-edge/opc-ua-demo-diagram.svg#lightbox)
 
 ## Prerequisites
 
@@ -130,7 +130,7 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
    
    Discovery URLs appear as `opc.tcp://<FQDN>:50000/`. In order to get the FQDNs of your OPC PLC servers, navigate to your deployments in Azure and you'll see the FQDN. Copy and paste the FQDN into your discovery URLs for each server.
 
-   ![Screenshot showing the container instance FQDN in azure portal](media/aks-edge/akri-opcplc-fqdn.png)
+   [ ![Screenshot showing the container instance FQDN in azure portal.](media/aks-edge/akri-opc-plc-fqdn.png) ](media/aks-edge/akri-opc-plc-fqdn.png#lightbox)
 
 4. Install Akri using Helm. When installing Akri, specify that you want to deploy the OPC UA discovery handlers by setting the helm value `opcua.discovery.enabled=true`. 
    
@@ -200,7 +200,7 @@ A sample anomaly detection web application was created for this end-to-end demo.
    
 3. Navigate to `http://<NODE IP>:<SERVICE PORT NUM>/`. It takes 3 seconds for the site to load, then you should see a log of the temperature values, which updates every few seconds. Note how the values come from two different discovery URLs, specifically the ones for each of the two OPC UA servers.
 
-![Screenshot showing the anomaly detection app in browser](media/aks-edge/akri-anomaly-detection.png)
+![Screenshot showing the anomaly detection app in browser.](media/aks-edge/akri-anomaly-detection.png)
 
 ## Clean up
 
