@@ -27,11 +27,11 @@ The following table outlines the steps required to create a virtual Azure Stack 
 | **Step**| **Description**|
 | ----- | -------- |
 | Step 0:|Review the prerequisites |
-| Step 1:|[Set up the virtual switch](#step-1:-set-up-the-virtual-switch) |
-| Step 2:|[Create the virtual host](#step-2:-create-the-virtual-host)|
-| Step 3:|[Enable nested virtualization](#step-3:-enable-nested-virtualization)|
-| Step 4:|[Configure NAT inbound rules](#step-4:-configure-nat-inbound-rules)|
-| Step 5:|[Start the deployment](#step-5:-start-the-deployment)|
+| Step 1:|[Set up the virtual switch](#step-1-set-up-the-virtual-switch) |
+| Step 2:|[Create the virtual host](#step-2-create-the-virtual-host)|
+| Step 3:|[Enable nested virtualization](#step-3-enable-nested-virtualization)|
+| Step 4:|[Configure NAT inbound rules](#step-4-configure-nat-inbound-rules)|
+| Step 5:|[Start the deployment](#step-5-start-the-deployment)|
 | Appendix I|[Sample single-server config file](#appendix-i)
 | Appendix II|[Sample output for VM creation](#appendix-ii)|
 
@@ -280,12 +280,13 @@ Change the external port as the one you are trying to use is already allocated.
 
    ```PowerShell
    copy \\<Network path to folder containing deployment tool on Windows Server> <Destination path on VM on D: drive> -r`
-    ```
+   ```
 
    Verify that the tool was copied over. Examine the contents of the `Cloud` folder.
     
    Here is a sample output:
 
+```PowerShell
         PS C:\Users\Administrator> net use \\WIN-29V48V6T1O8\C$
 
         Enter the user name for 'WIN-29V48V6T1O8': <Username>
@@ -303,6 +304,7 @@ Change the external port as the one you are trying to use is already allocated.
         -a----     6/28/2022   2:41 PM   11420824813 
         CloudDeployment_10.2206.0.50.zip
         PS D:\deployment>   
+```
 
 1. Rename the network adapters, using the names from the previous step. Note that the new name must match what is in the `config.json` file used for the deployment. Run the following commands:
 
@@ -310,8 +312,9 @@ Change the external port as the one you are trying to use is already allocated.
     Get-NetAdapter on the VM
     ```
 
-      Verify the names of the network adapters. Here is a sample output:
+Verify the names of the network adapters. Here is a sample output:
 
+```PowerShell
         PS C:\Users\Administrator> Get-NetAdapter
 
         Name     InterfaceDescription      ifIndex Status MacAddress   LinkSpeed
@@ -321,7 +324,7 @@ Change the external port as the one you are trying to use is already allocated.
 
         PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet" -NewName Nic1
         PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet 2" -NewName Nic2
-
+```
 
 1. Launch the Server Configuration Tool (`SConfig`). Run the following command:
 
