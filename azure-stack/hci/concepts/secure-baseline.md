@@ -63,7 +63,7 @@ To disable or enable drift control, follow these steps.
 
 
 > [!IMPORTANT]
-> With the drift control enabled, the only way to modify the security baseline settings is via the [PowerShell cmdlets](#enable-commands).
+> With the drift control enabled, the only way to modify the security baseline settings is via the [PowerShell cmdlets](#enable-and-disable-commands).
 > 
 > Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration (DSC), or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
 
