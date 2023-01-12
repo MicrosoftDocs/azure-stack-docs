@@ -40,7 +40,7 @@ Microsoft provides technical support for issues in the following areas:
 -  Issues with connectivity to other Azure Stack Hub services.
 -  Issues with Kubernetes API connectivity.
 -  Issues with Azure Stack Hub Kubernetes provider functionality and connectivity with Azure Resource Manager.
--  Issues with the AKS engine-generated configuration of Azure Stack Hub native artifacts such as Load Balancers, Network Security Groups, VNETs, Subnets, Network Interfaces, Route table, Availability sets, Public IP addresses, Storage account, and VM Machines.
+-  Issues with the AKS engine-generated configuration of Azure Stack Hub native artifacts such as load balancers, Network Security Groups, VNETs, subnets, network interfaces, route tables, availability sets, public IP addresses, storage accounts, and VMs.
 -  Issues with network performance and latency. ASK engine on Azure Stack Hub can use the kubenet networking plugin and the Azure CNI networking plugin.
 -  Issues with the AKS base image used by AKS engine in disconnected deployments.
 
