@@ -4,7 +4,7 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host AK
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/21/2022
+ms.date: 012/12/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 05/05/2022
@@ -20,7 +20,7 @@ You can use a Linux machine in your Azure Stack Hub to host AKS engine in order 
 
 ## Prepare the client VM
 
-AKS engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack Hub. From this machine, you will use AKS engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
+AKS engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack Hub. From this machine, you use AKS engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
 
 When choosing your client machine, consider:
 

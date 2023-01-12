@@ -4,7 +4,7 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/21/2022
+ms.date: 01/12/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/16/2021
@@ -15,7 +15,7 @@ ms.lastreviewed: 11/16/2021
 ---
 # Deploy a Kubernetes cluster with AKS engine on Azure Stack Hub
 
-You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
+You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the **apimodel.json** file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification
 
@@ -57,7 +57,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping)
+3.  In the **kubernetes-azurestack.json** file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping)
 
 4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
@@ -148,10 +148,10 @@ Proceed to deploy a cluster:
     | location | local | The region name for your Azure Stack Hub. For the ASDK, the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
-    | output-directory | kube-rg | Enter the name of the directory to contain the output file `apimodel.json` and other generated files. |
+    | output-directory | kube-rg | Enter the name of the directory to contain the output file **apimodel.json** and other generated files. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. You set up the client secret when creating your service. |
-    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenent. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenant. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
 
     Here is an example:
 
@@ -172,24 +172,24 @@ Proceed to deploy a cluster:
 
 3.  Save the AKS engine cluster configuration in a secure, encrypted location.
 
-    Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS engine operations.
+    Locate the file **apimodel.json**. Save it to a secure location. This file will be used as input in all of your other AKS engine operations.
 
-    The generated `apimodel.json` file contains the service principal, secret, and SSH public key you use in the input API model. The file also has all the other metadata needed by AKS engine to perform all other operations. If you lose the file, AKS engine won't be able configure the cluster.
+    The generated **apimodel.json** file contains the service principal, secret, and SSH public key you use in the input API model. The file also has all the other metadata needed by AKS engine to perform all other operations. If you lose the file, AKS engine won't be able configure the cluster.
 
     The secrets are **unencrypted**. Keep the file in an encrypted, secure place. 
 
 ## Verify your cluster
 
-Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
+Check your cluster by connecting to `kubectl`, getting the info, and then getting the states of your nodes.
 
-1. Get the `kubeconfig` file to connect to the control plane.
-    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly create cluster in this directory path `/kubeconfig/kubeconfig.json`. You can add the `/kubeconfig.json` file to the `.kube `directory to access your new cluster.  
+1. Get the **kubeconfig**** file to connect to the control plane.
+    - If you already have `kubectl` installed, check the **kubeconfig** file for the newly create cluster in this directory path: **/kubeconfig/kubeconfig.json**. You can add the **/kubeconfig.json** file to the **.kube** directory to access your new cluster.  
     If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the instructions below to access the cluster from one of the control plane nodes.
 2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
-3. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new control plane node using a client such as PuTTY or MobaXterm. 
+3. From a machine with access to your Azure Stack Hub instance, connect via SSH to the new control plane node using a client such as PuTTY or MobaXterm.
 
-4. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
+4. For the SSH username, use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
 5. Check that the cluster endpoints are running:
 
@@ -243,11 +243,11 @@ After the deployment of the Kubernetes cluster with AKS engine, the service prin
 ### Update each node manually
 
 1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](../operator/give-app-access-to-resources.md).
-2. Use the new credentials provided by your cloud operator to update `/etc/kubernetes/azure.json` on each node. After making the update, restart both **kubelet** and **kube-controller-manager**.
+2. Use the new credentials provided by your cloud operator to update **/etc/kubernetes/azure.json** on each node. After making the update, restart both `kubele` and `kube-controller-manager`.
 
 ### Update the cluster with aks-engine update
 
-Alternatively, you can replace the credentials in the `apimodel.json` and run upgrade using the updated json to the same or newer Kubernetes version. For instructions on upgrading the model see [Upgrade a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-upgrade.md)
+Alternatively, you can replace the credentials in the **apimodel.json** and run upgrade using the updated .json file to the same or newer Kubernetes version. For instructions on upgrading the model see [Upgrade a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-upgrade.md)
 
 ## Next steps
 
