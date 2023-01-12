@@ -67,7 +67,7 @@ To disable or enable drift control, follow these steps.
 > 
 > Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration (DSC), or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
 
-## Manage security baseline 
+## Manage security baseline
 
 When deploying your cluster via the Supplemental Package, you can modify the drift control settings as well as other security settings that constitute the security baseline. The changes that you make to the security settings are also reflected in the *config.json* that you are create using the deployment tool.
 
@@ -94,10 +94,9 @@ Once the deployment is complete, you can also toggle certain security features v
 
 | Name                                           |Feature     | Supports drift control | Reboot to take effect? |
 |------------------------------------------------|------------|------------|------------------------|
-| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting        |Windows Defender Credential Guard|       |                        |
-| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting                   |Dynamic Root of Trust for Measurement (DRTM)                        |    | |
-| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting                   |Hypervisor-protected Code Integrity (HVCI)      |    |
-| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     |    |                        |
+| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting        |Windows Defender Credential Guard|  Yes     | Yes                   |
+| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting                   |Dynamic Root of Trust for Measurement (DRTM)                        | Yes   |Yes |
+| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting                   |Hypervisor-protected Code Integrity (HVCI)      | Yes   |Yes| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     | Yes   | Yes                       |
 | Enable-ASOSConfigSMBSigning<br>Disable-ASOSConfigSMBSigning                    |SMB signing                 | Yes| Yes                    |
 | Enable-ASOSConfigSMBClusterEncryption<br>Disable-ASOSConfigSMBClusterEncryption          |SMB cluster encryption      | No, cluster setting    | No                     |
 
