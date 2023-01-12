@@ -92,7 +92,7 @@ Once the deployment is complete, you can also toggle certain security features v
 
 #### Enable and disable commands
 
-| Name                                           |Feature     | Supports drift control | Reboot to take effect? |
+| Name                                           |Feature     | Supports drift control | Reboot required |
 |------------------------------------------------|------------|------------|------------------------|
 | Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting  |Windows Defender Credential Guard|Yes     | Yes   |
 | Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting|Dynamic Root of Trust for Measurement (DRTM) | Yes   |Yes |
