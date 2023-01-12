@@ -27,13 +27,13 @@ The following table outlines the steps required to create a virtual Azure Stack 
 | **Step**| **Description**|
 | ----- | -------- |
 | Step 0:|Review the prerequisites |
-| Step 1:|[Set up the virtual switch](#step-1-set-up-the-virtual-switch) |
-| Step 2:|[Create the virtual host](#step-2-create-the-virtual-host)|
-| Step 3:|[Enable nested virtualization](#step-3-enable-nested-virtualization)|
-| Step 4:|[Configure NAT inbound rules](#step-4-configure-nat-inbound-rules)|
-| Step 5:|[Start the deployment](#step-5-start-the-deployment)|
-| Appendix I|[Sample single-server config file](#sample-single-node-config-file)
-| Appendix II|[Sample output for VM creation](#sample-output-for-vm-creation)|
+| Step 1:|[Set up the virtual switch](#step-1:-set-up-the-virtual-switch) |
+| Step 2:|[Create the virtual host](#step-2:-create-the-virtual-host)|
+| Step 3:|[Enable nested virtualization](#step-3:-enable-nested-virtualization)|
+| Step 4:|[Configure NAT inbound rules](#step-4:-configure-nat-inbound-rules)|
+| Step 5:|[Start the deployment](#step-5:-start-the-deployment)|
+| Appendix I|[Sample single-server config file](#appendix-i)
+| Appendix II|[Sample output for VM creation](#appendix-ii)|
 
 ## Prerequisites
 
@@ -347,7 +347,7 @@ For information on how to use `SConfig`, see [Configure a Server Core installati
    > [!NOTE]
    > You must use the sample single node configuration file (see below) since the UX will not allow you to create a single node configuration file with the current 22H2 preview builds.
 
-## Appendix I - sample single-server config file
+## Appendix I
 
 Modify and use this sample file to deploy a single-server Azure Stack HCI solution using the UX-based deployment tool. If you used a different NAT network, make sure to update the server name in this sample file to match your hostname and your infrastructure subnet.
 
@@ -478,7 +478,7 @@ Modify and use this sample file to deploy a single-server Azure Stack HCI soluti
  
    ```
 
-## Appendix II - sample output for VM creation
+## Appendix II
 
    ```PowerShell
     PS C:\Users\Administrator> mkdir c:\users\administrator\vms1\node1
