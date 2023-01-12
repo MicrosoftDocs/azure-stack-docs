@@ -186,7 +186,7 @@ To learn more about built-in Kubernetes RBAC roles, see [Kubernetes RBAC user-fa
 
 ### Use a built-in Kubernetes RBAC role with Azure AD
 
-To use a built-in Kubernetes RBACK role with Azure AD, do the following steps:
+To use a built-in Kubernetes RBAC role with Azure AD, do the following steps:
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
 
