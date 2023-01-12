@@ -94,11 +94,11 @@ Once the deployment is complete, you can also toggle certain security features v
 
 | Name                                           |Feature     | Supports drift control | Reboot to take effect? |
 |------------------------------------------------|------------|------------|------------------------|
-| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting        |Windows Defender Credential Guard|  Yes     | Yes                   |
-| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting                   |Dynamic Root of Trust for Measurement (DRTM)                        | Yes   |Yes |
-| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting                   |Hypervisor-protected Code Integrity (HVCI)      | Yes   |Yes| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     | Yes   | Yes                       |
-| Enable-ASOSConfigSMBSigning<br>Disable-ASOSConfigSMBSigning                    |SMB signing                 | Yes| Yes                    |
-| Enable-ASOSConfigSMBClusterEncryption<br>Disable-ASOSConfigSMBClusterEncryption          |SMB cluster encryption      | No, cluster setting    | No                     |
+| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting  |Windows Defender Credential Guard|Yes     | Yes   |
+| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting|Dynamic Root of Trust for Measurement (DRTM) | Yes   |Yes |
+| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting|Hypervisor-protected Code Integrity (HVCI) | Yes   |Yes| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     | Yes   | Yes   |
+| Enable-ASOSConfigSMBSigning<br>Disable-ASOSConfigSMBSigning  |SMB signing  | Yes| Yes     |
+| Enable-ASOSConfigSMBClusterEncryption<br>Disable-ASOSConfigSMBClusterEncryption   |SMB cluster encryption    | No, cluster setting    | No                     |
 
 
 ## View the settings
