@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack HCI 22H2 virtual deployment (preview)
+title: Deploy a virtual Azure Stack HCI 22H2 cluster (preview)
 description: This article describes how to perform an Azure Stack HCI version 22H2 virtual deployment.
 author: dansisson
 ms.author: v-dansisson
