@@ -195,7 +195,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following one:
 
    ```azurecli
-   _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
+   AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
    AZURE_TENANT_ID=${AZURE_TENANT_ID}
    AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
    AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
