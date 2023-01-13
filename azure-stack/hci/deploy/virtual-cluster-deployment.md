@@ -190,7 +190,7 @@ You can use the following series of PowerShell cmdlets to create the VM. Make su
  
       :::image type="content" source="media/virtual-deployment/trusted-platform-module.png" alt-text="Screenshot of Hardware Security window." lightbox="media/virtual-deployment/trusted-platform-module.png":::
 
-   1. Change the number of virtual processors to `4`:
+1. Change the number of virtual processors to `4`:
 
    ```PowerShell
       Set-VmProcessor -VMName <VM Name> -Count 4
@@ -239,7 +239,7 @@ Before you start the newly created virtual machine, enable nested virtualization
 
 ## Step 4: Configure NAT inbound rules
 
-To access the server from your Hyper-V host or any other machine in your network, NAT inbound rules are required. 
+To access the server from your Hyper-V host or any other machine in your network, NAT inbound rules are required.
 
 1. Create the following inbound rules:
 
@@ -299,9 +299,9 @@ To access the server from your Hyper-V host or any other machine in your network
 
    Verify that the tool was copied over. Examine the contents of the `Cloud` folder.
     
-   Here is a sample output:
+    Here is a sample output:
 
-```PowerShell
+    ```PowerShell
         PS C:\Users\Administrator> net use \\WIN-29V48V6T1O8\C$
 
         Enter the user name for 'WIN-29V48V6T1O8': <Username>
@@ -319,7 +319,7 @@ To access the server from your Hyper-V host or any other machine in your network
         -a----     6/28/2022   2:41 PM   11420824813 
         CloudDeployment_10.2206.0.50.zip
         PS D:\deployment>   
-```
+    ```
 
 1. Rename the network adapters, using the names from the previous step. Note that the new name must match what is in the `config.json` file used for the deployment. Run the following command:
 
