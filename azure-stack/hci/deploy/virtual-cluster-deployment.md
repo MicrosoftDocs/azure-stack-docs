@@ -6,7 +6,7 @@ ms.author: v-dansisson
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/12/2023
+ms.date: 1/13/2023
 ---
 
 # Azure Stack HCI virtual deployment (preview)
@@ -20,20 +20,21 @@ You’ll need administrator privileges for the Azure Stack HCI virtual deploymen
 > [!IMPORTANT]
 > Azure Stack HCI 22H2 is in preview. Please review the terms of use for the preview and sign up before you deploy this solution. For more details, see the [Preview Terms Of Use | Microsoft Azure ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## Introduction
+## Process
 
-The following table outlines the steps required to create a virtual Azure Stack HCI version 22H2 deployment.
+The following steps are required to create a virtual Azure Stack HCI version 22H2 deployment.
 
-| **Step**| **Description**|
-| ----- | -------- |
-| Step 0:|Review the prerequisites |
-| Step 1:|[Set up the virtual switch](#step-1-set-up-the-virtual-switch) |
-| Step 2:|[Create the virtual host](#step-2-create-the-virtual-host)|
-| Step 3:|[Enable nested virtualization](#step-3-enable-nested-virtualization)|
-| Step 4:|[Configure NAT inbound rules](#step-4-configure-nat-inbound-rules)|
-| Step 5:|[Start the deployment](#step-5-start-the-deployment)|
-| Appendix I|[Sample single-server config file](#appendix-i)
-| Appendix II|[Sample output for VM creation](#appendix-ii)|
+Step 0: Satisfy the prerequisites
+
+Step 1: [Set up the virtual switch](#step-1-set-up-the-virtual-switch)
+
+Step 2: [Create the virtual host](#step-2-create-the-virtual-host)
+
+Step 3: [Enable nested virtualization](#step-3-enable-nested-virtualization)
+
+Step 4: [Configure NAT inbound rules](#step-4-configure-nat-inbound-rules)
+
+Step 5: [Start the deployment](#step-5-start-the-deployment)
 
 ## Prerequisites
 
@@ -89,18 +90,20 @@ First, we will create an internal virtual switch with Network Address Translatio
          Get-NetAdapter    
      ```
 
-Here is a sample output of the `Get-NetAdapter` cmdlet.
+    Here is a sample output of the `Get-NetAdapter` cmdlet.
 
-  PS C:\Users\Administrator> Get-netadapter
+    ```PowerShell
+    PS C:\Users\Administrator> Get-netadapter
 
-| **Name**| **InterfaceDescription**| **ifIndex**| MacAddress|**LinkSpeed**|
-| ------------- | ----------------------- |------| ---------| ---------|
-| vEthernet (InternalDemo)| Hyper-V Virtual Ethernet… | 20  Up |  00-15-5D-E2-3E-00 | 10 Gbps |
-| vEthernet | (Intel(R) Ethernet Hyper-V Virtual Ethernet |  9  Up | 98-90-96-E0-69-2F | 1 Gbps |
-| Ethernet |  (Intel(R) Ethernet | 5  Up |  98-90-96-E0-69-2F | 1 Gbps |
-| Ethernet 2 | ASIX AX88772 USB2.0 to … | 3 Up |  00-50-B6-58-05-4A | 100 Mbps |
+    | **Name**| **InterfaceDescription**| **ifIndex**| MacAddress|**LinkSpeed**|
+    | ----------- | ------------------ |-----| --------| --------|
+    | vEthernet (InternalDemo)| Hyper-V Virtual Ethernet… | 20  Up |  00-15-5D-E2-3E-00 | 10 Gbps |
+    | vEthernet | (Intel(R) Ethernet Hyper-V Virtual Ethernet |  9  Up | 98-90-96-E0-69-2F | 1 Gbps |
+    | Ethernet |  (Intel(R) Ethernet | 5  Up |  98-90-96-E0-69-2F | 1 Gbps |
+    | Ethernet 2 | ASIX AX88772 USB2.0 to … | 3 Up |  00-50-B6-58-05-4A | 100 Mbps |
+    ```
 
-From the output of the `Get-NetAdapter` cmdlet, find the adapter that includes the virtual switch name you created in the earlier step. Make a note of the `ifIndex` corresponding to the virtual switch. In the above example, the `ifIndex` is 20.
+1. From the output of the `Get-NetAdapter` cmdlet, find the adapter that includes the virtual switch name you created in the earlier step. Make a note of the `ifIndex` corresponding to the virtual switch. In the above example, the `ifIndex` is 20.
 
 1. Create the NAT gateway. Provide the NAT gateway IP address, NAT subnet prefix length, and the interface index you determined in the previous step.
 
@@ -116,78 +119,87 @@ From the output of the `Get-NetAdapter` cmdlet, find the adapter that includes t
 
 ## Step 2: Create the virtual host
 
-You’ll now create a virtual machine (VM) with the following configuration:
+You’ll now create a virtual machine (VM) to serve as the virtual host with the following configuration:
 
 | **Component**| **Requirement**|
 | -------------| -------------- |
-| Virtual machine type | Secure boot enabled|
-|  | TPM enabled |
+| Virtual machine type | Secure boot enabled. TPM enabled |
 | vCPUs | 4 cores |
 | Memory | A minimum of 16 GB |
-| Networking |  Two network adapters connected to internal network. |
-|  | MAC spoofing must be enabled. |
+| Networking |  Two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | 1 disk using `ServerHCI.vhdx`.|
-| Hard disks for Storage Spaces Direct  |  6 dynamic expanding disks.|
-|  | Maximum disk size is 1024 GB. |
-| Data disk | At least 127 GB.|
-|  | Stores deployment tool. |
+| Hard disks for Storage Spaces Direct  |  6 dynamic expanding disks. Maximum disk size is 1024 GB. |
+| Data disk | At least 127 GB. Stores the deployment tool. |
 | Time synchronization in integration services | Disabled.|
 
 You can create this VM using one of the following methods:
 
-- Hyper-V Manager. For more information, see [Create a virtual machine using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) to mirror your physical management network.
+- Using Hyper-V Manager. For more information, see [Create a virtual machine using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) to mirror your physical management network.
 
-- PowerShell cmdlets.
+- Using PowerShell cmdlets.
 
-You can use the following PowerShell cmdlets to create the VM. Make sure to adjust the parameters before you run these cmdlets.
+You can use the following series of PowerShell cmdlets to create the VM. Make sure to adjust the VM configuration parameters listed above before you run these cmdlets. For an example output, see  [Appendix II](#appendix-ii).
+
+1. Create a folder and copy *ServerHCI.vhdx* to this folder.  Modify the source path accordingly.
 
    ```PowerShell
-  
-      #Create a folder and copy ServerHCI.vhdx to this folder.  Modify the source path accordingly.
-
       Mkdir <Destination path for ServerHCI.vhdx file>
-      Copy-item <Source path for ServerHCI.vhdx> <Destination path for ServerHCI.vhdx> 
+      Copy-item <Source path for ServerHCI.vhdx> <Destination path for ServerHCI.vhdx>
+   ```
 
-      #Create the VM
+1. Create the VM:
 
-      New-Vm -Name <VM Name> -MemoryStartupBytes 16GB -VHDPath <Source path for ServerHCI.vhdx file> -Generation 2 -Path <Source path for folder containing ServerHCI.vhdx>
+   ```PowerShell
+     New-Vm -Name <VM Name> -MemoryStartupBytes 16GB -VHDPath <Source path for ServerHCI.vhdx file> -Generation 2 -Path <Source path for folder containing ServerHCI.vhdx>
+   ```
 
-      #Add second network adapter
+1. Add second network adapter:
 
+   ```PowerShell
       Add-VmNetworkAdapter -VmName <VM Name>
+   ```
 
-      #Attach both adapters to virtual switch
+1. Attach both adapters to virtual switch:
 
+   ```PowerShell
       Get-VmNetworkAdapter -VmName <VM Name>|Connect-VmNetworkAdapter -SwitchName "<Internal virtual switch name>"
+   ```
 
-      #Enable MAC spoofing on both adapters
+1. Enable MAC spoofing on both adapters:
 
+   ```PowerShell
       Get-VmNetworkAdapter -VmName <VM Name>|Set-VmNetworkAdapter -MacAddressSpoofing On
+   ```
 
-      #Enable trunk port (for multi-node deployments only)
+1. Enable the trunk port (for multi-node deployments only):
 
+   ```PowerShell
       Get-VmNetworkAdapter -VmName <VM Name>|Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
+   ```
 
-      #Enable TPM
+1. Enable Trusted Platform Module (TPM):
 
-      Enable-VmTpm -VMName <VM Name>|
+   ```PowerShell
+      Enable-VmTpm -VMName <VM_name>
+   ```
 
-      If the above step fails, you must enable TPM using Hyper-V Manager. 
+      If the above step fails, you must enable TPM using Hyper-V Manager as follows:
 
-      In the Hyper-V Manager, select the VM, right-click and from the context menu, select **Settings**. 
+      a. In Hyper-V Manager, select the VM, right-click and from the context menu, select **Settings**.
 
-      Go to **Hardware > Security** and then check the **Enable Trusted Platform Module** option.
+      b. Go to **Hardware > Security** and then check the **Enable Trusted Platform Module** option:
  
-
       :::image type="content" source="media/virtual-deployment/trusted-platform-module.png" alt-text="Screenshot of Hardware Security window." lightbox="media/virtual-deployment/trusted-platform-module.png":::
 
+   1. Change the number of virtual processors to `4`:
 
-      #Change virtual processors to 4
-
+   ```PowerShell
       Set-VmProcessor -VMName <VM Name> -Count 4
+   ```
 
-      #Create additional drives to be used as boot disk and hard disks for Storage Spaces Direct
+1. Create additional drives to be used as boot disk and hard disks for Storage Spaces Direct:
 
+   ```PowerShell
       new-VHD -Path <Path to data.vhdx file> -SizeBytes 127GB
       new-VHD -Path <Path to s2d1.vhdx file> -SizeBytes 1024GB
       new-VHD -Path <Path to s2d2.vhdx file> -SizeBytes 1024GB
@@ -195,9 +207,11 @@ You can use the following PowerShell cmdlets to create the VM. Make sure to adju
       new-VHD -Path <Path to s2d4.vhdx file> -SizeBytes 1024GB
       new-VHD -Path <Path to s2d5.vhdx file> -SizeBytes 1024GB
       new-VHD -Path <Path to s2d6.vhdx file> -SizeBytes 1024GB
+   ```
 
-     #Attach drives
+1. Attach the drives:
 
+   ```PowerShell
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to data.vhdx file>
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to s2d1.vhdx file>
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to s2d2.vhdx file>
@@ -205,13 +219,13 @@ You can use the following PowerShell cmdlets to create the VM. Make sure to adju
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to s2d4.vhdx file>
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to s2d5.vhdx file>
      Add-VMHardDiskDrive -VMName <VM Name> -Path <Path to s2d6.vhdx file>
-
-     #Disable time synchronization
-
-     Get-VMIntegrationService -VMName node1 |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
    ```
 
-For an example output, see  [Appendix II](#appendix-ii).
+1. Disable time synchronization
+
+   ```PowerShell
+     Get-VMIntegrationService -VMName node1 |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
+   ```
 
 ## Step 3: Enable nested virtualization
 
@@ -226,12 +240,14 @@ Before you start the newly created virtual machine, enable nested virtualization
 
 ## Step 4: Configure NAT inbound rules
 
-To access the server from your Hyper-V host or any other machine in your network, we do require NAT inbound rules. For this deployment, we will create the following inbound rules:
+To access the server from your Hyper-V host or any other machine in your network, NAT inbound rules are required. 
 
-| **Protocol**| **Port** | **Description**|
-| ------------| ---------| ---------------|
-| Remote Desktop Protocol (RDP) | 3389| Access the server via Remote Desktop protocol |
-| Deployment tool UI | 443| Access to the web-based UI for deployment tool |
+1. Create the following inbound rules:
+
+    | **Protocol**| **Port** | **Description**|
+    | ------------| ---------| ---------------|
+    | Remote Desktop Protocol (RDP) | 3389| Access the server via Remote Desktop protocol |
+    | Deployment tool UI | 443| Access to the web-based UI for deployment tool |
 
 1. Enable port mapping from 53389 to 3389. Run the following command:
 
@@ -245,21 +261,21 @@ To access the server from your Hyper-V host or any other machine in your network
       Add-NetNatStaticMapping -NatName MyNATnetwork -ExternalIPAddress 0.0.0.0 -InternalIPAddress 192.168.0.92 -Protocol TCP -ExternalPort 5443 -InternalPort 443
    ```
 
-You may receive the following error: *Add-NetNatStaticMapping: The process cannot access the file because it is being used by another process*.
-
-Change the external port as the one you are trying to use is already allocated.
+    You may receive the following error: *Add-NetNatStaticMapping: The process cannot access the file because it is being used by another process*. To resolve this, change the external port as the one you are trying to use is already allocated.
 
 ## Step 5: Start the deployment
 
-1. Start the virtual host using Hyper-V Manager or PowerShell. The VM will take several minutes to boot up. Wait for the boot to complete.
+1. Start the virtual host VM using Hyper-V Manager or PowerShell. The VM will take several minutes to boot up. Wait for the boot to complete.
 
-      `Start-Vm node1`
+   ```PowerShell
+      Start-Vm <node1>
+   ```
 
-1. Update the password since this is the first start.
+1. Update the password since this is the first VM start up.
 
-1. After the password is changed, `Sconfig` is automatically loaded. Select option 15 to exit to the command line and run the next steps from there.
+1. After the password is changed, `Sconfig` is automatically loaded. Select option `15` to exit to the command line and run the next steps from there.
 
-1. Initialize the data disk to store the 22H2 deployment tool. Ensure that the data disk is assigned the drive letter *D*. Run the following commands inside the virtual server:
+1. Initialize the data disk to store the version 22H2 deployment tool. Ensure that the data disk is assigned the drive letter `D`. Run the following commands from the virtual server:
 
    ```PowerShell
       Set-disk 1 -isOffline $false
@@ -306,15 +322,15 @@ Change the external port as the one you are trying to use is already allocated.
         PS D:\deployment>   
 ```
 
-1. Rename the network adapters, using the names from the previous step. Note that the new name must match what is in the `config.json` file used for the deployment. Run the following commands:
+1. Rename the network adapters, using the names from the previous step. Note that the new name must match what is in the `config.json` file used for the deployment. Run the following command:
 
     ```PowerShell
-    Get-NetAdapter on the VM
+    Get-NetAdapter <VM>
     ```
 
-Verify the names of the network adapters. Here is a sample output:
+    Verify the names of the network adapters. Here is a sample output:
 
-```PowerShell
+    ```PowerShell
         PS C:\Users\Administrator> Get-NetAdapter
 
         Name     InterfaceDescription      ifIndex Status MacAddress   LinkSpeed
@@ -324,17 +340,19 @@ Verify the names of the network adapters. Here is a sample output:
 
         PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet" -NewName Nic1
         PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet 2" -NewName Nic2
-```
+    ```
 
 1. Launch the Server Configuration Tool (`SConfig`). Run the following command:
 
     ```PowerShell
-      `sconfig`
+      sconfig
     ```
 
-For information on how to use `SConfig`, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig](/windows-server/administration/server-core/server-core-sconfig).
+    For information on how to use `sconfig`, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig](/windows-server/administration/server-core/server-core-sconfig).
 
-1. Change hostname to `node1`. Use option 2 for **Computer name** in `SConfig`.  The hostname change will result in a restart. When prompted for a restart, enter `Yes` and  wait for the restart to complete. `SConfig` is launched automatically.
+1. Change hostname to `node1`. Use option `2` for **Computer name** in `SConfig`.
+
+    The hostname change will result in a restart. When prompted for a restart, enter `Yes` and  wait for the restart to complete. `SConfig` is launched automatically.
 
 1. Configure IP Address to `192.168.0.92`, subnet mask to `255.255.255.0`, and gateway to `192.168.0.1`. Configure a valid DNS server. Use option 8 for network settings in `SConfig`.
 
@@ -343,12 +361,12 @@ For information on how to use `SConfig`, see [Configure a Server Core installati
 1. Choose one of the following methods to deploy Azure Stack HCI:
 
     1. Deploy using the UX-based deployment tool. 
-        1. Switch to `D`: drive and install the deployment tool as per the instructions in **Step 2: Set up the deployment tool** in the *Azure Stack HCI, version 22H2 deployment guide.*
-        1. You then use the **deploy from file** option. 
-    1. Deploy a single-server cluster using PowerShell as per the instructions in the *Azure Stack HCI, version 22H2 deployment guide* for physical hosts. 
+        1. Switch to the `D` drive and install the deployment tool as per the instructions in **Step 2: Set up the deployment tool** in the *Azure Stack HCI, version 22H2 deployment guide.*
+        1. Afterward, use the **deploy from file** option. 
+    1. Deploy a single-server cluster using PowerShell as per the instructions in the *Azure Stack HCI, version 22H2 deployment guide* for physical hosts.
 
    > [!NOTE]
-   > You must use the sample single node configuration file (see below) since the UX will not allow you to create a single node configuration file with the current 22H2 preview builds.
+   > You must use the sample single node configuration file (see below) since the UX will not allow you to create a single-server configuration file with the current version 22H2 preview builds.
 
 ## Appendix I
 
