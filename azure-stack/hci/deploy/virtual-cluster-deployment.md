@@ -3,6 +3,7 @@ title: Deploy a virtual Azure Stack HCI 22H2 cluster (preview)
 description: This article describes how to perform an Azure Stack HCI version 22H2 virtual deployment.
 author: dansisson
 ms.author: v-dansisson
+ms.reviewer: alkohli
 ms.topic: how-to
 ms.date: 1/13/2023
 ---
@@ -358,13 +359,13 @@ To access the server from your Hyper-V host or any other machine in your network
 
 1. Choose one of the following methods to deploy Azure Stack HCI:
 
-    1. Deploy using the UX-based deployment tool. 
-        1. Switch to the `D` drive and install the deployment tool as per the instructions in **Step 2: Set up the deployment tool** in the *Azure Stack HCI, version 22H2 deployment guide.*
-        1. Afterward, use the **deploy from file** option. 
-    1. Deploy a single-server cluster using PowerShell as per the instructions in the *Azure Stack HCI, version 22H2 deployment guide* for physical hosts.
+    1. Deploy using the UX-based deployment tool:
+        1. Switch to the `D` drive and install the deployment tool as per the instructions in [Step 3A: Deploy Azure Stack HCI interactively](deployment-tool-new-file.md)
+        1. Afterward, use the **deploy from file** option.
+    1. Deploy a single-server cluster using PowerShell as per the instructions in [Step 3C: Deploy Azure Stack HCI using PowerShell](deployment-tool-powershell.md).
 
-   > [!NOTE]
-   > You must use the sample single node configuration file (see below) since the UX will not allow you to create a single-server configuration file with the current version 22H2 preview builds.
+       > [!NOTE]
+       > You must use the sample single-server configuration file (see Appendix I below) since the UX will not allow you to create a single-server configuration file with the current version 22H2 preview builds.
 
 ## Appendix I
 
