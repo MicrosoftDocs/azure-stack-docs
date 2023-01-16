@@ -3,7 +3,7 @@ title: Manage VMs using Windows PowerShell - Azure Stack HCI
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: JasonGerend 
 ms.topic: how-to 
-ms.date: 07/19/2021 
+ms.date: 10/20/2022
 ms.author: jgerend 
 ms.reviewer: stevenek 
 ---
@@ -40,18 +40,18 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
 
-- **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](/powershell/module/hyper-v/get-vmswitch). For example:  
+- **-SwitchName** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](/powershell/module/hyper-v/get-vmswitch). For example:  
 
 The full command as follows for creating a VM called VM1:
 
  ```powershell
- New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -Switch <SwitchName>
+ New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -SwitchName <Switch name>
  ```
 
 The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.  
 
 ``` powershell
-New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -Switch ExternalSwitch
+New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -SwitchName ExternalSwitch
 ```
 
 The following parameters are used to specify virtual hard disks.
@@ -59,7 +59,7 @@ The following parameters are used to specify virtual hard disks.
 To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with  **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:  
 
 ``` powershell  
-New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -Switch ExternalSwitch  
+New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -SwitchName ExternalSwitch  
  ```  
 
 To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine).  

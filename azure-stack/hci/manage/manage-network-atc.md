@@ -9,9 +9,17 @@ ms.author: jgerend
 
 # Manage Network ATC
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 21H2 and later
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
+
+
+
+
+
+
+
+
 
 ## Add a server node
 
@@ -19,37 +27,82 @@ You can add nodes to a cluster. Each node in the cluster receives the same inten
 
 In this task, you will add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
 
-1. Use the `Add-ClusterNode` cmdlet to add the additional (unconfigured) nodes to the cluster. You only need management access to the cluster at this time. Each node in the cluster should have all pNICs named the same.
+1. Use the `Add-ClusterNode` cmdlet to add the additional (not configured) nodes to the cluster. You only need management access to the cluster at this time. Each node in the cluster should have all pNICs named the same.
+
 
     ```powershell
     Add-ClusterNode -Cluster HCI01
     Get-ClusterNode
     ```
 
-1. Check the status across all cluster nodes using the `-ClusterName` parameter.
 
+
+2. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC will auto detect cluster name from version 22H2 and later.
+
+    # [21H2](#tab/21H2)
     ```powershell
     Get-NetIntentStatus -ClusterName HCI01
     ```
+    
+
+
+    # [22H2](#tab/22H2)
+    ```powershell
+    Get-NetIntentStatus
+    ``` 
+    
+    ---
+
 
     > [!NOTE]
     > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
-1. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. Note that this may take a similar amount of time to provision as the original node.
 
+  
+
+
+
+
+3. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. Note that this may take a similar amount of time to provision as the original node.
+
+    # [21H2](#tab/21H2)
     ```powershell
     Get-NetIntentStatus -ClusterName HCI01
     ```
+    
 
-You can also add several nodes to the cluster at once.
+
+
+    # [22H2](#tab/22H2)
+    ```powershell
+    Get-NetIntentStatus
+    ```
+    ---
+
+
+
+
+    You can also add several nodes to the cluster at once.
+
 
 ## Modify default VLANs for storage or management systems
 
 You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
 
+
+
+   # [21H2](#tab/21H2)
    ``` powershell
    Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
    ```
+
+
+
+   # [22H2](#tab/22H2)
+   ``` powershell
+   Add-NetIntent -Name MyIntent -StorageVLANs 101, 102 -ManagementVLAN 10
+   ```
+   ---
 
 ## Add or remove network adapters from an intent
 
@@ -63,17 +116,183 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     Get-NetAdapter -Name pNIC03, pNIC04 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
     ```
 
-1. Run the following command to update the intent to include the old and new network adapters. 
+2. Run the following command to update the intent to include the old and new network adapters. 
 
-    ``` powershell
+    # [21H2](#tab/21H2)
+    ```powershell
      Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
     ```
 
-1. Check that the net adapters were successfully added to the intent.
+    # [22H2](#tab/22H2)    
+     ```powershell
+     Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
+     ```
 
-    ``` powershell
-    Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
+    ---
+
+
+
+
+
+3. Check that the net adapters were successfully added to the intent.
+
+    # [21H2](#tab/21H2)
+    ```powershell
+        Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
     ```
+
+
+    # [22H2](#tab/22H2)
+    ```powershell
+        Get-NetIntent -Name Cluster_Compute 
+
+    ```
+    ---
+
+## Global overrides and cluster network settings
+> Applies to Azure Stack HCI, version 22H2 and later. 
+
+Global overrides and cluster network settings is a new feature Network ATC is introducing in version 22H2 (and later versions). Network ATC mainly consists of 2 kinds of global overrides: Proxy Configurations, and Cluster Network Features. 
+
+### Cluster network features 
+
+In this section we go over the set of new Cluster Network Features that we are releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, as well as managing live migrations. 
+
+Below is a table of the Cluster Network Features Network ATC configures, and their default values: 
+
+
+
+
+
+
+
+
+
+
+
+
+###### Cluster network naming  
+
+Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there is no way for clustering to know how you intended to use the networks – until now!
+
+Once you define your configuration through Network ATC, we now understand how the subnets are going to be used and can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
+
+In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
+
+:::image type="content" source="media/manage-network-atc/cluster-network-naming.png" alt-text="Screenshot of Cluster Network Selection." lightbox="media/manage-network-atc/cluster-network-naming.png":::
+
+###### Live migration network selection 
+This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
+
+###### Enable virtual machine migration: performance selection
+This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled ($true) and results in the system automatically determining the best live migration transport, eg: SMB, Compression, TCP. 
+
+If disabled: 
+- Live migration transport selection uses the transport specified in VirtualMachineMigrationPerformanceOption override value.
+- If the VirtualMachineMigrationPerformanceOption override value is not specified, Network ATC will revert to behavior when Network ATC was absent.
+- If null, but VirtualMachineMigrationPerformanceOption is configured, configure this option to $false and use the option specified in the VirtualMachineMigrationPerformanceOption override
+
+
+###### Virtual machine migration performance option
+Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system will use the selection logic outlined in this spec to determine the best transport.
+
+###### Maximum concurrent virtual machine migrations 
+Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through ten. 
+
+###### Maximum SMB migration bandwidth
+This value enforces a specific bandwidth limit (in Gbps) on SMB-transported live migration traffic to prevent consumption of the SMB traffic class. This value is only usable if the live migration transport is SMB. Default value will be calculated.
+
+#### Customize cluster network settings  
+
+
+Cluster Network Features work through their defined defaults. Since disabling cluster network features does not land you in an unsupported scenario, Network ATC has an option for a globaloverride. You can use the global override to adjust properties and make cluster network feature properties customized to your needs. To add a GlobalOverride with Network ATC,
+```powershell
+$clusterOverride = New-NetIntentGlobalClusterOverrides
+
+```
+The 'clusterOverride' variable has the following properties: 
+
+
+:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png"::: 
+
+
+Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command: 
+```powershell
+Set-NetIntent -GlobalClusterOverrides $clusterOverride
+```
+ And to verify a successful deployment of your clusterOverride run: 
+```powershell
+Get-NetIntentStatus -Globaloverrides
+```
+To remove the GlobalClusterOverride, run the following: 
+```powershell
+Remove-NetIntent -GlobalOverrides $clusterOverride
+```
+
+
+### Proxy configurations 
+
+Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
+
+The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
+
+###### Default parameter set
+
+ProxyServer: The ProxyServer parameter will take strings as inputs which represent the URL of the proxy server to use for https traffic. ProxyServer is a required parameter when setting up Proxy. 
+
+ProxyBypass: The ProxyBypass parameter takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use `local`  
+
+AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
+
+
+
+
+
+###### AutoDetect parameter set:
+AutoConfigUrl: The AutoConfigUrl parameter takes a string with the URL of the proxy server to use for http and/or https traffic as input. For both traffic classes, use a semi-colon to separate. This is a required parameter. 
+
+AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
+
+
+
+
+##### Setting-up proxy
+
+
+You can set your proxy configurations in the following ways: 
+
+```powershell
+$ProxyOverride = New-NetIntentProxyOverride -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
+```
+
+Using the AutoDetect switch, you can set your proxy configuration in the following way: 
+```powershell
+$ProxyOverride = New-NetIntentProxyOverride -AutoConfigUrl https://itg.contoso.com
+```
+
+You can add a GlobalProxyOverride for your cluster as follows: 
+```powershell
+Set-NetIntent -GlobalProxyOverride $ProxyOverride
+```
+
+To remove a GlobalProxyOverride for your cluster as follows:
+```powershell
+Remove-NetIntent -GlobalOverride $ProxyOverride
+```
+
+Finally, to access any global override, Proxy or Cluster, you can run the following: 
+
+```powershell
+$Obj1 = Get-NetIntent -GlobalOverride
+$Obj1
+```
+
+More specifically, you can access the Proxy and Cluster global overrides respectively, by calling their respective parameters for `$Obj1` 
+
+```powershell
+$Obj1.ProxyOverride
+$Obj1.ClusterOverride
+``` 
 
 ## Update or override network settings
 
@@ -224,7 +443,7 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 1. Retry the configuration. This step is only performed to expedite the remediation. Network ATC will automatically remediate this configuration.
 
     ```powershell
-    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage
+    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage -NodeName Node01
     ```
 
 1. Verify that the consistency check has completed:

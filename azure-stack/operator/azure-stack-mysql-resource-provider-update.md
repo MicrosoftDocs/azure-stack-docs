@@ -27,7 +27,7 @@ A new MySQL resource provider adapter might be released when Azure Stack Hub bui
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2108|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108,2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
@@ -65,8 +65,12 @@ e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/my
 
 ### Trigger MajorVersionUpgrade
 Run the following script from an elevated PowerShell console to perform major version upgrade. 
+
 > [!NOTE]
 > Make sure the client machine that you run the script on is of OS version no older than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
+
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
 
 ``` powershell
@@ -122,14 +126,7 @@ $MySQLConnector = "Provide the MySQL Connector Uri according to Prerequisites st
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
-. $tempDir\MajorVersionUpgradeMySQLProvider.ps1 `
-  -AzureEnvironment $AzureEnvironment `
-  -AzCredential $AdminCreds `
-  -CloudAdminCredential $CloudAdminCreds `
-  -Privilegedendpoint $privilegedEndpoint `
-  -PfxPassword $PfxPass `
-  -PfxCert $PfxFilePath `
-  -MySQLConnector $MySQLConnector
+. $tempDir\MajorVersionUpgradeMySQLProvider.ps1 -AzureEnvironment $AzureEnvironment -AzCredential $AdminCreds -CloudAdminCredential $CloudAdminCreds -Privilegedendpoint $privilegedEndpoint -PfxPassword $PfxPass -PfxCert $PfxFilePath -MySQLConnector $MySQLConnector
 
 ```
 
@@ -248,14 +245,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-.$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
--VMLocalCredential $vmLocalAdminCreds `
--CloudAdminCredential $cloudAdminCreds `
--PrivilegedEndpoint $privilegedEndpoint `
--AzureEnvironment $AzureEnvironment `
--DefaultSSLCertificatePassword $PfxPass `
--DependencyFilesLocalPath $tempDir\cert `
--AcceptLicense
+.$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint $privilegedEndpoint -AzureEnvironment $AzureEnvironment -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert -AcceptLicense
 ```  
 
 When the resource provider update script finishes, close the current PowerShell session.
