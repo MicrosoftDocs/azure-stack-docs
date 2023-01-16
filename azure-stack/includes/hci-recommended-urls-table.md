@@ -18,7 +18,7 @@ ms.lastreviewed: 04/19/2022
 | Microsoft Update | wustat.windows.com    | 80   | For Microsoft Update, which allows the OS to receive updates. |
 | Microsoft Update | ntservicepack.microsoft.com    | 80   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | go.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates.  |
-| Microsoft Update | dl.delivery.mp.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
+| Microsoft Update | *.delivery.mp.microsoft.com    | 443  | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | *.windowsupdate.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates. |
 | Microsoft Update | *.update.microsoft.com   | 80, 443   | For Microsoft Update, which allows the OS to receive updates.  |
 | Microsoft Update | *.windowsupdate.com | 80 | For Microsoft Update, which allows the OS to receive updates.|
