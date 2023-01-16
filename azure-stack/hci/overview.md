@@ -6,13 +6,13 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/16/2022
+ms.date: 12/09/2022
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
 # Azure Stack HCI solution overview
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
@@ -25,10 +25,6 @@ Azure Stack HCI is delivered as an Azure service and [billed to an Azure subscri
 ## Azure Stack HCI features and architecture
 
 Azure Stack HCI is a world-class, integrated virtualization stack built on proven technologies that have already been deployed at scale, including Hyper-V, Storage Spaces Direct, and Azure-inspired SDN. It's part of the [Azure Stack family](../index.yml), using the same software-defined compute, storage, and networking software as [Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/).
-
-Watch the video on the high-level features of Azure Stack HCI:
-
-> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
@@ -68,11 +64,21 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Virtual desktop infrastructure (VDI)              | Azure Stack HCI clusters are well suited for large-scale VDI deployments with RDS or equivalent third-party offerings as the virtual desktop broker. Azure Stack HCI provides additional benefits by including centralized storage and enhanced security, which simplifies protecting user data and minimizes the risk of accidental or intentional data leaks. To learn more about this workload, see [Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI](deploy/virtual-desktop-infrastructure.md).|
 | Highly performant SQL Server                      | Azure Stack HCI provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more about this workload, see [Deploy SQL Server on Azure Stack HCI](deploy/sql-server.md).|
 | Trusted enterprise virtualization                 | Azure Stack HCI satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more about this workload, see [Deploy Trusted Enterprise Virtualization on Azure Stack HCI](deploy/trusted-enterprise-virtualization.md).|
-| Azure Kubernetes Service (AKS)                    | You can leverage Azure Stack HCI to host container-based deployments, which increases workload density and resource usage efficiency. Azure Stack HCI also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more about this workload, see [What is Azure Kubernetes Service on Azure Stack HCI and Windows Server ?](../aks-hci/overview.md).|
+| Azure Kubernetes Service (AKS)                    | You can leverage Azure Stack HCI to host container-based deployments, which increases workload density and resource usage efficiency. Azure Stack HCI also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more about this workload, see [What is Azure Kubernetes Service on Azure Stack HCI and Windows Server ?](/azure/aks/hybrid/overview).|
 | Scale-out storage                                 | Storage Spaces Direct is a core technology of Azure Stack HCI that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication.|
 | Disaster recovery for virtualized workloads       | An Azure Stack HCI stretched cluster provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks.|
 | Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
 | Run Azure services on-premises                    | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview).|
+
+#### Demo of using Microsoft Azure with Azure Stack HCI
+
+For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo.
+
+Using a fictional customer, inspired directly by real customers, you will see how to deploy Kubernetes, set up GitOps, deploy VMs, use Azure Monitor and drill into a hardware failure, all without leaving the Azure portal.
+
+> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
+
+This video includes preview functionality which shows real product functionality, but in a closely controlled environment.
 
 ### Azure integration benefits
 
@@ -103,7 +109,7 @@ To get started, you'll need:
 
 Make sure your hardware meets the [System requirements](concepts/system-requirements.md) and that your network meets the [physical network](concepts/physical-network-requirements.md) and [host network](concepts/host-network-requirements.md) requirements for Azure Stack HCI.
 
-For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](../aks-hci/overview.md#what-you-need-to-get-started).
+For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](/azure/aks/hybrid/overview#what-you-need-to-get-started).
 
 Azure Stack HCI is priced on a per core basis on your on-premises servers. For current pricing, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 

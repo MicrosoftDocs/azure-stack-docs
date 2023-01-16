@@ -26,7 +26,7 @@ It is required that you apply the minimum supported Azure Stack Hub update to yo
 
 > |Supported Azure Stack Hub version|MySQL resource provider version|
 > |-----|-----|
-> |Version 2108|MySQL RP version 2.0.6.x|  
+> |Version 2108, 2206|MySQL RP version 2.0.6.x|  
 > |     |     |
 
 > [!IMPORTANT]

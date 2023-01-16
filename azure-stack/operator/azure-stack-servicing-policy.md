@@ -78,11 +78,11 @@ For your Azure Stack Hub instance to remain in a supported state, the instance m
 
 You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 
-Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
+Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recently available update version is 2102, and the previous two update packages were versions 2005 and 2008, both 2005 and 2008 remain in support. However, 2002 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
+For example, if the most recent update version available is 2206 (N), the two previous update versions were 2108 and 2102, which means both 2108 (N-1) and 2102 (N-2) remain in support. However, the 2008 version would be out of support, as 2008 would be N-3 when the 2206 update was released.
 
-Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
+Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 
 ### Resource provider version support
 
