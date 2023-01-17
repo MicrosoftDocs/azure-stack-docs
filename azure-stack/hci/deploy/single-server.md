@@ -15,7 +15,7 @@ ms.date: 01/17/2023
 
 This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 
-Note, that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
+Note that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 ## Prerequisites
 
