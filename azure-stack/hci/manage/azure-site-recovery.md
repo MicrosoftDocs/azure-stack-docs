@@ -10,20 +10,24 @@ ms.date: 11/02/2022
 
 >Applies to: Azure Stack HCI, version 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Windows Admin Center streamlines the process of replicating your virtual machines on your Hyper-V servers or clusters, making it easier to use the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
+Windows Admin Center streamlines the process of replicating your virtual machines (VMs) on your Hyper-V servers or clusters, making it easier to use the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
 
-Use the following information to configure replication settings and create a recovery plan from within the Azure portal. The plan enables Windows Admin Center to start VM replication and protect your VMs.
+This article describes how to configure replication settings and create a recovery plan from within the Azure portal. The plan enables Windows Admin Center to start VM replication and protect your VMs.
 
 > [!IMPORTANT]
-> If you're using an Azure Stack HCI cluster, it's strongly recommended that you manually install the Azure Site Recovery (ASR) agents on each node of your cluster. For more information, see [Set up disaster recovery of on-premises Azure Stack HCI VMs to Azure](/azure/site-recovery/hyper-v-azure-tutorial).
+> If you're using an Azure Stack HCI cluster, it's strongly recommended that you manually install the Azure Site Recovery (ASR) agents on each server of your cluster. For more information, see [Set up disaster recovery of on-premises Azure Stack HCI VMs to Azure](/azure/site-recovery/hyper-v-azure-tutorial).
+
 
 ## What is Azure Site Recovery and how does it work with Windows Admin Center?
 
-*Azure Site Recovery* is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected if there's a disaster. For more information about Azure Site Recovery, see [Learn more about Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+*Azure Site Recovery* is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected if there's a disaster. For more information about Azure Site Recovery, see [About Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 Azure Site Recovery consists of two components: **replication** and **failover**. The replication portion protects your VMs in case of disaster by replicating the target VM's VHD to an Azure storage account. You can then fail over these VMs and run them in Azure in the event of a disaster. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
 
 Completing setup for the replication component alone is sufficient to protect your VM in the case of disaster. However, you won't be able to start the VM in Azure until you configure the failover portion. You can set up the failover portion when you want to fail over to an Azure VM - this isn't required as part of the initial setup. If the host server goes down and you haven't yet configured the failover component, you can configure it at that time and access the workloads of the protected VM. However, it's a good practice to configure the failover-related settings before a disaster.
+
+> [!NOTE]
+> Azure Site Recovery doesn't support the replication, failover, and failback of the Arc resource bridge and Arc VMs (the VMs created by the Arc control plane).
 
 ## Prerequisites and planning
 
