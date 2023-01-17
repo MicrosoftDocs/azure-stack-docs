@@ -235,7 +235,7 @@ To enable nested virtualization, run the following command.
       Set-VmProcessor -VmName node1 -ExposeVirtualizationExtensions $true
    ```
 
-## Step 4: Configure the NAT inbound rules
+## Step 4: Configure NAT inbound rules
 
 To access the server from your Hyper-V host or any other computer in your network, NAT inbound rules are required.
 
