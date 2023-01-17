@@ -15,7 +15,7 @@ ms.date: 01/14/2023
 
 This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 
-Note that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
+Note, that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 ## Prerequisites
 
@@ -74,7 +74,7 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md).
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md).
 3. Once the server is added, change the cluster's fault domain awareness from PhysicalDisk to ScaleScaleUnit: [Inline fault domain changes](../manage/single-node-scale-out.md#inline-fault-domain-changes).
-4. Optionally, if additional resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
+4. Optionally, if more resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
 5. [Set up a cluster witness](../manage/witness.md).
 
 ## Next steps
