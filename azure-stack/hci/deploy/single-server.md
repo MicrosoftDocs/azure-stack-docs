@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
-ms.lastreviewed: 01/13/2023
-ms.date: 01/13/2023
+ms.lastreviewed: 01/14/2023
+ms.date: 01/14/2023
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -61,9 +61,9 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 ## Updating single-node clusters
 
-To install updates for Azure Stack HCI, version 21H2 use Windows Admin Center (Server Manager > Updates), PowerShell, or connect via Remote Desktop and use Server Configuration tool (SConfig).
+To install updates for Azure Stack HCI, version 21H2 use Windows Admin Center (Server Manager > Updates), [PowerShell](../manage/update-cluster.md#update-a-cluster-using-powershell), or connect via Remote Desktop and use [Server Configuration tool (SConfig)](../manage/update-cluster.md#perform-a-manual-feature-update-of-a-failover-cluster-using-sconfig).
 
-To install updates for Azure Stack HCI, version 22H2 use Cluster Manager > Updates. Cluster Aware Updating (CAU) is supported beginning with this version.
+To install updates for Azure Stack HCI, version 22H2 use Windows Admin Center (Cluster Manager > Updates). Cluster Aware Updating (CAU) is supported beginning with this version. To use PowerShell or connect via Remote Desktop and use Server Configuration Tool (SConfig), see [Update Azure Stack HCI clusters](../manage/update-cluster.md).
 
 For solution updates (such as driver and firmware updates), see your solution vendor.
 
