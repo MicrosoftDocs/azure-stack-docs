@@ -12,6 +12,20 @@ ms.custom: template-concept
 
 This article discussed some important concepts in AKS Edge Essentials.
 
+## Virtual machine nodes
+
+When you create an AKS Edge Essentials deployment, AKS Edge Essentials first creates a virtual machine for each of the nodes. 
+
+![Screenshot showing the the VMs in AKS Edge.](./media/aks-edge/aks-edge-vm.png)
+
+Note the following points:
+
+- You can only create one Linux VM on a given host machine. This Linux VM can act as both the control plane node and as a worker node based on your deployment needs.
+- Running a Windows node is optional and you can create a Windows node if you need to deploy Windows containers. 
+- You can define the amount of CPU and memory resources that you'd like to allocate for each of the VMs. This static allocation enables you to control how resources are used and ensures that applications running on the host have the required resources.
+- AKS Edge does not offer high availability of the virtual machines. If a VM goes down, you have to recreate it. That said, if you have a full deployment with multiple control plane nodes and worker nodes, if a VM goes down, Kubernetes moves workloads to an active node. 
+
+
 ## Networking
 
 There are three key networking concepts for AKS Edge Essentials that align with Kubernetes concepts. They are described in this article, and the chart below shows how to configure them. This guide assumes that you have control over your network and router (i.e. in a home setting). If you are in a corporate environment, we recommend you ask your network administrator for a range of free IP addresses (from the same subnet) that are reachable on the internet, then follow the same steps as below.

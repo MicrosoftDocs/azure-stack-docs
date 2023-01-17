@@ -2,6 +2,12 @@
 metadata:
   title: Troubleshoot security and identity issues and errors in AKS hybrid
   description: Get help to troubleshoot security and identity issues and errors in AKS hybrid.
+  author: sethmanheim
+  ms.author: sethm
+  ms.service: azure-stack
+  ms.subservice: aks-hci
+  ms.topic: faq
+  ms.date: 12/21/2022
 
 title: Fix security and identity known issues and errors in AKS hybrid
 summary: |
@@ -38,7 +44,7 @@ sections:
           After this step, `Get-AksHciCredential` should not fail.
           
       - question: | 
-          Error 'Certificate expired - Unable to connect to the server: x509'
+          Error "Certificate expired - Unable to connect to the server: x509"
 
         answer: | 
           The target cluster is not accessible when control plane certificates fail to renew. When trying to reach the cluster, the `kubectl` command displays the following error:
@@ -128,7 +134,7 @@ sections:
           1. Run the following command to renew the generated certificate manually:
           
              ```powershell
-             Update-AksHciClusterCertificates  -Name my-workload -cluster -fixKubeletCredentials
+             Update-AksHciClusterCertificates  -Name my-workload -fixKubeletCredentials
              ```
           
           2. Generate new credentials:
@@ -214,7 +220,7 @@ sections:
           Repair-MocLogin
           ```
       - question: | 
-          Delete KVA certificate if expired after 60 days.
+          Delete KVA certificate if expired after 60 days
 
         answer: | 
           KVA certificate expires after 60 days if no upgrade is performed.
@@ -232,19 +238,51 @@ sections:
           You can find a discussion about the issue at [KVA certificate needs to be deleted if KVA Certificate expired after 60 days](https://github.com/Azure/aks-hci/issues/146)
           
       - question: | 
-          Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes. 
+          Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes
 
         answer: | 
           Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have **Full Control** permission to create AD objects in the Active Directory container the server and service objects are created in. 
           
           Elevate the user's permissions.
       - question: | 
-          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
+          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'
 
         answer: | 
           If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays this error, you should ignore it for now as this issue will be fixed.
           
           `This issue will be fixed.`
+      - question: | 
+          kubectl logs return "error: You must be logged in to the server (the server has asked for the client to provide credentials)" 
+
+        answer: | 
+          There is an issue with AKS hybrid in which a cluster can stop returning logs. When this happens, running `kubectl logs <pod_name>` returns "error: You must be logged in to the server (the server has asked for the client to provide credentials)". AKS hybrid rotates core Kubernetes certificates every 4 days, but sometimes the Kubernetes API server doesn't immediately reload its client certificate for communication with kubelet when the certificates update.
+          
+          To mitigate the issue, there are several options:
+          
+          - Rerun `kubectl logs`. For example, run the following PowerShell command:
+          
+             ```powershell
+             while (1) {kubectl logs <POD_NAME>; sleep 1}
+             ```
+            
+          - Restart the `kube-apiserver` container on each of the control planes for a cluster. Restarting the API server does not impact running workloads. To restart the API server, follow these steps:
+             1. Get the IP addresses for each control plane in your cluster:
+                
+                ```powershell
+                kubectl get nodes -o wide
+                ```
+          
+             1. Run the following command:
+             
+                ```powershell
+                ssh -i (get-akshciconfig).Moc.sshPrivateKey clouduser@<CONTROL_PLANE_IP> 'sudo crictl stop $(sudo crictl ps --name kube-apiserver -o json | jq -r .containers[0].id)'
+                ```
+          
+          - Optionally, but not recommended for production workloads, you can ask `kube-apiserver` not to verify the server certificate of the kubelet:
+          
+             ```powershell
+             kubectl logs <POD_NAME> --insecure-skip-tls-verify-backend=true
+             ``` 
   
 
 additionalContent: |
@@ -252,5 +290,4 @@ additionalContent: |
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
   - [Storage known issues](/azure-stack/aks-hci/known-issues-storage)
-  
     

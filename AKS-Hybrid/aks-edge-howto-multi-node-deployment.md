@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Full Kubernetes deployments in AKS Edge Essentials
 
-The AKS cluster can be configured to run on multiple machines to support a distributed microservices architecture. Unlike other AKS products, such as AKS in the cloud or AKS on HCI on-premises that have multiple VMs, AKS Edge Essentials is intended for static configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed, each with a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we will configure the K8S cluster using an external switch. With this configuration you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, etc.  
+You can configure the AKS cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS HCI. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, etc.  
 
 ## Prerequisites
 
@@ -21,15 +21,23 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 The parameters needed to create a full Kubernetes are defined in the **aksedge-config.json** file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](aks-edge-deployment-config-json.md). The key parameters to note for a full Kubernetes deployment are:
 
 - **DeployOptions.SingleMachineCluster** - The parameter that identifies a full deployment cluster is the `singlemachinecluster` flag, which must be set to `false`.
-- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `Network.VSwitch.AdapterName` as either `Ethernet` or `Wi-Fi`. If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your **aksedge-config.json** file. If you do not create an external switch in Hyper-V manager and run the deployment command below, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `Network.VSwitch.AdapterName` as either `Ethernet` or `Wi-Fi`.
+
+    ```powershell
+    # get the list of available adapters in the machine
+    Get-NetAdapter -Physical | Where-Object { $_.Status -eq 'Up' }
+    ```
+
+    If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your **aksedge-config.json** file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
 
     > [!NOTE]
     > In this release, there is a known issue with automatic creation of an external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager, map the switch to the Wi-fi adapter, and then provide the switch details in your configuration JSON as described below.
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script that is included in the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, so you can avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, `ServiceIPRangeEnd` and `DnsServers`.
-- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  - `DeployOptions.NodeType`,  `DeployOptions.NetworkPlugin`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
+- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, `ServiceIPRangeEnd` and `DnsServers`.
+- The `DeployOptions.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. In K8S cluster change the `NetworkPlugin` to `calico`.
+- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  - `DeployOptions.NodeType`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
 - In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` as 'true' to enable the metrics server.
 
 ## 2. Validate the configuration file
@@ -42,7 +50,7 @@ Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json
 
 ## 3. Create a full deployment cluster
 
-If `Test-AksEdgeNetworkParameters` returns true, you are ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
+If `Test-AksEdgeNetworkParameters` returns true, you're ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json

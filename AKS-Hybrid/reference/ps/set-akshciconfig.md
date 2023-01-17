@@ -76,7 +76,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocat
 ### To deploy with a proxy server
 
 ```powershell
-PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
+PS C:\> $proxySettings = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
 
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySettings -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
@@ -222,7 +222,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A2_V2
+Default value: Standard_A4_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

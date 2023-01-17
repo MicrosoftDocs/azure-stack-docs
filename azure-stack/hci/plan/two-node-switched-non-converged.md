@@ -40,7 +40,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 :::image type="content" source="media/two-node-switched-non-converged/physical-components-layout.png" alt-text="Diagram showing two-node switchless physical connectivity layout." lightbox="media/two-node-switched-non-converged/physical-components-layout.png":::
 
-|Networks|Management & compute|Storage|BMC|
+|Networks|Management and compute|Storage|BMC|
 |--|--|--|--|
 |Link speed|At least 1 Gbps. 10 Gbps recommended|At least 10 Gbps|Check with hardware manufacturer|
 |Interface type|RJ45, SFP+ or SFP28|SFP+ or SFP28|RJ45|
@@ -50,7 +50,7 @@ As described in the diagram below, this pattern has the following physical netwo
 
 :::image type="content" source="media/two-node-switched-non-converged/network-atc.png" alt-text="Diagram showing two-node switchless Network ATC intents" lightbox="media/two-node-switched-non-converged/network-atc.png":::
 
-### Management & compute intent
+### Management and compute intent
 
 - Intent type: Management and compute
 - Intent mode: Cluster mode
@@ -92,7 +92,7 @@ The storage intent-based traffic consists of two individual networks supporting 
 
 The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 [!INCLUDE [includes](includes/hci-patterns-two-node.md)]
 

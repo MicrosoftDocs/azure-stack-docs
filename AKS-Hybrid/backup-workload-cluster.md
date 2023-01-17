@@ -195,7 +195,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following one:
 
    ```azurecli
-   _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
+   AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
    AZURE_TENANT_ID=${AZURE_TENANT_ID}
    AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
    AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
@@ -415,7 +415,7 @@ You can back up or restore all objects in your cluster, or you can filter object
 
 ### Create a backup
 
-Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes. For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.10.0-rc.1/backup-reference/).
+Use the Velero `backup create` command to create backups to your chosen storage. The following examples use the `--default-volumes-to-restic` flag, which creates a snapshot of the persistent volumes. For other backup options, see the [Velero Backup Reference](https://velero.io/docs/v1.10/backup-reference/).
 
 - On-demand backup of all namespaces in your cluster:
 

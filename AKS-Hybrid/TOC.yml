@@ -25,7 +25,7 @@
       items:
       - name: Introduction
         href: aks-hci-evaluation-guide.md
-      - name: 1 - Evaluate AKS on Azure Stack HCI
+      - name: 1 - Create an Azure Virtual Machine for AKS deployment
         href: aks-hci-evaluation-guide-1.md
       - name: 2a - Deploy with Windows Admin Center
         href: aks-hci-evaluation-guide-2a.md
@@ -177,7 +177,7 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
-          - name: Update noProxy settings
+          - name: Update proxy settings and certificates
             href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
@@ -319,6 +319,8 @@
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
+    - name: Discover OPC UA Servers with Akri
+      href: aks-edge-how-to-akri-opc-ua.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
   - name: Resources
@@ -386,7 +388,7 @@
   - name: AKS hybrid PowerShell
     href: ./reference/ps/index.md
   - name: AKS hybrid Azure CLI
-    xref: /cli/azure/hybridaks?view=azure-cli-latest
+    href: /cli/azure/hybridaks
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing

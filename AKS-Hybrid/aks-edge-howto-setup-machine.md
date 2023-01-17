@@ -22,7 +22,8 @@ This article describes how to set up an Azure Kubernetes Service (AKS) Edge node
   | Total physical memory | 4 GB with at least 2 GB free | 8 GB with at least 4 GB free  |
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
   | Disk space | At least 14 GB free |At least 14 GB free |
-  
+
+    To better understand the concept of vCPUs, [read this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 - Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command:
 
@@ -73,7 +74,21 @@ Before you install the MSI, you can review the [feature support](aks-edge-deploy
 
 ## Set up your machine as a Linux node
 
-1. Double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
+1. Open PowerShell as an admin, and navigate to the folder directory with the installer files.
+
+2. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+
+    ```powershell
+    msiexec.exe /i AksEdge-kXs-x.xx.x.msi
+    ```
+
+    Optionally, you can specify the install directory and the vhdx directory (directory where the vhdx files for the virtual machines are stored) using `INSTALLDIR` and `VHDXDIR`. By default, these will be in `C:\Program Files\AksEdge`.
+
+    ```powershell
+    msiexec.exe /i AksEdge-kXs-x.xx.x.msi INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
+    ```
+
+Alternatively, you can double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
 
 ## Set up your machine as a Linux and Windows node
 
@@ -81,17 +96,33 @@ In order to configure your MSI installer to include Windows nodes, make sure you
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer and **AksEdgeWindows-v1** files.
 
-2. In the following command, replace `kXs` with the Kubernetes distribution you have installed and run:
+2. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
 
     ```powershell
     msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
+    ```
+
+    (or)
+
+    ```powershell
+    msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
     ```
 
 3. Now you're ready to do mixed deployment.
 
 ## Load AKS Edge modules
 
-AKS edge modules can be loaded by running the `AksEdgePrompt` file from the `tools` folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd).
+You can load AKS Edge modules by running the **AksEdgePrompt** file from the **tools** folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd). This PowerShell script checks for prerequisites such as Hyper-V, system CPU and memory resources, and the AKS Edge Essentials program, and loads the corresponding PowerShell modules. It's recommended that you use the **AksEdgePrompt** tool.
+
+![Screenshot showing all pods running.](./media/aks-edge/aksedge-prompt.png)
+
+Alternatively, you can access the AKSEdge PowerShell modules from an elevated PowerShell instance as shown:
+
+```powershell
+Import-Module AksEdge
+```
+
+Open another elevated PowerShell window and continue with the next step.
 
 ## Check the AKS Edge modules
 
