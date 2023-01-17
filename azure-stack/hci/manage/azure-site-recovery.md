@@ -8,7 +8,7 @@ ms.date: 11/02/2022
 ---
 # Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center
 
->Applies to: Azure Stack HCI, version 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+>Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Windows Admin Center streamlines the process of replicating your virtual machines (VMs) on your Hyper-V servers or clusters, making it easier to use the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
 
