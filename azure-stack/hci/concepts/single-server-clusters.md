@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: kerimhanif
-ms.lastreviewed: 11/14/2022
-ms.date: 11/14/2022
+ms.lastreviewed: 01/17/2023
+ms.date: 01/17/2023
 ---
 
 # Using Azure Stack HCI on a single server
@@ -20,8 +20,8 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 - You must use PowerShell to create the single-node cluster and enable Storage Spaces Direct.
 - Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 - Stretched (dual-site) clusters aren't supported with individual servers (stretched clusters require a minimum of two servers in each site).
-- To install updates using Windows Admin Center, use the single-server Server Manager > Updates tool. Or use PowerShell or the Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor. You can't use the Cluster Manager > Updates tool to update single-node clusters at this time.
-- Operating system or other updates that require a restart cause downtime to running virtual machines (VMs) because there isn't another running cluster node to move the VMs to. We recommend manually shutting down the VMs before restarting to ensure that the VMs have enough time to shut down prior to the restart.
+- To install updates for single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters). For solution updates (such as driver and firmware updates), see your solution vendor.
+- Operating system or other updates requiring a restart cause downtime to running virtual machines (VMs) because there isn't another running cluster node to move the VMs to. We recommend manually shutting down the VMs before restarting to ensure that the VMs have enough time to shut down prior to the restart.
 
 ## Prerequisites
 
@@ -60,12 +60,12 @@ The following table describes currently known issues for single-node clusters. T
 
 |Issue | Notes|
 |-----------|---------------|
-|SBL cache is not supported in single-node clusters. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. |
+|SBL cache isn't supported in single-node clusters. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. |
 |Windows Admin Center doesn't support creating single-node clusters. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
 |Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration within the same cluster; allows affinity rules to be created, etc. Actions will fail without any harm. |
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
-|Cluster Aware Updating (CAU) doesn't support single-node clusters. | Update using PowerShell, the Server Configuration tool (SConfig), or Windows Admin Center (through server manager). [Learn more](../deploy/single-server.md#updating-single-node-clusters) |
+|Cluster Aware Updating (CAU) doesn't support single-node clusters in 21H2. You'll need to update to 22H2. | Update using Windows Admin Center (through server manager), PowerShell, or the Server Configuration tool (SConfig). [Learn more](../deploy/single-server.md#updating-single-node-clusters) |
 
 ## Next steps
 

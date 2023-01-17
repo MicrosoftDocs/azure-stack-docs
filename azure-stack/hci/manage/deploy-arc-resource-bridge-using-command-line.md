@@ -162,6 +162,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    az provider register --namespace Microsoft.ResourceConnector --wait
    az provider register --namespace Microsoft.AzureStackHCI --wait
    az provider register --namespace Microsoft.HybridConnectivity --wait
+   $hciClusterId= (Get-AzureStackHci).AzureResourceUri
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    $customloc_name= ((Get-AzureStackHci).AzureResourceName) + "-CL"
    ```
@@ -254,13 +255,12 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
 1. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
    ```azurecli
-   az arcappliance show --resource-group $resource_group --name $resource_name
+   az arcappliance show --resource-group $resource_group --name $resource_name --query '[provisioningState, status]'
    ```
 
 1. Add the required extensions for VM management capabilities to be enabled via the newly deployed Arc Resource Bridge:
 
     ```azurecli
-    $hciClusterId= (Get-AzureStackHci).AzureResourceUri
     az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
