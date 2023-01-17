@@ -133,6 +133,10 @@ To use Azure CLI with the ASDK, you must trust the CA root certificate on your r
     $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $root.Import($pemFile)
 
+    # X509Certificate2.Thumbprint calculates SHA1 hash of the public key. You can get sha1 of the pem file by using openssl, 
+    # e.g. openssl x509 -noout -fingerprint -sha1 -inform pem -in ./root.pem
+    # Alternatively, 'Get-FileHash' gives the same value (without ':') for the corresponding cer file
+    # Since the thumbprint is a unique value for the certificate, it is commonly used to find a particular certificate in a certificate store
     Write-Host "Extracting required information from the cert file"
     $md5Hash    = (Get-FileHash -Path $cerFile -Algorithm MD5).Hash.ToLower()
     $sha1Hash   = (Get-FileHash -Path $cerFile -Algorithm SHA1).Hash.ToLower()
