@@ -25,7 +25,7 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. Instead, you can use [Microsoft System Center VMM 2022](/system-center/vmm/overview?view=sc-vmm-2022).
+> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. Instead, you can use [Microsoft System Center VMM 2022](/system-center/vmm/overview?view=sc-vmm-2022&preserve-view=true).
 
 > [!IMPORTANT]
 > You can't use Microsoft System Center VMM 2019 and Windows Admin Center to manage SDN at the same time.
