@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Deploy SDN using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-supplemental-package-22h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]; Windows Server 2022 Datacenter, Windows Server 2022 Datacenter: Azure Edition, Windows Server 2019 Datacenter
 
 This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
 
@@ -25,10 +25,13 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. You can use [Microsoft System Center VMM 2022](https://techcommunity.microsoft.com/t5/system-center-blog/system-center-2022/ba-p/2907771) instead, which is currently in preview.
+> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. Instead, you can use [Microsoft System Center VMM 2022](/system-center/vmm/overview?view=sc-vmm-2022).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center VMM 2019 and WAC to manage SDN at the same time.
+> You can't use Microsoft System Center VMM 2019 and Windows Admin Center to manage SDN at the same time.
+
+> [!IMPORTANT]
+> You can’t deploy SDN on the Standard edition of Windows Server 2022 or Windows Server 2019. This is due to the limitations in the Remote Server Administration Tools (RSAT) installation on Windows Admin Center. However, you can deploy SDN on the Datacenter edition of Windows Server 2022 and Windows Server 2019 and also on the Datacenter: Azure Edition of Windows Server 2022.
 
 ## Before you begin
 
