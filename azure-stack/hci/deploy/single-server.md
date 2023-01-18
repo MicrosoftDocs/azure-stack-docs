@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
-ms.lastreviewed: 11/14/2022
-ms.date: 11/18/2022
+ms.lastreviewed: 01/17/2023
+ms.date: 01/17/2023
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -15,7 +15,7 @@ ms.date: 11/18/2022
 
 This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 
-Note that you can't yet use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
+Currently you can't use Windows Admin Center to deploy Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 ## Prerequisites
 
@@ -61,7 +61,11 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (SConfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
+To install updates for Azure Stack HCI version 21H2, use Windows Admin Center (Server Manager > Updates), [PowerShell](../manage/update-cluster.md#update-a-cluster-using-powershell), or connect via Remote Desktop and use [Server Configuration tool (SConfig)](../manage/update-cluster.md#perform-a-manual-feature-update-of-a-failover-cluster-using-sconfig).
+
+To install updates for Azure Stack HCI version 22H2, use Windows Admin Center (Cluster Manager > Updates). Cluster Aware Updating (CAU) is supported beginning with this version. To use PowerShell or connect via Remote Desktop and use Server Configuration Tool (SConfig), see [Update Azure Stack HCI clusters](../manage/update-cluster.md).
+
+For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Change a single-node to a multi-node cluster (optional)
 
@@ -70,7 +74,7 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md).
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md).
 3. Once the server is added, change the cluster's fault domain awareness from PhysicalDisk to ScaleScaleUnit: [Inline fault domain changes](../manage/single-node-scale-out.md#inline-fault-domain-changes).
-4. Optionally, if additional resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
+4. Optionally, if more resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
 5. [Set up a cluster witness](../manage/witness.md).
 
 ## Next steps
