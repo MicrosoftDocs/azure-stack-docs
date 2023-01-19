@@ -3,10 +3,10 @@ title: Migrate workloads to AKS engine from AKS preview on Azure Stack Hub
 description: Find out how to migrate workloads from the AKS preview on Azure Stack Hub to a Kubernetes cluster created in AKS engine. Compare supported Azure Kubernetes Service features.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/27/2022
+ms.date: 01/18/2023
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 12/14/2022
+ms.lastreviewed: 01/18/2023
 
 # Intent: As an Azure Stack operator, I need to know how to migrate my existing deployments in AKS preview to AKS engine and what to expect after I migrate the applications.
 # Keyword: Kubernetes AKS Engine difference
@@ -42,7 +42,7 @@ The following table compares AKS features in global Azure with features in the A
 |------------------------------|-----------------------------------------------------|-----------|-------------------------------|-------------------|
 | Access Security              |                                                     |           |                               |                   |
 |                              | Kubernetes RBAC                                     | Yes       | Yes                           | Yes               |
-|                              | Security Center Integration                         | Yes       | Yes                           | Yes               |  
+|                              | Security Center Integration                         | Yes       | Yes                           | No                |  
 |                              | Azure AD Auth/RBAC                                  | Yes       | No                            | No                |
 |                              | Calico Network Policy                               | Yes       | No                            | No                |
 | Monitoring & Logging         |                                                     |           |                               |                   |
