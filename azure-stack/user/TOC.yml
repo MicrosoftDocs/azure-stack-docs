@@ -292,6 +292,8 @@
           items:
           - name: Overview
             href: aks-overview.md
+          - name: Migrate to AKS engine from AKS preview
+            href: migrate-azure-stack-to-aks-engine.md
           - name: AKS commands
             href: aks-commands.md
           - name: Use AKS with CLI
