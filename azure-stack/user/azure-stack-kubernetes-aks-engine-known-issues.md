@@ -1,10 +1,10 @@
 ---
-title: Known issues with the AKS engine on Azure Stack Hub 
-description: Learn Known issues using the AKS engine on Azure Stack Hub. 
+title: Known issues with AKS engine on Azure Stack Hub 
+description: Learn about known issues using AKS engine on Azure Stack Hub. 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/1/2021
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
@@ -14,9 +14,9 @@ ms.lastreviewed: 11/1/2021
 
 ---
 
-# Known issues with the AKS engine on Azure Stack Hub
+# Known issues with AKS engine on Azure Stack Hub
 
-This topic covers known issues for the AKS engine on Azure Stack Hub.
+This article describes known issues for AKS engine on Azure Stack Hub.
 
 [!INCLUDE [Expired secret for service principal (SPN) causes cluster to fail](../includes/known-issue-aks-2.md)]
 
@@ -25,14 +25,14 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 ## Limit of 50 nodes per subscription
 
 - **Applicable to**: Azure Stack Hub, AKS engine (all)
-- **Description**: When creating clusters, you need to ensure that there are not more than 50 Kubernetes nodes (control plane and agent nodes) deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
-- **Remediation**: Use less then 51 nodes in your subscription.
+- **Description**: When creating clusters, ensure that no more than 50 Kubernetes nodes (control plane and agent nodes) are deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
+- **Remediation**: Use less than 51 nodes in your subscription.
 - **Occurrence**: When attempting to add more than 50 nodes per subscription.
 
 ## Unable to resize cluster VMs with the Compute service
 
 - **Applicable to**: Azure Stack Hub, AKS engine (all)
-- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. The AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, upgrade, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine upgrade` is executed.
+- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, upgrade, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine upgrade` is executed.
 - **Remediation**: To make this work locate the API model for the cluster, change the size there, and then run `aks-engine upgrade`.
 - **Occurrence**: When attempting to resize using the Compute service.
 
@@ -49,7 +49,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 * During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, upgrade of the following kubernetes components requires extra manual steps: **kube-proxy**, **azure-cni-networkmonitor**, **csi-secrets-store**, **kubernetes-dashboard**. The following describes what you may observe and how to work around the issues.
 
-  * In connected environments, it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
+  * In connected environments, this issue isn't obvious. There are no signs in the cluster that the affected components weren't upgraded. Everything appears to work as expected.
   <!-- * In disconnected environments, you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in "Ready" state: -->
 
     ```bash  

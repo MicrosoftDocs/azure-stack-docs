@@ -1,10 +1,10 @@
 ---
-title: Install the AKS engine on Linux in Azure Stack Hub 
-description: Learn how to use a Linux machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster.
+title: Install AKS engine on Linux in Azure Stack Hub 
+description: Learn how to use a Linux machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/05/2022
+ms.date: 01/12/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 05/05/2022
@@ -14,17 +14,17 @@ ms.lastreviewed: 05/05/2022
 
 ---
 
-# Install the AKS engine on Linux in Azure Stack Hub
+# Install AKS engine on Linux in Azure Stack Hub
 
-You can use a Linux machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack Hub instances, check the install, and setting up the client VM on the ASDK.
+You can use a Linux machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack Hub instances, check the install, and setting up the client VM on the ASDK.
 
 ## Prepare the client VM
 
-The AKS engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack Hub. From this machine, you will execute the AKS engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
+AKS engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack Hub. From this machine, you use AKS engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
 
 When choosing your client machine, consider:
 
-1. If the client machine should be recoverable in case of a disaster.
+1. Whether the client machine should be recoverable in a disaster.
 2. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
@@ -35,7 +35,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 2. Connect to your VM.
 3. Use your package manager to check that you have the following tools installed:
     - `jq` a JSON processor.
-    - `curl` - a tool for transferrring files using a variety of network protocols.
+    - `curl` - a tool for transferring files using a variety of network protocols.
     - `openssh` an ssh client.
     - `tar` a tool used to work with TAR archives.
 4. Install Azure CLI. Packages for Azure CLI are available for most distributions. You can find instructions at [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
@@ -56,7 +56,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
     > [!NOTE]  
-    > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
+    > If your installation method fails, try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
 
 ## Install in a disconnected environment
 
@@ -81,7 +81,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 ## Verify the installation
 
-Once your client VM is set up, check that you have installed the AKS engine.
+Once your client VM is set up, check that you have installed AKS engine.
 
 1. Connect to your client VM.
 2. Run the following command:
@@ -97,12 +97,12 @@ Once your client VM is set up, check that you have installed the AKS engine.
    sudo update-ca-certificates
    ```
 
-If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md)
+If you are unable to verify that you have installed AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md)
 
 
 ## ASDK installation
 
-You will need to add a certificate when running the client VM for the AKS engine on the ASDK.
+You will need to add a certificate when running the client VM for AKS engine on the ASDK.
 
 When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
 
@@ -117,4 +117,4 @@ sudo update-ca-certificates
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
+> [Deploy a Kubernetes cluster with AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md)

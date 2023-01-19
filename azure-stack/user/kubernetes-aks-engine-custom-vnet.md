@@ -4,12 +4,12 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/01/2022
+ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: walterov
 ms.lastreviewed: 04/14/2022
 
-# Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
+# Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
 
 ---
@@ -18,7 +18,7 @@ ms.lastreviewed: 04/14/2022
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. The AKS engine on Azure Stack Hub also supports the Azure CNI network plugin.  
+The Kubernetes cluster in Azure Stack Hub using AKS engine uses the kubenet network plugin. AKS engine on Azure Stack Hub also supports the Azure CNI network plugin.  
   - For a discussion of the kubenet networking plugin in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](/azure/aks/configure-kubenet).
   - For a discussion of the Azure CNI networking plugin in Azure, see [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](/azure/aks/configure-azure-cni).
 
@@ -65,20 +65,20 @@ When you create a custom virtual network, you specify the IP address space of yo
 
 ## Get the IP address blocks
 
-The AKS engine supports deploying into an existing virtual network. When deploying into an existing virtual network, your cluster will use blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space, choosing address blocks outside of the virtual network address space may result in connectivity problems.
+AKS engine supports deployment on an existing virtual network. When deployed on an existing virtual network, your cluster uses blocks of consecutive addresses for agent nodes, control plane nodes, cluster services, and containers (pods). Each address block can be translated into a subnet within the virtual network. All address blocks in the cluster deployment must be a part of the overall virtual network address space. Choosing address blocks outside of the virtual network address space may result in connectivity problems.
 
-There is a minimum of three address blocks required when setting up a Kubernetes cluster:
+A minimum of three address blocks are required when setting up a Kubernetes cluster:
 
 - Nodes address block: This is the address block used for assigning addresses to the cluster nodes. This can be a single address block for all cluster nodes or can be separate blocks (subnets) for control plane and agent pools. Take into consideration the node count in your cluster when selecting the address range for this block. For Azure CNI nodes and containers get their addresses from the same address block thus take into account the number of containers you want to deploy to your cluster when choosing the address range when using Azure CNI.
 - Services address block: This is the address block from which services deployed to the Kubernetes cluster will get their cluster address from. Take into consideration the maximum number of services you intend to run in your cluster when selecting the address range for this block.
 - Cluster address block: This is the address block from which pods will get their cluster address. Take into consideration the maximum number of pods you intend to run in your cluster when selecting the address range for this block. As mention earlier, for Azure CNI the cluster and nodes address blocks are the same.
 
 In addition to the address blocks, for control plane nodes you will need to set two more values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
-The AKS engine requires a range of up to 16 unused IP addresses when you use multiple control plane nodes. The cluster will use one IP address for each control plane up to five control plane nodes. The AKS engine will also require the next 10 IP address after the last control plane node for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the control plane nodes and headroom reservation for a total of 16.
+AKS engine requires a range of up to 16 unused IP addresses when you use multiple control plane nodes. The cluster will use one IP address for each control plane up to five control plane nodes. AKS engine will also require the next 10 IP address after the last control plane node for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the control plane nodes and headroom reservation, for a total of 16.
 When placing your block of IP addresses, the subnet requires the following allocations of the existing IP addresses:
-- The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet
+- The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet.
 - A buffer of 16 IP addresses should be left open.
-- The value of your cluster's first IP should be toward the end of the address space to avoid IP conflicts. If possible, assign to the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
+- The value of your cluster's first IP address should be toward the end of the address space to avoid IP conflicts. If possible, assign the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
 
 For example, for a cluster with three control plane nodes. If you are using a subnet with 256 addresses, for example 10.100.0.0/24, you will need to set your first consecutive static IP address before 239. The following table shows the addresses and considerations:
 
@@ -125,7 +125,7 @@ In this example, the `firstConsecutiveStaticIP` property would be `172.24.0.239`
 
 ## Update the API model
 
-Update the API model used to deploy the cluster from the AKS engine to your custom virtual network. 
+Update the API model used to deploy the cluster from AKS engine to your custom virtual network. 
 
 In **masterProfile** set the following values:
 
@@ -209,7 +209,7 @@ With a network address space of `172.24.0.0/16` where the subnet for `control-pl
 
 ## Deploy your cluster
 
-After adding the values to your API model, you can deploy your cluster from your client machine using the `deploy` command using the AKS engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+After adding the values to your API model, you can deploy your cluster from your client machine using the `deploy` command in AKS engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
 ## Set the route table
 
@@ -229,5 +229,5 @@ If you are using kubenet, for example, `networkPlugin`: `kubenet` in the `kubern
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
+- Read about the [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
 - Read about [Azure Monitor for containers overview](/azure/azure-monitor/insights/container-insights-overview)
