@@ -28,6 +28,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 - Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 
 ## Install the AksHci PowerShell module
+
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
 ## Register the resource provider to your subscription
