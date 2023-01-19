@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 02/14/2022
+ms.date: 01/19/2023
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
@@ -31,7 +31,7 @@ You can also deploy an SDN infrastructure using System Center Virtual Machine Ma
 > You can't use Microsoft System Center VMM 2019 and Windows Admin Center to manage SDN at the same time.
 
 > [!IMPORTANT]
-> You can’t deploy SDN on the Standard edition of Windows Server 2022 or Windows Server 2019. This is due to the limitations in the Remote Server Administration Tools (RSAT) installation on Windows Admin Center. However, you can deploy SDN on the Datacenter edition of Windows Server 2022 and Windows Server 2019 and also on the Datacenter: Azure Edition of Windows Server 2022.
+> You can’t manage SDN on the Standard edition of Windows Server 2022 or Windows Server 2019. This is due to the limitations in the Remote Server Administration Tools (RSAT) installation on Windows Admin Center. However, you can manage SDN on the Datacenter edition of Windows Server 2022 and Windows Server 2019 and also on the Datacenter: Azure Edition of Windows Server 2022.
 
 ## Before you begin
 
