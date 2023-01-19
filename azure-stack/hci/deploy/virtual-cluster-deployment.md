@@ -221,9 +221,9 @@ You can create this VM using one of the following methods:
 
     1. Disable time synchronization:
 
-    ```PowerShell
-    Get-VMIntegrationService -VmName node1 |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
-    ```
+        ```PowerShell
+        Get-VMIntegrationService -VmName node1 |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
+        ```
 
 ## Step 3: Enable nested virtualization
 
