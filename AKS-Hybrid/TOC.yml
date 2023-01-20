@@ -82,7 +82,7 @@
       - name: Container security
         href: container-security.md
       - name: Update certificates
-        href: certificates-update-after-sixty-days.md
+        href: repair-certificates.md
   - name: Networking
     items:
       - name: Kubernetes node networking

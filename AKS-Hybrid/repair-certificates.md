@@ -1,6 +1,6 @@
 ---
 title: Certificates and tokens in AKS hybrid
-description: Learn how to update AKS certificates in AKS hybrid.
+description: Learn how to repair AKS certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/18/2022
@@ -42,7 +42,7 @@ Each entity is valid for a specific period (the default is 90 days), at the end 
 There are two types of certificates used in AKS hybrid:
 
 - Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
-- Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 60 to 90 days.
+- Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 90 days.
 
 Currently, not all clients automatically renew their respective certificates or rotate tokens on a regular basis. Clients that automatically renew the certificate or rotate the tokens currently do the auto-rotation and auto-renewal on a frequent basis. Clients that don't have the capability to automatically renew the certificate must sign back in using a token to continue accessing the cloud agent. Sometimes these clients won't have a valid token and thus require manual rotation of the token.
 
@@ -60,11 +60,18 @@ Update-AksHciCertificates
 
 ## Update workload cluster certificates and tokens
 
-To update tokens and certificates of all clients in a target cluster, including KMS, CSI, CertManager, and CloudProvider, open a new PowerShell window and run the following cmdlet:
+Update certificates and rotate tokens for all clients in a target cluster, including KMS, CSI, CertManager, and CloudProvider by following the steps below:
 
+1. Open a PowerShell terminal and run the following command to repair kubelet certificates:
 ```powershell
-Update-AksHciClusterCertificates -fixCloudCredentials
+Update-AksHciClusterCertificates -Name <cluster name> -fixKubeletCredentials
 ```
+
+2. Run the following command to repair the cloud operator certificates:
+```powershell
+Update-AksHciClusterCertificates -Name <cluster name> -fixCloudCredentials
+```
+
 
 ## Next steps
 
