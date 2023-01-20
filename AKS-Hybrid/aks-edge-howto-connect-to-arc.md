@@ -42,7 +42,7 @@ To configure Azure,
     In your working folder, open the **AksEdgeDeployConfigTemplate.json** file to enter this information.
 
     ```shell
-    notepad.exe AksEdgeDeployConfigTemplate. json
+    notepad.exe AksEdgeDeployConfigTemplate.json
     ```
 
     Provide the parameters under the **Azure** section, with the appropriate information.
