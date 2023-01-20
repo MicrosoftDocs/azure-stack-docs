@@ -113,7 +113,7 @@ Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
 
 ## Connect host machine to Arc
 
-1. Download the [Azure/AKS-Edge GitHub repo](https://github.com/Azure/AKS-Edge/tree/main), if you have not done earlier Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+1. Download the [Azure/AKS-Edge GitHub repo](https://github.com/Azure/AKS-Edge/tree/main), if you have not done so earlier. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 1. In your working folder, open the **aide-userconfig.json** file from the **tools** folder to provide the parameters under the **Azure** section, with the appropriate information as mentioned in the table above.information.
 
