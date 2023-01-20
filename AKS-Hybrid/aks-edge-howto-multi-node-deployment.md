@@ -18,17 +18,24 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 
 ## 1. Full Kubernetes deployment configuration parameters
 
-The parameters needed to create a full Kubernetes are defined in the **aksedge-config.json** file in the downloaded GitHub folder. A detailed description of the configuration parameters is available [here](aks-edge-deployment-config-json.md). The key parameters to note for a full Kubernetes deployment are:
+The parameters needed to create a scalable cluster can be generated using the following command:
 
-- **DeployOptions.SingleMachineCluster** - The parameter that identifies a full deployment cluster is the `singlemachinecluster` flag, which must be set to `false`.
-- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `Network.VSwitch.AdapterName` as either `Ethernet` or `Wi-Fi`.
+```powershell
+New-AksEdgeConfig -DeploymentType ScalableCluster
+```
+
+This creates a configuration file called AksEdgeDeployConfigTemplate.json which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+
+The key parameters to note for a scalable Kubernetes deployment are:
+
+- **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `MachineConfigType.NetworkConnection.AdapterName` as either `Ethernet` or `Wi-Fi`.
 
     ```powershell
     # get the list of available adapters in the machine
     Get-NetAdapter -Physical | Where-Object { $_.Status -eq 'Up' }
     ```
 
-    If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your **aksedge-config.json** file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+    If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your configuration file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
 
     > [!NOTE]
     > In this release, there is a known issue with automatic creation of an external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager, map the switch to the Wi-fi adapter, and then provide the switch details in your configuration JSON as described below.
@@ -53,7 +60,7 @@ Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json
 If `Test-AksEdgeNetworkParameters` returns true, you're ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
 
 ```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
+New-AksEdgeDeployment -JsonConfigFilePath .\AksEdgeDeployConfigTemplate.json
 ```
 
 The `New-AksEdgeDeployment` cmdlet automatically gets the kubeconfig file.
@@ -71,57 +78,22 @@ A screenshot of a Kubernetes cluster is shown below:
 
 ## 5. Add a Windows worker node (optional)
 
-If you want to add Windows workloads to an existing Linux only cluster, you can run:
+If you want to add Windows node to an existing Linux only machine, you can run:
 
 ```powershell
-Add-AksEdgeNode -NodeType Windows
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx"
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
-## Example configurations for different deployment options
-
-### Create your own configuration file
-
-You can create your own configuration file using the `New-AksEdgeConfig` command:
+You can use the generated configuration file and run the following command to add the Windows node
 
 ```powershell
-$jsonString = New-AksEdgeConfig .\mydeployconfig.json
+Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
 ```
 
-You can now update your configuration file **mydeployconfig.json** with the right set of values. Some of the sample values are as follows:
+## Example configurations for different deployment options
 
-```json
-"DeployOptions": {
-    "NetworkPlugin": "flannel",
-    "SingleMachineCluster": false,
-    "TimeoutSeconds": 900,
-    "NodeType": "Linux"
-},
-"EndUser": {
-    "AcceptEula": false,
-    "AcceptOptionalTelemetry": false
-},
-"LinuxVm": {
-    "CpuCount": 4,
-    "MemoryInMB": 4096,
-    "DataSizeinGB": 20,
-    "Ip4Address": "192.168.1.171"
-},
-"Network": {
-    "VSwitch":{
-        "Name": "aksedgeswitch",
-        "Type":"External",
-        "AdapterName" : "Ethernet"
-    },
-    "ControlPlaneEndpointIp": "192.168.1.191",
-    "Ip4GatewayAddress": "192.168.1.1",
-    "Ip4PrefixLength": 24,
-    "ServiceIPRangeStart": "192.168.1.151",
-    "ServiceIPRangeEnd": "192.168.1.170",
-    "DnsServers": ["192.168.1.1"]
-}
-```
 
 ### Allocate resources to your nodes
 
@@ -158,38 +130,15 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
 
 ### Create Linux and Windows node
 
-To run both the Linux control plane and the Windows worker node on a machine:
+To run both the Linux control plane and the Windows worker node on a machine, create the configuration file using the following command:
 
-```json
-"DeployOptions": {
-    "ControlPlane": false,
-    "Headless": false,
-    "JoinCluster": false,
-    "NetworkPlugin": "flannel",
-    "SingleMachineCluster": false,
-    "TimeoutSeconds": 300,
-    "NodeType": "LinuxAndWindows",
-    "ServerTLSBootstrap": false
-  },
-  "EndUser": {
-    "AcceptEula": false,
-    "AcceptOptionalTelemetry": false
-  },
-  "LinuxVm": {
-    "CpuCount": 2,
-    "MemoryInMB": 2048,
-    "DataSizeInGB": 10,
-    "Ip4Address": "192.168.1.171",
-    "MacAddress": null,
-    "Mtu": 0
-  },
-  "WindowsVm": {
-    "CpuCount": 2,
-    "MemoryInMB": 2048,
-    "Ip4Address": "192.168.1.172",
-    "MacAddress": null,
-    "Mtu": 0
-  },
+```powershell
+New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows
+```
+Create the deployment using the command: 
+
+```powershell
+New-AksEdgeDeployment -JsonConfigFilePath .\AksEdgeDeployConfigTemplate.json
 ```
 
 ## Next steps
