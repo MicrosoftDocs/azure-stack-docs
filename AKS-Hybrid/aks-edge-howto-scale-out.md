@@ -105,7 +105,7 @@ New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx"
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
 
-You can use the generated configuration file and run the following command to add the Windows node
+You can use the generated configuration file and run the following command to add the Windows node:
 
 ```powershell
 Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
