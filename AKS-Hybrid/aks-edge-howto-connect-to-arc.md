@@ -130,7 +130,7 @@ Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
    Connect-AideArcServer
    ```
 
-1. To disconnect the host machine from Arc, using `Disconnect-AideArcServer` for Arc-enabled servers .
+1. To disconnect the host machine from Arc, using `Disconnect-AideArcServer` for Arc-enabled servers:
 
    ```powershell
    # Disconnect Arc-enabled server
