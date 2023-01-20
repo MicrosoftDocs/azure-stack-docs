@@ -61,7 +61,7 @@ If you want to add Windows node to an existing Linux only single machine cluster
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows
 ```
-This creates the configuration file ScaleConfig.json in the current working directory. ou can also modify the Windows node parameters in the configuration file to specify the resources that needs to be allocated to the Windows node. With the configuration file, you can run the following command to add the node the single machine cluster.
+This creates the configuration file ScaleConfig.json in the current working directory. You can also modify the Windows node parameters in the configuration file to specify the resources that needs to be allocated to the Windows node. With the configuration file, you can run the following command to add the node the single machine cluster.
 
 ```powershell
 Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
