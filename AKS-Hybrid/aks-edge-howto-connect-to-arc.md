@@ -42,7 +42,7 @@ To configure Azure,
     In your working folder, open the **AksEdgeDeployConfigTemplate.json** file to enter this information.
 
     ```shell
-    notepad.exe AksEdgeDeployConfigTemplate.json.json
+    notepad.exe AksEdgeDeployConfigTemplate. json
     ```
 
     Provide the parameters under the **Azure** section, with the appropriate information.
@@ -104,23 +104,33 @@ To configure Azure,
 
 ## Disconnect from Arc
 
-Run `Disconnect-AideArc` to disconnect from the Arc-enabled server and Arc-enabled Kubernetes.
+Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
 
    ```powershell
    # Disconnect Arc-enabled server and Arc-enabled kubernetes
-   Disconnect-AideArc
+   Disconnect-AksEdgeArc -JsonConfigFilePath AksEdgeDeployConfigTemplate.json
    ```
 
 ## Connect host machine to Arc
 
-You can connect the host machine using `Connect-AideArcServer` for Arc-enabled server 
+1. Download the [Azure/AKS-Edge GitHub repo](https://github.com/Azure/AKS-Edge/tree/main), if you have not done earlier Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+
+1. In your working folder, open the **aide-userconfig.json** file from the **tools** folder to provide the parameters under the **Azure** section, with the appropriate information as mentioned in the table above.information.
+
+    ```shell
+    notepad.exe aide-userconfig.json
+    ```
+
+1. If you already have configured Azure and have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file and skip to next step. Specify the required names for the resource group and service principal in the **aide-userconfig.json** file along with your subscription/tenant information.
+ 
+1. You can connect the host machine using `Connect-AideArcServer` for Arc-enabled server 
 
    ```powershell
    # Connect Arc-enabled server
    Connect-AideArcServer
    ```
 
-Alternatively, you can disconnect them individually using `Connect-AideArcServer` for Arc-enabled servers .
+1. To disconnect the host machine from Arc, using `Disconnect-AideArcServer` for Arc-enabled servers .
 
    ```powershell
    # Disconnect Arc-enabled server
