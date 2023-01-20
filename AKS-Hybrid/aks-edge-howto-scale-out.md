@@ -97,7 +97,7 @@ You can generate a new `ScaleConfig` file based on the nodeType required by repe
 
 ## 6. Add a Windows worker node (optional)
 
-If you want to add Windows node to an existing Linux only machine, you can run:
+If you want to add a Windows node to an existing Linux only machine, you can run:
 
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx"
