@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 1/20/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -60,6 +60,8 @@ The following parameters are required to set up and run the deployment tool prop
 |`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
 
+> [!NOTE]
+> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](register-with-azure.md#assign-permissions-from-azure-portal).
 
 ## Deploy a cluster
 
