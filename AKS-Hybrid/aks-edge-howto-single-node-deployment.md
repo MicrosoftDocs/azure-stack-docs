@@ -28,10 +28,10 @@ This creates a configuration file called AksEdgeDeployConfigTemplate.json which 
 
 The key parameters to note for single machine deployment are:
 
-- `DeploymentType` - This parameter is defines the deployment type and is specified as `SingleMachineCluster`. 
-- The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you are using a K8S cluster change the CNI to `calico`. 
+- `DeploymentType` - This parameter defines the deployment type and is specified as `SingleMachineCluster`. 
+- The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster change the CNI to `calico`. 
 - The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md) `DeployOptions.NodeType`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`, `Network.InternetDisabled`.
-- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` to 'true' to enable the metrics server.
+- In K8S clusters, set the `DeployOptions.ServerTLSBootstrap` to 'true' to enable the metrics server.
 
 ## 2. Create a single machine cluster
 
@@ -140,7 +140,7 @@ You can also create a cluster with both Linux and Windows node. You can create t
 ```powershell
 New-AksEdgeConfig -DeploymentType SingleMachineCluster - NodeType LinuxAndWindows
 ```
-Once the configuration file is created you can deploy your cluster using:
+Once the configuration file is created, you can deploy your cluster using:
 ```PowerShell
     New-AksEdgeDeployment -JsonConfigFilePath .\aks-edge-deployment-config-json.json
 ```
