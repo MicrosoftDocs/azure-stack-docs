@@ -123,7 +123,7 @@ Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
 
 1. If you already have configured Azure and have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file and skip to next step. Specify the required names for the resource group and service principal in the **aide-userconfig.json** file along with your subscription/tenant information.
  
-1. You can connect the host machine using `Connect-AideArcServer` for Arc-enabled server 
+1. You can connect the host machine using `Connect-AideArcServer` for Arc-enabled servers:
 
    ```powershell
    # Connect Arc-enabled server
