@@ -9,7 +9,7 @@ ms.date: 01/21/2021
 
 # Deploy branch office and edge on Azure Stack HCI
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. The guidance positions your organization to run complex, highly available workloads in virtual machines (VMs) and containers in remote branch office and edge deployments. Computing at the edge shifts most data processing from a centralized system to the edge of the network, closer to a device or system that requires data quickly.
 
