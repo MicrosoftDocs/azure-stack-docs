@@ -12,7 +12,7 @@ ms.lastreviewed: 02/14/2022
 
 # Free Extended Security Updates (ESU) through Azure Stack HCI
 
->Applies to Azure Stack HCI, version 21H2 and later
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Stack HCI comes with additional benefits and implementation steps – this article explains the specifics for Azure Stack HCI.
 
