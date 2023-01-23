@@ -127,6 +127,8 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 6. Stop system.
 7. Diagnostic log collection.
 
+---
+
 ## What to tell your users
 
 You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](../user/index.yml).
