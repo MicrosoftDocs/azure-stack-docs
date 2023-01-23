@@ -10,7 +10,7 @@ ms.date: 05/06/2022
 
 # Configure Software Load Balancer for high availability ports
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
 
 This article provides an overview of high availability ports rule and why to use high availability ports. It then describes the prerequisites of setting up a high availability ports rule, steps to configure it, supported configurations, and its limitations.
  
