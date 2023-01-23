@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn about the basics of Azure Stack Hub administration. See additional support information and view next steps.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 01/23/2023
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 10/26/2020
+ms.lastreviewed: 01/23/2023
 
 # Intent: As an Azure Stack operator, I want to learn the basics to Azure Stack Hub administration.
 # Keyword: azure stack hub administration
