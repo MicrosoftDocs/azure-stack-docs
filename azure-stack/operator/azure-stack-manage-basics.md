@@ -96,6 +96,37 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources.
 - Replace bad hardware. For example, [replace a failed disk](azure-stack-replace-disk.md).
 
+## Operator tasks
+
+Here is a list of daily, weekly, and monthly tasks for an operator:
+
+# [Daily](#tab/daily)
+
+1. Check alerts.
+2. Check backup state.
+3. Update Defender Signature (disconnected systems).
+
+# [Weekly](#tab/weekly)
+
+1. Check capacity.
+
+# [Monthly](#tab/monthly)
+
+1. Apply monthly update packages (Microsoft & OEM).
+2. Validate backup using ASDK.
+3. Manage Azure Stack Hub Marketplace (keep current).
+4. Reclaim storage capacity.
+
+# [OnDemand](#tab/ondemand)
+
+1. Secret rotation.
+2. Create and update offers, plans, and quotas.
+3. Apply hotfix packages.
+4. Expand capacity (nodes & IPSpace).
+5. Restore storage accounts.
+6. Stop system.
+7. Diagnostic log collection.
+
 ## What to tell your users
 
 You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](../user/index.yml).

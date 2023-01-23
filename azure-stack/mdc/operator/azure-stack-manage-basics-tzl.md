@@ -121,12 +121,11 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 1. Secret rotation.
 2. Create and update offers, plans, and quotas.
 3. Apply hotfix packages.
-4. Apply hotfix packages.
-5. Expand capacity (nodes & IPSpace).
-6. Run `isi status –verbose` in Avocent connection.
-7. Restore storage accounts.
-8. Stop system.
-9. Diagnostic log collection.
+4. Expand capacity (nodes & IPSpace).
+5. Run `isi status –verbose` in Avocent connection.
+6. Restore storage accounts.
+7. Stop system.
+8. Diagnostic log collection.
 
 ---
 
