@@ -399,7 +399,11 @@
   - name: Supplemental package
     items:
     - name: View known issues
-      href: hci-known-issues.md
+      items: 
+      - name: 2301 - Current
+        href: hci-known-issues-2301.md
+      - name: 2212
+        href: hci-known-issues.md
     - name: Plan
       items:
       - name: Review security
