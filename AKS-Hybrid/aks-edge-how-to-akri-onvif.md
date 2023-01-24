@@ -162,7 +162,14 @@ In order for our AKS Edge Essentials cluster to discover our camera, we must ope
 
     [ ![Screenshot showing the Akri pods and video app pod is running.](media/aks-edge/akri-onvif-pods-running.png) ](media/aks-edge/akri-onvif-pods-running.png#lightbox)
 
-5. Find your Linux node IP by running `Get-AksEdgeNodeAddr` and the port of your web app service by running `kubectl get svc`.
+5. Find your Linux node IP and the port of your web app service.
+
+    ```powershell
+    Get-AksEdgeNodeAddr
+    ```
+    ```powershell
+    kubectl get svc
+    ```
 
     [ ![Screenshot showing the node address and port of the web app service.](media/aks-edge/akri-web-app-address.png) ](media/aks-edge/akri-web-app-address.png#lightbox)
 
