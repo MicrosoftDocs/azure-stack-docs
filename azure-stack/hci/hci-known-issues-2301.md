@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2301 (preview)
+# View known issues in Azure Stack HCI, 2301 Supplemental Package (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
