@@ -402,7 +402,7 @@
       items: 
       - name: 2301 - Current
         href: hci-known-issues-2301.md
-      - name: 2212
+      - name: 2210
         href: hci-known-issues.md
     - name: Plan
       items:
