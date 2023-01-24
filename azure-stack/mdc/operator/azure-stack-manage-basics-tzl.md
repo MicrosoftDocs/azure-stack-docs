@@ -88,12 +88,12 @@ In addition to providing services, you must do the regular duties of an operator
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
 - [Manage Event Hubs](../../operator/event-hubs-rp-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 - [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
-- Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
+- Replace bad hardware. Here's the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
 - [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 
 ## Operator tasks
 
-Here is a list of daily, weekly, and monthly tasks for an operator:
+Here's a list of daily, weekly, and monthly tasks for an operator:
 
 # [Daily](#tab/daily)
 
