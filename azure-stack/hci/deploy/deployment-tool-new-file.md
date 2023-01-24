@@ -174,6 +174,8 @@ If you want to use an existing configuration file you have previously created, s
 
     If you select **Create infrastructure volumes** only, you will need to create workload volumes yourselves.  
 
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
+
     The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the deployment orchestrator and one or multiple data volumes for your use.
 
     If the resiliency configuration for data volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
@@ -191,7 +193,7 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
+    
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
