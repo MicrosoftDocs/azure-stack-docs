@@ -3,9 +3,9 @@ title: Certificates and tokens in AKS hybrid
 description: Learn how to repair AKS certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/18/2022
+ms.date: 01/24/2023
 ms.author: sethm 
-ms.lastreviewed: 07/06/2022
+ms.lastreviewed: 01/24/2023
 ms.reviewer: rbaziwane
 
 # Intent: As an IT pro, I want to update my certificates so that my Kubernetes cluster continues to operate.
@@ -60,18 +60,19 @@ Update-AksHciCertificates
 
 ## Update workload cluster certificates and tokens
 
-Update certificates and rotate tokens for all clients in a target cluster, including KMS, CSI, CertManager, and CloudProvider by following the steps below:
+Update certificates and rotate tokens for all clients in a target cluster, including KMS, CSI, CertManager, and CloudProvider by following these steps:
 
-1. Open a PowerShell terminal and run the following command to repair kubelet certificates:
-```powershell
-Update-AksHciClusterCertificates -Name <cluster name> -fixKubeletCredentials
-```
+1. Open a PowerShell window and run the following command to repair kubelet certificates:
+
+   ```powershell
+   Update-AksHciClusterCertificates -Name <cluster name> -fixKubeletCredentials
+   ```
 
 2. Run the following command to repair the cloud operator certificates:
-```powershell
-Update-AksHciClusterCertificates -Name <cluster name> -fixCloudCredentials
-```
 
+   ```powershell
+   Update-AksHciClusterCertificates -Name <cluster name> -fixCloudCredentials
+   ```
 
 ## Next steps
 
