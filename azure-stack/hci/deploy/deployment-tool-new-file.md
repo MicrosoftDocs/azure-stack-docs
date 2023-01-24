@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/10/2022
+ms.date: 01/23/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -33,7 +33,7 @@ Before you begin, make sure you've done the following:
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
-1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
+1. In the deployment UI, select the **first server listed for the cluster to act as a staging server** during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
@@ -170,7 +170,9 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
 
-1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
+1. On step **4.1 Create workload and infrastructure volumes**, select the recommended option to **Create workload volumes** in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+
+    If you select **Create infrastructure volumes** only, you will need to create workload volumes yourselves.  
 
     The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the deployment orchestrator and one or multiple data volumes for your use.
 
@@ -189,7 +191,7 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
