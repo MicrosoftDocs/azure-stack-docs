@@ -86,7 +86,7 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](../../operator/azure-stack-viewing-public-ip-address-consumption.md) and [storage](../../operator/azure-stack-manage-storage-accounts.md) resources.
 - [Start and stop Azure Stack Hub](../../operator/azure-stack-start-and-stop.md).
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
-- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
+- [Manage Event Hubs](../../operator/event-hubs-rp-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 - [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 - Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
 - [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
