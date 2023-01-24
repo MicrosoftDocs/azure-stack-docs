@@ -63,18 +63,16 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 In order for our AKS Edge Essentials cluster to discover our camera, we must open up the port for WS-Discovery (Web Services Dynamic Discovery), which is a multicast discovery protocol that operates over TCP and UDP port `3072`. 
 
-1. To enter the bash shell of your Linux node, simply enter `mars`.
-2. Once inside the bash shell, run the following command to open port 3072.
-    ```bash
-    sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT
+1. We will run the following command to to open port 3072 within the Linux node.
+    ```powershell
+    Invoke-AksEdgeNodeCommand -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
     ```
-3. Then we want to save the IP tables so that even if the node is stopped and restarted, the rules for opening port 3072 will be saved.
-    ```bash
-    sudo iptables-save | sudo tee /etc/systemd/scripts/ip4save > /dev/null
+2. Then we want to save the IP tables so that even if the node is stopped and restarted, the rules for opening port 3072 will be saved.
+    ```powershell
+    Invoke-AksEdgeNodeCommand -command "sudo iptables-save | sudo tee /etc/systemd/scripts/ip4save > /dev/null"
     ```
-4. Now exit the bash shell by entering `exit`.
 
-5. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera.
+3. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera.
     ```powershell
     kubectl get akrii
     ```
@@ -99,6 +97,8 @@ In order for our AKS Edge Essentials cluster to discover our camera, we must ope
           labels:
             app: akri-video-streaming-app
         spec:
+          nodeSelector:
+            "kubernetes.io/os": linux
           serviceAccountName: akri-video-streaming-app-sa
           containers:
           - name: akri-video-streaming-app
@@ -162,7 +162,7 @@ In order for our AKS Edge Essentials cluster to discover our camera, we must ope
 
     [ ![Screenshot showing the Akri pods and video app pod is running.](media/aks-edge/akri-onvif-pods-running.png) ](media/aks-edge/akri-onvif-pods-running.png#lightbox)
 
-5. Find your Linux node IP by running `Get-AKSEdgeLinuxNodeAddr` and the port of your web app service by running `kubectl get svc`.
+5. Find your Linux node IP by running `Get-AksEdgeNodeAddr` and the port of your web app service by running `kubectl get svc`.
 
     [ ![Screenshot showing the node address and port of the web app service.](media/aks-edge/akri-web-app-address.png) ](media/aks-edge/akri-web-app-address.png#lightbox)
 
