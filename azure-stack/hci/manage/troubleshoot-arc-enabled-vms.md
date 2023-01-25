@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Troubleshoot Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article provides guidance on how to debug issues that you might encounter when using Azure Arc virtual machines (VMs). It also describes the limitations and known issues that currently exist.
 
