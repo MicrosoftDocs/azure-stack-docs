@@ -186,7 +186,7 @@ Sets deployment to use artifacts downloaded offsite and transfered to deployment
 
 ### -stagingShare
 
-The local path to which you want the images to be downloaded. Used in tandem with the `offlineDownload` parameter.
+The local path to where you want the images to be downloaded. Use in tandem with the `offlineDownload` parameter.
 
 ```yaml
 Type: System.String
