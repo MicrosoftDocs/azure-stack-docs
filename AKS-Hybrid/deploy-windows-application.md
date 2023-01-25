@@ -1,47 +1,47 @@
 ---
-title: Deploy a Windows .NET application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to deploy a Windows.NET application to your cluster using a custom image stored in Azure Container Registry.
+title: Deploy a Windows .NET application in AKS hybrid
+description: Learn how to deploy a Windows.NET application to your Azure Kubernetes Service (AKS) cluster using a custom image stored in Azure Container Registry in AKS hybrid.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 06/27/2022
+ms.date: 11/01/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro, I want to use a custom image to deploy a Windows.NET application 
+# Intent: As an IT Pro, I want to use a custom image to deploy a Windows.NET application. 
 # Keyword: Windows .NET application ASP.NET application
 
 ---
 
-# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Deploy Windows applications in AKS hybrid
 
-> Applies to: Azure Stack HCI and Windows Server
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster, and then see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
+In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS hybrid, and then test and scale your application. You'll also learn how to join a Windows node to an Active Directory domain.
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
 ## Before you begin
 
-Make sure you have met the following requirements:
+Make sure you've met the following requirements:
 
-* An [Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
-* A kubeconfig file to access the cluster.
-* The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
+* An [Azure Kubernetes Service cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node is up and running. 
+* You have a kubeconfig file to access the cluster.
+* The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) is installed.
 
-In addition:
-* Run the commands in this document in a PowerShell administrative window.
-* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
+When you do the procedures:
+* Run the commands in a PowerShell administrative window.
+* Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 ## Deploy the application
 
-A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this article, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
+A Kubernetes manifest file defines a desired state for the cluster, such as which container images to run. In these procedures, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
 
-The ASP.NET sample application is provided as part of the .NET Framework Samples and runs in a Windows Server container. AKS on Azure Stack HCI and Windows Server requires Windows Server containers to be based on images of *Windows Server 2019*. 
+The ASP.NET sample application is provided as part of the .NET Framework Samples and runs in a Windows Server container. AKS hybrid requires that Windows Server containers be based on images of *Windows Server 2019*.
 
 The Kubernetes manifest file must also define a node selector to tell your AKS cluster to run your ASP.NET sample application's pod on a node that can run Windows Server containers.
 
-Create a file named `sample.yaml` and copy in the following YAML definition. 
+Create a file named `sample.yaml`, and copy in the following YAML definition. 
 
 ```yaml
 apiVersion: apps/v1
@@ -89,13 +89,13 @@ spec:
     app: sample
 ```
 
-Deploy the application using the `kubectl apply` command and specify the name of your YAML manifest:
+Deploy the application using the `kubectl apply` command, and specify the name of your YAML manifest:
 
 ```console
 kubectl apply -f sample.yaml
 ```
 
-The following example output shows the deployment and service created successfully:
+The following example output shows the deployment and service were created successfully:
 
 ```output
 deployment.apps/sample created
@@ -112,7 +112,7 @@ To monitor progress, use the `kubectl get service` command with the `--watch` ar
 kubectl get service sample --watch
 ```
 
-Initially the *EXTERNAL-IP* for the *sample* service is shown as *pending*.
+Initially, the *EXTERNAL-IP* for the *sample* service is shown as *pending*.
 
 ```output
 NAME    TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -128,25 +128,25 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 To see the sample app in action, open a web browser to the external IP address of your service.
 
-![Image of browsing to ASP.NET sample application](media/deploy-windows-application/asp-net-sample-app.png)
+![Screenshot of the home page for the ASP.NET sample application for Windows deployed on an AKS cluster.](media/deploy-windows-application/asp-net-sample-app.png)
 
-If you receive a connection timeout when trying to load the page, verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available before the windows container has started.
+If the connection times out when you try to load the page, verify whether the sample app is ready by running the `kubectl get pods --watch` command. Sometimes, the external IP address is available before the Windows container starts.
 
 ## Scale application pods
 
-We have created a single replica of the application front-end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
+We've created a single replica of the application front end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
 
 ```console
 kubectl get pods -n default
 ```
 
-To change the number of pods in the *sample* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to *3*:
+To change the number of pods in the *sample* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 3:
 
 ```console
 kubectl scale --replicas=3 deployment/sample
 ```
 
-Run `kubectl get pods` again to verify that additional pods have been created. After a minute or so, the additional pods are available in your cluster:
+Run `kubectl get pods` again to verify that the pods were created. After a minute or so, the additional pods are available in your cluster.
 
 ```console
 kubectl get pods -n default
@@ -155,4 +155,4 @@ kubectl get pods -n default
 ## Next steps
 
 * [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).
-* [Use persistent volume on a Kubernetes cluster](persistent-volume.md).
+* [Use persistent volumes on a Kubernetes cluster](persistent-volume.md).

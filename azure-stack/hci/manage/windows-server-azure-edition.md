@@ -7,16 +7,18 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2022
+ms.date: 11/21/2022
 ---
 
 # Deploy Windows Server Azure Edition VMs
 
-> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure marketplace.
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
 
 Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).
+
+To upgrade an existing VM to Windows Server Azure Edition, see [Upgrade VMs to Windows Server Azure Edition](upgrade-vm-windows-server-azure-edition.md).
 
 ## Considerations
 
@@ -37,21 +39,21 @@ Windows Server Azure Edition can be deployed as a guest VM using either an HCI M
 
 ## [HCI marketplace image](#tab/hci)
 
-You can provision a Windows Server Azure Edition VM using an HCI Marketplace image in conjunction with [VM provisioning using Azure Portal](azure-arc-enabled-virtual-machines.md).
+You can provision a Windows Server Azure Edition VM using an HCI Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
 
 You do this by following these steps:
 
-1. Deploy [Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#azure-arc-resource-bridge-deployment-overview) on your Azure Stack HCI.
+1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#azure-arc-vm-management-deployment-workflow) on your Azure Stack HCI.
 
-1. Learn about how certain [Azure marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
+1. Learn about how certain [Azure Marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
 
-1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure marketplace OS image.
+1. Configure a new Azure Stack HCI gallery OS image for Windows Server Azure Edition that links to the corresponding Azure Marketplace OS image.
 
 1. Use the Windows Server Azure Edition HCI gallery OS image to provision a VM.
 
-## [Azure marketplace image](#tab/azure)
+## [Azure Marketplace image](#tab/azure)
 
-You can provision a Windows Server Azure Edition VM using an Azure marketplace image using the process described below.
+You can provision a Windows Server Azure Edition VM using an Azure Marketplace image using the process described below.
 
 You can run the commands below from the Azure portal using either the Azure Cloud Shell or locally using the Azure CLI.
 
@@ -65,7 +67,7 @@ Run the [az version](/cli/azure/reference-index?#az-version) command to make sur
 
 ### 1. Download OS image
 
-You can find Windows Server Azure Edition images that are available to download by using the search function in Azure marketplace in the Azure portal. The example query below has search criteria for Windows Server 2022 Azure Edition Core:
+You can find Windows Server Azure Edition images that are available to download by using the search function in Azure Marketplace in the Azure portal. The example query below has search criteria for Windows Server 2022 Azure Edition Core:
 
 ```powershell
 az vm image list --all --publisher "microsoftwindowsserver" --offer "WindowsServer" --sku "2022-datacenter-azure-edition-core"
@@ -79,7 +81,7 @@ MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest
 
 ### 2. Create a new Azure managed disk
 
-Next, you'll create an Azure managed disk from the image you downloaded from Azure marketplace.
+Next, you'll create an Azure managed disk from the image you downloaded from Azure Marketplace.
 
 To create an Azure managed disk:
 
@@ -105,7 +107,7 @@ Next, you'll need to export the VHD you created from the managed disk to your Az
 
 To export the VHD:
 
-1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure marketplace at this URL.
+1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure Marketplace at this URL.
 
 1. Download the VHD image. The process may take several minutes. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
 

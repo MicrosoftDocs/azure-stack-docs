@@ -1234,7 +1234,12 @@
         "source_path": "azure-stack/aks-hci/use-containerd-on-windows-aks.md",
         "redirect_url": "/azure/aks/hybrid",
         "redirect_document_id": false
-      },    
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-lite-overview.md",
+        "redirect_url": "/azure/aks/hybrid/aks-edge-overview",
+        "redirect_document_id": false
+      },
       {
         "source_path": "azure-stack/aks-hci/kubernetes-walkthrough-powershell-proxy.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-walkthrough-powershell",

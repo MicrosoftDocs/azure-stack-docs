@@ -1,29 +1,48 @@
 ---
-title: What's new in Azure Stack HCI, version 22H2
-description: Find out what's new in Azure Stack HCI, version 22H2
+title: What's new in Azure Stack HCI, version 22H2 and Azure Stack HCI, Supplemental Package
+description: Find out what's new in Azure Stack HCI, version 22H2 and Azure Stack HCI, Supplemental Package
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2022
+ms.date: 12/05/2022
 ---
 
-# What's new in Azure Stack HCI, version 22H2 
+# What's new in Azure Stack HCI, version 22H2
 
-> Applies to: Azure Stack HCI, version 22H2 
+[!INCLUDE [hci-applies-to-supplemental-package-22h2](../includes/hci-applies-to-supplemental-package-22h2.md)]
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
+This article lists the various features and improvements that are available in Azure Stack HCI, version 22H2. This article also describes the Azure Stack HCI, Supplemental Package that can be deployed in conjunction with Azure Stack HCI, version 22H2 OS.
 
-## New Azure Stack HCI, version 22H2 operating system
-
-Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version is a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
-
-Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI, version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI, version 22H2 operating system](./manage/install-preview-version.md).
+Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution and focuses on Network ATC v2 improvements, storage replication compression, Hyper-V live migration, and more. Additionally, a preview version of Azure Stack HCI, Supplemental Package, is now available that can be deployed on servers running version 22H2 OS.
 
 You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
-The following sections briefly describe the various OS-related features and enhancements in Azure Stack HCI, version 22H2.
+The following sections briefly describe the various features and enhancements in [Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package-preview) and in [Azure Stack HCI, version 22H2](#azure-stack-hci-version-22h2).
+
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+## Azure Stack HCI, Supplemental Package (preview)
+
+Azure Stack HCI, Supplemental Package is now available to be deployed on servers running Azure Stack HCI, version 22H2 OS. This package contains a brand new deployment tool that allows for an interactive deployment, new security capabilities, an Azure Stack HCI Environment Checker tool that will validate connectivity, hardware, identity and networking prior to deployment, and a unified log collection experience.
+
+### New deployment tool (preview)
+
+[!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
+
+### New security capabilities (preview)
+
+[!INCLUDE [hci-security-capabilities-sp](../includes/hci-security-capabilities-sp.md)]
+
+### New Azure Stack HCI Environment Checker tool (preview)
+
+[!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
+
+## Azure Stack HCI, version 22H2
+
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
 
 ### Network ATC v2 improvements
 
@@ -52,7 +71,7 @@ In this release, the Network ATC has several new features and improvements:
 
 For more information, see the blog on [Network ATC v2 improvements](https://aka.ms/hciatcv2-blog).
 
-### Storage replica compression
+### Storage Replica compression
 
 This release includes the Storage Replica compression feature for data transferred between the source and destination servers. This new functionality compresses the replication data from the source system, which is transferred over the network, decompressed, and then saved on the destination. The compression results in fewer network packets to transfer the same amount of data, allowing for higher throughput and lower network utilization, which in turn results in lower costs for metered networks.
 
@@ -75,11 +94,17 @@ Set-SRPartnership -Compression <Boolean>
 
 ```
 
-Here `$False` is **Disabled** and `$True` is **Enabled**.
+where `$False` is **Disabled** and `$True` is **Enabled**.
  
 All the other commands and steps remain the same. These changes aren't in Windows Admin Center at this time and will be added in a subsequent release.
 
 For more information, see [Storage Replica overview](/windows-server/storage/storage-replica/storage-replica-overview).
+
+### Partition and share GPU with virtual machines on Azure Stack HCI
+
+With this release, GPU partitioning is now supported on NVIDIA [A2](https://www.nvidia.com/en-us/data-center/products/a2/), [A10](https://www.nvidia.com/en-us/data-center/products/a10-gpu/), [A16](https://www.nvidia.com/en-us/data-center/products/a16-gpu/), and [A40](https://www.nvidia.com/en-us/data-center/a40/) GPUs in Azure Stack HCI, enabled with NVIDIA RTX Virtual Workstation (vWS) and NVIDIA Virtual PC (vPC) software. GPU partitioning is implemented using single root I/O virtualization (SR-IOV), which provides a strong, hardware-backed security boundary with predictable performance for each virtual machine.
+
+For more information, see [Partition and share GPU with virtual machines on Azure Stack HCI](../hci/manage/partition-gpu.md).
 
 ### Hyper-V live migration improvements
 
@@ -87,7 +112,7 @@ In Azure Stack HCI, version 22H2, the Hyper-V live migration is faster and more 
 
 ### Cluster-Aware Updating (CAU) improvements
 
-With this release, cluster-aware updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-aware updating also supports single server deployments.
+With this release, Cluster-Aware Updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-Aware Updating also supports single server deployments.
 
 For more information, see [What is Cluster-Aware Updating?](/windows-server/failover-clustering/cluster-aware-updating)
 
@@ -109,49 +134,36 @@ In this release, you can secure your application workload virtual machines (VMs)
 
 For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md).
 
-## Azure Hybrid Benefit for Azure Stack HCI
+### Azure Hybrid Benefit for Azure Stack HCI
 
-Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), We are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
+Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), we are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
 
 If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
 
-For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit.md).
+For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit-hci.md).
 
-
-## Azure Arc VM changes and Azure Marketplace
+### Azure Arc VM changes and Azure Marketplace
 
 Another feature also available with this release is Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI. With this integration, you'll be able to access the latest fully updated images from Microsoft, including Windows Server 2022 Datacenter: Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
 
-You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing cluster running Azure Stack HCI, version 21H2 or later.
+You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc VMs. This feature works with your existing cluster running Azure Stack HCI, version 21H2 or later.
 
 For more information, see:
 
-  - [Create VM image using an Azure Marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
-  - [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
-  - [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
+- [Create VM image using an Azure Marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
+- [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
+- [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
 
-
-## Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI
+### Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI
 
 Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
 
 
-## New Azure Stack HCI Environment Checker tool
-
-Before you deploy your Azure Stack HCI solution, you can now use a standalone, PowerShell tool to check your environment readiness. The Azure Stack HCI Environment Checker is a lightweight, easy-to-use tool that will let you validate your:
-
-- Internet connectivity.
-- Hardware.
-- Network infrastructure for valid IP ranges provided by customers for deployment.
-- Active Directory (Adprep tool is run prior to deployment).
-
-The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
-
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing cluster running Azure Stack HCI, version 21H2 or later. 
-
 
 ## Next steps
 
-- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847).
-- [Install Azure Stack HCI, version 22H2 operating system](./manage/install-preview-version.md).
-
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-ignite-2022/ba-p/3650949).
+- For existing Azure Stack HCI deployments, [Update Azure Stack HCI](./manage/update-cluster.md).
+- For new Azure Stack HCI deployments:
+    - Read the [Deployment overview](./deploy/deployment-tool-introduction.md).
+    - Learn how to [Deploy interactively](./deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.

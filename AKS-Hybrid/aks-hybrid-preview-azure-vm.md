@@ -29,32 +29,6 @@ Before you begin, make sure you meet the following requirements:
 Register the following Azure providers on your Azure subscription. Make sure you login to Azure first. You only need to do this operation once per Azure subscription.
 
 ```azurecli
-az account set -s <Azure subscription ID>
-az feature register --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess
-az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess
-```
-Check if the above features are in the "Registered" state by running the following commands. Wait till the features in this step have been registered before proceeding with the next step. 
-
-```azurecli
-az account set -s <Azure subscription ID>
-az feature show --namespace Microsoft.HybridContainerService --name hiddenPreviewAccess -o table
-az feature show --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess -o table
-```
-Expected output:
-
-```output
-Name                                                  RegistrationState
-----------------------------------------------------  -------------------
-Microsoft.HybridContainerService/hiddenPreviewAccess  Registered
-
-Name                                                  RegistrationState
-------------------------------------------------      -------------------
-Microsoft.HybridConnectivity/hiddenPreviewAccess      Registered
-```
-
-Once your features have been registered, run the following command to register the Azure providers required for this preview:
-
-```azurecli
 az provider register --namespace Microsoft.Kubernetes --wait 
 az provider register --namespace Microsoft.ExtendedLocation --wait
 az provider register --namespace Microsoft.ResourceConnector --wait
@@ -106,7 +80,7 @@ Exit
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --upgrade
+az extension add -n arcappliance --upgrade --version 0.2.27
 az extension add -n hybridaks --upgrade
 ```
 
@@ -185,7 +159,7 @@ Expected Output:
 ```output
 1.0.13.10907
 ```
-Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the [troubleshooting section](/known-issues). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
+Do not proceed if you have any errors! If you face an issue installing AKS on Windows Server, review the [troubleshooting section](known-issues.yml). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
 
 ## Step 7: Generate pre-requisite YAML files needed to deploy Azure Arc Resource Bridge
 
@@ -255,7 +229,7 @@ Running
 To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
 ```azurecli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --version 0.1.0 --config Microsoft.CustomLocation.ServiceAccount="default"
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"
 ```
 
 Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.

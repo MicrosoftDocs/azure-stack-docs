@@ -1,33 +1,39 @@
 ---
-title: Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to create deployments in Azure Kubernetes Service on Azure Stack HCI.
+title: Create deployments in AKS hybrid
+description: Learn how to create deployments in Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/29/2022
+ms.date: 10/21/2022
 ms.author: sethm 
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
-# Intent: As an IT Pro, I want to learn what I need to do in order to create deployments in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+# Intent: As an IT Pro, I want to learn what I need to do in order to create deployments in Azure Kubernetes Service (AKS).
 # Keyword: Kubernetes deployment update deployment Kubernetes object
 ---
 
-# Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Create deployments in AKS hybrid
+
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+This article provides an overview of Kubernetes deployments and describes how to create and update deployments in AKS hybrid.
+
+## Kubernetes deployments overview
 
 A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application's life cycle, including the pods assigned to the application. It provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
 
-Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and then, Kubernetes takes all the necessary steps to create the desired state of the application.
+Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and then Kubernetes takes all the necessary steps to create the desired state of the application.
 
 While deployments define how your applications run, they do not guarantee where your applications are located within your cluster. For example, if your application requires an instance of a pod on every node, you'll want to use a DaemonSet. For stateful applications, a StatefulSet provides unique network identifiers, persistent storage, and ordered deployment/scaling. 
 
 The Kubernetes deployment object lets you:
 
-- Deploy a replica set or a pod
-- Scale the number of instances of an application up or down
-- Update every running instance of an application
-- Roll back all running instances of an application to another version
-- Pause or continue a deployment
+- Deploy a replica set or a pod.
+- Scale the number of instances of an application up or down.
+- Update every running instance of an application.
+- Roll back all running instances of an application to another version.
+- Pause or continue a deployment.
 
-For additional information, see [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+For more information, see [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 ## Create a deployment
 
@@ -83,6 +89,6 @@ Kubernetes provides several deployment strategies so you can update in various w
 
 ## Next steps
 
-- [Create pods](create-pods.md)
-- [Create a ReplicaSet](create-replicasets.md)
-- [Create a DaemonSet](create-daemonsets.md)
+- [Create pods](create-pods.md).
+- [Create a ReplicaSet](create-replicasets.md).
+- [Create a DaemonSet](create-daemonsets.md).

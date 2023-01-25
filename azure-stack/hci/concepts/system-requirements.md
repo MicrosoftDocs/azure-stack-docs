@@ -11,7 +11,7 @@ ms.date: 03/31/2022
 
 # System requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Use this topic to assess system requirements for servers, storage, and networking for Azure Stack HCI.
 
@@ -21,7 +21,7 @@ A standard Azure Stack HCI cluster requires a minimum of one server and a maximu
 
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
-- Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). Each site must have the same number of servers and drives.
+- Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries/regions, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). Each site must have the same number of servers and drives.
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
@@ -90,7 +90,7 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 | Physical servers per cluster | 16      |
 | VMs per host                 | 1,024   |
 | Disks per VM (SCSI)          | 256     |
-| Storage per cluster          | 16 PB    |
+| Storage per cluster          | 4 PB    |
 | Storage per server           | 400 TB  |
 | Volumes per cluster          | 64      |
 | Volume size                  | 64 TB

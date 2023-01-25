@@ -30,7 +30,7 @@ For more information about Kubernetes basics, see [Kubernetes core concepts for 
 
 ## Why use AKS hybrid for containerized applications?
 
-If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kuberenetes orchestrator helps with.
+If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kubernetes orchestrator helps with.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes, essential add-ons, and create Kubernetes clusters to host your workloads.
 
@@ -62,7 +62,7 @@ AKS hybrid fully supports running both Linux-based and Windows-based containers.
 
 ### AKS hybrid supports deploying GPU-enabled nodes
 
-AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see [GPU documentation](https://github.com/Azure/aks-hci/blob/main/preview/GPU/GPU-private-preview-documentation.md).
+AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see [GPU documentation](https://github.com/Azure/aks-hybrid/blob/main/preview/GPU/gpu-preview.md).
 
 ## Azure Kubernetes Service hybrid deployment options
 
@@ -73,7 +73,7 @@ AKS hybrid deployment option | Host OS | Minimum compute requirement | Failover 
 AKS on Windows Server | Windows Server 2019 </br> Windows Server 2022 </br>  | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node failover cluster | Local PowerShell </br> Windows Admin Center | Manual Azure Arc integration | 
 AKS on Azure Stack HCI | Azure Stack HCI 21H2 | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node Azure Stack HCI cluster | Local PowerShell  </br> Windows Admin Center | Manual Azure Arc integration | 
 AKS cluster provisioning from Azure (PREVIEW) | Windows Server 2019 </br> Windows Server 2022 </br> Azure Stack HCI 21H2 | Memory: 32GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2 node cluster | Azure Portal  </br> Azure CLI </br> Azure Resource Manager templates | Automatic Azure Arc integration | 
-AKS on Windows IOT (PREVIEW) | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
+AKS Edge Essentials (PREVIEW) | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
 
 ## Next steps
 

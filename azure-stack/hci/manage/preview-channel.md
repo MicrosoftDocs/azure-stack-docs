@@ -6,27 +6,27 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/11/2022
+ms.date: 11/08/2022
 ---
 
 # Join the Azure Stack HCI preview channel
 
-> Applies to: Azure Stack HCI, version 22H2
+> Applies to: Azure Stack HCI preview channel
 
-The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. It's intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are available via Windows Update using Windows Admin Center or PowerShell.
+The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. This program is intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are available via Windows Update using Windows Admin Center or PowerShell.
 
    > [!WARNING]
-   > Azure Stack HCI clusters that are managed by Microsoft System Center should not join the preview channel yet. System Center 2022 (including Virtual Machine Manager, Operations Manager, and other components) supports Azure Stack HCI, version 21H2 which is the current in-market (GA) version. System Center does not yet support further preview versions. See the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) for the latest updates.
+   > Azure Stack HCI clusters that are managed by Microsoft System Center shouldn't join the preview channel. System Center (including Virtual Machine Manager, Operations Manager, and other components) supports the latest generally available version of Azure Stack HCI, but might not be tested or supported with preview channel builds. See the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) for the latest updates.
 
    > [!WARNING]
    > Don't use preview builds in production. Preview builds contain experimental pre-release software made available for evaluating and testing only. You might experience crashes, security vulnerabilities, or data loss. Be sure to back up any important virtual machines (VMs) before upgrading your cluster. Once you install a build from the preview channel, the only way to go back is a clean install.
 
 ## How to join the preview channel
 
-Before joining the preview channel, make sure that all servers in the cluster are online and that the cluster is [registered with Azure](../deploy/register-with-azure.md).
+Before joining the preview channel, make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md).
 
    > [!IMPORTANT]
-   > You must be running version 21H2 to be offered version 22H2.
+   > You can't skip versions. For example, if you're running Azure Stack HCI, version 21H2, you must update to Azure Stack HCI, version 22H2 before installing a newer preview version.
 
 1. Make sure you have the latest version of Windows Admin Center installed on a management PC or server.
 
@@ -43,9 +43,10 @@ Before joining the preview channel, make sure that all servers in the cluster ar
    > [!NOTE]
    > If any of the servers in the cluster say **Not configured** for preview builds, try repeating the process.
 
-Once you've joined the preview channel, you're ready to install Azure Stack HCI, 22H2 using either Windows Admin Center or PowerShell.
+Once you've joined the preview channel, you're ready to install Azure Stack HCI using either Windows Admin Center or PowerShell.
+
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Install Azure Stack HCI, 22H2](../manage/install-preview-version.md)
+> [Install a preview version of Azure Stack HCI](../manage/install-preview-version.md)

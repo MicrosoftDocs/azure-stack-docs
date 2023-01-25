@@ -1,22 +1,21 @@
 ---
-title: Create Azure Stack HCI VM from local share images via Azure CLI
-description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster.
+title: Create Azure Stack HCI VM from local share images via Azure CLI (preview)
+description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/05/2022
+ms.date: 11/03/2022
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
 
-> Applies to: Azure Stack HCI, version 22H2; Azure Stack HCI, version 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-> [!IMPORTANT]
-> The Azure Marketplace on Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) before you deploy this solution.
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -228,4 +227,4 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 ## Next steps
 
-Use VM images to [Create Arc-enabled VMs](./manage-virtual-machines-in-azure-portal.md).
+- [Create virtual networks](./create-virtual-networks.md)

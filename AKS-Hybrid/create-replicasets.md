@@ -1,17 +1,23 @@
 ---
-title: Create a ReplicaSet in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to create a ReplicaSet in Azure Kubernetes Service on Azure Stack HCI.
+title: Create a ReplicaSet in AKS hybrid
+description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/25/2022
+ms.date: 10/21/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
-# Intent: As an IT Pro, I need to understand ReplicaSets and how to create or delete them in order to manage pods in my AKS on Azure Stack HCI deployment. 
+# Intent: As an IT Pro, I need to understand ReplicaSets and how to create or delete them in order to manage pods in my AKS deployment. 
 # Keyword: ReplicaSet replica pods pod fails create ReplicaSets delete ReplicaSets
 ---
 
-# Create ReplicaSets
+# Create ReplicaSets in AKS hybrid
+
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+This article describes how to create, scale, and delete ReplicaSets in AKS hybrid, which are used to ensure that a stable set of replica pods are running at any given time.
+
+## Overview of ReplicaSets
 
 A *ReplicaSet* is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees an available specified number of identical pods.
 
@@ -35,19 +41,19 @@ metadata:
       labels: 
          env: dev
          role: web
- spec:  
-       replicas: 4
-       selector: 
-           matchlabels: 
-  	 role: web
+spec:  
+   replicas: 4
+   selector: 
+       matchlabels: 
+       role: web
         template:
            metadata:
-   	labels:
-       	    role: web
-            spec:  
-      	containers:  
-       	    -name: nginx  
-       	    image: nginx
+       labels:
+           role: web
+spec:  
+      containers:  
+           -name: nginx  
+           image: nginx
 ```
 
 After you create a ReplicaSet, you can view the status by running the following command:
@@ -62,17 +68,17 @@ You can remove, but not delete, a pod that a ReplicaSet manages by changing its 
 
 There are two ways to change the number of pods that a ReplicaSet manages. 
 
-You can edit the controller's configuration using the following command:
+- Edit the controller's configuration using the following command:
 
-```powershell
-kubectl edit rs <ReplicaSet_NAME>
-```
+  ```powershell
+  kubectl edit rs <ReplicaSet_NAME>
+  ```
 
-You can also directly increase or decrease the number using the following command:
+- Directly increase or decrease the number using the following command:
 
-```powershell
-kubectl scale –replicas=2 rs <ReplicaSet_NAME>
-```
+ ```powershell
+ kubectl scale –replicas=2 rs <ReplicaSet_NAME>
+ ```
 
 When you edit a manifest file, you can replace your existing configuration with the updated one:
 
@@ -86,26 +92,28 @@ Autoscaling is also an option with ReplicaSets using `kubectl autoscale rs web �
 
 ## Delete a ReplicaSet
 
-As with other Kubernetes objects such as DaemonSets, you can delete ReplicaSets using the `kubectl delete` command. For example, you can use the following commands:
+As with other Kubernetes objects, such as DaemonSets, you can delete ReplicaSets using the `kubectl delete` command. For example, you can use the following commands:
 
-```powershell
-kubectl delete rs <ReplicaSet_NAME>
-```
+- To delete a ReplicaSet using the ReplicaSet name, run the following command:
 
-To delete a ReplicaSet using its filename, run the following:
+  ```powershell
+  kubectl delete rs <ReplicaSet_NAME>
+  ```
 
-```powershell
-kubectl delete –f nginx_replicaset.yaml
-```
+- To delete a ReplicaSet using its filename, run the following command:
 
-Using these commands, you delete the ReplicaSet and all the pods that it manages. However, if you want to delete only the ReplicaSet resource and then keep the pods without an owner, you need to manually delete them. To manually delete a ReplicaSet, run the following command:
+  ```powershell
+  kubectl delete –f nginx_replicaset.yaml
+  ```
 
-```powershell
-kubectl delete rs <ReplicaSet_NAME> --cascade=false
-```
+- The preceding commands delete the ReplicaSet and all the pods that it manages. If you want to delete only the ReplicaSet resource, and keep the pods without an owner, you need to manually delete them. To manually delete a ReplicaSet, run the following command:
+
+  ```powershell
+  kubectl delete rs <ReplicaSet_NAME> --cascade=false
+  ```
 
 ## Next steps
 
-- [Create pods](create-pods.md)
-- [Create a DaemonSet](create-daemonsets.md)
-- [Create a deployment](create-deployments.md)
+- [Create pods](create-pods.md).
+- [Create a DaemonSet](create-daemonsets.md).
+- [Create a deployment](create-deployments.md).

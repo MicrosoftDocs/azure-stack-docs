@@ -1,9 +1,9 @@
 ---
-title: Use multiple load balancers in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
-description: Learn how to deploy one or more instances of the load balancer and scale up (or down) configuration in the target cluster.
+title: Use multiple load balancers in AKS hybrid
+description: How to use multiple load balancer instances and scale the numbers of instances on your Azure Kubernetes Service (AKS) deployment in AKS hybrid.
 author: sethmanheim
 ms.author: sethm
-ms.date: 07/29/2022 
+ms.date: 10/21/2022 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 07/29/2022
 ms.topic: how-to
@@ -13,16 +13,21 @@ ms.topic: how-to
 
 ---
 
-# Use multiple load balancers in AKS on Azure Stack HCI and Windows Server
+# Use multiple load balancers in AKS hybrid
 
-In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy one or more instances of the **HAProxy** load balancer, including the ability to scale up (or down) the load balancer configuration in the target cluster. You can also use a custom load balancer with AKS on HCI or Windows Server. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
+This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS hybrid, and how to scale up or down the load balancer configuration in the target cluster. 
+
+In AKS hybrid, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services. 
+
+You can also use a custom load balancer with AKS hybrid. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 
 ## Before you begin
 
-1. You must have installed [AKS on Azure Stack HCI and Windows Server](kubernetes-walkthrough-powershell.md) and during installation, you must provide a range of virtual IP addresses for the load balancer during the network configuration step.
-2. Ensure that you have enough memory and storage to allow creation of a new virtual machine and virtual IP addresses to assign to application services.
+- Install [AKS hybrid](kubernetes-walkthrough-powershell.md), and provide a range of virtual IP addresses for the load balancer during the network configuration step.
+
+- Make sure you have enough memory and storage to create a new virtual machine and have virtual IP addresses to assign to application services.
 
 ## Deploy multiple load balancer instances
 
@@ -59,4 +64,4 @@ To scale up (or down) your load balancer instances after deployment of a workloa
 
 ## Next steps
 
-- Learn more about Kubernetes services: [Kubernetes services documentation](https://kubernetes.io/docs/concepts/services-networking/service/)
+- [Learn more about Kubernetes services](https://kubernetes.io/docs/concepts/services-networking/service/).

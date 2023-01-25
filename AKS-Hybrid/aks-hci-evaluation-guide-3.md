@@ -1,9 +1,9 @@
 ---
-title: Explore AKS on Azure Stack HCI environment
+title: Explore the AKS hybrid environment
 description: Evaluate AKS hybrid, Step 3 - With AKS deployed in your Azure Virtual Machine, explore other capabilities in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 11/01/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -11,11 +11,13 @@ ms.reviewer: oadeniji
 # Keyword: Azure Virtual Machine deployment
 ---
 
-# Explore the AKS on Azure Stack HCI environment
+# Explore the AKS hybrid environment
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With all key components deployed, including the management cluster, along with target clusters, you can now begin to explore some of the additional capabilities of an Azure Kubernetes Service (AKS) deployment. This section describes some of the key elements, but for more information, see [the product documentation](/azure-stack/aks-hci/).
+With all key components deployed for your AKS hybrid evaluation, including the management cluster and target clusters, you can now begin to explore some other capabilities of an Azure Kubernetes Service (AKS) deployment. 
+
+This section describes some of the key elements. For more information, see [AKS hybrid product documentation](/azure-stack/aks-hci/).
 
 ## Deploy a simple Linux application
 
@@ -110,7 +112,7 @@ This example, using the [previously deployed simple Linux application](#deploy-a
 
 With the network security group rule configured, there are some more steps required to route the incoming traffic to the containerized application.
 
-1. Inside the Azure Virtual Machine, in an administrative PowerShell console, you'll need to retrieve the external IP and port of your deployed application, by running the following command (in this case, the app front end name is "azure-vote-front"):
+1. Inside the Azure Virtual Machine, you'll need to retrieve the external IP and port of your deployed application. Open an administrative PowerShell window, and run the following command. In this case, the app front end name is "azure-vote-front".
 
    ```powershell
    kubectl get service azure-vote-front
@@ -127,7 +129,7 @@ With the network security group rule configured, there are some more steps requi
 
 4. The NAT static mapping should be successfully created, and you can now test the access of your application from outside of the Azure Virtual Machine. You should try to access the web application using the Azure Virtual Machine public IP address that you [noted previously](#add-an-inbound-rule-to-your-nsg).
 
-This process creates a NAT static mapping that's specific to that external IP and the port of that specific Kubernetes service you have deployed in the environment. You must repeat the process for additional applications. For more information, see PowerShell [NetNat](/powershell/module/netnat) commands.
+This process creates a NAT static mapping that's specific to that external IP and the port of that specific Kubernetes service you have deployed in the environment. You must repeat the process for other applications. For more information, see PowerShell [NetNat](/powershell/module/netnat) commands.
 
 ## Deploy hybrid end-to-end solutions
 

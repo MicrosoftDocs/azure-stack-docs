@@ -5,8 +5,8 @@ ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 09/27/2022
-ms.reviewer: abha
-ms.date: 05/20/2022
+ms.reviewer: mikek
+ms.date: 11/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -21,7 +21,10 @@ This article covers the requirements for setting up Azure Kubernetes Service on 
 
 ## Active Directory requirements
 
-For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+
+>[!NOTE]
+>Active Directory is not required for single node Azure Stack HCI or Windows Server deployments. 
 
 - Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
@@ -34,6 +37,10 @@ For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to fu
 ## Hardware requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+
+> [!IMPORTANT]
+> The host systems for production deployments must be physical hardware. Nested virtualization is not supported outside of use through the [evaluation guide](aks-hci-evaluation-guide.md).
+> Nested virtualization is characterized as deploying Azure Stack HCI or Windows Server in a virtual machine and installing AKS hybrid in that virtual machine.
 
 ### Maximum supported hardware specifications
 
@@ -69,7 +76,7 @@ Keep in mind that the above minimum requirement is for an AKS-HCI deployment wit
 
 For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single node Windows Server, you will not get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
 
-Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](/hci/concepts/system-requirements#server-requirements) for more details on Azure Stack HCI server requirements.
+Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements#server-requirements) for more details on Azure Stack HCI server requirements.
 
 You must install the same operating system on each server in the cluster. If you are using Azure Stack HCI, the same OS and version must be on same on each server in the cluster. If you are using Windows Server Datacenter the same OS and version must be the same on each server in the cluster. Each OS must use the `EN-US` region and language selections. You can't change these settings after installation.
 
@@ -87,7 +94,7 @@ For an Azure Stack HCI or Windows Server cluster, you've two supported storage c
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe. 
 
-Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
 Kuberentes uses etcd to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information you, [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
@@ -185,9 +192,12 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 ----
 
+> [!NOTE]
+> AKS on Azure Stack HCI and Windows Server stores/processes customer data. By default, customer data stays within the region the customer deploys the service instance in. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
+
 #### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server
 
-As outlined in the [Stretched clusters overview](/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
+As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
 
 #### Arc for Kubernetes requirements
 > [!NOTE]

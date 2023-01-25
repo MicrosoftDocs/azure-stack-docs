@@ -1,8 +1,8 @@
 ---
-title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
+title: Proxy server settings in AKS hybrid
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 06/28/2022
+ms.date: 10/20/2022
 ms.author: sethm 
 ms.lastreviewed: 05/25/2022
 ms.reviewer: mikek
@@ -12,12 +12,16 @@ author: sethmanheim
 # Keyword: proxy server proxy settings
 
 ---
-# Use proxy server settings on AKS on Azure Stack HCI and Windows Server
+# Use proxy server settings in AKS hybrid
+
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+<!--LET'S DISCUSS: 1) Title should be "AKS hybrid." Lead probably should be "AKS hybrid." But the structure of the intro makes it very hard to fit in an AKS hybrid product description. 2) Introduction shouldn't start with a Note, but the Note best describes the article.-->
+
+This article describes how to configure proxy settings for Azure Kubernetes Service (AKS) in AKS hybrid. If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps to set up proxy support in AKS using the **AksHci** PowerShell module. The steps are different depending on whether the proxy server requires authentication.<!--I moved the first sentence of the note to the lead to get in a product ID. I think it works better there, and it isn't needed in the note.-->
 
 > [!NOTE]
-> This topic covers how to configure proxy settings for AKS on Azure Stack HCI. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements). 
-
-If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** PowerShell module. There are different sets of steps depending on whether the proxy server requires authentication.
+> If you want to use Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 
 Once you've configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./kubernetes-walkthrough-powershell.md) and [create AKS clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
 
@@ -25,13 +29,16 @@ Once you've configured your deployment using the options listed below, you can [
 
 Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
-### **Proxy server configuration information:**
-   - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
-   - HTTPS URL and port, such as `https://proxy.corp.contoso.com:8443`.
-   - (Optional) Valid credentials for authentication to the proxy server.
-   - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
+### Proxy server configuration information
 
-### Exclusion list for excluding private subnets from being sent to the proxy:
+The proxy server configuration for your AKS deployment includes the following settings:
+
+- HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
+- HTTPS URL and port, such as `https://proxy.corp.contoso.com:8443`.
+- (Optional) Valid credentials for authentication to the proxy server.
+- (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
+
+### Exclusion list for excluding private subnets from being sent to the proxy
 
 The following table contains the list of addresses that must be excluded by using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
@@ -63,12 +70,13 @@ if ($http_proxy -or $https_proxy) {
     }
 }
 ```
+
 Configure machine-wide proxy exclusions on *each* of the physical cluster hosts where the problem was detected.
 
 > [!NOTE]
 > We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues.
 
-Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#Exclusion list for excluding private subnets from being sent to the proxy).
+Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
 ```powershell
 $no_proxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
@@ -128,6 +136,6 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 
 ## Next steps
 
-You can now proceed with installing AKS on your Azure Stack HCI/Windows Server cluster, by running [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) followed by `Install-AksHci`.
+You can now proceed with installing AKS on your Azure Stack HCI or Windows Server cluster, by running [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) followed by `Install-AksHci`.
 
-[Deploy Azure Kubernetes Services on Azure Stack HCI using PowerShell](./kubernetes-walkthrough-powershell.md)
+- [Deploy Azure Kubernetes Services on Azure Stack HCI using PowerShell](./kubernetes-walkthrough-powershell.md)

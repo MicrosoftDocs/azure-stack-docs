@@ -1,9 +1,9 @@
 ---
-title: Create a DaemonSet in Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Create a Kubernetes DaemonSet in AKS hybrid
+description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS).
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/17/2022
+ms.date: 10/21/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -13,19 +13,25 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# Create DaemonSets
+# Create Kubernetes DaemonSets in AKS hybrid
+
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+This article describes how to create and use a Kubernetes _DaemonSet_ in AKS hybrid to ensure that a copy of a pod is always available on every worker node in a cluster. A _DaemonSet_ can be used to improve cluster performance by ensuring an app runs on all the worker nodes and to deploy pods that do maintenance and provide support services for nodes.<!--New intro. Originally, the long discussion of Daemonset objects never led to a description of what the article covers.-->
+
+## Overview of DaemonSets
 
 _DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. 
 
-Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node (for example, as happens when using a _ReplicaSet_). This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
+Similarly, when a node is deleted, the pod that's running on the node is also deleted and isn't rescheduled on another node (for example, as happens with _ReplicaSets_). This enables you to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
 
 DaemonSets can improve the overall cluster performance. For example, you can use them to deploy pods to perform maintenance tasks and support services to every node: 
 
-- Run a log collection daemon, such as like Fluentd and Logstash.
-- Run a node monitoring daemon, such as Prometheus.
-- Run a cluster storage daemon, such as glusterd or ceph.
+- Run a log collection daemon, such as `Fluentd` and `Logstash`.
+- Run a node monitoring daemon, such as `Prometheus`.
+- Run a cluster storage daemon, such as `glusterd` or `ceph`.
 
-Although DaemonSets create a pod on every node by default, you can limit the number of acceptable nodes by predefining the node selector field in the YAML file. Only nodes that match the node selector will get a pod created on it by the DaemonSet controller. 
+Although DaemonSets create a pod on every node by default, you can limit the number of acceptable nodes by predefining the node selector field in the YAML file. The DaemonSet controller will only create pods on nodes that match the node selector.
 
 Usually, one DaemonSet deploys one daemon type across all nodes, but it's possible to have multiple DaemonSets control one daemon type by using different labels. A Kubernetes label specifies deployment rules based on the characteristics of individual nodes.
 
@@ -44,15 +50,15 @@ metadata:
       labels: 
          app: nginx
       name: example-daemon
- spec:  
-     template:
-           metadata:
-   	 labels:
+spec:  
+  template:
+    metadata:
+    labels:
        	  app: nginx
           spec:  
-      	containers:  
-       	    -name: nginx  
-       	    image: nginx
+    containers:  
+        -name: nginx  
+         image: nginx
 ```
 
 To view the current state of the DaemonSet, use the `kubectl describe` command (for example, `kubectl describe daemonset example-daemon`).
@@ -63,7 +69,7 @@ By default, DaemonSets create pods on all the nodes in a cluster, but with node 
 
 ## Update a DaemonSet
 
-You can update a DaemonSet using the `kubectl edit ds<NAME>` command. However, it's recommended that the user edits the original configuration file, and the use the `kubectl apply` command when it was initially created. After applying an update, the update status can be viewed using the `kubectl rollout status ds <daemonset-name>` command.
+You can update a DaemonSet using the `kubectl edit ds<NAME>` command. However, it's recommended that the user edits the original configuration file, and the use the `kubectl apply` command when it was initially created. After you apply an update, the update status can be viewed using the `kubectl rollout status ds <daemonset-name>` command.
 
 ## Delete a DaemonSet
 
@@ -71,6 +77,6 @@ To remove a DaemonSet, use the `kubectl delete` command (for example, `kubectl d
 
 ## Next steps
 
-- [Create pods](create-pods.md)
-- [Create a deployment](create-deployments.md)
-- [Create a ReplicaSet](create-replicasets.md)
+- [Create pods](create-pods.md).
+- [Create a deployment](create-deployments.md).
+- [Create a ReplicaSet](create-replicasets.md).

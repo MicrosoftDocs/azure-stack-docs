@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 10/03/2022
+ms.date: 11/15/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/03/2022
+ms.lastreviewed: 11/15/2022
 ms.reviewer: jeguan
 
 ---
@@ -45,6 +45,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-concurrentDownloads <int>]
                  [-skipHostLimitChecks]
                  [-skipRemotingChecks]
+                 [-skipValidationChecks]
                  [-insecure]
                  [-skipUpdates]
                  [-forceDnsReplication]   
@@ -75,7 +76,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocat
 ### To deploy with a proxy server
 
 ```powershell
-PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
+PS C:\> $proxySettings = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
 
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySettings -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 
 ### -workingDir
 
-This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -221,7 +222,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A2_V2
+Default value: Standard_A4_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -498,6 +499,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -skipValidationChecks
+
+Use this flag if you want to skip the validation checks of the environment infrastructure and user configuration input. These checks will highlight potential issues to address before proceeding with the install. We do not recommend using this setting.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

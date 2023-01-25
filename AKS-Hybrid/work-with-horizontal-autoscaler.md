@@ -1,45 +1,47 @@
 ---
-title: Use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
-description: Learn how to use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
+title: Use PowerShell for cluster autoscaling in AKS hybrid
+description: Learn how to use PowerShell for cluster autoscaling in Azure Kubernetes Service hybrid deployment options ("AKS hybrid").
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.lastreviewed: 05/31/2022
+ms.lastreviewed: 10/20/2022
 ms.reviewer: mikek
-ms.date: 06/28/2022
+ms.date: 11/07/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
 
 ---
 
-# Use PowerShell for cluster autoscaling
+# Use PowerShell for cluster autoscaling in AKS hybrid
 
-You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters in AKS hybrid. You can also use PowerShell to configure and manage cluster autoscaling.
 
 ## Create a new AksHciAutoScalerConfig object
 
-Create a new **AksHciAutoScalerConfig** object to pass into the `New-AksHciCluster` or `Set-AksHciCluster` commands.
+To create a new **AksHciAutoScalerConfig** object to pass into the `New-AksHciCluster` or `Set-AksHciCluster` command, use this command:
 
 ```powershell 
 New-AksHciAutoScalerProfile -Name asp1 -AutoScalerProfileConfig @{ "min-node-count"=2; "max-node-count"=7; 'scale-down-unneeded-time'='1m'}
 ```
 
-You can provide the **autoscalerconfig** object when creating your cluster. The object contains the parameters for your autoscaler. For more information about the parameters. See [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
+You can provide the **autoscalerconfig** object when creating your cluster. The object contains the parameters for your autoscaler. For parameter information, see [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
 ## Change an existing AksHciAutoScalerConfig profile object
 
-Change an existing **AksHciAutoScalerConfig profile** object. Clusters using this object will be updated to use the new parameters. 
+When you update an existing **AksHciAutoScalerConfig profile** object, clusters using that object are updated to use the new parameters.
 
 ```powershell 
 Set-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "max-node-count"=5; "min-node-count"=2 }
 ```
 
-You can update the **autoscalerconfig** object. The object contains the parameters for your autoscaler. For more information about the parameters. See [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
+You can update the **autoscalerconfig** object, which contains the parameters for your autoscaler. For parameter information, see [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
 ## Enable autoscaling for new clusters
 
-Set `New-AksHciCluster` and all newly created node pools will have autoscaling enabled upon creation.
+To enable autoscaling automatically on all newly created node pools, use the following parameters with the `New-AksHciCluster` command:
 
 ```powershell 
 New-AksHciCluster -name mycluster -enableAutoScaler -autoScalerProfileName myAutoScalerProfile
@@ -47,7 +49,7 @@ New-AksHciCluster -name mycluster -enableAutoScaler -autoScalerProfileName myAut
 
 ## Enable autoscaling on an existing cluster
 
-Set `enableAutoScaler` on an existing cluster using `Set-AksHciCluster` and all additionally created node pools will have autoscaling enabled. You must enable autoScaling for existing node pools using `Set-AksHcinode pool`.
+To enable autoscaling automatically on each newly created node pool on an existing cluster, use the `enableAutoScaler` parameter with the `Set-AksHciCluster` command:
 
 ```powershell 
 Set-AksHciCluster -Name <string> [-enableAutoScaler <boolean>] [-autoScalerProfileName <String>] 
@@ -55,43 +57,44 @@ Set-AksHciCluster -Name <string> [-enableAutoScaler <boolean>] [-autoScalerProfi
 
 ## Disable autoscaling
 
-Set `enableAutoScaler` to false on an existing cluster using `Set-AksHciCluster` to disable autoscaling on all existing and newly created node pools.
+To disable autoscaling on all existing and newly created node pools on an existing cluster, set `enableAutoScaler` to false using the `Set-AksHciCluster` command:
 
 ```powershell 
 Set-AksHciCluster -Name <string> -enableAutoScaler $false
 ```
+
 ## Making effective use of the horizontal autoscaler
 
-Now that the cluster and node pool are configured to automatically scale, we have to configure a workload to also scale in a way that makes use of the autoscaler capabilities. 
-There are two main ways to do that. 
+Now that the cluster and node pool are configured to automatically scale, you can configure a workload to also scale in a way that makes use of the horizontal autoscaler capabilities.
 
-* The Kubernetes horizontal pod autoscaler. Which scales the pods of an application deployment based on load characteristics to the available nodes in the Kubernetes cluster. If there are no more nodes to schedule to the horizontal autoscaler will instantiate a new node for the pods to be scheduled to. If the load goes down the nodes will get scaled back again.
-* The Kubernetes Node anti affinity rules. These rules for a Kubernetes Deployment define that a set of Pods in the deployment can't be scaled on the same node and a different node is required to scale the workload. In combination with either load characteristics or number of target pods for the application instances tha horizontal auto scaler will instantiate new nodes in the node pool to satisfy the requests and based on demand also scale the node pool back again when the demand subsides.
+Two main methods are available for workload scaling:
 
-Here are some examples:
+* **Kubernetes Horizontal Pod Autoscaler.** Based on load characteristics, the Horizontal Pod Autoscaler (also known as the *horizontal autoscaler*) scales the pods of an application deployment to available nodes in the Kubernetes cluster. If no more nodes are available to be scheduled to, the horizontal autoscaler instantiates a new node to schedule the pods to. If application load goes down, the nodes are scaled back again.
+* **Kubernetes node anti-affinity rules.** Anti-affinity rules for a Kubernetes deployment can specify that a set of pods can't be scaled on the same node, and a different node is required to scale the workload. In combination with either load characteristics or the number of target pods for the application instances, the horizontal autoscaler instantiates new nodes in the node pool to satisfy requests. If application demand subsides, the horizontal autoscaler scales down the node pool again.
+
+Here are some examples.
 
 ### Horizontal Pod Autoscaler
 
 Prerequisites:
 
-* AKS on Azure Stack HCI is installed
-* Target Cluster is installed and connected to Azure
-* One Linux Node Pool is deployed with at least one Linux Worker node active
-* Horizontal Node Autoscaler is enabled on the target cluster and the Linux node pool per the documentation above.
+* AKS hybrid is installed.
+* Target cluster is installed and connected to Azure.
+* One Linux node pool is deployed, with at least one active Linux worker node.
+* Horizontal Node Autoscaler is enabled on the target cluster and the Linux node pool, as described above.
 
-We'll make use of the [Kubernetes Horizontal Pod Autoscaler Walkthrough Example](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) to showcase the Horizontal Node Autoscaler.
+We'll make use of the [Kubernetes Horizontal Pod Autoscaler Walkthrough example](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) to show how the Horizontal Pod Autoscaler works.
 
-For the horizontal pod autoscaler to work you'll need to deploy the metrics server component in your target cluster.
-This is documented in detail in the [Kubernetes Metrics Server Documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
+For the Horizontal Pod Autoscaler to work, you must deploy the Metrics Server component in your target cluster.
 
-Use the following steps to deploy the metrics server to a target cluster called 'mycluster':
+To deploy the metrics server to a target cluster called `mycluster`, run the following commands:
 
 ```powershell
 Get-AksHciCredential -name mycluster
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
-Once the Kubernetes Metrics Server is deployed, you'll next deploy an application to the node pool that you can use to scale. We'll use a test application from the Kubernetes community website for this.
+After the Kubernetes Metrics Server is deployed, next, deploy an application to the node pool, which you will use to scale. We'll use a test application from the Kubernetes community website for this example.
 
 ```powershell  
 kubectl apply -f https://k8s.io/examples/application/php-apache.yaml
@@ -99,16 +102,16 @@ deployment.apps/php-apache created
 service/php-apache created
 ```
 
-This will create a deployment of an Apache web server based PHP application that will return an OK message to a calling client.
+This creates a deployment of an Apache web server-based PHP application that will return an "OK" message to a calling client.
 
-Next we'll configure the horizontal pod autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50% and scale from 1 to 50 pods.
+Next, configure the Horizontal Pod Autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50 percent, and scale from 1 to 50 pods.
 
 ```powershell
 kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 horizontalpodautoscaler.autoscaling/php-apache autoscaled
 ```
 
-You can check the current status of the newly made HorizontalPodAutoscaler, by running:
+You can check the current status of the newly made Horizontal Pod Autoscaler, by running the following command:
 
 ```powershell
 
@@ -117,13 +120,13 @@ NAME         REFERENCE                     TARGET    MINPODS   MAXPODS   REPLICA
 php-apache   Deployment/php-apache/scale   0% / 50%  1         10        1          18s
 ```
 
-Now last but not least lets increase the load on the web server to see it scale out. Open a new PowerShell Window and run the following command:
+Finally, increase the load on the web server to see it scale out. Open a new PowerShell window, and run the following command:
 
 ```powershell
 kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
 ```
 
-If you go back to the other window and run the below, within a short period you should see the number of pods change from the below to 
+If you go back to the previous PowerShell window and run the following command, you should see the number of pods change within a short period.  
 
 ```powershell
 kubectl get hpa php-apache --watch
@@ -131,20 +134,21 @@ kubectl get hpa php-apache --watch
 NAME         REFERENCE                     TARGET      MINPODS   MAXPODS   REPLICAS   AGE
 php-apache   Deployment/php-apache/scale   305% / 50%  1         10        1          3m
 ```
-within a short period you should see the number of pods change from the below to 
+
+In this example, the number of pods changes from 1 to 7, as shown below:
 
 ```powershell
 NAME         REFERENCE                     TARGET      MINPODS   MAXPODS   REPLICAS   AGE
 php-apache   Deployment/php-apache/scale   305% / 50%  1         10        7          3m
 ```
 
-Now this still might not be enough to trigger the node autoscaler because all of these pods might fit on one node of course. You might have to open a few more PowerShell windows and run more of the load generator commands. Make sure to change the name of the pod you're creating every time you're running the command that is: from load-generator to load-generator-2 
+If this isn't enough to trigger the node autoscaler because all the pods fit on one node, open more PowerShell windows and run more load generator commands. Make sure to change the name of the pod you're creating each time you run the command. For example, use `load-generator-2` instead of `load-generator`, as shown in the following command.
 
 ```powershell
 kubectl run -i --tty load-generator-2 --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
 ```
 
-then check the number of nodes instantiated with the following command.
+Then check the number of nodes instantiated with the following command:
 
 ```powershell
 kubectl get nodes
@@ -155,22 +159,22 @@ moc-lorl4323d02   Ready    <none>                   9m   v1.22.4
 moc-lorl43bc3c3   Ready    <none>                   2m   v1.22.4
 ```
 
-To see the scale down. Use CTRL-C to end the load generator pods and close the PowerShell Windows associated with them. After approximately 30 minutes you should see the number of pods go down and 30 minutes later the nodes will get deprovisioned as well.
+To watch a scale-down, press CTRL-C to end the load generator pods and close the PowerShell windows associated with them. After about 30 minutes, you should see the number of pods go down. About 30 minutes later, the nodes will be deprovisioned.
 
-To read more about the Kubernetes horizontal pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+For more information about the Kubernetes Horizontal Pod Autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 ### Node affinity rules
 
-You can use Node affinity rules to enable the Kubernetes Scheduler to run pods only on a specific set of nodes in a cluster or node pool based on certain characteristics of the node. The same rules can also be used to ensure that only one instance of a given pod runs per node to show the function of the horizontal node auto scaler.
+You can use node affinity rules to enable the Kubernetes Scheduler to run pods only on a specific set of nodes in a cluster or node pool based on certain characteristics of the node. To show the function of the Horizontal Node Autoscaler, you can use the same rules to ensure that only one instance of a given pod runs on each node.
 
 Prerequisites:
 
-* AKS on Azure Stack HCI is installed
-* Target Cluster is installed and connected to Azure
-* One Linux Node Pool is deployed with at least one Linux Worker node active
-* Horizontal Node Autoscaler is enabled on the target cluster and the Linux node pool per the documentation above.
+* AKS hybrid is installed.
+* Target cluster is installed and connected to Azure.
+* One Linux node pool is deployed, with at least one active Linux Worker node.
+* Horizontal Node Autoscaler is enabled on the target cluster, and the Linux node pool, as described above.
 
-Create a YAML file with the following content and save it as node-anti-affinity.yaml to a local folder.
+Create a YAML file with the following content, and save it as *node-anti-affinity.yaml* in a local folder.
 
 ``` yaml
 apiVersion: apps/v1
@@ -204,19 +208,19 @@ spec:
         image: redis:3.2-alpine
 ```
 
-Open a PowerShell Window and load the credentials for your target cluster. In our case, it's named 'mycluster'.
+Open a PowerShell window, and load the credentials for your target cluster. In the example, the cluster is named `mycluster`.
 
 ```powershell
 Get-AksHciCredential -name mycluster
 ```
 
-Now apply the YAML file from before to the target cluster
+Now, apply the YAML file to the target cluster:
 
 ```powershell
 kubectl apply -f node-anti-affinity.yaml
 ```
 
-After a few minutes you can use the following command to check for the new nodes to come online 
+After a few minutes, you can use the following command to check that the new nodes have come online:
 
 ```powershell
 kubectl get nodes
@@ -228,7 +232,7 @@ moc-lorl43bc3c3   Ready    <none>                   9m   v1.22.4
 moc-lorl44ef56c   Ready    <none>                   9m   v1.22.4
 ```
 
-To remove the node, delete the deployment of the redis server with
+To remove the node, delete the deployment of the redis server with this command:
 
 ```powershell
 kubectl delete -f node-anti-affinity.yaml
@@ -238,39 +242,42 @@ To learn more about Kubernetes pod affinity rules, see [Assigning Pods to Nodes]
 
 ## Troubleshoot horizontal autoscaler
 
-When the horizontal autoscaler is enabled for a target cluster, a new Kubernetes deployment will be created in the management cluster called `<cluster_name>-cluster-autoscaler`. This deployment monitors the target cluster to ensure there are enough worker nodes to schedule pods. Here are different ways to debug autoscaler related issues:
+When the Horizontal Pod Autoscaler is enabled for a target cluster, a new Kubernetes deployment called `<cluster_name>-cluster-autoscaler` is created in the management cluster. This deployment monitors the target cluster to ensure there are enough worker nodes to schedule pods. 
 
-The cluster autoscaler pods running on the management cluster log useful information about how it's making scaling decisions, the number of nodes that it needs to bring up or remove, and any general errors that it may experience. Run this command to access the logs:
+Here are some different ways to debug issues related to the autoscaler:
 
-```powershell 
-kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig logs -l app=<cluster_name>-cluster-autoscaler
-```
+- The cluster autoscaler pods running on the management cluster log useful information about how it's making scaling decisions, the number of nodes that it needs to bring up or remove, and any general errors that it may experience. Run the following command to access the logs:
 
-Cloud operator logs Kubernetes events in the management cluster, which can be helpful to understand when autoscaler has been enabled or disabled for a cluster and a node pool. These can be viewed by running:
+  ```powershell 
+  kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig logs -l app=<cluster_name>-cluster-autoscaler
+  ```
 
-```powershell 
-kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig get events
-```
-The cluster autoscaler deployment creates a `configmap` in the target cluster that it manages. This `configmap` holds information about the autoscaler's status at the cluster wide level and per node pool. Run this command against the target cluster to view the status:
+- Cloud operator logs record Kubernetes events in the management cluster, which can be helpful to understand when the autoscaler has been enabled or disabled for a cluster and a node pool. These can be viewed by running:
 
-> [!NOTE] 
-> Ensure you have run `Get-AksHciCredentials -Name <clustername>` to retrieve the `kubeconfig` information to access the target cluster in question.
+  ```powershell 
+  kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig get events
+  ```
 
-```powershell 
-kubectl --kubeconfig ~\.kube\config get configmap cluster-autoscaler-status -o yaml
-```
+- The cluster autoscaler deployment creates a `configmap` in the target cluster that it manages. This `configmap` holds information about the autoscaler's status cluster-wide level and per node pool. Run the following command against the target cluster to view the status:
 
-The cluster autoscaler logs events on the cluster autoscaler status configmap when it scales a cluster's node pool. These can be viewed by running this command against the target cluster:
+  > [!NOTE] 
+  > Ensure you have run `Get-AksHciCredentials -Name <clustername>` to retrieve the `kubeconfig` information to access the target cluster in question.
+
+  ```powershell 
+  kubectl --kubeconfig ~\.kube\config get configmap cluster-autoscaler-status -o yaml
+  ```
+
+- The cluster autoscaler logs events on the cluster autoscaler status `configmap` when it scales a cluster's node pool. These can be viewed by running this command against the target cluster:
  
-```powershell
-kubectl --kubeconfig ~\.kube\config describe configmap cluster-autoscaler-status
-```
+  ```powershell
+  kubectl --kubeconfig ~\.kube\config describe configmap cluster-autoscaler-status
+  ```
 
-The cluster autoscaler emits events on pods in the target cluster when it makes a scaling decision if the pod can't be scheduled. Run this command to view the events on a pod:
+- The cluster autoscaler emits events on pods in the target cluster when it makes a scaling decision if the pod can't be scheduled. Run this command to view the events on a pod:
 
-```powershell
-kubectl --kubeconfig ~\.kube\config describe pod <pod_name>
-```
+  ```powershell
+  kubectl --kubeconfig ~\.kube\config describe pod <pod_name>
+  ```
 
 ## PowerShell reference
 
