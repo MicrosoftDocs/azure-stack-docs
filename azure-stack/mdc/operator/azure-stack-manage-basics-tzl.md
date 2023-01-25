@@ -1,13 +1,13 @@
 ---
 title: Azure Stack Hub administration basics - MDC
 titleSuffix: Azure Stack Hub
-description: Learn about the basics of Azure Stack Hub administration. See additional support information and view next steps.
+description: Learn about the basics of Azure Stack Hub administration. See other support information and view next steps.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 01/23/2023
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 10/26/2020
+ms.lastreviewed: 01/23/2023
 
 # Intent: As an Azure Stack operator, I want to learn the basics to Azure Stack Hub administration.
 # Keyword: azure stack hub administration
@@ -37,17 +37,17 @@ By default, Azure Stack Hub includes the following foundational services when yo
 
 With these foundational services, you can offer infrastructure-as-a-service (IaaS) to your users with minimal configuration.
 
-### Additional services
+### More services
 
-We support the following additional platform-as-a-service (PaaS) services:
+We support these other platform-as-a-service (PaaS) services:
 
 - App Service
 - Azure Functions
 - SQL and MySQL databases
 - Kubernetes
-- Event Hub
+- Event Hubs
 
-These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).
+These services require more configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).
 
 ### Service roadmap
 
@@ -86,14 +86,14 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](../../operator/azure-stack-viewing-public-ip-address-consumption.md) and [storage](../../operator/azure-stack-manage-storage-accounts.md) resources.
 - [Start and stop Azure Stack Hub](../../operator/azure-stack-start-and-stop.md).
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
-- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
+- [Manage Event Hubs](../../operator/event-hubs-rp-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 - [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
-- Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
+- Replace bad hardware. Here's the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
 - [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=/azure-stack/breadcrumb/toc.json&branch=release-tzl&toc=/azure-stack/tdc/toc.json).
 
 ## Operator tasks
 
-Here is a list of daily, weekly, and monthly tasks for an operator:
+Here's a list of daily, weekly, and monthly tasks for an operator:
 
 # [Daily](#tab/daily)
 
@@ -121,12 +121,11 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 1. Secret rotation.
 2. Create and update offers, plans, and quotas.
 3. Apply hotfix packages.
-4. Apply hotfix packages.
-5. Expand capacity (nodes & IPSpace).
-6. Run `isi status –verbose` in Avocent connection.
-7. Restore storage accounts.
-8. Stop system.
-9. Diagnostic log collection.
+4. Expand capacity (nodes & IPSpace).
+5. Run `isi status –verbose` in Avocent connection.
+6. Restore storage accounts.
+7. Stop system.
+8. Diagnostic log collection.
 
 ---
 
@@ -148,7 +147,7 @@ The information in these articles summarizes the differences between a service i
 
 Your users will want to know how to [access the user portal](../../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/powershell-install-az-module.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) additional modules,
+If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/powershell-install-az-module.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) other modules,
 and [configure](../../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
 
 ### Subscribe to an offer
