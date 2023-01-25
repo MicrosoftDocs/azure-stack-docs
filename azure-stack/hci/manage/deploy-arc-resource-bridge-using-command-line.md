@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Set up Azure Arc VM management using command line (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and version 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to use Azure Command-Line Interface (CLI) to set up Azure Arc VM management, which includes:
 
