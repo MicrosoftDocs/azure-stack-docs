@@ -68,7 +68,7 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 In order for the AKS Edge Essentials cluster to discover your camera, open the port for WS-Discovery (Web Services Dynamic Discovery), which is a multicast discovery protocol that operates over TCP and UDP port `3072`. 
 
-1. Run the following command to to open port 3072 within the Linux node:
+1. Run the following command to open port 3072 within the Linux node:
 
     ```powershell
     Invoke-AksEdgeNodeCommand -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
