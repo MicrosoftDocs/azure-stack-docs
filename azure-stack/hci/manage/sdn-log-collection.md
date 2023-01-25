@@ -13,7 +13,7 @@ ms.date: 01/04/2023
 
 This article describes how to collect logs for Software Defined Networking (SDN) in Azure Stack HCI.
 
-The SDN logs help you gather key information about SDN issues before contacting Microsoft support. You can also use SDN logs to test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can execute a series of validation tests to gain a current goal state of your SDN environment and check for common misconfigured issues.
+The SDN logs help you identify and troubleshoot issues in your SDN environment. For troubleshooting any advanced issues, you can use these logs to gather key information before contacting Microsoft support. You can also use SDN logs to test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can execute a series of validation tests to gain a current goal state of your SDN environment and check for common misconfigured issues.
 
 ## Prerequisites
 
