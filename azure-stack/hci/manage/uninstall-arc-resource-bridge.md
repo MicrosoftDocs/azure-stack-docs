@@ -11,7 +11,7 @@ ms.date: 03/23/2022
 
 # Uninstall Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to uninstall Azure Arc VM management on an Azure Arc-enabled Azure Stack HCI cluster.
 
