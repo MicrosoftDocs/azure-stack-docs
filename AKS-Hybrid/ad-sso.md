@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 01/24/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -86,10 +86,18 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 #### Option 2
 
 If the cluster host isn't domain-joined, use the admin user name or group name in SID format as shown in the following example:
- 
+
+If using an admin user:
+
 ```powershell
-Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
+Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUserSID <User SID>
 ```  
+
+If using an admin group:
+
+```powershell
+Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminGroupSID <Group SID>
+```
 
 To find the SID for the user account, see [Determine the user or group security identifier](#determine-the-user-or-group-security-identifier). 
 
@@ -97,7 +105,7 @@ Before proceeding to the next steps, make note of the following items:
 
 - Make sure the keytab file is named _current.keytab_.
 - Replace the SPN that corresponds to your environment.
-- The **-adminUser** parameter creates a corresponding role binding for the specified AD group with cluster admin privileges. Replace _contoso\bob_ (as shown in Option 1, above) with the AD group or user that corresponds to your environment.
+- The **-adminGroup** parameter creates a corresponding role binding for the specified AD group with cluster admin privileges. Replace _contoso\bob_ (as shown in Option 1, above) with the AD group or user that corresponds to your environment.
 
 ### Step 3: Test the AD webhook and keytab file
 

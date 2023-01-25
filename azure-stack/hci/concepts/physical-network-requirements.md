@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Physical network requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 20H2, 21H2 and 22H2
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
