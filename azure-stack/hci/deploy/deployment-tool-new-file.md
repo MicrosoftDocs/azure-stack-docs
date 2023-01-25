@@ -30,8 +30,19 @@ Before you begin, make sure you've done the following:
 
 ## Set up the deployment tool
 
+
+
+
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
+
+You can download the Supplemental Package here:  
+
+| Azure Stack HCI Supplemental Package component| URL                                             |
+|-----------------------------------------------|-------------------------------------------------|
+| Bootstrap PowerShell                           | https://go.microsoft.com/fwlink/?linkid=2210545 |
+| CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
+| Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
 
 1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 
