@@ -9,11 +9,11 @@ ms.date: 01/04/2023
 
 # Collect logs for Software Defined Networking
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) in Azure Stack HCI.
 
-The SDN logs can help you gather key information to identify and troubleshoot issues before contacting Microsoft support. You can also use these logs to test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can also execute a series of validation tests to gain a current goal state of your SDN environment and check for common misconfigured issues.
+The SDN logs help you gather key information about SDN issues before contacting Microsoft support. You can also use SDN logs to test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can execute a series of validation tests to gain a current goal state of your SDN environment and check for common misconfigured issues.
 
 ## Prerequisites
 
@@ -94,14 +94,18 @@ Follow these steps in a new PowerShell window to install the `SdnDiagnostics` mo
     Install-SDNDiagnostics -ComputerName $EnvironmentDetails.FabricNodes -Credential (Get-Credential)
     ```
 
-Here's a sample output:
+Here's a sample output of how to get environment details:
 
 ```powershell
 PS C:\Users\AzureStackHCIUser> $NCVMName = 'nc01-pod06.tailwindtraders.com'
-PS C:\Users\AzureStackHCIUser> $NCVMName nc01-pod06.tailwindtraders.com
+PS C:\Users\AzureStackHCIUser> $NCVMName
+nc01-pod06.tailwindtraders.com
 PS C:\Users\AzureStackHCIUser> Import-Module -Name SdnDiagnostics -Force
-PS C:\Users\AzureStackHCIUser> $EnvironmentDetails = Get-Sdnlnfrastructurelnfo -NetworkController $NCVMName -Credential (get-cred ential)
-cmdlet Get-Credential at command pipeline position 1 Supply values for the following parameters: Credential
+PS C:\Users\AzureStackHCIUser> $EnvironmentDetails = Get-Sdnlnfrastructurelnfo -NetworkController $NCVMName -Credential (get-credential)
+
+cmdlet Get-Credential at command pipeline position 1 
+Supply values for the following parameters:
+Credential
 
 PS C:\Users\AzureStackHCIUser> $EnvironmentDetails
 
@@ -111,15 +115,16 @@ Name				Value
 RestApiVersion		V4.1
 FabricNodes			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
 NcUrl				https ://SDN-POD06.TAILWINDTRADERS.COM
-Server			{CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
-Gateway			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
-SoftwareLoadBalancer NetworkController
+Server			    {CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
+Gateway			    {nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
+SoftwareLoadBalancer 
+NetworkController
 
 ```
 
 ## Collect SDN logs using SdnDiagnostics
 
-After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources with the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
+After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
 
 Use the `Start-SdnDiagnostics` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
 
@@ -195,7 +200,7 @@ WARNING: [SA20N26-GW02] no events found for Microsoft-windows-VPN*
 [    N26-NC03] Collect configuration state details for role	NetworkController
 [    N26-2] Copying \\SA20N26-NC01\C$\Windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\Windows\Tracing\SdnDataCol1ection\20220118-233251\NetworkControl1erState 
 [    N26-2] Copying \\SA20N26-NC02\C$\Windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\Windows\Tracing\SdnDataCol1ection\20220118-233251\NetworkControl1erState 
-[	N26-2] Copying \\SA20N26-NC03\C$\windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\NetworkControl1 erstate
+[    N26-2] Copying \\SA20N26-NC03\C$\windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\NetworkControl1 erstate
 [    N26-2] Collect service fabric logs for Networkcontroller nodes:
 [    N26-NC01] Collect Service Fabric logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:22 pm utc
 [    N26-NC02] Collect Service Fabric logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:22 pm utc
@@ -246,9 +251,9 @@ WARNING: [	N26-1] 00155D865002 attached to netl does not have a port profile
 [    N26-2] Copying \\	\C$\windows\Tracing\sdnDataCol1ection\Temp to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\
 WARNING: TCP connect to (10.127.134.193 : 445) failed
 WARNING: [	N26-2] Unable to establish TCP connection to	i:445. Attempting to copy files using winRM
-[	N26-2] Copying C:\windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\ using winRM session id 311
-[	N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
-[	N26-2] Data collection completed
+[    N26-2] Copying C:\windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\ using winRM session id 311
+[    N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
+[    N26-2] Data collection completed
 PS C:\>
 
 ```
