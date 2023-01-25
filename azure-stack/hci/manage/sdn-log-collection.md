@@ -9,7 +9,7 @@ ms.date: 01/04/2023
 
 # Collect logs for Software Defined Networking
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) in Azure Stack HCI.
 
@@ -94,6 +94,29 @@ Follow these steps in a new PowerShell window to install the `SdnDiagnostics` mo
     Install-SDNDiagnostics -ComputerName $EnvironmentDetails.FabricNodes -Credential (Get-Credential)
     ```
 
+Here's a sample output:
+
+```powershell
+PS C:\Users\AzureStackHCIUser> $NCVMName = 'nc01-pod06.tailwindtraders.com'
+PS C:\Users\AzureStackHCIUser> $NCVMName nc01-pod06.tailwindtraders.com
+PS C:\Users\AzureStackHCIUser> Import-Module -Name SdnDiagnostics -Force
+PS C:\Users\AzureStackHCIUser> $EnvironmentDetails = Get-Sdnlnfrastructurelnfo -NetworkController $NCVMName -Credential (get-cred ential)
+cmdlet Get-Credential at command pipeline position 1 Supply values for the following parameters: Credential
+
+PS C:\Users\AzureStackHCIUser> $EnvironmentDetails
+
+Name				Value
+----				----
+
+RestApiVersion		V4.1
+FabricNodes			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
+NcUrl				https ://SDN-POD06.TAILWINDTRADERS.COM
+Server			{CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
+Gateway			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
+SoftwareLoadBalancer NetworkController
+
+```
+
 ## Collect SDN logs using SdnDiagnostics
 
 After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources with the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
@@ -133,6 +156,102 @@ In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Contro
     ```powershell
     Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,SoftwareLoadBalancer -IncludeLogs -IncludeNetView
     ```
+
+Here's a sample output of the `Start-SdnDataCollection` cmdlet:
+
+```powershell
+PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,SoftwareLoadBalancer,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
+[    N26-2] Starting SDN Data Collection
+[    N26-2] Results will be saved to C:\windows\Tracing\sdnDataCollection\20220ll8-23325l
+[    N26-2]	Node N26-GW0l.sal8.nttest.microsoft.com with role Gateway added	for data collection
+[    N26-2] Node N26-GW02.sal8.nttest.microsoft.com with role Gateway added	for data collection
+[    N26-2] Node N26-Mux0l.sal8.nttest.microsoft.com with role SoftwareLoadßalancer added for data collection
+[    N26-2]	Node N26-NC01 with role	Networkcontroller added	for	data collection
+[    N26-2]	Node N26-NC02 with role	Networkcontroller added	for	data collection
+[    N26-2]	Node N26-NC03 with role	Networkcontroller added	for	data collection
+[    N26-2]	Node n26-l.sal8.nttest.microsoft.com with role Server added for	data collection
+[    N26-2]	Node n26-2.sal8.nttest.microsoft.com with role Server added for	data collection
+[    N26-2]	Node n26-4.sal8.nttest.microsoft.com with role Server added for	data collection
+[    N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
+[    N26-2] Collect configuration state details for Gateway nodes:
+[    N26-GW01] Collect configuration state details for role Gateway
+[    N26-GW02] Collect configuration state details for role Gateway
+[    N26-2] Collect diagnostics logs for Gateway nodes:
+[    N26-GW01] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:32:55 pm utc
+[    N26-GW02] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:32:55 pm	utc
+[    N26-2] Collect event logs for Gateway nodes:
+[    N26-GW01] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:32:57 pm utc 
+[    N26-GW01] Collect the following events: Application,Microsoft-windows-RasAgilevpn*,Microsoft-windows-RemoteAccess*,Microsoft-windows-VPN*,system
+WARNING: [SA20N26-GW01] No events found for Microsoft-windows-RasAgilevpn* 
+WARNING: [SA20N26-GW01] No events found for Microsoft-windows-VPN*
+[    N26-GW02] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:32:57 pm utc
+[    N26-GW02] Collect the following events: Application,Microsoft-windows-RasAgilevpn*,Microsoft-windows-RemoteAccess*,Microsoft-windows-VPN*,system
+WARNING: [SA20N26-GW02] no events found for Microsoft-windows-RasAgilevpn* 
+WARNING: [SA20N26-GW02] no events found for Microsoft-windows-VPN*
+[    N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
+[    N26-2] Collect configuration state details for Networkcontroller nodes:
+[    N26-NC01] Collect configuration state details for role	NetworkController
+[    N26-NC02] Collect configuration state details for role NetworkController
+[    N26-NC03] Collect configuration state details for role	NetworkController
+[    N26-2] Copying \\SA20N26-NC01\C$\Windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\Windows\Tracing\SdnDataCol1ection\20220118-233251\NetworkControl1erState 
+[    N26-2] Copying \\SA20N26-NC02\C$\Windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\Windows\Tracing\SdnDataCol1ection\20220118-233251\NetworkControl1erState 
+[	N26-2] Copying \\SA20N26-NC03\C$\windows\Tracing\SDNDiagnostics\NetworkControl1erstate\* to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\NetworkControl1 erstate
+[    N26-2] Collect service fabric logs for Networkcontroller nodes:
+[    N26-NC01] Collect Service Fabric logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:22 pm utc
+[    N26-NC02] Collect Service Fabric logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:22 pm utc
+[    N26-NC03] Collect Service Fabric logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:22 pm utc
+[    N26-2] Collect diagnostics logs for Networkcontroller nodes:
+[    N26-NC01] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:45 pm utc
+[    N26-NC02] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:45 pm utc
+[    N26-NC03] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:45 pm utc
+[    N26-2] Collect event logs for Networkcontroller nodes:
+[    N26-NC0l] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:48 pm utc 
+[    N26-NC0l] Collect the following events: Application,Microsoft-windows-NetworkController*,Microsoft-ServiceFabric*,System
+[    N26-NC02] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:48 pm utc
+[    N26-NC02] Collect the following events: Application,Microsoft-windows-NetworkController*,Microsoft-ServiceFabric*,System 
+[    N26-NC03] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:34:48 pm utc
+[    N26-NC03] Collect the following events: Application,Microsoft-windows-NetworkController*,Microsoft-ServiceFabric*,System
+[    N26-2] Performing cleanup of C:\Windows\Tracing\sdnDataCollection\Temp directory across 
+[    N26-2] Collect configuration state details for server nodes: :
+[    N26-l] Collect configuration state details for role Server
+WARNING: [	N26-1] 00155D865002 attached to netl does not have a port profile
+[    N26-2] Collect configuration state details for role Server
+[    N26-4] collect diagnostics logs for server nodes:
+[    N26-2] Collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022	ll:41:19 pm	utc
+[    N26-1] Collect diagnostic logs	between	1/18/2022 10:32:51 pm and 1/18/2022	11:41:19 pm	utc
+[    N26-2] Collect diagnostic logs	between	1/18/2022 10:32:51 pm and 1/18/2022	ll:41:19 pm	utc
+[    N26-4] collect event logs for Server nodes:
+[    N26-2] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:41:22 pm utc
+[    N26-1] Collect the following events: Application,Microsoft-Windows-Hyper-V*,System
+[    N26-1] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:41:21 pm utc
+[    N26-2] Collect the following events: Application,Microsoft-Windows-Hyper-V*,System
+[    N26-2] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:41:22 pm utc
+[    N26-4] collect the following events: Application,Microsoft-Windows-Hyper-V*,System
+[    N26-2] Performing cleanup of C:\windows\Tracing\sdnoataCollection\Temp directory across
+[    N26-2] Collect configuration state details for SoftwareLoadBalancer nodes:
+[    N26-MUX01] collect configuration state details for role SoftwareLoadBalancer
+[    N26-2] Collect diagnostics logs for SoftwareLoadBalancer nodes:
+[    N26-MUX01] collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:48 pm utc
+[    N26-2] Collect event logs for SoftwareLoadBalancer nodes:
+[    N26-MUX01] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:49 pm utc
+[    N26-MUX01] Collect the following events: Application,Microsoft-windows-SlbMux*,System
+[    N26-2] Copying \\	 \C$\windows\Tracing\sdnoataCollection\Temp to C:\Windows\Tracing\sdnDataCollection\20220ll8-23325l\
+[    N26-2] Copying \\	C$\windows\Tracing\sdnDataCol1ection\Temp to C:\windows\Tracing\SdnDataCol1ection\20220ll8-23325l\
+[    N26-2] Copying \\	\C$\Windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\SdnoataCol1ection\20220ll8-23325l
+[    N26-2] Copying \\	\C$\Windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l
+[    N26-2] Copying \\	\C$\Windows\Tracing\sdnoataCollection\Temp to C:\Windows\Tracing\sdnDataCollection\20220ll8-23325l.
+[    N26-2] Copying \\	\C$\Windows\Tracing\sdnDataCol1ection\Temp to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l
+[    N26-2] Detected that is local machine
+[    N26-2] Copying C:\windows\Tracina\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\
+[    N26-2] Copying \\	\C$\windows\Tracing\sdnDataCol1ection\Temp to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\
+WARNING: TCP connect to (10.127.134.193 : 445) failed
+WARNING: [	N26-2] Unable to establish TCP connection to	i:445. Attempting to copy files using winRM
+[	N26-2] Copying C:\windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\ using winRM session id 311
+[	N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
+[	N26-2] Data collection completed
+PS C:\>
+
+```
 
 ## Next steps
 
