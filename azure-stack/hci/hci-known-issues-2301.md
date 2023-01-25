@@ -29,9 +29,9 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |After the deployment completes successfully, the instance of deployment tool is uninstalled and all the logs are removed. There's no indication of completion of the deployment and there's no command that you can run to confirm that the deployment is complete. | There's no workaround for this issue in this preview release. |
-|2|Observability | Deployment was configured with Metrics and telemetry data set to ON in the deployment tool. However, after the deployment is complete, the *SConfig* for Azure Stack HCI cluster nodes shows telemetry setting as OFF.|In this release, *SConfig* isn't aware of the telemetry settings. |
-|3|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|There's no workaround for this is in the preview release.|
+|1|Deployment |After the deployment completes successfully, the instance of deployment tool is uninstalled and all the logs are removed. There's no indication of completion of the deployment and there's no command that you can run to confirm that the deployment is complete. | Follow the steps in [Validate your deployment](./deploy/deployment-tool-validate.md) to verify that your deployment is complete. |
+|2|Observability | Deployment was configured with **Metrics and telemetry data** set to ON in the deployment tool. However, after the deployment is complete, the *SConfig* for Azure Stack HCI cluster nodes shows telemetry setting as OFF.|In this release, *SConfig* isn't aware of the telemetry settings. |
+|3|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-AsRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. |
 
 
 ## Known issues from previous releases
