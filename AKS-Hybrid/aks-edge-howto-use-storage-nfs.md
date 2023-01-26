@@ -37,7 +37,7 @@ Second, you'll need to get the resource templates. To set up the provisioner you
 
 5. Using the `dir` cmd, check that the *NFS* folder has the following files
 
-    ```bash
+    ```
         Directory: C:\Users\AKS-Edge\samples\storage\nfs
 
     Mode                 LastWriteTime         Length Name
@@ -82,34 +82,36 @@ Next you must edit the NFS provisioner's deployment file to add connection infor
     kubectl create -f .\pod.yaml
     ```
 
+## Step 5: Check resources created 
+
 If everything is running and correctly attached, you should see something like the following:
 
-First, you should see the PV has been created:
+First, you should see the PV has been created using `kubectl get pv`:
 
-```bash
+```
 PS C:\WINDOWS\system32> kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                STORAGECLASS   REASON   AGE
 pvc-72dd0e5a-1064-424d-b534-d414b6693aaa   1Mi        RWX            Delete           Bound    default/test-claim   nfs-client              20s
 ```
 
-Next, you should see the PVC has been bound:
+Next, you should see the PVC has been bound using `kubectl get pvc`:
 
-```bash
+```
 PS C:\WINDOWS\system32> kubectl get pvc
 NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 nfs-pvc      Bound    pvc-72dd0e5a-1064-424d-b534-d414b6693aaa   1Mi        RWX            nfs-client     25s
 ```
 
-Finally, you should see the *volume-test* and the *nfs-client-provisioner*.
+Finally, you should see the *volume-test* and the *nfs-client-provisioner* using `kubectl get pods`.
 
-```bash
-PS C:\WINDOWS\system32> kubectl get pod
+```
+PS C:\WINDOWS\system32> kubectl get pods
 NAME                                      READY   STATUS      RESTARTS   AGE
 nfs-client-provisioner-696845f854-wz5cp   1/1     Running     0          2m
 volume-test                               1/1     Running     0          2m
 ```
 
-## Step 4: Test persistent storage
+## Step 6: Test persistent storage
 
 A final test is to make sure that the storage is persistent in the NFS connected drive.
 
