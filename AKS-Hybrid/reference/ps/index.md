@@ -84,4 +84,4 @@ Commands to interact with AKS hybrid.
 
 ## Next steps
 
-[AKS hybrid overview](../index.yml)
+[AKS hybrid overview](../../index.yml)
