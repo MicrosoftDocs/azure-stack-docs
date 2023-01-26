@@ -141,7 +141,7 @@ Finally, read the content of the file that was previously written. If everything
 kubectl exec volume-test -- sh -c "cat /data/Test-NFS.txt"
 ```
 
-## Step 5: Clean up deployments
+## Step 7: Clean up deployments
 
 Once you're finished with NFS storage, go to PowerShell and clean up your workspace by running:
 
