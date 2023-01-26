@@ -10,11 +10,11 @@ ms.reviewer: jeguan
 
 ---
 
-# AksHci PowerShell Reference
+# AKS hybrid deployment options PowerShell reference
 
 Commands to interact with AKS hybrid.
 
-## AksHci cmdlets
+## AKS hybrid cmdlets
 
 |    Cmdlet    |    Description        |
 | ------- | ---------- |
