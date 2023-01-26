@@ -12,15 +12,12 @@ ms.custom: template-how-to
 
 Applications running in Azure Kubernetes Service (AKS) Edge may need to store and retrieve data. Persistent storage solutions allow you to store application data external from the pod running your application, and allow you to maintain application data, even if the application's pod fails.
 
-The [Local Path Provisioner](https://github.com/rancher/local-path-provisioner) provides a way for Kubernetes users to use the local storage in each node.
-
-AKS Edge **K3S** version comes with Local Path Provisioner out of the box. This tool enables the ability to create persistent volume claims out of the box using local storage on the respective node.
+The [Local Path Provisioner](https://github.com/rancher/local-path-provisioner) provides a way for Kubernetes users to use the local storage in each node by enabling the ability to create persistent volume claims using local storage on the respective node.
 
 In this guide, you'll learn how to set up Local Path Provisioner storage and deploy a sample container on your AKS Edge cluster. For more information, please see [the official local-path documentation](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 ## Step 1: Install prerequisites
 
-If you're using the **K3S** version, you can skip **Step 1** and move to **Step 2**. If you're using **K8S** you must install the prerequisites.
 In your admin PowerShell window, run the following cmdlet: 
 
 ```powershell
@@ -28,7 +25,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/s
 ```
 
 > [!WARNING]
-> [Busybox](https://hub.docker.com/r/rancher/busybox) image is not maintained by Microsoft and is currently pulled from [Rancher Labs](https://hub.docker.com/u/rancher) repository.  
+> [Local-Path-Provisioner](https://github.com/rancher/local-path-provisioner) and [Busybox](https://hub.docker.com/r/rancher/busybox) images are not maintained by Microsoft and are pulled from [Rancher Labs](https://hub.docker.com/u/rancher) repository.  
 
 Once deployment is finished, make sure that the **local-path** storage class is available on your node by running the following cmdlet: 
 

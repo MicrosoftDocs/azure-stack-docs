@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Set up Azure Arc VM management using Windows Admin Center (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 You can set up Azure Arc VM management using Windows Admin Center (recommended) or Azure Command-Line Interface (CLI).
 

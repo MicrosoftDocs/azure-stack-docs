@@ -45,7 +45,7 @@ In some scenarios, you don’t need to use SDN Virtual Networks with Virtual Ext
 
 The Hyper-V Network Virtualization (HNV) Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need for deploying virtual networks using VXLAN encapsulation for another layer of isolation and for network multitenancy.
 
-For more information, see [Plan an SDN infrastructure: Management and HNV Provider](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
+For more information, see [Plan an SDN infrastructure: Management and HNV Provider](../../concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
 ## Network isolation options
 
@@ -98,7 +98,7 @@ For more information, see [Virtual network peering](/windows-server/networking/s
 
 Cloud Service Providers (CSPs) and enterprises that deploy Software Defined Networking (SDN) can use Software Load Balancer (SLB) to evenly distribute customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to VMs, and outbound NAT services for outbound connectivity.
 
-Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp.md) to advertise virtual IP addresses to the physical network.
+Using SLB, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. SLB supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, SLB supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
 For more information, see [What is SLB for SDN?](../../concepts/software-load-balancer.md)
 
