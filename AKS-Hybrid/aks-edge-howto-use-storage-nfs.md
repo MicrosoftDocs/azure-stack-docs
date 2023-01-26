@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # External NFS storage on Azure Kubernetes Service Edge Essentials
 
-Persistent storage solutions allow you to store application data external from the pod running your application, and allow you to maintain application data, even if the application's pod fails. It's possible to use [Local Path Provisioner](./aks-lite-howto-use-storage-local-path.md) for local storage, however storage will depend on the node's availability. It's possible to decouple storage availability from nodes lifecycle by using external storage providers. 
+Persistent storage solutions allow you to store application data external from the pod running your application, and allow you to maintain application data, even if the application's pod fails. It's possible to use [Local Path Provisioner](./aks-edge-howto-use-storage-local-path.md) for local storage, however storage will depend on the node's availability. It's possible to decouple storage availability from nodes lifecycle by using external storage providers. 
 
 In this guide, you'll learn how to set up an NFS provider and deploy a sample container with an NFS connected PV on your AKS Edge Essentials cluster. 
 
@@ -24,7 +24,8 @@ First, ensure your NFS server is accessible from your AKS Edge Essentials cluste
 
 Second, you'll need to get the resource templates. To set up the provisioner you need to download a set of *YAML* template files, edit them to add your NFS server's connection information, and then apply each deployment file. 
 
->[!NOTE] The NFS sample used is based on the [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) sample code and adjusted for AKS EE virtual machine. 
+>[!NOTE]
+>The NFS sample used is based on the [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) sample code and adjusted for AKS EE virtual machine. 
 
 1. Download the latest *Source code (zip)* from [AKS-Edge](https://github.com/Azure/AKS-Edge).
 
@@ -144,5 +145,5 @@ kubectl delete -f .\class.yaml
 
 ## Next steps
 
-- [Overview](aks-lite-overview.md)
-- [Uninstall AKS cluster](aks-lite-howto-uninstall.md)
+- [Overview](./aks-edge-overview.md)
+- [Uninstall AKS cluster](./aks-edge-howto-uninstall.md)
