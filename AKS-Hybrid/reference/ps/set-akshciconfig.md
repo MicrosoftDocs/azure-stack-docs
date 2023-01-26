@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
+title: Set-AksHciConfig for AKS hybrid
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 11/15/2022
@@ -85,7 +85,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocat
 
 ### -imageDir
 
-The path to the directory in which Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is required. The path must point to a shared storage path, such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share, such as `\\FileShare\ImageStore`.
+The path to the directory in which AKS hybrid will store its VHD images. This parameter is required. The path must point to a shared storage path, such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share, such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 
 ### -sshPublicKey
 
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location is generated and used.
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the AKS hybrid deployment. If you have your own SSH public key, pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location is generated and used.
 
 ```yaml
 Type: System.String
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 
 ### -version
 
-The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version. We do not recommend changing the default.
+The version of AKS hybrid that you want to deploy. The default is the latest version. We do not recommend changing the default.
 
 ```yaml
 Type: System.String
@@ -453,7 +453,7 @@ Accept wildcard characters: False
 
 ### -insecure
 
-Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections). We do not recommend using insecure mode in production environments.
+Deploys AKS hybrid components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections). We do not recommend using insecure mode in production environments.
 
 ```yaml
 Type: System.String
@@ -514,6 +514,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

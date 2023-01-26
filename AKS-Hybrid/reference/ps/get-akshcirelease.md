@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciRelease for AKS on Azure Stack HCI
+title: Get-AksHciRelease for AKS hybrid
 description: The Get-AksHciRelease PowerShell command Downloads the install and upgrade bits to a local share that was configured in Enable-AksHciOfflineDownload.
 ms.topic: reference
 ms.date: 10/03/2022

@@ -1,6 +1,6 @@
 ---
-title: Enable-AksHciOfflineDownload for AKS on Azure Stack HCI
-description: The Enable-AksHciOfflineDownload PowerShell command enables offline downloading to get the AKS on Azure Stack HCI and Windows Server images.
+title: Enable-AksHciOfflineDownload for AKS hybrid
+description: The Enable-AksHciOfflineDownload PowerShell command enables offline downloading to get the AKS hybrid images.
 ms.topic: reference
 ms.date: 10/03/2022
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Enables offline downloading to get the AKS on Azure Stack HCI images.
+Enables offline downloading to get the AKS hybrid images.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Enable-AksHciOfflineDownload  -stagingShare
 
 ## Description
 
-Enables offline downloading to get the AKS on Azure Stack HCI images.
+Enables offline downloading to get the AKS hybrid images.
 
 ## Examples
 
@@ -35,7 +35,7 @@ Enable-AksHciOfflineDownload -stagingShare
 
 ### -stagingShare
 
-The path to which you want the images to be downloaded.
+The path to where you want the images to be downloaded.
 
 ```yaml
 Type: System.String
