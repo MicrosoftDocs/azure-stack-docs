@@ -38,7 +38,7 @@ kubectl get StorageClass
 
 If everything is correctly configured, you should see similar output:
 
-```
+```shell
 NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsumer   false                  21h
 ```
@@ -63,7 +63,7 @@ If everything is running and correctly attached, you should see something like t
 
 First, you should see the PV has been created:
 
-```
+```shell
 PS C:\WINDOWS\system32> kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                    STORAGECLASS   REASON   AGE
 pvc-0f217d0e-1d07-4d9e-91da-6b83534180b9   128Mi      RWO            Delete           Bound    default/local-path-pvc   local-path              16s
@@ -71,7 +71,7 @@ pvc-0f217d0e-1d07-4d9e-91da-6b83534180b9   128Mi      RWO            Delete     
 
 Next, you should see the PVC has been bound:
 
-```
+```shell
 PS C:\WINDOWS\system32> kubectl get pvc
 NAME             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 local-path-pvc   Bound    pvc-0f217d0e-1d07-4d9e-91da-6b83534180b9   128Mi      RWO            local-path     118s
@@ -79,7 +79,7 @@ local-path-pvc   Bound    pvc-0f217d0e-1d07-4d9e-91da-6b83534180b9   128Mi      
 
 Finally, you should see the sample pod running:
 
-```
+```shell
 PS C:\WINDOWS\system32> kubectl get pod
 NAME          READY   STATUS    RESTARTS   AGE
 volume-test   1/1     Running   0          2m24s
@@ -109,7 +109,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/s
 
 Finally, read the content of the file that was previously written. If everything runs successfully, you should see the **Hello AKS Edge!** message. 
 
-```
+```shell
 PS C:\WINDOWS\system32> kubectl exec volume-test -- sh -c "cat /data/test"
 Hello AKS Edge!
 ```
@@ -125,5 +125,5 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/
 
 ## Next steps
 
-- [Overview](aks-edge-overview.md)
+- [AKS Edge Essentials overview](aks-edge-overview.md)
 - [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
