@@ -67,7 +67,7 @@ Next, edit the NFS provisioner's deployment file to add connection information f
 1. Replace the server hostname *path* under *volumes* -> *nfs* 
 1. Open an elevated PowerShell window
 
-1. Create a folder to be used for persisten volumes inside the node:
+1. Create a folder to be used for persistent volumes inside the node:
 
     ```powershell
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo mkdir /var/persistentVolumes"
@@ -122,7 +122,7 @@ Start by writing something to the pod. In your admin PowerShell window, run the 
 kubectl exec volume-test -- sh -c "echo Hello AKS Edge! > /data/Test-NFS.txt"
 ```
 
-Now, go to your NFS shared drive, and check for a file named **Test-NFS.txt**. Open the file, and you should see a line that says "Hello AKS Edge!."
+Now, go to your NFS shared drive, and check for a file named **Test-NFS.txt**. Open the file, and you should see a line that says "Hello AKS Edge!"
 
 Finally, delete the pod to simulate a pod failing, or even a deployment being removed, using the following cmdlet:
 

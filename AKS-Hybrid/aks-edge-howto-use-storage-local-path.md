@@ -20,7 +20,7 @@ In this guide, you'll learn how to set up Local Path Provisioner storage and dep
 
 ## Step 1: Install prerequisites
 
-If you are using the **K3S** verison, you can skip **Step 1** and move to **Step 2**. If you are using **K8S** you must install the the prerequistes.
+If you're using the **K3S** version, you can skip **Step 1** and move to **Step 2**. If you're using **K8S** you must install the prerequisites.
 In your admin PowerShell window, run the following cmdlet: 
 
 ```powershell
@@ -95,7 +95,7 @@ Start by writing something to the pod. In your admin PowerShell window, run the 
 kubectl exec volume-test -- sh -c "echo Hello AKS Edge! > /data/test"
 ```
 
-Now delete the pod to simulate a pod failing, or even a deployment being removed.:
+Now delete the pod to simulate a pod failing, or even a deployment being removed:
 
 ```powershell
 kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/pod.yaml
