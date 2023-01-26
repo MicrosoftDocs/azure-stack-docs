@@ -30,7 +30,7 @@ The following table lists the tests that are executed when you run the [Set-AksH
 - Should be able to create and start failover cluster resource.
 - Cloud service IP should not overlap with VIP pool, or k8snodepool IP addresses provided during VNET configuration. | - Ensure that the IP address of the CloudServiceIP meets the requirements in the description.
 - [AKS hybrid network concepts](concepts-node-networking.md)
-- [AKS hybrid network troubleshooting](known-issues-networking.md)
+- [AKS hybrid network troubleshooting](known-issues-networking.yml)
 - [Troubleshoot network issues in Azure Stack HCI](https://azurehybridevents.z22.web.core.windows.net/content/9.AzStackHCI-TroubleShooting.pdf)                                                                                                                        |
 | MOC SDN configuration                                                                                                                                  | Validates that the SDN configuration is correct, and the Network Controller is available. It checks the following:
 - Network Controller FQDN or IP address information is reachable.
