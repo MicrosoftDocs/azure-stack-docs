@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 11/15/2022
+ms.date: 01/25/2023
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 11/15/2022
+ms.lastreviewed: 01/25/2023
 ms.reviewer: jeguan
 
 ---
@@ -27,6 +27,7 @@ Set-AksHciConfig  -imageDir <String>
                   -vnet <Virtual Network>
                  [-createAutoConfigContainers {true, false}]
                  [-offlineDownload]
+                 [-offsiteTransferCompleted]
                  [-stagingShare <String>]
                  [-nodeConfigLocation <String>]
                  [-controlPlaneVmSize <VmSize>]
@@ -174,14 +175,18 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: True
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -offsiteTransferCompleted
+
+Sets deployment to use artifacts downloaded offsite and transfered to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
+
 ### -stagingShare
 
-The local path to which you want the images to be downloaded. This parameter is used in tandem with the `offlineDownload` parameter.
+The local path to where you want the images to be downloaded. Use in tandem with the `offlineDownload` parameter.
 
 ```yaml
 Type: System.String
@@ -514,6 +519,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)
