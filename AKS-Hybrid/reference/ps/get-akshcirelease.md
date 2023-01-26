@@ -12,6 +12,7 @@ ms.reviewer: jeguan
 # Get-AksHciRelease
 
 ## Synopsis
+
 Downloads the install and upgrade bits to a local share that was configured in [Enable-AksHciOfflineDownload](enable-akshciofflinedownload.md).
 
 ## Syntax

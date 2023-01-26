@@ -3,9 +3,9 @@ title: AksHci PowerShell module for AKS hybrid
 description: Learn how to use the AksHci module commands to manage AKS hybrid 
 author: sethmanheim
 ms.topic: reference
-ms.date: 04/15/2022
+ms.date: 01/26/2023
 ms.author: sethm 
-ms.lastreviewed: 04/15/2022
+ms.lastreviewed: 01/26/2023
 ms.reviewer: jeguan
 
 ---
@@ -37,6 +37,7 @@ Commands to interact with AKS hybrid.
 | [Get-AksHciNodePool](./get-akshcinodepool.md) | List the node pools in a Kubernetes cluster. |
 | [Get-AksHciProxySetting](./get-akshciproxysetting.md) | Retrieve a list or an individual proxy settings object. |
 | [Get-AksHciRegistration](./get-akshciregistration.md) | Get registration information for the AKS hybrid deployment. |
+| [Get-AksHciRelease](./get-akshcirelease.md) | Downloads the install and upgrade bits to a local share. |
 | [Get-AksHciContainerStorage](./get-akshcistoragecontainer.md) | Get the information of the specified storage container. |
 | [Get-AksHciUpdates](./get-akshciupdates.md) | List available updates for AKS hybrid. |
 | [Get-AksHciVersion](./get-akshciversion.md) | Get the current version of AKS hybrid. |
