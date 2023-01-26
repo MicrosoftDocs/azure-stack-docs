@@ -10,6 +10,8 @@ ms.date: 11/03/2022
 
 # Troubleshoot Azure Stack HCI registration
 
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+
 Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
 
 ## Collect PowerShell registration logs
