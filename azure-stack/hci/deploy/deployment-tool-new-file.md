@@ -38,9 +38,9 @@ Before you begin, make sure you've done the following:
 
 You can download the Supplemental Package here:  
 
-[Bootstrap PowerShell](https://go.microsoft.com/fwlink/?linkid=2210545)
-[CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
-[Verify Cloud Deployment PowerShell](https://go.microsoft.com/fwlink/?linkid=2210608)
+*[Bootstrap PowerShell](https://go.microsoft.com/fwlink/?linkid=2210545)
+*[CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
+*[Verify Cloud Deployment PowerShell](https://go.microsoft.com/fwlink/?linkid=2210608)
 
 1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 
