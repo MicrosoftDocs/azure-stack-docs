@@ -315,6 +315,8 @@
       href: aks-edge-howto-connect-to-arc.md
     - name: Add local storage binding
       href: aks-edge-howto-use-storage-local-path.md
+    - name: Add NFS storage binding
+      href: aks-edge-howto-use-storage-nfs.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
