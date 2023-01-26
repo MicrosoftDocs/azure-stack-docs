@@ -38,23 +38,23 @@ Second, you'll need to get the resource templates. To set up the provisioner you
 5. Using the `dir` cmd, check that the *NFS* folder has the following files
 
     ```bash
-        Directory: C:\Users\aks-edge\nfs-subdir-external-provisioner\deploy
+        Directory: C:\Users\AKS-Edge\samples\storage\nfs
 
     Mode                 LastWriteTime         Length Name
     ----                 -------------         ------ ----
-    -a----        11/29/2022  10:10 AM            246 class.yaml
-    -a----        11/29/2022  10:10 AM           1064 deployment.yaml
-    -a----        11/29/2022  10:10 AM           1900 rbac.yaml
-    -a----        11/29/2022  10:10 AM            190 test-claim.yaml
-    -a----        11/29/2022  10:10 AM            401 test-pod.yaml
+    -a----         1/25/2023  10:43 AM            345 class.yaml
+    -a----         1/25/2023   1:14 PM            979 deployment.yaml
+    -a----         1/25/2023   1:16 PM            371 pod.yaml
+    -a----         1/25/2023   1:17 PM            218 pvc.yaml
+    -a----          1/9/2023  10:19 AM           1900 rbac.yaml
     ```
 
 ## Step 3: Setup authorization
 
-AKS Edge Essential cluster has the default RBAC enabled, so no other RBAC needs to be configured. However, if you are in a namespace/project other than *default* edit *deploy/rbac.yaml* before deploying the templated. In your admin PowerShell window, run the following cmdlet: 
+AKS Edge Essential cluster has the default RBAC enabled, so no other RBAC needs to be configured. However, if you are in a namespace/project other than *default* edit *rbac.yaml* before deploying the templated. In your admin PowerShell window, run the following cmdlet: 
 
 ```powershell
-kubectl create -f .\deploy\rbac.yaml
+kubectl create -f .\rbac.yaml
 ```
 
 ## Step 4: Configure the NFS subdir external provisioner
@@ -66,12 +66,20 @@ Next you must edit the NFS provisioner's deployment file to add connection infor
 1. Replace the server hostname *VALUE* under *name: NFS_PATH*
 1. Replace the server hostname *path* under *volumes* -> *nfs* 
 1. Open an elevated PowerShell window
-1. Deploy the *deploy/deployment.yaml* file
+
+1. Create a folder to be used for persisten volumes inside the node
+    ```powershell
+    Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo mkdir /var/persistentVolumes"
+    ```
+    >[!TIP]
+    >Current guide is using the */var/persistenVolumes* folder. If you want to change this, ensure to create another mounting folder and set the appropiate permissions. Also, you need to update the *deployment.yaml* file with the new directory. 
+
+1. Deploy the needed yaml files file
     ```powershell
     kubectl create -f .\class.yaml
     kubectl create -f .\deployment.yaml
-    kubectl create -f .\test-claim.yaml
-    kubectl create -f .\test-pod.yaml
+    kubectl create -f .\pvc.yaml
+    kubectl create -f .\pod.yaml
     ```
 
 If everything is running and correctly attached, you should see something like the following:
@@ -89,16 +97,16 @@ Next, you should see the PVC has been bound:
 ```bash
 PS C:\WINDOWS\system32> kubectl get pvc
 NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-test-claim   Bound    pvc-72dd0e5a-1064-424d-b534-d414b6693aaa   1Mi        RWX            nfs-client     25s
+nfs-pvc      Bound    pvc-72dd0e5a-1064-424d-b534-d414b6693aaa   1Mi        RWX            nfs-client     25s
 ```
 
-Finally, you should see the *test-pod* and the *nfs-client-provisioner*.
+Finally, you should see the *volume-test* and the *nfs-client-provisioner*.
 
 ```bash
 PS C:\WINDOWS\system32> kubectl get pod
 NAME                                      READY   STATUS      RESTARTS   AGE
 nfs-client-provisioner-696845f854-wz5cp   1/1     Running     0          2m
-test-pod                                  1/1     Running     0          2m
+volume-test                               1/1     Running     0          2m
 ```
 
 ## Step 4: Test persistent storage
@@ -113,23 +121,22 @@ kubectl exec volume-test -- sh -c "echo Hello AKS Edge! > /data/Test-NFS.txt"
 
 Now, go to your NFS shared drive, and check for a file named *Test-NFS.txt*. Open the file, and you should see a line that says *Hello AKS Edge!*.
 
-Finally, delete the pod to simulate a pod failing, or even a deployment being removed.:
+Finally, delete the pod to simulate a pod failing, or even a deployment being removed using the following cmdlet:
 
 ```powershell
-kubectl delete -f .\test-pod.yaml
+kubectl delete -f .\pod.yaml
 ```
 
-Check that the pod was removed and then deploy the *test-pod* pod again:
+Check that the pod was removed and then deploy the *volume-test* pod again:
 
 ```powershell
-kubectl apply -f .\test-pod.yaml
+kubectl apply -f .\pod.yaml
 ```
 
 Finally, read the content of the file that was previously written. If everything runs successfully, you should see the **Hello AKS Edge!** message. 
 
-```bash
-PS C:\WINDOWS\system32> kubectl exec volume-test -- sh -c "cat /data/test"
-Hello AKS Edge!
+```powershell
+kubectl exec volume-test -- sh -c "cat /data/Test-NFS.txt"
 ```
 
 ## Step 5: Clean up deployments
@@ -137,8 +144,8 @@ Hello AKS Edge!
 Once you're finished with NFS storage, go to PowerShell and clean up your workspace by running:
 
 ```powershell
-kubectl delete -f .\test-pod.yaml
-kubectl delete -f .\test-claim.yaml
+kubectl delete -f .\pod.yaml
+kubectl delete -f .\pvc.yaml
 kubectl delete -f .\deployment.yaml
 kubectl delete -f .\class.yaml
 ```
