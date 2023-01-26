@@ -56,11 +56,11 @@ Commands to interact with AKS hybrid.
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Create a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [New-AksHciStorageContainer](./new-akshcistoragecontainer.md) | Creates a new storage container.  |
-| [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Remove an unused autoscaler configuration profile from the system.  |
-| [Remove-AksHciCluster](./remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
+| [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Removes an unused autoscaler configuration profile from the system.  |
+| [Remove-AksHciCluster](./remove-akshcicluster.md) | Deletes a managed Kubernetes cluster. |
 | [Remove-AksHciGmsaCredentialSpec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
-| [Remove-AksHciClusterNetwork](./remove-akshciclusternetwork.md) | Remove a cluster network object. |
-| [Remove-AksHciCluster](./remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
+| [Remove-AksHciClusterNetwork](./remove-akshciclusternetwork.md) | Removes a cluster network object. |
+| [Remove-AksHciCluster](./remove-akshcicluster.md) | Deletes a managed Kubernetes cluster. |
 | [Remove-AksHciGmsaCredentialSpec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [Remove-AksHciNode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [Remove-AksHciNodePool](./remove-akshcinodepool.md) | Delete a node pool from a cluster. |
