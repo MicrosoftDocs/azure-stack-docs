@@ -1,5 +1,5 @@
 ---
-title: New-AksHciStorageContainer for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciStorageContainer for AKS hybrid
 author: sethmanheim
 description: The New-AksHciStorageContainer PowerShell command creates a new storage container.
 ms.topic: reference
@@ -13,6 +13,7 @@ ms.reviewer: jeguan
 # New-AksHciStorageContainer
 
 ## Synopsis
+
 Creates a new storage container.
 
 ## Syntax
@@ -28,7 +29,7 @@ Creates a new storage container.
 
 ## Examples
 
-### New AKS-HCI cluster with required parameters
+### New AKS hybrid cluster with required parameters
 
 ```powershell
 New-AksHciStorageContainer -name mystoragecontainer -path c:\clusterstorage\volume1
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -path
-The location where new Storage Container will be created. Storage Class uses Storage Container to store dynamically provisioned Persistent Volumes.
+The location where the new storage container will be created. The Storage class uses the storage container to store dynamically provisioned persistent volumes.
 
 ```yaml
 Type: System.String
