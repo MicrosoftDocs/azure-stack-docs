@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciNodePool for AKS on Azure Stack HCI and Windows Server
+title: Set-AksHciNodePool for AKS hybrid
 author: mkostersitz
 description: The Set-AksHciNodePool PowerShell command scales a node pool
 ms.topic: reference

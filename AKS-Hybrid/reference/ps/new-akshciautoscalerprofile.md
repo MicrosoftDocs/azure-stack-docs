@@ -1,5 +1,5 @@
 ---
-title: New-AksHciAutoScalerProfile for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciAutoScalerProfile for AKS hybrid
 author: mkostersitz
 description: The New-AksHciAutoScalerProfile PowerShell command creates an autoscaler configuration profile
 ms.topic: reference
@@ -13,9 +13,7 @@ ms.reviewer: jeguan
 # New-AksHciAutoScalerProfile
 
 ## Synopsis
-Create a new autoscaler configuration profile for the node pool autoscaler.
-Auto scaler configuration profiles are stored on an AKS on Azure Stack HCI and Windows Server deployment wide basis and can be reused across multiple clusters.
-Changing a profile will impact all clusters using that profile.
+Create a new autoscaler configuration profile for the node pool autoscaler. Auto scaler configuration profiles are stored on an AKS hybrid deployment-wide basis and can be reused across multiple clusters. Changing a profile impacts all clusters using that profile.
 
 ## Syntax
 

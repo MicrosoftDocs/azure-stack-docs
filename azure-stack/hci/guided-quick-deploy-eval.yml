@@ -3,6 +3,8 @@ title: Evaluate Azure Stack HCI
 metadata:
   title: Evaluate Azure Stack HCI
   description: Learn how to quickly deploy an HCI cluster for evaluation.
+  author: ronmiab
+  ms.author: robess
   audience: IT Pro
   level: Beginner
   ms.date: 05/10/2022
