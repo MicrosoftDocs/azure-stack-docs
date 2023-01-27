@@ -3,7 +3,7 @@ title: Deploy AKS infrastructure using Windows Admin Center
 description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using Windows Admin Center for your AKS hybrid evaluation.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/03/2022
+ms.date: 01/27/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -208,6 +208,9 @@ Whichever option you chose, you will now be at the start of the **Create Kuberne
    - **Node size**: Default (4 GB Memory, 4 CPU)
    - **Node count**: 1
    - **Max pods per node**: Leave the default
+
+   :::image type="content" source="media/aks-hci-evaluation-guide/aks-cluster-deploy.png" alt-text="Screen shot of Windows Admin Center cluster deploy screen." lightbox="media/aks-hci-evaluation-guide/aks-cluster-deploy.png":::
+
 1. Optionally, repeat step 6, to add a Windows node and the following info, then click **Add**:
    - **Node pool name**: windowsnodepool
    - **OS type**: Windows
