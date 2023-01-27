@@ -10,7 +10,7 @@ ms.reviewer: waltero
 
 ---
 
-# AKS hybrid pre-install validation tests
+# AKS hybrid pre-installation validation tests
 
 The following table lists the tests that are executed when you run the [Set-AksHciConfig](reference/ps/set-akshciconfig.md) and [Set-AksHciRegistration](reference/ps/set-akshciregistration.md) PowerShell cmdlets. The tests help to ensure that when you run the actual installation with [Install-AksHci](reference/ps/install-akshci.md), the installation process avoids many common environment and configuration issues. For a better understanding of the terms used in the tests, see the [AKS hybrid concepts article](kubernetes-concepts.md).
 

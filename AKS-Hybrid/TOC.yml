@@ -339,6 +339,8 @@
     href: troubleshoot-overview.md
   - name: Azure Arc enabled Kubernetes
     href: known-issues-arc.yml
+  - name: Pre-installation validation tests
+    href: validation-tests.md
   - name: Install
     href: known-issues-installation.yml
   - name: Upgrade 
