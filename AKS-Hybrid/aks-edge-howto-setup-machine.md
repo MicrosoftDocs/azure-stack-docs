@@ -14,43 +14,8 @@ This article describes how to set up an Azure Kubernetes Service (AKS) Edge node
 
 ## Prerequisites
 
-- Hardware requirements:
-
-  | Specs | Local cluster | Arc-connected cluster and GitOps|
-  | ---------- | --------- |--------- |
-  | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022||
-  | Total physical memory | 4 GB with at least 2 GB free | 8 GB with at least 4 GB free  |
-  | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
-  | Disk space | At least 14 GB free |At least 14 GB free |
-
-    To better understand the concept of vCPUs, [read this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
+- Refer to the [system requirements](aks-edge-system-requirements.md)
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
-- Enable Hyper-V on your machine. You can check if Hyper-V is enabled using this command:
-
-    ```powershell
-     Get-WindowsOptionalFeature -Online -FeatureName *hyper*
-    ```
-
-    You can enable Hyper-V on [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) and on [Windows Server](/windows-server/virtualization/hyper-v/get-started/get-started-with-hyper-v-on-windows) as described.
-- If your machine has power standby settings turned on, you'll have to turn it off using these commands:
-
-    ```bash
-    powercfg /x -standby-timeout-ac 0
-    powercfg /x -standby-timeout-dc 0
-    powercfg /hibernate off
-    ```
-
-    Some device firmware may require that **Connected Standby** be disabled to avoid sleep cycling while operating your Kubernetes cluster. If your machine’s firmware requires this, you can disable connected standby by following the documentation provided by your device OEM. Or, use the following command to change your registry:
-
-    ```bash
-    reg add HKLM\System\CurrentControlSet\Control\Power /v PlatformAoAcOverride /t REG_DWORD /d 0
-    ```
-
-    A reboot is required for this registry key change to take effect. You can validate that all sleep states are now unavailable, as is required by Kubernetes, by running the following command:
-
-    ```bash
-    powercfg /a
-    ```
 
 ## Download the installer
 
@@ -70,7 +35,7 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
-Before you install the MSI, you can review the [feature support](aks-edge-deployment-options.md#feature-support-matrix) to understand the different options available.  
+Before you install the MSI, you can review the [feature support](aks-edge-system-requirements.md#feature-support-matrix) to understand the different options available.  
 
 ## Set up your machine as a Linux node
 
@@ -135,6 +100,16 @@ Get-Command -Module AKSEdge | Format-Table Name, Version
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-modules-installed.png)
 
 See the [AKS Edge Essentials PowerShell cmdlets reference](./reference/aks-edge-ps/index.md) for a full list of supported commands.
+
+## Check AKS Edge Essentials related settings on the device
+
+You can run the `Install-AksEdgeHostFeatures` command to validate the Hyper-V, SSH and Power settings on the machine. This might require a system reboot.
+
+```powershell
+Install-AksEdgeHostFeatures
+```
+
+![Screenshot showing the checks that are done](media/aks-edge/aks-edge-host-check.png)
 
 ## Next steps
 
