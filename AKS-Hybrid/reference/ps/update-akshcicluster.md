@@ -1,5 +1,5 @@
 ---
-title: Update-AksHciCluster for AKS on Azure Stack HCI and Windows Server
+title: Update-AksHciCluster for AKS hybrid
 author: sethmanheim
 description: The Update-AksHciCluster PowerShell command updates a managed Kubernetes cluster to a newer Kubernetes or OS version.
 ms.topic: reference

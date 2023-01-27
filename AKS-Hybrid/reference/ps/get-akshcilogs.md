@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciLogs for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciLogs for AKS hybrid
 author: sethmanheim
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
@@ -40,6 +40,7 @@ Get-AksHciLogs
 ## Parameters
 
 ### -agentLogs
+
 Use this flag to get the logs from the MOC stack Cloud agent and node agent services.
 
 ```yaml
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -virtualMachineLogs
-Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+Use this flag to get the logs from the guest virtual machines created by AKS hybrid.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -kvaLogs
-Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
+Use this flag to get the logs from the AKS hybrid host.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -downloadSdkLogs
-Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI and Windows Server uses.
+Use this flag to get the download logs from downloading the binaries and images that AKS hybrid uses.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
