@@ -384,7 +384,7 @@ items:
     1. Select the **Next** button at the bottom of this page.  
 
 - content: |
-    You've completed your Azure Stack Hub HCI evaluation!
+    You've completed your Azure Stack HCI evaluation!
 
     If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete the Azure resource group that was created at the beginning of this guide.
 
