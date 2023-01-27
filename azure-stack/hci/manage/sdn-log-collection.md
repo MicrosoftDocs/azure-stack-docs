@@ -22,8 +22,11 @@ Use SDN logs to also test a recently deployed SDN environment or retest an exist
 Before you begin, make sure that:
 
 - The client computer that you use for log collection has access to the SDN environment. For example, a management computer running Windows Admin Center that can access SDN.
+
 - The client computer is running PowerShell 5.1 or later.
+
 - All the SDN resources within the SDN fabric run the same version of the `SdnDiagnostics` module.
+
 - All the SDN resources within the SDN fabric are configured to run remote PowerShell. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1&preserve-view=true) reference documentation.
 
 ## SDN log collection workflow
@@ -74,25 +77,25 @@ After you've installed the `SdnDiagnostics` module on the client computer, insta
 
 Follow these steps in a new PowerShell window to install the `SdnDiagnostics` module on a Network Controller virtual machine (VM):
 
-1. Set the variable for the Network Controller VM name:
+1. To set the variable for the Network Controller VM name, run the following cmdlet:
 
     ```powershell
     $NCVMName = ‘example: nc01.contoso.com’
     ```
 
-1. Run the following cmdlet to import the `SdnDiagnostics` module to the current session:
+1. To import the `SdnDiagnostics` module into the current session, run the following cmdlet:
 
     ```powershell
     Import-Module -Name SdnDiagnostics -Force
     ```
 
-1. Set the variable for environment details:
+1. To set the variable for environment details, run the following cmdlet:
 
     ```powershell
     $EnvironmentDetails = Get-SdnInfrastructureInfo -NetworkController $NCVMName -Credential (get-credential)
     ```
 
-1. Run the following cmdlet to install the `SdnDiagnostics` module on the Network Controller VM:
+1. To install the `SdnDiagnostics` module on the Network Controller VM, run the following cmdlet:
 
     ```powershell
     Install-SDNDiagnostics -ComputerName $EnvironmentDetails.FabricNodes -Credential (Get-Credential)
