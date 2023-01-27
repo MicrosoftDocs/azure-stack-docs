@@ -1,7 +1,7 @@
 ---
-title: Get-AksHciVersion for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciVersion for AKS hybrid
 author: sethmanheim
-description: The Get-AksHciVersion PowerShell command gets the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+description: The Get-AksHciVersion PowerShell command gets the current Kubernetes version of AKS hybrid.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: sethm 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Get-AksHciVersion
 
 ## Synopsis
-Get the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+Get the current Kubernetes version of AKS hybrid.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Get-AksHciVersion
 ```
 
 ## Description
-Get the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+Get the current Kubernetes version of AKS hybrid.
 
 ## Examples
 

@@ -1,7 +1,7 @@
 ---
-title: New-AksHciLoadBalancerSetting for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciLoadBalancerSetting for AKS hybrid
 author: sethmanheim
-description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS on Azure Stack HCI and Windows Server.
+description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS hybrid.
 ms.topic: reference
 ms.date: 11/18/2021
 ms.author: sethm 
@@ -25,7 +25,7 @@ New-AksHciLoadBalancerSetting -name <String>
 Create a load balancer object for the workload clusters.
 
 > [!NOTE]
-> When you deploy an AKS cluster with no load balancer, you need to make sure that the Kubernetes API server is reachable. `kube-vip` is automatically deployed to handle requests to the API server, which allows you to continue to perform cluster operations. **If you choose `none` as the load balancer SKU, then your applications will be unreachable until you configure your own load balancer.**
+> When you deploy an AKS cluster with no load balancer, you need to make sure that the Kubernetes API server is reachable. `kube-vip` is automatically deployed to handle requests to the API server, which allows you to continue to perform cluster operations. If you choose `none` as the load balancer SKU, then your applications will be unreachable until you configure your own load balancer.
 
 ## Examples
 
