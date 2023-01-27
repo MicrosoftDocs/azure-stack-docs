@@ -3,7 +3,7 @@ title: Node auto-repair in AKS hybrid
 description: Learn about automatic node repair of Windows and Linux nodes in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/26/2023
+ms.date: 01/27/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
@@ -45,11 +45,7 @@ moc-wvt025q406z   Ready    <none>   47h   v1.19.7
 
 ## How automatic repair works
 
-If AKS hybrid identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, AKS hybrid takes the following actions:
-
-1. Reboot the node.
-2. If the reboot is unsuccessful, reimage the node.
-3. If the reimage is unsuccessful, create and reimage a new node.
+If AKS hybrid identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, AKS hybrid creates and reimages a new node. 
 
 It usually takes 20 to 30 minutes to repair the node. If AKS hybrid finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
 
