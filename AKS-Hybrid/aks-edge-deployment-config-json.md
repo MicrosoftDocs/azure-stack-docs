@@ -41,7 +41,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| `Arc.ClusterName` |String|Name of the cluster in the Azure Portal| `<Machinename>-cluster` |
+| `Arc.ClusterName` |String|Name of the cluster in the Azure portal| `<Machinename>-cluster` |
 | `Arc.Location` |String|Location of resource group| None |
 | `Arc.ResourceGroupName` |String|Resource group name| None |
 | `Arc.SubscriptionId` |String|Azure subscription ID| None |

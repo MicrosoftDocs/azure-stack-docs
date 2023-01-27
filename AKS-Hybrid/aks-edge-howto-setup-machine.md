@@ -109,7 +109,7 @@ You can run the `Install-AksEdgeHostFeatures` command to validate the Hyper-V, S
 Install-AksEdgeHostFeatures
 ```
 
-![Screenshot showing the checks that are done](media/aks-edge/aks-edge-host-check.png)
+![Screenshot showing the checks that are done.](media/aks-edge/aks-edge-host-check.png)
 
 ## Next steps
 

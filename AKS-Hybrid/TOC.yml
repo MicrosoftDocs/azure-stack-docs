@@ -285,10 +285,12 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS Edge Essentials (preview)
+- name: AKS Edge Essentials
   items:
   - name: Overview
     href: aks-edge-overview.md
+  - name: System requirements and support matrix
+    href: aks-edge-system-requirements.md
   - name: Concepts
     items:
     - name: AKS Edge Essentials key concepts
