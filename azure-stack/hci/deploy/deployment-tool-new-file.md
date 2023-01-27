@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/10/2022
+ms.date: 1/26/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -31,7 +31,12 @@ Before you begin, make sure you've done the following:
 ## Set up the deployment tool
 
 > [!NOTE]
-> You need to install and set up the deployment tool only on the first server in the cluster.
+> You need to install and set up the deployment tool only on the first server in the cluster. The deployment tool is included in the Azure Stack HCI Supplemental Package.
+
+Ensure the following Supplemental Package components are downloaded first:
+- [BootstrapCloudDeploymentTool.ps1](https://go.microsoft.com/fwlink/?linkid=2210545)
+- [CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
+- [Verify-CloudDeployment.ps1](https://go.microsoft.com/fwlink/?linkid=2210608)
 
 1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 

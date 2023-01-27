@@ -1,5 +1,5 @@
 ---
-title: Update-AksHciCertificates for AKS on Azure Stack HCI and Windows Server
+title: Update-AksHciCertificates for AKS hybrid
 description: The Update-AksHciCertificates PowerShell command rotates tokens and certificates of all clients in the management cluster.
 author: sethmanheim
 ms.topic: reference
@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Rotates the tokens and certificates of all clients in the AKS on Azure Stack HCI and Windows Server host.
+Rotates the tokens and certificates of all clients in the AKS hybrid host.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Update-AksHciCertificates [-force]
 
 ## Description
 
-Rotates the tokens and certificates of all clients in the AKS on Azure Stack and Windows Server HCI host.
+Rotates the tokens and certificates of all clients in the AKS hybrid.
 
 ## Examples
 
