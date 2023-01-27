@@ -10,6 +10,9 @@ ms.custom: template-how-to
 
 # Full Kubernetes deployments in AKS Edge Essentials
 
+> [!CAUTION]
+> Full deployment on multiple machines is an experimental feature at this point. We are actively working on this and will have an update soon.
+
 You can configure the AKS cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS HCI. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, etc.  
 
 ## Prerequisites
@@ -20,14 +23,14 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 
 The parameters needed to create a scalable cluster can be generated using the following command:
 
+
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster
+New-AksEdgeConfig -DeploymentType ScalableCluster -outFile ./aksedge-config.json
 ```
 
-This creates a configuration file called AksEdgeDeployConfigTemplate.json which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
 
 The key parameters to note for a scalable Kubernetes deployment are:
-
 - **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `MachineConfigType.NetworkConnection.AdapterName` as either `Ethernet` or `Wi-Fi`.
 
     ```powershell
@@ -42,10 +45,9 @@ The key parameters to note for a scalable Kubernetes deployment are:
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, `ServiceIPRangeEnd` and `DnsServers`.
-- The `DeployOptions.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. In K8S cluster change the `NetworkPlugin` to `calico`.
-- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  - `DeployOptions.NodeType`, `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
-- In case of K8S clusters, set the `DeployOptions.ServerTLSBootstrap` as 'true' to enable the metrics server.
+- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart` and `DnsServers`.
+- The `Network.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. In K8S cluster change the `NetworkPlugin` to `calico`.
+- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  -  `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
 
 ## 2. Validate the configuration file
 
@@ -114,8 +116,6 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
     },
 "Network": {
     "VSwitch":{
-        "Name": "aksedgeswitch",
-        "Type":"External",
         "AdapterName" : "Ethernet"
     },
     "ControlPlaneEndpointIp": "192.168.1.191",
@@ -123,7 +123,6 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
     "Ip4PrefixLength": 24,
     "ServiceIpRangeSize":10,
     "ServiceIPRangeStart": "192.168.1.151",
-    "ServiceIPRangeEnd": "192.168.1.160",
     "DnsServers": ["192.168.1.1"]
 }
 ```
@@ -138,7 +137,7 @@ New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows
 Create the deployment using the command: 
 
 ```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\AksEdgeDeployConfigTemplate.json
+New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
 ## Next steps
