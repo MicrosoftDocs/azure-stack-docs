@@ -1,19 +1,21 @@
 ---
-title: Collect logs for Software Defined Networking
+title: Collect Software Defined Networking logs on Azure Stack HCI
 description: Learn how to collect logs to troubleshoot Software Defined Networking (SDN) in Azure Stack HCI.
-ms.topic: article
+ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
 ms.date: 01/04/2023
 ---
 
-# Collect logs for Software Defined Networking
+# Collect logs for Software Defined Networking on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
 
-This article describes how to collect logs for Software Defined Networking (SDN) in Azure Stack HCI.
+This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Stack HCI cluster.
 
-The SDN logs help you identify and troubleshoot issues in your SDN environment. For troubleshooting any advanced issues, you can use these logs to gather key information before contacting Microsoft support. You can also use SDN logs to test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can execute a series of validation tests to gain a current goal state of your SDN environment and check for common misconfigured issues.
+The SDN logs help you identify and troubleshoot advanced issues in your SDN environment. Use these logs to gather key information before you contact Microsoft support.
+
+Use SDN logs to also test a recently deployed SDN environment or retest an existing SDN deployment. In addition to log collection, you can run validation tests to get the state of your SDN environment and check for common configuration issues.
 
 ## Prerequisites
 
@@ -21,52 +23,54 @@ Before you begin, make sure that:
 
 - The client computer that you use for log collection has access to the SDN environment. For example, a management computer running Windows Admin Center that can access SDN.
 - The client computer is running PowerShell 5.1 or later.
-- All the servers within the SDN fabric run the same version of the `SdnDiagnostics` module.
-- All the servers within the SDN fabric are enabled with PSRemoting. You can run `Enable-PSRemoting` to enable PSRemoting. For more information about how to enable PSRemoting, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1&preserve-view=true) reference documentation.
+- All the SDN resources within the SDN fabric run the same version of the `SdnDiagnostics` module.
+- All the SDN resources within the SDN fabric are configured to run remote PowerShell. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1&preserve-view=true) reference documentation.
 
 ## SDN log collection workflow
 
 Here's a high-level workflow for SDN log collection:
 
 - [Install the SDN diagnostics PowerShell module on the client computer](#install-the-sdn-diagnostics-powershell-module-on-the-client-computer)
-- [Install the SDN diagnostics PowerShell module on the SDN resources within the SDN fabric](#install-the-sdn-diagnostics-powershell-module-on-the-sdn-resources-within-the-sdn-fabric)
+- [Install the SDN diagnostics PowerShell module on the SDN resources within the SDN fabric](#install-the-sdn-diagnostics-powershell-module-on-the-sdn-resources)
 - [Collect logs using SdnDiagnostics](#collect-sdn-logs-using-sdndiagnostics)
 
 ## Install the SDN diagnostics PowerShell module on the client computer
 
-`SdnDiagnostics` is a PowerShell module used to simplify the data collection and diagnostics of SDN. For more information about `SdnDiagnostics`, see the [SdnDiagnostics wiki page](https://github.com/microsoft/SdnDiagnostics/wiki).
+Use the `SdnDiagnostics` PowerShell module to simplify the data collection and diagnostics in your SDN environment. For more information about `SdnDiagnostics`, see the [SdnDiagnostics wiki page](https://github.com/microsoft/SdnDiagnostics/wiki).
 
 Follow these steps to install the `SdnDiagnostics` PowerShell module on the client computer that has access to the SDN environment:
 
 1. Run PowerShell as administrator (5.1 or later). If you need to install PowerShell, see [Installing PowerShell on Windows](/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2&preserve-view=true).
 
-1. Enter the following cmdlet to install the latest version of the `PackageManagement` module:
+1. To install the latest version of the `PackageManagement` module, run the following cmdlet:
 
     ```powershell
     Install-Module -name PackageManagement -Force
     ```
 
-1. After the installation completes, close the PowerShell window and open a new PowerShell session as administrator. Enter the following cmdlet to reload the latest version of the `PackageManagement` module:
+1. After the installation completes, close the PowerShell window and open a new PowerShell session as administrator. 
+
+1. To reload the latest version of the `PackageManagement` module, run the following cmdlet:
 
     ```powershell
     Update-Module -Name PackageManagement -Force
     ```
 
-1. Enter the following cmdlet to install the `SdnDiagnostics` module:
+1. To install the `SdnDiagnostics` module, run the following cmdlet:
 
     ```powershell
     Install-Module SdnDiagnostics
     ```
 
-1. Enter the following cmdlet to import the `SdnDiagnostics` module:
+1. To import the `SdnDiagnostics` module, run the following cmdlet:
 
     ```powershell
     Import-Module SdnDiagnostics
     ```
 
-## Install the SDN diagnostics PowerShell module on the SDN resources within the SDN fabric
+## Install the SDN diagnostics PowerShell module on the SDN resources
 
-After you've installed the `SdnDiagnostics` module on the client computer, install the `SdnDiagnostics` module on the appropriate servers within the SDN fabric. This ensures that all the servers run the same version of the `SdnDiagnostics` module.
+After you've installed the `SdnDiagnostics` module on the client computer, install the `SdnDiagnostics` module on the SDN resources within the SDN fabric. This ensures that all the SDN resources run the same version of the `SdnDiagnostics` module.
 
 Follow these steps in a new PowerShell window to install the `SdnDiagnostics` module on a Network Controller virtual machine (VM):
 
@@ -96,7 +100,7 @@ Follow these steps in a new PowerShell window to install the `SdnDiagnostics` mo
 
 Here's a sample output of how to get environment details:
 
-```powershell
+```output
 PS C:\Users\AzureStackHCIUser> $NCVMName = 'nc01-pod06.tailwindtraders.com'
 PS C:\Users\AzureStackHCIUser> $NCVMName
 nc01-pod06.tailwindtraders.com
@@ -126,15 +130,7 @@ NetworkController
 
 After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
 
-Use the `Start-SdnDiagnostics` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
-
-Here's the syntax of the `Start-SdnDiagnostics` cmdlet:
-
-```powershell
-Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnRoles[]> [-OutputDirectory <FileInfo>] [-IncludeNetView] [-IncludeLogs] [-FromDate <DateTime>] [-Credential <PSCredential>] [-NcRestCredential <PSCredential>] [-Limit <Int32>] [-ConvertETW <Boolean>] [<CommonParameters>]
-```
-
-For more information about the parameters and specifications, see the [Start SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
+### Before you run Start-SdnDiagnostics
 
 A few things to consider before you run the `Start-SdnDiagnostics` cmdlet:
  
@@ -145,6 +141,18 @@ A few things to consider before you run the `Start-SdnDiagnostics` cmdlet:
 - The `Start-SdnDiagnostics` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, SoftwareLoadBalancer. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
 - If you don't specify any credentials, the `Start-SdnDiagnostics` cmdlet uses the credentials of the current user by default.
+
+### Run Start-SdnDiagnostics
+
+Use the `Start-SdnDiagnostics` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
+
+Here's the syntax of the `Start-SdnDiagnostics` cmdlet:
+
+```powershell
+Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnRoles[]> [-OutputDirectory <FileInfo>] [-IncludeNetView] [-IncludeLogs] [-FromDate <DateTime>] [-Credential <PSCredential>] [-NcRestCredential <PSCredential>] [-Limit <Int32>] [-ConvertETW <Boolean>] [<CommonParameters>]
+```
+
+For more information about the parameters and specifications, see the [Start SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
 
 ### Example of the `Start-SdnDiagnostics` cmdlet usage
 
@@ -164,7 +172,7 @@ In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Contro
 
 Here's a sample output of the `Start-SdnDataCollection` cmdlet:
 
-```powershell
+```output
 PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,SoftwareLoadBalancer,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
 [    N26-2] Starting SDN Data Collection
 [    N26-2] Results will be saved to C:\windows\Tracing\sdnDataCollection\20220ll8-23325l
@@ -250,7 +258,7 @@ WARNING: [	N26-1] 00155D865002 attached to netl does not have a port profile
 [    N26-2] Copying C:\windows\Tracina\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\
 [    N26-2] Copying \\	\C$\windows\Tracing\sdnDataCol1ection\Temp to C:\windows\Tracing\sdnoataCol1ection\20220ll8-23325l\
 WARNING: TCP connect to (10.127.134.193 : 445) failed
-WARNING: [	N26-2] Unable to establish TCP connection to	i:445. Attempting to copy files using winRM
+WARNING: [    N26-2] Unable to establish TCP connection to i:445. Attempting to copy files using winRM
 [    N26-2] Copying C:\windows\Tracing\sdnoataCol1ection\Temp to C:\windows\Tracing\sdnoatacol1ection\20220ll8-23325l\ using winRM session id 311
 [    N26-2] Performing cleanup of C:\windows\Tracing\sdnDataCollection\Temp directory across
 [    N26-2] Data collection completed
