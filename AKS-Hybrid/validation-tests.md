@@ -21,12 +21,12 @@ The following table lists the tests that are executed when you run the [Set-AksH
 * [Blog post on troubleshooting network issues in Windows Server](https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-troubleshoot-windows-server-network-connectivity-issues/ba-p/1500934)
 * [Firewall requirements for Azure Stack HCI](/azure-stack/hci/concepts/firewall-requirements)
    |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
+| a  |a   |a   |
+|a   | a  | a  |
+|a   | a  | a  |
+| a  | a  | a  |
+|a   | a  |a   |
+| a  | a  |  a |
+| a  | a  |a   |
+|a   | a  | a  |
+| a  | a  |  a |
