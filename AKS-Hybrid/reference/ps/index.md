@@ -1,20 +1,20 @@
 ---
 title: AksHci PowerShell module for AKS hybrid
-description: Learn how to use the AksHci module commands to manage AKS hybrid deployment options. 
+description: Learn how to use the AksHci module commands to manage AKS hybrid 
 author: sethmanheim
 ms.topic: reference
-ms.date: 04/15/2022
+ms.date: 01/26/2023
 ms.author: sethm 
-ms.lastreviewed: 04/15/2022
+ms.lastreviewed: 01/26/2023
 ms.reviewer: jeguan
 
 ---
 
-# AksHci PowerShell Reference
+# AKS hybrid deployment options PowerShell reference
 
 Commands to interact with AKS hybrid.
 
-## AksHci cmdlets
+## AKS hybrid cmdlets
 
 |    Cmdlet    |    Description        |
 | ------- | ---------- |
@@ -26,13 +26,13 @@ Commands to interact with AKS hybrid.
 | [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS hybrid cluster. |
 | [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS hybrid to a preview channel. |
 | [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Gets billing status for the AKS hybrid deployment. |
-| [Get-AksHciCluster](./get-akshcicluster.md) | Lists deployed clusters including the AKS host. |
+| [Get-AksHciCluster](./get-akshcicluster.md) | Lists deployed clusters including the Azure Kubernetes Service host. |
 | [Get-AksHciClusterNetwork](./get-akshciclusternetwork.md) | Retrieves virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
-| [Get-AksHciClusterUpdates](./get-akshciclusterupdates.md) | Gets the available upgrades for an AKS cluster. |
-| [Get-AksHciConfig](./get-akshciconfig.md) | Lists the current configuration settings for the AKS host. |
+| [Get-AksHciClusterUpdates](./get-akshciclusterupdates.md) | Gets the available upgrades for an Azure Kubernetes Service cluster. |
+| [Get-AksHciConfig](./get-akshciconfig.md) | Lists the current configuration settings for the Azure Kubernetes Service host. |
 | [Get-AksHciCredential](./get-akshcicredential.md) | Accesses your cluster using kubectl. |
 | [Get-AksHciEventLog](./get-akshcieventlog.md) | Gets all the event logs from the AKS hybrid PowerShell module. |
-| [Get-AksHciKubernetesVersion](./get-akshcikubernetesversion.md) | Lists available versions for creating managed Kubernetes clusters. |
+| [Get-AksHciKubernetesVersion](./get-akshcikubernetesversion.md) | Lists available version for creating managed Kubernetes cluster. |
 | [Get-AksHciLogs](./get-akshcilogs.md) | Creates a zipped folder with logs from all your pods. |
 | [Get-AksHciNodePool](./get-akshcinodepool.md) | Lists the node pools in a Kubernetes cluster. |
 | [Get-AksHciProxySetting](./get-akshciproxysetting.md) | Retrieves a list or an individual proxy settings object. |
@@ -43,7 +43,7 @@ Commands to interact with AKS hybrid.
 | [Get-AksHciVersion](./get-akshciversion.md) | Gets the current version of AKS hybrid. |
 | [Get-AksHciVmSize](./get-akshcivmsize.md) | Lists supported VM sizes. |
 | [Initialize-AksHciNode](./initialize-akshcinode.md) | Runs checks on every physical node to see if all requirements are satisfied to install AKS hybrid. |
-| [Install-AksHci](./install-akshci.md) | Installs the AKS hybrid agents/services and host. |
+| [Install-AksHci](./install-akshci.md) | Installs the Azure Kubernetes Service on AKS hybrid agents/services and host. |
 | [Install-AksHciAdAuth](./install-akshciadauth.md) | Installs Active Directory authentication. |
 | [Install-AksHciCsiNfs](./install-akshcicsinfs.md) | Installs the CSI NFS plug-in to a cluster. |
 | [Install-AksHciCsiSmb](./install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
@@ -67,7 +67,7 @@ Commands to interact with AKS hybrid.
 | [Remove-AksHciNodePool](./remove-akshcinodepool.md) | Deletes a node pool from a cluster. |
 | [Repair-AksHciCerts](./repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS hybrid host. |
 | [Repair-AksHciClusterCerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
-| [Restart-AksHci](./restart-akshci.md) | Restarst AKS hybrid and removes all deployed Kubernetes clusters. |
+| [Restart-AksHci](./restart-akshci.md) | Restarts Azure Kubernetes Service on AKS hybrid and removes all deployed Kubernetes clusters. |
 | [Set-AksHciAutoScalerProfile](./set-akshciautoscalerprofile.md) | Configures individual settings of an autoscaler configuration profile.  |
 | [Set-AksHciCluster](./set-akshcicluster.md) | Scales the number of control plane nodes or worker nodes in a cluster. |
 | [Set-AksHciConfig](./set-akshciconfig.md) | Sets or update the configurations settings for the Azure Kubernetes Service host. |
@@ -80,9 +80,9 @@ Commands to interact with AKS hybrid.
 | [Uninstall-AksHciCsiSmb](./uninstall-akshcicsismb.md) | Uninstalls the CSI SMB plug-in in a cluster. |
 | [Uninstall-AksHciGmsaWebhook](./uninstall-akshcigmsawebhook.md) | Uninstalls the gMSA webhook add-on to the cluster. |
 | [Uninstall-AksHciMonitoring](./uninstall-akshcimonitoring.md) | Removes Prometheus for monitoring from the AKS hybrid deployment. |
-| [Update-AksHci](./update-akshci.md) | Updates the AKS host to the latest Kubernetes version. |
+| [Update-AksHci](./update-akshci.md) | Updates the Azure Kubernetes Service host to the latest Kubernetes version. |
 | [Update-AksHciCluster](./update-akshcicluster.md) | Updates a managed Kubernetes cluster to a newer Kubernetes or OS version. |
 
 ## Next steps
 
-For more information, see [AKS hybrid](../../index.yml).
+[AKS hybrid overview](../../index.yml)
