@@ -12,7 +12,7 @@ ms.date: 10/19/2021
 
 # Failover cluster maintenance procedures
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
 
