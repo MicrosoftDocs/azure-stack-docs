@@ -5,16 +5,19 @@ author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 1/19/2023
+ms.date: 1/30/2023
 ---
 
 # Deploy a virtual Azure Stack HCI cluster (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to deploy a single-server or multi-node Azure Stack HCI, version 22H2, on a host system running Hyper-V on Windows Server 2022, Windows 11, or later.  A virtual deployment of Azure Stack HCI, version 22H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+This article describes how to deploy a single-server or multi-node Azure Stack HCI, version 22H2, on a host system running Hyper-V on Windows Server 2022, Windows 11, or later.  
 
 You’ll need administrator privileges for the Azure Stack HCI virtual deployment and be familiar with the existing Azure Stack HCI solution. The deployment can take around 2.5 hours to complete.
+
+> [!IMPORTANT]
+> A virtual deployment of Azure Stack HCI, version 22H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
 
 > [!IMPORTANT]
 > Azure Stack HCI 22H2 is in preview. Please review the terms of use for the preview and sign up before you deploy this solution. For more details, see the [Preview Terms Of Use | Microsoft Azure ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -64,7 +67,7 @@ Before you begin, make sure that the host system can dedicate the following reso
 
 - At least two network adapters connected to the internal network with MAC, spoofing-enabled.
 
-- At least one boot disk that has the virtual hard disk image for the deployment.
+- At least one boot disk to [install the HCI operating system](deployment-tool-install-os.md).
 
 - At least six hard disks with a maximum size of 1024 GB for Storage Spaces Direct.
 
@@ -123,7 +126,7 @@ Create a virtual machine (VM) to serve as the virtual host with the following co
 | -------------| -------------- |
 | Virtual machine type | Secure Boot and TPM enabled. |
 | vCPUs | 4 cores |
-| Memory | A minimum of 16 GB |
+| Memory | A minimum of 8 GB |
 | Networking |  Two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | 1 disk using `ServerHCI.vhdx`.|
 | Hard disks for Storage Spaces Direct  |  6 dynamic expanding disks. Maximum disk size is 1024 GB. |
@@ -134,7 +137,7 @@ You can create this VM using one of the following methods:
 
 - **Use Hyper-V Manager**. For more information, see [Create a virtual machine using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) to mirror your physical management network.
 
-- **Use PowerShell cmdlets**. Use PowerShell cmdlets to create the VM. Make sure to adjust the VM configuration parameters listed above before you run these cmdlets. For an example output, see  [Appendix II](#appendix-ii).
+- **Use PowerShell cmdlets**. Use PowerShell cmdlets to create the VM. Make sure to adjust the VM configuration parameters listed above before you run these cmdlets. For an example output, see the  [Appendix](#appendix-ii).
 
     Follow these steps to create a VM via PowerShell cmdlets:
 
@@ -269,6 +272,8 @@ To access the server from your Hyper-V host or any other computer in your networ
       Start-Vm <node1>
    ```
 
+1. [Install the HCI operating system](deployment-tool-install-os.md).
+
 1. Update the password since this is the first VM start up.
 
 1. After the password is changed, `Sconfig` is automatically loaded. Select option `15` to exit to the command line and run the next steps from there.
@@ -363,141 +368,7 @@ To access the server from your Hyper-V host or any other computer in your networ
         1. Afterward, use the **deploy from file** option.
     1. Deploy a single-server cluster using PowerShell as per the instructions in [Step 3C: Deploy Azure Stack HCI using PowerShell](deployment-tool-powershell.md).
 
-       > [!NOTE]
-       > You must use the sample single-server configuration file (see Appendix I below) since the UX will not allow you to create a single-server configuration file with the current version of the supplemental package.
-
-## Appendix I
-
-Modify and use this sample configuration file to deploy a single-server Azure Stack HCI solution. If you used a different NAT network, make sure to update the server name in this sample file to match your hostname and your infrastructure subnet.
-
-   ```PowerShell
-    {
-      {
-    "Version": "2.0.0.0",
-    "ScaleUnits": [
-        {
-            "DeploymentData": {
-                "DomainFQDN": "contoso.com",
-                "SecuritySettings": {
-                    "SecurityModeSealed": true,
-                    "WDACEnforced": true
-
-                },
-                "InternalDomainConfiguration": {
-                    "InternalDomainName": "contoso.com",
-                    "Timeserver": "40.119.148.38",
-                    "DNSForwarder": "10.50.50.50"
-                },
-                "Observability": {
-                    "StreamingDataClient": true,
-                    "EULocation": false,
-                    "EpisodicDataUpload": true
-                },
-                "Cluster": {
-                    "Name": "s-cluster",
-                    "StaticAddress": [
-                        ""
-                    ]
-                },
-                "Storage": {
-                    "ConfigurationMode": "Express"
-                },
-                "TimeZone": "Pacific Standard Time",
-                "DNSForwarder": [
-                    "10.50.50.50"
-                ],
-                "TimeServer": "40.119.148.38",
-                "InfrastructureNetwork": {
-                    "VlanId": [
-                        8
-                    ],
-                    "Subnet": [
-                        "192.168.0.0/24"
-                    ],
-                    "Gateway": "192.168.0.1",
-                    "StartingAddress": "",
-                    "EndingAddress": ""
-                },
-                "PhysicalNodes": [
-                    {
-                        "Name": "Node1"
-                    }
-                ],
-                "HostNetwork": {
-                    "Intents": [
-                        {
-                            "Name": "Compute_Storage_Management",
-                            "TrafficType": [
-                                "Compute",
-                                "Storage",
-                                "Management"
-                            ],
-                            "Adapter": [
-                                "NIC1",
-                                "NIC2"
-                            ],
-                            "OverrideVirtualSwitchConfiguration": false,
-                            "VirtualSwitchConfigurationOverrides": {
-                                "EnableIov": "",
-                                "LoadBalancingAlgorithm": ""
-                            },
-                            "OverrideQoSPolicy": false,
-                            "QoSPolicyOverrides": {
-                                "PriorityValue8021Action_Cluster": "",
-                                "PriorityValue8021Action_SMB": "",
-                                "BandwidthPercentage_SMB": "",
-                                "BandwidthPercentage_Cluster": ""
-                            },
-                            "OverrideAdapterProperty": false,
-                            "AdapterPropertyOverrides": {
-                                "EncapOverhead": "",
-                                "VlanID": "",
-                                "JumboPacket": "",
-                                "NetworkDirectTechnology": ""
-                            }
-                        }
-                    ]
-                },
-                "SDNIntegration": {
-                    "Enabled": true,
-                    "NetworkControllerName": "nc",
-                    "MacAddressPoolStart": "06-EC-00-00-00-01",
-                    "MacAddressPoolStop": "06-EC-00-00-FF-FF"
-                },
-                "OptionalServices": {
-                    "VirtualSwitchName": "vSwitch",
-                    "CSVPath": "C:\\clusterStorage\\Volume1",
-                    "ARBRegion": "eastus"
-                },
-                "CompanyName": "Microsoft",
-                "RegionName": "Redmond",
-                "ExternalDomainFQDN": "ext-contoso.com",
-                "NamingPrefix": "iastack",
-                "Storage1Network": {
-                    "VlanId": [
-                        108
-                    ],
-                    "Subnet": [
-                        "100.73.16.0/25"
-                    ]
-                },
-                "Storage2Network": {
-                    "VlanId": [
-                        208
-                    ],
-                    "Subnet": [
-                        "100.73.21.0/25"
-                    ]
-                }
-            }
-        }
-    ]
- }
-
- 
-   ```
-
-## Appendix II
+## Appendix
 
 Here is an example output for VM creation:
 
