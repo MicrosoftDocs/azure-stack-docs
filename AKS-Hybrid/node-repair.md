@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 01/27/2023
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 01/10/2023
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to automatically repair unhealthy nodes in order to avoid service disruptions.
 # Keyword: unhealthy nodes service disruptions node repair auto-repair
