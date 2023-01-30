@@ -44,7 +44,7 @@ New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
 ### Create a Windows node pool
 
 ```powershell
-New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType Windows -osSku Windows2022
 ```
 
 ### Create a node pool with custom VM size
