@@ -186,8 +186,6 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 |`Invoke-AzsSupportWmiTracing` | Enables `netsh` ETL tracing for a series of WMI providers on a specified computer name. Also supports a series of procdumps of winmgt and WmiPrvSE if specified. |
 |`Save-AzsSupportObjectToFile` | Save an object to a file in a consistent format creating a file that contains the current time as a timestamp in the file name. |
 |`Send-AzureStackDiagnosticLog` | Sends Azure Stack diagnostic logs to Microsoft. |
-|`Start-AzsSupportClusterPerfAnalysis` | Analyzes key performance data such as cluster performance history and exports performance data. |
-|`Start-AzsSupportRingManager` | Provides a simplified management experience for working with Service Fabric clusters. |
 |`Start-AzsSupportSdnDiagnostic` | Automated network diagnostics and data collection/tracing script. |
 |`Start-AzsSupportStorageDiagnostic` | Runs a series of storage specific diagnostic tests and generates a storage report. |
 
