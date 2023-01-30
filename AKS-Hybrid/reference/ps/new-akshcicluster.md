@@ -99,7 +99,7 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSi
 ### New AKS-HCI cluster with a Windows node pool
 
 ```powershell
-New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType Windows -osSku Windows2022
 ```
 
 ### New AKS-HCI cluster with a Linux node pool and taints
