@@ -137,7 +137,7 @@ You can create this VM using one of the following methods:
 
 - **Use Hyper-V Manager**. For more information, see [Create a virtual machine using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) to mirror your physical management network.
 
-- **Use PowerShell cmdlets**. Use PowerShell cmdlets to create the VM. Make sure to adjust the VM configuration parameters listed above before you run these cmdlets. For an example output, see the  [Appendix](#appendix-ii).
+- **Use PowerShell cmdlets**. Use PowerShell cmdlets to create the VM. Make sure to adjust the VM configuration parameters listed above before you run these cmdlets. For an example output, see the  [Appendix](#appendix).
 
     Follow these steps to create a VM via PowerShell cmdlets:
 
