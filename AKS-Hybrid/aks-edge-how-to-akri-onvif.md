@@ -22,6 +22,9 @@ This article describes how you can discover ONVIF cameras that are connected to 
 - An ONVIF IP camera connected to the same network as your external switch cluster.
 - Akri only works on Linux: use Linux nodes for this exercise.
 
+> [!NOTE]
+> This sample ONVIF broker currently does not support connecting to cameras that require authentication. To run this demo, disable authentication on your ONVIF camera. 
+
 ## Run Akri
 
 1. Open a PowerShell window as administrator. Akri depends on `critcl` to track pod information. To use it, the Akri agent must know where the container runtime socket lives. To specify this information, set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
@@ -194,15 +197,15 @@ In order for the AKS Edge Essentials cluster to discover your camera, open the p
 
 1. Delete the video streaming web application.
 
-   ```powershell
+    ```powershell
     kubectl delete -f akri-video-streaming-app.yaml
     ```
 
 2. Uninstall Akri from your cluster.
 
-   ```powershell
+    ```powershell
     helm delete akri
-   ```
+    ```
 
 
 ## Next steps
