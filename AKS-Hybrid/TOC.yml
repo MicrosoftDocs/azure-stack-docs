@@ -82,7 +82,7 @@
       - name: Container security
         href: container-security.md
       - name: Update certificates
-        href: certificates-update-after-sixty-days.md
+        href: repair-certificates.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -165,6 +165,8 @@
               href: restart-cluster.md
             - name: Stop and start an AKS cluster
               href: stop-start-cluster.md
+            - name: Restore AKS cluster from disaster
+              href: restore-aks-cluster.md
             - name: Back up or restore workload clusters using Velero
               href: backup-workload-cluster.md
     - name: Use Azure Arc Kubernetes
@@ -337,6 +339,8 @@
     href: troubleshoot-overview.md
   - name: Azure Arc enabled Kubernetes
     href: known-issues-arc.yml
+  - name: Pre-installation validation tests
+    href: validation-tests.md
   - name: Install
     href: known-issues-installation.yml
   - name: Upgrade 
