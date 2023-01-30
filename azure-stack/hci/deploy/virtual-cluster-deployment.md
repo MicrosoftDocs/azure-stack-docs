@@ -63,7 +63,7 @@ Before you begin, make sure that the host system can dedicate the following reso
 
 - A minimum of 4 vCPUs.
 
-- At least 16 GB of RAM.
+- At least 8 GB of RAM.
 
 - At least two network adapters connected to the internal network with MAC, spoofing-enabled.
 
