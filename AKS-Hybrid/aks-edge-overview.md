@@ -8,7 +8,7 @@ ms.date: 12/05/2022
 ms.custom: template-overview
 ---
 
-# AKS Edge Essentials - (preview)
+# AKS Edge Essentials (preview)
 
 > [!NOTE]
 > AKS Edge Essentials is currently in public preview.
