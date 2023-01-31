@@ -1,6 +1,6 @@
 ---
-title: Steps to prepare your machine for AKS Edge Essentials
-description: Learn how to prepare your machines for AKS clusters. 
+title: Quickstart to AKS Edge Essentials
+description: Bring up an AKS Edge Essentials cluster and connect it to Arc. 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
