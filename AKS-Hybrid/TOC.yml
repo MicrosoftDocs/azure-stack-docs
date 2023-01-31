@@ -325,7 +325,7 @@
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
-    - name: Update AKS Edge cluster
+    - name: Update AKS Edge Essentials cluster
       href: aks-edge-howto-update.md
     - name: Discover OPC UA Servers with Akri
       href: aks-edge-how-to-akri-opc-ua.md
@@ -335,11 +335,11 @@
       href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: AKS Edge PowerShell 
+    - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
-    - name: AKS Edge Pricing
+    - name: AKS Edge Essentials pricing
       href: aks-edge-pricing.md
-    - name: AKS Edge Licensing 
+    - name: AKS Edge Essentials licensing 
       href: aks-edge-licensing.md
     - name: Release notes and known issues
       href: https://github.com/Azure/AKS-Edge/releases

@@ -1,19 +1,15 @@
 ---
-title: AKS Edge commands #Required; page title is displayed in search results. Include the brand.
-description: Powershell cmdlets for AKS #Required; article description that is displayed in search results. 
-author: rcheeran #Required; your GitHub user alias, with correct capitalization.
-ms.author: rcheeran #Required; microsoft alias of author; optional team alias.
-#ms.service: #Required; service per approved list. slug assigned by ACOM.
-ms.topic: reference #Required; leave this attribute/value as-is.
-ms.date: 09/30/2022 #Required; mm/dd/yyyy format.
-ms.custom: template-tutorial #Required; leave this attribute/value as-is.
+title: AKS Edge Essentials PowerShell commands
+description: Powershell cmdlets for AKS Edge Essentials 
+author: rcheeran
+ms.author: rcheeran
+ms.topic: reference
+ms.date: 01/31/2023
 ---
 
+# AKS Edge Essentials PowerShell module
 
-
-# AKS Edge Essentials PowerShell Module
-
-## Module PowerShell Commands
+## PowerShell commands
 
 ### [Add-AksEdgeNode](./add-aksedgenode.md)
 
