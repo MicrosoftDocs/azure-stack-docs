@@ -41,7 +41,7 @@ To learn more about the new deployment methods, see [Deployment overview](../hci
 
 The following new features are available in the 2301 preview release of Supplemental Package:
 
-- **Create workload and infrastructure volume options**. In this release, you can create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. For more information, see the **Set up cluster storage** of how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental package.
+- **Creation of workload and infrastructure volumes**. In this release, you can create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. For more information, see the **Create workload and infrastructure volume** of how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental package.
 
 - **Download deployment log and deployment report**. Beginning this release, you have the option to download deployment logs and deployment report after the deployment is complete. For more information, see the last step of how to [Deploy interactively](../deploy/deployment-tool-new-file.md) to download deployment log and report.
 
