@@ -21,7 +21,7 @@ This article describes how to connect your AKS Edge Essentials cluster to [Azure
 > [!NOTE]
 > You will need the **Contributor** role to be able to delete the resources within the resource group. Commands to disconnect from Arc will fail without this role assignment.
 
-## Step 1. Configure your machine
+## Step 1: Configure your machine
 
 ### Install dependencies
 
@@ -48,7 +48,7 @@ Expand-Archive "helm-v3.6.3-windows-amd64.zip" C:\helm
 $env:Path = "C:\helm\windows-amd64;$env:Path"
 ```
 
-## Step 2. Configure your Azure environment
+## Step 2: Configure your Azure environment
 
 Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal you can follow the steps [here.](/azure/active-directory/develop/howto-create-service-principal-portal)
 
@@ -65,7 +65,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 > [!NOTE]
 > This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.
 
-## Step 3. Connect your cluster to Arc
+## Step 3: Connect your cluster to Arc
 
 1. Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enabled Kubernetes.
 
@@ -79,7 +79,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 
     ![Screenshot showing PowerShell prompt while connecting to Arc](media/aks-edge/aks-edge-ps-arc-connection.png)
 
-## Step 4. View AKS Edge resources in Azure
+## Step 4: View AKS Edge resources in Azure
 
 1. Once the process is complete, you can view your cluster in your Azure portal if you navigate to your resource group.
 
