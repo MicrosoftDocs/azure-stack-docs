@@ -291,6 +291,8 @@
     href: aks-edge-overview.md
   - name: System requirements and support matrix
     href: aks-edge-system-requirements.md
+  - name: Quickstart
+    href: aks-edge-quickstart.md
   - name: Concepts
     items:
     - name: AKS Edge Essentials key concepts
