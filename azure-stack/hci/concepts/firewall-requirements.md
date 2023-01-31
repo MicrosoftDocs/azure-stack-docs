@@ -42,7 +42,7 @@ The following table provides a list of required firewall URLs. Make sure to incl
 
 [!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
 
-For a comprehensive list of all firewall URLs, download the [firewall URLs spreadsheet](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/azure-stack-hci-firewall-rules.xlsx).
+For a comprehensive list of all the firewall URLs, download the [firewall URLs spreadsheet](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-firewall-rules.xlsx).
 
 ## Recommended firewall URLs
 
