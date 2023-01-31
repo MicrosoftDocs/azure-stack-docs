@@ -11,9 +11,9 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 
 
-# AKS Edge Essentials PowerShell Module
+# AKS Edge Essentials PowerShell module
 
-## Module PowerShell Commands
+## PowerShell commands
 
 ### [Add-AksEdgeNode](./add-aksedgenode.md)
 
