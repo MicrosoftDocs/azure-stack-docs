@@ -337,9 +337,9 @@
     items:
     - name: AKS Edge PowerShell 
       href: ./reference/aks-edge-ps/index.md
-    - name: AKS Edge Pricing
+    - name: AKS Edge pricing
       href: aks-edge-pricing.md
-    - name: AKS Edge Licensing 
+    - name: AKS Edge licensing 
       href: aks-edge-licensing.md
     - name: Release notes and known issues
       href: https://github.com/Azure/AKS-Edge/releases
