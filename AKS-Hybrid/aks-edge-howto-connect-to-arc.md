@@ -54,7 +54,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
-|`ClusterName` | string | Provide a name of your cluster. By default, the `hostname_cluster` is the name used |
+|`ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
 |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
 | `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
 | `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
@@ -64,7 +64,6 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 
 > [!NOTE]
 > This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.
-I
 
 ## Step 3. Connect your cluster to Arc
 
