@@ -285,7 +285,7 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS Edge Essentials
+- name: AKS Edge Essentials (Preview)
   items:
   - name: Overview
     href: aks-edge-overview.md
