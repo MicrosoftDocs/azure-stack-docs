@@ -8,7 +8,7 @@ ms.date: 12/05/2022
 ms.custom: template-how-to #Required; leave this attribute/value as-is.
 ---
 
-# Additional configurations and scripts for AKS Edge Essentials
+# Additional configuration and scripts for AKS Edge Essentials
 
 This article provides an alternate ways of connecting to Azure Arc which can be applicable with clusters connected via a proxy.
 
