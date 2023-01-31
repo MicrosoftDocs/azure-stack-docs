@@ -8,7 +8,7 @@ ms.date: 12/05/2022
 ms.custom: template-overview
 ---
 
-# AKS Edge Essentials (preview)
+# AKS Edge Essentials
 
 > [!NOTE]
 > AKS Edge Essentials is currently in public preview.
@@ -66,4 +66,3 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 - Read about [deployment options](./aks-edge-deployment-options.md)
 - Contact product team by emailing projecthaven@microsoft.com
-
