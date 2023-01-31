@@ -1,5 +1,5 @@
 ---
-title: About AKS Edge Essentials Pricing
+title: About AKS Edge Essentials pricing
 description: AKS Edge Essentials pricing details
 author: rcheeran
 ms.author: rcheeran
@@ -8,16 +8,16 @@ ms.date: 01/31/2023
 ms.custom: template-overview
 ---
 
-# AKS Edge Essentials Pricing
+# AKS Edge Essentials pricing
 
-AKS Edge Essentials can be licensed via the following options
+AKS Edge Essentials can be licensed via one of the following options:
 
 - Azure subscription-based model
 - Volume licensing model (available from April 2023)
 
-You can review the details of each of the approach in this [page.](aks-edge-licensing.md) This article focuses on the Azure-subscription based approach. The AKS EE subscription-based Kubernetes offering  can run on Windows Pro, Windows Enterprise, Windows IoT Enterprise, or Windows Server based devices. You can download and install AKS Edge Essentials on your existing or new hardware that will be deployed on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free.
+You can [review the details of each of the approaches](aks-edge-licensing.md). This article focuses on the Azure-subscription based approach. The AKS EE subscription-based Kubernetes offering can run on Windows Pro, Windows Enterprise, Windows IoT Enterprise, or Windows Server-based devices. You can download and install AKS Edge Essentials on your existing or new hardware that will be deployed on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free.
 
-The billing unit model is based on a device which can be a physical or virtual device on which AKS Edge Essentials is installed. After you install AKS Edge Essentials on your device and connect your cluster to Azure Arc, a pay-as-you-go rate per device per month will be applied. The date when the usage is captured and posted for billing is determined by the day of the month when the Azure Arc enabled Kubernetes cluster is created. For example, if the Azure Arc enabled Kubernetes cluster is created on March 6th with AKS Edge Essentials, the number of devices included in this cluster will be captured and submitted for billing on April 5th.(e.g., if you only have one device in this cluster when the usage is posted on April 5th, you will be billed for one device usage for this Azure Arc enabled Kubernetes cluster resource by AKS Edge Essentials).
+The billing unit model is based on a device which can be a physical or virtual device on which AKS Edge Essentials is installed. After you install AKS Edge Essentials on your device and connect your cluster to Azure Arc, a pay-as-you-go rate per device per month will be applied. The date when the usage is captured and posted for billing is determined by the day of the month when the Azure Arc enabled Kubernetes cluster is created. For example, if the Azure Arc enabled Kubernetes cluster is created on March 6th with AKS Edge Essentials, the number of devices included in this cluster will be captured and submitted for billing on April 5th. For example, if you only have one device in this cluster when the usage is posted on April 5th, you will be billed for one device usage for this Azure Arc enabled Kubernetes cluster resource by AKS Edge Essentials.
 
 ## Pricing details
 
@@ -25,12 +25,12 @@ AKS Edge Essentials pricing is based on the US currency list pricing with no dis
 For detailed pricing information, see the AKS Edge Essentials pricing details page. The list price for AKS Edge Essentials includes the following:
 
 - Includes a Microsoft-managed, lightweight, CNCF-conformant K8S and K3S distribution.
-- Includes license to use one Microsoft-managed Linux (CBL-Mariner) VM Container Host for use with Linux containers on AKS Edge Essentials.
-- Includes license to use one Microsoft-managed Windows VM Container Host for use with Windows containers on AKS Edge Essentials. Pricing does not include Windows VM Container Host license.
+- Includes license to use one Microsoft-managed Linux (CBL-Mariner) VM container host for use with Linux containers on AKS Edge Essentials.
+- Includes license to use one Microsoft-managed Windows VM container host for use with Windows containers on AKS Edge Essentials. Pricing does not include a Windows VM container host license.
 - Includes Azure Arc-enabled Kubernetes at no extra charge and the following items:
-  - **Inventory, grouping**, and **tagging** in Azure.
-  - **Deployment of apps and configurations with GitOps**: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is per vCPU per month).
-  - **Azure Policy for Kubernetes**: Included at no extra charge (normally, the charge per vCPU per cluster for each month).
+  - Inventory, grouping, and tagging in Azure.
+  - Deployment of apps and configurations with GitOps: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is per vCPU per month).
+  - Azure Policy for Kubernetes: Included at no extra charge (normally, the charge per vCPU per cluster for each month).
 
 ## Next steps
 
