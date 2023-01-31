@@ -325,6 +325,8 @@
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
+    - name: Update AKS Edge cluster
+      href: aks-edge-howto-update.md
     - name: Discover OPC UA Servers with Akri
       href: aks-edge-how-to-akri-opc-ua.md
     - name: Discover ONVIF cameras with Akri
