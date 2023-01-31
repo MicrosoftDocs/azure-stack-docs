@@ -19,7 +19,7 @@ This article describes how to connect your AKS Edge Essentials cluster to [Azure
 * Create and verify a resource group for AKS Edge Essentials Azure resources.
 
 > [!NOTE]
-> You will require the **Contributor** role to be able to delete the resources within the resource group. Commands to disconnect from Arc will fail without this role assignment.
+> You will need the **Contributor** role to be able to delete the resources within the resource group. Commands to disconnect from Arc will fail without this role assignment.
 
 ## Step 1. Configure your machine
 
