@@ -25,6 +25,7 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
+> [Cluster sets](cluster-set.md) are not supported with Azure Stack HCI but you can Live Migrate between clusters.
 
 - It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade, or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
 
