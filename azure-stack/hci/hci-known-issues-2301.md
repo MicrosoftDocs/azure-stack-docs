@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2301 Public Preview release. This release maps to software version number **10.2301.0.26**. This release supports only brand new software installation using a deployment tool.
+This article applies to Azure Stack HCI, Supplemental Package, for 2301 Public Preview release. This release maps to software version number **10.2301.0.30**. This release supports only brand new software installation using a deployment tool.
 
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-preview.md#azure-stack-hci-supplemental-package-preview).
 
@@ -33,7 +33,8 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 |2|Observability | Deployment was configured with **Metrics and telemetry data** set to ON in the deployment tool. However, after the deployment is complete, the *SConfig* for Azure Stack HCI cluster nodes shows telemetry setting as OFF.|In this release, *SConfig* isn't aware of the telemetry settings. |
 |3|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-ASRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. <br> 4. Select option 15 to open a PowerShell session. Run this command: `Send-DiagnosticsData`.  |
 |4|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data is not collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
-|5|Disk Firmware |You may experience an issue with the Disk Firmware release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
+|5|Disk Firmware |You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
+|6|Deployment |The **Region** and **Management traffic virtual switch** parameters in the **Services** page in the deployment tool are not used in the deployment.|This issue will likely be fixed in a future release. |
 
 
 ## Known issues from previous releases
