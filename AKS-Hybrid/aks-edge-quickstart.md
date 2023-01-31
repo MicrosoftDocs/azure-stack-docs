@@ -64,16 +64,17 @@ Install-AksEdgeHostFeatures
 ## Step 6: Configure Azure Arc-related settings
 
 1. On your Azure subscription, enable the following resource providers: **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, and **Microsoft.KubernetesConfiguration**.
-2. In your working folder, open the [aide-userconfig.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aide-userconfig.json) file and provide the following information
-    | Attribute | Value type      |  Description |
-    | :------------ |:-----------|:--------|
-    |`SubscriptionName` | string | The name of your Azure subscription. You can find this on the Azure portal.|
-    | `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
-    | `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
-    |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-    |`ServicePrincipalName` | string | The name of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
-    |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
-    |`Auth` | object | Leave this blank, as it will be automatically filled in the next step. |
+2. In your working folder, open the [aide-userconfig.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aide-userconfig.json) file and provide the following information:
+
+   | Attribute | Value type      |  Description |
+   | :------------ |:-----------|:--------|
+   |`SubscriptionName` | string | The name of your Azure subscription. You can find this on the Azure portal.|
+   | `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
+   | `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+   |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
+   |`ServicePrincipalName` | string | The name of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
+   |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
+   |`Auth` | object | Leave this blank, as it will be automatically filled in the next step. |
 
 3. In the **AksEdgePrompt**, run the **AksEdgeAzureSetup.ps1** script from the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription.
 
