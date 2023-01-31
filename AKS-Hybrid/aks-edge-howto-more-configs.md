@@ -118,12 +118,12 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
 
     ![Screenshot showing results of all pods shown in Arc.](media/aks-edge/all-pods-in-arc.png)
 
-## Disconnect AKS Edge Essential cluster from Arc when using a proxy
+## Disconnect AKS Edge Essentials cluster from Arc when using a proxy
 
  Run `Disconnect-AideArc` to disconnect from the Arc-enabled server and Arc-enabled Kubernetes.
 
    ```powershell
-   # Disconnect Arc-enabled server and Arc-enabled kubernetes
+   # Disconnect Arc-enabled server and Arc-enabled Kubernetes
    Disconnect-AideArc
    ```
 
@@ -152,7 +152,7 @@ Alternatively, you can disconnect them individually using `Connect-AideArcServer
    Disconnect-AideArcServer
    ```
 
-For a complete clean-up, through the Azure portal, delete the service principal and resource group you created for this example.
+For a complete clean-up through the Azure portal, delete the service principal and resource group you created for this example.
 
 ## Next steps
 
