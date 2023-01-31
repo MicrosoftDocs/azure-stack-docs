@@ -11,7 +11,7 @@ ms.custom: template-tutorial #Required; leave this attribute/value as-is.
 
 
 
-# AKS Edge Essentials
+# AKS Edge Essentials PowerShell Module
 
 ## Module PowerShell Commands
 
