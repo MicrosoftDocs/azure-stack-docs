@@ -37,7 +37,7 @@ You can download the Supplemental Package here:
 | CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
 | Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
 
-To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
+To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
 
 The following new features are available in the 2301 preview release of Supplemental Package:
 
