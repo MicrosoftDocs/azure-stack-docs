@@ -8,77 +8,99 @@ ms.date: 12/05/2022
 ms.custom: template-how-to #Required; leave this attribute/value as-is.
 ---
 
-# Additional configuration for AKS Edge Essentials
+# Additional configuration and scripts for AKS Edge Essentials
 
-This article provides an alternate way of connecting to Azure Arc using Az PowerShell and PowerShell 7.
+This article provides alternate ways of connecting to Azure Arc, which can be applicable with clusters connected via a proxy.
 
-## Connect to Arc using PowerShell 7
+## Connect an AKS Edge Essentials cluster to Arc using a proxy
 
-### Step 1: Install dependencies
+### Prerequisites
 
-First, install [PowerShell 7.2.7](https://github.com/PowerShell/PowerShell/releases/download/v7.2.7/PowerShell-7.2.7-win-x64.msi).
-
-Then run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
-
-```PowerShell
-Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
-Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop 
-Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
-```
+* An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. Read the [Azure Resource Manager documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
+* Enable all required resource providers in the Azure subscription such as **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, and **Microsoft.KubernetesConfiguration**.
+* Create and verify a resource group for AKS Edge Essentials Azure resources.
 
 > [!NOTE]
-> For connecting to Arc, you must install a helm version that is greater than v3.0 but less than v3.7. We recommend installing version 3.6.3.
+> You will need the **Contributor** role to be able to delete the resources within the resource group. Commands to disconnect from Arc will fail without this role assignment.
 
-```PowerShell
-#download helm from web
-Invoke-WebRequest -Uri "https://get.helm.sh/helm-v3.6.3-windows-amd64.zip" -OutFile ".\helm-v3.6.3-windows-amd64.zip"
-```
+### Step 1: Configure your cluster for Azure connectivity
 
-```PowerShell
-#Unzip to a local directory
-Expand-Archive "helm-v3.6.3-windows-amd64.zip" C:\helm
-#set helm in the env Path
-$env:Path = "C:\helm\windows-amd64;$env:Path"
-```
+1. Download the [Azure/AKS-Edge GitHub repo](https://github.com/Azure/AKS-Edge/tree/main), if you haven't done so earlier. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+2. Provide details of your Azure subscription in the **aide-userconfig.json** file under the `Azure` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file. If you don't have a service principal, you can provide a name and the script in the next step creates one and populates the `Auth` section for you.
 
-### Step 2: Configure your Azure environment
+| Attribute | Value type      |  Description |
+| :------------ |:-----------|:--------|
+|`ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
+|`Location` | string | The location of your resource group. Choose the location closest to your deployment. |
+| `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
+| `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+|`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
+|`ClientId` | string | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
+|`ClientSecret` | string | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
 
-Follow the steps in [Configure your Azure environment](aks-edge-howto-connect-to-arc.md#1-configure-your-azure-environment) and note all the Azure parameters including the service principal ID and password.
+> [!NOTE]
+> This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.
 
-#### Create a PSCredential object with service principal
+3. Run or double-click the **AksEdgePrompt.cmd** file to open an elevated PowerShell window with the required modules loaded. You will see an overview of the PC information and the installed software versions.
+4. Run the **AksEdgeAzureSetup.ps1** script in the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription:
 
-Now create a **PSCredential** object to make it easier for you to connect to Arc:
+    ```powershell
+    # prompts for interactive login for service principal creation with Contributor role at resource group level
+    ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spContributorRole
 
-```powershell
-$username = "<appId of service principal>"
-$password ="<password of service principal>"
-$password = ConvertTo-SecureString $password -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($username, $password)
-```
+    # (or) alternative option
 
-### Step 3: Connect your cluster to Arc
+    # Prompts for interactive login for service principal creation with minimal privileges
+    ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
+    ```
 
-Connect your cluster to Azure Arc-enabled Kubernetes using `Set-AksEdgeArcConnection` function.
+6. Make sure that the credentials are valid, using **AksEdgeAzureSetup-Test.ps1**. This script logs into Azure using the new service principal credentials and checks the status of Azure resources.
 
-```powershell
-#populate your parameters and $credential from the earlier step.
-$parameters = @{
-    ClusterName = "optional cluster name"
-    TenantId = "your tenant ID"
-    SubscriptionId = "subscription id"
-    ResourceGroupName = "resourcegroupname"
-    Location = "fill location"
-    Credential = $credential
-    Connect = $true
-}
-Set-AksEdgeArcConnection @parameters
-```
+    ```powershell
+    # Test the credentials
+    ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup-Test.ps1 .\aide-userconfig.json
+    ```
 
-This step may take a while. When the PowerShell command is finished running, navigate to your resource group in the Azure portal and select your cluster. You should see its status as **Connected**.
+### Step 2: Connect your cluster to Azure
 
-![Screenshot showing cluster in Azure portal.](media/aks-edge/cluster-connected.png)
+1. Load the JSON configuration into the **AksEdgeShell** using `Read-AideUserConfig` and verify that the values are updated using `Get-AideUserConfig`. Alternatively, you can reopen **AksEdgePrompt.cmd** to use the updated JSON configuration:
 
-### Step 4: View cluster resources
+    ```powershell
+    Read-AideUserConfig
+    Get-AideUserConfig
+    ```
+
+    > [!IMPORTANT]
+    > Any time you modify **aide-userconfig.json**, run `Read-AideUserConfig` to reload, or close and re-open **AksEdgePrompt.cmd**.
+
+2. Run `Initialize-AideArc`. This installs Azure CLI (if not already installed), signs in to Azure with the given credentials, and validates the Azure configuration (resource providers and resource group status):
+
+   ```powershell
+   Initialize-AideArc
+   ```
+
+3. Run `Connect-AideArc` to install and connect the host machine to the Arc-enabled server and to connect the existing cluster to Arc-enabled Kubernetes.
+
+   ```powershell
+   # Connect Arc-enabled server and Arc-enabled Kubernetes
+   Connect-AideArc
+   ```
+
+    Alternatively, you can connect them individually using `Connect-AideArcServer` for Arc-enabled server and `Connect-AideArcKubernetes` for Arc-enabled Kubernetes.
+
+   ```powershell
+   # Connect Arc-enabled server
+   Connect-AideArcServer
+   # Connect Arc-enabled Kubernetes
+   Connect-AideArcKubernetes
+   ```
+
+    > [!NOTE]
+    > This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell will output `True` and return to the prompt when the process is completed. A bearer token will be saved in **servicetoken.txt** in the **tools** folder.
+
+    ![Screenshot showing PowerShell prompt while connecting to Arc](media/aks-edge/aks-edge-ps-arc-connection.png)
+
+### Step 3: View your cluster on Azure
 
 1. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
 
@@ -96,18 +118,44 @@ This step may take a while. When the PowerShell command is finished running, nav
 
     ![Screenshot showing results of all pods shown in Arc.](media/aks-edge/all-pods-in-arc.png)
 
-### Disconnect from Arc
+## Disconnect AKS Edge Essentials cluster from Arc when using a proxy
 
-Run the following command to disconnect your cluster from Azure Arc:
+ Run `Disconnect-AideArc` to disconnect from the Arc-enabled server and Arc-enabled Kubernetes.
 
-```powershell
-Set-AksEdgeArcConnection -connect $false -credential $credential
-```
+   ```powershell
+   # Disconnect Arc-enabled server and Arc-enabled Kubernetes
+   Disconnect-AideArc
+   ```
 
-For a complete clean-up, delete the service principal and resource group you created for this evaluation.
+Alternatively, you can disconnect them individually using `Connect-AideArcServer` for Arc-enabled servers and `Connect-AideArcKubernetes` for Arc-enabled Kubernetes.
+
+   ```powershell
+   # Disconnect Arc-enabled server
+   Disconnect-AideArcServer
+   # Disconnect Arc-enabled Kubernetes
+   Disconnect-AideArcKubernetes
+   ```
+
+## Connect host machine to Arc
+
+1. You can connect the host machine using `Connect-AideArcServer` for Arc-enabled servers:
+
+   ```powershell
+   # Connect Arc-enabled server
+   Connect-AideArcServer
+   ```
+
+1. To disconnect the host machine from Arc, using `Disconnect-AideArcServer` for Arc-enabled servers:
+
+   ```powershell
+   # Disconnect Arc-enabled server
+   Disconnect-AideArcServer
+   ```
+
+For a complete clean-up through the Azure portal, delete the service principal and resource group you created for this example.
 
 ## Next steps
 
-- Deploy your application (./aks-edge-howto-deploy-app.md)
-- [Overview](aks-edge-overview.md)
-- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
+* Deploy your application (./aks-edge-howto-deploy-app.md)
+* [Overview](aks-edge-overview.md)
+* [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

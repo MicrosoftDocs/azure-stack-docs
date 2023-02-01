@@ -38,7 +38,6 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 
 ### Azure Arc parameters
 
-
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
 | `Arc.ClusterName` |String|Name of the cluster in the Azure portal| `<Machinename>-cluster` |
@@ -48,9 +47,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | `Arc.ClientId` |String|Client ID of the service principal| None |
 | `Arc.ClientSecret` |String|Secret associated with the Service Principal| None |
 
-
 ### Network parameters
-
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
@@ -69,7 +66,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 
 | Attribute | Value type      |  Description |  Default value |
 | :------------ |:-----------|:--------|:--------|
-| `AcceptEula` | `boolean` | Accept or decline the [EULA](https://github.com/Azure/AKS-Edge/blob/main/EULA.md) for public preview. | `false` |
+| `AcceptEula` | `boolean` | Accept or decline the [EULA](https://github.com/Azure/AKS-Edge/blob/main/EULA.md) | `false` |
 | `AcceptOptionalTelemetry` | `boolean` | Accept only the required telemetry or accept the optional telemetry as well. The default is only the required telemetry. | `false` |
 
 ## Machines
