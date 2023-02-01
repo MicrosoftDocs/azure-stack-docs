@@ -24,7 +24,7 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 The parameters needed to create a scalable cluster can be generated using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster -outFile ./aksedge-config.json
+New-AksEdgeConfig -DeploymentType ScalableCluster -outFile .\aksedge-config.json
 ```
 
 This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).

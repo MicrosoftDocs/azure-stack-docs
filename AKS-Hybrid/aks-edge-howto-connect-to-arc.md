@@ -72,7 +72,7 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
 
    ```powershell
    # Connect Arc-enabled server and Arc-enabled kubernetes
-   Connect-AksEdgeArc -JsonConfigFilePath ./aksedge-config.json
+   Connect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
    ```
 
 > [!NOTE]
@@ -112,7 +112,7 @@ Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
 
    ```powershell
    # Disconnect Arc-enabled server and Arc-enabled kubernetes
-   Disconnect-AksEdgeArc -JsonConfigFilePath AksEdgeDeployConfigTemplate.json
+   Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
    ```
 
 ## Connect host machine to Arc

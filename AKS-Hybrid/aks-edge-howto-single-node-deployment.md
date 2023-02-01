@@ -21,7 +21,7 @@ Set up your primary machine as described in the [Set up machine](aks-edge-howto-
 The parameters needed to create a single machine cluster can be generated using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile ./aksedge-config.json
+New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json
 ```
 
 This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
@@ -37,7 +37,7 @@ The key parameters for single machine deployment are:
 1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
 ```PowerShell
-New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
+New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
 ## 3. Validate your cluster
@@ -58,13 +58,13 @@ The following image shows pods on a K3S cluster:
 If you want to add Windows node to an existing Linux only single machine cluster, first create the configuration file using the following command:
 
 ```powershell
-New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -outFile ./ScaleConfig.json
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -outFile .\ScaleConfig.json
 ```
 
 This creates the configuration file `ScaleConfig.json` in the current working directory. You can also modify the Windows node parameters in the configuration file to specify the resources that needs to be allocated to the Windows node. With the configuration file, you can run the following command to add the node the single machine cluster.
 
 ```powershell
-Add-AksEdgeNode -JsonConfigFilePath ./ScaleConfig.json
+Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
 ```
 
 ## Example deployment options
@@ -147,13 +147,13 @@ You can also choose to pass the parameters as a JSON string, as previously menti
 You can also create a cluster with both Linux and Windows node. You can create the configuration file using the command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile ./aksedge-config.json
+New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json
 ```
 
 Once the configuration file is created, you can deploy your cluster using:
 
 ```PowerShell
-New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
+New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
 ## Next steps
