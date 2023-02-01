@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Connect your AKS Edge Essentials cluster to Arc
 
-This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the Github repo to connect your cluster to Arc as described [here.](./aks-edge-howto-more-configs.md)
+This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the GitHub repo to connect your cluster to Arc as described [here.](./aks-edge-howto-more-configs.md)
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ## Step 2: Configure your Azure environment
 
-Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal you can follow the steps [here.](/azure/active-directory/develop/howto-create-service-principal-portal)
+Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/active-directory/develop/howto-create-service-principal-portal)
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
@@ -67,7 +67,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 
 ## Step 3: Connect your cluster to Arc
 
-1. Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enabled Kubernetes.
+Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enabled Kubernetes.
 
    ```powershell
    # Connect Arc-enabled server and Arc-enabled kubernetes
@@ -97,7 +97,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 
    ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
-5. Now you can view resources on your cluster. This is the **Workloads** blade, showing the same as:
+5. Now you can view resources on your cluster. The **Workloads** blade, shows the pods running in your cluster.
 
     ```powershell
     kubectl get pods --all-namespaces

@@ -35,7 +35,7 @@ Deploy an AKS Edge Essentials K3S cluster on a single machine. On your machine, 
 
 ## Step 3: Download scripts for easy deployment
 
-In addition to the MSI, Microsoft provides a few samples and tools which you can download from the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
+In addition to the MSI, Microsoft provides a few samples and tools, which you can download from the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
 ## Step 4: Load AKS Edge Essentials PowerShell modules
 
@@ -53,7 +53,7 @@ Get-Command -Module AKSEdge | Format-Table Name, Version
 
 ## Step 5: Check AKS Edge Essentials-related device settings
 
-You can run the `Install-AksEdgeHostFeatures` command to validate the Hyper-V, SSH and Power settings on the machine. This might require a system reboot.
+You can run the `Install-AksEdgeHostFeatures` command to validate the Hyper-V, SSH and Power settings on the machine. Running this command might require a system reboot.
 
 ```powershell
 Install-AksEdgeHostFeatures
@@ -68,7 +68,7 @@ Install-AksEdgeHostFeatures
 
    | Attribute | Value type      |  Description |
    | :------------ |:-----------|:--------|
-   |`SubscriptionName` | string | The name of your Azure subscription. You can find this on the Azure portal.|
+   |`SubscriptionName` | string | The name of your Azure subscription from the Azure portal.|
    | `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
    | `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
    |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
@@ -89,25 +89,25 @@ Install-AksEdgeHostFeatures
 
 1. You can generate the parameters needed to create a single machine cluster using the following command:
 
-```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile ./aksedge-config.json
-```
-
+    ```powershell
+    New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile ./aksedge-config.json
+    ```
+    
 This command creates a configuration file called **aksedge-config.json** which includes the configurations needed to create a single-machine cluster with a Linux node. The file is created in your current working directory.
 
 2. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge Essentials cluster with a single Linux control-plane node:
 
-```PowerShell
-New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
-```
-
+    ```PowerShell
+    New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
+    ```
+    
 3. Confirm that the deployment was successful by running:
 
-```powershell
-kubectl get nodes -o wide
-kubectl get pods -A -o wide
-```
-
+    ```powershell
+    kubectl get nodes -o wide
+    kubectl get pods -A -o wide
+    ```
+    
 The following image shows pods on a K3S cluster:
 
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
@@ -133,7 +133,7 @@ The following image shows pods on a K3S cluster:
 
 2. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**:
 
-   ![Kubernetes resources preview.](media/aks-edge/kubernetes-resources-preview.png)
+   ![Screenshot of Kubernetes resources.](media/aks-edge/kubernetes-resources-preview.png)
 
 3. To view your Kubernetes resources, you need a bearer token:
 
@@ -143,7 +143,7 @@ The following image shows pods on a K3S cluster:
 
    ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
-5. Now you can view resources on your cluster. This is the **Workloads** blade, showing the same as:
+5. Now you can view resources on your cluster. The **Workloads** blade, shows the pods running on your cluster.
 
     ```powershell
     kubectl get pods --all-namespaces
