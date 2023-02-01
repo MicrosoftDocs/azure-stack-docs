@@ -275,7 +275,7 @@ If you exceed the maximum period of offline operation, `ConnectionStatus` will s
 
 To view the status of the cluster and Arc resources, navigate to the following screens in the Azure portal:
 
-:::image type="content" source="media/register-with-azure/cluster-status-1.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-1.png":::
+:::image type="content" source="media/register-with-azure/cluster-status-1.png" alt-text="Screenshot of cluster resources." lightbox="media/register-with-azure/cluster-status-1.png":::
 
 :::image type="content" source="media/register-with-azure/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-2.png":::
 
@@ -478,7 +478,7 @@ Before registration, make sure the [prerequisites](#prerequisites-for-cluster-re
 > [!NOTE]
 > When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster. This is important to remember if you plan to "Add new server" or "Unregister" in the future. These SPN credentials are used for initial onboarding to HCI. HCI still creates separate SPN credentials for Arc onboarding. To use a custom SPN for Arc onboarding, see [How do I register a cluster using SPN for Arc onboarding?](#how-do-i-register-a-cluster-using-spn-for-arc-onboarding).
 
-1. Run ['Connect-AzAccount'](/powershell/module/az.accounts/connect-azaccount?view=azps-9.3.0) to connect to Azure.
+1. Run ['Connect-AzAccount'](/powershell/module/az.accounts/connect-azaccount) to connect to Azure.
    To use SPN to connect, you can use:
    - Device Code-based authentication. Use `-DeviceCode` in the cmdlet.
    - Certificated based authentication. [See this article](/azure/active-directory/authentication/how-to-certificate-based-authentication) to configure the SPN for certificate-based authentication. Then use appropriate parameters in the `Connect-AzAccount` cmdlet that accept certificate information.
