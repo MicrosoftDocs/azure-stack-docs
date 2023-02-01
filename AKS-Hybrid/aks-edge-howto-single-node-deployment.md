@@ -28,9 +28,9 @@ This creates a configuration file called `aksedge-config.json` which includes th
 
 The key parameters for single machine deployment are:
 
-- `DeploymentType` - This parameter defines the deployment type and is specified as `SingleMachineCluster`. 
-- The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster change the CNI to `calico`. 
-- The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md)  `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `Network.ServiceIPRangeSize`, `Network.InternetDisabled`.
+- `DeploymentType` - This parameter defines the deployment type and is specified as `SingleMachineCluster`.
+- The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster change the CNI to `calico`.
+- The following parameters can be set according to your deployment configuration [as described here](aks-edge-deployment-config-json.md)  `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, `Network.InternetDisabled`.
 
 ## 2. Create a single machine cluster
 
@@ -76,13 +76,14 @@ You can programmatically edit the JSON object and pass it as a string:
 ```powershell
 $jsonString = New-AksEdgeConfig -DeploymentType SingleMachineCluster
 $jsonObj = $jsonString | ConvertFrom-Json 
-$jsonObj.EndUser.AcceptEula = $true
-$jsonObj.EndUser.AcceptOptionalTelemetry = $true
-$jsonObj.LinuxVm.CpuCount = 4
-$jsonObj.LinuxVm.MemoryInMB = 4096
-$jsonObj.Network.ServiceIpRangeSize = 10
+$jsonObj.User.AcceptEula = $true
+$jsonObj.User.AcceptOptionalTelemetry = $true
+$jsonObj.Init.ServiceIpRangeSize = 10
+$machine = $jsonObj.Machines[0]
+$machine.LinuxNode.CpuCount = 4
+$machine.LinuxNode.MemoryInMB = 4096
 
-New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
+New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 ```
 
 ### Create a simple cluster without a load balancer
@@ -95,11 +96,11 @@ You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as
 
 ### Allocate resources to your nodes
 
- To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4 GB or more for `LinuxVm.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxNode.CpuCount` (processing power), 4 GB or more for `LinuxNode.MemoryinMB` (RAM) and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
    ```json
     {
-      "SchemaVersion": "1.4",
+      "SchemaVersion": "1.5",
       "Version": "1.0",
       "DeploymentType": "SingleMachineCluster",
       "Init": {
@@ -108,14 +109,19 @@ You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as
        "Network": {
            "NetworkPlugin": "flannel",
        },
-       "EndUser": {
+       "User": {
            "AcceptEula": true,
            "AcceptOptionalTelemetry": true
        },
-       "LinuxVm": {
-           "CpuCount": 4,
-           "MemoryInMB": 4096
-       }
+       "Machines": [
+            {
+               "LinuxNode": {
+                   "CpuCount": 4,
+                   "MemoryInMB": 4096
+               }
+            }
+        ]
+    }
    ```
 
 > [!NOTE]
@@ -124,28 +130,32 @@ You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as
 You can also choose to pass the parameters as a JSON string, as previously mentioned:
 
    ```powershell
-   $jsonString = New-AksEdgeConfig -outFile .\mydeployconfig.json
+   $jsonString = New-AksEdgeConfig -DeploymentType SingleMachineCluster
    $jsonObj = $jsonString | ConvertFrom-Json 
-   $jsonObj.EndUser.AcceptEula = $true
-   $jsonObj.EndUser.AcceptOptionalTelemetry = $true
-   $jsonObj.LinuxVm.CpuCount = 4
-   $jsonObj.LinuxVm.MemoryInMB = 4096
-   $jsonObj.Network.ServiceIpRangeSize = 10
+   $jsonObj.User.AcceptEula = $true
+   $jsonObj.User.AcceptOptionalTelemetry = $true
+   $jsonObj.Init.ServiceIpRangeSize = 10
+   $machine = $jsonObj.Machines[0]
+   $machine.LinuxNode.CpuCount = 4
+   $machine.LinuxNode.MemoryInMB = 4096
 
-   New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json)
+   New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
    ```
 
 ### Create a mixed workload cluster
 
-You can also create a cluster with both Linux and Windows node. You can create the configuration file using the command: 
+You can also create a cluster with both Linux and Windows node. You can create the configuration file using the command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows
+New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile ./aksedge-config.json
 ```
+
 Once the configuration file is created, you can deploy your cluster using:
+
 ```PowerShell
 New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
 ```
+
 ## Next steps
 
 - [Deploy your application](aks-edge-howto-deploy-app.md).
