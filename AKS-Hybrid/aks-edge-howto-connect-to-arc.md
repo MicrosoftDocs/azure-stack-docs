@@ -57,8 +57,8 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 | :------------ |:-----------|:--------|
 |`ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
 |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
-| `SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
-| `TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+|`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
+|`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
 |`ClientId` | GUID | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
 |`ClientSecret` | string | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
@@ -71,7 +71,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enabled Kubernetes.
 
    ```powershell
-   # Connect Arc-enabled server and Arc-enabled kubernetes
+   # Connect Arc-enabled kubernetes
    Connect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
    ```
 
@@ -111,7 +111,7 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
 Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
 
    ```powershell
-   # Disconnect Arc-enabled server and Arc-enabled kubernetes
+   # Disconnect Arc-enabled kubernetes
    Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
    ```
 
