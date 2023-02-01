@@ -103,6 +103,8 @@ New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx"
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
+> [!NOTE]
+> Run `New-AksEdgeScaleConfig` only on the machines that has `Linux node with ControlPlane role`
 
 You can use the generated configuration file and run the following command to add the Windows node:
 
