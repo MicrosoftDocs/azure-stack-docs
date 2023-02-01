@@ -74,10 +74,10 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
    Connect-AksEdgeArc -JsonConfigFilePath ./aksedge-config.json
    ```
 
-    > [!NOTE]
-    > This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell will output `True` and return to the prompt when the process is completed.
+> [!NOTE]
+> This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell will output `True` and return to the prompt when the process is completed.
 
-    ![Screenshot showing PowerShell prompt while connecting to Arc](media/aks-edge/aks-edge-ps-arc-connection.png)
+![Screenshot showing PowerShell prompt while connecting to Arc](media/aks-edge/aks-edge-ps-arc-connection.png)
 
 ## Step 4: View AKS Edge resources in Azure
 
