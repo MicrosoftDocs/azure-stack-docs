@@ -91,7 +91,7 @@ PS C:\ClusterStorage\Volume1> $ImageSourcePath = "C:\ClusterStorage\Volume1\Wind
 1. Create the VM image starting with a specified image in a local share on your Azure Stack HCI cluster.
 
     ```azurecli
-    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
+    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $ImageSourcePath --name $ImageName --os-type $osType
     ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
 
