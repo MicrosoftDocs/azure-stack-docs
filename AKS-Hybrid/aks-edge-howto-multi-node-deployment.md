@@ -23,7 +23,6 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 
 The parameters needed to create a scalable cluster can be generated using the following command:
 
-
 ```powershell
 New-AksEdgeConfig -DeploymentType ScalableCluster -outFile ./aksedge-config.json
 ```
@@ -31,6 +30,7 @@ New-AksEdgeConfig -DeploymentType ScalableCluster -outFile ./aksedge-config.json
 This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
 
 The key parameters to note for a scalable Kubernetes deployment are:
+
 - **External switch information** - A full deployment uses an external switch to enable communication across the nodes. You must specify the `MachineConfigType.NetworkConnection.AdapterName` as either `Ethernet` or `Wi-Fi`.
 
     ```powershell
@@ -47,7 +47,7 @@ The key parameters to note for a scalable Kubernetes deployment are:
 
 - **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart` and `DnsServers`.
 - The `Network.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. In K8S cluster change the `NetworkPlugin` to `calico`.
-- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  -  `LinuxVm.CpuCount`, `LinuxVm.MemoryInMB`, `LinuxVm.DataSizeInGB`,  `LinuxVm.Ip4Address`, `WindowsVm.CpuCount`, `WindowsVm.MemoryInMB`, `WindowsVm.Ip4Address`, `Network.ServiceIPRangeSize`,  `Network.InternetDisabled`.
+- In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  -  `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`,  `LinuxNode.Ip4Address`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `WindowsNode.Ip4Address`, `Init.ServiceIPRangeSize`,  `Network.InternetDisabled`.
 
 ## 2. Validate the configuration file
 
@@ -62,7 +62,7 @@ Test-AksEdgeNetworkParameters -JsonConfigFilePath .\aksedge-config.json
 If `Test-AksEdgeNetworkParameters` returns true, you're ready to create your deployment. You can create your deployment using the `New-AksEdgeDeployment` cmdlet:
 
 ```powershell
-New-AksEdgeDeployment -JsonConfigFilePath .\AksEdgeDeployConfigTemplate.json
+New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
 The `New-AksEdgeDeployment` cmdlet automatically gets the kubeconfig file.
@@ -83,7 +83,7 @@ A screenshot of a Kubernetes cluster is shown below:
 If you want to add Windows node to an existing Linux only machine, you can run:
 
 ```powershell
-New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx"
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
@@ -96,35 +96,35 @@ Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
 
 ## Example configurations for different deployment options
 
-
 ### Allocate resources to your nodes
 
-To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxVm.CpuCount` (processing power), 4 GB or more for `LinuxVm.MemoryinMB` (RAM), and assign a number greater than 0 to `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxNode.CpuCount` (processing power), 4 GB or more for `LinuxNode.MemoryinMB` (RAM), and assign a number greater than 0 to `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
 
 ```json
- "LinuxVm": {
-        "CpuCount": 4,
-        "MemoryInMB": 4096,
-        "DataSizeinGB": 20,
-        "Ip4Address": "192.168.1.171"
+    "Init": {
+        "ServiceIpRangeSize": 10,
+        "ServiceIPRangeStart": "192.168.1.151"
     },
-    "WindowsVm": {
-        "CpuCount": 2,
-        "MemoryInMB": 4096,
-        "DataSizeinGB": 20,
-        "Ip4Address": "192.168.1.172"
+    "Network": {
+        "ControlPlaneEndpointIp": "192.168.1.191",
+        "NetworkPlugin": "calico",
+        "Ip4GatewayAddress": "192.168.1.1",
+        "Ip4PrefixLength": 24,
+        "DnsServers": ["192.168.1.1"]
     },
-"Network": {
-    "VSwitch":{
-        "AdapterName" : "Ethernet"
-    },
-    "ControlPlaneEndpointIp": "192.168.1.191",
-    "Ip4GatewayAddress": "192.168.1.1",
-    "Ip4PrefixLength": 24,
-    "ServiceIpRangeSize":10,
-    "ServiceIPRangeStart": "192.168.1.151",
-    "DnsServers": ["192.168.1.1"]
-}
+    "Machines": [
+        {
+            "NetworkConnection": {
+                "AdapterName": "Ethernet"
+            },
+            "LinuxNode": {
+                "CpuCount": 4,
+                "MemoryInMB": 4096,
+                "DataSizeInGB": 20,
+                "Ip4Address": "192.168.1.171"
+            }
+        }
+    ]
 ```
 
 ### Create Linux and Windows node
@@ -132,12 +132,34 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
 To run both the Linux control plane and the Windows worker node on a machine, create the configuration file using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows
+New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows -outFile aksedge-config.json
 ```
-Create the deployment using the command: 
+
+Create the deployment using the command:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
+```
+
+```json
+    "Machines": [
+        {
+            "NetworkConnection": {
+                "AdapterName": "Ethernet"
+            },
+            "LinuxNode": {
+                "CpuCount": 4,
+                "MemoryInMB": 4096,
+                "DataSizeInGB": 20,
+                "Ip4Address": "192.168.1.171"
+            },
+            "WindowsNode": {
+                "CpuCount": 2,
+                "MemoryInMB": 4096,
+                "Ip4Address": "192.168.1.172"
+            }
+        }
+    ]
 ```
 
 ## Next steps
