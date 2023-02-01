@@ -16,7 +16,7 @@ ms.date: 01/31/2022
 This article describes the new features or enhancements that are currently available in the preview for Azure Stack HCI. This article includes:
 
 - [What's in the preview channel](#azure-stack-hci-preview-channel).
-- [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package-preview).
+- [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-2301-supplemental-package-preview).
 
 ## Azure Stack HCI preview channel
 
