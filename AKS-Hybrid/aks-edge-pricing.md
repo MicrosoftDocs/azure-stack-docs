@@ -27,7 +27,7 @@ For detailed pricing information, see the AKS Edge Essentials pricing details pa
 
 - A Microsoft-managed, lightweight, CNCF-conformant K8S and K3S distribution.
 - License to use one Microsoft-managed Linux (CBL-Mariner) VM container host for use with Linux containers on AKS Edge Essentials.
-- License to use one Microsoft-managed Windows VM container host for use with Windows containers on AKS Edge Essentials. Pricing does'nt include a Windows VM container host license.
+- License to use one Microsoft-managed Windows VM container host for use with Windows containers on AKS Edge Essentials. Pricing doesn't include a Windows VM container host license.
 - Azure Arc-enabled Kubernetes at no extra charge and the following items:
   - Inventory, grouping, and tagging in Azure.
   - Deployment of apps and configurations with GitOps: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is per vCPU per month).
