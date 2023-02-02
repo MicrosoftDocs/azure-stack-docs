@@ -110,7 +110,7 @@ The following image shows pods on a K3S cluster:
 
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
-## Step 8: Connect your cluster to Azure using Arc
+## Step 7: Connect your cluster to Azure using Arc
 
 1. You can now run the following command to connect your cluster to Azure:
 
@@ -122,7 +122,7 @@ The following image shows pods on a K3S cluster:
     > [!NOTE]
     > This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell will output `True` and return to the prompt when the process is completed.
 
-## Step 9: View the AKS Edge Essentials cluster in Azure
+## Step 8: View the AKS Edge Essentials cluster in Azure
 
 1. Once the process is complete, you can view your cluster in the Azure portal if you navigate to your resource group:
 
