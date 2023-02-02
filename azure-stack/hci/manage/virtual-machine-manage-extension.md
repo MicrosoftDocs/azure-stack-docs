@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/01/2023
+ms.date: 02/02/2023
 ---
 
 # Manage VM extensions on Azure Stack HCI virtual machines (preview)
@@ -26,7 +26,9 @@ The following VM extensions are supported on Azure Stack HCI VMs.
 | Extension       | Publisher  | Type               |
 |---------------------|--------------|------------|
 | Custom Script Extension | Microsoft.Compute    |CustomScriptExtension|
-| Domain Join Extension | Microsoft.Compute    |DomainJoinExtension|
+| Domain Join Extension* | Microsoft.Compute    |DomainJoinExtension|
+
+**Domain Join extension is only available during VM creation.*
 
 
 ## Supported VM extensions on Linux
@@ -42,7 +44,7 @@ The following VM extensions are supported on Azure Stack HCI VMs.
 
 Before you install and manage VM extensions, make sure that:
 
-- You’ve access to an Arc-enabled Azure Stack HCI VM that has guest management enabled. Guest management is supported both on Windows and Linux VMs. For more information on how to create an Arc-enabled VM, see [Deploy Arc-enabled VMs on your Azure Stack HCI cluster](./manage-virtual-machines-in-azure-portal.md).
+- You’ve access to an Arc-enabled Azure Stack HCI VM that has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc-enabled VM, see [Deploy Arc-enabled VMs on your Azure Stack HCI cluster](./manage-virtual-machines-in-azure-portal.md).
 
 ## Verify guest management is enabled
 
@@ -51,7 +53,7 @@ To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you mu
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extension is only available during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](../manage/manage-virtual-machines-in-azure-portal.md#create-arc-vms).
+> Domain Join extension can only be enabled and installed during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](../manage/manage-virtual-machines-in-azure-portal.md#create-arc-vms).
 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
