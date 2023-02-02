@@ -55,7 +55,16 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
     1. **Custom location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
 
-    1. **Image** – Select the Marketplace or customer managed image to create the VM image. If you selected a Windows image, provide a username and password for the administrator account. For Linux VMs, provide SSH keys.
+    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
+    
+        1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
+ 
+           :::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::       
+
+        1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
+
+           :::image type="content" source="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png":::
+
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 
@@ -65,15 +74,30 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
        :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot showing how to Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
     
-    1. **Administrator account**: Specify the username and the password for the administrator account on the VM. 
+    1. **Administrator account** – Specify the username and the password for the administrator account on the VM.
     
-    1. **Enable guest management** - Select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
+    1. **Enable guest management** – Select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
     
         > [!NOTE]
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
-        > - Add atleast one network interface through the **Networking** tab to complete guest management setup.
+        > - Add at least one network interface through the **Networking** tab to complete guest management setup.
+        > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Network topology and connectivity for Azure Arc-enabled servers](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/eslz-arc-servers-connectivity#define-extensions-connectivity-method).
 
-       :::image type="content" source="./media/manage-vm-resources/create-arc-vm-1.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
+    1. If you selected a Windows VM image, you can domain join your Windows VM. Follow these steps: 
+    
+        1. Select **Enable domain join**. Azure AD-joined VMs remove the need to have line-of-sight from the VM to an on-premises or virtualized Active Directory Domain Controller or to deploy Azure AD Domain Services.
+    
+        1. Only the Azure Active Directory is supported and selected by default.  
+        
+        1. Provide the AD domain join UPN. The UPN user has permissions and is used to join the virtual machines to your domain.
+        
+        1. Provide the domain administrator password for the virtual machine.
+
+        1. Specify domain or unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path. 
+        
+            If not specified, the domain name uses the suffix of the Active Directory domain join UPN by default. For example, the user "azurestackhciuser@contoso.com" would get the default domain name "contoso.com".
+        
+       :::image type="content" source="./media/manage-vm-resources/create-vm-enable-guest-management.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-vm-enable-guest-management.png":::
 
 1. **(Optional)** Create new or add more disks to the VM by providing a name and size. You can also choose the disk type to be static or dynamic.
 
@@ -84,7 +108,6 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
    :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
 
-
 1. **(Optional)** Add tags to the VM resource if necessary.
 
 1. Review all the properties, and then select **Create**. It should take a few minutes to provision the VM.
@@ -92,6 +115,6 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
 ## Next steps
 
-- [Install and manage VM extensions](./virtual-machine-manage-extension.md)
-- [Troubleshoot](troubleshoot-arc-enabled-vms.md)
-- [FAQs](faqs-arc-enabled-vms.md)
+- [Install and manage VM extensions](./virtual-machine-manage-extension.md).
+- [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
+- [Frequently Asked Questions for Arc VM management](faqs-arc-enabled-vms.md).
