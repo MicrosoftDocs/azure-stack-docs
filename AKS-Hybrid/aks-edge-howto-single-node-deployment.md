@@ -86,9 +86,9 @@ $machine.LinuxNode.MemoryInMB = 4096
 New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 ```
 
-### Create a simple cluster without a load balancer
+### Create a simple cluster with NodePort service
 
-You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0). You can't create a LoadBalancer service in this approach.
+You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0).
 
    ```powershell
    New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
