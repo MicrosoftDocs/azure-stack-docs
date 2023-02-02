@@ -13,7 +13,9 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to set up the first server in your Azure Stack HCI cluster.
+This article describes how to set up the first server in the cluster for a new Azure Stack HCI deployment.
+
+The deployment tool is included in the Azure Stack HCI Supplemental Package. You need to install and set up the deployment tool only on the first server in the cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 

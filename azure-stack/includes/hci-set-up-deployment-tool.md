@@ -8,9 +8,6 @@ ms.date: 02/01/2023
 ms.reviewer: alkohli
 ---
 
-> [!NOTE]
-> You need to install and set up the deployment tool only on the first server in the cluster. The deployment tool is included in the Azure Stack HCI Supplemental Package.
-
 1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
