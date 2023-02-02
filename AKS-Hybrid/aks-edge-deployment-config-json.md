@@ -78,7 +78,7 @@ After you set up your machines and downloaded the [GitHub repo](https://github.c
 | `ServiceIPRangeSize` | `number` | Number of reserved IP start addresses for your Kubernetes services. Based on the size, we will allocate a range of free IP addresses on your subnet. |
 | `ServiceIPRangeStart`| `A.B.C.x` | Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C**. |
 | `ServiceIPRangeEnd` | `A.B.C.x` | Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C**.  |
-| `DnsServers` | `A.B.C.1` | IP address of your DNS (typically the router address). To view what DNS your machine uses, issue the command `ipconfig /all \| findstr /R "DNS\ Servers"`. |
+| `DnsServers` | `A.B.C.1` | IP address of your DNS (typically the router address). To view what DNS your machine uses, run the PowerShell `Get-DnsClientServerAddress \|   Where-Object AddressFamily -EQ '2'  \| Select-Object –ExpandProperty ServerAddresses` command to show the IPv4 addresses. |
 | `InternetDisabled` | `boolean` | Whether your cluster has access to the internet. The default is `false`, meaning your cluster by default has access to the internet. |
 | `Proxy.Http` | `string` | HttpProxy link. |
 | `Proxy.Https` | `string` | HttpsProxy link. |
