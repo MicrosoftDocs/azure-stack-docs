@@ -17,31 +17,36 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
-## Step 1: Download the installer
+## Step 1: Download scripts for easy deployment
 
-Deploy an AKS Edge Essentials K3S cluster on a single machine. On your machine, download the [**AksEdge-k3s.msi**](https://aka.ms/aks-edge/k3s-msi) file.
+Microsoft provides a few samples and tools, which you can download from the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
 
-## Step 2: Install the MSI
+## Step 2: Configure deployment parameters
 
-1. Open PowerShell as an administrator, and navigate to the folder directory with the installer file.
+In your working folder, open the [aide-userconfig.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aide-userconfig.json) file and provide the following information:
 
-2. In the following command, replace `k3s-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+   | Attribute | Type / Values |  Description |
+   | :------------ |:-----------|:--------|
+   |`AksEdgeProduct` | [`AKS Edge Essentials - K8s` / `AKS Edge Essentials - K3s` ]| Specify the desired product K3s or K8s.|
+   |`InstallOptions.InstallPath` | string | File path for the AKS Edge installation.|
+   |`InstallOptions.VhdxPath` | string | File path for the vhdx files. |
+   |`VSwitch.AdapterName` | string | Physical network adapter name, required only for `ScalableCluster`. You can get this using `Get-NetAdapter -Physical \| Where-Object { $_.Status -eq 'Up'}`.|
+   |`VSwitch.Name` | string | Switch name for the virtual switch (External), required only for `ScalableCluster`.|
+   |`AksEdgeConfigFile` | string | The file name for the AKS Edge config (`aksedge-config.json`)|
 
-    ```powershell
-    msiexec.exe /i AksEdge-k3s-x.xx.x.msi
-    ```
+In your working folder, open the [aksedge-config.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file and review the json configuration for singlemachinecluster cluster. You may want to change the `Network.NetworkPlugin` to `calico` if you are using K8s configuration.
 
-    By default, AKS Edge Essentials will be installed in `C:\Program Files\AksEdge`.
-
-## Step 3: Download scripts for easy deployment
-
-In addition to the MSI, Microsoft provides a few samples and tools, which you can download from the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a working folder.
-
-## Step 4: Load AKS Edge Essentials PowerShell modules
+## Step 3: Install AKS Edge Essentials PowerShell modules
 
 You can load AKS Edge Essentials modules by running the **AksEdgePrompt** file from the **tools** folder in the downloaded [GitHub repo](https://github.com/Azure/AKS-Edge/blob/main/tools/AksEdgePrompt.cmd). This PowerShell script checks for prerequisites such as Hyper-V, system CPU and memory resources, and the AKS Edge Essentials program, and loads the corresponding PowerShell modules.
 
 ![Screenshot showing the PowerShell prompt.](./media/aks-edge/aksedge-prompt.png)
+
+Install the AKS Edge Essentials msi using
+
+```powershell
+Install-AideMsi
+```
 
 You can see the full list of supported commands by running the following cmdlet:
 
@@ -51,7 +56,7 @@ Get-Command -Module AKSEdge | Format-Table Name, Version
 
 ![Screenshot of installed PowerShell modules.](media/aks-edge/aks-edge-prompt-get-module.png)
 
-## Step 5: Check AKS Edge Essentials-related device settings
+## Step 4: Check AKS Edge Essentials-related device settings
 
 You can run the `Install-AksEdgeHostFeatures` command to validate the Hyper-V, SSH and Power settings on the machine. Running this command might require a system reboot.
 
@@ -61,65 +66,57 @@ Install-AksEdgeHostFeatures
 
 ![Screenshot showing the checks that are done.](media/aks-edge/aks-edge-prompt-install-host.png)
 
-## Step 6: Configure Azure Arc-related settings
+## Step 5: Configure Azure Arc-related settings
 
-1. On your Azure subscription, enable the following resource providers: **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, and **Microsoft.KubernetesConfiguration**.
-2. In your working folder, open the [aide-userconfig.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aide-userconfig.json) file and provide the following information:
+1. In your working folder, open the [aide-userconfig.json](https://github.com/Azure/AKS-Edge/blob/main/tools/aide-userconfig.json) file and provide the following information:
 
    | Attribute | Value type      |  Description |
    | :------------ |:-----------|:--------|
-   |`SubscriptionName` | string | The name of your Azure subscription from the Azure portal.|
-   | `SubscriptionId` | string | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
-   | `TenantId` | string | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
-   |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-   |`ServicePrincipalName` | string | The name of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
-   |`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
-   |`Auth` | object | Leave this blank, as it will be automatically filled in the next step. |
+   |`Azure.ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
+   |`Azure.Location` | string | The location of your resource group. Choose the location closest to your deployment. |
+   |`Azure.SubscriptionName` | string | Your subscription Name. |
+   |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and opy/paste the subscription ID string into the JSON. |
+   |`Azure.ServicePrincipalName` | string | Azure Service Principal name. AKS Edge uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the later step. |
+   |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+   |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
+   |`Azure.Auth.ServicePrincipalId` | GUID | The AppID of `Azure.ServicePrincipalName` to use as credentials. Leave this blank if you creating a new service principal. |
+   |`Azure.Auth.Password` | string | The password (in clear) for `Azure.ServicePrincipalName` to use as credentials. Leave this blank if you creating a new service principal. |
 
-3. In the **AksEdgePrompt**, run the **AksEdgeAzureSetup.ps1** script from the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription.
+2. In the **AksEdgePrompt**, run the **AksEdgeAzureSetup.ps1** script from the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription.
 
     ```powershell
     # prompts for interactive login for service principal creation with Contributor role at resource group level
     ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json -spContributorRole
     ```
 
-4. Once the script completes, you will have the service principal authentication details in the `aide-userconfig.json` file.
+3. Once the script completes, you will have the service principal authentication details in the `aide-userconfig.json` file.
 
-## Step 7: Create a single-machine deployment
+## Step 6: Create a single-machine deployment
 
-1. You can generate the parameters needed to create a single machine cluster using the following command:
-
-    ```powershell
-    New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile ./aksedge-config.json
-    ```
-    
-This command creates a configuration file called **aksedge-config.json** which includes the configurations needed to create a single-machine cluster with a Linux node. The file is created in your current working directory.
-
-2. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge Essentials cluster with a single Linux control-plane node:
+1. You can now run the `Start-AideWorkflow` cmdlet to deploy a single-machine AKS Edge Essentials cluster with a single Linux control-plane node:
 
     ```PowerShell
-    New-AksEdgeDeployment -JsonConfigFilePath ./aksedge-config.json
+    Start-AideWorkflow
     ```
-    
-3. Confirm that the deployment was successful by running:
+
+2. Confirm that the deployment was successful by running:
 
     ```powershell
     kubectl get nodes -o wide
     kubectl get pods -A -o wide
     ```
-    
+
 The following image shows pods on a K3S cluster:
 
 ![Screenshot showing all pods running.](./media/aks-edge/all-pods-running.png)
 
 ## Step 8: Connect your cluster to Azure using Arc
 
-1. Copy the configurations needed for Azure connectivity from the **aide-userconfig.json** file to the Azure section in **aksedge-config.json**. The `ServicePrincipalID` maps to the `ClientID` and the `Password` field maps to the `ClientSecret` parameters in the **aksedge-config.json** file.
-2. You can now run the following command to connect your cluster to Azure:
+1. You can now run the following command to connect your cluster to Azure:
 
     ```powershell
    # Connect Arc-enabled server and Arc-enabled kubernetes
-   Connect-AksEdgeArc -JsonConfigFilePath aksedge-config.json
+   Connect-AideArc
    ```
 
     > [!NOTE]
