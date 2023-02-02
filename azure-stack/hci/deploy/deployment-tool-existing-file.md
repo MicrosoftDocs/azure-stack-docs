@@ -29,7 +29,7 @@ Before you begin, make sure you have done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2](deployment-tool-install-os.md) on each server.
-- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster].
+- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster.
 
 ## Create the configuration file
 

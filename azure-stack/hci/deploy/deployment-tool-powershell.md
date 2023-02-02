@@ -27,7 +27,7 @@ Before you begin, make sure you have done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
-- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster].
+- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster.
 - Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
     - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
     - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-azure-portal).

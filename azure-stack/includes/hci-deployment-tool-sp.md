@@ -14,6 +14,6 @@ You can download the Supplemental Package here:
 
 | Azure Stack HCI Supplemental Package component| Download URL | Description |
 |- |- |- |
-| BootstrapCloudDeploymentTool.ps1 | [Download](https://go.microsoft.com/fwlink/?linkid=2210545 )| Script to extract content and launch the deployment tool.. When this script is run with -ExtractOnly parameter, it will extract the zip file but not launch the deployment tool. |
-| CloudDeployment.zip | [Download](https://go.microsoft.com/fwlink/?linkid=2210546)|Azure Stack HCI, version 22H2 content such as images and agents. |
+| BootstrapCloudDeploymentTool.ps1 | [Download](https://go.microsoft.com/fwlink/?linkid=2210545 )| Script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file but not launch the deployment tool. |
+| CloudDeployment.zip | [Download](https://go.microsoft.com/fwlink/?linkid=2210546)|Azure Stack HCI, version 22H2 content, such as images and agents. |
 | Verify-CloudDeployment.ps1 | [Download](https://go.microsoft.com/fwlink/?linkid=2210608) | Hash used to validate the integrity of zip file. |
