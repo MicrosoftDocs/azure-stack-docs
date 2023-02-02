@@ -45,4 +45,4 @@ To deploy Azure Stack HCI using PowerShell, the following parameters are require
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
 
 > [!NOTE]
-> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](register-with-azure.md#assign-permissions-from-azure-portal).
+> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](../hci/deploy/register-with-azure.md#assign-permissions-from-azure-portal).

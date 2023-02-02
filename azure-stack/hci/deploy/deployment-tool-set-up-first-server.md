@@ -28,7 +28,7 @@ Before you begin, make sure you've done the following:
 
 ## Download the Supplemental Package
 
-[!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
+[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
 
 ## Set up the deployment tool
 
