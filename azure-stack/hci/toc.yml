@@ -426,13 +426,15 @@
         href: deploy/deployment-tool-active-directory.md
       - name: 2 - Install OS
         href: deploy/deployment-tool-install-os.md
-      - name: 3A - Deploy interactively
+      - name: 3 - Set up the first server
+        href: deploy/deployment-tool-set-up-first-server.md
+      - name: 4A - Deploy interactively
         href: deploy/deployment-tool-new-file.md
-      - name: 3B - Deploy via config file
+      - name: 4B - Deploy via config file
         href: deploy/deployment-tool-existing-file.md
-      - name: 3C - Deploy via PowerShell
+      - name: 4C - Deploy via PowerShell
         href: deploy/deployment-tool-powershell.md
-      - name: 4 - Validate deployment
+      - name: 5 - Validate deployment
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
         href: manage/collect-logs.md

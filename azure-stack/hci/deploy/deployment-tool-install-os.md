@@ -146,9 +146,4 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 ## Next steps
 
-After installing the Azure Stack HCI version 22H2 OS, you're ready to install, configure, and run the deployment tool in Windows Admin Center. You can either create a new deployment configuration file interactively or use an existing configuration file you created:
-
-- [Deploy using a new configuration file](deployment-tool-new-file.md).
-- [Deploy using an existing configuration file](deployment-tool-existing-file.md).
-
-- If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).
+[Set up the first server in your Azure Stack HCI cluster](deployment-tool-set-up-first-server.md).

@@ -27,6 +27,7 @@ Before you begin, make sure you have done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster].
 - Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
     - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
     - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-azure-portal).
@@ -46,22 +47,6 @@ Before you begin, make sure you have done the following:
     ```powershell
     Copy-Item -path <Path for you source file> -destination C:\setup\config.json
     ```
-
-## Set up the deployment tool
-
-The following parameters are required to set up and run the deployment tool properly:
-
-|Parameter|Description|
-|----|----|
-|`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
-|`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
-|`LocalAdminCredential`|Specify the local administrator credentials.|
-|`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to public Azure is supported.|
-|`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
-|`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
-
-> [!NOTE]
-> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](register-with-azure.md#assign-permissions-from-azure-portal).
 
 ## Deploy a cluster
 

@@ -27,32 +27,7 @@ Before you begin, make sure you've done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
-
-## Set up the deployment tool
-
-> [!NOTE]
-> You need to install and set up the deployment tool only on the first server in the cluster. The deployment tool is included in the Azure Stack HCI Supplemental Package.
-
-Ensure the following Supplemental Package components are downloaded first:
-- [BootstrapCloudDeploymentTool.ps1](https://go.microsoft.com/fwlink/?linkid=2210545)
-- [CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
-- [Verify-CloudDeployment.ps1](https://go.microsoft.com/fwlink/?linkid=2210608)
-
-1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
-
-1. Sign in to the staging server using local administrative credentials.
-
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
-
-1. Run PowerShell as administrator.
-
-1. Run the following command to install the deployment tool:
-
-   ```PowerShell
-    .\BootstrapCloudDeploymentTool.ps1 
-    ```
-
-    This step takes several minutes to complete.
+- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster].
 
 ## Run the deployment tool
 

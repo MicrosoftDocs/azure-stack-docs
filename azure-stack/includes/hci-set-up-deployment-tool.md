@@ -8,17 +8,41 @@ ms.date: 02/01/2023
 ms.reviewer: alkohli
 ---
 
-For servers running Azure Stack HCI, version 22H2 OS, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file, or via PowerShell.
+> [!NOTE]
+> You need to install and set up the deployment tool only on the first server in the cluster. The deployment tool is included in the Azure Stack HCI Supplemental Package.
 
-> [!IMPORTANT]
-> When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the Supplemental Package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
+1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
 
-You can download the Supplemental Package here:  
+1. Sign in to the staging server using local administrative credentials.
 
-| Azure Stack HCI Supplemental Package component| URL                                             |
-|-----------------------------------------------|-------------------------------------------------|
-| Bootstrap PowerShell                           | https://go.microsoft.com/fwlink/?linkid=2210545 |
-| CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
-| Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
+1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
+1. Run PowerShell as administrator.
+
+1. Run the following command to install the deployment tool:
+
+   ```PowerShell
+    .\BootstrapCloudDeploymentTool.ps1 
+    ```
+
+    This step takes several minutes to complete.
+
+    > [!NOTE]
+    > If you manually extracted deployment content from the ZIP file previously, you must run `BootstrapCloudDeployment-Internal.ps1` instead.
+
+To deploy Azure Stack HCI using PowerShell, the following parameters are required to set up and run the deployment tool properly:
+
+|Parameter|Description|
+|----|----|
+|`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
+|`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
+|`LocalAdminCredential`|Specify the local administrator credentials.|
+|`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to public Azure is supported.|
+|`RegistrationRegion`|(Optional) Specify the region that should be used when registering the system with Azure Arc.|
+|`RegistrationResourceGroupName`|(Optional) Specify the resource group that will be used to hold the resource objects for the system.|
+|`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
+|`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
+|`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
+
+> [!NOTE]
+> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](register-with-azure.md#assign-permissions-from-azure-portal).
