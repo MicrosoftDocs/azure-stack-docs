@@ -228,7 +228,7 @@ Performing a census sync before node synchronization can result in the sync bein
 
 ### Scenario 1
 
-**Failure State Explanation**:
+**Failure state explanation**:
 
 This can happen if the required role **Azure Connected Machine Resource Manager** is removed from the HCI resource provider in the Arc-for-Server resource group.
 
@@ -246,7 +246,7 @@ Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" 
 
 ### Scenario 2
 
-**Failure State Explanation**:
+**Failure state explanation**:
 
 This message can also be due to a transient issue that sometimes occurs while performing Azure Stack HCI registration. When that happens, the `Register-AzStackHCI` cmdlet shows the following warning message:
 

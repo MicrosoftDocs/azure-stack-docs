@@ -469,7 +469,7 @@ You can further scope down the permissions required to perform HCI registration 
 
    You can now register the cluster in the subscription with more restrictive role permissions, provided you are using an existing resource group for the cluster resource and Arc-for-Server resources.
 
-   If you need to un-register this cluster, add the `Microsoft.Resources/subscriptions/resourceGroups/delete` permission in step 2.
+   If you need to un-register this cluster, add the **Microsoft.Resources/subscriptions/resourceGroups/delete** permission in step 2.
 
 ### How do I register a cluster using ArmAccessToken/SPN?
 
