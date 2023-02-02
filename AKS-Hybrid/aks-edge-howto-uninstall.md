@@ -106,7 +106,7 @@ See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows#uninstall).
 
 ## Uninstall Az Powershell
 
-See [How to uninstall Azure Powershell modules](/powershell/azure/uninstall-az-ps?view=azps-9.3.0).
+See [How to uninstall Azure Powershell modules](/powershell/azure/uninstall-az-ps).
 
 ## Next steps
 
