@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/07/2022
+ms.date: 02/02/2022
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -81,7 +81,7 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
         > [!NOTE]
         > - You can't enable guest management via Azure portal if the Arc VM is already created.
         > - Add at least one network interface through the **Networking** tab to complete guest management setup.
-        > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Network topology and connectivity for Azure Arc-enabled servers](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/eslz-arc-servers-connectivity#define-extensions-connectivity-method).
+        > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
     1. If you selected a Windows VM image, you can domain join your Windows VM. Follow these steps: 
     
@@ -93,9 +93,9 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
         
         1. Provide the domain administrator password for the virtual machine.
 
-        1. Specify domain or unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path. 
+        1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
         
-            If not specified, the domain name uses the suffix of the Active Directory domain join UPN by default. For example, the user "azurestackhciuser@contoso.com" would get the default domain name "contoso.com".
+            If not specified, the domain name uses the suffix of the Active Directory domain join UPN by default. For example, the user *azurestackhciuser@contoso.com* would get the default domain name *contoso.com*.
         
        :::image type="content" source="./media/manage-vm-resources/create-vm-enable-guest-management.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-vm-enable-guest-management.png":::
 
