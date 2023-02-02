@@ -40,11 +40,11 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ||General Availability(GA)   |Experimental|
 |------------|-----------|--------|
-|Kubernetes (K8S)|Version : 1.23.8 and 1.24.3| 1.25.0
-|Kubernetes (K3S)|Version : 1.23.8 and 1.24.3| 1.25.0
-|Network plugin | Calico on K8S <br> Flannel on K3S | Flannel on K8S <br> Calico on K3S|
-|Configuration|SingleMachine Cluster (Internal Switch)|Full Kubernetes (External Switch)
-|Scaling to additional nodes| |Non-CAPI  on K8S and K3S|
+|Kubernetes (K8S)|Version : 1.24.3| - |
+|Kubernetes (K3S)|Version : 1.24.3| - |
+|Network plugin | Calico on K8S <br/> Flannel on K3S | Flannel on K8S <br/> Calico on K3S|
+|Configuration| * Single machine Kubernetes <br/> * Full Kubernetes (on single machine)|Full Kubernetes (on multiple machines)
+
 
 ## Next steps
 
