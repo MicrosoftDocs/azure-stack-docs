@@ -132,7 +132,7 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
 To run both the Linux control plane and the Windows worker node on a machine, create the configuration file using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows -outFile aksedge-config.json
+New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json
 ```
 
 Create the deployment using the command:
