@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # New-AksEdgeScaleConfig
 
- Creates a new AKS Edge Essentials configuration template for scaling the cluster.
+Creates a new AKS Edge Essentials configuration template for scaling the cluster.
 
 ## Syntax
 
@@ -21,6 +21,7 @@ ms.lastreviewed: 02/02/2023
 ```
 
 ## Description
+
 Creates a new AKS Edge Essentials configuration template for scaling the cluster. This template can be customized and provided as an input to Add-AksEdgeNode (to add a new node) or  New-AksEdgeDeployment (to add a new machine). Further, this commandlet isn't needed when adding a Windows node on a single machine cluster. 
 
 ## Examples
