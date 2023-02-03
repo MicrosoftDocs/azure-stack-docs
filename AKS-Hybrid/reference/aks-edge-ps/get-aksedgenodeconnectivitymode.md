@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Get-AksEdgeNodeConnectivityMode
 
-Gets the connectivity mode of the AksEdge Linux node.
+Gets the connectivity mode of the AKS Edge Essentials Linux node.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksEdgeNodeConnectivityMode
 
 ## Description
 
-Gets the connectivity mode of the AksEdge Linux node.
+Gets the connectivity mode of the AKS Edge Essentials Linux node.
 
 
 ## Examples
@@ -33,7 +33,7 @@ Get-AksEdgeNodeConnectivityMode
 
 ## Parameters
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
