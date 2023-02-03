@@ -31,11 +31,74 @@ The procedure to create Arc VMs is described in the next section.
 
 Before you create an Azure Arc-enabled VM, make sure that the following prerequisites are completed.
 
+# [Azure CLI](#tab/azurecli)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
+
+    - Running PowerShell 5.0 or later.
+    - Running the latest version of `az` CLI.
+        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
+        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+
+# [Azure portal](#tab/azureportal)
+
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 ## Create Arc VMs
 
-Follow these steps in the Azure portal to create an Arc VM on your Azure Stack HCI cluster.
+Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
+
+# [Azure CLI](#tab/azurecli)
+
+Follow these steps on the client running az CLI and is connected to your Azure Stack HCI cluster.
+
+### Set some parameters
+
+1. Run PowerShell as an administrator.
+
+
+1. Sign in. Type:
+
+    ```azurecli
+    az login
+    ```
+
+1. Set your subscription.
+
+    ```azurecli
+    az account set --subscription <Subscription ID>
+    ```
+
+1. Set parameters for your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
+
+    ```azurecli
+    $Subscription = "<Subscription ID>"
+    $Resource_Group = "<Resource group>"
+    $Location = "<Location for Azure Stack HCI cluster resource>"
+    $CustomLoc_Name = "<Custom location for Azure Stack HCI cluster>"
+    $VNet_Name = "<Virtual network for VMs deployed on Azure Stack HCI cluster>"
+    $Nic = "<Network interface associated with the VM>"
+    ```
+    
+    The parameters are described in the following table:
+    
+    | Parameter      | Description                                                                                |
+    |----------------|--------------------------------------------------------------------------------------------|
+    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
+    | `Resource_Group` | Resource group for Azure Stack HCI cluster that will contain all the Arc VM resources.        |
+    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `CustomLocation` | Custom location associated with your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).     |
+
+### Create virtual network interface
+
+### Create VM
+
+
+# [Azure portal](#tab/azureportal)
+
+Follow these steps in Azure portal of your Azure Stack HCI cluster.
 
 1. Go to **Resources (Preview) > Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
