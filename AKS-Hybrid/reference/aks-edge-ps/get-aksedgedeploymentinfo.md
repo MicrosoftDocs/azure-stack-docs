@@ -22,7 +22,7 @@ Get-AksEdgeDeploymentInfo
 
 ## Description
 
-Gets AKS Edge Essentials deployment returns networking, node and Arc connectivity status, and name for the cluster of the local AKS Edge Essentials deployment.
+Gets AKS Edge Essentials deployment information. Returns networking, node and Arc connectivity status, and name for the cluster of the local AKS Edge Essentials deployment.
 
 ## Next steps
 
