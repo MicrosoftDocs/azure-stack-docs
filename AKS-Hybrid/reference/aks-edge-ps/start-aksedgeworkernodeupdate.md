@@ -12,7 +12,7 @@ ms.lastreviewed: 02/03/2023
 
 # Start-AksEdgeWorkerNodeUpdate
 
-Update any worker nodes on this machine as part of the update process. You must have already run Start-AksEdgeUpdate on every deployment in the cluster before running this command on every machine with a worker node. Please refresh the powershell instance and re-import the AKS-EE module before running this command.
+Updates any worker nodes on this machine as part of the update process. You must have already run `Start-AksEdgeUpdate` on every deployment in the cluster before running this command on every machine with a worker node. Please refresh the PowerShell instance and re-import the AKS Edge Essentials module before running this command.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Start-AksEdgeWorkerNodeUpdate
 
 ## Description
 
-After starting the upgrade process with Start-AksEdgeUpdate, and running Start-AksEdgeUpdate on every machine in the cluster, run this command on every machine to upgrade the worker nodes. Please refresh the powershell instance and re-import the AKS-EE module before running this command.
+After starting the upgrade process with `Start-AksEdgeUpdate`, and running `Start-AksEdgeUpdate` on every machine in the cluster, run this command on every machine to upgrade the worker nodes. Refresh the PowerShell instance and re-import the AKS Edge Essentials module before running this command.
 
 
 ## Examples
@@ -35,7 +35,7 @@ Start-AksEdgeWorkerNodeUpdate -Force
 
 ### -Force
 
-This parameter forcefully installs required features and capabilities despite errors.
+This parameter force-installs required features and capabilities despite errors.
 
 ```yaml
 Type: SwitchParameter
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
