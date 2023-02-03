@@ -4,7 +4,7 @@ description: Use Azure RBAC with Azure Active Directory (Azure AD) to control ac
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: sumit.lahiri
+ms.reviewer: sulahiri
 ms.date: 02/03/2023
 ms.lastreviewed: 12/01/2022
 
