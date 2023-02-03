@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Set-AksEdgeNodeConnectivityMode
 
-Set AksEdge Linux node connectivity mode.
+Sets tje AKS Edge Essentials Linux node connectivity mode.
 
 ## Syntax
 
@@ -22,12 +22,12 @@ Set-AksEdgeNodeConnectivityMode
 
 ## Description
 
-Set AksEdge Linux node connectivity mode.
+Sets the AKS Edge Essentials Linux node connectivity mode.
 
 
 ## Examples
 
-### Turn-off connectivity 
+### Turn off connectivity 
 
 ```powershell
 Set-AksEdgeNodeConnectivityMode -mode "Off"
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
