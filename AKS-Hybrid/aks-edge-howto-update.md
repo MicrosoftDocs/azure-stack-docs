@@ -30,7 +30,7 @@ To receive AKS Edge Essentials updates, configure the Windows host to receive up
 1. Select **Advanced options**.
 1. Toggle the **Receive updates for other Microsoft products when you update Windows** button to **On**.
 
-Microsoft Update in the Windows Update subsystem can now scan for an update for AKS-EE based on the Windows Update policy set on the machine. If you wish to force the scan immediately, you can manually trigger the **Check for updates** button.
+Microsoft Update in the Windows Update subsystem can now scan for an update for AKS Edge Essentials based on the Windows Update policy set on the machine. If you want to force the scan immediately, you can select **Check for updates**.
 
 > [!IMPORTANT]
 > Microsoft updates needs to be enabled on all machines in the cluster.
