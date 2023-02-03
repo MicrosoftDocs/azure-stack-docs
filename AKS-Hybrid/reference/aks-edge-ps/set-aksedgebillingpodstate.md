@@ -1,60 +1,54 @@
 ---
-title:  Get-AksEdgeEventLog for AKS Edge
+title: Set-AksEdgeBillingPodState for AKS Edge
 author: rcheeran
-description: The Get-AksEdgeEventLog PowerShell command collects event logs from the deployment.
+description: The Set-AksEdgeBillingPodState PowerShell command  allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/02/2023
 ms.author: rcheeran 
-ms.lastreviewed: 10/04/2022
+ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Get-AksEdgeEventLog
+# Set-AksEdgeBillingPodState
 
-Collects event logs from the deployment.
+The Set-AksEdgeBillingPodState PowerShell command allows the front end to set billing pod state after joining Arc using the Azure CLI.
 
 ## Syntax
 
 ```powershell
-Get-AksEdgeEventLog [[-OutputPath] <String>] [<CommonParameters>]
+Set-AksEdgeBillingPodState
 ```
 
 ## Description
 
-The Get-AksEdgeEventLog cmdlet gets the event log from the AksEdge deployment
+This function allows the front end to set billing pod state after joining Arc using the Azure CLI.
+
 
 ## Examples
 
-### Example 1
-
 ```powershell
-Get-AksEdgeEventLog
-```
-
-### Example 2
-
-```powershell
-Get-AksEdgeEventLog -OutputPath ~/Desktop
+Set-AksEdgeBillingPodState -Connect
 ```
 
 ## Parameters
 
-### -OutputPath
+### -Connect
 
-Optional parameter allowing to change the path to which the zipped log folder will be stored
+This parameter connects or disconnects.
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 
 ### Common parameters
 
