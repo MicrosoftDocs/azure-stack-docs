@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Get-AksEdgeUpgrade
 
-Get whether AksEdge is allowed to upgrade the Kubernetes version on update.
+Returns whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksEdgeUpgrade
 
 ## Description
 
-The Get-AksEdgeUpgrade cmdlet returns whether AksEdge is allowed to upgrade the Kubernetes version on update.
+The Get-AksEdgeUpgrade cmdlet returns whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 
 ## Examples
@@ -33,7 +33,7 @@ Get-AksEdgeUpgrade
 
 ## Parameters
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
