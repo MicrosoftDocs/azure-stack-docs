@@ -1,7 +1,7 @@
 ---
 title: Set-AksEdgeNodeToDrain for AKS Edge
 author: rcheeran
-description: The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a  node  from an existing cluster.
+description: The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a node from an existing cluster.
 ms.topic: reference
 ms.date: 11/17/2022
 ms.author: rcheeran 
@@ -31,8 +31,7 @@ This is useful for gracefully terminating the pods running on the node, for inst
 ### -NodeType
 
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained.
-When not specified, the 'Linux' node is drained only.
+'LinuxAndWindows', should be drained. When not specified, the 'Linux' node is drained only.
 When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml

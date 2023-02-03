@@ -17,7 +17,7 @@ The following are the requirements on the host machine that runs AKS Edge Essent
   | Specs | Local cluster | Arc-connected cluster and GitOps|
   | ---------- | --------- |--------- |
   | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022||
-  | Total physical memory | 4 GB with at least 2 GB free | 8 GB with at least 4 GB free  |
+  | Total physical memory | 4 GB with at least 2.5 GB free | 8 GB with at least 4.5 GB free  |
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
   | Disk space | At least 14 GB free |At least 14 GB free |
 
@@ -37,7 +37,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## Feature support matrix
 
-|Feature | General Availability(GA)   |Experimental|
+||Public Preview   |Experimental|
 |------------|-----------|--------|
 |Kubernetes (K8S)|Version : 1.24.3| - |
 |Kubernetes (K3S)|Version : 1.24.3| - |

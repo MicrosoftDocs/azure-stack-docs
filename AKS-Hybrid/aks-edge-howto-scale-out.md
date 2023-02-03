@@ -94,9 +94,9 @@ You should be able to see all the nodes of the cluster.
 
 You can generate a new `ScaleConfig` file based on the nodeType required by repeating steps 1-4. Ensure that you provide IP addresses that are available in your network each time you add a node.
 
-## 6. Add a Windows worker node (optional)
+## 6. Add the second node(Linux/Windows) on a machine that already has a node (optional)
 
-If you want to add a Windows node to an existing Linux only machine, you can run:
+You can add an another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it. 
 
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json

@@ -15,6 +15,18 @@ ms.date: 01/31/2023
 
 Adds a new AksEdge node to the cluster.
 
+### [Connect-AksEdgeArc](./connect-aksedgearc.md)
+
+Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes.
+
+### [Copy-AksEdgeNodeFile](./copy-aksedgenodefile.md)
+
+Copies a file to or from a node.
+
+### [Disconnect-AksEdgeArc](./disconnect-aksedgearc.md)
+
+Disconnects the AksEdge cluster running on this machine from Azure Arc for Kubernetes.
+
 ### [Get-AksEdgeDeploymentInfo](./get-aksedgedeploymentinfo.md)
 
 Gets AksEdge deployment information.
@@ -25,15 +37,7 @@ Collects event logs from the deployment.
 
 ### [Get-AksEdgeKubeConfig](./get-aksedgekubeconfig.md)
 
-Pulls the KubeConfig file from the Linux node.
-
-### [Get-AksEdgeNodeAddr](./get-aksedgenodeaddr.md)
-
-Gets the VM's IP and MAC addresses
-
-### [Get-AksEdgeNodeName](./get-aksedgenodename.md)
-
-Gets the VM's hostname
+Pulls the KubeConfig file from the specified node.
 
 ### [Get-AksEdgeLogs](./get-aksedgelogs.md)
 
@@ -43,9 +47,29 @@ Collects all the logs from the deployment.
 
 Gets the AksEdge managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
+### [Get-AksEdgeNodeAddr](./get-aksedgenodeaddr.md)
+
+Gets the VM's IP and MAC addresses.
+
+### [Get-AksEdgeNodeConnectivityMode](./get-aksedgenodeconnectivitymode.md)
+
+Gets the connectivity mode of the AksEdge Linux node.
+
+### [Get-AksEdgeNodeName](./get-aksedgenodename.md)
+
+Gets the VM's hostname.
+
+### [Get-AksEdgeUpgrade](./get-aksedgeupgrade.md)
+
+Get whether AksEdge is allowed to upgrade the Kubernetes version on update.
+
 ### [Invoke-AksEdgeNodeCommand](./invoke-aksedgenodecommand.md)
 
-Executes an SSH command on the Linux VM.
+Executes an SSH command on the specified node.
+
+### [Install-AksEdgeHostFeatures](./invoke-aksedgehostfeatures.md)
+
+Installs missing required OS features.
 
 ### [New-AksEdgeConfig](./new-aksedgeconfig.md)
 
@@ -58,7 +82,7 @@ Creates a new AksEdge deployment on this machine.
 
 ## [New-AksEdgeScaleConfig](./new-aksedgescaleconfig.md)
 
-Creates a new AksEdge deployment on this machine.
+Creates the configuration file needed to scale the deployment to other machines.
 
 ### [Remove-AksEdgeDeployment](./remove-aksedgedeployment.md)
 
@@ -68,17 +92,33 @@ Removes the deployment from an existing cluster.
 
 Removes a local node from an existing cluster.
 
+### [Set-AksEdgeBillingPodState](./set-aksedgebillingpodstate.md)
+
+ Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
+
+### [Set-AksEdgeNodeConnectivityMode](./set-aksedgeconnectivitymode.md)
+
+ Sets AksEdge node connectivity mode.
+
 ### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
 
-Safely drains a node before your delete the node. 
+Safely drains a node before your delete the node.
 
-### [Set-AksEdgeArcConnection](./set-aksedgearcconnection.md)
+### [Set-AksEdgeUpgrade](./set-aksedgeupgrade.md)
 
-Connects or disconnects the AKS on Windows IoT cluster running on this machine to or from Azure Arc forKubernetes.
+ Sets whether AksEdge is allowed to upgrade the Kubernetes version on update.
 
 ### [Start-AksEdgeNode](./start-aksedgenode.md)
 
 Starts the node VM if it's currently stopped.
+
+### [Start-AksEdgeUpdate](./start-aksedgeupdate.md)
+
+Starts the update process for updating AKS-Edge. 
+
+### [Start-AksEdgeWorkerNodeUpdate](./start-aksedgeworkernodeupdate.md)
+
+Updates any worker nodes on this machine as part of the update process.
 
 ### [Stop-AksEdgeNode](./stop-aksedgenode.md)
 
@@ -86,16 +126,18 @@ Stops the node VM if it's currently started.
 
 ### [Test-AksEdgeArcConnection](./test-aksedgearcconnection.md)
 
-Checks whether the deployment was created.
+Checks whether the cluster is Azure Arc connected.
 
 ### [Test-AksEdgeDeployment](./test-aksedgedeployment.md)
 
 Checks whether the deployment was created.
 
-### [Test-AksEdgeNode](./test-aksedgenode.md)
-
-Checks whether the Linux VM was created.
-
 ### [Test-AksEdgeNetworkParameters](./test-aksedgenetworkparameters.md)
 
-Validates AksEdge network parameters, useful as a pre-deployment check.
+Validates AksEdge network parameters, useful as a pre-deployment check as well before scaling to multiple machines.
+
+### [Test-AksEdgeNode](./test-aksedgenode.md)
+
+Checks whether the VM was created.
+
+

@@ -1,44 +1,42 @@
 ---
-title: Add-AksEdgeNode for AKS Edge
+title: Connect-AksEdgeArc for AKS Edge
 author: rcheeran
-description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster..
+description: The Connect-AksEdgeArc PowerShell command add the cluster to Azure Arc.
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/01/2023
 ms.author: rcheeran 
-ms.lastreviewed: 02/02/2023
+ms.lastreviewed: 02/01/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Add-AksEdgeNode
+# Connect-AksEdgeArc
 
-Creates a new AksEdge node on the machine and adds it to the cluster.
+Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes.
 
 ## Syntax
 
 ```powershell
-Add-AksEdgeNode [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [<CommonParameters>]
+Connect-AksEdgeArc [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [<CommonParameters>]
 ```
 
 ## Description
 
-Adds a new AksEdge node to the cluster. The new node created on this machine joins the cluster to
-which the existing deployment on this machine belongs. In case of a single machine deployment, this command can be used to add a Windows node to the single machine cluster.
-In a scalable deployment, the existing Linux or Windows node can be complemented with the other node type.
+Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes. Running this requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules as well as an up to date helm version in the binary path.
 
 
 ## Examples
 
-### Using a configuration file
+### Example 1
 
 ```powershell
-Add-AksEdgeNode -JsonConfigFilePath ./aksedge-config.json
+Connect-AksEdgeArc -JsonConfigFilePath ./aksedge-config.json
 ```
 
-### Passing configurations as a JSON string
+### Example 2
 
 ```powershell
-Add-AksEdgeNode -JsonConfigString ($jsonObj | ConvertTo-Json)
+Connect-AksEdgeArc -JsonConfigString ($jsonObj | ConvertTo-Json)
 ```
 
 ## Parameters

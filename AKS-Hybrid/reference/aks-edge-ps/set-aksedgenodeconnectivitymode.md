@@ -1,48 +1,44 @@
 ---
-title:  Get-AksEdgeEventLog for AKS Edge
+title: Set-AksEdgeNodeConnectivityMode for AKS Edge
 author: rcheeran
-description: The Get-AksEdgeEventLog PowerShell command collects event logs from the deployment.
+description: The Set-AksEdgeNodeConnectivityMode PowerShell command sets AksEdge Linux node connectivity mode.
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/02/2023
 ms.author: rcheeran 
-ms.lastreviewed: 10/04/2022
+ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Get-AksEdgeEventLog
+# Set-AksEdgeNodeConnectivityMode
 
-Collects event logs from the deployment.
+Set AksEdge Linux node connectivity mode.
 
 ## Syntax
 
 ```powershell
-Get-AksEdgeEventLog [[-OutputPath] <String>] [<CommonParameters>]
+Set-AksEdgeNodeConnectivityMode
 ```
 
 ## Description
 
-The Get-AksEdgeEventLog cmdlet gets the event log from the AksEdge deployment
+Set AksEdge Linux node connectivity mode.
+
 
 ## Examples
 
-### Example 1
+### Turn-off connectivity 
 
 ```powershell
-Get-AksEdgeEventLog
+Set-AksEdgeNodeConnectivityMode -mode "Off"
 ```
 
-### Example 2
-
-```powershell
-Get-AksEdgeEventLog -OutputPath ~/Desktop
-```
 
 ## Parameters
 
-### -OutputPath
+### -mode
 
-Optional parameter allowing to change the path to which the zipped log folder will be stored
+This parameter specifies the connectivity mode. Expected values are 'on' or 'off'.
 
 ```yaml
 Type: String
@@ -50,11 +46,12 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 
 ### CommonParameters
 

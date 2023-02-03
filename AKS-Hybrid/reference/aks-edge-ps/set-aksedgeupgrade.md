@@ -1,57 +1,50 @@
 ---
-title:  Get-AksEdgeEventLog for AKS Edge
+title: Set-AksEdgeUpgrade for AKS Edge
 author: rcheeran
-description: The Get-AksEdgeEventLog PowerShell command collects event logs from the deployment.
+description: The Set-AksEdgeUpgrade PowerShell command set whether AksEdge is allowed to upgrade the Kubernetes version on update.
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/02/2023
 ms.author: rcheeran 
-ms.lastreviewed: 10/04/2022
+ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Get-AksEdgeEventLog
+# Set-AksEdgeUpgrade
 
-Collects event logs from the deployment.
+ Set whether AksEdge is allowed to upgrade the Kubernetes version on update.
 
 ## Syntax
 
 ```powershell
-Get-AksEdgeEventLog [[-OutputPath] <String>] [<CommonParameters>]
+Set-AksEdgeUpgrade
 ```
 
 ## Description
 
-The Get-AksEdgeEventLog cmdlet gets the event log from the AksEdge deployment
+The Set-AksEdgeUpgrade cmdlet set whether AksEdge is allowed to upgrade the Kubernetes version on update.
+
 
 ## Examples
 
-### Example 1
-
 ```powershell
-Get-AksEdgeEventLog
-```
-
-### Example 2
-
-```powershell
-Get-AksEdgeEventLog -OutputPath ~/Desktop
+ Set-AksEdgeUpgrade -acceptUpgrade $True
 ```
 
 ## Parameters
 
-### -OutputPath
+### -acceptUpgrade
 
-Optional parameter allowing to change the path to which the zipped log folder will be stored
+This parameter specifies whether AksEdge is allowed to upgrade the Kubernetes version on update.
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

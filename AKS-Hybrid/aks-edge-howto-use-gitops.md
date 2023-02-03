@@ -19,6 +19,8 @@ This article describes how to deploy applications to your Arc-enabled AKS Edge E
 > [!NOTE]
 > Make sure you have allocated at least 4GB of RAM and 4 CPU for the Linux VM as well as a service IP range greater than 0. You might also need a larger disk space than the default 10 GB, depending on your workloads.
 
+
+
 ## Step 1: Fork demo application
 
 Go to the [Azure Arc Jumpstart repository](https://github.com/microsoft/azure-arc-jumpstart-apps) and fork it to your own GitHub account.
@@ -76,6 +78,9 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 | Force | Not enabled |
 
 ![Screenshot showing namespace-level configuration.](media/aks-edge/gitops-second-config.png)
+
+> [!CAUTION]
+> The sample `config-helloarc` is available only as a Linux container.
 
 Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up:
 

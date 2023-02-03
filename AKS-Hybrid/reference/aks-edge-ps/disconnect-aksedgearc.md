@@ -1,44 +1,42 @@
 ---
-title: Add-AksEdgeNode for AKS Edge
+title: Disconnect-AksEdgeArc for AKS Edge
 author: rcheeran
-description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster..
+description: The Disconnect-AksEdgeArc PowerShell command removes the cluster from Azure Arc.
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/01/2023
 ms.author: rcheeran 
-ms.lastreviewed: 02/02/2023
+ms.lastreviewed: 02/01/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Add-AksEdgeNode
+# Disconnect-AksEdgeArc
 
-Creates a new AksEdge node on the machine and adds it to the cluster.
+Disconnect the AksEdge cluster running on this machine from Azure Arc for Kubernetes.
 
 ## Syntax
 
 ```powershell
-Add-AksEdgeNode [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [<CommonParameters>]
+Disconnect-AksEdgeArc [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [<CommonParameters>]
 ```
 
 ## Description
 
-Adds a new AksEdge node to the cluster. The new node created on this machine joins the cluster to
-which the existing deployment on this machine belongs. In case of a single machine deployment, this command can be used to add a Windows node to the single machine cluster.
-In a scalable deployment, the existing Linux or Windows node can be complemented with the other node type.
+Disconnect the AksEdge cluster running on this machine to Azure Arc for Kubernetes. 
 
 
 ## Examples
 
-### Using a configuration file
+### Example 1
 
 ```powershell
-Add-AksEdgeNode -JsonConfigFilePath ./aksedge-config.json
+Disconnect-AksEdgeArc -JsonConfigFilePath ./aksedge-config.json
 ```
 
-### Passing configurations as a JSON string
+### Example 2
 
 ```powershell
-Add-AksEdgeNode -JsonConfigString ($jsonObj | ConvertTo-Json)
+Disconnect-AksEdgeArc -JsonConfigString ($jsonObj | ConvertTo-Json)
 ```
 
 ## Parameters

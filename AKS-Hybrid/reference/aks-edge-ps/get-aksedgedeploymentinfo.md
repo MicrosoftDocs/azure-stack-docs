@@ -21,8 +21,8 @@ Get-AksEdgeDeploymentInfo
 ```
 
 ## Description
-Gets AksEdge deployment information.
-The function returns networking, node and Arc connectivity status and name for the cluster of the local AksEdge deployment.
+
+Gets AksEdge deployment returns networking, node and Arc connectivity status and name for the cluster of the local AksEdge deployment.
 
 ## Next steps
 

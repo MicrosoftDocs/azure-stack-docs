@@ -1,7 +1,7 @@
 ---
 title: Test-AksEdgeNode for AKS Edge
 author: rcheeran
-description: The Test-AksEdgeNode PowerShell command checks whether the Linux VM was created
+description: The Test-AksEdgeNode PowerShell command checks whether the VM was created
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -22,15 +22,14 @@ Test-AksEdgeNode [[-NodeType] <String>] [<CommonParameters>]
 
 ## Description
 
-The Test-AksEdgeNode commandlet is an exposed function to verify whether the Linux or Windows node
-was created.
-It returns true if the node was created or false if not.
+The Test-AksEdgeNode commandlet is an exposed function to verify whether the Linux or Windows node was created. It returns true if the node was created or false if not.
 
 ## Examples
 
-### Example 1
+### Example
+
 ```powershell
-Test-AksEdgeNode -WorkloadType Windows
+Test-AksEdgeNode -NodeType Windows
 ```
 
 ## Parameters
