@@ -21,7 +21,6 @@ AKS Edge Essentials upgrades are sequential and you must upgrade to every versio
 > [!CAUTION]
 > Updating full deployments across multi-machines is currently an experimental feature.
 
-
 ## Step 1: Configure the host machine to receive updates using Microsoft Update
 
 To receive AKS Edge Essentials updates, configure the Windows host to receive updates for other Microsoft products. By default, Microsoft Updates is turned on during AKS Edge Essentials installation. If custom configuration is needed after installation, you can turn this option on or off with the following steps:
@@ -36,11 +35,11 @@ Microsoft Update in the Windows Update subsystem can now scan for an update for 
 > [!IMPORTANT]
 > Microsoft updates needs to be enabled on all machines in the cluster.
 
-Once the update is downloaded from either the cloud endpoint or a local WSUS server, it can now be staged and installed on all the nodes on a machine. 
+Once the update is downloaded from either the cloud endpoint or a local WSUS server, it can now be staged and installed on all the nodes on a machine.
 
 ## Step 2: Update the primary control node
 
-First, you need to update the primary control node, by running the following command on the primary control node. 
+First, you need to update the primary control node, by running the following command on the primary control node.
 
 ```powershell
 Start-AksEdgeUpdate

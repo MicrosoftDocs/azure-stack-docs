@@ -96,7 +96,7 @@ You can generate a new `ScaleConfig` file based on the nodeType required by repe
 
 ## 6. Add the second node(Linux/Windows) on a machine that already has a node (optional)
 
-You can add an another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it. 
+You can add an another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it.
 
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json
