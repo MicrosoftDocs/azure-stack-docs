@@ -23,7 +23,7 @@ Get-AksEdgeKubeConfig [[-KubeConfigPath] <String>] [-NodeType <String>] [-ignore
 
 ## Description
 
-Pulls the KubeConfig file from the Linux or Windows node so that kubectl on the host to access the AksEdge cluster. The function will set the AksEdge cluster's kubeconfig file as the default kubeconfig file for kubectl.
+Pulls the KubeConfig file from the Linux or Windows node so that kubectl on the host to access the AKS Edge Essentials cluster. The function will set the AKS Edge Essentials cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 
 ## Parameters
@@ -106,7 +106,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
