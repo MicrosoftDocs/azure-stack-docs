@@ -67,7 +67,7 @@ Get whether AksEdge is allowed to upgrade the Kubernetes version on update.
 
 Executes an SSH command on the specified node.
 
-### [Install-AksEdgeHostFeatures](./invoke-aksedgehostfeatures.md)
+### [Install-AksEdgeHostFeatures](./install-aksedgehostfeatures.md)
 
 Installs missing required OS features.
 
@@ -96,7 +96,7 @@ Removes a local node from an existing cluster.
 
  Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
 
-### [Set-AksEdgeNodeConnectivityMode](./set-aksedgeconnectivitymode.md)
+### [Set-AksEdgeNodeConnectivityMode](./set-aksedgenodeconnectivitymode.md)
 
  Sets AksEdge node connectivity mode.
 
