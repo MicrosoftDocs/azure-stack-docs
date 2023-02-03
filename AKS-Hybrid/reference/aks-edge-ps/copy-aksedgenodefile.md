@@ -29,18 +29,17 @@ Copies files to or from a node.
 
 ### Example 1
 
-Pushes the sample.json to a file to the Linux node and names the file as config.json 
+Pushes the sample.json to a file to the Linux node and names the file as config.json.
 
 ```powershell
 Copy-AksEdgeNodeFile -FromFile ./sample.json -ToFile /var/config.json -PushFile -NodeType Linux
 ```
 
-
 ## Parameters
 
 ### -FromFile
 
- Name of the file
+ Name of the file.
 
 ```yaml
 Type: String
@@ -56,7 +55,7 @@ Accept wildcard characters: False
 
 ### -ToFile
 
-Name of the file
+Name of the file.
 
 ```yaml
 Type: String
@@ -72,7 +71,7 @@ Accept wildcard characters: False
 
 ### -PushFile
 
-Name of the file
+Name of the file.
 
 ```yaml
 Type: SwitchParameter
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 
 ### -NodeType
 
-This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
+This parameter indicates whether the 'Linux' node, the 'Windows' node, or both at the same time with
 'LinuxAndWindows', should be drained. When not specified, the 'Linux' node is drained only. When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml
