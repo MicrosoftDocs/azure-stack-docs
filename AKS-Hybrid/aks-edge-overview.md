@@ -4,15 +4,15 @@ description: AKS Edge Essentials is an on-premises Kubernetes implementation of 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: overview
-ms.date: 12/05/2022
+ms.date: 02/03/2023
 ms.custom: template-overview
 ---
 
 # AKS Edge Essentials (preview)
 
 > [!NOTE]
-> AKS Edge Essentials is currently in public preview.
-> 02/03/2023 -  Public preview has been refreshed! You can find the release notes [here.](https://github.com/Azure/AKS-Edge/releases) Try out our new bits (1.0.266.0 Release Candidate for GA) and share your valuable feedback with us.
+> AKS Edge Essentials is currently in public preview. As of 02/03/2023, the public preview has been refreshed. [See the release notes here](https://github.com/Azure/AKS-Edge/releases). Try out our new bits (1.0.266.0 Release Candidate for GA) and share your valuable feedback with us.
+
 
 Azure Kubernetes Service Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Edge Essentials includes a Microsoft-supported Kubernetes platform that includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. AKS Edge Essentials makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
 
@@ -30,7 +30,7 @@ While Kubernetes is an open-source orchestrator for automating container managem
 
 AKS Edge Essentials includes the following features, managed by Microsoft:
 
-- A lightweight, CNCF-conformant K8S and K3S distribution that is supported and managed by Microsoft. The key difference between AKS on HCI and AKS on Windows is that AKS on Windows has minimal compute and memory requirements (4-GB RAM and 2 vCPUs).
+- A lightweight, CNCF-conformant K8S and K3S distribution that is supported and managed by Microsoft. The key difference between AKS on HCI and AKS on Windows is that AKS on Windows has minimal compute and memory requirements (4 GB RAM and 2 vCPUs).
 - Each Kubernetes node runs in its own Hyper-V isolated virtual machine and includes many features to help secure your container infrastructure.
 - Microsoft-maintained Linux and Windows worker nodes virtual machine images adhere to security best practices. Microsoft also refreshes these images monthly with the latest security updates.
 - Simplified installation experience with PowerShell cmdlets and agents to enable provisioning and control of VMs and infrastructure. Microsoft provides automatic updates for your Kubernetes deployment, so you stay up-to-date with the latest available Kubernetes versions.
