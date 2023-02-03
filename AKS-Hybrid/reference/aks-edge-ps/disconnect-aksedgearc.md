@@ -12,7 +12,7 @@ ms.lastreviewed: 02/01/2023
 
 # Disconnect-AksEdgeArc
 
-Disconnect the AksEdge cluster running on this machine from Azure Arc for Kubernetes.
+Disconnects the AKS Edge Essentials cluster running on this machine from Azure Arc for Kubernetes.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Disconnect-AksEdgeArc [-JsonConfigFilePath <String>] [-JsonConfigString <String>
 
 ## Description
 
-Disconnect the AksEdge cluster running on this machine to Azure Arc for Kubernetes. 
+Disconnects the AKS Edge Essentials cluster running on this machine to Azure Arc for Kubernetes. 
 
 
 ## Examples
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
