@@ -3,7 +3,7 @@ title: New-AksEdgeScaleConfig for AKS Edge
 author: rcheeran
 description: The New-AksEdgeScaleConfig PowerShell command creates the configs needed to scale the cluster.
 ms.topic: reference
-ms.date: 11/17/2022
+ms.date: 02/03/2023
 ms.author: rcheeran 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # New-AksEdgeScaleConfig
 
- Creates a new AksEdge configuration template for scaling the cluster.
+ Creates a new AKS Edge Essentials configuration template for scaling the cluster.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ ms.lastreviewed: 02/02/2023
 ```
 
 ## Description
-Creates a new AksEdge configuration template for scaling the cluster. This template can be customized and provided as an input to Add-AksEdgeNode (to add a new node) or  New-AksEdgeDeployment (to add a new machine). Further, this commandlet isn't needed when adding a Windows node on a single machine cluster. 
+Creates a new AKS Edge Essentials configuration template for scaling the cluster. This template can be customized and provided as an input to Add-AksEdgeNode (to add a new node) or  New-AksEdgeDeployment (to add a new machine). Further, this commandlet isn't needed when adding a Windows node on a single machine cluster. 
 
 ## Examples
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 
 ### -NodeType
 
- This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. 
+This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. 
 
 ```yaml
 Type: String
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 
 ### -ScaleType
 
- This parameter indicates the intended cluster scale operation: 'AddNode' - To create a configuration for adding a node locally, or 'AddMachine' - to create a configuration for creating a new deployment that joins the existing cluster on a new machine.
+This parameter indicates the intended cluster scale operation: 'AddNode' - To create a configuration for adding a node locally, or 'AddMachine' - to create a configuration for creating a new deployment that joins the existing cluster on a new machine.
 
 ```yaml
 Type: String
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 
 ### -LinuxNodeIp
 
-  Applicable for scalable clusters and specifies the desired Linux node IP. A networking parameter check will be executed to ensure the IP is supported.
+Applicable for scalable clusters and specifies the desired Linux node IP. A networking parameter check will be executed to ensure the IP is supported.
 
 ```yaml
 Type: String
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -WindowsNodeIp
 
- Applicable for scalable clusters and specifies the desired Windows node IP. A networking parameter check will be executed to ensure the IP is supported.
+Applicable for scalable clusters and specifies the desired Windows node IP. A networking parameter check will be executed to ensure the IP is supported.
 
 ```yaml
 Type: String
