@@ -3,7 +3,7 @@ title: Set-AksEdgeNodeToDrain for AKS Edge
 author: rcheeran
 description: The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a node from an existing cluster.
 ms.topic: reference
-ms.date: 11/17/2022
+ms.date: 02/03/2023
 ms.author: rcheeran 
 ms.lastreviewed: 11/17/2022
 #ms.reviewer: jeguan
@@ -31,7 +31,7 @@ This is useful for gracefully terminating the pods running on the node, for inst
 ### -NodeType
 
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained. When not specified, the 'Linux' node is drained only.
+'LinuxAndWindows', should be drained. When not specified, only the 'Linux' node is drained.
 When both nodes are drained, the Windows node is drained first, then the Linux node.
 
 ```yaml
@@ -61,7 +61,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### Common parameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
