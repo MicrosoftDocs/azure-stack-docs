@@ -1,5 +1,5 @@
 ---
-title: Uninstall-AksHciGmsaWebhook for AKS on Azure Stack HCI and Windows Server
+title: Uninstall-AksHciGmsaWebhook for AKS hybrid
 author: sethmanheim
 description: The Uninstall-AksHciGmsaWebhook PowerShell command uninstalls the gMSA webhook add-on to the cluster.
 ms.topic: reference
@@ -13,6 +13,7 @@ ms.reviewer: jeguan
 # Uninstall-AksHciGmsaWebhook
 
 ## Synopsis
+
 Uninstalls the gMSA webhook add-on to the cluster.
 
 ## Syntax

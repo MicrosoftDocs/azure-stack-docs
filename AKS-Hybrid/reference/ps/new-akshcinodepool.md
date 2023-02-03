@@ -1,5 +1,5 @@
 ---
-title: New-AksHciNodePool for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciNodePool for AKS hybrid
 author: mkostersitz
 description: The New-AksHciNodePool PowerShell command creates a new node pool to an existing cluster
 ms.topic: reference
@@ -44,7 +44,7 @@ New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
 ### Create a Windows node pool
 
 ```powershell
-New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType Windows -osSku Windows2022
 ```
 
 ### Create a node pool with custom VM size

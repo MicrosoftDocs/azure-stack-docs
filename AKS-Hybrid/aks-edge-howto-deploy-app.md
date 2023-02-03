@@ -27,7 +27,7 @@ This article uses a sample application that is a basic voting app consisting of 
 To deploy your application, use the [kubectl apply][kubectl-apply] command. This command parses the manifest file and creates the defined Kubernetes objects. Specify the YAML manifest file, as shown in the following example:
 
 ```console
-kubectl apply -f linux-sample.yaml
+kubectl apply -f  https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/linux-sample.yaml
 ```
 
 ### 3. Verify the pods
@@ -71,7 +71,6 @@ If the application doesn't load, it might be due to an authorization problem wit
 
 ### 6. Remove application
 
-
 To clean up, delete all resources using the following command:
 
 ```bash
@@ -87,7 +86,7 @@ This example runs a sample ASP.NET application based on [Microsoft's sample imag
 Make sure you are in the directory of the YAML in a PowerShell window, and then run the following command:
 
 ```powershell
-kubectl apply -f win-sample.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
 ```
 
 ### 2. Verify that the sample pod is running

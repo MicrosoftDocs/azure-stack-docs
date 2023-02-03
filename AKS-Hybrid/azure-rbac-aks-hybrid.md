@@ -4,8 +4,8 @@ description: Use Azure RBAC with Azure Active Directory (Azure AD) to control ac
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: sumit.lahiri
-ms.date: 12/07/2022
+ms.reviewer: sulahiri
+ms.date: 02/03/2023
 ms.lastreviewed: 12/01/2022
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -86,10 +86,8 @@ Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&pres
 The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
 
 ```azurecli
-az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the SPN> 
+az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the subscription ID> 
 ```
-
-In the command output, **Creating 'Kubernetes Cluster - Azure Arc Onboarding' role assignment** appears under the **/subscriptions/my-SPN-OID** scope.
 
 > [!IMPORTANT]
 > The command output for `az ad sp` includes credentials that you must protect. Do not include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).

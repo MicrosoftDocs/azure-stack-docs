@@ -1,7 +1,7 @@
 ---
-title: Set-AksHciRegistration for AKS on Azure Stack HCI and Windows Server
+title: Set-AksHciRegistration for AKS hybrid
 author: sethmanheim
-description: The Set-AksHciRegistration PowerShell command registers Azure Kubernetes Service on Azure Stack HCI and Windows Server with Azure.
+description: The Set-AksHciRegistration PowerShell command registers Azure Kubernetes Service on AKS hybrid with Azure.
 ms.topic: reference
 ms.date: 04/12/2021
 ms.author: sethm 
@@ -13,10 +13,9 @@ ms.reviewer: jeguan
 # Set-AksHciRegistration
 
 ## Synopsis
-Register Azure Kubernetes Service on Azure Stack HCI and Windows Server with Azure.
+Registers AKS hybrid with Azure.
 
 ## Syntax
-
 
 ```powershell
 Set-AksHciRegistration -subscriptionId<String>
@@ -33,22 +32,23 @@ Set-AksHciRegistration -subscriptionId<String>
 ```
 
 ## Description
-Register Azure Kubernetes Service on Azure Stack HCI and Windows Server with Azure.
+Registers AKS hybrid with Azure.
 
 ## Examples
 
-### Register AKS on Azure Stack HCI and Windows Server using a subscription ID and resource group name
+### Register AKS hybrid using a subscription ID and resource group name
 
 ```powershell
 Set-AksHciRegistration -subscriptionId 57ac26cf-a9f0-4908-b300-9a4e9a0fb205 -resourceGroupName myresourcegroup
 ```
 
 ### Register with a device login or while running in a headless shell
+
 ```powershell
 Set-AksHciRegistration -subscriptionId myazuresubscription -resourceGroupName myresourcegroup -UseDeviceAuthentication
 ```
 
-### Register AKS on Azure Stack HCI and Windows Server using a service principal
+### Register AKS hybrid using a service principal
 
 If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal.
 
@@ -59,6 +59,7 @@ Connect-AzAccount
 ```
 
 Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) command.
+
 ```powershell
 Set-AzContext -Subscription myAzureSubscription
 ```
@@ -93,11 +94,13 @@ Retrieve the password for the service principal by running the following command
 $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))
 Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
-```   
-From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI and Windows Server. You should take a note of these items and store them safely.
+```
+
+From the output above, you now have the **application ID** and the **secret** available when deploying AKS hybrid. You should take a note of these items and store them safely.
 Now that you have the application ID and secret available, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new service principal.
 
 Store your service principal credentials (the application ID and secret) with [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), then set the registration.
+
 ```powershell
 $credential = Get-Credential
 Set-AksHciRegistration -SubscriptionId myazuresubscription -ResourceGroupName myresourcegroup -TenantId $tenant -Credential $credential
@@ -269,6 +272,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

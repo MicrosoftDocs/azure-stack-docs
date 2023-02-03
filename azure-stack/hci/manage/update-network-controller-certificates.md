@@ -53,7 +53,7 @@ Use the following cmdlet on each Network Controller VM to check the expiration d
 Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subject-name>"}|Select-Object NotAfter, Subject
 ```
 
-- To get the expiry of a REST certificate, replace "Certificate-subject-name" with the IP address of the Network Controller REST endpoint. You can get this value from the `Get-NetworkController` cmdlet.
+- To get the expiry of a REST certificate, replace "Certificate-subject-name" with the RestIPAddress or RestName of the Network Controller. You can get this value from the `Get-NetworkController` cmdlet.
 
 - To get the expiry of a node certificate, replace "Certificate-subject-name" with the fully qualified domain name (FQDN) of the Network Controller VM. You can get this value from the `Get-NetworkController` cmdlet.
 

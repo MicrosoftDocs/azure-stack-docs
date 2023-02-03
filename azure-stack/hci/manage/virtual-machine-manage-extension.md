@@ -11,7 +11,7 @@ ms.date: 11/07/2022
 
 # Manage VM extensions on Azure Stack HCI virtual machines (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to install and manage VM extensions on your Azure Stack HCI via the Azure portal.
 
