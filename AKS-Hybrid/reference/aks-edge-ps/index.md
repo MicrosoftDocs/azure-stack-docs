@@ -17,7 +17,7 @@ Adds a new AksEdge node to the cluster.
 
 ### [Connect-AksEdgeArc](./connect-aksedgearc.md)
 
-Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes.
+Connects the AKS Edge Essentials cluster running on this machine to Azure Arc for Kubernetes.
 
 ### [Copy-AksEdgeNodeFile](./copy-aksedgenodefile.md)
 
@@ -25,11 +25,11 @@ Copies a file to or from a node.
 
 ### [Disconnect-AksEdgeArc](./disconnect-aksedgearc.md)
 
-Disconnects the AksEdge cluster running on this machine from Azure Arc for Kubernetes.
+Disconnects the AKS Edge Essentials cluster running on this machine from Azure Arc for Kubernetes.
 
 ### [Get-AksEdgeDeploymentInfo](./get-aksedgedeploymentinfo.md)
 
-Gets AksEdge deployment information.
+Gets AKS Edge Essentials deployment information.
 
 ### [Get-AksEdgeEventLog](./get-aksedgeeventlog.md)
 
@@ -45,7 +45,7 @@ Collects all the logs from the deployment.
 
 ### [Get-AksEdgeManagedServiceToken](./get-aksedgemanagedservicetoken.md)
 
-Gets the AksEdge managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
+Gets the AKS Edge Essentials managed service token, for instance for use for Azure ARC for Kubernetes connected cluster.
 
 ### [Get-AksEdgeNodeAddr](./get-aksedgenodeaddr.md)
 
@@ -53,7 +53,7 @@ Gets the VM's IP and MAC addresses.
 
 ### [Get-AksEdgeNodeConnectivityMode](./get-aksedgenodeconnectivitymode.md)
 
-Gets the connectivity mode of the AksEdge Linux node.
+Gets the connectivity mode of the AKS Edge Essentials Linux node.
 
 ### [Get-AksEdgeNodeName](./get-aksedgenodename.md)
 
@@ -61,7 +61,7 @@ Gets the VM's hostname.
 
 ### [Get-AksEdgeUpgrade](./get-aksedgeupgrade.md)
 
-Get whether AksEdge is allowed to upgrade the Kubernetes version on update.
+Get whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 ### [Invoke-AksEdgeNodeCommand](./invoke-aksedgenodecommand.md)
 
@@ -73,12 +73,11 @@ Installs missing required OS features.
 
 ### [New-AksEdgeConfig](./new-aksedgeconfig.md)
 
-Creates the configuration file needed for a new AksEdge deployment on this machine.
-
+Creates the configuration file needed for a new AKS Edge Essentials deployment on this machine.
 
 ### [New-AksEdgeDeployment](./new-aksedgedeployment.md)
 
-Creates a new AksEdge deployment on this machine.
+Creates a new AKS Edge Essentials deployment on this machine.
 
 ## [New-AksEdgeScaleConfig](./new-aksedgescaleconfig.md)
 
@@ -98,7 +97,7 @@ Removes a local node from an existing cluster.
 
 ### [Set-AksEdgeNodeConnectivityMode](./set-aksedgenodeconnectivitymode.md)
 
- Sets AksEdge node connectivity mode.
+ Sets AKS Edge Essentials node connectivity mode.
 
 ### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
 
@@ -106,7 +105,7 @@ Safely drains a node before your delete the node.
 
 ### [Set-AksEdgeUpgrade](./set-aksedgeupgrade.md)
 
- Sets whether AksEdge is allowed to upgrade the Kubernetes version on update.
+Sets whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 ### [Start-AksEdgeNode](./start-aksedgenode.md)
 
@@ -114,7 +113,7 @@ Starts the node VM if it's currently stopped.
 
 ### [Start-AksEdgeUpdate](./start-aksedgeupdate.md)
 
-Starts the update process for updating AKS-Edge. 
+Starts the update process for updating AKS Edge Essentials. 
 
 ### [Start-AksEdgeWorkerNodeUpdate](./start-aksedgeworkernodeupdate.md)
 
@@ -134,7 +133,7 @@ Checks whether the deployment was created.
 
 ### [Test-AksEdgeNetworkParameters](./test-aksedgenetworkparameters.md)
 
-Validates AksEdge network parameters, useful as a pre-deployment check as well before scaling to multiple machines.
+Validates AKS Edge Essentials network parameters, useful as a pre-deployment check as well before scaling to multiple machines.
 
 ### [Test-AksEdgeNode](./test-aksedgenode.md)
 
