@@ -127,7 +127,7 @@ The next step is to install required Windows roles and features on every server 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "SMB Bandwidth Limit", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "FS-SMBBW", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
