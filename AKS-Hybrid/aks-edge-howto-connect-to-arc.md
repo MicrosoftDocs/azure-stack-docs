@@ -98,7 +98,7 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
 
    ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
-5. Now you can view resources on your cluster. The **Workloads** option, shows the pods running in your cluster.
+5. Now you can view resources on your cluster. The **Workloads** option shows the pods running in your cluster.
 
     ```powershell
     kubectl get pods --all-namespaces
