@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters 
 To install, you will need to have the VM extensions, the AKS base image, a plan and offer to your users, and enable multi-tenancy for your Azure Stack Hub. AKS clusters can only be created in the user environment.
 
 > [!IMPORTANT]  
-> Azure Kubernetes Service on Azure Stack Hub, currently in PREVIEW, is being discontinued and will not become GA. See [AKS Engine](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub. 
+> Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not become GA. See [AKS Engine](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub. 
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 > [!NOTE]  
