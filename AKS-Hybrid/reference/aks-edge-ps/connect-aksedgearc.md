@@ -12,7 +12,7 @@ ms.lastreviewed: 02/01/2023
 
 # Connect-AksEdgeArc
 
-Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes.
+Connects the AKS Edge Essentials cluster running on this machine to Azure Arc for Kubernetes.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Connect-AksEdgeArc [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [
 
 ## Description
 
-Connects the AksEdge cluster running to Azure Arc for Kubernetes. Running this command requires an up-to-date version of the Az.ConnectedKubernetes and Az.Accounts modules and an up-to-date helm version in the binary path.
+Connects the AKS Edge Essentials cluster running to Azure Arc for Kubernetes. Running this command requires an up-to-date version of the Az.ConnectedKubernetes and Az.Accounts modules and an up-to-date helm version in the binary path.
 
 
 ## Examples
