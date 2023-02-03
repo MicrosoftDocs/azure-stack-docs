@@ -43,8 +43,9 @@ Accept wildcard characters: False
 
 ### -DeploymentType
 
-This parameter allows to specify three deployment types: The simple single machine cluster that requires minimal parameters but cannot be scaled across multiple machines. The scalable cluster which requires input of network parameters and which can be scaled by calling New-AksEdgeScaleConfig after deployment (this config can be transferred to another machine to join the cluster).
-The CAPI managed cluster type: Similar to the scalable cluster type, network parameters are required, but in addition a multitude of machines can be specified. This allows for automated deployment of the whole cluster spanning across multiple machines in one go. Note that the deployment if the CAPI managed cluster is not yet supported.
+This parameter supports two deployment types: 
+- `SingleMachineCluster`- The simple single machine cluster that requires minimal parameters but can't be scaled across multiple machines. 
+- `ScalableCluster` - The scalable cluster that requires input of network parameters and which can be scaled by calling New-AksEdgeScaleConfig after deployment (this config can be transferred to another machine to join the cluster).
 
 ```yaml
 Type: String

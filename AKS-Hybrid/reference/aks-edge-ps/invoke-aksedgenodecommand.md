@@ -23,7 +23,7 @@ Invoke-AksEdgeNodeCommand [[-command] <String>] [-ignoreError] [[-NodeType] <Str
 ## Description
 
 The Invoke-AksEdgeNodeCommand cmdlet executes a command inside the virtual machine and returns the output.
-This cmdlet only works for commands that return a finite output. It cannot be used for commands that require user interaction or that run indefinitely.
+This cmdlet only works for commands that return a finite output. It can't be used for commands that require user interaction or that runs indefinitely.
 
 ## Examples
 

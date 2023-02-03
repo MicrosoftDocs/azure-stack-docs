@@ -39,8 +39,8 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ||Public Preview   |Experimental|
 |------------|-----------|--------|
-|Kubernetes (K8S)|Version : 1.24.3| - |
-|Kubernetes (K3S)|Version : 1.24.3| - |
+|Kubernetes (K8S)|Version: 1.24.3| - |
+|Kubernetes (K3S)|Version: 1.24.3| - |
 |Network plugin | Calico on K8S <br/> Flannel on K3S | Flannel on K8S <br/> Calico on K3S|
 |Configuration| *Single machine Kubernetes<br/>* Full Kubernetes (on single machine)|Full Kubernetes (on multiple machines)|
 

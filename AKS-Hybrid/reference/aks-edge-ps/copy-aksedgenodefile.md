@@ -29,7 +29,7 @@ Copies files to or from a node.
 
 ### Example 1
 
-Pushes the sample.json to a file to te Linux node and names the file as config.json 
+Pushes the sample.json to a file to the Linux node and names the file as config.json 
 
 ```powershell
 Copy-AksEdgeNodeFile -FromFile ./sample.json -ToFile /var/config.json -PushFile -NodeType Linux

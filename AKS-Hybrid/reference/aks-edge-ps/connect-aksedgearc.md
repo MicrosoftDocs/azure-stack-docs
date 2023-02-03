@@ -1,7 +1,7 @@
 ---
 title: Connect-AksEdgeArc for AKS Edge
 author: rcheeran
-description: The Connect-AksEdgeArc PowerShell command add the cluster to Azure Arc.
+description: The Connect-AksEdgeArc PowerShell command adds the cluster to Azure Arc.
 ms.topic: reference
 ms.date: 02/01/2023
 ms.author: rcheeran 
@@ -22,7 +22,7 @@ Connect-AksEdgeArc [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [
 
 ## Description
 
-Connects the AksEdge cluster running on this machine to Azure Arc for Kubernetes. Running this requires an up to date version of the Az.ConnectedKubernetes and Az.Accounts modules as well as an up to date helm version in the binary path.
+Connects the AksEdge cluster running to Azure Arc for Kubernetes. Running this command requires an up-to-date version of the Az.ConnectedKubernetes and Az.Accounts modules and an up-to-date helm version in the binary path.
 
 
 ## Examples

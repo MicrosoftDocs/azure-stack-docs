@@ -21,7 +21,7 @@ ms.lastreviewed: 02/02/2023
 ```
 
 ## Description
-Creates a new AksEdge configuration template for scaling the cluster. This template can be customized and input to Add-AksEdgeNode when the scaling intent it add a node locally, or to New-AksEdgeDeployment when the scaling intent is to add a new machine with a Linux/Windows/LinuxAndWindows node(s) to the existing cluster. This commandlet cannot be used for CAPI managed clusters. Further, this commandlet cannot be used to add machines in the single machine cluster case where only adding a potentially missing Windows node is supported.
+Creates a new AksEdge configuration template for scaling the cluster. This template can be customized and provided as an input to Add-AksEdgeNode (to add a new node) or  New-AksEdgeDeployment (to add a new machine). Further, this commandlet isn't needed when adding a Windows node on a single machine cluster. 
 
 ## Examples
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 
 ### -NodeType
 
- This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. When adding a node, either 'Linux' or 'Windows' must be supplied while for adding a machine, also 'LinuxAndWindows' may be supplied
+ This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. 
 
 ```yaml
 Type: String
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 
 ### -LinuxNodeIp
 
-  Applicable for scalable clusters, this allow specifying the desired Linux node IP. A networking parameter check will be executed to ensure the IP is supported.
+  Applicable for scalable clusters and specifies the desired Linux node IP. A networking parameter check will be executed to ensure the IP is supported.
 
 ```yaml
 Type: String
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -WindowsNodeIp
 
- Applicable for scalable clusters, this allow specifying the desired Windows node IP. A networking parameter check will be executed to ensure the IP is supported.
+ Applicable for scalable clusters and specifies the desired Windows node IP. A networking parameter check will be executed to ensure the IP is supported.
 
 ```yaml
 Type: String
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -ControlPlane
 
-This parameter when specified with a NodeType of Linux or LinuxAndWindows for the AddMachine case, this indicates that the intent is to create a Linux control plane node on the new machine.
+This parameter when specified with a NodeType of Linux or LinuxAndWindows for the AddMachine case, indicates that the intent is to create a Linux control plane node on the new machine.
 
 ```yaml
 Type: SwitchParameter

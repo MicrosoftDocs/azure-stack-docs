@@ -1,7 +1,7 @@
 ---
 title: Add-AksEdgeNode for AKS Edge
 author: rcheeran
-description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster..
+description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster.
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -23,7 +23,7 @@ Add-AksEdgeNode [-JsonConfigFilePath <String>] [-JsonConfigString <String>] [<Co
 ## Description
 
 Adds a new AksEdge node to the cluster. The new node created on this machine joins the cluster to
-which the existing deployment on this machine belongs. In case of a single machine deployment, this command can be used to add a Windows node to the single machine cluster.
+which the existing deployment on this machine belongs. In a single machine deployment, this command can be used to add a Windows node to the single machine cluster.
 In a scalable deployment, the existing Linux or Windows node can be complemented with the other node type.
 
 

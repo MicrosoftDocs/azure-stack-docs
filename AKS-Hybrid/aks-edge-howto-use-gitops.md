@@ -92,7 +92,7 @@ kubectl get pods -n hello-arc
 
 ![Screenshot showing hello-arc service.](media/aks-edge/hello-arc-pods-up.png)
 
-Open a browser and navigate to your Node IP which is the `external-IP` of your `ingress-nginx-controller`.
+Open a browser and navigate to your Node IP, which is the `external-IP` of your `ingress-nginx-controller`.
 
 ![Screenshot of hello-arc application.](media/aks-edge/hello-arc-app-success.png)
 

@@ -1,7 +1,7 @@
 ---
 title: Get-AksEdgeUpgrade for AKS Edge
 author: rcheeran
-description: The Get-AksEdgeUpgrade PowerShell command get whether AksEdge is allowed to upgrade the Kubernetes version on update.
+description: The Get-AksEdgeUpgrade PowerShell command gets whether AksEdge is allowed to upgrade the Kubernetes version on update.
 ms.topic: reference
 ms.date: 02/02/2023
 ms.author: rcheeran 
