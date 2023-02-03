@@ -4,7 +4,7 @@ description: Description of deployment configuration JSON parameters.
 author: yujinkim-msft
 ms.author: yujinkim
 ms.topic: conceptual
-ms.date: 12/02/2022
+ms.date: 02/02/2023
 ms.custom: template-concept
 ---
 
