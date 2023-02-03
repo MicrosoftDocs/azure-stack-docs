@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Set-AksEdgeBillingPodState
 
-The Set-AksEdgeBillingPodState PowerShell command  allows the front end to set Billing pod state after joining Arc through Azure CLI.
+The Set-AksEdgeBillingPodState PowerShell command allows the front end to set billing pod state after joining Arc using the Azure CLI.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Set-AksEdgeBillingPodState
 
 ## Description
 
-This function allows the front end to set Billing pod state after joining Arc through Azure CLI
+This function allows the front end to set billing pod state after joining Arc using the Azure CLI.
 
 
 ## Examples
@@ -35,7 +35,7 @@ Set-AksEdgeBillingPodState -Connect
 
 ### -Connect
 
-This parameter connects or disconnects based on the Connect parameter
+This parameter connects or disconnects.
 
 ```yaml
 Type: Boolean
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
