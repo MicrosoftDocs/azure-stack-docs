@@ -223,7 +223,7 @@ If you want to use an existing configuration file you have previously created, s
     > [!NOTE]
     > When you start the deployment, the page may not show actual progress even after the staging server has restarted. Refresh the page once using the browser refresh and then the page will automatically refresh for the remainder of the deployment.
 
-    If the deployment fails, you can also choose to **Download deployment logs**and **Download deployment report**. Deployment logs can help you troubleshoot a failed deployment.
+    If the deployment fails, you can also choose to **Download deployment logs** and **Download deployment report**. Deployment logs can help you troubleshoot a failed deployment.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-download-config-logs-report.png" alt-text="Screenshot of the Download options that let you download config, logs, and report." lightbox="media/deployment-tool/new-file/deployment-download-config-logs-report.png":::
 
