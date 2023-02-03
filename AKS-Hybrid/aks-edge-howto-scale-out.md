@@ -94,17 +94,18 @@ You should be able to see all the nodes of the cluster.
 
 You can generate a new `ScaleConfig` file based on the nodeType required by repeating steps 1-4. Ensure that you provide IP addresses that are available in your network each time you add a node.
 
-## 6. Add the second node(Linux/Windows) on a machine that already has a node (optional)
+## 6. Add the second node (Linux/Windows) on a machine that already has a node (optional)
 
-You can add another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it.
+You can add another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it:
 
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
+
 > [!NOTE]
-> Run `New-AksEdgeScaleConfig` only on the machines that has `Linux node with ControlPlane role`
+> Run `New-AksEdgeScaleConfig` only on the machines that has the **Linux node with ControlPlane** role.
 
 You can use the generated configuration file and run the following command to add the Windows node:
 
