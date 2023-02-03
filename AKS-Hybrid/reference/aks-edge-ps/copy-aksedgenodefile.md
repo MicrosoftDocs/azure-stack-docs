@@ -12,7 +12,7 @@ ms.lastreviewed: 02/01/2023
 
 # Copy-AksEdgeNodeFile
 
-Copy-AksEdgeNodeFile PowerShell command copies a file to or from a node.
+Copies a file to or from a node.
 
 ## Syntax
 
