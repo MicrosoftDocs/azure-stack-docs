@@ -49,7 +49,7 @@ When this command returns, your version will be running in the new updated/patch
 
 ## Step 3: Update the secondary control nodes
 
-If you have more control nodes in your deployment, you can now update them using the following command.
+If you have more control nodes in your deployment, you can now update them using the following command:
 
 ```powershell
 Start-AksEdgeUpdate -secondaryControlPlaneUpdate
@@ -57,7 +57,7 @@ Start-AksEdgeUpdate -secondaryControlPlaneUpdate
 
 ## Step 4: Update worker nodes
 
-You'll now update the worker nodes in your cluster by running the following command on each of the worker nodes.
+Update the worker nodes in your cluster by running the following command on each of the worker nodes:
 
 ```powershell
 Start-AksEdgeUpdate -secondaryControlPlaneUpdate
@@ -65,7 +65,7 @@ Start-AksEdgeUpdate -secondaryControlPlaneUpdate
 
 ## Step 5: Complete the update
 
-Open a PowerShell window with administrative privileges and run the following command on **all** the nodes in the cluster.
+Open a PowerShell window with administrative privileges and run the following command on all the nodes in the cluster:
 
 ```powershell
 Start-AksEdgeWorkerNodeUpdate 
