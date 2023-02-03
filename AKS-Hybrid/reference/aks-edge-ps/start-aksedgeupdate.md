@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Start-AksEdgeUpdate
 
-Starts the update process for updating AKS-Edge. Upgrades control plane nodes only.
+Starts the update process for updating AKS Edge Essentials. Upgrades control plane nodes only.
 
 ## Syntax
 
@@ -22,9 +22,9 @@ Start-AksEdgeUpdate
 
 ## Description
 
-Microsoft Update will send all the binaries necessary to complete the AKS-Edge Update. The Start-AksEdgeUpdate command will locate these
-binaries and start the MSI’s Update process. Note, starting this command will result in some downtime for the images inside of AKS-Edge.
-If you have any worker nodes in the cluster, you must run Start-AksEdgeWorkerNodeUpdate once ALL of the control plane nodes in the cluster are updated.
+Microsoft Update sends all the binaries necessary to complete the AKS Edge Essentials Update. The `Start-AksEdgeUpdate` command locates these
+binaries and starts the MSI update process. Running this command results in some downtime for the images inside of AKS Edge Essentials.
+If you have any worker nodes in the cluster, you must run `Start-AksEdgeWorkerNodeUpdate` once all of the control plane nodes in the cluster are updated.
 
 
 ## Examples
@@ -59,7 +59,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
