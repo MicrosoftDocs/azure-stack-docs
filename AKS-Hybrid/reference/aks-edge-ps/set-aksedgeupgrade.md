@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Set-AksEdgeUpgrade
 
- Set whether AksEdge is allowed to upgrade the Kubernetes version on update.
+Sets whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 ## Syntax
 
@@ -22,8 +22,7 @@ Set-AksEdgeUpgrade
 
 ## Description
 
-The Set-AksEdgeUpgrade cmdlet set whether AksEdge is allowed to upgrade the Kubernetes version on update.
-
+The Set-AksEdgeUpgrade cmdlet sets whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on update.
 
 ## Examples
 
@@ -49,7 +48,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### Common parameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
