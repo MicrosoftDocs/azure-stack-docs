@@ -287,10 +287,14 @@
     items:
       - name: REST API reference
         href: /rest/api/hybridcontainer/
-- name: AKS Edge Essentials (preview)
+- name: AKS Edge Essentials (Preview)
   items:
   - name: Overview
     href: aks-edge-overview.md
+  - name: System requirements and support matrix
+    href: aks-edge-system-requirements.md
+  - name: Quickstart
+    href: aks-edge-quickstart.md
   - name: Concepts
     items:
     - name: AKS Edge Essentials key concepts
@@ -317,17 +321,23 @@
       href: aks-edge-howto-connect-to-arc.md
     - name: Add local storage binding
       href: aks-edge-howto-use-storage-local-path.md
+    - name: Add NFS storage binding
+      href: aks-edge-howto-use-storage-nfs.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
+    - name: Update AKS Edge Essentials cluster
+      href: aks-edge-howto-update.md
     - name: Discover OPC UA Servers with Akri
       href: aks-edge-how-to-akri-opc-ua.md
+    - name: Discover ONVIF cameras with Akri
+      href: aks-edge-how-to-akri-onvif.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
-    - name: AKS Edge PowerShell 
+    - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: Release notes and known issues
       href: https://github.com/Azure/AKS-Edge/releases
