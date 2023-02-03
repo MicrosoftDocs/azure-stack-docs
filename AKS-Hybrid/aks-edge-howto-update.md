@@ -39,7 +39,7 @@ Once the update is downloaded from either the cloud endpoint or a local WSUS ser
 
 ## Step 2: Update the primary control node
 
-First, you need to update the primary control node, by running the following command on the primary control node.
+First, update the primary control node, by running the following command on the primary control node:
 
 ```powershell
 Start-AksEdgeUpdate
