@@ -12,7 +12,7 @@ ms.custom: template-how-to
 
 As newer versions of AKS Edge Essentials are available, you can update your AKS Edge Essentials cluster for the latest features and security improvements. This article describes how to update and upgrade your AKS Edge Essentials devices when fixes and a new version are available.
 
-The AKS Edge Essentials cluster is composed of two main components that need to be updated. First is the Mariner Linux VM. This virtual machine is installed as a part of the AKS Edge Essentials MSI, and has no package manager, so you can't manually update or change any of the VM components. Instead, the virtual machine is managed with Microsoft Update to keep the components up to date automatically. Second, the Kubernetes platform can be upgraded to stay in sync with the open-source version and the AKS service.  
+The AKS Edge Essentials cluster is comprised of two main components that need to be updated. First is the Mariner Linux VM. This virtual machine is installed as a part of the AKS Edge Essentials MSI, and has no package manager, so you can't manually update or change any of the VM components. Instead, the virtual machine is managed with Microsoft Update to keep the components up to date automatically. Second, the Kubernetes platform can be upgraded to stay in sync with the open-source version and the AKS service.  
 
 The AKS Edge Essentials virtual machine is reliably updated via Microsoft Update. The virtual machine uses A/B update partition scheme, to make each update safe and enable a roll-back to a previous version if anything goes wrong during the update process.
 
