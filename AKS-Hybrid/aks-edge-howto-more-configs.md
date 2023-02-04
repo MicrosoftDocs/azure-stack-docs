@@ -155,7 +155,7 @@ Alternatively, you can disconnect them individually using `Connect-AideArcServer
    Disconnect-AideArcServer
    ```
 
-For a complete clean-up through the Azure portal, delete the service principal and resource group you created for this example.
+    You can also uninstall the Arc for Server agent following the steps [here](/azure/azure-arc/servers/manage-agent#uninstall-the-agent). For a complete clean-up through the Azure portal, delete the service principal and resource group you created for this example.
 
 ## Next steps
 
