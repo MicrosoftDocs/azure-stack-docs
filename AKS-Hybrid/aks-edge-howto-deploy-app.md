@@ -74,7 +74,7 @@ If the application doesn't load, it might be due to an authorization problem wit
 To clean up, delete all resources using the following command:
 
 ```bash
-kubectl delete -f linux-sample.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/linux-sample.yaml
 ```
 
 ## Deploy a sample Windows application to your cluster
@@ -91,7 +91,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/sa
 
 ### 2. Verify that the sample pod is running
 
-It might take a while for the pod to reach the running status, depending on your internet connection. The ASP.NET image is quite large.
+It might take a while for the pod to reach the running status, depending on your internet connection. The ASP.NET image is large.
 
 ```powershell
 kubectl get pods -o wide
@@ -126,7 +126,7 @@ Open a web browser and locate the NodePort to access your service:
 To clean up, delete all resources using:
 
 ```powershell
-kubectl delete -f win-sample.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
 ```
 
 ## Deploying your own applications
