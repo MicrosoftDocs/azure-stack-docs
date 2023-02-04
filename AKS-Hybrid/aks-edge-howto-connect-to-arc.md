@@ -51,13 +51,13 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ## Step 2: Configure your Azure environment
 
-Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/active-directory/develop/howto-create-service-principal-portal)
+Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
 |`ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
-|`Location` | string | The location in which to create your resource group. Choose the location closest to your deployment. |
-|`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
+|`Location` | string | The location of your resource group. Choose the location closest to your deployment. |
+|`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
 |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
 |`ClientId` | GUID | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
@@ -86,7 +86,7 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
 
    ![Screenshot showing the cluster in azure portal](media/aks-edge/cluster-in-az-portal.png)
 
-2. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
+2. On the left panel, select the **Namespaces** option, under **Kubernetes resources (preview)**.
 
    ![Kubernetes resources preview.](media/aks-edge/kubernetes-resources-preview.png)
 
@@ -98,7 +98,7 @@ Run `Connect-AksEdgeArc` to install and connect the existing cluster to Arc-enab
 
    ![Screenshot showing where to paste token in portal.](media/aks-edge/bearer-token-in-portal.png)
 
-5. Now you can view resources on your cluster. The **Workloads** blade, shows the pods running in your cluster.
+5. Now you can view resources on your cluster. The **Workloads** option shows the pods running in your cluster.
 
     ```powershell
     kubectl get pods --all-namespaces
@@ -115,27 +115,8 @@ Run `Disconnect-AksEdgeArc` to disconnect from the Arc-enabled Kubernetes.
    Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
    ```
 
-## Connect host machine to Arc
-
-1. You can connect your host machine to Azure using Arc for Servers. You can follow steps 1-3 mentioned [here.](./aks-edge-howto-more-configs.md)
-
-1. You can connect the host machine using `Connect-AideArcServer` for Arc-enabled servers:
-
-   ```powershell
-   # Connect Arc-enabled server
-   Connect-AideArcServer
-   ```
-
-1. To disconnect the host machine from Arc, using `Disconnect-AideArcServer` for Arc-enabled servers:
-
-   ```powershell
-   # Disconnect Arc-enabled server
-   Disconnect-AideArcServer
-   ```
-
-For a complete clean-up, through the Azure portal, delete the service principal and resource group you created for this example.
-
 ## Next steps
 
 * [Overview](aks-edge-overview.md)
+* [Connect host machine to Arc](aks-edge-howto-more-configs.md)
 * [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
