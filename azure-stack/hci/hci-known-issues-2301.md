@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2301 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2301 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/04/2023
+ms.date: 02/05/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,17 +23,21 @@ For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supp
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
+## Fixed issues in this release
+|#|Feature|Issue|
+|-|------|------|
+|1|Deployment |In earlier releases, after the deployment completed successfully, the instance of deployment tool was uninstalled and all the logs were removed. In this release, this issue is fixed and the deployment logs and deployment report can now be saved. |
+
 ## Known issues in this release
 
 Here are the known issues in the current Azure Stack HCI supplemental package release:
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |After the deployment completes successfully, the instance of deployment tool is uninstalled and all the logs are removed. There's no indication of completion of the deployment and there's no command that you can run to confirm that the deployment is complete. | Follow the steps in [Validate your deployment](./deploy/deployment-tool-validate.md) to verify that your deployment is complete. |
-|2|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-ASRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. <br> 4. Select option 15 to open a PowerShell session. Run this command: `Send-DiagnosticsData`.  |
-|3|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data is not collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
-|4|Disk Firmware |You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
-|5|Deployment |The **Region** and **Management traffic virtual switch** parameters in the **Services** page in the deployment tool are not used in the deployment.|This issue will likely be fixed in a future release. |
+|1|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-ASRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. <br> 4. Select option 15 to open a PowerShell session. Run this command: `Send-DiagnosticsData`.  |
+|2|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data is not collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
+|3|Disk Firmware |You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
+|4|Deployment |The **Region** and **Management traffic virtual switch** parameters in the **Services** page in the deployment tool are not used in the deployment.|This issue will likely be fixed in a future release. |
 
 
 ## Known issues from previous releases
