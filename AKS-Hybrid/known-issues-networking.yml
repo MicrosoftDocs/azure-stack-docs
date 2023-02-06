@@ -273,13 +273,13 @@ sections:
           
           #### Steps
           
-          1. Run the following `kubectl`` command using the workload cluster **kubeconfig** to get a list of nodes in it:
+          1. Run the following `kubectl` command using the workload cluster **kubeconfig** to get a list of nodes in it:
           
              ```powershell
              kubectl --kubeconfig <PATH TO KUBECONFIG> get nodes -owide
              ```
           
-          1. Run the following `kubectl`` command to correlate the node names from the previous command to the workload cluster's nodepool nodes. Take note of the relevant IP addresses from the previous command's output.
+          1. Run the following `kubectl` command to correlate the node names from the previous command to the workload cluster's nodepool nodes. Take note of the relevant IP addresses from the previous command's output.
           
              ```powershell
              kubectl --kubeconfig (Get-KvaConfig).kubeconfig get machine -l cluster.x-k8s.io/cluster-name=<WORKLOAD_CLUSTER_NAME>
