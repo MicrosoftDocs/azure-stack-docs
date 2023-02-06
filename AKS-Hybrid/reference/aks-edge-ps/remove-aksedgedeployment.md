@@ -23,8 +23,7 @@ Remove-AksEdgeDeployment [-Force] [-Headless] [<CommonParameters>]
 
 ## Description
 
-Removes all nodes running on the current machine. If the last control-plane node of a cluster is
-removed, remaining worker nodes will be dangling.
+Removes all nodes running on the current machine. If the last control-plane node of a cluster is removed, remaining worker nodes will be dangling.
 
 ## Parameters
 
