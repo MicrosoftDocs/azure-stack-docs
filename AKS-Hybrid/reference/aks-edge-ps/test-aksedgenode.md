@@ -1,9 +1,9 @@
 ---
 title: Test-AksEdgeNode for AKS Edge
 author: rcheeran
-description: The Test-AksEdgeNode PowerShell command checks whether the Linux VM was created
+description: The Test-AksEdgeNode PowerShell command checks whether the VM was created
 ms.topic: reference
-ms.date: 10/04/2022
+ms.date: 02/03/2023
 ms.author: rcheeran 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
@@ -12,7 +12,7 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNode
 
-Checks whether the node of NodeType was created.
+Checks whether the node of `NodeType` was created.
 
 ## Syntax
 
@@ -22,15 +22,14 @@ Test-AksEdgeNode [[-NodeType] <String>] [<CommonParameters>]
 
 ## Description
 
-The Test-AksEdgeNode commandlet is an exposed function to verify whether the Linux or Windows node
-was created.
-It returns true if the node was created or false if not.
+The `Test-AksEdgeNode` cmdlet verifies whether the Linux or Windows node was created. It returns **true** if the node was created, or **false** if not.
 
 ## Examples
 
-### Example 1
+### Example
+
 ```powershell
-Test-AksEdgeNode -WorkloadType Windows
+Test-AksEdgeNode -NodeType Windows
 ```
 
 ## Parameters
@@ -55,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 
-### CommonParameters
+### Common parameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps

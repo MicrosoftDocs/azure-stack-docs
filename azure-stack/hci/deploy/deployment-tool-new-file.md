@@ -38,7 +38,7 @@ Ensure the following Supplemental Package components are downloaded first:
 - [CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
 - [Verify-CloudDeployment.ps1](https://go.microsoft.com/fwlink/?linkid=2210608)
 
-1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
+1. In the deployment UI, select the **first server listed for the cluster to act as a staging server** during deployment.
 
 1. Sign in to the staging server using local administrative credentials.
 
@@ -175,7 +175,11 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
 
-1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
+1. On step **4.1 Create workload and infrastructure volumes**, select the recommended option to **Create workload volumes** in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+
+    If you select **Create infrastructure volumes** only, you will need to create workload volumes yourselves.  
+
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 
     The deployment tool configures your storage according to the best practices based on the number of nodes in the cluster. The tool also configures at least one infrastructure volume that is used by the deployment orchestrator and one or multiple data volumes for your use.
 
@@ -194,7 +198,7 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage.png":::
+    
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
@@ -205,6 +209,7 @@ If you want to use an existing configuration file you have previously created, s
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/new-file/deploy-new-step-5-arc.png":::
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
+
 
     > [!IMPORTANT]
     > The staging server restarts after the deployment starts.
@@ -217,6 +222,12 @@ If you want to use an existing configuration file you have previously created, s
 
     > [!NOTE]
     > When you start the deployment, the page may not show actual progress even after the staging server has restarted. Refresh the page once using the browser refresh and then the page will automatically refresh for the remainder of the deployment.
+
+    If the deployment fails, you can also choose to **Download deployment logs** and **Download deployment report**. Deployment logs can help you troubleshoot a failed deployment.
+
+    :::image type="content" source="media/deployment-tool/new-file/deployment-download-config-logs-report.png" alt-text="Screenshot of the Download options that let you download config, logs, and report." lightbox="media/deployment-tool/new-file/deployment-download-config-logs-report.png":::
+
+
 
 ## Next steps
 

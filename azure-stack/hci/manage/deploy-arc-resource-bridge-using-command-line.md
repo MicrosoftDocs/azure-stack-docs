@@ -80,7 +80,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
+        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the proxy configuration first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
    
       ### [For static IP address](#tab/for-static-ip-address-1)
 
