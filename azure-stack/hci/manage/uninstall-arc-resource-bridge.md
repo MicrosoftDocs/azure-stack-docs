@@ -17,6 +17,9 @@ This article describes how to uninstall Azure Arc VM management on an Azure Arc-
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
+> [!CAUTION]
+> The de-installation will also remove the VMs that have been created using the Azure Arc VM management (preview). You may want to backup these beforehand.
+
 ## How to uninstall Azure Arc VM management
 
 Perform the following steps to uninstall Azure Arc VM management:
