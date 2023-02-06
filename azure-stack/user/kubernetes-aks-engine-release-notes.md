@@ -108,7 +108,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 | 2206                                           | 0.70.0, 0.71.0*, 0.73.0* |    |
 
 > [!Note]  
-> *Supported
+> *Supported. See [AKS Engine Version Support policy](../user/azure-stack-kubernetes-aks-engine-support.md#version-support) for more information. 
 
 ## Kubernetes version upgrade path in AKS engine v0.71.0
 
