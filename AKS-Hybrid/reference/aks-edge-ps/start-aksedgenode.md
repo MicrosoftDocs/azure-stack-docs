@@ -1,7 +1,7 @@
 ---
 title: Start-AksEdgeNode for AKS Edge
 author: rcheeran
-description: The Start-AksEdgeNode PowerShell command starts the Linux node VM 
+description: The Start-AksEdgeNode PowerShell command starts the node VM. 
 ms.topic: reference
 ms.date: 10/04/2022
 ms.author: rcheeran 
@@ -29,6 +29,7 @@ No action is taken if the virtual machine is already started.
 ## Examples
 
 ### Example 1
+
 ```powershell
 Start-AksEdgeNode -NodeType Linux
 ```

@@ -24,13 +24,12 @@ Remove-AksEdgeNode [-NodeType] <String> [-Force] [-Headless] [<CommonParameters>
 ## Description
 
 Removes a local node from an existing cluster. This is supported only when Linux and Windows nodes are deployed
-in the same machine.
-To remove the single node deployed, use Remove-AksEdgeDeployment.
+in the same machine. To remove the single node deployed, use Remove-AksEdgeDeployment.
 
 ## Examples
 
 ```powershell
-Remove-AksEdgeNode -WorkloadType Linux
+Remove-AksEdgeNode -NodeType Linux
 ```
 
 ## Parameters
