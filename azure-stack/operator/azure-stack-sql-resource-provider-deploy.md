@@ -30,6 +30,9 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 > [!IMPORTANT]
 > Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
+> [!IMPORTANT]
+> The V2.x SQL/MySQL resource provider uses the Deployment Resource Provider (DRP) installation mechanism, which isn't supported on the ASDK. Therefore, the V2.x SQL/MySQL resource provider isn't supported on the ASDK.
+
 ## Prerequisites
 
 [!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
