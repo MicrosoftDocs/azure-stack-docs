@@ -204,28 +204,19 @@ A sample anomaly detection web application was created for this end-to-end demo.
 
 ## Clean up
 
-1. Delete the anomaly detection application deployment and service.
+1. Delete the anomaly detection application.
 
    ```powershell
-    kubectl delete service akri-anomaly-detection-app
-    kubectl delete deployment akri-anomaly-detection-app
+   kubectl delete -f https://raw.githubusercontent.com/project-akri/akri/main/deployment/samples/akri-anomaly-detection-app.yaml
    ```
 
-2. Delete the OPC UA monitoring configuration.
+2. Uninstall Akri from your cluster.
 
    ```powershell
-    kubectl delete akric akri-opcua-monitoring
+   helm delete akri
    ```
 
-3. Bring down the Akri agent, controller, and CRDs.
-
-   ```powershell
-    helm delete akri
-    kubectl delete crd instances.akri.sh
-    kubectl delete crd configurations.akri.sh
-   ```
-
-4. Delete the OPC UA server deployment by navigating to your container instances and select **Delete** in the Azure portal.
+3. Delete the OPC UA server deployment by navigating to your container instances and select **Delete** in the Azure portal.
 
 ## Next steps
 
