@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI (preview)
+# View known issues in Azure Stack HCI, 2210 Supplemental Package release (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, which maps to software version number **10.2210.0.32**. This release supports brand new software installation using a deployment tool. For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-preview.md#azure-stack-hci-supplemental-package-preview).
+This article applies to Azure Stack HCI, Supplemental Package, for 2210 public preview release. This release maps to software version number **10.2210.0.32**. This release supports brand new software installation using a deployment tool. For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-preview.md#azure-stack-hci-supplemental-package-preview).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
