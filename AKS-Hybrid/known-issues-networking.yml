@@ -261,15 +261,17 @@ sections:
         answer: | 
           Applications that are NTP time-dependent can trigger hundreds of false alerts when they are out of time sync. If the cluster is running in a proxy environment, your nodepools may not be able to communicate with the default NTP server, **time.windows.com**, through your proxy or firewall.
           
+          ### Fix
+          
           To work around this issue, update the NTP server config on each nodepool node to synchronize the clocks. Doing so will set the clocks in each of your application pods as well.
           
-          ### Prerequisites
+          #### Prerequisites
           
           - An address of an NTP server that is accessible in each nodepool node.
           - Access to the workload cluster **kubeconfig** file.
           - Access to the management cluster **kubeconfig**.
           
-          ### Steps
+          #### Steps
           
           1. Run the following `kubectl`` command using the workload cluster **kubeconfig** to get a list of nodes in it:
           
