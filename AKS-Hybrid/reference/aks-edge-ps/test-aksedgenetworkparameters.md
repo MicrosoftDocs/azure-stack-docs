@@ -12,7 +12,7 @@ ms.lastreviewed: 10/04/2022
 
 # Test-AksEdgeNetworkParameters
 
-Validates AksEdge network parameters, useful as a pre-deployment step.
+Validates AksEdge network parameters, useful as a pre-deployment step. This command is useful as a pre-deployment check before scaling your cluster across multiple machines. 
 
 ## Syntax
 
@@ -25,7 +25,7 @@ Test-AksEdgeNetworkParameters [-JsonConfigFilePath <String>] [<CommonParameters>
 ### fromJsonConfigString
 
 ```powershell
-Test-AksEdgeNetworkParameters -JsonConfigString <String> [<CommonParameters>]
+Test-AksEdgeNetworkParameters [-JsonConfigString <String>] [<CommonParameters>]
 ```
 
 ## Description
@@ -36,9 +36,9 @@ parameters, see the New-AksEdgeDeployment commandlet.
 
 ## Examples
 
-### Example 1
+
 ```powershell
-Test-AksEdgeNetworkParameters -WorkloadType Linux
+Test-AksEdgeNetworkParameters -JsonConfigFilePath ./aksedge-config.json
 ```
 
 ## Parameters
