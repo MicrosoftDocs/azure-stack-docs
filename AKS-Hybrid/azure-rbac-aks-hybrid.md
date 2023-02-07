@@ -63,8 +63,9 @@ The following example uses [az role assignment](/cli/azure/role/assignment?view=
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
 ```
-> In order to access the cluster via connectedk8s proxy method, the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, Resource Group or Cluster.
-> For more details about the role [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
+
+In order to access the cluster via connectedk8s proxy method, the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, Resource Group or Cluster.
+For more details about the role [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 
 To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
 
