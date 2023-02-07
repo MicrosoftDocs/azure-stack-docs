@@ -390,7 +390,7 @@
   items:
   - name: What's in preview?
     items: 
-    - name: 2301 release 
+    - name: 2301 release - Current
       href: manage/whats-new-2301-preview.md
     - name: 2210 release
       href: manage/whats-new-preview.md

@@ -1,6 +1,6 @@
 ---
-title: What's in Azure Stack HCI, Supplemental Package and preview channel (preview)
-description: Preview features and OS versions available via preview channel and supplemental packages.
+title: What's in Azure Stack HCI, 2210 Supplemental Package and preview channel (preview)
+description: Preview features and OS versions available via preview channel and 2210 supplemental packages.
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 12/05/2022
 ---
 
-# What's in preview for Azure Stack HCI
+# What's in preview for Azure Stack HCI, 2210 release (preview)
 
 > Applies to: Azure Stack HCI preview channel and Supplemental Package
 
