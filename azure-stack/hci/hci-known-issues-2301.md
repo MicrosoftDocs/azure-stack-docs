@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2301 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2301 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/04/2023
+ms.date: 02/07/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -29,11 +29,10 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |After the deployment completes successfully, the instance of deployment tool is uninstalled and all the logs are removed. There's no indication of completion of the deployment and there's no command that you can run to confirm that the deployment is complete. | Follow the steps in [Validate your deployment](./deploy/deployment-tool-validate.md) to verify that your deployment is complete. |
-|2|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-ASRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. <br> 4. Select option 15 to open a PowerShell session. Run this command: `Send-DiagnosticsData`.  |
-|3|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data is not collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
-|4|Disk Firmware |You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
-|5|Deployment |The **Region** and **Management traffic virtual switch** parameters in the **Services** page in the deployment tool are not used in the deployment.|This issue will likely be fixed in a future release. |
+|1|Observability |`Send-DiagnosticData` fails when run from a remote PowerShell session connected to Azure Stack HCI cluster nodes.|To run this command, enable Remote Desktop Protocol on your Azure Stack HCI cluster node. <br> 1. In the remote PowerShell session connected to your Azure Stack HCI cluster node, run this command: `Enable-ASRemoteDesktop`. <br> 2. Connect to the cluster node via Remote Desktop. <br> 3. In the *SConfig* on your cluster node, you can verify that Remote desktop (option 7) is enabled. <br> 4. Select option 15 to open a PowerShell session. Run this command: `Send-DiagnosticsData`.  |
+|2|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data is not collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
+|3|Disk Firmware |You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` is not getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |
+|4|Deployment |The **Region** and **Management traffic virtual switch** parameters in the **Services** page in the deployment tool are not used in the deployment.|This issue will likely be fixed in a future release. |
 
 
 ## Known issues from previous releases
@@ -52,7 +51,7 @@ Here are the known issues that have carried over from the previous releases in A
 |8|Deployment|Cluster creation will fail with the error "Microsoft-Windows-Kerberos-Key-Distribution-Center Event ID 14 error event" in the System section of Event Log on your domain controller.|Search for and install the following cumulative updates:<br>Windows Server 2022: [KB5021656](https://support.microsoft.com/help/5021656)<br>Windows Server 2019: [KB5021655](https://support.microsoft.com/help/5021655)<br>Windows Server 2016: [KB5021654](https://support.microsoft.com/help/5021654)<br>To get the standalone package for these out-of-band updates, search for the KB number in the Microsoft Update Catalog. You can manually import these updates into Windows Server Update Services (WSUS) and Microsoft Endpoint Configuration Manager. For WSUS instructions, see [WSUS and the Catalog Site](/windows-server/administration/windows-server-update-services/manage/wsus-and-the-catalog-site#the-microsoft-update-catalog-site). For Configuration Manger instructions, see [Import updates from the Microsoft Update Catalog](/mem/configmgr/sum/get-started/synchronize-software-updates#import-updates-from-the-microsoft-update-catalog). |
 |9|Deployment|Rebooting a cluster node can result in a prompt for the BitLocker recovery key.|First, always ensure that BitLocker recovery keys are securely stored outside the cluster after deployment.<br/><br/>Enter the BitLocker recovery key and once the machine is booted, run the following two commands to mitigate the issue:<br/><br/>`Suspend-AzsOSVolumeEncryption`<br/>`Resume-AzsOSVolumeEncryption`|
 |10|Environment Checker| If SSL inspection is turned on in your Azure Stack HCI system, the connectivity validator fails with the certificate validation error message.  | For information about the error and how to troubleshoot it, see [Potential failure scenario for connectivity validator](./manage/use-environment-checker.md#potential-failure-scenario-for-connectivity-validator).|
-|11|Deployment| AzureStackHCI module may cause the deployment to fail with the following exception: "HCI Registration failed. Error: Could not load file or assembly 'Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The system cannot find the file specified." | Use the following workaround and resume the deployment: <br>`Uninstall-Module Az.Stackhci -Force`<br>`Uninstall-Module Az.Accounts -Force`<br>`Install-Module Az.Accounts -RequiredVersion 2.10.4`<br>`Install-Module Az.StackHci -RequiredVersion 1.4.1`.|
+
 
 
 ## Next steps
