@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 02/01/2023
+ms.date: 02/07/2023
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -40,7 +40,7 @@ Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
 
 **Failure state explanation**:
 
-During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
+During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) cmdlet talks to each server in the cluster to provision certificates. Each server uses its certificate to make an API call to HCI services in the cloud to validate registration.
 
 If registration fails, you may see the following message: **Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
 
@@ -60,7 +60,7 @@ If there are node names after the **Couldn't set and verify registration certifi
 
 1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
-1. Try running the `Invoke-AzStackHciConnectivityValidation` cmdlet from the **AzStackHCI.EnvironmentChecker** module and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
+1. Try running the `Invoke-AzStackHciConnectivityValidation` cmdlet from the [AzStackHCI.EnvironmentChecker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5) module and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
 
 1. Look at the hcisvc debug logs on each node listed in the error message.
 
@@ -256,6 +256,18 @@ This message can also be due to a transient issue that sometimes occurs while pe
 
 Wait for 12 hours after the registration for the problem to be resolved automatically.
 
+### Scenario 3
+
+**Failure state explanation**:
+
+This can also happen when the proxy is not configured properly for a connection to Azure ARC cloud services from HCI nodes. You might see the following error in the Arc agent logs:
+
+:::image type="content" source="media/troubleshoot-hci-registration/azure-arc-logs.png" alt-text="Screenshot of Arc agent logs.":::
+
+**Remediation action**:
+
+To resolve this issue, follow the [guidelines to update proxy settings](/azure/azure-arc/servers/manage-agent). Then, re-register the Azure Stack HCI cluster.
+
 ## Not able to rotate certificates in Fairfax and Mooncake
 
 **Failure state explanation**:
@@ -323,6 +335,18 @@ This issue happens when one or more cluster nodes had connectivity issues after 
 4. Sign in to the Azure portal and delete the Azure Resource Manager resource representing the Arc server for this node.
 5. Sign in to the disconnected node again and run `Enable-AzureStackHCIArcIntegration`.
 6. Run `Sync-AzureStackHCI` on the node.
+
+## Job failure when attempting to create VM
+
+**Failure state explanation**:
+
+If the cluster is not registered with Azure upon deployment, or if the cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
+
+`There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.`
+
+**Remediation action**:
+
+Register your HCI cluster with Azure. For information on how to register the cluster, [see the instructions in the Register-AzStackHCI documentation](/powershell/module/az.stackhci/register-azstackhci).
 
 ## Use common resource group for cluster and Arc-for-Server resources
 
