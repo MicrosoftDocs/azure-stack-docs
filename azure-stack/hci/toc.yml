@@ -406,9 +406,9 @@
     items:
     - name: View known issues
       items: 
-      - name: 2301 - Current
+      - name: 2301 release - Current
         href: hci-known-issues-2301.md
-      - name: 2210
+      - name: 2210 release
         href: hci-known-issues.md
     - name: Plan
       items:
