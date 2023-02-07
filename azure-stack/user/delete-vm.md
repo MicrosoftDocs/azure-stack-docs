@@ -89,7 +89,7 @@ $containerRg = (Get-AzStorageAccount | where { $_.StorageAccountName -eq $contai
 $storeParams = @{
     'ResourceGroupName' = $containerRg
     'Name' = $container }
-Get-AzStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
+Get-AzStorageAccount @storeParams | Get-AzStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzStorageContainer -Force
 ```
 
 Remove the virtual network interface.
@@ -104,7 +104,7 @@ Delete the operating system disk.
 $osVhdUri = $machine.StorageProfile.OSDisk.Vhd.Uri
 $osDiskConName = $osVhdUri.Split('/')[-2]
 $osDiskStorageAcct = Get-AzStorageAccount | where { $_.StorageAccountName -eq $osVhdUri.Split('/')[2].Split('.')[0] }
-$osDiskStorageAcct | Remove-AzureStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
+$osDiskStorageAcct | Remove-AzStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
 ```
 
 Remove the data disks attached to your VM.
@@ -116,7 +116,7 @@ if ($machine.DataDiskNames.Count -gt 0)
         foreach ($uri in $machine.StorageProfile.DataDisks.Vhd.Uri )
         {
             $dataDiskStorageAcct = Get-AzStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
-             $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
+             $dataDiskStorageAcct | Remove-AzStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
         }
  }
 ```
