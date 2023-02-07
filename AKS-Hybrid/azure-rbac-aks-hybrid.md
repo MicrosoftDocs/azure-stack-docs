@@ -115,6 +115,7 @@ You can create an Azure RBAC-enabled cluster using an SPN (Option A) or create t
 To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 
 1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/create-an-azure-service-principal-azure-cli) now.
+2. Note this is SPN used for creating Azure RBAC enabled AKS hybrid cluster and is meant for one time use.
 
 1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster, and run the following command:
 
