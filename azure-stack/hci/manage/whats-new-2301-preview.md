@@ -48,9 +48,8 @@ The following new features are available in the 2301 preview release of Suppleme
 
 ## Next steps
 
-- [Join the preview channel](./preview-channel.md) and [install a preview version of Azure Stack HCI](./install-preview-version.md)
+- [Join the preview channel](./preview-channel.md) and [install a preview version of Azure Stack HCI](./install-preview-version.md).
 
 - For new Azure Stack HCI deployments via supplemental package:
     - Read the [Deployment overview](../deploy/deployment-tool-introduction.md).
-    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.
-
+    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md). using the Azure Stack HCI, Supplemental Package.
