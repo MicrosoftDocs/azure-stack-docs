@@ -32,8 +32,6 @@
     href: remove-aksedgenode.md
   - name: Set-AksEdgeNodeToDrain
     href: set-aksedgenodetodrain.md
-  - name: Set-AksEdgeArcConnection
-    href: set-aksedgearcconnection.md
   - name: Start-AksEdgeNode
     href: start-aksedgenode.md
   - name: Stop-AksEdgeNode
