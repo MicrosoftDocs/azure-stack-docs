@@ -87,7 +87,7 @@ The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** 
 
 > [!NOTE]
 > In order to access the cluster via connectedk8s proxy method, the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, Resource Group or Cluster.
-> For more details about the role see: https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role.
+> For more details about the role [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 > 
 
 ```azurecli
