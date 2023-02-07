@@ -79,7 +79,7 @@ Creates the configuration file needed for a new AKS Edge Essentials deployment o
 
 Creates a new AKS Edge Essentials deployment on this machine.
 
-## [New-AksEdgeScaleConfig](./new-aksedgescaleconfig.md)
+### [New-AksEdgeScaleConfig](./new-aksedgescaleconfig.md)
 
 Creates the configuration file needed to scale the deployment to other machines.
 
@@ -113,7 +113,7 @@ Starts the node VM if it's currently stopped.
 
 ### [Start-AksEdgeUpdate](./start-aksedgeupdate.md)
 
-Starts the update process for updating AKS Edge Essentials. 
+Starts the update process for updating AKS Edge Essentials.
 
 ### [Start-AksEdgeWorkerNodeUpdate](./start-aksedgeworkernodeupdate.md)
 
@@ -138,5 +138,3 @@ Validates AKS Edge Essentials network parameters, useful as a pre-deployment che
 ### [Test-AksEdgeNode](./test-aksedgenode.md)
 
 Checks whether the VM was created.
-
-
