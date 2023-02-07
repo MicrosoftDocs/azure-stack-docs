@@ -250,7 +250,7 @@ Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" 
 
 This message can also be due to a transient issue that sometimes occurs while performing Azure Stack HCI registration. When that happens, the `Register-AzStackHCI` cmdlet shows the following warning message:
 
-:::image type="content" source="media/troubleshoot-hci-registration/hci-cmdlet-output.png" alt-text="Scrrenshot of output message from Register-AzStackHCI cmdlet.":::
+:::image type="content" source="media/troubleshoot-hci-registration/hci-cmdlet-output.png" alt-text="Scrrenshot of output message from Register-AzStackHCI cmdlet." lightbox="media/troubleshoot-hci-registration/hci-cmdlet-output.png":::
 
 **Remediation action**:
 
@@ -262,7 +262,7 @@ Wait for 12 hours after the registration for the problem to be resolved automati
 
 This can also happen when the proxy is not configured properly for a connection to Azure ARC cloud services from HCI nodes. You might see the following error in the Arc agent logs:
 
-:::image type="content" source="media/troubleshoot-hci-registration/azure-arc-logs.png" alt-text="Screenshot of Arc agent logs.":::
+:::image type="content" source="media/troubleshoot-hci-registration/azure-arc-logs.png" alt-text="Screenshot of Arc agent logs." lightbox="media/troubleshoot-hci-registration/azure-arc-logs.png":::
 
 **Remediation action**:
 
