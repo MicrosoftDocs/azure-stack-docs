@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2301 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2301 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/05/2023
+ms.date: 02/06/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -22,11 +22,6 @@ This article applies to Azure Stack HCI, Supplemental Package, for 2301 Public P
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-preview.md#azure-stack-hci-supplemental-package-preview).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
-
-## Fixed issues in this release
-|#|Feature|Issue|
-|-|------|------|
-|1|Deployment |In earlier releases, after the deployment completed successfully, the instance of deployment tool was uninstalled and all the logs were removed. In this release, this issue is fixed and the deployment logs and deployment report can now be saved. |
 
 ## Known issues in this release
 
