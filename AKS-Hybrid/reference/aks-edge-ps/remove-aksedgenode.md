@@ -23,7 +23,7 @@ Remove-AksEdgeNode [-NodeType] <String> [-Force] [-WhatIf] [-Confirm] [<CommonPa
 
 ## Description
 
-Removes a local node from an existing cluster. This is supported only when Linux and Windows nodes are deployed in the same machine. To remove the single node deployed, use Remove-AksEdgeDeployment.
+Removes a local node from an existing cluster. This function is supported only when Linux and Windows nodes are deployed in the same machine. To remove the single node deployed, use Remove-AksEdgeDeployment.
 
 ## Examples
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ### -Force
 
 This parameter enables user to remove node without user interaction.
-In combination with the Confirm switch, a node can be force removed with or without user interaction even in case of errors.
+In combination with the Confirm switch, a node can be force removed with or without user interaction even if there are errors.
 If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
 Otherwise, user will be asked for confirmation for node removal unless Confirm is set to false, and asked again if force removal is required.
 
