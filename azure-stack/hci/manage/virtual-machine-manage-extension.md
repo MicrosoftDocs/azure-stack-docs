@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/02/2023
+ms.date: 02/07/2023
 ---
 
 # Manage VM extensions on Azure Stack HCI virtual machines (preview)
@@ -53,7 +53,7 @@ To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you mu
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extension can only be enabled and installed during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](../manage/manage-virtual-machines-in-azure-portal.md#create-arc-vms).
+> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](../manage/manage-virtual-machines-in-azure-portal.md#create-arc-vms).
 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
@@ -114,8 +114,6 @@ Follow these steps in Azure portal to list the installed VM extensions.
 
 You may want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
-> [!NOTE]
-> You can remove only Windows VM extensions using this method.
 
 1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
 
