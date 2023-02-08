@@ -4,9 +4,9 @@ description: Learn about the identity providers you can use with Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 11/09/2021
+ms.date: 02/09/2023
 ms.author: sethm
-ms.reviewer: fiseraci
+ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
 
 # Intent: As an Azure Stack operator, I want an overview for the identity provider options I have when deploying Azure Stack.
@@ -120,7 +120,7 @@ To learn about service principals for Azure Stack Hub, see [Create service princ
 
 Services in Azure Stack Hub that interact with the identity provider are registered as apps with the identity provider. Like apps, registration enables a service to authenticate with the identity system.
 
-All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Azure AD and AD FS use protocols consistently, you can use [Azure Active Directory Authentication Library](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) to authenticate on-premises or to Azure (in a connected scenario). With ADAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
+All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Azure AD and AD FS use protocols consistently, you can use [the Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) (MSAL) to obtain a security token to authenticate on-premises or to Azure (in a connected scenario). With MSAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
 
 ### Identities and your identity system
 
