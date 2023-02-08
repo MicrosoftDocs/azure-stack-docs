@@ -20,15 +20,15 @@ The following table gives descriptions for the settings listed in the configurat
 |HVCIProtection|By default, Hypervisor-protected Code Integrity (HVCI) is enabled on your Azure HCI cluster. For more information, see [Hypervisor-protected Code Integrity](/windows-hardware/design/device-experiences/oem-hvci-enablement).|
 |DRTMProtection|By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Secure Boot with Dynamic Root of Trust for Measurement (DRTM)](/windows-server/security/secured-core-server#2-advanced-protection).|
 |KernelDMAProtection|By default, Pre-boot Kernel Direct Memory Access (DMA) protection is enabled on your Azure HCI cluster. This setting is hardware dependent. For more information, see [Kernel Direct Memory Access protection](/windows-server/security/secured-core-server#2-advanced-protection).|
-|DriftControlEnforced|When set to `true`, the security baseline is re-applied regularly. For more information, see [Security baseline settings for Azure Stack HCI](../concepts/secure-baseline.md)|
+|DriftControlEnforced|When set to `true`, the security baseline is re-applied regularly. For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md)|
 |CredentialGuardEnforced|When set to `true`, Credential Guard is enabled. For more information, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage).|
 |SMBSigningEnforced|When set to `true`, the SMB default instance requires sign in for the client and server services. For more information, see [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing).|
 |SMBClusterEncryption|When set to `true`, cluster east-west traffic is encrypted. For more information, see [SMB encryption](/windows-server/storage/file-server/smb-security#smb-encryption).|
 |SideChannelMitigationEnforced|When set to `true`, all the side channel mitigations are enabled, see [KB4072698](https://support.microsoft.com/en-us/topic/kb4072698-windows-server-and-azure-stack-hci-guidance-to-protect-against-silicon-based-microarchitectural-and-speculative-execution-side-channel-vulnerabilities-2f965763-00e2-8f98-b632-0d96f30c8c8e).|
-|BitLockerBootVolume|When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. For more information, see [BitLocker encryption for Azure Stack HCI](../concepts/security-bitlocker.md).|
-|BitLockerDataVolumes|When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. For more information, see [BitLocker encryption for Azure Stack HCI](../concepts/security-bitlocker.md).|
+|BitLockerBootVolume|When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. For more information, see [BitLocker encryption for Azure Stack HCI](../hci/concepts/security-bitlocker.md).|
+|BitLockerDataVolumes|When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. For more information, see [BitLocker encryption for Azure Stack HCI](../hci/concepts/security-bitlocker.md).|
 |SEDProtectionEnforced|Not used for Azure Stack HCI version 22H2.|
-|WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. For more information, see [Windows Defender Application Control](../concepts/security-windows-defender-application-control.md).|
+|WDACEnforced|Windows Defender Application Control (WDAC) is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. For more information, see [Windows Defender Application Control](../hci/concepts/security-windows-defender-application-control.md).|
 |**Observability**|Section name|
 |StreamingDataClient|Enables telemetry data to be sent to Microsoft.|
 |EULocation|Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU.|
@@ -37,7 +37,7 @@ The following table gives descriptions for the settings listed in the configurat
 |Name|The cluster name provided when preparing Active Directory.|
 |StaticAddress| This value is not used during deployment and will be removed in future releases.|
 |**Storage**|Section name|
-|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](deployment-tool-new-file.md).|
+|ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](../hci/deploy/deployment-tool-new-file.md).|
 |**OptionalServices**|Section name|
 |VirtualSwitchName| This value is not used during deployment and will be removed in future releases.|
 |CSVPath| This value is not used during deployment and will be removed in future releases.|
