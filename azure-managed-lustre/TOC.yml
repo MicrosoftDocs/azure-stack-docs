@@ -1,0 +1,62 @@
+- name: Azure Managed Lustre File System
+  href: index.yml
+- name: Overview
+  items:
+  - name: AMLFS overview
+    href: azure-managed-lustre-overview.md
+- name: System requirements
+  href: system-requirements.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: AMLFS quickstart
+      items:
+      - name: Introduction
+        href: amlfs-quickstart.md
+- name: Tutorial
+  items:
+    - name: 1 - Prepare an application
+      href: tutorial-kubernetes-prepare-application.md
+- name: Concepts
+  items:
+  - name: Clusters and workloads
+    href: kubernetes-concepts.md
+- name: How-to guides
+  items: 
+    - name: Install
+      items:
+          - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
+            href: prestage-cluster-service-host-create.md
+- name: Troubleshooting
+  items:
+  - name: Troubleshooting overview
+    href: troubleshoot-overview.md
+- name: Reference
+  items:
+  - name: Azure Stack HCI
+    href: /azure-stack/hci/index
+  - name: Windows Admin Center (WAC)
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
+- name: Resources
+  items:
+  - name: Release notes
+    href: https://aka.ms/AKS-hybrid-Releasenotes
+  - name: AKS hybrid PowerShell
+    href: ./reference/ps/index.md
+  - name: AKS hybrid Azure CLI
+    href: /cli/azure/hybridaks
+  - name: Azure Arc Jumpstart
+    href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+  - name: Pricing
+    href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
+  - name: Azure roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: AKS roadmap
+    href: https://aka.ms/k8sroadmap
+  - name: AKS hybrid deployment options roadmap
+    href: https://aka.ms/AKS-hybrid-roadmap
+
