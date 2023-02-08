@@ -64,6 +64,9 @@ The following example uses [az role assignment](/cli/azure/role/assignment?view=
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
 ```
 
+In order to access the cluster via connectedk8s proxy method, the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, Resource Group or Cluster.
+For more details about the role [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
+
 To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
 
 ```azurecli
@@ -84,6 +87,7 @@ Creating a target cluster only requires limited privileges on the subscription. 
 Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
 The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
+
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the subscription ID> 
@@ -115,6 +119,7 @@ You can create an Azure RBAC-enabled cluster using an SPN (Option A) or create t
 To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 
 1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/create-an-azure-service-principal-azure-cli) now.
+2. Note the SPN created is for one time use when creating the cluster and doesn't require managing passwords
 
 1. Open a PowerShell window on the Azure HCI node or Windows server where you'll deploy the cluster, and run the following command:
 
@@ -187,6 +192,8 @@ To connect to an AKS hybrid cluster using the `connectedk8s` proxy method, do th
 ### Connect to AKS hybrid cluster over a private network
 
 When you connect to an AKS hybrid cluster over a private network, there's no limit the on number of groups you can use.
+
+In order to retrieve the AAD kubeconfig log into on-premises machine (for example HCI cluster ) and generate the AAD kubeconfig using the command below and distribute users that will connect from their client machine, the AAD kubeconfig doesn't contain any secrets.
 
 To connect to an AKS hybrid cluster over a private network, do the following steps:
 
