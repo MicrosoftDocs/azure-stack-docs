@@ -35,7 +35,10 @@ Before you begin, make sure you've done the following:
     Import-Module .\AsHciADArtifactsPreCreationTool.psm1
     ```
 - Obtain domain administrator access to the Active Directory domain server.
-
+- Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
+    - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
+    - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-azure-portal).
+    
 ## Active Directory preparation module
 
 The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. The following parameters can be provided with the module:

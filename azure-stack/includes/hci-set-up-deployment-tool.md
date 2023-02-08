@@ -8,12 +8,6 @@ ms.date: 02/01/2023
 ms.reviewer: alkohli
 ---
 
-1. In the deployment UX, select the **first server listed for the cluster to act as a staging server** during deployment.
-
-1. Sign in to the staging server using local administrative credentials.
-
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
-
 1. Run PowerShell as administrator.
 
 1. Run the following command to install the deployment tool:
@@ -26,6 +20,31 @@ ms.reviewer: alkohli
 
     > [!NOTE]
     > If you manually extracted deployment content from the ZIP file previously, you must run `BootstrapCloudDeployment-Internal.ps1` instead.
+
+Follow these next steps only if you plan to deploy Azure Stack HCI via PowerShell:
+
+1. Change the directory to *C:\clouddeployment\setup*.
+
+1. Set the following parameters:
+
+    ```powershell
+    $DeploymentUserCred=Get-Credential
+    $LocalAdminCred=Get-Credential
+    $SubscriptionID="<Your subscription ID>"
+    $CloudName="AzureCloud"   
+    $SPNAppID = "<Your App ID>"
+    $SPNSecret= "<Your SPN Secret>"
+    $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
+    $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
+    ```
+
+1. Specify the path to your configuration file and run the following to start the deployment:
+
+    ```powershell
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
+    ```
+
+### Set up parameters
 
 To deploy Azure Stack HCI using PowerShell, the following parameters are required to set up and run the deployment tool properly:
 
@@ -40,6 +59,3 @@ To deploy Azure Stack HCI using PowerShell, the following parameters are require
 |`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
 |`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
-
-> [!NOTE]
-> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](../hci/deploy/register-with-azure.md#assign-permissions-from-azure-portal).

@@ -13,8 +13,8 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-The Azure Stack HCI, version 22H2 operating system (OS) is installed locally on each server in your cluster.
-The installation includes one *Cloud* folder that contains the deployment tool used to deploy a cluster.
+The Azure Stack HCI, version 22H2 operating system is installed locally on each server in your cluster.
+The installation includes a folder that contains the deployment tool used to deploy a cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -26,17 +26,7 @@ Before you begin, make sure you've done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 
-## Files and folders
-
-The *Cloud* folder included with the installation contains the following files:
-
-|File|Description|
-|--|--|
-|*CloudDeployment_*.zip*|Azure Stack HCI, version 22H2 content images and agents.|
-|*BoostrapCloudDeploymentTool.ps1*|Hash script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file, but not launch the deployment tool.|
-|*Verify-CloudDeployment_buildnumber.zip_Hash.ps1*|Hash used to validate the integrity of the .zip file.|
-
-## Boot and install the OS
+## Boot and install the operating ystem
 
 To install the Azure Stack HCI operating system, follow these steps:
 
@@ -63,12 +53,12 @@ To install the Azure Stack HCI operating system, follow these steps:
 
     | Disk partition         | Recommended min. size | Purpose                  |
     |------------------------|-----------------------|--------------------------|
-    | Boot partition (C:)    |60 GB<sup>*</sup>                  |Used for the OS           |
+    | Boot partition (C:)    |60 GB<sup>*</sup>                  |Used for the operating system           |
     | Data partition (D:)    |120 GB                 |Used for logs, crash dumps |
 
     <sup>*</sup> - *The minimum requirement should be based on the memory required to ensure a full memory dump can be created. For more information, see [Overview of memory dump file options for Windows](/troubleshoot/windows-server/performance/memory-dump-file-options).*
 
-    Confirm the OS installation in the boot partition, and then select **Next**.
+    Confirm the operating system installation in the boot partition, and then select **Next**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="Screenshot of the drive location page of the Install Azure Stack HCI wizard.":::
 
@@ -93,7 +83,7 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-## Configure the OS using SConfig
+## Configure the operating system using SConfig
 
 You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
 

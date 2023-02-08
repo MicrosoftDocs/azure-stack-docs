@@ -28,62 +28,28 @@ Before you begin, make sure you have done the following:
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 - [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster.
-- Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
-    - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-    - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-azure-portal).
+
+## Create the configuration file
+
+[!INCLUDE [configuration file](../../includes/hci-deployment-tool-configuration-file.md)]
 
 ## Prepare the configuration file
 
 1. Select the first server in the cluster to act as a staging server during deployment.
 
-1. Use the [sample configuration file](deployment-tool-existing-file.md) as a template to create your file.
-
-1. Review the configuration file to ensure the provided values match your environment details before you copy it to the first (staging) server.
+1. Review the [configuration file created previously](#create-the-configuration-file) to ensure the provided values match your environment details before you copy it to the first (staging) server.
 
 1. Sign in to the staging server using local administrator credentials.
 
-1. Copy the *config* file to the staging server by using the following command:
+1. Copy the configuration file to the staging server by using the following command:
 
     ```powershell
     Copy-Item -path <Path for you source file> -destination C:\setup\config.json
     ```
 
-## Deploy a cluster
+## Reference: Configuration file settings
 
-Follow these steps to deploy a multiple-node cluster or a single-server using PowerShell:
-
-1. Sign in to the first (staging) server using local administrative credentials.
-
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
-
-1. Run PowerShell as administrator.
-
-1. Set the following parameters:
-
-    ```powershell
-    $DeploymentUserCred=Get-Credential
-    $LocalAdminCred=Get-Credential
-    $SubscriptionID="<Your subscription ID>"
-    $CloudName="AzureCloud"   
-    $SPNAppID = "<Your App ID>"
-    $SPNSecret= "<Your SPN Secret>"
-    $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
-    $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
-    ```
-
-1. Set up the deployment tool:
-
-    ```powershell
-    .\BootstrapCloudDeploymentTool.ps1
-    ```
-
-1. Change the directory to *C:\clouddeployment\setup*.
-
-1. Specify the path to your configuration file and run the following to start the deployment:
-
-    ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
-    ```
+[!INCLUDE [configuration file reference](../../includes/hci-deployment-tool-configuration-file-reference.md)]
 
 ## Next steps
 
