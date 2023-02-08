@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 05/16/2022
+ms.date: 02/07/2023
 ms.author: robess
 ms.reviewer: stevenek
 ---
@@ -127,7 +127,7 @@ The next step is to install required Windows roles and features on every server 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "SMB Bandwidth Limit", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -135,7 +135,7 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "SMB Bandwidth Limit", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "FS-SMBBW", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
