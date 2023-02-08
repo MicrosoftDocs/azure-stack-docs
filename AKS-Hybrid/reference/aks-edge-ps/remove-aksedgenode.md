@@ -27,32 +27,31 @@ Removes a local node from an existing cluster. This is supported only when Linux
 
 ## Examples
 
+Prompt confirmation for both general removal, and force removal if needed
+
 ```powershell
 Remove-AksEdgeNode -NodeType Linux
 ```
 
-Prompt confirmation for both general removal, and force removal if needed
+Skip both confirmation
 
 ```powershell
 Remove-AksEdgeNode -Force -NodeType Linux
 ```
 
-Skip both confirmation
-
+Prompt confirmation for both general removal, and force removal if needed
 
 ```powershell
 Remove-AksEdgeNode -Force -Confirm -NodeType Linux
 ```
 
-Prompt confirmation for both general removal, and force removal if needed
+Skip confirmation for general removal, but will prompt confirmation if force removal is required
 
 ```powershell
 Remove-AksEdgeNode -Confirm:$false -NodeType Linux
 ```
 
-Skip confirmation for general removal, but will prompt confirmation if force removal is required
-
-## PARAMETERS
+## Parameters
 
 ### -NodeType
 
@@ -71,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-This parameter enables to remove node without user interaction.
+
+This parameter enables user to remove node without user interaction.
 In combination with the Confirm switch, a node can be force removed with or without user interaction even in case of errors.
 If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
 Otherwise, user will be asked for confirmation for node removal unless Confirm is set to false, and asked again if force removal is required.
@@ -89,6 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -105,6 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
