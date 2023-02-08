@@ -28,8 +28,8 @@ Removes all nodes running on the current machine. If the last control-plane node
 ## Parameters
 
 ### -Force
-This parameter enables to remove node without user interaction.
-In combination with the Confirm switch, a node can be force removed with or without user interaction even in case of errors.
+This parameter enables user to remove node without interaction.
+In combination with the Confirm switch, a node can be force removed with or without user interaction even if there are errors.
 If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
 Otherwise, user will be asked for confirmation for node removal unless Confirm is set to false, and asked again if force removal is required.
 
