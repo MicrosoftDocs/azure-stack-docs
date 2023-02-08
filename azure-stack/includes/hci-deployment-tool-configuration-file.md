@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.lastreviewed: 12/05/2022
 ---
 
-Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively. For descriptions of each setting, see the reference section below.
+Here's a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively. For descriptions of each setting, see the reference section later in this article.
 
 ```json
 {
