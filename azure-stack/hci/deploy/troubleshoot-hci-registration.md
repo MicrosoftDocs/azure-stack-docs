@@ -266,7 +266,7 @@ This can also happen when the proxy is not configured properly for a connection 
 
 **Remediation action**:
 
-To resolve this issue, follow the [guidelines to update proxy settings](/azure/azure-arc/servers/manage-agent). Then, re-register the Azure Stack HCI cluster.
+To resolve this issue, follow the [guidelines to update proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
 
 ## Not able to rotate certificates in Fairfax and Mooncake
 
