@@ -62,6 +62,9 @@ Verify that all fields in the storage profile are correct.
 
 You can check the current version of your AKS engine by running the following command:
 
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version` 
+
 ```bash  
 $ aks-engine version
 Version: v0.55.0
