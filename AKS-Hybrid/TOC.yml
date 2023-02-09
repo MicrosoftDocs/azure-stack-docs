@@ -299,6 +299,8 @@
     items:
     - name: AKS Edge Essentials key concepts
       href: aks-edge-concept.md
+    - name: Networking
+      href: aks-edge-concept-networking.md
     - name: Deployment options
       href: aks-edge-deployment-options.md
     - name: Deployment JSON configuration parameters
