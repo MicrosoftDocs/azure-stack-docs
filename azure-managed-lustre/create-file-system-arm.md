@@ -78,7 +78,7 @@ Before you take these steps, you should decide on the file system type and size 
 
 1. Deploy the Azure Managed Lustre system by using the template. The syntax is different depending on whether you're using JSON or Bicep files, and the number of files you use.
 
-   Both Bicep and JSON templates can be deployed as single files or multiple files. Read the [Azure Resource Manager templates documentation](<https://docs.microsoft.com/azure/azure-resource-manager/templates/>) for more guidance and exact syntax for each option.
+   Both Bicep and JSON templates can be deployed as single files or multiple files. Read the [Azure Resource Manager templates documentation](/azure/azure-resource-manager/templates) for more guidance and exact syntax for each option.
 
    Example JSON command:
 
