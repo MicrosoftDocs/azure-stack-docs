@@ -312,12 +312,12 @@ sections:
           To resolve the error, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
           
       - question: | 
-          Set-AksHciConfig fails with the error "GetCatalog error returned by API call: � proxyconnect tcp: tls: first record does not look like a TLS Handshake"
+          Set-AksHciConfig fails with the error "GetCatalog error returned by API call: proxyconnect tcp: tls: first record does not look like a TLS Handshake"
 
         answer: | 
           The `Set-AksHciConfig` PowerShell cmdlet fails with the error:
           
-          `GetCatalog error returned by API call: � proxyconnect tcp: tls: first record does not look like a TLS Handshake`
+          `GetCatalog error returned by API call: proxyconnect tcp: tls: first record does not look like a TLS Handshake`
           
           If you are using AKS with a proxy server, you might have used the wrong URL when setting the required HTTPS proxy URL value. The HTTP proxy URL and HTTPS proxy URL values are both required when configuring AKS with a proxy server, but it's common to need both values to share the same HTTP-prefixed URL.
           
@@ -452,7 +452,7 @@ sections:
           
           1. Navigate to **Active Directory Users and Computers**.
           2. Right-click on the OU or container where the cluster resides.
-          3. Select **Delegate Control�** to open the **Delegation of Control Wizard**.
+          3. Select **Delegate Control** to open the **Delegation of Control Wizard**.
           4. Click **Next** > Click **Add...** to open the **Select Users, Computers, or Groups** window.
           5. Select your choice of group or users to whom you want to delegate control > Click **OK**.
           6. Select **Create a custom task to delegate** > Click **Next** to move on to the **Active Directory Object Type** page.
