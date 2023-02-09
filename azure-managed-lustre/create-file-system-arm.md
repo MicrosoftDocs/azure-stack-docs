@@ -1,6 +1,6 @@
 ---
 title: Create an Azure Managed Lustre file system using Azure Resource Manager templates (Preview)
-description: TK
+description: Use Azure Resource Manager (ARM) templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -19,19 +19,19 @@ ms.date: 02/09/2023
 
 You can automate Azure Managed Lustre file system creation by using Azure Resource Manager (ARM) templates. This article explains the basic procedure and gives examples of the files you'll need.
 
-[Learn more about Azure Resource Manager templates](<https://docs.microsoft.com/azure/azure-resource-manager/templates/>)
+[Learn more about Azure Resource Manager templates](/azure/azure-resource-manager/templates/)
 
 This article gives examples of two different methods for creating ARM templates:
 
-* Use JSON to create ARM templates directly. Read [JSON template syntax](https://learn.microsoft.com/azure/azure-resource-manager/templates/syntax) for details.
+* Use JSON to create ARM templates directly. Read [JSON template syntax](/azure/azure-resource-manager/templates/syntax) for details.
 
-* Use [Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the information. When you deploy the template, the Bicep files are converted into ARM template files. Read [Bicep documentation](https://learn.microsoft.com/azure/azure-resource-manager/bicep/) for details.
+* Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the information. When you deploy the template, the Bicep files are converted into ARM template files. Read [Bicep documentation](/azure/azure-resource-manager/bicep/) for details.
 
-Read [Comparing JSON and Bicep for templates](https://learn.microsoft.com/azure/azure-resource-manager/bicep/compare-template-syntax) for help understanding your options.
+Read [Comparing JSON and Bicep for templates](/azure/azure-resource-manager/bicep/compare-template-syntax) for help understanding your options.
 
 ## File system type and size options
 
-Before you write a template, you'll need to make some decisions about your Azure Managed Lustre file system. If you aren't familiar with the options, read the [Create an Azure Managed Lustre file system](create.md) article and page through the Azure Portal create workflow to learn more.
+Before you write a template, you'll need to make some decisions about your Azure Managed Lustre file system. If you aren't familiar with the options, read the [Create an Azure Managed Lustre file system](create-file-system-portal.md) article and page through the Azure Portal create workflow to learn more.
 
 When you use a template, you need to specify a *SKU name* to define the basic type of Azure Managed Lustre system to create. (If you use the Azure Portal to create your Azure Managed Lustre, you specify the system type indirectly by selecting its capabilities.)
 
@@ -59,7 +59,7 @@ You can use the Azure Portal create workflow to double-check SKU capabilities. S
 
 These example steps use Azure CLI commands to create a new resource group and create an Azure Managed Lustre file system within it.
 
-Before you take these steps, you should decide on the file system type and size to create, check that your environment meets other [prerequisites](prerequisites.md), and prepare the template files.
+Before you take these steps, you should decide on the file system type and size to create, check that your environment meets other [prerequisites](prerequisites-amlfs.md), and prepare the template files.
 
 1. Set your default subscription:
 
@@ -166,7 +166,7 @@ The parameters in this section are either completely optional, or required only 
 
 * **Tags** - Use this option if you want to set Azure resource metadata tags.
 
-* **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this system. Read [Blob integration](create.md#blob-integration) to learn more.
+* **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this system. Read [Blob integration](create-file-system-portal.md#blob-integration) to learn more.
 
   * **Container** - The resource ID of the blob container to use for Lustre HSM.
   * **Logging container** - The resource ID of a different container to hold import and export logs.
@@ -177,7 +177,7 @@ The parameters in this section are either completely optional, or required only 
   * **Identity type** - set this to `UserAssigned` to turn on customer-managed keys.
   * **Encryption Key Vault** - The resource ID of the Azure Key Vault that stores the encryption keys.
   * **Encryption key URL** - The identifier for the key to use to encrypt your data.
-  * **Managed identity** - A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. Read [Use customer-managed encryption keys](customer-keys.md) to learn more.
+  * **Managed identity** - A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. Read [Use customer-managed encryption keys](customer-managed-encryption-keys-amlfs.md) to learn more.
 
 ## Sample JSON files
 

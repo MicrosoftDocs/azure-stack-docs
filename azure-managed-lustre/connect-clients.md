@@ -1,6 +1,6 @@
 ---
 title: Connect clients to an Azure Managed Lustre file system (Preview)
-description: TK
+description: Describes how to connect Linux clients with supported software versions to an Azure Managed Lustre file system.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -30,7 +30,7 @@ Azure Managed Lustre can be accessed by Linux OS client machines. These are the 
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** - 
   - Clients MUST reside in the same Availability Zone in which the cluster resides. 
-  - Be sure that [accelerated networking is indeed enabled on all client VMs](https://learn.microsoft.com/en-us/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it’s not enabled, note that [fully enabling accelerated networking requires a stop/deallocate of each VM](https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
+  - Be sure that [accelerated networking is enabled on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it’s not enabled, note that [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
 
 ## Install client software
 
@@ -43,15 +43,15 @@ Packages and kernel modules are available for these Linux operating systems. Cli
 <!-- - [AlmaLinux 8](client-rhel8.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 7](client-rhel7.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 8](client-rhel8.md) - NOT SUPPORTED in public preview-->
-- [Red Hat Enterprise Linux (RHEL) 7](client-rhel7.md)
-- [Red Hat Enterprise Linux (RHEL) 8](client-rhel8.md)
-- [Ubuntu 18.04](client-ubuntu18.md)
-- [Ubuntu 20.04](client-ubuntu20.md)
-- [Ubuntu 22.04](client-ubuntu22.md)
+- Red Hat Enterprise Linux (RHEL) 7
+- Red Hat Enterprise Linux (RHEL) 8
+- Ubuntu 18.04
+- Ubuntu 20.04
+- Ubuntu 22.04
+
+<!--Add links to download sites for supported client software versions.-->
 
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
-
-<!--NOTES: 1) Individual install articles will not be included in public preview. Link directly to download sites instead. 2) Supported client operating systems to be added to new "Requirements" article.-->
 
 <!-- There are two main steps:
 
