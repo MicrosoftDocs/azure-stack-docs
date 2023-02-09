@@ -43,6 +43,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 6. Run the following command from an elevated prompt and include the version number:
 
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack` 
+
     ```PowerShell  
         choco install aks-engine --version 0.xx.x -y
     ```
@@ -68,6 +71,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 7.  Run the following command from an elevated prompt. Include the right version number:
 
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack` 
+
     ```PowerShell  
         choco install aks-engine --version 0.xx.x -y
     ```
@@ -78,6 +84,9 @@ Once your client VM is set up, check that you have installed the AKS engine.
 
 1. Connect to your client VM.
 2. Run the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version` 
 
     ```PowerShell  
     aks-engine version
