@@ -15,15 +15,15 @@ This article provides information about how to configure the networking between 
 ## Networking
 This guide assumes that you have control over your network and router (that is, in a home setting). If you are in a corporate environment, we recommend you ask your network administrator for a range of free IP addresses (from the same subnet) that 's reachable on the internet.
 
-To establish a communication channel between the Windows host OS and the Linux & Windows virtual machines, we use Hyper-V networking stack. For more information about Hyper-V networking, see [Hyper-V networking basics](https://learn.microsoft.com/windows-server/virtualization/hyper-v/plan/plan-hyper-v-networking-in-windows-server#hyper-v-networking-basics). 
+To establish a communication channel between the Windows host OS and the Linux & Windows virtual machines, we use Hyper-V networking stack. For more information about Hyper-V networking, see [Hyper-V networking basics](/windows-server/virtualization/hyper-v/plan/plan-hyper-v-networking-in-windows-server#hyper-v-networking-basics). 
 
 There are key networking concepts for AKS Edge Essentials that align with Kubernetes concepts. 
 
-- **Virtual switch**: Hyper-V component that allows virtual machines created on Hyper-V hosts to communicate with other computers. For more information, see [Create and configure a virtual switch with Hyper-V](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines?tabs=hyper-v-manager). AKS Edge Essentials support two types of virtual switches:
+- **Virtual switch**: Hyper-V component that allows virtual machines created on Hyper-V hosts to communicate with other computers. For more information, see [Create and configure a virtual switch with Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines?tabs=hyper-v-manager). AKS Edge Essentials support two types of virtual switches:
     - **Internal**: connects to a network that can be used only by the virtual machines running on the Windows host OS that has the virtual switch, and between the host OS and the virtual machines.
     - **External**: connects to a wired, physical network by binding to a physical network adapter. It gives virtual machines access to a physical network to communicate with devices on an external network. In addition, it allows virtual machines on the same Hyper-V server to communicate with each other.
 
-- **Network Address Translation (NAT)**: gives a virtual machine access to network resources using the host computer's IP address and a port through an internal Hyper-V Virtual Switch. Is a networking mode designed to conserve IP addresses by mapping an external IP address and port to a larger set of internal IP addresses. For more information, see [Set up a NAT network](https://learn.microsoft.com/virtualization/hyper-v-on-windows/user-guide/setup-nat-network).
+- **Network Address Translation (NAT)**: gives a virtual machine access to network resources using the host computer's IP address and a port through an internal Hyper-V Virtual Switch. Is a networking mode designed to conserve IP addresses by mapping an external IP address and port to a larger set of internal IP addresses. For more information, see [Set up a NAT network](/virtualization/hyper-v-on-windows/user-guide/setup-nat-network).
 
 - **Control plane endpoint IP address**: The Kubernetes control plane is reachable from this IP address. You must provide a single IP that is free throughout the lifetime of the cluster for the Kubernetes control plane.
 

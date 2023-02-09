@@ -297,12 +297,10 @@
     href: aks-edge-quickstart.md
   - name: Concepts
     items:
-    - name: AKS Edge Essentials key concepts
+    - name: Nodes and clusters
       href: aks-edge-concept.md
     - name: Networking
       href: aks-edge-concept-networking.md
-    - name: Deployment options
-      href: aks-edge-deployment-options.md
     - name: Deployment JSON configuration parameters
       href: aks-edge-deployment-config-json.md
   - name: How-to
