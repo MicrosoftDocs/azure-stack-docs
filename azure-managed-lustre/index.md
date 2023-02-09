@@ -4,7 +4,6 @@ description: Azure Managed Lustre File System
 ms.topic: overview
 ms.date: 02/09/2023
 ms.service: azure-stack
-ms.subservice: azure-managed-lustre
 author: sethmanheim
 ms.author: sethm
 ---
