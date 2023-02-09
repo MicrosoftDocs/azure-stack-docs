@@ -21,7 +21,11 @@ You can scale your cluster with the AKS engine using the **scale** command. The 
 
 ## Scale a cluster
 
-The `aks-engine scale` command can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster. Nodes will always be added or removed from the end of the agent pool. Nodes will be cordoned and drained before deletion.
+For AKS Engine versions 0.73.0 and below: **The `aks-engine scale` command** can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster.
+
+For AKS Engine versions 0.75.3 and above: **The `aks-engine-azurestack scale` command** can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster. 
+
+Nodes will always be added or removed from the end of the agent pool. Nodes will be cordoned and drained before deletion.
 
 ### Values for the scale command
 
@@ -45,6 +49,9 @@ You must specify the **--azure-env** parameter when scaling a cluster in Azure S
 ### Command to scale your cluster
 
 To scale the cluster you run the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to scale a cluster is `aks-engine-azurestack scale` 
 
 ```bash
 aks-engine scale \
