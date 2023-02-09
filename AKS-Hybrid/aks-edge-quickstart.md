@@ -36,7 +36,7 @@ In your working folder, open the `AKSEdgeRemoteDeployment.ps1` file and update t
    |`Azure.ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
    |`Azure.Location` | string | The location of your resource group. Choose the location closest to your deployment. |
    |`Azure.SubscriptionName` | string | Your subscription Name. |
-   |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and opy/paste the subscription ID string into the JSON. |
+   |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
    |`Azure.ServicePrincipalName` | string | Azure Service Principal name. AKS Edge uses this service principal to connect your cluster to Arc.|
    |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
    |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge.|
