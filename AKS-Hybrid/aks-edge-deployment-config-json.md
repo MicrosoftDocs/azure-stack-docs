@@ -62,5 +62,5 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 
 ## Next steps
 
-- [AKS Edge Essentials concepts](./aks-edge-concept.md)
+- [AKS Edge Essentials nodes and clusters](./aks-edge-concept-nodes.md)
 - [Set up your machine](./aks-edge-howto-setup-machine.md)

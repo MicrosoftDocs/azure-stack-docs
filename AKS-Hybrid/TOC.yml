@@ -298,7 +298,7 @@
   - name: Concepts
     items:
     - name: Nodes and clusters
-      href: aks-edge-concept.md
+      href: aks-edge-concept-nodes.md
     - name: Networking
       href: aks-edge-concept-networking.md
     - name: Deployment JSON configuration parameters

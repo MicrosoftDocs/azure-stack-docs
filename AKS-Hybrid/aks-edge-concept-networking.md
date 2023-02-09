@@ -12,6 +12,9 @@ ms.custom: template-concept
 
 This article provides information about how to configure the networking between the Windows host OS and the Linux & Windows nodes virtual machines. For more information about AKS Edge Essentials architecture, see [AKS Edge Essentials overview](./aks-edge-overview.md).
 
+>[!TIP]
+>The following guide describe different networking concepts and configurations available in ASK Edge Essentials. If you are using Single machine cluster, the installer and deployment mechanism will handle all the networking configurations necessary and no extra steps or configurations are needed to deploy your cluster. 
+
 ## Networking
 This guide assumes that you have control over your network and router (that is, in a home setting). If you are in a corporate environment, we recommend you ask your network administrator for a range of free IP addresses (from the same subnet) that 's reachable on the internet.
 
@@ -102,7 +105,7 @@ It's possible to check the DNS servers being used for both Linux and Windows nod
     The command's output shows a list of the Windows VM network interfaces configured. In particular, it's important to check the *Ethernet adapter vEthernet (Ethernet)* interface status, whchi is the default interface for the AKS EE VM communication. Also, make sure to check the IP addresses of the **DNS Servers**  field of the list. If there's no IP address, or the IP address isn't a valid DNS server IP address, then the DNS service won't work.
 
 ### Proxy
-A proxy server is a dedicated software acting as a gateway between a client and the rest of the Internet. It processes networks requests as an intermediary – when you connect to a proxy server, your computer sends requests to the server rather than directly to the recipient. AKS Edge Essentials supports setting up proxy servers for both the Linux and Windows virtual machines. 
+A proxy server is a dedicated software acting as a gateway between a client and the rest of the Internet. It processes networks requests as an intermediary – when you connect to a proxy server, your computer sends requests to the server rather than directly to the recipient. AKS Edge Essentials support setting up proxy servers for both the Linux and Windows virtual machines. 
 
 By default, during AKS EE deployment, the user can provide the proxy configurations using the `Proxy.Http`, `Proxy.Https` and `Proxy.No` parameters. If no parameters are provided, the deployment mechanism sets up the `no_proxy` flag with the necessary Kubernetes internal networking. 
 

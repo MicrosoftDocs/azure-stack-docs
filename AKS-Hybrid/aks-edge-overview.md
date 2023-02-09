@@ -65,5 +65,5 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 ## Next steps
 
-- Read about [deployment options](./aks-edge-deployment-options.md)
+- Read about [deployment options](./aks-edge-concept-nodes.md)
 - Contact product team by emailing projecthaven@microsoft.com
