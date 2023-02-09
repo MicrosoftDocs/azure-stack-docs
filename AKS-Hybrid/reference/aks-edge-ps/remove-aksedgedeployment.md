@@ -23,15 +23,16 @@ Remove-AksEdgeDeployment [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ## Description
 
-Removes all nodes running on the current machine. If the last control-plane node of a cluster is removed, remaining worker nodes will be dangling.
+Removes all nodes running on the current machine. Remove all worker nodes before removing the last control plane node.
 
 ## Parameters
 
 ### -Force
+
 This parameter enables user to remove node without interaction.
 In combination with the Confirm switch, a node can be force removed with or without user interaction even if there are errors.
-If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
-Otherwise, user will be asked for confirmation for node removal unless Confirm is set to false, and asked again if force removal is required.
+If Force is specified, user isn't asked for confirmation for node removal.
+Specifying `-Confirm` explicitly, prompts user for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -46,8 +47,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+The cmdlet isn't run.
 
 ```yaml
 Type: SwitchParameter
@@ -62,7 +64,8 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+
+Prompts you for confirmation before running the cmdlet. Overrides `-Force` parameter for user confirmations.
 
 ```yaml
 Type: SwitchParameter
@@ -77,6 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps
