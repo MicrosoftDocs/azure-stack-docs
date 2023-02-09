@@ -37,11 +37,11 @@ In your working folder, open the `AKSEdgeRemoteDeployment.ps1` file and update t
    |`Azure.Location` | string | The location of your resource group. Choose the location closest to your deployment. |
    |`Azure.SubscriptionName` | string | Your subscription Name. |
    |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and opy/paste the subscription ID string into the JSON. |
-   |`Azure.ServicePrincipalName` | string | Azure Service Principal name. AKS Edge uses this service principal to connect your cluster to Arc. You can either use an existing service principal or if you add a new name. If the service principal doesn't exist, the system creates it for you in the later step. |
+   |`Azure.ServicePrincipalName` | string | Azure Service Principal name. AKS Edge uses this service principal to connect your cluster to Arc.|
    |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
-   |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-   |`Azure.Auth.ServicePrincipalId` | GUID | The AppID of `Azure.ServicePrincipalName` to use as credentials. Leave this field blank if you're creating a new service principal. |
-   |`Azure.Auth.Password` | string | The password (in clear) for `Azure.ServicePrincipalName` to use as credentials. Leave this field blank if you're creating a new service principal. |
+   |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge.|
+   |`Azure.Auth.ServicePrincipalId` | GUID | The AppID of `Azure.ServicePrincipalName` to use as credentials.|
+   |`Azure.Auth.Password` | string | The password (in clear) for `Azure.ServicePrincipalName` to use as credentials.|
 
 See [AksEdgeAzureSetup](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/README.md) to set up your Azure account and create the required service principal.
 
