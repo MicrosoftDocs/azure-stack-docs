@@ -25,9 +25,7 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg",
-          "**/*.svg",
-          "**/*.gif"
+          "**/*.jpg"
         ],
         "exclude": [
           "**/obj/**",
@@ -42,31 +40,11 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "_op_documentIdPathDepotMapping": {
-        "./": { 
-          "depot_name": "Azure.azure-documents", 
-          "folder_relative_path_in_docset": "articles/azure-stack/azure-managed-lustre/" 
-        }
-      },
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None",
-      "manager":"femila",
-      "ms.service": "azure-stack",
-      "recommendations": true
-
+      "feedback_system": "None"
     },
-    "fileMetadata": {
-      "titleSuffix": {
-        "**/*.md": "Azure Managed Lustre"
-      },
-      "feedback_product_url": {
-        "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
-      },
-      "ms.subservice": {
-        "./**/*.md": "azure-managed-lustre"
-      }
-    },
+    "fileMetadata": {},
     "template": [],
     "dest": "azure-managed-lustre"
   }
