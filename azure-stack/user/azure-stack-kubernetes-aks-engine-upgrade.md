@@ -20,7 +20,11 @@ ms.lastreviewed: 3/4/2021
 The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
 ## Upgrade a cluster
 
-The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. You can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
+The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. 
+
+For AKS Enginer versions 0.73.0 and below, you can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
+
+For AKS Enginer versions 0.75.3 and above, you can use the `aks-engine-azurestack upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
 Microsoft doesn't manage your cluster. But Microsoft provides the tool and VM image you can use to manage your cluster. 
 
@@ -69,6 +73,9 @@ The following instructions use the minimum steps to perform the upgrade. If you 
     | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
 3. With your values in place, run the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade` 
 
     ```bash  
     aks-engine upgrade \
@@ -175,6 +182,9 @@ After running the migration script, if the pod is stuck with error "Unable to at
 ## Forcing an upgrade
 
 There may be conditions where you may want to force an upgrade of your cluster. For example, on day one you deploy a cluster in a disconnected environment using the latest Kubernetes version. The following day Ubuntu releases a patch to a vulnerability for which Microsoft generates a new **AKS Base Image**. You can apply the new image by forcing an upgrade using the same Kubernetes version you already deployed.
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade` 
 
 ```bash  
 aks-engine upgrade \
