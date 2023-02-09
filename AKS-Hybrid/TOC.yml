@@ -297,8 +297,8 @@
     href: aks-edge-quickstart.md
   - name: Concepts
     items:
-    - name: Nodes and clusters
-      href: aks-edge-concept-nodes.md
+    - name: Clusters and nodes
+      href: aks-edge-concept-clusters-nodes.md
     - name: Networking
       href: aks-edge-concept-networking.md
     - name: Deployment JSON configuration parameters

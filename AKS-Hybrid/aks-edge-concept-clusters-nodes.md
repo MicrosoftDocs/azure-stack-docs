@@ -1,6 +1,6 @@
 ---
-title: AKS Edge Essentials nodes and clusters
-description: Nodes and clusters running on AKS Edge Essentials 
+title: AKS Edge Essentials clusters and noes
+description: Clusters and nodes running on AKS Edge Essentials 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
@@ -8,9 +8,9 @@ ms.date: 12/05/2022
 ms.custom: template-concept
 ---
 
-# AKS Edge Essentials nodes and clusters key concepts
+# AKS Edge Essentials clusters and nodes key concepts
 
-This article provides information about AKS Edge Essentials nodes, virtual machines creation and types of cluster deployments.
+This article provides information about AKS Edge Essentials types of cluster deployments, nodes and virtual machines creation.
 
 ## Virtual machine nodes
 
