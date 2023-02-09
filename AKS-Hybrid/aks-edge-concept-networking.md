@@ -26,8 +26,6 @@ There are key networking concepts for AKS Edge Essentials that align with Kubern
     - **Internal**: connects to a network that can be used only by the virtual machines running on the Windows host OS that has the virtual switch, and between the host OS and the virtual machines.
     - **External**: connects to a wired, physical network by binding to a physical network adapter. It gives virtual machines access to a physical network to communicate with devices on an external network. In addition, it allows virtual machines on the same Hyper-V server to communicate with each other.
 
-- **Network Address Translation (NAT)**: gives a virtual machine access to network resources using the host computer's IP address and a port through an internal Hyper-V Virtual Switch. Is a networking mode designed to conserve IP addresses by mapping an external IP address and port to a larger set of internal IP addresses. For more information, see [Set up a NAT network](/virtualization/hyper-v-on-windows/user-guide/setup-nat-network).
-
 - **Control plane endpoint IP address**: The Kubernetes control plane is reachable from this IP address. You must provide a single IP that is free throughout the lifetime of the cluster for the Kubernetes control plane.
 
 - **Service IP addresses range**: The Service IP range is a pool of reserved IP addresses used for allocating IP addresses to the Kubernetes services (your Kubernetes services/workloads) for your applications to  be reachable.
@@ -43,7 +41,7 @@ Depending if the AKS Edge Essentials is deployed using a **Single Machine Cluste
 | **Type of virtual switch** | Internal | External |
 | **Virtual switch creation** | Automatic | Manually by user or automatically based on physical net adapter name |
 | **IP address assignment** | Automatic – Addresses defined | Static IP addresses configured by user |
-| **Outbound connections** | Using NAT | Directly using the physical net adapter | 
+| **Outbound connections** | Using virtual switch | Directly using the physical net adapter | 
 | **Inbound connections** | Not reachable | Using the virtual machine IP address | 
 | **DNS** | Configurable using `DnsServers` parameter – If not provided, use Windows host DNS servers | Configurable using `DnsServers` parameter – If not provided, use Windows host DNS servers | 
 | **Proxy** | Configurable using `http_proxy`, `https_proxy` and `no_proxy` parameters | Configurable using `http_proxy`, `https_proxy` and `no_proxy` parameters | 
@@ -58,14 +56,16 @@ Single machine deployments use an internal virtual switch to manage the networki
 
 ![Diagram showing the network architecture using internal virtual switch](./media/aks-edge/networking-single-machine.jpg)
 
-During single machine deployment, AKS Edge Essential creates an internal virtual switch named `aksedgesw-int` and the appropriate virtual network adapters to connect the virtual machines and the Windows host OS. The setup also handles the IP address assignation for the NICs and the creation of the NAT table. IP addresses of the virtual NICs are defined in the following way:
+During single machine deployment, AKS Edge Essential creates an internal virtual switch named `aksedgesw-int` and the appropriate virtual network adapters to connect the virtual machines and the Windows host OS. The setup also handles the IP address assignment and address translation for the NICs. For example, IP addresses of the virtual NICs could be defined in the following way:
 
-- **Windows host OS**: 192.168.0.1
-- **Linux node virtual machine**: 192.168.0.2
-- **Windows node virtual machine (optional)**: 192.168.0.3
-- **Service IP addresses start**: 192.168.0.4
+- **Windows host OS**: 192.168.0.**1**
+- **Linux node virtual machine**: 192.168.0.**2**
+- **Windows node virtual machine**: 192.168.0.**3**
+- **Service IP addresses start**: 192.168.0.**4**
 
-Finally, by using the NAT component, traffic is able to reach the external network using the physical network adapter. The diagram above shows an external network using the *10.0.0.0/24* IP address family; however this depends on the networking environment that the device is installed.
+The *192.168.0.0/24* address family can change depending on the internal virtual switch, however nodes and host OS will always have the same suffix: host OS (.1), Linux VM (.2), Windows VM (.3) and ServiceIP start (.4).
+
+Finally, by using address translation, traffic is able to reach the external network using the physical network adapter. The diagram above shows an external network using the *10.0.0.0/24* IP address family; however this depends on the networking environment that the device is installed.
 
 ## Scalable cluster
 
@@ -78,7 +78,7 @@ To start this type of deployment, the user must provide certain networking param
 - **AdapterName**: Name of the physical adapter connected to the external network. You can run the PowerShell `Get-NetAdapter -Physical` command to view the `Name` column for the adapter of your choice.
 - **Ip4Address**: Specify the IP address your VM takes. Each node needs its own unique IP address. 
 
-Once deployment is finished, all nodes and Windows host OS will be connected to the external network using same external virtual switch. Because nodes are connected directly to the network, there's no need for a NAT table. The diagram above shows a networking architecture using the *192.168.0.0/24* IP address family; however this depends on the networking environment that the devices are installed.
+Once deployment is finished, all nodes and Windows host OS will be connected to the external network using same external virtual switch. Because nodes are connected directly to the network, there's no need for address translation. The diagram above shows a networking architecture using the *192.168.0.0/24* IP address family; however this depends on the networking environment that the devices are installed.
 
 For more information about Scalable clusters configurations, see [Full Kubernetes deployments in AKS Edge Essentials](./aks-edge-howto-multi-node-deployment.md) and [Scaling out on multiple machines](./aks-edge-howto-scale-out.md).
 
