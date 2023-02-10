@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2023
 
 # Get-AksEdgeNodeConnectivityMode
 
-Gets the connectivity mode of the AKS Edge Essentials Linux node.
+Gets the connectivity mode of the AKS Edge Essentials Linux node (ssh access on or off). Returns `On` when the ssh access is enabled.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksEdgeNodeConnectivityMode
 
 ## Description
 
-Gets the connectivity mode of the AKS Edge Essentials Linux node.
+Gets the connectivity mode of the AKS Edge Essentials Linux node (ssh access on or off). Returns `On` when the ssh access is enabled.
 
 
 ## Examples
