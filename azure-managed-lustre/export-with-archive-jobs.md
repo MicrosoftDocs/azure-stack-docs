@@ -1,6 +1,6 @@
 ---
 title: Use archive jobs to export data from Azure Managed Lustre (Preview)
-description: TK
+description: How to use an archive job to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 

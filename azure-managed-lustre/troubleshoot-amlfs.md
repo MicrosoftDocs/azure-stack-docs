@@ -18,7 +18,7 @@ ms.date: 02/09/2023
 
 This article documents workarounds and gives help for common problems.
 
-You also can check the list of [known issues](known-issues-amlfs.md) to see if your issue is a reported bug.
+You also can check the list of [known issues](known-issues-amlfs-preview.md) to see if your issue is a reported bug.
 
 ## Auto-mount conflict (port 988 already in use)
 

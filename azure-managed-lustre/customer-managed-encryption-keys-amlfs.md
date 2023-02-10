@@ -63,16 +63,16 @@ Key vault access permissions:
 
 * The user that creates the Azure Managed Lustre system must have permissions equivalent to the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor). The same permissions are needed to set up and manage Azure Key Vault.
 
-  Read [Secure access to a key vault](https://learn.microsoft.com/azure/key-vault/general/security-features) for more information.
+  Read [Secure access to a key vault](/azure/key-vault/general/security-features) for more information.
 
-Learn more [Azure Key Vault basics](https://learn.microsoft.com/azure/key-vault/general/basic-concepts)
+Learn more [Azure Key Vault basics](/azure/key-vault/general/basic-concepts)
 
 ### Create a user-assigned managed identity
 <!-- check for cross-references from here and create -->
 
 The Azure Managed Lustre file system needs a user-assigned managed identity to access the key vault.
 
-Managed identities are standalone identity credentials that take the place of user identities when accessing Azure services through Azure Active Directory. Like other users, they can be assigned roles and permissions. [Learn more about managed identities](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/)
+Managed identities are standalone identity credentials that take the place of user identities when accessing Azure services through Azure Active Directory. Like other users, they can be assigned roles and permissions. [Learn more about managed identities](/azure/active-directory/managed-identities-azure-resources/)
 
 Create this identity before you create the file system, and give it access to the key vault.
 
@@ -81,8 +81,8 @@ Create this identity before you create the file system, and give it access to th
 
 Read the managed identities documentation to learn more:
 
-* [Create a user-assigned managed identity](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
-* [Assign resource access](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal?source=recommendations)
+* [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
+* [Assign resource access](/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal?source=recommendations)
 
 ## Create the Azure Managed Lustre file system with customer-managed encryption keys
 
@@ -106,7 +106,7 @@ If your Azure Key Vault does not appear in the list, check these requirements:
 
 After selecting a vault, select the individual key from the available options, or create a new key. The key must be a 2048-bit RSA key.
 
-Specify the version for the selected key. Learn more about versioning in the [Azure Key Vault documentation](<https://learn.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning>).
+Specify the version for the selected key. Learn more about versioning in the [Azure Key Vault documentation](/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning).
 <!-- 
 ***[? - From HPC Cache GUI - this isn't an option in Lustre, should it be? - ?]***
 *Optionally, check the **Always use current key version** box if you want to use [automatic key rotation](<https://learn.microsoft.com/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys>).* -->

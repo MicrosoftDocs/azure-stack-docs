@@ -1,6 +1,6 @@
 ---
 title: What is Azure Managed Lustre (Preview)?
-description: TK
+description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -16,7 +16,7 @@ ms.date: 02/09/2023
 
 <!--STATUS: Source content compiled from existing Private Preview overviews. Links not added. Organization needs work. Product team to review for needed content.-->
 
-The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs. 
+The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
 Lustre is an open-source parallel file system that can scale to massive storage sizes while also providing high performance throughput. It's used by the world's fastest supercomputers and in data-centric workflows for a variety of industries.  
 
@@ -34,13 +34,13 @@ IN DEVELOPMENT (2 sentences):
 * How to sign up
 * Support policies
 
-## Data security for Azure Managed Lustre
+## Data security in Azure Managed Lustre
 
 All data stored in Azure is encrypted at rest using Microsoft-managed keys by default. If you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster, follow the instructions in [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
 All information in an Azure Managed Lustre file system also is protected by VM host encryption on the managed disks that hold your data, even if you add a customer-managed key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. For more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
-## Data reesilience in Azure Managed Lustre
+## Data resilience in Azure Managed Lustre
 
 <!--Source: Azure Managed Lustre system properties - fs-properties.md-->
 

@@ -19,7 +19,7 @@ ms.date: 02/09/2023
 
 The Azure Lustre container support interface (CSI) driver for Kubernetes allows you to use an Azure Managed Lustre storage system with Kubernetes containers.
 
-The driver is compatible with [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS). Other Kubernetes installations are currently not supported; contact the Azure Managed Lustre team at the email address above for more information.
+The driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are currently not supported; contact the Azure Managed Lustre team at the email address above for more information.
 
 [Compatible Kubernetes versions](https://github.com/kubernetes-sigs/azurelustre-csi-driver#container-images--kubernetes-compatibility) are listed in the driver repository README.
 
@@ -103,7 +103,7 @@ With this option, you don't have to explicitly create or size the VNet and subne
 
 If you haven't already done so, create and connect to your AKS instance.
 
-Read [Deploy an Azure Kubernetes Service (AKS) cluster](<https://docs.microsoft.com/azure/aks/learn/quick-kubernetes-deploy-portal>) for details.
+Read [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal) for details.
 
 After your AKS cluster is created, connect to it. In the Azure portal overview for your AKS cluster, select the **Get started** tab, then the **Connect** button to see CLI commands populated with your AKS cluster values.
 
@@ -160,7 +160,7 @@ This is the recommended method to create a persistent volume for an existing Azu
 
 1. Update the following values in the **storageclass_existing_lustre.yaml** file.
 
-   ![Screenshot of storageclass_existing_lustre.yaml file with values to replace highlighted.](media/storageclass-values-highlighted.png)
+   ![Screenshot of storageclass_existing_lustre.yaml file with values to replace highlighted.](media/use-csi-driver-kubernetes/storageclass-values-highlighted.png)
 
    1. Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. In nearly all cases, this will be `lustrefs`.
 

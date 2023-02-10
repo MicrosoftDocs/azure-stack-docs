@@ -1,6 +1,6 @@
 ---
 title: Known issues in Azure Managed Lustre (Preview)
-description: TK
+description: Review known issues in the Azure Managed Lustre public preview.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 

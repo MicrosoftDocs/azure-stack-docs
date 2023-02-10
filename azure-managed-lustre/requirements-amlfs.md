@@ -1,6 +1,6 @@
 ---
 title: Requirements for Azure Managed Lustre file systems (Preview)
-description: TK
+description: Review requirements for accounts, networks, storage, access, and clients for Azure Managed Lustre file systems.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
