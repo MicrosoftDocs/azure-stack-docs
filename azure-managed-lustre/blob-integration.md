@@ -19,7 +19,7 @@ ms.date: 02/09/2023
 
 This article explains concepts for using the Azure blob integration with Azure Managed Lustre file systems.
 
-Read [Storage account prerequisites](prerequisites-amlfs.md#storage-prerequisites) to learn the requirements and pre-configuration needed for a compatible blob container.
+Read [Storage account prerequisites](amlfs-prerequisites.md#storage-prerequisites) to learn the requirements and pre-configuration needed for a compatible blob container.
 
 ## Understand hierarchical and non-hierarchical storage schemas
 <!-- update aka link if you change this header text -->

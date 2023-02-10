@@ -15,7 +15,7 @@ ms.date: 02/10/2023
 
 # Requirements for Azure Managed Lustre file systems (Preview)
 
-<!--SOURCE: Sort out requirements from Prerequisites. See prerequisites-amlfs.md for source.-->
+<!--SOURCE: Sort out requirements from Prerequisites. See amlfs-prerequisites.md for source.-->
 
 An Azure Managed Lustre file system has the following requirements for accounts, networks, storage, access, and client software.<!--Placeholder.-->
 

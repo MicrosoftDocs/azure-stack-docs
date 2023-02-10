@@ -60,7 +60,7 @@ You can use the Azure Portal create workflow to double-check SKU capabilities. S
 
 These example steps use Azure CLI commands to create a new resource group and create an Azure Managed Lustre file system within it.
 
-Before you take these steps, you should decide on the file system type and size to create, check that your environment meets other [prerequisites](prerequisites-amlfs.md), and prepare the template files.
+Before you take these steps, you should decide on the file system type and size to create, check that your environment meets other [prerequisites](amlfs-prerequisites.md), and prepare the template files.
 
 1. Set your default subscription:
 
@@ -178,7 +178,7 @@ The parameters in this section are either completely optional, or required only 
   * **Identity type** - set this to `UserAssigned` to turn on customer-managed keys.
   * **Encryption Key Vault** - The resource ID of the Azure Key Vault that stores the encryption keys.
   * **Encryption key URL** - The identifier for the key to use to encrypt your data.
-  * **Managed identity** - A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. Read [Use customer-managed encryption keys](customer-managed-encryption-keys-amlfs.md) to learn more.
+  * **Managed identity** - A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. Read [Use customer-managed encryption keys](customer-managed-encryption-keys.md) to learn more.
 
 ## Sample JSON files
 

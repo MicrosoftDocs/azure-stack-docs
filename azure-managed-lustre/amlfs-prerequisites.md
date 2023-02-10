@@ -168,7 +168,7 @@ If you want to control the encryption keys that are used on your Azure Managed L
 
 Using customer-managed keys is optional; all data stored in Azure is encrypted with Microsoft-managed keys by default. Read [Azure storage encryption](/azure/storage/common/storage-service-encryption) to learn more.
 
-Read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys-amlfs.md) for more information, including complete prerequisites.
+Read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md) for more information, including complete prerequisites.
 
 Customer-managed keys must be provided in an Azure Key Vault. Prepare these requirements before you create your Azure Managed Lustre system:
 
@@ -179,8 +179,8 @@ Customer-managed keys must be provided in an Azure Key Vault. Prepare these requ
   * Provide network access between the key vault and the Azure Managed Lustre file system.
   * Keys must be 2048-bit RSA keys.
 
-  Refer to [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys-amlfs.md) for additional Azure Key Vault requirements.
+  Refer to [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md) for additional Azure Key Vault requirements.
 
 * Create a user-assigned managed identity for the file system to use when accessing the key vault. Read [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview) to learn more.
 
-* Make sure that the user who creates the Azure Managed Lustre file system has sufficient privileges to manage the key vault ([Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor).) Read more about key vault access in [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys-amlfs.md).
+* Make sure that the user who creates the Azure Managed Lustre file system has sufficient privileges to manage the key vault ([Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor).) Read more about key vault access in [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).

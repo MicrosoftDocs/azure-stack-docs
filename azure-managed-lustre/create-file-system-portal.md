@@ -21,11 +21,11 @@ Use the Azure portal to create your file system.
 
 To find the **Create** wizard, search for **Azure Managed Lustre** or follow the link provided by your preview onboarding team.
 
-(To learn about using Azure Resource Manager templates for programmatic creation, see [Create a file system using Azure Resource Manager templates](create-file-system-templates.md).)
+(To learn about using Azure Resource Manager templates for programmatic creation, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).)
 
 ## Prerequisites and planning considerations
 
-Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](prerequisites-amlfs.md).
+Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
 After creation, these items can't be changed:
 
@@ -86,11 +86,11 @@ capacity is a combination of two values:
 
 The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
-Make sure that the subnet has [enough IP addresses](prerequisites-amlfs.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system.
+Make sure that the subnet has [enough IP addresses](amlfs-prerequisites.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system.
 
 The subnet also needs access to a number of standard Azure services.
 
-Read [Network prerequisites](prerequisites-amlfs.md#network-prerequisites) for more information about network sizing and other requirements.
+Read [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
 
 * **Virtual network** - Select or create the network that will hold your Azure Managed Lustre file system.
 * **Subnet** - Select or create the subnet to use for file system interaction.
@@ -112,7 +112,7 @@ Read the [Lustre HSM documentation](https://doc.lustre.org/lustre_manual.xhtml#l
 > [!NOTE]
 > If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you must specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container after the file system exists.
 
-To learn which types of accounts are compatible and what access settings need to be configured, see [Storage account prerequisites](prerequisites-amlfs.md#storage-prerequisites).
+To learn which types of accounts are compatible and what access settings need to be configured, see [Storage account prerequisites](amlfs-prerequisites.md#storage-prerequisites).
 
 The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
 
@@ -169,7 +169,7 @@ You can skip this section if you do not need customer-managed keys. Azure encryp
 > [!NOTE]
 > You cannot change between Microsoft-managed keys and customer-managed keys after creating the file system.
 
-For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys-amlfs.md).
+For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
 
 Select **Customer managed** to choose customer-managed key encryption. The key vault specification fields appear. Select the Azure Key Vault to use, then select the key and version to use for this file system. The key must be a 2048-bit RSA key. You can create a new key vault, key, or key version from this page.
 
