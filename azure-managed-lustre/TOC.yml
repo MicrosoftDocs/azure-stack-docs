@@ -9,7 +9,7 @@
 - name: Concepts
   items:
   - name: requirements
-    href: requirements-amlfs.md
+    href: amlfs-requirements.md
   - name: Use Azure Blob storage with Azure Managed Lustre
     href: blob-integration.md
 - name: How-to guides
@@ -17,11 +17,11 @@
   - name: Create a file system
     items:
     - name: Prerequisites
-      href: prerequisites-amlfs.md
+      href: amlfs-prerequisites.md
     - name: Create file system in Azure portal
       href: create-file-system-portal.md
     - name: Create file system using Azure Resource Manager
-      href: create-file-system-templates.md
+      href: create-file-system-resource-manager.md
   - name: Connect clients to the file system
     href: connect-clients.md
   - name: Use Azure Lustre CSI driver for Kubernetes
@@ -32,11 +32,11 @@
       href: export-with-archive-jobs.md
   - name: Security
     items:
-    - name: User customer-managed encryption keys
-      href: customer-managed-encryption-keys-amlfs.md
+    - name: Use customer-managed encryption keys
+      href: customer-managed-encryption-keys.md
   - name: Troubleshoot
     items:
     - name: Tips & troubleshooting
-      href: troubleshoot-amlfs.md
+      href: amlfs-troubleshoot.md
     - name: Public preview support
       href: preview-support.md
