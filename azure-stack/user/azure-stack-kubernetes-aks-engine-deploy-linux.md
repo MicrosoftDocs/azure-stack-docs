@@ -47,7 +47,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     ```bash  
     sudo apt update
     sudo apt install jq
-    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
+    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine-azurestack/master/scripts/get-akse.sh
     chmod 700 get-akse.sh
     ./get-akse.sh --version v0.xx.x
     ```
@@ -62,7 +62,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
-1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, `aks-engine-v0.xx.x-linux-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, in AKS Engine versions 0.73.0 and below, it would be `aks-engine-v0.xx.x-linux-amd64.tar.gz`, in AKS Engine versions 0.75.3 and above, it would be `aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
@@ -74,9 +74,18 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 5.  Run the following command:
 
+    For AKS Engine versions 0.73.0 and below:
+
     ```bash  
     curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
     tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
+    ```
+    
+    For AKS Engine versions 0.75.3 and above:
+
+    ```bash  
+    curl -o aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz>
+    tar xvzf aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
     ```
 
 ## Verify the installation
