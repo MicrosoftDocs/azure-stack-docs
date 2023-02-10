@@ -1,6 +1,6 @@
 ---
 title: Create an Azure Managed Lustre file system using Azure Resource Manager templates (Preview)
-description: Use Azure Resource Manager (ARM) templates with JSON or Bicep to create an Azure Managed Lustre file system. 
+description: Use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -17,15 +17,15 @@ ms.date: 02/10/2023
 
 <!--STATUS: Ported as is from private preview content. Only titles have been updated.-->
 
-You can automate Azure Managed Lustre file system creation by using Azure Resource Manager (ARM) templates. This article explains the basic procedure and gives examples of the files you'll need.
+You can automate Azure Managed Lustre file system creation by using Azure Resource Manager templates. This article explains the basic procedure and gives examples of the files you'll need.
 
 [Learn more about Azure Resource Manager templates](/azure/azure-resource-manager/templates/)
 
-This article gives examples of two different methods for creating ARM templates:
+This article gives examples of two different methods for creating Azure Resource Manager templates:
 
-* Use JSON to create ARM templates directly. Read [JSON template syntax](/azure/azure-resource-manager/templates/syntax) for details.
+* Use JSON to create Azure Resource Manager templates directly. Read [JSON template syntax](/azure/azure-resource-manager/templates/syntax) for details.
 
-* Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the information. When you deploy the template, the Bicep files are converted into ARM template files. Read [Bicep documentation](/azure/azure-resource-manager/bicep/) for details.
+* Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the information. When you deploy the template, the Bicep files are converted into Azure Resource Manager template files. Read [Bicep documentation](/azure/azure-resource-manager/bicep/) for details.
 
 Read [Comparing JSON and Bicep for templates](/azure/azure-resource-manager/bicep/compare-template-syntax) for help understanding your options.
 
@@ -42,7 +42,8 @@ As of late October 2022, two SKUs are supported:
 * AMLFS-Durable-Premium-125
 * AMLFS-Durable-Premium-250
 
-***NOTE:** The older SKU, AMLFS-Durable-Premium-200, is no longer supported.*
+> [!NOTE]
+> The older SKU, AMLFS-Durable-Premium-200, is no longer supported.
 
 Both of these SKUs create a file system that uses durable SSD storage, but they have different qualities for throughput and configurable storage size. This table explains the differences:
 
@@ -100,9 +101,9 @@ Before you take these steps, you should decide on the file system type and size 
 
 ## Required information
 
-This section explains the information you need to include in your ARM template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for each language type for the literal values.
+This section explains the information you need to include in your Azure Resource Manager template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for each language type for the literal values.
 
-* **Resource type to create** - Tell ARM that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
+* **Resource type to create** - Tell Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
 
   There are various ways to do this.
 
@@ -181,7 +182,7 @@ The parameters in this section are either completely optional, or required only 
 
 ## Sample JSON files
 
-This section has sample contents for a template file (`azlustre-template.json`) and separate parameters file (`azlustre-parameters.json`). These files contain all possible configuration options; optional parameters can be removed when creating your own ARM template.
+This section has sample contents for a template file (`azlustre-template.json`) and separate parameters file (`azlustre-parameters.json`). These files contain all possible configuration options; optional parameters can be removed when creating your own Azure Resource Manager template.
 
 Downloadable example files:
 
