@@ -1,6 +1,6 @@
 ---
 title: Create an Azure Managed Lustre file system in the Azure portal (Preview)
-description: TK
+description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -21,11 +21,11 @@ Use the Azure portal to create your file system.
 
 To find the **Create** wizard, search for **Azure Managed Lustre** or follow the link provided by your preview onboarding team.
 
-(To learn about using Azure Resource Manager (ARM) templates for programmatic creation, read [ARM template deploy](arm-template-deploy.md).)
+(To learn about using Azure Resource Manager (ARM) templates for programmatic creation, read [ARM template deploy](create-file-system-arm.md).)
 
 ## Prerequisites and planning considerations
 
-Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](prerequisites.md).
+Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](prerequisites-amlfs.md).
 
 After creation, these items can't be changed:
 
@@ -85,11 +85,11 @@ capacity is a combination of two values:
 
 The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
-Make sure that the subnet has [enough IP addresses](prerequisites.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system.
+Make sure that the subnet has [enough IP addresses](prerequisites-amlfs.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system.
 
 The subnet also needs access to a number of standard Azure services.
 
-Read [Network prerequisites](prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
+Read [Network prerequisites](prerequisites-amlfs.md#network-prerequisites) for more information about network sizing and other requirements.
 
 * **Virtual network** - Select or create the network that will hold your Azure Managed Lustre file system.
 * **Subnet** - Select or create the subnet to use for file system interaction.
@@ -112,7 +112,7 @@ Read the [Lustre HSM documentation](https://doc.lustre.org/lustre_manual.xhtml#l
 >
 > If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you must specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container after the file system exists.
 
-Read [Storage account prerequisites](prerequisites.md#storage-prerequisites) to learn which types of accounts are compatible and what access settings need to be configured.
+Read [Storage account prerequisites](prerequisites-amlfs.md#storage-prerequisites) to learn which types of accounts are compatible and what access settings need to be configured.
 
 The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
 
@@ -126,7 +126,7 @@ To configure blob integration:
 
 1. Optionally, specify a path for the import prefix, described below in [Understand the import prefix](#understand-the-import-prefix).
 
-If you *only want to export* files from your Azure Managed Lustre system, set an import prefix that doesn't match any existing files in your blob container. Later, you can use archive jobs to move files into the blob container you specify here. Read [Use archive jobs to export data from Azure Managed Lustre](archive-export.md) for details.
+If you *only want to export* files from your Azure Managed Lustre system, set an import prefix that doesn't match any existing files in your blob container. Later, you can use archive jobs to move files into the blob container you specify here. Read [Use archive jobs to export data from Azure Managed Lustre](export-with-archive-jobs.md) for details.
 
 #### Understand the import prefix
 <!-- later problem because this is an aka link - needs to be a header for the anchor - but Microsoft docs won't allow H4's -->
@@ -165,24 +165,24 @@ After the general availability (GA) release, maintenance is expected to be done 
 
 If you want to manage the encryption keys used for your Azure Managed Lustre file system storage, supply your Azure Key Vault information on the **Disk encryption keys** page. The key vault must be in the same region and in the same subscription as the cache.
 
-You can skip this section if you do not need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. Read [Azure storage encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) to learn more.
+You can skip this section if you do not need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. Read [Azure storage encryption](/azure/storage/common/storage-service-encryption) to learn more.
 
 > **NOTE:**
 >
 > You cannot change between Microsoft-managed keys and customer-managed keys after creating the file system.
 
-For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-keys.md).
+For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys-amlfs.md).
 
 Select **Customer managed** to choose customer-managed key encryption. The key vault specification fields appear. Select the Azure Key Vault to use, then select the key and version to use for this file system. The key must be a 2048-bit RSA key. You can create a new key vault, key, or key version from this page.
 
-Check the **Always use current key version** box if you want to use [automatic key rotation](https://docs.microsoft.com/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys).
+Check the **Always use current key version** box if you want to use [automatic key rotation](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys).
 
 In the **Managed identities** section, specify a user-assigned managed identity to use for this file system. The identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
 
 > **NOTE:**
 > You cannot change the assigned identity after you create the file system.
 
-Read [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) to learn more.
+Read [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview) to learn more.
 
 ## Review settings and create the file system
 
@@ -192,5 +192,4 @@ Your Azure Managed Lustre file system should appear in your portal **Resources**
 
 ## Next steps
 
-* Learn how to [connect clients](mount-new.md) to your new Azure Managed Lustre file system
-* Return to the [main page](index.md)
+* Learn how to [connect clients](connect-clients.md) to your new Azure Managed Lustre file system

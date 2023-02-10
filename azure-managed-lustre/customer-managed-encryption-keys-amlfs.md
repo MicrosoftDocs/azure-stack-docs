@@ -1,6 +1,6 @@
 ---
 title: Use customer-managed encryption keys with Azure Managed Lustre (Preview)
-description: TK
+description: Use an Azure Key Vault to create and manage your own encryption keys for Azure Managed Lustre file systems.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -21,7 +21,7 @@ You can use Azure Key Vault to control ownership of the keys used to encrypt you
 > [!NOTE]
 > All data stored in Azure is encrypted at rest using Microsoft-managed keys by default. You only need to follow the steps in this article if you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster.
 
-All information in an Azure Managed Lustre file system also is protected by [VM host encryption](https://learn.microsoft.com/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) on the managed disks that hold your data, even if you add a customer key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. Read [Server-side encryption of Azure disk storage](https://learn.microsoft.com/azure/virtual-machines/disk-encryption) for details.
+All information in an Azure Managed Lustre file system also is protected by [VM host encryption](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) on the managed disks that hold your data, even if you add a customer key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. Read [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption) for details.
 
 There are three steps to enable customer-managed key encryption for Azure Managed Lustre:
 
@@ -61,7 +61,7 @@ Key properties:
 
 Key vault access permissions:
 
-* The user that creates the Azure Managed Lustre system must have permissions equivalent to the [Key Vault contributor role](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor). The same permissions are needed to set up and manage Azure Key Vault.
+* The user that creates the Azure Managed Lustre system must have permissions equivalent to the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor). The same permissions are needed to set up and manage Azure Key Vault.
 
   Read [Secure access to a key vault](https://learn.microsoft.com/azure/key-vault/general/security-features) for more information.
 
@@ -88,7 +88,7 @@ Read the managed identities documentation to learn more:
 
 When you create your Azure Managed Lustre file system, use the **Disk encryption keys** tab to select **Customer managed** in the **Disk encryption key type** setting. Additional sections appear for **Customer key settings** and **Managed identities**.
 
-![Screenshot of the Azure Portal interface for creating a new Azure Managed Lustre system, with customer managed selected on the Disk encryption keys tab. The page shows a Customer key settings section with a clickable link (text: "Select or create a key vault, key, or version"). Below that is a 'Managed identities' header with a link that has the text "Add user assigned managed identities".](media/portal-encryption-keys.png)
+![Screenshot of the Azure Portal interface for creating a new Azure Managed Lustre system, with customer managed selected on the Disk encryption keys tab. The page shows a Customer key settings section with a clickable link (text: "Select or create a key vault, key, or version"). Below that is a 'Managed identities' header with a link that has the text "Add user assigned managed identities".](media/customer-managed-encryption-keys-amlfs/portal-encryption-keys.png)<!--Reformat alt-text for complex illustration.-->
 
 Remember that you can only set up customer managed keys at creation time. You can't change the type of encryption keys used for an existing Azure Managed Lustre file system.
 
@@ -140,5 +140,5 @@ After you choose the new encryption key values, click **Select**. A confirmation
 
 These articles explain more about using Azure Key Vault and customer-managed keys to encrypt data in Azure:
 
-* [Azure storage encryption overview](<https://learn.microsoft.com/azure/storage/common/storage-service-encryption>)
-* [Disk encryption with customer-managed keys](<https://learn.microsoft.com/azure/virtual-machines/disk-encryption#customer-managed-keys>)
+* [Azure storage encryption overview](/azure/storage/common/storage-service-encryption)
+* [Disk encryption with customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys)

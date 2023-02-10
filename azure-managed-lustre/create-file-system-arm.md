@@ -185,8 +185,8 @@ This section has sample contents for a template file (`azlustre-template.json`) 
 
 Downloadable example files:
 
-* [azlustre-template.json](media/example-azlustre-template.json)
-* [azlustre-parameters.json](media/example-azlustre-parameters.json)
+* azlustre-template.json <!--Link to script in public repo when product is ready to go public.-->
+* azlustre-parameters.json <!--Link to script in public repo when product is ready to go public.-->
 
 ### Template file
 
@@ -343,7 +343,7 @@ Sample contents of `azure-lustre-parameters.json`:
 
 This file includes examples for all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values you don't want.
 
-[Downloadable azlustre.bicep example](media/example-azlustre.bicep)
+Downloadable azlustre.bicep example <!--Link to script in public repo when product is ready to go public.-->
 
 ```bicep
 

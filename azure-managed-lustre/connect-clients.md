@@ -87,7 +87,7 @@ Mount all of your clients to the file system's MGS IP address.
 
 The **Client connection** page in the Azure portal shows the IP address and gives a sample mount command that you can copy and use to mount clients.
 
-![Screenshot of Client Connection page in the portal, showing the fields to fill in client path and MGS IP, and the copyable mount command populated with those values.](media/client-connection.png)
+![Screenshot of Client Connection page in the portal, showing the fields to fill in client path and MGS IP, and the copyable mount command populated with those values.](media/connect-clients/client-connection.png)
 
 The mount command includes three components:
 
