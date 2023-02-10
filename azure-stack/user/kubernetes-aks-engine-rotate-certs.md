@@ -67,9 +67,9 @@ Review the following considerations before attempting this operation:
 
 ## Simple steps to rotate certificates
 
-For AKS Engine versions 0.75.3 and above, once you have read all the [requirements](https://github.com/Azure/aks-engine/blob/master/docs/topics/rotate-certs.md#pre-requirements), run `aks-engine-azurestack rotate-certs` with the appropriate arguments (see below).
+For AKS Engine versions 0.75.3 and above, once you have read all the [requirements](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/rotate-certs.md#pre-requirements), run `aks-engine-azurestack rotate-certs` with the appropriate arguments (see below).
 
-For AKS Engine versions 0.73.0 and below, once you have read all the [requirements](https://github.com/Azure/aks-engine/blob/master/docs/topics/rotate-certs.md#pre-requirements), run `aks-engine rotate-certs` with the appropriate arguments:
+For AKS Engine versions 0.73.0 and below, once you have read all the [requirements](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/rotate-certs.md#pre-requirements), run `aks-engine rotate-certs` with the appropriate arguments:
 
 ```bash  
 ./bin/aks-engine rotate-certs \
@@ -114,7 +114,7 @@ If the certificate rotation process halts before completion due to a failure or 
 
 Also notice that `aks-engine rotate-certs` logs the output of every step in file `/var/log/azure/rotate-certs.log` (Linux) and `c:\\k\\rotate-certs.log` (Windows).
 
-For more information on what happens under the hood when running this operation or for further customization, see [Under The Hood](https://github.com/Azure/aks-engine/blob/master/docs/topics/rotate-certs.md#under-the-hood).
+For more information on what happens under the hood when running this operation or for further customization, see [Under The Hood](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/rotate-certs.md#under-the-hood).
 
 ## Next steps
 
