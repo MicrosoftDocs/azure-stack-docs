@@ -22,7 +22,7 @@ Get-AksEdgeNodeName [[-NodeType] <String>]
 
 ## Description
 
-The Get-AksEdgeNodeName queries the virtual machine's current hostname from wssdagent.
+The Get-AksEdgeNodeName returns the virtual machine's current hostname.
 
 ## Examples
 
@@ -33,17 +33,17 @@ Get-AksEdgeNodeName
 ## Parameters
 
 ### -NodeType
-
-This parameter indicates whether a 'Linux' node or a 'Windows' node should be added.
+NodeType specifies whether to get the name of the Linux or Windows node.
+Default is Linux.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
-Default value: None
+Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

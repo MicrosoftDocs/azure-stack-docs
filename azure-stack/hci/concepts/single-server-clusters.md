@@ -4,7 +4,7 @@ description: This article describes Azure Stack HCI OS on a single server
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.reviewer: kerimhanif
+ms.reviewer: kimlam
 ms.lastreviewed: 01/17/2023
 ms.date: 01/17/2023
 ---
@@ -64,7 +64,6 @@ The following table describes currently known issues for single-node clusters. T
 |Windows Admin Center doesn't support creating single-node clusters. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
 |Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration within the same cluster; allows affinity rules to be created, etc. Actions will fail without any harm. |
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
-|Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single-node clusters in 21H2. You'll need to update to 22H2. | Update using Windows Admin Center (through server manager), PowerShell, or the Server Configuration tool (SConfig). [Learn more](../deploy/single-server.md#updating-single-node-clusters) |
 
 ## Next steps

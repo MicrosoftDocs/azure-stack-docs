@@ -12,7 +12,7 @@ ms.lastreviewed: 10/04/2022
 
 # Get-AksEdgeKubeConfig
 
-Pulls the KubeConfig file from the Kubernetes node.
+Pulls the KubeConfig file from the Kubernetes Linux node.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Get-AksEdgeKubeConfig [[-KubeConfigPath] <String>] [-NodeType <String>] [-ignore
 
 ## Description
 
-Pulls the KubeConfig file from the Linux or Windows node so that kubectl on the host to access the AKS Edge Essentials cluster. The function will set the AKS Edge Essentials cluster's kubeconfig file as the default kubeconfig file for kubectl.
+Pulls the KubeConfig file from the Linux so that kubectl on the host to access the AKS Edge Essentials cluster. The function will set the AKS Edge Essentials cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 
 ## Parameters
