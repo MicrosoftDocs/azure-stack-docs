@@ -44,6 +44,18 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 6. Run the following command:
 
+    For AKS Engine versions 0.73.0 and below:
+
+    ```bash  
+    sudo apt update
+    sudo apt install jq
+    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
+    chmod 700 get-akse.sh
+    ./get-akse.sh --version v0.xx.x
+    ```
+    
+    For AKS Engine versions 0.75.3 and above:
+
     ```bash  
     sudo apt update
     sudo apt install jq
@@ -51,9 +63,6 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     chmod 700 get-akse.sh
     ./get-akse.sh --version v0.xx.x
     ```
-
-    > [!NOTE]  
-    > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
     > [!NOTE]  
     > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
