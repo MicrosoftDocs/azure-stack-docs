@@ -1,0 +1,20 @@
+### YamlMime:Landing
+
+title: Azure Managed Lustre File System documentation
+summary: Azure Managed Lustre File System documentation is good.
+
+metadata:
+  title: Azure Managed Lustre File System documentation
+  description: Azure Managed Lustre File System documentation is good.
+  ms.topic: landing-page
+  author: sethmanheim
+  ms.author: sethm 
+  ms.date: 02/08/2023
+
+landingContent:
+  - title: About Azure Kubernetes Service
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS hybrid deployment options?
+            url: aks-hybrid-options-overview.md

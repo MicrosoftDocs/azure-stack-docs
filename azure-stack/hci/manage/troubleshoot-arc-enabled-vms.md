@@ -86,7 +86,7 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
-- If your environment fails to recognize Azure CLI after installing it, please run the following code block to add the Azure CLI installation path to the enrivonment path.
+- If your environment fails to recognize Azure CLI after installing it, please run the following code block to add the Azure CLI installation path to the environment path.
 
 ```PowerShell
         if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {
