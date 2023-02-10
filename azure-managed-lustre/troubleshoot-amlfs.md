@@ -1,6 +1,6 @@
 ---
 title: Tips and troubleshooting for Azure Managed Lustre (Preview)
-description: TK
+description: How to troubleshoot some common problems with Azure Managed Lustre file systems.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -18,7 +18,7 @@ ms.date: 02/09/2023
 
 This article documents workarounds and gives help for common problems.
 
-You also can check the list of [known issues](known-issues.md) to see if your issue is a reported bug.
+You also can check the list of [known issues](known-issues-amlfs.md) to see if your issue is a reported bug.
 
 ## Auto-mount conflict (port 988 already in use)
 

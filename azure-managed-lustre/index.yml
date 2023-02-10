@@ -12,9 +12,9 @@ metadata:
   ms.date: 02/08/2023
 
 landingContent:
-  - title: About Azure Kubernetes Service
+  - title: About Azure Managed Lustre
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS hybrid deployment options?
-            url: aks-hybrid-options-overview.md
+          - text: What is an Azure Managed Lustre file system?
+            url: overview-amlfs.md
