@@ -17,7 +17,7 @@ ms.lastreviewed: 3/4/2021
 
 # Install the AKS engine on Windows in Azure Stack Hub
 
-You can use a Windows machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack Hub instances, check the install, and setting up the client VM on the ASDK.
+Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the `aks-engine` binary (and optionally integrate it to your `$PATH` for more convenient CLI usage).
 
 ## Prepare the client VM
 
@@ -28,7 +28,13 @@ When choosing your client machine, consider:
 1. If the client machine should be recoverable in case of a disaster.
 3. How you will connect to the client machine and how the machine will interact with your cluster.
 
-## Install in a connected environment
+
+## Install AKS Engine version 0.75.3
+
+Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine/releases/latest). Download the package for your operating system, and extract the `aks-engine` binary (and optionally integrate it to your `$PATH` for more convenient CLI usage).
+
+
+## Install AKS Engine version 0.73.0 and below in a connected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
@@ -53,7 +59,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 > [!NOTE]  
 > If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
 
-## Install in a disconnected environment
+## Install AKS Engine version 0.73.0 and below in a disconnected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
