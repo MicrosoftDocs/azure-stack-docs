@@ -4,9 +4,9 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/09/2023
+ms.lastreviewed: 02/10/2023
 ms.reviewer: sethm
-ms.date: 02/09/2023
+ms.date: 02/10/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
@@ -81,7 +81,8 @@ After this procedure you can mount the client to your Azure Managed Lustre syste
 
 ## Mount command
 
-***NOTE:** Before running the mount command, make sure that the client host can see the Azure Managed Lustre file system's virtual network. You can do this by pinging the file system's server IP address. If the ping command doesn't succeed, peer the file system network to your compute resources network.*
+> [!NOTE]
+> Before you run the `mount` command, make sure that the client host can see the Azure Managed Lustre file system's virtual network. You can do this by pinging the file system's server IP address. If the ping command doesn't succeed, peer the file system network to your compute resources network.
 
 Mount all of your clients to the file system's MGS IP address.
 
