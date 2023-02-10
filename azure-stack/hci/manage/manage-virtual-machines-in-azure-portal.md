@@ -104,6 +104,50 @@ To create a VM, you'll first need to create a virtual network interface.
     ```
 1. Here is a sample output:
 
+    ```azurecli
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
+      "location": "eastus",
+      "name": "testnic001",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": null,
+            "properties": {
+              "gateway": null,
+              "prefixLength": null,
+              "privateIpAddress": null,
+              "privateIpAllocationMethod": null,
+              "subnet": {
+                "id": "internalNAT"
+              }
+            }
+          }
+        ],
+        "macAddress": null,
+        "provisioningState": "Succeeded",
+        "resourceName": "testnic001",
+        "status": {}
+      },
+      "resourceGroup": "hybridaksresgrp-491206666",
+      "systemData": {
+        "createdAt": "2023-02-08T23:25:10.984508+00:00",
+        "createdBy": "vlakshmanan@microsoft.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-02-08T23:26:03.262252+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/networkinterfaces"
+    }
+    PS C:\windows\system32> 
+    ```
+
 
 ### Create VM
 
@@ -114,8 +158,13 @@ To create a VM with guest management enabled, you'll use the network interface t
 To create a Windows VM, run the following command:
 
 ```azurecli
-az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
+az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "<VM administrator username>" --admin-password "<VM administrator password>" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
 ```
+
+Make sure to provide VM computer name, VM administrator username and VM administrator password.
+
+In the above cmdlet, the parameter `--provision-vm-agent` when set to `true` enables guest management in the VM that is created. To disable guest management, you can omit the parameter or set it to `false'.
+
 
 Here is a sample output:
 
@@ -123,7 +172,7 @@ Here is a sample output:
 PS C:\windows\system32> az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
 Guest Management for Azure Stack HCI VMs is currently in Preview. This command enables password-based authentication for the created VM. Would you like to proceed? (y/N): y
 
-******************************************************************************************************************
+********************************************************************************
 {
   "extendedLocation": {
     "name": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
@@ -212,8 +261,9 @@ Guest Management for Azure Stack HCI VMs is currently in Preview. This command e
 }
 
 ```
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
-#### Create a Linux VM
+<!--#### Create a Linux VM
 
 To create a Linux VM, run the following command:
 
@@ -225,7 +275,7 @@ Here is a sample output:
 ```
 
 ```
-
+-->
 # [Azure portal](#tab/azureportal)
 
 Follow these steps in Azure portal of your Azure Stack HCI cluster.
