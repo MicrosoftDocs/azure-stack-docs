@@ -15,8 +15,6 @@ ms.date: 02/10/2023
 
 # Create an Azure Managed Lustre file system (Preview)
 
-<!--STATUS: Ported as is from private preview. Title only updated.-->
-
 Use the Azure portal to create your file system.
 
 To find the **Create** wizard, search for **Azure Managed Lustre** or follow the link provided by your preview onboarding team.
