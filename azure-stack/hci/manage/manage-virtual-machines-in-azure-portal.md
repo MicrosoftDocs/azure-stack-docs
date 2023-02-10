@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/07/2022
+ms.date: 02/10/2023
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -35,6 +35,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
+- Access to a virtual network that you have created on your Azure Stack HCI cluster. For more information, see [Create virtual network]().
 - Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
 
     - Running PowerShell 5.0 or later.
@@ -78,8 +79,9 @@ Follow these steps on the client running az CLI and is connected to your Azure S
     $Resource_Group = "<Resource group>"
     $Location = "<Location for Azure Stack HCI cluster resource>"
     $CustomLoc_Name = "<Custom location for Azure Stack HCI cluster>"
-    $VNet_Name = "<Virtual network for VMs deployed on Azure Stack HCI cluster>"
-    $Nic = "<Network interface associated with the VM>"
+    $VNet = "<Virtual network for VMs deployed on Azure Stack HCI cluster>"
+    $VNic = "<Virtual network interface associated with the VM>"
+    $galleryImageName = "<Name of the VM image you'll use to create VM>" 
     ```
     
     The parameters are described in the following table:
@@ -93,8 +95,136 @@ Follow these steps on the client running az CLI and is connected to your Azure S
 
 ### Create virtual network interface
 
+To create a VM, you'll first need to create a virtual network interface.
+
+1. Create a network interface. Run the following command:
+
+    ```azurecli
+    az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --subnet-id $VNet --name $VNic
+    ```
+1. Here is a sample output:
+
+
 ### Create VM
 
+To create a VM with guest management enabled, you'll use the network interface that you created in the previous step. You can create a Windows VM or a Linux VM.
+
+#### Create a Windows VM
+
+To create a Windows VM, run the following command:
+
+```azurecli
+az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
+```
+
+Here is a sample output:
+
+```
+PS C:\windows\system32> az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
+Guest Management for Azure Stack HCI VMs is currently in Preview. This command enables password-based authentication for the created VM. Would you like to proceed? (y/N): y
+
+******************************************************************************************************************
+{
+  "extendedLocation": {
+    "name": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+    "type": "CustomLocation"
+  },
+  "id": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.AzureStackHCI/virtualmachines/testvm001",
+  "identity": {
+    "principalId": "9ab8c590-8f6e-4657-89f4-54af762153d4",
+    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "type": "SystemAssigned"
+  },
+  "location": "eastus",
+  "name": "testvm001",
+  "properties": {
+    "guestAgentProfile": {
+      "agentVersion": "1.25.02203.713",
+      "errorDetails": [],
+      "lastStatusChange": "2023-02-08T23:46:26.6921034Z",
+      "status": "Connected",
+      "vmuuid": "31B7B385-1502-467C-BCB0-A815CAB0C5F7"
+    },
+    "hardwareProfile": {
+      "dynamicMemoryConfig": null,
+      "memoryGb": 4,
+      "processors": 4,
+      "vmSize": "Custom"
+    },
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "testnic001"
+        }
+      ]
+    },
+    "osProfile": {
+      "adminPassword": null,
+      "adminUsername": "admin",
+      "computerName": "testvm0001",
+      "linuxConfiguration": {
+        "disablePasswordAuthentication": false,
+        "provisionVmAgent": true,
+        "ssh": null
+      },
+      "osType": null,
+      "windowsConfiguration": {
+        "enableAutomaticUpdates": null,
+        "provisionVmAgent": true,
+        "ssh": null,
+        "timeZone": null
+      }
+    },
+    "provisioningState": "Succeeded",
+    "resourceName": "testvm001",
+    "securityProfile": {
+      "enableTpm": null,
+      "uefiSettings": {
+        "secureBootEnabled": true
+      }
+    },
+    "status": {
+      "powerState": "Running"
+    },
+    "storageProfile": {
+      "dataDisks": [],
+      "imageReference": {
+        "name": "windos"
+      },
+      "osDisk": {
+        "id": null
+      },
+      "storagepathId": null
+    },
+    "vmId": "85679cec-a80a-11ed-bfb6-22ee2f11ced4"
+  },
+  "resourceGroup": "hybridaksresgrp-491206666",
+  "systemData": {
+    "createdAt": "2023-02-08T23:43:59.974877+00:00",
+    "createdBy": "hciuser@contoso.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2023-02-08T23:46:35.803537+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedByType": "Application"
+  },
+  "tags": null,
+  "type": "microsoft.azurestackhci/virtualmachines"
+}
+
+```
+
+#### Create a Linux VM
+
+To create a Linux VM, run the following command:
+
+```azurecli
+
+```
+Here is a sample output:
+
+```
+
+```
 
 # [Azure portal](#tab/azureportal)
 
