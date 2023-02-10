@@ -52,6 +52,9 @@ When upgrading a production cluster, consider:
 The following instructions use the minimum steps to perform the upgrade. If you would like more detail, see the article [Upgrading Kubernetes Clusters](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The Kubernetes versions supported by your AKS Engine can be listed by running the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to get the versions of AKS engine is `aks-engine-azurestack get-versions` 
     
     ```bash
     aks-engine get-versions --azure-env AzureStackCloud
@@ -94,18 +97,18 @@ The following instructions use the minimum steps to perform the upgrade. If you 
 
 ## Steps to only upgrade the OS image
 
-1. Review [the supported-kubernetes-versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
+1. Review [the supported-kubernetes-versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. If you are on AKS Engine version 0.73.0 or below, to view the version of aks-engine run: `aks-engine version`. If you are on AKS Engine version 0.75.3 or above, to view the version of aks-engine run: `aks-engine-azurestack version`.
 2. Upgrade your AKS engine accordingly, in the machine where you have installed aks-engine run: `./get-akse.sh --version vx.xx.x` replacing **x.xx.x** with your targeted version.
 3. Ask your Azure Stack Hub operator to add the version of the AKS Base Image you need in the Azure Stack Hub Marketplace that you plan to use.
 4. Run the `aks-engine upgrade` command using the same version of Kubernetes that you are already using, but add the `--force`. You can see an example in [Forcing an upgrade](#forcing-an-upgrade).
 
 
-## Steps to update cluster to OS version Ubuntu 18.04
+## Steps to update cluster to OS version Ubuntu 20.04
 
-With AKS engine version 0.60.1 and above you can upgrade your cluster VMs from Ubuntu 16.04 to 18.04. Follow these steps:
+With AKS engine version 0.75.3 and above you can upgrade your cluster VMs from Ubuntu 18.04 to 20.04. Follow these steps:
 
-1. Locate and edit the `api-model.json` file that was generated during deployment. This should be the same file used for any upgrade or scale operation with `aks-engine`.
-2. Locate the sections for `masterProfile` and `agentPoolProfiles`, within those sections change the value of `distro` to `aks-ubuntu-18.04`.
+1. Locate and edit the `api-model.json` file that was generated during deployment. This should be the same file used for any upgrade or scale operation with `aks-engine`. In AKS Engine version 0.75.3 and above, use `aks-engine-azurestack`.
+2. Locate the sections for `masterProfile` and `agentPoolProfiles`, within those sections change the value of `distro` to `aks-ubuntu-20.04`.
 2. Save the `api-model.json` file and use the `api-model.json` file in your` aks-engin upgrade` command as you would in the [Steps to upgrade to a newer Kubernetes version](#steps-to-upgrade-to-a-newer-kubernetes-version)
 
 ## Steps to upgrade cluster if you're using storage volumes with AKS Engine v0.70.0 and later
