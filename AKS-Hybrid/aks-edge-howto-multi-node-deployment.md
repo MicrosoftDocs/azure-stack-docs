@@ -24,7 +24,7 @@ Set up your machine as described in the [Set up machine](aks-edge-howto-setup-ma
 The parameters needed to create a scalable cluster can be generated using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster -outFile .\aksedge-config.json
+New-AksEdgeConfig -DeploymentType ScalableCluster -outFile .\aksedge-config.json | Out-Null
 ```
 
 This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a scalable cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
@@ -83,7 +83,7 @@ A screenshot of a Kubernetes cluster is shown below:
 If you want to add Windows node to an existing Linux only machine, you can run:
 
 ```powershell
-New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json | Out-Null
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
@@ -132,7 +132,7 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
 To run both the Linux control plane and the Windows worker node on a machine, create the configuration file using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json
+New-AksEdgeConfig -DeploymentType ScalableCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json | Out-Null
 ```
 
 Create the deployment using the command:

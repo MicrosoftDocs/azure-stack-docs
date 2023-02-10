@@ -24,7 +24,7 @@ New-AksEdgeDeployment [-JsonConfigFilePath <String>] [<CommonParameters>]
 
 ### fromJsonConfigString
 
-```
+```powershell
 New-AksEdgeDeployment -JsonConfigString <String> [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ The new cluster can either be a single machine cluster, or a scalable cluster. B
 
 ### Example 1
 
-```
-New-AksEdgeDeployment -JsonConfigString $herestring
+```powershell
+New-AksEdgeDeployment -JsonConfigString $jsonString
 ```
 
 ### Example 2
 
-```
+```powershell
 New-AksEdgeDeployment -JsonConfigFilePath $jsonFile
 ```
 
@@ -77,7 +77,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $(Get-DefaultJsonConfigFileLocation)
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
