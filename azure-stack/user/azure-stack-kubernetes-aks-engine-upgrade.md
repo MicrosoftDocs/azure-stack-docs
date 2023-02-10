@@ -22,9 +22,9 @@ The AKS engine allows you to upgrade the cluster that was originally deployed us
 
 The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. 
 
-For AKS Enginer versions 0.73.0 and below, you can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
+For AKS Engine versions 0.73.0 and below, you can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
-For AKS Enginer versions 0.75.3 and above, you can use the `aks-engine-azurestack upgrade` command to maintain the currency of every master and agent node in your cluster. 
+For AKS Engine versions 0.75.3 and above, you can use the `aks-engine-azurestack upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
 Microsoft doesn't manage your cluster. But Microsoft provides the tool and VM image you can use to manage your cluster. 
 
