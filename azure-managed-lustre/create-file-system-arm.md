@@ -4,9 +4,9 @@ description: Use Azure Resource Manager (ARM) templates with JSON or Bicep to cr
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/09/2023
+ms.lastreviewed: 02/10/2023
 ms.reviewer: sethm
-ms.date: 02/09/2023
+ms.date: 02/10/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
@@ -185,8 +185,8 @@ This section has sample contents for a template file (`azlustre-template.json`) 
 
 Downloadable example files:
 
-* azlustre-template.json <!--Link to script in public repo when product is ready to go public.-->
-* azlustre-parameters.json <!--Link to script in public repo when product is ready to go public.-->
+* [azlustre-template.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-template.json)
+* [azlustre-parameters.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-parameters.json)[]
 
 ### Template file
 
@@ -343,7 +343,7 @@ Sample contents of `azure-lustre-parameters.json`:
 
 This file includes examples for all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values you don't want.
 
-Downloadable azlustre.bicep example <!--Link to script in public repo when product is ready to go public.-->
+[Downloadable azlustre.bicep example](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre.bicep)
 
 ```bicep
 
