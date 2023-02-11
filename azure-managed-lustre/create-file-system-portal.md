@@ -15,13 +15,15 @@ ms.date: 02/10/2023
 
 # Create an Azure Managed Lustre file system (Preview)
 
-Use the Azure portal to create your file system.
+Use the Azure portal to create an Azure Managed Lustre file system.
 
 To find the **Create** wizard, search for **Azure Managed Lustre** or follow the link provided by your preview onboarding team.
 
-(To learn about using Azure Resource Manager templates for programmatic creation, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).)
+To learn about using Azure Resource Manager templates for programmatic creation, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).
 
-## Prerequisites and planning considerations
+## Prerequisites
+
+<!--Revise following standard quick-start format. Note each requirement briefly. Then link.-->
 
 Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
@@ -29,30 +31,28 @@ After creation, these items can't be changed:
 
 * The size of the file system
 * The option to use an integrated blob storage container
-* The choice between user-managed or system-managed storage encryption keys, and some related settings for user-managed keys
+* The choice between customer-managed or system-generated encryption keys for storage, and some related settings for customer-managed keys
 
-Be sure to plan and configure these items correctly when you create the Azure Managed Lustre file system.
+Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
+
+1. Sign in to the [Azure preview portal](https://aka.ms/azureLustrePrivatePreview).
+1. Select **+ Create a Resource**.
+1. Type "azure managed lustre file system" in the search box, and press **Enter**. 
+1. Select **Azure Managed Lustre File system (preview)**. Then select **Create**.
 
 ## Basics
 
-In the **Basics** tab, set the location and capacity of your Lustre file system, and choose the virtual network and subnet it will use.
+On the **Basics** tab, enter the following information.
 
 ### Project details
 
-Specify the subscription and location for your file system.
+1. Select a subscription. <!--Subscription requirements?-->
+1. In **Resource group**, select a resource group, or create a new one to use for this installation.
+1. **Region** and **Availability zone** - Set the Azure region and zone (if supported) for your file system.
 
-* **Subscription** - Select a subscription that is enrolled in the private preview program.
+   For the public preview, Azure Managed Lustre is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.<!--Update list for the public preview.-->
 
-* **Resource group** - Specify or create a resource group to use for this installation.
-
-  > [!TIP]
-  > If you use a unique resource group for each test file system, you can delete the resource group to clean up all of the related resources after you're finished.
-
-* **Region** and **Availability zone** - Set the Azure region and zone (if supported) for your file system.
-  
-  Azure Managed Lustre currently is supported in these regions for private preview: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.
-
-  For best performance, you should create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
+   For best performance, create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
 
 ### File system details
 
@@ -60,20 +60,20 @@ Set the name and capacity of the Azure Managed Lustre file system.
 
 * **File system name** - Choose a name to identify this file system in your list of resources.
 
-* **File system type** - *This value is not configurable in this preview.* The type of infrastructure used for the file system.
+* **File system type** - Select the type of infrastructure to use for the file system. For this preview, the file system type will be **Durable, SSD**.
 
 * **Storage and throughput** - In this section, set the size of your file system.
 
-  Your file system size is determined by two factors: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You can set one of these two values, and the other value is automatically adjusted based on the  **Throughput per TiB** setting for your file system type.
+  Your file system size is determined by two factors: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). Select one of these options. The other values are provided based on the  **Throughput per TiB** setting for your file system type.
 
   To set your Azure Managed Lustre file system size, follow this process:
   
-  1. Choose either **Storage capacity** or **Maximum throughput** as the value you want to set.
+  1. Choose either **Storage capacity** or **Maximum throughput**.
 
-  1. Enter your value in the writeable field - either your desired storage capacity (in TiB), or desired maximum throughput (in MB/second).
+  1. Enter your value in the writeable field - either your desired storage capacity (in TiB) or desired maximum throughput (in MB/second).
 
      > [!NOTE]
-     > The values you enter will be automatically rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
+     > These values are rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
 
 <!-- hpc cache text: 
 capacity is a combination of two values:
