@@ -10,11 +10,11 @@ ms.custom: template-concept
 
 # AKS Edge Essentials clusters and nodes key concepts
 
-This article provides information about AKS Edge Essentials types of cluster deployments, nodes and virtual machines creation.
+This article decribes how to create AKS Edge Essentials cluster deployments, nodes, and virtual machines.
 
 ## Virtual machine nodes
 
-When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine for each deployed node. ASK Edge Essentials manages the lifecycle, configuration and updates of the virtual machines. 
+When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine for each deployed node. ASK Edge Essentials manages the lifecycle, configuration, and updates of the virtual machines. 
 
 ![Screenshot showing the the VMs in AKS Edge.](./media/aks-edge/aks-edge-vm.png)
 
@@ -29,14 +29,14 @@ Running a Windows node is optional and you can create a Windows node if you need
 
 You can define the amount of CPU and memory resources that you'd like to allocate for each of the VMs. This static allocation enables you to control how resources are used and ensures that applications running on the host have the required resources.
 
-Finally, AKS Edge Essential doesn't offer dynamic creation of virtual machines. If a node VM goes down, you have to recreate it. That said, if you have a full deployment with multiple control plane nodes and worker nodes, if a VM goes down, Kubernetes moves workloads to an active node.
+Finally, AKS Edge Essentials doesn't offer dynamic creation of virtual machines. If a node VM goes down, you have to recreate it. That said, if you have a full deployment with multiple control plane nodes and worker nodes, if a VM goes down, Kubernetes moves workloads to an active node.
 
 ## Node types
 
 When deploying AKS Edge Essentials nodes, you should specify the `-NodeType` parameter. This parameter indicates the types of workloads can run on this machine, and will tell AKS Edge Essentials to create the corresponding VM. The possible values are **Linux**, **Windows**, or **LinuxAndWindows**.
 
 > [!IMPORTANT]
-> Kubernetes control plane components are in Linux, so the first node you deploy must include a Linux node.
+> Kubernetes control plane components are written in Linux, so the first node you deploy must include a Linux node.
 
 ## Cluster deployment options
 
@@ -45,9 +45,9 @@ After you set up your machines, you can deploy AKS Edge Essentials in the follow
 - **Single machine cluster**: Runs Kubernetes nodes on a single machine to create a single machine cluster. This deployment uses an internal network switch to enable communication across the nodes. This deployment supports only one Linux node and one Windows node, both running on a single machine.
 - **Scalable cluster**: Lets you create a multi-node Kubernetes cluster that can be scaled across multiple machines.
 
-![Diagram show AKS Edge Essentials deployment scenarios](./media/aks-edge/aks-edge-deployment-options.jpg)
+![Diagram showing AKS Edge Essentials deployment scenarios.](./media/aks-edge/aks-edge-deployment-options.jpg)
   
-Once you've created your cluster, you can deploy your applications and connect your cluster to Arc to enable Arc extensions such as Azure Monitor and Azure Policy. You can also choose to use GitOps to manage your deployments.
+Once you've created your cluster, you can deploy your applications and connect your cluster to Arc, to enable Arc extensions such as Azure Monitor and Azure Policy. You can also choose to use GitOps to manage your deployments.
 
 ## Next steps
 
