@@ -10,7 +10,7 @@ ms.custom: template-concept
 
 # AKS Edge Essentials clusters and nodes key concepts
 
-This article decribes how to create AKS Edge Essentials cluster deployments, nodes, and virtual machines.
+This article describes how to create AKS Edge Essentials cluster deployments, nodes, and virtual machines.
 
 ## Virtual machine nodes
 
