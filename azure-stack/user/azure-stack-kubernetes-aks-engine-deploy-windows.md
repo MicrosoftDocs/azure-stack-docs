@@ -31,7 +31,7 @@ When choosing your client machine, consider:
 
 ## Install AKS Engine version 0.75.3
 
-Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the `aks-engine-azurestack` binary (and optionally integrate it to your `$PATH` for more convenient CLI usage).
+Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the **aks-engine-azurestack** file (and optionally add it to your `$PATH` environment variable for more convenient CLI usage).
 
 
 ## Install AKS Engine version 0.73.0 and below in a connected environment
