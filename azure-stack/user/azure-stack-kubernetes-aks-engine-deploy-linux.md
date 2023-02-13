@@ -71,7 +71,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
-1.  From a machine with access to the Internet: 
+1.  From a machine with access to the internet: 
     
     For AKS Engine versions 0.73.0 and below, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, `aks-engine-v0.xx.x-linux-amd64.tar.gz`. 
 
