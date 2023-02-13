@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -vmsize
-Changes the node pool to a different VM size (SKU).
+Changes the node pool to a different VM size (SKU). See the [Get-AksHciVmSize](get-akshcivmsize.md) cmdlet reference to get the valid SKU identifiers.
 
 ```yaml
 Type: System.String
