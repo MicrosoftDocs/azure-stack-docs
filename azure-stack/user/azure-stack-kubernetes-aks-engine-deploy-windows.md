@@ -50,7 +50,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 6. Run the following command from an elevated prompt and include the version number:
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack` 
+> For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack`.
 
     ```PowerShell  
         choco install aks-engine --version 0.xx.x -y
