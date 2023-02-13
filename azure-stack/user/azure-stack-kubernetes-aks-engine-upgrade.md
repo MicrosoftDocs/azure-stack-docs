@@ -187,7 +187,7 @@ After running the migration script, if the pod is stuck with error "Unable to at
 There may be conditions where you may want to force an upgrade of your cluster. For example, on day one you deploy a cluster in a disconnected environment using the latest Kubernetes version. The following day Ubuntu releases a patch to a vulnerability for which Microsoft generates a new **AKS Base Image**. You can apply the new image by forcing an upgrade using the same Kubernetes version you already deployed.
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade` 
+> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade`.
 
 ```bash  
 aks-engine upgrade \
