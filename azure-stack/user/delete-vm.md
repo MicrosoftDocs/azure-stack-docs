@@ -24,13 +24,15 @@ If you remove a VM from Azure Stack Hub, the component dependencies--that is dat
 
 When you create a new VM, you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all of its dependencies, you can delete the resource group. The Azure Resource Manager will successfully delete the dependencies. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
 
-## Delete a VM with dependencies
+## Delete a VM with dependencies (UnManaged Disks)
 
 You can use the portal or PowerShell to remove your VM and its dependencies.
 
 ### [With the portal](#tab/portal)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
+
+Please remember that the steps included to remove the Disks are for UnManaged Disks
 
 1. Open the Azure Stack user portal.
 
@@ -104,19 +106,19 @@ Delete the operating system disk.
 $osVhdUri = $machine.StorageProfile.OSDisk.Vhd.Uri
 $osDiskConName = $osVhdUri.Split('/')[-2]
 $osDiskStorageAcct = Get-AzStorageAccount | where { $_.StorageAccountName -eq $osVhdUri.Split('/')[2].Split('.')[0] }
-$osDiskStorageAcct | Remove-AzStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
+$osDiskStorageAcct | Remove-AzStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1] -Confirm:$true
 ```
 
 Remove the data disks attached to your VM.
 
 ```powershell
-if ($machine.DataDiskNames.Count -gt 0)
+if ($machine.StorageProfile.DataDisks.Name.Count -gt 0)
  {
     Write-Verbose -Message 'Deleting disks...'
         foreach ($uri in $machine.StorageProfile.DataDisks.Vhd.Uri )
         {
-            $dataDiskStorageAcct = Get-AzStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
-             $dataDiskStorageAcct | Remove-AzStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
+            $dataDiskStorageAcct = Get-AzStorageAccount | where { $_.StorageAccountName -eq $uri.Split('/')[2].Split('.')[0] }
+             $dataDiskStorageAcct | Remove-AzStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore -Confirm:$true
         }
  }
 ```
