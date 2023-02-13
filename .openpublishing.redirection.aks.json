@@ -1251,12 +1251,12 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "azure/aks/hybrid/aks-edge-concept.md",
+        "source_path": "AKS-Hybrid/aks-edge-concept.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
         "redirect_document_id": false
       },
       {
-        "source_path": "azure/aks/hybrid/aks-edge-deployment-options.md",
+        "source_path": "AKS-Hybrid/aks-edge-deployment-options.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
         "redirect_document_id": false
       }     
