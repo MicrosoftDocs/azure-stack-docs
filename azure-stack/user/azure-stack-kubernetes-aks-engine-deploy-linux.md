@@ -111,7 +111,7 @@ Once your client VM is set up, check that you have installed the AKS engine.
 2. Run the following command:
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version` 
+> For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version`. 
 
    ```bash  
    aks-engine version
