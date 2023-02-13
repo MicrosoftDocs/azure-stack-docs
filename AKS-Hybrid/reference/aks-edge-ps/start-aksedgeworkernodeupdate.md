@@ -12,18 +12,17 @@ ms.lastreviewed: 02/03/2023
 
 # Start-AksEdgeWorkerNodeUpdate
 
-Updates any worker nodes on this machine as part of the update process. You must have already run `Start-AksEdgeUpdate` on every deployment in the cluster before running this command on every machine with a worker node. Please refresh the PowerShell instance and re-import the AKS Edge Essentials module before running this command.
+Updates any worker nodes on this machine as part of the update process. You must have already run `Start-AksEdgeUpdate` on every deployment in the cluster before running this command on every machine with a worker node. Refresh the PowerShell instance and reimport the AKS Edge Essentials module before running this command.
 
 ## Syntax
 
 ```powershell
-Start-AksEdgeWorkerNodeUpdate 
+Start-AksEdgeWorkerNodeUpdate [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## Description
 
-After starting the upgrade process with `Start-AksEdgeUpdate`, and running `Start-AksEdgeUpdate` on every machine in the cluster, run this command on every machine to upgrade the worker nodes. Refresh the PowerShell instance and re-import the AKS Edge Essentials module before running this command.
-
+After starting the upgrade process with `Start-AksEdgeUpdate`, and running `Start-AksEdgeUpdate` on every machine in the cluster, run this command on every machine to upgrade the worker nodes. Refresh the PowerShell instance and reimport the AKS Edge Essentials module before running this command.
 
 ## Examples
 
@@ -49,8 +48,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
 
-### Common parameters
+Shows what would happen if the cmdlet runs.
+The cmdlet isn't run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
