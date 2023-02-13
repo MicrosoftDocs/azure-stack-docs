@@ -90,7 +90,7 @@ For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0, 0.67.3 |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0, 0.71.0, 0.73.0*, 0.75.3* |
-| 2206                                           | 0.70.0, 0.71.0, 0.73.0*, 0.75.3* |    |
+| 2206                                           | 0.70.0, 0.71.0, 0.73.0*, 0.75.3* |
 
 > [!Note]  
 > *Supported. See [AKS Engine Version Support policy](../user/azure-stack-kubernetes-aks-engine-support.md#version-support) for more information. 
@@ -125,7 +125,7 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 
 ## What's new with AKSe 0.75.3
 
-AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in the [Create Linux Client](../user/azure-stack-kubernetes-aks-engine-deploy-linux?view=azs-2206#install-in-a-connected-environment) and [Create Windows Client](../user/azure-stack-kubernetes-aks-engine-deploy-windows?view=azs-2206#install-in-a-connected-environment>) directions. Please create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any. 
+AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in the [Create Linux Client](../user/azure-stack-kubernetes-aks-engine-deploy-linux) and [Create Windows Client](../user/azure-stack-kubernetes-aks-engine-deploy-windows) directions. Please create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any. 
 
 AKS Engine release v0.75.3 on Azure Stack Hub offers Ubuntu 20.04 LTS as its Linux base image. Starting from this release, Ubuntu 18.04 will no longer be supported. Please refer to the section [*Upgrading Kubernetes clusters created with the Ubuntu 18.04 Distro*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-the-ubuntu-18.04-distro) for more details. 
 
