@@ -4,7 +4,7 @@ description: Clusters and nodes running on AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 12/05/2022
+ms.date: 02/13/2023
 ms.custom: template-concept
 ---
 
