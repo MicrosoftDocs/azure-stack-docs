@@ -85,17 +85,17 @@ Follow these steps in the Azure portal to create an Arc VM on your Azure Stack H
 
     1. If you selected a Windows VM image, you can domain join your Windows VM. Follow these steps: 
     
-        1. Select **Enable domain join**. Azure AD-joined VMs remove the need to have line-of-sight from the VM to an on-premises or virtualized Active Directory Domain Controller or to deploy Azure AD Domain Services.
+        1. Select **Enable domain join**.
     
-        1. Only the Azure Active Directory is supported and selected by default.  
+        1. Only the Active Directory domain join is supported and selected by default.  
         
-        1. Provide the AD domain join UPN. The UPN user has permissions and is used to join the virtual machines to your domain.
+        1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
         
-        1. Provide the domain administrator password for the virtual machine.
+        1. Provide the domain administrator password.
 
         1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
         
-            If not specified, the domain name uses the suffix of the Active Directory domain join UPN by default. For example, the user *azurestackhciuser@contoso.com* would get the default domain name *contoso.com*.
+            If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *azurestackhciuser@contoso.com* would get the default domain name *contoso.com*.
         
        :::image type="content" source="./media/manage-vm-resources/create-vm-enable-guest-management.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-vm-enable-guest-management.png":::
 
