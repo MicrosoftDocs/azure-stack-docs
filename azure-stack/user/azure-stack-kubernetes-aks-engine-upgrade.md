@@ -53,8 +53,8 @@ The following instructions use the minimum steps to perform the upgrade. If you 
 
 1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The Kubernetes versions supported by your AKS Engine can be listed by running the following command:
 
-> [!Note]
-> For AKSe version 0.75.3 and above, the command to get the versions of AKS engine is `aks-engine-azurestack get-versions`.
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to get the versions of AKS engine is `aks-engine-azurestack get-versions`.
     
     ```bash
     aks-engine get-versions --azure-env AzureStackCloud
@@ -77,8 +77,8 @@ The following instructions use the minimum steps to perform the upgrade. If you 
 
 3. With your values in place, run the following command:
 
-> [!Note]
-> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade`.
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade`.
 
     ```bash  
     aks-engine upgrade \
