@@ -20,7 +20,7 @@ ms.lastreviewed: 3/4/2021
 The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
 ## Upgrade a cluster
 
-The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. 
+The upgrade command updates the Kubernetes version and the base OS image. Every time you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS base image associated with the version of **aks-engine** used. 
 
 For AKS Engine versions 0.73.0 and below, you can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
