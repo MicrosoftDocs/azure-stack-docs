@@ -55,7 +55,7 @@ The following storage account types can be used with Azure Managed Lustre file s
 
 | Storage account type  | Redundancy                          |
 |-----------------------|-------------------------------------|
-| Standard              | locally redundant storage (LRS), geo-redundant storage (GRS)<br><be>zone-redundant storage (ZRS), read-access-geo-redundant storage (RAGRS), geo-zone-redundant storage (GZRS), read-access-geo-zone-redundant storage (RA-GZRS) <!--Spell out on first mention-->|
+| Standard              | Locally redundant storage (LRS), geo-redundant storage (GRS)<br><br>Zone-redundant storage (ZRS), read-access-geo-redundant storage (RAGRS), geo-zone-redundant storage (GZRS), read-access-geo-zone-redundant storage (RA-GZRS) <!--Spell out on first mention-->|
 | Premium - Block blobs | LRS, ZRS                            |
 
 For more information about storage account types, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
@@ -70,7 +70,7 @@ XXX
 
 ### Compatible Kubernetes versions
 
-The following container images are compatible with the 
+The following container images are compatible with Azure Managed Lustre file systems.
 
 | CSI driver version | Container image                                             | Supported Kubernetes version | Lustre client version |
 |--------------------|-------------------------------------------------------------|------------------------------|-----------------------|

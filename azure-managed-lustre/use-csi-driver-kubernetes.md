@@ -19,7 +19,7 @@ The Azure Lustre container support interface (CSI) driver for Kubernetes allows 
 
 The driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are currently not supported Ccontact the Azure Managed Lustre team for more information.
 
-To find out compatible Kubernetes versions, see [Compatible Kubernetes versions](almlf-requirements.md#compatible-kubernetes-versions) in [Azure Managed Lustre file system requirements](almlf-requirements.md).
+To find out compatible Kubernetes versions, see [Compatible Kubernetes versions](amlfs-requirements.md#compatible-kubernetes-versions) in [Azure Managed Lustre file system requirements](amlfs-requirements.md).
 
 ## Use Kubernetes with Azure Managed Lustre
 

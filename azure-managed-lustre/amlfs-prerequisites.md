@@ -101,7 +101,7 @@ Create these items before you create an Azure-Managed Lustre file system:
 
 * A storage account that meets the following requirements:
 
-  * A compatible storage account type. For more information, see [storage account type](amlfs.requirements.md#supported-storage-account-types)
+  * A compatible storage account type. For more information, see [storage account types](amlfs-requirements.md#supported-storage-account-types)
   * [Public endpoint](#account-access)
   * [Access roles](#set-access-roles) that permit the Azure Managed Lustre system to modify data
 
