@@ -26,21 +26,21 @@ This article explains prerequisites that you must configure before creating an A
 
 Azure Managed Lustre file systems exist in a virtual network subnet. The subnet contains the Lustre Management Service (MGS) and handles all of the client interactions with the virtual Lustre cluster.
 
-Each file system you create must have its own unique subnet.
+Each file system you create must have its own unique subnet. You can't move a file system from one network or subnet to another after you create the file system.
 
-The size of the subnet depends on the size of the file system you create. As a rough estimate, consider these values as minimum subnet sizes for an Azure Managed Lustre file system with the listed storage capacity:
+The size of subnet that you need depends on the size of the file system you create. The following table gives a rough estimate of the minimum subnet size for an Azure Managed Lustre file system based on the storage capacity of the file system.
 
-| Capacity in TiB | Recommended CIDR prefix value |
-|-----------------|-------------------------------|
-| 4 to 16 TiB     | /27 or larger                 |
-| 20 to 40 TiB    | /26 or larger                 |
-| 44 to 92 TiB    | /25 or larger                 |
-| 96 to 196 TiB   | /24 or larger                 |
-| 200 to 400 TiB  | /23 or larger                 |
+| Storage capacity | Recommended CIDR prefix value |
+|------------------|-------------------------------|
+| 4 to 16 TiB      | /27 or larger                 |
+| 20 to 40 TiB     | /26 or larger                 |
+| 44 to 92 TiB     | /25 or larger                 |
+| 96 to 196 TiB    | /24 or larger                 |
+| 200 to 400 TiB   | /23 or larger                 | 
 
 Also read [Additional network size requirements](#additional-network-size-requirements), below, to learn about other services that can share the capacity of your VNet and subnet.
 
-The following subnet also needs the following access and permissions:
+The subnet also needs the following access and permissions:
 
 * The file system must be able to create NICs on its subnet.
 
@@ -83,11 +83,9 @@ When planning your VNet and subnet, take into account the requirements for any o
 
   To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre) .
 
-* If you use more than one AKS cluster within the VNet, make sure the VNet has sufficient capacity for all resources in all of the clusters.
+* If you use more than one AKS cluster within the VNet, make sure the VNet has enough capacity for all resources in all of the clusters.
 
 * If you plan to use another resource to host your compute VMs in the same VNet, check the requirements for that process before creating the VNet and subnet for your Azure Managed Lustre system.
-
-* You cannot move an Azure Managed Lustre file system from one network or subnet to another after you create it.
 
 ## Storage prerequisites
 

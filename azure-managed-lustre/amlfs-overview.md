@@ -42,15 +42,16 @@ All information in an Azure Managed Lustre file system also is protected by VM h
 
 When you create an Azure Managed Lustre file system, the resulting cloud-based Lustre system is pre-configured based on the storage size and throughput values you chose.
 
-You can see some of the properties on the file system **Overview** page in the Azure portal. Click the **JSON view** link for more details. 
+You can see some of the properties on the file system **Overview** page in the Azure portal. Click the **JSON view** link for more details.
+<!--QUESTIONS: 1) From the Overview blade for a file system deployment, Json view link is only available after they Go to resource group. 2) The Json view doesn't show much in a minimal default deployment. What will they be looking for?-->
 
-[ADD SCREENSHOT: Summary & detail]
+[ADD SCREENSHOT: Summary & Json view detail]
 
 ## Data disks
 
 Your Azure Managed Lustre file system uses Azure managed disks as object storage target (OST) data disks.
 
-All Azure Managed Lustre file systems that are created as a "durable" file system type use Azure Premium SSD (solid state drive) disks configured as locally redundant storage (LRS). LRS disk contents are replicated three times within the local datacenter to protect against drive and server rack failures. This redundancy provides 99.99999 percent durability. <!--Do we provide this type of statistical assurance in Learning content? Better to link to another source for this?-->
+All Azure Managed Lustre file systems that are created as a "durable" file system type use Azure Premium SSD (solid state drive) disks configured as locally redundant storage (LRS). LRS disk contents are replicated three times within the local datacenter to protect against drive and server rack failures. This redundancy provides 99.99999 percent durability.<!--Do we provide this type of statistical assurance in Learning content? Better to link to another source for this?-->
 
 The Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 
@@ -66,19 +67,16 @@ If you integrate Azure Blob Storage when you create a Lustre file system, you ca
 
 Read the Lustre HSM documentation - GET LINK - to learn more about how Lustre HSM works.
 
+## Use Azure Managed Lustre with Kubernetes
 
-## Use Azure Managed Lustre with Kubernetes (Private Preview)
+If you want to use an Azure Managed Lustre storage system with your Kubernetes containers, you can use the Azure Lustre container support interface (CSI) driver for Kubernetes, which is compatible with Azure Kubernetes Service (AKS). Other types of Kubernetes installation currently aren't supported.
 
-If you want to use an Azure Managed Lustre storage system with your Kubernetes containers, you can use the Azure Lustre container support interface (CSI) driver for Kubernetes, which is compatible with Azure Kubernetes Service (AKS). <!--Other types of Kubernetes installation currently aren't supported. - Just don't mention this?--> 
+Kubernetes can simplify configuring and deploying virtual client endpoints for your Azure Managed Lustre workload, automating setup tasks such as:
 
-Kubernetes can simplify configuring and deploying virtual client endpoints for your Azure Managed Lustre workload. Kubernetes can automate setup tasks such as:
+* Creating virtual machine scale sets (VMSS) used by Azure Kubernetes Service (AKS) to run the pods.
+* Loading the correct Lustre client software on VM instances.
+* Specifying the Azure Managed Lustre mount point, and propagating that information to the client pods.
 
-* Create virtual machine scale sets (VMSS) used by Azure Kubernetes Service (AKS) to run the pods.
+The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin<!--Check plugin name.--> as a deployment with two replicas by default, and a CSI node plugin<!--Check plugin name.--> as a daemonset.
 
-* Load the correct Lustre client software on VM instances.
-
-* Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
-
-The Azure Lustre CSI Driver can automate installing the client software and mounting drives. The driver provides a CSI controller plugin<!--Check plugin name.--> as a deployment with two replicas by default, and a CSI node plugin<!--Check plugin name.--> as a daemonset.
-
-For compatible Kubernetes versions, see [Compatible Kubernetes versions](almlf-requirements.md#compatible-kubernetes-versions) in [Azure Managed Lustre file system requirements](almlf-requirements.md).
+To find out which driver versions to use, see [Compatible Kubernetes versions](almlf-requirements.md#compatible-kubernetes-versions) in [Azure Managed Lustre file system requirements](almlf-requirements.md).

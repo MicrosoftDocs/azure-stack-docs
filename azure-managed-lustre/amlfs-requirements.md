@@ -26,6 +26,23 @@ In development.
 
 ## Network requirements
 
+
+### Subnet size
+
+Each Azure Managed Lustre system you create must have its own unique subnet. You can't move an Azure Managed Lustre file system from one network or subnet to another after you create the file system.
+
+The size of subnet that you need depends on the size of the file system you create. The following table gives a rough estimate of the minimum subnet size for an Azure Managed Lustre file system based on the storage capacity of the file system.
+
+| Storage capacity | Recommended CIDR prefix value |
+|------------------|-------------------------------|
+| 4 to 16 TiB      | /27 or larger                 |
+| 20 to 40 TiB     | /26 or larger                 |
+| 44 to 92 TiB     | /25 or larger                 |
+| 96 to 196 TiB    | /24 or larger                 |
+| 200 to 400 TiB   | /23 or larger                 |
+
+### Access and permissions for the subnet
+
 XXX
 
 ## Storage requirements
@@ -34,12 +51,14 @@ XXX
 
 ## Supported storage account types
 
-The following storage account types can be used with Azure Managed Lustre.
+The following storage account types can be used with Azure Managed Lustre file systems.
 
-| Performance           | Redundancy                          |
+| Storage account type  | Redundancy                          |
 |-----------------------|-------------------------------------|
-| Standard              | LRS, GRS, ZRS, RAGRS, GZRS, RA-GZRS <!--Spell out on first mention-->|
+| Standard              | locally redundant storage (LRS), geo-redundant storage (GRS)<br><be>zone-redundant storage (ZRS), read-access-geo-redundant storage (RAGRS), geo-zone-redundant storage (GZRS), read-access-geo-zone-redundant storage (RA-GZRS) <!--Spell out on first mention-->|
 | Premium - Block blobs | LRS, ZRS                            |
+
+For more information about storage account types, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
 ## Required access permissions
 
