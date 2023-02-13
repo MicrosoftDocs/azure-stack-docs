@@ -38,8 +38,7 @@ Copy-AksEdgeNodeFile -FromFile ./sample.json -ToFile /var/config.json -PushFile 
 ## Parameters
 
 ### -FromFile
-
- Name of the file.
+File to be read from.
 
 ```yaml
 Type: String
@@ -54,8 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ToFile
-
-Name of the file.
+File to be written to.
 
 ```yaml
 Type: String
@@ -63,15 +61,15 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PushFile
-
-Name of the file.
+Indicates copy direction.
+If present, pushes file to the node.
 
 ```yaml
 Type: SwitchParameter
@@ -86,9 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-
-This parameter indicates whether the 'Linux' node, the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained. When not specified, the 'Linux' node is drained only. When both nodes are drained, the Windows node is drained first, then the Linux node.
+Specifies Linux or Windows node to connect to.
+Default is Linux.
 
 ```yaml
 Type: String
@@ -96,7 +93,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 3
 Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
