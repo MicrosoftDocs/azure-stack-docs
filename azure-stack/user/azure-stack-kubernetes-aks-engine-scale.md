@@ -4,7 +4,7 @@ description: Learn how to scale a Kubernetes cluster using AKS engine on Azure S
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/12/2023
+ms.date: 02/13/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
@@ -21,7 +21,11 @@ You can scale your Kubernetes cluster on Azure Stack Hub with AKS engine using t
 
 ## Scale a cluster
 
-The `aks-engine scale` command can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster. Nodes will always be added or removed from the end of the agent pool. Nodes will be cordoned and drained before deletion.
+For AKS Engine versions 0.73.0 and below: the `aks-engine scale` command can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster.
+
+For AKS Engine versions 0.75.3 and above: the `aks-engine-azurestack scale` command can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster. 
+
+Nodes will always be added or removed from the end of the agent pool. Nodes will be cordoned and drained before deletion.
 
 ### Values for the scale command
 
@@ -40,11 +44,14 @@ The following parameters are used by the scale command to find your cluster defi
 | apiserver |  | Master FQDN. Needed when scaling down. |
 | identity-system | adfs | Optional. Specify your identity management solution if you're using Active Directory Federated Services (AD FS). |
 
-You must specify the `--azure-env` parameter when scaling a cluster in Azure Stack Hub. For more information about parameters and their values used in the `scale` command for AKS engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
+You must specify the **--azure-env** parameter when scaling a cluster in Azure Stack Hub. For more information about parameters and their values used in the **scale** command for the AKS engine, see [Scale - parameters](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/scale.md#parameters).
 
 ### Command to scale your cluster
 
 To scale the cluster, run the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to scale a cluster is `aks-engine-azurestack scale`.
 
 ```bash
 aks-engine scale \

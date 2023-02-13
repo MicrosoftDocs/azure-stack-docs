@@ -4,7 +4,7 @@ description: Learn how to use a Windows machine in your Azure Stack Hub to host 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/21/2022
+ms.date: 02/13/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/4/2021
@@ -17,7 +17,7 @@ ms.lastreviewed: 3/4/2021
 
 # Install AKS engine on Windows in Azure Stack Hub
 
-You can use a Windows machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack Hub instances, check the install, and setting up the client VM on the ASDK.
+Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the **aks-engine** file for AKS Engine versions 0.73.0 and below. For AKS Engine versions 0.75.3 and above, extract the **aks-engine-azurestack** file (and optionally add it to your `$PATH` environment variable for more convenient CLI usage).
 
 ## Prepare the client VM
 
@@ -28,7 +28,13 @@ When choosing your client machine, consider:
 1. Whether the client machine should be recoverable in a disaster.
 1. How you will connect to the client machine, and how the machine will interact with your cluster?
 
-## Install in a connected environment
+
+## Install AKS Engine version 0.75.3
+
+Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the **aks-engine-azurestack** file (and optionally add it to your `$PATH` environment variable for more convenient CLI usage).
+
+
+## Install AKS Engine version 0.73.0 and below in a connected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
@@ -43,14 +49,17 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 6. Run the following command from an elevated prompt and include the version number:
 
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack`.
+
     ```PowerShell  
         choco install aks-engine --version 0.xx.x -y
     ```
 
-> [!NOTE]  
-> If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
+    > [!NOTE]  
+    > If this method for installation fails, you can try the steps for a disconnected environment below.
 
-## Install in a disconnected environment
+## Install AKS Engine version 0.73.0 and below in a disconnected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
@@ -68,6 +77,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 7.  Run the following command from an elevated prompt. Include the right version number:
 
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack`. 
+
     ```PowerShell  
         choco install aks-engine --version 0.xx.x -y
     ```
@@ -78,6 +90,9 @@ Once your client VM is set up, check that you have installed AKS engine.
 
 1. Connect to your client VM.
 2. Run the following command:
+
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version`.
 
     ```PowerShell  
     aks-engine version

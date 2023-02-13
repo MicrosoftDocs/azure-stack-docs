@@ -96,6 +96,7 @@
   "redirection_files": [
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json",
-    ".openpublishing.redirection.aks.json"
+    ".openpublishing.redirection.aks.json",
+    ".openpublishing.redirection.aks-edge.json"
   ]
 }

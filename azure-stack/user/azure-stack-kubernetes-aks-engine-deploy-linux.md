@@ -44,6 +44,8 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 6. Run the following command:
 
+    For AKS Engine versions 0.73.0 and below:
+
     ```bash  
     sudo apt update
     sudo apt install jq
@@ -51,9 +53,16 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     chmod 700 get-akse.sh
     ./get-akse.sh --version v0.xx.x
     ```
+    
+    For AKS Engine versions 0.75.3 and above:
 
-    > [!NOTE]  
-    > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+    ```bash  
+    sudo apt update
+    sudo apt install jq
+    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine-azurestack/master/scripts/get-akse.sh
+    chmod 700 get-akse.sh
+    ./get-akse.sh --version v0.xx.x
+    ```
 
     > [!NOTE]  
     > If your installation method fails, try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
@@ -62,7 +71,13 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
-1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, `aks-engine-v0.xx.x-linux-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+1.  From a machine with access to the internet: 
+    
+    For AKS Engine versions 0.73.0 and below, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, `aks-engine-v0.xx.x-linux-amd64.tar.gz`. 
+
+    For AKS Engine versions 0.75.3 and above, go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example,`aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz`. 
+    
+    Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
@@ -74,9 +89,18 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 5.  Run the following command:
 
+    For AKS Engine versions 0.73.0 and below:
+
     ```bash  
     curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
     tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
+    ```
+    
+    For AKS Engine versions 0.75.3 and above:
+
+    ```bash  
+    curl -o aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz>
+    tar xvzf aks-engine-azurestack-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
     ```
 
 ## Verify the installation
@@ -85,6 +109,9 @@ Once your client VM is set up, check that you have installed AKS engine.
 
 1. Connect to your client VM.
 2. Run the following command:
+
+> [!Note]
+> For AKSe version 0.75.3 and above, the command to check the current version of your AKS engine is `aks-engine-azurestack version`. 
 
    ```bash  
    aks-engine version
