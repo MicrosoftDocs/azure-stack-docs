@@ -18,15 +18,18 @@ ms.lastreviewed: 11/18/2020
 
 You may find an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine. Collect information about your AKS engine, collect Kubernetes logs, and review custom script extension error codes. You can also open a GitHub issue for the AKS engine.
 
+> [!Note]
+> For AKSe version 0.75.3 and above, the `aks-engine` commands below will begin with `aks-engine-azurestack` rather than `aks-engine`.
+
 ## Troubleshoot the AKS engine install
 
 If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
 
-You can find instructions for using GoFish to install the AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
+You can find [instructions for using GoFish to install the AKS engine here](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool).
 
 ## Collect node and cluster logs
 
-You can find the instructions on collecting node and cluster logs at [Retrieving Node and Cluster Logs](https://github.com/Azure/aks-engine/blob/master/docs/topics/get-logs.md).
+You can find the instructions on collecting node and cluster logs at [Retrieving Node and Cluster Logs](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/get-logs.md).
 
 ### Prerequisites
 
@@ -86,7 +89,7 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine-azurestack/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
@@ -108,7 +111,7 @@ You can provide Kubernetes logs in several ways:
 
 If you're unable to resolve your deployment error, you can open a GitHub Issue.
 
-1.  Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
+1.  Open a [GitHub Issue](https://github.com/Azure/aks-engine-azurestack/issues/new) in the AKS engine repository.
 
 2.  Add a title using the following format: CSE error: `exit code <INSERT_YOUR_EXIT_CODE>`.
 

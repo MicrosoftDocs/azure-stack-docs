@@ -26,31 +26,31 @@ On your primary machine on which you created your scalable deployment, run the f
 - To scale by adding a Linux-only worker node, create the required configuration file using the following command and specify the `NodeType` as "Linux" and provide a unique and available IP address for this node.
 
     ```powershell
-    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Linux -LinuxNodeIp x.x.x.x -outFile .\ScaleConfig.json
+    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Linux -LinuxNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
     ```
 
 - To scale by adding more Linux control plane node, specify the `NodeType` as "Linux", set the `ControlPlane` flag as true, and provide a unique IP address for the Linux node:
 
     ```powershell
-    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Linux -LinuxNodeIp x.x.x.x -ControlPlane -outFile .\ScaleConfig.json
+    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Linux -LinuxNodeIp x.x.x.x -ControlPlane -outFile .\ScaleConfig.json | Out-Null
     ```
 
 - To scale by adding a Windows-only worker node, specify the `NodeType` as "Windows" and provide a unique IP address for the Windows node:
 
    ```powershell
-    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Windows -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json
+    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Windows -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
     ```
 
 - To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux and Windows nodes as follows:
 
     ```powershell
-    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json
+    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
     ```
 
 - To add a Linux control plane node and Windows worker node, specify the `NodeType` as "LinuxAndWindows", set the `ControlPlane` flag as `true`, and provide a unique IP address for both the Linux and Windows nodes:
 
     ```powershell
-    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x  -ControlPlane -outFile .\ScaleConfig.json
+    New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x  -ControlPlane -outFile .\ScaleConfig.json | Out-Null
     ```
 
 This command exports the necessary data to join a cluster in the JSON format and returns it as a JSON string and stores it in the file specified via `outFile` parameter.
@@ -64,7 +64,7 @@ This command exports the necessary data to join a cluster in the JSON format and
     > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described below.
 
 - The `Network.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. For a K8S cluster, change the `NetworkPlugin` to `calico`.
-- Verify the resource configurations for the secondary nodes. You can modify these parameters as needed. Ensure to [reserve enough memory for each node](./aks-edge-concept.md#aks-edge-essentials-key-concepts). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
+- Verify the resource configurations for the secondary nodes. You can modify these parameters as needed. Ensure that you [reserve enough memory for each node](./aks-edge-concept-clusters-nodes.md). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
 
 - The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
@@ -99,7 +99,7 @@ You can generate a new `ScaleConfig` file based on the nodeType required by repe
 You can add another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it:
 
 ```powershell
-New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json | Out-Null
 ```
 
 You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.

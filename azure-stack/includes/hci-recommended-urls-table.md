@@ -10,6 +10,8 @@ ms.lastreviewed: 04/19/2022
 
 |   Service |  URL | Port | Notes |
 |   :---|  :---| :---| :---|
+| Azure Benefits on Azure Stack HCI  | crl3.digicert.com    | 80   | Enables the platform attestation service on Azure Stack HCI to perform a certificate revocation list check to provide assurance that VMs are indeed running on Azure environments.|
+| Azure Benefits on Azure Stack HCI  | crl4.digicert.com    | 80   | Enables the platform attestation service on Azure Stack HCI to perform a certificate revocation list check to provide assurance that VMs are indeed running on Azure environments.|
 | Azure Stack HCI  | *.powershellgallery.com   | 443  | To obtain the Az.StackHCI PowerShell module, which is required for cluster registration. Alternatively, you can download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1). |
 | Cluster Cloud Witness  | *.blob.core.windows.net   | 443  | For firewall access to the Azure blob container, if choosing to use a cloud witness as the cluster witness, which is optional. |
 | Microsoft Update | windowsupdate.microsoft.com   | 80   | For Microsoft Update, which allows the OS to receive updates. |
