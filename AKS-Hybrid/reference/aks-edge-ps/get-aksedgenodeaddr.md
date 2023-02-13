@@ -22,7 +22,7 @@ Get-AksEdgeNodeAddr [[-NodeType] <String>]
 
 ## Description
 
-The Get-AksEdgeNodeAddr cmdlet queries the node's primary interface for its current IP & Mac address, which can change over time.
+The Get-AksEdgeNodeAddr cmdlet queries the node's primary interface for its current IP & Mac address.
 
 ## Examples
 
@@ -33,6 +33,8 @@ Get-AksEdgeNodeAddr -NodeType Linux
 ## Parameters
 
 ### -NodeType
+NodeType specifies whether to get the address information of the `Linux` or `Windows` node.
+Default is Linux.
 
 ```yaml
 Type: String
@@ -40,8 +42,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
+Position: 1
+Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
