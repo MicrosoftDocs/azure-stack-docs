@@ -154,9 +154,8 @@ Proceed to deploy a cluster:
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenent. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
 
     Here is an example:
-
-> [!Note]
-> For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy`. 
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy`. 
 
     ```bash  
     aks-engine deploy \
