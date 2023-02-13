@@ -102,7 +102,7 @@ For example:
 ## Rotate `front-proxy` certificates
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the commands for certificate rotation begin with `aks-engine-azurestack` rather than `aks-engine` 
+> For AKSe version 0.75.3 and above, the commands for certificate rotation begin with `aks-engine-azurestack` rather than `aks-engine`.
 
 The AKS engine creates a separate PKI for  the `front-proxy` as part of node bootstrapping process and delivers them to all nodes through `etcd`. To effectively reuse this functionality, `rotate-certs` has to replace the certificates stored in `etcd`. The `front-proxy` certificates expire after 30 years.` aks-engine rotate-certs` rotates the front-proxy certs.
 ## Troubleshooting
