@@ -156,7 +156,7 @@ Proceed to deploy a cluster:
     Here is an example:
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy` 
+> For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy`. 
 
     ```bash  
     aks-engine deploy \
