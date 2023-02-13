@@ -51,7 +51,7 @@ You must specify the **--azure-env** parameter when scaling a cluster in Azure S
 To scale the cluster you run the following command:
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to scale a cluster is `aks-engine-azurestack scale` 
+> For AKSe version 0.75.3 and above, the command to scale a cluster is `aks-engine-azurestack scale`.
 
 ```bash
 aks-engine scale \
