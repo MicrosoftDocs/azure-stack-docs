@@ -64,7 +64,15 @@ The following example uses [az role assignment](/cli/azure/role/assignment?view=
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
 ```
 
-In order to access the cluster via connectedk8s proxy method, the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, Resource Group or Cluster.
+In order to access the cluster via connectedk8s proxy method (one of the options to communicate with the api-server), the user should have “Azure Arc Enabled Kubernetes Cluster User Role” scoped to the subscription, resource group or cluster.
+
+The following command assigns a role to a group instead of a specific user (see previous example)
+```azurecli
+az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Azure Arc Kubernetes Cluster Admin" --scope $id
+```
+
+The assignee is the object id of the Azure AD group.
+
 For more details about the role [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 
 To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
@@ -193,7 +201,7 @@ To connect to an AKS hybrid cluster using the `connectedk8s` proxy method, do th
 
 When you connect to an AKS hybrid cluster over a private network, there's no limit the on number of groups you can use.
 
-In order to retrieve the AAD kubeconfig log into on-premises machine (for example HCI cluster ) and generate the AAD kubeconfig using the command below and distribute users that will connect from their client machine, the AAD kubeconfig doesn't contain any secrets.
+In order to retrieve the AAD kubeconfig log into on-premises machine (for example HCI cluster) and generate the AAD kubeconfig using the command below. The AAD kubeconfig can be distributed to the users that will connect from their client machine, the AAD kubeconfig doesn't contain any secrets.
 
 To connect to an AKS hybrid cluster over a private network, do the following steps:
 
