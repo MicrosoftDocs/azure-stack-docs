@@ -4,7 +4,7 @@ description: Describes how to create a cluster with multiple machines.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 02/13/2023
 ms.custom: template-how-to
 ---
 
@@ -45,7 +45,7 @@ The key parameters to note for a scalable Kubernetes deployment are:
 
     ![Screenshot of Hyper-v switch manager.](./media/aks-edge/hyper-v-external-switch.png)
 
-- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](aks-edge-concept.md#networking) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart` and `DnsServers`.
+- **IP addresses**:  You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. Read the [AKS Edge Essentials Networking](./aks-edge-concept-networking.md) overview for more details. For example, in local networks with the 192.168.1.0/24 IP address range, 1.151 and above are outside of the DHCP scope, and therefore are guaranteed to be free. AKS Edge Essentials currently supports IPv4 addresses only. You can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file -  `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart` and `DnsServers`.
 - The `Network.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. In K8S cluster change the `NetworkPlugin` to `calico`.
 - In addition to the above, the following parameters can be set according to your deployment configuration as described [here](aks-edge-deployment-config-json.md)  -  `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`,  `LinuxNode.Ip4Address`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `WindowsNode.Ip4Address`, `Init.ServiceIPRangeSize`,  `Network.InternetDisabled`.
 
