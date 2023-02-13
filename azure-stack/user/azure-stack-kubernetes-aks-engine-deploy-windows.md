@@ -57,7 +57,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     ```
 
     > [!NOTE]  
-    > If this method for installation fails, you can try the steps in the [disconnected environment](#install-aks-engine-version-0.73.0-and-below-in-a-disconnected-environment).
+    > If this method for installation fails, you can try the steps for a disconnected environment below.
 
 ## Install AKS Engine version 0.73.0 and below in a disconnected environment
 
