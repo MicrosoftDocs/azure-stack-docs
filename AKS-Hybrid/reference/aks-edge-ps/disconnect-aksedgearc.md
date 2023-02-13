@@ -36,7 +36,7 @@ Disconnect-AksEdgeArc -JsonConfigFilePath ./aksedge-config.json
 ### Example 2
 
 ```powershell
-Disconnect-AksEdgeArc -JsonConfigString ($jsonObj | ConvertTo-Json)
+Disconnect-AksEdgeArc -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 ```
 
 ## Parameters
@@ -47,11 +47,11 @@ Disconnect-AksEdgeArc -JsonConfigString ($jsonObj | ConvertTo-Json)
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: fromJsonConfigFile
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -63,11 +63,11 @@ Input parameters based on a JSON string.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: fromJsonConfigString
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -49,11 +49,11 @@ Add-AksEdgeNode -JsonConfigString ($jsonObj | ConvertTo-Json)
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: fromJsonConfigFile
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,11 +65,11 @@ Input parameters based on a JSON string.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: fromJsonConfigString
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

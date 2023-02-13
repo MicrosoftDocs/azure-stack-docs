@@ -21,7 +21,7 @@ Set up your primary machine as described in the [Set up machine](aks-edge-howto-
 The parameters needed to create a single machine cluster can be generated using the following command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json
+New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json | Out-Null
 ```
 
 This creates a configuration file called `aksedge-config.json` which includes the configurations needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. Refer to the examples below for more options on creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
@@ -58,7 +58,7 @@ The following image shows pods on a K3S cluster:
 If you want to add Windows node to an existing Linux only single machine cluster, first create the configuration file using the following command:
 
 ```powershell
-New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -outFile .\ScaleConfig.json
+New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -outFile .\ScaleConfig.json | Out-Null
 ```
 
 This creates the configuration file `ScaleConfig.json` in the current working directory. You can also modify the Windows node parameters in the configuration file to specify the resources that needs to be allocated to the Windows node. With the configuration file, you can run the following command to add the node the single machine cluster.
@@ -74,8 +74,7 @@ Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
 You can programmatically edit the JSON object and pass it as a string:
 
 ```powershell
-$jsonString = New-AksEdgeConfig -DeploymentType SingleMachineCluster
-$jsonObj = $jsonString | ConvertFrom-Json 
+$jsonObj = New-AksEdgeConfig -DeploymentType SingleMachineCluster
 $jsonObj.User.AcceptEula = $true
 $jsonObj.User.AcceptOptionalTelemetry = $true
 $jsonObj.Init.ServiceIpRangeSize = 10
@@ -91,7 +90,7 @@ New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0).
 
    ```powershell
-   New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig)
+   New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig | ConvertTo-Json -Depth 4)
    ```
 
 ### Allocate resources to your nodes
@@ -130,8 +129,7 @@ You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as
 You can also choose to pass the parameters as a JSON string, as previously mentioned:
 
    ```powershell
-   $jsonString = New-AksEdgeConfig -DeploymentType SingleMachineCluster
-   $jsonObj = $jsonString | ConvertFrom-Json 
+   $jsonObj = New-AksEdgeConfig -DeploymentType SingleMachineCluster
    $jsonObj.User.AcceptEula = $true
    $jsonObj.User.AcceptOptionalTelemetry = $true
    $jsonObj.Init.ServiceIpRangeSize = 10
@@ -147,7 +145,7 @@ You can also choose to pass the parameters as a JSON string, as previously menti
 You can also create a cluster with both Linux and Windows node. You can create the configuration file using the command:
 
 ```powershell
-New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json
+New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json | Out-Null
 ```
 
 Once the configuration file is created, you can deploy your cluster using:
