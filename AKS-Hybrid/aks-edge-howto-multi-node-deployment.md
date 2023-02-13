@@ -4,7 +4,7 @@ description: Describes how to create a cluster with multiple machines.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 02/13/2023
 ms.custom: template-how-to
 ---
 
