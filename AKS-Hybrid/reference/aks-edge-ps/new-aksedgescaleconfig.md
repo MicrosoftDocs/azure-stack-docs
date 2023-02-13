@@ -17,7 +17,7 @@ Creates a new AKS Edge Essentials configuration template for scaling the cluster
 ## Syntax
 
 ```powershell
- New-AksEdgeScaleConfig [[-outFile] <string>] [[-NodeType] <string>] [[-ScaleType] <string>]  [[-LinuxNodeIp] <string>] [[-WindowsNodeIp] <string>] [-ControlPlane]
+ New-AksEdgeScaleConfig [[-outFile] <string>] [[-ScaleType] <string>] [[-NodeType] <string>] [[-LinuxNodeIp] <string>] [[-WindowsNodeIp] <string>] [-ControlPlane]
 ```
 
 ## Description
@@ -43,22 +43,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeType
-
-This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. 
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -75,11 +59,28 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
+Position: 2
+Default value: AddMachine
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -NodeType
+
+This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows' are to be deployed. 
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Linux
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -LinuxNodeIp
 
@@ -90,8 +91,8 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,8 +107,8 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

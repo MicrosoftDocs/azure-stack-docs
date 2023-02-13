@@ -17,7 +17,7 @@ Sets whether AKS Edge Essentials is allowed to upgrade the Kubernetes version on
 ## Syntax
 
 ```powershell
-Set-AksEdgeUpgrade
+Set-AksEdgeUpgrade [[-AcceptUpgrade] <Boolean>]
 ```
 
 ## Description
@@ -32,7 +32,7 @@ The Set-AksEdgeUpgrade cmdlet sets whether AKS Edge Essentials is allowed to upg
 
 ## Parameters
 
-### -acceptUpgrade
+### -AcceptUpgrade
 
 This parameter specifies whether AksEdge is allowed to upgrade the Kubernetes version on update.
 
@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
