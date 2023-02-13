@@ -78,7 +78,7 @@ The following instructions use the minimum steps to perform the upgrade. If you 
 3. With your values in place, run the following command:
 
 > [!Note]
-> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade` 
+> For AKSe version 0.75.3 and above, the command to upgrade AKS engine is `aks-engine-azurestack upgrade`.
 
     ```bash  
     aks-engine upgrade \
