@@ -14,21 +14,22 @@ If you experience issues running AKS Edge Essentials IoT Edge in your environmen
 
 ## Get logs
 
-Your first step when troubleshooting AKS Edge Essentials should be to use gather logs. The most convenient way is to use the `Get-AksEdgeLogs` command. By default, this command collects different logs around VM management, networking, Kubernetes services and more. It compresses them into a single file for easy sharing.
+Your first step when troubleshooting AKS Edge Essentials should be to gather logs. The most convenient way is to use the `Get-AksEdgeLogs` command. By default, this cmdlet collects different logs around VM management, networking, Kubernetes services, and more. It compresses them into a single file for easy sharing.
 
 To get the AKS Edge Essentials logs, use the following steps
 
-1. Open an elevated PowerShell session
-1. Run the cmdlet to get the logs
+1. Open an elevated PowerShell session.
+1. Run the cmdlet to get the logs:
+
     ```powershell
     Get-AksEdgeLogs
     ```
-1. All logs are stored in a .Zip file under the following path `C:\ProgramData\AksEdge\logs\aksedge-logs-ddmmyy-hhmm.zip" 
-1. Move to `C:\ProgramData\AksEdge\logs\` folder and unzip the `aksedge-logs-ddmmyy-hhmm.zip` logs file.
+1. All logs are stored in a .zip file under the following path: **C:\ProgramData\AksEdge\logs\aksedge-logs-ddmmyy-hhmm.zip**. 
+1. Go to the **C:\ProgramData\AksEdge\logs\** folder and unzip the **aksedge-logs-ddmmyy-hhmm.zip** logs file.
 
 ## Understanding logs
 
-The logs compressed file consists of different configuration files, deployment & services logs, and information about host OS and deployed cluster. Depending on the cluster state, Kubernetes distribution and host OS, some files may not be available. 
+The compressed log file consists of different configuration files, deployment and services logs, and information about host OS and deployed cluster. Depending on the cluster state, Kubernetes distribution and host OS, some files may not be available. 
 
 ### Windows host OS logs
 
@@ -53,7 +54,7 @@ The logs compressed file consists of different configuration files, deployment &
 
 ### AKS Edge nodes logs
 
-These logs should be independent of the cluster type and the Kubernetes distribution being used (K3s or K8s)
+These logs should be independent of the cluster type and the Kubernetes distribution being used (K3s or K8s):
 
 | File name | Group |  Description |
 | --------- | ----- | ------------ | 
