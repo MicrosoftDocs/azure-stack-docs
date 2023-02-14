@@ -1,6 +1,6 @@
 ---
 title: App Service on Azure Stack Hub 2302 release notes 
-description: Learn about what's in the 2302 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+description: Learn about what's in the 2302 release for App Service on Azure Stack Hub and where to download the update.
 author: apwestgarth
 manager: stefsch
 
@@ -29,9 +29,9 @@ The App Service on Azure Stack Hub 2302 build number is **98.0.1.703**
 
 Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release](app-service-release-notes-2022-h1.md) and includes fixes for the following issues:
 
-- [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability] (https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-21777) 
+- [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-21777) 
 
-- Unable to open Virtual Machine Scalesets User Experience from the App Service Roles admin user experience in the Azure Stack Hub administration portal.
+- Unable to open Virtual Machine Scale Sets User Experience from the App Service Roles admin user experience in the Azure Stack Hub administration portal.
 
 - All other updates are documented in the [Azure App Service on Azure Stack Hub 2022 H1 Update Release Notes](app-service-release-notes-2022-h1.md)
 
@@ -64,7 +64,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2022 H1:
  >[!Note] 
  > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues only.
  
- Azure App Service on Azure Stack Hub 2302 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
+ Azure App Service on Azure Stack Hub 2302 is a significant update which will take multiple hours to complete.  The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
