@@ -37,7 +37,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## Feature support matrix
 
-||Public Preview   |Experimental|
+| Feature | Public Preview   |Experimental|
 |------------|-----------|--------|
 |Kubernetes (K8S)|Version: 1.24.3| - |
 |Kubernetes (K3S)|Version: 1.24.3| - |
