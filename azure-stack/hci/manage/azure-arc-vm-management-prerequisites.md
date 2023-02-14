@@ -92,12 +92,14 @@ Make sure to include the following firewall URLs in your allowlist:
 | https\://azurearcfork8sdev.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images
 | https\://adhs.events.data.microsoft.com | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which would mean any Kubernetes control plane |
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
-| pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
-| pythonhosted.org  | 443 | Python package | Used for downloading python packages during Azure CLI installation |
+| *.pythonhosted.org  | 443 | Python package | Used for downloading python packages during Azure CLI installation |
 | msk8s.sf.tlu.dl.delivery.mp.microsoft.com | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
+| msk8s.sb.tlu.dl.delivery.mp.microsoft.com	 | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
+| kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
+| linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 
 ## Network proxy requirements
 
