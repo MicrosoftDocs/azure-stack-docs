@@ -76,19 +76,21 @@ An integrated blob container can automatically import files to the Azure Managed
 
 If you don't add an integrated blob container when you create your Lustre system, you can write your own client scripts or commands to move files between your Azure Managed Lustre file system and other storage.
 
-It's also important to understand the differences in how metadata is handled in hierarchical and non-hierarchical blob storage. For more information, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
+It's also important to understand the differences in how metadata is handled in hierarchical and non-hierarchical blob storage. For more information, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).<!--Why is this important? Advanced feature? Explain why in full procedrues.-->
 
 Create these items before you create an Azure-Managed Lustre file system:
 
 * A storage account that meets the following requirements:
 
-  * A compatible storage account type. For more information, see [storage account types](amlfs-requirements.md#supported-storage-account-types).
-  * [Public endpoint](#account-access)
-  * [Access roles](#set-access-roles) that permit the Azure Managed Lustre system to modify data
+  * A compatible storage account type. See [storage account types](amlfs-requirements.md#supported-storage-account-types) for more information.
+  * [A public endpoint](#account-access).
+  * [Access roles](#set-access-roles) that permit the Azure Managed Lustre system to modify data.
 
-* A data container in the storage account, which contains the files that you want to use in the Azure Managed Lustre system. You can add files to the Lustre file system later from clients, but files added to the original blob container after the file system is created won't be imported to the Azure Managed Lustre file system.
+* A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.
 
-* A logging container for import/export logs in the storage account. The import/export logs must be stored in a different container from the data container.
+  You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system.
+
+* A logging container for import/export logs in the storage account. The import/export logs must be stored in a different container from the data container.<!--Is there a special type of container called a "logging container," or is this just a separate container for logs?-->
 
 ### Supported storage account types
 
