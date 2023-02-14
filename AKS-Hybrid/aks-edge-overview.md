@@ -4,14 +4,15 @@ description: AKS Edge Essentials is an on-premises Kubernetes implementation of 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: overview
-ms.date: 12/05/2022
+ms.date: 02/03/2023
 ms.custom: template-overview
 ---
 
 # AKS Edge Essentials (preview)
 
 > [!NOTE]
-> AKS Edge Essentials is currently in public preview.
+> AKS Edge Essentials is currently in public preview. As of 02/03/2023, the public preview has been refreshed. [See the release notes here](https://github.com/Azure/AKS-Edge/releases). Try out our new bits (1.0.266.0 Release Candidate for GA) and share your valuable feedback with us.
+
 
 Azure Kubernetes Service Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Edge Essentials includes a Microsoft-supported Kubernetes platform that includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. AKS Edge Essentials makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
 
@@ -19,7 +20,7 @@ Azure Kubernetes Service Edge Essentials is an on-premises Kubernetes implementa
 
 ### 1. Simplified Kubernetes experience
 
-Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), AKS Edge Essentials is intended for static, pre-defined configurations and does not enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS Edge Essentials cluster can have only one Linux VM which acts as a control node and worker node in the Kubernetes cluster. Each machine with AKS Edge Essentials has a VM with restricted RAM, storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side; that is, interoperable alongside the AKS Edge Essentials VMs.
+Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), AKS Edge Essentials is intended for static, pre-defined configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS Edge Essentials cluster can have only one Linux and/or Windows VM. The Linux VM acts as the control node and worker node for Linux workloads in the Kubernetes cluster. Each machine with AKS Edge Essentials has a VM with restricted RAM, storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side; that is, interoperable alongside the AKS Edge Essentials VMs.
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS Edge Essentials simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
@@ -30,7 +31,7 @@ While Kubernetes is an open-source orchestrator for automating container managem
 AKS Edge Essentials includes the following features, managed by Microsoft:
 
 - A lightweight, CNCF-conformant K8S and K3S distribution that is supported and managed by Microsoft. The key difference between AKS on HCI and AKS on Windows is that AKS on Windows has minimal compute and memory requirements (4 GB RAM and 2 vCPUs).
-- Each Kubernetes cluster runs in its own Hyper-V isolated virtual machine and includes many features to help secure your container infrastructure.
+- Each Kubernetes node runs in its own Hyper-V isolated virtual machine and includes many features to help secure your container infrastructure.
 - Microsoft-maintained Linux and Windows worker nodes virtual machine images adhere to security best practices. Microsoft also refreshes these images monthly with the latest security updates.
 - Simplified installation experience with PowerShell cmdlets and agents to enable provisioning and control of VMs and infrastructure. Microsoft provides automatic updates for your Kubernetes deployment, so you stay up-to-date with the latest available Kubernetes versions.
 
@@ -50,7 +51,7 @@ Once you have set up on-premises Kubernetes using AKS Edge Essentials and create
 
 ### Interoperable with native Windows applications
 
-Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you are faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS Edge Essentials, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition, AKS Edge Essentials offers interoperability between native Windows applications and containerized Linux workloads.
+Windows provides a rich app eco system, user experience and robust security, and powers much of the infrastructure for industrial solutions today from HMIs, robots, PLCs, medical devices etc. That said, many of the cloud-native workloads are built on Linux and you're faced with the challenge of having to introduce Linux systems to take advantage of cloud-native solutions. These solutions require additional infrastructure management tools and skills to manage Linux systems in your environment. With AKS Edge Essentials, you get the best of both worlds. You can continue to use your Windows application investments and use existing hardware. In addition, you can also run cloud-native Linux workloads on Windows without the need to have new skills or new control plane to manage the Linux devices. This enables you to use a broad set of AI capabilities to innovate quickly and drive your edge innovation forward with the least disruption. In addition, AKS Edge Essentials offers interoperability between native Windows applications and containerized Linux workloads.
 
 ![Diagram of AKS Edge Essentials interop.](media/aks-edge/aks-edge-windows-arch.png)
 
@@ -64,6 +65,5 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 ## Next steps
 
-- Read about [deployment options](./aks-edge-deployment-options.md)
+- Read about [deployment options](./aks-edge-concept-clusters-nodes.md)
 - Contact product team by emailing projecthaven@microsoft.com
-

@@ -389,7 +389,11 @@
 - name: Preview
   items:
   - name: What's in preview?
-    href: manage/whats-new-preview.md
+    items: 
+    - name: 2301 release - Current
+      href: manage/whats-new-2301-preview.md
+    - name: 2210 release
+      href: manage/whats-new-preview.md
   - name: Preview channel
     items:
     - name: Join preview channel
@@ -401,7 +405,11 @@
   - name: Supplemental package
     items:
     - name: View known issues
-      href: hci-known-issues.md
+      items: 
+      - name: 2301 release - Current
+        href: hci-known-issues-2301.md
+      - name: 2210 release
+        href: hci-known-issues.md
     - name: Plan
       items:
       - name: Review security

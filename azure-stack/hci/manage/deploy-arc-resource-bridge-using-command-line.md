@@ -80,7 +80,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
+        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the proxy configuration first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
    
       ### [For static IP address](#tab/for-static-ip-address-1)
 
@@ -196,7 +196,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
    
    1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
-      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$workingDir\kubeconfig" 
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$csv_path\ResourceBridge\kubeconfig" 
       ```
       > [!IMPORTANT]
       > - The output of the above command is a kubeconfig file. Make sure you store this file in a secure and safe location for future use.
@@ -210,7 +210,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
    
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
-      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$workingDir\kubeconfig" 
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$csv_path\ResourceBridge\kubeconfig" 
       ```
 
    ### [For dynamic IP address](#tab/for-dynamic-ip-address-2)
@@ -234,7 +234,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       ```
    1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
-      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$workingDir\kubeconfig" 
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$csv_path\ResourceBridge\kubeconfig" 
       ```
       > [!IMPORTANT]
       > - The output of the above command is a kubeconfig file. Make sure you store this file in a secure and safe location for future use.
@@ -248,7 +248,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
 
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
-      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$workingDir\kubeconfig" 
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$csv_path\ResourceBridge\kubeconfig" 
       ```
    ---
 
