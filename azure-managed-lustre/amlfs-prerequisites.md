@@ -4,18 +4,16 @@ description: Network and storage prerequisites to complete before you create an 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/13/2023
-ms.reviewer: sethm
+ms.lastreviewed: 02/14/2023
+ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
-# Intent: As an IT Pro, XXX.
+# Intent: As an IT Pro, I  need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure what I need.
 # Keyword: 
 
 ---
 
 # Azure Managed Lustre file system prerequisites (Preview)
-
-<!--Text imported as is from "Prerequisites" for private preview. Links haven't been updated. Requirements will move to new Requirements doc for public preiew.-->
 
 This article explains prerequisites that you must configure before creating an Azure Managed Lustre file system.
 
@@ -36,7 +34,7 @@ The size of subnet that you need depends on the size of the file system you crea
 | 20 to 40 TiB     | /26 or larger                 |
 | 44 to 92 TiB     | /25 or larger                 |
 | 96 to 196 TiB    | /24 or larger                 |
-| 200 to 400 TiB   | /23 or larger                 | 
+| 200 to 400 TiB   | /23 or larger                 |
 
 Also read [Additional network size requirements](#additional-network-size-requirements), below, to learn about other services that can share the capacity of your virtual network and subnet.
 
@@ -112,14 +110,13 @@ Storage accounts used with an Azure Managed Lustre file system must be configure
 
 Azure Managed Lustre needs authorization to access your storage account. Use [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/) to give the file system access to your blob storage.
 
-A storage account owner must explicitly add these roles:
+A storage account owner must add these roles before creating the file system:
 
 * [Storage Account Contributor](/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 * [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 
 > [!IMPORTANT]
-> - You must add these roles before you create your Azure Managed Lustre file system. If the file system can't access your blob container, file system creation fails. Validation performed before the file system is created can't detect container access permission problems.
-> - It can take up to five minutes for the role settings to propagate through the Azure environment.
+> You must add these roles before you create your Azure Managed Lustre file system. If the file system can't access your blob container, file system creation fails. Validation performed before the file system is created can't detect container access permission problems. It can take up to five minutes for the role settings to propagate through the Azure environment.
 
 To add the roles for the service principal **HPC Cache Resource Provider**, do these steps:
 
@@ -127,7 +124,7 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
 
 1. Select **Add** > **Add role assignment** to open the **Add role assignment** page.
 
-1. Assign the following roles, one at a time. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+1. Assign each of the following roles, and grant access to the **HPC Cache Resource Provider**. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
     | Setting             | Values                      |
     |---------------------|-----------------------------|
@@ -135,6 +132,8 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
     | **Assign access to** | HPC Cache Resource Provider<br>TIP: If you can't find the HPC Cache Resource Provider, search for **storagecache** instead. **storagecache Resource Provider** was the service principal name before general availability of the product.|
 
 ## Azure Key Vault integration requirements (optional)
+
+<!--Exclude from Quickstart guide.-->
 
 If you want to create and manage the encryption keys used on your Azure Managed Lustre files, you can add customer-managed keys to an Azure Key Vault before or during file system creation. You can create a new key vault and key when you create the file system, but you should be familiar with these requirements ahead of time. To add a key vault and keys when you create the file system, you must have permissions to manage key vault access.
 
