@@ -42,7 +42,6 @@ These logs should be independent of the cluster type and the Kubernetes distribu
 | aksedgelogs-summary | Information | Details around which logs were collected and included in the logs compressed file. |
 | AksEdgenetworkConfig_LinuxVm | VM Information | Output of networking configurations: IP addresses of network interfaces (`sudo ip a`), routes being used (`sudo route`) and *iptables* firewall rules (`sudo iptables -L`).
 | *\<Windows-hostname\>*-ledge_cloudinit & *\<Windows-hostname\>*-ledge_cloudinit-output | VM Information | Output of cloudinit configurations used for the Linux VM creation. For more information, check [cloudinit docs](https://cloudinit.readthedocs.io/en/latest/). | 
-
 | *\<Windows-hostname\>*-ledge_systemd | VM information | Logs of Linux *systemd* (`sudo journalctl`). |
 | *\<Windows-hostname\>*-ledge_vmconfig | Deployment configurations | Linux virtual machine configurations - Internal use only. |
 | *\<Windows-hostname\>*-ledge-aksedge-agent | VM information | Linux virtual machine deployment logs - Internal use only. |
@@ -54,7 +53,6 @@ These logs should be independent of the cluster type and the Kubernetes distribu
 | hnsdiag_list_all | VM information | Network information related to the virtual machines. Only valid for Windows Client host OS deployments.
 | kubectl_describe | Kubernetes information | 
 | kubectl_pods | Cluster information | Output of running `kubectl get pods`. For more information about this command, check [Kubectl Reference Docs - Get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get). | 
-| 
 
 ### K3s specific logs
 
