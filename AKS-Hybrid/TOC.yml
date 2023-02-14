@@ -339,6 +339,8 @@
     items:
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Logs 
+      href: aks-edge-resources-logs.md
     - name: Release notes and known issues
       href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs

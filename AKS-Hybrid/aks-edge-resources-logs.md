@@ -3,9 +3,9 @@ title: Logs for AKS Edge Essentials
 description: Gather and troubleshoot AKS Edge Essentials using logs. 
 author: fcabrera
 ms.author: fcabrera
-ms.topic: resources
+ms.topic: end-user-help
 ms.date: 02/14/2023
-ms.custom: resources
+ms.custom: end-user-help
 ---
 
 # AKS Edge Essentials logs
@@ -47,10 +47,17 @@ The compressed log file consists of different configuration files, deployment an
 
 ### Wssdagent logs
 
+The WSSDAgent is the AKS Edge Essentials service used for virtual machines creation and lifecycle management. This service runs on the Windows host OS and uses Hyper-V API implementations (HCS or VMMS) to manage the VMs. 
+
+| File name | Group |  Description |
+| --------- | ----- | ------------ | 
+| agent-log-0 | VM Information | Virtual machines lifecycle logs - Internal use only.| 
+| wssdagent | VM Information | Virtual machines lifecycle logs - Internal use only. |
+| Other files | Deployment configurations | Internal use only. | 
 
 ## Linux-containers logs
 
-
+Linux containers running inside the Linux nodes use `/var/log/continers/\<container-name>.log` files to store container logs. All these `.log` files are copied and compressed under the *linux-containers* folder. 
 
 ### AKS Edge nodes logs
 
@@ -74,11 +81,10 @@ These logs should be independent of the cluster type and the Kubernetes distribu
 | *\<Windows-hostname\>*-wedge-aksedge-agent | VM information | Windows virtual machine deployment logs - Internal use only. |
 | *\<Windows-hostname\>*-wedge-aksedge-agent-config | Deployment configurations | Windows virtual machine configurations - Internal use only. |
 | *\<Windows-hostname\>*-ledge-aksedge-lifecycle-mgmt | VM information | Windows virtual machine lifecycle management logs - Internal use only. |
-| config | Deployment configurations | Copy of JSON configuration used for deployment. Sensistive information is not included. |
+| config | Deployment configurations | Copy of JSON configuration used for deployment. Sensitive information isn't included. |
 | hnsdiag_list_all | VM information | Network information related to the virtual machines. Only valid for Windows Client host OS deployments.
-| kubectl_describe | Kubernetes information | Outuput of running `kubectl describe nodes`. For more information about this command, check [Kubectl Reference Docs - Describe](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe). | 
+| kubectl_describe | Kubernetes information | Output of running `kubectl describe nodes`. For more information about this command, check [Kubectl Reference Docs - Describe](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe). | 
 | kubectl_pods | Cluster information | Output of running `kubectl describe pods`. For more information about this command, check [Kubectl Reference Docs - Describe](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe). | 
-| *\<Windows-hostname\>*-ledge_vmconfig | Deployment configurations | Linux virtual machine configurations - Internal use only. |
 
 ### K3s specific logs
 
