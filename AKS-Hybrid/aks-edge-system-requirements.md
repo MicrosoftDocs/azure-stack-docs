@@ -4,7 +4,7 @@ description: Requirements and supported version
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 01/26/2023
+ms.date: 02/14/2023
 ms.custom: template-concept
 ---
 
@@ -32,7 +32,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 | Parameter | Permissible limit |
   | ---------- | --------- |
   | Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
-  | Maximum number of vCPUs assinged to virtual machines  | 16 vCPUs |
+  | Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
 ## Feature support matrix
@@ -46,4 +46,4 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## Next steps
 
-- [Set up your machine](./aks-edge-howto-setup-machine.md)
+[Set up your machine](./aks-edge-howto-setup-machine.md)
