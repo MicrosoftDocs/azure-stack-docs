@@ -38,9 +38,7 @@ The size of subnet that you need depends on the size of the file system you crea
 | 96 to 196 TiB    | /24 or larger                 |
 | 200 to 400 TiB   | /23 or larger                 |
 
-Also read [Additional network size requirements](#additional-network-size-requirements), below, to learn about other services that can share the capacity of your virtual network and subnet.
-
-#### Other network size requirements
+#### Other network size considerations
 
 When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
 
@@ -88,8 +86,8 @@ Create these items before you create an Azure-Managed Lustre file system:
 
 * A storage account that meets the following requirements:
 
-  * A compatible storage account type. See [storage account types](amlfs-requirements.md#supported-storage-account-types) for more information.
-  * [A public endpoint](#account-access).
+  * A compatible storage account type. See [storage account types](#supported-storage-account-types) for more information.
+  * [A public endpoint](#storage-account-access).
   * [Access roles](#set-access-roles) that permit the Azure Managed Lustre system to modify data.
 
 * A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.

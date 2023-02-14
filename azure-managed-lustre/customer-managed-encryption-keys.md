@@ -4,7 +4,7 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/09/2023
+ms.lastreviewed: 02/14/2023
 ms.reviewer: sethm
 ms.date: 02/09/2023
 
@@ -16,10 +16,9 @@ ms.date: 02/09/2023
 
 <!--Imported from Requirements. These settings are optional. Will integrate this content with the existing content.-->
 
-===========================
-BEGIN "Requirements" IMPORT
+**BEGIN "Requirements" IMPORT**
 
-## Azure Key Vault integration requirements (optional)
+H2 heading: Azure Key Vault integration requirements (optional)
 
 If you want to create and manage the encryption keys used on your Azure Managed Lustre files, you can add customer-managed keys to an Azure Key Vault before or during file system creation. You can create a new key vault and key when you create the file system, but you should be familiar with these requirements ahead of time. To add a key vault and keys when you create the file system, you must have permissions to manage key vault access.
 
@@ -42,8 +41,7 @@ If you plan to use customer-managed encryption keys with your Azure Managed Lust
 
 * Assign the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor) to the person who will create the Azure Managed Lustre file system. The Key vault contributor role is required in order to manage key vault access. For more information, see [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
 
-END "Requirements" IMPORT
-=========================
+**END "Requirements" IMPORT**
 
 You can use Azure Key Vault to control ownership of the keys used to encrypt your data while it's stored in the Azure Managed Lustre file system. This article explains how to use customer-managed keys for data encryption with Azure Managed Lustre.
 
