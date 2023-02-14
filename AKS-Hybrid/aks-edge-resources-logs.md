@@ -25,7 +25,7 @@ To get the AKS Edge Essentials logs, use the following steps
     Get-AksEdgeLogs
     ```
 1. All logs are stored in a .zip file under the following path: **C:\ProgramData\AksEdge\logs\aksedge-logs-ddmmyy-hhmm.zip**. 
-1. Go to the **C:\ProgramData\AksEdge\logs\** folder and unzip the **aksedge-logs-ddmmyy-hhmm.zip** logs file.
+1. Go to the **C:\ProgramData\AksEdge\logs** folder and unzip the **aksedge-logs-ddmmyy-hhmm.zip** logs file.
 
 ## Understanding logs
 
@@ -55,9 +55,9 @@ The WSSDAgent is the AKS Edge Essentials service used for virtual machines creat
 | **wssdagent** | VM Information | Virtual machines lifecycle logs - Internal use only. |
 | **Other files** | Deployment configurations | Internal use only. | 
 
-## Linux-containers logs
+### Linux-containers logs
 
-Linux containers running inside the Linux nodes use `/var/log/continers/\<container-name>.log` files to store container logs. All these `.log` files are copied and compressed under the *linux-containers* folder. 
+Linux containers running inside the Linux nodes use `/var/log/continers/<container-name>.log` files to store container logs. All these `.log` files are copied and compressed under the *linux-containers* folder. 
 
 ### AKS Edge nodes logs
 
