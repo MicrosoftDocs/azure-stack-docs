@@ -32,7 +32,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 | Parameter | Permissible limit |
   | ---------- | --------- |
   | Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
-  | Maximum number of vCPUs per machine  | 16 vCPUs |
+  | Maximum number of vCPUs assinged to virtual machines  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
 ## Feature support matrix
