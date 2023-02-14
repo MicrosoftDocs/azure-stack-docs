@@ -38,7 +38,7 @@ Follow these steps to connect to the first server:
 
 1. In the deployment wizard, select the **first server listed for the cluster to act as a staging server** during deployment.
 
-1. Sign in to the staging server using local administrative credentials.
+1. Sign in to the first server using local administrative credentials.
 
 1. Copy the [Supplemental Package that you downloaded previously](#download-the-supplemental-package) to any drive other than the C:\ drive of the first server.
 

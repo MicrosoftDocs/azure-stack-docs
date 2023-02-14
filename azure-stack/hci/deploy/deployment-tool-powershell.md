@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 In this article, learn how to deploy Azure Stack HCI using PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
-You will use a configuration file you have created before you begin. For more information, see the [sample configuration file](deployment-tool-existing-file.md).
+This method of deployment uses a configuration file that you manually create beforehand using a text editor.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
