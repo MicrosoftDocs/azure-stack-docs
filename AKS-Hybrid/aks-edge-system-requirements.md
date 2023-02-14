@@ -46,4 +46,4 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## Next steps
 
-[Set up your machine](./aks-edge-howto-setup-machine.md)
+- [Set up your machine](./aks-edge-howto-setup-machine.md)
