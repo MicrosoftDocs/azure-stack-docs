@@ -40,7 +40,7 @@ The size of subnet that you need depends on the size of the file system you crea
 
 Also read [Additional network size requirements](#additional-network-size-requirements), below, to learn about other services that can share the capacity of your virtual network and subnet.
 
-#### Additional network size requirements
+#### Other network size requirements
 
 When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
 
@@ -56,21 +56,19 @@ When you plan your VNet and subnet, take into account the requirements for any o
 
 <!--Alternate presentation - When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, if you'll use your Azure Managed Lustre file system, with an Azure Kubernetes Service (AKS) deployment, review network strategies for Azure Managed Lustre and AKS in [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre). If you plan to use another resource to host your compute VMs in the same VNet, check the requirements for that process before creating the VNet and subnet for your Azure Managed Lustre system.-->
 
-### Subnet access and permissions
+### Subnet access, permissions
 
 The subnet for the Azure Managed Lustre file system needs the following access and permissions:
 
-* The file system must be able to create NICs on its subnet.<!--Is this a reference to a "virtual NIC"? What setting is required?-->
-
-* Azure Managed Lustre supports IPv4 only.<!--Placement: More protocol than access and permissions?-->
-
+<!--I will chase down existing procedures to link to for these requirements. Dale-->
 | Access type | Required network settings |
 |-------------|---------------------------|
 |Create NICs  |The file system must be able to create network interface cards (NICs) on its subnet. <!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
 | DNS access  |You can use the default Azure-based DNS server.<!--Will customers want to use their own DNS server?-->|
-| Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>Option 1: Add a private endpoint for Azure Storage to your subnet. LINK TO PROCEDURE.<br><br>Option 2: Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
+| Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>**Option 1:** Add a private endpoint for Azure Storage to your subnet. LINK TO PROCEDURE.<br><br>**Option 2:** Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Source**: Service tag<br>- **Source service tag**: AzureCloud<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
 |Lustre network port access| Your network security group must allow inbound and outbound access on port 988.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
+|Protocol | Azure Managed Lustre supports IPv4 only. |
 <!--Holds for later. |Storage access |If you use Microsoft Azure Blob Storage integration with your Azure Managed Lustre file system, configure an Azure Storage endpoint so the file system can access the storage.
 |Customer-managed encryption keys |If you use customer-managed encryption keys for you Azure Managed Lustre files, the file system must be able to access the associated Azure key vault.|-->
 
