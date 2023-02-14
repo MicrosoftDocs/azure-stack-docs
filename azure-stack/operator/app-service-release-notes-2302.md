@@ -64,7 +64,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2022 H1:
  >[!Note] 
  > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues only.
  
- Azure App Service on Azure Stack Hub 2302 is a significant update which will take multiple hours to complete.  The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
+ Azure App Service on Azure Stack Hub 2302 is a significant update that will take multiple hours to complete.  The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
