@@ -35,15 +35,15 @@ The compressed log file consists of different configuration files, deployment an
 
 | File name | Group |  Description |
 | --------- | ----- | ------------ | 
-| **aksedgeevents.xml** | Windows Events | Windows events logged during deployment or VM lifecycle. To manually check these events, use Event Viewer application and check the events under *Applications and Services Logs* -> *AKS Edge Essentials- K3s/K8s*.
+| **aksedgeevents.xml** | Windows Event Log | Windows events logged during deployment or VM lifecycle. To manually check these events, use Event Viewer application and check the events under *Applications and Services Logs* -> *AKS Edge Essentials- K3s/K8s*.
 | **aksedgehost-systeminfo** | Information | Windows host OS information including: PowerShell version, Windows OS version, CPU, Memory and Storage. |
-| **Microsoft-Windows-Host-Network-Service-Admin.xml** | Event logs | HNS service event logs - Internal use only. | 
-| **Microsoft-Windows-Host-Network-Service-Operational.xml** | Event logs | HNS operational service event logs - Internal use only. | 
-| **Microsoft-Windows-Hyper-V-Compute-Admin.xml**| Event logs | Events from the Host Compute Service [HCS](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - Internal use only. | 
-| **Microsoft-Windows-Hyper-V-Compute-Operational.xml** | Event logs | Events from the Host Compute Service [HCS](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - Internal use only. | 
-| **Microsoft-Windows-Hyper-V-VMMS-Admin.xml** | Event logs | Events from the virtual machine management service (VMMS) can be found here - Internal use only. | 
-| **Microsoft-Windows-Hyper-V-VMMS-Networking.xml** | Event logs | Events from the virtual machine management service (VMMS) networking stack can be found here - Internal use only. | 
-| **Microsoft-Windows-Hyper-V-VMMS-Operational.xml** | Event logs | Events from the virtual machine management service (VMMS) operation can be found here - Internal use only. | 
+| **Microsoft-Windows-Host-Network-Service-Admin.xml** | Windows Event Log | HNS service Windows Event Log - Internal use only. | 
+| **Microsoft-Windows-Host-Network-Service-Operational.xml** | Windows Event Log | HNS operational service Windows Event Log - Internal use only. | 
+| **Microsoft-Windows-Hyper-V-Compute-Admin.xml**| Windows Event Log | Events from the Host Compute Service [HCS](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - Internal use only. | 
+| **Microsoft-Windows-Hyper-V-Compute-Operational.xml** | Windows Event Log | Events from the Host Compute Service [HCS](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - Internal use only. | 
+| **Microsoft-Windows-Hyper-V-VMMS-Admin.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) can be found here - Internal use only. | 
+| **Microsoft-Windows-Hyper-V-VMMS-Networking.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) networking stack can be found here - Internal use only. | 
+| **Microsoft-Windows-Hyper-V-VMMS-Operational.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) operation can be found here - Internal use only. | 
 
 ### Wssdagent logs
 
