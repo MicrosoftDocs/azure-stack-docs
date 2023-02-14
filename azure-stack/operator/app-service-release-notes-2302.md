@@ -17,24 +17,23 @@ ms.lastreviewed:
 
 # App Service on Azure Stack Hub 2302 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2022 H1 release notes and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2302 release notes and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2302 build number is **98.0.1.699**
+The App Service on Azure Stack Hub 2302 build number is **98.0.1.703**
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 2302 brings many new capabilities to Azure Stack Hub
+Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release](app-service-release-notes-2022-h1.md) and includes fixes for the following issues:
 
-- All roles are now powered by Windows Server 2022 Datacenter.
-- Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService. 
-- Network design update for all worker virtual machine scale sets, addressing customers faced with SNAT port exhaustion issues.
-- Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
-- Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
-- Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
+- [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability] (https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-21777) 
+
+- Unable to open Virtual Machine Scalesets User Experience from the App Service Roles admin user experience in the Azure Stack Hub administration portal.
+
+- All other updates are documented in the [Azure App Service on Azure Stack Hub 2022 H1 Update Release Notes](app-service-release-notes-2022-h1.md)
 
 ## Prerequisites
 
@@ -60,72 +59,12 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2022 H1:
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
-## Updates
-
-Azure App Service on Azure Stack Update 2022 H1 includes the following improvements and fixes:
-
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
-
-- Updates **Azure Functions runtime** to **v1.0.13154**.
-
-- Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
-
-- **Updates to the following application frameworks and tools**:
-  - 2022-09 Cumulative Update for .NET Framework 3.5 and 4.8 for Microsoft server operating system version 21H2 for x64 (KB5017028)
-  - ASP.NET Core 
-    - 3.1.18
-    - 3.1.23
-    - 6.0.2
-    - 6.0.3
-  - Eclipse Temurin OpenJDK 8
-    - 8u302
-    - 8u312
-    - 8u322
-  - Microsoft OpenJDK 11
-    - 11.0.12.7.1
-    - 11.0.13.8
-    - 11.0.14.1
-    - 17.0.1.12
-    - 17.0.2.8
-  - MSBuild 
-    - 16.7.0
-    - 17.1.0
-  - MSDeploy 3.5.100608.567
-  - NodeJS
-    - 14.18.1
-    - 16.9.1
-    - 16.13.0
-  - NPM
-    - 6.14.15
-    - 7.21.1
-    - 8.1.0
-  - Tomcat
-    - 8.5.69
-    - 8.5.72
-    - 8.5.78
-    - 9.0.52
-    - 9.0.54
-    - 9.0.62
-    - 10.0.12
-    - 10.0.20
-  - Updated Kudu to 97.40427.5713
-
-
-- **Updates to underlying operating system of all roles**:
-  - [2022-09 Cumulative Update for Windows Server 2022 for x64-based Systems (KB5017316)](https://support.microsoft.com/help/5017316)
-  - Defender Definition 1.373.353.0
-
-- **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
-
-## Issues fixed in this release
-
-- Automatically clean up SiteDataRecord and TraceMessages tables within the App Service Resource Provider database(s).
-- Private certificate now shows in sites with deployment slot(s).
-- Improved reliability of upgrade process, by verifying all roles are ready.
-
 ## Pre-Update steps
 
-Azure App Service on Azure Stack Hub 2022 H1 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
+ >[!Note] 
+ > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues only.
+ 
+ Azure App Service on Azure Stack Hub 2302 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
