@@ -12,17 +12,17 @@ ms.lastreviewed: 02/02/2023
 
 # Set-AksEdgeNodeConnectivityMode
 
-Sets tje AKS Edge Essentials Linux node connectivity mode.
+Sets the AKS Edge Essentials Linux node connectivity mode. (ssh access `On` or `Off`). Returns "OK" if successfully set, null otherwise.
 
 ## Syntax
 
 ```powershell
-Set-AksEdgeNodeConnectivityMode
+Set-AksEdgeNodeConnectivityMode [-mode] <String> [<CommonParameters>]
 ```
 
 ## Description
 
-Sets the AKS Edge Essentials Linux node connectivity mode.
+Sets the AKS Edge Essentials Linux node connectivity mode. (ssh access `On` or `Off`).
 
 
 ## Examples
@@ -45,8 +45,8 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 0
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
