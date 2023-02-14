@@ -106,7 +106,7 @@ Run the following commands in a PowerShell admin window inside the Azure VM:
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --upgrade --version 0.2.27
+az extension add -n arcappliance --upgrade
 az extension add -n hybridaks --upgrade
 ```
 
