@@ -305,42 +305,40 @@
       href: aks-edge-deployment-config-json.md
   - name: How-to
     items:
-    - name: Deploy & Scale
-      items:
-      - name: Set up machine
-        href: aks-edge-howto-setup-machine.md
-      - name: Create single machine deployment
-        href: aks-edge-howto-single-node-deployment.md
-      - name: Create full deployment
-        href: aks-edge-howto-multi-node-deployment.md
-      - name: Scale out deployment
-        href: aks-edge-howto-scale-out.md
+    - name: Set up machine
+      href: aks-edge-howto-setup-machine.md
+    - name: Create single machine deployment
+      href: aks-edge-howto-single-node-deployment.md
+    - name: Create full deployment
+      href: aks-edge-howto-multi-node-deployment.md
+    - name: Scale out deployment
+      href: aks-edge-howto-scale-out.md
     - name: Deploy application
       href: aks-edge-howto-deploy-app.md
     - name: Enable metric server
       href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
-    - name: Storage
-      items:
-      - name: Add local storage binding
-        href: aks-edge-howto-use-storage-local-path.md
-      - name: Add NFS storage binding
-        href: aks-edge-howto-use-storage-nfs.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
     - name: Update AKS Edge Essentials cluster
       href: aks-edge-howto-update.md
+    - name: Uninstall AKS Edge Essentials
+      href: aks-edge-howto-uninstall.md
+    - name: Storage
+      items:
+      - name: Add local storage binding
+        href: aks-edge-howto-use-storage-local-path.md
+      - name: Add NFS storage binding
+        href: aks-edge-howto-use-storage-nfs.md
     - name: Akri
       items:
       - name: Discover OPC UA Servers with Akri
         href: aks-edge-how-to-akri-opc-ua.md
       - name: Discover ONVIF cameras with Akri
         href: aks-edge-how-to-akri-onvif.md
-    - name: Uninstall AKS Edge Essentials
-      href: aks-edge-howto-uninstall.md
   - name: Resources
     items:
     - name: AKS Edge Essentials PowerShell 
