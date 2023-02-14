@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 # Quickstart: Using Azure CLI to deploy an AKS hybrid cluster on a Windows Server node in an Azure VM
 
-In this quickstart, you'll learn how to use Azure CLI to test creating AKS hybrid clusters on-premises. You can use this quickstart to run a quick proof-of-concept on an Azure VM, or if you do not have a Windows Server or Azure Stack HCI cluster.
+In this quickstart, you learn how to use Azure CLI to test creating AKS hybrid clusters on-premises. You can use this quickstart to run a quick proof-of-concept on an Azure VM, or if you do not have a Windows Server or Azure Stack HCI cluster.
 
 If you do have a Windows Server or Azure Stack HCI cluster, follow this detailed guide to [get started with deploying AKS hybrid clusters from Azure](aks-hybrid-preview-requirements.md).
 
@@ -27,18 +27,18 @@ Before you begin, make sure you meet the following requirements:
 
 ## Step 1: Create an Azure VM and deploy Windows Server on the Azure VM
 
-To keep things simple, we'll show you how to deploy your VM via an Azure Resource Manager template. The **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this in a new tab, hold CTRL when you click the button.
+To keep things simple, we show you how to deploy your VM via an Azure Resource Manager template. The **Deploy to Azure** button, when clicked, takes you directly to the Azure portal, and upon sign-in, provides you with a form to complete. If you want to open this form in a new tab, hold CTRL when you click the button.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Deploy to Azure")
 
-After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Review and Create**.
+After clicking the **Deploy to Azure** button, enter the details, which should look something similar to the following image, and then click **Review and Create**.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure.":::
 
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
-The custom template will be validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM will be created.
+The custom template is validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM is created.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed.":::
 
@@ -50,7 +50,7 @@ If you're not already signed into the [Azure portal](https://portal.azure.com), 
 
 :::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure.":::
 
-In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
+In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this port should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine.":::
 
@@ -291,7 +291,7 @@ Expected output:
 
 You can run the commands in this step from an Azure portal shell.
 
-Run the following commands to create a custom Location on top of the Arc Resource Bridge. You will choose this custom location when creating the AKS hybrid cluster through Azure CLI or through the Azure portal.
+Run the following commands to create a custom Location on top of the Arc Resource Bridge. You choose this custom location when creating the AKS hybrid cluster through Azure CLI or through the Azure portal.
 
 ```azurecli
 $ArcApplianceResourceId=az arcappliance show --resource-group $resourceGroup --name $arcAppName --query id -o tsv
@@ -346,9 +346,9 @@ Add-KvaGalleryImage -kubernetesVersion 1.22.11
 
 You can perform the operations in this step from the Azure portal or from Azure CLI.
 
-In order to connect to the AKS hybrid cluster from anywhere, you need to create an Azure AD group and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Azure AD group. If you do not add yourself, you will not be able to access the AKS hybrid cluster using `kubectl`.
+In order to connect to the AKS hybrid cluster from anywhere, you need to create an Azure AD group and add members to it. All the members of the Azure AD group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Azure AD group. If you do not add yourself, you cannot access the AKS hybrid cluster using `kubectl`.
 
-To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You will need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
+To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
 
 ## Step 14: Create an AKS hybrid cluster using Azure CLI
 
