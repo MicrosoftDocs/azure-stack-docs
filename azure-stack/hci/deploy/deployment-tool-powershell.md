@@ -35,21 +35,19 @@ Before you begin, make sure you have done the following:
 
 ## Prepare the configuration file
 
-1. Select the first server in the cluster to act as a staging server during deployment.
+1. Connect and sign in to the first server in your Azure Stack HCI cluster as local administrator.
 
-1. Review the [configuration file that you created previously](#create-the-configuration-file) to ensure the provided values match your environment details before you copy it to the first (staging) server.
+1. Review the [configuration file that you created previously](#create-the-configuration-file) to ensure the provided values match your environment details before you copy it to the first server.
 
-1. Sign in to the staging server using local administrator credentials.
-
-1. Copy the configuration file to the staging server by using the following command:
+1. Copy the configuration file to the first server by using the following command:
 
     ```powershell
     Copy-Item -path <Path for you source file> -destination C:\setup\config.json
     ```
 
-## Set up parameters
+## Get information for the required parameters
 
-To deploy Azure Stack HCI using PowerShell, the following parameters are required to set up and run the deployment tool properly:
+The following parameters are required to run the deployment tool. Consult your network administrator to get some of this information.
 
 |Parameter|Description|
 |----|----|
@@ -67,7 +65,11 @@ To deploy Azure Stack HCI using PowerShell, the following parameters are require
 
 Follow these steps to deploy Azure Stack HCI via PowerShell:
 
-1. Change the directory to *C:\clouddeployment\setup*.
+1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
+
+1. Use option 15 in Server Configuration tool (Sconfig) to exit to command line.
+
+1. In the PowerShell window, change the directory to *C:\clouddeployment\setup*.
 
 1. Set the following parameters:
 
