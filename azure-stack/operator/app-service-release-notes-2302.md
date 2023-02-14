@@ -29,7 +29,7 @@ The App Service on Azure Stack Hub 2302 build number is **98.0.1.703**
 
 Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release](app-service-release-notes-2022-h1.md) and includes fixes for the following issues:
 
-- [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2023-21777) 
+- [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2023-21777) 
 
 - Unable to open Virtual Machine Scale Sets User Experience from the App Service Roles admin user experience in the Azure Stack Hub administration portal.
 
