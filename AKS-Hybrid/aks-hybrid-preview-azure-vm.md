@@ -110,7 +110,7 @@ az extension add -n arcappliance --upgrade --version 0.2.27
 az extension add -n hybridaks --upgrade
 ```
 
-## Step 5: Install pre-requisite PowerShell repositories
+## Step 5: Install prerequisite PowerShell repositories
 
 Run the following commands in a PowerShell admin window inside the Azure VM.
 
@@ -196,7 +196,7 @@ Expected Output:
 
 Do not proceed if you have any errors. If you face an issue installing AKS on Windows Server, review the [troubleshooting section](known-issues.yml). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
 
-## Step 7: Generate pre-requisite YAML files needed to deploy Azure Arc Resource Bridge
+## Step 7: Generate prerequisite YAML files needed to deploy Azure Arc Resource Bridge
 
 Run the following commands in a PowerShell admin window inside the Azure VM:
 
