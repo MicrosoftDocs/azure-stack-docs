@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/10/2023
+ms.date: 02/13/2023
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -43,6 +43,20 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
     - Running the latest version of `az` CLI.
         - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
         -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+    - Running 0.2.6 version for `azurestackhci` module. To verify, run the `az version` command. Here is a sample output:
+        
+        ```azurecli
+        PS C:\windows\system32> az version
+        {
+          "azure-cli": "2.42.0",
+          "azure-cli-core": "2.42.0",
+          "azure-cli-telemetry": "1.0.8",
+          "extensions": {
+            "azurestackhci": "0.2.6",
+            "k8s-extension": "1.3.9"
+          }
+        }
+        ```
 
 # [Azure portal](#tab/azureportal)
 
@@ -84,7 +98,7 @@ Follow these steps on the client running az CLI and is connected to your Azure S
     $CustomLoc_Name = "<Custom location for Azure Stack HCI cluster>"
     $VNet = "<Virtual network for VMs deployed on Azure Stack HCI cluster>"
     $VNic = "<Virtual network interface associated with the VM>"
-    $galleryImageName = "<Name of the VM image you'll use to create VM>" 
+    $galleryImageName = "<Name of the VM image you'll use to create VM. This is Windows or Linux based on the VM you want to create.>" 
     ```
     
     The parameters are described in the following table:
@@ -266,19 +280,27 @@ Guest Management for Azure Stack HCI VMs is currently in Preview. This command e
 ```
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
-<!--#### Create a Linux VM
+#### Create a Linux VM
 
 To create a Linux VM, run the following command:
 
-```azurecli
 
+```azurecli
+az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $netInt --provision-vm-agent true --allow-password-auth true
 ```
+This command will create a Linux VM with guest management enabled. The command is similar to the one used for Windows VM creation with the exception of the inclusion of `--allow-password-auth` parameter. The gallery image used should also be a Linux image. 
+
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
+
+<!--As linux has SSH keys and password mode
+
 Here is a sample output:
 
 ```
 
 ```
 -->
+
 # [Azure portal](#tab/azureportal)
 
 Follow these steps in Azure portal of your Azure Stack HCI cluster.
