@@ -1,7 +1,7 @@
 ### YamlMime:Landing
 
 title: Azure Managed Lustre File System documentation
-summary: Azure Managed Lustre File System documentation is good.
+summary: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
 metadata:
   title: Azure Managed Lustre File System documentation
