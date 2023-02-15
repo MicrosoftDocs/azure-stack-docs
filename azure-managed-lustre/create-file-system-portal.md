@@ -16,20 +16,20 @@ ms.date: 02/10/2023
 # Create an Azure Managed Lustre file system (Preview)
 <!--Dale's  is in progress. 2/22-->
 
-Use the Azure portal to create an Azure Managed Lustre file system.
+This how-to guide describes how to create an Azure Managed Lustre file system from the Azure portal.
 
-To find the **Create** wizard, search for **Azure Managed Lustre** or follow the link provided by your preview onboarding team.
-
-To learn about using Azure Resource Manager templates for programmatic creation, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).
+<!--RESTORE NOTE WHEN THIS IS PUBLISHED.> [!NOTE]
+> If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).-->
 
 ## Prerequisites
 
 Before you start to create an Azure Managed Lustre file system:
 
-1. Contact the Azure Managed Lustre team to sign up for the preview. FORM LINK WILL BE AVAILABLE ON 2/22.
+1. If you haven't already, sign up for the preview by filling in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
+
 1. Complete the prerequisites in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
-   After you create the file system, you can't change these items:
+   After you create the file system, you can't change the following items:
 
    * The size of the file system
    * The option to use an integrated Azure Blob Storage container
@@ -39,11 +39,19 @@ Before you start to create an Azure Managed Lustre file system:
 
 ## Sign in to the Azure portal
 
-1. Sign in to the [Azure portal](https://aka.ms/azureLustrePrivatePreview).
+1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
+
 1. Select **+ Create a Resource**.
-1. Type "azure managed lustre file system" in the search box, and press **Enter**. 
-1. Select **Azure Managed Lustre File system (preview)**. Then select **Create**.
-1. If you have signed up for the Azure Managed Lustre public preview, **Plan** will show **Azure Managed Lustre File System**. Click **Create** to continue.
+
+1. Type "azure managed lustre file system" in the search box, and press **Enter**.<!--Currently, they have to type this, select the SQL string below, and press Enter. Will that be fixed?-->
+
+   ADD SCREENSHOT.
+
+1. Select **Azure Managed Lustre File system (preview)**. Then select **Create**.<!--1) The search box shows "No results were found," although the preview is available below. 2) Ignore the "Azure benefit eligible only" check box?-->
+
+   ADD SCREENSHOT.
+
+1. To start creating a file system, click **Create**.
 
 ## Basics
 
@@ -51,23 +59,23 @@ On the **Basics** tab, enter the following information.
 
 ### Project details
 
-1. Select a subscription. <!--Subscription requirements?-->
-1. In **Resource group**, select a resource group, or create a new one to use for this installation.
-1. **Region** and **Availability zone** - Set the Azure region and zone (if supported) for your file system.
+1. Select the subscription that you will use for Azure Managed Lustre.
 
-   For the public preview, Azure Managed Lustre is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.<!--Update list for the public preview.-->
+1. In **Resource group**, select a resource group, or create a new one to use for this installation.
+
+1. **Region** and **Availability zone**: Select the Azure region and availability zone (if the region supports zones) for your file system.
 
    For best performance, create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
 
 ### File system details
 
-Set the name and capacity of the Azure Managed Lustre file system.
+Set the name and capacity of the Azure Managed Lustre file system:
 
-* **File system name** - Choose a name to identify this file system in your list of resources.
+1. **File system name**: Choose a name to identify this file system in your list of resources.
 
-* **File system type** - Select the type of infrastructure to use for the file system. For this preview, the file system type will be **Durable, SSD**.
+2. **File system type**: Shows **Durable, SSD**, the type of infrastructure that's available for the file system in this preview.
 
-* **Storage and throughput** - These settings set the size of your file system.
+3. **Storage and throughput**: Use these settings to set the size of your file system.
 
   Your file system size is determined by two factors: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You'll select one of these options. The other values are calculated based on the  **Throughput per TiB** setting for your file system type.
 
@@ -75,15 +83,10 @@ Set the name and capacity of the Azure Managed Lustre file system.
   
   1. Choose either **Storage capacity** or **Maximum throughput**.
 
-  1. Enter your value in the writeable field - either your desired storage capacity (in TiB) or desired maximum throughput (in MB/second).
+  1. Enter a value in the writeable field - either your desired storage capacity (in TiB) if you selected **Storage capacity**, or your desired maximum throughput (in MB/second) if you selected **Maximum throughput**.
 
      > [!NOTE]
      > These values are rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
-
-<!-- hpc cache text: 
-capacity is a combination of two values:
-- The maximum data transfer rate for the cache (throughput), in GB/second
-- The amount of storage allocated for cached data, in TB -->
 
 ### Networking
 
@@ -91,17 +94,21 @@ In the **Networking** section:
 
 1. Enter the virtual network and subnet that you configured earlier in [Network prerequisites](amlfs-prerequisites.md#network-prerequisites):
 
-   * **Virtual network** - Select or create the network that will hold your Azure Managed Lustre file system.
-   * **Subnet** - Select or create the subnet to use for file system interaction.
-
+   1. **Virtual network**: Select or create the network that will hold your Azure Managed Lustre file system.
+   
+   1. **Subnet**: Select or create the subnet to use for file system interaction.
+STOPPED HERE.
    The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
-1. Before proceeding, make sure the subnet has [enough IP addresses](amlfs-prerequisites.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system. Also make sure you completed all access settings to enable the subnet to access the needed Azure services. To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
+   You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. has enough IP addresses to handle the file system's load and IP addresses required by any other services you want to co-locate with the file system. 
+     * Also make sure you completed all access settings to enable the subnet to access the needed Azure services. 
 
-1. After you enter your network settings, select <>
+      To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
 
 > [!NOTE]
 > An earlier preview version required two subnets instead of one. Any references to a *management subnet* are remainders from that obsolete design.<!--Is note still needed?-->
+
+When you finish entering **Basic** settings, select **Next: Advanced** to continue.
 
 ## Advanced
 
@@ -109,9 +116,9 @@ Use the **Advanced** tab to set up blob storage integration and customize the ma
 
 ### Blob integration
 
-Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify a populated blob container to make its data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. All of the setup and maintenance is done for you - you just need to specify the blob container to use.
+Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify a populated blob container to make its data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. All of the setup and maintenance is done for you. You just need to specify which blob container to use.
 
-Integrating blob storage at creation time is optional, but it's the only way to use Lustre Hierarchical Storage Management (HSM) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
+Integrating blob storage when you create a file system is optional, but it's the only way to use Lustre Hierarchical Storage Management (HSM) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
 
 Read the [Lustre HSM documentation](https://doc.lustre.org/lustre_manual.xhtml#lustrehsm) to learn more about how Lustre HSM works.
 
