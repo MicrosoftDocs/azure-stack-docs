@@ -4,9 +4,9 @@ description: How to use an Azure Managed Lustre storage system with your Kuberne
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/15/2023
+ms.lastreviewed: 02/09/2023
 ms.reviewer: mayabishop
-ms.date: 02/09/2023
+ms.date: 02/15/2023
 
 # Intent: As an IT Pro, I want to be able to use a Lustre storage system with my apps deployed on Azure Kubernetes Service (AKS).
 # Keyword: AKS Azure Kubernetes Service
@@ -35,7 +35,6 @@ The following container images are compatible with Azure Managed Lustre file sys
 |--------------------|-------------------------------------------------------------|------------------------------|-----------------------|
 | main branch        | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest | 1.21 or later | 2.15.1 |
 | v0.1.5             | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5 | 1.21 or later | 2.15.1 |
-
 
 ## Use Azure Managed Lustre storage system with Kubernetes
 
@@ -66,9 +65,7 @@ To use the Azure Managed Lustre CSI Driver for Kubernetes, follow these steps:
 
 The rest of this article gives instructions for each of these steps.
 
-===============
 **EACH H2 BELOW SHOULD HAVE A DIRECT REFERENCE AND LINK IN THE PROCESS OVERVIEW ABOVE.**
-===============
 
 ## Provide subnet access between AKS and Azure Managed Lustre
 
@@ -123,7 +120,7 @@ Connect from the system where you will install and administer the CSI driver.
 The following command is the basic connect command:
 
 ```azurecli
-   az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
+az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
 ```
 
 ## Install the CSI driver
@@ -157,9 +154,7 @@ The documentation file **docs/static-provisioning.md** (online at https://github
 
 ### Option 1: Use "storage class" (recommended)
 
-================
 **WILL THERE BE AN OPTION 2? If not remove OPTION 1 subheading.**
-================
 
 This is the recommended method to create a persistent volume for an existing Azure Managed Lustre file system.
 
