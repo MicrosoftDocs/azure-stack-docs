@@ -2,6 +2,6 @@
   tocHref: /
   topicHref: /
   items:
-  - name: AKS hybrid deployment options
+  - name: Azure Kubernetes Service (AKS) hybrid deployment options
     tocHref: /azure/aks/hybrid/
     topicHref: /azure/aks/hybrid/index
