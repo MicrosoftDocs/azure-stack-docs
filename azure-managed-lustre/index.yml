@@ -24,7 +24,13 @@ landingContent:
             url: connect-clients.md
   - title: Get started
     linkLists:
-      - linkListType: Quickstart
+      - linkListType: quickstart
         links:
           - text: Create a file system using the Azure portal
             url: create-file-system-portal.md
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Known issues
+            url: amlfs-known-issues-preview.md
