@@ -3,9 +3,9 @@ title: Add-ons and extensions available for AKS hybrid
 description: Learn about what add-ons and integrations are supported in AKS hybrid
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/14/2023
+ms.date: 02/15/2023
 ms.author: sethm 
-ms.lastreviewed: 02/14/2023
+ms.lastreviewed: 02/15/2023
 ms.reviewer: baziwane
 ---
 
@@ -56,10 +56,10 @@ The table below shows a few examples of open-source and third-party integrations
 | Name                | Description                                                                                           | More details                                                                                                                                                               |
 |-------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Helm](https://helm.sh/)         | An open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. | [Quickstart: Develop on Azure Kubernetes Service (AKS) with Helm](/azure/aks/quickstart-helm)                                                                                                     |
-| [Couchbase](https://www.couchbase.com/)    | A distributed NoSQL cloud database.                                                                       | [Install Couchbase and the Operator on AKS](https://docs.couchbase.com/operator/current/tutorial-aks.html)                                                                                                                           |
-| <u>OpenFaaS</u>         | An open-source framework for building serverless functions by using containers.                           | [<u>Use OpenFaaS with AKS</u>][]                                                                                                                                               |
-| [<u>Apache Spark</u>][] | An open source, fast engine for large-scale data processing.                                              | Running Apache Spark jobs requires a minimum node size of *Standard\_D3\_v2*. See [<u>running Spark on Kubernetes</u>][] for more details on running Spark jobs on Kubernetes. |
-| [<u>Istio</u>][]        | An open-source service mesh.                                                                              | [<u>Istio Installation Guides</u>][]                                                                                                                                           |
-| [<u>Linkerd</u>][]      | An open-source service mesh.                                                                              | [<u>Linkerd Getting Started</u>][]                                                                                                                                             |
-| [<u>Consul</u>][]       | An open source, identity-based networking solution.                                                       | [<u>Getting Started with Consul Service Mesh for Kubernetes</u>][]                                                                                                             |
+| [Istio](https://istio.io/)        | An open-source service mesh.                                                                              | [Istio installation guides](https://istio.io/latest/docs/setup/install/)                                                                                                                                        |
+| [Linkerd](https://linkerd.io/)      | An open-source service mesh.                                                                              | [Linkerd getting started](https://linkerd.io/getting-started/)                                                                                                                                             |
+  |
 
+## Next steps
+
+- [AKS hybrid overview](aks-hybrid-options-overview.md)
