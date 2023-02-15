@@ -4,8 +4,8 @@ description: Use Azure Managed Lustre to quickly create an Azure-based Lustre fi
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/14/2023
-ms.reviewer: sethm
+ms.lastreviewed: 02/15/2023
+ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
 # Intent: As an IT Pro, I want to understand how to use an Azure Managed Lustre file system xxx.
@@ -24,13 +24,13 @@ Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allo
 
 You can also use your Azure Managed Lustre file system with your Azure Kubernetes Service (AKS) containers. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
 
-## To join the public preview
+## Join the preview
 
-**PLEASE PROVIDE:**
+To participate in the preview, fill in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0). There is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.<!--Form will be available on 02/22.-->
 
-* How to sign up for the public preview
-* Cost?
-* Support policies
+For the private preview, Azure Managed Lustre is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3. **UPDATE FOR PUBLIC PREVIEW.**
+
+**ADD DATA RESIDENCY DISCLAIMER HERE.** <!--Instructions at https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/141823/Update-Product-Documentation-(ACOM)-with-Data-Residency-Disclaimers. Please provide specifics.-->
 
 ## Data security in Azure Managed Lustre
 
@@ -38,24 +38,27 @@ All data stored in Azure is encrypted at rest using Microsoft-managed keys by de
 
 All information in an Azure Managed Lustre file system also is protected by VM host encryption on the managed disks that hold your data, even if you add a customer-managed key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. For more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
-## Data resilience in Azure Managed Lustre
+===================
+**MOVE OR REMOVE? ("Create" content.)**
 
 When you create an Azure Managed Lustre file system, the cloud-based Lustre system is pre-configured based on the storage size and throughput values you chose.
 
 You can see some of the properties on the file system **Overview** page in the Azure portal. Click the **JSON view** link for more details.
-<!--QUESTIONS: What are we showing them? 1) From the Overview blade for a file system deployment, Json view link is only available after they Go to resource group. 2) The Json view doesn't show much in a minimal default deployment. What will they be looking for?-->
+QUESTIONS: What are we showing them? 1) From the Overview blade for a file system deployment, Json view link is only available after they Go to resource group. 2) The Json view doesn't show much in a minimal default deployment. What will they be looking for?-->
 
 [ADD SCREENSHOT: Summary & Json view detail]
 
-## Data disks
+===================
+
+## Data resilience in Azure Managed Lustre
 
 Your Azure Managed Lustre file system uses Azure managed disks as object storage target (OST) data disks.
 
 All Azure Managed Lustre file systems that are created as a "durable" file system type use Azure Premium SSD (solid state drive) disks configured as locally redundant storage (LRS). LRS disk contents are replicated three times within the local datacenter to protect against drive and server rack failures. This redundancy provides 99.99999 percent durability.<!--Do we provide this type of statistical assurance in Learning content? Better to link to another source for this?-->
 
-The Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
+The Azure Managed Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 
-If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage and use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-requirements.md#supported-storage-account-types].
+If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage and use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-requirements.md#supported-storage-account-types).
 
 ## Azure Blob Storage integration
 
