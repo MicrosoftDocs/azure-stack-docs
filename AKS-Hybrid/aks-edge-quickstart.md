@@ -16,18 +16,27 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
+- Review [EULA](https://github.com/Azure/AKS-Edge/blob/main/EULA.md) terms. The Remotedeployment script sets the `AcceptEula` flag to `true` reflecting the acceptance of these terms.
 
 ## Step 1: Download script for easy deployment
 
-Download the [AKSEdgeRemoteDeployment.ps1](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeRemoteDeploy/AksEdgeRemoteDeploy.ps1) to a working folder.
+Download the [AKSEdgeRemoteDeployment.ps1](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeRemoteDeploy/AksEdgeRemoteDeploy.ps1), **right-click** and **save link as** to a working folder.
+
+Depending on the policy setup on your machine, you may require to unblock the file before running.
+
+```powershell
+Unblock-File .\AKSEdgeRemoteDeployment.ps1
+```
 
 ### Configure deployment parameters
 
-The deployment script has configuration set for single machine cluster with linux node. If you require a different configuration, you can modify these configuration settings. For the quickstart, this step is optional.
+The deployment script has configuration set for single machine cluster with linux node. If you require a different configuration, you can modify these configuration settings. For the quickstart, this step is **optional**.
 
 ### Configure Azure parameters
 
 For connecting your cluster to Azure Arc, you need to provide these parameters. If you skip these parameters, the Arc connection will be skipped, but the cluster will still be deployed.
+
+See [AksEdgeAzureSetup](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/README.md) to set up your Azure account and create the required service principal.
 
 In your working folder, open the `AKSEdgeRemoteDeployment.ps1` file and update the `$jsonContent` content with your own Azure specific information:
 
@@ -36,14 +45,12 @@ In your working folder, open the `AKSEdgeRemoteDeployment.ps1` file and update t
    |`Azure.ClusterName` | string | Provide a name for your cluster. By default, `hostname_cluster` is the name used. |
    |`Azure.Location` | string | The location of your resource group. Choose the location closest to your deployment. |
    |`Azure.SubscriptionName` | string | Your subscription Name. |
-   |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
+   |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
    |`Azure.ServicePrincipalName` | string | Azure Service Principal name. AKS Edge uses this service principal to connect your cluster to Arc.|
    |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
    |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge.|
    |`Azure.Auth.ServicePrincipalId` | GUID | The AppID of `Azure.ServicePrincipalName` to use as credentials.|
    |`Azure.Auth.Password` | string | The password (in clear) for `Azure.ServicePrincipalName` to use as credentials.|
-
-See [AksEdgeAzureSetup](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/README.md) to set up your Azure account and create the required service principal.
 
 ## Step 2: Deploy AKS Edge Essentials
 
@@ -59,12 +66,21 @@ For installing K8s version, specify the `-UseK8s` flag
 .\AKSEdgeRemoteDeployment.ps1 -UseK8s
 ```
 
-This script will do the following
+<details>
+<summary><i>Read more about AKSEdgeRemoteDeployment script</i></summary>
+This script automates the following steps
 
-- Download and install AKS Edge Essentials MSI.
-- Install required Host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled and you'll need to restart the script again.
-- Deploy a single machine cluster with internal switch (linux node only).
-- Connect the host machine to Arc for Servers and the deployed cluster to Arc for Kubernetes.
+- Download the Github repo `Azure/AKS-Edge` to the current working folder
+- Update the `aide-userconfig.json` with the json in the script
+- Invoke `Start-AideWorkflow` function that performs the following
+  - Download and install AKS Edge Essentials MSI.
+  - Install required Host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled and you'll need to restart the script again.
+  - Deploy a single machine cluster with internal switch (linux node only).
+- Invoke `Connect-AideArc` function if the Azure parameters are provided. This function performs the following
+  - Install the Azure Connected Machine Agent and connects the host machine to Arc for Servers
+  - Connects the deployed cluster to Arc for Connected Kubernetes.
+  
+</details>
 
 ## Step 3: Verify deployment
 
