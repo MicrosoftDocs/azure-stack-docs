@@ -4,8 +4,8 @@ description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/10/2023
-ms.reviewer: sethm
+ms.lastreviewed: 02/14/2023
+ms.reviewer: mayabishop
 ms.date: 02/10/2023
 
 # Intent: As an IT Pro, XXX.
@@ -14,6 +14,7 @@ ms.date: 02/10/2023
 ---
 
 # Create an Azure Managed Lustre file system (Preview)
+<!--Dale's  is in progress. 2/22-->
 
 Use the Azure portal to create an Azure Managed Lustre file system.
 
@@ -23,22 +24,26 @@ To learn about using Azure Resource Manager templates for programmatic creation,
 
 ## Prerequisites
 
-<!--Revise following standard quick-start format. Note each requirement briefly. Then link.-->
+Before you start to create an Azure Managed Lustre file system:
 
-Before you start to create an Azure Managed Lustre file system, create the storage account and containers you will need if you are using the Azure Blob integration feature. Read details in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
+1. Contact the Azure Managed Lustre team to sign up for the preview. FORM LINK WILL BE AVAILABLE ON 2/22.
+1. Complete the prerequisites in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
-After creation, these items can't be changed:
+   After you create the file system, you can't change these items:
 
-* The size of the file system
-* The option to use an integrated blob storage container
-* The choice between customer-managed or system-generated encryption keys for storage, and some related settings for customer-managed keys
+   * The size of the file system
+   * The option to use an integrated Azure Blob Storage container
+   * The choice between customer-managed or system-generated encryption keys for storage
 
-Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
+   Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
 
-1. Sign in to the [Azure preview portal](https://aka.ms/azureLustrePrivatePreview).
+## Sign in to the Azure portal
+
+1. Sign in to the [Azure portal](https://aka.ms/azureLustrePrivatePreview).
 1. Select **+ Create a Resource**.
 1. Type "azure managed lustre file system" in the search box, and press **Enter**. 
 1. Select **Azure Managed Lustre File system (preview)**. Then select **Create**.
+1. If you have signed up for the Azure Managed Lustre public preview, **Plan** will show **Azure Managed Lustre File System**. Click **Create** to continue.
 
 ## Basics
 
@@ -62,11 +67,11 @@ Set the name and capacity of the Azure Managed Lustre file system.
 
 * **File system type** - Select the type of infrastructure to use for the file system. For this preview, the file system type will be **Durable, SSD**.
 
-* **Storage and throughput** - In this section, set the size of your file system.
+* **Storage and throughput** - These settings set the size of your file system.
 
-  Your file system size is determined by two factors: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). Select one of these options. The other values are provided based on the  **Throughput per TiB** setting for your file system type.
+  Your file system size is determined by two factors: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You'll select one of these options. The other values are calculated based on the  **Throughput per TiB** setting for your file system type.
 
-  To set your Azure Managed Lustre file system size, follow this process:
+  To set your Azure Managed Lustre file system size, do these steps:
   
   1. Choose either **Storage capacity** or **Maximum throughput**.
 
@@ -82,18 +87,21 @@ capacity is a combination of two values:
 
 ### Networking
 
-The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
+In the **Networking** section:
 
-Make sure that the subnet has [enough IP addresses](amlfs-prerequisites.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system.
+1. Enter the virtual network and subnet that you configured earlier in [Network prerequisites](amlfs-prerequisites.md#network-prerequisites):
 
-The subnet also needs access to a number of standard Azure services.
+   * **Virtual network** - Select or create the network that will hold your Azure Managed Lustre file system.
+   * **Subnet** - Select or create the subnet to use for file system interaction.
 
-Read [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
+   The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
-* **Virtual network** - Select or create the network that will hold your Azure Managed Lustre file system.
-* **Subnet** - Select or create the subnet to use for file system interaction.
+1. Before proceeding, make sure the subnet has [enough IP addresses](amlfs-prerequisites.md#network-prerequisites) to handle the file system's load. When sizing the VNet and subnet, you also should consider the IP address requirements for any other services that you want to colocate with your Azure Managed Lustre file system. Also make sure you completed all access settings to enable the subnet to access the needed Azure services. To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
 
-> **NOTE:** An earlier preview version required two subnets instead of one. Any references to a *management subnet* are remainders from that obsolete design.
+1. After you enter your network settings, select <>
+
+> [!NOTE]
+> An earlier preview version required two subnets instead of one. Any references to a *management subnet* are remainders from that obsolete design.<!--Is note still needed?-->
 
 ## Advanced
 
