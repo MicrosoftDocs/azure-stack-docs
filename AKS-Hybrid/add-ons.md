@@ -58,7 +58,6 @@ The table below shows a few examples of open-source and third-party integrations
 | [Helm](https://helm.sh/)         | An open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. | [Quickstart: Develop on Azure Kubernetes Service (AKS) with Helm](/azure/aks/quickstart-helm)                                                                                                     |
 | [Istio](https://istio.io/)        | An open-source service mesh.                                                                              | [Istio installation guides](https://istio.io/latest/docs/setup/install/)                                                                                                                                        |
 | [Linkerd](https://linkerd.io/)      | An open-source service mesh.                                                                              | [Linkerd getting started](https://linkerd.io/getting-started/)                                                                                                                                             |
-  |
 
 ## Next steps
 
