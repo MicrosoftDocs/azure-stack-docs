@@ -11,7 +11,7 @@ ms.reviewer: baziwane
 
 # Add-ons, extensions, and other integrations with AKS hybrid
 
-Azure Kubernetes Service (AKS) hybrid provides augmented functionality for your Kubernetes cluster mainly through extensions which are supported by Microsoft. Additionally, numerous integrations offered by open-source projects and third-party organizations are available with AKS hybrid. It is important to note that these integrations, which are not supported by AKS hybrid, are not included in the [AKS hybrid support policy](support-policies.md).
+Azure Kubernetes Service (AKS) hybrid provides augmented functionality for your Kubernetes cluster, mainly through extensions which are supported by Microsoft. Additionally, there are numerous integrations offered by open-source projects and third-party organizations. It is important to note that these integrations, which are not supported by AKS hybrid, are not included in the [AKS hybrid support policy](support-policies.md).
 
 ## Add-ons
 
