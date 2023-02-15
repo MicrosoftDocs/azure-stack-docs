@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials System Requirements 
-description: Requirements and supported version 
+description: Requirements and supported versions for AKS Edge Essentials. 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 01/26/2023
+ms.date: 02/14/2023
 ms.custom: template-concept
 ---
 
@@ -32,12 +32,12 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 | Parameter | Permissible limit |
   | ---------- | --------- |
   | Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
-  | Maximum number of vCPUs per machine  | 16 vCPUs |
+  | Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
 ## Feature support matrix
 
-||Public Preview   |Experimental|
+| Feature | Public Preview   |Experimental|
 |------------|-----------|--------|
 |Kubernetes (K8S)|Version: 1.24.3| - |
 |Kubernetes (K3S)|Version: 1.24.3| - |
