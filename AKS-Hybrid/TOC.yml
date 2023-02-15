@@ -405,7 +405,7 @@
     href: ./reference/ps/index.md
   - name: AKS hybrid Azure CLI
     href: /cli/azure/hybridaks
-  - name: Add-ons, extensions, and other integrations
+  - name: Add-ons, extensions, and integrations
     href: add-ons.md
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
