@@ -11,11 +11,11 @@ ms.reviewer: baziwane
 
 # Add-ons, extensions, and other integrations with AKS hybrid
 
-Azure Kubernetes Service (AKS) hybrid provides augmented functionality for your Kubernetes cluster, mainly through extensions which are supported by Microsoft. Additionally, there are numerous integrations offered by open-source projects and third-party organizations. It is important to note that these integrations, which are not supported by AKS hybrid, are not included in the [AKS hybrid support policy](support-policies.md).
+Azure Kubernetes Service (AKS) hybrid provides augmented functionality for your Kubernetes cluster, mainly through extensions which are supported by Microsoft. There are also many integrations offered by open-source projects and third-party organizations. It is important to note that these integrations, which are not supported by AKS hybrid, are not included in the [AKS hybrid support policy](support-policies.md).
 
 ## Add-ons
 
-Add-ons are a fully supported way to provide extra capabilities for your AKS hybrid cluster. Add-ons' installation, configuration, and lifecycle are managed by AKS hybrid. For instructions on how to install each add-on, see the available add-ons list.
+Add-ons are a fully supported way to provide extra capabilities for your AKS hybrid cluster. The add-ons installation, configuration, and lifecycle are managed by AKS hybrid. For instructions on how to install each add-on, see the available add-ons list.
 
 The following rules are used by AKS hybrid for applying updates to installed add-ons:
 
@@ -35,23 +35,21 @@ The following rules are used by AKS hybrid for applying updates to installed add
 ## Azure Arc extensions
 
 Cluster extensions build on top of certain Helm charts and provide an Azure Resource Manager-driven experience for installation and lifecycle
-management of different Azure capabilities on top of your Kubernetes cluster. These extensions can be [deployed to your clusters](/azure/azure-arc/kubernetes/extensions) to improve cluster management.
+management of different Azure capabilities on top of your Kubernetes cluster. You can [deploy these extensions to your clusters](/azure/azure-arc/kubernetes/extensions) to improve cluster management.
 
 ### Available extensions
 
-For more details about the specific cluster extensions for AKS hybrid, see [Currently available extensions](/azure/azure-arc/kubernetes/extensions-release).
+For more information about the specific cluster extensions for AKS hybrid, see [Currently available extensions](/azure/azure-arc/kubernetes/extensions-release).
 
 ## Difference between extensions and add-ons
 
-Both extensions and add-ons are supported ways to add functionality to your AKS hybrid cluster. When you install an add-on, the functionality
-is added as part of the AKS hybrid deployment. When you install an extension, the functionality is added as part of a separate resource provider in the Azure API.
+Both extensions and add-ons are supported ways to add functionality to your AKS hybrid cluster. When you install an add-on, the functionality is added as part of the AKS hybrid deployment. When you install an extension, the functionality is added as part of a separate resource provider in the Azure API.
 
 ## Open source and third-party integrations
 
-You can install many open source and third-party integrations on your AKS cluster, but these open-source and third-party integrations are not
-covered by the [AKS hybrid support policy](support-policies.md).
+You can install many open source and third-party integrations on your AKS cluster, but these open-source and third-party integrations are not covered by the [AKS hybrid support policy](support-policies.md).
 
-The table below shows a few examples of open-source and third-party integrations.
+The following table shows a few examples of open-source and third-party integrations:
 
 | Name                | Description                                                                                           | More details                                                                                                                                                               |
 |-------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
