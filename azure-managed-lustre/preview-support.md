@@ -16,7 +16,7 @@ ms.date: 02/15/2023
 
 During the Preview period for Azure Managed Lustre, the following support standards apply:
 
-* Service support hours are 8:00 AM - 6 PM Eastern Time (UTC-5) in the United States.
+* Service support hours are 8:00 AM - 6:00 PM Eastern Time (UTC-5) in the United States.
 
 * You can create support tickets through the [Azure support portal](https://azure.microsoft.com/support/create-ticket/)
 
