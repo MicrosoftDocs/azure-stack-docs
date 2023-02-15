@@ -8,7 +8,7 @@
     href: amlfs-known-issues-preview.md
 - name: Concepts
   items:
-  - name: requirements
+  - name: Requirements
     href: amlfs-requirements.md
   - name: Use Azure Blob storage with Azure Managed Lustre
     href: blob-integration.md
