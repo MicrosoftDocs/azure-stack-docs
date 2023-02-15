@@ -1,3 +1,7 @@
 - name: Docs
   tocHref: /
   topicHref: /
+  items:
+  - name: Azure Managed Lustre File System
+    tocHref: /azure-managed-lustre/
+    topicHref: /azure-managed-lustre/
