@@ -1,4 +1,4 @@
-- name: Azure Managed Lustre File System (preview)
+- name: Azure Managed Lustre File System
   href: index.yml
 - name: Overview
   items:

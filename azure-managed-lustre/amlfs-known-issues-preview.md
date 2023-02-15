@@ -1,6 +1,6 @@
 ---
-title: Known issues in Azure Managed Lustre (Preview)
-description: Review known issues in the Azure Managed Lustre public preview.
+title: Known issues in Azure Managed Lustre (preview)
+description: Review known issues in Azure Managed Lustre.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
@@ -13,13 +13,9 @@ ms.date: 02/09/2023
 
 ---
 
-# Known issues in Azure Managed Lustre (Preview)
+# Known issues in Azure Managed Lustre (preview)
 
-<!--SOURCE: Managed Lustre private preview known issues. Updated title only.-->
-
-These problems or feature change requests are being tracked by the Azure Managed Lustre private preview team.
-
-This list does not necessarily include all known issues.
+This article describes known issues in the Azure Managed Lustre public preview. The list does not necessarily include all known issues.
 
 <!--Add public preview disclaimer. Replaces private preview disclaimer inserted by include file.-->
 
