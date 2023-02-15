@@ -16,5 +16,5 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is an Azure Managed Lustre file system?
+          - text: What is the Azure Managed Lustre file system?
             url: amlfs-overview.md
