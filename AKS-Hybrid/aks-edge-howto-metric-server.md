@@ -15,7 +15,7 @@ The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a too
 ## Deploy metrics server
 
 >[!NOTE]
-> AKS Edge Essentials K8s does not support [Kubernetes TLS boostrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). To deploy metrics server using K8s, ensure to use the `--kubelet-insecure-tls` in your deployment yaml. 
+> AKS Edge Essentials K8s does not support [Kubernetes TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). To deploy the metrics server using K8s, be sure to include `--kubelet-insecure-tls` in your deployment YAML. 
 
 ### Step 1: Deploy the metrics server manifest
 
