@@ -49,7 +49,7 @@
         }
       },
       "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
+      "extendBreadcrumb": false,
       "feedback_system": "None",
       "manager":"femila",
       "ms.service": "azure-stack",
