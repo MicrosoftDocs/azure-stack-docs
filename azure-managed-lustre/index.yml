@@ -22,3 +22,9 @@ landingContent:
         links:
           - text: Connect clients to an Azure Managed Lustre file system
             url: connect-clients.md
+  - title: Get started
+    linkLists:
+      - linkListType: Quickstart
+        links:
+          - text: Create a file system using the Azure portal
+            url: create-file-system-portal.md
