@@ -50,7 +50,7 @@ This starts the **Create** wizard.
 
 ## Basics
 
-On the **Basics** tab, enter the following information.
+On the **Basics** tab, enter the following information:
 
 ### Project details
 
