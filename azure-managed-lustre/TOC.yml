@@ -32,7 +32,5 @@
       href: customer-managed-encryption-keys.md
   - name: Troubleshoot
     items:
-    - name: Tips & troubleshooting
-      href: amlfs-troubleshoot.md
     - name: Public preview support
       href: preview-support.md
