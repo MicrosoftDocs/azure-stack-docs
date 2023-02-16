@@ -95,7 +95,7 @@ Requirements for certificates:
 - The DNS of server certificates and AkriBroker certificate should contain the FQDN of OPC UA server container instance created (go to Step 3 of "Run Akri" to learn how to get the FQDN).
 - The OPC UA server certificate should be named as `OpcPlc` (In certificate generating term, `CN=OpcPlc`) and the Akri broker certificate should be named as `AkriBroker` (`CN=AkriBroker`) (there are no requirements for the CA name).
 
-There are many tools for generating proper certificates for OPC UA, such as the [OPC Foundation's Certificate Generator](https://github.com/OPCFoundation/Misc-Tools) or Openssl (as in this [walk through](https://github.com/OPCFoundation/Misc-Tools)). OPC Foundation's Certificate Generator can be a more convenient option whereas OpenSSL provides more room for customization. 
+There are many tools for generating proper certificates for OPC UA, such as OPC Foundation's Certificate Generator or OpenSSL. OPC Foundation's Certificate Generator can be a more convenient option whereas OpenSSL provides more room for customization. 
 
 If you choose to use OPC Foundation's Certificate Generator, here is now to build:
 1. Install [Perl](https://strawberryperl.com/).
