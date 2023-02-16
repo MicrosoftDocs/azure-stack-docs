@@ -126,7 +126,7 @@ Integrating blob storage when you create a file system is optional, but it's the
 
 To configure blob integration:
 
-1. If you haven't configured storage access created containers for blob integration, complete the [storage prerequisites](amlfs-prerequisites#storage-prerequisites) now.
+1. If you haven't configured storage access created containers for blob integration, complete the [storage prerequisites](amlfs-prerequisites.md#storage-prerequisites) now.
 
    To learn which types of accounts are compatible and what access settings need to be configured, see [Storage prerequisites](amlfs-prerequisites.md#storage-prerequisites).
 

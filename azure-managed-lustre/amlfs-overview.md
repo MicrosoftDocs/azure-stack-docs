@@ -59,7 +59,7 @@ All Azure Managed Lustre file systems that are created as a "durable" file syste
 
 The Azure Managed Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 
-If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage and use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-requirements.md#supported-storage-account-types).
+If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage and use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
 
 ## Azure Blob Storage integration
 
@@ -83,4 +83,4 @@ Kubernetes can simplify configuring and deploying virtual client endpoints for y
 
 The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin<!--Verify spelling of plugin name.--> as a deployment with two replicas by default, and a CSI node plugin<!--Verify spelling of plugin name.--> as a daemonset.
 
-To find out which driver versions to use, see [Compatible Kubernetes versions](amlfs-requirements.md#compatible-kubernetes-versions) in [Azure Managed Lustre file system requirements](amlfs-requirements.md).
+To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes#compatible-kubernetes-versions).
