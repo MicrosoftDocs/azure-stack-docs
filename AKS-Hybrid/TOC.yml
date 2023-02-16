@@ -297,10 +297,10 @@
     href: aks-edge-quickstart.md
   - name: Concepts
     items:
-    - name: AKS Edge Essentials key concepts
-      href: aks-edge-concept.md
-    - name: Deployment options
-      href: aks-edge-deployment-options.md
+    - name: Clusters and nodes
+      href: aks-edge-concept-clusters-nodes.md
+    - name: Networking
+      href: aks-edge-concept-networking.md
     - name: Deployment JSON configuration parameters
       href: aks-edge-deployment-config-json.md
   - name: How-to
@@ -311,34 +311,40 @@
       href: aks-edge-howto-single-node-deployment.md
     - name: Create full deployment
       href: aks-edge-howto-multi-node-deployment.md
-    - name: Deploy application
-      href: aks-edge-howto-deploy-app.md
     - name: Scale out deployment
       href: aks-edge-howto-scale-out.md
+    - name: Deploy application
+      href: aks-edge-howto-deploy-app.md
     - name: Enable metric server
       href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
-    - name: Add local storage binding
-      href: aks-edge-howto-use-storage-local-path.md
-    - name: Add NFS storage binding
-      href: aks-edge-howto-use-storage-nfs.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
     - name: Update AKS Edge Essentials cluster
       href: aks-edge-howto-update.md
-    - name: Discover OPC UA Servers with Akri
-      href: aks-edge-how-to-akri-opc-ua.md
-    - name: Discover ONVIF cameras with Akri
-      href: aks-edge-how-to-akri-onvif.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
+    - name: Storage
+      items:
+      - name: Add local storage binding
+        href: aks-edge-howto-use-storage-local-path.md
+      - name: Add NFS storage binding
+        href: aks-edge-howto-use-storage-nfs.md
+    - name: Akri
+      items:
+      - name: Discover OPC UA Servers with Akri
+        href: aks-edge-how-to-akri-opc-ua.md
+      - name: Discover ONVIF cameras with Akri
+        href: aks-edge-how-to-akri-onvif.md
   - name: Resources
     items:
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Logs 
+      href: aks-edge-resources-logs.md
     - name: Release notes and known issues
       href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
@@ -403,6 +409,8 @@
     href: ./reference/ps/index.md
   - name: AKS hybrid Azure CLI
     href: /cli/azure/hybridaks
+  - name: Add-ons, extensions, and integrations
+    href: add-ons.md
   - name: Azure Arc Jumpstart
     href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
