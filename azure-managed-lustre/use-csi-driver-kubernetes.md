@@ -27,7 +27,7 @@ The Azure Lustre CSI Driver can automate the client software and mount tasks. Th
 
 ## Compatible Kubernetes versions
 
-The Azure Lustre CSI driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are currently not supported. Contact the Azure Managed Lustre team for more information.
+The Azure Lustre CSI driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are not currently supported. Contact the Azure Managed Lustre team for more information.
 
 The following container images are compatible with Azure Managed Lustre file systems.
 
@@ -64,8 +64,6 @@ To use the Azure Managed Lustre CSI Driver for Kubernetes, follow these steps:
     1. Optionally, [use an echo pod](#check-installation) to confirm that the driver is working.
 
 The rest of this article gives instructions for each of these steps.
-
-**EACH H2 BELOW SHOULD HAVE A DIRECT REFERENCE AND LINK IN THE PROCESS OVERVIEW ABOVE.**
 
 ## Provide subnet access between AKS and Azure Managed Lustre
 

@@ -15,7 +15,7 @@ ms.date: 02/10/2023
 
 # Create an Azure Managed Lustre Preview file system
 
-This how-to guide describes how to create an Azure Managed Lustre file system from the Azure portal.
+This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
 <!--RESTORE NOTE WHEN THIS IS PUBLISHED.> [!NOTE]
 > If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).-->
@@ -36,6 +36,8 @@ Before you start to create an Azure Managed Lustre file system:
 
    Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
 
+Do the following procedure in the [Azure portal](https://aka.ms/azureLustrePrivatePreview).
+
 ## Sign in to the Azure portal
 
 1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
@@ -50,17 +52,17 @@ This starts the **Create** wizard.
 
 ## Basics
 
-On the **Basics** tab, enter the following information.
+On the **Basics** tab, enter the following information:
 
 ### Project details
 
-1. Select the subscription that you will use for Azure Managed Lustre.
+1. Select the subscription to use for Azure Managed Lustre.
 
 1. In **Resource group**, select a resource group, or create a new one to use for this installation.
 
 1. **Region** and **Availability zone**: Select the Azure region and availability zone (if the region supports zones) for your file system.
 
-   For best performance, create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
+   For best performance, create your Azure Managed Lustre file system in the same region and availability zone as your client machines.
 
 ![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
 
@@ -107,14 +109,11 @@ In the **Networking** section:
 
 ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
 
-> [!NOTE]
-> An earlier preview version required two subnets instead of one. Any references to a *management subnet* are remainders from that obsolete design.<!--Is this note still needed?-->
-
 When you finish entering **Basic** settings, select **Next: Advanced** to continue.
 
 ## Advanced
 
-Use the **Advanced** tab to set up blob storage integration and customize the maintenance window.
+Use the **Advanced** tab to set up Blob Storage integration and customize the maintenance window.
 
 ### Blob integration
 
@@ -165,7 +164,7 @@ The import prefix field determines what data is imported from your blob containe
 
   If you use a hierarchical blob storage service (like NFSv3-mounted blob storage), you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
 
-  If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. (Note that Lustre is a hierarchical file system, and **/** characters in blob file names will become directory delimiters when stored in Lustre.)
+  If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob file names will become directory delimiters when stored in Lustre.
 
   For more information about using Azure Managed Lustre with hierarchical or non-hierarchical blob containers, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
 
@@ -242,7 +241,7 @@ On the **Review + create** tab, do these steps:
 
 1. Review **Preview terms**, and select the check box indicating you agree to the terms.
 
-   Your setting will be validated.
+   Your setting is validated.
 
 1. When a **Validation passed** message appears, select **Create** to begin creating the file system.
 

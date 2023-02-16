@@ -45,7 +45,7 @@ The size of subnet that you need depends on the size of the file system you crea
 
 When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
 
-* If using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
+* If your're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
 
   * You can locate the AKS cluster in the same subnet as the managed Lustre system. In that case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system.
  
@@ -55,14 +55,13 @@ When you plan your VNet and subnet, take into account the requirements for any o
 
 * If you plan to use another resource to host your compute VMs in the same VNet, check the requirements for that process before creating the VNet and subnet for your Azure Managed Lustre system.
 
-### Subnet access, permissions
+### Subnet access and permissions
 
 The subnet for the Azure Managed Lustre file system needs the following access and permissions:
 
-<!--I will chase down existing procedures to link to for these requirements. Dale-->
 | Access type | Required network settings |
 |-------------|---------------------------|
-|**Create NICs** permission |The file system must be able to create network interface cards (NICs) on its subnet. <!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
+|Create NICs permission |The file system must be able to create network interface cards (NICs) on its subnet.<!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
 | DNS access  |You can use the default Azure-based DNS server.<!--Will customers want to use their own DNS server?-->|
 | Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>**Option 1:** Add a private endpoint for Azure Storage to your subnet. LINK TO PROCEDURE.<br><br>**Option 2:** Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Source**: Service tag<br>- **Source service tag**: AzureCloud<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
@@ -95,7 +94,7 @@ To integrate Azure Blob Storage with your Azure Managed Lustre file system, you 
 
   You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system.
 
-* A logging container for import/export logs in the storage account. The import/export logs must be stored in a different container from the data container.<!--Is there a special type of container called a "logging container," or is this just a separate container for logs?-->
+* A second container for import/export logs in the storage account. The logs must be stored in a different container from the data container.
 
 ### Supported storage account types
 
