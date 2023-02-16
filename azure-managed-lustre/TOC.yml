@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Managed Lustre overview 
+  - name: Azure Managed Lustre File System overview 
     href: amlfs-overview.md
 - name: Concepts
   items:
