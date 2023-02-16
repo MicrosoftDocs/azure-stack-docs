@@ -19,14 +19,14 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 ## Client prerequisites
 
-Azure Managed Lustre can be accessed by client machines running Linux. These are the basic client requirements:
+Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
 - **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages that have been tested with Azure Managed Lustre are available from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software). See [Install client software](#install-client-software) for more information. Client packages are available for several commonly used Linux OS distributions.
 - **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** -
   - Clients must reside in the same Availability Zone in which the cluster resides.
-  - Be sure that [accelerated networking is enabled on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, note that [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
+  - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
 
 ## Install client software
 
@@ -52,11 +52,11 @@ The basic workflow is as follows:
 1. [Install the Lustre client software](#update-a-lustre-client-to-the-current-version) on each client.
 1. [Use the `mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
 
-If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules as well as the software packages.
+If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
 
 ## Update a Lustre client to the current version
 
-If your client machines have been used with an older version of Lustre, make sure you completely uninstall the previous Lustre client's kernel modules in addition to removing the software packages.
+If you've used client machines with an older version of Lustre, make sure you completely uninstall the previous Lustre client's kernel modules in addition to removing the software packages.
 
 Follow this procedure:
 
@@ -105,7 +105,7 @@ sudo mount -t lustre -o noatime,flock 10.0.0.4@tcp:/lustrefs /azure-lustre-mount
 
 After your clients are connected to the file system, you can use the Azure Managed Lustre file system as you would any mounted file system. For example, you might perform one of the following tasks:
 
-- Access data from your integrated blob container: send the file request directly to the mount point. The create process pre-populates the file system metadata, and the file will be added to the Lustre file system when it is read.
+- Access data from your integrated blob container: send the file request directly to the mount point. The create process pre-populates the file system metadata, and the file is added to the Lustre file system when it is read.
 - Add data to the file system (if you did not add a populated blob container at create time).
 - Start a compute job.
 
