@@ -27,7 +27,7 @@ You can also use your Azure Managed Lustre file system with your Azure Kubernete
 
 ## Join the preview
 
-To participate in the preview, fill in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0). There is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.<!--Form will be available on 02/22.-->
+To participate in the preview, complete the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0), providing contact information, Azure subscription ID(s), and basic use case information. Currently there is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.<!--Form will be available on 02/21.-->
 
 Azure Managed Lustre Preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3. **UPDATE FOR PUBLIC PREVIEW.**
 
