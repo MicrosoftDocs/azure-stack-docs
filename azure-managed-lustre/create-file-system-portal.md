@@ -27,7 +27,7 @@ Before you start to create an Azure Managed Lustre file system:
 
 1. If you haven't already, sign up for the preview by filling in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
 
-1. Complete the prerequisites in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
+1. Complete network, storage, and access prerequisites in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
    After you create the file system, you can't change the following items:
 
@@ -41,17 +41,11 @@ Before you start to create an Azure Managed Lustre file system:
 
 1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
 
-1. Select **+ Create a Resource**.
+1. Enter **Azure Managed Lustre** in the search box.
+1. 
+1. On the **Azure Managed Lustre** blade, select **+ Create**.
 
-1. Type "azure managed lustre file system" in the search box, and press **Enter**.<!--Currently, they have to type this, select the SQL string below, and press Enter. Will that be fixed?-->
-
-   ADD SCREENSHOT.
-
-1. Select **Azure Managed Lustre File system (preview)**. Then select **Create**.<!--1) The search box shows "No results were found," although the preview is available below. 2) Ignore the "Azure benefit eligible only" check box?-->
-
-   ADD SCREENSHOT.
-
-1. To start creating a file system, click **Create**.
+This starts the **Create** wizard.
 
 ## Basics
 
@@ -66,6 +60,8 @@ On the **Basics** tab, enter the following information.
 1. **Region** and **Availability zone**: Select the Azure region and availability zone (if the region supports zones) for your file system.
 
    For best performance, create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
+
+ADD SCREENSHOT: basics-project-details
 
 ### File system details
 
@@ -117,54 +113,63 @@ Use the **Advanced** tab to set up blob storage integration and customize the ma
 
 ### Blob integration
 
-Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify a populated blob container to make its data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. All of the setup and maintenance is done for you. You just need to specify which blob container to use.
+If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you must specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container to an existing file system.
 
-Integrating blob storage when you create a file system is optional, but it's the only way to use Lustre Hierarchical Storage Management (HSM) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
+Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify a populated blob container to make its data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. All setup and maintenance is done for you. You just need to specify which blob container to use.
 
-Read the [Lustre HSM documentation](https://doc.lustre.org/lustre_manual.xhtml#lustrehsm) to learn more about how Lustre HSM works.
-
-> [!NOTE]
-> If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you must specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container after the file system exists.
-
-To learn which types of accounts are compatible and what access settings need to be configured, see [Storage account prerequisites](amlfs-prerequisites.md#storage-prerequisites).
-
-The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
+Integrating blob storage when you create a file system is optional, but it's the only way to use [Lustre Hierarchical Storage Management (HSM)](https://doc.lustre.org/lustre_manual.xhtml#lustrehsm) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
 
 To configure blob integration:
 
-1. Check the box marked **Import/export data from blob**.
+1. If you haven't configured storage access created containers for blob integration, complete the [storage prerequisites](amlfs-prerequisites#storage-prerequisites) now.
 
-1. Specify the subscription, storage account, and container to use with your Lustre file system.
+<!--REMOVE: PREREQUISITES - To learn which types of accounts are compatible and what access settings need to be configured, see [Storage account prerequisites](amlfs-prerequisites.md#storage-prerequisites).-->
 
-1. In the **Logging container** field, select a container that the system will use to store import/export logs. This container must be different from the data container, but in the same storage account.
+The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
 
-1. Optionally, specify a path for the import prefix, described below in [Understand the import prefix](#understand-the-import-prefix).
+1. Select the **Import/export data from blob** check box.
 
-If you *only want to export* files from your Azure Managed Lustre system, set an import prefix that doesn't match any existing files in your blob container. Later, you can use archive jobs to move files into the blob container you specify here. Read [Use archive jobs to export data from Azure Managed Lustre](export-with-archive-jobs.md) for details.
+1. Specify the **Subscription** and **Storage account**, and **Container** to use with your Lustre file system.
+
+1. In the **Logging container** field, select the container you created to store import/export logs. The logs must be stored in a separate container from the data container, but in the same storage account.
+
+1. In **import prefix**, optionally supply a file path that matches data files in your container. The default prefix, **/**, imports all files from the data container.
+
+   When you create the Azure Managed Lustre file system, contents that match this prefix are added to a metadata record in the file system. When clients request a file, its contents are retrieved from the blob container and stored in the file system.
+
+   If you don't want to import files from the blob container, set an import prefix that doesn't match any files in the container.
+
+   * If you use a hierarchical blob storage service like NFSv3-mounted blob storage, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
+
+   * If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name.
+
+   For more information, see [Understand the import prefix](#understand-the-import-prefix).
+
+   You can't change this field after you create the Azure Managed Lustre file system.
 
 #### Understand the import prefix
 <!-- later problem because this is an aka link - needs to be a header for the anchor - but Microsoft docs won't allow H4's -->
 
-The **import prefix** field determines what data is imported from your blob container when the system is created. This field can't be changed after you create the Azure Managed Lustre file system.
+The import prefix field determines what data is imported from your blob container when the system is created. This field can't be changed after you create the Azure Managed Lustre file system.
 
 * In **import prefix**, supply a file path that matches data files in your container.
 
   When you create the Azure Managed Lustre file system, contents that match this prefix are added to a metadata record in the file system. When clients request a file, its contents are retrieved from the blob container and stored in the file system.
-  
+
   If you use a hierarchical blob storage service (like NFSv3-mounted blob storage), you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
 
-  If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. (Note that Lustre is a hierarchical file system, and '/' characters in blob file names will become directory delimiters when stored in Lustre.)
-  
-  Read more about [Azure Managed Lustre with hierarchical or non-hierarchical blob containers](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
+  If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. (Note that Lustre is a hierarchical file system, and **/** characters in blob file names will become directory delimiters when stored in Lustre.)
 
-  The default import prefix is ``/``, which imports the entire contents of the blob container.
+  For more information about using Azure Managed Lustre with hierarchical or non-hierarchical blob containers, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
+
+  The default import prefix is **/**, which imports the entire contents of the blob container.
 
   If you don't want to import files from the blob container, you can set an import prefix that does not match any files in the container.
 
 ### Maintenance window
 
 > [!NOTE]
-> The maintenance window configuration is not supported during the private preview. Maintenance tasks might be done at any time.
+> The maintenance window configuration is not supported during the public preview. Maintenance tasks might be done at any time.
 
 To allow Azure staff to maintain your Azure Managed Lustre file system, they need access to the file system to run diagnostics, update software, and troubleshoot any problems. Use the **Maintenance window** setting to set a time when the system can be disrupted for routine service.
 
@@ -172,35 +177,75 @@ Tasks that are active during this service might fail, or might only be delayed. 
 
 After the general availability (GA) release, maintenance is expected to be done less than once a month. Routine software upgrades will happen about six times a year, and approximately five other update tasks might be needed to address vulnerabilities or critical bugs over the same time.
 
-## Customize encryption keys (optional)
+When you finish entering **Advanced settings**:
+
+* Select **Next: Disk encryption keys** if you want to use your own encryption keys for your Azure Managed Lustre file system storage.
+* If you to let Azure encrypt the data with Microsoft-managed keys (the default), select **Review + create**.
+
+> [!NOTE]
+> You cannot change between Microsoft-managed keys and customer-managed keys after your create the file system.
+
+## Disk encryption keys (optional)
 <!-- update aka link if you change this header -->
 [//]: # (Test 2 of user-invisible comment!)
 
 If you want to manage the encryption keys used for your Azure Managed Lustre file system storage, supply your Azure Key Vault information on the **Disk encryption keys** page. The key vault must be in the same region and in the same subscription as the cache.
 
-You can skip this section if you do not need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. Read [Azure storage encryption](/azure/storage/common/storage-service-encryption) to learn more.
+You can skip this section if you do not need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. For more information, see [Azure storage encryption](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > You cannot change between Microsoft-managed keys and customer-managed keys after creating the file system.
 
-For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
+<!--RESTORE WHEN WE PUBLISH THE ARTICLE. - For a complete explanation of the customer-managed key encryption process, read [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).-->
 
-Select **Customer managed** to choose customer-managed key encryption. The key vault specification fields appear. Select the Azure Key Vault to use, then select the key and version to use for this file system. The key must be a 2048-bit RSA key. You can create a new key vault, key, or key version from this page.
+To use customer-managed encryption keys with your Azure Managed Lustre file system, do these steps:
 
-Check the **Always use current key version** box if you want to use [automatic key rotation](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys).
+1. For **Disk encryption key type**, select **Customer managed**.
 
-In the **Managed identities** section, specify a user-assigned managed identity to use for this file system. The identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
+   The key vault specification fields appear.
 
-> [!NOTE]
-> You cannot change the assigned identity after you create the file system.
+1. Under **Customer key settings**, open the **Select or create a key vault, key, or version** link.
 
-To learn more, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview).
+   ADD SCREENSHOT.
+
+1. On the **Select a key** screen, select the **Key vault**, **key**, and **Version** of the key to use for this file system. Then click **Select**.
+
+   You can create a new key vault, key, and key version from this page. The key must be a 2048-bit RSA key, and must be stored in Azure Key Vault.
+
+   SCREENSHOT HERE.
+
+   **Customer key settings** now displays your key vault, key, and version.
+
+   SCREENSHOT
+
+<!--1. If you want to use [automatic key rotation](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys), select the **Always use current key version** check box.-->
+
+1. In the **Managed identities** section, specify one or more user-assigned managed identities to use for this file system. Each identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
+
+   > [!NOTE]
+   > You cannot change the assigned identity after you create the file system.
+
+   To learn more, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview).
+
+   FIND OUT HOW TO ADD A MANAGED IDENTITY.
+
+When you finish entering customer key settings and managed identities, select **Review + create** to continue.
 
 ## Review settings and create the file system
 
-After you are finished configuring the options for your Azure Managed Lustre file system, click the **Create** button on the last tab.
+On the **Review + create** tab, do these steps:
+
+1. Review **Preview terms**, and select the check box indicating you agree to the terms.
+
+   Your setting will be validated.
+
+1. When a **Validation passed** message appears, select **Create** to begin creating the file system.
+
+SCREENSHOT
 
 Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.
+
+ADD A QUICK TOUR OF RESOURCE.
 
 ## Next steps
 
