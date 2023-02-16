@@ -121,7 +121,7 @@ If you choose to use OPC Foundation's Certificate Generator, here is now to buil
 If you choose to use OpenSSL, here is a list of references:
 1. [OpenSSL Project](https://www.openssl.org/)
 2. [OpenSSL Cookbook](https://www.feistyduck.com/library/openssl-cookbook/online/)
-3. [Tutorial: Use OpenSSL to create test certificates](https://learn.microsoft.com/en-us/azure/iot-hub/tutorial-x509-openssl)
+3. [Tutorial: Use OpenSSL to create test certificates](/azure/iot-hub/tutorial-x509-openssl)
 
 ### Create an opcua-broker-credentials Kubernetes secret
 
