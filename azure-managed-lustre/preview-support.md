@@ -12,7 +12,7 @@ ms.date: 02/15/2023
 # Keyword: 
 
 ---
-# Support information for Azure Managed Lustre (Preview)
+# Support information for Azure Managed Lustre (preview)
 
 During the Preview period for Azure Managed Lustre, the following support standards apply:
 
