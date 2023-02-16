@@ -164,7 +164,7 @@ After creating the Azure file share and certificates, upload the CA and OPC UA s
 
 ## Run Akri
 
-1. Make sure your OPC UA servers are running.
+1. Make sure your OPC UA servers are running by checking to see that the container instances have been started on your Azure portal.
 
 2. Akri depends on `critcl` to track Pod information, and to use it, the Akri agent must know where the container runtime socket lives. To specify this information, set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
 
