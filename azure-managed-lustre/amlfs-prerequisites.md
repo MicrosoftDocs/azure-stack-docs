@@ -55,7 +55,7 @@ When you plan your VNet and subnet, take into account the requirements for any o
 
 * If you plan to use another resource to host your compute VMs in the same VNet, check the requirements for that process before creating the VNet and subnet for your Azure Managed Lustre system.
 
-### Subnet access, permissions
+### Subnet access and permissions
 
 The subnet for the Azure Managed Lustre file system needs the following access and permissions:
 
