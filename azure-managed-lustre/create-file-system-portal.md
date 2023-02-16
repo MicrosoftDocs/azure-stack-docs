@@ -8,7 +8,7 @@ ms.lastreviewed: 02/16/2023
 ms.reviewer: mayabishop
 ms.date: 02/10/2023
 
-# Intent: As an IT Pro, I want to use a Lustre file system for tasks with a heavy computation load.
+# Intent: As an IT Pro, I want to use a Lustre file system to process files that involve a heavy computation load.
 # Keyword: 
 
 ---
@@ -85,7 +85,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
      > [!NOTE]
      > These values are rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
 
-![Screenshot showing Storage and Throughput settings for sizing an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-storage-throughput.png)
+![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
 
 ### Networking
 
@@ -219,7 +219,7 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 
    You can create a new key vault, key, and key version from this page. The key must be a 2048-bit RSA key, and must be stored in Azure Key Vault.
 
-   ![Screenshot showing Select a key screen while creating Azure Managed Lustre file system.](./media/create-file-system-portal/key-vault-key-key-version.png)
+   ![Screenshot showing Select a key screen while creating Azure Managed Lustre file system.](./media/create-file-system-portal/key-vault-key-version.png)
 
    **Customer key settings** now displays your key vault, key, and version.
 

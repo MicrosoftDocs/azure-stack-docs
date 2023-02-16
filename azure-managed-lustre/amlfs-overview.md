@@ -21,7 +21,7 @@ Lustre is an open-source parallel file system that can scale to massive storage 
 Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre file system. Using a **Create** command in the Azure portal, you can quickly deploy a Lustre file system in the size that you need, connect your clients, and be ready to use the system.
 
 Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allows you to specify files to import from a blob container for the file system's use. When the high-performance computing jobs are finished, you can export changed data to Azure Blob Storage, and delete the Azure Managed Lustre system. For more information, see [Azure Blob Storage integration](#azure-blob-storage-integration), later in this article.
-Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre system. With a simple "create" experience in the Azure Pportal, you can quickly deploy a right-sized Lustre file system in less than half an hour, connect your clients, and be ready to go. 
+Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre system. With a simple "create" experience in the Azure portal, you can quickly deploy a right-sized Lustre file system in less than half an hour, connect your clients, and be ready to go. 
 
 You can also use your Azure Managed Lustre file system with your Azure Kubernetes Service (AKS) containers. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
 
@@ -29,7 +29,7 @@ You can also use your Azure Managed Lustre file system with your Azure Kubernete
 
 To participate in the preview, fill in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0). There is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.<!--Form will be available on 02/22.-->
 
-For the private preview, Azure Managed Lustre is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3. **UPDATE FOR PUBLIC PREVIEW.**
+Azure Managed Lustre Preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3. **UPDATE FOR PUBLIC PREVIEW.**
 
 **ADD DATA RESIDENCY DISCLAIMER HERE.** <!--Instructions at https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/141823/Update-Product-Documentation-(ACOM)-with-Data-Residency-Disclaimers. Please provide specifics.-->
 
@@ -77,10 +77,10 @@ If you want to use an Azure Managed Lustre storage system with your Kubernetes c
 
 Kubernetes can simplify configuring and deploying virtual client endpoints for your Azure Managed Lustre workload, automating setup tasks such as:
 
-* Creating virtual machine scale sets (VMSS) used by Azure Kubernetes Service (AKS) to run the pods.
+* Creating Azure Virtual Machine Scale Sets used by Azure Kubernetes Service (AKS) to run the pods.
 * Loading the correct Lustre client software on VM instances.
 * Specifying the Azure Managed Lustre mount point, and propagating that information to the client pods.
 
 The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin<!--Verify spelling of plugin name.--> as a deployment with two replicas by default, and a CSI node plugin<!--Verify spelling of plugin name.--> as a daemonset.
 
-To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes#compatible-kubernetes-versions).
+To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).
