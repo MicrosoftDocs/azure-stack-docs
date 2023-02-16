@@ -248,7 +248,7 @@ On the **Review + create** tab, do these steps:
 
    SCREENSHOT: review-validate.png
 
-Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.<!--Need better verification, with mini-tour and screenshots.-->
+Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.<!--Future updates: Better verification, with mini-tour and screenshots.-->
 
 ## Next steps
 
