@@ -14,7 +14,7 @@ ms.date: 02/15/2023
 ---
 # Support information for Azure Managed Lustre (preview)
 
-During the Preview period for Azure Managed Lustre, the following support standards apply:
+During the preview period for Azure Managed Lustre, the following support standards apply:
 
 * Service support hours are 8:00 AM - 6:00 PM Eastern Time (UTC-5) in the United States.
 
