@@ -1,5 +1,5 @@
 ---
-title: What is Azure Managed Lustre (Preview)?
+title: What is Azure Managed Lustre Preview?
 description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 ms.topic: overview
 author: sethmanheim
@@ -12,7 +12,7 @@ ms.date: 02/09/2023
 # Keyword: 
 
 ---
-# What is Azure Managed Lustre (Preview)?
+# What is Azure Managed Lustre Preview?
 
 The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 

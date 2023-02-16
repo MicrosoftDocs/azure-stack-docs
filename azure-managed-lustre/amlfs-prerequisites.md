@@ -4,7 +4,7 @@ description: Network and storage prerequisites to complete before you create an 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/14/2023
+ms.lastreviewed: 02/16/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
@@ -69,7 +69,8 @@ The subnet for the Azure Managed Lustre file system needs the following access a
 |Storage access |If you use Microsoft Azure Blob Storage integration with your Azure Managed Lustre file system, configure an Azure Storage endpoint so the file system can access the storage.
 |Customer-managed encryption keys |If you use customer-managed encryption keys for your Azure Managed Lustre files, the file system must be able to access the associated Azure key vault.|
 
-<!--MOVES TO PORTAL HOW-TO - After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.-->
+> [!NOTE]
+> After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.
 
 ## Storage prerequisites
 
@@ -113,7 +114,7 @@ Storage accounts used with an Azure Managed Lustre file system must be configure
 > [!TIP]
 > If you create the subnet before you create the storage account, you can configure restricted access when you create the storage account.
 
-### Storage account access roles
+### Access roles
 
 Azure Managed Lustre needs authorization to access your storage account. Use [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/) to give the file system access to your blob storage.
 
@@ -137,6 +138,29 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
     |---------------------|-----------------------------|
     | **Roles**           | [Storage Account Contributor](/azure/role-based-access-control/built-in-roles#storage-account-contributor)<br>[Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) |
     | **Assign access to** | HPC Cache Resource Provider<br>TIP: If you can't find the HPC Cache Resource Provider, search for **storagecache** instead. **storagecache Resource Provider** was the service principal name before general availability of the product.|
+
+## Azure Key Vault integration requirements (optional)
+
+If you want to create and manage the encryption keys used on your Azure Managed Lustre files, you can add customer-managed keys to an Azure Key Vault before or during file system creation. You can create a new key vault and key when you create the file system, but you should be familiar with these requirements ahead of time. To add a key vault and keys when you create the file system, you must have permissions to manage key vault access.
+
+Using customer-managed keys is optional. All data stored in Azure is encrypted with Microsoft-managed keys by default. For more information, see [Azure storage encryption](/azure/storage/common/storage-service-encryption).
+
+For more information about requirements for using customer-managed encryption keys with an Azure Managed Lustre file system, including prerequisites, see [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
+
+If you plan to use customer-managed encryption keys with your Azure Managed Lustre file system, complete the following prerequisites:
+
+* Create an Azure key vault that meets the following requirements, either before or during file system creation:
+
+  * The key vault must be in the same subscription and Azure region as the Azure Managed Lustre file system.
+  * Enable **soft delete** and **purge protection** on the key vault.
+  * Provide network access between the key vault and the Azure Managed Lustre file system.<!--How do they do this? They have to have configured the subnet for the file system before they do this?-->
+  * Keys must be 2048-bit RSA keys.
+
+  For more Azure Key Vault requirements, see [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
+
+* Create a user-assigned managed identity for the file system to use when accessing the key vault. For more information, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview)
+
+* Assign the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor) to the person who will create the Azure Managed Lustre file system. The Key vault contributor role is required in order to manage key vault access. For more information, see [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
 
 ## Next steps
 
