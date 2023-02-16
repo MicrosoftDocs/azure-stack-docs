@@ -4,12 +4,8 @@
   items:
   - name: Azure Managed Lustre overview 
     href: amlfs-overview.md
-  - name: Known issues
-    href: amlfs-known-issues-preview.md
 - name: Concepts
   items:
-  - name: requirements
-    href: amlfs-requirements.md
   - name: Use Azure Blob storage with Azure Managed Lustre
     href: blob-integration.md
 - name: How-to guides
@@ -36,7 +32,5 @@
       href: customer-managed-encryption-keys.md
   - name: Troubleshoot
     items:
-    - name: Tips & troubleshooting
-      href: amlfs-troubleshoot.md
     - name: Public preview support
       href: preview-support.md

@@ -4,7 +4,7 @@ description: Use Azure Managed Lustre to quickly create an Azure-based Lustre fi
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/15/2023
+ms.lastreviewed: 02/16/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
@@ -21,6 +21,7 @@ Lustre is an open-source parallel file system that can scale to massive storage 
 Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre file system. Using a **Create** command in the Azure portal, you can quickly deploy a Lustre file system in the size that you need, connect your clients, and be ready to use the system.
 
 Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allows you to specify files to import from a blob container for the file system's use. When the high-performance computing jobs are finished, you can export changed data to Azure Blob Storage, and delete the Azure Managed Lustre system. For more information, see [Azure Blob Storage integration](#azure-blob-storage-integration), later in this article.
+Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre system. With a simple "create" experience in the Azure Pportal, you can quickly deploy a right-sized Lustre file system in less than half an hour, connect your clients, and be ready to go. 
 
 You can also use your Azure Managed Lustre file system with your Azure Kubernetes Service (AKS) containers. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
 
