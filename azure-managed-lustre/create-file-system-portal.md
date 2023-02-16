@@ -24,7 +24,7 @@ This article describes how to create an Azure Managed Lustre file system from th
 
 Before you start to create an Azure Managed Lustre file system:
 
-1. If you haven't already, sign up for the preview by filling in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
+1. If you haven't done so already, sign up for the preview by submitting the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
 
 1. Complete network, storage, and access prerequisites in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
 
