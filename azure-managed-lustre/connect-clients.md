@@ -79,19 +79,19 @@ Mount all of your clients to the file system's MGS IP address.
 
 The **Client connection** page in the Azure portal shows the IP address and gives a sample mount command that you can copy and use to mount clients.
 
-![Screenshot of Client Connection page in the portal, showing the fields to fill in client path and MGS IP, and the copyable mount command populated with those values.](media/connect-clients/client-connection.png)
+:::image type="content" source="media/connect-clients/client-connection.png" alt-text="Screenshot of client connection page in the portal." lightbox="media/connect-clients/client-connection.png":::
 
 The mount command includes three components:
 
 - **Client path** - The path on the client machine where the Azure Managed Lustre file system should be mounted. The default value is the file system name, but you can change it.
 
-  Make sure that this directory path exists on the client machine before you use the mount command.
+  Make sure that this directory path exists on the client machine before you use the `mount` command.
 
 - **MGS IP address** - The IP address for the Azure Managed Lustre file system's Lustre management service (MGS).
 
 - **Mount command options** - Additional recommended options are included in the sample `mount` command.
 
-These components are assembled into a mount command with this form: `sudo mount -t lustre -o noatime,flock *MGS_IP*`@tcp:/lustrefs /<client_path>`
+These components are assembled into a mount command with this form: `sudo mount -t lustre -o noatime,flock *MGS_IP*`@tcp:/lustrefs /<client_path>`:
 
 - The `lustrefs` value in the MSG IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own mount commands.
 

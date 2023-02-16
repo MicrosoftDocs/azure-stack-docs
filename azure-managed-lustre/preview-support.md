@@ -1,5 +1,5 @@
 ---
-title: Public preview support information for Azure Managed Lustre (Preview)
+title: Public preview support information for Azure Managed Lustre
 description: TK
 ms.topic: overview
 author: sethmanheim
@@ -12,7 +12,7 @@ ms.date: 02/09/2023
 # Keyword: 
 
 ---
-# Public preview support information for Azure Managed Lustre (Preview)
+# Public preview support information for Azure Managed Lustre
 
 <!--STATUS: Ported as is from private preview. Only updated title. Support must be updated for public preview. Dillip owns updates.-->
 
