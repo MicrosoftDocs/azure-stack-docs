@@ -60,7 +60,7 @@ On the **Basics** tab, enter the following information:
 
 1. **Region** and **Availability zone**: Select the Azure region and availability zone (if the region supports zones) for your file system.
 
-   For best performance, create your Azure Managed Lustre file system in the same region and availability zone where your client machines will be.
+   For best performance, create your Azure Managed Lustre file system in the same region and availability zone as your client machines.
 
 ![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
 
