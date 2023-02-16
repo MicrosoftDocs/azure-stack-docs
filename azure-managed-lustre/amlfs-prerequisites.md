@@ -45,7 +45,7 @@ The size of subnet that you need depends on the size of the file system you crea
 
 When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
 
-* If using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
+* If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
 
   * You can locate the AKS cluster in the same subnet as the managed Lustre system. In that case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system.
  
