@@ -61,7 +61,7 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 5. (for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
 
-6. Prepare the MySQL Connector Uri. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
+6. Prepare the MySQL Connector Uri with the required version. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
 e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi
 
 ### Trigger MajorVersionUpgrade

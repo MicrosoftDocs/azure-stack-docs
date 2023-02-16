@@ -23,11 +23,11 @@ The resource provider has a minimum corresponding Azure Stack Hub build. The min
 
 It is required that you apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system **before** deploying the latest version of the MySQL resource provider.
 
-> |Supported Azure Stack Hub version|MySQL resource provider version|
-> |-----|-----|
-> |Version 2108,2206|MySQL RP version 2.0.6.0|  
-> |Version 2206|MySQL RP version 2.0.13.0|  
-> |     |     |
+> |Supported Azure Stack Hub version|MySQL resource provider version|MySQL Connector version|
+> |-----|-----|-----|
+> |Version 2108,2206|MySQL RP version 2.0.6.0|mysql-connector-net-8.0.21|
+> |Version 2206|MySQL RP version 2.0.13.0|mysql-connector-net-8.0.21|
+> |     |     |     |
 
 > [!IMPORTANT]
 > It is strongly recommended to upgrade to 2.0.13.0 when your Azure Stack Hub version is 2206. 
