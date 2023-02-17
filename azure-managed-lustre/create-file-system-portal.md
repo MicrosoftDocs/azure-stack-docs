@@ -75,7 +75,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
 
 3. **Storage and throughput**: Use these settings to set the size of your file system.
 
-  Your file system size is determined by two factors: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You'll select one of these options. The other values are calculated based on the  **Throughput per TiB** setting for your file system type.
+   Your file system size is determined by two factors: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You'll select one of these options. The other values are calculated based on the  **Throughput per TiB** setting for your file system type.
 
   To set your Azure Managed Lustre file system size, do these steps:
   

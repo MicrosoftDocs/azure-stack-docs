@@ -4,7 +4,7 @@ description: Use Azure Managed Lustre to quickly create an Azure-based Lustre fi
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/16/2023
+ms.lastreviewed: 02/17/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
@@ -12,6 +12,7 @@ ms.date: 02/09/2023
 # Keyword: 
 
 ---
+
 # What is Azure Managed Lustre (preview)?
 
 The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
@@ -26,11 +27,7 @@ You can also use your Azure Managed Lustre file system with your Azure Kubernete
 
 ## Join the preview
 
-<<<<<<< HEAD
 To participate in the preview, complete the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0), providing contact information, Azure subscription ID(s), and basic use case information. Currently there is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.
-=======
-To participate in the preview, complete the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0), providing contact information, Azure subscription ID(s), and basic use case information. Currently there is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.<!--Form will be available on 02/21.-->
->>>>>>> 2e1bada09c9619543c1c78164f78bfe7ec64349c
 
 The Azure Managed Lustre preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.
 
@@ -74,7 +71,7 @@ Kubernetes can simplify configuring and deploying virtual client endpoints for y
 
 The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin as a deployment with two replicas by default, and a CSI node plugin, as a daemonset. You can change the number of replicas.
 
-To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).
+<!--Restore this cross-reference when article is merged with release branch - To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).-->
 
 Next steps:
 
