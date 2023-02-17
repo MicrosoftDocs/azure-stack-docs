@@ -44,11 +44,11 @@ Packages and kernel modules are available for these Linux operating systems. Cli
 <!-- - [AlmaLinux 8](client-rhel8.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 7](client-rhel7.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 8](client-rhel8.md) - NOT SUPPORTED in public preview-->
-- [Red Hat Enterprise Linux (RHEL) 7](https://developers.redhat.com/products/rhel/download)
-- [Red Hat Enterprise Linux (RHEL) 8](https://developers.redhat.com/products/rhel/download)
-- [Ubuntu 18.04](https://www.releases.ubuntu.com/18.04/)
-- [Ubuntu 20.04](https://www.releases.ubuntu.com/20.04/)
-- [Ubuntu 22.04](https://www.releases.ubuntu.com/22.04/)
+- Red Hat Enterprise Linux (RHEL) 7
+- Red Hat Enterprise Linux (RHEL) 8
+- Ubuntu 18.04
+- Ubuntu 20.04
+- Ubuntu 22.04
 
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
 
