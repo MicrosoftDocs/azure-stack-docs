@@ -54,13 +54,13 @@ Once you've created the cluster, you can manually validate that the SSH restrict
 ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 ```
 
-You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs should have access. Those outside the list should not have access.
+You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs should have access. SSH attempts from outside the list should not have access.
 
 ## Considerations
 
-- The configuration can only be set during installation phase of AKS hybrid.
+- You can only set the configuration during the installation phase of AKS hybrid.
 - There is no support for upgrades.
-- The SSH setting you provide is re-used for all target clusters. Individual SSH configuration for workload clusters is not available.
+- The SSH setting you provide is reused for all target clusters. Individual SSH configuration for workload clusters isn't available.
 
 ## Next steps
 
