@@ -121,9 +121,9 @@ Integrating blob storage when you create a file system is optional, but it's the
 
 To configure blob integration:
 
-1. If you haven't configured storage access created containers for blob integration, complete the [storage prerequisites](amlfs-prerequisites.md#storage-prerequisites) now.
+1. If you haven't configured storage access created containers for blob integration, complete the [blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional) now.
 
-   To learn which types of accounts are compatible and what access settings need to be configured, see [Storage prerequisites](amlfs-prerequisites.md#storage-prerequisites).
+   To learn which types of accounts are compatible and what access settings need to be configured, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
 
    The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
 
@@ -166,6 +166,8 @@ The import prefix field determines what data is imported from your blob containe
   The default import prefix is **/**, which imports the entire contents of the blob container.
 
   If you don't want to import files from the blob container, you can set an import prefix that does not match any files in the container.
+
+  For more information about import prefixes, see (blob-integration.md#filter-blob-imports).
 
 ### Maintenance window
 

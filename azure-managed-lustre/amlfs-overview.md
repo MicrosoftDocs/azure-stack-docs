@@ -71,7 +71,7 @@ Kubernetes can simplify configuring and deploying virtual client endpoints for y
 
 The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin as a deployment with two replicas by default, and a CSI node plugin, as a daemonset. You can change the number of replicas.
 
-<!--Restore this cross-reference when article is merged with release branch - To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).-->
+To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).
 
 Next steps:
 

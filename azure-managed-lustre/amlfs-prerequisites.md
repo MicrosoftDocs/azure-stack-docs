@@ -18,7 +18,7 @@ ms.date: 02/09/2023
 This article explains prerequisites that you must configure before creating an Azure Managed Lustre file system.
 
 * [Network prerequisites](#network-prerequisites)
-* [Storage prerequisites](#storage-prerequisites)
+* [Blob integration prerequisites](#blob-integration-prerequisites-optional)
 * [Azure Key Vault integration prerequisites (Optional)](#azure-key-vault-integration-requirements-optional)
 
 ## Network prerequisites
@@ -107,14 +107,14 @@ The following storage account types can be used with Azure Managed Lustre file s
 
 For more information about storage account types, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
-### Storage access
+### Storage access for blob integration
 
 Storage accounts used with an Azure Managed Lustre file system must be configured with a public endpoint. However, you can restrict the endpoint to only accept traffic from the file system subnet. This configuration is needed because agents and copying tools are hosted in an infrastructure subscription, not within the customer's subscription.
 
 > [!TIP]
 > If you create the subnet before you create the storage account, you can configure restricted access when you create the storage account.
 
-### Access roles
+### Access roles for blob integration
 
 Azure Managed Lustre needs authorization to access your storage account. Use [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/) to give the file system access to your blob storage.
 
