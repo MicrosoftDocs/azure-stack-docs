@@ -30,3 +30,9 @@ landingContent:
             url: amlfs-prerequisites.md
           - text: Create a file system using the Azure portal
             url: create-file-system-portal.md
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Contact support
+            url: preview-support.md
