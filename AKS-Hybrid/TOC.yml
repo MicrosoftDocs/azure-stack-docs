@@ -341,8 +341,6 @@
         href: aks-edge-how-to-akri-onvif.md
   - name: Resources
     items:
-    - name: Microsoft Software License Terms
-      href: aks-edge-software-license-terms.md
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: Logs 
@@ -351,6 +349,13 @@
       href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
       href: https://github.com/Azure/AKS-Edge/issues
+    - name: AKS Edge Essentials pricing
+      href: aks-edge-pricing.md
+    - name: AKS Edge Essentials licensing 
+      href: aks-edge-licensing.md
+    - name: Microsoft Software License Terms
+      href: aks-edge-software-license-terms.md
+  
 - name: Troubleshooting
   items:
   - name: Troubleshooting overview
