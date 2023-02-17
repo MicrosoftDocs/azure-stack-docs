@@ -4,24 +4,31 @@ description: How to use an Azure Managed Lustre storage system with your Kuberne
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/09/2023
+ms.lastreviewed: 02/17/2023
 ms.reviewer: sethm
 ms.date: 02/09/2023
 
-# Intent: As an IT Pro, XXX.
+# Intent: As an IT Pro, I want to be able to use a Lustre file system with the apps I've deployed on Kubernetes.
 # Keyword: 
 
 ---
 
 # Use the Azure Lustre CSI Driver (Preview) for Kubernetes
 
-<!--STATUS: Copied as is from private preview docs.-->
-
 The Azure Lustre container support interface (CSI) driver for Kubernetes allows you to use an Azure Managed Lustre storage system with Kubernetes containers.
 
 The driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are currently not supported; contact the Azure Managed Lustre team at the email address above for more information.
 
-[Compatible Kubernetes versions](https://github.com/kubernetes-sigs/azurelustre-csi-driver#container-images--kubernetes-compatibility) are listed in the driver repository README.
+## Compatible Kubernetes versions
+
+The Azure Lustre CSI driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are not currently supported. Contact the Azure Managed Lustre team for more information.
+
+The following container images are compatible with Azure Managed Lustre file systems.
+
+| CSI driver version | Container image                                             | Supported Kubernetes version | Lustre client version |
+|--------------------|-------------------------------------------------------------|------------------------------|-----------------------|
+| main branch        | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest | 1.21 or later | 2.15.1 |
+| v0.1.5             | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5 | 1.21 or later | 2.15.1 |
 
 ## Use Kubernetes with Azure Managed Lustre (Preview)
 

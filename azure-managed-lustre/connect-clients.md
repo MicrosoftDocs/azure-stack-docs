@@ -28,6 +28,11 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
   - Clients must reside in the same Availability Zone in which the cluster resides.
   - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
 
+The basic workflow is as follows:
+
+1. [Install the Lustre client software](#install-client-software) on each client.
+1. [Use the `mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
+
 ## Install client software
 
 Each client that connects to the Lustre file system must have a Lustre client package that is compatible with the file system's Lustre version (currently 2.15).
@@ -39,18 +44,13 @@ Packages and kernel modules are available for these Linux operating systems. Cli
 <!-- - [AlmaLinux 8](client-rhel8.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 7](client-rhel7.md) - NOT SUPPORTED in public preview
 - [CentOS Linux 8](client-rhel8.md) - NOT SUPPORTED in public preview-->
-- [Red Hat Enterprise Linux (RHEL) 7](https://developers.redhat.com/products/rhel/download)
-- [Red Hat Enterprise Linux (RHEL) 8](https://developers.redhat.com/products/rhel/download)
-- [Ubuntu 18.04](https://www.releases.ubuntu.com/18.04/)
-- [Ubuntu 20.04](https://www.releases.ubuntu.com/20.04/)
-- [Ubuntu 22.04](https://www.releases.ubuntu.com/22.04/)
+- Red Hat Enterprise Linux (RHEL) 7
+- Red Hat Enterprise Linux (RHEL) 8
+- Ubuntu 18.04
+- Ubuntu 20.04
+- Ubuntu 22.04
 
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
-
-The basic workflow is as follows:
-
-1. [Install the Lustre client software](#update-a-lustre-client-to-the-current-version) on each client.
-1. [Use the `mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
 
 If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
 
