@@ -341,7 +341,7 @@
         href: aks-edge-how-to-akri-onvif.md
   - name: Resources
     items:
-    - name: End User Licensing Agreement
+    - name: Microsoft Software License Terms
       href: aks-edge-eula.md
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
