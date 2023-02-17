@@ -17,11 +17,11 @@ AKS Edge Essentials can be licensed using one of the following options:
 
 ## Azure subscription-based model
 
-You are entitled to commercially use AKS Edge Essentials, provided you connect your Kubernetes clusters to Azure using Azure Arc. AKS Edge Essentials includes both the agent required to connect to Azure Arc and corresponding PowerShell commands, to easily connect your cluster to Arc.  
+You're entitled to commercially use AKS Edge Essentials, provided you connect your Kubernetes clusters to Azure using Azure Arc. AKS Edge Essentials includes both the agent required to connect to Azure Arc and corresponding PowerShell commands, to easily connect your cluster to Arc.  
 
 ## Volume licensing based model (available in April 2023)
 
-You are entitled to commercially use AKS Edge Essentials once you have purchased the required number of licenses via the Volume Licensing Service Center (VLSC). We will share more details once we are ready to launch this program.
+You're entitled to commercially use AKS Edge Essentials once you've purchased the required number of licenses via the Volume Licensing Service Center (VLSC). We'll share more details once we're ready to launch this program.
 
 ## Next steps
 
