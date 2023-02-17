@@ -1,5 +1,5 @@
 ---
-title: Support information for Azure Managed Lustre (Preview)
+title: Support information for Azure Managed Lustre (preview)
 description: Product support that's available during the Azure Managed Lustre Preview period.
 ms.topic: overview
 author: sethmanheim
