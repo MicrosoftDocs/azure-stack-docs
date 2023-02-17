@@ -91,7 +91,7 @@ The mount command includes three components:
 
 - **Mount command options** - Additional recommended options are included in the sample `mount` command.
 
-These components are assembled into a mount command with this form: `sudo mount -t lustre -o noatime,flock *MGS_IP*`@tcp:/lustrefs /<client_path>`:
+These components are assembled into a mount command with this form: `sudo mount -t lustre -o noatime,flock *MGS_IP* @tcp:/lustrefs /<client_path>`.
 
 - The `lustrefs` value in the MSG IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own mount commands.
 
