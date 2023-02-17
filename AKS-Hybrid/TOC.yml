@@ -342,7 +342,7 @@
   - name: Resources
     items:
     - name: Microsoft Software License Terms
-      href: aks-edge-eula.md
+      href: aks-edge-software-license-terms.md
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
     - name: Logs 
