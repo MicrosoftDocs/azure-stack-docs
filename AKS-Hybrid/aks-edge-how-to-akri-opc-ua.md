@@ -103,7 +103,7 @@ If you choose to use OPC Foundation's Certificate Generator, here is now to buil
 3. Run `build_certificate-generator.bat` from VS Developer Command Prompt (Visual Studio 2022 is recommended).
 4. Build `Opc.Ua.CertificateGenerator` solution from Visual Studio 2022.
 5. Check if `Opc.Ua.CertificateGenerator.exe` has been successfully built in the `build/Debug/Opc.Ua.CertificateGenerator` directory.
-6. Use following example command lines to create certificates. Please refer to [Misc-Tools]((https://github.com/OPCFoundation/Misc-Tools)) for more options.
+6. Use following example command lines to create certificates. Please refer to [Misc-Tools](https://github.com/OPCFoundation/Misc-Tools) for more options.
    - Self-Signed CA:
    ```powershell
    .\Opc.Ua.CertificateGenerator.exe -cmd issue -sp . -sn CN=<CA name e.g. MyCA> -ca true -pw <password>
