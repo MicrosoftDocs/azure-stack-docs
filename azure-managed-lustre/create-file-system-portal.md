@@ -17,18 +17,15 @@ ms.date: 02/10/2023
 
 This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
-<!--RESTORE NOTE WHEN THIS IS PUBLISHED.> [!NOTE]
-> If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).-->
+If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).
 
 ## Prerequisites
 
 Before you start to create an Azure Managed Lustre file system:
 
-<<<<<<< HEAD
-1. If you haven't done so already, sign up for the preview by filling in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
-=======
 1. If you haven't done so already, sign up for the preview by submitting the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
 
+   You can't change the following configurations after you create your file system:
    * The size of the file system
    * The option to use an integrated Azure Blob Storage container
    * The choice between customer-managed or system-generated encryption keys for storage
@@ -153,7 +150,6 @@ To configure blob integration:
 ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
 
 #### Understand the import prefix
-<!-- later problem because this is an aka link - needs to be a header for the anchor - but Microsoft docs won't allow H4's -->
 
 The import prefix field determines what data is imported from your blob container when the system is created. This field can't be changed after you create the Azure Managed Lustre file system.
 
@@ -191,8 +187,6 @@ When you finish entering **Advanced settings**:
 > You cannot change between Microsoft-managed keys and customer-managed keys after your create the file system.
 
 ## Disk encryption keys (optional)
-<!-- update aka link if you change this header -->
-[//]: # (Test 2 of user-invisible comment!)
 
 If you want to manage the encryption keys used for your Azure Managed Lustre file system storage, supply your Azure Key Vault information on the **Disk encryption keys** page. The key vault must be in the same region and in the same subscription as the cache.
 
@@ -223,8 +217,6 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 
    ![Screenshot showing sample Customer key settings on Basics tab for an Azure Managed Lustre file system.](./media/create-file-system-portal/keys-summary.png)
 
-   <!--1. If you want to use [automatic key rotation](/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys), select the **Always use current key version** check box.-->
-
 1. In **Managed identities**, specify one or more user-assigned managed identities to use for this file system. Each identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
 
    > [!NOTE]
@@ -246,7 +238,7 @@ On the **Review + create** tab, do these steps:
 
    ![Screenshot of Review and Validate tab for Azure Managed Lustre Create. Validation check box, status, Create button are highlighted.](./media/create-file-system-portal/review-validate.png)
 
-Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.<!--Future updates: Better verification, with mini-tour and screenshots.-->
+Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.
 
 ## Next steps
 

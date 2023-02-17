@@ -48,7 +48,7 @@ When you plan your VNet and subnet, take into account the requirements for any o
 * If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
 
   * You can locate the AKS cluster in the same subnet as the managed Lustre system. In that case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system.
- 
+
   * If you use more than one AKS cluster within the VNet, make sure the VNet has enough capacity for all resources in all of the clusters.
   
   To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre).
@@ -61,9 +61,9 @@ The subnet for the Azure Managed Lustre file system needs the following access a
 
 | Access type | Required network settings |
 |-------------|---------------------------|
-|Create NICs permission |The file system must be able to create network interface cards (NICs) on its subnet.<!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
-| DNS access  |You can use the default Azure-based DNS server.<!--Will customers want to use their own DNS server?-->|
-| Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>**Option 1:** Add a private endpoint for Azure Storage to your subnet. LINK TO PROCEDURE.<br><br>**Option 2:** Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
+| Create NICs permission |The file system must be able to create network interface cards (NICs) on its subnet. This is enabled by default. |
+| DNS access  | Use the default Azure-based DNS server. |
+| Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>**Option 1:** Add a private endpoint for Azure Storage to your subnet..<br><br>**Option 2:** Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Source**: Service tag<br>- **Source service tag**: AzureCloud<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
 |Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
 |Storage access |If you use Microsoft Azure Blob Storage integration with your Azure Managed Lustre file system, configure an Azure Storage endpoint so the file system can access the storage.
@@ -72,9 +72,9 @@ The subnet for the Azure Managed Lustre file system needs the following access a
 > [!NOTE]
 > After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.
 
-## Storage prerequisites
+## Blob integration prerequisites (optional)
 
-This section explains prerequisites for integrating Microsoft Azure Blob Storage containers with Azure Managed Lustre.
+If you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage, complete the following prerequisites before you create your file system.
 
 An integrated blob container can automatically import files to the Azure Managed Lustre system when you create the file system. You can then create archive jobs to export changed files from your Azure Managed Lustre file system to that container.
 
@@ -128,16 +128,20 @@ A storage account owner must add these roles before creating the file system:
 
 To add the roles for the service principal **HPC Cache Resource Provider**, do these steps:
 
-1. Open **Access control (IAM)** for your storage account.
+1. Open your storage account, and select **Access control (IAM)** in the left navigation pane.
 
 1. Select **Add** > **Add role assignment** to open the **Add role assignment** page.
 
-1. Assign each of the following roles, and grant access to the **HPC Cache Resource Provider**. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+1. Assign the role.
 
-    | Setting             | Values                      |
-    |---------------------|-----------------------------|
-    | **Roles**           | [Storage Account Contributor](/azure/role-based-access-control/built-in-roles#storage-account-contributor)<br>[Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) |
-    | **Assign access to** | HPC Cache Resource Provider<br>TIP: If you can't find the HPC Cache Resource Provider, search for **storagecache** instead. **storagecache Resource Provider** was the service principal name before general availability of the product.|
+1. Then add the **HPC Cache Resource Provider** to that role.
+
+   > [!TIP]
+   > If you can't find the HPC Cache Resource Provider, search for **storagecache** instead. **storagecache Resource Provider** was the service principal name before general availability of the product.
+
+1. Repeat steps 3 and 4 for to add each role.
+
+For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Azure Key Vault integration requirements (optional)
 
@@ -153,7 +157,7 @@ If you plan to use customer-managed encryption keys with your Azure Managed Lust
 
   * The key vault must be in the same subscription and Azure region as the Azure Managed Lustre file system.
   * Enable **soft delete** and **purge protection** on the key vault.
-  * Provide network access between the key vault and the Azure Managed Lustre file system.<!--How do they do this? They have to have configured the subnet for the file system before they do this?-->
+  * Ensure there is network access between the key vault and the Azure Managed Lustre file system. By default, the access exists.
   * Keys must be 2048-bit RSA keys.
 
   For more Azure Key Vault requirements, see [Use customer-managed encryption keys with Azure Managed Lustre](customer-managed-encryption-keys.md).
