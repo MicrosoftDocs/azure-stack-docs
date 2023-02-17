@@ -4,7 +4,7 @@ description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/16/2023
+ms.lastreviewed: 02/17/2023
 ms.reviewer: mayabishop
 ms.date: 02/10/2023
 
@@ -24,11 +24,10 @@ This article describes how to create an Azure Managed Lustre file system in the 
 
 Before you start to create an Azure Managed Lustre file system:
 
+<<<<<<< HEAD
 1. If you haven't done so already, sign up for the preview by filling in the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
-
-1. Complete network, storage, and access prerequisites specified in [Azure Managed Lustre prerequisites](amlfs-prerequisites.md).
-
-   After you create the file system, you can't change the following items:
+=======
+1. If you haven't done so already, sign up for the preview by submitting the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
 
    * The size of the file system
    * The option to use an integrated Azure Blob Storage container

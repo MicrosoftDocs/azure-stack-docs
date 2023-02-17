@@ -45,7 +45,11 @@ The size of subnet that you need depends on the size of the file system you crea
 
 When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
 
+<<<<<<< HEAD
 * If your're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
+=======
+* If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
+>>>>>>> 2e1bada09c9619543c1c78164f78bfe7ec64349c
 
   * You can locate the AKS cluster in the same subnet as the managed Lustre system. In that case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system.
  
@@ -61,7 +65,11 @@ The subnet for the Azure Managed Lustre file system needs the following access a
 
 | Access type | Required network settings |
 |-------------|---------------------------|
+<<<<<<< HEAD
 |Create NICs permission |The file system must be able to create network interface cards (NICs) on its subnet.<!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
+=======
+|Create NICs permission |The file system must be able to create network interface cards (NICs) on its subnet. <!--Role or permission? Where is it set? 2) Link to more info about NIC requirements for the Azure Managed Lustre file system.-->|
+>>>>>>> 2e1bada09c9619543c1c78164f78bfe7ec64349c
 | DNS access  |You can use the default Azure-based DNS server.<!--Will customers want to use their own DNS server?-->|
 | Azure Queue Storage service access |Azure Managed Lustre uses the Azure Queue Storage service to communicate configuration and state information. You can configure access in two ways:<br><br>**Option 1:** Add a private endpoint for Azure Storage to your subnet. LINK TO PROCEDURE.<br><br>**Option 2:** Configure firewall rules to allow the following access:<br>- TCP port 443, for secure traffic to any host in the queue.core.windows.net domain (`*.queue.core.windows.net`)<br>- TCP port 80, for access to the certificate revocation list (CRL) and online certificate status protocol (OCSP) servers.<br><br>Contact your Azure Managed Lustre team if you need help with this requirement.|
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Source**: Service tag<br>- **Source service tag**: AzureCloud<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
