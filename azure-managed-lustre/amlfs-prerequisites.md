@@ -87,8 +87,8 @@ To integrate Azure Blob Storage with your Azure Managed Lustre file system, you 
 * A storage account that meets the following requirements:
 
   * A compatible storage account type. See [Supported storage account types](#supported-storage-account-types) for more information.
-  * A public endpoint. See [Storage account access](#storage-access) for more information.
-  * Access roles that permit the Azure Managed Lustre system to modify data. See [Required access roles](#access-roles) for more information.
+  * A public endpoint. See [Storage account access](#storage-access-for-blob-integration) for more information.
+  * Access roles that permit the Azure Managed Lustre system to modify data. See [Required access roles](#access-roles-for-blob-integration) for more information.
 
 * A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.
 
