@@ -49,7 +49,7 @@ Use the **Import prefix** option on the **Advanced** tab to determine what data 
 
 - If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob file names will become directory delimiters when stored in Lustre.
 
-### Metadata for exported files
+## Metadata for exported files
 
 When files are archived from the Azure Managed Lustre system to the blob container, additional metadata is saved to simplify re-importing the contents to an Azure Managed Lustre file system.
 
