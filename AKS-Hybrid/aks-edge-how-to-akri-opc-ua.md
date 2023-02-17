@@ -116,7 +116,7 @@ If you choose to use OPC Foundation's Certificate Generator, here is now to buil
    ```powershell
    .\Opc.Ua.CertificateGenerator.exe -cmd issue -sp . -an AkriBroker -ikf '.\private\MyCA [hash].pfx' -ikp <password>-dn <DNS separated by commas>
    ```
-7. Create a `.crl` file for CA using OpenSSL (only if you created CA from the generator whicih would be missing the `.crl` file).
+7. Create a `.crl` file for CA using OpenSSL (only if you created CA from the generator, which would be missing the `.crl` file).
 
 If you choose to use OpenSSL, here is a list of references:
 1. [OpenSSL Project](https://www.openssl.org/)
@@ -157,7 +157,8 @@ After creating the Azure file share and certificates, upload the CA and OPC UA s
        └── crl
            └── CA.crl
    ```
- >[NOTE]: Because we added a flag for security in the template, this will cause an arbitrary certificate to be generated in the file share. Please delete any unidentified certificates in the file share (the folder paths should look exactly the same as above).
+ > [!NOTE]
+ > Because we added a flag for security in the template, this will cause an arbitrary certificate to be generated in the file share. Please delete any unidentified certificates in the file share (the folder paths should look exactly the same as above).
 
  After following these steps for security, click "Restart" on your container instances to update it and run with the mounted certificates. 
  
