@@ -60,7 +60,7 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
 |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-|`ClientId` | GUID | Provide the name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. |
+|`ClientId` | GUID | Provide the Application ID of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. |
 |`ClientSecret` | string | Provide the password for the service principal. |
 
 > [!NOTE]
