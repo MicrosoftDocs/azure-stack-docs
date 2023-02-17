@@ -4,22 +4,24 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/16/2023
-ms.reviewer: brianl
+ms.lastreviewed: 02/09/2023
+ms.reviewer: sethm
 ms.date: 02/09/2023
 
-# Intent: As an IT pro, I need to know how to use my own encryption keys for data in my Azure Managed Lustre file system to meet my organization's security requirements.
+# Intent: As an IT Pro, XXX.
 # Keyword: 
 
 ---
 # Use customer-managed encryption keys with Azure Managed Lustre (Preview)
 
-You can use Azure Key Vault to control ownership of the keys used to encrypt your data that's stored in the Azure Managed Lustre file system. This article explains how to use customer-managed keys for data encryption with Azure Managed Lustre.
+<!--STATUS: Imported as is from private preview content. Updated title only.-->
+
+You can use Azure Key Vault to control ownership of the keys used to encrypt your data while it's stored in the Azure Managed Lustre file system. This article explains how to use customer-managed keys for data encryption with Azure Managed Lustre.
 
 > [!NOTE]
 > All data stored in Azure is encrypted at rest using Microsoft-managed keys by default. You only need to follow the steps in this article if you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster.
 
-[VM host encryption](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) also protects all information on the managed disks that hold your data in an Azure Managed Lustre file system. Host encryption takes place even if you add a customer-managed encryption key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. Read [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption) for details.
+All information in an Azure Managed Lustre file system also is protected by [VM host encryption](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) on the managed disks that hold your data, even if you add a customer key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. Read [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption) for details.
 
 There are three steps to enable customer-managed key encryption for Azure Managed Lustre:
 
@@ -27,7 +29,7 @@ There are three steps to enable customer-managed key encryption for Azure Manage
 1. [Create a managed identity](#create-a-user-assigned-managed-identity) that can access that key vault.
 1. When creating the file system, [choose customer-managed key encryption](#create-the-azure-managed-lustre-file-system-with-customer-managed-encryption-keys) and specify the key vault, key, and managed identity to use.
 
-The following sections explain these steps in more detail.
+These steps are explained in more detail below.
 
 After you create the file system, you can't change between customer-managed keys and Microsoft-managed keys.<!-- However, if you use customer-managed keys you can [change](#update-key-settings) the encryption key, the key version, and the key vault as needed. ***[? - The update option doesn't seem to be in Azure Managed Lustre yet -?]*** -->
 
@@ -46,7 +48,7 @@ Key vault properties:
 * **Subscription** - Use the same subscription that is used for the Azure Managed Lustre file system.
 * **Region** - The key vault must be in the same region as the file system.
 * **Pricing tier** - Standard tier is sufficient for use with Azure Managed Lustre.
-* **Soft delete** - Azure Managed Lustre enables soft delete if it's not already configured on the key vault.
+* **Soft delete** - Azure Managed Lustre will enable soft delete if it is not already configured on the key vault.
 * **Purge protection** - Purge protection must be enabled.
 * **Access policy** - Default settings are sufficient.
 * **Network connectivity** - Azure Managed Lustre must be able to access the key vault, regardless of the endpoint settings you choose.
@@ -66,7 +68,7 @@ Key vault access permissions:
 Learn more [Azure Key Vault basics](/azure/key-vault/general/basic-concepts)
 
 ### Create a user-assigned managed identity
-
+<!-- check for cross-references from here and create -->
 
 The Azure Managed Lustre file system needs a user-assigned managed identity to access the key vault.
 
@@ -84,7 +86,7 @@ Read the managed identities documentation to learn more:
 
 ## Create the Azure Managed Lustre file system with customer-managed encryption keys
 
-When you create your Azure Managed Lustre file system, use the **Disk encryption keys** tab to select **Customer managed** in the **Disk encryption key type** setting. When you select **Customer managed**, sections for **Customer key settings** and **Managed identities** appear.
+When you create your Azure Managed Lustre file system, use the **Disk encryption keys** tab to select **Customer managed** in the **Disk encryption key type** setting. Additional sections appear for **Customer key settings** and **Managed identities**.
 
 ![Screenshot of the Azure Portal interface for creating a new Azure Managed Lustre system, with customer managed selected on the Disk encryption keys tab. The page shows a Customer key settings section with a clickable link (text: "Select or create a key vault, key, or version"). Below that is a 'Managed identities' header with a link that has the text "Add user assigned managed identities".](media/customer-managed-encryption-keys/portal-encryption-keys.png)<!--Reformat alt-text for complex illustration.-->
 
@@ -92,7 +94,7 @@ Remember that you can only set up customer managed keys at creation time. You ca
 
 ### Customer key settings
 
-Click the link in **Customer key settings**, and select the key vault, key, and version settings. You can also create a new Azure Key Vault from this page. If you create a new key vault, remember to give your managed identity access to it.
+Click the link in **Customer key settings** to select the key vault, key, and version settings. You can also create a new Azure Key Vault from this page. If you create a new key vault, remember to give your managed identity access to it.
 
 <!-- GUI is significantly different from HPC Cache at least the version in doc -->
 
@@ -111,7 +113,7 @@ Specify the version for the selected key. Learn more about versioning in the [Az
 
 ### Managed identities settings
 
-Click the link in **Managed identities**, and select the identity for the Azure Managed Lustre file system to use for key vault access.
+Click the link in **Managed identities** and select the identity that the Azure Managed Lustre file system will use for key vault access.
 
 After you configure these encryption key settings, proceed to the **Review + create** tab and finish creating the file system as usual.
 
@@ -138,5 +140,5 @@ After you choose the new encryption key values, click **Select**. A confirmation
 
 These articles explain more about using Azure Key Vault and customer-managed keys to encrypt data in Azure:
 
-* Learn more about [Azure storage encryption](/azure/storage/common/storage-service-encryption)
-* Learn more about [disk encryption with customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys)
+* [Azure storage encryption overview](/azure/storage/common/storage-service-encryption)
+* [Disk encryption with customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys)
