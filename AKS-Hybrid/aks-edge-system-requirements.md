@@ -23,7 +23,7 @@ The following are the requirements on the host machine that runs AKS Edge Essent
 
 To better understand the concept of vCPUs, [read this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 
-You can run AKS Edge Essentials on an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on [Dv5 and Dsv5-series](https://learn.microsoft.com/en-us/azure/virtual-machines/dv5-dsv5-series) virtual machines.
+You can run AKS Edge Essentials on an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines.
 
 > [!CAUTION]
 > Running AKS Edge Essentials on a virtual machine, using nested virtualization is an experimental feature and is recommended only for developer use cases.  
