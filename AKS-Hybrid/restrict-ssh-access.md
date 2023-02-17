@@ -26,7 +26,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 
 ## Enable SSH restriction
 
-To enable SSH restrictions, do the following:
+To enable SSH restrictions, perform the following steps:
 
 1. Create an SSH configuration using the `New-AksHciSSHConfiguration` cmdlet, with the allowed source IP addresses or CIDR you want to permit access to the VMs:
 
@@ -48,7 +48,7 @@ To enable SSH restrictions, do the following:
 
 ### Validation
 
-Once the cluster is created, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
+Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
 
 ```powershell
 ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
