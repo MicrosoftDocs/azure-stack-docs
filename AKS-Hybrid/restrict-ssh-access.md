@@ -56,7 +56,7 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs should have access. SSH attempts from outside the list should not have access.
 
-## Considerations
+### Considerations
 
 - You can only set the configuration during the installation phase of AKS hybrid.
 - There is no support for upgrades.
