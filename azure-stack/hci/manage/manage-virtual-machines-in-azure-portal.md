@@ -43,7 +43,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
     - Running the latest version of `az` CLI.
         - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
         -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
-    - Running 0.2.6 version for `azurestackhci` module. To verify, run the `az version` command. Here is a sample output:
+    - Running the latest version for `azurestackhci` module. To verify, run the `az version` command. Here is a sample output:
         
         ```azurecli
         PS C:\windows\system32> az version
@@ -119,6 +119,7 @@ To create a VM, you'll first need to create a virtual network interface.
     ```azurecli
     az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --subnet-id $VNet --name $VNic
     ```
+   
 1. Here is a sample output:
 
     ```azurecli
@@ -153,7 +154,7 @@ To create a VM, you'll first need to create a virtual network interface.
       "resourceGroup": "hybridaksresgrp-491206666",
       "systemData": {
         "createdAt": "2023-02-08T23:25:10.984508+00:00",
-        "createdBy": "vlakshmanan@microsoft.com",
+        "createdBy": "hciuser@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-02-08T23:26:03.262252+00:00",
         "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
@@ -178,9 +179,9 @@ To create a Windows VM, run the following command:
 az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "<VM administrator username>" --admin-password "<VM administrator password>" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --debug
 ```
 
-Make sure to provide VM computer name, VM administrator username and VM administrator password.
+Make sure to provide the VM computer name, VM administrator username, and the VM administrator password.
 
-In the above cmdlet, the parameter `--provision-vm-agent` when set to `true` enables guest management in the VM that is created. To disable guest management, you can omit the parameter or set it to `false'.
+In the above cmdlet, the parameter `--provision-vm-agent` when set to `true` enables guest management in the VM that is created. To disable guest management, you can omit the parameter or set it to `false`.
 
 
 Here is a sample output:
@@ -286,20 +287,11 @@ To create a Linux VM, run the following command:
 
 
 ```azurecli
-az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $netInt --provision-vm-agent true --allow-password-auth true
+az azurestackhci virtualmachine create --name $vm_name --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --hardware-profile vm-size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image-reference $galleryImageName --nic-id $VNic --provision-vm-agent true --allow-password-auth true
 ```
 This command will create a Linux VM with guest management enabled. The command is similar to the one used for Windows VM creation with the exception of the inclusion of `--allow-password-auth` parameter. The gallery image used should also be a Linux image. 
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
-
-<!--As linux has SSH keys and password mode
-
-Here is a sample output:
-
-```
-
-```
--->
 
 # [Azure portal](#tab/azureportal)
 
