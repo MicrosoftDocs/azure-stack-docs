@@ -7,6 +7,7 @@ ms.author: sethm
 ms.lastreviewed: 02/17/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
+ms.custom: references_regions
 
 # Intent: As an IT Pro, I want to understand how to use an Azure Managed Lustre file system xxx.
 # Keyword: 
@@ -73,8 +74,8 @@ The Azure Lustre CSI driver for Kubernetes can automate installing the client so
 
 To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).
 
-Next steps:
+## Next steps
 
-- Learn more about [blob storage integration]()
-- Learn more about [using Azure Managed Lustre with Kubernetes]()
-- Sign up for the preview by completing [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0)
+- Learn more about [blob storage integration](blob-integration.md)
+- Learn more about [using Azure Managed Lustre with Kubernetes](use-csi-driver-kubernetes.md)
+- Sign up for the preview by completing the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0)

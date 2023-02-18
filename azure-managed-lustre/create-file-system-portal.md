@@ -1,5 +1,5 @@
 ---
-title: Create an Azure Managed Lustre Preview file system in the Azure portal
+title: Create an Azure Managed Lustre (preview) file system in the Azure portal
 description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.date: 02/10/2023
 
 ---
 
-# Create an Azure Managed Lustre Preview file system
+# Create an Azure Managed Lustre (preview) file system
 
 This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
