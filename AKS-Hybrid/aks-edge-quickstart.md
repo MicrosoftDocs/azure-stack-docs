@@ -16,7 +16,7 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
-- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) terms as they apply to your use of the software. By using the remotedeployment script, you accept the EULA terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the EULA.
+- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) terms as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the EULA.
 
 ## Step 1: Download script for easy deployment
 
@@ -31,7 +31,7 @@ Unblock-File .\AksEdgeQuickStart.ps1
 This script automates the following steps:
 
 - Downloads the GitHub repo `Azure/AKS-Edge` to the current working folder
-- Uses the [`AksEdgeAzureSetup.ps1`](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to retrieve the Azure credentials and create a service principal that is used to connect the cluster to Azure Arc. 
+- Uses the [`AksEdgeAzureSetup.ps1`](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and create a service principal that is used to connect the cluster to Azure Arc. 
 - Invoke `Start-AideWorkflow` function that performs the following
   - Download and install AKS Edge Essentials MSI.
   - Install required Host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled and you need to restart the script again.
@@ -53,7 +53,7 @@ For connecting your cluster to Azure Arc, you need to provide these parameters. 
 
 ## Step 2: Deploy AKS Edge Essentials
 
-In an elevated PowerShell prompt, run the `AKSEdgeRemoteDeployment.ps1` script.
+In an elevated PowerShell prompt, run the `AksEdgeQuickStart.ps1` script.
 
 ```powershell
 .\AksEdgeQuickStart.ps1 -SubscriptionId "<subscription-id>" -TenantId "<tenant-id>" -Location "<location>"
@@ -62,7 +62,7 @@ In an elevated PowerShell prompt, run the `AKSEdgeRemoteDeployment.ps1` script.
 For installing K8s version, specify the `-UseK8s` flag
 
 ```powershell
-.\AKSEdgeRemoteDeployment.ps1 -UseK8s
+.\AksEdgeQuickStart.ps1 -SubscriptionId "<subscription-id>" -TenantId "<tenant-id>" -Location "<location>" -UseK8s
 ```
 
 The script installs AKS Edge Essentials and connects your cluster to Azure using Azure Arc. 
