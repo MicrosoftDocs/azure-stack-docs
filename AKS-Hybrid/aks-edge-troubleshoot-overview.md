@@ -33,7 +33,7 @@ if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPo
 1. Issues with `Disconnect-AksEdgeArc`:
     Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-    Workaround: If the pods aren't cleaned up, run the below commands to manually cleanup the existing arc related resources before trying to reconnect again.
+    Workaround: If the pods aren't cleaned up, run the below commands to manually clean up the existing arc related resources before trying to reconnect again.
 
     ```powershell
         kubectl delete ns azure-arc
