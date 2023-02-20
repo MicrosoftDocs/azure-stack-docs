@@ -1,5 +1,5 @@
 ---
-title: Use customer-managed encryption keys with Azure Managed Lustre (Preview)
+title: Use customer-managed encryption keys with Azure Managed Lustre
 description: Use an Azure Key Vault to create and manage your own encryption keys for Azure Managed Lustre file systems.
 ms.topic: overview
 author: sethmanheim
@@ -10,7 +10,7 @@ ms.date: 02/21/2023
 
 ---
 
-# Use customer-managed encryption keys with Azure Managed Lustre (Preview)
+# Use customer-managed encryption keys with Azure Managed Lustre
 
 You can use Azure Key Vault to control ownership of the keys used to encrypt your data while it's stored in the Azure Managed Lustre file system. This article explains how to use customer-managed keys for data encryption with Azure Managed Lustre.
 
