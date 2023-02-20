@@ -69,7 +69,6 @@ You can create a new subnet within your Azure Managed Lustre VNet, and use that 
 
 ![Diagram showing Azure Managed Lustre VNet with two subnets, one for the Lustre file system and one for AKS.](media/use-csi-driver-kubernetes/subnet-access-option-1.png)
 
-If you use this option, XXX the following considerations:
 
 - This option doesn't require VNet peering.
 
