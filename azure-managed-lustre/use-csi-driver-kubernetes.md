@@ -19,24 +19,24 @@ The Azure Lustre container support interface (CSI) driver for Kubernetes enables
 
 ## Compatible Kubernetes versions
 
-The Azure Lustre CSI driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations are not currently supported.
+The Azure Lustre CSI driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS). Other Kubernetes installations aren't currently supported.
 
 The following container images are compatible with Azure Managed Lustre file systems.
 
-| CSI driver version | Container image                                             | Supported Kubernetes version | Lustre client version |
-|--------------------|-------------------------------------------------------------|------------------------------|-----------------------|
-| main branch        | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest | 1.21 or later | 2.15.1 |
-| v0.1.5             | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5 | 1.21 or later | 2.15.1 |
+| CSI driver version | Container image                                               | Supported Kubernetes version | Lustre client version |
+|--------------------|---------------------------------------------------------------|------------------------------|-----------------------|
+| main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest` | 1.21 or later | 2.15.1 |
+| v0.1.5             | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5` | 1.21 or later | 2.15.1 |
 
 ## Use Kubernetes with Azure Managed Lustre (Preview)
 
 Kubernetes can simplify the process to configure and deploy virtual client endpoints for your Azure Managed Lustre workload. It can automate setup tasks like these:
 
-- Create virtual machine scale sets (VMSS) used by AKS to run the pods.
+- Create Virtual Machine Scale Sets used by AKS to run the pods.
 - Load the correct Lustre client software onto the VM instances.
 - Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
 
-The Azure Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas (by default, this can be customized) and a CSI node plugin as a daemonset.
+The Azure Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
 
 To use the Azure Managed Lustre CSI driver for Kubernetes, do these steps:
 
@@ -175,14 +175,14 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
    ![Screenshot of storageclass_existing_lustre.yaml file with values to replace highlighted.](media/use-csi-driver-kubernetes/storageclass-values-highlighted.png)
 
-   - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. In nearly all cases, this will be `lustrefs`.
+   - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. In most cases, the internal name is `lustrefs`.
 
      > [!NOTE]
      > This is not the same name that you gave the file system when you created it.
 
      You can double-check the name on your file system's **Client connection** page in the Azure portal. The suggested `mount` command on that page includes the name in an address string: <MGS_IP_address>`@tcp`<cluster_internal_name>
 
-   - Replace `EXISTING_LUSTRE_IP_ADDRESS` with your Azure Managed Lustre file system's MGS IP address. You'll find the address on the **Client connection** page in the Azure portal.
+   - Replace `EXISTING_LUSTRE_IP_ADDRESS` with your Azure Managed Lustre file system's MGS IP address. The **Client connection** page in the Azure portal displays this address.
 
    ![Screenshot of the Azure portal Client Connection page. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
 
