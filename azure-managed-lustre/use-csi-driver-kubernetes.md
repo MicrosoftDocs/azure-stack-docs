@@ -38,7 +38,7 @@ The following container images are compatible with Azure Managed Lustre file sys
 
 ## Setup overview
 
-To use the Azure Managed Lustre CSI driver for Kubernetes, complete the following set up tasks:
+To use the Azure Managed Lustre CSI driver for Kubernetes, complete the following setup tasks:
 
 1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
@@ -129,7 +129,7 @@ Connect to the cluster by doing these steps:
 
 ## Install the CSI driver
 
-The CSI driver is available in the Kubernetes SIGs repository, **azurelustre-csi-driver**, in GitHub at [https://github.com/kubernetes-sigs/azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver). The **Deploy** folder includes a script that installs the driver.
+The CSI driver is available in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver) repository in GitHub. The **Deploy** folder includes a script that installs the driver.
 
 To install the CSI driver, do these steps:
 
@@ -157,7 +157,7 @@ Complete the following tasks to create and configure a persistent volume. For mo
 
 To create a persistent volume for an existing Azure Managed Lustre file system, do these steps:
 
-1. Copy the following configuration files from **Examples** folder in the [azurelustre-csi-driver GItHub repository](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs) to your working path:
+1. Copy the following configuration files from **Examples** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs) rpository in GitHub to your working path:
 
    - **azurelustre-csi-driver/docs/examples/storageclass_existing_lustre.yaml**
    - **azurelustre-csi-driver/docs/examples/pvc_storageclass.yaml**
