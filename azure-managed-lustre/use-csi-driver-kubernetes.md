@@ -61,7 +61,7 @@ To use the Azure Managed Lustre CSI driver for Kubernetes, do these steps:
 
     1. [Install the driver components](#install-the-csi-driver).
     1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
-    1. Optionally, [use an echo pod](#check-installation) to confirm that the driver is working.
+    1. Optionally, [use an echo pod](#verify-installation) to confirm that the driver is working.
 
 The rest of this article gives instructions for each of these steps.
 
