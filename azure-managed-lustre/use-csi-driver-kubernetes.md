@@ -59,9 +59,9 @@ To use the Azure Managed Lustre CSI driver for Kubernetes, do these steps:
 
 1. In your clone of the driver repository:
 
-    1. [Install the driver components](#install-the-csi-driver).
+    1. [Install the driver components](#install-csi-driver).
     1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
-    1. Optionally, [use an echo pod](#verify-your-installation) to confirm that the driver is working.
+    1. Optionally, [use an echo pod](#verify-installation) to confirm that the driver is working.
 
 The rest of this article gives instructions for each of these steps.
 
@@ -109,9 +109,9 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
 
 - To learn how to connect the two networks, see [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
-## Create and connect to an Azure Kubernetes Service cluster
+## Create and connect to Azure Kubernetes Service cluster
 
-If you haven't already done so, create and connect to your AKS instance.
+If you haven't already done so, create and connect to your Azure Kubernetes Service instance.
 
 For instructions for creating an AKS instance, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
 
@@ -129,7 +129,7 @@ After you create your AKS cluster, connect to the cluster by doing these steps:<
    az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
    ```
 
-## Install the CSI driver
+## Install CSI driver
 
 The CSI driver is available in the GitHub Kubernetes SIGs repository, at [Azure Lustre CSI Driver for Kubernetes](https://github.com/kubernetes-sigs/azurelustre-csi-driver). The **Deploy** folder includes a script that installs the driver. 
 
@@ -193,7 +193,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
    kubectl create -f pvc_storageclass.yaml
    ```
 
-## Verify your installation
+## Verify installation
 
 To view timestamps in the console during writes, update the echo pod content to write a timestamp log by running the following commands:
 
