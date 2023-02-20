@@ -15,7 +15,15 @@ ms.date: 02/17/2023
 
 # Use the Azure Lustre CSI Driver (preview) for Kubernetes
 
-The Azure Lustre container support interface (CSI) driver for Kubernetes enables you to use an Azure Managed Lustre storage system with Kubernetes containers. The driver is compatible with [Azure Kubernetes Service](/azure/aks/) (AKS).
+The Azure Lustre container support interface (CSI) driver for Kubernetes enables you to use an Azure Managed Lustre storage system with Kubernetes containers. The driver is compatible with [Azure Kubernetes Service (AKS)](/azure/aks/).
+
+Kubernetes can simplify the process to configure and deploy virtual client endpoints for your Azure Managed Lustre workload. It can automate setup tasks like these:
+
+- Create Virtual Machine Scale Sets used by AKS to run the pods.
+- Load the correct Lustre client software onto the VM instances.
+- Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
+
+The Azure Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
 
 ## Compatible Kubernetes versions
 
@@ -28,34 +36,32 @@ The following container images are compatible with Azure Managed Lustre file sys
 | main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest` | 1.21 or later | 2.15.1 |
 | v0.1.5             | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5` | 1.21 or later | 2.15.1 |
 
-## Use Kubernetes with Azure Managed Lustre (Preview)
-
-Kubernetes can simplify the process to configure and deploy virtual client endpoints for your Azure Managed Lustre workload. It can automate setup tasks like these:
-
-- Create Virtual Machine Scale Sets used by AKS to run the pods.
-- Load the correct Lustre client software onto the VM instances.
-- Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
-
-The Azure Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
+## Set up Kubernetes with Azure Managed Lustre (preview)
 
 To use the Azure Managed Lustre CSI driver for Kubernetes, do these steps:
 
-1. Plan your [network architecture](#provide-subnet-access-between-aks-and-azure-managed-lustre).
+<!--1. Plan your [network architecture](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
    Because the Azure Managed Lustre system operates inside a private subnet, you need to make sure your Kubernetes system can access that subnet. For the supported options, see [Provide subnet access to the Azure Managed Lustre cluster](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
    > [!TIP]
-   > Network access is easier to configure if your Azure Managed Lustre file system and your Azure Kubernetes Service system use the same subscription and virtual network (VNet).
+   > Network access is easier to configure if your Azure Managed Lustre file system and your Azure Kubernetes Service system use the same subscription and virtual network (VNet).-->
+
+1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
+
+   Because the Azure Managed Lustre file system operates inside a private subnet, you must make sure your AKS instance can access that subnet. For the supported options, see [Provide subnet access to the Azure Managed Lustre cluster](#provide-subnet-access-between-aks-and-azure-managed-lustre).
+
+  -->
 
 1. Create an [Azure Managed Lustre](create-file-system-portal.md) file system.
 
    Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
 
-1. Create an [Azure Kubernetes Service](#create-and-connect-to-an-azure-kubernetes-service-cluster) instance, if you don't already have one.
+1. [Create an Azure Kubernetes Service instance](#create-aks-cluster), if you don't already have one.
 
-1. [Connect to your AKS instance](#create-and-connect-to-an-azure-kubernetes-service-cluster).
+1. [Connect to your AKS instance](#connect-to-aks-cluster).
 
-1. [Clone and download the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver) from the GitHub Kubernetes SIGs repository.
+1. [Install the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver) from the GitHub Kubernetes SIGs repository.
 
 1. In your clone of the driver repository:
 
@@ -63,19 +69,22 @@ To use the Azure Managed Lustre CSI driver for Kubernetes, do these steps:
     1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
     1. Optionally, [use an echo pod](#verify-installation) to confirm that the driver is working.
 
-The rest of this article gives instructions for each of these steps.
+The rest of this article gives instructions for each of these steps.<!--UGH-->
 
 ## Provide subnet access between AKS and Azure Managed Lustre
 
-Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster.
+Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access.
 
-Three options are available to configure subnet access.
+> [!TIP]
+> Network access is easier to configure if your Azure Managed Lustre file system and your Azure Kubernetes Service system use the same subscription and virtual network (VNet).
 
 ### Option 1: Create an AKS subnet inside the Azure Managed Lustre VNet
 
-You can create a new subnet within your Azure Managed Lustre VNet and use that subnet with the Azure Container Network Interface (Azure CNI) for AKS. Or you can host the AKS cluster within your Azure Managed Lustre subnet.
+You can create a new subnet within your Azure Managed Lustre VNet, and use that subnet with the Azure Container Network Interface (Azure CNI) for AKS. Or you can host the AKS cluster within your Azure Managed Lustre subnet.
 
 ![Diagram showing Azure Managed Lustre VNet with two subnets, one for the Lustre file system and one for AKS.](media/use-csi-driver-kubernetes/subnet-access-option-1.png)
+
+If you use this option, XXX the following considerations:
 
 - This option doesn't require VNet peering.
 
@@ -113,9 +122,13 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
 
 If you haven't already done so, create and connect to your Azure Kubernetes Service instance.
 
-For instructions for creating an AKS instance, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+### Create AKS cluster
 
-After you create your AKS cluster, connect to the cluster by doing these steps:<!--More work is needed. I made some steps. Once they're stepwise, things don't necessarily add up.-->
+If you haven't already created an AKS cluster, create one now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+
+### Connect to AKS cluster
+
+Connect to the cluster by doing these steps:<!--More work is needed. I made some steps. Once they're stepwise, things don't necessarily add up.-->
 
 1. In the Azure portal, on the **Overview** for your AKS cluster, select the **Get started** tab.
 
