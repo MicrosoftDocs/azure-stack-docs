@@ -140,7 +140,7 @@ To install the CSI driver, do these steps:
    cd azurelustre-csi-driver
    ```
 
-2. Change directories to the **deploy/** subdirectory of the repository, and run the installation script **install-driver-sh** (at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh)):
+1. Change directories to the **deploy/** subdirectory of the repository, and run the installation script **install-driver-sh** (at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh)):
 
    ```bash
    cd deploy/
@@ -201,7 +201,7 @@ To view timestamps in the console during writes, update the echo pod content to 
    while true; do echo $(date) >> /mnt/lustre/outfile; tail -1 /mnt/lustre/outfile; sleep 1; done
    ```
 
-2. To view timestamps in the console during writes, run the following `kubectl` command:
+1. To view timestamps in the console during writes, run the following `kubectl` command:
 
    ```bash
    `kubectl logs -f lustre-echo-date`
