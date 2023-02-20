@@ -181,7 +181,7 @@ This section shows sample contents for a template file (**azlustre-template.json
 Downloadable example files:
 
 * [azlustre-template.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-template.json)
-* [azlustre-parameters.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-parameters.json)[]
+* [azlustre-parameters.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-parameters.json)
 
 ### Template file
 
