@@ -56,9 +56,6 @@ To use the Azure Managed Lustre CSI driver for Kubernetes, complete the followin
 
 The following sections describe each task in greater detail.
 
-   
-The rest of this article gives instructions for each of these steps.<!--UGH-->
-
 ## Provide subnet access between AKS and Azure Managed Lustre
 
 Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access.
