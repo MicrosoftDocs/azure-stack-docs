@@ -12,7 +12,7 @@ ms.date: 02/21/2023
 
 # Create an Azure Managed Lustre file system using Azure Resource Manager templates
 
-You can automate Azure Managed Lustre file system creation by using Azure Resource Manager templates. This article explains the basic procedure and gives examples of the files you'll need.
+You can automate Azure Managed Lustre file system creation by using Azure Resource Manager templates. This article explains the basic procedure and gives examples of the files you need.
 
 For more information about resource manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/templates/).
 
@@ -25,7 +25,7 @@ For help understanding your options, see [Comparing JSON and Bicep for templates
 
 ## File system type and size options
 
-Before you write a template, you'll need to make some decisions about your Azure Managed Lustre file system. If you aren't familiar with the options, read the [Create an Azure Managed Lustre file system](create-file-system-portal.md) article and page through the Azure portal create workflow to learn more.
+Before you write a template, you must make some decisions about your Azure Managed Lustre file system. If you aren't familiar with the options, read the [Create an Azure Managed Lustre file system](create-file-system-portal.md) article and page through the Azure portal create workflow to learn more.
 
 When you use a template, specify a **SKU name** to define the basic type of Azure Managed Lustre system to create. If you use the Azure portal to create your Azure Managed Lustre, you specify the system type indirectly by selecting its capabilities.
 
@@ -74,7 +74,7 @@ Before you perform these steps, you should decide on the file system type and si
 
 1. Deploy the Azure Managed Lustre system by using the template. The syntax is different depending on whether you're using JSON or Bicep files, and the number of files you use.
 
-   Both Bicep and JSON templates can be deployed as single files or multiple files. For more guidance and exact syntax for each option, see the [Azure Resource Manager templates documentation](/azure/azure-resource-manager/templates).
+   You can deploy both Bicep and JSON templates as single files or multiple files. For more guidance and exact syntax for each option, see the [Azure Resource Manager templates documentation](/azure/azure-resource-manager/templates).
 
    Example JSON command:
 
@@ -100,7 +100,7 @@ This section explains the information you need to include in your Azure Resource
 
 * **Resource type to create** - Tells Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
 
-  There are several ways to do this.
+  There are several ways to create the resource type:
 
   * In this article's JSON example, the resource type value is passed literally in the **template.json** file, but the API version value is read from the **parameters.json** file.
   * In the Bicep example, the resource type and API version are passed together at the beginning of the template file.
