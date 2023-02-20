@@ -38,7 +38,7 @@ The following container images are compatible with Azure Managed Lustre file sys
 
 ## Setup overview
 
-To use the Azure Managed Lustre CSI driver for Kubernetes, you'll complete these tasks:
+To use the Azure Managed Lustre CSI driver for Kubernetes, complete the following set up tasks:
 
 1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
@@ -46,19 +46,16 @@ To use the Azure Managed Lustre CSI driver for Kubernetes, you'll complete these
 
    Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
 
-1. [Create an Azure Kubernetes Service instance](#create-aks-cluster) if you don't already have one.
+1. [Create an Azure Kubernetes Service instance](#create-aks-cluster) if you don't already have one, and [connect to your AKS instance](#connect-to-aks-cluster).
 
-1. [Connect to your AKS instance](#connect-to-aks-cluster).
+1. [Install the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver).
 
-1. [Install the Azure Lustre CSI driver for Kubernetes](#install-csi-driver).
+1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
 
+1. [Check the installation](#check-the-installation) by optionally using an echo pod to confirm the driver is working.
 
+The following sections describe each task in greater detail.
 
-In your clone of the driver repository:
-
-    1. [Install the driver components](#install-csi-driver).
-    1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
-    1. Optionally, [use an echo pod](#check-the-installation) to confirm that the driver is working.
    
 The rest of this article gives instructions for each of these steps.<!--UGH-->
 
@@ -135,18 +132,18 @@ Connect to the cluster by doing these steps:
 
 ## Install the CSI driver
 
-The CSI driver is available in the GitHub Kubernetes SIGs repository, at [https://github.com/kubernetes-sigs/azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver). The **Deploy** folder includes a script that installs the driver.
+The CSI driver is available in the Kubernetes SIGs repository, **azurelustre-csi-driver**, in GitHub at [https://github.com/kubernetes-sigs/azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver). The **Deploy** folder includes a script that installs the driver.
 
 To install the CSI driver, do these steps:
 
-1. Clone and download the repository to get the software by running the following command:
+1. To get the software, clone the GitHub Kubernetes SIGs repository:
 
    ```bash
    git clone https://github.com/kubernetes-sigs/azurelustre-csi-driver.git
    cd azurelustre-csi-driver
    ```
 
-2. Change directories to the **deploy/** subdirectory, and run the installation script, **install-driver-sh (at https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh):
+2. Change directories to the **deploy/** subdirectory of the repository, and run the installation script **install-driver-sh** (at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh)):
 
    ```bash
    cd deploy/
@@ -174,7 +171,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
    - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/pvc_storageclass.yaml)
 
-1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the MSG IP address.
+1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the MSG IP address:
 
    ![Screenshot of storageclass_existing_lustre.yaml file with values to replace highlighted.](media/use-csi-driver-kubernetes/storageclass-values-highlighted.png)
 
@@ -196,6 +193,8 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
    ```
 
 ## Check the installation
+
+If you want to check your installation, you can optionally use an echo pod to confirm the driver is working.
 
 To view timestamps in the console during writes, update the echo pod content to write a timestamp log by running the following commands:
 
