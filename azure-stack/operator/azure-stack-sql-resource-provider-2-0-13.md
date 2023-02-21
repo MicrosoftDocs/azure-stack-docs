@@ -17,17 +17,15 @@ ms.lastreviewed: 02/16/2023
 These release notes describe the improvements and known issues in SQL resource provider version 2.0.13.x.
 
 ## Build reference
-Starting from release version 2.0, SQL resource provider becomes a standard Azure Stack Hub value-add RP. If you want to get access to the SQL resource provider in Azure Stack Hub marketplace, [open a support case](../operator/azure-stack-help-and-support-overview.md) to add your subscription to the allowlist. 
+After release version 2.0, SQL resource provider becomes a standard Azure Stack Hub value-add RP. If you want to get access to the SQL resource provider in Azure Stack Hub marketplace, [open a support case](../operator/azure-stack-help-and-support-overview.md) to add your subscription to the allowlist. 
 
-The resource provider has a minimum corresponding Azure Stack Hub build. The minimum Azure Stack Hub release version required to install this version of the SQL resource provider is listed below.
+The resource provider has a minimum corresponding Azure Stack Hub build. It is required that you apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system **before** deploying the latest version of the SQL resource provider.
 
-It is required that you apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system **before** deploying the latest version of the SQL resource provider.
-
-> |Supported Azure Stack Hub version|SQL resource provider version|
-> |-----|-----|
-> |Version 2108,2206|SQL RP version 2.0.6.0|  
-> |Version 2206|SQL RP version 2.0.13.0|  
-> |     |     |
+ |Supported Azure Stack Hub version|SQL resource provider version|
+ |-----|-----|
+ |Version 2108,2206|SQL RP version 2.0.6.0|  
+ |Version 2206|SQL RP version 2.0.13.0|  
+ |     |     |
 
 > [!IMPORTANT]
 > It is strongly recommended to upgrade to 2.0.13.0 when your Azure Stack Hub version is 2206. 

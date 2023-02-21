@@ -164,8 +164,8 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
    - Upload the mysql-connector-net-8.0.21.msi file from your local folder to the newly created storage container.
       ![Screenshot of uploading MySQL Connector to the container.](media/azure-stack-mysql-rp-deploy/8-3-upload-connector.png)
 
- > [!IMPORTANT]
- > Make sure the version of hte MySQL Connector is 8.0.21.
+   > [!IMPORTANT]
+   > Make sure the version of the MySQL Connector is 8.0.21.
    
    - Copy the blob URI.
       ![Screenshot of copying the MySQL Connector URI.](media/azure-stack-mysql-rp-deploy/8-4-copy-uri.png)
