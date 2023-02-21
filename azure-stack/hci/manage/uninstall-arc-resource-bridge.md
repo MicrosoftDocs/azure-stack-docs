@@ -42,7 +42,7 @@ Perform the following steps to uninstall Azure Arc VM management:
 4. Remove the Kubernetes extension:
 
    ```azurecli
-   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --yes
+   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name vmss-hci --yes
    ```
 
 5. Remove the appliance:
