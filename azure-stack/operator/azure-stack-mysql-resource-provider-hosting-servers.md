@@ -178,6 +178,9 @@ Create plans and offers to make MySQL database servers available to users. Add t
 > [!IMPORTANT]
 > It can take up to two hours for new quotas to be available in the user portal or before a changed quota is enforced.
 
+> [!NOTE]
+> You can't delete a quota if there are any current plans that use it. You must first delete the plan that references the quota.
+
 ## Next steps
 
 [Create a MySQL database](azure-stack-mysql-resource-provider-databases.md)

@@ -1,3 +1,36 @@
 - name: Azure Managed Lustre File System
   href: index.yml
-
+- name: Overview
+  items:
+  - name: Azure Managed Lustre File System overview 
+    href: amlfs-overview.md
+- name: Concepts
+  items:
+  - name: Use Azure Blob storage with Azure Managed Lustre
+    href: blob-integration.md
+- name: How-to guides
+  items:
+  - name: Create a file system
+    items:
+    - name: Prerequisites
+      href: amlfs-prerequisites.md
+    - name: Create file system in Azure portal
+      href: create-file-system-portal.md
+    - name: Create file system using Azure Resource Manager
+      href: create-file-system-resource-manager.md
+  - name: Connect clients to the file system
+    href: connect-clients.md
+  - name: Use Azure Lustre CSI driver for Kubernetes
+    href: use-csi-driver-kubernetes.md
+  - name: Export data
+    items:
+    - name: Use archive jobs to export data
+      href: export-with-archive-jobs.md
+  - name: Security
+    items:
+    - name: Use customer-managed encryption keys
+      href: customer-managed-encryption-keys.md
+  - name: Troubleshoot
+    items:
+    - name: Public preview support
+      href: preview-support.md
