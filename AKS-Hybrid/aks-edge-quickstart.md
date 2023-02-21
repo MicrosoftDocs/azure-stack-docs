@@ -46,7 +46,7 @@ For connecting your cluster to Azure Arc, you need to provide these parameters. 
    | :------------ |:-----------|:--------|
    |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy the subscription ID string. |
    |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy the tenant ID string. |
-   |`Location` | string | The location of your resource group. Choose the location closest to your deployment. See [Azure Arc by Region](/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region where both are supported. |
+   |`Location` | string | The location of your resource group. Choose the location closest to your deployment. See [Azure Arc by Region](/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by **Azure Arc enabled servers** and **Azure Arc enabled Kubernetes** services. Choose a region where both are supported. |
 
 ## Step 2: Deploy AKS Edge Essentials
 
