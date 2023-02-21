@@ -41,7 +41,7 @@
     "externalReference": [],
     "globalMetadata": {
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
+      "extendBreadcrumb": false,
       "feedback_system": "None",
       "manager":"femila",
       "ms.service": "azure-stack",
