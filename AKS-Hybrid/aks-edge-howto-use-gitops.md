@@ -77,8 +77,6 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 
 ![Screenshot showing namespace-level configuration.](media/aks-edge/gitops-second-config.png)
 
-> [!CAUTION]
-> The sample `config-helloarc` is available only as a Linux container.
 
 Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up:
 
