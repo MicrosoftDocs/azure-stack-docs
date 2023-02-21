@@ -15,11 +15,11 @@ ms.date: 02/09/2023
 
 # Use archive jobs to export data from Azure Managed Lustre (preview)
 
-This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job.
+This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job, and explains what is exported from the file system.
 
-This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands directly to copy the data without creating an archive job.
+This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an archive job.
 
-## Understand which files are exported
+## Which files does an archive job export?
 
 When you archive files from your Azure Managed Lustre system, not all of the files are copied into the blob container that you specified when you created the file system:
 
@@ -29,16 +29,16 @@ When you archive files from your Azure Managed Lustre system, not all of the fil
 
 * If you delete a file in the Azure Managed Lustre file system, the archive job won't delete the file from the original source.
 
-Archiving data is a manual process that you can do in the Azure portal or using command in the native Lustre client CLI. With both methods, you can monitor the state of the archive job.
+Archiving data is a manual process that you can do in the Azure portal or by using commands in the native Lustre client CLI. With both methods, you can monitor the state of the archive job.
 
 The following procedures tell how to:
 
-* [Create archive job in Azure portal](#create-archive-job-in-azure-portal)
-* [Monitor or cancel an archive job in the Azure portal](#monitor-or-cancel-archive-job-in-azure-portal)
-* [Create an archive job with native Lustre CLI](#create-archive-job-using-native-lustre-client-cli)
-* [Monitor archiving state for a file using the native Luster CLI](#monitor-archive-state-using-native-lustre-client-cli)
+* [Create an archive job in the Azure portal](#create-an-archive-job-in-the-azure-portal)
+* [Monitor or cancel an archive job in the Azure portal](#monitor-or-cancel-an-archive-job-in-the-azure-portal)
+* [Create an archive job using commands in the native Lustre CLI](#create-archive-job-using-the-native-lustre-client-cli)
+* [Monitor archiving state for a file using native Luster CLI commands](#monitor-archive-state-using-the-native-lustre-client-cli)
 
-## Create archive job in Azure portal
+## Create an archive job in the Azure portal
 
 To create an archive job to export changed data from an Azure Managed Lustre file system in the Azure portal, do the following steps:
 
@@ -52,15 +52,15 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
 
    ![Screenshot showing the Create Archive Job button on the Blob Integration page of an Azure Managed Lustre file system.](media/export-with-archive-jobs/select-create-archive-job.png)
 
-3. Enter the **File system path** to specify what to export in this archive job, and select **OK**.
-
-   ![Screenshot showing the Create Archive Job pane for an Azure Managed Lustre file system.](media/export-with-archive-jobs/create-archive-job-options.png)
+3. To specify what to export in the archive job, enter a **File system path**. Then select **OK**.
 
    * All new or changed files whose filenames begin with this string in the Azure Managed Lustre file system will be exported.
 
    * Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. If you want to avoid overwriting existing files in the blob container, make sure the files' path in your Lustre system doesn't overlap the existing files' path in the blob container.
 
-## Monitor or cancel archive job in Azure portal
+   ![Screenshot showing the Create Archive Job pane for an Azure Managed Lustre file system.](media/export-with-archive-jobs/create-archive-job-options.png)
+
+## Monitor or cancel an archive job in the Azure portal
 
 You can monitor or cancel an archive job that you created through the blob integration feature for your Azure Managed Lustre file system in the Azure portal. The **Arhive jobs** section of the **Blob integration** page shows the status of each job.
 
@@ -68,7 +68,7 @@ You can monitor or cancel an archive job that you created through the blob integ
 
 Only one archive job runs at a time. To cancel the job that's in progress, select the **Cancel** button at the top of the page. Or select the **Cancel** link for that job in the **Archive jobs** table. The **Cancel** link isn't available for a completed job.
 
-## Create archive job using native Lustre client CLI
+## Create archive job using the native Lustre client CLI
 
 To create an archive job to export changed data from an Azure Managed Lustre file system using native Lustre client CLI command, use one of the following commands:
 
@@ -84,7 +84,7 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
   nohup find local/directory -type f -print0 | xargs -0 -n 1 sudo lfs hsm_archive &
   ```
 
-## Monitor archive state using native Lustre client CLI
+## Monitor archive state using the native Lustre client CLI
 
 To check on the status of an archive job using the native Lustre client CLI, run the following command:
 
