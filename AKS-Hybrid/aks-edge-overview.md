@@ -8,7 +8,7 @@ ms.date: 02/03/2023
 ms.custom: template-overview
 ---
 
-# AKS Edge Essentials (preview)
+# AKS Edge Essentials
 
 > [!NOTE]
 > AKS Edge Essentials is now Generally Available. Note that some of the [features](./aks-edge-system-requirements.md#ga-feature-support-matrix) from public preview are not supported in GA yet. 

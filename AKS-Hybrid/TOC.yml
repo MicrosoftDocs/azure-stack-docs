@@ -345,6 +345,8 @@
     items:
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Troubleshooting 
+      href: aks-edge-troubleshoot-overview.md
     - name: Logs 
       href: aks-edge-resources-logs.md
     - name: Release notes and known issues
