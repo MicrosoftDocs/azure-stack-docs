@@ -30,15 +30,15 @@ Unblock-File .\AksEdgeQuickStart.ps1
 
 This script automates the following steps:
 
-- Downloads the GitHub repo `Azure/AKS-Edge` to the current working folder
-- Uses the [`AksEdgeAzureSetup.ps1`](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and create a service principal that is used to connect the cluster to Azure Arc. 
-- Invoke `Start-AideWorkflow` function that performs the following
-  - Download and install AKS Edge Essentials MSI.
-  - Install required Host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled and you need to restart the script again.
-  - Deploy a single machine cluster with internal switch (linux node only).
-- Invoke `Connect-AideArc` function if the Azure parameters are provided. This function performs the following
-  - Install the Azure Connected Machine Agent and connects the host machine to Arc for Servers
-  - Connects the deployed cluster to Arc for Connected Kubernetes.
+- Downloads the GitHub repo `Azure/AKS-Edge` to the current working folder.
+- Uses the [`AksEdgeAzureSetup.ps1` script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and create a service principal that is used to connect the cluster to Azure Arc. 
+- Invokes the `Start-AideWorkflow` function that performs the following tasks:
+  - Downloads and installs the AKS Edge Essentials MSI.
+  - Installs required host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled, and you must restart the script again.
+  - Deploy a single machine cluster with internal switch (Linux node only).
+- Invokes the `Connect-AideArc` function if the Azure parameters are provided. This function performs the following tasks:
+  - Installs the Azure Connected Machine Agent and connects the host machine to Arc for Servers.
+  - Connects the deployed cluster to Arc for connected Kubernetes.
 
 
 ### Get your Azure subscription parameters
