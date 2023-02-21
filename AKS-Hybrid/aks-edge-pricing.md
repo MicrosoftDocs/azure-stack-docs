@@ -31,7 +31,8 @@ For detailed pricing information, see the [AKS Edge Essentials pricing details p
   - Inventory, grouping, and tagging in Azure.
   - Deployment of apps and configurations with GitOps: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is per vCPU per month).
 
-**Note**: When you run the Azure Arc-enabled Kubernetes clusters on the following products, the Kubernetes configuration capability (deployment of apps and configurations with GitOps) will be included at no extra charge. 
+When you run the Azure Arc-enabled Kubernetes clusters on the following products, the Kubernetes configuration capability (deployment of apps and configurations with GitOps) will be included at no extra charge.
+
 - Windows 11 Enterprise
 - Windows 11 Enterprise N
 - Windows 11 IoT Enterprise
