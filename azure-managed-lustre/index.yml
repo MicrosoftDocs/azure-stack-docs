@@ -1,20 +1,38 @@
 ### YamlMime:Landing
 
-title: Azure Managed Lustre File System documentation
-summary: Azure Managed Lustre File System documentation is good.
+title: Azure Managed Lustre File System documentation (preview)
+summary: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
 metadata:
   title: Azure Managed Lustre File System documentation
-  description: Azure Managed Lustre File System documentation is good.
+  description: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
-  ms.date: 02/08/2023
+  ms.date: 02/15/2023
 
 landingContent:
-  - title: About Azure Kubernetes Service
+  - title: About Azure Managed Lustre
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS hybrid deployment options?
-            url: aks-hybrid-options-overview.md
+          - text: What is the Azure Managed Lustre file system?
+            url: amlfs-overview.md
+      - linkListType: concept
+        links:
+          - text: Connect clients to an Azure Managed Lustre file system
+            url: connect-clients.md
+  - title: Get started
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Prerequisites
+            url: amlfs-prerequisites.md
+          - text: Create a file system using the Azure portal
+            url: create-file-system-portal.md
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Contact support
+            url: preview-support.md

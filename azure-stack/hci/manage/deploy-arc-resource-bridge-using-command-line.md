@@ -112,8 +112,6 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
      
      ```azurecli
      az extension remove --name arcappliance
-     az extension remove --name connectedk8s
-     az extension remove --name k8s-configuration
      az extension remove --name k8s-extension
      az extension remove --name customlocation
      az extension remove --name azurestackhci
@@ -123,8 +121,6 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    
      ```azurecli
      az extension add --upgrade --name arcappliance
-     az extension add --upgrade --name connectedk8s
-     az extension add --upgrade --name k8s-configuration
      az extension add --upgrade --name k8s-extension
      az extension add --upgrade --name customlocation
      az extension add --upgrade --name azurestackhci
