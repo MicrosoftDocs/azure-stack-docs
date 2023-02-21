@@ -16,7 +16,7 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
-- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) terms as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the EULA.
+- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) terms as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the license terms.
 
 ## Step 1: Download script for easy deployment
 
