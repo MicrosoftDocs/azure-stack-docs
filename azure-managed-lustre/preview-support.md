@@ -8,7 +8,7 @@ ms.lastreviewed: 02/20/2023
 ms.reviewer: dsundarraj
 ms.date: 02/20/2023
 
-# Intent: As an IT Pro, I need to know how to get support for my Azure Managed Lustre file system during the public preview. 
+# Intent: As an IT Pro, I need to know about available support and limitations for my Azure Managed Lustre file system while the product is in preview. 
 # Keyword: 
 
 ---
@@ -22,6 +22,6 @@ During the preview period for Azure Managed Lustre, the following support standa
 
 * Upgrades and patches for bugs, features, and security vulnerabilities will be performed during the normal scheduled maintenance window.
 
-* This preview is provided "as-is", "with all faults," and "as available," and is excluded from service-level agreements and limited warranty.
+* This preview is provided "as-is," "with all faults," and "as available," and is excluded from service level agreements and limited warranty. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 * Production workloads are not advised during this preview.
