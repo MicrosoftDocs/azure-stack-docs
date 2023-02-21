@@ -132,7 +132,19 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
 
    [ ![Screenshot showing the container instance FQDN in azure portal.](media/aks-edge/akri-opc-plc-fqdn.png) ](media/aks-edge/akri-opc-plc-fqdn.png#lightbox)
 
-4. Install Akri using Helm. When installing Akri, specify that you want to deploy the OPC UA discovery handlers by setting the helm value `opcua.discovery.enabled=true`. 
+4.  Add the Akri helm charts if you've haven't already:
+
+    ```powershell
+    helm repo add akri-helm-charts https://project-akri.github.io/akri/
+    ```
+    
+    If you have already added Akri helm chart previously, update your repo for the latest build:
+    
+    ```powershell
+    helm repo update
+    ```
+
+5. Install Akri using Helm. When installing Akri, specify that you want to deploy the OPC UA discovery handlers by setting the helm value `opcua.discovery.enabled=true`. 
    
    In this scenario, specify the `Identifier` and `NamespaceIndex` of the NodeID you want the brokers to monitor. In this case, that's the temperature variable created previously, which has an `Identifier` of `FastUInt1` and `NamespaceIndex` of `2`. 
 
@@ -141,7 +153,6 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
    If using security, uncomment `--set opcua.configuration.mountCertificates='true'`.
     
    ```powershell
-   helm repo add akri-helm-charts https://project-akri.github.io/akri/
    helm install akri akri-helm-charts/akri `
       $AKRI_HELM_CRICTL_CONFIGURATION `
       --set opcua.discovery.enabled=true `
@@ -161,7 +172,7 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
    
    Learn more about the [OPC UA configuration settings here](https://docs.akri.sh/discovery-handlers/opc-ua).
 
-5. Once Akri is installed, the Akri agent discovers the two servers and creates an instance for each server. Watch two broker pods spin up, one for each server.
+6. Once Akri is installed, the Akri agent discovers the two servers and creates an instance for each server. Watch two broker pods spin up, one for each server.
 
    ```powershell
    kubectl get pods -o wide --watch
