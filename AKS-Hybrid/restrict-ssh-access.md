@@ -3,9 +3,9 @@ title: Restrict SSH access in AKS hybrid
 description: Learn how to restrict SSH access in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/17/2023
+ms.date: 02/21/2023
 ms.author: sethm 
-ms.lastreviewed: 02/17/2023
+ms.lastreviewed: 02/21/2023
 ms.reviewer: oadeniji
 
 # Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
@@ -15,11 +15,11 @@ ms.reviewer: oadeniji
 
 # Restrict SSH access to virtual machines
 
-This article describes a new security feature in AKS hybrid that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs), to only certain IP addresses.
+This article describes a new security feature in AKS hybrid that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs). The feature limits access to only certain IP addresses.
 
 ## Overview
 
-Currently, anyone with administrator access to AKS hybrid has access to VMs through SSH on any machine. In some scenarios you might want to reduce that access, which makes it difficult to pass compliance.
+Currently, anyone with administrator access to AKS hybrid has access to VMs through SSH on any machine. In some scenarios you might want to reduce that access, because unlimited access makes it difficult to pass compliance.
 
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs.
