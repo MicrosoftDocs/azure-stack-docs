@@ -23,10 +23,11 @@ ms.lastreviewed: 09/26/2021
 > [!IMPORTANT]
 > Updating the resource provider will NOT update the hosting MySQL Server. 
 
-A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
+When Azure Stack Hub releases a new build, we may release A new MySQL resource provider adapter. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
+   |2206|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108,2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
@@ -49,7 +50,7 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 3. Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
 
-4. Ensure datacenter integration prerequisites are met.
+4. Ensure your Azure Stack Hub meets the datacenter integration prerequisites.
 
    |Prerequisite|Reference|
    |-----|-----|
@@ -60,7 +61,7 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 5. (for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
 
-6. Prepare the MySQL Connector Uri. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
+6. Prepare the MySQL Connector Uri with the required version. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
 e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi
 
 ### Trigger MajorVersionUpgrade
@@ -138,7 +139,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 1.	The MajorVersionUpgrade script executed without any errors.
 2.	Check the resource provider in marketplace and make sure that MySQL RP 2.0 has been installed successfully.
 3.  The old **system.\<location\>.mysqladapter** resource group and **system.\<location\>.dbadapter.dns** resource group in the default provider subscription will not be automatically deleted by the script. 
-* We recommend to keep the Storage Account and the Key Vault in the mysqladapter resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the resource group.
+* We recommend keeping the Storage Account and the Key Vault in the mysqladapter resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the resource group.
 * After verifying that the DNS Zone in the dbadapter.dns resource group is empty with no DNS record, it is safe to delete the dbadapter.dns resource group.
 * [IMPORTANT] Do not use the V1 deploy script to uninstall the V1 version. After upgrade completed and confirmation that the upgrade was successful, you can manually delete the resource group from the provider subscription.
 

@@ -213,6 +213,8 @@
             href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
+          - name: Restrict SSH access
+            href: restrict-ssh-access.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
