@@ -20,7 +20,7 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 ## Step 1: Download script for easy deployment
 
-Download the [AksEdgeQuickStart.ps1](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1), **right-click** and **save link as** to a working folder. Depending on the policy setup on your machine, you may require to unblock the file before running.
+Download the [AksEdgeQuickStart.ps1 script](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1). To do so, right-click and choose **Save link as...** to a working folder. Depending on the policy setup on your machine, you may have to unblock the file before running.
 
 ```powershell
 Unblock-File .\AksEdgeQuickStart.ps1
