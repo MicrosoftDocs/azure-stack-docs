@@ -62,7 +62,7 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
 
 ## Monitor or cancel an archive job in the Azure portal
 
-You can monitor or cancel an archive job that you created through the blob integration feature for your Azure Managed Lustre file system in the Azure portal. The **Arhive jobs** section of the **Blob integration** page shows the status of each job.
+You can monitor or cancel an archive job that you created through the blob integration feature for your Azure Managed Lustre file system in the Azure portal. The **Archive jobs** section of the **Blob integration** page shows the status of each job.
 
    ![Screenshot showing the Blob Integration pane for an Azure Managed Lustre file system. The Archive Jobs heading and the Cancel button for a completed job are highlighted.](media/export-with-archive-jobs/archive-jobs.png)
 
