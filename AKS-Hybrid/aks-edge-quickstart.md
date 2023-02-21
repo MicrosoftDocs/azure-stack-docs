@@ -50,7 +50,7 @@ For connecting your cluster to Azure Arc, you need to provide these parameters. 
 
 ## Step 2: Deploy AKS Edge Essentials
 
-In an elevated PowerShell prompt, run the `AksEdgeQuickStart.ps1` script.
+In an elevated PowerShell prompt, run the `AksEdgeQuickStart.ps1` script. This brings up a K3s cluster.
 
 ```powershell
 .\AksEdgeQuickStart.ps1 -SubscriptionId "<subscription-id>" -TenantId "<tenant-id>" -Location "<location>"

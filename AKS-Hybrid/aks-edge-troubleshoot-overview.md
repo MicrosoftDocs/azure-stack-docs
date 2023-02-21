@@ -28,20 +28,20 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
-## Arc connectivity
+## Azure Arc connectivity
 
 1. Issues with `Disconnect-AksEdgeArc`:
     Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-    Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing arc related resources before trying to reconnect again.
+    Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc related resources before trying to reconnect again.
 
     ```powershell
         kubectl delete ns azure-arc
         kubectl delete clusterrolebinding azure-arc-operator
         kubectl delete secret sh.helm.release.v1.azure-arc.v1
     ```
-2. Arc connectivity with a proxy setup:
-    Issue: Arc connectivity doesn't work in a proxy environment.
+2. Azure Arc connectivity with a proxy setup:
+    Issue: Azure Arc connectivity doesn't work in a proxy environment.
     Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**. 
     
-    ![Screenshot showing internet options](./media/aks-edge/aks-edge-arc-proxy.png)
+    ![Screenshot showing internet options.](./media/aks-edge/aks-edge-azure-arc-proxy.png)
