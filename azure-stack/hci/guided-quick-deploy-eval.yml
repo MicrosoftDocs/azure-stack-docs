@@ -3,6 +3,8 @@ title: Evaluate Azure Stack HCI
 metadata:
   title: Evaluate Azure Stack HCI
   description: Learn how to quickly deploy an HCI cluster for evaluation.
+  author: ronmiab
+  ms.author: robess
   audience: IT Pro
   level: Beginner
   ms.date: 05/10/2022
@@ -384,7 +386,7 @@ items:
     1. Select the **Next** button at the bottom of this page.  
 
 - content: |
-    You've completed your Azure Stack Hub HCI evaluation!
+    You've completed your Azure Stack HCI evaluation!
 
     If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete the Azure resource group that was created at the beginning of this guide.
 

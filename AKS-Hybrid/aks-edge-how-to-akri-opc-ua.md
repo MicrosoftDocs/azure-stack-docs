@@ -24,6 +24,61 @@ This demo will help you get started using Akri to discover OPC UA servers and ut
 - Azure subscription and a resource group to deploy OPC PLC servers to.
 - Akri only works on Linux: use Linux nodes for this exercise.
 
+## Create OPC UA servers
+
+Now, create some OPC UA PLC servers to discover. Instead of starting from scratch, deploy OPC PLC server containers. You can read more about the [containers and their parameters here](https://github.com/Azure-Samples/iot-edge-opc-plc). This demo uses the template provided to deploy OPC PLC server container instances to Azure.
+
+1. Go to [Azure IoT Edge OPC PLC sample's readme](https://github.com/Azure-Samples/iot-edge-opc-plc) and select **Deploy to Azure**.
+
+2. Select **Edit Template** and navigate to line 172. Replace the entire line with the following to add the necessary flags for deploying the desired OPC PLC servers:
+
+   If using security:
+   
+   ```json
+   "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
+   ```
+   
+   If not using security:
+   
+   ```json
+   "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True --ut', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
+   ```
+
+   You can [read more about the parameters in the readme file](https://github.com/Azure-Samples/iot-edge-opc-plc). 
+
+3. (Only for using security) Under the "resources" section, add the following code inside the third "properties" (line 167) section (same level as `image`, `command`, `ports`, etc.).
+   
+   ```json
+   "volumeMounts": [
+                     {
+                     "name": "filesharevolume",
+                     "mountPath": "/app/pki"
+                     }
+                   ],
+   ```
+   
+   Then add the following code inside the second "properties" (line 163) section (same level as `containers`).
+   
+   ```json
+   "volumes": [
+                  {
+                     "name": "filesharevolume",
+                     "azureFile": {
+                           "shareName": "acishare",
+                           "storageAccountName": "<storageAccName>",
+                           "storageAccountKey": "<storageAccKey>"
+                     }
+                  }
+              ]
+   ```
+   
+4. Save the template, and fill in the project and instance details. For `Number of Simulations`, specify `2` in order to run two OPC PLC servers.
+
+5. Select **Review and Create**, then **Create** to deploy your servers on Azure. 
+
+You've now successfully created two OPC UA PLC servers, each with one fast PLC node, which generates an **unsigned integer** with **lower bound = 65** and **upper bound = 85** at a **rate of 1**. 
+
+
 ## (Optional) Create X.509 v3 certificates
 
 > [!NOTE]
@@ -32,7 +87,41 @@ This demo will help you get started using Akri to discover OPC UA servers and ut
 ### Generate certificates
 
 Create three (one for the broker and each server) OPC UA compliant X.509v3 certificates, ensuring that the certificate contains the [necessary components](http://opclabs.doc-that.com/files/onlinedocs/QuickOpc/Latest/User%27s%20Guide%20and%20Reference-QuickOPC/Providing%20Client%20Instance%20Certificate.html)
-such as an application URI. They should all be signed by a common Certificate Authority (CA). There are many tools for generating proper certificates for OPC UA, such as the [OPC Foundation's Certificate Generator](https://github.com/OPCFoundation/Misc-Tools) or Openssl (as in this [walk through](https://github.com/OPCFoundation/Misc-Tools)).
+such as an application URI. 
+
+Requirements for certificates:
+- They should all be signed by a common Certificate Authority (CA), and the signing algorithms for all certificates should be `SHA256`. 
+- The key size also must be greater than or equal to `2048` bits. 
+- The DNS of server certificates and AkriBroker certificate should contain the FQDN of OPC UA server container instance created (go to Step 3 of "Run Akri" to learn how to get the FQDN).
+- The OPC UA server certificate should be named as `OpcPlc` (In certificate generating term, `CN=OpcPlc`) and the Akri broker certificate should be named as `AkriBroker` (`CN=AkriBroker`) (there are no requirements for the CA name).
+
+There are many tools for generating proper certificates for OPC UA, such as OPC Foundation's Certificate Generator or OpenSSL. OPC Foundation's Certificate Generator can be a more convenient option whereas OpenSSL provides more room for customization. 
+
+If you choose to use OPC Foundation's Certificate Generator, here is now to build:
+1. Install [Perl](https://strawberryperl.com/).
+2. Download .zip file or git clone [OPC Foundation's Certificate Generator](https://github.com/OPCFoundation/Misc-Tools) (Misc-Tools)
+3. Run `build_certificate-generator.bat` from VS Developer Command Prompt (Visual Studio 2022 is recommended).
+4. Build `Opc.Ua.CertificateGenerator` solution from Visual Studio 2022.
+5. Check if `Opc.Ua.CertificateGenerator.exe` has been successfully built in the `build/Debug/Opc.Ua.CertificateGenerator` directory.
+6. Use following example command lines to create certificates. Please refer to [Misc-Tools](https://github.com/OPCFoundation/Misc-Tools) for more options.
+   - Self-Signed CA:
+   ```powershell
+   .\Opc.Ua.CertificateGenerator.exe -cmd issue -sp . -sn CN=<CA name e.g. MyCA> -ca true -pw <password>
+   ```
+   - OPC UA Server Certificate
+   ```powershell
+   .\Opc.Ua.CertificateGenerator.exe -cmd issue -sp . -an OpcPlc -ikf '.\private\MyCA [hash].pfx' -ikp <password>-dn <DNS separated by commas>
+   ```
+   - Akri Broker Certificate
+   ```powershell
+   .\Opc.Ua.CertificateGenerator.exe -cmd issue -sp . -an AkriBroker -ikf '.\private\MyCA [hash].pfx' -ikp <password>-dn <DNS separated by commas>
+   ```
+7. Create a `.crl` file for CA using OpenSSL (only if you created CA from the generator, which would be missing the `.crl` file).
+
+If you choose to use OpenSSL, here is a list of references:
+1. [OpenSSL Project](https://www.openssl.org/)
+2. [OpenSSL Cookbook](https://www.feistyduck.com/library/openssl-cookbook/online/)
+3. [Tutorial: Use OpenSSL to create test certificates](/azure/iot-hub/tutorial-x509-openssl)
 
 ### Create an opcua-broker-credentials Kubernetes secret
 
@@ -50,67 +139,33 @@ kubectl create secret generic opcua-broker-credentials `
 
 The certificate is mounted to the volume `credentials` at the `mountPath` /etc/opcua-certs/client-pki, as shown in the [OPC UA configuration helm template](https://github.com/project-akri/akri/blob/main/deployment/helm/templates/opcua-configuration.yaml). This path is where the brokers expect to find the certificates.
 
-## Create OPC UA servers
+### Mount the folder of certificates to the ACI
 
-Now, create some OPC UA PLC servers to discover. Instead of starting from scratch, deploy OPC PLC server containers. You can read more about the [containers and their parameters here](https://github.com/Azure-Samples/iot-edge-opc-plc). This demo uses the template provided to deploy OPC PLC server container instances to Azure.
+[Follow these instructions](/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
 
-1. Go to [Azure IoT Edge OPC PLC sample's readme](https://github.com/Azure-Samples/iot-edge-opc-plc) and select **Deploy to Azure**.
-
-2. (Optional) If you're using security, this method requires mounting the folder containing the certificate to the ACI. [Follow these instructions](/azure/container-instances/container-instances-volume-azure-files#create-an-azure-file-share) to create an Azure file share. 
-
-   After creating the Azure file share, add the `plc` folder to the file share in the same structure as described. Then go back to the **Deploy to Azure** page. Click **Edit template**, and add the following code inside the `container` section:
+After creating the Azure file share and certificates, upload the CA and OPC UA server certificates to the file share as described. 
    
-   ```json
-   "volumeMounts": [
-                     {
-                     "name": "filesharevolume",
-                     "mountPath": "/app/pki"
-                     }
-                  ],
    ```
-   
-   Then add the following code inside the `properties` section (same level as `container`):
-   
-   ```json
-   "volumes": [
-                  {
-                     "name": "filesharevolume",
-                     "azureFile": {
-                           "shareName": "acishare",
-                           "storageAccountName": "<storageAccName>",
-                           "storageAccountKey": "<storageAccKey>"
-                     }
-                  }
-               ]
+   ├── own
+   │   ├── certs
+   │   │   └── OpcPlc [hash].der
+   │   └── private
+   │       └── OpcPlc [hash].pfx
+   └── trusted
+       ├── certs
+       │   └── CA.der
+       └── crl
+           └── CA.crl
    ```
-   
-   Now the folder `plc` should be mounted to `/app/pki`.
+ > [!NOTE]
+ > Because we added a flag for security in the template, this will cause an arbitrary certificate to be generated in the file share. Please delete any unidentified certificates in the file share (the folder paths should look exactly the same as above).
 
-3. Select **Edit Template** and navigate to line 172. Replace the entire line with the following to add the necessary flags for deploying the desired OPC PLC servers:
-
-   If using security:
-   
-   ```json
-   "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
-   ```
-   
-   If not using security:
-   
-   ```json
-   "[concat('./opcplc --pn=50000 --sph --fn=1 --fr=1 --ft=uint --ftl=65 --ftu=85 --ftr=True --aa --sph --ftl=65 --ftu=85 --ftr=True --ut', ' --ph=', variables('aciPlc'), add(copyIndex(), 1), '.', resourceGroup().location, '.azurecontainer.io')]"
-   ```
-
-   You can [read more about the parameters in the readme file](https://github.com/Azure-Samples/iot-edge-opc-plc). 
-
-4. Save the template, and fill in the project and instance details. For `Number of Simulations`, specify `2` in order to run two OPC PLC servers.
-
-5. Select **Review and Create**, then **Create** to deploy your servers on Azure. 
-
-You've now successfully created two OPC UA PLC servers, each with one fast PLC node, which generates an **unsigned integer** with **lower bound = 65** and **upper bound = 85** at a **rate of 1**. 
+ After following these steps for security, click "Restart" on your container instances to update it and run with the mounted certificates. 
+ 
 
 ## Run Akri
 
-1. Make sure your OPC UA servers are running.
+1. Make sure your OPC UA servers are running by checking to see that the container instances have been started on your Azure portal.
 
 2. Akri depends on `critcl` to track Pod information, and to use it, the Akri agent must know where the container runtime socket lives. To specify this information, set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
 
@@ -176,6 +231,11 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
 
    ```powershell
    kubectl get pods -o wide --watch
+   ```
+   You can also ensure that Akri's monitoring pod has successfully connected to the OPC UA server. 
+   
+   ```powershell
+   kubectl logs <name of OPC UA monitoring pod>
    ```
 
    To inspect more of the elements of Akri:

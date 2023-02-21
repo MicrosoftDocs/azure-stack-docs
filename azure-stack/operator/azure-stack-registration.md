@@ -687,7 +687,7 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | The billing model that your subscription uses. Allowed values for this parameter are: Capacity, PayAsYouUse, and Development. |
+| BillingModel | String | The billing model that your subscription uses. Allowed values for this parameter are: Capacity, Custom, and Development. |
 | MarketplaceSyndicationEnabled | True/False |  |
 | UsageReportingEnabled | True/False | Azure Stack Hub reports usage metrics by default. Operators with capacity uses or supporting a disconnected environment need to turn off usage reporting. Allowed values for this parameter are: True, False. |
 | AgreementNumber | String |  |

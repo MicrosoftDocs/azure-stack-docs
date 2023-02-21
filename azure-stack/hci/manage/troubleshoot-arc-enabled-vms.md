@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Troubleshoot Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article provides guidance on how to debug issues that you might encounter when using Azure Arc virtual machines (VMs). It also describes the limitations and known issues that currently exist.
 
@@ -86,7 +86,7 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
-- If your environment fails to recognize Azure CLI after installing it, please run the following code block to add the Azure CLI installation path to the enrivonment path.
+- If your environment fails to recognize Azure CLI after installing it, please run the following code block to add the Azure CLI installation path to the environment path.
 
 ```PowerShell
         if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {

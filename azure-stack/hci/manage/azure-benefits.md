@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 03/21/2022
+ms.date: 01/25/2023
 ms.lastreviewed: 03/21/2022
 
 ---
@@ -31,6 +31,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 | Windows Server Datacenter: Azure Edition | 2022 edition or later                        | An Azure-only guest operating system that includes all the latest Windows Server innovations and other exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)                                      |
 | Extended Security Update (ESUs)          | October 12th, 2021 security updates or later | A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md). |
 | Azure Policy guest configuration         | Arc agent version 1.13 or later              | A feature that can audit or configure OS settings as code, for both host and   guest machines. <br/> Learn more: [Understand the guest configuration feature of Azure Policy](/azure/governance/policy/concepts/guest-configuration)                                             |
+| Azure Virtual Desktop                    | For multi-session editions only. Windows 10 Enterprise multi-session or later. | A service that enables you to deploy Azure Virtual Desktop session hosts on your Azure Stack HCI infrastructure. <br/> For more information, see the [Azure Virtual Desktop for Azure Stack HCI overview](/azure/virtual-desktop/azure-stack-hci-overview). |
 
 ## How it works
 

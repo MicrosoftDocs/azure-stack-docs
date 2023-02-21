@@ -1,5 +1,5 @@
 ---
-title: New-AksHciCluster for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciCluster for AKS hybrid
 author: sethmanheim
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
@@ -15,7 +15,7 @@ ms.reviewer: mikek
 
 ## Synopsis
 
-Create a new managed Kubernetes cluster.
+Creates a new managed Kubernetes cluster.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ New-AksHciCluster -name <String>
 
 ## Description
 
-Create a new Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
+Create a new Azure Kubernetes Service on an AKS hybrid cluster.
 
 ## Examples
 
@@ -99,7 +99,7 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSi
 ### New AKS-HCI cluster with a Windows node pool
 
 ```powershell
-New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType Windows -osSku Windows2022
 ```
 
 ### New AKS-HCI cluster with a Linux node pool and taints

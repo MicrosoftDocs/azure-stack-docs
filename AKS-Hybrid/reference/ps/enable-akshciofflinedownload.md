@@ -1,11 +1,11 @@
 ---
-title: Enable-AksHciOfflineDownload for AKS on Azure Stack HCI
-description: The Enable-AksHciOfflineDownload PowerShell command enables offline downloading to get the AKS on Azure Stack HCI and Windows Server images.
+title: Enable-AksHciOfflineDownload for AKS hybrid
+description: The Enable-AksHciOfflineDownload PowerShell command enables offline downloading to get the AKS hybrid images.
 ms.topic: reference
-ms.date: 10/03/2022
+ms.date: 01/25/2023
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/03/2022
+ms.lastreviewed: 01/25/2023
 ms.reviewer: jeguan
 ---
 
@@ -13,29 +13,29 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Enables offline downloading to get the AKS on Azure Stack HCI images.
+Enables offline downloading to get the AKS hybrid images.
 
 ## Syntax
 
 ```powershell
-Enable-AksHciOfflineDownload  -stagingShare
+Enable-AksHciOfflineDownload  -stagingShare -offsiteTransferCompleted
 ```
 
 ## Description
 
-Enables offline downloading to get the AKS on Azure Stack HCI images.
+Enables offline downloading to get the AKS hybrid images.
 
 ## Examples
 
 ```PowerShell
-Enable-AksHciOfflineDownload -stagingShare
+Enable-AksHciOfflineDownload -stagingShare -offsiteTransferCompleted
 ```
 
 ## Parameters
 
 ### -stagingShare
 
-The path to which you want the images to be downloaded.
+The path to where you want the images to be downloaded.
 
 ```yaml
 Type: System.String
@@ -45,6 +45,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offsiteTransferCompleted
+
+Sets deployment to use artifacts downloaded offsite and transferred to the deployment server.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

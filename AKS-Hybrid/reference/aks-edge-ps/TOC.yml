@@ -4,22 +4,34 @@
   items:
   - name: Add-AksEdgeNode
     href: add-aksedgenode.md
+  - name: Connect-AksEdgeArc
+    href: connect-aksedgearc.md
+  - name: Copy-AksEdgeNodeFile
+    href: copy-aksedgenodefile.md
+  - name: Disconnect-AksEdgeArc
+    href: disconnect-aksedgearc.md
   - name: Get-AksEdgeDeploymentInfo
     href: get-aksedgedeploymentinfo.md
   - name: Get-AksEdgeEventLog
     href: get-aksedgeeventlog.md
   - name: Get-AksEdgeKubeConfig
     href: get-aksedgekubeconfig.md
-  - name: Get-AksEdgeNodeAddr
-    href: get-aksedgenodeaddr.md
-  - name: Get-AksEdgeNodeName
-    href: get-aksedgenodename.md
   - name: Get-AksEdgeLogs
     href: get-aksedgelogs.md
   - name: Get-AksEdgeManagedServiceToken
     href: get-aksedgemanagedservicetoken.md
+  - name: Get-AksEdgeNodeAddr
+    href: get-aksedgenodeaddr.md
+  - name: Get-AksEdgeNodeConnectivityMode
+    href: get-aksedgenodeconnectivitymode.md
+  - name: Get-AksEdgeNodeName
+    href: get-aksedgenodename.md
+  - name: Get-AksEdgeUpgrade
+    href: get-aksedgeupgrade.md
   - name: Invoke-AksEdgeNodeCommand
     href: invoke-aksedgenodecommand.md
+  - name: Install-AksEdgeHostFeatures
+    href: install-aksedgehostfeatures.md
   - name: New-AksEdgeConfig
     href: new-aksedgeconfig.md
   - name: New-AksEdgeDeployment
@@ -32,10 +44,14 @@
     href: remove-aksedgenode.md
   - name: Set-AksEdgeNodeToDrain
     href: set-aksedgenodetodrain.md
-  - name: Set-AksEdgeArcConnection
-    href: set-aksedgearcconnection.md
+  - name: Set-AksEdgeUpgrade
+    href: set-aksedgeupgrade.md
   - name: Start-AksEdgeNode
     href: start-aksedgenode.md
+  - name: Start-AksEdgeUpdate
+    href: start-aksedgeupdate.md
+  - name: Start-AksEdgeWorkerNodeUpdate
+    href: start-aksedgeworkernodeupdate.md
   - name: Stop-AksEdgeNode
     href: stop-aksedgenode.md
   - name: Test-AksEdgeArcConnection
