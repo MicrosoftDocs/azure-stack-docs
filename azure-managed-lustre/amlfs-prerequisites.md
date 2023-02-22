@@ -1,10 +1,10 @@
 ---
-title: Prerequisites for Azure Managed Lustre file systems (Preview)
+title: Prerequisites for Azure Managed Lustre file systems (preview)
 description: Network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/17/2023
+ms.lastreviewed: 02/22/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
@@ -13,13 +13,15 @@ ms.date: 02/09/2023
 
 ---
 
-# Azure Managed Lustre file system prerequisites (Preview)
+# Azure Managed Lustre file system prerequisites (preview)
 
 This article explains prerequisites that you must configure before creating an Azure Managed Lustre file system.
 
 * [Network prerequisites](#network-prerequisites)
 * [Blob integration prerequisites](#blob-integration-prerequisites-optional)
 * [Azure Key Vault integration prerequisites (Optional)](#azure-key-vault-integration-requirements-optional)
+
+[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## Network prerequisites
 
