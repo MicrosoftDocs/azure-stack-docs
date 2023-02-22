@@ -17,9 +17,9 @@ ms.date: 02/21/2023
 
 Follow these steps to download and configure dynamic kernel module support (DKMS) for Azure Managed Lustre on Ubuntu 22.04 clients.
 
-You can install a pre-built software package for your OS. Installation procedures are described below.
+You can install a pre-built software package for your OS. The following section describes the installation procedures.
 
-Read [Connect clients to an Azure Managed Lustre file system (Private preview)](connect-clients.md) for complete information, including:
+For complete information, see [Connect clients to an Azure Managed Lustre file system (Private preview)](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)

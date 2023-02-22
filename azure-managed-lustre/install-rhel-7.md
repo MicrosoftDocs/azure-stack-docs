@@ -20,9 +20,9 @@ Follow these steps to download and install the Azure Managed Lustre client on th
 * Red Hat Enterprise Linux 7 (RHEL 7)
 * CentOS Linux 7
 
-You can install a pre-built software package for your OS. Installation procedures are described below.
+You can install a pre-built software package for your OS. The following section describes the installation procedures.
 
-Read [Connect clients to an Azure Managed Lustre file system (Private preview)](connect-clients.md) for complete information, including:
+For complete information, see [Connect clients to an Azure Managed Lustre file system (Private preview)](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)

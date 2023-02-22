@@ -21,7 +21,7 @@ Follow these steps to download and install the Azure Managed Lustre client on th
 * CentOS Linux 8
 * AlmaLinux 8
 
-You can install a pre-built software package for your OS. Installation procedures are described below.
+You can install a pre-built software package for your OS. The following section describes the installation procedures.
 
 For complete information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 

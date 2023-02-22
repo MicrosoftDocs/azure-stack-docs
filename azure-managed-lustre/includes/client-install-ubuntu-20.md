@@ -9,7 +9,7 @@ ms.lastreviewed: 02/19/2023
 
 ---
 
-1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`.
+1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
 
    ```bash
    #!/bin/bash
