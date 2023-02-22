@@ -42,6 +42,31 @@ The following container images are compatible with Azure Managed Lustre file sys
 | main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest` | 1.21 or later | 2.15.1 |
 | v0.1.5             | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5` | 1.21 or later | 2.15.1 |
 
+## Prerequisites
+
+Before you deploy the Azure Lustre CSI Driver for Kubernetes, complete the following prerequisites:
+
+
+1. If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+
+1. Connect to the cluster by doing these steps:
+
+   1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
+
+   1. On the **Overview** page for your AKS cluster, select the **Get started** tab.
+
+      To see CLI commands populated with your AKS cluster values, select **Connect**.
+
+   1. Open a PowerShell session on the system where you'll install and administer the CSI driver.
+
+   1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
+
+      ```azurecli
+      az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
+      ```
+
+1. Install a Lustre client, and mount XXX.
+
 ## Setup overview
 
 To use the Azure Managed Lustre CSI Driver for Kubernetes, complete the following setup tasks:
@@ -106,32 +131,6 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
   For more information, see [Kubenet (basic) networking](/azure/aks/concepts-network#kubenet-basic-networking) in [Network concepts for applications in Azure Kubernetes Service (AKS)](/azure/aks/concepts-network).
 
 - To learn how to connect the two networks, see [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
-
-## Create and connect to AKS cluster
-
-If you haven't already done so, create an Azure Kubernetes Service cluster, and connect to the cluster.
-
-### Create AKS cluster
-
-If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
-
-### Connect to AKS cluster
-
-Connect to the cluster by doing these steps:
-
-1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
-
-1. On the **Overview** page for your AKS cluster, select the **Get started** tab.
-
-   To see CLI commands populated with your AKS cluster values, select **Connect**.
-
-1. Open a PowerShell session on the system where you'll install and administer the CSI driver.
-
-1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
-
-   ```azurecli
-   az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
-   ```
 
 ## Install the CSI driver
 
