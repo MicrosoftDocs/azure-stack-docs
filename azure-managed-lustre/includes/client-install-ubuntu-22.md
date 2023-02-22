@@ -38,7 +38,7 @@ ms.lastreviewed: 02/19/2023
    > [!NOTE]
    > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
 
-   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You will want to run something similar to this:
+   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
 
    ```bash
    apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.1-24-gbaa21ca
