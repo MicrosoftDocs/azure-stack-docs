@@ -100,7 +100,7 @@ Make sure to include the following firewall URLs in your allowlist:
 | msk8s.sb.tlu.dl.delivery.mp.microsoft.com	 | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
-| hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required download the AZ CLI Extension azurestackhci |
+| hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required to download the AZ CLI Extension azurestackhci |
 
 ## Network proxy requirements
 
