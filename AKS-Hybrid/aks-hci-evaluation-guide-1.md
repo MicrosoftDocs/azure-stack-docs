@@ -3,7 +3,7 @@ title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: For a low-cost evaluation of Azure Kubernetes Service hybrid deployments (AKS hybrid), prepare an Azure Virtual Machine for your AKS deployment.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/20/2022
+ms.date: 02/22/2023
 ms.author: sethm
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -366,5 +366,5 @@ If however, you're having a problem with AKS hybrid outside of this evaluation g
 
 In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center, or via PowerShell:
 
-* [Step 2a - Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md)
-* [Step 2b - Deploy AKS infrastructure using PowerShell](aks-hci-evaluation-guide-2b.md)
+* [Step 2, Option 1 - Deploy AKS using Windows Admin Center](aks-hci-evaluation-guide-2a.md)
+* [Step 2, Option2 - Deploy AKS using PowerShell](aks-hci-evaluation-guide-2b.md)
