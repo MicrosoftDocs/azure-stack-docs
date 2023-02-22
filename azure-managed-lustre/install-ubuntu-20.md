@@ -19,7 +19,7 @@ Follow these steps to download and configure dynamic kernel module support (DKMS
 
 You can install a pre-built software package for your OS. The following section describes the installation procedures.
 
-For complete information, see [Connect clients to an Azure Managed Lustre file system (Private preview)](connect-clients.md), including:
+For complete information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
