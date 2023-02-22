@@ -304,14 +304,14 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 </SiPolicy>
 ```
 
-## Switch WDAC policy modes
+## Enable WDAC policy modes
 
 You can decide to have WDAC enabled during deployment or after deployment. If you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell.  
 
-Connect to one of the cluster nodes and use the following cmdlets to switch between nodes. In this build release there are 2 cmdlets.
+Connect to one of the cluster nodes and use the following cmdlets to enable the desired WDAC policy in "Audit" or "Enforced" mode. In this build release there are 2 cmdlets.
 
-* First cmdlet `Switch-AsWdacPolicy` affects all the nodes in the cluster.
-* Second cmdlet `Switch-ASLocalWDACPolicy` only affects the node from where it is run.
+* First cmdlet `Enable-AsWdacPolicy` affects all the nodes in the cluster.
+* Second cmdlet `Enable-ASLocalWDACPolicy` only affects the node from where it is run.
 
 Depending on the use case, you should run a global cluster change or a local node change.
 

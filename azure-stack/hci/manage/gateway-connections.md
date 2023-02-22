@@ -10,7 +10,7 @@ ms.date: 06/21/2021
 
 # Manage Azure Stack HCI gateway connections
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 

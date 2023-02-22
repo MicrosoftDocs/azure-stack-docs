@@ -3,7 +3,7 @@ title: Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 07/11/2022
+ms.date: 01/19/2023
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
@@ -28,6 +28,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 - Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 
 ## Install the AksHci PowerShell module
+
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
 ## Register the resource provider to your subscription
@@ -122,7 +123,8 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 ```
 
 ### Option 2: Using an Azure service principal
-If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Stack HCI and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal).
+
+If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Stack HCI and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
 
 ## Step 5: Start a new deployment
 

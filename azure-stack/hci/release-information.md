@@ -6,12 +6,12 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/15/2022
+ms.date: 12/20/2022
 ---
 
 # Azure Stack HCI release information
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
 
@@ -25,7 +25,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Apply update by** |
 |:------------|:----------------------|:------------------|:-------------------------|
-| 22H2        | 2022-10-12            | 20349             | 2023-04-12               |
+| 22H2        | 2022-10-12            | 20349.1194        | 2023-04-12               |
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
 | 20H2        | 2020-12-10            | 17784.1408        | Initial release          |
 
@@ -37,6 +37,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1547   | 2023-02-14            | [KB 5022842](https://support.microsoft.com/topic/d5293fe7-3d6e-42d4-aa77-b2993562863a)  |
+| 20349.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/08650290-831c-4b1b-b241-b2a0112b5246)  |
+| 20349.1368   | 2022-12-20            | [KB 5022553](https://support.microsoft.com/topic/ea457f12-62bd-461c-9f32-7cde11816a44)  |
 | 20349.1366   | 2022-12-13            | [KB 5021249](https://support.microsoft.com/topic/3815a4c2-a71b-4cb1-9777-a9ef7db8701e)  |
 | 20349.1311   | 2022-11-22            | [KB 5020032](https://support.microsoft.com/topic/c0c2f038-a248-4fac-9c63-45ab4f462424)  |
 | 20349.1251   | 2022-11-17            | [KB 5021656](https://support.microsoft.com/topic/336b8958-d1dd-40b2-a93b-ed1b80003c27)  |
@@ -51,6 +54,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1547   | 2023-02-14             | [KB 5022842](https://support.microsoft.com/topic/c5f53080-d4aa-4c0e-ade8-62cb35acbd98)  |
+| 20348.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/02c080d2-0dee-44a0-8796-37cef529f6d6)  |
+| 20348.1368   | 2022-12-20            | [KB 5022553](https://support.microsoft.com/topic/701b899c-f41c-4888-94fd-7d2f7a97a1a6)  |
 | 20348.1366   | 2022-12-13            | [KB 5021249](https://support.microsoft.com/topic/e6f3210a-c999-4ac8-8fd6-66751febf300)  |
 | 20348.1311   | 2022-11-22            | [KB 5020032](https://support.microsoft.com/topic/96bc003c-a310-445a-af1c-98e977a1a7d3)  |
 | 20348.1251   | 2022-11-17            | [KB 5021656](https://support.microsoft.com/topic/f33facaa-2ccc-4ce2-a374-c5a3e01a6fdd)  |

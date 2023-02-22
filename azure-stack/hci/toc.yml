@@ -254,8 +254,6 @@
         href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage SDN
     items:
-    - name: Deploy an SDN infrastructure
-      href: manage/sdn-express.md
     - name: Update SDN infrastructure
       href: manage/update-sdn.md       
     - name: Configure network security groups with Windows Admin Center
@@ -288,6 +286,10 @@
         href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
+    - name: Troubleshoot SDN
+      items:
+      - name: Collect SDN logs
+        href: manage/sdn-log-collection.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -387,7 +389,11 @@
 - name: Preview
   items:
   - name: What's in preview?
-    href: manage/whats-new-preview.md
+    items: 
+    - name: 2301 release - Current
+      href: manage/whats-new-2301-preview.md
+    - name: 2210 release
+      href: manage/whats-new-preview.md
   - name: Preview channel
     items:
     - name: Join preview channel
@@ -399,7 +405,11 @@
   - name: Supplemental package
     items:
     - name: View known issues
-      href: hci-known-issues.md
+      items: 
+      - name: 2301 release - Current
+        href: hci-known-issues-2301.md
+      - name: 2210 release
+        href: hci-known-issues.md
     - name: Plan
       items:
       - name: Review security

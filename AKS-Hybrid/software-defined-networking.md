@@ -1,9 +1,9 @@
 ---
-title: How to use AKS hybrid with SDN and virtual networking infrastructure (Public Preview)
+title: How to use AKS hybrid with SDN and virtual networking infrastructure
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/16/2022
+ms.date: 12/21/2022
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -118,8 +118,8 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
    ```powershell
    Set-AksHciConfig 
    –imageDir "C:\ClusterStorage\Volume1\ImageStore" 
-   –workingDir "C:\ClusterStorage\Volume1\ImageStore"
-   –cloudConfigLocation "C:\ClusterStorage\Volume1\ImageStore" 
+   –workingDir "C:\ClusterStorage\Volume1\WorkDir"
+   –cloudConfigLocation "C:\ClusterStorage\Volume1\Config" 
    –vnet $vnet –useNetworkController
    –NetworkControllerFqdnOrIpAddress "nc.contoso.com" 
    –networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" 
@@ -193,6 +193,6 @@ for all Kubernetes services, and acts as the load balancer for the API server on
 [how to create and attach VM's to an SDN virtual network]: /azure-stack/hci/manage/vm
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
-[Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal
+[Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal
 [workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
 [Deploy your applications]: deploy-windows-application.md

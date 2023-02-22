@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 2/1/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -57,9 +57,14 @@ The following parameters are required to set up and run the deployment tool prop
 |`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
 |`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to public Azure is supported.|
+|`RegistrationRegion`|(Optional) Specify the region that should be used when registering the system with Azure Arc.|
+|`RegistrationResourceGroupName`|(Optional) Specify the resource group that will be used to hold the resource objects for the system.|
+|`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
 |`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
 
+> [!NOTE]
+> You must configure the Active Directory permission for the Service Principal following guidance given in [Assign permissions from Azure portal](register-with-azure.md#assign-permissions-from-azure-portal).
 
 ## Deploy a cluster
 

@@ -1,5 +1,5 @@
 ---
-title: New-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciClusterNetwork for AKS hybrid
 author: sethmanheim
 description: The New-AksHciClusterNetwork PowerShell command creates an object for a new virtual network used by a workload cluster.
 ms.topic: reference
@@ -13,6 +13,7 @@ ms.reviewer: mikek
 # New-AksHciClusterNetwork
 
 ## Synopsis
+
 Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for workload clusters.
 
 ## Syntax
@@ -243,21 +244,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-<!--- ### -macPoolName
-The name of the MAC address pool that you wish to use for the Azure Kubernetes Service host VM. The pool will be created with the New-AksHciMacPoolSetting command.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
---->
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

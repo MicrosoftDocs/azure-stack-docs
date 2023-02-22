@@ -11,7 +11,7 @@ ms.date: 11/03/2022
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -77,7 +77,7 @@ Follow these steps to create a VM image using the Azure CLI.
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
     | `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
     | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |

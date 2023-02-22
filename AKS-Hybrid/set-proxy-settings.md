@@ -29,14 +29,16 @@ Once you've configured your deployment using the options listed below, you can [
 
 Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
-### **Proxy server configuration information:**
+### Proxy server configuration information
+
+The proxy server configuration for your AKS deployment includes the following settings:
 
 - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
 - HTTPS URL and port, such as `https://proxy.corp.contoso.com:8443`.
 - (Optional) Valid credentials for authentication to the proxy server.
 - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
 
-### Exclusion list for excluding private subnets from being sent to the proxy:
+### Exclusion list for excluding private subnets from being sent to the proxy
 
 The following table contains the list of addresses that must be excluded by using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
@@ -74,7 +76,7 @@ Configure machine-wide proxy exclusions on *each* of the physical cluster hosts 
 > [!NOTE]
 > We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues.
 
-Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#Exclusion list for excluding private subnets from being sent to the proxy).
+Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
 ```powershell
 $no_proxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"

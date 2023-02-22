@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 10/11/2022
+ms.date: 12/19/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -41,6 +41,8 @@ The following table provides a list of required firewall URLs. Make sure to incl
 > The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
 [!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
+
+For a comprehensive list of all the firewall URLs, download the [firewall URLs spreadsheet](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-firewall-rules.xlsx).
 
 ## Recommended firewall URLs
 
@@ -171,6 +173,7 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
+- [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
 - [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
