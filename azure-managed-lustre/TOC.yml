@@ -19,7 +19,25 @@
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
   - name: Connect clients to the file system
-    href: connect-clients.md
+    items:
+    - name: Connect clients overview
+      href: connect-clients.md
+    - name: Install AlmaLinux 8
+      href: install-rhel-8.md
+    - name: Install CentOS Linux 7
+      href: install-rhel-7.md
+    - name: Install CentOS Linux 8
+      href: install-rhel-8.md
+    - name: Install Red Hat Enterprise Linux (RHEL) 7
+      href: install-rhel-7.md
+    - name: Install Red Hat Enterprise Linux (RHEL) 8
+      href: install-rhel-8.md
+    - name: Install Ubuntu 18.04
+      href: install-ubuntu-18.md
+    - name: Install Ubuntu 20.04
+      href: install-ubuntu-20.md
+    - name: Install Ubuntu 22.04
+      href: install-ubuntu-22.md    
   - name: Use Azure Lustre CSI driver for Kubernetes
     href: use-csi-driver-kubernetes.md
   - name: Export data
