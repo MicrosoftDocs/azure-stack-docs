@@ -165,7 +165,7 @@ For this procedure, use a computer that can communicate with the privileged endp
 2. Now that you're connected to the privileged endpoint, run the following command using the parameters appropriate for your environment:
 
    ```powershell  
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $federationMetadataFileContent
    ```
 
 3. Run the following command to update the owner of the default provider subscription using the parameters appropriate for your environment:
