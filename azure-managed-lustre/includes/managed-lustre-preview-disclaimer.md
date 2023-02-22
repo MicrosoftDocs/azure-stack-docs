@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 02/21/2023
+ms.date: 02/22/2023
 ms.reviewer: mayabishop
 ms.lastreviewed: 02/21/2023
 
@@ -12,4 +12,4 @@ ms.lastreviewed: 02/21/2023
 ---
 
 > [!IMPORTANT]
-> Azure Managed Lustre is in preview. The preview is provided "as-is," "with all faults," and "as available," and is excluded from service level agreements and limited warranty. Production workloads are not advised during this preview.
+> Azure Managed Lustre is in preview. The software is provided "as-is," with [limited preview support](../preview-support.md). Production workloads are not advised while the product is in preview.
