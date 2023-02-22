@@ -40,12 +40,13 @@ ms.lastreviewed: 02/19/2023
    sudo dnf install amlfs-lustre-client-2.15.1_24_gbaa21ca-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
 
-> [!NOTE]
-> The metapackage version does not always align with the kernel version. Please use the install command above to install the proper metapackage.
+   > [!NOTE]
+   > The metapackage version does not always align with the kernel version. Please use the install command above to install the proper metapackage.
 
-If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
 
-```bash
-export NEWKERNELVERSION=6.7.8
-sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.1-24-gbaa21ca-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-```
+   ```bash
+   export NEWKERNELVERSION=6.7.8
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.1-24-gbaa21ca-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
