@@ -4,7 +4,7 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 02/22/2023
 ms.reviewer: sethm
 ms.date: 02/21/2023
 
@@ -29,9 +29,11 @@ This article explains these steps in more detail.
 
 After you create the file system, you can't change between customer-managed keys and Microsoft-managed keys.
 
+[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
+
 ## Prerequisites
 
-Follow these prerequisite steps before you create the Azure Managed Lustre system.
+Complete these prerequisite steps before you create the Azure Managed Lustre system.
 
 ### Create a key vault and key
 
