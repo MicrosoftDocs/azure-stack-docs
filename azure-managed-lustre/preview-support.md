@@ -24,4 +24,4 @@ During the preview period for Azure Managed Lustre, the following support standa
 
 * This preview is provided "as-is," "with all faults," and "as available," and is excluded from service level agreements and limited warranty. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-* Production workloads are not advised during this preview.
+* Production workloads aren't advised during this preview.
