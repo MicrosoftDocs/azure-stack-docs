@@ -1,5 +1,5 @@
 ---
-title: How to use AKS hybrid with SDN and virtual networking infrastructure (Public Preview)
+title: How to use AKS hybrid with SDN and virtual networking infrastructure
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
