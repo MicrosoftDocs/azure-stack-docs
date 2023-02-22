@@ -4,9 +4,9 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/16/2023
+ms.lastreviewed: 02/21/2023
 ms.reviewer: dsundarraj
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
@@ -41,14 +41,14 @@ You can download pre-built and tested client packages for Azure Managed Lustre f
 
 Packages and kernel modules are available for these Linux operating systems. Click the links to go to the installation instructions.
 
-<!-- - [AlmaLinux 8](client-rhel8.md) - NOT SUPPORTED in public preview
-- [CentOS Linux 7](client-rhel7.md) - NOT SUPPORTED in public preview
-- [CentOS Linux 8](client-rhel8.md) - NOT SUPPORTED in public preview-->
-- Red Hat Enterprise Linux (RHEL) 7
-- Red Hat Enterprise Linux (RHEL) 8
-- Ubuntu 18.04
-- Ubuntu 20.04
-- Ubuntu 22.04
+- [AlmaLinux 8](install-rhel-8.md)
+- [CentOS Linux 7](install-rhel-7.md)
+- [CentOS Linux 8](install-rhel-8.md)
+- [Red Hat Enterprise Linux (RHEL) 7](install-rhel-7.md)
+- [Red Hat Enterprise Linux (RHEL) 8](install-rhel-8.md)
+- [Ubuntu 18.04](install-ubuntu-18.md)
+- [Ubuntu 20.04](install-ubuntu-20.md)
+- [Ubuntu 22.04](install-ubuntu-22.md)
 
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
 
