@@ -12,4 +12,4 @@ ms.lastreviewed: 02/21/2023
 ---
 
 > [!IMPORTANT]
-> Azure Managed Lustre is in preview. This preview is provided "as-is," "with all faults," and "as available," and is excluded from service level agreements and limited warranty. Production workloads are not advised during this preview.
+> Azure Managed Lustre is in preview. The preview is provided "as-is," "with all faults," and "as available," and is excluded from service level agreements and limited warranty. Production workloads are not advised during this preview.

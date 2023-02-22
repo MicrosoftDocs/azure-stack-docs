@@ -15,13 +15,12 @@ ms.date: 02/10/2023
 
 # Create an Azure Managed Lustre (preview) file system
 
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
-This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
 If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).
 
-
+[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
+This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
 ## Prerequisites
 
