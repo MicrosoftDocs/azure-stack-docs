@@ -4,7 +4,7 @@ description: How to use an archive job to copy data from your Azure Managed Lust
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/20/2023
+ms.lastreviewed: 02/22/2023
 ms.reviewer: brianl
 ms.date: 02/09/2023
 
@@ -18,6 +18,8 @@ ms.date: 02/09/2023
 This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job, and explains what is exported from the file system.
 
 This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an archive job.
+
+[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## Which files does an archive job export?
 
