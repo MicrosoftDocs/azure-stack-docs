@@ -3,7 +3,7 @@ title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster 
 description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 02/13/2023
+ms.date: 02/21/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023
 ms.reviewer: abha
@@ -106,7 +106,7 @@ Run the following commands in a PowerShell admin window inside the Azure VM:
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --upgrade
+az extension add -n arcappliance --version 0.2.29
 az extension add -n hybridaks --upgrade
 ```
 

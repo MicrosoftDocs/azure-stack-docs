@@ -13,7 +13,7 @@ ms.date: 06/09/2022
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 > [!IMPORTANT]
 > The functionality described in this article requires the latest Azure Stack HCI update. Previous versions of Azure Stack HCI display a **Monitoring** tile instead of an **Insights** tile, and the **Insights** menu is not available. Please [install the latest update](update-cluster.md) to get the new capabilities.
