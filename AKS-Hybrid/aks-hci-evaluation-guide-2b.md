@@ -1,13 +1,13 @@
 ---
 title: Deploy AKS infrastructure using PowerShell
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
+description: Evaluate AKS hybrid, Step 2 - Deploy Azure Kubernetes Service on Azure Stack HCI with PowerShell.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/03/2022
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-#Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
+#Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 #Keyword: Azure Virtual Machine deployment, Evaluate AKS hybrid in Azure
 ---
 
@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host. Then you'll deploy a target cluster on which you can test deployment of a workload.
 
 > [!NOTE]
 > If you prefer to use Windows Admin Center, see [Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
