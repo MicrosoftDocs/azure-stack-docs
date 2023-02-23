@@ -27,10 +27,12 @@
         href: aks-hci-evaluation-guide.md
       - name: 1 - Create an Azure Virtual Machine for AKS deployment
         href: aks-hci-evaluation-guide-1.md
-      - name: 2a - Deploy with Windows Admin Center
-        href: aks-hci-evaluation-guide-2a.md
-      - name: 2b - Deploy with PowerShell
-        href: aks-hci-evaluation-guide-2b.md
+      - name: 2 - Deploy AKS hybrid
+        items:
+            - name: Use Windows Admin Center
+              href: aks-hci-evaluation-guide-2a.md
+            - name: Use PowerShell
+              href: aks-hci-evaluation-guide-2b.md
       - name: 3 - Explore the environment
         href: aks-hci-evaluation-guide-3.md
     - name: Deploy an AKS cluster
