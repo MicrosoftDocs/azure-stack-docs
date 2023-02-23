@@ -4,7 +4,7 @@ description: How to use an archive job to copy data from your Azure Managed Lust
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
 ms.date: 02/09/2023
 
@@ -100,4 +100,18 @@ Each file has an associated state, which indicates the relationship between the 
 sudo lfs hsm_state path/to/export/file
 ```
 
+The state command reports the state of changes to the file. one of four states for the file:
+
+|State|Description|
+|-----|-----------|
+|`(0x00000009) exists archived`|The file exists in Blob Storage only. *QUERY: Is this about the file itself or changes to the file? If this is about the file, the file's contents will not be updated by archive jobs?*|
+|`(0x00000009) exists archived`|The file existing in both Lustre and Azure Blob Storage. *QUERY: Is this about the file itself or changes to the file? If this relates to the file, archive jobs will overwrite the file's contents in Blob Storage?*|
+|`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. *QUERY: They should run an archive job to export the changes the file in Blob Storage? The archive job overwrite's the files current contents in Blob Storage?*|
+|`(0x00000000)`|The file is new, and only exists in the Lustre file system. *QUERY: The archive job will export the file to Azure Storage, and updates from Azure Lustre will continue in future archive jobs?*|
+
+*REPLACES THIS TEXT:*
 The state command shows you whether a file's data is in Azure Blob Storage only (`(0x0000000d) released exists archived`), in both Lustre and Azure Blob Storage (`(0x00000009) exists archived`), has changes that haven't been archived to Azure Blob Storage (`(0x0000000b) exists dirty archived`), or is new and only exists in the Lustre file system (`(0x00000000)`).
+
+## Next steps
+
+* Learn more about [Azure Blob Storage integration with an Azure Managed Lustre file system](amlfs-overview.md#azure-blob-storage-integration)
