@@ -111,4 +111,4 @@ The state command reports the state of changes to the file. one of four states f
 
 ## Next steps
 
-* Learn more about [Azure Blob Storage integration with an Azure Managed Lustre file system](amlfs-overview.md#azure-blob-storage-integration)
+* Learn more about [Azure Blob Storage integration with Lustre file systems](blob-integration.md)
