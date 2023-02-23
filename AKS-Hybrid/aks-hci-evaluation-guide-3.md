@@ -112,7 +112,7 @@ This example, using the [previously deployed simple Linux application](#deploy-a
 
 With the network security group rule configured, there are some more steps required to route the incoming traffic to the containerized application.
 
-1. Inside the Azure Virtual Machine, you need to retrieve the external IP and port of your deployed application. Open an administrative PowerShell window, and run the following command. In this case, the app front end name is "azure-vote-front".
+1. Inside the Azure Virtual Machine, you must retrieve the external IP and port of your deployed application. Open an administrative PowerShell window, and run the following command. In this case, the app front end name is "azure-vote-front".
 
    ```powershell
    kubectl get service azure-vote-front
