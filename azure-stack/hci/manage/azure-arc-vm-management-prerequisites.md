@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/4/2023
+ms.date: 02/22/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -116,12 +116,12 @@ You will need the following information about the proxy server to set up Arc VM 
 
 |Parameter|Description|
 |--|--|
-|ProxyServerHTTP|HTTP URL and port for the proxy server, such as `http://proxy.corp.contoso.com:8080`|
-|ProxyServerHTTPS|HTTPS URL and port for the proxy server, such as `https://proxy.corp.contoso.com:8443`|
-|ProxyServerNoProxy|URLs which can bypass proxy, such as<br>Localhost traffic: `localhost,127.0.0.1`<br>Private network address space: `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`<br>URLs in your organizations domain: `.contoso.com`|
-|ProxyServerUsername|Username for proxy authentication|
-|ProxyServerPassword|Password for proxy authentication|
-|CertificateFilePath|Certificate filename with full path, such as `C:\Users\Gus\proxycert.crt`|
+|ProxyServerHTTP|Destination proxy for HTTP traffic. It can be HTTP or HTTPS. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
+|ProxyServerHTTPS|Destination proxy for HTTPS traffic. It can be HTTP or HTTPS proxy. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
+|ProxyServerNoProxy|URLs and IP addresses that you shouldn't relay through the proxy, including:<br>- Localhost traffic: `localhost,127.0.0.1`<br>- Private network address space: `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`<br>- URLs in your organizations domain: `corp.contoso.com`|
+|ProxyServerUsername|Username for proxy authentication.|
+|ProxyServerPassword|Password for proxy authentication.|
+|CertificateFilePath|Certificate filename with full path. Example: `C:\Users\Gus\proxycert.crt`.|
 
 ### Proxy authentication
 
@@ -138,7 +138,7 @@ PowerShell is used to create the necessary configuration files to set the authen
 In a PowerShell window of the host computer, run the following command as an administrator:
 
 ```PowerShell
-New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $ControlPlaneIP -vipPoolEnd $ControlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com"
+New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $ControlPlaneIP -vipPoolEnd $ControlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,172.16.0.0/12,192.168.0.0/16,corp.contoso.com"
 ```
 
 #### Use username and password authentication
@@ -146,7 +146,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 In a PowerShell window of the host computer, run the following command as an administrator:
 
 ```PowerShell
-New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -proxyServerUsername <username_for_proxy> -proxyServerPassword <password_for_proxy>
+New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,172.16.0.0/12,192.168.0.0/16,corp.contoso.com" -proxyServerUsername <username_for_proxy> -proxyServerPassword <password_for_proxy>
 ```
 
 #### Use certificate-based authentication
@@ -154,7 +154,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 In a PowerShell window of the host computer, run the following command as an administrator:
 
 ```PowerShell
-New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,.contoso.com" -certificateFilePath <file_path_to_cert_file> 
+New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,172.16.0.0/12,192.168.0.0/16,corp.contoso.com" -certificateFilePath <file_path_to_cert_file> 
 ```
 
 ### Continue setting up Arc VM management
