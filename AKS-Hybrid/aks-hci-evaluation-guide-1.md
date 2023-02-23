@@ -15,11 +15,11 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-The AKS hybrid evaluation guide walks you through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. You'll deploy AKS on an Azure Virtual Machine. This is made possible by [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/), which enables you to validate configurations that would otherwise require more hardware, such as running Hyper-V hosts and clusters.
+The AKS hybrid evaluation guide walks you through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options. You'll deploy AKS on an Azure Virtual Machine. [Nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) makes this possible. Nested virtualization enables you to validate configurations that would otherwise require more hardware, such as running Hyper-V hosts and clusters.
 
 The AKS deployment for your AKS hybrid evaluation consists of the following high-level tasks:
 
-1. Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM will be automatically configured with the relevant roles and features needed for your evaluation.
+1. Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM is automatically configured with the relevant roles and features needed for your evaluation.
 1. On the Windows Server VM, deploy the AKS management cluster.
 1. Then deploy the AKS target clusters, for running workloads, on the Windows Server VM.
 
@@ -28,7 +28,7 @@ The AKS deployment for your AKS hybrid evaluation consists of the following high
 
 ## Get an Azure subscription
 
-To evaluate AKS, you'll need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
+To evaluate AKS, you need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
 
 The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
@@ -37,13 +37,13 @@ The second option would be to sign up for an [Azure free trial](https://azure.mi
 > [!NOTE]
 > The free trial subscription provides $200 for your usage, however, the largest individual VM you can create is capped at 4 vCPUs, which is not enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
 
-You can also use this same Azure subscription to integrate with Azure Arc, once the deployment is completed.
+You can also use this same Azure subscription to integrate with Azure Arc, after you deploy AKS.
 
 ## Azure Virtual Machine size considerations
 
-Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure Virtual Machine deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
+Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. You should choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive is the default 127 GB in size. The Azure Virtual Machine deployment adds eight data disks (32 GB each by default), so you have around 256 GB to deploy AKS on Azure Stack HCI. You can make this larger after deployment.
 
-This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure Virtual Machine, and select an Azure Virtual Machine size from there. Some potential examples would be:
+This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you want to deploy inside the VM when you select an Azure Virtual Machine size. The following sections show possible examples.
 
 ### D-series VMs (General purpose) with at least 64GB memory
 
@@ -75,9 +75,9 @@ For reference, the Standard_E8s_v4 VM size costs approximately US $0.50 per hour
 
 Note the following considerations:
 
-* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. It's therefore advisable, that if you are going to be running the Azure Virtual Machine for a period of time, but shutting down frequently, you choose a VM size with no temp storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
-* It's strongly recommended that you choose a VM size that supports premium storage - when running nested virtual machines, increasing the number of available IOPS can have a significant impact on performance, hence, choosing premium storage over Standard HDD or Standard SSD is strongly advised. Refer to the table above to make the most appropriate selection.
-* Please ensure that whichever VM size you choose, it [supports nested virtualization](/azure/virtual-machines/acu) and is [available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. If you will be running the Azure Virtual Machine for a period of time, but shutting down frequently, you should choose a VM size with no temporary storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
+* We recommend that you choose a VM size that supports premium storage. When you run nested virtual machines, increasing the number of available IOPs can have a significant impact on performance. Hence, we recommend that you choose premium storage over Standard HDD or Standard SSD. Refer to the table above to make the most appropriate selection.
+* Ensure that whichever VM size you choose, the VM [supports nested virtualization](/azure/virtual-machines/acu) and is [available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## Deploying the Azure Virtual Machine
 
@@ -105,7 +105,7 @@ This automated deployment should take about 13-15 minutes.
 
 To keep things simple and graphical, we'll show you how to deploy your VM via an Azure Resource Manager template. To simplify things further, we'll use the following buttons.
 
-First, the **Visualize** button will launch the ARMVIZ designer view, where you will see a graphic representing the core components of the deployment, including the VM, NIC, disk and more. If you want to open this in a new tab, hold CTRL when you click the button.
+First, the **Visualize** button launches the ARMVIZ designer view, which displays a graphic representing the core components of the deployment. These components include the VM, NIC, and disk. To open this view in a new tab, hold down CTRL while you click the button.
 
 [![Visualize your template deployment](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Visualize your template deployment")
 
@@ -132,7 +132,7 @@ If you chose to enable the auto-shutdown for the VM, and supplied a time and tim
 4. Select **Yes** to enable notifications, and enter a Webhook URL, or email address.
 5. Select **Save**.
 
-You'll be notified when the VM has been successfully shut down at the requested time.
+You are notified when the VM is successfully shut down at the requested time.
 
 With that completed, skip to [connecting to your Azure Virtual Machine](#connect-to-your-azure-virtual-machine).
 
@@ -146,7 +146,7 @@ For simplicity and speed, you can also use PowerShell on the local workstation t
 
 #### Update the Execution Policy
 
-In this step, you'll update your PowerShell execution policy to **RemoteSigned**:
+In this step, you update your PowerShell execution policy to **RemoteSigned**:
 
 ```powershell
 # Get the Execution Policy on the system, and make note of it before making changes
@@ -272,7 +272,7 @@ Once you've made your size and region selection, based on the information provid
 
 :::image type="content" source="media/aks-hci-evaluation-guide/vm-deployment-complete.png" alt-text="Screenshot of virtual machine successfully deployed with PowerShell":::
 
-With the VM successfully deployed, make a note of the fully qualified domain name, as you'll use that to connect to the VM.
+With the VM successfully deployed, make a note of the fully qualified domain name (FQDN). You'll use the FQDN to connect to the VM.
 
 #### OPTIONAL - Enable auto-shutdown notifications for your VM
 
