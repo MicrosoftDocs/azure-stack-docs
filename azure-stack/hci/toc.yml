@@ -441,7 +441,7 @@
       - name: 3C - Deploy via PowerShell
         href: deploy/deployment-tool-powershell.md
       - name: 3D - Deploy using non-native VLANs
-        href: depoy/deployment-tool-non-native-vlans.md
+        href: deploy/deployment-tool-non-native-vlans.md
       - name: 4 - Validate deployment
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
