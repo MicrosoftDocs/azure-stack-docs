@@ -1,9 +1,9 @@
 ---
-title: Deploy AKS infrastructure using Windows Admin Center
-description: Evaluate AKS hybrid, Step 2 - Deploy Azure Kubernetes Service on Azure Stack HCI with Windows Admin Center.
+title: Deploy AKS hybrid infrastructure using Windows Admin Center
+description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using Windows Admin Center to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 01/27/2023
+ms.topic: quickstart
+ms.date: 02/22/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
