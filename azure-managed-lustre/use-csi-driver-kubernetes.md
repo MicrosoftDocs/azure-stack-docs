@@ -135,9 +135,9 @@ If you haven't already created your AKS cluster, create the cluster now. For ins
 
 Do the following steps to install a Lustre client, and mount the file system:
 
-1. Review the steps for installing the client software and mounting the system in [Connect to clients](connect-to-client.md).
+1. Review the steps for installing the client software and mounting the system in [Connect to clients](connect-clients.md).
 
-1. Link to specific steps for the client software version you're installing. See [Install client software](connect-to-client.md#install-client-software) for links to supported software versions. Follow the steps in the individual article for your preferred client software version to install the client software.
+1. Link to specific steps for the client software version you're installing. See [Install client software](connect-clients.md#install-client-software) for links to supported software versions. Follow the steps in the individual article for your preferred client software version to install the client software.
 
 ## Connect to the Lustre cluster
 
