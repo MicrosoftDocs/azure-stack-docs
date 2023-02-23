@@ -83,7 +83,7 @@ Note the following considerations:
 
 The following guidance provides two options for deploying the Azure Virtual Machine. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
-1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). YOu can launch this option quickly and directly using the button within the documentation. After you complete a simple form, your VM is deployed, and host configuration automated.
+1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). You can launch this option quickly and directly using the button within the documentation. After you complete a simple form, your VM is deployed, and host configuration automated.
 2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM is deployed, and host configuration is automated.
 
 ### Deployment detail
