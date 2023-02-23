@@ -89,7 +89,7 @@ AKS on Azure Stack HCI is supported in the following Azure regions:
 
 Scaling an AKS deployment on Azure Stack HCI involves planning ahead and knowing what your workloads and target cluster utilization will look like. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
 
-The below examples assume that only AKS based workloads are deployed on the underlying infrastructure. Deploying non-AKS workloads such as stand-alone or clustered virtual machines, or database servers, reduces the resources available to AKS, which you must take into account.
+The following examples assume that only AKS-based workloads are deployed on the underlying infrastructure. Deploying non-AKS workloads such as stand-alone or clustered virtual machines, or database servers, reduces the resources available to AKS, which you must take into account.
 
 Before you start, consider the following in order to determine your maximum scale and the number of target clusters you need to support:
 
