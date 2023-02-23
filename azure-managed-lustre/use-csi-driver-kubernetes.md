@@ -70,8 +70,6 @@ To enable  the Azure Managed Lustre CSI Driver for Kubernetes, do these steps:
 
 1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
-1. [Create an Azure Kubernetes Service instance](#create-aks-cluster) if you don't already have one, and [connect to your AKS instance](#connect-to-aks-cluster).
-
 1. [Install the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver).
 
 1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
@@ -82,7 +80,11 @@ The following sections describe each task in greater detail.
 
 ## Provide subnet access between AKS and Azure Managed Lustre
 
-Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access.
+Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access
+
+- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-vnet): Create an AKS subnet inside the Azure Managed Lustre VNet
+- [Option 2](#option-2-use-azure-cni-in-aks-and-peer-the-vnets): Use Azure CNI in AKS, and peer the VNets
+- [Option 3](#option-3-use-aks-kubenet-and-peer-its-vnet-with-the-azure-managed-lustre-vnet): Use AKS `kubenet`, and peer its VNet with the Azure Managed Lustre VNet
 
 > [!TIP]
 > Network access is easier to configure if your Azure Managed Lustre file system and your Azure Kubernetes Service instance use the same subscription and virtual network (VNet).
@@ -147,7 +149,7 @@ Connect to the Azure Managed Lustre cluster by doing these steps:
 
    To see CLI commands populated with your AKS cluster values, select **Connect**.
 
-1. Open a PowerShell session on the system where you'll install and administer the CSI driver.<!--They'll open a session on the Lustre client?-->
+1. Open a PowerShell session on the system where you'll install and administer the CSI driver.
 
 1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
 
@@ -179,7 +181,6 @@ To install the CSI driver, do these steps:
 
    > [!NOTE]
    > The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
-
 
 ## Create and configure a persistent volume
 
@@ -242,4 +243,4 @@ To view timestamps in the console during writes, run the following commands:
 
 ## Next steps
 
-- Learn how to [export files from you file system with an archive job]
+- Learn how to [export files from you file system with an archive job](export-with-archive-jobs.md).
