@@ -141,13 +141,13 @@ Do the following steps to install a Lustre client, and mount the file system:
 
 Connect to the Azure Managed Lustre cluster by doing these steps:
 
-1. On your Lustre client, sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
+1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
 
 1. On the **Overview** page for your AKS cluster, select the **Get started** tab.
 
    To see CLI commands populated with your AKS cluster values, select **Connect**.
 
-1. Open a PowerShell session on the system where you'll install and administer the CSI driver.
+1. Open a PowerShell session on the system where you'll install and administer the CSI driver.<!--They'll open a session on the Lustre client?-->
 
 1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
 
@@ -168,7 +168,7 @@ To install the CSI driver, do these steps:
    cd azurelustre-csi-driver
    ```
 
-1. In your local clone, change directories to the **deploy/** subdirectory of the repository, and run the installation script **install-driver-sh**. (Online, the script is available at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh).)
+1. In your local clone of the **azurelustre-csi-driver** repository, change directories to the **deploy/** subdirectory, and run the installation script **install-driver-sh**. (Online, the script is available at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh).)
 
    ```bash
    cd deploy/
@@ -185,7 +185,7 @@ To install the CSI driver, do these steps:
 
 To create a persistent volume for an existing Azure Managed Lustre file system, do these steps:
 
-1. Copy the following configuration files from the **/docs/examples/** folder in your **local azurelustre-csi-driver** repository. (Online, you can find the sample scripts at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples).)
+1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the CSI driver](#install-the-csi-driver), you'll have local copies available already.
 
    - storageclass_existing_lustre.yaml
    - pvc_storageclass.yaml
@@ -193,7 +193,6 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
    If you don't want to clone the entire repository, you can download each file individually. Open each of the following links, copy the file's contents, and then paste the contents into a local file with the same filename.
 
    - [storageclass_existing_lustre.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/storageclass_existing_lustre.yaml)
-
    - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/pvc_storageclass.yaml)
 
 1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the MSG IP address.
@@ -203,6 +202,8 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
    Both settings are displayed in the Azure portal, on the **Client connection** page for your Azure Lustre file system.
 
    ![Screenshot of the Azure portal Client Connection page. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
+
+Make these updates:
 
    - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. The internal name is usually `lustrefs`. The internal name is not the name that you gave the file system when you created it.
 
@@ -221,11 +222,11 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
 ## Check the installation
 
-If you want to check your installation, you can optionally use an echo pod to confirm the driver is working.
+If you want to check your installation, you can optionally use an echo pod to confirm the driver is working.<!--NEEDED: Explain what an echo pod is.-->
 
-To view timestamps in the console during writes, update the echo pod content to write a timestamp log by running the following commands:
+To view timestamps in the console during writes, run the following commands:
 
-1. Add the following code to the echo pod:
+1. Add the following code to the echo pod:<!--What is an echo pod, and where do they find it? Do they need to be in a particular directory to run this command?-->
 
    ```bash
    while true; do echo $(date) >> /mnt/lustre/outfile; tail -1 /mnt/lustre/outfile; sleep 1; done
@@ -236,3 +237,7 @@ To view timestamps in the console during writes, update the echo pod content to 
    ```bash
    `kubectl logs -f lustre-echo-date`
    ```
+
+## Next steps
+
+* Learn how to [export files from you file system with an archive job]
