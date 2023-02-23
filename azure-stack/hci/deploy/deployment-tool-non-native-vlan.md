@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to deploy Azure Stack HCI using an existing configuration file that uses a non-native VLAN ID for the management network, instead of the default native VLAN ID `0`.
+By default, when you deploy Azure Stack HCI using an existing configuration file, a native VLAN ID `0` is used for the management network. This article provides instructions for a specific deployment scenario where you deploy Azure Stack HCI using a non-native VLAN ID for the management network instead of the native one.
 
 ## Prerequisites
 
@@ -28,8 +28,8 @@ Before you begin, make sure you have done the following:
 
 Here are the high-level steps to deploy Azure Stack HCI by using a non-native VLAN ID for the management network:
 
-- [Create a virtual switch on every server in the cluster using the required naming convention](#create-a-virtual-switch-conforming-to-the-required-naming-convention).
-- [Configure the management virtual network adapter on every server in the cluster using the required naming convention](#configure-the-management-virtual-network-adapter-using-the-required-naming-convention).
+- [Create a virtual switch on every server in the cluster using the required naming convention](#create-a-virtual-switch-using-the-required-naming-conventions).
+- [Configure the management virtual network adapter on every server in the cluster using the required naming convention](#configure-the-management-virtual-network-adapter-using-the-required-naming-conventions).
 - [Configure the required VLAN ID to the management virtual network adapter on every server in the cluster](#configure-the-required-vlan-id-to-the-management-virtual-network-adapter).
 - [Create a deployment configuration file](#create-a-deployment-configuration-file).
 - [Deploy Azure Stack HCI using the configuration file](./deployment-tool-existing-file.md).
@@ -55,7 +55,7 @@ Name of the virtual switch: `"ConvergedSwitch($Intentname)"`
   New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
   ```
 
-## Configure the management virtual network adapter conforming to the required naming conventions
+## Configure the management virtual network adapter using the required naming conventions
 
 After you configure the virtual switch, create the management virtual network adapter.
 
