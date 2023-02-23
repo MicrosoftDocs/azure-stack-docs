@@ -238,7 +238,7 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
    > [!NOTE]
    > If you have a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the ArcForServer resource group.
 
-   For Powershell module version 1.4.1 or earlier, you can't use a pre-created resource group for the `ARCServerResourceGroupName` parameter.
+   For PowerShell module version 1.4.1 or earlier, you can't use a pre-created resource group for the `ARCServerResourceGroupName` parameter.
 
    > [!NOTE]
    > If you are registering Azure Stack HCI in Azure China, run the `Register-AzStackHCI` cmdlet with these additional parameters: `-EnvironmentName "AzureChinaCloud" -Region "ChinaEast2"`.
@@ -350,7 +350,7 @@ Follow these steps to unregister your Azure Stack HCI cluster:
 
 ### Unregister Azure Stack HCI using PowerShell
 
-You can use the [`Unregister-AzStackHCI`](/powershell/module/az.stackhci/unregister-azstackhci) cmdlet to unregister an Azure Stack HCI cluster with Powershell.
+You can use the [`Unregister-AzStackHCI`](/powershell/module/az.stackhci/unregister-azstackhci) cmdlet to unregister an Azure Stack HCI cluster with PowerShell.
 
 You might need to install the latest version of the **Az.StackHCI** module. If you see a prompt that says **Are you sure you want to install the modules from 'PSGallery'?**, answer yes (Y):
 

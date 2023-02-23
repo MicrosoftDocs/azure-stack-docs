@@ -234,7 +234,7 @@ This can happen if the required role **Azure Connected Machine Resource Manager*
 
 You can find the permission under the **Access Control** blade of the resource group in the Azure portal. The following image shows the permission:
 
-:::image type="content" source="media/troubleshoot-hci-registration/access-control-troubleshooting.png" alt-text="Screenshot of access control blade.":::
+:::image type="content" source="media/troubleshoot-hci-registration/access-control-troubleshooting.png" alt-text="Screenshot of access control blade." lightbox="media/troubleshoot-hci-registration/access-control-troubleshooting.png":::
 
 **Remediation action**:
 
