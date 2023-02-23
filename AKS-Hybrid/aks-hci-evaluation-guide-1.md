@@ -3,7 +3,7 @@ title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: Evaluate AKS hybrid, Step 1 - To keep costs low, prepare an Azure Virtual Machine to deploy Azure Kubernetes Service on.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/05/2023
+ms.date: 02/23/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -15,15 +15,15 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this quickstart, you'll prepare an Azure Virtual Machine to deploy Azure Kubernetes Service (AKS) on to enable low-cost evaluation of AKS hybrid deployment options (AKS hybrid). The evaluation guide describes how to deploy AKS on Azure Stack HCI.
+In this quickstart, you prepare an Azure Virtual Machine to deploy Azure Kubernetes Service (AKS) on to enable low-cost evaluation of AKS hybrid deployment options (AKS hybrid). The evaluation guide describes how to deploy AKS on Azure Stack HCI.
 
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
+With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is useful for validating configurations that would require more hardware in your environment, such as running Hyper-V hosts and clusters.
 
-In this guide, you'll walk through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options.
+In this guide, you walk through the steps to deploy an Azure Kubernetes Service (AKS) on Azure Stack HCI infrastructure, one of the AKS hybrid deployment options.
 
 At a high level, these steps consist of the following tasks:
 
-* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM will be automatically configured with the relevant roles and features needed for your evaluation.
+* Deploy an Azure Virtual Machine, running Windows Server 2019 or Windows Server 2022, to act as your main Hyper-V host. The VM is automatically configured with the relevant roles and features needed for your evaluation.
 * On the Windows Server VM, deploy the AKS management cluster.
 * On the Windows Server VM, deploy the AKS target clusters, for running workloads.
 
@@ -32,7 +32,7 @@ At a high level, these steps consist of the following tasks:
 
 ## Get an Azure subscription
 
-To evaluate AKS, you'll need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
+To evaluate AKS, you need an Azure subscription. If you already have one provided by your company, you can skip this step, but if not, you have a couple of options.
 
 The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
@@ -41,11 +41,11 @@ The second option would be to sign up for an [Azure free trial](https://azure.mi
 > [!NOTE]
 > The free trial subscription provides $200 for your usage, however, the largest individual VM you can create is capped at 4 vCPUs, which is not enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
 
-You can also use this same Azure subscription to integrate with Azure Arc, once the deployment is completed.
+You can also use this same Azure subscription to integrate with Azure Arc after the deployment is complete.
 
 ## Azure Virtual Machine size considerations
 
-Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure Virtual Machine deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
+Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. You should choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive is the default 127 GB in size, and the Azure Virtual Machine deployment adds eight data disks (32 GB each by default), so you have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
 
 This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure Virtual Machine, and select an Azure Virtual Machine size from there. Some potential examples would be:
 

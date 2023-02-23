@@ -3,7 +3,7 @@ title: Tested resource limits, VM sizes, and regions for AKS hybrid
 description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) hybrid deployment options.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/05/2023
+ms.date: 02/23/2023
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
@@ -17,7 +17,7 @@ ms.custom: references_regions
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service hybrid deployment options (AKS hybrid). The tests were conducted using the latest release of AKS on Azure Stack HCI.
+This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service hybrid deployment options (AKS hybrid). The tests used the latest release of AKS on Azure Stack HCI.
 
 ## Maximum specifications
 
@@ -28,7 +28,7 @@ AKS on Azure Stack HCI deployments have been validated with the following config
 | Physical servers per cluster | 8       |
 | Total number of VMs          | 200     |
 
-The recommended limits have been tested with the default virtual machine (VM) sizes, based on the following table:
+The recommended limits were tested with the default virtual machine (VM) sizes, based on the following table:
 
 | **System Role** | **VM Size**|
 |-------------|---------|
@@ -89,15 +89,15 @@ AKS on Azure Stack HCI is supported in the following Azure regions:
 
 Scaling an AKS deployment on Azure Stack HCI involves planning ahead and knowing what your workloads and target cluster utilization will look like. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
 
-The below examples assume that only AKS based workloads will be deployed on the underlying infrastructure. Deploying non AKS workloads such as stand alone or clustered virtual machines, database servers etc. reduce the amount of available resources to AKS and must be taken into account.
+The below examples assume that only AKS based workloads are deployed on the underlying infrastructure. Deploying non-AKS workloads such as stand-alone or clustered virtual machines, or database servers, reduces the resources available to AKS, which you must take into account.
 
-Before you start, consider the following in order to determine your maximum scale and the number of target clusters you'll need to support:
+Before you start, consider the following in order to determine your maximum scale and the number of target clusters you need to support:
 
 - The number of IP addresses you have available for pods in a target cluster.
 - The number of IP addresses available for Kubernetes services in a target cluster.
-- The number of pods you'll need to run your workloads.
+- The number of pods you need to run your workloads.
 
-To determine the size of your Azure Kubernetes Service Host VM, you'll need to know the number of worker nodes and target clusters, as that determines the size of the AKS Host VM. For example:
+To determine the size of your Azure Kubernetes Service Host VM, you need to know the number of worker nodes and target clusters, as that determines the size of the AKS Host VM. For example:
 
 - The number of target clusters in the final deployed system.
 - The number of nodes, including control plane, load balancer, and worker nodes across all target clusters.
@@ -105,7 +105,7 @@ To determine the size of your Azure Kubernetes Service Host VM, you'll need to k
 > [!NOTE]
 > A single AKS host can only manage target clusters on the same platform.
 
-Also, to determine the size of your target cluster control plane node, you'll need to know the number of pods, containers, and worker nodes you're planning to deploy in each target cluster.
+Also, to determine the size of your target cluster control plane node, you need to know the number of pods, containers, and worker nodes you're planning to deploy in each target cluster.
  
 ### Default settings that currently can't be changed in AKS on Azure Stack HCI
 
