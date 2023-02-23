@@ -31,7 +31,7 @@ Microsoft offers two versions of Windows Server images through the Azure Stack m
 
 - **Bring Your Own License (BYOL)**: These images can be used on Azure Stack Hub ruggedized and MDC.
 
-Users of 1P Azure Stack Hub Appliances including Azure Stack Hub Ruggedized (ASH-R) and the Azure Modular Data Center (MDC) can leverage their existing entitlements through Enterprise Agreements (EAs) or Bring Your Own License (BYOL) to license Windows Server guests on Azure Stack Hub. As part of the 1P Azure Stack Hub offering, Microsoft allows the customer to use the Appliance for as long as the Customer has an active subscription to the Service, which use includes but is not limited to, use of the hardware, hardware support, and basic software infrastructure services (e.g., storage, compute, including virtual machines and containers). Windows Server guest licenses are not included with the Service.
+Users of 1P Azure Stack Hub appliances including Azure Stack Hub Ruggedized (ASH-R) and the Azure Modular Data Center (MDC) can leverage their existing entitlements through Enterprise Agreements (EAs) or Bring Your Own License (BYOL) to license Windows Server guests on Azure Stack Hub. As part of the 1P Azure Stack Hub offering, Microsoft allows the customer to use the appliance for as long as the customer has an active subscription to the service, which use includes but is not limited to, use of the hardware, hardware support, and basic software infrastructure services (i.e., storage, compute, including virtual machines and containers). Windows Server guest licenses are not included with the service.
 
 ## What about other VMs that use Windows Server, such as SQL Server?
 
