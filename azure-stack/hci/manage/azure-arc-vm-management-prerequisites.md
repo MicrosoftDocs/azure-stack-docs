@@ -117,11 +117,11 @@ You will need the following information about the proxy server to set up Arc VM 
 |Parameter|Description|
 |--|--|
 |ProxyServerHTTP|Destination proxy for HTTP traffic. It can be HTTP or HTTPS. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
-|ProxyServerHTTPS|Destination proxy for HTTPS traffic. It can be HTTP or HTTPS proxy. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
+|ProxyServerHTTPS|Destination proxy for HTTPS traffic. It can be HTTP or HTTPS. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
 |ProxyServerNoProxy|URLs and IP addresses that you shouldn't relay through the proxy, including:<br>- Localhost traffic: `localhost,127.0.0.1`<br>- Private network address space: `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`<br>- URLs in your organizations domain: `corp.contoso.com`|
-|ProxyServerUsername|Username for proxy authentication.|
-|ProxyServerPassword|Password for proxy authentication.|
-|CertificateFilePath|Certificate filename with full path. Example: `C:\Users\Gus\proxycert.crt`.|
+|ProxyServerUsername|Username for proxy authentication|
+|ProxyServerPassword|Password for proxy authentication|
+|CertificateFilePath|Certificate filename with full path. Example: `C:\Users\Gus\proxycert.crt`|
 
 ### Proxy authentication
 
