@@ -1,6 +1,6 @@
 ---
 title: Concepts about securing containers in AKS hybrid
-description: Learn ways to implement security on containers used to package & deploy applications in AKS hybrid.
+description: Learn ways to implement security on containers used to package and deploy applications in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 01/05/2023
