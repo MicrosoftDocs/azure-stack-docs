@@ -4,7 +4,7 @@ description: How to use an Azure Managed Lustre storage system with your Kuberne
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
 ms.date: 02/17/2023
 
@@ -175,9 +175,11 @@ To install the CSI driver, do these steps:
    ./install-driver.sh
    ```
 
-   The installation script uses `kubectl` to apply several configuration files to your environment. If you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
-
    For command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
+
+   > [!NOTE]
+   > The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
+
 
 ## Create and configure a persistent volume
 
@@ -240,4 +242,4 @@ To view timestamps in the console during writes, run the following commands:
 
 ## Next steps
 
-* Learn how to [export files from you file system with an archive job]
+- Learn how to [export files from you file system with an archive job]
