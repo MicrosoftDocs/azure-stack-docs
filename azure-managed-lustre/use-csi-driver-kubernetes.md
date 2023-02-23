@@ -206,7 +206,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
    ![Screenshot of the Azure portal Client Connection page. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
 
-Make these updates:
+   Make these updates:
 
    - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. The internal name is usually `lustrefs`. The internal name is not the name that you gave the file system when you created it.
 
