@@ -18,19 +18,37 @@ Removes a local node from an existing cluster.
 ## Syntax
 
 ```powershell
-Remove-AksEdgeNode [-NodeType] <String> [-Force] [-Headless] [<CommonParameters>]
+Remove-AksEdgeNode [-NodeType] <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## Description
 
-Removes a local node from an existing cluster. This is supported only when Linux and Windows nodes are deployed
-in the same machine.
-To remove the single node deployed, use Remove-AksEdgeDeployment.
+Removes a local node from an existing cluster. This function is supported only when Linux and Windows nodes are deployed in the same machine. To remove the single node deployed, use Remove-AksEdgeDeployment.
 
 ## Examples
 
+Prompt confirmation for both general removal, and force removal if needed
+
 ```powershell
-Remove-AksEdgeNode -WorkloadType Linux
+Remove-AksEdgeNode -NodeType Linux
+```
+
+Skip both confirmation
+
+```powershell
+Remove-AksEdgeNode -Force -NodeType Linux
+```
+
+Prompt confirmation for both general removal, and force removal if needed
+
+```powershell
+Remove-AksEdgeNode -Force -Confirm -NodeType Linux
+```
+
+Skip confirmation for general removal, but will prompt confirmation if force removal is required
+
+```powershell
+Remove-AksEdgeNode -Confirm:$false -NodeType Linux
 ```
 
 ## Parameters
@@ -53,7 +71,10 @@ Accept wildcard characters: False
 
 ### -Force
 
-This parameter forcefully removes a node despite errors. A confirmation dialogue will be displayed because proceeding in error cases can have adverse side effects on the state of the cluster. In combination with the headless switch, a node can be force removed without user interaction even if there are errors.
+This parameter enables user to remove node without user interaction.
+In combination with the Confirm switch, a node can be force removed with or without user interaction even if there are errors.
+If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
+Otherwise, user will be asked for confirmation for node removal unless Confirm is set to false, and asked again if force removal is required.
 
 ```yaml
 Type: SwitchParameter
@@ -67,19 +88,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Headless
+### -WhatIf
 
-This parameter is useful for automation without user interaction.
-The default user input will be applied.
+Shows what would happen if the cmdlet runs.
+The cmdlet isn't run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

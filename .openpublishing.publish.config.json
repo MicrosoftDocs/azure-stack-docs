@@ -15,6 +15,20 @@
       "template_folder": "_themes"
     },
     {
+      "docset_name": "azure-managed-lustre",
+      "build_source_folder": "azure-managed-lustre",
+      "build_output_subfolder": "azure-managed-lustre",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
       "docset_name": "AzureStack",
       "build_source_folder": "azure-stack",
       "build_output_subfolder": "AzureStack",
@@ -39,7 +53,6 @@
   "branches_to_filter": [],
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-stack-docs",
   "git_repository_branch_open_to_public_contributors": "main",
-  "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "dependent_repositories": [
     {
@@ -77,11 +90,13 @@
     }
   },
   "docs_build_engine": {},
+  "skip_source_output_uploading": false,
   "contribution_branch_mappings": {},
   "need_generate_pdf_url_template": true,
   "redirection_files": [
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json",
-    ".openpublishing.redirection.aks.json"
+    ".openpublishing.redirection.aks.json",
+    ".openpublishing.redirection.aks-edge.json"
   ]
 }

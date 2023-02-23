@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Troubleshoot Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article provides guidance on how to debug issues that you might encounter when using Azure Arc virtual machines (VMs). It also describes the limitations and known issues that currently exist.
 
@@ -86,7 +86,14 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
+- If your environment fails to recognize Azure CLI after installing it, please run the following code block to add the Azure CLI installation path to the environment path.
 
+```PowerShell
+        if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {
+            $env:PATH += "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+            Write-Host "Updated path $env:PATH"
+        }
+```
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.

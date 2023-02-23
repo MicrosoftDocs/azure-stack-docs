@@ -328,7 +328,7 @@ Get-AksHciNodePool -clusterName akshciclus001
 1. Scale your Kubernetes cluster to add a Windows Node Pool and worker node. This process triggers the download and extraction of a Windows container host image, which takes a few minutes.
 
    ```powershell
-   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType windows
+   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType Windows -osSku Windows2022
    ```
 
 2. Next, scale your Kubernetes cluster to have 2 Linux worker nodes:

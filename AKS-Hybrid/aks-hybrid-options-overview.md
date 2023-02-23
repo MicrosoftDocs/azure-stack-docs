@@ -72,8 +72,8 @@ AKS hybrid deployment option | Host OS | Minimum compute requirement | Failover 
 |-------|-------------------|-----------|----------|---------|---------|
 AKS on Windows Server | Windows Server 2019 </br> Windows Server 2022 </br>  | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node failover cluster | Local PowerShell </br> Windows Admin Center | Manual Azure Arc integration | 
 AKS on Azure Stack HCI | Azure Stack HCI 21H2 | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node Azure Stack HCI cluster | Local PowerShell  </br> Windows Admin Center | Manual Azure Arc integration | 
-AKS cluster provisioning from Azure (PREVIEW) | Windows Server 2019 </br> Windows Server 2022 </br> Azure Stack HCI 21H2 | Memory: 32GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2 node cluster | Azure Portal  </br> Azure CLI </br> Azure Resource Manager templates | Automatic Azure Arc integration | 
-AKS Edge Essentials (PREVIEW) | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
+AKS cluster provisioning from Azure (PREVIEW) | Windows Server 2019 </br> Windows Server 2022 </br> Azure Stack HCI 21H2 | Memory: 32GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2 node cluster | Azure portal  </br> Azure CLI </br> Azure Resource Manager templates | Automatic Azure Arc integration | 
+AKS Edge Essentials | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
 
 ## Next steps
 

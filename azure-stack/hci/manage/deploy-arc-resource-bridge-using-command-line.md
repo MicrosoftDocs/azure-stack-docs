@@ -3,14 +3,14 @@ title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 12/27/2022
+ms.date: 1/4/2023
 ms.author: v-mandhiman
 ms.reviewer: alkohli
 ---
 
 # Set up Azure Arc VM management using command line (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and version 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to use Azure Command-Line Interface (CLI) to set up Azure Arc VM management, which includes:
 
@@ -55,7 +55,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    $csv_path="<input-from-admin>"
    $VlanID="<vLAN-ID>" (Optional)
    $VMIP_1="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
-   $VMIP_2="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
+   $VMIP_2="<static IP address for upgrading Resource Bridge VM>" (required only for static IP configurations)   
    $DNSServers="<comma separated list of DNS servers. For example: @("192.168.250.250","192.168.250.255") for a list of DNS servers. Or "192.168.250.250" for a single DNS server>" (required only for static IP configurations)
    $IPAddressPrefix="<network address in CIDR notation>" (required only for static IP configurations)
    $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
@@ -69,8 +69,8 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | **VswitchName** | Should match the name of the switch on the host. The network served by this switch must be able to provide static IP addresses for the **ControlPlaneIP**.|
    | **ControlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
-   | **vanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
-   | **VMIP_1, VMIP_2** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. |
+   | **VlanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
+   | **VMIP_1**, **VMIP_2** | (Required only for static IP configurations) IP addresses for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. **VMIP_2** will only be used during an upgrade of the Arc Resource Bridge. Make sure **VMIP_1** and **VMIP_2** are in ascending order to form a pool, with **VMIP_1** the first IP of the pool and **VMIP_2** the last IP of the pool. |
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: <br>- For a list of DNS servers: `@("192.168.250.250","192.168.250.255")`<br>- For a single DNS server: `"192.168.250.250"` |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
@@ -80,7 +80,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the authentication method used first. For specific information, see [Deploy Arc Resource Bridge using a network proxy](azure-arc-vm-management-proxy.md). Once completed, return back to this article to set up Arc VM management.
+        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the proxy configuration first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
    
       ### [For static IP address](#tab/for-static-ip-address-1)
 
@@ -112,8 +112,6 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
      
      ```azurecli
      az extension remove --name arcappliance
-     az extension remove --name connectedk8s
-     az extension remove --name k8s-configuration
      az extension remove --name k8s-extension
      az extension remove --name customlocation
      az extension remove --name azurestackhci
@@ -123,8 +121,6 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    
      ```azurecli
      az extension add --upgrade --name arcappliance
-     az extension add --upgrade --name connectedk8s
-     az extension add --upgrade --name k8s-configuration
      az extension add --upgrade --name k8s-extension
      az extension add --upgrade --name customlocation
      az extension add --upgrade --name azurestackhci
@@ -162,6 +158,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    az provider register --namespace Microsoft.ResourceConnector --wait
    az provider register --namespace Microsoft.AzureStackHCI --wait
    az provider register --namespace Microsoft.HybridConnectivity --wait
+   $hciClusterId= (Get-AzureStackHci).AzureResourceUri
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    $customloc_name= ((Get-AzureStackHci).AzureResourceName) + "-CL"
    ```
@@ -179,9 +176,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
-      > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -195,7 +192,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
    
    1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
-      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$csv_path\ResourceBridge\kubeconfig" 
       ```
       > [!IMPORTANT]
       > - The output of the above command is a kubeconfig file. Make sure you store this file in a secure and safe location for future use.
@@ -209,7 +206,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
    
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
-      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$csv_path\ResourceBridge\kubeconfig" 
       ```
 
    ### [For dynamic IP address](#tab/for-dynamic-ip-address-2)
@@ -219,9 +216,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -vswitchName $vswitchName -vLanID $vlanID
       ```
       > [!IMPORTANT]
-      > The configuration files are required to perform essential az arcappliance CLI commands. Make sure you store these files in a secure and safe location for future use.
+      > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files using [these steps](azure-arc-vm-management-proxy.md). After the proxy settings are applied, come back here and continue set up with the below steps.
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -233,7 +230,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       ```
    1. Build the Azure ARM resource and on-premises appliance VM for Arc Resource Bridge:
       ```PowerShell
-      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile "$csv_path\ResourceBridge\kubeconfig" 
       ```
       > [!IMPORTANT]
       > - The output of the above command is a kubeconfig file. Make sure you store this file in a secure and safe location for future use.
@@ -247,21 +244,20 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
 
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
-      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$csv_path\ResourceBridge\kubeconfig" 
       ```
    ---
 
 1. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
    ```azurecli
-   az arcappliance show --resource-group $resource_group --name $resource_name
+   az arcappliance show --resource-group $resource_group --name $resource_name --query '[provisioningState, status]'
    ```
 
 1. Add the required extensions for VM management capabilities to be enabled via the newly deployed Arc Resource Bridge:
 
     ```azurecli
-    $hciClusterId= (Get-AzureStackHci).AzureResourceUri
-    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
+    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --config-protected-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
 1. Verify that the extensions are installed. Keep running the following cmdlet until the extension result is **Succeeded**. This operation can take up to five minutes.

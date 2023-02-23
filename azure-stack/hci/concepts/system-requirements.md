@@ -11,7 +11,7 @@ ms.date: 03/31/2022
 
 # System requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Use this topic to assess system requirements for servers, storage, and networking for Azure Stack HCI.
 

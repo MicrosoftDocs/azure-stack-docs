@@ -1,0 +1,66 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "**/docfx.json",
+          "_repo.en-us/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices.md",
+          "SECURITY.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "**/docfx.json",
+          "_repo.en-us/**"
+        ]
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
+      "extendBreadcrumb": false,
+      "feedback_system": "None",
+      "manager":"femila",
+      "ms.service": "azure-stack",
+      "recommendations": true
+   },
+   "fileMetadata": {
+    "titleSuffix": {
+      "**/*.md": "Azure Managed Lustre File System",
+      "aks-hci/**/*.md": "Azure Managed Lustre File System"
+    },
+    "feedback_product_url": {
+      "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
+    },
+    "ms.subservice": {
+      "./**/*.md": "aks-hci"
+    }
+  },
+    "template": [],
+    "dest": "azure-managed-lustre"
+  }
+}
+

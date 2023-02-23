@@ -77,6 +77,7 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 
 ![Screenshot showing namespace-level configuration.](media/aks-edge/gitops-second-config.png)
 
+
 Refresh your configuration table and wait for the configurations to be in the installed state and compliant. Check using `kubectl` that the service is up:
 
 ```bash
@@ -89,7 +90,7 @@ kubectl get pods -n hello-arc
 
 ![Screenshot showing hello-arc service.](media/aks-edge/hello-arc-pods-up.png)
 
-Open a browser and navigate to your Node IP which is the `external-IP` of your `ingress-nginx-controller`.
+Open a browser and navigate to your Node IP, which is the `external-IP` of your `ingress-nginx-controller`.
 
 ![Screenshot of hello-arc application.](media/aks-edge/hello-arc-app-success.png)
 

@@ -46,7 +46,7 @@ for (let i=0;i<galleryItemsResult.length;i++) {
    }
 }
 if (result.length === 0) {
-    console.log("\n\n You don't have to udpate any item :)");
+    console.log("\n\n You don't have to update any item :)");
 } else {
     console.log("\n\nThese items need to be updated:");
     result.forEach((v)=>{

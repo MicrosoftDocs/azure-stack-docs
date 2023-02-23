@@ -12,21 +12,21 @@ ms.custom: template-how-to
 
 Follow the steps in this article to uninstall AKS Edge Essentials.
 
-## Disconnect from Arc
+## Disconnect from Azure Arc
 
-If you used the commands from the AKSEdgeDeploy module to connect to Arc, run `Disconnect-ArcIotK8s` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example.
+If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect-AideArcKubernetes` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example.
 
 ```powershell
 Disconnect-AideArcKubernetes
 ```
 
-If you used PowerShell 7 and the `Set-AksEdgeArcConnection` command to connect to Arc, you can test the Arc connection status using `Test-AksEdgeArcConnection` and disconnect it using:
+If you used `Connect-AksEdgeArc` to connect to Arc, run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc.
 
 ```powershell
-Set-AksEdgeArcConnection -connect $false
+Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
 ```
 
-You can also manually remove the cluster from Arc using the Azure portal.
+You can also manually remove the cluster from Arc using the Azure portal and delete the arc pods in the cluster.
 
 ## Remove your application from cluster
 
@@ -54,9 +54,11 @@ To remove your single machine cluster with a `Linux` or `LinuxandWindows` worklo
 
 ```powershell
 Remove-AksEdgeDeployment
+(or)
+Remove-AksEdgeDeployment -Force #to forcefully remove all.
 ```
 
-You can't remove the Linux node alone, you must remove the deployment if you need to remove Linux node.
+You can't remove the Linux node alone in this configuration, you must remove the deployment if you need to remove Linux node.
 
 > [!NOTE]
 > If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
@@ -66,28 +68,23 @@ You can't remove the Linux node alone, you must remove the deployment if you nee
 
 ## Remove nodes on a multi-machine cluster
 
-Before removing a node, make sure to drain the node that you'll be removing with `Set-AksEdgeNodeToDrain`. This ensures the safe de-allocation of the node's resources and that the application pods are gracefully shut down and transferred to other remaining nodes.
-
 Be careful when removing control plane nodes and make sure you have another working control plane node before doing so.
 
 To remove a **Windows** only node:
 
 ```powershell
-Set-AksEdgeNodeToDrain -NodeType Windows
 Remove-AksEdgeNode -NodeType Windows
 ```
 
 To remove a **Linux** only node:
 
 ```powershell
-Set-AksEdgeNodeToDrain -NodeType Linux
 Remove-AksEdgeNode -NodeType Linux
 ```
 
 To remove both:
 
 ```powershell
-Set-AksEdgeNodeToDrain -NodeType LinuxAndWindows
 Remove-AksEdgeDeployment
 ```
 
@@ -105,7 +102,11 @@ If you encounter any issues uninstalling AKS edge, try [downloading this trouble
 
 ## Uninstall Azure CLI
 
-See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows&tabs=azure-powershell#uninstall).
+See [Uninstall Azure CLI](/cli/azure/install-azure-cli-windows#uninstall).
+
+## Uninstall Az PowerShell
+
+See [How to uninstall Azure PowerShell modules](/powershell/azure/uninstall-az-ps).
 
 ## Next steps
 
