@@ -181,7 +181,7 @@ You've reached the end of the evaluation guide. In this guide you have:
 
 ## Product improvements
 
-If, while you work through this guide, you have an idea to make the product better, whether it's something in AKS hybrid, Azure Stack HCI, Windows Admin Center, or the Azure Arc integration and experience, let us know! We want to hear from you! [Head on over to our AKS on Azure Stack HCI GitHub page](https://github.com/Azure/aks-hci/issues "AKS on Azure Stack HCI GitHub"), where you can share your thoughts and ideas about making the technologies better.  If, however, you have an issue that you'd like some help with, read on... 
+If, while you work through this guide, you have an idea to make the product better, whether it's something in AKS hybrid, Azure Stack HCI, Windows Admin Center, or the Azure Arc integration and experience, visit the [AKS on Azure Stack HCI GitHub page](https://github.com/Azure/aks-hci/issues), where you can share your thoughts and ideas about making the technologies better.  If, however, you have an issue that you'd like some help with, see the following section. 
 
 ## Raising issues
 
