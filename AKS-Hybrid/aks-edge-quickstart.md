@@ -20,16 +20,21 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 ## Step 1: Download script for easy deployment
 
-Download the [AksEdgeQuickStart.ps1 script](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1). To do so, right-click and choose **Save link as...** to a working folder. Depending on the policy setup on your machine, you may have to unblock the file before running.
+Download the `AksEdgeQuickStart.ps1 script` to a working folder. Depending on the policy setup on your machine, you may have to unblock the file before running and Set-ExecutionPolicy to allow the script execution.
+
+Open an elevated PowerShell window, change directory to a working folder
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1"
+Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStart.ps1
 Unblock-File .\AksEdgeQuickStart.ps1
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 ```
 
 This script automates the following steps:
 
 - Downloads the GitHub repo [`Azure/AKS-Edge`](https://github.com/Azure/AKS-Edge) to the current working folder.
-- Uses the [`AksEdgeAzureSetup.ps1` script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and creates a service principal that is used to connect the cluster to Azure Arc.
+- Uses the [`AksEdgeAzureSetup.ps1` script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and creates a resource group `aksedge-rp` and a service principal `aksedge-sp`  that is used to connect the cluster to Azure Arc.
 - Invokes the `Start-AideWorkflow` function that performs the following tasks:
   - Downloads and installs the AKS Edge Essentials MSI.
   - Installs required host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled, and you must restart the script again.
@@ -46,7 +51,7 @@ For connecting your cluster to Azure Arc, you need to provide these parameters. 
    | :------------ |:-----------|:--------|
    |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy the subscription ID string. |
    |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy the tenant ID string. |
-   |`Location` | string | The location of your resource group. Choose the location closest to your deployment. See [Azure Arc by Region](/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by **Azure Arc enabled servers** and **Azure Arc enabled Kubernetes** services. Choose a region where both are supported. |
+   |`Location` | string | The location of your resource group. See [Azure Arc by Region](/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by **Azure Arc enabled servers** and **Azure Arc enabled Kubernetes** services. Choose a region where both are supported. |
 
 ## Step 2: Deploy AKS Edge Essentials
 
