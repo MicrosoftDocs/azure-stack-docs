@@ -1,13 +1,13 @@
 ---
 title: Azure Kubernetes Service hybrid (AKS hybrid) evaluation guide 
-description: Evaluate Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
+description: Quickstart - Evaluate hybrid deployment options for Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 11/01/2022
+ms.topic: quickstart
+ms.date: 02/22/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 
@@ -15,28 +15,25 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This guide demonstrates the basics of how to deploy [AKS hybrid](./overview.md) in an Azure Virtual Machine.
+The AKS hybrid evaluation guide demonstrates the basics of how to deploy and use Azure Kubernetes Service hybrid deployment options ([AKS hybrid](./overview.md)) by deploying AKS in an Azure Virtual Machine.
 
 You'll learn how to:
 
 * Deploy and configure a Windows Server 2019 or 2022 Azure Virtual Machine to host the infrastructure.
-* Use Windows Admin Center or PowerShell to deploy the AKS hybrid management cluster.
-* Deploy the AKS target/workload clusters with Windows Admin Center or PowerShell.
-* Integrate with Azure Arc.
-* Deploy a simple test application and expose the app externally.
+* Deploy an AKS hybrid management cluster using Windows Admin Center or PowerShell.
+* Deploy the AKS target (workload) clusters using Windows Admin Center or PowerShell.
+* Integrate your AKS deployment with Azure Arc.
+* Deploy a simple test application, and expose the app externally.
 
-## Version
+## AKS version
 
 This guide has been tested and validated with the **July 2022 release** of AKS.
 
-> [!NOTE]
-> The user interface is subject to updates and changes, so some of the screen shots in this guide may differ from what you actually see.
-
 ## What is AKS hybrid?
 
-AKS hybrid deployment is an on-premises implementation of AKS that automates running containerized applications at scale. AKS hybrid is now available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2022 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
+AKS hybrid deployment is an on-premises implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS hybrid is  available on Azure Stack HCI 21H2 and Windows Server 2019 and Windows Server 2200 based clusters, making it easier to get started hosting Linux and Windows containers in your datacenter.
 
-To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md) before completing your evaluation. This guide also provides references to available documents that can help build your knowledge of AKS hybrid.
+To learn more about AKS hybrid, see [What is AKS hybrid?](overview.md). This guide also provides references to other articles that can help you build your knowledge of AKS hybrid.
 
 ## Who should read this guide?
 
@@ -65,7 +62,7 @@ The first virtualized layer is running a nested operating system with Hyper-V en
 
 This guide assumes you don't have multiple server-class pieces of hardware running Azure Stack HCI 21H2 or Windows Server 2019/2022; instead it describes how to deploy AKS hybrid inside an Azure Virtual Machine using [nested virtualization](/azure-stack/hci/concepts/nested-virtualization).
 
-:::image type="content" source="media/aks-hci-evaluation-guide/deployment-overview.png" alt-text="Illustration of the AKS hybrid infrastructure.":::<!--Remove "AZURE STACK HCI" from top label.-->
+:::image type="content" source="media/aks-hci-evaluation-guide/deployment-overview.png" alt-text="Illustration of the AKS hybrid infrastructure.":::
 
 In this configuration, you'll take advantage of the nested virtualization support provided within certain Azure Virtual Machine sizes.
 
@@ -91,10 +88,6 @@ The following figure shows the general flow:
 **[Step 2a - Deploy AKS hybrid with Windows Admin Center](aks-hci-evaluation-guide-2a.md) and [Step 2b - Deploy AKS hybrid with PowerShell](aks-hci-evaluation-guide-2b.md):** In this step, you'll use either Windows Admin Center or PowerShell to deploy AKS hybrid. You'll deploy the necessary management cluster, and then a target cluster for running workloads.
 
 **[Step 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md):** With your deployment completed, you're now ready to explore many of the aspects of AKS hybrid. This includes experimenting with various provided hybrid solutions that can help you get started in using your AKS hybrid cluster. We'll also provide links to further scenarios and resources to continue your evaluation.
-
-<!-- ### Fully automated deployment
-
-If you have already deployed AKS on Azure Stack HCI and would like to fully automate the deployment inside an Azure Virtual Machine sandbox, [see this information on fully automated deployment](/eval/autodeploy/README.md). -->
 
 ## Product improvements
 
