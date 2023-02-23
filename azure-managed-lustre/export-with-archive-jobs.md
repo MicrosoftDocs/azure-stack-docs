@@ -104,13 +104,10 @@ The state command reports the state of changes to the file. one of four states f
 
 |State|Description|
 |-----|-----------|
-|`(0x00000009) exists archived`|The file exists in Blob Storage only. *QUERY: Is this about the file itself or changes to the file? If this is about the file, the file's contents will not be updated by archive jobs?*|
-|`(0x00000009) exists archived`|The file existing in both Lustre and Azure Blob Storage. *QUERY: Is this about the file itself or changes to the file? If this relates to the file, archive jobs will overwrite the file's contents in Blob Storage?*|
-|`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. *QUERY: They should run an archive job to export the changes the file in Blob Storage? The archive job overwrite's the files current contents in Blob Storage?*|
-|`(0x00000000)`|The file is new, and only exists in the Lustre file system. *QUERY: The archive job will export the file to Azure Storage, and updates from Azure Lustre will continue in future archive jobs?*|
-
-*REPLACES THIS TEXT:*
-The state command shows you whether a file's data is in Azure Blob Storage only (`(0x0000000d) released exists archived`), in both Lustre and Azure Blob Storage (`(0x00000009) exists archived`), has changes that haven't been archived to Azure Blob Storage (`(0x0000000b) exists dirty archived`), or is new and only exists in the Lustre file system (`(0x00000000)`).
+|`(0x0000000d) released exists archived`|The file's contents (the data) exist in Blob Storage only; only the metadata exists in Lustre. An archive job will not update (overwrite) the file in Blob Storage.|
+|`(0x00000009) exists archived`|An archive job won't export the file to Blob Storage because Blob Storage already has the latest copy.|
+|`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. To send the changes in Lustre back to Blob Storage, run an archive job. The archive job overwrites the file in Blob Storage.|
+|`(0x00000000)`|The file is new and only exists in the Lustre file system. An archive job will create a new file in the blob container. If the file is updated again in Lustre, run another archive job to copy those changes to Blob Storage.|
 
 ## Next steps
 
