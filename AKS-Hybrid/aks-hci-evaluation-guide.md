@@ -1,13 +1,13 @@
 ---
 title: Azure Kubernetes Service hybrid (AKS hybrid) evaluation guide 
-description: Evaluate Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
+description: Quickstart - Evaluate hybrid deployment options in Azure Kubernetes Service (AKS) by deploying AKS hybrid in an Azure Virtual Machine.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2022
+ms.date: 01/05/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS hybrid in an Azure Virtual Machine.
+# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 
@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This guide demonstrates the basics of how to deploy [AKS hybrid](./overview.md) in an Azure Virtual Machine.
+The AKS hybrid evaluation guide demonstrates the basics of how to deploy and use Azure Kubernetes Service hybrid deployment options ([AKS hybrid](./overview.md)) by deploying AKS in an Azure Virtual Machine.
 
 You'll learn how to:
 
