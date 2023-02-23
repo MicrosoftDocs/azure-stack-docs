@@ -115,7 +115,7 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 
 ### Firewall URL exceptions
 
-
+[!INCLUDE [Network requirements](~/../AzureDocs/articles/azure-arc/resource-bridge/includes/network-requirements.md)]
 
 The following firewall URL exceptions are needed on all servers in the Windows Server cluster:
 
