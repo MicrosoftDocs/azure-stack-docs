@@ -75,7 +75,7 @@ For reference, the Standard_E8s_v4 VM size costs approximately US $0.50 per hour
 
 Note the following considerations:
 
-* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. If you will be running the Azure Virtual Machine for a period of time, but shutting down frequently, you should choose a VM size with no temporary storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
+* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. If you will be running the Azure Virtual Machine for a period of time, but shutting it down frequently, you should choose a VM size with no temporary storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
 * We recommend that you choose a VM size that supports premium storage. When you run nested virtual machines, increasing the number of available IOPs can have a significant impact on performance. Hence, we recommend that you choose premium storage over Standard HDD or Standard SSD. Refer to the table above to make the most appropriate selection.
 * Ensure that whichever VM size you choose, the VM [supports nested virtualization](/azure/virtual-machines/acu) and is [available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
@@ -83,12 +83,12 @@ Note the following considerations:
 
 The following guidance provides two options for deploying the Azure Virtual Machine. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
-1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
-2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
+1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). YOu can launch this option quickly and directly using the button within the documentation. After you complete a simple form, your VM is deployed, and host configuration automated.
+2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM is deployed, and host configuration is automated.
 
 ### Deployment detail
 
-As part of the deployment, the following steps will be automated for you:
+As part of the deployment, the following steps are automated:
 
 1. A Windows Server 2019 Datacenter or Windows Server 2022 Datacenter VM is deployed in Azure.
 2. 8 x 32 GB (by default) Azure Managed Disks are attached and provisioned with a Simple Storage Space for optimal nested VM performance.
@@ -120,7 +120,7 @@ After clicking the **Deploy to Azure** button, enter the details, which should l
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure Hybrid Benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
-The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
+The custom template is validated, and if all your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
 
