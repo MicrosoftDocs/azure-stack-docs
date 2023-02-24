@@ -1,9 +1,9 @@
 ---
 title: Explore the AKS hybrid environment
-description: Evaluate AKS hybrid, Step 3 - Deploy a simple Linux app and an end-to-end hybrid solution to explore the AKS hybrid environment.
+description: Quickstart – Evaluate Azure Kubernetes Service hybrid deployment options (AKS hybrid) by deploying simple Linux app and end-to-end hybrid solution. 
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 02/23/2023
+ms.topic: quickstart
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -197,4 +197,4 @@ A number of other useful tutorials can help you grow your knowledge of Kubernete
 * [Use Azure Policy to apply cluster configurations at scale](/azure/azure-arc/kubernetes/use-azure-policy)
 * [Enable monitoring of an AKS cluster connected to Azure Arc](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
 
-In addition to these resources, it's certainly worth exploring additional scenarios around Azure Arc, on the [Azure Arc jumpstart website](https://azurearcjumpstart.io). Here, you can explore scenarios around [AKS clusters, which are Arc-enabled in AKS hybrid](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/), and [Azure Arc-enabled data services](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/).
+In addition to these resources, it's certainly worth exploring additional scenarios around Azure Arc, on the [Azure Arc jumpstart website](https://azurearcjumpstart.io). Here, you can explore scenarios around [AKS clusters, which are Arc-enabled in AKS hybrid](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/) and [Azure Arc-enabled data services](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/).
