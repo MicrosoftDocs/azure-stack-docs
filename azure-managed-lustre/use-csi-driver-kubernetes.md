@@ -222,4 +222,4 @@ To view timestamps in the console during writes, run the following commands:
 
 ## Next steps
 
-- Learn how to [export files from you file system with an archive job](export-with-archive-jobs.md).
+- Learn how to [export files from your file system with an archive job](export-with-archive-jobs.md).
