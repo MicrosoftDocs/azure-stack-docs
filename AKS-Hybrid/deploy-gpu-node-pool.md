@@ -1,3 +1,16 @@
+---
+title: Using GPU for compute-intensive workloads in AKS hybrid
+description: Learn how to deploy GPU-enabled node pools on AKS hybrid.
+author: baziwane
+ms.topic: how-to
+ms.date: 02/24/2023
+ms.author: rbaziwane 
+ms.lastreviewed: 02/24/2023
+ms.reviewer: sethm
+# Intent: As an IT Pro, I want to learn how to deploy GPU enabled node pools
+# Keyword: Run GPU workloads on Kubernetes
+---
+
 # Using GPU for compute-intensive workloads in AKS hybrid
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning and more.
