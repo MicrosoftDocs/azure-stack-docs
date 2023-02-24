@@ -4,9 +4,9 @@ description: How to use an Azure Managed Lustre storage system with your Kuberne
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/23/2023
+ms.lastreviewed: 02/24/2023
 ms.reviewer: brianl
-ms.date: 02/17/2023
+ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I want to be able to use a Lustre file system with the apps I've deployed on Kubernetes.
 # Keyword: 
