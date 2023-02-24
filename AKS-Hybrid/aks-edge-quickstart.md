@@ -33,7 +33,7 @@ Open an elevated PowerShell window, change directory to a working folder
 $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1"
 Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStart.ps1
 Unblock-File .\AksEdgeQuickStart.ps1
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 ```
 
 This script automates the following steps:
@@ -52,7 +52,6 @@ This script automates the following steps:
 - Invokes the `Connect-AideArc` function if the Azure parameters are provided. This function performs the following tasks:
   - Installs the Azure Connected Machine Agent and connects the host machine to Arc for Servers.
   - Connects the deployed cluster to Arc for connected Kubernetes.
-
 
 ## Step 2: Deploy AKS Edge Essentials
 
