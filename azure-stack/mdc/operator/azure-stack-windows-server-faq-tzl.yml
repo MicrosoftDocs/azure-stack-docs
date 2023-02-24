@@ -29,7 +29,6 @@ sections:
       - question: |
           What are the licensing options for Windows Server Marketplace images on Azure Stack?
         answer: |
-          
           Microsoft offers two versions of Windows Server images through the Azure Stack marketplace. Only one version of this image can be used in any given Azure Stack environment at the same time.
           
           - **Pay as you use**: These images should not be used on Azure Stack Hub ruggedized or MDC.
