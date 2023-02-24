@@ -45,6 +45,8 @@
               href: create-kubernetes-cluster.md
     - name: Develop applications
       items:
+        - name: Use GPUs
+          href: deploy-gpu-node-pool.md
         - name: Deploy applications with Helm
           href: helm-deploy.md
         - name: Deploy Azure Arc enabled data services
