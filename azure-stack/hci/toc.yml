@@ -446,7 +446,7 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
-      - name: Specific deployment scenario
+      - name: Specific deployment scenarios
         items:
         - name: Deploy using non-native VLAN ID
           href: deploy/deployment-tool-non-native-vlan.md

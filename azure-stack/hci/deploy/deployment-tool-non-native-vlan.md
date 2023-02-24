@@ -13,9 +13,9 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-When you deploy Azure Stack HCI using an existing configuration file, the default native VLAN ID `0` is used for the management network. However, in some specific scenarios you may need to use a non-native VLAN ID for the management network instead of a native one.
+When you deploy Azure Stack HCI using an existing configuration file, by default native VLAN ID 0 is used for the management network. However, in some specific scenarios, you may need to use a non-native VLAN ID for the management network.
 
-This article is intended for the specific deployment scenario and provides instructions on how to deploy Azure Stack HCI using a non-native VLAN ID for the management network. For the default deployment scenario using a native VLAN ID, see [Deploy Azure Stack HCI using an existing configuration file (preview)](deployment-tool-existing-file.md).
+This article is intended for those specific deployment scenarios and describes how to deploy Azure Stack HCI using a non-native VLAN ID for the management network. For the default deployment scenario using a native VLAN ID, see [Deploy Azure Stack HCI using an existing configuration file (preview)](deployment-tool-existing-file.md).
 
 ## Prerequisites
 
