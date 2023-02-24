@@ -32,7 +32,9 @@ The following section describes the nested architecture, highlighting the main c
 - **L1 Virtual Machine**: Windows VM running on top of L0 Windows host OS - This VM has the AKS Edge Essentials installation. 
 - **L2 Virtual Machine**: AKS Edge Essentials nested VM (Linux or Windows) running on top of the L1 Windows virtual machine. 
 
-Nested environment can be setup using *Internal* or *External* virtual switch. However, this guide assumes you're using an *Internal* virtual switch. IP addresses of the L0 Windows machine and L1/L2 virtual machines can change depending on the networking scenario. This guide assumes that you're using the *172.20.1.0/24* IP address family. Also, deploying AKS EE windows nodes is optional, and will impact your assigned memory requirements. This guide goes through a Linux only deployment, but you can add your Windows nodes just by adding the appropriate configuration to the deployment JSON files. 
+Nested environment can be setup using *Internal* or *External* virtual switch. However, this guide assumes you're using an *Internal* virtual switch. IP addresses of the L0 Windows machine and L1/L2 virtual machines can change depending on the networking scenario. This guide assumes that you're using the *172.20.1.0/24* IP address family. 
+
+Also, deploying AKS EE windows nodes is optional, and will impact your assigned memory requirements. This guide goes through a Linux only deployment, but you can add your Windows nodes just by adding the appropriate configuration to the deployment JSON files. 
 
 >[!TIP]
 > If you're using *External* virutal switches for the deployment, ensure to use the correct *Network Adapters* and IP addresses allocations. 
@@ -137,7 +139,7 @@ The diagram shows the different virtual machines and components of this nested a
    Set-DNSClientServerAddress –InterfaceIndex $ifIndex –ServerAddresses "172.20.1.1"
    ```
 
-1. Set up the *Windows-VM-1* virtual machine following [Prepare your machines for AKS Edge Essentials](./aks-edge-howto-setup-machine).
+1. Set up the *Windows-VM-1* virtual machine following [Prepare your machines for AKS Edge Essentials](aks-edge-howto-setup-machine.md).
 
 1. Install all AKS Edge Essentials prerequisites for *Windows-VM-1* virtual machine. For more information about prerequisites, see [AKS Edge Essentials requirements and support matrix](aks-edge-system-requirements.md).
    ```powershell
@@ -208,7 +210,7 @@ The diagram shows the different virtual machines and components of this nested a
 1. Copy the AKS Edge scale configuration file from *Windows-VM-1* and modify it with the appropriate parameters. For more information, [Scaling out on multiple machines](aks-edge-howto-scale-out.md).
 
 1. Deploy *AKS-Edge-VM-2* on *Window-VM-2* using the scale configuration JSON file from the previous step.
- ```powershell
+   ```powershell
    New-AksEdgeDeployment -JsonConfigFilePath <scale-config-json>
    ``` 
 
