@@ -4,7 +4,7 @@ description: How to use an archive job to copy data from your Azure Managed Lust
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
 ms.date: 02/09/2023
 
@@ -29,7 +29,7 @@ When you archive files from your Azure Managed Lustre system, not all of the fil
 
 * Files with metadata changes only (owner, permissions, extended attributes) aren't exported.
 
-* If you delete a file in the Azure Managed Lustre file system, the archive job won't delete the file from the original source.
+* If you delete a file in the Azure Managed Lustre file system, the archive job does not delete the file from the original source.
 
 Archiving data is a manual process that you can do in the Azure portal or by using commands in the native Lustre client CLI. With both methods, you can monitor the state of the archive job.
 
@@ -56,7 +56,7 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
 
 3. To specify what to export in the archive job, enter a **File system path**. Then select **OK**.
 
-   * All new or changed files whose filenames begin with this string in the Azure Managed Lustre file system will be exported.
+   * All new or changed files whose filenames begin with this string in the Azure Managed Lustre file system are exported.
 
    * Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. If you want to avoid overwriting existing files in the blob container, make sure the files' path in your Lustre system doesn't overlap the existing files' path in the blob container.
 
@@ -64,7 +64,7 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
 
 ## Monitor or cancel an archive job in the Azure portal
 
-You can monitor or cancel an archive job that you created through the blob integration feature for your Azure Managed Lustre file system in the Azure portal. The **Archive jobs** section of the **Blob integration** page shows the status of each job.
+You can monitor or cancel archive jobs you created through blob integration with your Azure Managed Lustre file system in the Azure portal. The **Archive jobs** section of the **Blob integration** page shows the status of each job.
 
    ![Screenshot showing the Blob Integration pane for an Azure Managed Lustre file system. The Archive Jobs heading and the Cancel button for a completed job are highlighted.](media/export-with-archive-jobs/archive-jobs.png)
 
@@ -100,4 +100,15 @@ Each file has an associated state, which indicates the relationship between the 
 sudo lfs hsm_state path/to/export/file
 ```
 
-The state command shows you whether a file's data is in Azure Blob Storage only (`(0x0000000d) released exists archived`), in both Lustre and Azure Blob Storage (`(0x00000009) exists archived`), has changes that haven't been archived to Azure Blob Storage (`(0x0000000b) exists dirty archived`), or is new and only exists in the Lustre file system (`(0x00000000)`).
+The state command reports the state of changes to the file. one of four states for the file:
+
+|State|Description|
+|-----|-----------|
+|`(0x0000000d) released exists archived`|The file's contents (the data) exist in Blob Storage only. Only the metadata exists in Lustre. An archive job won't update (overwrite) the file in Blob Storage.|
+|`(0x00000009) exists archived`|An archive job won't export the file to Blob Storage because Blob Storage already has the latest copy.|
+|`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. To send the changes in Lustre back to Blob Storage, run an archive job. The archive job overwrites the file in Blob Storage.|
+|`(0x00000000)`|The file is new and only exists in the Lustre file system. An archive job will create a new file in the blob container. If the file is updated again in Lustre, run another archive job to copy those changes to Blob Storage.|
+
+## Next steps
+
+* Learn more about [Azure Blob Storage integration with Lustre file systems](blob-integration.md)
