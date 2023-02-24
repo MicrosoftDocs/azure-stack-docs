@@ -98,7 +98,13 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv)
     ```
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image. Use the following table to find the attribute value for your marketplace image:
+1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image.
+
+    ```azurecli
+    az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "<VM image name>"  --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
+    ```
+
+Use the following table to find the available marketplace images and their attribute values:
 
     | Name | Publisher | Offer | SKU | Latest version |
     |---|---|---|---|---|
@@ -110,9 +116,6 @@ Follow these steps to create a VM image using the Azure CLI.
     | Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 21H2 | microsoftwindowsdesktop | office-365 | win11-21h2-avd-m365 | 22000.1455.230110 |
     | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 | 19044.2486.230110 |
 
-    ```azurecli
-    az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "<VM image name>"  --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
-    ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
 
 Here's a sample output:
