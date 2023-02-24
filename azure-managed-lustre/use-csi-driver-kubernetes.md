@@ -4,9 +4,9 @@ description: How to use an Azure Managed Lustre storage system with your Kuberne
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 02/24/2023
 ms.reviewer: brianl
-ms.date: 02/17/2023
+ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I want to be able to use a Lustre file system with the apps I've deployed on Kubernetes.
 # Keyword: 
@@ -42,17 +42,17 @@ The following container images are compatible with Azure Managed Lustre file sys
 | main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest` | 1.21 or later | 2.15.1 |
 | v0.1.5             | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5` | 1.21 or later | 2.15.1 |
 
+## Prerequisites
+
+Before you deploy the Azure Lustre CSI Driver for Kubernetes, complete the following prerequisite:
+
+- If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+
 ## Setup overview
 
-To use the Azure Managed Lustre CSI Driver for Kubernetes, complete the following setup tasks:
+To enable  the Azure Managed Lustre CSI Driver for Kubernetes, do these steps:
 
 1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
-
-1. [Create an Azure Managed Lustre file system](create-file-system-portal.md).
-
-   Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
-
-1. [Create an Azure Kubernetes Service instance](#create-aks-cluster) if you don't already have one, and [connect to your AKS instance](#connect-to-aks-cluster).
 
 1. [Install the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver).
 
@@ -64,10 +64,11 @@ The following sections describe each task in greater detail.
 
 ## Provide subnet access between AKS and Azure Managed Lustre
 
-Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access.
+Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access
 
-> [!TIP]
-> Network access is easier to configure if your Azure Managed Lustre file system and your Azure Kubernetes Service instance use the same subscription and virtual network (VNet).
+- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-vnet): Create an AKS subnet inside the Azure Managed Lustre VNet
+- [Option 2](#option-2-use-azure-cni-in-aks-and-peer-the-vnets): Use Azure CNI in AKS, and peer the VNets
+- [Option 3](#option-3-use-aks-kubenet-and-peer-its-vnet-with-the-azure-managed-lustre-vnet): Use AKS `kubenet`, and peer its VNet with the Azure Managed Lustre VNet
 
 ### Option 1: Create an AKS subnet inside the Azure Managed Lustre VNet
 
@@ -107,17 +108,21 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
 
 - To learn how to connect the two networks, see [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
-## Create and connect to AKS cluster
+## Create an Azure Managed Lustre file system
 
-If you haven't already done so, create an Azure Kubernetes Service cluster, and connect to the cluster.
+If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal). Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
 
-### Create AKS cluster
+## Connect a client to your Azure Managed Lustre file system
 
-If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+Do the following steps to install a Lustre client, and mount the file system:
 
-### Connect to AKS cluster
+1. Review the steps for installing the client software and mounting the system in [Connect to clients](connect-clients.md).
 
-Connect to the cluster by doing these steps:
+1. Link to specific steps for the client software version you're installing. See [Install client software](connect-clients.md#install-client-software) for links to supported software versions. Follow the steps in the individual article for your preferred client software version to install the client software.
+
+## Connect to the Lustre cluster
+
+Connect to the Azure Managed Lustre cluster by doing these steps:
 
 1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
 
@@ -146,24 +151,23 @@ To install the CSI driver, do these steps:
    cd azurelustre-csi-driver
    ```
 
-1. Change directories to the **deploy/** subdirectory of the repository, and run the installation script **install-driver-sh** (at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh)):
+1. In your local clone of the **azurelustre-csi-driver** repository, change directories to the **deploy/** subdirectory, and run the installation script **install-driver-sh**. (Online, the script is available at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh).)
 
    ```bash
    cd deploy/
    ./install-driver.sh
    ```
 
-   The installation script uses `kubectl` to apply several configuration files to your environment. If you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
-
    For command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
+
+   > [!NOTE]
+   > The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
 
 ## Create and configure a persistent volume
 
-Complete the following tasks to create and configure a persistent volume. For more information, see [Static provisioning](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/static-provisioning.md).
-
 To create a persistent volume for an existing Azure Managed Lustre file system, do these steps:
 
-1. Copy the following configuration files from the [docs/examples](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) path in the azurelustre-csi-driver repository in GitHub to your working path:
+1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the CSI driver](#install-the-csi-driver), you'll have local copies available already.
 
    - storageclass_existing_lustre.yaml
    - pvc_storageclass.yaml
@@ -171,7 +175,6 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
    If you don't want to clone the entire repository, you can download each file individually. Open each of the following links, copy the file's contents, and then paste the contents into a local file with the same filename.
 
    - [storageclass_existing_lustre.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/storageclass_existing_lustre.yaml)
-
    - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/pvc_storageclass.yaml)
 
 1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the MSG IP address.
@@ -182,12 +185,13 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
    ![Screenshot of the Azure portal Client Connection page. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
 
+   Make these updates:
+
    - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. The internal name is usually `lustrefs`. The internal name is not the name that you gave the file system when you created it.
 
      The suggested `mount` command includes the name highlighted in the following address string.
 
      ![Screenshot of a sample address string on the Client Connection page. The internal name of the Lustre cluster is highlighted.](media/use-csi-driver-kubernetes/portal-mount-address-string.png)
-
 
    - Replace `EXISTING_LUSTRE_IP_ADDRESS` with the **MSG IP Address**.
 
@@ -202,7 +206,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
 If you want to check your installation, you can optionally use an echo pod to confirm the driver is working.
 
-To view timestamps in the console during writes, update the echo pod content to write a timestamp log by running the following commands:
+To view timestamps in the console during writes, run the following commands:
 
 1. Add the following code to the echo pod:
 
@@ -215,3 +219,7 @@ To view timestamps in the console during writes, update the echo pod content to 
    ```bash
    `kubectl logs -f lustre-echo-date`
    ```
+
+## Next steps
+
+- Learn how to [export files from your file system with an archive job](export-with-archive-jobs.md).
