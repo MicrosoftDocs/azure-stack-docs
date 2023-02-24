@@ -208,7 +208,7 @@ Done
 
 Note: If you receive a version mismatch error when calling into drivers, such as, CUDA driver version is insufficient for CUDA runtime version, review the NVIDIA driver matrix compatibility chart - https://docs.nvidia.com/deploy/cuda-compatibility/index.html
 
-# Frequently Asked Questions
+## Frequently Asked Questions
 
 ### What happens during upgrade of a GPU-enabled node pool?
 
