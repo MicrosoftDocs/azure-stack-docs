@@ -4,7 +4,7 @@ description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 02/23/2023
 ms.reviewer: mayabishop
 ms.date: 02/22/2023
 
@@ -145,31 +145,11 @@ To configure blob integration:
 
    * If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name.
 
-   For more information, see [Understand the import prefix](#understand-the-import-prefix).
+   For more information, see [Filter blob imports](blob-integration.md#filter-blob-imports).
 
    You can't change this field after you create the Azure Managed Lustre file system.
 
 ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
-
-#### Understand the import prefix
-
-The import prefix field determines what data is imported from your blob container when the system is created. This field can't be changed after you create the Azure Managed Lustre file system.
-
-* In **import prefix**, supply a file path that matches data files in your container.
-
-  When you create the Azure Managed Lustre file system, contents that match this prefix are added to a metadata record in the file system. When clients request a file, its contents are retrieved from the blob container and stored in the file system.
-
-  If you use a hierarchical blob storage service (like NFSv3-mounted blob storage), you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
-
-  If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file will be made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob file names will become directory delimiters when stored in Lustre.
-
-  For more information about using Azure Managed Lustre with hierarchical or non-hierarchical blob containers, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
-
-  The default import prefix is **/**, which imports the entire contents of the blob container.
-
-  If you don't want to import files from the blob container, you can set an import prefix that does not match any files in the container.
-
-  For more information about import prefixes, see (blob-integration.md#filter-blob-imports).
 
 ### Maintenance window
 
