@@ -41,7 +41,7 @@ Here are the known issues that have carried over from the previous releases in A
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |If incorrect domain credentials are provided in the **Join a domain** page or via the *config file*, the deployment will fail. You will need to [Reset the deployment](./deploy/deployment-tool-troubleshoot.md#reset-deployment).|There is no workaround in this release. Make sure that the domain credentials that you provide are correct.<br><br>The behavior will change in the upcoming release and a workaround will be available.|
+|1|Deployment |If incorrect domain credentials are provided in the **Join a domain** page or using the *config file*, the deployment will fail. You will need to [Reset the deployment](./deploy/deployment-tool-troubleshoot.md#reset-deployment).|There is no workaround in this release. Make sure that the domain credentials that you provide are correct.<br><br>This behavior will change in the upcoming release and a workaround will be available.|
 |2|Deployment |Failure in ECE – *Set-RoleDefinition: Can't find the element 'NodeDefinition' for the role NC*|Make sure that a DVD isn't inserted in the physical machine or mounted via the Baseboard Management Controller (BMC).|
 |3|Deployment |Only the first host can be the staging server.|There's no workaround for this issue in this preview release.|
 |4|Deployment |During deployment, an error is seen in Windows Admin Center: Remote Exception "GetCredential" with "1".|Reboot the staging server and run the bootstrap script again. Make sure that the Azure credentials for the subscription haven't expired and are correct.|
