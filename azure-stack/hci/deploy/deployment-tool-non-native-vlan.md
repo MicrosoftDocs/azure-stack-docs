@@ -19,7 +19,7 @@ This article is intended for those specific deployment scenarios and describes h
 
 ## Prerequisites
 
-Before you begin, make sure you have done the following:
+Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md).
 - Complete the [deployment checklist](deployment-tool-checklist.md).
@@ -85,13 +85,13 @@ The following example shows how to configure the management virtual network adap
 Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID 8
 ```
 
-After you configure the required VLAN ID, assign an IP address and gateways to the management virtual network adapter. This will validate its connectivity with other servers, DNS, Active Directory, and internet.
+After you configure the required VLAN ID, assign an IP address and gateways to the management virtual network adapter. This verifies that the virtual network adapter has connectivity with other servers, DNS, Active Directory, and internet.
 
 ## Deploy Azure Stack HCI using the configuration file
 
 After you finish configuring the networking elements on all the servers, you're ready to deploy Azure Stack HCI using a configuration file that you manually create beforehand using a text editor. For information about how to create the configuration file and then run the deployment, see [Deploy Azure Stack HCI using an existing configuration file (preview)](deployment-tool-existing-file.md).
 
-The following example shows a snippet of the `HostNetwork` configuration section within the configuration file, where the management and compute intent is defined to use the two physical network adapters assigned for these traffic types. There is no reference to the management virtual network adapters created in the previous steps because the deployment tool keeps the network configuration as-is, including the VLAN ID.
+The following example shows a snippet of the `HostNetwork` configuration section within the configuration file, where the management and compute intent is defined to use the two physical network adapters assigned for these traffic types. There's no reference to the management virtual network adapters created in the previous steps because the deployment tool keeps the network configuration as-is, including the VLAN ID.
 
 ```JSON
 "HostNetwork": {
