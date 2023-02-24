@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
-ms.date: 02/09/2023
+ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I need to be able to export files from my Azure Managed Lustre file system to longterm Azure Blob Storage.
 # Keyword: 
