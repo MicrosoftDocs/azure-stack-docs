@@ -440,8 +440,8 @@
         href: deploy/deployment-tool-existing-file.md
       - name: 3C - Deploy via PowerShell
         href: deploy/deployment-tool-powershell.md
-      - name: Special case - Deploy using non-native VLAN ID
-        href: deploy/deployment-tool-non-native-vlans.md
+      - name: Deploy using non-native VLAN ID
+        href: deploy/deployment-tool-non-native-vlan.md
       - name: 4 - Validate deployment
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
