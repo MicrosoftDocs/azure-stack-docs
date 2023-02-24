@@ -97,7 +97,7 @@ The diagram shows the different virtual machines and components of this nested a
 
 1. Inside the *Windows-VM-1* virtual machine, open an elevated PowerShell session. 
 
-1. Check the adapters connected to the virtual machine - Look for the \<name\> of the connected *Ethernet adapter <name>*. For example, *Ethernet 2*.
+1. Check the adapters connected to the virtual machine - Look for the \<name\> of the connected *Ethernet adapter \<name\>*. For example, *Ethernet 2*.
 
    ```powershell
    ipconfig
@@ -139,12 +139,12 @@ The diagram shows the different virtual machines and components of this nested a
 
 1. Set up the *Windows-VM-1* virtual machine following [Prepare your machines for AKS Edge Essentials](./aks-edge-howto-setup-machine).
 
-1. Install all AKS Edge Essentials prerequisites for *Windows-VM-1* virtual machine. For more information about prerequisites, see [AKS Edge Essentials requirements and support matrix](./aks-edge-system-requirements.md).
+1. Install all AKS Edge Essentials prerequisites for *Windows-VM-1* virtual machine. For more information about prerequisites, see [AKS Edge Essentials requirements and support matrix](aks-edge-system-requirements.md).
    ```powershell
    Install-AksEdgeHostFeatures
    ```
 
-1. Create the AKS Edge full-scale deployment configuration file - Once JSON is created, input the required parameters.  Make sure to change the network adapter for external virtual switch creation, DNS server, assigned memory and correct static IP addresses. For more information, see [Full Kubernetes deployments in AKS Edge Essentials](./aks-edge-howto-multi-node-deployment).
+1. Create the AKS Edge full-scale deployment configuration file - Once JSON is created, input the required parameters.  Make sure to change the network adapter for external virtual switch creation, DNS server, assigned memory and correct static IP addresses. For more information, see [Full Kubernetes deployments in AKS Edge Essentials](aks-edge-howto-multi-node-deployment.md).
    ```powershell
    New-AksEdgeConfig -NodeType Linux -DeploymentType ScalableCluster
    ```
@@ -193,9 +193,9 @@ The diagram shows the different virtual machines and components of this nested a
    >[!WARNING]
    >If the ping requests to the *AKS-Edge-VM-1* fail, review the IP configurations and ensure troubleshoot the network connections. 
 
-1. Set up the *Windows-VM-2* virtual machine following [Prepare your machines for AKS Edge Essentials](./aks-edge-howto-setup-machine).
+1. Set up the *Windows-VM-2* virtual machine following [Prepare your machines for AKS Edge Essentials](aks-edge-howto-setup-machine.md).
 
-1. Install all AKS Edge Essentials prerequisites for *Windows-VM-2* virtual machine. For more information about prerequisites, see [AKS Edge Essentials requirements and support matrix](./aks-edge-system-requirements.md).
+1. Install all AKS Edge Essentials prerequisites for *Windows-VM-2* virtual machine. For more information about prerequisites, see [AKS Edge Essentials requirements and support matrix](aks-edge-system-requirements.md).
    ```powershell
    Install-AksEdgeHostFeatures
    ```
@@ -205,7 +205,7 @@ The diagram shows the different virtual machines and components of this nested a
    New-AksEdgeScaleConfig -NodeType Linux -ScaleType AddMachine -LinuxNodeIp <AKS-Edge-Linux-VM-2>
    ```   
 
-1. Copy the AKS Edge scale configuration file from *Windows-VM-1* and modify it with the appropriate parameters. For more information, [Scaling out on multiple machines](./aks-edge-howto-scale-out).
+1. Copy the AKS Edge scale configuration file from *Windows-VM-1* and modify it with the appropriate parameters. For more information, [Scaling out on multiple machines](aks-edge-howto-scale-out.md).
 
 1. Deploy *AKS-Edge-VM-2* on *Window-VM-2* using the scale configuration JSON file from the previous step.
  ```powershell
@@ -227,5 +227,5 @@ The diagram shows the different virtual machines and components of this nested a
 
 ## Next steps
 
-- Add workloads by [deploying applications](./aks-edge-howto-deploy-app.md)
-- [Troubleshoot](./aks-edge-troubleshoot-overview) your deployment
+- Add workloads by [deploying applications](aks-edge-howto-deploy-app.md)
+- [Troubleshoot](aks-edge-troubleshoot-overview.md) your deployment
