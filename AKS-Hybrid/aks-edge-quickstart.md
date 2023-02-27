@@ -16,37 +16,42 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 
 - See the [system requirements](aks-edge-system-requirements.md). For this quickstart, ensure that you have a minimum of 4.5 GB RAM free, 4 vCPUs and 20 GB free disk space.
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
-- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) terms as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the license terms.
+- See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the license terms.
+- Get your Azure subscription parameters: For connecting your cluster to Azure Arc, you need to provide these parameters. If you skip these parameters, the Arc connection is skipped, but the cluster will be deployed.
+  - Your **login credentials**: Required for interactive login into Azure using Azure CLI. Your account should have one of these roles `Owner` or `Contributor` or `Administrator`.
+  - Your **Subscription ID** `<subscription-id>`: In the Azure portal, select the subscription you're using and look for the subscription ID (GUID).
+  - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. Look for the tenant ID (GUID).
+  - The **Location (Azure region)** `<location>`:  where you want your resources to be created, see [Azure Arc by Region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc) for the locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region where both are supported.
 
 ## Step 1: Download script for easy deployment
 
-Download the [AksEdgeQuickStart.ps1 script](https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1). To do so, right-click and choose **Save link as...** to a working folder. Depending on the policy setup on your machine, you may have to unblock the file before running.
+Download the `AksEdgeQuickStart.ps1` script to a working folder. Depending on the policy setup on your machine, you may have to unblock the file before running and Set-ExecutionPolicy to allow the script execution.
+
+Open an elevated PowerShell window, change directory to a working folder
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1"
+Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStart.ps1
 Unblock-File .\AksEdgeQuickStart.ps1
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 ```
 
 This script automates the following steps:
 
-- Downloads the GitHub repo [`Azure/AKS-Edge`](https://github.com/Azure/AKS-Edge) to the current working folder.
-- Uses the [`AksEdgeAzureSetup.ps1` script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and creates a service principal that is used to connect the cluster to Azure Arc.
+- In the working folder, the script downloads the GitHub archive [Azure/AKS-Edge](https://github.com/Azure/AKS-Edge) and unzips to a folder **AKS-Edge-main** (or **AKS-Edge-<tag>**). By default this downloads the current main branch.
+- Uses the [AksEdgeAzureSetup script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and performs the following tasks:
+  - Installs [Azure CLI](/cli/azure/).
+  - Creates a resource group **aksedge-rp**.
+  - Creates a service principal **aksedge-sp** with **Contributor** role restricted to the **aksedge-rp** resource group scope. If the service principal already exists, it resets its password. This service principal is used to connect to Azure Arc.
+  - Registers the resource providers **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**,
+    **Microsoft.Kubernetes**, **Microsoft.KubernetesConfiguration**, **Microsoft.ExtendedLocation**.
 - Invokes the `Start-AideWorkflow` function that performs the following tasks:
   - Downloads and installs the AKS Edge Essentials MSI.
   - Installs required host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled, and you must restart the script again.
-  - Deploy a single machine cluster with internal switch (Linux node only).
+  - Deploys a single machine cluster with internal switch (Linux node only).
 - Invokes the `Connect-AideArc` function if the Azure parameters are provided. This function performs the following tasks:
   - Installs the Azure Connected Machine Agent and connects the host machine to Arc for Servers.
   - Connects the deployed cluster to Arc for connected Kubernetes.
-
-### Get your Azure subscription parameters
-
-For connecting your cluster to Azure Arc, you need to provide these parameters. If you skip these parameters, the Arc connection is skipped, but the cluster will be deployed.
-
-   | Attribute | Value type      |  Description |
-   | :------------ |:-----------|:--------|
-   |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy the subscription ID string. |
-   |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy the tenant ID string. |
-   |`Location` | string | The location of your resource group. Choose the location closest to your deployment. See [Azure Arc by Region](/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by **Azure Arc enabled servers** and **Azure Arc enabled Kubernetes** services. Choose a region where both are supported. |
 
 ## Step 2: Deploy AKS Edge Essentials
 
