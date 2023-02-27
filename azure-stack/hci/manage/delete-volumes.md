@@ -5,7 +5,7 @@ ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: jgerend
-ms.date: 02/10/2023
+ms.date: 02/27/2023
 ---
 
 # Delete volumes on Azure Stack HCI and Windows Server clusters
@@ -46,7 +46,7 @@ Remove-VirtualDisk -FriendlyName "Volume1"
 You will be asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
 
    > [!WARNING]
-   > This is not a recoverable action. This example permanently deletes a **VirtualDisk** Volume object.
+   > This is not a recoverable action. This permanently deletes a **VirtualDisk** Volume object.
 
 ## Next steps
 
