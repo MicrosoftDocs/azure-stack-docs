@@ -38,7 +38,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
 This script automates the following steps:
 
-- In the working folder, the script downloads the GitHub archive [Azure/AKS-Edge](https://github.com/Azure/AKS-Edge) and unzips to a folder **AKS-Edge-main** (or **AKS-Edge-<tag>**). By default this downloads the current main branch.
+- In the working folder, the script downloads the GitHub archive [Azure/AKS-Edge](https://github.com/Azure/AKS-Edge) and unzips to a folder **AKS-Edge-main** (or **AKS-Edge-\<tag\>**). By default this downloads the current main branch.
 - Uses the [AksEdgeAzureSetup script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and performs the following tasks:
   - Installs [Azure CLI](/cli/azure/).
   - Creates a resource group **aksedge-rp**.
