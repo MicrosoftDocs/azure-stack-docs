@@ -3,7 +3,7 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/24/2022
+ms.date: 02/27/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 08/13/2021
@@ -24,7 +24,7 @@ The first step for the user is to request VM console access via PowerShell. The 
 It is important to note that the operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
 
 > [!IMPORTANT]
-> The EVA feature is limited to Windows Server computers running with a GUI, because the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
+> The EVA feature is limited to computers running with a graphical user interface (GUI). For Windows Server, the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
 
 ## Operator enables a user subscription for EVA
 
