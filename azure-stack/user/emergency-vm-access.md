@@ -24,7 +24,7 @@ The first step for the user is to request VM console access via PowerShell. The 
 It is important to note that the operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
 
 > [!IMPORTANT]
-> The EVA feature is limited to computers running with a graphical user interface (GUI). For Windows Server, the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
+> For VMs running Windows Server, the EVA feature is limited to computers running with a graphical user interface (GUI). For Windows Server, the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
 
 ## Operator enables a user subscription for EVA
 
