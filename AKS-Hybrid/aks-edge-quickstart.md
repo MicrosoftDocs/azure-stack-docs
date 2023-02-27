@@ -21,7 +21,7 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
   - Your **login credentials**: Required for interactive login into Azure using Azure CLI. Your account should have one of these roles `Owner` or `Contributor` or `Administrator`.
   - Your **Subscription ID** `<subscription-id>`: In the Azure portal, select the subscription you're using and look for the subscription ID (GUID).
   - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. Look for the tenant ID (GUID).
-  - The **Location (Azure region)** `<location>`:  where you want your resources to be created, see [Azure Arc by Region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc) for the Locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region where both are supported.
+  - The **Location (Azure region)** `<location>`:  where you want your resources to be created, see [Azure Arc by Region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc) for the locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region where both are supported.
 
 ## Step 1: Download script for easy deployment
 
