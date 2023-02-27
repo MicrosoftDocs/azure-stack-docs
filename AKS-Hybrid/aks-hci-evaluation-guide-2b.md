@@ -1,9 +1,9 @@
 ---
 title: Deploy AKS infrastructure using PowerShell
-description: Evaluate AKS hybrid, Step 2 - Deploy Azure Kubernetes Service on Azure Stack HCI with PowerShell.
+description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using PowerShell to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 01/05/2023
+ms.topic: quickstart
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -411,4 +411,4 @@ For more information about integrating with Azure Arc, see [Connect an AKS clust
 
 In this step, you've successfully deployed the AKS management cluster, deployed and scaled a Kubernetes cluster, and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).
+- [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).
