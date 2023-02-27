@@ -38,17 +38,17 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
 This script automates the following steps:
 
-- In the working folder, the script downloads the Github archive [Azure/AKS-Edge](https://github.com/Azure/AKS-Edge) and unzips to a folder `AKS-Edge-main` (or `AKS-Edge-<tag>`). By default this downloads the current main branch..
-- Uses the [AksEdgeAzureSetup script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and performs the following:
-  - Installs [Azure CLI](/cli/azure/)
-  - Creates a resource group `aksedge-rp`
-  - Creates a service principal `aksedge-sp` with `Contributor` role restricted to the `aksedge-rp` resource group scope. If the service principal already exists, it resets its password. This service principal is used to connect to Azure Arc.
-  - Registers the resource providers `Microsoft.HybridCompute`, `Microsoft.GuestConfiguration`, `Microsoft.HybridConnectivity`,
-    `Microsoft.Kubernetes`, `Microsoft.KubernetesConfiguration`, `Microsoft.ExtendedLocation`
+- In the working folder, the script downloads the Github archive [Azure/AKS-Edge](https://github.com/Azure/AKS-Edge) and unzips to a folder **AKS-Edge-main** (or **AKS-Edge-<tag>**). By default this downloads the current main branch.
+- Uses the [AksEdgeAzureSetup script](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeAzureSetup/AksEdgeAzureSetup.ps1) to prompt the user to log in to the Azure portal using their Azure credentials and performs the following tasks:
+  - Installs [Azure CLI](/cli/azure/).
+  - Creates a resource group **aksedge-rp**.
+  - Creates a service principal **aksedge-sp** with **Contributor** role restricted to the **aksedge-rp** resource group scope. If the service principal already exists, it resets its password. This service principal is used to connect to Azure Arc.
+  - Registers the resource providers **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**,
+    **Microsoft.Kubernetes**, **Microsoft.KubernetesConfiguration**, **Microsoft.ExtendedLocation**.
 - Invokes the `Start-AideWorkflow` function that performs the following tasks:
   - Downloads and installs the AKS Edge Essentials MSI.
   - Installs required host OS features (`Install-AksEdgeHostFeatures`). The machine may reboot when Hyper-V is enabled, and you must restart the script again.
-  - Deploy a single machine cluster with internal switch (Linux node only).
+  - Deploys a single machine cluster with internal switch (Linux node only).
 - Invokes the `Connect-AideArc` function if the Azure parameters are provided. This function performs the following tasks:
   - Installs the Azure Connected Machine Agent and connects the host machine to Arc for Servers.
   - Connects the deployed cluster to Arc for connected Kubernetes.
