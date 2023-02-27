@@ -101,7 +101,7 @@ Visit the AKS quickstart using [PowerShell](/azure-stack/aks-hci/kubernetes-walk
 Create a workload cluster with a GPU node pool. Currently, using GPU-enabled node pools is only available for Linux node pools.
 
 ```powershell
-New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -OSType linux -nodeVmSize Standard_NK6 
+New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -osType linux -nodeVmSize Standard_NK6 
 ```
 
 Post installation of the workload cluster, run the following command to get your Kubeconfig:
@@ -114,8 +114,8 @@ PS C:> Get-AksHciCredential -Name gpucluster
 
 With your GPU node pool created, confirm that GPUs are schedulable in Kubernetes. First, list the nodes in your cluster using the [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command:
 
-```
-$ kubectl get nodes
+```powershell
+PS C:> kubectl get nodes
 ```
 
 ```output
