@@ -27,7 +27,7 @@ On each host machine, navigate to the Control Panel > Add or Remove programs and
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
 ```
 
-You should see the GPU devices appearing in an error state as shown in this sample output.
+You should see the GPU devices appearing in an error state as shown in this example output:
 
 ```output
 Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
