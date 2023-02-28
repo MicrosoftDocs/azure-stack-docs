@@ -24,7 +24,7 @@ If you are updating AKS from a preview version older than October 2022 that is r
 On each host machine, navigate to the Control Panel > Add or Remove programs and uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver has been successfully uninstalled. Open an elevated PowerShell terminal and run the following command. 
 
 ```
-PS C:\> Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
 ```
 
 You should see the GPU devices appearing in an error state as shown in this sample output.
