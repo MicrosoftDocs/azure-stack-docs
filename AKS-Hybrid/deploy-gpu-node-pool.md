@@ -107,7 +107,7 @@ New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -o
 Post installation of the workload cluster, run the following command to get your Kubeconfig:
 
 ```powershell
-PS C:> Get-AksHciCredential -Name gpucluster
+Get-AksHciCredential -Name gpucluster
 ```
 
 ##  Confirm that GPUs are schedulable
