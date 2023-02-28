@@ -4,7 +4,7 @@ description: Learn about the identity providers you can use with Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 02/09/2023
+ms.date: 02/28/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
