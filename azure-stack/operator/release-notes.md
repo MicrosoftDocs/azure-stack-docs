@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2023
+ms.date: 03/01/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -105,7 +105,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
+- [Azure Stack Hub hotfix 1.2108.2.136](hotfix-1-2108-2-136.md)
 
 ### After successfully applying the 2206 update
 
@@ -113,7 +113,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2206.2.52](hotfix-1-2206-2-52.md)
+- [Azure Stack Hub hotfix 1.2206.2.62](hotfix-1-2206-2-62.md)
 ::: moniker-end
 
 ::: moniker range="azs-2108"
@@ -195,7 +195,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
+- [Azure Stack Hub hotfix 1.2108.2.136](hotfix-1-2108-2-136.md)
 ::: moniker-end
 
 ::: moniker range="azs-2102"
