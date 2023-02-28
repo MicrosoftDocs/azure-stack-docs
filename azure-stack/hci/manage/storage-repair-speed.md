@@ -1,19 +1,18 @@
 ---
-title: Adjustable storage repair speed in Azure Stack HCI and Windows Server clusters
+title: Adjust storage repair speed in Azure Stack HCI and Windows Server clusters
 description: How to adjust storage repair speed in Azure Stack HCI and Windows Server clusters by using Windows Admin Center or PowerShell.
-author: TinaWu-Msft
-ms.author: tinawu
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 06/08/2021
+author: dansisson
+ms.author: v-dansisson
+ms.reviewer: tinawu
+ms.date: 02/28/2023
 ---
 
 # Adjustable storage repair speed in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
 
-User adjustable storage repair speed offers more control over the data resync process by allocating resources to either repair data copies (resiliency) or run active workloads (performance). This helps improve availability and allows you to service your clusters more flexibly and efficiently.
+User-adjustable storage repair speed offers more control over the data resync process by allocating resources to either repair data copies (resiliency) or run active workloads (performance). This helps improve availability and allows you to service your clusters more flexibly and efficiently.
 
 ## Storage repair speed settings
 
@@ -34,14 +33,14 @@ The storage speed repair settings are:
 
 ## Change storage repair speed using Windows Admin Center
 
-To change the storage repair speed for a cluster by using Windows Admin Center:
+To change the storage repair speed for a cluster by using Windows Admin Center, do the following:
 
 :::image type="content" source="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png" alt-text="You can change storage repair speeds in Cluster Manager > Settings > Storage Spaces and pools" lightbox="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png":::
 
-1. In **Cluster Manager**, select **Settings** from the lower left.
+1. In Windows Admin Center, connect to a cluster, and then select **Settings** from the **Tools** pane.
 1. In the **Settings** pane, select **Storage Spaces and pools**.
 1. Use the **Storage repair speed** dropdown to select the desired speed.
-1. Optional: Review the caution text if selecting **Very low** or **Very high**.
+1. Review the caution text if selecting **Very low** or **Very high**.
 1. Select **Save**.
 
 ## Change storage repair speed using PowerShell:
