@@ -35,7 +35,7 @@ Creates a zipped folder with logs from all your pods. This command creates an ou
 
 ### Example 1
 
-This example returns the smallest log size. This size is enough to debug any issues with management cluster pods, target cluster pods, billing, and download issues:
+Returns the smallest log size. This size is enough to debug any issues with management cluster pods, target cluster pods, billing, and download issues:
 
 ```powershell
 Get-AksHciLogs -EventLogs -KvaLogs -DownloadSdkLogs -BillingRecords
