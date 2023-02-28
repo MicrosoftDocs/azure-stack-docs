@@ -68,7 +68,7 @@ Add-PhysicalDisk -StoragePoolFriendlyName "FriendlyName_from_step2" -PhysicalDis
 
 ### Option B
 
-This option enables AutoPool and lets the Health service add the disk to the pool. Run the following Powershell command as administrator:
+This option enables AutoPool and lets the Health service add the disk to the pool. Run the following PowerShell command as administrator:
 
 ```powershell
 Get-StorageSubsystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.PhysicalDisk.AutoPool.Enabled" -Value True
