@@ -125,7 +125,7 @@ moc-lhbkqoncefu  Ready   <none>                3m19s  v1.22.6
 moc-li87udi8l9s  Ready   <none>                3m5s  v1.22.6
 ```
 
- Now use the [kubectl describe node](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe) command to confirm that the GPUs are schedulable. Under the *Capacity* section, the GPU should list as `nvidia.com/gpu: 1`.
+Now use the [kubectl describe node](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe) command to confirm that the GPUs are schedulable. Under the **Capacity** section, the GPU should appear as **nvidia.com/gpu: 1**.
 
 ```powershell
 kubectl describe <node> | findstr "gpu" 
