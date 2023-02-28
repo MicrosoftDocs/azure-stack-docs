@@ -49,7 +49,7 @@ Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 
 To confirm that the GPUs have been correctly dismounted from the host, run the following command. You should GPUs in an `Unknown` state. 
 
-```output
+```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
 Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
 Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
