@@ -250,7 +250,7 @@ Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" 
 
 This message can also be due to a transient issue that sometimes occurs while performing Azure Stack HCI registration. When that happens, the `Register-AzStackHCI` cmdlet shows the following warning message:
 
-:::image type="content" source="media/troubleshoot-hci-registration/hci-cmdlet-output.png" alt-text="Scrrenshot of output message from Register-AzStackHCI cmdlet." lightbox="media/troubleshoot-hci-registration/hci-cmdlet-output.png":::
+:::image type="content" source="media/troubleshoot-hci-registration/hci-cmdlet-output.png" alt-text="Screenshot of output message from Register-AzStackHCI cmdlet." lightbox="media/troubleshoot-hci-registration/hci-cmdlet-output.png":::
 
 **Remediation action**:
 
