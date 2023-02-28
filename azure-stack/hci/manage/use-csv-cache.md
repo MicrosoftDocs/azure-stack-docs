@@ -1,12 +1,11 @@
 ---
 title: Use the CSV in-memory read cache with Azure Stack HCI and Windows Server clusters
 description: This topic describes how to use system memory to boost performance.
-author: jasongerend
-ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 03/18/2021
+author: dansisson
+ms.author: v-dansisson
+ms.reviewer: jgerend
+ms.date: 02/27/2023
 ---
 
 # Use the CSV in-memory read cache
@@ -17,7 +16,7 @@ This topic describes how to use system memory to boost the performance of Azure 
 
 Azure Stack HCI and Windows Server are compatible with the Cluster Shared Volume (CSV) in-memory read cache. Using system memory to cache reads can improve performance for applications like Hyper-V, which uses unbuffered I/O to access VHD or VHDX files. (Unbuffered I/Os are any operations that are not cached by the Windows Cache Manager.)
 
-Because the in-memory cache is server-local, it improves data locality: recent reads are cached in memory on the same host where the virtual machine (VM) is running, reducing how often reads go over the network. This results in lower latency and better storage performance.
+Because the in-memory cache is server-local, it improves data locality. Recent reads are cached in memory on the same host where the virtual machine (VM) is running, reducing how often reads go over the network. This results in lower latency and better storage performance.
 
 Note that the CSV in-memory read cache is different from the [storage pool cache](../concepts/cache.md).
 
@@ -42,13 +41,18 @@ The CSV in-memory read cache is available in Azure Stack HCI, Windows Server 201
 
 ### Configure the cache using Windows Admin Center
 
-To configure the cache using Windows Admin Center, select **Settings** at the very bottom of the **Tools** menu on the left. Then go to **Storage > In-memory cache**. A checkbox enables or disables the cache, and you can also specify the maximum memory per server to be allocated to the cache. Be sure to click **Save** at the bottom of the page after making your changes.
+To configure the cache using Windows Admin Center, do the following: 
+
+1. In Windows Admin Center, connect to a cluster, and then select **Settings** from the **Tools** pane on the left.
+1. Select **In-memory cache** under **Storage** on the **Settings** pane.
+1. In  the right pane, a checkbox enables or disables the cache, and you can also specify the maximum memory per server to be allocated to the cache.
+1. When done, select **Save**.
 
 :::image type="content" source="media/use-csv-cache/in-memory-cache.png" alt-text="In Windows Admin Center, a checkbox enables or disables the cache. You can also specify the maximum memory per server to be allocated to the cache." lightbox="media/use-csv-cache/in-memory-cache.png":::
 
 ### Configure the cache using PowerShell
 
-To see how much memory is allocated using PowerShell, run:
+To see how much memory is allocated using PowerShell, run the following as administrator:
 
 ```PowerShell
 (Get-Cluster).BlockCacheSize
