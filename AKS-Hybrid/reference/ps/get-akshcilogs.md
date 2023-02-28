@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -eventLogs
-Use this flag to get the event logs logged to event viewer.
+Use this flag to get the logs sent to the event viewer.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
