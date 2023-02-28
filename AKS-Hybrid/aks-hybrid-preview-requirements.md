@@ -112,7 +112,6 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 | 55000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Server                            | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 | 65000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Authentication                    | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 
-
 ### Firewall URL exceptions
 
 [!INCLUDE [network-requirements](~/../AzureDocs/articles/azure-arc/resource-bridge/includes/network-requirements.md)]
