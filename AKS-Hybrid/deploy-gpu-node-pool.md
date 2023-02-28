@@ -38,7 +38,7 @@ Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_1
 
 Uninstalling the host driver will cause the physical GPU to go into an error state. You will need to dismount all the GPU devices from the host. 
 
-For each GPU (3D Video Controller) device, run the following commands in PowerShell. You will need to copy the instance id e.g. `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output.
+For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output.
 
 ```output
 $id1 = "<Copy and paste GPU instance id into this string>"  
