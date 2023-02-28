@@ -3,7 +3,7 @@ title: Deploy AKS hybrid infrastructure using Windows Admin Center
 description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using Windows Admin Center to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 02/22/2023
+ms.date: 02/28/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
@@ -224,7 +224,7 @@ Whichever option you chose, you will now be at the start of the **Create Kuberne
 1. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**.
 1. On the **Review + Create** page, review your chosen settings, then click **Create**.
 
-   :::image type="content" source="media/aks-hci-evaluation-guide/create-cluster.png" alt-text="Screenshot of the Review Plus Create screen for a new AKS cluster in Windows Admin Center.":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/create-cluster.png" alt-text="Screenshot of the Review Plus Create screen for a new AKS cluster in Windows Admin Center." lightbox="media/aks-hci-evaluation-guide/create-cluster.png":::
 
 1. The creation process begins, and takes a few minutes.
 1. Once completed, you should see a message for successful creation, then click **Finish**.
