@@ -40,7 +40,7 @@ Uninstalling the host driver will cause the physical GPU to go into an error sta
 
 For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output.
 
-```output
+```powershell
 $id1 = "<Copy and paste GPU instance id into this string>"  
 $lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0] 
 Disable-PnpDevice -InstanceId $id1 -Confirm:$false 
