@@ -201,6 +201,9 @@ Create plans and offers to make SQL databases available for users. Add the **Mic
 > [!IMPORTANT]
 > It can take up to two hours for new quotas to be available in the user portal or before a changed quota is enforced.
 
+> [!NOTE]
+> You can't delete a quota if there are any current plans that use it. You must first delete the plan that references the quota.
+
 ## Next steps
 
 [Add databases](azure-stack-sql-resource-provider-databases.md)

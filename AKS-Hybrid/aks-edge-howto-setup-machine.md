@@ -35,7 +35,7 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
-Before you install the MSI, you can review the [feature support](aks-edge-system-requirements.md#feature-support-matrix) to understand the different options available.  
+Before you install the MSI, you can review the [feature support](aks-edge-system-requirements.md#ga-feature-support-matrix) to understand the different options available.  
 
 ## Install AKS Edge Essentials
 

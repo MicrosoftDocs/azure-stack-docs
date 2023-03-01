@@ -1,15 +1,16 @@
 ---
 title: Delete volumes on Azure Stack HCI and Windows Server clusters
 description: How to delete volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center or PowerShell.
-author: jasongerend
-ms.author: jgerend
 ms.topic: how-to
-ms.date: 03/09/2021
+author: dansisson
+ms.author: v-dansisson
+ms.reviewer: jgerend
+ms.date: 02/27/2023
 ---
 
 # Delete volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article explains how to delete volumes by using either Windows Admin Center or PowerShell.
 
@@ -45,7 +46,7 @@ Remove-VirtualDisk -FriendlyName "Volume1"
 You will be asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
 
    > [!WARNING]
-   > This is not a recoverable action. This example permanently deletes a **VirtualDisk** Volume object.
+   > This is not a recoverable action. This permanently deletes a **VirtualDisk** Volume object.
 
 ## Next steps
 

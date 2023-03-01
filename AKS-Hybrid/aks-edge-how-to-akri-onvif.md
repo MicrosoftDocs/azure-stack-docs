@@ -50,7 +50,7 @@ This article describes how you can discover ONVIF cameras that are connected to 
     If you have already added Akri helm chart previously, update your repo for the latest build:
     
     ```powershell
-    helm repo update akri
+    helm repo update
     ```
 
 3. Install Akri using Helm. When installing Akri, specify that you want to deploy the ONVIF discovery handlers by setting the helm value `onvif.discovery.enabled=true`. Also, specify that you want to deploy the ONVIF video broker:  
