@@ -36,7 +36,7 @@ Before you begin, make sure you've done the following:
 
 Follow these steps to connect to the first server:
 
-1. In the deployment wizard, select the **first server listed for the cluster to act as a staging server** during deployment.
+1. Select the first server listed for the cluster to act as a staging server during deployment.
 
 1. Sign in to the first server using local administrative credentials.
 
