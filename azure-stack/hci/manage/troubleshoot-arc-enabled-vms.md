@@ -12,20 +12,22 @@ ms.reviewer: JasonGerend
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article helps you troubleshoot issues with Azure Arc VM management. It also provides the list of limitations and known issues that currently exist. If you need additional help, contact Microsoft support.
+This article helps you troubleshoot issues with Azure Arc virtual machines (VMs) in Azure Stack HCI. It also describes the limitations and known issues that currently exist in Azure Arc VM management.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Collect logs
 
-Collect diagnostics information before contacting Microsoft support as they may ask for it. Make sure you have the latest PowerShell module for log collection. To update the PowerShell module, run the following command:
+Collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
+
+Make sure you have the latest PowerShell module for log collection. To update the PowerShell module, run the following command:
 
 ```PowerShell
 #Update the PowerShell module
 Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
 ```
 
-To collect logs for Azure Arc VM management on your Azure Stack HCI cluster, run the following command:
+To collect logs for Azure Arc VMs on your Azure Stack HCI cluster, run the following command:
 
 ```PowerShell
 $csv_path="<input-from-admin>"
@@ -39,11 +41,11 @@ where:
 
 **$VMIP** is the IP address of the Arc Resource Bridge VM.
 
-Optionally, you can set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
+Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
 
-## Troubleshoot Azure Arc VM management
+## Troubleshoot Azure Arc VMs
 
-This section describes the errors related to Azure Arc VM management and their recommended resolution.
+This section describes the errors related to Azure Arc VMs and their recommended resolution.
 
 ### Permission denied error when you run the arcappliance prepare command
 
@@ -61,12 +63,13 @@ Here's an example output when your PowerShell session doesn't have permissions t
 
 If your environment fails to recognize Azure CLI after installing it, run the following code block to add the Azure CLI installation path to the environment path.
 
-    ```PowerShell
+```PowerShell
         if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {
             $env:PATH += "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
             Write-Host "Updated path $env:PATH"
         }
-    ```
+```
+
 ### KVA timeout error
 
 Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
