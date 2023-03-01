@@ -175,7 +175,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 1. Select one of the following options to select the Azure Stack HCI resource group:
 
-   - Select **Use existing** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is the same as the one used for the Azure Stack HCI cluster.
+   - Select **Use existing** to create the Azure Stack HCI cluster and Arc for Server resources in an existing resource group.
 
    - Select **Create new** to create a new resource group.
 
