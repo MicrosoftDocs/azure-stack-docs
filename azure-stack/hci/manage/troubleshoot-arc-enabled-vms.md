@@ -27,7 +27,7 @@ Make sure you have the latest PowerShell module for log collection. To update th
 Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
 ```
 
-To collect logs for Azure Arc VMs on your Azure Stack HCI cluster, run the following command:
+To collect logs for Arc VMs in your Azure Stack HCI cluster, run the following command:
 
 ```PowerShell
 $csv_path="<input-from-admin>"
@@ -37,11 +37,11 @@ Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\R
 
 where:
 
-**$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
+- **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
-**$VMIP** is the IP address of the Arc Resource Bridge VM.
+- **$VMIP** is the IP address of the Arc Resource Bridge VM.
 
-Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
+- Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
 
 ## Troubleshoot Azure Arc VMs
 
@@ -92,15 +92,15 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
     1. Deploy AKS management cluster
     1. Deploy Arc Resource Bridge for Arc VMs
 
-    > [!NOTE]
-    > If Arc Resource Bridge is already deployed, don't deploy the AKS management cluster unless the Arc Resource Bridge is removed.
+        > [!NOTE]
+        > If Arc Resource Bridge is already deployed, don't deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
 - You must uninstall AKS management cluster and Arc Resource Bridge in the following order:
     1. Uninstall Arc Resource Bridge
     1. Uninstall AKS management cluster
 
-    > [!NOTE]
-    > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it won't remember the VM entities created previously.
+        > [!NOTE]
+        > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it won't remember the VM entities created previously.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
 
