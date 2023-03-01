@@ -29,12 +29,7 @@ When choosing your client machine, consider:
 3. How you will connect to the client machine and how the machine will interact with your cluster.
 
 
-## Install AKS Engine version 0.75.3
-
-Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the **aks-engine-azurestack** file (and optionally add it to your `$PATH` environment variable for more convenient CLI usage).
-
-
-## Install AKS Engine version 0.73.0 and below in a connected environment
+## Install AKS Engine in a connected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
@@ -59,7 +54,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > [!NOTE]  
     > If this method for installation fails, you can try the steps for a disconnected environment below.
 
-## Install AKS Engine version 0.73.0 and below in a disconnected environment
+## Install AKS Engine in a disconnected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
