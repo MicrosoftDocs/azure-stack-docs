@@ -116,8 +116,6 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 
 - Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
 
-- Adding a server to an HCI cluster doesn't install Arc components automatically.
-
 - Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
 
 - Naming convention for Azure resources, such as virtual networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
