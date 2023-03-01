@@ -12,13 +12,13 @@ ms.reviewer: JasonGerend
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article helps you troubleshoot issues with Azure Arc virtual machines (VMs) in Azure Stack HCI. It also describes the limitations and known issues that currently exist in Azure Arc VM management.
+This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Collect logs
 
-Collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
+You can collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
 
 Make sure you have the latest PowerShell module for log collection. To update the PowerShell module, run the following command:
 
@@ -45,7 +45,7 @@ Optionally, set the `-logDir` parameter to specify the path to the directory whe
 
 ## Troubleshoot Azure Arc VMs
 
-This section describes the errors related to Azure Arc VMs and their recommended resolution.
+This section describes the errors related to Azure Arc VM management and their recommended resolutions.
 
 ### Permission denied error when you run the arcappliance prepare command
 
