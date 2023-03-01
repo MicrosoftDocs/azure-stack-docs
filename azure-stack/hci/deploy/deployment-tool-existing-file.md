@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses a configuration file that you manually create beforehand using a text editor.
+After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This deployment method uses an existing configuration file that you have modified for your environment.
 
 The deployment tool wizard uses your file and further provides an interactive, guided experience that helps you deploy and register the cluster.
 
