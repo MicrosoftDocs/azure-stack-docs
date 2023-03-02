@@ -54,7 +54,7 @@ The following parameters are required to run the deployment tool. Consult your n
 |`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
 |`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
-|`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to public Azure is supported.|
+|`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to global Azure is supported.|
 |`RegistrationRegion`|(Optional) Specify the region that should be used when registering the system with Azure Arc.|
 |`RegistrationResourceGroupName`|(Optional) Specify the resource group that will be used to hold the resource objects for the system.|
 |`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
@@ -67,7 +67,7 @@ Follow these steps to deploy Azure Stack HCI via PowerShell:
 
 1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
 
-1. Use option 15 in Server Configuration tool (Sconfig) to exit to command line.
+1. Use option 15 in Server Configuration tool (SConfig) to exit to command line.
 
 1. In the PowerShell window, change the directory to *C:\clouddeployment\setup*.
 

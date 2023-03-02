@@ -26,13 +26,13 @@ Before you begin, make sure you've done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 
-## Boot and install the operating ystem
+## Boot and install the operating system
 
 To install the Azure Stack HCI operating system, follow these steps:
 
-1. The first step is to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
 
-1. You'll need to fill out and submit a trial form. On the Azure Stack HCI software download form page, select **Download Azure Stack HCI**. This action downloads an ISO file that you'll use to install the operating system on each server that you want to cluster.
+1. On the **Azure Stack HCI software download** page, select **Download Azure Stack HCI**. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
 
