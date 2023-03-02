@@ -4,13 +4,14 @@ description: Learn how to run a sample app that retrieves keys and secrets from 
 author: sethmanheim
 
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 11/20/2020
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to create an app that accesses key vault secrets
 # Keyword: access key vault secrets
-
 ---
 
 

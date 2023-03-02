@@ -10,8 +10,9 @@ ms.lastreviewed: 02/18/2021
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.
 # Keyword: linuxVM powershell
-
-ms.custom: mode-api
+ms.custom:
+  - mode-api
+  - devx-track-azurepowershell
 ---
 
 
