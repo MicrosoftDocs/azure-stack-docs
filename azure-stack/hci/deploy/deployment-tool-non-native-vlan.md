@@ -49,17 +49,19 @@ Install-WindowsFeature -Name Hyper-V -ComputerName <computer_name> -IncludeManag
 
 For detailed installation instructions, see [Install Hyper-V by using the Install-WindowsFeature cmdlet](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server#install-hyper-v-by-using-the-install-windowsfeature-cmdlet) in the Install the Hyper-V role on Windows Server article.
 
-## Create a virtual switch using the required naming conventions
+## Create virtual switches using the recommended naming conventions
 
-Follow these naming conventions to name the virtual switch for the management and compute network traffic types:
+Azure Stack HCI with Supplemental Package deployment relies on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch. Although it is not required, we recommend to name your virtual switches with the same naming convention.  
 
-Name of the virtual switch: `"ConvergedSwitch($Intentname)"`
+Here's the recommended naming convention for the virtual switches:
+
+Format for the name of the virtual switch: `"ConvergedSwitch($IntentName)"`
 
 where:
 
 - The name is case-sensitive.
-
--  `$Intentname` inside the parenthesis can be any string you want, preferably indicating the intent type.
+    
+- `$IntentName` inside the parenthesis can be any string you want, preferably indicating the intent type. This string should match the name on the virtual nic for management as described in the next step.
 
 - The list of network adapter names must be the list of physical network adapters that you plan to use for the management and compute network traffic types.
 
