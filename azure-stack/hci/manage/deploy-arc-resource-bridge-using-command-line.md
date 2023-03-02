@@ -200,7 +200,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       >    ```powershell
       >    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
       >    ```
-      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge#kva-timeout-error).
    
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
@@ -238,7 +238,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       >    ```powershell
       >    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
       >    ```
-      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge#kva-timeout-error).
 
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
