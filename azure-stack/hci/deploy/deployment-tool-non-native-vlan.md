@@ -50,9 +50,7 @@ where:
     
 - `$IntentName` inside the parenthesis can be any string you want, preferably indicating the intent type. This string should match the management virtual network adapter name as described later, in the [Configure the management virtual network adapter using the required naming conventions](#configure-the-management-virtual-network-adapter-using-the-required-naming-conventions) section.
 
-- The list of network adapter names must be the list of physical network adapters that you plan to use for the management and compute network traffic types.
-
-**Example:** In the following example, you create a virtual switch, `ConvergedSwitch(MgmtCompute)` for management and compute traffic types by using two physical network adapters, `NIC1` and `NIC2`. The intent name within the parenthesis, `MgmtCompute` describe the purpose of the virtual switch.
+**Example:** The following example shows how to create a virtual switch using the recommended naming convention. You create a virtual switch, `ConvergedSwitch(MgmtCompute)` for management and compute traffic types by using two physical network adapters, `NIC1` and `NIC2`. The list of network adapter names must be the list of physical network adapters that you plan to use for the management and compute network traffic types.
 
 ```powershell
 $IntentName = "MgmtCompute"
@@ -65,13 +63,13 @@ After you create the virtual switch, configure the management virtual network ad
 
 Here are required naming conventions for the virtual network adapter used for the management traffic:
 
-Format for the management virtual network adapter name: `"vManagement($Intentname)"`
+Format for the management virtual network adapter name: `"vManagement($IntentName)"`
 
 where:
 
 - The name is case-sensitive.
 
-- `$Intentname` inside the parenthesis must match the string that you used for the virtual switch.
+- `$IntentName` inside the parenthesis must match the string that you used for the virtual switch.
 
 **Example:** The following example shows how to update the name of the management virtual network adapter:
 
