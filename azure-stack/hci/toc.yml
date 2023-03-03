@@ -444,10 +444,10 @@
           href: deploy/deployment-tool-existing-file.md
         - name: 4C - Deploy via PowerShell
           href: deploy/deployment-tool-powershell.md
+        - name: 4D - Deploy virtual
+        href: deploy/virtual-cluster-deployment.md
       - name: 5 - Validate deployment
         href: deploy/deployment-tool-validate.md
-      - name: Deploy virtual cluster
-        href: deploy/virtual-cluster-deployment.md
       - name: Collect logs 
         href: manage/collect-logs.md
       - name: Troubleshoot issues
