@@ -59,7 +59,7 @@ When you plan your VNet and subnet, take into account the requirements for any o
 
 ### Subnet access and permissions
 
-The subnet for the Azure Managed Lustre file system needs the following access and permissions:
+By default, no specific changes need to be made to enable Azure Managed Lustre. If you have restricted network and/or security policies in your environment, the following should be considered:
 
 | Access type | Required network settings |
 |-------------|---------------------------|
