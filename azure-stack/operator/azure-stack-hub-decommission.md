@@ -61,6 +61,10 @@ Follow these steps in a connected (Azure AD) environment:
    $applicationRegistrations.appId | Write-Host
    ```
 
+## Disconnected scenarios
+
+For disconnected environments, follow the [Remove the activation resource from Azure Stack Hub](/azure-stack/operator/azure-stack-registration?pivots=state-disconnected&tabs=az1%2Caz2%2Caz3%2Caz4) procedure.
+
 ## Remove Azure Stack Hub registration
 
 This step removes the Azure Stack Hub registration and prevents usage data being pushed to Azure billing.
