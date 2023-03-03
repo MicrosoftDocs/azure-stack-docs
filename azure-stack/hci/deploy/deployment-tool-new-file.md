@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 1/26/2023
+ms.date: 03/03/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -72,6 +72,8 @@ If you want to use an existing configuration file you have previously created, s
 
       :::image type="content" source="media/deployment-tool/new-file/deploy-new-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/new-file/deploy-new-get-started.png":::
 
+### Step 1: Initial configuration
+
 1. On step 1.1 **Provide registration details**, enter the following details to authenticate your cluster with Azure:
 
     1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
@@ -136,6 +138,8 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
 
+### Step 2: Networking
+
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
@@ -171,9 +175,13 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
+### Step 3: Clustering
+
 1. On step **3.1 Create cluster**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
+
+### Step 4: Clustering
 
 1. On step **4.1 Create workload and infrastructure volumes**, select the recommended option to **Create workload volumes** in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
@@ -198,7 +206,7 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-    
+### Step 5: Services
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
@@ -207,6 +215,8 @@ If you want to use an existing configuration file you have previously created, s
 1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch (already populated) used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/new-file/deploy-new-step-5-arc.png":::
+
+### Step 6: Deploy
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
@@ -227,7 +237,9 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-download-config-logs-report.png" alt-text="Screenshot of the Download options that let you download config, logs, and report." lightbox="media/deployment-tool/new-file/deployment-download-config-logs-report.png":::
 
+### Step 6: Validation
 
+Environment Checker steps to be added...
 
 ## Next steps
 
