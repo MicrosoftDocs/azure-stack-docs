@@ -1,6 +1,6 @@
 ---
 title: Decommission an Azure Stack Hub system
-description: Learn how to properly decomission an Azure Stack Hub system. 
+description: Learn how to properly decommission an Azure Stack Hub system. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
@@ -17,7 +17,7 @@ This article describes how to properly decommission an Azure Stack Hub system. P
 Before you begin, ensure that the following prerequisites are met:
 
 - Ensure that all workloads have been removed from the system with appropriate backups.
-- Fully stopping or removing all resources (VMs, web apps, etc.) from the system is not necessary. However, you can stop or remove these resources to manage usage and costs during the decommission process.
+- It's not necessary that you fully stop or remove all resources (VMs, web apps, etc.) from the system. However, you can stop or remove these resources to manage usage and costs during the decommission process.
 - Once the system is permanently shut down, no further usage information is reported.
 
 ## Connected (Azure AD) scenarios
