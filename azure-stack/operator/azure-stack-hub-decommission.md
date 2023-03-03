@@ -63,7 +63,7 @@ Follow these steps in a connected (Azure AD) environment:
 
 ## Disconnected scenarios
 
-For disconnected environments, follow the [Remove the activation resource from Azure Stack Hub](/azure-stack/operator/azure-stack-registration&tabs=az1%2Caz2%2Caz3%2Caz4&pivots=state-disconnected#remove-the-activation-resource-from-azure-stack-hub) procedure.
+For disconnected environments, follow the [Remove the activation resource from Azure Stack Hub](/azure-stack/operator/azure-stack-registration?pivots=state-disconnected&tabs=az1%2Caz2%2Caz3%2Caz4#remove-the-activation-resource-from-azure-stack-hub) procedure.
 
 ## Remove Azure Stack Hub registration
 
