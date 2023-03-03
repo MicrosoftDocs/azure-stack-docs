@@ -4,7 +4,7 @@ description: Reference for the supported VM sizes in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: reference
-ms.date: 03/10/2022
+ms.date: 12/01/2022
 ms.author: sethm
 ms.reviewer: nebird
 ms.lastreviewed: 03/10/2022
@@ -205,6 +205,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_E4_v3**  | 4  | 32  | 100  | 8 /8x500 | 2 |
 | **Standard_E8_v3**  | 8  | 64  | 200  | 16 /16x500| 4 |
 | **Standard_E16_v3** | 16 | 128 | 400  | 32 /32x500| 8 |
+| **Standard_E20_v3** | 20 | 160 | 500  | 32 /32x500| 8 |
 
 ::: moniker-end
 
