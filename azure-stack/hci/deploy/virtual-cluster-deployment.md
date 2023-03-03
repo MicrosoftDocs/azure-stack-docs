@@ -5,48 +5,31 @@ author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 1/30/2023
+ms.date: 3/03/2023
 ---
 
 # Deploy a virtual Azure Stack HCI cluster (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to deploy a single-server or multi-node Azure Stack HCI, version 22H2, on a host system running Hyper-V on Windows Server 2022, Windows 11, or later.  
+[!INCLUDE [applies-to](../../includes/hci-preview.md)]
+
+This article describes how to deploy a single-server or multi-node Azure Stack HCI, version 22H2, on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).  
 
 You’ll need administrator privileges for the Azure Stack HCI virtual deployment and be familiar with the existing Azure Stack HCI solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
 > A virtual deployment of Azure Stack HCI, version 22H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
 
-> [!IMPORTANT]
-> Azure Stack HCI 22H2 is in preview. Please review the terms of use for the preview and sign up before you deploy this solution. For more details, see the [Preview Terms Of Use | Microsoft Azure ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## Process
-
-The following steps are required to create a virtual Azure Stack HCI version 22H2 deployment:
-
-Step 0: Satisfy the prerequisites
-
-Step 1: [Set up the virtual switch](#step-1-set-up-the-virtual-switch)
-
-Step 2: [Create the virtual host](#step-2-create-the-virtual-host)
-
-Step 3: [Enable nested virtualization](#step-3-enable-nested-virtualization)
-
-Step 4: [Configure NAT inbound rules](#step-4-configure-nat-inbound-rules)
-
-Step 5: [Start the deployment](#step-5-start-the-deployment)
-
 ## Prerequisites
 
-Here are the software, hardware, and networking prerequisites to deploy Azure Stack HCI 22H2:
+Here are the software, hardware, and networking prerequisites for the virtual deployment:
 
 ### Hardware requirements
 
 Before you begin, make sure that:
 
-- You have access to a host system running Hyper-V on Windows Server 2022 or later. This host would be used to provision a virtual Azure Stack HCI deployment.
+- You have access to a host system running Hyper-V on Windows Server 2022, Windows 11, or later. This host would be used to provision a virtual Azure Stack HCI deployment.
 
 - The physical hardware used for the virtual deployment meets the following requirements:
  
@@ -59,7 +42,7 @@ Before you begin, make sure that:
 
 ### Software requirements
 
-Before you begin, make sure that the host system can dedicate the following resources to provision your virtualized Azure Stack HCI:
+Before you begin, make sure that the host system can dedicate the following resources to provision your virtualized Azure Stack HCI. The host operating system must be running Hyper-V on Windows Server 2022, Windows 11, or later.
 
 - A minimum of 4 vCPUs.
 
@@ -73,11 +56,15 @@ Before you begin, make sure that the host system can dedicate the following reso
 
 - At least one data disk with 127 GB to store the deployment tool.
 
-## Step 1: Set up the virtual switch
+## Install the OS
+
+Before you begin, make sure to install the host operating system - Windows Server 2022, Windows 11, or later.
+
+## Set up the virtual switch
 
 First, create an internal virtual switch with Network Address Translation (NAT) enabled. The use of this switch ensures that the Azure Stack HCI deployment is isolated.
 
-1. On the Windows Server host computer, run PowerShell as Administrator.
+1. On your host computer, run PowerShell as Administrator.
 
 1. Create an internal virtual switch and name the switch *InternalDemo*. Run the following command:
 
@@ -94,7 +81,7 @@ First, create an internal virtual switch with Network Address Translation (NAT) 
     Here is a sample output of the `Get-NetAdapter` cmdlet.
 
     ```PowerShell
-    PS C:\Users\Administrator> Get-netadapter
+    PS C:\Users\Administrator> Get-NetAdapter
 
     Name  InterfaceDescription  ifIndex  MacAddress  LinkSpeed
     ----  --------------------  -------  ----------  ---------
@@ -118,7 +105,7 @@ First, create an internal virtual switch with Network Address Translation (NAT) 
          New-NetNat -Name <NAT network name> -InternalIPInterfaceAddressPrefix 192.168.0.0/24
       ```
 
-## Step 2: Create the virtual host
+## Create the virtual host
 
 Create a virtual machine (VM) to serve as the virtual host with the following configuration:
 
@@ -128,7 +115,7 @@ Create a virtual machine (VM) to serve as the virtual host with the following co
 | vCPUs | 4 cores |
 | Memory | A minimum of 8 GB |
 | Networking |  Two network adapters connected to internal network. MAC spoofing must be enabled. |
-| Boot disk | 1 disk using `ServerHCI.vhdx`.|
+| Boot disk | 1 disk to install the Azure Stack HCI operating system from ISO.|
 | Hard disks for Storage Spaces Direct  |  6 dynamic expanding disks. Maximum disk size is 1024 GB. |
 | Data disk | At least 127 GB. Stores the deployment tool. |
 | Time synchronization in integration services | Disabled|
@@ -141,17 +128,11 @@ You can create this VM using one of the following methods:
 
     Follow these steps to create a VM via PowerShell cmdlets:
 
-    1. Create a folder and copy the *ServerHCI.vhdx* file to this folder.  Modify the source path accordingly.
+   1. Create the VM:
 
        ```PowerShell
-       Mkdir <Destination path for ServerHCI.vhdx file>
-       Copy-item <Source path for ServerHCI.vhdx> <Destination path for ServerHCI.vhdx>
-       ```
-
-    1. Create the VM:
-
-       ```PowerShell
-       New-Vm -Name <VM Name> -MemoryStartupBytes 16GB -VHDPath <Source path for ServerHCI.vhdx file> -Generation 2 -Path <Source path for folder containing ServerHCI.vhdx>
+       new-VHD -Path -SizeBytes 127GB
+       New-Vm -Name -MemoryStartupBytes 16GB -VHDPath -Generation 2 -Path
        ```
 
     1. Add a second network adapter:
@@ -228,7 +209,7 @@ You can create this VM using one of the following methods:
         Get-VMIntegrationService -VmName node1 |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
         ```
 
-## Step 3: Enable nested virtualization
+## Enable nested virtualization
 
 If the host processor supports nested virtualization, the Hyper-V role enabled by the Azure Stack HCI deployment will validate.
 
@@ -239,7 +220,9 @@ To enable nested virtualization, run the following command.
       Set-VmProcessor -VmName node1 -ExposeVirtualizationExtensions $true
    ```
 
-## Step 4: Configure NAT inbound rules
+## Configure NAT inbound rules (optional)
+
+The configuration in this section is optional.
 
 To access the server from your Hyper-V host or any other computer in your network, Network Address Translation (NAT) inbound rules are required.
 
@@ -264,7 +247,7 @@ To access the server from your Hyper-V host or any other computer in your networ
 
     You may receive the following error: *Add-NetNatStaticMapping: The process cannot access the file because it is being used by another process*. To resolve this, change the external port as the one you are trying to use is already allocated.
 
-## Step 5: Start the deployment
+## Start the deployment
 
 1. Start the virtual host VM using Hyper-V Manager or PowerShell. The VM will take several minutes to boot up. Wait for the boot to complete.
 
@@ -323,26 +306,6 @@ To access the server from your Hyper-V host or any other computer in your networ
         -a----     6/28/2022   2:41 PM   11420824813 
         CloudDeployment_10.2206.0.50.zip
         PS D:\deployment>   
-    ```
-
-1. Rename the network adapters, using the names from the previous step. Note that the new name must match what is in the `config.json` file used for the deployment. Run the following command:
-
-    ```PowerShell
-    Get-NetAdapter <VM name>
-    ```
-
-    Verify the names of the network adapters. Here is a sample output:
-
-    ```PowerShell
-        PS C:\Users\Administrator> Get-NetAdapter
-
-        Name     InterfaceDescription      ifIndex Status MacAddress   LinkSpeed
-        ----     --------------------      ------- ------ ----------   ---------
-        Ethernet Microsoft Hyper-V Network Adapter 8 Up 00-15-5D-E2-3E-03  10 Gbps 
-        Ethernet 2 Microsoft Hyper-V Network Ada…  5 Up  00-15-5D-E2-3E-04   10 Gbps 
-
-        PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet" -NewName Nic1
-        PS C:\Users\Administrator> Rename-NetAdapter -Name "ethernet 2" -NewName Nic2
     ```
 
 1. Launch the Server Configuration Tool (`SConfig`). Run the following command:
