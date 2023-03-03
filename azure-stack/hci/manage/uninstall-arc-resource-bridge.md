@@ -11,7 +11,7 @@ ms.date: 03/23/2022
 
 # Uninstall Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to uninstall Azure Arc VM management on an Azure Arc-enabled Azure Stack HCI cluster.
 
@@ -42,7 +42,7 @@ Perform the following steps to uninstall Azure Arc VM management:
 4. Remove the Kubernetes extension:
 
    ```azurecli
-   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --yes
+   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name vmss-hci --yes
    ```
 
 5. Remove the appliance:
@@ -57,13 +57,7 @@ Perform the following steps to uninstall Azure Arc VM management:
    Remove-ArcHciConfigFiles
    ```
    > [!NOTE]
-   >  The uninstallation of Azure Arc VM management completes at this step if Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed. If it's not installed, proceed to the next step.
-
-7. (Required only if AKS on Azure Stack HCI is not installed) Run the following cmdlet to uninstall the Microsoft on Cloud (MOC) service:
-
-   ```PowerShell
-   Uninstall-Moc
-   ```
+   >  The uninstallation of Azure Arc VM management completes at this step.
 
 ## Next steps
 

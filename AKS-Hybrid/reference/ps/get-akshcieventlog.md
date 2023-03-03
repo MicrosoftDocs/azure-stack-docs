@@ -1,7 +1,7 @@
 ---
-title: Get-AksHciEventLog for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciEventLog for AKS hybrid
 author: sethmanheim
-description: The Get-AksHciEventLog PowerShell command gets all the event logs from the AKS on Azure Stack HCI and Windows Server PowerShell module.
+description: The Get-AksHciEventLog PowerShell command gets all the event logs from the AKS hybrid PowerShell module.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: sethm 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Get-AksHciEventLog
 
 ## Synopsis
-Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server PowerShell module.
+Gets all the event logs from the AKS hybrid PowerShell module.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksHciEventLog
 ```
 
 ## Description
-Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server PowerShell module.
+Gets all the event logs from the AKS hybrid PowerShell module.
 
 ## Examples
 

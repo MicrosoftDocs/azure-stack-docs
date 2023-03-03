@@ -114,8 +114,8 @@ This section looks at creating an API model for your cluster.
 
 ### More information about the API model
 
-- For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
-- For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
+- For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/clusterdefinitions.md).  
+- For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
 
 ## Add certificate when using ASDK
 
@@ -139,7 +139,7 @@ Ask your Azure Stack Hub operator to:
 
 Proceed to deploy a cluster:
 
-1.  Review the available parameters for AKS engine on Azure Stack Hub [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
+1.  Review the available parameters for AKS engine on Azure Stack Hub [CLI flags](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cli-flags).
 
     | Parameter | Example | Description |
     | --- | --- | --- |
@@ -154,6 +154,8 @@ Proceed to deploy a cluster:
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenent. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
 
     Here is an example:
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy`. 
 
     ```bash  
     aks-engine deploy \
@@ -231,7 +233,7 @@ When encountering errors while deploying a Kubernetes cluster using the AKS engi
 3. Do you have a large enough quota in your Azure Stack Hub plan?
 4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
 
-For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
+For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine-azurestack** GitHub repo.
 
 ## Rotate your service principle secret
 

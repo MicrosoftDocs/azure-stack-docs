@@ -46,6 +46,8 @@ The procedures in this section describe how to install Velero and use Azure Blob
    ```
 
 1. Install the [Velero CLI](https://velero.io/docs/v1.9/basic-install/#install-the-cli) by running the following command:
+> [!NOTE]
+> The flag --use-restic is no longer supported on version velero 1.10+, to be able to use the flag version [1.9.x](https://github.com/vmware-tanzu/velero/releases/tag/v1.9.5) is required 
 
    ```powershell
    choco install velero   
@@ -195,7 +197,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 1. Create a file that contains the variables the Velero installation requires. The command looks similar to the following one:
 
    ```azurecli
-   _SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
+   AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
    AZURE_TENANT_ID=${AZURE_TENANT_ID}
    AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
    AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}

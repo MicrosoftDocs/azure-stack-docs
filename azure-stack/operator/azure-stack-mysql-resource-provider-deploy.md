@@ -44,6 +44,7 @@ The MySQL resource provider runs as a service on a special Add-on RP Windows Ser
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
+  |2206|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108,2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
@@ -162,6 +163,9 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 
    - Upload the mysql-connector-net-8.0.21.msi file from your local folder to the newly created storage container.
       ![Screenshot of uploading MySQL Connector to the container.](media/azure-stack-mysql-rp-deploy/8-3-upload-connector.png)
+
+   > [!IMPORTANT]
+   > Make sure the version of the MySQL Connector is 8.0.21.
    
    - Copy the blob URI.
       ![Screenshot of copying the MySQL Connector URI.](media/azure-stack-mysql-rp-deploy/8-4-copy-uri.png)

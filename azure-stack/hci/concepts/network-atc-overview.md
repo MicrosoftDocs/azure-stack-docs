@@ -8,9 +8,9 @@ ms.author: jgerend
 ms.reviewer: JasonGerend
 ---
 
-# Network ATC overview 
+# Network ATC overview
 
-> Applies to: Azure Stack HCI, version 21H2 and later
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
 

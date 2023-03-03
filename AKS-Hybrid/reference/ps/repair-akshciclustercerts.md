@@ -1,5 +1,5 @@
 ---
-title: Repair-AksHciClusterCerts for AKS on Azure Stack HCI and Windows Server
+title: Repair-AksHciClusterCerts for AKS hybrid
 description: The Repair-AksHciClusterCerts PowerShell command troubleshoots and fixes errors related to expired certificates for Kubernetes built-in components. 
 author: sethmanheim
 ms.topic: reference
@@ -34,7 +34,7 @@ Repair-AksHciClusterCerts -name
 
 ## Description
 
-**This cmdlet will be deprecated. Please use [Update-AksHciClusterCertificates](update-akshciclustercertificates.md).**
+**This cmdlet will be deprecated. Use [Update-AksHciClusterCertificates](update-akshciclustercertificates.md).**
 
 Troubleshoots and fixes errors related to expired certificates for Kubernetes built-in components.
 

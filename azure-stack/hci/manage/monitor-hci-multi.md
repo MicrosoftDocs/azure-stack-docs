@@ -12,7 +12,7 @@ ms.date: 05/13/2022
 
 # Monitor multiple clusters with Azure Stack HCI Insights (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](/azure-stack/hci/manage/monitor-hci-single). This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
 

@@ -3,9 +3,9 @@ title: Azure Stack Hub administration basics
 description: Learn the basics of Azure Stack Hub administration.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 01/23/2023
 ms.author: sethm
-ms.lastreviewed: 06/16/2020
+ms.lastreviewed: 01/23/2023
 
 # Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
 # Keyword: azure stack administration basics
@@ -95,6 +95,39 @@ In addition to providing services, you must do the regular duties of an operator
 - [Monitor infrastructure health](azure-stack-monitor-health.md).
 - Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources.
 - Replace bad hardware. For example, [replace a failed disk](azure-stack-replace-disk.md).
+
+## Operator tasks
+
+Here is a list of daily, weekly, and monthly tasks for an operator:
+
+# [Daily](#tab/daily)
+
+1. Check alerts.
+2. Check backup state.
+3. Update Defender Signature (disconnected systems).
+
+# [Weekly](#tab/weekly)
+
+1. Check capacity.
+
+# [Monthly](#tab/monthly)
+
+1. Apply monthly update packages (Microsoft & OEM).
+2. Validate backup using ASDK.
+3. Manage Azure Stack Hub Marketplace (keep current).
+4. Reclaim storage capacity.
+
+# [OnDemand](#tab/ondemand)
+
+1. Secret rotation.
+2. Create and update offers, plans, and quotas.
+3. Apply hotfix packages.
+4. Expand capacity (nodes & IPSpace).
+5. Restore storage accounts.
+6. Stop system.
+7. Diagnostic log collection.
+
+---
 
 ## What to tell your users
 

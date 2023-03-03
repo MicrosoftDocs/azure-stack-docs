@@ -159,11 +159,11 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
         > [!NOTE]
         > This change can only be performed from **Azure Portal**. By default, Azure Stack HCI collects basic system metadata necessary to keep its service current, secure, and properly operating. For most systems, this data level doesn't need to be changed.
 
-    - To enable VM provisioning through the Azure portal on HCI, a **Resource Bridge** is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md).
+    - To enable VM provisioning through the Azure portal on HCI, a **Resource Bridge** is required. The resource bridge creates Azure Resource Manager entities for VMs including disks, images, interfaces, networks, custom locations, and cluster extensions. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](/azure-stack/hci/manage/azure-arc-vm-management-overview).
 
         :::image type="content" source="media/manage-cluster/resource-bridge.png" alt-text="Screenshot of the cluster Resource bridge screen." lightbox="media/manage-cluster/resource-bridge.png":::
 
-    - To provision VMs on your Azure Stack HCI cluster from the Azure portal, select **Azure Arc VM setup for Azure Stack HCI**. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](../manage/azure-arc-enabled-virtual-machines.md)
+    - To provision VMs on your Azure Stack HCI cluster from the Azure portal, select **Azure Arc VM setup for Azure Stack HCI**. For more information, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](/azure-stack/hci/manage/azure-arc-vm-management-overview)
 
         :::image type="content" source="media/manage-cluster/azure-arc-vm.png" alt-text="Screenshot of the cluster Azure Arc VM screen." lightbox="media/manage-cluster/azure-arc-vm.png":::
 

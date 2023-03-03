@@ -434,6 +434,8 @@
           href: app-service-migrate-sql-server.md
       - name: Release notes
         items:
+        - name: 2302 release notes [February 2023]
+          href: app-service-release-notes-2302.md
         - name: 2022 H1 release notes [October 2022]
           href: app-service-release-notes-2022-h1.md
         - name: 2021 Q3 release notes [December 2021]
@@ -524,6 +526,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 2.0.13.0 release notes
+          href: azure-stack-mysql-resource-provider-2-0-13.md
         - name: MySQL resource provider 2.0.00.0 release notes
           href: azure-stack-mysql-resource-provider-20000.md
         - name: MySQL resource provider 1.1.93.0 release notes
@@ -550,6 +554,8 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
+        - name: SQL resource provider 2.0.13.0 release notes
+          href: azure-stack-sql-resource-provider-2-0-13.md 
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
         - name: SQL resource provider 1.1.93.0 release notes

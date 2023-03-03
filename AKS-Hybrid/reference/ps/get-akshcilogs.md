@@ -1,11 +1,11 @@
 ---
-title: Get-AksHciLogs for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciLogs for AKS hybrid
 author: sethmanheim
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
-ms.date: 04/13/2021
+ms.date: 02/28/2023
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 02/28/2023
 ms.reviewer: jeguan
 
 ---
@@ -13,7 +13,8 @@ ms.reviewer: jeguan
 # Get-AksHciLogs
 
 ## Synopsis
-Create a zipped folder with logs from all your pods. 
+
+Creates a zipped folder with logs from all your pods.
 
 ## Syntax
 
@@ -27,11 +28,32 @@ Get-AksHciLogs [-virtualMachineLogs]
 ```
 
 ## Description
-Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI and Windows Server working directory. The full path to the `akshcilogs.zip` file will be the output after running  `Get-AksHciLogs` (for example, `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS on Azure Stack HCI and Windows Server release number). When the no flags are used, then the command will collect all logs.
+
+Creates a zipped folder with logs from all your pods. This command creates an output zipped folder called `akshcilogs.zip` in your AKS hybrid working directory. The full path to the **akshcilogs.zip** file will be the output after running  `Get-AksHciLogs` (for example, `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS hybrid release number). When no flags are used, the command collects all logs.
 
 ## Examples
 
-### Example
+### Example 1
+
+Returns the smallest log size. This size is enough to debug any issues with management cluster pods, target cluster pods, billing, and download issues:
+
+```powershell
+Get-AksHciLogs -EventLogs -KvaLogs -DownloadSdkLogs -BillingRecords
+```
+
+For example, for billing issues, example 1 should be good enough.
+
+### Example 2
+
+In addition to example 1, this command returns all VM logs. It's larger than example 1, but smaller than example 3:
+
+```powershell
+Get-AksHciLogs -EventLogs -KvaLogs -DownloadSdkLogs -BillingRecords -VirtualMachineLogs
+```
+
+### Example 3
+
+This example returns MOC logs. It's the largest of all the options.
 
 ```powershell
 Get-AksHciLogs
@@ -40,7 +62,8 @@ Get-AksHciLogs
 ## Parameters
 
 ### -agentLogs
-Use this flag to get the logs from the MOC stack Cloud agent and node agent services.
+
+Use this flag to get the logs from the MOC stack cloud agent and node agent services.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -55,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -eventLogs
-Use this flag to get the event logs logged to event viewer.
+Use this flag to get the logs sent to the event viewer.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -70,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -virtualMachineLogs
-Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+Use this flag to get the logs from the guest virtual machines created by AKS hybrid.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -kvaLogs
-Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
+Use this flag to get the logs from the AKS hybrid host.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -downloadSdkLogs
-Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI and Windows Server uses.
+Use this flag to get the download logs from downloading the binaries and images that AKS hybrid uses.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +136,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### -billingRecords
 Use this flag to get the billing records.
@@ -132,4 +154,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-[AksHci PowerShell Reference](index.md)
+[AksHci PowerShell reference](index.md)

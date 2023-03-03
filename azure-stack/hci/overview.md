@@ -12,7 +12,7 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 # Azure Stack HCI solution overview
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 

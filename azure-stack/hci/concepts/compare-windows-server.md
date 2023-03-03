@@ -11,7 +11,7 @@ ms.date: 05/24/2021
 
 # Compare Azure Stack HCI to Windows Server
 
-> Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022
 
 This article explains key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
