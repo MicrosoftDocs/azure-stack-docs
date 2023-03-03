@@ -470,7 +470,7 @@
         items:
         - name: Apply updates
           href: resource-provider-apply-updates.md
-        - name: Backup & restore
+        - name: Back up and restore
           href: azure-stack-backup-enable-backup-console.md
         - name: Collect logs
           href: diagnostic-log-collection.md
