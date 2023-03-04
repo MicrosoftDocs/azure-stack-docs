@@ -50,7 +50,7 @@ where:
     
 - `$IntentName` inside the parenthesis can be any string you want, preferably indicating the intent type. This string should match the management virtual network adapter name as described later, in the [Configure the management virtual network adapter using the required naming conventions](#configure-the-management-virtual-network-adapter-using-the-required-naming-conventions) section.
 
-**Example:** The following example shows how to create a virtual switch using the recommended naming convention. You create a virtual switch, `ConvergedSwitch(MgmtCompute)` for management and compute traffic types by using two physical network adapters, `NIC1` and `NIC2`. The list of network adapter names must be the list of physical network adapters that you plan to use for the management and compute network traffic types.
+**Example:** The following example shows how to create a virtual switch using the recommended naming convention. Here you create a virtual switch named, `ConvergedSwitch(MgmtCompute)` for management and compute traffic types by using two physical network adapters, `NIC1` and `NIC2`. Note that the list of network adapter names must be the list of physical network adapters that you plan to use for the management and compute network traffic types.
 
 ```powershell
 $IntentName = "MgmtCompute"
