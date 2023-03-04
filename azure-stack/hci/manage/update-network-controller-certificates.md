@@ -50,7 +50,7 @@ In Azure Stack HCI, each Network Controller VM uses two types of certificates:
 Use the following cmdlet on each Network Controller VM to check the expiration date of a certificate:
 
 ```powershell
-Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subject-name>"}|Select-Object NotAfter, Subject
+Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subject-name>"} | Select-Object NotAfter, Subject
 ```
 
 - To get the expiry of a REST certificate, replace "Certificate-subject-name" with the RestIPAddress or RestName of the Network Controller. You can get this value from the `Get-NetworkController` cmdlet.
@@ -79,7 +79,7 @@ To renew REST certificate, complete the following steps:
 1. Assign the new certificate to a variable:
 
    ```powershell
-   \$cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
+   $cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
    ```
 
 1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
@@ -89,9 +89,8 @@ To renew REST certificate, complete the following steps:
    ```powershell
    $targetCertPrivKey = $Cert.PrivateKey
    $privKeyCertFile = Get-Item -path
-   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq
-   $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
-   $privKeAcl = Get-Acl $privKeyCertFile
+   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
+   $privKeyAcl = Get-Acl $privKeyCertFile
    $permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
    $accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
    $privKeyAcl.AddAccessRule($accessRule)
@@ -112,8 +111,8 @@ Follow these steps for copying one certificate to all Network Controller VMs.
 
    ```powershell
    $mypwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
-   Export-PfxCertificate -FilePath C:\newpfx.pfx -Password \$mypwd -Cert $cert    
-   //Here, $cert is the new certificate
+   Export-PfxCertificate -FilePath "C:\newpfx.pfx" -Password $mypwd -Cert $cert    
+   # Here, $cert is the new certificate
    ```
 
 1. On other Network Controller VMs, import the certificate and private keys from a PFX file to the destination store:
@@ -121,7 +120,7 @@ Follow these steps for copying one certificate to all Network Controller VMs.
    ```powershell
    $mypwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
    Import-PfxCertificate -FilePath C:\newpfx.pfx -CertStoreLocation Cert:\LocalMachine\My -Password $mypwd
-   //Ensure that you copy the pfx file into the local machine before importing the cert
+   # Ensure that you copy the pfx file into the local machine before importing the cert
    ```
 
 ### Copy the certificate public key to all the hosts and Software Load Balancer VMs (only for self-signed certificate)
@@ -134,8 +133,7 @@ If you're using a self-signed certificate, place it in the root store of the loc
 Here's a sample command to import the certificate public key that has already been exported:
 
 ```powershell
-Import-Certificate -FilePath "\\sa18fs\SU1_LibraryShare1\RestCert.cer\" -CertStoreLocation
-cert:\localMachine\Root
+Import-Certificate -FilePath "\\sa18fs\SU1_LibraryShare1\RestCert.cer\" -CertStoreLocation cert:\localMachine\Root
 ```
 
 ### Modify Network Controller settings to use the new certificate
@@ -155,7 +153,7 @@ Set-NetworkController -ServerCertificate \$cert
 To change the certificate that Network Controller uses to encrypt the credentials, run the following command on any of the Network Controller VMs:
 
 ```powershell
-Set-NetworkControllerCluster -CredentialEncryptionCertificate \$cert
+Set-NetworkControllerCluster -CredentialEncryptionCertificate $cert
 ```
 
 **For Southbound communication**
@@ -178,7 +176,7 @@ To renew the Network Controller node certificate, perform the following steps on
 1. Assign the new certificate to a variable:
 
    ```powershell
-   $cert= Get-ChildItem Cert:\LocalMachine\My | where{\$_.Thumbprint-eq "<thumbprint of the new certificate>"}
+   $cert = Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
    ```
 
 1. Provide Read and Allow permissions for NT Authority/Network Service on the certificate:
@@ -186,9 +184,8 @@ To renew the Network Controller node certificate, perform the following steps on
    ```powershell
    $targetCertPrivKey = $Cert.PrivateKey
    $privKeyCertFile = Get-Item -path
-   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq
-   $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
-   $privKeAcl = Get-Acl $privKeyCertFile
+   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
+   $privKeyAcl = Get-Acl $privKeyCertFile
    $permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
    $accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
    $privKeyAcl.AddAccessRule($accessRule)
@@ -198,5 +195,5 @@ To renew the Network Controller node certificate, perform the following steps on
 1. Execute the following command to change the node certificate:
 
    ```powershell
-   Set-NetworkControllerNode -Name <Name of the Network Controller node> -NodeCertificate $cert
+   Set-NetworkControllerNode -Name "<Name of the Network Controller node>" -NodeCertificate $cert
    ```

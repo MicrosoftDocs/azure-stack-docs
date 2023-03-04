@@ -1,9 +1,9 @@
 ---
 title: Supported Kubernetes versions for AKS hybrid
-description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service hybrid deployment options(AKS hybrid).
+description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service hybrid deployment options (AKS hybrid).
 services: container-service
 ms.topic: article
-ms.date: 10/07/2022
+ms.date: 01/05/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -18,7 +18,7 @@ ms.reviewer: mikek
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can find the supported Kubernetes versions for Azure Kubernetes Service hybrid deployment options (AKS hybrid) in this topic. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19.
+This article describes the supported Kubernetes versions for Azure Kubernetes Service hybrid deployment options (AKS hybrid). The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19.
 
 Minor version releases include new features and improvements. Patch releases are more frequent (sometimes weekly) and are intended for critical bug fixes within a minor version. Patch releases include fixes for security vulnerabilities or major bugs.
 

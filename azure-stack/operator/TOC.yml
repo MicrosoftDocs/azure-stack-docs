@@ -288,6 +288,8 @@
       href: azure-stack-change-subscription-owner.md
     - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
+    - name: Decommission an Azure Stack Hub system
+      href: azure-stack-hub-decommission.md
     - name: Azure Site Recovery tool
       href: site-recovery-failback.md
     - name: Manage capacity
@@ -468,7 +470,7 @@
         items:
         - name: Apply updates
           href: resource-provider-apply-updates.md
-        - name: Backup & restore
+        - name: Back up and restore
           href: azure-stack-backup-enable-backup-console.md
         - name: Collect logs
           href: diagnostic-log-collection.md
@@ -526,6 +528,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 2.0.13.0 release notes
+          href: azure-stack-mysql-resource-provider-2-0-13.md
         - name: MySQL resource provider 2.0.00.0 release notes
           href: azure-stack-mysql-resource-provider-20000.md
         - name: MySQL resource provider 1.1.93.0 release notes
@@ -552,6 +556,8 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
+        - name: SQL resource provider 2.0.13.0 release notes
+          href: azure-stack-sql-resource-provider-2-0-13.md 
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
         - name: SQL resource provider 1.1.93.0 release notes

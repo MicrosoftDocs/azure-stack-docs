@@ -41,7 +41,7 @@
     "externalReference": [],
     "globalMetadata": {
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
+      "extendBreadcrumb": false,
       "feedback_system": "None",
       "manager":"femila",
       "ms.service": "azure-stack",
@@ -56,7 +56,7 @@
       "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
     },
     "ms.subservice": {
-      "./**/*.md": "aks-hci"
+      "./**/*.md": "azure-managed-lustre"
     }
   },
     "template": [],

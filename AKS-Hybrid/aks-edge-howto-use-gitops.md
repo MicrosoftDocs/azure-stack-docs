@@ -94,7 +94,38 @@ Open a browser and navigate to your Node IP, which is the `external-IP` of your 
 
 ![Screenshot of hello-arc application.](media/aks-edge/hello-arc-app-success.png)
 
-## Step 3: Update your application using GitOps
+## Step 3: Creating Windows configuration (optional)
+
+If you have a Windows node, you can also enable **flux2** for Windows. The **hello-arc-windows** sample uses a **hello-arc** Windows container. 
+
+>[!TIP]
+>Windows containers are larger in size than Linux containers. Download of **hello-arc-windows** container can take up to 15 minutes. 
+
+Create a new namespace-level configuration for Windows nodes.
+
+### Namespace-level configuration
+
+| Attribute | Input |
+| --- | --- |
+| Configuration name | `config-helloarc-windows` |
+| Namespace | `hello-arc` |
+| Scope | Namespace |
+| Source kind | Git Repository |
+| Repository URL | \<URL of your fork\>|
+| Reference type | Branch |
+| Branch | main |
+| Repository type | Public |
+| Sync interval | 1 |
+| Sync timeout | 10 |
+| **Kustomization** | |
+| Instance name | `app` |
+| Path | `./hello-arc-windows/releases/app` |
+| Sync interval | 10 |
+| Sync timeout | 10 |
+| Prune | Enabled |
+| Force | Not enabled |
+
+## Step 4: Update your application using GitOps
 
 1. In your fork of the **azure-arc-jumpstart-apps** repository, navigate to **hello-arc > releases > app > hello-arc.yaml**.
 1. Make a change to this YAML file by selecting **Edit**. Change the replicaCount to 5. Change value to "Deploying to AKS Edge Essentials Gitops!"
