@@ -86,7 +86,7 @@ This example runs a sample ASP.NET application based on [Microsoft's sample imag
 Make sure you are in the directory of the YAML in a PowerShell window, and then run the following command:
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/win-sample.yaml
 ```
 
 ### 2. Verify that the sample pod is running

@@ -101,8 +101,7 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
     > [!NOTE]
     > This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell will output `True` and return to the prompt when the process is completed. A bearer token will be saved in **servicetoken.txt** in the **tools** folder.
 
-    ![Screenshot showing PowerShell prompt while connecting to Arc](media/aks-edge/aks-edge-ps-arc-connection.png)
-
+    
 ### Step 3: View your cluster on Azure
 
 1. On the left panel, select the **Namespaces** blade under **Kubernetes resources (preview)**.
