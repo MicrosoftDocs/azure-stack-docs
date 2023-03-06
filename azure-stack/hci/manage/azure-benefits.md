@@ -4,10 +4,11 @@ description: Learn about the Azure Benefits feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
 ms.topic: overview
+ms.custom:
+  - devx-track-azurepowershell
 ms.reviewer: jlei
 ms.date: 01/25/2023
 ms.lastreviewed: 03/21/2022
-
 ---
 
 # Azure Benefits on Azure Stack HCI
