@@ -26,7 +26,7 @@ Site Recovery helps replicate all the VM data itself, but before starting that, 
 - When configuring the replication, you can also create the resource groups, but for a production environment, you should pre-create them according to your naming policy and structure.
 - Ensure the right RBAC is assigned and the tagging is in place – all according to your enterprise policy.
 - The "cache storage account" is created and available.
-- This is a temporary storage account used in the replication process.
+- The "cache storage account" is a temporary storage account used in the replication process.
 
   > [!NOTE]
   > The scope of this storage account is complex and the [Plan capacity for Hyper-V VM disaster recovery](/azure/site-recovery/site-recovery-capacity-planner) article clarifies these concepts. For Azure Site Recovery on Azure Stack Hub, see the Capacity Planning article.
@@ -77,7 +77,7 @@ Once a VM is protected and data replicated, there are further tasks you can perf
   - You can run a test failover to validate your replication and disaster recovery strategy, without any data loss or downtime. A test failover doesn't impact ongoing replication, or your production environment. You can run a test failover on a specific VM, or on a recovery plan containing multiple VMs.
 - A test failover simulates the failover of this VM (from the source to the target) by creating the target VM. When doing a test failover, you can select:
   - The recovery point to fail over to:
-    - Latest recovery point (lowest RPO): this option first processes all the data that has been sent to the Site Recovery service, to create a recovery point for each VM before failing over to it. This option provides the lowest RPO (Recovery Point Objective), because the VM created after failover will have all the data replicated to Site Recovery when the failover was triggered.
+    - Latest recovery point (lowest RPO): this option first processes all the data that has been sent to the Site Recovery service, to create a recovery point for each VM before failing over to it. This option provides the lowest RPO (Recovery Point Objective), because the VM created after failover will have all the data replicated to Site Recovery when the failover triggers.
     - Latest processed (lowest RTO): fails over all VMs in the plan to the latest recovery point processed by Site Recovery. To see the latest recovery point for a specific VM, check **Latest Recovery Points** in the VM settings. This option provides a low RTO (Recovery Time Objective), because no time is spent processing unprocessed data.
     - Latest app-consistent: fails over all the VMs in the plan to the latest application-consistent recovery point processed by Site Recovery. To see the latest recovery point for a specific VM, check **Latest Recovery Points** in the VM settings.
     - Custom: use this option to fail over a specific VM to a particular recovery point.
@@ -99,12 +99,12 @@ Once a VM is protected and data replicated, there are further tasks you can perf
 
   :::image type="content" source="media/protect-virtual-machines/failover-vm.png" alt-text="Screenshot of failover vm screen." lightbox="media/protect-virtual-machines/failover-vm.png":::
 
-  - When starting the failover process, you have the option to **Shut down machine before beginning failover**. Since this option moves the entire VM from the source to the target, the source VM should be shut down before you select this option.
+  - When starting the failover process, you can **Shut down machine before beginning failover**. Since this option moves the entire VM from the source to the target, the source VM should be shut down before you select this option.
 
   > [!NOTE]
   > If no test failover was done in the past 180 days, Site Recovery recommends that you perform one before an actual failover. Skipping validation of the replication via test failover can lead to data loss or unpredictable downtime.
 
-  - Once the failover process is complete, you must commit the changes in order to fully complete the failover process. If you don't commit first, then try to re-protect, the re-protect action first triggers a commit, and then continues with the re-protect (therefore it will take longer because both operations are required).
+  - Once the failover process is complete, you must commit the changes in order to fully complete the failover process. If you don't commit first, then try to re-protect, the re-protect action first triggers a commit, and then continues with the re-protect (therefore it takes longer because both operations are required).
 
   - After the source environment is healthy again, you can start a "failback" process. This process is performed in two steps:
     - Run re-protect to start replicating the data back to the source.
@@ -132,7 +132,7 @@ For each of the states, there are several considerations:
 
   :::image type="content" source="media/protect-virtual-machines/resource-output.png" alt-text="Screenshot of PowerShell command output." lightbox="media/protect-virtual-machines/resource-output.png":::
 
-  - Before running re-protect for Linux VMs, ensure that the certificate of the Site Recovery service is trusted on the Linux VMs that you want to re-protect. This unblocks the VM registration with the Site Recovery service, which is required by re-protection.
+  - Before running re-protect for Linux VMs, ensure that the certificate of the Site Recovery service is trusted on the Linux VMs that you want to re-protect. This trust unblocks the VM registration with the Site Recovery service, which re-protection requires.
 
   For Ubuntu/Debian VMs:
 
@@ -152,7 +152,7 @@ For each of the states, there are several considerations:
   sudo update-ca-trust extract
   ```
 
-  - Ensure that the Site Recovery appliance VM has enough data disk slots available. The replica disks for re-protect will be attached to the appliance (check the Capacity Planning for more information).
+  - Ensure that the Site Recovery appliance VM has enough data disk slots available. The replica disks for re-protection are attached to the appliance (check the Capacity Planning for more information).
   - During the re-protection process, the source VM (which would have the **sourceAzStackVirtualMachineId** on the source stamp) is shut down once the re-protect is triggered, and the OS disk and data disks attached to it are detached and attached to the appliance as replica disks if they are the old ones. The OS disk is replaced with a temporary OS disk of size 1GB.
   - Even if a disk can be re-used as replica in re-protect, but it is in a different subscription from the appliance VM, a new disk is created from it in the same subscription and resource group as the appliance, so that the new disk can be attached to the appliance. 
   - The attached data disks of the appliance should not be modified/attached/detached/changed manually, as a re-protect manual resync is not supported in public preview (see the known issues article). The re-protection cannot be recovered if the replica disks are removed.
