@@ -10,18 +10,18 @@ ms.date: 03/06/2023
 
 # Enable VM protection in Azure Site Recovery
 
-Once the **Target** and the **Source** environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the **Target** environment, in the Site Recovery vault itself.
+Once the target and the source environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the target environment, in the Site Recovery vault itself.
 
 ## Prerequisites
 
-You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the **Source** environment, where they have configured a specific resource group structure, virtual networks, public IPs, and NSGs.
+You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the source environment, where they have configured a specific resource group structure, virtual networks, public IPs, and NSGs.
 
 Site Recovery helps replicate all the VM data itself, but before starting that, make sure that the following prerequisites are met:
 
 - The target network connectivity is configured.
 - The target virtual networks are configured - where each of the protected VMs are connected when a failover occurs.
-- These virtual networks can be configured in the same manner as the **Source** networks, or they can have a different design, depending on your disaster recovery plan and goal.
-- Ensure that the new public and private IPs work as expected for the specific workloads you are protecting (when failovers occur, the failed-over VMs have IPs from the **Target** environment).
+- These virtual networks can be configured in the same manner as the source networks, or they can have a different design, depending on your disaster recovery plan and goal.
+- Ensure that the new public and private IPs work as expected for the specific workloads you are protecting (when failovers occur, the failed-over VMs have IPs from the target environment).
 - The desired resource group configuration is created.
 - When configuring the replication, you can also create the resource groups, but for a production environment, you should pre-create them according to your naming policy and structure.
 - Ensure the right RBAC is assigned and the tagging is in place – all according to your enterprise policy.
@@ -33,7 +33,7 @@ Site Recovery helps replicate all the VM data itself, but before starting that, 
 
 ## Enable replication
 
-On the **Target** environment, in the Azure Stack Hub user portal, open the Site Recovery vault and select **Protect workloads**:
+In the target environment, in the Azure Stack Hub user portal, open the Site Recovery vault and select **Protect workloads**:
 
 :::image type="content" source="media/protect-virtual-machines/protect-workloads.png" alt-text="Screenshot of protect workloads portal screen." lightbox="media/protect-virtual-machines/protect-workloads.png":::
 
@@ -85,7 +85,7 @@ Once a VM is protected and data replicated, there are further tasks you can perf
 
     :::image type="content" source="media/protect-virtual-machines/vm-compute-properties.png" alt-text="Screenshot of portal VM properties screen." lightbox="media/protect-virtual-machines/vm-compute-properties.png":::
 
-- The test failover can help check the application behavior when failed over. However, your **Source** VM might still be running. You must consider this behavior when doing a test failover.
+- The test failover can help check the application behavior when failed over. However, your source VM might still be running. You must consider this behavior when doing a test failover.
 
   > [!NOTE]
   > Azure Site Recovery replicates the VM completely when doing a test failover. The VM runs on both source and target environments. You must take this into account, as it might affect the behavior of your app.
