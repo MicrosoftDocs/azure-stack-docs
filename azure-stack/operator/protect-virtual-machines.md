@@ -12,7 +12,7 @@ ms.date: 03/06/2023
 
 Once the **Target** and the **Source** environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the **Target** environment, in the Site Recovery vault itself.
 
-## Prerequisites and considerations
+## Prerequisites
 
 You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the **Source** environment, where they have configured a specific resource group structure, virtual networks, public IPs, and NSGs.
 
@@ -83,12 +83,12 @@ Once a VM is protected and data replicated, there are further tasks you can perf
     - Custom: use this option to fail over a specific VM to a particular recovery point.
   - You cannot select the network at this point. The **test failover network** is configured for each protected VM. If you need to change it, go back to the properties of the protected VM, then select **View or edit**.
 
-  :::image type="content" source="media/protect-virtual-machines/vm-compute-properties.png" alt-text="Screenshot of portal VM properties screen." lightbox="media/protect-virtual-machines/vm-compute-properties.png":::
+    :::image type="content" source="media/protect-virtual-machines/vm-compute-properties.png" alt-text="Screenshot of portal VM properties screen." lightbox="media/protect-virtual-machines/vm-compute-properties.png":::
 
 - The test failover can help check the application behavior when failed over. However, your **Source** VM might still be running. You must consider this behavior when doing a test failover.
 
-> [!NOTE]
-> Azure Site Recovery replicates the VM completely when doing a test failover. The VM runs on both source and target environments. You must take this into account, as it might affect the behavior of your app.
+  > [!NOTE]
+  > Azure Site Recovery replicates the VM completely when doing a test failover. The VM runs on both source and target environments. You must take this into account, as it might affect the behavior of your app.
 
 - When the test failover is complete, you can select **Clean test failover**. This option deletes the test failover VM and all the test resources
 
@@ -97,12 +97,12 @@ Once a VM is protected and data replicated, there are further tasks you can perf
 - Failover:
   - In the event of an issue on the source environment, you can choose to fail the VMs over to the target environment.
 
-  :::image type="content" source="media/protect-virtual-machines/failover-vm.png" alt-text="Screenshot of failover vm screen." lightbox="media/protect-virtual-machines/failover-vm.png":::
+    :::image type="content" source="media/protect-virtual-machines/failover-vm.png" alt-text="Screenshot of failover vm screen." lightbox="media/protect-virtual-machines/failover-vm.png":::
 
   - When starting the failover process, you can **Shut down machine before beginning failover**. Since this option moves the entire VM from the source to the target, the source VM should be shut down before you select this option.
 
-  > [!NOTE]
-  > If no test failover was done in the past 180 days, Site Recovery recommends that you perform one before an actual failover. Skipping validation of the replication via test failover can lead to data loss or unpredictable downtime.
+    > [!NOTE]
+    > If no test failover was done in the past 180 days, Site Recovery recommends that you perform one before an actual failover. Skipping validation of the replication via test failover can lead to data loss or unpredictable downtime.
 
   - Once the failover process is complete, you must commit the changes in order to fully complete the failover process. If you don't commit first, then try to re-protect, the re-protect action first triggers a commit, and then continues with the re-protect (therefore it takes longer because both operations are required).
 
@@ -124,33 +124,33 @@ For each of the states, there are several considerations:
 - Re-protect:
   - Ensure that the initial source subscription, the initial resource group, and the virtual network/subnet of the initial primary NIC still exist on the primary stamp. You can retrieve this information from the protected item using PowerShell:
 
-  ```powershell
-  Get-AzResource -ResourceID "/subscriptions/<subID>/resourceGroups/<RGname>/providers/Microsoft.DataReplication/replicationVaults/<vaultName>/protectedItems/<vmName>"
-  ```
+    ```powershell
+    Get-AzResource -ResourceID "/subscriptions/<subID>/resourceGroups/<RGname>/providers/Microsoft.DataReplication/replicationVaults/<vaultName>/protectedItems/<vmName>"
+    ```
 
-  The following image shows example output from this command:
+    The following image shows example output from this command:
 
-  :::image type="content" source="media/protect-virtual-machines/resource-output.png" alt-text="Screenshot of PowerShell command output." lightbox="media/protect-virtual-machines/resource-output.png":::
+    :::image type="content" source="media/protect-virtual-machines/resource-output.png" alt-text="Screenshot of PowerShell command output." lightbox="media/protect-virtual-machines/resource-output.png":::
 
   - Before running re-protect for Linux VMs, ensure that the certificate of the Site Recovery service is trusted on the Linux VMs that you want to re-protect. This trust unblocks the VM registration with the Site Recovery service, which re-protection requires.
 
-  For Ubuntu/Debian VMs:
+    For Ubuntu/Debian VMs:
 
-  ```shell
-  sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/Certificates.crt
+    ```shell
+    sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/Certificates.crt
 
-  sudo update-ca-certificates
-  ```
+    sudo update-ca-certificates
+    ```
 
-  For Red Hat VMs:
+    For Red Hat VMs:
 
-  ```shell
-  sudo update-ca-trust force-enable
+    ```shell
+    sudo update-ca-trust force-enable
 
-  sudo cp /var/lib/waagent/Certificates.pem /etc/pki/ca-trust/source/anchors/
+    sudo cp /var/lib/waagent/Certificates.pem /etc/pki/ca-trust/source/anchors/
 
-  sudo update-ca-trust extract
-  ```
+    sudo update-ca-trust extract
+    ```
 
   - Ensure that the Site Recovery appliance VM has enough data disk slots available. The replica disks for re-protection are attached to the appliance (check the Capacity Planning for more information).
   - During the re-protection process, the source VM (which would have the **sourceAzStackVirtualMachineId** on the source stamp) is shut down once the re-protect is triggered, and the OS disk and data disks attached to it are detached and attached to the appliance as replica disks if they are the old ones. The OS disk is replaced with a temporary OS disk of size 1GB.
@@ -163,7 +163,7 @@ For each of the states, there are several considerations:
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, all the disks attached to it are detached but not deleted, and the NICs remain the same.
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, and if it is in a different subscription from the appliance VM, new disks are created in the same subscription and resource group as the failback VM from the replica ones detached from the appliance, so that the new disks can be attached to the failback VM.
 
-- Commit: commit that the failover/failback is done. The failed-over VM on the recovery stamp is deleted after failback is committed.
+- Commit that the failover/failback is done. The failed-over VM on the recovery stamp is deleted after failback is committed.
 
 ## Next steps
 
