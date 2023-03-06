@@ -4,11 +4,12 @@ description: Activate Azure Hybrid Benefit for AKS
 author: baziwane
 ms.author: rbaziwane
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 12/06/2022
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   
 # Keyword: Azure Hybrid Benefit for AKS
-
 ---
 
 # Azure Hybrid Benefit for Azure Kubernetes Service (AKS)
