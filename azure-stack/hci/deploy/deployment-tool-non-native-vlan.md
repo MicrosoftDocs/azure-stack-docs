@@ -31,7 +31,7 @@ Before you begin, make sure you've done the following:
 
 Here are the high-level steps to deploy Azure Stack HCI by using a non-native VLAN ID for the management network:
 
-- [Create a virtual switch on every server in the cluster using the required naming convention](#create-virtual-switches-using-the-recommended-naming-conventions).
+- [Create a virtual switch on every server in the cluster using the recommended naming convention](#create-virtual-switches-using-the-recommended-naming-conventions).
 - [Configure the management virtual network adapter on every server in the cluster using the required naming convention](#configure-the-management-virtual-network-adapter-using-the-required-naming-conventions).
 - [Configure the required VLAN ID to the management virtual network adapter on every server in the cluster](#configure-the-required-vlan-id-to-the-management-virtual-network-adapter).
 - [Deploy Azure Stack HCI using the configuration file](#deploy-azure-stack-hci-using-the-configuration-file).
@@ -54,7 +54,7 @@ where:
 
 ```powershell
 $IntentName = "MgmtCompute"
-New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
+New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
 ```
 
 ## Configure the management virtual network adapter using the required naming conventions
@@ -149,8 +149,8 @@ The following example shows a snippet of the `HostNetwork` configuration section
                             "OverrideAdapterProperty": false, 
                             "AdapterPropertyOverrides": { 
                                 "JumboPacket": "", 
-                                "NetworkDirect": "", 
-                                "NetworkDirectTechnology": "" 
+                                "NetworkDirect": "Enabled", 
+                                "NetworkDirectTechnology": "iWARP" 
                             } 
                         } 
                     ], 
