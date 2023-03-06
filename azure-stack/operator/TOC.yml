@@ -460,11 +460,6 @@
       items:
       - name: Protect virtual machines
         href: protect-virtual-machines.md
-      - name: Deploy
-        href: protect-virtual-machines.md
-        items:
-        - name: Deploy target
-          href: protect-virtual-machines.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
