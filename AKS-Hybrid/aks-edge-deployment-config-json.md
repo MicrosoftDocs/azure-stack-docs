@@ -42,7 +42,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Network.Proxy.Http` |String | HttpProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.Https` |String | HttpsProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.No` |String | No proxy config for bypassing the proxy. ||Single-machine and <br> full deployment|
-| `User.AcceptEula` | Boolean | Accept or decline the [EULA](https://github.com/Azure/AKS-Edge/blob/main/EULA.md) | `false` |Single-machine and <br> full deployment|
+| `User.AcceptEula` | Boolean | Accept or decline the EULA | `false` |Single-machine and <br> full deployment|
 | `User.AcceptOptionalTelemetry` | Boolean | Accept or decline the `optional` telemetry. The `required` telemetry is enabled always. | `false` |Single-machine and <br> full deployment|
 | `Machines[].ArcHybridComputeMachineId` |String | `Reserved` | `null` |Single-machine and <br> full deployment|
 | `Machines[].NetworkConnection.AdapterName` |String | NetAdapterName for VSwitch. It is mandatory for a full Kubernetes deployment. You can run the PowerShell `Get-NetAdapter -Physical` command to view the `Name` column for the adapter of your choice. ||Single-machine and <br> full deployment|

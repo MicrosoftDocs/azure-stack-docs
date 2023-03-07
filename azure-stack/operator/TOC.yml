@@ -290,6 +290,8 @@
       href: azure-stack-change-subscription-owner.md
     - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
+    - name: Decommission an Azure Stack Hub system
+      href: azure-stack-hub-decommission.md
     - name: Azure Site Recovery tool
       href: site-recovery-failback.md
     - name: Manage capacity
@@ -482,7 +484,7 @@
         items:
         - name: Apply updates
           href: resource-provider-apply-updates.md
-        - name: Backup & restore
+        - name: Back up and restore
           href: azure-stack-backup-enable-backup-console.md
         - name: Collect logs
           href: diagnostic-log-collection.md

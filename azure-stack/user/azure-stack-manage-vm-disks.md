@@ -7,11 +7,12 @@ ms.date: 06/22/2021
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 11/22/2020
-ms.custom: contperf-fy21q4
+ms.custom:
+  - contperf-fy21q4
+  - devx-track-azurepowershell
 
 # Intent: As an Azure Stack user, I want to create managed and unmanaged disk storage in Azure Stack so I can store OS files and other data.
 # Keyword: create vm disk storage
-
 ---
 
 
