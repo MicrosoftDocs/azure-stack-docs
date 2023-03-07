@@ -77,7 +77,7 @@ We've tested and validated the following VM OSs (each having respective Azure St
 |Debian 7 | Includes support for all 7. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 8 | Includes support for all 8. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
-|Debian 10 | [Supported kernel versions](h/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
+|Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 11 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |SUSE Linux Enterprise Server 11 | SP3. **The upgrade of replicating machines from SP3 to SP4 isn't supported**. If a replicated machine has been upgraded, you need to disable replication and re-enable replication after the upgrade.|
 |SUSE Linux Enterprise Server 11 | SP4 |
