@@ -1,11 +1,11 @@
 ---
 title: What is Azure Stack Hub for a user? 
 description: Learn how to use Azure Stack Hub as a developer.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 12/2/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 

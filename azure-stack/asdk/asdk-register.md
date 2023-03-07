@@ -4,6 +4,8 @@ description: Learn how to register the Azure Stack Development Kit (ASDK) with A
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 1/20/2021
 ms.author: sethm
 ms.reviewer: misainat
@@ -11,7 +13,6 @@ ms.lastreviewed: 1/20/2021
 
 # Intent: As an ASDK user, I want to register my ASDK with Azure so I can download marketplace items and report data back to global Azure.
 # Keyword: register asdk azure
-
 ---
 
 

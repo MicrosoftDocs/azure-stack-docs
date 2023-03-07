@@ -1,8 +1,8 @@
 ---
 title: How to remove IoT Hub on Azure Stack Hub
 description: Instructions on uninstalling IoT Hub on Azure Stack Hub
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 1/26/2020

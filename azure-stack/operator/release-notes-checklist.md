@@ -1,11 +1,11 @@
 ---
 title: Azure Stack Hub update activity checklist 
 description:  Checklist to prepare your system for the latest Azure Stack Hub update.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 05/17/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: TBD
 ms.lastreviewed: 01/14/2020
 

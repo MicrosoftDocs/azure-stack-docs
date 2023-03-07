@@ -9,11 +9,11 @@ ms.date: 02/02/2021
 
 # Manage tenant logical networks
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller. A Software Defined Networking (SDN) logical network is a traditional VLAN-based network.
 
-By modeling a VLAN-based network as an SDN logical network, you can apply network policies to workloads that are attached to these networks. For example, you can apply security access control lists (ACLs) to workloads that are attached to SDN logical networks. Applying the ACLs protects your VLAN-based workloads from both external and internal attacks.
+By modeling a VLAN-based network as an SDN logical network, you can apply network policies to workloads that are attached to these networks. For example, you can apply a network security group to workloads that are attached to SDN logical networks. Applying the ACLs protects your VLAN-based workloads from both external and internal attacks.
 
 ## Create a logical network
 Use the following steps in Windows Admin Center to create a logical network.

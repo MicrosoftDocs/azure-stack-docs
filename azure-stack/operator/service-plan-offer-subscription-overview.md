@@ -1,11 +1,11 @@
 ---
 title: Azure Stack Hub services, plans, offers, subscriptions overview 
 description: An overview of Azure Stack Hub services, plans, offers, and subscriptions.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 02/07/2022
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/01/2019
 

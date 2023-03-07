@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Arc-enabled virtual machines
-description: Learn how to troubleshoot Arc-enabled virtual machines
+title: Troubleshoot Azure Arc VM management (preview)
+description: Learn how to troubleshoot Azure Arc VM management (preview)
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 03/24/2022
@@ -8,64 +8,119 @@ ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
-# Troubleshoot Arc-enabled virtual machines
+# Troubleshoot Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article provides guidance on how to debug issues that you might encounter when using Arc-enabled virtual machines (VMs). It also describes the limitations and known issues that currently exist.
+This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
-## Troubleshoot and debug
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
-See the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, contact Microsoft support.
+## Collect logs
 
-Collect diagnostics information before contacting Microsoft support as they may ask for it.
+You can collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
 
-For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
+Make sure you have the latest PowerShell module for log collection. To update the PowerShell module, run the following command:
 
 ```PowerShell
-Get-ArcHCILogs -workDirectory <path>
+#Update the PowerShell module
+Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
 ```
 
-The `workDirectory` is located under the following path: 
+To collect logs for Arc VMs in your Azure Stack HCI cluster, run the following command:
 
-`$csv_path\ResourceBridge`
+```PowerShell
+$csv_path="<input-from-admin>"
+$VMIP="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP
+```
 
-Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
+where:
+
+- **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
+
+- **$VMIP** is the IP address of the Arc Resource Bridge VM.
+
+- Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
+
+## Troubleshoot Azure Arc VMs
+
+This section describes the errors related to Azure Arc VM management and their recommended resolutions.
+
+### Permission denied error when you run the arcappliance prepare command
+
+If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
+
+**Error:** `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
+
+Here's an example output when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
+
+:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error." lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
+
+**Resolution:** Go to your home directory and rerun the `az arcapplicance prepare` command.
+
+### Azure CLI installation isn't recognized
+
+If your environment fails to recognize Azure CLI after installing it, run the following code block to add the Azure CLI installation path to the environment path.
+
+```PowerShell
+        if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {
+            $env:PATH += "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+            Write-Host "Updated path $env:PATH"
+        }
+```
+
+### KVA timeout error
+
+Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
+
+- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
+- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
+- The host isn't able to reach $controlPlaneIP or $VMIP.
+
+To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
 
 ## Limitations and known issues
 
-- Resource name must be unique for an Azure Stack HCI cluster and must contain only lower case alphabets, numbers, and hyphens.
+Here's a list of existing limitations and known issues with Azure Arc VM management:
+
+- Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
+
 - Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
-- Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster must be enabled in the following deployment order:
 
+- You must deploy Azure Kubernetes and Arc VMs on the same Azure Stack HCI cluster in the following order:
     1. Deploy AKS management cluster
-    1. Deploy Arc Resource Bridge for Arc-enabled VMs
+    1. Deploy Arc Resource Bridge for Arc VMs
 
-    > [!NOTE]
-    > If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
+        > [!NOTE]
+        > If Arc Resource Bridge is already deployed, don't deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
-    While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-    **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
-
-- You must uninstall these in the following order:
-
+- You must uninstall AKS management cluster and Arc Resource Bridge in the following order:
     1. Uninstall Arc Resource Bridge
-    1. Uninstall the AKS management cluster
+    1. Uninstall AKS management cluster
 
-    > [!NOTE]
-    > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
+        > [!NOTE]
+        > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it won't remember the VM entities created previously.
 
-- If only Arc Resource Bridge needs to be uninstalled, skip the step **uninstall-moc** for Azure Kubernetes Service to continue running on the cluster.
+- VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
 
-- VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
-- You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.
+- You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools aren't updated in the Azure portal.
+
 - Arc VMs must be created in the same Azure subscription as the Custom location.
-- An IT administrator can't view or manage VMs from cluster resource page in the Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
+
+- An IT administrator can't view or manage VMs from cluster resource page in the Azure portal, if they are created in a subscription where the IT administrator doesn't have at least read-only access role.
+
 - If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
+
 - Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
-- Support for Arc Resource Bridge & Arc VM Management is currently available only in English language.
+
+- Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
+
+- Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
+
+- Naming convention for Azure resources, such as virtual networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Next steps
 
-- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)
-- [Azure Arc-enabled Azure Stack HCI FAQs](faqs-arc-enabled-vms.md)
+- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
+- [Azure Arc VM management FAQs](faqs-arc-enabled-vms.md)

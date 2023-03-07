@@ -1,10 +1,10 @@
 ---
 title: Use the Azure web apps deploy action with Azure Stack Hub 
 description: Use the Azure web apps deploy action to create a continuous integration, continuous deployment (CI/CD) workflow to Azure Stack Hub
-author: BryanLa
+author: sethmanheim
 ms.topic: how-to
 ms.date: 03/16/2022
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 03/16/2022
 
@@ -97,7 +97,7 @@ The following code snippets are written for a Windows machine using the PowerShe
 
 1. Sign in to your Azure Stack Hub portal.
 1. Select **Create a resource** > **Web + Mobile** > **Web App**.
-    ![Create a web app in Azure Stack Hub](\media\ci-cd-github-action-webapp\create-web-app.png)
+    ![Create a web app in Azure Stack Hub](./media/ci-cd-github-action-webapp/create-web-app.png)
 ### To create your web app
 
 1. Select your **Subscription**.
@@ -109,9 +109,9 @@ The following code snippets are written for a Windows machine using the PowerShe
 1. Select the plan based on your Azure Stack Hub instance, region, and app OS.
 1. Select **Review + Create**.
 1. Review your Web app. Select **Create**.
-    ![Review web app in Azure Stack Hub](\media\ci-cd-github-action-webapp\review-azure-stack-hub-web-app.png)
+    ![Review web app in Azure Stack Hub](./media/ci-cd-github-action-webapp/review-azure-stack-hub-web-app.png)
 1. Select **Go to resource**.
-    ![Get publish profile in Azure Stack Hub](\media\ci-cd-github-action-webapp\get-azure-stack-hub-web-app-publish-profile.png)
+    ![Get publish profile in Azure Stack Hub](./media/ci-cd-github-action-webapp/get-azure-stack-hub-web-app-publish-profile.png)
 1. Select **Get publish profile**. Your publish profile downloads and is named `<yourappname>.PublishSettings`. The file contains an XML with the target values of your web app.
 1. Store your publish profile so that you can access it when you create the secrets for your repository.
 
@@ -123,7 +123,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 1. Select **Settings**.
 1. Select **Secrets**.
 1. Select **New repository secret**.
-    ![Add your GitHub Actions secret](.\media\ci-cd-github-action-login-cli\github-action-secret.png)
+    ![Add your GitHub Actions secret](./media/ci-cd-github-action-login-cli/github-action-secret.png)
 1. Name your secret `AZURE_CREDENTIALS`.
 1. Paste the JSON object that represents your service principal.
 1. Select **Add secret**.
@@ -146,17 +146,17 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     | PHP | [php.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/php-webapp-on-azure.yml) |
     | Docker | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) |
 
-2. Place the template GitHub action workflow directory in your project repository: `.github/workflows/<runtime.yml>` Your workflow directory will contain two workflows.
+2. Place the template GitHub Actions workflow directory in your project repository: `.github/workflows/<runtime.yml>` Your workflow directory will contain two workflows.
 
 ## Add the web app deploy action
 
 Create a second workflow using the yaml in this section. In this example, you're deploying a Python web app. You would need to select a setup action based on your workflow. You can find references to set up actions for various runtimes in the table, [Setup actions for different runtimes](#setup-actions-for-different-runtimes), after the steps used to create the action.
 
-### Example GitHub action workflow
+### Example GitHub Actions workflow
 
 1. Open your GitHub repository. If you have not already added your web app application resources, add them now. In this example, I am using the [Python Flask Hello World](https://github.com/Azure-Samples/python-docs-hello-world) sample, and I added the Python `.gitignore`, `app.py`, and `requirements.txt` files.
 
-    ![Exmaple of the repo using Python Flask with Azure Stack Hub](\media\ci-cd-github-action-webapp\example-of-repo.png)
+    ![Exmaple of the repo using Python Flask with Azure Stack Hub](./media/ci-cd-github-action-webapp/example-of-repo.png)
 1. Select **Actions**.
 1. Select **New workflow**.
     - If this is your first workflow, select **set up a workflow yourself** under **Choose a workflow template**.
@@ -218,10 +218,10 @@ When the action runs, verify that it has run successfully.
 1. Open your GitHub repository. You can trigger the workflow by pushing to the repository.
 1. Select **Actions**.
 1. Select the name of the commit under **All workflows**. Both workflows have logged their status.
-    ![Review the status of your GitHub action](\media\ci-cd-github-action-webapp\workflow-success.png)
+    ![Review the status of your GitHub action](./media/ci-cd-github-action-webapp/workflow-success.png)
 1. Select the name of the job for the deployment, `.github/workflows/workflow.yml`.
 1. Expand the sections to review the return values for your workflow actions. Find the URL for your deployed web app.
-    ![Find your Azure Stack Hub web app URL](\media\ci-cd-github-action-webapp\review-cli-log-and-get-url.png)
+    ![Find your Azure Stack Hub web app URL](./media/ci-cd-github-action-webapp/review-cli-log-and-get-url.png)
 1. Open a web browser and load the URL.
 ## Next steps
 

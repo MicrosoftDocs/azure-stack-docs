@@ -153,4 +153,4 @@ See [here](https://github.com/Azure-Samples/Hybrid-Python-Samples/tree/ac7098068
 
 - [Azure Python developer center](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
+- [Learning path for Virtual Machines](/training/paths/deploy-a-website-with-azure-virtual-machines/)

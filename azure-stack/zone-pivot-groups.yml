@@ -8,6 +8,14 @@ groups:
     title: Connected
   - id: state-disconnected
     title: Disconnected
+- id: version-2022h1-previous
+  title: App Service on Azure Stack Hub Version
+  prompt: Choose version
+  pivots:
+  - id: version-2022h1
+    title: App Service on Azure Stack Hub 2022 H1
+  - id: version-previous
+    title: Previous versions
 - id: management-tool-portal-powershell
   title: Management tool
   prompt: Choose a management tool
@@ -15,7 +23,23 @@ groups:
   - id: management-tool-portal
     title: Portal
   - id: management-tool-powershell
-    title: PowerShell    
+    title: PowerShell 
+- id: csr-cert-type
+  title: CSR type
+  prompt: Choose a CSR certificate scenario
+  pivots:
+  - id: csr-type-new-deployment
+    title: New deployment
+  - id: csr-type-renewal
+    title: Renewal
+- id: hci-versions
+  title: Version
+  prompt: Choose an HCI version
+  pivots:
+  - id: on-5b
+    title: 5b
+  - id: above-5b
+    title: 5c and later
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.

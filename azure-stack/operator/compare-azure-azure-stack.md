@@ -2,11 +2,11 @@
 title: Differences between global Azure, Azure Stack Hub, Azure Stack HCI
 titleSuffix: Azure Stack Hub 
 description: Learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
 
@@ -82,7 +82,7 @@ Azure Stack HCI uses Microsoft-validated hardware from an OEM partner to ensure 
 - Lower-cost storage
 - High availability and disaster recovery in the cloud
 - Virtualizing enterprise apps like SQL Server
-- Run containers with [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md)
+- Run containers with [Azure Kubernetes Service (AKS) on Azure Stack HCI](/azure/aks/hybrid/overview)
 - Run Azure Arc enabled services such as [Azure data services](/azure/azure-arc/data/overview), which includes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners.

@@ -1,11 +1,11 @@
 ---
 title: Deploy Azure Stack Hub VM using password stored in Key Vault 
 description: Learn how to deploy a VM using a password stored in an Azure Stack Hub key vault.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: ppacent
 ms.lastreviewed: 11/20/2020
 

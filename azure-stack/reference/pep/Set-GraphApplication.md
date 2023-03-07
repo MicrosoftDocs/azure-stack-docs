@@ -1,11 +1,11 @@
 ---
 title: Set-GraphApplication privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Set-GraphApplication
-author: BryanLa
+author: sethmanheim
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---
@@ -29,7 +29,12 @@ Invokes the Set-GraphApplicationGroup on AD FS to modify an application on to AD
 
 ### Example 1
 ```
-New-GraphApplication -Name $ApplicationName -ClientRedirectUris $redirectUri -ClientCertificates $certificate
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2('c:\temp\testcert.cer')
+$appId = 'S-1-1-11-2222222222-3333333333-4444444444-5555'
+$script = {
+    Set-GraphApplication -ApplicationIdentifier $using:appId -ClientCertificates $using:cert
+}
+Invoke-Command -ComputerName '<ercs01 computer name>' -ScriptBlock $script -ConfigurationName PrivilegedEndpoint
 ```
 
 ## Parameters

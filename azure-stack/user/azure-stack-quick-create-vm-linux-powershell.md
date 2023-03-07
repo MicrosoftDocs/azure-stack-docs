@@ -1,17 +1,18 @@
 ---
 title: Create Linux VM with PowerShell in Azure Stack Hub 
 description: Create a Linux VM by using PowerShell in Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: quickstart
 ms.date: 02/18/2021
-ms.author: bryanla
+ms.author: sethm
 ms.lastreviewed: 02/18/2021
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.
 # Keyword: linuxVM powershell
-
-ms.custom: mode-api
+ms.custom:
+  - mode-api
+  - devx-track-azurepowershell
 ---
 
 
@@ -289,7 +290,7 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 # Add the SSH key to the VM
 Add-AzVMSshPublicKey -VM $VirtualMachine `
  -KeyData $sshPublicKey `
- -Path "/home/azureuser/.ssh/authorized_keys"
+ -Path "/home/$UserName/.ssh/authorized_keys"
 
 # Create the VM
 New-AzVM `

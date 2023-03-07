@@ -1,21 +1,27 @@
 ---
-title: Uninstall Azure Arc Resource Bridge 
-description: Learn how to uninstall Azure Arc Resource Bridge
+title: Uninstall Azure Arc VM management (preview)
+description: Learn how to uninstall Azure Arc VM management (preview).
 author: ksurjan
 ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom:
+  - devx-track-azurecli
 ms.date: 03/23/2022
 ---
 
-# Uninstall Azure Arc Resource Bridge
+# Uninstall Azure Arc VM management (preview)
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article describes how to uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-enabled Azure Stack HCI cluster.
+This article describes how to uninstall Azure Arc VM management on an Azure Arc-enabled Azure Stack HCI cluster.
 
-Perform the following steps to uninstall Azure Arc Resource Bridge:
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+
+## How to uninstall Azure Arc VM management
+
+Perform the following steps to uninstall Azure Arc VM management:
 
 1. Remove the virtual network:
 
@@ -38,7 +44,7 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
 4. Remove the Kubernetes extension:
 
    ```azurecli
-   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --yes
+   az k8s-extension delete --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name vmss-hci --yes
    ```
 
 5. Remove the appliance:
@@ -47,22 +53,13 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
    ```
 
-   > [!NOTE]
-   > On every attempt to reinstall the appliance, remove the `.wssd\python` python folder in the user profile folder using the following cmdlet:
-   > 
-   > rmdir $env:USERPROFILE\\.wssd\python -Recurse -Force
-
 6. Remove the config files:
 
    ```PowerShell
    Remove-ArcHciConfigFiles
    ```
-
-7. Uninstall the moc setup after testing:
-
-   ```PowerShell
-   Uninstall-Moc
-   ```
+   > [!NOTE]
+   >  The uninstallation of Azure Arc VM management completes at this step.
 
 ## Next steps
 

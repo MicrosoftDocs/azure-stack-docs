@@ -25,7 +25,7 @@ It is required that you apply the minimum supported Azure Stack Hub update to yo
 
 > |Supported Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
-> |Version 2108|SQL RP version 2.0.6.0|  
+> |Version 2108,2206|SQL RP version 2.0.6.0|  
 > |     |     |
 
 > [!IMPORTANT]

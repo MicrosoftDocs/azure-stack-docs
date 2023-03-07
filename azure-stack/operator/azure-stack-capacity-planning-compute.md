@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
-author: BryanLa
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 11/19/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 03/02/2021
 
@@ -75,20 +75,35 @@ This calculation results in the total available memory that can be used for tena
 
 Available memory for VM placement = total host memory - resiliency reserve - memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead <sup>1</sup>
 
-Resiliency reserve = N * R + (N-2)* V + min(H-R, sum(memoryofHAVMs))
+* Total host memory = Sum of memory from all nodes
+* Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
+* Memory used by tenant VMs = Actual memory consumed by tenant workload, does not depend on HA configuration
+* Azure Stack Hub Infrastructure Overhead = 268 GB + (4GB x N)
 
 > Where:
 > -    H = Size of single server memory
 > - N = Size of Scale Unit (number of servers)
 > -    R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
 > -    V = Largest HA VM in the scale unit
-> - memoryofHAVMs = sum of the memory of all the HA VMs in the scale unit. This includes 142 GB of HA infrastructure + memory of HA tenant VMs
 
 <sup>1</sup> Azure Stack Hub Infrastructure overhead = 268 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 268 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing, and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they're developed.
 
 <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
 The value V, largest HA VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest HA VM value is a minimum of 12 GB (accounting for the infrastructure VM) or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest HA VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself. Remember that GPU VMs run in non-HA mode.
+
+### Sample calculation
+
+We have a small four-node Azure Stack Hub deployment with 768 GB RAM on each node. We plan to place a virtual machine for SQL server with 128GB of RAM (Standard_E16_v3). What will be the available memory for VM placement?
+
+* Total host memory = Sum of memory from all nodes = 4 * 768 GB = 3072 GB
+* Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 768 + 0.15 * ((4 - 1) * 768) + 128 * (4 - 2) = 1370 GB
+* Memory used by tenant VMs = Actual memory consumed by tenant workload, does not depend on HA configuration = 0 GB
+* Azure Stack Hub Infrastructure Overhead = 268 GB + (4GB x N) = 268 + (4 * 4) = 284 GB
+
+Available memory for VM placement = total host memory - resiliency reserve - memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead
+
+Available memory for VM placement = 3072 - 1370 - 0 - 284 = 1418 GB
 
 ## Considerations for deallocation
 

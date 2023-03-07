@@ -1,11 +1,11 @@
 ---
 title: Back up Azure Stack Hub 
 description: Learn how to do an on-demand backup on Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2019
 

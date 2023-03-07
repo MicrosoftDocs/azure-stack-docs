@@ -10,7 +10,7 @@ ms.date: 02/02/2021
 ---
 # What is Network Controller?
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Network Controller is the cornerstone of Software Defined Networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
@@ -23,6 +23,8 @@ Network Controller provides one application programming interface (API) that all
 With the Southbound API, Network Controller can manage network devices and network services, and gather all of the information you need about the network. Network Controller continually monitors the state of network devices and services, and ensures that any configuration drift from the desired state is remediated.
 
 The Network Controller Northbound API is implemented as a REST interface. It provides the ability to manage your datacenter network from management applications. For management, users can use the REST API directly, or use Windows PowerShell built on top of the REST API, or management applications with a graphical user interface such as Windows Admin Center or System Center Virtual Machine Manager.
+
+To learn more about these PowerShell cmdlets, see [NetworkController](/powershell/module/networkcontroller/?view=windowsserver2022-ps&preserve-view=true) reference.
 
 ## Network Controller features
 

@@ -1,10 +1,10 @@
 ---
 title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about working with Azure Kubernetes Service on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
 ms.date: 02/24/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 12/8/2021
 

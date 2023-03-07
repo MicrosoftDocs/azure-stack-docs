@@ -1,11 +1,11 @@
 ---
 title:  Run N-tier application in multiple Azure Stack Hub regions for high availability 
 description: Learn how to run an N-tier application in multiple Azure Stack Hub regions for high availability.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 2/1/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 

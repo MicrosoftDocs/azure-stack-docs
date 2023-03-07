@@ -1,11 +1,11 @@
 ---
 title: Close-PrivilegedEndpoint privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
-author: BryanLa
+author: sethmanheim
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---

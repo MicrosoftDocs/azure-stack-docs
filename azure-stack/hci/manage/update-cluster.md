@@ -4,39 +4,47 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/18/2022
+ms.date: 10/13/2022
 ---
 
 # Update Azure Stack HCI clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
 
-When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
+This article describes how to install, monitor, and troubleshoot updates on multi-node clusters. To update single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters).
+
+When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example, to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center; it can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI, version 21H2 has entered General Availability (GA) and is available as a feature update. To update your cluster to version 21H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center). If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI clusters, don't attempt to upgrade to version 21H2 without first installing [System Center 2022](/system-center/). Don't upgrade your cluster using Windows Admin Center or PowerShell if you intend to continue to manage it using Virtual Machine Manager.
+   > Azure Stack HCI, version 22H2 has entered general availability (GA) and is available as a feature update. To update your cluster to version 22H2 and access new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
+   >
+   > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrades](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 (original release) to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
+   >
+   > If you're currently using System Center 2019, do not install feature updates to Azure Stack HCI yet. Upgrade to [System Center 2022](/system-center/vmm/whats-new-in-vmm#new-features-in-vmm-2022) before updating to Azure Stack HCI, version 21H2. After you've upgraded to System Center 2022, you can update to Azure Stack HCI, version 21H2 using any available option: Windows Admin Center, PowerShell, or the cluster rolling upgrade feature in Virtual Machine Manager.
+   >
+   > Please do not enroll the clusters managed by Virtual Machine Manager to the [Azure Stack HCI preview channel](/azure-stack/hci/manage/preview-channel). System Center 2022 does not support Azure Stack HCI preview versions. You can monitor the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) if you're interested in Azure Stack HCI previews.
 
-This topic focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
+This article focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
 ## Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware wasn't purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
    > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, skip ahead to [Update a cluster using PowerShell](#update-a-cluster-using-powershell).
 
 Follow these steps to install updates:
 
-1. When you connect to a cluster, the Windows Admin Center dashboard will alert you if one or more servers have updates ready to be installed, and provide a link to update now. Alternatively, you can select **Updates** from the **Tools** menu at the left.
+1. When you connect to a cluster, the Windows Admin Center dashboard will alert you if one or more servers have updates ready to be installed and provide a link to update now. Alternatively, you can select **Updates** from the **Tools** menu at the left.
 
-2. If you are updating your cluster for the first time, Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating, and if needed, will ask if you'd like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, click **Get Started**.
+2. If you are updating your cluster for the first time, Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating and, if needed, ask if you'd like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, click **Get Started**.
 
    :::image type="content" source="media/update-cluster/add-cau-role.png" alt-text="Windows Admin Center will automatically configure the cluster to run Cluster-Aware Updating" lightbox="media/update-cluster/add-cau-role.png":::
 
    > [!NOTE]
    > To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, click **Yes**. Specify your username and password, and click **Continue**.
 
-3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates that are available for each server in the cluster. You may need to supply administrator credentials. If no operating system updates are available, click **Next: hardware updates** and proceed to step 7.
+3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates available for each server in the cluster. You may need to supply administrator credentials. If no operating system updates are available, click **Next: hardware updates** and proceed to step 8.
 
    > [!IMPORTANT]
    > Feature updates require additional steps. If Windows Admin Center indicates that a feature update is available for your cluster, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
@@ -50,23 +58,29 @@ Follow these steps to install updates:
    > [!NOTE]
    > If you're installing updates on a cluster that has [Kernel Soft Reboot](kernel-soft-reboot.md) enabled, you'll see a **Disable Kernel Soft Reboot for this run** checkbox. Checking the box disables Kernel Soft Reboot only for that particular updating run. This makes it possible to disable Kernel Soft Reboot when an updating run requires a full reboot, such as BIOS updates.
 
-5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours. You may be asked to supply your login credentials to Windows Admin Center multiple times.
+5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You'll see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
 
    > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
 
 6. When operating system updates are complete, the update status will change to "succeeded." Click **Next: hardware updates** to proceed to the hardware updates screen.
 
    > [!IMPORTANT]
    > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
 
-7. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
+7. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster:
 
-8. To improve security, disable CredSSP as soon as you're finished installing the updates:
-    - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
-    - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
+    When the cluster nodes are not connected to Windows Update after installing the latest quality updates and the setup media has been copied to a share that is accessible to the cluster nodes:
+
+    > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force`
+
+8. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
+
+9. To improve security, disable CredSSP as soon as you're finished installing the updates:
+    - In Windows Admin Center, under **All connections**, select the first server in your cluster and then select **Connect**.
+    - On the **Overview** page, select **Disable CredSSP**, and then, on the **Disable CredSSP** pop-up window, select **Yes**.
 
 ## Install feature updates using Windows Admin Center
 
@@ -83,7 +97,7 @@ Microsoft recommends installing new feature updates as soon as possible, using t
 
    :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
 
-3. When the readiness check is complete, you're ready to install the updates. Unless you want the ability to roll back the updates, check the optional **Update the cluster functional level to enable new features** checkbox; otherwise, you can update the cluster functional level post-installation using PowerShell. Review the updates listed, and select **Install** to start the update.
+3. When the readiness check is complete, you're ready to install the updates. Unless you want the ability to roll back the updates, check the optional **Update the cluster functional level to enable new features** checkbox; otherwise, you can update the cluster functional level post-installation using PowerShell. Review the updates listed and select **Install** to start the update.
 
    :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
 
@@ -92,11 +106,11 @@ Microsoft recommends installing new feature updates as soon as possible, using t
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
    > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
 
 5. When the feature updates are complete, check if any further updates are available and install them.
 
-6. Perform [post installation steps](#post-installation-steps-for-feature-updates) using PowerShell. These steps are critical to the stability of your cluster.
+6. Perform [post-installation steps](#post-installation-steps-for-feature-updates) using PowerShell. These steps are critical to the stability of your cluster.
 
 
 ## Update a cluster using PowerShell
@@ -119,7 +133,7 @@ To check if a cluster or server has the Failover Clustering feature and Failover
 Get-WindowsFeature -Name Failover*, RSAT-Clustering* -ComputerName Server1
 ```
 
-Make sure "Install State" says Installed and that an X appears before both Failover Clustering and Failover Cluster Module for Windows PowerShell:
+Make sure "Install State" says **Installed**     and that an X appears before both Failover Clustering and Failover Cluster Module for Windows PowerShell:
 
 ```
 Display Name                                            Name                       Install State
@@ -131,27 +145,28 @@ Display Name                                            Name                    
             [ ] Failover Cluster Command Interface      RSAT-Clustering-CmdI...        Available
 ```
 
-If the Failover Clustering feature is not installed, install it on each server in the cluster with the `Install-WindowsFeature` cmdlet, using the -IncludeAllSubFeature and -IncludeManagementTools parameters:
+If the Failover Clustering feature is not installed, install it on each server in the cluster with the `Install-WindowsFeature` cmdlet using the -IncludeAllSubFeature and -IncludeManagementTools parameters:
 
 ```PowerShell
 Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
 ```
 
-This command will also install the Failover Cluster Module for PowerShell, which includes PowerShell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
+This command will also install the Failover Cluster Module for PowerShell, which includes PowerShell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell for installing software updates on failover clusters.
 
-If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell is not, simply install it on each server in the cluster with the `Install-WindowsFeature` cmdlet:
+If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell isn't, install it on each server in the cluster with the `Install-WindowsFeature` cmdlet:
 
 ```PowerShell
 Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 ```
 
-### Choose an updating mode
+### Choose a CAU updating mode
 
-Cluster-Aware Updating can coordinate the complete cluster updating operation in two modes:  
+Cluster-Aware Updating (CAU) can coordinate the complete cluster updating operation in two modes:  
   
--   **Self-updating mode** For this mode, the Cluster-Aware Updating clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the Cluster-Aware Updating Update Coordinator process starts on the node that currently owns the Cluster-Aware Updating clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the Cluster-Aware Updating clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, Cluster-Aware Updating can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired.
+-   **Self-updating mode** For this mode, the Cluster-Aware Updating clustered role is configured as a workload on the failover cluster that is to be updated and an associated update schedule that is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the Cluster-Aware Updating Update Coordinator process starts on the node that currently owns the Cluster-Aware Updating clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the Cluster-Aware Updating clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, Cluster-Aware Updating can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode or simply use the remote-updating approach if desired.
   
--   **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
+-   **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run and for clusters that are running on Server Core installations.  
+
 
    > [!NOTE]
    > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/download/details.aspx?id=45520).
@@ -166,7 +181,7 @@ The `Get-CauClusterRole` cmdlet displays the configuration properties of the Clu
 Get-CauClusterRole -ClusterName Cluster1
 ```
 
-If the role is not yet configured on the cluster, you will see the following error message:
+If the role isn't yet configured on the cluster, you'll see the following error message:
 
 ```Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.```
 
@@ -181,7 +196,7 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 
 ### Enable firewall rules to allow remote restarts
 
-You'll need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall, or pass the -EnableFirewallRules parameter to the cmdlet such as in the example above.
+Allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall or pass the `-EnableFirewallRules` parameter to the cmdlet, such as in the example above.
 
 ## Check for updates using PowerShell
 
@@ -191,7 +206,7 @@ You can use the `Invoke-CAUScan` cmdlet to scan servers for applicable updates a
 Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -Verbose
 ```
 
-Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it does not include updates that might become applicable after the initial updates are installed.
+Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it doesn't include updates that might become applicable after the initial updates are installed.
 
 ## Install operating system updates using PowerShell
 
@@ -201,7 +216,7 @@ To scan servers for operating system updates and perform a full updating run on 
 Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -EnableFirewallRules -Force
 ```
 
-This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the **Microsoft.WindowsUpdatePlugin** plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
+This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the **Microsoft.WindowsUpdatePlugin** plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed and allows no more than one node to fail before marking the entire updating run as failed. It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
 
 The updating run process includes the following: 
 - Scanning for and downloading applicable updates on each server in the cluster
@@ -210,7 +225,7 @@ The updating run process includes the following:
 - Restarting the server if required by the installed updates
 - Moving the clustered roles back to the original server
 
-The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken.
+The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken is completed.
 
 ## Install feature updates using PowerShell
 
@@ -236,15 +251,7 @@ To install feature updates using PowerShell, follow these steps. If your cluster
    Test-Cluster
    ```
 
-4. Run the following cmdlet with no parameters on every server in the cluster:
-
-   ```PowerShell
-   Set-PreviewChannel
-   ```
-
-   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server was not already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
-
-5. Check for the feature update:
+4. Check for the feature update:
 
    ```PowerShell
    Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
@@ -252,15 +259,15 @@ To install feature updates using PowerShell, follow these steps. If your cluster
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
-6. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
+5. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
 
    ```PowerShell
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-7. Check for any further updates and install them.
+6. Check for any further updates and install them.
 
-You're now ready to perform [post installation steps for feature updates](#post-installation-steps-for-feature-updates).
+You're now ready to perform [post-installation steps for feature updates](#post-installation-steps-for-feature-updates).
 
 ## Check on the status of an updating run
 
@@ -291,12 +298,12 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-## Post installation steps for feature updates
+## Post-installation steps for feature updates
 
 Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
 
    > [!IMPORTANT]
-   > Azure Stack HCI clusters running Storage Replica will require each server to be restarted a second time after the 21H2 Feature update is complete, before performing the post installation steps. This is a known issue.
+   > Azure Stack HCI clusters running Storage Replica will require each server to be restarted a second time after the 21H2 Feature update is complete before performing the post-installation steps. This is a known issue.
 
 1. **Update the cluster functional level.**
 
@@ -305,10 +312,10 @@ Once the feature updates are installed, you'll need to update the cluster functi
    Run the following cmdlet on any server in the cluster:
    
    ```PowerShell
-   Update-ClusterFunctionalLevel
-   ```
+   Update-ClusterFunctionalLevel='true';
+
    
-   You'll see a warning that you cannot undo this operation. Confirm **Y** that you want to continue.
+   You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
    
    > [!WARNING]
    > After you update the cluster functional level, you can't roll back to the previous operating system version.
@@ -325,35 +332,57 @@ Once the feature updates are installed, you'll need to update the cluster functi
 
 3. **Upgrade VM configuration levels (optional).**
    
-   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet, and then starting the VMs again.
+   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
 
 4. **Verify that the upgraded cluster functions as expected.**
    
-   Roles should fail-over correctly and if VM live migration is used on the cluster, VMs should successfully live migrate.
+   Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
+
 
 5. **Validate the cluster.**
    
    Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
+## Perform a manual feature update of a Failover Cluster using SCONFIG
+
+To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig)
+
+For each node in the cluster, run these commands on the target node:
+
+1. `Suspend-ClusterNode -Node<node> -Drain`
+
+    Check suspend using `Get-ClusterGroup`--nothing should be running on the target node.
+
+    Run the **SCONFIG** option 6.3 on the target node.
+
+    After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
+
+2. `Resume-ClusterNode -Node <nodename> -Failback`
+
+When all nodes have been upgraded, run these two cmdlets:
+
+   `Update-ClusterFunctional Level`
+
+   `Update-StoragePool`
+
+
 ## Perform a fast, offline update of all servers in a cluster
 
 This method allows you to take all the servers in a cluster down at once and update them all at the same time. This saves time during the updating process, but the trade-off is downtime for the hosted resources.
 
-If there is a critical security update that you need to apply quickly, or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
+If there is a critical security update that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
 
 1. Plan your maintenance window.
 2. Take the virtual disks offline.
 3. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
 4. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
-5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time - there's no need to wait, because the cluster is down.
-6. Restart the servers, and ensure everything looks good.
+5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
+6. Restart the servers and ensure everything looks good.
 7. Set the cluster service back to **Automatic** on each server.
-8. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.
-
-   Give it a few minutes.  Make sure the storage pool is healthy.
-
-9. Bring the virtual disks back online.
-10. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
+8. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
+9. Give it a few minutes.  Make sure the storage pool is healthy.
+10. Bring the virtual disks back online.
+11. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 
 ## Known issues
 
@@ -367,13 +396,13 @@ This error message is seen when Windows Admin Center loses connectivity to the m
 
 ### Couldn't check for updates
 
-This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell, and then refresh your browser when the run is complete.
+This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell and then refresh your browser when the run is complete.
 
 This message is also seen when the clustered servers have mixed versions of patches installed. This causes the `Invoke_CAUScan` command with `RollingUpgrade` plugin to return multiple feature updates. To mitigate this issue, apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to all servers in the cluster before attempting to update the cluster.
 
 ### Multiple prompts for login credentials
 
-In older versions of Windows Admin Center, you may be prompted to authenticate multiple times during an updating run. Either authenticate each time when prompted, or go back to **Connections** and re-connect to the cluster.
+In older versions of Windows Admin Center, you may be prompted to authenticate multiple times during an updating run. Either authenticate each time when prompted or go back to **Connections** and re-connect to the cluster.
 
 ### Cluster readiness check doesn't complete
 
@@ -383,15 +412,15 @@ When `Test-Cluster` finishes on the machines (usually after a couple of minutes)
 
 ### CredSSP credentials error
 
-In older versions of Windows Admin Center, you may encounter the error message "You can't use Cluster Aware Updating without enabling CredSSP and providing explicit credentials" when you have already done so. This issue is fixed in Windows Admin Center version 2110.
+In older versions of Windows Admin Center, you may encounter the error message "You can't use Cluster Aware Updating without enabling CredSSP and providing explicit credentials" when you've already done so. This issue is fixed in Windows Admin Center version 2110.
 
 ### CredSSP session endpoint permissions issue
 
 During an updating run, you may see a notification to enable CredSSP, along with an error message: "Couldn't enable CredSSP delegation. Connecting to the remote server failed."
 
-This CredSSP error is seen when Windows Admin Center is running on a local PC, and when the Windows Admin Center user is not the same user who installed Windows Admin Center on the machine.
+This CredSSP error is seen when Windows Admin Center is running on a local PC and when the Windows Admin Center user is not the same user who installed Windows Admin Center on the machine.
 
-To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC, and then sign back in, and the error should go away.
+To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC and then sign back in, and the error should go away.
 
 ### Naming mismatch on operating system versions
 

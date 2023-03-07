@@ -1,11 +1,11 @@
 ---
 title: Validate system state with the Azure Stack Hub validation tool  
 description: Learn how to use the Azure Stack Hub validation tool to validate system state.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 12/02/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
 ms.custom: contperf-fy22q2
@@ -231,6 +231,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## Next steps
 
-To learn more about Azure Stack Hub diagnostics tools and issue logging, see [Azure Stack Hub diagnostics tools](./diagnostic-log-collection.md?view=azs-2002).
+To learn more about Azure Stack Hub diagnostics tools and issue logging, see [Azure Stack Hub Diagnostic log collection](./diagnostic-log-collection.md).
 
 To learn more about troubleshooting, see [Microsoft Azure Stack Hub troubleshooting](azure-stack-troubleshooting.md).

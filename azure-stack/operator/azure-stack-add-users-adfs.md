@@ -1,10 +1,10 @@
 ---
 title: Add Azure Stack Hub users in AD FS
 description: Learn how to add Azure Stack Hub users for Active Directory Federation Services (AD FS) deployments.
-author: BryanLa
+author: sethmanheim
 ms.topic: article
 ms.date: 06/03/2019
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 06/03/2019
 

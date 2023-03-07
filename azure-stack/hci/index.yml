@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: jasongerend
   ms.author: jgerend
-  ms.date: 10/19/2021
+  ms.date: 08/16/2022
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -24,7 +24,7 @@ landingContent:
             url: overview.md
       - linkListType: whats-new
         links:
-          - text: What's new in Azure Stack HCI, version 21H2?
+          - text: What's new in Azure Stack HCI, version 22H2?
             url: whats-new.md
       - linkListType: get-started
         links:
@@ -147,7 +147,7 @@ landingContent:
           - text: Register cluster with Azure
             url: deploy/register-with-azure.md
           - text: Manage cluster registration with Azure
-            url: manage/manage-azure-registration.md
+            url: /azure-stack/hci/deploy/register-with-azure
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
 
@@ -177,10 +177,10 @@ landingContent:
       - linkListType: learn
         links:
           - text: Azure Stack HCI foundations
-            url: /learn/paths/azure-stack-hci-foundations/
+            url: /training/paths/azure-stack-hci-foundations/
           - text: Operate and maintain Azure Stack HCI
-            url: /learn/paths/operate-maintain-azure-stack-hci/
+            url: /training/paths/operate-maintain-azure-stack-hci/
           - text: Implement Datacenter Firewall and Software Load Balancer
-            url: /learn/modules/implement-firewall-load-balancer/
+            url: /training/modules/implement-firewall-load-balancer/
           - text: Plan for and deploy SDN infrastructure on Azure Stack HCI
-            url: /learn/modules/plan-deploy-sdn-infrastructure/
+            url: /training/modules/plan-deploy-sdn-infrastructure/

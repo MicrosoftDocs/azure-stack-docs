@@ -1,11 +1,11 @@
 ---
 title: Deploy Kubernetes cluster with AKS engine on Azure Stack Hub 
 description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. 
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 11/16/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/16/2021
 
@@ -114,8 +114,8 @@ This section looks at creating an API model for your cluster.
 
 ### More information about the API model
 
-- For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
-- For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
+- For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/clusterdefinitions.md).  
+- For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
 
 ## Add certificate when using ASDK
 
@@ -139,7 +139,7 @@ Ask your Azure Stack Hub operator to:
 
 Proceed to deploy a cluster:
 
-1.  Review the available parameters for AKS engine on Azure Stack Hub [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
+1.  Review the available parameters for AKS engine on Azure Stack Hub [CLI flags](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cli-flags).
 
     | Parameter | Example | Description |
     | --- | --- | --- |
@@ -154,6 +154,8 @@ Proceed to deploy a cluster:
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenent. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
 
     Here is an example:
+    > [!Note]
+    > For AKSe version 0.75.3 and above, the command to deploy an AKS engine cluster is `aks-engine-azurestack deploy`. 
 
     ```bash  
     aks-engine deploy \
@@ -182,13 +184,16 @@ Proceed to deploy a cluster:
 
 Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
 
-1. Get the public IP address of one of your master nodes using the Azure Stack Hub portal.
+1. Get the `kubeconfig` file to connect to the control plane.
+    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly create cluster in this directory path `/kubeconfig/kubeconfig.json`. You can use add the `/kubeconfig.json` to the `.kube `directory to access your new cluster.  
+    If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the the instructions below to access the cluster from one of the control plane nodes.
+2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
-2. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new master node using a client such as PuTTY or MobaXterm. 
+3. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new control plane node using a client such as PuTTY or MobaXterm. 
 
-3. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
+4. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
-4. Check that the cluster endpoints are running:
+5. Check that the cluster endpoints are running:
 
     ```bash
     kubectl cluster-info
@@ -202,7 +207,7 @@ Check your cluster by connect to **kubectl**, getting the info, and then the sta
     Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
     ```
 
-5. Then, review node states:
+6. Then, review node states:
 
     ```bash
     kubectl get nodes
@@ -228,7 +233,7 @@ When encountering errors while deploying a Kubernetes cluster using the AKS engi
 3. Do you have a large enough quota in your Azure Stack Hub plan?
 4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
 
-For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
+For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine-azurestack** GitHub repo.
 
 ## Rotate your service principle secret
 

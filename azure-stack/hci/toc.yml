@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: What's new in Azure Stack HCI?
+  - name: What's new in Azure Stack HCI? 
     href: whats-new.md
   - name: Release information
     href: release-information.md
@@ -14,8 +14,10 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Use Azure Benefits
-    href: ./manage/azure-benefits.md
+  - name: Save with Azure Hybrid Benefit
+    href: concepts/azure-hybrid-benefit-hci.md
+  - name: Evaluate Azure Stack HCI
+    href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -28,15 +30,49 @@
   items:
   - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
+- name: Plan
+  items:
+  - name: Network reference patterns overview
+    href: plan/network-patterns-overview.md
+  - name: Choose network reference pattern
+    href: plan/choose-network-pattern.md
+  - name: Single-server deployment
+    items:
+    - name: Single-server deployment
+      href: plan/single-server-deployment.md
+    - name: Pattern components
+      href: plan/single-server-components.md
+    - name: Pattern IP requirements
+      href: plan/single-server-ip-requirements.md
+  - name: Two-node deployments
+    items:
+    - name: Storage switchless, single switch
+      href: plan/two-node-switchless-single-switch.md
+    - name: Storage switchless, two switches
+      href: plan/two-node-switchless-two-switches.md
+    - name: Storage switched, non-converged
+      href: plan/two-node-switched-non-converged.md
+    - name: Storage switched, fully converged
+      href: plan/two-node-switched-converged.md
+    - name: Pattern components
+      href: plan/two-node-components.md
+    - name: Pattern IP requirements
+      href: plan/two-node-ip-requirements.md
+    - name: Decision matrix
+      href: plan/two-node-decision-matrix.md
+  - name: SDN considerations
+    href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: 3. Register a cluster with Azure
+  - name: 3. Set up a cluster witness
+    href: manage/witness.md    
+  - name: 4. Register with Azure
     href: deploy/register-with-azure.md
-  - name: 4. Validate the cluster
+  - name: 5. Validate the cluster
     href: deploy/validate.md
   - name: Migrate a cluster
     items:
@@ -46,10 +82,12 @@
       href: deploy/migrate-cluster-same-hardware.md
   - name: Deploy with PowerShell
     items:
+    - name: Deploy on a single server
+      href: deploy/single-server.md
+    - name: Single server scale-out
+      href: manage/single-node-scale-out.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy a cluster set
-      href: deploy/cluster-set.md
     - name: Host networking with Network ATC
       href: deploy/network-atc.md
   - name: Deploy SDN
@@ -62,6 +100,8 @@
       href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
+    - name: Deploy Azure Benefits
+      href: ./manage/azure-benefits.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
@@ -92,19 +132,45 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
+    - name: Partition and share GPUs with VMs
+      href: manage/partition-gpu.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
-  - name: Manage Azure Arc-enabled VMs (preview)
+    - name: Deploy Windows Server Azure Edition VMs
+      href: manage/windows-server-azure-edition.md
+    - name: Upgrade VMs to Windows Server Azure Edition
+      href: manage/upgrade-vm-windows-server-azure-edition.md
+  - name: Manage Azure Arc VMs
     items:
-    - name: Set up Azure Arc-enabled VMs
-      href: manage/azure-arc-enabled-virtual-machines.md
-    - name: Deploy Arc Resource Bridge using command line
-      href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Deploy Arc Resource Bridge using Windows Admin Center
-      href: manage/deploy-arc-resource-bridge-using-wac.md
-    - name: Manage Arc-enabled VMs in Azure portal
+    - name: What is Azure Arc VM management?
+      href: manage/azure-arc-vm-management-overview.md
+    - name: Azure Arc VM management networking
+      href: manage/azure-arc-vm-management-networking.md
+    - name: Set up Arc VM management
+      items:
+      - name: Review prerequisites
+        href: manage/azure-arc-vm-management-prerequisites.md
+      - name: Set up using Windows Admin Center (recommended)
+        href: manage/deploy-arc-resource-bridge-using-wac.md
+      - name: Set up using command line
+        href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Manage Arc VM resources
+      items:
+      - name: Create VM images
+        items:
+        - name: Using Azure Marketplace images
+          href: manage/virtual-machine-image-azure-marketplace.md
+        - name: Using images in Azure Storage account
+          href: manage/virtual-machine-image-storage-account.md
+        - name: Using images in local share 
+          href: manage/virtual-machine-image-local-share.md
+      - name: Create virtual networks
+        href: manage/create-virtual-networks.md
+    - name: Deploy Arc VMs
       href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Uninstall Azure Arc Resource Bridge
+    - name: Manage VM extensions
+      href: manage/virtual-machine-manage-extension.md
+    - name: Uninstall Azure Arc VM management
       href: manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
@@ -130,6 +196,8 @@
       href: manage/manage-smb-multichannel.md
     - name: Storage thin provisioning
       href: manage/thin-provisioning.md
+    - name: Thin provisioning conversion
+      href: manage/thin-provisioning-conversion.md
     - name: Adjustable storage repair speed
       href: manage/storage-repair-speed.md
   - name: Manage clusters 
@@ -138,24 +206,24 @@
       items:
       - name: Manage the cluster
         href: manage/cluster.md
+      - name: Manage the cluster using Windows Admin Center in Azure
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
         href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md 
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-      - name: Set up a cluster witness
-        href: manage/witness.md
     - name: Monitoring
       items:
-      - name: Configure Azure portal to monitor clusters (preview)
-        href: manage/monitor-azure-portal.md
+      - name: Set up alerts for Azure Stack HCI systems
+        href: manage/setup-hci-system-alerts.md
+      - name: Monitor a single cluster using the Azure portal (preview)
+        href: manage/monitor-hci-single.md      
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-        href: manage/azure-stack-hci-insights.md
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Monitor clusters with Health Service
@@ -186,26 +254,46 @@
         href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage SDN
     items:
-    - name: Deploy an SDN infrastructure
-      href: manage/sdn-express.md
-    - name: Use Datacenter Firewall
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md       
+    - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Use Datacenter Firewall with PowerShell
+    - name: Configure network security groups with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
+    - name: Manage default network access policies
+      href: manage/manage-default-network-access-policies-virtual-machines.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage SDN security
+      items:
+      - name: Secure the Network Controller
+        href: manage/nc-security.md
+      - name: Manage certificates for SDN
+        href: manage/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: manage/update-network-controller-certificates.md
+      - name: Authenticate with Kerberos
+        href: manage/kerberos-with-spn.md
     - name: Manage software load balancers
-      href: manage/load-balancers.md
+      items:
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Configure load balancer for high availability ports
+        href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
+    - name: Troubleshoot SDN
+      items:
+      - name: Collect SDN logs
+        href: manage/sdn-log-collection.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
-    - name: Manage cluster registration with Azure
-      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
@@ -214,6 +302,8 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
+  - name: Troubleshoot cluster registration
+    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
@@ -224,6 +314,8 @@
   items:
   - name: Storage and clusters
     items:
+    - name: Single-node clusters
+      href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
     - name: Choose drives
@@ -234,6 +326,8 @@
       href: concepts/plan-volumes.md
     - name: Understand Storage Spaces Direct
       href: concepts/storage-spaces-direct-overview.md
+    - name: Understand nested resiliency for Storage Spaces Direct
+      href: concepts/nested-resiliency.md      
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
@@ -258,13 +352,15 @@
       href: concepts/host-network-requirements.md
     - name: Network ATC overview
       href: concepts/network-atc-overview.md
+    - name: Network HUD overview
+      href: concepts/network-hud-overview.md
     - name: Firewall requirements
       href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
     items:
     - name: SDN overview
       href: concepts/software-defined-networking.md
-    - name: Plan a SDN infrastructure
+    - name: Plan an SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
@@ -290,10 +386,72 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-- name: Preview channel
+- name: Preview
   items:
-  - name: Join the preview channel
-    href: manage/preview-channel.md
+  - name: What's in preview?
+    items: 
+    - name: 2301 release - Current
+      href: manage/whats-new-2301-preview.md
+    - name: 2210 release
+      href: manage/whats-new-preview.md
+  - name: Preview channel
+    items:
+    - name: Join preview channel
+      href: manage/preview-channel.md    
+    - name: Install a preview version
+      href: manage/install-preview-version.md
+    - name: Post installation tasks
+      href: manage/preview-post-installation.md
+  - name: Supplemental package
+    items:
+    - name: View known issues
+      items: 
+      - name: 2301 release - Current
+        href: hci-known-issues-2301.md
+      - name: 2210 release
+        href: hci-known-issues.md
+    - name: Plan
+      items:
+      - name: Review security
+        items: 
+        - name: Use Windows Defender Application Control 
+          href: concepts/security-windows-defender-application-control.md
+        - name: Review security baseline settings
+          href: concepts/secure-baseline.md
+        - name: Understand BitLocker encryption
+          href: concepts/security-bitlocker.md
+      - name: Assess environment readiness
+        href: manage/use-environment-checker.md
+    - name: Deploy 
+      items:
+      - name: Deployment overview
+        href: deploy/deployment-tool-introduction.md
+      - name: Review prerequisites
+        href: deploy/deployment-tool-prerequisites.md
+      - name: 0 - View deployment checklist
+        href: deploy/deployment-tool-checklist.md
+      - name: 1 - Prepare Active Directory
+        href: deploy/deployment-tool-active-directory.md
+      - name: 2 - Install OS
+        href: deploy/deployment-tool-install-os.md
+      - name: 3 - Set up the first server
+        href: deploy/deployment-tool-set-up-first-server.md
+      - name: 4 - Choose a deployment method
+        items:
+        - name: 4A - Deploy interactively
+          href: deploy/deployment-tool-new-file.md
+        - name: 4B - Deploy via config file
+          href: deploy/deployment-tool-existing-file.md
+        - name: 4C - Deploy via PowerShell
+          href: deploy/deployment-tool-powershell.md
+        - name: 4D - Deploy using non-native VLAN ID
+          href: deploy/deployment-tool-non-native-vlan.md
+      - name: 5 - Validate deployment
+        href: deploy/deployment-tool-validate.md
+      - name: Collect logs 
+        href: manage/collect-logs.md
+      - name: Troubleshoot issues
+        href: deploy/deployment-tool-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -311,7 +469,7 @@
   - name: Azure Stack HCI REST API reference
     href: /rest/api/stackhci
   - name: .NET Namespaces for Azure Stack HCI
-    href: /dotnet/api/overview/azure/stackhci/management
+    href: /dotnet/api/overview/azure/stack-hci
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
@@ -330,8 +488,8 @@
     href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
-    href: ../aks-hci/overview.md
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+    href: /azure/aks/hybrid/overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
@@ -346,24 +504,28 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Evaluation Guide
-    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
-    href: manage/get-support.md
+    items:
+    - name: Get support
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
-      href: /learn/paths/azure-stack-hci-foundations/
+      href: /training/paths/azure-stack-hci-foundations/
     - name: Operate and maintain Azure Stack HCI
-      href: /learn/paths/operate-maintain-azure-stack-hci/
+      href: /training/paths/operate-maintain-azure-stack-hci/
     - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /learn/modules/implement-firewall-load-balancer/
+      href: /training/modules/implement-firewall-load-balancer/
     - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /learn/modules/plan-deploy-sdn-infrastructure/
+      href: /training/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
+    - name: What's new in version 21H2
+      href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 
