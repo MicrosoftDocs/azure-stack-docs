@@ -28,7 +28,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
 4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks,`An internal error occurred`message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery logs.":::
+:::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery.":::
 
 :::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
 
@@ -41,7 +41,7 @@ Find the latest warning to identify the issue. For example, "Next free LUN on th
 
 1. Check your kernel version with `uname -r`.
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/linux-kernel-version.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/linux-kernel-version.png" alt-text="Sample screenshot of Linux Kernel version.":::
 
     For more information on supported Linux kernel versions, see [Azure to Azure support matrix](/azure/site-recovery/azure-to-azure-support-matrix#linux).
 
@@ -92,9 +92,9 @@ There are two types of resync:
 
 1. Leaving `$failbackPolicyName` and `$failbackExtensionName` empty or null causes re-protect to fail, see the following examples:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of Automatic Resync on the Users portal.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VMs failed to perform operation error.":::
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of Automatic Resync on the Users portal.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM.":::
 
     - Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
     
@@ -125,7 +125,7 @@ There are two types of resync:
 
 When replicating multiple VMs, you might see this error in the Site recovery jobs:
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of Automatic Resync on the Users portal.":::
+:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning.":::
 
 The `Protected item health changed to Warning` message should only be a warning and not any issue on the actual replication or failover processes.
 
