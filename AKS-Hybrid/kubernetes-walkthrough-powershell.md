@@ -7,7 +7,10 @@ ms.date: 01/19/2023
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
-ms.custom: mode-api, kr2b-contr-experiment
+ms.custom:
+  - mode-api
+  - kr2b-contr-experiment
+  - devx-track-azurepowershell
 
 # Intent: As an IT Pro, I want to use Windows PowerShell to create an AKS on Azure Stack HCI and Windows Server cluster.
 # Keyword: AKS setup PowerShell 

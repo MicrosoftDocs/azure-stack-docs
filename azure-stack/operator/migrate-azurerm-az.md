@@ -4,6 +4,8 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 12/2/2020
 ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
