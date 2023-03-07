@@ -456,6 +456,10 @@
         href: container-registries-troubleshoot.md
     - name: Azure Kubernetes Service
       href: aks-add-on.md
+    - name: Azure Site Recovery
+      items:
+      - name: Protect virtual machines
+        href: protect-virtual-machines.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
