@@ -29,6 +29,8 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
     - Hardware-assisted virtualization. This is available in processors that include a virtualization option, specifically processors with Intel Virtualization Technology (Intel VT) or AMD Virtualization (AMD-V) technology.
     - Hardware-enforced Data Execution Prevention (DEP) must be available and enabled. For Intel systems, this is the XD bit (execute disable bit). For AMD systems, this is the NX bit (no execute bit).
 
+- Ensure all the servers are in the same time zone as your local domain controller.
+
 - You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required but is supported for boot. A 200 GB minimum size is recommended.
 
 - For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
@@ -85,6 +87,17 @@ For more information about preparing for using SDN in Azure Stack HCI, see [Plan
 
 You must have an Active Directory Domain Services (AD DS) domain available for the Azure Stack HCI system to join. There are no special domain functional-level requirements. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already. To learn more, see [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
+## Windows Admin Center requirements
+
+If you use Windows Admin Center to [create](../deploy/create-cluster.md) or [manage](../manage/cluster.md) your Azure Stack HCI cluster, make sure to complete the following requirements:
+
+- Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+
+- Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
+
+- If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
+
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 ## Maximum supported hardware specifications
 
