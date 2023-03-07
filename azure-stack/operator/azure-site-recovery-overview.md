@@ -5,25 +5,23 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: rtiberiu
-ms.lastreviewed: 03/03/2023
-ms.date: 03/03/2023
+ms.lastreviewed: 03/07/2023
+ms.date: 03/07/2023
 ---
 
 # Azure Site Recovery overview
 
-[!INCLUDE [applies-to](../../azure-stack/includes/hci-applies-to-22h2.md)]
+Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages. Azure Site Recovery on Azure Stack Hub replicates virtual machines (VMs) workloads from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to a secondary location, and access apps from there. After the primary location is running again, you can fail back to it.
 
-Azure Site Recovery (ASR) on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages. Azure Site Recovery on Azure Stack Hub replicates virtual machines (VMs) workloads from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to a secondary location, and access apps from there. After the primary location is running again, you can fail back to it.
-
-Azure Site Recovery on Azure Stack Hub is based on the same service as [Azure Site Recovery](/azure/site-recovery-overview), being deployed on an [Azure Stack Hub](../operator) instance.
+Azure Site Recovery on Azure Stack Hub is based on the same service as [Azure Site Recovery](/azure/site-recovery-overview), being deployed on an [Azure Stack Hub](../operator/azure-stack-overview.md) instance.
 
 To enable replication of VMs across two Azure Stack Hub stamps, configure the following environments:
 
 1. **Source** environment is the Azure Stack Hub stamp where tenant VMs are running.
-    - **Azure Stack Hub Operator**, download the ASR Appliance VM and the ASR VM extensions in the Marketplace Management.
+    - **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
     - **Azure Stack Users**, on the User subscriptions, configure the connection to the target Vault in this source environment.
 
-2. **Target** environment is where the ASR Resource Provider and dependencies are running.
+2. **Target** environment is where the Azure Site Recovery Resource Provider and dependencies are running.
     - **Azure Stack Hub Operator**, download the respective images.
     - **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
 
