@@ -169,7 +169,7 @@ Advance to the next tutorial to learn how to deploy an application to the cluste
 > [Deploy application in Kubernetes](tutorial-kubernetes-deploy-application.md)
 
 <!-- LINKS - external -->
-[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubectl]: https://kubernetes.io/docs/reference/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->
