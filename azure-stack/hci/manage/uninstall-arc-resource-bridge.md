@@ -6,6 +6,8 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom:
+  - devx-track-azurecli
 ms.date: 03/23/2022
 ---
 

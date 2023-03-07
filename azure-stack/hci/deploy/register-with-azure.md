@@ -7,7 +7,9 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom: references_regions
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
 ms.date: 02/28/2023
 ---
 
@@ -175,7 +177,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 1. Select one of the following options to select the Azure Stack HCI resource group:
 
-   - Select **Use existing** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is the same as the one used for the Azure Stack HCI cluster.
+   - Select **Use existing** to create the Azure Stack HCI cluster and Arc for Server resources in an existing resource group.
 
    - Select **Create new** to create a new resource group.
 
@@ -281,7 +283,7 @@ To view the status of the cluster and Arc resources, navigate to the resource gr
 
 :::image type="content" source="media/register-with-azure/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-2.png":::
 
-### Enable Azure Arc integration
+## Enable Azure Arc integration
 
 All the Azure Stack HCI clusters with version 21H2 or later are Arc-enabled by default.
 
@@ -492,7 +494,7 @@ Before registration, make sure the [prerequisites](#prerequisites-for-cluster-re
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -ArmAccessToken $token.Token -AccountId $token.UserId
    ```
 
-## How do I register a cluster using SPN for Arc onboarding?
+### How do I register a cluster using SPN for Arc onboarding?
 
 The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
 
