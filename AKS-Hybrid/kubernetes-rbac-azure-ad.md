@@ -6,11 +6,12 @@ ms.author: sethm
 ms.lastreviewed: 10/21/2022
 ms.reviewer: abha
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 11/04/2022
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
 # Keyword: Kubernetes role-based access control 
-
 ---
 
 # Control access using Azure AD and Kubernetes RBAC in AKS hybrid
