@@ -18,20 +18,21 @@ Removes all nodes on the current machine.
 ## Syntax
 
 ```powershell
-Remove-AksEdgeDeployment [-Force] [-Headless] [<CommonParameters>]
+Remove-AksEdgeDeployment [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## Description
 
-Removes all nodes running on the current machine. If the last control-plane node of a cluster is
-removed, remaining worker nodes will be dangling.
+Removes all nodes running on the current machine. Remove all worker nodes before removing the last control plane node.
 
 ## Parameters
 
 ### -Force
-This parameter forcefully removes a node even if there are errors. A confirmation dialogue will be
-displayed because proceeding with error condition can have adverse side effects on the state of the cluster.
-In combination with the headless switch, a node can be forcefully removed without user interaction even if there are errors. 
+
+This parameter enables user to remove node without interaction.
+In combination with the Confirm switch, a node can be force removed with or without user interaction even if there are errors.
+If Force is specified, user isn't asked for confirmation for node removal.
+Specifying `-Confirm` explicitly, prompts user for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -45,23 +46,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Headless
-This parameter is useful for automation without user interaction.
-The default user input will be applied.
+### -WhatIf
+
+Shows what would happen if the cmdlet runs.
+The cmdlet isn't run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+
+Prompts you for confirmation before running the cmdlet. Overrides `-Force` parameter for user confirmations.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## Next steps

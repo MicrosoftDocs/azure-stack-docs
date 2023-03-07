@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI deployment (preview)
 description: Learn to troubleshoot the Azure Stack HCI deployment (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 11/01/2022
+ms.date: 02/23/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -38,7 +38,7 @@ To rerun the deployment if there is a failure, follow these steps:
 
 You may have to reset your deployment if it is in a not recoverable state. For example, if it is an incorrect network configuration, or if rerun doesn't resolve the issue. In these cases, do the following:
 
-1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
+1. Back up all your data first. The orchestrated deployment will always clean the data drives used by Storage Spaces Direct in this preview release. Only the data drives are cleaned, not the C: and D: volumes. As such, the D: volume must be cleaned.
 
 1. Connect to the first server via remote desktop protocol (RDP). [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
 1. You'll need to clean the Active Directory objects that were created. Connect to your Active Directory Domain server. Run PowerShell as administrator.

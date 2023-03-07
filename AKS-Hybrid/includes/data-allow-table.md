@@ -27,4 +27,4 @@ ms.lastreviewed: 08/15/2022
 |  mcr.microsoft.com, \*.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 |  akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 |  v20.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
-|  adhs.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |
+|  gcs.prod.monitoring.core.windows.net | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |

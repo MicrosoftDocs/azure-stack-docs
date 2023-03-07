@@ -169,17 +169,17 @@ Here are two examples:
 
 ```bash
 apiVersion: rbac.authorization.k8s.io/v1 
- kind: ClusterRoleBinding 
- metadata: 
-   name: ad-user-cluster-admin 
- roleRef: 
-   apiGroup: rbac.authorization.k8s.io 
-   kind: ClusterRole 
-   name: cluster-admin 
- subjects: 
- - apiGroup: rbac.authorization.k8s.io 
-   kind: User 
-   name: "microsoft:activedirectory:CONTOSO\Bob" 
+kind: ClusterRoleBinding 
+metadata: 
+  name: ad-user-cluster-admin 
+roleRef: 
+  apiGroup: rbac.authorization.k8s.io 
+  kind: ClusterRole 
+  name: cluster-admin 
+subjects: 
+- apiGroup: rbac.authorization.k8s.io 
+  kind: User 
+  name: "microsoft:activedirectory:CONTOSO\Bob" 
 ```
 
 ### Example 2
@@ -213,7 +213,7 @@ roleRef:
   name: sre-user-full-access
 subjects:
   - apiGroup: rbac.authorization.k8s.io
-    kind: User
+    kind: Group
     name: "microsoft:activedirectory:CONTOSO\SREGroup" 
 ```
 

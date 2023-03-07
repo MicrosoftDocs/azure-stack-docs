@@ -1,5 +1,5 @@
 ---
-title: Add-AksHciGmsaCredentialSpec for AKS on Azure Stack HCI and Windows Server
+title: Add-AksHciGmsaCredentialSpec for AKS hybrid
 author: sethmanheim
 description: The Add-AksHciGmsaCredentialSpec PowerShell command adds a credentials spec for gMSA deployments on a cluster.
 ms.topic: reference

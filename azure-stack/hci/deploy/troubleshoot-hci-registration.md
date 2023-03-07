@@ -5,10 +5,14 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 11/03/2022
+ms.custom:
+  - devx-track-azurepowershell
+ms.date: 02/28/2023
 ---
 
 # Troubleshoot Azure Stack HCI registration
+
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
 
@@ -38,7 +42,7 @@ Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
 
 **Failure state explanation**:
 
-During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
+During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) cmdlet talks to each server in the cluster to provision certificates. Each server uses its certificate to make an API call to HCI services in the cloud to validate registration.
 
 If registration fails, you may see the following message: **Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
 
@@ -48,7 +52,7 @@ If there are node names after the **Couldn't generate self-signed certificate on
 
 1. Check that each server listed in the above message is up and running. You can check the status of hcisvc by running `sc.exe query hcisvc` and start it if needed with `start-service hcisvc`.
 
-2. Check that each server listed in the error message has connectivity to the machine on which the `Register-AzStackHCI` cmdlet is run. Verify this by running the following cmdlet from the machine on which `Register-AzStackHCI` is run, using `New-PSSession` to connect to each server in the cluster and make sure it works:
+1. Check that each server listed in the error message has connectivity to the machine on which the `Register-AzStackHCI` cmdlet is run. Verify this by running the following cmdlet from the machine on which `Register-AzStackHCI` is run, using `New-PSSession` to connect to each server in the cluster and make sure it works:
 
    ```PowerShell
    New-PSSession -ComputerName {failing nodes}
@@ -58,13 +62,13 @@ If there are node names after the **Couldn't set and verify registration certifi
 
 1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
-2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
+1. Try running the `Invoke-AzStackHciConnectivityValidation` cmdlet from the [AzStackHCI.EnvironmentChecker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5) module and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
 
-3. Look at the hcisvc debug logs on each node listed in the error message.
+1. Look at the hcisvc debug logs on each node listed in the error message.
 
    - It's OK to have the message **ExecuteWithRetry operation AADTokenFetch failed with retryable error** appear a few times before it either fails with **ExecuteWithRetry operation AADTokenFetch failed after all retries** or **ExecuteWithRetry operation AADTokenFetch succeeded in retry**.
    - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated Azure AD exception that's logged with this message. 
-   - If you see **AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'**, this is an issue with how the time is set on the server. Check the UTC time on all servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct the times on the servers and then try registration again.
+   - If you see **AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'**, this is an issue with how the time is set on the server. Check the UTC time on all servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct times on the servers and try the registration again.
 
 ## Deleting HCI resource from portal and re-registering the same cluster causes issues
 
@@ -202,8 +206,6 @@ Performing a census sync before node synchronization can result in the sync bein
 
 1. On the Azure portal, sign in to the node that appears as **Not installed**.
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of the Azure portal with nodes highlighted that appear as not installed." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
-
 2. Disconnect the Arc agent using the following two commands:
 
    ```bash
@@ -226,47 +228,47 @@ Performing a census sync before node synchronization can result in the sync bein
 
 ## Registration completes successfully but Azure Arc connection in portal says Not Installed
 
+### Scenario 1
+
 **Failure state explanation**:
 
-This happens in scenarios in which one or all of the HCI cluster nodes were Arc-enabled manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow. It can also happen in scenarios in which the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
+This can happen if the required role **Azure Connected Machine Resource Manager** is removed from the HCI resource provider in the Arc-for-Server resource group.
 
-With the cluster in this state, when you attempt to register HCI with Azure, the registration completes successfully. However, in the Azure portal, the **Azure Arc** connection displays **Not Installed**.
+You can find the permission under the **Access Control** blade of the resource group in the Azure portal. The following image shows the permission:
+
+:::image type="content" source="media/troubleshoot-hci-registration/access-control-troubleshooting.png" alt-text="Screenshot of access control blade." lightbox="media/troubleshoot-hci-registration/access-control-troubleshooting.png":::
 
 **Remediation action**:
 
-1. Sign in to the cluster-node with the **Azure Arc** status that shows as **Not installed**:
+Run the repair registration cmdlet:
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes that appear as not installed under the Azure Arc status cluster-node." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
+```powershell
+Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration
+```
 
-2. Disconnect the Arc agent using the following two commands:
+### Scenario 2
 
-   ```bash
-   cd "C:\Program Files\AzureConnectedMachineAgent"
-   ```
+**Failure state explanation**:
 
-   then
+This message can also be due to a transient issue that sometimes occurs while performing Azure Stack HCI registration. When that happens, the `Register-AzStackHCI` cmdlet shows the following warning message:
 
-   ```bash
-   .\azcmagent.exe disconnect --force-local-only
-   ```
+:::image type="content" source="media/troubleshoot-hci-registration/hci-cmdlet-output.png" alt-text="Screenshot of output message from Register-AzStackHCI cmdlet." lightbox="media/troubleshoot-hci-registration/hci-cmdlet-output.png":::
 
-3. Make sure you are running the latest **Az.StackHCI** PS module:
+**Remediation action**:
 
-   ```powershell
-   Install-Module -Name Az.StackHCI 
-   ```
+Wait for 12 hours after the registration for the problem to be resolved automatically.
 
-4. Verify that the output shows the status as disabled for each node:
+### Scenario 3
 
-   ```powershell
-   Get-AzureStackHCIArcIntegration
-   ```
+**Failure state explanation**:
 
-5. Run the repair registration cmdlet:
+This can also happen when the proxy is not configured properly for a connection to Azure ARC cloud services from HCI nodes. You might see the following error in the Arc agent logs:
 
-   ```powershell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration
-   ```
+:::image type="content" source="media/troubleshoot-hci-registration/azure-arc-logs.png" alt-text="Screenshot of Arc agent logs." lightbox="media/troubleshoot-hci-registration/azure-arc-logs.png":::
+
+**Remediation action**:
+
+To resolve this issue, follow the [guidelines to update proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
 
 ## Not able to rotate certificates in Fairfax and Mooncake
 
@@ -317,6 +319,49 @@ If the user account used for registration is part of multiple Azure AD tenants, 
    ```powershell
    Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001 -TenantId <Tenant_ID>
    ```
+
+## One or more cluster nodes not able to connect to Azure
+
+**Failure state explanation**:
+
+This issue happens when one or more cluster nodes had connectivity issues after registration, and were not able to connect to Azure for a long time. Even after the resolution of connectivity issues, the nodes are unable to reconnect to Azure due to the expired certificates.
+
+**Remediation action**:
+
+1. Sign in to the disconnected node.
+2. Run `Disable-AzureStackHCIArcIntegration`.
+3. Check the status of ARC integration by running `Get-AzureStackHCIArcIntegration` and make sure it now says "Disabled" for the disconnected node:
+
+   :::image type="content" source="media/troubleshoot-hci-registration/cluster-node-integration.png" alt-text="Screenshot of Get-AzureStackHCIArcIntegration cmdlet output.":::
+
+4. Sign in to the Azure portal and delete the Azure Resource Manager resource representing the Arc server for this node.
+5. Sign in to the disconnected node again and run `Enable-AzureStackHCIArcIntegration`.
+6. Run `Sync-AzureStackHCI` on the node.
+
+## Job failure when attempting to create VM
+
+**Failure state explanation**:
+
+If the cluster is not registered with Azure upon deployment, or if the cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
+
+`There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.`
+
+**Remediation action**:
+
+Register your HCI cluster with Azure. For information on how to register the cluster, [see the instructions in the Register-AzStackHCI documentation](/powershell/module/az.stackhci/register-azstackhci).
+
+## Use common resource group for cluster and Arc-for-Server resources
+
+The latest PowerShell module supports having a common resource group for both cluster and Arc-for-Server resources, or using any pre-existing resource group for Arc-for-Server resources.
+
+For clusters registered with PowerShell module version 1.4.1 or earlier, you can perform the following steps to use the new feature:
+
+1. Unregister the cluster by running `Unregister-AzStackHCI` from one of the nodes. See [Unregister Azure Stack HCI Using PowerShell](register-with-azure.md#unregister-azure-stack-hci-using-powershell).
+2. Install the latest PowerShell module: `Install-Module Az.StackHCI -Force`.
+3. Run [`Register-AzStackHCI`](register-with-azure.md#register-a-cluster-using-powershell) by passing the appropriate parameters for `-ResourceGroupName` and `-ArcForServerResourceGroupName`.
+
+> [!NOTE]
+> If you are using a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the **ArcServerResourceGroup**.
 
 ## Next steps
 

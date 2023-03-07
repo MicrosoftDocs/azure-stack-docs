@@ -2,7 +2,7 @@
 title: Use offline download in AKS on Azure Stack HCI
 description: Learn how to use offline download in AKS on Azure Stack HCI
 ms.topic: reference
-ms.date: 10/10/2022
+ms.date: 01/25/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/10/2022
@@ -13,11 +13,13 @@ ms.reviewer: jeguan
 
 If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you will deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
 
+In both onsite and offsite scenarios, the latest change ensures that all the zip/cab files of different versions are extracted during the install/update process. This process takes less space then before, which required files to be extracted prior to install/upgrade and stored on the cluster storage.
+
 ## Before you begin
 
 The following prerequisites are required:
 
-- The September release or later of the AKS-HCI PowerShell module.
+- The latest release of the AKS-HCI PowerShell module.
 - Open PowerShell as an administrator.
 - Make sure you have satisfied all the [system requirements](.\system-requirements.md) prerequisites.
 
@@ -139,7 +141,7 @@ In this step, use your tool of choice to transfer the images so that they are av
 Set your configuration, make sure to use the `-offlineDownload` flag, and set your path to where AKS on HCI will look for the images during install:
 
 ```powershell
-Set-AksHciConfig -offlineDownload $true -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -offlineDownload $true -offsiteTransferCompleted $true -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 > [!NOTE]
@@ -200,7 +202,7 @@ In this step, use your tool of choice to transfer the images so that they are av
 If you do not already have offline downloading enabled, run the following command to enable offline downloading, and provide the correct path to where the images are located:
 
 ```powershell
-Enable-AksHciOfflineDownload -stagingShare <your path>
+Enable-AksHciOfflineDownload -stagingShare <your path> -offsiteTransferCompleted $true 
 ```
 
 ### Step 5: Start the update

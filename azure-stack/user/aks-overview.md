@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) makes it simple to deploy a Kubernetes cluster in
 As a managed Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance for you. The Azure Stack team manages the image used for maintaining the clusters. The cluster administrator will only need to apply the updates as needed. The services come at no extra cost. AKS is free: you only pay to use the VMs (master and agent nodes) within your clusters. It is simpler to use than [AKS engine](azure-stack-kubernetes-aks-engine-overview.md) since it removes some of the manual tasks required with AKS engine.
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on Azure Stack Hub is currently in PREVIEW.
+> Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not become GA. See [AKS Engine](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub. 
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 

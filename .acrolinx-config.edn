@@ -1,2 +1,2 @@
 {:allowed-branchname-matches ["main" "release-.*"]
- :allowed-filename-matches ["azure-stack" "AKS-Hybrid"]}
+:allowed-filename-matches ["azure-stack" "AKS-Hybrid" "azure-managed-lustre"]}

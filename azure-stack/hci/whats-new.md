@@ -30,7 +30,11 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 ### New deployment tool (preview)
 
+For servers running Azure Stack HCI, version 22H2 OS, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file, or via PowerShell.
+
 [!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
+
+To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
 
 ### New security capabilities (preview)
 

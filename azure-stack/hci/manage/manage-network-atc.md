@@ -9,17 +9,9 @@ ms.author: jgerend
 
 # Manage Network ATC
 
-> Applies to: Azure Stack HCI, version 21H2 and later
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
-
-
-
-
-
-
-
-
 
 ## Add a server node
 

@@ -145,9 +145,9 @@ Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
 ### Gateway VM section
 
-A minimum of three Gateway VMs (two active and one redundant) are recommended for SDN.
+A minimum of two Gateway VMs (one active and one redundant) are recommended for SDN.
 
-The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range. Ensure that you get the `FrontEndIp` from the end of the PA Pool specified in the configuration file.
+The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range.
 
 Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
@@ -155,7 +155,6 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 - **HostName** - host name of server where the Gateway VM is located
 - **ManagementIP** - management network IP address for the Gateway VM
 - **MACAddress** - MAC address for the Gateway VM
-- **FrontEndIp** - Provider Network front end IP address for the Gateway VM
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
 - **BackEndMac** - Provider network back end MAC address for the Gateway VM
 

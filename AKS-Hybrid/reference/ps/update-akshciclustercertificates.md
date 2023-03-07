@@ -1,5 +1,5 @@
 ---
-title: Update-AksHciClusterCertificates for AKS on Azure Stack HCI and Windows Server
+title: Update-AksHciClusterCertificates for AKS hybrid
 description: The Update-AksHciClusterCertificates PowerShell command rotates tokens and certificates of all clients in the workload cluster.
 author: sethmanheim
 ms.topic: reference

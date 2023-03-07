@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciCredential for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciCredential for AKS hybrid
 author: sethmanheim
 description: The Get-AksHciCredential PowerShell command accesses your cluster using kubectl.
 ms.topic: reference

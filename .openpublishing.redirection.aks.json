@@ -1244,7 +1244,22 @@
         "source_path": "azure-stack/aks-hci/kubernetes-walkthrough-powershell-proxy.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-walkthrough-powershell",
         "redirect_document_id": false
-      }   
+      },
+      {
+        "source_path": "AKS-hybrid/certificates-update-after-sixty-days.md",
+        "redirect_url": "/azure/aks/hybrid/repair-certificates",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-edge-concept.md",
+        "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-edge-deployment-options.md",
+        "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
+        "redirect_document_id": false
+      }     
     ]
   }
   
