@@ -4,7 +4,7 @@ description: This topic explains the benefits of using Automatic Virtual Machine
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/21/2022
+ms.date: 03/07/2023
 
 ---
 
@@ -246,9 +246,12 @@ Now that you have set up AVMA, you can activate VMs against the host server by [
 
 This FAQ provides answers to some questions about licensing Windows Server.
 
-### Will my Windows Server 2022 Datacenter Azure Edition guests activate on Azure Stack HCI?
+### Will my Windows Server Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance, which will be available after the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
+Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server Datacenter keys with **Software Assurance**. For BYOL, you can use either:
+
+- [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys)
+- [KMS client keys](/windows-server/get-started/kms-client-activation-keys#generic-volume-license-keys-gvlk)
 
 ### Do I still need Windows Server CALs?
 
