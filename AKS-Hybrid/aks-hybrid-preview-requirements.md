@@ -44,7 +44,7 @@ Windows Server admin:
 
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
-| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery` | Confirm that the AksHci module version is atleast `1.1.39` by running the following command: `Get-Command -Module AksHci` |
+| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery` | Confirm that the AksHci module version is at least `1.1.39` by running the following command: `Get-Command -Module AksHci` |
 | 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense` | Confirm that the ArcHci module version is atleast `0.2.11` by running the following command: `Get-Command -Module ArcHci` |
 
 ## Networking prerequisites
