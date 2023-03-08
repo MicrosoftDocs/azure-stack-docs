@@ -25,7 +25,7 @@ To enable replication of VMs across two Azure Stack Hub stamps, configure the fo
     - **Azure Stack Hub Operator**, download the respective images.
     - **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
 
-:::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
 
 Azure Site Recovery on Azure Stack Hub is available for both Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS) type deployments of Azure Stack Hub, which means it can run in disconnected environments.
 
@@ -33,12 +33,12 @@ Azure Site Recovery on Azure Stack Hub is available for both Azure Active Direct
 
 Azure Site Recovery provides many features as detailed in the following table.
 
-|Feature                | Details                              |
-|-----------------------|--------------------------------------|
-|BCDR Solution          | Using Site Recovery, you can set up and manage replication, failover, and failback from a single location in the Azure Stack Hub portal.|
-|BCDR Integration       | Site Recovery integrates with other BCDR technologies. For example, you can use Site Recovery to protect the SQL Server backend of corporate workloads, with native support for SQL Server Always On, to manage the failover of availability groups.|
+|Feature | Details  |
+|--------|----------|
+|BCDR Solution | Using Site Recovery, you can set up and manage replication, failover, and failback from a single location in the Azure Stack Hub portal.|
+|BCDR Integration | Site Recovery integrates with other BCDR technologies. For example, you can use Site Recovery to protect the SQL Server backend of corporate workloads, with native support for SQL Server Always On, to manage the failover of availability groups.|
 |Azure Automation Integration| A rich Azure Automation library provides production-ready, application-specific scripts that can be downloaded and integrated with Site Recovery.|
-|RTO and PRO Targets    | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
+|RTO and PRO Targets | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
 |Keep apps consistent over failover | You can replicate using recovery points with application-consistent snapshots. These snapshots capture disk data, all data in memory, and all transactions in process.|
 |Testing without disruption | You can easily run disaster recovery drills, without affecting ongoing replication.|
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
@@ -54,7 +54,7 @@ We've tested and validated the following VM OSs (each having respective Azure St
 
 | Operating system    | Details   |
 |---------------------|-----------|
-|Windows Server 2022  | Supported. |
+|Windows Server 2022  | Supported.|
 |Windows Server 2019  | Supported for Server Core, Server with Desktop Experience.|
 |Windows Server 2016 | Supported Server Core, Server with Desktop Experience.|
 |Windows Server 2012 R2 | Supported.|
