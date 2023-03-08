@@ -6,7 +6,7 @@ author: ManikaDhiman
 ms.subservice: azure-stack-hci
 ms.author: v-mandhiman
 ms.reviewer: stevenek
-ms.date: 3/8/22
+ms.date: 3/8/2023
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
