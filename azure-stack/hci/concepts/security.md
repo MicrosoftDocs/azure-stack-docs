@@ -130,7 +130,7 @@ The following sections recommend advanced security tools and technologies to fur
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
-     >[!NOTE]
+       >[!NOTE]
        > Enabling vTPM will impact VM mobility, manual action will be required to enable vTPM enabled VMs to live migrate.
 
         To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
