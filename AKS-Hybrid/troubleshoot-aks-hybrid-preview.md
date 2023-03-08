@@ -73,12 +73,12 @@ If your `az hybridaks create` command has failed, delete all corresponding Azure
 ## Default node pool name can't be changed
 For this preview, we don't allow changing the name of the default node pool. This option will be added in an upcoming release.
 
-## How to get the certificate based admin kubeconfig of AKS hybrid cluster provisioned through Azure
+## How to get the certificate based admin kubeconfig of Azure provisioned AKS hybrid cluster 
 
 To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to the Azure Stack HCI or Windows Server cluster and then run the following command:
 
 ```powershell
-Get-TargetClusterAdminCredentials -clusterName <aks hybrid cluster-name> -outfile <location where you want to store the target cluster kubeconfig> -kubeconfig <kubeconfig of Arc Resource Bridge>
+Get-TargetClusterAdminCredentials -clusterName <aks hybrid cluster-name> -outfile <location where you want to store the target cluster kubeconfig>
 ```
 
 ## How to uninstall the AKS hybrid cluster provisioning from Azure preview
