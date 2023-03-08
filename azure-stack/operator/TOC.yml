@@ -264,6 +264,8 @@
       href: azure-stack-connect-expressroute.md  
     - name: Enable CLI for users
       href: azure-stack-cli-admin.md
+    - name: VPN Fast Path
+      href: azure-stack-vpn-fast-path-operators.md
     - name: Set up management environment
       items:
       - name: Install PowerShell Az
@@ -456,6 +458,10 @@
         href: container-registries-troubleshoot.md
     - name: Azure Kubernetes Service
       href: aks-add-on.md
+    - name: Azure Site Recovery
+      items:
+      - name: Protect virtual machines
+        href: protect-virtual-machines.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
