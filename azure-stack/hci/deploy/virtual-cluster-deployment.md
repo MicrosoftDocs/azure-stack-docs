@@ -5,7 +5,7 @@ author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 3/03/2023
+ms.date: 3/08/2023
 ---
 
 # Deploy a virtual Azure Stack HCI cluster (preview)
@@ -58,7 +58,7 @@ Before you begin, make sure that the host system can dedicate the following reso
 
 ## Install the OS
 
-Before you begin, make sure to install the host operating system - Windows Server 2022, Windows 11, or later.
+Before you begin, make sure to [install the host operating system](deployment-tool-install-os.md) - Windows Server 2022, Windows 11, or later.
 
 ## Set up the virtual switch
 
@@ -111,7 +111,7 @@ Create a virtual machine (VM) to serve as the virtual host with the following co
 
 | **Component**| **Requirement**|
 | -------------| -------------- |
-| Virtual machine type | Secure Boot and TPM enabled. |
+| Virtual machine type | Secure Boot and Trusted Platform Module (TPM) enabled. |
 | vCPUs | 4 cores |
 | Memory | A minimum of 8 GB |
 | Networking |  Two network adapters connected to internal network. MAC spoofing must be enabled. |
@@ -288,7 +288,7 @@ To access the server from your Hyper-V host or any other computer in your networ
     
     Here is a sample output:
 
-    ```PowerShell
+    ```
         PS C:\Users\Administrator> net use \\WIN-29V48V6T1O8\C$
 
         Enter the user name for 'WIN-29V48V6T1O8': <Username>
