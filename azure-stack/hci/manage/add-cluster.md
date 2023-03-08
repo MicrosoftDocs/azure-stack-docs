@@ -276,4 +276,3 @@ Once the servers have been successfully removed, the associated drives are autom
 ## Next steps
 
 - You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
-- If you need to remove a server from an Azure Stack HCI cluster, see
