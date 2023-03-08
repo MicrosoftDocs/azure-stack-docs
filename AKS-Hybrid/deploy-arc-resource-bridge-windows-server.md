@@ -14,10 +14,26 @@ ms.date: 09/29/2022
 > Applies to: Windows Server 2019 or 2022
 
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
- 
-## Step 1: Install AKS host management cluster OR Install Moc
 
-With the January 2022 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS on Azure Stack HCI or Microsoft On-premises cloud(Moc). To learn more about Moc, visit [Microsoft on-premises cloud](https://learn.microsoft.com/azure/aks/hybrid/concepts-node-networking#microsoft-on-premises-cloud-service).
+## Step 1: Install pre-requisite PowerShell modules
+Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
+
+```PowerShell
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
+Install-PackageProvider -Name NuGet -Force  
+Install-Module -Name PowershellGet -Force 
+Exit 
+```
+
+Open a new PowerShell admin window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
+```PowerShell
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force 
+Exit 
+```
+ 
+## Step 2: Install AKS host management cluster OR Install Moc
+
+With the January 2023 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS on Azure Stack HCI or Microsoft On-premises cloud(Moc). To learn more about Moc, visit [Microsoft on-premises cloud](https://learn.microsoft.com/azure/aks/hybrid/concepts-node-networking#microsoft-on-premises-cloud-service).
 
 ### [AKS on Azure Stack HCI](#tab/powershell)
 Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1. if you already have AKS on Azure Stack HCI installed on your Windows Server or Azure Stack HCI cluster.
@@ -47,7 +63,7 @@ cp .\kubectl.exe $config.installationPackageDir
 ```
 ---
 
-## Step 2: Generate YAML files required for installing Arc Resource Bridge
+## Step 3: Generate YAML files required for installing Arc Resource Bridge
 
 Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file for you. Before running the PowerShell command that will generate these YAML files, make sure you have the following parameters ready:
 
@@ -202,7 +218,7 @@ Generating ARC HCI configuration files...
 Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
 ```
 
-## Step 3: Install Azure Arc Resource Bridge
+## Step 4: Install Azure Arc Resource Bridge
 
 Once you have generated the required YAML files in step 2, you can proceed with deploying Azure Arc Resource Bridge. Make sure you sign in to any one of the nodes in your Azure Stack HCI or Windows Server cluster to run the following commands. We do not support using remote desktop.
 
@@ -243,7 +259,7 @@ Before proceeding to the next step, run the following command to check if the Az
 az arcappliance show --resource-group $resourceGroup --name $resourceName --query "status" -o tsv
 ```
 
-## Step 4: Install the AKS hybrid extension on the Azure Arc Resource Bridge 
+## Step 5: Install the AKS hybrid extension on the Azure Arc Resource Bridge 
 
 To install the AKS hybrid extension, run the following command:
 
@@ -268,7 +284,7 @@ Once you have created the AKS hybrid extension on top of the Azure Arc Resource 
 az k8s-extension show --resource-group <resource group name> --cluster-name <azure arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query "provisioningState" -o tsv
 ```
 
-## Step 5: Create a custom location on top of the Azure Arc Resource Bridge
+## Step 6: Create a custom location on top of the Azure Arc Resource Bridge
 
 Run the following commands to create a custom location on top of the Arc Resource Bridge. You will choose this custom location when creating the AKS hybrid cluster through Az CLI or through the Azure portal.
 
