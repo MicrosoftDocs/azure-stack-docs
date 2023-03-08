@@ -54,7 +54,7 @@ On the source environment, consider the following areas:
     - The Azure Site Recovery VM Appliance itself has the data requirements defined by its VM size.
     - When planning for capacity, make sure the Appliance VM has enough storage to exercise the fail-back and re-protect mechanisms.
 
-    > [NOTE!]
+    > [!NOTE]
     > If there are storage limitations, the fail-back and re-protect may fail with `An internal error occurred` message. Users should check the event logs on the appliance to confirm the actual Azure Resource Manager error. For more information, see Known issues.
 
 - Bandwidth:
@@ -91,7 +91,7 @@ These three services are created on the Azure Stack Hub Admin subscription and m
 |Azure Site Recovery| 12     | 42 GB      | 300 GB     |
 |**Total**          | **40** | **175 GB** | **1700 GB**|
 
-> [NOTE!]
+> [!NOTE]
 > The above resources are Azure Stack Hub services on the Administration side of Azure Stack Hub. Once installed, the platform manages these resources.
 
 ## Protected Workloads
@@ -113,7 +113,7 @@ When creating the BCDR plan, you need to consider all the aspects of the protect
     - How many quotas need to be assigned to the target Azure Stack hub User subscriptions, so users have sufficient allocation?
     - The cache storage account for replication.
 
-    > [IMPORTANT!]
+    > [!IMPORTANT]
     > There are complex requirements depending on the type of workloads protected, the scenario used, the number of VMs and disks protected, and the overall state of the system. For more information, see [Site Recovery Capacity Planner](/azure/site-recovery/site-recovery-capacity-planner).
 
 - Compute considerations:
@@ -126,7 +126,7 @@ For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point
 
 2. If there's a failover, given a worst case scenario, multiply the number of disks replicated by the average RPO over a full day.
 
-    > [IMPORTANT!]
+    > [!IMPORTANT]
     > If some parts of Azure Site Recovery aren't working and others are there can be at most one day of difflog in the storage account before Azure Site Recovery decides to timeout.
 
 3. Failback to new VM. Calculate the sum of the disks size of each batch.
@@ -155,7 +155,7 @@ The following table is an example of tests we've ran in our environments. The in
 |28                       |28 MB/s         |3584     |Azure Site Recovery CPU & Memory   |
 |16                       |32 MB/s         |4096     |                                   |
 
-> [NOTE!]
+> [!NOTE]
 > 8KB are the smallest block size of data Azure Site Recovery supports. Any changes lower than 8KB will be treated as 8KB.
 
 To test further, we generated a consistent type of workload. For example, consistent storage changes in blocks of 8 KB that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given changes would happen at various times of the day, or in spikes of various sizes.
@@ -166,7 +166,7 @@ To replicate these random patterns, we've also tested scenarios with:
     - Each VM generating at random intervals, at least twice per hour, random blocks totaling 5 Gb of data across five files.
     - Replication succeeded across all 120 VMs with a low-to-medium load on the Azure Site Recovery services.
 
-> [NOTE!]
+> [!NOTE]
 > These numbers should be used as a baseline only. They don't necessarily scale linearly. Adding another batch of the same number of VMs might have less impact than the initial one. The results are highly dependent on the type of workloads used.
 
 ## How should you plan and test
@@ -179,7 +179,7 @@ Applications and solution workloads have certain recovery time objective (RTO) a
 
 - Support for multi-region deployments for failover, with component proximity for performance. Application operations with reduced functionality or degraded performance during an outage.
 
-    > [NOTE!]
+    > [!NOTE]
     > Note: The application could know natively to run on or have certain components that are able to run across multiple Azure Stack Hub environments. In which case, you could use Azure Site Recovery to replicate only the VMs with the components that don't have this functionality. For example, a front-end / back-end type solution, where the front-ends could be deployed across Azure Stack Hub environments.
 
 - Avoid using overlapping IP address ranges in production and DR networks.

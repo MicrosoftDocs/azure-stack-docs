@@ -23,7 +23,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
     - Split the VMs that require re-protection into smaller groups to ensure the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
     - Increase the size of the Azure Site Recovery Appliance VM.
 
-    >[NOTE!]
+    >[!NOTE]
     > we do not test and validate large VM SKUs for the Appliance VM.
 
 4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks,`An internal error occurred`message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
@@ -34,7 +34,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
 Find the latest warning to identify the issue. For example, "Next free LUN on the appliance isn't found."
 
->[NOTE!]
+>[!NOTE]
 >The log experience will be improved in a future release so that the error can be displayed directly on the portal error message.
 
 ## Linux VM kernel version not supported
@@ -85,7 +85,7 @@ There are two types of resync:
     2. The replication disk on the appliance is missing.
     3. The replication write exceeds the capacity of the replication disk on the appliance.
 
-    >[TIP!]
+    >[!TIP]
     > The Manual re-sync reasons can also be found in the events blade to help users decide whether a manual resync is required.
 
 ## Known issues in PowerShell automation
@@ -129,7 +129,7 @@ When replicating multiple VMs, you might see this error in the Site recovery job
 
 The `Protected item health changed to Warning` message should only be a warning and not any issue on the actual replication or failover processes.
 
->[TIP!]
+>[!TIP]
 >You can check the the state of the respective VM to ensure it's healthy.
 
 ## Next steps
