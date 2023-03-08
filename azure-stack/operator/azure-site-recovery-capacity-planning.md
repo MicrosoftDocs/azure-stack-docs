@@ -156,9 +156,9 @@ The following table is an example of tests we've ran in our environments. The in
 |16                       |32 MB/s         |4096     |                                   |
 
 > [!NOTE]
-> 8KB are the smallest block size of data Azure Site Recovery supports. Any changes lower than 8KB will be treated as 8KB.
+> 8Kb are the smallest block size of data Azure Site Recovery supports. Any changes lower than 8Kb will be treated as 8Kb.
 
-To test further, we generated a consistent type of workload. For example, consistent storage changes in blocks of 8 KB that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given changes would happen at various times of the day, or in spikes of various sizes.
+To test further, we generated a consistent type of workload. For example, consistent storage changes in blocks of 8 Kb that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given changes would happen at various times of the day, or in spikes of various sizes.
 
 To replicate these random patterns, we've also tested scenarios with:
 
