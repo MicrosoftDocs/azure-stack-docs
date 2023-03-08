@@ -79,9 +79,9 @@ To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to t
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| $controlPlaneIP |  VM IP of the AKS hybrid cluster's control plane VM  |
-| $sshPrivateKey  |  SSH private key of the AKS hybrid cluster |
-| $outfile  |  Location where you want to store the AKS hybrid Kubernetes cluster's kubeconfig. You will use this kubeconfig in `kubectl` commands. |
+| $controlPlaneIP |  VM IP of the AKS hybrid cluster's control plane VM.  |
+| $sshPrivateKey  |  SSH private key location of the AKS hybrid cluster. The default value is  `.\.ssh\id_rsa`  |
+| $outfile  |  Location where you want to store the AKS hybrid Kubernetes cluster's kubeconfig. You will use this kubeconfig in `kubectl` commands to access the AKS hybrid cluster. |
 
 ```powershell
 Get-TargetClusterAdminCredentials -controlPlaneIP $controlPlaneIP -sshPrivateKey $sshPrivateKey -outfile $outfile
