@@ -75,10 +75,16 @@ For this preview, we don't allow changing the name of the default node pool. Thi
 
 ## How to get the certificate based admin kubeconfig of Azure provisioned AKS hybrid cluster 
 
-To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to the Azure Stack HCI or Windows Server cluster and then run the following command:
+To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to the Azure Stack HCI or Windows Server cluster and then run the following command.
+
+|  Parameter  |  Parameter details  |
+| ------------|  ----------------- |
+| $controlPlaneIP |  VM IP of the AKS hybrid cluster's control plane VM  |
+| $sshPrivateKey  |  SSH private key of the AKS hybrid cluster |
+| $outfile  |  Location where you want to store the AKS hybrid Kubernetes cluster's kubeconfig. You will use this kubeconfig in `kubectl` commands. |
 
 ```powershell
-Get-TargetClusterAdminCredentials -controlPlaneIP <VM IP of the AKS hybrid cluster's control plane> -sshPrivateKey <sshPrivateKey of the AKS hybrid cluster> -outfile <location where you want to store the target cluster kubeconfig>
+Get-TargetClusterAdminCredentials -controlPlaneIP $controlPlaneIP -sshPrivateKey $sshPrivateKey -outfile $outfile
 ```
 
 ## How to uninstall the AKS hybrid cluster provisioning from Azure preview
