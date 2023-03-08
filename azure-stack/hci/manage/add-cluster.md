@@ -72,6 +72,10 @@ Before you run the script, ensure that a virtual switch is created and the serve
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
 
+To learn more about removing a server from a cluster, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
+
+To learn more about removing a cluster, see [Remove a Cluster](/hci/manage/cluster-powershell#remove-a-cluster).
+
 ### Uninstall VM extensions
 
 Before you remove a server from a cluster, you must uninstall any VM extensions from your Azure Arc-enabled servers, or else you risk issues installing extensions later if you add the server back again.
@@ -272,3 +276,4 @@ Once the servers have been successfully removed, the associated drives are autom
 ## Next steps
 
 - You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
+- If you need to remove a server from an Azure Stack HCI cluster, see
