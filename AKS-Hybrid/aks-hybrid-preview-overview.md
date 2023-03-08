@@ -29,7 +29,7 @@ At this time, you can perform the following operations through the Azure portal,
 
 Through Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioning from Azure:
 
-- Azure Defender
+- Container Insights
 - GitOps v2
 - Open Service Mesh
 - Azure Key Vault
