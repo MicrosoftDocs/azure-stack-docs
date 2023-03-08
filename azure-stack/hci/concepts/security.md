@@ -63,7 +63,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
     To enable SMB encryption, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
-- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-windows).
+- **Windows Defender Antivirus** in protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
 
 - **Microsoft Defender for Endpoint (MDE EDR)** is an enterprise endpoint security platform designed to help enterprise networks prevent, detect, investigate, and respond to advanced threats. It is among the major benefits of the Microsoft Defender for Servers. Available in Defender for Endpoint Plan 1 and Plan 2 (with a new Microsoft Defender Vulnerability Management add-on now available), MDE EDR combines technology from Windows 10 and Microsoft's cloud service to offer endpoint behavioral sensors, cloud security analytics, and threat intelligence. For more information on the MDE EDR, see [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint?view=o365-worldwide).
 
@@ -130,6 +130,9 @@ The following sections recommend advanced security tools and technologies to fur
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
+     >[!NOTE]
+       > Enabling vTPM will impact VM mobility, manual action will be required to enable vTPM enabled VMs to live migrate.
+
         To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
      - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages virtual network devices, such as the software load balancer, data center firewall, gateways, and virtual switches in your infrastructure. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
@@ -137,7 +140,7 @@ The following sections recommend advanced security tools and technologies to fur
         To learn more, see [Software Defined Networking (SDN)](/windows-server/networking/sdn/).
 
        >[!NOTE]
-       > Shielded VMs are not supported in Azure Stack HCI.
+       > Shielded VMs protected by Host Guardian Service are not supported in Azure Stack HCI. Local Guardians are still available.
 
 ### Protect identities
 
