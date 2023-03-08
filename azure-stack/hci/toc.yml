@@ -444,7 +444,9 @@
           href: deploy/deployment-tool-existing-file.md
         - name: 4C - Deploy via PowerShell
           href: deploy/deployment-tool-powershell.md
-        - name: 4D - Deploy virtual
+        - name: 4D - Deploy using non-native VLAN ID
+          href: deploy/deployment-tool-non-native-vlan.md
+        - name: 4E - Deploy virtual
           href: deploy/virtual-cluster-deployment.md
       - name: 5 - Validate deployment
         href: deploy/deployment-tool-validate.md
