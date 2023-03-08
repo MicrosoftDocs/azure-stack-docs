@@ -14,23 +14,37 @@ ms.date: 09/29/2022
 > Applies to: Windows Server 2019 or 2022
 
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
+ 
+## Step 1: Install AKS host management cluster OR Install Moc
 
-## Step 1: Install August release of AKS host management cluster 
-At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
+With the January 2022 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS on Azure Stack HCI or Microsoft On-premises cloud(Moc). To learn more about Moc, visit [Microsoft on-premises cloud](https://learn.microsoft.com/azure/aks/hybrid/concepts-node-networking#microsoft-on-premises-cloud-service).
 
-You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing the `-version "1.0.13.10907"` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
+### [AKS on Azure Stack HCI](#tab/powershell)
+Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1. if you already have AKS on Azure Stack HCI installed on your Windows Server or Azure Stack HCI cluster.
 
 You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
 ```PowerShell
 Get-AksHciVersion
 ```
+Note that the output should atleast indicate the version number of the October release of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
 
-Note that the output should be `1.0.13.10907` for the August release. Expected Output:
+Expected Output:
 ```
-1.0.13.10907
+1.0.16.10113
 ```
 
 If you face an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
+
+### [Microsoft On-premises cloud(Moc)](#tab/shell)
+Run the following steps to install Microsoft On-premises cloud(Moc) on your Windows Server or Azure Stack HCI cluster. 
+
+```PowerShell
+Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
+Install-Moc
+curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
+$config = Get-MocConfig
+cp .\kubectl.exe $config.installationPackageDir
+---
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
 
