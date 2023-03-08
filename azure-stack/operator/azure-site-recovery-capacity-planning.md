@@ -13,7 +13,7 @@ ms.date: 03/07/2023
 
 As an organization, it's imperative to adopt a business continuity and disaster recovery (BCDR) strategy that keeps your data safe, apps available, and workloads online during planned and unplanned outages.
 
-Through the replication of virtual machines (VMs) workloads from a primary site to a secondary location, Azure Site Recovery on Azure Stack Hub provides services that can support the safety of organizational data, application availability, and workloads during outages. For example, when an outage occurs at your primary site, you fail over to a secondary location to access your apps. As soon as the primary site is running again, you can fail back to it. For more information, see [About Site Recovery](/azure/site-recovery/site-recovery-overview).
+Through the replication of virtual machines (VMs) workloads from a primary site to a secondary location, Azure Site Recovery on Azure Stack Hub provides services that can support the safety of organizational data, application availability, and workloads during outages. For example, when an outage occurs at your primary site, you fail over to a secondary location to access your apps. As soon as the primary site is running again, you can fail back to it. For more information, see [About Site Recovery](site-recovery-overview.md).
 
 To enable replication of VMs across two Azure Stack Hub stamps, two environments need to be configured:
 
@@ -64,9 +64,9 @@ On the source environment, consider the following areas:
     - The initial replication generates high bandwidth usage.
     - Changes on each VM, or deltas changes, are replicated depending on the replication policies and each type of application.  
 
- ## Target considerations
+## Target considerations
 
-In the target environment there are two parts to consider for capacity planning:
+In the target environment, there are two parts to consider for capacity planning:
 
 - The Azure Site Recovery service requirements. How much is consumed to run Azure Site Recovery, without necessarily protecting any workloads.
 
@@ -74,7 +74,8 @@ In the target environment there are two parts to consider for capacity planning:
 
 ## Azure Site Recovery RP resources
 
-Installing Azure Site Recovery on Azure Stack Hub involves adding two dependencies and the Azure Site Recovery Resource Provider (RP) itself.
+Installing Azure Site Recovery on Azure Stack Hub involves adding two dependencies and the Azure Site Recovery Resource Provider (RP) itself:
+
 
 - Azure Stack Hub Event Hubs
 
@@ -96,9 +97,9 @@ These three services are created on the Azure Stack Hub Admin subscription and m
 > [!NOTE]
 > The above resources are Azure Stack Hub services on the Administration side of Azure Stack Hub. Once installed, the platform manages these resources.
 
-## Protected Workloads
+## Protected workloads
 
-When creating the BCDR plan, you need to consider all the aspects of the protected workloads. The following list isn't complete and should be treated as a starting point:
+When creating the BCDR plan, consider all aspects of the protected workloads. The following list isn't complete and should be treated as a starting point:
 
 - VM size, number of disks, disk size, IOPS, data churn, and new data created.
 
@@ -106,38 +107,38 @@ When creating the BCDR plan, you need to consider all the aspects of the protect
     - The network bandwidth that's required for delta replication.
     - The amount of throughput, on the target environment, that Azure Site Recovery can get from source environment.
     - The number of VMs to batch at a time. Based on the estimated bandwidth to complete initial replication in a given amount of time.
-    - The RPO that can be achieved for a given bandwidth
+    - The RPO that can be achieved for a given bandwidth.
     - The effect on the desired RPO if lower bandwidth is provisioned.
 
 - Storage considerations:
     - How much data is required for the initial replication?
     - How many recovery points are held and how data increases, for each protected VM, during these intervals?
-    - How many quotas need to be assigned to the target Azure Stack hub User subscriptions, so users have sufficient allocation?
+    - How many quotas need to be assigned to the target Azure Stack hub user subscriptions, so that users have sufficient allocation?
     - The cache storage account for replication.
 
     > [!IMPORTANT]
-    > There are complex requirements depending on the type of workloads protected, the scenario used, the number of VMs and disks protected, and the overall state of the system. For more information, see [Site Recovery Capacity Planner](/azure/site-recovery/site-recovery-capacity-planner).
+    > There are complex requirements depending on the type of workloads protected, the scenario used, the number of VMs and disks protected, and the overall state of the system. For more information, see [Site Recovery Capacity Planner](site-recovery/site-recovery-capacity-planner.md).
 
 - Compute considerations:
-    - When failover occurs, the VMs are started on the target Azure Stack Hub User Subscriptions. Which means enough quota allocation needs to be in place to be able to start these VM resources.
+    - When failover occurs, the VMs are started on the target Azure Stack Hub user Subscriptions. Enough quota allocation must be in place to be able to start these VM resources.
     - During the protection of the VM, when the protected VM is active on the source environment, no VM-related-resources like vCPU, memory, etc. are consumed on the target environment. These resources become relevant only during a failover process such as test failover.
 
-For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point for calculations, especially for the cache storage account used.
+For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point for calculations, especially for the cache storage account used:
 
-1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. Example (2MB * 250s). Note, the cache storage account is normally a few KB to 500 MB per disk.
+1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. For example, (2MB * 250s). The cache storage account is normally a few KB to 500 MB per disk.
 
 2. If there's a failover, given a worst case scenario, multiply the number of disks replicated by the average RPO over a full day.
 
     > [!IMPORTANT]
-    > If some parts of Azure Site Recovery aren't working and others are there can be at most one day of difflog in the storage account before Azure Site Recovery decides to timeout.
+    > If some parts of Azure Site Recovery aren't working, but others are working, there can be at most one day of difflog in the storage account before Azure Site Recovery decides to timeout.
 
 3. Failback to new VM. Calculate the sum of the disks size of each batch.
     - The entire disk needs to be copied to the cache storage account for the target VM to apply since the target is an empty disk.
-    - The associated data is deleted once copied, but it's likely to see a peak usage with the sum of all disks size.
+    - The associated data is deleted once copied, but it's likely to see a peak usage with the sum of all disk sizes.
 
-The BCDR plan needs to be created based on the specifics of the solution you're trying to protect.
+Create the BDCR plan based on the specifics of the solution you're trying to protect.
 
-The following table is an example of tests we've ran in our environments. The insight can be used to get a baseline for your own application, but each workload differs:
+The following table is an example of tests run in our environments. You an use this insight to get a baseline for your own application, but each workload differs:
 
 #### Configuration
 
@@ -150,21 +151,21 @@ The following table is an example of tests we've ran in our environments. The in
 
 #### Result
 
-|Number of Disks supported|Total throughput|Total OPS|Bottleneck                         |
+|Number of disks supported|Total throughput|Total OPS|Bottleneck                         |
 |-------------------------|----------------|---------|-----------------------------------|
 |68                       |136 MB/s        |68       |storage                            |
 |60                       |120 MB/s        |2048     |storage                            |
-|28                       |28 MB/s         |3584     |Azure Site Recovery CPU & Memory   |
+|28                       |28 MB/s         |3584     |Azure Site Recovery CPU and memory   |
 |16                       |32 MB/s         |4096     |                                   |
 
 > [!NOTE]
-> 8Kb are the smallest block size of data Azure Site Recovery supports. Any changes lower than 8Kb will be treated as 8Kb.
+> 8Kb is the smallest block size of data Azure Site Recovery supports. Any changes less than 8Kb are treated as 8Kb.
 
-To test further, we generated a consistent type of workload. For example, consistent storage changes in blocks of 8 Kb that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given changes would happen at various times of the day, or in spikes of various sizes.
+To test further, we generated a consistent type of workload; for example, consistent storage changes in blocks of 8 Kb that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given that changes can happen at various times of the day, or in spikes of various sizes.
 
 To replicate these random patterns, we've also tested scenarios with:
 
-- 120 VMs (80 Windows, 40 Linux) protected through the same Azure Site Recovery VM Appliance.
+- 120 VMs (80 Windows, 40 Linux) protected through the same Azure Site Recovery VM appliance.
     - Each VM generating at random intervals, at least twice per hour, random blocks totaling 5 Gb of data across five files.
     - Replication succeeded across all 120 VMs with a low-to-medium load on the Azure Site Recovery services.
 
@@ -182,16 +183,16 @@ Applications and solution workloads have certain recovery time objective (RTO) a
 - Support for multi-region deployments for failover, with component proximity for performance. You may experience application operations with reduced functionality or degraded performance during an outage.
 
     > [!NOTE]
-    > The application could know natively to run on or have certain components that are able to run across multiple Azure Stack Hub environments. In which case, you could use Azure Site Recovery to replicate only the VMs with the components that don't have this functionality. For example, a front-end / back-end type solution, where the front-ends could be deployed across Azure Stack Hub environments.
+    > The application might know natively to run on, or have certain components that are able to run across multiple Azure Stack Hub environments. In that case, you can use Azure Site Recovery to replicate only the VMs with the components that don't have this functionality; for example, a front-end or back-end type solution, in which you can deploy the front-ends across Azure Stack Hub environments.
 
 - Avoid using overlapping IP address ranges in production and DR networks.
     - Production and DR networks that have overlapping IP addresses require a failover process that can complicate and delay application failover. When possible, plan for a BCDR network architecture that provides concurrent connectivity to all sites.
 
-- Sizing your target environments
-    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment due to the way the history of the disks bookmarks happen. This allocation isn't a 2x increase since it would include only deltas for the data. Depending on the type of data, changes expected, and replication policies having a 1.5x to 2x more storage on the target would ensure failover processes introduce no concerns.
-    - Some customers might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hubs. In this case, you would be lowering the overall cost, but would need to plan what happens when certain workloads go down. For example, which source would need to be prioritized versus another source.
-    - In the case where your target environment is used for running other workloads, the BCDR plan needs to include the behavior of these workloads. For example, you could run the Dev/Test VMs on the target environment and if an issue with your source environment occurs, all the VMs on the target could be turned off to ensure sufficient resources are available to start the protected VMs.
+- Sizing your target environments:
+    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment. This is due to the way the history of the disks bookmarks happen. This allocation isn't a 2x increase, since it only includes changes to the data. Depending on the type of data and the changes expected, and replication policies having a 1.5x to 2x more storage on the target ensure that failover processes introduce no concerns.
+    - You might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hub sources. In this case, you are lowering the overall cost, but must plan for what happens when certain workloads go down; for example, which source must be prioritized.
+    - If your target environment is used for running other workloads, the BCDR plan must include the behavior of these workloads. For example, you can run the Dev/Test VMs on the target environment, and if an issue occurs with your source environment, you can turn off all the VMs on the target to ensure sufficient resources are available to start the protected VMs.
 
-The BCDR should be tested and validated regularly, either by using Test Failover processes, or moving the entire workloads to validate the flows end-to-end.
+The BCDR should be tested and validated regularly, either by using test failover processes, or by moving the entire workloads to validate the flows end-to-end.
 
 ## Next steps
