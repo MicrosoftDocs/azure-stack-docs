@@ -96,7 +96,7 @@ There are two types of resync:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM.":::
 
-Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
+    Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
 
     ```powershell
     $failbackPolicyName = "failback-default-replication-policy"
