@@ -24,13 +24,13 @@ This article describes known issues for Azure Site Recovery. Use the following s
     - Increase the size of the Azure Site Recovery Appliance VM.
 
     >[!NOTE]
-    > we do not test and validate large VM SKUs for the Appliance VM.
+    > We do not test and validate large VM SKUs for the Appliance VM.
 
 4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks,`An internal error occurred`message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery.":::
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
 
 Find the latest warning to identify the issue. For example, "Next free LUN on the appliance isn't found."
 
@@ -52,9 +52,9 @@ Find the latest warning to identify the issue. For example, "Next free LUN on th
     - Debian / Ubuntu: `dpkg --list | grep linux-image`
     - RedHat / CentOS / RHEL: `rpm -qa kernel`
 
-        Here's an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After running the command we can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, we can take the next step and roll back to the supported version.
+    Here's an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After running the command we can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, we can take the next step and roll back to the supported version.
 
-        :::image type="content" source="../operator/media/azure-site-recovery/known-issues/kernel-version-rollback.png" alt-text="Sample screenshot of an Ubuntu VM kernel version check.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/kernel-version-rollback.png" alt-text="Sample screenshot of an Ubuntu VM kernel version check.":::
 
 4. Roll back to a supported kernel version using these steps:
     1. First, make a copy of /etc/default/grub in case there's any error. For example, `sudo cp /etc/default/grub /etc/default/grub.bak`
@@ -68,7 +68,7 @@ Find the latest warning to identify the issue. For example, "Next free LUN on th
 
 5. Should you not have an old kernel version to roll back to, wait for the mobility agent update so that your kernel can be supported. The update is completed automatically, if it's ready, and you can check the version on the portal to confirm:
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check.":::
 
 ## Re-protect manual resync isn't supported yet
 
@@ -96,7 +96,7 @@ There are two types of resync:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM.":::
 
-    - Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
+Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
     
     ```powershell
     $failbackPolicyName = "failback-default-replication-policy"

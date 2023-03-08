@@ -17,8 +17,10 @@ Through the replication of virtual machines (VMs) workloads from a primary site 
 
 To enable replication of VMs across two Azure Stack Hub stamps, two environments need to be configured:
 
-1. **Source** environment: The Azure Stack Hub stamp where tenant VMs are running.
-2. **Target** environment: The Azure Site Recovery Resource Provider and dependencies run here.
+1. **Source** environment:
+    - The Azure Stack Hub stamp where tenant VMs are running.
+1. **Target** environment:
+    - The Azure Site Recovery Resource Provider and dependencies run here.
 
 :::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
 
