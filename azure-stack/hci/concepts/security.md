@@ -14,7 +14,7 @@ ms.date: 3/3/2023
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.
-- Part 2 covers resources available through the Microsoft Defender for Cloud (MDC). See [Microsoft Defender for Cloud Introduction](/azure/defender-for-cloud/defender-for-cloud-introduction)
+- Part 2 covers resources available through the Microsoft Defender for Cloud. See [Microsoft Defender for Cloud Introduction](/azure/defender-for-cloud/defender-for-cloud-introduction)
 - Part 3 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
 
 ## Why are security considerations important?
@@ -100,17 +100,17 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 ## Part 2: Use Microsoft Defender for Cloud (MDC)
 
-*Microsoft Defender for Cloud* is a unified infrastructure security management system that strengthens the security posture of your data centers and provides advanced threat protection across your hybrid workloads in the cloud and on premises. MDC provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. MDC performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
+*Microsoft Defender for Cloud* is a unified infrastructure security management system that strengthens the security posture of your data centers and provides advanced threat protection across your hybrid workloads in the cloud and on premises. Defender for Cloud provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. Defender for Cloud performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
 
-MDC protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through MDC monitoring while reducing the attack surface across all of your resources.
+Defender for Cloud  protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Defender for Cloud monitoring while reducing the attack surface across all of your resources.
 
 Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure RBAC is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
 
-Working with MDC through Windows Admin Center requires an Azure subscription. To get started, see [Integrate Azure Security Center with Windows Admin Center](/azure/security-center/windows-admin-center-integration). To get started, see [Plan your Defender for Server Deployment](/azure/defender-for-cloud/plan-defender-for-servers).  For licensing of Defender for Servers (server plans), see [Select a Defender for Servers Plan](/azure/defender-for-cloud/plan-defender-for-servers-select-plan).
+Working with Defender for Cloud through Windows Admin Center requires an Azure subscription. To get started, see [Protect Windows Admin Center Resources with Microsoft Defender for Cloud](/azure/defender-for-cloud/windows-admin-center-integration). To get started, see [Plan your Defender for Server Deployment](/azure/defender-for-cloud/plan-defender-for-servers).  For licensing of Defender for Servers (server plans), see [Select a Defender for Servers Plan](/azure/defender-for-cloud/plan-defender-for-servers-select-plan).
 
 After registering, access MDC in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Microsoft Defender for Cloud**, and then select **Sign into Azure**.
 
-To learn more, see [What is Azure Security Center?](/azure/security-center/security-center-intro).
+To learn more, see [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction).
 
 ## Part 3: Add advanced security
 
@@ -158,7 +158,7 @@ The following sections recommend advanced security tools and technologies to fur
 
 - **Microsoft Defender for Identities** helps you protect privileged identities by monitoring user behavior and activities, reducing the attack surface, protecting Active Directory Federal Service (AD FS) in a hybrid environment, and identifying suspicious activities and advanced attack across the cyber-attack kill-chain.
 
-    To learn more, see [What is Microsoft Defender for Identity](/defender-for-identity/what-is).
+    To learn more, see [What is Microsoft Defender for Identity?](/defender-for-identity/what-is).
 
 
 ## Next steps
