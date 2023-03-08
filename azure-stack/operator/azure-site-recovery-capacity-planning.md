@@ -177,16 +177,16 @@ Applications and solution workloads have certain recovery time objective (RTO) a
     - RTO and RPO requirements for each workload.
     - Support for active-active and active-passive availability patterns.
 
-- Support for multi-region deployments for failover, with component proximity for performance. Application operations with reduced functionality or degraded performance during an outage.
+- Support for multi-region deployments for failover, with component proximity for performance. You may experience application operations with reduced functionality or degraded performance during an outage.
 
     > [!NOTE]
-    > Note: The application could know natively to run on or have certain components that are able to run across multiple Azure Stack Hub environments. In which case, you could use Azure Site Recovery to replicate only the VMs with the components that don't have this functionality. For example, a front-end / back-end type solution, where the front-ends could be deployed across Azure Stack Hub environments.
+    > The application could know natively to run on or have certain components that are able to run across multiple Azure Stack Hub environments. In which case, you could use Azure Site Recovery to replicate only the VMs with the components that don't have this functionality. For example, a front-end / back-end type solution, where the front-ends could be deployed across Azure Stack Hub environments.
 
 - Avoid using overlapping IP address ranges in production and DR networks.
     - Production and DR networks that have overlapping IP addresses require a failover process that can complicate and delay application failover. When possible, plan for a BCDR network architecture that provides concurrent connectivity to all sites.
 
 - Sizing your target environments
-    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment due to the way the history of the disks <bookmarks> happen. This allocation isn't a 2x increase since it would include only deltas for the data. Depending on the type of data, changes expected, and replication policies having a 1.5x to 2x more storage on the target would ensure failover processes introduce no concerns.
+    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment due to the way the history of the disks snapshots happen. This allocation isn't a 2x increase since it would include only deltas for the data. Depending on the type of data, changes expected, and replication policies having a 1.5x to 2x more storage on the target would ensure failover processes introduce no concerns.
     - Some customers might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hubs. In this case, you would be lowering the overall cost, but would need to plan what happens when certain workloads go down. For example, which source would need to be prioritized versus another source.
     - In the case where your target environment is used for running other workloads, the BCDR plan needs to include the behavior of these workloads. For example, you could run the Dev/Test VMs on the target environment and if an issue with your source environment occurs, all the VMs on the target could be turned off to ensure sufficient resources are available to start the protected VMs.
 
