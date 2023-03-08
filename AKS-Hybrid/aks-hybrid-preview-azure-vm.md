@@ -275,7 +275,7 @@ You must run the commands in this step in a PowerShell admin window inside the A
 Run the following command to create the local network for AKS hybrid clusters:
 
 ```PowerShell
-New-KvaVirtualNetwork -name hybridaks-vnet -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.15" -k8snodeippoolend "192.168.0.25" -vipPoolStart "192.168.0.162" -vipPoolEnd "192.168.0.170" -kubeconfig $workingDir\config
+New-ArcHciVirtualNetwork -name hybridaks-vnet -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.15" -k8snodeippoolend "192.168.0.25" -vipPoolStart "192.168.0.162" -vipPoolEnd "192.168.0.170" 
 ```
 
 Once you've created the local network, connect it to Azure by running the following command:
