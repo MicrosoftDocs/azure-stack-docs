@@ -13,7 +13,7 @@ ms.date: 03/07/2023
 
 As an organization, it's imperative to adopt a business continuity and disaster recovery (BCDR) strategy that keeps your data safe, apps available, and workloads online during planned and unplanned outages.
 
-Through the replication of virtual machines (VMs) workloads from a primary site to a secondary location, Azure Site Recovery on Azure Stack Hub provides services that can support the safety of organizational data, application availability, and workloads during outages. For example, when an outage occurs at your primary site, you fail over to a secondary location to access your apps. As soon as the primary site is running again, you can fail back to it. For more information, see [About Site Recovery](site-recovery-overview.md).
+Through the replication of virtual machines (VMs) workloads from a primary site to a secondary location, Azure Site Recovery on Azure Stack Hub provides services that can support the safety of organizational data, application availability, and workloads during outages. For example, when an outage occurs at your primary site, you fail over to a secondary location to access your apps. As soon as the primary site is running again, you can fail back to it. For more information, see [About Site Recovery](../operator/azure-site-recovery-overview.md).
 
 To enable replication of VMs across two Azure Stack Hub stamps, two environments need to be configured:
 
@@ -117,7 +117,7 @@ When creating the BCDR plan, consider all aspects of the protected workloads. Th
     - The cache storage account for replication.
 
     > [!IMPORTANT]
-    > There are complex requirements depending on the type of workloads protected, the scenario used, the number of VMs and disks protected, and the overall state of the system. For more information, see [Site Recovery Capacity Planner](site-recovery/site-recovery-capacity-planner.md).
+    > There are complex requirements depending on the type of workloads protected, the scenario used, the number of VMs and disks protected, and the overall state of the system. For more information, see [Site Recovery Capacity Planner](../operator/azure-site-recovery-capacity-planning.md).
 
 - Compute considerations:
     - When failover occurs, the VMs are started on the target Azure Stack Hub user Subscriptions. Enough quota allocation must be in place to be able to start these VM resources.
