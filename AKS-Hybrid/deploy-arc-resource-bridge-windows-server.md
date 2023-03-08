@@ -42,7 +42,7 @@ You can verify if the AKS host management cluster has been successfully deployed
 ```PowerShell
 Get-AksHciVersion
 ```
-Note that the output should atleast indicate the version number of the October release of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
+Note that the output should indicate the version number of the October release (or later) of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
 
 Expected Output:
 ```
