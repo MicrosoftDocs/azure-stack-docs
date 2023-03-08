@@ -92,7 +92,7 @@ There are two types of resync:
 
 1. Leaving `$failbackPolicyName` and `$failbackExtensionName` empty or null causes re-protect to fail, see the following examples:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VMs failed to perform operation error.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VM failed to perform operation error.":::
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM.":::
 
