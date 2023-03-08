@@ -36,7 +36,7 @@ Exit
 With the January 2023 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS on Azure Stack HCI or Microsoft On-premises cloud (MOC). To learn more about MOC, see [Microsoft on-premises cloud](https://learn.microsoft.com/azure/aks/hybrid/concepts-node-networking#microsoft-on-premises-cloud-service).
 
 ### [AKS on Azure Stack HCI](#tab/powershell)
-Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1. if you already have AKS on Azure Stack HCI installed on your Windows Server or Azure Stack HCI cluster.
+Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1 if you already have AKS on Azure Stack HCI installed on your Windows Server or Azure Stack HCI cluster.
 
 You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
 ```PowerShell
