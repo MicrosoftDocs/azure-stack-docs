@@ -51,7 +51,7 @@ If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP a
 For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
-The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.22.11.` Right now, we **only** support `v1.22.11`. This issue will be fixed in an upcoming release.
+The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.22.11.` Right now, we **only** support `v1.22.11`.
 
 If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we may help you with your deployment.
 
