@@ -5,6 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 02/28/2023
 ---
 

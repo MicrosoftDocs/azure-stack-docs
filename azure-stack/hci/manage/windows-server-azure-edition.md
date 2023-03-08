@@ -7,7 +7,9 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/21/2022
+ms.custom:
+  - devx-track-azurecli
+ms.date: 03/07/2023
 ---
 
 # Deploy Windows Server Azure Edition VMs
@@ -26,7 +28,14 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 - **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed only on Azure Stack HCI version 21H2 and Azure Stack HCI version 22H2.
 
-- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.
+- **VM licensing:**  Windows Server Azure Edition can be licensed with either:
+
+  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Windows Server subscription](vm-activate.md#tutorial-windows-server-subscription).
+
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#tutorial-bring-your-own-license-byol-activation-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+
+   > [!Tip]
+   > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
 
 - **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 

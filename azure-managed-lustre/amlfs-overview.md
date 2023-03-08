@@ -58,7 +58,7 @@ Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. Y
 
 If you integrate Azure Blob Storage when you create a Lustre file system, you can use Lustre HSM features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
 
-To learn more about how Luster HSM works, see [Lustre HSM tools now available](/updates/lustre-hsm-tools-now-available-to-import-from-or-export-to-azure-storage/).
+To learn more about how Luster HSM works, see [Lustre HSM tools now available](https://azure.microsoft.com/updates/lustre-hsm-tools-now-available-to-import-from-or-export-to-azure-storage/).
 
 ## Use Azure Managed Lustre with Kubernetes
 

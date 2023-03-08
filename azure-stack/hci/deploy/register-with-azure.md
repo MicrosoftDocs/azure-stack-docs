@@ -7,7 +7,9 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom: references_regions
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
 ms.date: 02/28/2023
 ---
 
@@ -175,7 +177,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 1. Select one of the following options to select the Azure Stack HCI resource group:
 
-   - Select **Use existing** to create the Azure Stack HCI cluster resource in an existing resource group. Optionally, enter the name of the **Arc-enabled servers resource group** where you want to create the Arc-enabled servers resources. If left blank, the default Arc-enabled servers resource group is the same as the one used for the Azure Stack HCI cluster.
+   - Select **Use existing** to create the Azure Stack HCI cluster and Arc for Server resources in an existing resource group.
 
    - Select **Create new** to create a new resource group.
 
@@ -281,7 +283,7 @@ To view the status of the cluster and Arc resources, navigate to the resource gr
 
 :::image type="content" source="media/register-with-azure/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-2.png":::
 
-### Enable Azure Arc integration
+## Enable Azure Arc integration
 
 All the Azure Stack HCI clusters with version 21H2 or later are Arc-enabled by default.
 
@@ -341,9 +343,9 @@ Follow these steps to unregister your Azure Stack HCI cluster:
 
 1. Connect to the cluster using Windows Admin Center.
 
-1. Select **Settings** at the bottom of the **Tools** menu on the left.
+1. Select **Azure Arc** from the menu on the left-hand side.
 
-1. Select **Azure Stack HCI registration**, and select the **Unregister** button, and then select **Unregister** again.
+1. Select **Azure Stack HCI registration**, select the **Unregister** button, and then select **Unregister** again.
 
 > [!NOTE]
 > If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
@@ -492,7 +494,7 @@ Before registration, make sure the [prerequisites](#prerequisites-for-cluster-re
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -ArmAccessToken $token.Token -AccountId $token.UserId
    ```
 
-## How do I register a cluster using SPN for Arc onboarding?
+### How do I register a cluster using SPN for Arc onboarding?
 
 The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
 

@@ -4,6 +4,8 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 07/22/2022
 ---
 
