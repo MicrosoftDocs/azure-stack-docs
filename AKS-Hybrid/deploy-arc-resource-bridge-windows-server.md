@@ -263,14 +263,14 @@ To install the AKS hybrid extension, run the following command:
 ```azurecli
 az account set -s <subscription ID>
 
-az k8s-extension create --resource-group <azure resource group> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid cluster extension name> --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
+az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.  |
-| cluster-name  |  The name of your Azure Arc Resource Bridge. |
-| name  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge.  |
+| $resourceGroup |  A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.  |
+| $clusterName  |  The name of your Azure Arc Resource Bridge. |
+| $extensionName  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge. Can be any value, for example `$extensionName = "hybridaks"  |
 | cluster-type  | Must be `appliances`. Do not change this value.  |
 | extension-type  |  Must be `Microsoft.HybridAKSOperator`. Do not change this value. |
 | config  | Must be `config Microsoft.CustomLocation.ServiceAccount="default"`. Do not change this value. |
@@ -278,7 +278,7 @@ az k8s-extension create --resource-group <azure resource group> --cluster-name <
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az k8s-extension show --resource-group <resource group name> --cluster-name <azure arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query "provisioningState" -o tsv
+az k8s-extension show --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --query "provisioningState" -o tsv
 ```
 
 ## Step 6: Create a custom location on top of the Azure Arc Resource Bridge
@@ -288,28 +288,28 @@ Run the following commands to create a custom location on top of the Arc Resourc
 Collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the AKS hybrid extension in variables:
 
 ```azurecli
-$ArcResourceBridgeId=az arcappliance show --resource-group <resource group name> --name <arc resource bridge name> --query id -o tsv
-$AKSClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query id -o tsv
+$ArcResourceBridgeId=az arcappliance show --resource-group $resourceGroup --name $clusterName --query id -o tsv
+$AKSClusterExtensionResourceId=az k8s-extension show --resource-group $resourceGroup --name $clusterName --cluster-type appliances --name $extensionName --query id -o tsv
 ```
   
 You can then create the custom location for your Windows Server or Azure Stack HCI cluster that has the AKS hybrid extension installed on it:
 
 ```azurecli
-az customlocation create --name <customlocation name> --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group <resource group name>
+az customlocation create --name $customLocationName --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group $resourceGroup
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge.  |
+| resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
 | namespace  |  Must be `default`. Do not change this value. |
-| name  |  Name of your Windows Server or Azure Stack HCI Custom Location |
+| $customLocationName  |  Name of your Windows Server or Azure Stack HCI Custom Location. It can be any value, for example - `$customLocationName = "hybridaks-cl"` |
 | host-resource-id  | Resource Manager ID of the Azure Arc Resource Bridge. |
 | cluster-extension-ids   | Resource Manager ID of the AKS hybrid extension on top of Resource Bridge. |
 
 Once you create the custom location on top of the Azure Arc Resource Bridge, run the following command to check if the custom location provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az customlocation show --name <custom location name> --resource-group <resource group name> --query "provisioningState" -o tsv
+az customlocation show --name $customLocationName --resource-group $resourceGroup --query "provisioningState" -o tsv
 ```
   
 ## Next steps
