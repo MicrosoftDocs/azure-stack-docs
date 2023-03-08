@@ -168,8 +168,8 @@ To replicate these random patterns, we've also tested scenarios with:
     - Each VM generating at random intervals, at least twice per hour, random blocks totaling 5 Gb of data across five files.
     - Replication succeeded across all 120 VMs with a low-to-medium load on the Azure Site Recovery services.
 
-> [!NOTE]
-> These numbers should be used as a baseline only. They don't necessarily scale linearly. Adding another batch of the same number of VMs might have less impact than the initial one. The results are highly dependent on the type of workloads used.
+    > [!NOTE]
+    > These numbers should be used as a baseline only. They don't necessarily scale linearly. Adding another batch of the same number of VMs might have less impact than the initial one. The results are highly dependent on the type of workloads used.
 
 ## How should you plan and test
 

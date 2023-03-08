@@ -123,11 +123,11 @@ There are two types of resync:
 
 ## Mobility service agent warning
 
-When replicating multiple VMs, you might see this error in the Site recovery jobs:
+When replicating multiple VMs, you might see the "***Protected item health changed to Warning***" error in the Site recovery jobs.
 
 :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning.":::
 
-The "***Protected item health changed to Warning***" message should only be a warning and not any issue on the actual replication or failover processes.
+This error message should only be a warning and not any issue on the actual replication or failover processes.
 
 >[!TIP]
 >You can check the the state of the respective VM to ensure it's healthy.
