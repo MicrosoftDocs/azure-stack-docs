@@ -21,7 +21,7 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
-- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages that have been tested with Azure Managed Lustre are available from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software). See [Install client software](#install-client-software) for more information. Client packages are available for several commonly used Linux OS distributions.
+- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See [Install client software](#install-client-software) for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions.
 - **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** -
