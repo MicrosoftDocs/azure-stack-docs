@@ -243,7 +243,7 @@ Before proceeding to the next step, run the following command to check if the Az
 az arcappliance show --resource-group $resourceGroup --name $resourceName --query "status" -o tsv
 ```
 
-## Step 4: Installing the AKS hybrid extension on the Azure Arc Resource Bridge 
+## Step 4: Install the AKS hybrid extension on the Azure Arc Resource Bridge 
 
 To install the AKS hybrid extension, run the following command:
 
