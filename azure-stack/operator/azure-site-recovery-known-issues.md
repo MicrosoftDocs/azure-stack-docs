@@ -20,13 +20,13 @@ This article describes known issues for Azure Site Recovery. Use the following s
 2. The initial allowed number of disks being re-protected at the same time is 31. The default size of the appliance created from the marketplace item is Standard DS4 v2, which supports up to 32 data disks, and the appliance itself utilizes one data disk.
 
 3. If the sum of the protected VMs is bigger than 31, perform one of the following actions:
-    - Split the VMs that require re-protection into smaller groups to ensure the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
-    - Increase the size of the Azure Site Recovery Appliance VM.
+    1. Split the VMs that require re-protection into smaller groups to ensure the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
+    2. Increase the size of the Azure Site Recovery Appliance VM.
 
     >[!NOTE]
     > We do not test and validate large VM SKUs for the Appliance VM.
 
-4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks,`An internal error occurred`message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
+4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks, "***An internal error occurred***" message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery.":::
 
@@ -76,11 +76,11 @@ After the re-protect job is done, the initial replication and replication will b
 
 There are two types of resync:
 
-- Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
+1. Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic Resync on the Users portal.":::
 
-- Manual re-sync. Requires user action to trigger the resync manually. Needed in the following instances:
+2. Manual re-sync. Requires user action to trigger the resync manually. Needed in the following instances:
     1. The storage account chosen for the re-protect is missing.
     2. The replication disk on the appliance is missing.
     3. The replication write exceeds the capacity of the replication disk on the appliance.
@@ -127,7 +127,7 @@ When replicating multiple VMs, you might see this error in the Site recovery job
 
 :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning.":::
 
-The `Protected item health changed to Warning` message should only be a warning and not any issue on the actual replication or failover processes.
+The "***Protected item health changed to Warning***" message should only be a warning and not any issue on the actual replication or failover processes.
 
 >[!TIP]
 >You can check the the state of the respective VM to ensure it's healthy.

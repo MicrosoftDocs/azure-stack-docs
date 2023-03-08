@@ -18,12 +18,12 @@ Azure Site Recovery on Azure Stack Hub is based on the same service as [Azure Si
 To enable replication of VMs across two Azure Stack Hub stamps, configure the following environments:
 
 1. **Source** environment is the Azure Stack Hub stamp where tenant VMs are running.
-    - **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
-    - **Azure Stack Users**, on the User subscriptions, configure the connection to the target Vault in this source environment.
+    1. **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
+    2. **Azure Stack Users**, on the User subscriptions, configure the connection to the target Vault in this source environment.
 
 2. **Target** environment is where the Azure Site Recovery Resource Provider and dependencies are running.
-    - **Azure Stack Hub Operator**, download the respective images.
-    - **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
+    1. **Azure Stack Hub Operator**, download the respective images.
+    2. **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
 
     :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
 
