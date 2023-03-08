@@ -77,7 +77,7 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | Parameter  |  Parameter details |
 | -----------| ------------ |
 | $vswitchname | The name of your VM switch. |
-| $vnetName | The name of your virtual network. |
+| $vnetName | The name of your virtual network. This can be any value, for example - `$vnetName = "resourcebridge-vnet"`|
 | $ipaddressprefix | The IP address value of your subnet. |
 | $gateway | The IP address value of your gateway for the subnet. |
 | $dnsservers | The IP address value(s) of your DNS servers. |
@@ -88,8 +88,8 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $vswitchname | The name of your VM switch |
-| $vnetName | The name of your virtual network |
+| $vswitchname | The name of your VM switch. |
+| $vnetName | The name of your virtual network. This can be any value, for example - `$vnetName = "resourcebridge-vnet"` |
 | $controlPlaneIP | This IP address will be used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
 
 #### More parameters if you have a proxy server in your environment
