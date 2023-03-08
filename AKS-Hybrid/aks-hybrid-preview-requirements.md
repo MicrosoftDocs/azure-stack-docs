@@ -61,9 +61,8 @@ Windows Server admin in consultation with the datacenter network admin:
 | 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 4 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.0.10" |
 | 3 | Do you have a gateway? | The IP address of the default gateway of the subnet you provided above.  | The IP address of your gateway. For example - "172.16.0.1" |
 | 4 | Do you have one or more DNS servers? | Along with gateway, this is required for creating a network with a static IP. A minimum of one and a maximum of three DNS servers can be provided.  | The IP address(es) of your DNS servers. For example - "172.16.0.2" |
-| 5 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that the Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. This will be required to install the Azure Arc Resource Bridge. |
-| 6 | Do you have an external virtual switch? | You need an external virtual switch for the Azure Arc Resource Bridge. | Name of your virtual switch |
-| 7 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
+| 5 | Do you have an external virtual switch? | You need an external virtual switch for the Azure Arc Resource Bridge. | Name of your virtual switch |
+| 6 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Option 2: DHCP networking
 
@@ -72,8 +71,7 @@ Windows Server admin in consultation with the datacenter network admin:
 | 1 | Do you have a DHCP server with atleast 3 IP addresses in your environment? | This DHCP server will be used to assign an IP address to the underlying VM of the Azure Arc Resource Bridge. | Check with your admin if your Windows Server network environment has a DHCP server. |
 | 2 | Do you have atleast 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope? | You need 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope. <br> Apart from 3 required IP addresses in the DHCP server, we also need to statically assign IP addresses to some important agents, so they are long lived. | List of atleast 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope. |
 | 3 | Do you have an external virtual switch? | You need an external virtual switch for the underlying VM of the Azure Arc Resource Bridge. | Name of your virtual switch |
-| 4 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. |
-| 5 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
+| 4 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Proxy settings
 
