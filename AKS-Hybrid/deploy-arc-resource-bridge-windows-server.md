@@ -266,7 +266,7 @@ az account set -s <subscription ID>
 az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
 ```
 
-| Parameter  |  Parameter details |
+|  Parameter  |  Parameter details |
 | -----------| ------------ |
 | $resourceGroup | A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge. |
 | $clusterName   | The name of your Azure Arc Resource Bridge. |
