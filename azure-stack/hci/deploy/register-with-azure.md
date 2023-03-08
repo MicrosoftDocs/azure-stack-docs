@@ -343,9 +343,9 @@ Follow these steps to unregister your Azure Stack HCI cluster:
 
 1. Connect to the cluster using Windows Admin Center.
 
-1. Select **Settings** at the bottom of the **Tools** menu on the left.
+1. Select **Azure Arc** from the menu on the left-hand side.
 
-1. Select **Azure Stack HCI registration**, and select the **Unregister** button, and then select **Unregister** again.
+1. Select **Azure Stack HCI registration**, select the **Unregister** button, and then select **Unregister** again.
 
 > [!NOTE]
 > If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
