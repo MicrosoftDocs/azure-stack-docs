@@ -44,6 +44,7 @@ Install-Moc
 curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
 $config = Get-MocConfig
 cp .\kubectl.exe $config.installationPackageDir
+```
 ---
 
 ## Step 2: Generate YAML files required for installing Arc Resource Bridge
