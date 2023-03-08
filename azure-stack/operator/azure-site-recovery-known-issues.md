@@ -34,8 +34,8 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
     - Find the latest warning to identify the issue.
 
->[!NOTE]
->The log experience will be improved in a future release so that the error can be displayed directly on the portal error message.
+    >[!NOTE]
+    >The log experience will be improved in a future release so that the error can be displayed directly on the portal error message.
 
 ## Linux VM kernel version not supported
 
