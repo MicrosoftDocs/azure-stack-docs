@@ -32,7 +32,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
 
-Find the latest warning to identify the issue. For example, "Next free LUN on the appliance isn't found."
+    - Find the latest warning to identify the issue.
 
 >[!NOTE]
 >The log experience will be improved in a future release so that the error can be displayed directly on the portal error message.
@@ -98,28 +98,28 @@ There are two types of resync:
 
     - Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
 
-    ```powershell
-    $failbackPolicyName = "failback-default-replication-policy"
-    $failbackExtensionName = "default-failback-extension"
-    ```
+        ```powershell
+        $failbackPolicyName = "failback-default-replication-policy"
+        $failbackExtensionName = "default-failback-extension"
+        ```
 
-    ```powershell
-    $parameters = @{
-        "properties" = @{
-            "customProperties" = @{
-                "instanceType" = "AzStackToAzStackFailback"
-                "applianceId" = $applianceId
-                "logStorageAccountId" = $LogStorageAccount.Id
-                "policyName" = $failbackPolicyName
-                "replicationExtensionName" = $failbackExtensionName
+        ```powershell
+        $parameters = @{
+            "properties" = @{
+                "customProperties" = @{
+                    "instanceType" = "AzStackToAzStackFailback"
+                    "applianceId" = $applianceId
+                    "logStorageAccountId" = $LogStorageAccount.Id
+                    "policyName" = $failbackPolicyName
+                    "replicationExtensionName" = $failbackExtensionName
+                }
             }
         }
-    }
-    ```
+        ```
 
-    ```powershell
-    $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
-    ```
+        ```powershell
+        $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
+        ```
 
 ## Mobility service agent warning
 
