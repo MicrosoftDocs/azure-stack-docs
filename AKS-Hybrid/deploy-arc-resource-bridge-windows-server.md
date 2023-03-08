@@ -266,14 +266,14 @@ az account set -s <subscription ID>
 az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
 ```
 
-| Parameter      | Parameter details                                                                                                                                        |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| $resourceGroup | A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.                 |
-| $clusterName   | The name of your Azure Arc Resource Bridge.                                                                                                              |
+| Parameter | Parameter details |
+|----------------|---------|
+| $resourceGroup | A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.|
+| $clusterName   | The name of your Azure Arc Resource Bridge.|
 | $extensionName | Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge. Can be any value, for example `$extensionName = "hybridaks" |
-| cluster-type   | Must be `appliances`. Do not change this value.                                                                                                          |
-| extension-type | Must be `Microsoft.HybridAKSOperator`. Do not change this value.                                                                                         |
-| config         | Must be `config Microsoft.CustomLocation.ServiceAccount="default"`. Do not change this value.                                                            |
+| cluster-type   | Must be `appliances`. Do not change this value.|
+| extension-type | Must be `Microsoft.HybridAKSOperator`. Do not change this value.|
+| config         | Must be `config Microsoft.CustomLocation.ServiceAccount="default"`. Do not change this value.|
 
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
