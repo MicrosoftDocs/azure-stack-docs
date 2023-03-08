@@ -55,12 +55,12 @@ On the source environment, consider the following areas:
     - When planning for capacity, make sure the Appliance VM has enough storage to exercise the fail-back and re-protect mechanisms.
 
     > [!NOTE]
-    > If there are storage limitations, the fail-back and re-protect may fail with `An internal error occurred` message. Users should check the event logs on the appliance to confirm the actual Azure Resource Manager error. For more information, see Known issues.
+    > If there are storage limitations, the fail-back and re-protect may fail with `An internal error occurred` message. Users should check the event logs on the appliance to confirm the actual Azure Resource Manager error. For more information, see [Known issues for Azure Site Recovery](../operator/azure-site-recovery-known-issues.md).
 
 - Bandwidth:
 
     - The initial replication generates high bandwidth usage.
-    - Changes on each VM (deltas) are replicated depending on the replication policies and each type of application.  
+    - Changes on each VM, or deltas changes, are replicated depending on the replication policies and each type of application.  
 
  ## Target considerations
 
@@ -186,7 +186,7 @@ Applications and solution workloads have certain recovery time objective (RTO) a
     - Production and DR networks that have overlapping IP addresses require a failover process that can complicate and delay application failover. When possible, plan for a BCDR network architecture that provides concurrent connectivity to all sites.
 
 - Sizing your target environments
-    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment due to the way the history of the disks snapshots happen. This allocation isn't a 2x increase since it would include only deltas for the data. Depending on the type of data, changes expected, and replication policies having a 1.5x to 2x more storage on the target would ensure failover processes introduce no concerns.
+    - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment due to the way the history of the disks bookmarks happen. This allocation isn't a 2x increase since it would include only deltas for the data. Depending on the type of data, changes expected, and replication policies having a 1.5x to 2x more storage on the target would ensure failover processes introduce no concerns.
     - Some customers might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hubs. In this case, you would be lowering the overall cost, but would need to plan what happens when certain workloads go down. For example, which source would need to be prioritized versus another source.
     - In the case where your target environment is used for running other workloads, the BCDR plan needs to include the behavior of these workloads. For example, you could run the Dev/Test VMs on the target environment and if an issue with your source environment occurs, all the VMs on the target could be turned off to ensure sufficient resources are available to start the protected VMs.
 
