@@ -41,46 +41,17 @@ Uninstalling the AKS host management cluster will also uninstall Azure Arc Resou
 ## my AKS hybrid cluster create call has timed out 
 If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons:
 
-### You are not running the August release of AKS host management cluster
-You can verify if the AKS host management cluster has been successfully deployed on the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by running the following command on any one node in your physical cluster:
-
-```PowerShell
-Get-AksHciVersion
-```
-
-Note that the output should be `1.0.13.10907` for the August release. Expected Output:
-```
-1.0.13.10907
-```
-If you see a value other than the one listed above, we recommend you uninstall the AKS host management cluster and start again. You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing in `-version '1.0.13.10907'` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
-
-### You are not running the September release of Arc Resource Bridge
-We currently *do not support running the [October release](https://github.com/Azure/ArcResourceBridge/releases)* of Arc Resource Bridge. You can verify your Arc Resource Bridge version is not the October version by running the following command:
-
-```azcli
-az arcappliance show -n <name of Arc resource bridge> -g <name of resource group> --query version -o tsv
-```
-
-**Note that the output should be less than `1.0.9`.** 
-
-If you see `1.0.9` as the output, we recommend you uninstall the Arc Resource Bridge and start again. You can pin your Arc Resource Bridge version to an earlier release by using the following set of commands -
-
-```azcli
-az extension remove -n arcappliance
-az extension add -n arcappliance --version 0.2.27
-```
-
 ### You used an uppercase character for your AKS hybrid cluster name
 For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### The AKS hybrid vnet you used ran out of IP addresses
 If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it's not possible to edit an AKS hybrid vnet once it has been created.
 
-### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-KvaGalleryImage`
-Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-KvaGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
+### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-ArcHcik8sGalleryImage`
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-ArcHcik8sGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
-The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.21.9.` Right now, we **only** support `v1.21.9`. This issue will be fixed in an upcoming release.
+The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.22.11.` Right now, we **only** support `v1.22.11`. This issue will be fixed in an upcoming release.
 
 If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we may help you with your deployment.
 
