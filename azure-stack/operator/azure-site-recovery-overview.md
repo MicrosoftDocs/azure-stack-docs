@@ -25,7 +25,7 @@ To enable replication of VMs across two Azure Stack Hub stamps, configure the fo
     1. **Azure Stack Hub Operator**, download the respective images.
     2. **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
 
-    :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/overview/source-and-target.png":::
 
 Azure Site Recovery on Azure Stack Hub is available for both Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS) type deployments of Azure Stack Hub, which means it can run in disconnected environments.
 

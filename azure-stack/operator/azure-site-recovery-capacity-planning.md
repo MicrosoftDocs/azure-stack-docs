@@ -22,7 +22,7 @@ To enable replication of VMs across two Azure Stack Hub stamps, two environments
 1. **Target** environment:
     - The Azure Site Recovery Resource Provider and dependencies run here.
 
-:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps.":::
+:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/capacity-planning/source-and-target.png":::
 
 An essential component for the success of a business continuity and disaster recovery plan is capacity planning. During capacity planning, there are a few factors to consider:
 
@@ -82,7 +82,7 @@ Installing Azure Site Recovery on Azure Stack Hub involves adding two dependenci
 
 - Azure Site Recovery
 
-:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Example of the three services to install Azure Site Recovery on Azure Stack Hub.":::
+:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Example of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
 
 These three services are created on the Azure Stack Hub Admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated.
 

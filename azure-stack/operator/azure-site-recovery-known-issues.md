@@ -28,9 +28,9 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
 4. If the user is trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks, "***An internal error occurred***" message displays. The user can check the number of the data disks currently on the appliance, or sign-in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery."lightbox="media/azure-site-recovery/known-issues/event-viewer.png":::
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/azure-site-recovery-logs.png" alt-text="Sample screenshot of Azure Site Recovery logs."lightbox="media/azure-site-recovery/known-issues/azure-site-recovery-logs.png":::
 
     - Find the latest warning to identify the issue.
 
@@ -41,7 +41,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
 1. Check your kernel version with `uname -r`.
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/linux-kernel-version.png" alt-text="Sample screenshot of Linux Kernel version.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/linux-kernel-version.png" alt-text="Sample screenshot of Linux Kernel version."lightbox="media/azure-site-recovery/known-issues/linux-kernel-version.png":::
 
     For more information on supported Linux kernel versions, see [Azure to Azure support matrix](/azure/site-recovery/azure-to-azure-support-matrix#linux).
 
@@ -54,13 +54,13 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
     Here's an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After running the command we can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, we can take the next step and roll back to the supported version.
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/kernel-version-rollback.png" alt-text="Sample screenshot of an Ubuntu VM kernel version check.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/kernel-version-rollback.png" alt-text="Sample screenshot of an Ubuntu VM kernel version check."lightbox="media/azure-site-recovery/known-issues/kernel-version-rollback.png":::
 
 4. Roll back to a supported kernel version using these steps:
     1. First, make a copy of /etc/default/grub in case there's any error. For example, `sudo cp /etc/default/grub /etc/default/grub.bak`
     1. Then modify `/etc/default/grub` to set GRUB_DEFAULT to the version we want to switch back to. You may have something similar to this `GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.4.0-1077-azure"`.
 
-        :::image type="content" source="../operator/media/azure-site-recovery/known-issues/grub-default.png" alt-text="Sample screenshot of an Ubuntu VM kernel version rollback.":::
+        :::image type="content" source="../operator/media/azure-site-recovery/known-issues/grub-default.png" alt-text="Sample screenshot of an Ubuntu VM kernel version rollback."lightbox="media/azure-site-recovery/known-issues/grub-default.png":::
 
     1. **Save** the file and **Exit**.
     1. Then run `sudo update-grub` to update the grub.
@@ -68,7 +68,7 @@ This article describes known issues for Azure Site Recovery. Use the following s
 
 5. Should you not have an old kernel version to roll back to, wait for the mobility agent update so that your kernel can be supported. The update is completed automatically, if it's ready, and you can check the version on the portal to confirm:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check."lightbox="media/azure-site-recovery/known-issues/mobility-agent-update.png":::
 
 ## Re-protect manual resync isn't supported yet
 
@@ -78,7 +78,7 @@ There are two types of resync:
 
 1. Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic Resync on the Users portal.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic Resync on the Users portal."lightbox="media/azure-site-recovery/known-issues/automatic-resync-portal.png":::
 
 2. Manual re-sync. Requires user action to trigger the resync manually. Needed in the following instances:
     1. The storage account chosen for the re-protect is missing.
@@ -92,9 +92,9 @@ There are two types of resync:
 
 1. Leaving `$failbackPolicyName` and `$failbackExtensionName` empty or null causes re-protect to fail, see the following examples:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VM failed to perform operation error.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error1.png":::
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM.":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error2.png":::
 
     - Always specify the `$failbackPolicyName` and `$failbackExtensionName`as outlined in proceeding example:
 
@@ -125,7 +125,7 @@ There are two types of resync:
 
 When replicating multiple VMs, you might see the "***Protected item health changed to Warning***" error in the Site recovery jobs.
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning.":::
+:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning."lightbox="media/azure-site-recovery/known-issues/mobility-service-agent-warning.png":::
 
 This error message should only be a warning and not any issue on the actual replication or failover processes.
 
