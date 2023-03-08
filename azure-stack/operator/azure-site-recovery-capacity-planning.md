@@ -1,9 +1,9 @@
 ---
 title: Capacity Planning using Azure Site Recovery
-description: Capacity planning uses Azure Stack Hub locations to keep data safe, apps available and workloads online during planned and unplanned outages.
+description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/07/2023
 ms.date: 03/07/2023

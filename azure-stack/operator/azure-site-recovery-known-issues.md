@@ -1,9 +1,9 @@
 ---
 title: Known issues for Azure Site Recovery
-description: There are some known issues associated with using Azure Site Recovery. This article provides detail on those known issues.
+description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
-ms.topic: overview
+ms.topic: troubleshooting
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/07/2023
 ms.date: 03/07/2023
