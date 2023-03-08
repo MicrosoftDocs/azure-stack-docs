@@ -65,10 +65,6 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
 - **Windows Defender Antivirus** in protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
 
-- **Microsoft Defender for Endpoint (MDE EDR)** is an enterprise endpoint security platform designed to help enterprise networks prevent, detect, investigate, and respond to advanced threats. It is among the major benefits of the Microsoft Defender for Servers. Available in Defender for Endpoint Plan 1 and Plan 2 (with a new Microsoft Defender Vulnerability Management add-on now available), MDE EDR combines technology from Windows 10 and Microsoft's cloud service to offer endpoint behavioral sensors, cloud security analytics, and threat intelligence. For more information on the MDE EDR, see [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint?view=o365-worldwide).
-
-    For more information on the features and capabilities included in each plan, including the new Defender Vulnerability Management add-on, see [Compare Microsoft Defender for Endpoint Plans](/microsoft-365/security/defender-endpoint/deployment-strategy?view=o365-worldwide).
-
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
 
