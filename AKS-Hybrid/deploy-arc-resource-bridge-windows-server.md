@@ -52,7 +52,7 @@ Expected Output:
 If you face an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
 ### [Microsoft On-premises cloud(Moc)](#tab/shell)
-Run the following steps to install Microsoft On-premises cloud(Moc) on your Windows Server or Azure Stack HCI cluster. 
+Run the following steps to install Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster. 
 
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
