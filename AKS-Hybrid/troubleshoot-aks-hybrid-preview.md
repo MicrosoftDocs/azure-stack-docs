@@ -41,14 +41,14 @@ Uninstalling the AKS host management cluster will also uninstall Azure Arc Resou
 ## my AKS hybrid cluster create call has timed out 
 If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons:
 
-### You used an uppercase character for your AKS hybrid cluster name
-For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
+### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-ArcHciK8sGalleryImage`
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-ArcHciK8sGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. To download the Kubernetes VHD image, visit [this page.](https://learn.microsoft.com/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd#download-the-kubernetes-vhd-file) This issue will be fixed in an upcoming release. 
 
 ### The AKS hybrid vnet you used ran out of IP addresses
-If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet. At this point, it's not possible to edit an AKS hybrid vnet once it has been created.
+If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create will time out and fail silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vnet [by following this documentation.](https://learn.microsoft.com/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd) At this point, it's not possible to edit an AKS hybrid vnet once it has been created.
 
-### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-ArcHcik8sGalleryImage`
-Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-ArcHcik8sGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
+### You used an uppercase character for your AKS hybrid cluster name
+For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
 The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.22.11.` Right now, we **only** support `v1.22.11`. This issue will be fixed in an upcoming release.
