@@ -57,9 +57,6 @@ Run the following steps to install Microsoft On-premises cloud(Moc) on your Wind
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
 Install-Moc
-curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
-$config = Get-MocConfig
-cp .\kubectl.exe $config.installationPackageDir
 ```
 ---
 
