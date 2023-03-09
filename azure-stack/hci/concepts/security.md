@@ -14,7 +14,7 @@ ms.date: 3/3/2023
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.
-- Part 2 covers resources available through the Microsoft Defender for Cloud. See [Microsoft Defender for Cloud Introduction](/azure/defender-for-cloud/defender-for-cloud-introduction)
+- Part 2 covers resources available through the Microsoft Defender for Cloud. See [Microsoft Defender for Cloud Introduction](/azure/defender-for-cloud/defender-for-cloud-introduction).
 - Part 3 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
 
 ## Why are security considerations important?
@@ -33,7 +33,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 - **Azure Stack HCI-certified hardware** provides consistent Secure Boot, UEFI, and TPM settings out of the box. Combining virtualization-based security and certified hardware helps protect security-sensitive workloads. You can also connect this trusted infrastructure to Microsoft Defender for Cloud to activate behavioral analytics and reporting to account for rapidly changing workloads and threats.
 
     - *Secure boot* is a security standard developed by the PC industry to help ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM). To learn more, see [Secure boot](/windows-hardware/design/device-experiences/oem-secure-boot).
-    - *United Extensible Firmware Interface (UEFI)* controls the booting process of the server, and then passes control to either Windows or another operating system. To learn more, see [UEFI firmware requirements](/windows-hardware/design/device-experiences/oem-uefi).
+    - *United Extensible Firmware Interface (UEFI)* controls the booting process of the server and then passes control to either Windows or another operating system. To learn more, see [UEFI firmware requirements](/windows-hardware/design/device-experiences/oem-uefi).
     - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
     To learn more about Azure Stack HCI-certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
@@ -127,7 +127,7 @@ The following sections recommend advanced security tools and technologies to fur
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
        >[!NOTE]
-       > Enabling vTPM will impact VM mobility, manual action will be required to enable vTPM enabled VMs to live migrate.
+       > Enabling vTPM will impact VM mobility: manual actions will be required to allow the VM to start on different Host from the one you enabled vTPM originally.
 
         To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
@@ -136,7 +136,7 @@ The following sections recommend advanced security tools and technologies to fur
         To learn more, see [Software Defined Networking (SDN)](/windows-server/networking/sdn/).
 
        >[!NOTE]
-       > Shielded VMs protected by Host Guardian Service are not supported in Azure Stack HCI. Local Guardians are still available.
+       > Shielded VMs protected by Host Guardian Service are not supported in Azure Stack HCI.
 
 ### Protect identities
 
@@ -146,7 +146,7 @@ The following sections recommend advanced security tools and technologies to fur
 
 - **Microsoft Advanced Threat Analytics (ATA)** is an on-premises product that you can use to help detect attackers attempting to compromise privileged identities. ATA parses network traffic for authentication, authorization, and information gathering protocols, such as Kerberos and DNS. ATA uses the data to build behavioral profiles of users and other entities on the network to detect anomalies and known attack patterns.
     
-    To learn more, see [What is Advanced Threat Analytics?](/advanced-threat-analytics/what-is-ata).
+    To learn more, see [What is Advanced Threat Analytics?](/advanced-threat-analytics/what-is-ata)
 
 - **Windows Defender Remote Credential Guard** protects credentials over a Remote Desktop connection by redirecting Kerberos requests back to the device that's requesting the connection. It also provides single sign-on (SSO) for Remote Desktop sessions. During a Remote Desktop session, if the target device is compromised, your credentials are not exposed because both credential and credential derivatives are never passed over the network to the target device.
 
