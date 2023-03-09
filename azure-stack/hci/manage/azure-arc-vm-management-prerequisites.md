@@ -101,7 +101,7 @@ Make sure to include the following firewall URLs in your allowlist:
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 
-## Network proxy requirements
+## Network proxy requirements for setting up Arc VM management
 
 When setting up Arc VM management, if your network requires the use of a proxy server to connect to the internet, this section describes how to create the configuration files with proxy settings. Running these steps alone will not set up Arc VM management. 
 
