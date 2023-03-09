@@ -80,6 +80,16 @@ Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in
 
 To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
 
+### Valid token required error
+
+Expritation of MOC token may result in failure of creation of virtual machines, virtual hard disks, virtual NICs or other enttities. The error in ArcHCI Logs could be "Valid token required" or a variation of that. Perform the following steps on any HCI host to recover from this error:
+```PowerShell
+        rmdir $env:USERPROFILE\.wssd\python -Recurse -Force
+        Repair-MOC
+        Repair-MocOperatorToken
+```
+
+
 ## Limitations and known issues
 
 Here's a list of existing limitations and known issues with Azure Arc VM management:
