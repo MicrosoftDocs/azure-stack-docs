@@ -1,16 +1,16 @@
 ---
-title: Set up Trust in Azure Kubernetes Service on AKS hybrid
+title: Set up Trust in Azure Kubernetes Service on AKS hybrid (preview)
 description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/15/2022
+ms.date: 03/08/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
 
 ---
 
-# Update certificate bundle on container hosts
+# Update certificate bundle on container hosts (preview)
 
 An AKS cluster needs to trust other on-premises resources such as the container registry. This article describes how to add a certificate chain of trust (root, intermediate and lead certificates) with a public key, for the endpoints the cluster is expected to trust and allow communication. The certificates are added on the Linux hosts.
 
