@@ -15,7 +15,7 @@ To enable replication of virtual machines (VMs) across two Azure Stack Hub envir
 - The **source** environment. This is the Azure Stack Hub environment in which user VMs (the actual workloads you want to protect) are running.
 - The **target** environment. This is where the Azure Site Recovery resource provider and dependencies run.
 
-  :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Image showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
+  :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Diagram showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
 
 The process to install Azure Site Recovery includes actions from both the Azure Stack Hub operator and the Azure Stack Hub user:
 

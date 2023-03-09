@@ -18,7 +18,7 @@ In the target environment, Azure Site Recovery requires the Azure Stack Hub oper
 
 - The [Event Hubs service](event-hubs-rp-install.md).
 - The **Azure Site Recovery - dependency service**.
-- Once these two services are installed, you can install the ASR service itself.
+- Once these two services are installed, you can install the Azure Site Recovery service itself.
 
 > [!NOTE]
 > For more information, see the [Event Hubs installation](event-hubs-rp-install.md) page. Once installed, no other configuration is needed.
@@ -93,7 +93,7 @@ After the installation of the Azure Site Recovery resource provider and the assi
 
 - Make sure the subscription has the following namespaces registered: **Microsoft.DataReplication, Microsoft.Compute, Microsoft.Storage, Microsoft.Network, Microsoft.KeyVault**.
 
-  :::image type="content" source="media/site-recovery-deploy-target/resource-providers.png" alt-text="Screenshot showing regietered resource providers." lightbox="media/site-recovery-deploy-target/resource-providers.png":::
+  :::image type="content" source="media/site-recovery-deploy-target/resource-providers.png" alt-text="Screenshot showing registered resource providers." lightbox="media/site-recovery-deploy-target/resource-providers.png":::
 
 - Once these are configured, the users of this subscription are ready to create an Azure Site Recovery Vault and start protecting workloads.
 
@@ -104,7 +104,7 @@ In the target environment, in the Azure Stack Hub user subscription in which you
 To create a new vault, open the Azure Stack Hub user portal, select **Create new resource**, and then select the Azure Site Recovery items in
 the **Compute** category:
 
-:::image type="content" source="media/site-recovery-deploy-target/create-a-resource.png" alt-text="Screenshot of create a resouce screen." lightbox="media/site-recovery-deploy-target/create-a-resource.png":::
+:::image type="content" source="media/site-recovery-deploy-target/create-a-resource.png" alt-text="Screenshot of create a resource screen." lightbox="media/site-recovery-deploy-target/create-a-resource.png":::
 
 Provide a resource group and a name for the new recovery vault. Once created, you can open the vault to access the properties required in the Site Recovery VM appliance. In the Recovery Vault, you can either select **Protect Workload** or on the left-hand side, select the **Replicated items** blade.
 
