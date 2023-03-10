@@ -193,4 +193,4 @@ Applications and solution workloads have certain recovery time objective (RTO) a
     - You might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hub sources. In this case, you're lowering the overall cost, but must plan for what happens when certain workloads go down; for example, which source must be prioritized.
     - If your target environment is used for running other workloads, the BCDR plan must include the behavior of these workloads. For example, you can run the Dev/Test VMs on the target environment, and if an issue occurs with your source environment, you can turn off all the VMs on the target to ensure sufficient resources are available to start the protected VMs.
 
-The BCDR should be tested and validated regularly, either by using test failover processes, or by moving the entire workloads to validate the flows end-to-end.
+The BCDR should be tested and validated regularly. You can do this by using test failover processes, or by moving the entire workloads to validate the flows end-to-end.

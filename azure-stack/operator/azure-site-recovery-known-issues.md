@@ -13,20 +13,20 @@ ms.date: 03/07/2023
 
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations related to Azure Site Recovery on Azure Stack Hub features.
 
-## Re-protection: available data disk slots on appliance
+## Reprotection: available data disk slots on appliance
 
-1. Ensure the appliance VM has enough data disk slots, as the replica disks for re-protect is attached to the appliance.
+1. Ensure the appliance VM has enough data disk slots, as the replica disks for reprotect is attached to the appliance.
 
-2. The initial allowed number of disks being re-protected at the same time is 31. The default size of the appliance created from the marketplace item is Standard DS4 v2, which supports up to 32 data disks, and the appliance itself uses one data disk.
+2. The initial allowed number of disks being reprotected at the same time is 31. The default size of the appliance created from the marketplace item is Standard DS4 v2, which supports up to 32 data disks, and the appliance itself uses one data disk.
 
 3. If the sum of the protected VMs is greater than 31, perform one of the following actions:
-    - Split the VMs that require re-protection into smaller groups to ensure that the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
+    - Split the VMs that require reprotection into smaller groups to ensure that the number of disks reprotected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
     - Increase the size of the Azure Site Recovery appliance VM.
 
     >[!NOTE]
     > We do not test and validate large VM SKUs for the appliance VM.
 
-4. If you're trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks, **An internal error occurred** message displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
+4. If you're trying to reprotect a VM, but there aren't enough slots on the appliance to hold the replication disks, **An internal error occurred** message displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery."lightbox="media/azure-site-recovery/known-issues/event-viewer.png":::
 
@@ -67,27 +67,27 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check."lightbox="media/azure-site-recovery/known-issues/mobility-agent-update.png":::
 
-## Re-protect manual re-sync isn't supported yet
+## Reprotect manual resync isn't supported yet
 
-After the re-protect job is complete, the initial replication and replication is started in sequence. During replication, there may be cases that require a re-sync, which means a new initial replication is triggered to synchronize all the changes.
+After the reprotect job is complete, the initial replication and replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
 
-There are two types of re-sync:
+There are two types of resync:
 
-- Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
+- Automatic resync. Requires no user action and is done automatically. Users can see some events shown on the portal:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic Re-sync on the Users portal."lightbox="media/azure-site-recovery/known-issues/automatic-resync-portal.png":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic resync on the Users portal."lightbox="media/azure-site-recovery/known-issues/automatic-resync-portal.png":::
 
-- Manual re-sync. Requires user action to trigger the re-sync manually. Needed in the following instances:
-    - The storage account chosen for the re-protect is missing.
+- Manual resync. Requires user action to trigger the resync manually. Needed in the following instances:
+    - The storage account chosen for the reprotect is missing.
     - The replication disk on the appliance is missing.
     - The replication write exceeds the capacity of the replication disk on the appliance.
 
     >[!TIP]
-    > You can also find the manual re-sync reasons in the events blade to help you decide whether a manual re-sync is required.
+    > You can also find the manual resync reasons in the events blade to help you decide whether a manual resync is required.
 
 ## Known issues in PowerShell automation
 
-1. If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the re-protect can fail. See the following examples:
+1. If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the reprotect can fail. See the following examples:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error1.png":::
 
