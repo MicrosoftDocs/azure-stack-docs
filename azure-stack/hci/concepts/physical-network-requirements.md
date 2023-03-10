@@ -37,14 +37,16 @@ When purchasing network switches, contact your switch vendor and ensure that the
 
 Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](https://review.learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements?branch=pr-en-us-12160#network-traffic-types).
 
+> [!IMPORTANT]
+> We update these lists as we're informed of changes by network switch vendors.
+
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 # [Arista](#tab/Arista)
-
 ### 21H2
 
 | Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-| -----  |---| :-:  | :-:  | :-:   | :-:   |
+|-----|---|:-:|:-:|:-:|:-:|
 | [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X | |
 | [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
 | [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
