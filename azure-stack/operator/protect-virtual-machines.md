@@ -1,5 +1,5 @@
 ---
-title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub
+title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub (preview)
 description: Learn how to protect virtual machines in Azure Site Recovery on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
@@ -8,7 +8,7 @@ ms.date: 03/06/2023
 ---
 
 
-# Enable VM protection in Azure Site Recovery
+# Enable VM protection in Azure Site Recovery (preview)
 
 Once the target and the source environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the target environment, in the Site Recovery vault itself.
 

@@ -1,5 +1,5 @@
 ---
-title: Capacity planning using Azure Site Recovery
+title: Capacity planning using Azure Site Recovery (preview)
 description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.lastreviewed: 03/07/2023
 ms.date: 03/07/2023
 ---
 
-# Capacity planning using Azure Site Recovery
+# Capacity planning using Azure Site Recovery (preview)
 
 As an organization, it's imperative to adopt a business continuity and disaster recovery (BCDR) strategy that keeps your data safe, apps available, and workloads online during planned and unplanned outages.
 

@@ -1,5 +1,5 @@
 ---
-title: Known issues for Azure Site Recovery
+title: Known issues for Azure Site Recovery (preview)
 description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.lastreviewed: 03/07/2023
 ms.date: 03/07/2023
 ---
 
-# Known issues - Azure Site Recovery on Azure Stack Hub
+# Known issues - Azure Site Recovery on Azure Stack Hub (preview)
 
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations related to Azure Site Recovery on Azure Stack Hub features.
 
