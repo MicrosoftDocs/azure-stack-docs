@@ -87,7 +87,7 @@ There are two types of resync:
 
 ## Known issues in PowerShell automation
 
-1. If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the reprotect can fail. See the following examples:
+- If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the reprotect can fail. See the following examples:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error-1.png":::
 
