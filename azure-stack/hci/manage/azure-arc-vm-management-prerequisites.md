@@ -31,7 +31,7 @@ The Azure requirements include:
 
 - An Azure subscription ID. This is the Azure subscription GUID where your Arc Resource Bridge, custom location, and cluster extension resources reside.
   > [!NOTE]
-  > Arc VM management for Azure Stack HCI is currently supported in **East US** & **West Europe**. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region. The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and guest management.
+  > Arc VM management for Azure Stack HCI is currently supported in **East US** & **West Europe**. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region. The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management.
 
 - The latest version of Azure Command-Line Interface (CLI). You must install this on all servers in your Azure Stack HCI cluster.
 
