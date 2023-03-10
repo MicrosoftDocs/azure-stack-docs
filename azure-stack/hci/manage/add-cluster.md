@@ -74,7 +74,7 @@ Keep in mind that when you remove a server, you will also remove any virtual mac
 
 To learn more about removing a server from a cluster, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
-To learn more about removing a cluster, see [Remove a Cluster](/hci/manage/cluster-powershell#remove-a-cluster).
+For more information about removing a cluster, see [Remove a Cluster](/hci/manage/cluster-powershell#remove-a-cluster).
 
 ### Uninstall VM extensions
 
