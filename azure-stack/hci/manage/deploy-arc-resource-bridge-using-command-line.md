@@ -133,7 +133,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    ```PowerShell
    $subscription="subscription ID in Azure"
    $resource_group="<pre-created resource group in Azure>"
-   $location="<Azure Region - Available regions include 'eastus', 'westeurope' and 'southeastasia'>"
+   $location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
    ```
 
    where:
@@ -142,7 +142,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | ----- | ----------- |
    | **subscription** | Subscription ID in Azure. |
    | **resource_group** | Name of the pre-created resource group in Azure. |
-   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **westeurope** or **southeastasia**. |
+   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
 
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
