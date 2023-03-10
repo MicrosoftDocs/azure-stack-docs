@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 03/03/2023
+ms.date: 03/08/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -158,9 +158,9 @@ If you want to use an existing configuration file you have previously created, s
 
 ### Step 4: Storage
 
-1. On step **4.1 Create workload and infrastructure volumes**, select the recommended option to **Create workload volumes** in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+1. On step **4.1 Create workload and infrastructure volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
-    If you select **Create infrastructure volumes** only, you will need to create workload volumes yourselves.  
+    If you select **Create required volumes** only, you will need to create workload volumes yourselves.  
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery Overview
+title: Azure Site Recovery overview
 description: Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages.
 author: ronmiab
 ms.author: robess
@@ -15,15 +15,15 @@ Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keepi
 
 To enable replication of VMs across two Azure Stack Hub stamps, configure the following environments:
 
-1. **Source** environment is the Azure Stack Hub stamp where tenant VMs are running.
-    1. **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
-    2. **Azure Stack Users**, on the User subscriptions, configure the connection to the target Vault in this source environment.
+- **Source** environment is the Azure Stack Hub stamp where tenant VMs are running.
+    - **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
+    - **Azure Stack Users**, on the User subscriptions, configure the connection to the target Vault in this source environment.
 
-2. **Target** environment is where the Azure Site Recovery Resource Provider and dependencies are running.
-    1. **Azure Stack Hub Operator**, download the respective images.
-    2. **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
+- **Target** environment is where the Azure Site Recovery Resource Provider and dependencies are running.
+    - **Azure Stack Hub Operator**, download the respective images.
+    - **Azure Stack Hub Users**, configure the Vault and prepare the prerequisites for your replicated VMs.
 
-    :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/overview/source-and-target.png":::
+    :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Screenshot of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/overview/source-and-target.png":::
 
 Azure Site Recovery on Azure Stack Hub is available for both Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS) type deployments of Azure Stack Hub, which means it can run in disconnected environments.
 
@@ -68,7 +68,7 @@ We've tested and validated the following VM OSs and each has respective Azure St
 | Operating system    | Details   |
 |---------------------|-----------|
 |Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6,[7.7](/topic/update-rollup-41-for-azure-site-recovery-267eebca-ab08-c5ee-5b04-b3be62426191), [7.8](/topic/update-rollup-46-for-azure-site-recovery-0e938469-3de5-9ed4-d1bf-91fd24e711de), [7.9](/topic/update-rollup-49-for-azure-site-recovery-e455bd62-ed02-038d-87b4-a257fb4cdbe6), [8.0](/topic/update-rollup-42-for-azure-site-recovery-88be2b2d-fb52-3a36-4af2-785bbd847074), 8.1, [8.2](/topic/update-rollup-47-for-azure-site-recovery-8ceb92e2-27c2-8f20-e229-52bdbaa27963), [8.3](/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), [8.4](/topic/update-rollup-60-for-azure-site-recovery-kb5011122-883a93a7-57df-4b26-a1c4-847efb34a9e8) (4.18.0-305.30.1.el8_4.x86_64 or higher), [8.5](/topic/update-rollup-60-for-azure-site-recovery-kb5011122-883a93a7-57df-4b26-a1c4-847efb34a9e8) (4.18.0-348.5.1.el8_5.x86_64 or higher), [8.6](/topic/update-rollup-62-for-azure-site-recovery-e7aff36f-b6ad-4705-901c-f662c00c402b), and 8.7.|
-|CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, [7.8](/topic/update-rollup-46-for-azure-site-recovery-0e938469-3de5-9ed4-d1bf-91fd24e711de), [7.9 pre-GA version](/topic/update-rollup-49-for-azure-site-recovery-e455bd62-ed02-038d-87b4-a257fb4cdbe6), 7.9 GA version is supported from 9.37 hot fix patch** 8.0, 8.1, [8.2](/topic/update-rollup-47-for-azure-site-recovery-8ceb92e2-27c2-8f20-e229-52bdbaa27963), [8.3](/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), 8.4 (4.18.0-305.30.1.el8_4.x86_64 or later), 8.5 (4.18.0-348.5.1.el8_5.x86_64 or later), 8.6, and 8.7.|
+|CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, [7.8](/topic/update-rollup-46-for-azure-site-recovery-0e938469-3de5-9ed4-d1bf-91fd24e711de), [7.9 pre-GA version](/topic/update-rollup-49-for-azure-site-recovery-e455bd62-ed02-038d-87b4-a257fb4cdbe6), 7.9 GA version is supported from 9.37 hotfix patch, 8.0, 8.1, [8.2](/topic/update-rollup-47-for-azure-site-recovery-8ceb92e2-27c2-8f20-e229-52bdbaa27963), [8.3](/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), 8.4 (4.18.0-305.30.1.el8_4.x86_64 or later), 8.5 (4.18.0-348.5.1.el8_5.x86_64 or later), 8.6, and 8.7.|
 |Ubuntu 14.04 LTS Server |Includes support for all 14.04.x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines).|
 |Ubuntu 16.04 LTS Server | Includes support for all 16.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 18.04 LTS Server | Includes support for all 18.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
@@ -85,5 +85,3 @@ We've tested and validated the following VM OSs and each has respective Azure St
 |Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](/topic/update-rollup-42-for-azure-site-recovery-88be2b2d-fb52-3a36-4af2-785bbd847074), [7.8](/topic/update-rollup-48-for-azure-site-recovery-8dc98c92-3a8b-d280-86ac-439881963ee0), [7.9](/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), [8.0](/topic/update-rollup-48-for-azure-site-recovery-8dc98c92-3a8b-d280-86ac-439881963ee0), [8.1](/topic/update-rollup-48-for-azure-site-recovery-8dc98c92-3a8b-d280-86ac-439881963ee0), [8.2](/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8), [8.3](/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) (running the Red Hat compatible kernel or Unbreakable Enterprise Kernel Release 3, 4, 5, and 6 (UEK3, UEK4, UEK5, UEK6)), and [8.4](/topic/update-rollup-59-for-azure-site-recovery-kb5008707-66a65377-862b-4a4c-9882-fd74bdc7a81e), 8.5, 8.6, and 8.7. **8.1 (running on all UEK kernels and RedHat kernel greater than or equal to 3.10.0-10620 are supported in 9.35). Support for rest of the RedHat kernels is available in 9.36**.|
 
 ---
-
-## Next steps

@@ -85,7 +85,7 @@ The script installs AKS Edge Essentials and connects your cluster to Azure using
 2. You can view your cluster in the Azure portal if you navigate to your resource group:
 
    ![Screenshot showing the cluster in azure portal](media/aks-edge/cluster-in-az-portal.png)
-
+    
 3. On the left panel, select the **Namespaces** under **Kubernetes resources (preview)**:
 
    ![Screenshot of Kubernetes resources.](media/aks-edge/kubernetes-resources-preview.png)
@@ -107,6 +107,9 @@ The script installs AKS Edge Essentials and connects your cluster to Azure using
     ![Screenshot showing all pods in Arc.](media/aks-edge/all-pods-in-arc.png)
 
 You now have an Arc-connected AKS Edge Essentials K3S cluster with a Linux node. You can now explore deploying a sample application on this cluster.
+
+> [!TIP]
+> If you did not provide your Azure subscription details while running the `AksEdgeQuickStart.ps1` script, you can still connect to Azure Arc by [following the steps in this article](aks-edge-howto-connect-to-arc.md).
 
 ## Next steps
 

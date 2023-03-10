@@ -471,7 +471,7 @@ The type of resource you choose also establishes the *access scope* for the app.
 3. Select the **Access Control (IAM)** page, which is universal across all resources that support RBAC.
 4. Select **+ Add**
 5. Under **Role**, pick the role you wish to assign to the app.
-6. Under **Select**, search for your app using a full or partial Application Name. During registration, the Application Name is generated as *Azurestack-\<YourAppName\>-\<ClientId\>*. For example, if you used an application name of *App2*, and ClientId *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff* was assigned during creation, the full name would be  *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, like *Azurestack* or *Azurestack-App2*.
+6. Under **Select**, search for your app using a full or partial Application Name. During registration, the Application Name is generated as *Azurestack-\<YourAppName\>-\<GUID\>*. For example, if you used an application name of *App2*, and GUID *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff* was assigned during creation, the full name would be *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, like *Azurestack* or *Azurestack-App2*.
 7. Once you find the app, select it and it will show under **Selected members**.
 8. Select **Save** to finish assigning the role.
 

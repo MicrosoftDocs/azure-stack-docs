@@ -460,8 +460,19 @@
       href: aks-add-on.md
     - name: Azure Site Recovery
       items:
+<<<<<<< HEAD
       - name: Overview
         href: azure-site-recovery-overview.md
+=======
+      - name: Deploy
+        items:
+        - name: Deployment overview
+          href: site-recovery-deploy.md
+        - name: Deploy source environment
+          href: site-recovery-deploy-source.md
+        - name: Deploy target environment
+          href: site-recovery-deploy-target.md
+>>>>>>> 9e2f4e96627b556a0dfcfad28102294c184b0fed
       - name: Protect virtual machines
         href: protect-virtual-machines.md
       - name: Capacity Planning

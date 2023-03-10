@@ -1,5 +1,5 @@
 ---
-title: Capacity Planning using Azure Site Recovery
+title: Capacity planning using Azure Site Recovery
 description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
@@ -17,12 +17,12 @@ Through the replication of virtual machines (VMs) workloads from a primary site 
 
 To enable replication of VMs across two Azure Stack Hub stamps, two environments need to be configured:
 
-1. **Source** environment:
+- **Source** environment:
     - The Azure Stack Hub stamp where tenant VMs are running.
-1. **Target** environment:
+- **Target** environment:
     - The Azure Site Recovery Resource Provider and dependencies run here.
 
-:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Example of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/capacity-planning/source-and-target.png":::
+:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Snapshot of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/capacity-planning/source-and-target.png":::
 
 An essential component for the success of a business continuity and disaster recovery plan is capacity planning. During capacity planning, there are a few factors to consider:
 
@@ -83,7 +83,7 @@ Installing Azure Site Recovery on Azure Stack Hub involves adding two dependenci
 
 - Azure Site Recovery
 
-:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Example of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
+:::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Screenshot of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
 
 These three services are created on the Azure Stack Hub Admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated.
 
@@ -125,7 +125,7 @@ When creating the BCDR plan, consider all aspects of the protected workloads. Th
 
 For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point for calculations, especially for the cache storage account used:
 
-1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. For example, (2MB * 250s). The cache storage account is normally a few KB to 500 MB per disk.
+1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. For example, you might have (2MB * 250s). The cache storage account is normally a few KB to 500 MB per disk.
 
 2. If there's a failover, given a worst case scenario, multiply the number of disks replicated by the average RPO over a full day.
 
@@ -138,7 +138,7 @@ For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point
 
 Create the BDCR plan based on the specifics of the solution you're trying to protect.
 
-The following table is an example of tests run in our environments. You an use this insight to get a baseline for your own application, but each workload differs:
+The following table is an example of tests run in our environments. You can use this insight to get a baseline for your own application, but each workload differs:
 
 #### Configuration
 
@@ -190,9 +190,7 @@ Applications and solution workloads have certain recovery time objective (RTO) a
 
 - Sizing your target environments:
     - If you're using the source and target in a 1:1 manner, allocate slightly more storage on your target environment. This is due to the way the history of the disks bookmarks happen. This allocation isn't a 2x increase, since it only includes changes to the data. Depending on the type of data and the changes expected, and replication policies having a 1.5x to 2x more storage on the target ensure that failover processes introduce no concerns.
-    - You might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hub sources. In this case, you are lowering the overall cost, but must plan for what happens when certain workloads go down; for example, which source must be prioritized.
+    - You might consider having the target Azure Stack Hub environment as the target for multiple source Azure Stack Hub sources. In this case, you're lowering the overall cost, but must plan for what happens when certain workloads go down; for example, which source must be prioritized.
     - If your target environment is used for running other workloads, the BCDR plan must include the behavior of these workloads. For example, you can run the Dev/Test VMs on the target environment, and if an issue occurs with your source environment, you can turn off all the VMs on the target to ensure sufficient resources are available to start the protected VMs.
 
 The BCDR should be tested and validated regularly, either by using test failover processes, or by moving the entire workloads to validate the flows end-to-end.
-
-## Next steps

@@ -20,8 +20,8 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 2. The initial allowed number of disks being re-protected at the same time is 31. The default size of the appliance created from the marketplace item is Standard DS4 v2, which supports up to 32 data disks, and the appliance itself uses one data disk.
 
 3. If the sum of the protected VMs is greater than 31, perform one of the following actions:
-    1. Split the VMs that require re-protection into smaller groups to ensure that the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
-    2. Increase the size of the Azure Site Recovery appliance VM.
+    - Split the VMs that require re-protection into smaller groups to ensure that the number of disks re-protected, at the same time, doesn't exceed the maximum number of data disks the appliance supports.
+    - Increase the size of the Azure Site Recovery appliance VM.
 
     >[!NOTE]
     > We do not test and validate large VM SKUs for the appliance VM.
@@ -73,14 +73,14 @@ After the re-protect job is complete, the initial replication and replication is
 
 There are two types of re-sync:
 
-1. Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
+- Automatic re-sync. Requires no user action and is done automatically. Users can see some events shown on the portal:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic Re-sync on the Users portal."lightbox="media/azure-site-recovery/known-issues/automatic-resync-portal.png":::
 
-2. Manual re-sync. Requires user action to trigger the re-sync manually. Needed in the following instances:
-    1. The storage account chosen for the re-protect is missing.
-    2. The replication disk on the appliance is missing.
-    3. The replication write exceeds the capacity of the replication disk on the appliance.
+- Manual re-sync. Requires user action to trigger the re-sync manually. Needed in the following instances:
+    - The storage account chosen for the re-protect is missing.
+    - The replication disk on the appliance is missing.
+    - The replication write exceeds the capacity of the replication disk on the appliance.
 
     >[!TIP]
     > You can also find the manual re-sync reasons in the events blade to help you decide whether a manual re-sync is required.
@@ -89,9 +89,9 @@ There are two types of re-sync:
 
 1. If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the re-protect can fail. See the following examples:
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error1.png":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error1.png":::
 
-    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error2.png" alt-text="Sample screenshot of second operation error on a different VM."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error2.png":::
+    :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-2.png" alt-text="Sample screenshot of second operation error on a different VM."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error2.png":::
 
     - Always specify the `$failbackPolicyName` and `$failbackExtensionName`, as shown in the preceding example:
 
@@ -128,5 +128,3 @@ This error message should only be a warning and is not a blocking issue for the 
 
 >[!TIP]
 >You can check the the state of the respective VM to ensure it's healthy.
-
-## Next steps
