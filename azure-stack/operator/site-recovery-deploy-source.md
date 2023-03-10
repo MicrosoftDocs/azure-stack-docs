@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines in Azure Site Recovery from so
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/06/2023
+ms.date: 03/10/2023
 ---
 
 
@@ -14,14 +14,14 @@ This article describes the actions that are required to complete the installatio
 
 ## Prerequisites
 
-The Azure Stack Hub operator must download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
+As an Azure Stack Hub operator, download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
 extensions** in the Azure Stack Hub Marketplace Management.
 
 For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack
 Hub Marketplace:
 
 1. Follow the instructions in [Download Marketplace items: disconnected or partially connected scenario](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected). Download and run the Marketplace Syndication tool, which enables you to download resource provider packages.
-1. After the syndication tool **Azure Marketplace Items** window opens, find and select the name of the resource provider to download the required packages to your local machine.
+1. After the **Azure Marketplace Items** syndication tool window opens, find and select the name of the resource provider to download the required packages to your local machine.
 1. Once the download finishes, import the packages to your Azure Stack Hub instance and publish to the Marketplace.
 
 For a connected scenario, download the items from Azure Marketplace directly to the Azure Stack Hub Marketplace:
@@ -39,10 +39,10 @@ For a connected scenario, download the items from Azure Marketplace directly to 
 
 ## Installation
 
-In the source environment, in the Azure Stack Hub user subscription, the user must now deploy the **ASR appliance on AzureStack Hub**. This is a VM that appears in the Azure Stack Hub Marketplace. Following the template, it creates a VM that has the following properties:
+In the source environment, in the Azure Stack Hub user subscription, you must now deploy the **ASR appliance on AzureStack Hub**. This is a VM that appears in the Azure Stack Hub Marketplace. Following the template, it creates a VM that has the following properties:
 
 - Size: standard DS4 v2 (8 vcpus, 28 GiB memory). This means that by default, the VM can have 32 data disks attached. This is important when doing a "failback" operation; for example, when having more than 31 disks from protected VMs generates an error (in which case the appliance VM must have its size increased). By default, the Site Recovery appliance itself consumes one disk, and each data disk from a protected VM must be attached.
-- Uses a 610Gb disk.
+- Uses a 610 Gib disk.
 - Uses a storage account. Appliance boot diagnostics data is stored here.
 - After the deployment of the VM completes, sign in through RDP on that VM. This launches a set of PowerShell scripts that install all the requirements for the Site Recovery appliance and prepares the VM to be configured.
 
