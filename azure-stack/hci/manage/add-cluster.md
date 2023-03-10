@@ -5,7 +5,7 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 3/8/2023
+ms.date: 3/10/2023
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
@@ -273,4 +273,4 @@ Once the servers have been successfully removed, the associated drives are autom
 
 ## Next steps
 
-- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
+- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md).
