@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 12/01/2022
+ms.date: 3/10/2023
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
@@ -149,7 +149,7 @@ This is the recommended option for configuring host networking. For more informa
 1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
 
 1. On **2.2 Define intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the dropdown list. You can add the **Management** and **Storage** intent types to exactly one intent while the **Compute** intent type can be added to one or more intents. For more information, see [Network ATC traffic types](../concepts/host-network-requirements#network-traffic-types.md).
+    - For **Traffic types**, select a traffic type from the dropdown list. You can add the **Management** and **Storage** intent types to exactly one intent while the **Compute** intent type can be added to one or more intents. For more information, see [Network ATC traffic types](../concepts/host-network-requirements.md#network-traffic-types).
     - For **Intent name**, enter a friendly name for the intent.
     - For **Network adapters**, select an adapter from the dropdown list.  
     - (Optional) Click **Select another adapter for this traffic** if needed.
