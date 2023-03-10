@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines in Azure Site Recovery on Azur
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/06/2023
+ms.date: 03/10/2023
 ---
 
 
@@ -45,4 +45,3 @@ For more information about configuring the source and target environments, see t
 
 - [Deploy for source environments](site-recovery-deploy-source.md)
 - [Deploy for target environments](site-recovery-deploy-target.md)
-

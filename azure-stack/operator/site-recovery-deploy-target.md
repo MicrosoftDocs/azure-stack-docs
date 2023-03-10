@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines to targets in Azure Site Recov
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/06/2023
+ms.date: 03/10/2023
 ---
 
 
