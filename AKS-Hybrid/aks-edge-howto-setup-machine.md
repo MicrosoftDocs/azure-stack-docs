@@ -41,30 +41,30 @@ Before you install the MSI, you can review the [feature support](aks-edge-system
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer files.
 
-2. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+2. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you have downloaded and run:
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi
     ```
 
     Optionally, you can specify the install directory and the vhdx directory (directory where the vhdx files for the virtual machines are stored) using `INSTALLDIR` and `VHDXDIR`. By default, these will be in `C:\Program Files\AksEdge`.
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
     ```
 
-    Alternatively, you can double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
+    Alternatively, you can double-click the **AksEdge-k8s-x.x.xxx.x.msi** or **AksEdge-k3s-x.x.xxx.x.msi** file to install the latest version.
 
-3. To include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+3. To include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you have downloaded and run:
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
     ```
 
     (or)
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
     ```
 
     Now you're ready to do mixed deployment.
