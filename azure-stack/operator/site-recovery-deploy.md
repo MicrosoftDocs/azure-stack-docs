@@ -39,11 +39,10 @@ Users must perform the following steps:
   - Deploy the Azure Site Recovery Vault.
   - Create the protection policies and enable the protection of the workloads.
 
-For more information about configuring the source and target environments, see the following articles:
-
-- Deploy for source environments
-- Deploy for target environments
-
 ## Next steps
 
-Azure Site Recovery overview
+For more information about configuring the source and target environments, see the following articles:
+
+- [Deploy for source environments](site-recovery-deploy-source.md)
+- [Deploy for target environments](site-recovery-deploy-target.md)
+

@@ -23,16 +23,15 @@ In the target environment, Azure Site Recovery requires the Azure Stack Hub oper
 > [!NOTE]
 > For more information, see the [Event Hubs installation](event-hubs-rp-install.md) page. Once installed, no other configuration is needed.
 
-For the installation of these services, the Azure Stack Hub operator must obtain 3 public key infrastructure (PKI) SSL certificates. The Subject Alternative Name (SAN) must adhere to the naming pattern described in [PKI certificate requirements](azure-stack-pki-certs.md). The following 3 certificates are required:
+For the installation of these services, you must obtain 3 public key infrastructure (PKI) SSL certificates. The Subject Alternative Name (SAN) must adhere to the naming pattern described in [PKI certificate requirements](azure-stack-pki-certs.md). The following 3 certificates are required:
 
-1. For Event Hubs: `CN=*.eventhub.<region>.<fqdn>`. A subject name may be specified, but it's not used by Event Hubs when handling certificates. Only the SAN is used.
+1. For Event Hubs: `CN=*.eventhub.<region>.<fqdn>`. You can specify a subject name, but it's not used by Event Hubs when handling certificates. Only the SAN is used.
 1. For Azure Site Recovery dependency service: `*.servicebus.<region>.<fqdn>`.
 1. For Azure Site Recovery service: `rp.asr.<region>.<fqdn> or *.asr.<region>.<fqdn>`.
 
 :::image type="content" source="media/site-recovery-deploy-target/certificates.png" alt-text="Screenshot of certificates selection picker." lightbox="media/site-recovery-deploy-target/certificates.png":::
 
-Once these 3 certificates are ready, installation on the target requires that the Azure Stack Hub operator downloads each of these images
-from the Marketplace Management and starts each respective installation.
+Once these 3 certificates are ready, installation on the target requires that you download each of these images from Marketplace Management, and start each respective installation.
 
 ## Download and install packages
 
@@ -50,8 +49,8 @@ For a disconnected or partially connected scenario, download the packages to you
 Hub Marketplace:
 
 1. Follow the instructions in [Download Marketplace items - Disconnected or partially connected scenario](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected). Download and run the Marketplace Syndication tool, which enables you to download resource provider packages.
-1. After the syndication tool **Azure Marketplace Items** window opens, find and select the name of the resource provider to download the required packages to your local machine.
-1. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to the Marketplace.
+1. After the **Azure Marketplace Items** syndication tool window opens, find and select the name of the resource provider to download the required packages to your local machine.
+1. Once the download finishes, import the packages to your Azure Stack Hub instance and publish to the Marketplace.
 
 ### Connected scenario
 
@@ -76,15 +75,15 @@ For a connected scenario, download the items from Azure Marketplace directly to 
 
 ## Create plans and offers
 
-Once Azure Site Recovery on Azure Stack Hub and its dependencies are installed, the next step for the operator is to ensure that users have the correct offers assigned to their respective Azure Stack Hub user subscriptions.
+Once Azure Site Recovery on Azure Stack Hub and its dependencies are installed, the next step is to ensure that users have the correct offers assigned to their respective Azure Stack Hub user subscriptions.
 
-The process is similar to [Create an offer in Azure Stack Hub](azure-stack-create-offer.md), and the operator must add the respective **Microsoft.DataReplication** service to the plan they intend to use. This can be either a plan to a new offer, or used as an add-on to an
+The process is similar to [Create an offer in Azure Stack Hub](azure-stack-create-offer.md), and you must add the respective **Microsoft.DataReplication** service to the plan you intend to use. This can be either a plan to a new offer, or used as an add-on to an
 existing offer:
 
 :::image type="content" source="media/site-recovery-deploy-target/add-new-plan.png" alt-text="Screenshot showing new plans added." lightbox="media/site-recovery-deploy-target/add-new-plan.png":::
 
-The **Microsoft.DataReplication** service does not enforce any quotas. Instead, operators rely on the existing quotas (for VM, Compute,
-Storage, and so on) to ensure that Users can create whatever resources they are allowed to create, conforming with the capacity planning in
+The **Microsoft.DataReplication** service does not enforce any quotas. Instead, you can rely on the existing quotas (for VM, Compute,
+Storage, and so on) to ensure that users can create whatever resources they are allowed to create, conforming with the capacity planning in
 place.
 
 ## Azure Stack Hub user subscription
@@ -99,22 +98,22 @@ After the installation of the Azure Site Recovery resource provider and the assi
 
 ## Create the Site Recovery Vault
 
-In the target environment, in the Azure Stack Hub user subscription in which you plan to protect workloads, the user must create a Site Recovery Vault. A Site Recovery vault is a storage entity in the Azure Stack Hub target environment that houses data. The data are typically copies of data, or configuration information for VMs.
+In the target environment, in the Azure Stack Hub user subscription in which you plan to protect workloads, the user must create a Site Recovery Vault. A vault is a storage entity in the Azure Stack Hub target environment that contains data. The data are typically copies of data, or configuration information for VMs.
 
 To create a new vault, open the Azure Stack Hub user portal, select **Create new resource**, and then select the Azure Site Recovery items in
 the **Compute** category:
 
 :::image type="content" source="media/site-recovery-deploy-target/create-a-resource.png" alt-text="Screenshot of create a resource screen." lightbox="media/site-recovery-deploy-target/create-a-resource.png":::
 
-Provide a resource group and a name for the new recovery vault. Once created, you can open the vault to access the properties required in the Site Recovery VM appliance. In the Recovery Vault, you can either select **Protect Workload** or on the left-hand side, select the **Replicated items** blade.
+Provide a resource group and a name for the new recovery vault. Once created, you can open the vault to access the properties required in the Site Recovery VM appliance. In the recovery vault, you can either select **Protect Workload** or on the left-hand side, select the **Replicated items** blade.
 
 :::image type="content" source="media/site-recovery-deploy-target/vault-dashboard.png" alt-text="Screenshot showing vault options." lightbox="media/site-recovery-deploy-target/vault-dashboard.png":::
 
-In the **Replicated items** blade, you can select **Set up a new replication appliance**. This provides a registration key which you can use to configure the Site Recovery VM appliance (in the source environment):
+In the **Replicated items** blade, you can select **Set up a new replication appliance**. This provides a registration key that you can use to configure the Site Recovery VM appliance (in the source environment):
 
 :::image type="content" source="media/site-recovery-deploy-target/new-appliance.png" alt-text="Screenshot showing new appliance setup on portal." lightbox="media/site-recovery-deploy-target/new-appliance.png":::
 
-With this key you are ready to start the "deployment source environment" and configure the Azure Site Recovery VM appliance.
+With this key you are ready to start the deployment source environment and configure the Azure Site Recovery VM appliance.
 
 ## Next steps
 
