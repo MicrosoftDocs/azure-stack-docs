@@ -63,7 +63,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
     To enable SMB encryption, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
-- **Windows Defender Antivirus** in protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
+- **Windows Defender Antivirus** protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
 
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
