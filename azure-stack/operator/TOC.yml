@@ -464,7 +464,7 @@
         href: azure-site-recovery-overview.md
       - name: Protect virtual machines
         href: protect-virtual-machines.md
-      - name: Capacity Planning
+      - name: Capacity planning
         href: azure-site-recovery-capacity-planning.md
       - name: Known issues
         href: azure-site-recovery-known-issues.md
