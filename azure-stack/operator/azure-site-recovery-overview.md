@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery overview
+title: Azure Site Recovery overview (preview)
 description: Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.lastreviewed: 03/07/2023
 ms.date: 03/07/2023
 ---
 
-# Azure Site Recovery overview
+# Azure Site Recovery overview (preview)
 
 Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages. Azure Site Recovery on Azure Stack Hub replicates virtual machines (VMs) workloads from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to a secondary location, and access apps from there. After the primary location is running again, you can fail back to it.
 

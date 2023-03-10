@@ -1,5 +1,5 @@
 ---
-title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub
+title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub (preview)
 description: Learn how to deploy virtual machines in Azure Site Recovery from source machines on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
@@ -8,7 +8,7 @@ ms.date: 03/10/2023
 ---
 
 
-# Deploy for source environments
+# Deploy for source environments (preview)
 
 This article describes the actions that are required to complete the installation of the source environment.
 

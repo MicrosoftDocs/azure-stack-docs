@@ -462,6 +462,14 @@
       items:
       - name: Overview
         href: azure-site-recovery-overview.md
+      - name: Deploy
+        items:
+        - name: Deployment overview
+          href: site-recovery-deploy.md
+        - name: Deploy source environment
+          href: site-recovery-deploy-source.md
+        - name: Deploy target environment
+          href: site-recovery-deploy-target.md        
       - name: Protect virtual machines
         href: protect-virtual-machines.md
       - name: Capacity planning
