@@ -6,7 +6,7 @@ author: ManikaDhiman
 ms.subservice: azure-stack-hci
 ms.author: v-mandhiman
 ms.reviewer: stevenek
-ms.date: 11/28/2022
+ms.date: 3/8/2023
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -187,4 +187,4 @@ For more detailed information, see also:
 - [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 - [Register a cluster with Azure](../deploy/register-with-azure.md)
 - [Unregister Azure Stack HCI](../deploy/register-with-azure.md#unregister-azure-stack-hci-using-windows-admin-center)
-- [Remove (destroy) a cluster](cluster-powershell.md#remove-a-cluster)
+- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster)
