@@ -55,7 +55,7 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 
 4. Roll back to a supported kernel version using these steps:
     1. First, make a copy of /etc/default/grub in case there's any error. For example, `sudo cp /etc/default/grub /etc/default/grub.bak`
-    1. Then modify `/etc/default/grub` to set GRUB_DEFAULT to the version to which you want to switch back to. You might have something similar to this `GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.4.0-1077-azure"`.
+    1. Then modify `/etc/default/grub` to set GRUB_DEFAULT to the previous version that you want to use. You might have something similar to this `GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.4.0-1077-azure"`.
 
         :::image type="content" source="../operator/media/azure-site-recovery/known-issues/grub-default.png" alt-text="Sample screenshot of an Ubuntu VM kernel version rollback."lightbox="media/azure-site-recovery/known-issues/grub-default.png":::
 
@@ -77,7 +77,7 @@ There are two types of resync:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/automatic-resync-portal.png" alt-text="Sample screenshot of Automatic resync on the Users portal."lightbox="media/azure-site-recovery/known-issues/automatic-resync-portal.png":::
 
-- Manual resync. Requires user action to trigger the resync manually. Needed in the following instances:
+- Manual resync. Requires user action to trigger the resync manually and is needed in the following instances:
     - The storage account chosen for the reprotect is missing.
     - The replication disk on the appliance is missing.
     - The replication write exceeds the capacity of the replication disk on the appliance.
