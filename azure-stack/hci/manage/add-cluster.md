@@ -5,12 +5,12 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 05/27/2021
+ms.date: 11/18/2022
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
@@ -42,8 +42,10 @@ Use Windows Admin Center to join the server to your cluster.
 1. In **Server name**, enter the full-qualified domain name of the server you want to add, click **Add**, then click **Add** again at the bottom.
 1. Verify the server has been successfully added to your cluster.
 
->[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
+If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
+
+> [!NOTE]
+> If the cluster has Arc-for-server enabled, the new server automatically gets Arc-for-server enabled during the next scheduler run, which runs every hour.
 
 ### Add a server to an SDN-enabled cluster
 

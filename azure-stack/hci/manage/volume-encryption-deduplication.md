@@ -9,7 +9,7 @@ ms.date: 11/05/2021
 
 # Enable volume encryption, deduplication, and compression in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI using Windows Admin Center. It also covers how to enable deduplication and compression on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
 

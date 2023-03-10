@@ -6,8 +6,8 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 2/1/2021
 ms.author: sethm
-ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2020
+ms.reviewer: cedward
+ms.lastreviewed: 12/7/2022
 
 # Intent: As an Azure Stack user, I want an introduction to networking in Azure Stack so I can get started.
 # Keyword: azure stack networking 
@@ -37,6 +37,9 @@ Azure Stack Hub provides different kinds of networking capabilities that can be 
 - **Deployment and configuration tools**  
     Use a web-based portal or cross-platform command-line tools to deploy and configure network resources.
 
+## Azure Stack Hub IPv6 support
+
+Azure Stack Hub does not offer support for IPv6 and there are no roadmap items to provide support.
 
 ## Next steps
 

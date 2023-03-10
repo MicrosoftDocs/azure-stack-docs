@@ -12,21 +12,18 @@ ms.reviewer: johnmar
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly, and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
+An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
 Storage Replica supports both synchronous and asynchronous replication:
 
 - Synchronous replication mirrors data across sites in a low-latency network with crash-consistent volumes to ensure zero data loss at the file-system level during a failure.
-- Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies, but without a guarantee that both sites have identical copies of the data at the time of a failure.
-
->[!NOTE]
-> For asynchronous replication, you need to bring destination volumes in the other site online manually after failover. For more information, see [Asynchronous replication](/windows-server/storage/storage-replica/storage-replica-overview#asynchronous-replication).
+- Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies but without a guarantee that both sites have identical copies of the data at the time of a failure. If replication completes prior to the failure, the destination volume comes online automatically following failover. If replication is in process at the time of failure, you must manually bring the destination volume online.
 
 There are two types of stretched clusters, active-passive and active-active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
 
 In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
 
-Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
+Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provide disaster recovery and business continuity should a site suffer an outage or failure.
 
 Take a few minutes to watch the video on stretched clustering with Azure Stack HCI:
 > [!VIDEO https://www.youtube.com/embed/rYnZL1wMiqU]
@@ -49,13 +46,13 @@ When talking about stretch clustering, one of the considerations that must be ac
 
 The first and easiest is the use of DHCP. When moving a virtual machine from one site to another, one step that it will do is request a DHCP address. This will obtain the proper IP Address for the proper site it is in as long as a DHCP server is available.
 
-Next, there is the use of a static address. However, unlike Hyper-V Replica, there is not a way to specify an alternate IP address. Therefore, a script will need to be created to assign the proper IP address for the VM depending on which site it is on. For example, SiteA uses a 1.x network and SiteB uses a 156.x network. This script would need to detect the network the virtual machine is on and set a 1.x IP address scheme if it is in SiteA or a 156.x IP address scheme if it is in SiteB. The Domain Name Services (DNS) will also need to be made aware of the change and replicated between the sites.
+Next, there is the use of a static address. However, unlike Hyper-V Replica, there is not a way to specify an alternate IP address. Therefore, a script will need to be created to assign the proper IP address for the VM depending on which site it is on. For example, SiteA uses a 1.x network and SiteB uses a 156.x network. This script would need to detect the network the virtual machine is on and set a 1.x IP address scheme if it is in SiteA or a 156.x IP address scheme if it is in SiteB. The Domain Name Services (DNS) will also need to be alerted to the change and replicated between the sites.
 
 Another option is the use of an intermediary network device that will provide a single IP address for the virtual machine for client connectivity which can route the traffic to the virtual machine to the site it is currently on. Clients and DNS will always have the same address for the virtual machine, and the intermediary device would need to track the actual IP address and location of the virtual machine so that clients are directed to the virtual machine appropriately.
 
 The last option is the use of a stretched vLAN. With a stretched vLAN, virtual machines can keep the same IP address no matter the site it is on. However, due to some of the complexities of configuring and maintaining a stretched vLAN, this option is not recommended by Microsoft.
 
-With any of the above options, additional considerations (DNS, ARP caches, TTL, etc.) need to be accounted for when it comes to client connectivity and must be thoroughly thought out.  Please work with your networking team to identify the best option to meet your needs. 
+With any of the above options, additional considerations (DNS, ARP caches, TTL, etc.) need to be accounted for when it comes to client connectivity and must be thoroughly thought out. Please work with your networking team to identify the best option to meet your needs.
 
 ## Next steps
 

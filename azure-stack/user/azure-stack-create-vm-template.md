@@ -43,7 +43,7 @@ In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/A
 
 Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both master and agent node components locally:
 
-* Master node components such as API Server, Scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
+* Master node components such as API Server, Scheduler, and [etcd Server](https://etcd.io) are run in a single Linux process called **LocalKube**.
 * Agent node components are run inside docker containers exactly as they would run on a normal agent node. From an application deployment standpoint, there's no difference between deploying the application on a Minikube or in a regular Kubernetes cluster.
 
 This template installs the following components:

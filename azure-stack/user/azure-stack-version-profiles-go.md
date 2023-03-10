@@ -46,7 +46,7 @@ To use a different SDK profile or version, substitute the date in an import stat
 
 For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md).
 
-See [Go SDK profiles](https://github.com/Azure/azure-sdk-for-go/tree/main/profiles).
+See [Go SDK profiles](https://github.com/Azure/azure-sdk-for-go/tree/legacy/profiles).
 
 ## Subscription
 

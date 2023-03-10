@@ -1,19 +1,19 @@
 ---
-title: Install an Azure Stack HCI, 22H2 (preview)
+title: Install a preview version of Azure Stack HCI
 description: How to install feature updates using Windows Admin Center or Windows PowerShell.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/05/2022
+ms.date: 11/08/2022
 ---
 
-# Install an Azure Stack HCI, 22H2 (preview)
+# Install a preview version of Azure Stack HCI
 
-Applies to: Azure Stack HCI, version 22H2 preview
+> Applies to: Azure Stack HCI preview channel
 
-This article will provide instructions on installing a preview version of Azure Stack HCI OS using Windows Admin Center or PowerShell.
+This article provides instructions on installing a preview version of Azure Stack HCI OS using Windows Admin Center or PowerShell.
 
 Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis.
 
@@ -73,7 +73,7 @@ To install a preview version using PowerShell, follow these steps.
    Set-PreviewChannel
    ```
 
-   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server wasn't already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
+   This cmdlet will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server wasn't already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
 
 5. Check for the feature update:
 
@@ -86,7 +86,7 @@ To install a preview version using PowerShell, follow these steps.
 6. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. 
 
    > [!IMPORTANT]
-   > The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed.
+   > The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 22H2, or Azure Stack HCI, version 21H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed.
 
    ```PowerShell
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
@@ -99,4 +99,4 @@ To install a preview version using PowerShell, follow these steps.
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Post Installation](../manage/preview-post-installation.md)
+> [Post Installation tasks](../manage/preview-post-installation.md)

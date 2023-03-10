@@ -21,7 +21,7 @@ ms.lastreviewed: 10/23/2019
 
 As an Azure Stack Hub operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack Hub, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
-This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the control plane node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack Hub MySQL Hosting Server, and then users can create highly available MySQL databases.
+This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=mysql%20bitnami&page=1). This solution uses multiple VMs to replicate the databases from the control plane node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack Hub MySQL Hosting Server, and then users can create highly available MySQL databases.
 
 > [!IMPORTANT]
 > The **MySQL with replication** Azure Stack Marketplace item might not be available for all Azure cloud subscription environments. Verify that the marketplace item is available in your subscription before attempting to follow the rest of this tutorial.
@@ -40,8 +40,8 @@ Before starting, ensure that the [MySQL Server resource provider](azure-stack-my
 > [!IMPORTANT]
 > All of the following are required to create the MySQL cluster.
 
-- [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster): This is the Bitnami solution template that will be used for the MySQL cluster deployment.
-- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian): Debian 8 "Jessie" with backports kernel for Microsoft Azure provided by credativ. Debian GNU/Linux is one of the most popular Linux distributions.
+- [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=mysql%20bitnami&page=1): This is the Bitnami solution template that will be used for the MySQL cluster deployment.
+- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/debian.debian-10): Debian 8 "Jessie" with backports kernel for Microsoft Azure provided by credativ. Debian GNU/Linux is one of the most popular Linux distributions.
 - [Custom script for linux 2.0](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftcorporation1610754355835.azure-linux-stig-templates): Custom Script Extension is a tool to execute your VM customization tasks post VM provision. When this Extension is added to a VM, it can download scripts from Azure storage and run them on the VM. Custom Script Extension tasks can also be automated using the Azure PowerShell cmdlets and Azure Cross-Platform Command-Line Interface (xPlat CLI).
 - VM Access For Linux Extension 1.4.7: The VM Access extension enables you to reset the password, SSH key, or the SSH configurations so you can regain access to your VM. You can also add a new user with password or SSH key, or delete a user using this extension. This extension targets Linux VMs.
 
@@ -51,7 +51,7 @@ You'll also need an SSH client like [PuTTY](https://www.chiark.greenend.org.uk/~
 
 ## Create a MySQL Server cluster
 
-Use the steps in this section to deploy the MySQL Server cluster using the [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster) marketplace item. This template deploys three MySQL Server instances configured in a highly available MySQL cluster. By default, it creates the following resources:
+Use the steps in this section to deploy the MySQL Server cluster using the [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=mysql%20bitnami&page=1) marketplace item. This template deploys three MySQL Server instances configured in a highly available MySQL cluster. By default, it creates the following resources:
 
 - A virtual network
 - A network security group

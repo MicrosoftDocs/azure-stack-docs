@@ -10,7 +10,10 @@ ms.reviewer: JasonGerend
 
 # Physical network requirements for Azure Stack HCI
 
+
 > Applies to: Azure Stack HCI, versions 21H2 and 22H2
+=======
+[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
@@ -21,6 +24,7 @@ This article discusses physical (fabric) network considerations and requirements
 
 Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
+
 These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies). Select **Download Specifications, Windows Server 2022**, open the ZIP file, open **Devices and Components WHCP Requirements for Windows Server 2022.pdf**, then see the **Device.Network.Switch.AzureStackHCI** section.
 
 > [!IMPORTANT]
@@ -28,12 +32,10 @@ These requirements are also published in [Windows Hardware Compatibility Program
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet the Azure Stack HCI requirements for your specified role types. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
+
 # [Overview](#tab/overview)
 
 Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](https://review.learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements?branch=pr-en-us-12160#network-traffic-types).
-
-> [!IMPORTANT]
-> We update these lists as we're informed of changes by network switch vendors.
 
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
@@ -253,6 +255,7 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 
 ### Custom TLV requirements
 
+
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table above shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version 21H2.
 
 # [22H2](#tab/22H2reqs)
@@ -326,6 +329,7 @@ Ethernet switches used for Azure Stack HCI SDN compute traffic must support Bord
 
 ### DHCP Relay Agent 
 *New Requirement in 22H2*
+
 
 Ethernet switches used for Azure Stack HCI management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 

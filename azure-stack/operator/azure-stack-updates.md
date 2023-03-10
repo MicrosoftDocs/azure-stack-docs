@@ -4,10 +4,10 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 11/14/2022
 ms.author: sethm
 ms.lastreviewed: 07/14/2021
-ms.reviewer: niy
+ms.reviewer: dechoudhury
 
 # Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
 # Keyword: manage updates azure stack hub
@@ -51,6 +51,8 @@ The three types of updates are released with the following cadence:
 - **Azure Stack Hub hotfixes**. Hotfixes are time-sensitive releases that can be released at any time. If you are upgrading from one major version to another (for example, 1.2002.x to 1.2005.x), the latest hotfixes, if any have been released for that new major version, are installed automatically.
 
 - **OEM hardware vendor-provided updates**. OEM hardware vendors release their updates on an as-needed basis.
+  > [!IMPORTANT]
+  > Make sure you have installed the latest available OEM update version before installing the latest MS version.
 
 To continue to receive support, you must keep your Azure Stack Hub environment on a supported Azure Stack Hub software version. For more information, see [Azure Stack Hub Servicing Policy](azure-stack-servicing-policy.md).
 
@@ -89,6 +91,9 @@ Once you know you have an update, apply it by using the following steps.
 1. **Plan for the update**
 
     Prepare your Azure Stack Hub to make the update process go as smoothly as possible so that there's minimal impact on your users. Notify your users of any possible service outage and then follow the steps to prepare your instance for the update. Be sure to follow all steps in the [Azure Stack Hub pre-update checklist](release-notes-checklist.md) to ensure that you've completed the required prerequisites for applying an update. Also make sure to schedule an appropriate maintenance window for the update type being applied.
+
+    > [!IMPORTANT]
+    > Before proceeding with the update, make sure that the culture session settings are set correctly using PowerShell. A culture is a locale for unmanaged code development. The information includes the names for the culture, the alphabet, the calendar, and formatting for dates and strings. For more information, see the [CultureInfo class](/dotnet/api/system.globalization.cultureinfo).
 
 2. **Upload and prepare the update package**
 
