@@ -72,8 +72,6 @@ Before you run the script, ensure that a virtual switch is created and the serve
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
 
-To learn more about removing a server from a cluster, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
-
 For more information about removing a cluster, see [Remove a Cluster](/hci/manage/cluster-powershell#remove-a-cluster).
 
 ### Uninstall VM extensions
