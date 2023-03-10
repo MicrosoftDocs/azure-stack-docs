@@ -133,7 +133,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    ```PowerShell
    $subscription="subscription ID in Azure"
    $resource_group="<pre-created resource group in Azure>"
-   $location="<Azure Region - Available regions include 'eastus', 'westeurope' and 'southeastasia'>"
+   $location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
    ```
 
    where:
@@ -142,7 +142,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | ----- | ----------- |
    | **subscription** | Subscription ID in Azure. |
    | **resource_group** | Name of the pre-created resource group in Azure. |
-   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **westeurope** or **southeastasia**. |
+   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
 
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
@@ -178,7 +178,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -218,7 +218,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
