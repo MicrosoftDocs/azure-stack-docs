@@ -3,8 +3,8 @@ title: Renew Network Controller certificates before they expire
 description: This article describes how to renew Network Controller certificates before they expire.
 author: ManikaDhiman
 ms.author: v-mandhiman
-ms.topic: conceptual
-ms.date: 08/22/2022
+ms.topic: how-to
+ms.date: 03/10/2023
 ---
 
 # Renew Network Controller certificates before they expire
@@ -61,7 +61,7 @@ Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subj
 
 You use the Network Controller's REST certificate for:
 
-- Northbound communication with REST clients 
+- Northbound communication with REST clients
 - Encryption of credentials
 - Southbound communication to hosts and Software Load Balancer VMs
 
@@ -197,3 +197,89 @@ To renew the Network Controller node certificate, perform the following steps on
    ```powershell
    Set-NetworkControllerNode -Name "<Name of the Network Controller node>" -NodeCertificate $cert
    ```
+
+## Renew Network Controller certificates automatically
+
+Azure Stack HCI supports automatic rotation of Network Controller certificates before their expiry to avoid any downtime or outages.
+
+Here are the scenarios where certificate autorotation is supported:
+
+- Self-signed certificates: Any existing self-signed certificates are autorotated by default. The default expiry time three years, after which the certificates get auto-rotate. But you can specify a  but you can change it as per .
+- Bring your own certificates: You can generate your self-signed certificate or request certificate from CA, then use those certificates for rotation.
+- Use pre-installed certificates: You can have the required certificates installed on Network Controller nodes and use them for rotation.
+
+### Renew self-signed certificates automatically
+Start the cmdlet:
+
+Start with default option. By default, the certificate generated will be valid for 3 year.
+Import-Module -Name SdnDiagnostics -Force
+Start-SdnCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -Credential (Get-Credential)
+
+To specify a different valid period for the auto generated certificate, use -NotAfter parameter. Example below showed valid for 5 years.
+Import-Module -Name SdnDiagnostics -Force
+Start-SdnCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -NotAfter (Get-Date).AddYears(5) -Credential (Get-Credential)
+
+There will be two prompts for credential. For 1st credential enter the password to protect the generated certificate. The username part can be anything and won't be used. For 2nd credential, use a credential have admin access to all NetworkController Nodes.
+
+You will receive below warning after certificates generated. Press Y to continue. You can avoid any prompt for confirmation by specify -Force in Start-SdnCertificateRotation
+
+Wait until the cmdlet finish.
+
+### Bring your own certificates
+
+Prepare your certificates in .pfx format to a folder on one of the Network Controller node where you want to start the cmdlet.-
+
+Start the cmdlet:
+
+Import-Module -Name SdnDiagnostics -Force
+Start-SdnCertificateRotation -CertPath "<Path where you put your certificates>" -CertPassword (Get-Credential).Password -Credential (Get-Credential)
+There will be two prompts for credential. For 1st credential enter the password to protect the generated certificate. The username part can be anything and won't be used. For 2nd credential, use a credential have admin access to all Network Controller Nodes.
+
+You will receive below warning after certificates generated. Press Y to continue. You can avoid any prompt for confirmation by specify -Force in Start-SdnCertificateRotation
+
+
+
+Wait until the cmdlet finish.
+
+### Use The Pre-Installed Certificate on Network Controller
+
+Install the certificates use the way you preferred on all Network Controller Nodes and ensure they are trusted by other infrastructure nodes include SDN Mux Servers and SDN hosts.
+
+Create certificate rotation configuration:
+
+Generate the default certificate rotation configuration
+
+Import-Module -Name SdnDiagnostics -Force
+$certConfig = New-SdnCertificateRotationConfig
+$certConfig
+Review the default certificate rotation configuration to confirm if the auto detected certificates are the one you want to use. By default, it will retrieve the latest issued certificate to be used.
+
+Example:
+
+
+
+ws22ncx.corp.contoso.com show the node certificates thumbprint
+
+NcRestCert show the Network Controller Rest certificate thumbprint
+
+ClusterCredentialType show the Network Controller Cluster authentication type. If this is not X509, the node certificate won't be used and won't be shown in the output
+
+If the above $certConfig generated is incorrect. You can change it like:
+
+$certConfig.NcRestCert = <new certificate thumbprint>
+Start certificate rotation, enter the credential that have admin access all Network Controller Nodes.
+
+Import-Module -Name SdnDiagnostics -Force
+Start-SdnCertificateRotation -CertRotateConfig $certConfig -Credential (Get-Credential)
+You will receive below warning after certificates generated. Press Y to continue. You can avoid any prompt for confirmation by specify -Force in Start-SdnCertificateRotation
+
+
+
+Wait until the cmdlet finish.
+
+## Accounts to run PowerShell
+
+There are two types of accounts used by SDN to authorize access. See NC Security for more information.
+
+-Credential is used to specify account that have local admin privilege on Network Controller.
+-NcRestCredential is used to specify account that have access NC REST API. It is member of ClientSecurityGroup from Get-NetworkController. This account will be used to call REST API to update credential resource with new certificate.
