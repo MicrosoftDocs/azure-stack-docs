@@ -30,7 +30,7 @@ When purchasing network switches, contact your switch vendor and ensure that the
 
 # [Overview](#tab/overview)
 
-Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](../host-network-requirements#network-traffic-types).
+Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](host-network-requirements.md#network-traffic-types).
 
 > [!IMPORTANT]
 > We update these lists as we're informed of changes by network switch vendors.
@@ -38,16 +38,6 @@ Click on a vendor tab to see validated switches for each of the Azure Stack HCI 
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 # [Arista](#tab/Arista)
-### 21H2
-
-|Model|Firmware|Management|Storage|Compute (Standard)|Compute (SDN)|
-|-----|---|:-:|:-:|:-:|:-:|
-| [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X | |
-| [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
-| [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
-| [7280R](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X|  X|
-| [7280R3](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
-| [7060X4](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
 
 ### 22H2
 
@@ -59,6 +49,17 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X|  X|
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
+
+### 21H2
+
+|Model|Firmware|Management|Storage|Compute (Standard)|Compute (SDN)|
+|-----|---|:-:|:-:|:-:|:-:|
+| [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X | |
+| [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
+| [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
+| [7280R](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X|  X|
+| [7280R3](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
+| [7060X4](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -76,22 +77,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 # [Cisco](#tab/Cisco)
 
-### 21H2
-
-<!-- [!Important]
->> NX-OS version 10.3(2)F or later is required. -->
-
-|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
-| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
-| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X|  X|
-| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
-
 ### 22H2
-
 <!-- > [!Important]     
 > NX-OS version 10.3(2)F or later is required. -->
 
@@ -106,14 +92,18 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [Dell](#tab/Dell)
-
 ### 21H2
 
-|Model | Firmware  | Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  |--- | :-:  | :-:  | :-:   | :-:   |
-| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X | |
-| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(25, 100 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X|
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
+| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
+| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
+| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X|  X|
+| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|X| X| X| X |
+| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
+
+# [Dell](#tab/Dell)
 
 ### 22H2
 
@@ -126,14 +116,14 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [HPE](#tab/HPE)
-
 ### 21H2
 
-|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE) |Comware 7 version R6710 or later|X| X| X| X | |
-| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
+|Model | Firmware  | Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |--- | :-:  | :-:  | :-:   | :-:   |
+| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X | |
+| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(25, 100 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X|
+
+# [HPE](#tab/HPE)
 
 ### 22H2
 
@@ -143,6 +133,13 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
+### 21H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE) |Comware 7 version R6710 or later|X| X| X| X | |
+| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
 
 # [Juniper](#tab/Juniper)
 
@@ -183,15 +180,6 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 # [NVIDIA](#tab/NVIDIA)
 
-### 21H2
-
-
-|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X | |
-| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X|
-| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
-
 ### 22H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -201,6 +189,15 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
+### 21H2
+
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X | |
+| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X|
+| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
 
 ---
 
@@ -214,51 +211,6 @@ This section lists industry standards that are mandatory for the specific roles 
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
 
 Here are the mandatory IEEE standards and specifications:
-
-# [21H2](#tab/21H2reqs)
-
-### 21H2 Role Requirements
-|Requirement | Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  | :-:  | :-:  | :-:   | :-:   |
-| Virtual LANS |X| X| X| X | |
-| Priority Flow Control || X| | |
-| Enhanced Transmission Selection || X| ||
-| LLDP VLAN Name|X| X| X|X |
-| LLDP Maximum Frame Size|X| X| X|X |
-
-### Standard: IEEE 802.1Q
-
-Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
-
-### Standard: IEEE 802.1Qbb
-
-Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
-
-### Standard: IEEE 802.1Qaz
-
-Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
-
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, we recommend that you do not configure ingress rates. However, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
-
-> [!NOTE]
-> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
-
-
-### Standard: IEEE 802.1AB
-
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI to enable troubleshooting of physical networking configurations.
-
-Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on the switch ports.
-
-### Custom TLV requirements
-
-
-LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table below shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version 21H2.
-
-| Organization | TLV Subtype                      |
-|--------------|----------------------------------|
-| IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
-| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
 
 # [22H2](#tab/22H2reqs)
 
@@ -332,6 +284,52 @@ Ethernet switches used for Azure Stack HCI SDN compute traffic must support Bord
 
 
 Ethernet switches used for Azure Stack HCI management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+
+# [21H2](#tab/21H2reqs)
+
+### 21H2 Role Requirements
+|Requirement | Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  | :-:  | :-:  | :-:   | :-:   |
+| Virtual LANS |X| X| X| X | |
+| Priority Flow Control || X| | |
+| Enhanced Transmission Selection || X| ||
+| LLDP VLAN Name|| X| X|X |
+| LLDP Maximum Frame Size|X| X| X|X |
+
+### Standard: IEEE 802.1Q
+
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+
+### Standard: IEEE 802.1Qbb
+
+Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
+
+### Standard: IEEE 802.1Qaz
+
+Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
+
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+
+> [!NOTE]
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
+
+
+### Standard: IEEE 802.1AB
+
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI to enable troubleshooting of physical networking configurations.
+
+Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on the switch ports.
+
+### Custom TLV requirements
+
+
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table below shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version 21H2.
+
+| Organization | TLV Subtype                      |
+|--------------|----------------------------------|
+| IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
+| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
+
 
 ---
 
