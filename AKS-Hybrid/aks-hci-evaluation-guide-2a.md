@@ -81,7 +81,7 @@ In order to deploy AKS using Windows Admin Center, connect your Windows Admin Ce
 In order to successfully deploy AKS with Windows Admin Center, other permissions were applied on the Windows Admin Center Azure AD application that was created when you connected Windows Admin Center to Azure. In this step, you can quickly validate those permissions.
 
 1. Still in Windows Admin Center, click the **Settings** gear in the top-right corner.
-2. Under **Gateway**, click **Azure**. You should see your previously registered Azure AD app.
+2. Under **Gateway**, click **Register**. You should see your previously registered Azure AD app.
 3. Click on **View in Azure** to be taken to the Azure AD app portal, where you should see information about this app, including required permissions. If you're prompted to sign in, provide appropriate credentials.
 4. Once signed in, under **Configured permissions**, you should see a few permissions listed with the status **Granted for...** and the name of your tenant. The **Microsoft Graph (5)** API permissions show as **Not granted**, but this status will be updated upon deployment.
 
