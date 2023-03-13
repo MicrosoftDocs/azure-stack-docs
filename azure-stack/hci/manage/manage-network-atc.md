@@ -226,7 +226,7 @@ Remove-NetIntent -GlobalOverrides $clusterOverride
 
 Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
 
-The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
+The `New-NetIntentGlobalProxyOverrides` command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
 
 ###### Default parameter set
 
@@ -250,16 +250,16 @@ AutoDetect: Similar to the AutoDetect parameter above, this is a true or false p
 
 ##### Setting-up proxy
 
-
-You can set your proxy configurations in the following ways: 
+You can set your proxy configurations in the following ways:
 
 ```powershell
-$ProxyOverride = New-NetIntentProxyOverride -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
 ```
 
-Using the AutoDetect switch, you can set your proxy configuration in the following way: 
+Using the `AutoConfigURL` switch, you can set your proxy configuration in the following way:
+
 ```powershell
-$ProxyOverride = New-NetIntentProxyOverride -AutoConfigUrl https://itg.contoso.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -AutoConfigUrl https://itg.contoso.com
 ```
 
 You can add a GlobalProxyOverride for your cluster as follows: 
