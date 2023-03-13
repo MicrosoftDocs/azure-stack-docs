@@ -64,7 +64,7 @@ Your Azure Virtual Machine deployment automatically installed Windows Admin Cent
 
 In order to deploy AKS using Windows Admin Center, connect your Windows Admin Center instance to Azure:
 
-1. Still in **Settings**, under **Gateway**, select **Azure**.
+1. Still in **Settings**, under **Gateway**, select **Register**.
 2. Select **Register**, and in the **Get started with Azure in Windows Admin Center** blade, follow the instructions to **Copy the code**, then select the link to configure device login.
 3. When prompted for credentials, enter your Azure credentials for a tenant you want to use to register Windows Admin Center.
 4. Back in Windows Admin Center, your tenant information has been added. You can now select **Connect** to connect Windows Admin Center to Azure.
