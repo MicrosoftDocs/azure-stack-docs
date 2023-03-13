@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 3/8/2023
+ms.date: 3/15/2023
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
@@ -271,12 +271,21 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
     - Specify one or more static addresses. The IP address must be entered in the following format: IP address/current subnet length. For example: 10.0.0.200/24.
     - Assign address dynamically with DHCP.
 
-1. When finished, select **Create cluster**. This can take a while to complete. If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
+1. When finished, select **Create cluster**. This can take a while to complete. 
 
-    > [!NOTE]
-    > The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
+    If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
 
-1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
+    > [!IMPORTANT]
+    >  If you failed to create a cluster, DO NOT click the Back button instead of the Retry connectivity checks button. Clicking the Back button will confuse the Cluster Creation wizard and possibly reset the entire process.
+
+    If you run into issues with deployment after the cluster is created and you want to restart the Cluster Creation wizard, first remove (destroy) the cluster. To do so, see Remove a Cluster.
+
+1. The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
+
+    Deploy host networking settings, select Deploy to apply the Network ATC intents you defined earlier. If you chose to manually deploy host networking in step 1.8 of the Cluster Creation wizard, you won't see this page.
+
+1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the 
+ Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
 
 1. On **3.3 Validate cluster**, select **Validate**. Validation can take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production. If you experience issues with cluster validation, see [Troubleshoot cluster validation reporting](../manage/validate-qos.md).
 
@@ -301,7 +310,8 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
 
 ## Step 4: Storage
 
-Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
+Complete these steps after finishing the Create Cluster wizard. 
+Step 4 walks you through setting up Storage Spaces Direct for your cluster.
 
 1. On **4.1 Clean drives**, you can optionally select **Erase drives** if it makes sense for your deployment.
 1. On **4.2 Check drives**, click the **>** icon next to each server to verify that the disks are working and connected. If all is OK, click **Next**.
@@ -357,6 +367,13 @@ If Network Controller deployment fails, do the following before you try this aga
 - Clean up any VHD mount points that the wizard created.
 
 - Ensure you have at least 50-100GB of free space on your Hyper-V hosts.
+
+## Step 6: Remove a Cluster (optional)
+
+There are situations in which you may need to actually remove the cluster which you created in Step 3. If so, choose the Remove the Cluster option in the Cluster 
+Creation Wizard.
+
+For more information on removing a cluster, see [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 ## Next steps
 
