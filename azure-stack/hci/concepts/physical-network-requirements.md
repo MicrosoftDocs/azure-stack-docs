@@ -30,7 +30,7 @@ When purchasing network switches, contact your switch vendor and ensure that the
 
 # [Overview](#tab/overview)
 
-Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](https://learn.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types).
+Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](../host-network-requirements#network-traffic-types).
 
 > [!IMPORTANT]
 > We update these lists as we're informed of changes by network switch vendors.
@@ -220,11 +220,11 @@ Here are the mandatory IEEE standards and specifications:
 ### 21H2 Role Requirements
 |Requirement | Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  | :-:  | :-:  | :-:   | :-:   |
-| Virtual LANS (Dot1q) |X| X| X| X | |
-| Priority Flow Control (PFC) |X| X| X|X |
-| Enhanced Transmission Selection (ETS) |X| X| X|X |
-| VLAN Name (Subtype = 3) |X| X| X|X |
-| Maximum Frame Size (Subtype = 4) |X| X| X|X |
+| Virtual LANS |X| X| X| X | |
+| Priority Flow Control || X| | |
+| Enhanced Transmission Selection || X| ||
+| LLDP VLAN Name|X| X| X|X |
+| LLDP Maximum Frame Size|X| X| X|X |
 
 ### Standard: IEEE 802.1Q
 
@@ -253,7 +253,12 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 ### Custom TLV requirements
 
 
-LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table above shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version 21H2.
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table below shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required by Azure Stack HCI OS version 21H2.
+
+| Organization | TLV Subtype                      |
+|--------------|----------------------------------|
+| IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
+| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
 
 # [22H2](#tab/22H2reqs)
 
@@ -261,16 +266,16 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)| 
 |-----  | :-:  | :-:  | :-:   | :-:   |
-| Virtual LANS (Dot1q) |X| X| X| X | |
-| Priority Flow Control (PFC) || X| | |
-| Enhanced Transmission Selection (ETS) || X| | |
-| Port VLAN ID (Subtype = 1) <br> *Minimum of 10 VLANS*  |X| | | |
-| VLAN Name (Subtype = 3) || X| X|X |
-| Link Aggregation Flag (Subtype = 7) |X| X| X|X |
-| ETS Configuration (Subtype = 9) ||X | | |
-| ETS Recommendation (Subtype = A) || X|| |
-| PFC Configuration (Subtype = B) || X| | |
-| Maximum Frame Size (Subtype = 4) |X| X| X|X |
+| Virtual LANS |X| X| X| X | |
+| Priority Flow Control|| X| | |
+| Enhanced Transmission Selection|| X| | |
+| LLDP Port VLAN ID |X| | | |
+| LLDP VLAN Name|| X| X|X |
+| LLDP Link Aggregation|X| X| X|X |
+| LLDP ETS Configuration||X | | |
+| LLDP ETS Recommendation || X|| |
+| LLDP PFC Configuration  || X| | |
+| LLDP Maximum Frame Size |X| X| X|X |
 | Maximum Transmission Unit || | |X |
 | Border Gateway Protocol || | |X |
 | DHCP Relay Agent |X| | | |
@@ -301,19 +306,17 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 
 ### Custom TLV requirements
 
-LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table above shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required per role.
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The table below shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required.
 
-<!--
-| Version Required                   | Organization | TLV Subtype                      |
-|------------------------------------|--------------|----------------------------------|
-| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
-| 22H2 and later                     | IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
-| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | Link Aggregation (Subtype = 7)   |
-| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Configuration (Subtype = 9)  |
-| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | ETS Recommendation (Subtype = A) |
-| 22H2 and later **(*New in 22H2*)** | IEEE 802.1   | PFC Configuration (Subtype = B)  |
-| 22H2 and later                     | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
--->
+| Organization | TLV Subtype                      |
+|--------------|----------------------------------|
+| IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
+| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
+| IEEE 802.1   | Link Aggregation (Subtype = 7)   |
+| IEEE 802.1   | ETS Configuration (Subtype = 9)  |
+| IEEE 802.1   | ETS Recommendation (Subtype = A) |
+| IEEE 802.1   | PFC Configuration (Subtype = B)  |
+| IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
 ### Maximum Transmission Unit 
 *New Requirement in 22H2*
