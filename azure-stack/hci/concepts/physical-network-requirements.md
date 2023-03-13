@@ -50,6 +50,9 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
 
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 21H2
 
 |Model|Firmware|Management|Storage|Compute (Standard)|Compute (SDN)|
@@ -61,8 +64,6 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R3](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
 | [7060X4](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
 
-> [!NOTE]
-> Guest RDMA requires both Compute (Standard) and Storage.
 
 # [Aruba](#tab/Aruba)
 
@@ -143,6 +144,19 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 # [Juniper](#tab/Juniper)
 
+### 22H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later|X| X| X| X | |
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X| X|
+| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
+| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X|  X|
+| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X|  X|
+| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|X| X| X| X |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 21H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -153,19 +167,6 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X|  X|
 | [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X|  X|
 | [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
-
-### 22H2
-
-|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later|X| X| X| X | |
-| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X| X|
-| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
-| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X|  X|
-| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X|  X|
-| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|X| X| X| X |
-> [!NOTE]
-> Guest RDMA requires both Compute (Standard) and Storage.
 
 # [Lenovo](#tab/Lenovo)
 
