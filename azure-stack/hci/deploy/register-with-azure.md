@@ -47,7 +47,7 @@ Regions supported in the Azure Government cloud:
 
 - US Gov Virginia
 
-Regions supported for Additional Features of Azure Stack HCI
+Regions supported for additional features of Azure Stack HCI:
 - Currently, Azure Arc Resource Bridge only supports the following regions for Azure Stack HCI registration:
   - East US
   - West Europe
