@@ -47,6 +47,14 @@ Regions supported in the Azure Government cloud:
 
 - US Gov Virginia
 
+Regions supported for Additional Features of Azure Stack HCI
+- Currently Azure Arc Resource Bridge only supports the following Regionsfor Azure Stack HCI Registration:
+  - East US
+  - West Europe
+  
+  For More Information please refer to: [Azure Arc Resource Bridge PreRequisites](https://learn.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-vm-management-prerequisites#azure-requirements]).
+ 
+
 ## Prerequisites for cluster registration
 
 - **HCI cluster must exist**: You won't be able to register your cluster with Azure until you've created an Azure Stack HCI cluster. For the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing. Make sure every server in the cluster is up and running.
