@@ -52,7 +52,7 @@ Regions supported for additional features of Azure Stack HCI:
   - East US
   - West Europe
   
-For more information, see [Azure Arc Resource Bridge PreRequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements]).
+For more information, see [Azure Arc Resource Bridge PreRequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements).
  
 
 ## Prerequisites for cluster registration
