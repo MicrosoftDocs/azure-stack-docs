@@ -165,7 +165,7 @@ The following scaling example is based on these general assumptions/use cases:
 
   - **Standard_D32s_v3**, for the AKS host with 32 cores and 128 GB - could support a maximum of 1,600 nodes. 
   > [!NOTE]
-  Since this has not been tested extensively at this time, it will require a careful approach and validation.
+  > Since this has not been tested extensively at this time, it will require a careful approach and validation.
 
 - At a scale like this, you may want to split the environment into at least eight (8) target clusters with 200 worker nodes each.
 
