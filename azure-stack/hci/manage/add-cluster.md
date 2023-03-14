@@ -5,7 +5,7 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 11/18/2022
+ms.date: 3/10/2023
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
@@ -71,6 +71,8 @@ Before you run the script, ensure that a virtual switch is created and the serve
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
+
+For more information about removing a cluster, see [Remove a Cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 ### Uninstall VM extensions
 
@@ -271,4 +273,4 @@ Once the servers have been successfully removed, the associated drives are autom
 
 ## Next steps
 
-- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
+- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md).
