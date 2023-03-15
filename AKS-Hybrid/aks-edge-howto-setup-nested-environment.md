@@ -1,7 +1,7 @@
 ---
 title: Nested virtualization environment for AKS Edge Essentials
 description: Learn how to prepare your nested virtualization environment for AKS Edge clusters. 
-author: fcabrera
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
 ms.date: 02/17/2023
@@ -13,7 +13,7 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge cluster. 
 
 >[!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM or vSpere. 
+> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor.  
 
 ## Prerequisites
 
