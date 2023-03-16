@@ -444,7 +444,8 @@ To get the activation key, run the following PowerShell cmdlets:
 Return to the Azure Stack Hub environment with the file or text from the activation key created from Get-AzsActivationKey. Next create an activation resource in Azure Stack Hub using that activation key. To create an activation resource, run the following PowerShell cmdlets:
 
   ```powershell
-  $ActivationKey = "<activation key>"
+  # Open the file that contains the activation key (from Azure), copy the entire contents into your clipboard, then within your PowerShell session (that will communicate with the PEP), paste the activation key contents into a string variable, enclosed by quotation marks: 
+  $ActivationKey = "<paste activation key here>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
