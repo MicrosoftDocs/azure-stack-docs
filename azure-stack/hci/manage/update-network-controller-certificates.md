@@ -208,9 +208,9 @@ Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdl
 - [Bring your own certificates](#auto-rotate-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate rotation. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
 - [Pre-installed certificates](#auto-rotate-pre-installed-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to rotate those certificate to other SDN infrastructure components.
 
-For more information about how to manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
+For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
 
-## Requirements
+### Requirements
 
 Here are the requirements for certificate rotation:
 
@@ -219,15 +219,16 @@ Here are the requirements for certificate rotation:
 <!--Confirm if we need to mention these two account types here-->
 - You must have credentials for the following two types of accounts to authorize communication between Network Controller nodes:
 
-   - `Credential` specifies a user account with local admin privileges on Network Controller.
+   - `Credential` to specify a user account with local admin privileges on Network Controller.
 
-   - `NcRestCredential` specifies a user account with access to Network Controller REST API. It is a member of `ClientSecurityGroup` from [`Get-NetworkController`](/powershell/module/networkcontroller/get-networkcontroller). This account is used to call REST API to update credential resource with the new certificate.
+   - `NcRestCredential` to specify a user account with access to Network Controller REST API. It is a member of `ClientSecurityGroup` from [`Get-NetworkController`](/powershell/module/networkcontroller/get-networkcontroller). This account is used to call REST API to update credential resource with the new certificate.
 
    For more information about configuring authorization for Network Controller Northbound communication, see [Authorization](./nc-security.md#authorization) for Northbound communication.
 
 ### Auto-rotate self-signed certificates
 
-<!--Confirm if this is one-time activity? Or we need to manually run the cmdlet again after the validity period-->You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and auto-rotate them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
+<!--Confirm if this is one-time activity? Or we need to manually run the cmdlet again after the validity period?-->
+You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and auto-rotate them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
 
 Perform these steps on one of the Network Controller nodes to generate self-signed certificates and auto-rotate them:
 
@@ -270,7 +271,7 @@ Perform these steps on one of the Network Controller nodes to rotate your own ce
 
 1. Prepare your certificates in `.pfx` format and save in a folder on one of the Network Controller nodes from where you'll run the `Start-SdnCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
-1. Run the `Start-SdnCertificateRotation` cmdlet:
+1. To start certificate rotation, run the following commands:
 
    ```powershell
    Import-Module -Name SdnDiagnostics -Force
@@ -292,6 +293,7 @@ Perform these steps on one of the Network Controller nodes to rotate your own ce
 
 ### Auto-rotate pre-installed certificates
 
+<!--Is there a doc section that we can link to for pre-installed certificates-->
 In this scenario, you have the required certificates installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to rotate those certificate to other SDN infrastructure components.
 
 Perform these steps on one of the Network Controller nodes to auto-rotate the pre-installed certificates:
@@ -316,11 +318,11 @@ Perform these steps on one of the Network Controller nodes to auto-rotate the pr
 
       where:
 
-      - **ws22nc*x*.corp.contoso.com** is the certificate's thumbprint on each node.
-      - **ClusterCredentialType** is the Network Controller Cluster authentication type. If this is not X509, the node certificate won't be used and won't be shown in the output.
-      - **NcRestCert** is the thumbprint of the Network Controller Rest certificate.
+      - **ws22nc*x*.corp.contoso.com** shows the certificate's thumbprint for each Network Controller node.
+      - **ClusterCredentialType** shows the Network Controller Cluster authentication type. If this is not X509, the node certificate won't be used and won't be shown in the output.
+      - **NcRestCert** shows the thumbprint of the Network Controller Rest certificate.
 
-   1. (Optional) If the generated `$certConfig` isn't correct, you can change it by specifying a new certificate's thumbprint. For example, to change the thumbprint of the Network Controller Rest certificate, run the following cmdlet:
+   1. (Optional) If the generated `$certConfig` isn't correct, you can change it by specifying a new certificate's thumbprint. For example, to change the thumbprint of the Network Controller Rest certificate, run the following command:
 
       ```powershell
       $certConfig.NcRestCert = <new certificate thumbprint>
