@@ -112,7 +112,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X | |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
-| [S54xx series](https://i.dell.com/sites/csdocuments/Shared-Content_data-Sheets_Documents/en/pwcnt-5400-specs.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
+| [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
