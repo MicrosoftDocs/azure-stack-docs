@@ -47,9 +47,11 @@ The Azure requirements include:
 
 - Required Azure permissions:
 
-  - To onboard the Arc Resource Bridge, you must have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role for the resource group.
+  - To install the Arc Resource Bridge, you must have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role for the resource group.
     
   - To read, modify, and delete the Arc resource bridge, you must have the Contributor role for the resource group.
+
+  - To provision Arc VMs & entities through Azure Portal, users must have Contributor level access at the subscription level.
 
 ## Networking requirements
 
