@@ -197,29 +197,29 @@ The following section lists the allowed commands that Microsoft support can exec
 
 ### Access level: Diagnostics
 
-The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session:
+The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session. The commands are grouped based on their functions.
 
-- **Default types**
+**Default types**
 
-    ```powershell
-        Clear-Host
-        Exit-PSSession
-        Format-Table
-        Format-List
-        Get-Command
-        Get-FormatData
-        Get-Date
-        Get-Help
-        Get-Service
-        Get-Process
-        Measure-Object        
-        Out-Default
-        Select-Object
-        Sort-Object
-        Where-Object
-    ```
+```powershell
+    Clear-Host
+    Exit-PSSession
+    Format-Table
+    Format-List
+    Get-Command
+    Get-FormatData
+    Get-Date
+    Get-Help
+    Get-Service
+    Get-Process
+    Measure-Object        
+    Out-Default
+    Select-Object
+    Sort-Object
+    Where-Object
+```
 
-- **Azure Stack HCI**
+**Azure Stack HCI**
 
 ```powershell
     Get-AzureStackHCI
@@ -230,7 +230,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Test-AzStackHCIConnection
 ``` 
 
-- **Hyper-V**
+**Hyper-V**
 
 ```powershell
     Get-VHD
@@ -299,7 +299,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Get-VMVideo
 ```
 
-- **Failover Cluster**
+**Failover Cluster**
 
 ```powershell
     Get-Cluster
@@ -316,7 +316,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Test-CauSetup
 ```
 
-- **Net Adapter**
+**Net Adapter**
 
 ```powershell
     Get-NetAdapter
@@ -423,7 +423,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Get-SecureBootPolicy
 ```
 
-- **Storage**
+**Storage**
 
 ```powershell
     Get-StorageEnclosure
@@ -503,9 +503,9 @@ The **Diagnostics** access level includes the following commands that Microsoft 
 
 ### Access level: Diagnostics and repair
 
-The **Diagnostics and repair** access level includes the following commands that Microsoft support can execute during a remote support session:
+The **Diagnostics and repair** access level includes the following commands that Microsoft support can execute during a remote support session. The commands are grouped based on their functions.
 
-- **Default types**
+**Default types**
 
 ```powershell
     Start-Service
