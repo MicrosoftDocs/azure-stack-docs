@@ -241,11 +241,18 @@ sections:
              ```
           
           1. Ensure that all network names and IP addresses are in an online state.
-          1. Run the following command:
+          1. Run the following two commands:
           
              ```powershell
-             Stop-ClusterResource -name "Cluster IP Address 10.185.210.0" and then Start-ClusterResource -name "Cluster IP Address 10.185.210.0"
+             Stop-ClusterResource -name "Cluster IP Address x.x.x.x"
              ```
+          
+             and then
+             
+             ```powershell
+             Start-ClusterResource -name "Cluster IP Address x.x.x.x"
+             ```
+          
       - question: | 
           When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 
