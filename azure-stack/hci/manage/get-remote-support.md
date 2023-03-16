@@ -4,9 +4,8 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurepowershell
-ms.date: 07/22/2022
+ms.custom: devx-track-azurepowershell
+ms.date: 03/16/2023
 ---
 
 # Get remote support for Azure Stack HCI (preview)
@@ -36,9 +35,9 @@ Remote support gives you the ability to:
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
 - Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
 
-## Before you begin
+## Workflow
 
-Before you begin using remote support, you must:
+The high-level workflow to enable remote support is as follows:
 
 - [Submit a support request](#submit-a-support-request)
 - [Create a KDS root key](#create-a-kds-root-key)
@@ -47,6 +46,10 @@ Before you begin using remote support, you must:
 - [Install JEA configurations](#install-jea-configurations-before-azure-registration)
 - [Install Remote Support extension](#grant-remote-support-access)
 - [Grant remote support access](#grant-remote-support-access)
+
+## Prerequisites
+
+- For several remote support actions, you must have a domain administrator account. Make sure your administrator account is a member of the Domain Administrative group.
 
 ### Submit a support request
 
@@ -75,7 +78,7 @@ Install the Az.StackHCI PowerShell module. Make sure that the module is updated 
 Install-Module -Name Az.StackHCI
 ```
 
-If not already installed, run the following cmdlet:
+If not already installed, run the following cmdlet as a domain admin:
 
 ```powershell
 Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
@@ -97,7 +100,7 @@ If you are using a proxy with Azure Stack HCI, include the following endpoints i
 
 ### Install JEA configurations (before Azure registration)
 
-A local domain administrator must install the following JEA configurations to grant remote support access. If the cluster is not registered with Azure, Microsoft support will provide you with the shared access signature (SAS) token required to enable remote support.
+A domain administrator must install the following JEA configurations to grant remote support access. If the cluster is not registered with Azure, Microsoft support will provide you with the shared access signature (SAS) token required to enable remote support.
 
 | Name | Description |
 |--|--|
@@ -112,7 +115,7 @@ For example scenarios that show how to perform various operations to grant remot
 
 ### Install Remote Support extension (after Azure registration)
 
-Install the Remote Support extension from the Windows Admin Center Extensions feed. Make sure that the Remote Support extension is updated to the latest version if already installed.
+Install the Remote Support extension from the Windows Admin Center Extensions feed. You must have domain admin account to complete this step. Make sure that the Remote Support extension is updated to the latest version if already installed.
 
 :::image type="content" source="media/remote-support/remote-support-extension-installed.png" alt-text="Screenshot to verify that the remote support extension is installed" lightbox="media/remote-support/remote-support-extension-installed.png":::
 
@@ -187,39 +190,326 @@ Get-AzStackHCIRemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <
 
 You can grant Microsoft support one of the following access levels for remote support:
 
-- **Diagnostics:** To view diagnostic info and logs
-- **Diagnostics and repair:** To view diagnostic info and logs in addition to perform software repairs
+- [**Diagnostics**](#access-level-diagnostics): To view diagnostic info and logs
+- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): To view diagnostic info and logs in addition to perform software repairs
 
-The following section lists the allowed diagnostic commands that Microsoft support can execute during a remote support session.
-
-> [!NOTE]
-> Support for the repair commands will be available at a later date.
+The following section lists the allowed commands that Microsoft support can execute during a remote support session.
 
 ### Access level: Diagnostics
 
 The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session:
 
+- **Default types**
+
+    ```powershell
+        Clear-Host
+        Exit-PSSession
+        Format-Table
+        Format-List
+        Get-Command
+        Get-FormatData
+        Get-Date
+        Get-Help
+        Get-Service
+        Get-Process
+        Measure-Object        
+        Out-Default
+        Select-Object
+        Sort-Object
+        Where-Object
+    ```
+
+- **Azure Stack HCI**
+
 ```powershell
-Get-AzureStackHCI
-Get-Cluster
-Get-ClusterGroup
-Get-ClusterNode
-Get-ClusterOwnerNode
-Get-ClusterResource
-Get-ClusterSharedVolume
-Get-NetAdapter
-Get-NetAdapterRdma
-Get-PhysicalDisk
-Get-StorageEnclosure
-Get-StorageJob
-Get-StorageNode
-Get-StorageSubsystem
-Get-VHD
-Get-VirtualDisk
-Get-VM
-Get-VMHost
-Get-VMSwitch
-Get-Volume
+    Get-AzureStackHCI
+    Get-AzureStackHCIArcIntegration
+    Get-AzureStackHCIBillingRecord
+    Get-AzureStackHCIRegistrationCertificate
+    Get-AzureStackHCISubscriptionStatus
+    Test-AzStackHCIConnection
+``` 
+
+- **Hyper-V**
+
+```powershell
+    Get-VHD
+    Get-VM
+    Get-VMHost
+    Get-VMSwitch
+    Get-VMCheckpoint
+    Get-VHDSet
+    Get-VHDSnapshot
+    Get-VMAssignableDevice
+    Get-VMBios
+    Get-VMComPort
+    Get-VMConnectAccess
+    Get-VMDvdDrive
+    Get-VMFibreChannelHba
+    Get-VMFirmware
+    Get-VMFloppyDiskDrive
+    Get-VMGpuPartitionAdapter
+    Get-VMGroup
+    Get-VMHardDiskDrive
+    Get-VMHostAssignableDevice
+    Get-VMHostCluster
+    Get-VMHostNumaNode
+    Get-VMHostNumaNodeStatus
+    Get-VMHostPartitionableGpu
+    Get-VMHostSupportedVersion
+    Get-VMIdeController
+    Get-VMIntegrationService
+    Get-VMKeyProtector
+    Get-VMKeyStorageDrive
+    Get-VMMemory
+    Get-VMMigrationNetwork
+    Get-VMNetworkAdapter
+    Get-VMNetworkAdapterAcl
+    Get-VMNetworkAdapterExtendedAcl
+    Get-VMNetworkAdapterFailoverConfiguration
+    Get-VMNetworkAdapterIsolation
+    Get-VMNetworkAdapterRdma
+    Get-VMNetworkAdapterRoutingDomainMapping
+    Get-VMNetworkAdapterTeamMapping
+    Get-VMNetworkAdapterVlan
+    Get-VMPartitionableGpu
+    Get-VMPmemController
+    Get-VMProcessor
+    Get-VMRemoteFx3dVideoAdapter
+    Get-VMRemoteFXPhysicalVideoAdapter
+    Get-VMReplication
+    Get-VMReplicationAuthorizationEntry
+    Get-VMReplicationServer
+    Get-VMResourcePool
+    Get-VMSan
+    Get-VMScsiController
+    Get-VMSecurity
+    Get-VMSnapshot
+    Get-VMStoragePath
+    Get-VMStorageSettings
+    Get-VMSwitchExtension
+    Get-VMSwitchExtensionPortData
+    Get-VMSwitchExtensionPortFeature
+    Get-VMSwitchExtensionSwitchData
+    Get-VMSwitchExtensionSwitchFeature
+    Get-VMSwitchTeam
+    Get-VMSystemSwitchExtension
+    Get-VMSystemSwitchExtensionPortFeature
+    Get-VMSystemSwitchExtensionSwitchFeature
+    Get-VMVideo
+```
+
+- **Failover Cluster**
+
+```powershell
+    Get-Cluster
+    Get-ClusterGroup
+    Get-ClusterNode
+    Get-ClusterOwnerNode
+    Get-ClusterResource
+    Get-ClusterSharedVolume
+    Export-CauReport
+    Get-CauClusterRole
+    Get-CauDeviceInfoForFeatureUpdates
+    Get-CauPlugin
+    Get-CauRun
+    Test-CauSetup
+```
+
+- **Net Adapter**
+
+```powershell
+    Get-NetAdapter
+    Get-NetAdapterRdma
+    Get-NetAdapterAdvancedProperty
+    Get-NetAdapterBinding
+    Get-NetAdapterChecksumOffload
+    Get-NetAdapterDataPathConfiguration
+    Get-NetAdapterEncapsulatedPacketTaskOffload
+    Get-NetAdapterHardwareInfo
+    Get-NetAdapterIPsecOffload
+    Get-NetAdapterLso
+    Get-NetAdapterPacketDirect
+    Get-NetAdapterPowerManagement
+    Get-NetAdapterQos
+    Get-NetAdapterRsc
+    Get-NetAdapterRss
+    Get-NetAdapterSriov
+    Get-NetAdapterSriovVf
+    Get-NetAdapterStatistics
+    Get-NetAdapterUso
+    Get-NetAdapterVmq
+    Get-NetAdapterVmqQueue
+    Get-NetAdapterVPort
+    Get-NetConnectionProfile
+    Get-NetEventNetworkAdapter
+    Get-NetEventPacketCaptureProvider
+    Get-NetEventProvider
+    Get-NetEventSession
+    Get-NetEventVFPProvider
+    Get-NetEventVmNetworkAdapter
+    Get-NetEventVmSwitch
+    Get-NetEventVmSwitchProvider
+    Get-NetEventWFPCaptureProvider
+    Get-NetLbfoTeam
+    Get-NetLbfoTeamMember
+    Get-NetLbfoTeamNic
+    Get-NetNat
+    Get-NetNatExternalAddress
+    Get-NetNatGlobal
+    Get-NetNatStaticMapping
+    Get-NetQosPolicy
+    Get-NetFirewallAddressFilter
+    Get-NetFirewallApplicationFilter
+    Get-NetFirewallDynamicKeywordAddress
+    Get-NetFirewallInterfaceFilter
+    Get-NetFirewallInterfaceTypeFilter
+    Get-NetFirewallPortFilter
+    Get-NetFirewallProfile
+    Get-NetFirewallRule
+    Get-NetFirewallSecurityFilter
+    Get-NetFirewallServiceFilter
+    Get-NetFirewallSetting
+    Get-NetIPsecDospSetting
+    Get-NetIPsecMainModeCryptoSet
+    Get-NetIPsecMainModeRule
+    Get-NetIPsecMainModeSA
+    Get-NetIPsecPhase1AuthSet
+    Get-NetIPsecPhase2AuthSet
+    Get-NetIPsecQuickModeCryptoSet
+    Get-NetIPsecQuickModeSA
+    Get-NetIPsecRule
+    Get-NetSwitchTeam
+    Get-NetSwitchTeamMember
+    Get-NetCompartment
+    Get-NetIPAddress
+    Get-NetIPInterface
+    Get-NetIPv4Protocol
+    Get-NetIPv6Protocol
+    Get-NetNeighbor
+    Get-NetOffloadGlobalSetting
+    Get-NetPrefixPolicy
+    Get-NetRoute
+    Get-NetTCPConnection
+    Get-NetTCPSetting
+    Get-NetTransportFilter
+    Get-NetUDPEndpoint
+    Get-NetUDPSetting
+    Get-NetView
+    Get-NCSIPolicyConfiguration
+    Get-Net6to4Configuration
+    Get-NetDnsTransitionConfiguration
+    Get-NetDnsTransitionMonitoring
+    Get-NetIPHttpsConfiguration
+    Get-NetIPHttpsState
+    Get-NetIsatapConfiguration
+    Get-NetNatTransitionConfiguration
+    Get-NetNatTransitionMonitoring
+    Get-NetTeredoConfiguration
+    Get-NetTeredoState
+    Get-DscConfiguration
+    Get-DscConfigurationStatus
+    Get-DscLocalConfigurationManager
+    Get-DscResource
+    Test-DscConfiguration
+    Get-LogProperties
+    Get-JobTrigger
+    Get-ScheduledJobOption
+    Get-ScheduledJob
+    Get-ScheduledTask
+    Get-ScheduledTaskInfo
+    Get-ClusteredScheduledTask
+    Get-SecureBootUEFI
+    Get-SecureBootPolicy
+```
+
+- **Storage**
+
+```powershell
+    Get-StorageEnclosure
+    Get-StorageJob
+    Get-StorageNode
+    Get-StorageSubsystem
+    Get-VirtualDisk
+    Get-Volume
+    Get-ClusterS2D
+    Get-ClusterAffinityRule
+    Get-ClusterFaultDomain
+    Get-ClusterFaultDomainXML
+    Get-ClusterGroupSet
+    Get-ClusterGroupSetDependency
+    Get-ClusterHCSVM
+    Get-ClusterNodeSupportedVersion
+    Get-ClusterStorageNode
+    Get-ClusterStorageSpacesDirect
+    Get-ClusterAccess
+    Get-ClusterAvailableDisk
+    Get-ClusterNetwork
+    Get-ClusterNetworkInterface
+    Get-ClusterParameter
+    Get-ClusterQuorum
+    Get-ClusterResourceDependency
+    Get-ClusterResourceDependencyReport
+    Get-ClusterResourceType
+    Get-ClusterSharedVolumeState
+    Test-ClusterResourceFailure
+    Get-SmbClientConfiguration
+    Get-SmbClientNetworkInterface
+    Get-SmbConnection
+    Get-SmbGlobalMapping
+    Get-SmbMapping
+    Get-SmbMultichannelConnection
+    Get-SmbMultichannelConstraint
+    Get-SmbOpenFile
+    Get-SmbServerCertificateMapping
+    Get-SmbServerCertProps
+    Get-SmbServerConfiguration
+    Get-SmbServerNetworkInterface
+    Get-SmbSession
+    Get-SmbShare
+    Get-SmbShareAccess
+    Get-SmbWitnessClient
+    Get-Disk
+    Get-DiskImage
+    Get-FileShare
+    Get-InitiatorId
+    Get-InitiatorPort
+    Get-MaskingSet
+    Get-OffloadDataTransferSetting
+    Get-Partition
+    Get-PartitionSupportedSize
+    Get-ResiliencySetting
+    Get-StorageFileServer
+    Get-StoragePool
+    Get-StorageProvider
+    Get-StorageSetting
+    Get-StorageTier
+    Get-StorageTierSupportedSize
+    Get-SupportedClusterSizes
+    Get-SupportedFileSystems
+    Get-TargetPort
+    Get-TargetPortal
+    Get-VirtualDiskSupportedSize
+    Get-VolumeCorruptionCount
+    Get-VolumeScrubPolicy
+    Get-StorageBusCache
+    Get-StorageBusClientDevice
+    Get-StorageBusTargetCacheStore
+    Get-StorageBusTargetCacheStoresInstance
+    Get-StorageBusTargetDevice
+    Get-StorageBusTargetDeviceInstance
+    Get-WindowsErrorReporting
+```
+
+### Access level: Diagnostics and repair
+
+The **Diagnostics and repair** access level includes the following commands that Microsoft support can execute during a remote support session:
+
+- **Default types**
+
+```powershell
+    Start-Service
+    Stop-Service
 ```
 
 ## Remote support terms and conditions
