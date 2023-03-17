@@ -212,9 +212,9 @@ The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics
 
 Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to autorenew Network Controller certificates:
 
-- [Self-signed certificates](#autorotate-self-signed-certificates). You use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
-- [Bring your own certificates](#autorotate-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
-- [Preinstalled certificates](#autorotate-preinstalled-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
+- [Self-signed certificates](#autorenew-self-signed-certificates). You use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
+- [Bring your own certificates](#autorenew-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
+- [Preinstalled certificates](#autorenew-preinstalled-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
 
 For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
 
