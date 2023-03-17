@@ -164,7 +164,7 @@ Beginning this release, you can run Windows Server 2022 Datacenter: Azure Editio
 
 ### Automatic renewal of Network Controller certificates
 
-You can now renew your Network Controller certificates automatically, in addition to manual renewal. For information on how to renew the Network Controller certificates, both manually and automatically, see [Renew Network Controller certificates before they expire](./manage/update-network-controller-certificates.md).
+You can now renew your Network Controller certificates automatically, in addition to manual renewal. For information on how to automatically renew the Network Controller certificates, see [Automatic renewal](./manage/update-network-controller-certificates.md#tab-automatic-renewal).
 
 ## Next steps
 
