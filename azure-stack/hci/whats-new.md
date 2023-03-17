@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/05/2022
+ms.date: 03/17/2023
 ---
 
 # What's new in Azure Stack HCI, version 22H2
