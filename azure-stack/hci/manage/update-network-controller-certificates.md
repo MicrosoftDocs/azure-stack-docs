@@ -57,6 +57,14 @@ Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subj
 
 - To get the expiry of a node certificate, replace "Certificate-subject-name" with the fully qualified domain name (FQDN) of the Network Controller VM. You can get this value from the `Get-NetworkController` cmdlet.
 
+## Renew Network Controller certificates
+
+You can renew your Network Controller certificates either manually or automatically.
+
+### [Manual renewal](#tab/manual-renewal)
+
+Use the following instructions to manually renew REST certificates and Network Controller node certificates.
+
 ## Renew REST certificates
 
 You use the Network Controller's REST certificate for:
@@ -198,7 +206,9 @@ To renew the Network Controller node certificate, perform the following steps on
    Set-NetworkControllerNode -Name "<Name of the Network Controller node>" -NodeCertificate $cert
    ```
 
-## Autorotate Network Controller certificates
+---
+
+### [Automatic renewal](#tab/automatic-renewal)
 
 The `Start-SdnCertificateRotation` cmdlet enables you to automate rotation of your Network Controller certificates. Certificate autorotation helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
 
@@ -216,7 +226,6 @@ Here are the requirements for certificate rotation:
 
 - You must run the `Start-SdnCertificateRotation` cmdlet on one of the Network Controller nodes. For installation instructions, see [Install SdnDiagnostics module](https://github.com/microsoft/SdnDiagnostics/wiki#installation).
 
-<!--Confirm if we need to mention these two account types here-->
 - You must have credentials for the following two types of accounts to authorize communication between Network Controller nodes:
 
    - `Credential` to specify a user account with local admin privileges on Network Controller.
@@ -227,7 +236,6 @@ Here are the requirements for certificate rotation:
 
 ### Autorotate self-signed certificates
 
-<!--Confirm if this is one-time activity? Or we need to manually run the cmdlet again after the validity period?-->
 You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and autorotate them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
 
 Perform these steps on one of the Network Controller nodes to generate self-signed certificates and autorotate them:
@@ -293,7 +301,6 @@ Perform these steps on one of the Network Controller nodes to rotate your own ce
 
 ### Autorotate preinstalled certificates
 
-<!--Is there a doc section that we can link to for pre-installed certificates-->
 In this scenario, you have the required certificates installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to rotate those certificate to other SDN infrastructure components.
 
 Perform these steps on one of the Network Controller nodes to autorotate the preinstalled certificates:
@@ -344,6 +351,8 @@ Perform these steps on one of the Network Controller nodes to autorotate the pre
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. Wait until the cmdlet finishes.
+
+---
 
 ## Next steps
 
