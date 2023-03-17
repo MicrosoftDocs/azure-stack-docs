@@ -206,8 +206,6 @@ To renew the Network Controller node certificate, perform the following steps on
    Set-NetworkControllerNode -Name "<Name of the Network Controller node>" -NodeCertificate $cert
    ```
 
----
-
 ### [Automatic renewal](#tab/automatic-renewal)
 
 The `Start-SdnCertificateRotation` cmdlet enables you to automate rotation of your Network Controller certificates. Certificate autorotation helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
