@@ -208,19 +208,19 @@ To renew the Network Controller node certificate, perform the following steps on
 
 ### [Automatic renewal](#tab/automatic-renewal)
 
-The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnCertificateRotation) cmdlet enables you to automate rotation of your Network Controller certificates. Certificate autorotation helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
+The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnCertificateRotation) cmdlet enables you to automate renewal of your Network Controller certificates. Certificate autorenewal helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
 
-Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to autorotate Network Controller certificates:
+Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to autorenew Network Controller certificates:
 
-- [Self-signed certificates](#autorotate-self-signed-certificates). You use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and rotate those certificates in all the Network Controller nodes.
-- [Bring your own certificates](#autorotate-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate rotation. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
-- [Preinstalled certificates](#autorotate-preinstalled-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to rotate those certificate to other SDN infrastructure components.
+- [Self-signed certificates](#autorotate-self-signed-certificates). You use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
+- [Bring your own certificates](#autorotate-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
+- [Preinstalled certificates](#autorotate-preinstalled-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
 
 For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
 
 ### Requirements
 
-Here are the requirements for certificate rotation:
+Here are the requirements for automatic renewal of certificate:
 
 - You must run the `Start-SdnCertificateRotation` cmdlet on one of the Network Controller nodes. For installation instructions, see [Install SdnDiagnostics module](https://github.com/microsoft/SdnDiagnostics/wiki#installation).
 
@@ -232,11 +232,11 @@ Here are the requirements for certificate rotation:
 
    For more information about configuring authorization for Network Controller Northbound communication, see [Authorization](./nc-security.md#authorization) for Northbound communication.
 
-### Autorotate self-signed certificates
+### Autorenew self-signed certificates
 
-You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and autorotate them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
+You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and autorenew them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
 
-Perform these steps on one of the Network Controller nodes to generate self-signed certificates and autorotate them:
+Perform these steps on one of the Network Controller nodes to generate self-signed certificates and autorenew them:
 
 1. To generate self-signed certificates, run the `Start-SdnCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
@@ -269,15 +269,15 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
 1. Wait until the cmdlet finishes.
 
-### Autorotate your own certificates
+### Autorenew your own certificates
 
-In addition to generating self-signed Network Controller certificates, you can also bring your own certificates, either self-signed or CA-signed, and use the `Start-SdnCertificateRotation` cmdlet to rotate those certificates.
+In addition to generating self-signed Network Controller certificates, you can also bring your own certificates, either self-signed or CA-signed, and use the `Start-SdnCertificateRotation` cmdlet to renew those certificates.
 
-Perform these steps on one of the Network Controller nodes to rotate your own certificates:
+Perform these steps on one of the Network Controller nodes to autorenew your own certificates:
 
 1. Prepare your certificates in `.pfx` format and save in a folder on one of the Network Controller nodes from where you run the `Start-SdnCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
-1. To start certificate rotation, run the following commands:
+1. To start certificate renewal, run the following commands:
 
    ```powershell
    Import-Module -Name SdnDiagnostics -Force
@@ -286,7 +286,7 @@ Perform these steps on one of the Network Controller nodes to rotate your own ce
 
 1. Enter the credentials. You get two prompts to provide two types of credentials:
 
-   - In the first prompt, enter the password of your certificate<!--confirm-->. The username can be anything and isn't used.
+   - In the first prompt, enter the password of your certificate. The username can be anything and isn't used.
    - In the second prompt, use the credential that has admin access to all the Network Controller nodes.
 
 1. You get a warning to confirm if you want to continue with the certificate rotation process. The warning text displays the list of Network Controller certificates that will be replaced with the newly generated ones. Type `Y` to confirm.
@@ -297,11 +297,11 @@ Perform these steps on one of the Network Controller nodes to rotate your own ce
 
 1. Wait until the cmdlet finishes.
 
-### Autorotate preinstalled certificates
+### Autorenew preinstalled certificates
 
-In this scenario, you have the required certificates installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to rotate those certificate to other SDN infrastructure components.
+In this scenario, you have the required certificates installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificates to other SDN infrastructure components.
 
-Perform these steps on one of the Network Controller nodes to autorotate the preinstalled certificates:
+Perform these steps on one of the Network Controller nodes to autorenew the preinstalled certificates:
 
 1. Install the Network Controller certificates on all the Network Controller nodes as per your preferred method. Ensure the certificates are trusted by other SDN infrastructure components, including SDN MUX servers and SDN hosts.
 
