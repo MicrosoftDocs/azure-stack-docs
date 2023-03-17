@@ -160,9 +160,11 @@ For more information, see:
 
 ### Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI
 
-Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
+Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases.
 
+### Automatic renewal of Network Controller certificates
 
+You can now renew your Network Controller certificates automatically, in addition to the manual renewal. For more information on how to automatically renew the Network Controller certificates, see [Automatic renewal](../hci/manage/update-network-controller-certificates.md#automatic-renewal).
 
 ## Next steps
 
