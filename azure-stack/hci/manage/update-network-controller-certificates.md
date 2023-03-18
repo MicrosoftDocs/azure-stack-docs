@@ -208,13 +208,13 @@ To renew the Network Controller node certificate, perform the following steps on
 
 ### [Automatic renewal](#tab/automatic-renewal)
 
-The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnCertificateRotation) cmdlet enables you to automate renewal of your Network Controller certificates. Certificate autorenewal helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
+The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnCertificateRotation) cmdlet enables you to automate renewal of your Network Controller certificates. Certificate automatic renewal helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
 
-Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to autorenew Network Controller certificates:
+Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to automatically renew Network Controller certificates:
 
-- [Self-signed certificates](#autorenew-self-signed-certificates). You use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
-- [Bring your own certificates](#autorenew-your-own-certificates). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
-- [Preinstalled certificates](#autorenew-preinstalled-certificates). You have the required certificates already installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
+- [Self-signed certificates](#renew-self-signed-certificates-automatically). Use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
+- [Bring your own certificates](#renew-your-own-certificates-automatically). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
+- [Preinstalled certificates](#renew-preinstalled-certificates-automatically). You have the required certificates already installed on the Network Controller nodes. Use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
 
 For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
 
@@ -232,11 +232,11 @@ Here are the requirements for automatic renewal of certificate:
 
    For more information about configuring authorization for Network Controller Northbound communication, see [Authorization](./nc-security.md#authorization) for Northbound communication.
 
-### Autorenew self-signed certificates
+### Renew self-signed certificates automatically
 
-You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and autorenew them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period also.
+You can use the `Start-SdnCertificateRotation` cmdlet to generate new self-signed certificates and automatically renew them to all the Network Controller nodes. By default, the cmdlet generates certificates with a validity period of three years, but you can specify a different validity period.
 
-Perform these steps on one of the Network Controller nodes to generate self-signed certificates and autorenew them:
+Perform these steps on one of the Network Controller nodes to generate self-signed certificates and automatically renew them:
 
 1. To generate self-signed certificates, run the `Start-SdnCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
@@ -269,11 +269,11 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
 1. Wait until the cmdlet finishes.
 
-### Autorenew your own certificates
+### Renew your own certificates automatically
 
 In addition to generating self-signed Network Controller certificates, you can also bring your own certificates, either self-signed or CA-signed, and use the `Start-SdnCertificateRotation` cmdlet to renew those certificates.
 
-Perform these steps on one of the Network Controller nodes to autorenew your own certificates:
+Perform these steps on one of the Network Controller nodes to automatically renew your own certificates:
 
 1. Prepare your certificates in `.pfx` format and save in a folder on one of the Network Controller nodes from where you run the `Start-SdnCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
@@ -297,11 +297,11 @@ Perform these steps on one of the Network Controller nodes to autorenew your own
 
 1. Wait until the cmdlet finishes.
 
-### Autorenew preinstalled certificates
+### Renew preinstalled certificates automatically
 
-In this scenario, you have the required certificates installed on the Network Controller nodes. You use the `Start-SdnCertificateRotation` cmdlet to renew those certificates to other SDN infrastructure components.
+In this scenario, you have the required certificates installed on the Network Controller nodes. Use the `Start-SdnCertificateRotation` cmdlet to renew those certificates on other SDN infrastructure components.
 
-Perform these steps on one of the Network Controller nodes to autorenew the preinstalled certificates:
+Perform these steps on one of the Network Controller nodes to automatically renew the preinstalled certificates:
 
 1. Install the Network Controller certificates on all the Network Controller nodes as per your preferred method. Ensure the certificates are trusted by other SDN infrastructure components, including SDN MUX servers and SDN hosts.
 
