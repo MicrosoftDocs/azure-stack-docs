@@ -11,10 +11,7 @@ ms.date: 03/10/2023
 
 > Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 and Windows Server 2019
 
-This article provides instructions on how to renew or change Network Controller certificates before they expire, both manually and automatically.
-
-> [!IMPORTANT]
-> If Network Controller certificates have already expired, don't use instructions in this article to renew them.
+This article provides instructions on how to renew or change Network Controller certificates before they expire, both manually and automatically. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
 In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. You must renew them before they expire.
 
@@ -65,6 +62,9 @@ You can renew your Network Controller certificates either manually or automatica
 
 Use the following instructions to manually renew REST certificates and Network Controller node certificates.
 
+> [!IMPORTANT]
+> If your Network Controller certificates have already expired, use the [automatic renewal](#automatic-renewal) method to renew them.
+
 ## Renew REST certificates
 
 You use the Network Controller's REST certificate for:
@@ -79,9 +79,6 @@ To renew REST certificate, complete the following steps:
 
 1. Make sure that the certificate on the Network Controller VMs isn't expired before renewing it. See [View certificate expiry](#view-certificate-expiry).
    
-   > [!NOTE]
-   > If the certificate is already expired, don't use these steps.
-
 1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM. For information about how to create a new certificate or issue it from a Certification Authority, see [Manage certificates for Software Defined Networking](/windows-server/networking/sdn/security/sdn-manage-certs).
 
 1. Assign the new certificate to a variable:
@@ -213,7 +210,7 @@ The [`Start-SdnCertificateRotation`](https://github.com/microsoft/SdnDiagnostics
 Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdlet  to automatically renew Network Controller certificates:
 
 - [Self-signed certificates](#renew-self-signed-certificates-automatically). Use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
-- [Bring your own certificates](#renew-your-own-certificates-automatically). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates to all the Network Controller nodes and seeds them into other SDN infrastructure components.
+- [Bring your own certificates](#renew-your-own-certificates-automatically). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates on all the Network Controller nodes and distributes them to other SDN infrastructure components.
 - [Preinstalled certificates](#renew-preinstalled-certificates-automatically). You have the required certificates already installed on the Network Controller nodes. Use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
 
 For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
@@ -267,7 +264,11 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. Wait until the cmdlet finishes.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
+
+   Here's a sample screenshot of the PowerShell command window showing the status of ongoing operations:
+  
+   :::image type="content" source="./media/network-controller-certificates/screenshot-powershell-window-status.png" alt-text="Screenshot of the PowerShell command window showing the status of ongoing operations." lightbox="./media/network-controller-certificates/screenshot-powershell-window-status.png" :::
 
 ### Renew your own certificates automatically
 
@@ -295,7 +296,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. Wait until the cmdlet finishes.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
 
 ### Renew preinstalled certificates automatically
 
@@ -319,7 +320,17 @@ Perform these steps on one of the Network Controller nodes to automatically rene
    
       Here's a sample certificate rotation configuration:
 
-      :::image type="content" source="./media/network-controller-certificates/screenshot-certconfig-cmdlet.png" alt-text="Screenshot showing the output of the CertConfig cmdlet." lightbox="./media/network-controller-certificates/screenshot-certconfig-cmdlet.png" :::
+      ```output
+      PS C:\Users\LabAdmin> $certConfig
+
+      Name					Value
+      ----					-----
+      ws22ncl.corp.contoso.com 	F4AAF14991DAF282D9056E147AE60C2C5FE80A49
+      ws22nc3.corp.contoso.com 	BC3E6B090E2AA80220B7BAED7F8F981A1E1DD115
+      ClusterCredentialType 		X509
+      ws22nc2.corp.contoso.corn 	75DC229A8E61AD855CC445C42482F9F919CC1077
+      NcRestCert				029D7CA0067A60FB24827D8434566787114AC30C
+      ```
 
       where:
 
@@ -331,7 +342,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
       ```powershell
       $certConfig.NcRestCert = <new certificate thumbprint>
-      ```   
+      ```
 
 1. Start certificate rotation. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
@@ -348,7 +359,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. Wait until the cmdlet finishes.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
 
 ---
 
