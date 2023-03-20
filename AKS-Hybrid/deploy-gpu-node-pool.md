@@ -214,7 +214,7 @@ Note: If you receive a version mismatch error when calling into drivers, such as
 
 Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. Hence, for GPU-enabled node pools for a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node. 
 
-Before you upgrade
+Before you upgrade:
 
 1. Plan for downtime during the upgrade 
 2. Have 1 extra GPU per physical host if you a running the *Standard_NK6* or 2 extra GPUs if you are running *Standard_NK12*. If you are running at full capacity don’t have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
