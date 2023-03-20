@@ -1,5 +1,5 @@
 ---
-title: Using GPU for compute-intensive workloads in AKS hybrid
+title: Use GPU for compute-intensive workloads in AKS hybrid
 description: Learn how to deploy GPU-enabled node pools on AKS hybrid.
 author: baziwane
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.reviewer: sethm
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Using GPU for compute-intensive workloads in AKS hybrid
+# Use GPU for compute-intensive workloads in AKS hybrid
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning and more.
 
@@ -47,7 +47,7 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force 
 ```
 
-To confirm that the GPUs have been correctly dismounted from the host, run the following command. You should GPUs in an `Unknown` state. 
+To confirm that the GPUs have been correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state. 
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
@@ -217,7 +217,7 @@ Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's
 Before you upgrade:
 
 1. Plan for downtime during the upgrade.
-2. Have one extra GPU per physical host if you a running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+2. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
