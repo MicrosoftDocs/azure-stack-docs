@@ -51,7 +51,7 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ## Step 2: Configure your Azure environment
 
-Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal with the built-in `Microsoft.Kubernetes connected cluster` role to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
+Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal with the built-in `Microsoft.Kubernetes connected cluster role` role to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
