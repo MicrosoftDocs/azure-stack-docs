@@ -161,7 +161,7 @@ $location=<Azure location. Can be "eastus", "westeurope", "westus3", or "southce
 ```
 
 ```PowerShell
-$workingDir = "V:\Arc-HCI\WorkDir"
+$workingDir = "V:\Arc-HCI\WorkingDir"
 $arcAppName="arc-resource-bridge"
 $configFilePath= $workingDir + "\hci-appliance.yaml"
 $arcExtnName = "aks-hybrid-ext"
