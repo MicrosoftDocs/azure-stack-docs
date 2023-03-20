@@ -64,14 +64,14 @@ Visit the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/
 ```powershell
 Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
 
-PS C:\> mkdir nvidia-mitigation-driver
+mkdir nvidia-mitigation-driver
 
-PS C:\> Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
+Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder containing the extracted files, right click on `nvidia_azure_stack_T4_base.inf` and select Install. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU. 
+To install the mitigation driver, navigate to the folder containing the extracted files, right click on the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU. 
 
-You could also install using the command line by navigating to the folder and run the following commands to install the mitigation driver.
+You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
 
 ```powershell
 pnputil /add-driver nvidia_azure_stack_T4_base.inf /install 
@@ -79,21 +79,21 @@ pnputil /add-driver nvidia_azure_stack_T4_base.inf /install
 pnputil /scan-devices 
 ```
 
-After installing the mitigation driver, you will see the GPU’s listed as `OK` state under `Nvidia T4_base - Dismounted `
+After installing the mitigation driver, you will see the GPUs listed in the **OK** state under **Nvidia T4_base - Dismounted**.
 
 ```powershell
-PS C:\> Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia" 
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia" 
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
-### Step 4: Repeat steps 1 to 3 for each node in your failover cluster.
+### Step 4: Repeat steps 1 to 3 for each node in your failover cluster
 
 Important: GPU enabled Virtual Machines are not added to failover clustering in Windows Server 2019, Windows Server 2002 or Azure Stack HCI. This functionality will be available in a later version of Windows Server and Azure Stack HCI.
 
-## Install or Update AKS on Azure Stack HCI or Windows Server
+## Install or update AKS hybrid
 
-Visit the AKS quickstart using [PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell) or using [Windows Admin Center](/azure-stack/aks-hci/setup) to install or update AKS on Azure Stack HCI or Windows Server.
+Visit the AKS quickstart using [PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell) or using [Windows Admin Center](/azure-stack/aks-hci/setup) to install or update AKS hybrid.
 
 
 ## Create a new workload cluster with a GPU-enabled node pool
@@ -104,7 +104,7 @@ Create a workload cluster with a GPU node pool. Currently, using GPU-enabled nod
 New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -osType linux -nodeVmSize Standard_NK6 
 ```
 
-Post installation of the workload cluster, run the following command to get your Kubeconfig:
+After installing the workload cluster, run the following command to get your Kubeconfig:
 
 ```powershell
 Get-AksHciCredential -Name gpucluster
@@ -115,7 +115,7 @@ Get-AksHciCredential -Name gpucluster
 With your GPU node pool created, confirm that GPUs are schedulable in Kubernetes. First, list the nodes in your cluster using the [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command:
 
 ```powershell
-PS C:> kubectl get nodes
+kubectl get nodes
 ```
 
 ```output
@@ -131,7 +131,7 @@ Now use the [kubectl describe node](https://kubernetes.io/docs/reference/generat
 kubectl describe <node> | findstr "gpu" 
 ```
 
-The output should display the GPU(s) from the worker node and look something like this
+The output should display the GPU(s) from the worker node and look something like this:
 
 ```output
          nvidia.com/gpu.compute.major=7
@@ -153,7 +153,7 @@ kube-system         gpu-feature-discovery-gd62h       0 (0%)    0 (0%)   0 (0%) 
 
 ## Run a GPU-enabled workload
 
-Once the above steps are completed create a new yaml file for testing e.g. gpupod.yaml: Copy and paste the below yaml into the new file named 'gpupod.yaml' and save it.
+Once the previous steps are completed, create a new YAML file for testing; for example, **gpupod.yaml**. Copy and paste the following YAML into the new file named **gpupod.yaml**, then save it.
 
 ```yaml
 apiVersion: v1
@@ -170,34 +170,34 @@ spec:
         nvidia.com/gpu: 1
 ```
 
-Run the following command to deploy the sample application
+Run the following command to deploy the sample application:
 
 ```powershell
 kubectl apply -f gpupod.yaml
 ```
 
-Verify if the pod has started, completed running and the GPU is assigned:
+Verify if the pod has started, completed running, and the GPU is assigned:
 
 ```powershell
 kubectl describe pod cuda-vector-add | findstr 'gpu'
 ```
 
-should show one GPU assigned.
+The previous command should show one GPU assigned:
 
 ```output
-    nvidia.com/gpu: 1
-    nvidia.com/gpu: 1
+nvidia.com/gpu: 1
+nvidia.com/gpu: 1
 ```
 
-Check the log file of the pod to see if the test has passed
+Check the log file of the pod to see if the test has passed:
 
 ```powershell
 kubectl logs cuda-vector-add
 ```
 
-Sample output
+The following is example output from the previous command:
 
-```
+```shell
 [Vector addition of 50000 elements]
 Copy input data from the host memory to the CUDA device
 CUDA kernel launch with 196 blocks of 256 threads
@@ -208,7 +208,7 @@ Done
 
 Note: If you receive a version mismatch error when calling into drivers, such as, CUDA driver version is insufficient for CUDA runtime version, review the NVIDIA driver matrix compatibility chart - https://docs.nvidia.com/deploy/cuda-compatibility/index.html
 
-## Frequently Asked Questions
+## FAQ
 
 ### What happens during upgrade of a GPU-enabled node pool?
 
@@ -216,8 +216,8 @@ Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's
 
 Before you upgrade:
 
-1. Plan for downtime during the upgrade 
-2. Have 1 extra GPU per physical host if you a running the *Standard_NK6* or 2 extra GPUs if you are running *Standard_NK12*. If you are running at full capacity don’t have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+1. Plan for downtime during the upgrade.
+2. Have one extra GPU per physical host if you a running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
