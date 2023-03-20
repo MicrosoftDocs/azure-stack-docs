@@ -63,7 +63,7 @@ You can renew your Network Controller certificates either manually or automatica
 Use the following instructions to manually renew REST certificates and Network Controller node certificates.
 
 > [!IMPORTANT]
-> If your Network Controller certificates have already expired, use the instructions in the [automatic renewal](./manage/update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates) section to renew the certificates.
+> If your Network Controller certificates have already expired, use the instructions in the [automatic renewal](update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates) section to renew the certificates.
 
 ## Renew REST certificates
 
