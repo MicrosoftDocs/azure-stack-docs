@@ -151,11 +151,17 @@ To install the CSI driver, do these steps:
    cd azurelustre-csi-driver
    ```
 
-1. In your local clone of the **azurelustre-csi-driver** repository, change directories to the **deploy/** subdirectory, and run the installation script **install-driver-sh**. (Online, the script is available at [https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/deploy/install-driver.sh).)
+1. The version of the CSI driver to use depends on the networking model in your AKS deployment.
+    1. Azure CNI
+
+    ```bash
+    curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash -s azurecni_stable
+    ```
+
+   1. Kubenet
 
    ```bash
-   cd deploy/
-   ./install-driver.sh
+   curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
    ```
 
    For command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).

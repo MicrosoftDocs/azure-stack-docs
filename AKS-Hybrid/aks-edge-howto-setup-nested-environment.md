@@ -13,7 +13,7 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge cluster. 
 
 >[!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM or vSpere. 
+> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM or vSphere. 
 
 ## Prerequisites
 
@@ -72,10 +72,15 @@ The diagram shows the different virtual machines and components of this nested a
    AKS-Int Internal
    ```
 
-1. Assign an IP address to the **AKS-Int** virtual switch. We use the 172.20.1.1/24 network.
+1. Assign an IP address to the **AKS-Int** virtual switch. This guide uses the **172.20.1.0/24** network. The **Windows host OS** uses this virtual switch IP address to communicate with the other virtual machines and AKS Edge Essential nodes.
    ```powershell
    $ifIndex = (Get-NetAdapter -Name "vEthernet (AKS-Int)").ifIndex
-   New-NetIPAddress -IPAddress 172.20.1.1 -PrefixLength 24 -InterfaceIndex $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
+   ```
+
+1. Create a NAT table for connecting the internal virtual switch and the internal network connected devices with the external/Internet network.
+   ```powershell
+    New-NetNat -Name "AKS-EE-Int-Network" -InternalIPInterfaceAddressPrefix "172.20.1.0/24"
    ```
 
 1. Using Hyper-V Manager, create the first Windows virtual machine and name it **Windows-VM-1**. For more information about virtual machine creation, see [Windows Server virtualization](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager). During the configuration of the VM, make sure you correctly set up the following parameters:
@@ -133,7 +138,11 @@ The diagram shows the different virtual machines and components of this nested a
    $ifIndex = (Get-NetAdapter -Name "<name>").ifIndex
    ```
 
-1. Configure static IP **172.20.1.2** and gateway IP **172.20.1.1** and DNS Server **172.20.1.1**.
+1. Configure static IP **172.20.1.2** and gateway IP **172.20.1.1** and DNS Server **172.20.1.1**. 
+
+   >[!TIP]
+   > If you are using an Azure VM, use the **Windows host OS (L0)** DNS server. Use the `ipconfig /all` command to get the DNS server address. Check that using your Edge browser you're able to get Internet access. If you have no access, check the if the DNS server is correctly configured. 
+
    ```powershell
    New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength $ifIndex
    Set-DNSClientServerAddress –InterfaceIndex $ifIndex –ServerAddresses "172.20.1.1"

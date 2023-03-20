@@ -4,7 +4,7 @@ description: Network and storage prerequisites to complete before you create an 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
+ms.lastreviewed: 03/16/2023
 ms.reviewer: mayabishop
 ms.date: 02/09/2023
 
@@ -59,7 +59,7 @@ When you plan your VNet and subnet, take into account the requirements for any o
 
 ### Subnet access and permissions
 
-The subnet for the Azure Managed Lustre file system needs the following access and permissions:
+By default, no specific changes need to be made to enable Azure Managed Lustre. If you have restricted network and/or security policies in your environment, the following should be considered:
 
 | Access type | Required network settings |
 |-------------|---------------------------|
@@ -89,7 +89,6 @@ To integrate Azure Blob Storage with your Azure Managed Lustre file system, you 
 * A storage account that meets the following requirements:
 
   * A compatible storage account type. See [Supported storage account types](#supported-storage-account-types) for more information.
-  * A public endpoint. See [Storage account access](#storage-access-for-blob-integration) for more information.
   * Access roles that permit the Azure Managed Lustre system to modify data. See [Required access roles](#access-roles-for-blob-integration) for more information.
 
 * A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.
@@ -108,13 +107,6 @@ The following storage account types can be used with Azure Managed Lustre file s
 | Premium - Block blobs | LRS, ZRS |
 
 For more information about storage account types, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-
-### Storage access for blob integration
-
-Storage accounts used with an Azure Managed Lustre file system must have a public endpoint configured. However, you can restrict the endpoint to only accept traffic from the file system subnet. This configuration is needed because agents and copying tools are hosted in an infrastructure subscription, not within the customer's subscription.
-
-> [!TIP]
-> If you create the subnet before you create the storage account, you can configure restricted access when you create the storage account.
 
 ### Access roles for blob integration
 

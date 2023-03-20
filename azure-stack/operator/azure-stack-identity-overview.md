@@ -26,7 +26,7 @@ Your choice of either Azure AD or AD FS is determined by the mode in which you d
 
 For more information about your options, which depend on your Azure Stack Hub environment, see the following articles:
 
-- Azure Stack Hub deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
+- Azure Stack Hub development kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
 - Azure Stack Hub integrated systems: [Deployment planning decisions for Azure Stack Hub integrated systems](azure-stack-connection-models.md).
 
 > [!IMPORTANT]

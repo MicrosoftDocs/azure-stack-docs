@@ -30,6 +30,8 @@ The resource requirements include:
 The Azure requirements include:
 
 - An Azure subscription ID. This is the Azure subscription GUID where your Arc Resource Bridge, custom location, and cluster extension resources reside.
+  > [!NOTE]
+  > Arc VM management for Azure Stack HCI is currently supported in **East US** & **West Europe**. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region. The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
 - The latest version of Azure Command-Line Interface (CLI). You must install this on all servers in your Azure Stack HCI cluster.
 
@@ -45,9 +47,11 @@ The Azure requirements include:
 
 - Required Azure permissions:
 
-  - To onboard the Arc Resource Bridge, you must have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role for the resource group.
+  - To install the Arc Resource Bridge, you must have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role for the resource group.
     
   - To read, modify, and delete the Arc resource bridge, you must have the Contributor role for the resource group.
+
+  - To provision Arc VMs & entities through Azure Portal, users must have Contributor level access at the subscription level.
 
 ## Networking requirements
 
@@ -101,7 +105,7 @@ Make sure to include the following firewall URLs in your allowlist:
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 
-## Network proxy requirements
+## Network proxy requirements for setting up Arc VM management
 
 When setting up Arc VM management, if your network requires the use of a proxy server to connect to the internet, this section describes how to create the configuration files with proxy settings. Running these steps alone will not set up Arc VM management. 
 
