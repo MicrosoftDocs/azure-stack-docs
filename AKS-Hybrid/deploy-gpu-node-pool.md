@@ -221,5 +221,5 @@ Before you upgrade
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
-If an upgrade is triggered on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process will hang until a GPU is available. If you are running at full capacity don’t have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+If an upgrade is triggered on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process will hang until a GPU is available. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
