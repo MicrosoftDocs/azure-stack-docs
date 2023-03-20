@@ -63,7 +63,7 @@ You can renew your Network Controller certificates either manually or automatica
 Use the following instructions to manually renew REST certificates and Network Controller node certificates.
 
 > [!IMPORTANT]
-> If your Network Controller certificates have already expired, use the [automatic renewal](#automatic-renewal) method to renew them.
+> If your Network Controller certificates have already expired, use the instructions in the [automatic renewal](./manage/update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates) section to renew the certificates.
 
 ## Renew REST certificates
 
@@ -264,7 +264,10 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
+
+   > [!Important]
+   > Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
 
    Here's a sample screenshot of the PowerShell command window showing the status of ongoing operations:
   
@@ -296,7 +299,10 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
+
+   > [!Important]
+   > Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
 
 ### Renew preinstalled certificates automatically
 
@@ -359,7 +365,10 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
 
-1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window. Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
+1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
+
+   > [!Important]
+   > Don't close the PowerShell window until the cmdlet finishes. Depending on your environment, such as the number of Network Controller nodes in the cluster, it may take several minutes or more than an hour to finish.
 
 ---
 
