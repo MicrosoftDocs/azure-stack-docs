@@ -89,14 +89,13 @@ For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clus
 
 ## Step 1: Create an SPN and assign permissions
 
-Use an Azure service principal to configure an automation account with the permissions needed to create a target cluster with Azure RBAC enabled. 
+Use an Azure service principal to configure an automation account with the permissions needed to create a target cluster with Azure RBAC enabled.
 
 Creating a target cluster only requires limited privileges on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
 
 The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
-
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the subscription ID> 
