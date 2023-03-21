@@ -9,21 +9,21 @@ ms.date: 03/21/2023
 
 # Update your Azure Stack HCI solution via PowerShell (preview)
 
-Applies to: Azure Stack HCI, Supplemental Package
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
 The procedure in this article applies to both a single node and multi-node cluster that is running software versions with Lifecycle Manager installed. If your cluster was created via a new deployment of Azure Stack HCI, Supplemental Package, then Lifecycle Manager was automatically installed as part of the deployment.
 
-For information on how to apply solution updates to clusters that were created with older versions of Azure Stack HCI that did not have Lifecycle Manager installed, see [Apply updates to an existing cluster](../index.yml).
+For information on how to apply solution updates to clusters that were created with older versions of Azure Stack HCI that didn't have Lifecycle Manager installed, see [Apply updates to an existing cluster](../index.yml).
 
 ## About solution updates
 
 The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](../index.yml).
 
-The update example used in this article does not include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).
+The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).
 
-When you apply a solution update, here are the high-level steps that you’ll take:
+When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
 1. Connect to your Azure Stack HCI cluster via remote PowerShell.
@@ -40,13 +40,13 @@ Before you begin, make sure that:
 
 - You’ve access to an Azure Stack HCI cluster that is running 2302 or higher. The cluster should be registered in Azure.
 - You’ve access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
-- You’ve access to the solution update package over the network. You will sideload or copy these updates to the nodes of your cluster.
+- You’ve access to the solution update package over the network. You'll sideload or copy these updates to the nodes of your cluster.
 
 ## Connect to your Azure Stack HCI cluster
 
 Follow these steps on your client to connect to one of the nodes of your Azure Stack HCI cluster.
 
-1. Run PowerShell as administrator on the client that you are using to connect to your cluster.
+1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
 1. Open a remote PowerShell session to a node on your Azure Stack HCI cluster. Run the following command and provide the credentials of your node when prompted:
 
     ```powershell
@@ -54,7 +54,7 @@ Follow these steps on your client to connect to one of the nodes of your Azure S
     Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred -Authentication 'CredSSP'
     ```
 
-    Here is an example output:
+    Here's an example output:
     
     ```Console
     PS C:\Users\Administrator> $cred = Get-Credential
@@ -97,7 +97,7 @@ You’ll now sideload the updates that you intend to apply to your cluster.
     $readyUpdate.ComponentVersions
     ```
 
-    Here is an example output:
+    Here's an example output:
     
     ```console
     PS C:\> $updates = Get-SolutionUpdate
@@ -141,7 +141,7 @@ You can download the updates, perform a set of checks to verify the update readi
 
     - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download may take several minutes.
 
-        Here is an example output when the updates are being downloaded:
+        Here's an example output when the updates are being downloaded:
 
         ```
         [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdate
@@ -180,11 +180,10 @@ You can download the updates, perform a set of checks to verify the update readi
 
     - When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage completed.
 
-        **IMPORTANT:**
+        > [!IMPORTANT]
+        > During the install, the cluster nodes may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single node, your Azure Stack HCI will experience a downtime.
     
-        During the install, the cluster nodes may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single node, your Azure Stack HCI will experience a downtime.
-    
-        Here is a sample output while the updates are being installed.
+        Here's a sample output while the updates are being installed.
 
         ```console
         [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdate
@@ -226,7 +225,7 @@ To track a more granular progress of the updates, see [Verify detailed progress]
 
 ## Step 4: Verify the installation
 
-After the updates are installed, verify the solution version of the environment as well as the version of the operating system.
+After the updates are installed, verify the solution version of the environment and the version of the operating system.
 
 1. After the update is in Installed state, check the environment solution version. Run the following command:
 
@@ -234,7 +233,7 @@ After the updates are installed, verify the solution version of the environment 
     Get-SolutionUpdateEnvironment | ft State, CurrentVersion
     ```
 
-    Here is a sample output:
+    Here's a sample output:
     
     ```console
     [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdateEnvironment | ft State, CurrentVersion
@@ -251,7 +250,7 @@ After the updates are installed, verify the solution version of the environment 
     cmd /c ver
     ```
 
-    Here is a sample output:
+    Here's a sample output:
 
     ```console
     [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> cmd /c ver
@@ -270,7 +269,7 @@ While the update is in the preparation phase (download if necessary, stage the c
     $updateRun.Progress.Steps | ft Name, Status
     ```
 
-    Here is an example output:
+    Here's an example output:
 
     ```console
     PS C:\> $updateRun = $readyUpdate | Get-SolutionUpdateRun
@@ -291,7 +290,7 @@ While the update is in the preparation phase (download if necessary, stage the c
     C:\> $readyUpdate | Get-SolutionUpdate | % State
     ```
 
-    Here is an example output:
+    Here's an example output:
 
     ```console
     PS C:\> $readyUpdate | Get-SolutionUpdate | % State
