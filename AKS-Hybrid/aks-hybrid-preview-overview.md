@@ -29,20 +29,24 @@ At this time, you can perform the following operations through the Azure portal,
 
 Through Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioning from Azure:
 
-- Azure Defender
+- Container Insights
 - GitOps v2
 - Open Service Mesh
 - Azure Key Vault
 
 In order to be able to create and manage AKS clusters from Azure, you must install the following key components -
 
-### AKS host management cluster
+### Microsoft On-premises Cloud (MOC)
+Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Azure Stack HCI and Windows Server-based SDDC to be managed by Azure. MOC consists of:
 
-The AKS host management cluster is created for you when you install AKS on Azure Stack HCI or Windows Server. The AKS host management cluster is a specialized Kubernetes cluster that provisions and manages all AKS workload clusters (these Kubernetes workload clusters run your applications). 
+- A single instance of a highly available cloud agent service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.
+- A node agent running on every Azure Stack HCI physical node.
+
+MOC is automatically installed if you decide to install AKS host management cluster (`Install-AksHci`). If you choose not to install the AKS host management cluster, you need to install MOC manually.
 
 ### Azure Arc Resource Bridge
 
-Azure Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/vSphere, OpenStack, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as VMs and Kubernetes clusters on-premises through Azure. 
+Azure Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as VMs and Kubernetes clusters on-premises through Azure. 
 
 ### Arc Kubernetes cluster extensions
 
