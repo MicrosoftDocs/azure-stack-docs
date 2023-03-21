@@ -338,7 +338,7 @@ With the new event logs in 22H2, there are some simplistic troubleshooting metho
 
 ### Error: AdapterBindingConflict
 
-:::image type="content" source="media/network-atc/adapterbinderror.png" alt-text="Adapter Binding Error Screenshot"  lightbox="media/network-atc/network-atc-adapterbinderror.png":::
+:::image type="content" source="media/network-atc/adapterbinderror.png" alt-text="Adapter Binding Error Screenshot"  lightbox="media/network-atc/adapterbinderror.png":::
  
 - An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
 
@@ -350,11 +350,11 @@ With the new event logs in 22H2, there are some simplistic troubleshooting metho
 
 **Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
 
-:::image type="content" source="media/network-atc/adapterbindresolve.png" alt-text="Adapter Binding Error Resolved"  lightbox="media/network-atc/network-atc-adapterbindresolve.png":::
+:::image type="content" source="media/network-atc/adapterbindresolve.png" alt-text="Adapter Binding Error Resolved"  lightbox="media/network-atc/adapterbindresolve.png":::
 
 ### Error: ConflictingTrafficClass
 
-:::image type="content" source="media/network-atc/ConflictingTrafficClass.png" alt-text="ConflictingTrafficClass Screenshot"  lightbox="media/network-atc/network-atc-ConflictingTrafficClass.png":::
+:::image type="content" source="media/network-atc/ConflictingTrafficClass.png" alt-text="ConflictingTrafficClass Screenshot"  lightbox="media/network-atc/ConflictingTrafficClass.png":::
 
 This issue occurs because a traffic class is already configured that conflicts with the ones Network ATC is deploying. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
 
