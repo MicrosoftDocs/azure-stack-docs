@@ -93,7 +93,7 @@ Make sure to include the following firewall URLs in your allowlist:
 | https\://*.dp.prod.appliances.azure.com | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance) | 
 | https\://ecpacr.azurecr.io | 443 | Download agent | Used to download Resource bridge (appliance) container images |
 | *.blob.core.windows.net <br> *.dl.delivery.mp.microsoft.com <br> *.do.dsp.mp.microsoft.com | 443 | TCP | Used to download Resource bridge (appliance) images |
-| https\://azurearcfork8sdev.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images
+| https\://azurearcfork8s.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images
 | https\://adhs.events.data.microsoft.com | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which would mean any Kubernetes control plane |
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |

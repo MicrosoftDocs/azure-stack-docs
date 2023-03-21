@@ -15,24 +15,52 @@ ms.date: 09/29/2022
 
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
-## Step 1: Install August release of AKS host management cluster 
-At this point of the preview, it is mandatory to install the AKS host management cluster on your Azure Stack HCI or Windows Server cluster. Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). We only support running the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) of AKS host management cluster.
+## Step 1: Install pre-requisite PowerShell modules
+Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
 
-You can pin your AKS host managemenet cluster to the [August release](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2208) by passing the `-version "1.0.13.10907"` parameter to the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command.
+```PowerShell
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
+Install-PackageProvider -Name NuGet -Force  
+Install-Module -Name PowershellGet -Force 
+Exit 
+```
+
+Open a new PowerShell admin window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
+```PowerShell
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.21
+Exit 
+```
+ 
+## Step 2: Install AKS host management cluster OR Install Moc
+
+With the January 2023 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS on Azure Stack HCI or Microsoft On-premises cloud (MOC). To learn more about MOC, see [Microsoft on-premises cloud](concepts-node-networking.md#microsoft-on-premises-cloud-service).
+
+### [AKS on Azure Stack HCI](#tab/powershell)
+Follow this documentation to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1 if you already have AKS on Azure Stack HCI installed on your Windows Server or Azure Stack HCI cluster.
 
 You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
 ```PowerShell
 Get-AksHciVersion
 ```
+Note that the output should indicate the version number of the October release (or later) of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
 
-Note that the output should be `1.0.13.10907` for the August release. Expected Output:
+Expected Output:
 ```
-1.0.13.10907
+1.0.16.10113
 ```
 
 If you face an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
 
-## Step 2: Generate YAML files required for installing Arc Resource Bridge
+### [Microsoft On-premises cloud(Moc)](#tab/shell)
+Run the following steps to install Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster. 
+
+```PowerShell
+Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
+Install-Moc
+```
+---
+
+## Step 3: Generate YAML files required for installing Arc Resource Bridge
 
 Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file for you. Before running the PowerShell command that will generate these YAML files, make sure you have the following parameters ready:
 
@@ -49,17 +77,19 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | Parameter  |  Parameter details |
 | -----------| ------------ |
 | $vswitchname | The name of your VM switch. |
+| $vnetName | The name of your virtual network. This can be any value, for example - `$vnetName = "resourcebridge-vnet"`|
 | $ipaddressprefix | The IP address value of your subnet. |
 | $gateway | The IP address value of your gateway for the subnet. |
 | $dnsservers | The IP address value(s) of your DNS servers. |
-| $vmIP | This IP address will be the IP address of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
+| $vmIP1, $vmIP2 | These IP addresses will be the IP address of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that these IP addresses come from the subnet in your datacenter. Also make sure that these IP addresses are available and aren't being used anywhere else. You need two IP addresses to support Arc Resource Bridge update operations.
 | $controlPlaneIP | This IP address will be used by the Kubernetes API server of the Azure Arc Resource Bridge. Similar to $vmIP, make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
 
 #### More parameters if you're using DHCP
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $vswitchname | The name of your VM switch |
+| $vswitchname | The name of your VM switch. |
+| $vnetName | The name of your virtual network. This can be any value, for example - `$vnetName = "resourcebridge-vnet"` |
 | $controlPlaneIP | This IP address will be used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
 
 #### More parameters if you have a proxy server in your environment
@@ -83,11 +113,11 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 
 ### [Windows Server](#tab/powershell)
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2
 ```
 ### [Azure Stack HCI](#tab/shell)
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2
 ```
 ---
 
@@ -95,12 +125,12 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ### [Windows Server](#tab/powershell)
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -vlanid $vlanid 
 ```
 ---
 
@@ -108,12 +138,12 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ### [Windows Server](#tab/powershell)
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
 ```
 ---
 
@@ -122,13 +152,13 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 ### [Windows Server](#tab/powershell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -proxyServerUsername $proxyServerUsername -proxyServerPassword $proxyServerPassword -vlanid $vlanid 
 ```
 ---
 
@@ -137,13 +167,13 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 ### [Windows Server](#tab/powershell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -vlanID $vlanid
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -vlanID $vlanid
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP -k8snodeippoolend $vmIP -vlanID $vlanid
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -vlanID $vlanid
 ```
 ---
 
@@ -152,13 +182,13 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 ### [Windows Server](#tab/powershell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP
 ```
 ---
 
@@ -167,13 +197,13 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 ### [Windows Server](#tab/powershell)
 
 ```powershell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
 ```
 
 ### [Azure Stack HCI](#tab/shell)
 
 ```powershell
-New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vswitchname -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
+New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -controlPlaneIP $controlPlaneIP -vlanID $vlanid
 ```
 ---
 
@@ -185,7 +215,7 @@ Generating ARC HCI configuration files...
 Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
 ```
 
-## Step 3: Install Azure Arc Resource Bridge
+## Step 4: Install Azure Arc Resource Bridge
 
 Once you have generated the required YAML files in step 2, you can proceed with deploying Azure Arc Resource Bridge. Make sure you sign in to any one of the nodes in your Azure Stack HCI or Windows Server cluster to run the following commands. We do not support using remote desktop.
 
@@ -208,7 +238,7 @@ az arcappliance validate hci --config-file $configfile
 az arcappliance prepare hci --config-file $configfile
 ```
 
-Once you've validated the YAML file and downloaded the Arc Resource Bridge VHD image, run the following command on any one of the nodes of your Windows Server or Azure Stack HCI cluster to deploy the Arc Resource Bridge on your physical cluster:
+Once you've validated the YAML file and downloaded the Arc Resource Bridge VHD image, run the following command on any one of the nodes of your Windows Server or Azure Stack HCI cluster to deploy the Arc Resource Bridge on your physical cluster. 
 
 ```azurecli
 az arcappliance deploy hci --config-file $configfile --outfile $appliancekubeconfig
@@ -226,60 +256,57 @@ Before proceeding to the next step, run the following command to check if the Az
 az arcappliance show --resource-group $resourceGroup --name $resourceName --query "status" -o tsv
 ```
 
-## Step 4: Installing the AKS hybrid extension on the Azure Arc Resource Bridge 
+## Step 5: Install the AKS hybrid extension on the Azure Arc Resource Bridge 
 
 To install the AKS hybrid extension, run the following command:
 
 ```azurecli
 az account set -s <subscription ID>
 
-az k8s-extension create --resource-group <azure resource group> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid cluster extension name> --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
+az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription. Make sure you use the same resource group you used when deploying Azure Arc Resource Bridge.  |
-| cluster-name  |  The name of your Azure Arc Resource Bridge. |
-| name  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge.  |
-| cluster-type  | Must be `appliances`. Do not change this value.  |
-| extension-type  |  Must be `Microsoft.HybridAKSOperator`. Do not change this value. |
-| config  | Must be `config Microsoft.CustomLocation.ServiceAccount="default"`. Do not change this value. |
+| resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
+| $clusterName  |  The name of your Azure Arc Resource Bridge. |
+| $extensionName  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge. Can be any value, for example "hybridaks". |
 
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az k8s-extension show --resource-group <resource group name> --cluster-name <azure arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query "provisioningState" -o tsv
+az k8s-extension show --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --query "provisioningState" -o tsv
 ```
 
-## Step 5: Create a custom location on top of the Azure Arc Resource Bridge
+## Step 6: Create a custom location on top of the Azure Arc Resource Bridge
 
 Run the following commands to create a custom location on top of the Arc Resource Bridge. You will choose this custom location when creating the AKS hybrid cluster through Az CLI or through the Azure portal.
 
 Collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the AKS hybrid extension in variables:
 
 ```azurecli
-$ArcResourceBridgeId=az arcappliance show --resource-group <resource group name> --name <arc resource bridge name> --query id -o tsv
-$AKSClusterExtensionResourceId=az k8s-extension show --resource-group <resource group name> --cluster-name <arc resource bridge name> --cluster-type appliances --name <aks hybrid extension name> --query id -o tsv
+$ArcResourceBridgeId=az arcappliance show --resource-group $resourceGroup --name $clusterName --query id -o tsv
+$AKSClusterExtensionResourceId=az k8s-extension show --resource-group $resourceGroup --name $clusterName --cluster-type appliances --name $extensionName --query id -o tsv
 ```
   
 You can then create the custom location for your Windows Server or Azure Stack HCI cluster that has the AKS hybrid extension installed on it:
 
 ```azurecli
-az customlocation create --name <customlocation name> --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group <resource group name>
+az customlocation create --name $customLocationName --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group $resourceGroup
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge.  |
+| resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
 | namespace  |  Must be `default`. Do not change this value. |
-| name  |  Name of your Windows Server or Azure Stack HCI Custom Location |
+| $customLocationName  |  Name of your Windows Server or Azure Stack HCI Custom Location. It can be any value, for example - `$customLocationName = "hybridaks-cl"` |
 | host-resource-id  | Resource Manager ID of the Azure Arc Resource Bridge. |
 | cluster-extension-ids   | Resource Manager ID of the AKS hybrid extension on top of Resource Bridge. |
 
 Once you create the custom location on top of the Azure Arc Resource Bridge, run the following command to check if the custom location provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az customlocation show --name <custom location name> --resource-group <resource group name> --query "provisioningState" -o tsv
+az customlocation show --name $customLocationName --resource-group $resourceGroup --query "provisioningState" -o tsv
 ```
   
 ## Next steps
