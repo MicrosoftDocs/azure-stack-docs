@@ -55,9 +55,9 @@ There are several requirements and things to consider before you begin to use th
 
 ### Prerequisites for Windows Admin Center
 
-If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.8.0. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions#installing-an-extension).
+If you're using Windows Admin Center to provision GPU partitioning, you must install the latest version of [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) with the **GPUs** extension, version 2.8.0 or later. For instructions on how to install the **GPUs** extensions in Windows Admin Center, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions#installing-an-extension).
 
-After you install the extension, it appears under the **Installed extensions** tab as shown in the following screenshot. Make sure the version of the **GPUs** extension is **2.8.0**.
+After you install the extension, it appears under the **Installed extensions** tab as shown in the following screenshot. Make sure the version of the **GPUs** extension is 2.8.0 or later.
 
 :::image type="content" source="./media/partition-gpu/gpu-extension.png" alt-text="Screenshot of the Installed extensions tab in Windows Admin Center to verify the GPUs extension is installed." lightbox="./media/partition-gpu/gpu-extension.png" :::
 
