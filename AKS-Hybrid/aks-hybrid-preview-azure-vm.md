@@ -106,7 +106,7 @@ Run the following commands in a PowerShell admin window inside the Azure VM:
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --version 0.2.29
+az extension add -n arcappliance --upgrade
 az extension add -n hybridaks --upgrade
 ```
 
@@ -125,76 +125,30 @@ Exit
 
 Open a new PowerShell admin window and run the following command:
 
-   ```PowerShell
-   Install-Module -Name AksHci -Repository PSGallery -AcceptLicense -Force 
-   Exit 
-   ```
-
-Open a new PowerShell admin window and run the following command:
-
-   ```PowerShell
-   Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force 
-   Exit 
-   ```
-
-Open a new PowerShell admin window and run the following command:
-
-   ```PowerShell
-   Initialize-AksHciNode 
-   Exit 
-   ```
-
-Open a new PowerShell admin window and run the following command:
-
-   ```PowerShell
-   New-Item -Path "V:\" -Name "AKS-HCI" -ItemType "directory" -Force 
-   New-Item -Path "V:\AKS-HCI\" -Name "Images" -ItemType "directory" -Force 
-   New-Item -Path "V:\AKS-HCI\" -Name "WorkingDir" -ItemType "directory" -Force 
-   New-Item -Path "V:\AKS-HCI\" -Name "Config" -ItemType "directory" -Force 
-   Exit 
-   ```
-
-## Step 6: Install the AKS on Windows Server management cluster
-
-You must run the commands in this step in a PowerShell admin window inside the Azure VM.
+```PowerShell
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.21
+Exit 
+```
 
 Open a new PowerShell admin window and run the following command:
 
 ```PowerShell
-$vnet=New-AksHciNetworkSetting -Name "mgmt-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.4" -k8snodeippoolend "192.168.0.10" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.160"
-
-Set-AksHciConfig -vnet $vnet -imageDir "V:\AKS-HCI\Images" -workingDir "V:\AKS-HCI\WorkingDir" -cloudConfigLocation "V:\AKS-HCI\Config" -cloudServiceIP "192.168.0.4"  
+New-Item -Path "V:\" -Name "Arc-HCI" -ItemType "directory" -Force  
+New-Item -Path "V:\Arc-HCI\" -Name "WorkingDir" -ItemType "directory" -Force 
+Exit 
 ```
 
-Next, set the Azure subscription and resource group variables and then run `Set-AksHciRegistration`:
+## Step 6: Install Moc on the Azure VM & download Kubernetes VHD image
 
+Open a new PowerShell admin window and run the following command:
 ```PowerShell
-$sub = <Azure subscription>
-$rgName = <Azure resource group>
-
-#Use device authentication to login to Azure. Follow the steps you see on the screen
-Set-AksHciRegistration -SubscriptionId $sub -ResourceGroupName $rgName -UseDeviceAuthentication
+Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
+Install-Moc
+Add-ArcHcik8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
+$config = Get-MocConfig
+cp .\kubectl.exe $config.installationPackageDir
 ```
-
-Run the following command to install AKS on Windows Server host:
-
-```PowerShell
-Install-AksHci 
-```
-
-### Validate AKS on Windows Server version
-
-You can check if AKS on Windows Server has been installed using the following command. Run the following command in the Azure VM:
-
-```PowerShell
-Get-AksHciVersion
-```
-
-Expected Output:
-
-`1.0.16.10113`
-
-Do not proceed if you have any errors. If you face an issue installing AKS on Windows Server, review the [troubleshooting section](known-issues.yml). If the troubleshooting section does not help you, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Attach logs using `Get-AksHciLogs` so that we can help you faster.
 
 ## Step 7: Generate prerequisite YAML files needed to deploy Azure Arc Resource Bridge
 
@@ -207,7 +161,7 @@ $location=<Azure location. Can be "eastus", "westeurope", "westus3", or "southce
 ```
 
 ```PowerShell
-$workingDir = "V:\AKS-HCI\WorkingDir"
+$workingDir = "V:\Arc-HCI\WorkingDir"
 $arcAppName="arc-resource-bridge"
 $configFilePath= $workingDir + "\hci-appliance.yaml"
 $arcExtnName = "aks-hybrid-ext"
@@ -223,9 +177,9 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -re
 Sample output:
 
 ```output
-HCI login file successfully generated in 'V:\AKS-HCI\WorkingDir\kvatoken.tok'
+HCI login file successfully generated in 'V:\Arc-HCI\WorkingDir\kvatoken.tok'
 Generating ARC HCI configuration files...
-Config file successfully generated in 'V:\AKS-HCI\WorkingDir'
+Config file successfully generated in 'V:\Arc-HCI\WorkingDir'
 ```
 
 ## Step 8: Deploy Azure Arc Resource Bridge
@@ -321,7 +275,7 @@ You must run the commands in this step in a PowerShell admin window inside the A
 Run the following command to create the local network for AKS hybrid clusters:
 
 ```PowerShell
-New-KvaVirtualNetwork -name hybridaks-vnet -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.15" -k8snodeippoolend "192.168.0.25" -vipPoolStart "192.168.0.162" -vipPoolEnd "192.168.0.170" -kubeconfig $workingDir\config
+New-ArcHciVirtualNetwork -name hybridaks-vnet -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.15" -k8snodeippoolend "192.168.0.25" -vipPoolStart "192.168.0.162" -vipPoolEnd "192.168.0.170" 
 ```
 
 Once you've created the local network, connect it to Azure by running the following command:
@@ -332,17 +286,7 @@ az hybridaks vnet create -n "azvnet" -g $resourceGroup --custom-location $clId -
 $vnetId = az hybridaks vnet show -n "azvnet" -g $resourceGroup --query id -o tsv
 ```
 
-## Step 12: Download the Kubernetes VHD image to your Azure VM
-
-You must run the commands in this step in a PowerShell admin window inside the Azure VM.
-
-Run the following command to download the Kubernetes VHD image for your AKS hybrid clusters to your Azure VM:
-
-```PowerShell
-Add-KvaGalleryImage -kubernetesVersion 1.22.11
-```
-
-## Step 13: Create an Azure AD group and add Azure AD members to it
+## Step 12: Create an Azure AD group and add Azure AD members to it
 
 You can perform the operations in this step from the Azure portal or from Azure CLI.
 
@@ -350,7 +294,7 @@ In order to connect to the AKS hybrid cluster from anywhere, you need to create 
 
 To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
 
-## Step 14: Create an AKS hybrid cluster using Azure CLI
+## Step 13: Create an AKS hybrid cluster using Azure CLI
 
 Run the following command to create an AKS hybrid cluster using Azure CLI:
 
