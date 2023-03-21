@@ -5,7 +5,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 03/16/2023
+ms.date: 03/21/2023
 ---
 
 # Get remote support for Azure Stack HCI (preview)
@@ -115,13 +115,13 @@ For example scenarios that show how to perform various operations to grant remot
 
 ### Install Remote Support extension (after Azure registration)
 
-Install the Remote Support extension from the Windows Admin Center Extensions feed. You must have domain admin account to complete this step. Make sure that the Remote Support extension is updated to the latest version if already installed.
+Install the Remote Support extension from the Windows Admin Center Extensions feed. Make sure that the Remote Support extension is updated to the latest version if already installed.
 
-:::image type="content" source="media/remote-support/remote-support-extension-installed.png" alt-text="Screenshot to verify that the remote support extension is installed" lightbox="media/remote-support/remote-support-extension-installed.png":::
+:::image type="content" source="media/remote-support/remote-support-extension-feed.png" alt-text="Screenshot of the Extensions page that displays Remote Support as available extension." lightbox="media/remote-support/remote-support-extension-feed.png":::
 
 ### Grant remote support access
 
-Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands. Carefully read the [remote support terms and conditions](#remote-support-terms-and-conditions) before granting access.
+Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands. You must have domain admin account to complete this step. Carefully read the [remote support terms and conditions](#remote-support-terms-and-conditions) before granting access.
 
 :::image type="content" source="media/remote-support/remote-support-hci-grant-access.png" alt-text="Screenshot of grant remote support access options" lightbox="media/remote-support/remote-support-hci-grant-access.png":::
 
@@ -191,7 +191,7 @@ Get-AzStackHCIRemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <
 You can grant Microsoft support one of the following access levels for remote support:
 
 - [**Diagnostics**](#access-level-diagnostics): To view diagnostic info and logs
-- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): To view diagnostic info and logs in addition to perform software repairs
+- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): To view diagnostic info and logs plus perform software repairs
 
 The following section lists the allowed commands that Microsoft support can execute during a remote support session.
 
