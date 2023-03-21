@@ -1,93 +1,303 @@
 ---
 title: Update Azure Stack HCI clusters via PowerShell (preview)
-description: How to apply operating system, service, and Solution extension updates to Azure Stack HCI using PowerShell (preview).
+description: How to apply operating system, service, and Solution Extension updates to Azure Stack HCI using PowerShell (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/01/2023
+ms.date: 03/21/2023
 ---
 
 # Update your Azure Stack HCI solution via PowerShell (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and later
+Applies to: Azure Stack HCI, Supplemental Package
 
-This article describes how to apply a solution update via PowerShell cmdlets on your Azure Stack HCI clusters. This procedure applies to both a single node and multi-node clusters that are running software versions with Lifecycle Manager installed. If your Azure Stack HCI cluster was created using a new deployment of version 22H2, then Lifecycle Manager was automatically installed as part of the deployment.
+This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
+The procedure in this article applies to both a single node and multi-node cluster that is running software versions with Lifecycle Manager installed. If your cluster was created via a new deployment of Azure Stack HCI, Supplemental Package, then Lifecycle Manager was automatically installed as part of the deployment.
 
-## About solution updates using the Lifecycle Manager
+For information on how to apply solution updates to clusters that were created with older versions of Azure Stack HCI that did not have Lifecycle Manager installed, see [Apply updates to an existing cluster](../index.yml).
 
-This article focuses on solution updates that can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](placeholder.md).
+## About solution updates
 
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](../index.yml).
+
+The update example used in this article does not include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).
+
+When you apply a solution update, here are the high-level steps that you’ll take:
+
+1. Make sure that all the prerequisites are completed.
+1. Connect to your Azure Stack HCI cluster via remote PowerShell.
+1. Discover the updates that are available and filter the ones that you can apply to your cluster.
+1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
+1. Verify the version of the updates installed.
+
+> [!NOTE]
+> The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node cluster varies from X-Y hrs. and for a two-node cluster varies from Y-Z hrs.
 
 ## Prerequisites
 
-Before you apply the solution updates, make sure that you've access to:
+Before you begin, make sure that:
 
-- An Azure Stack HCI cluster that is running 2302 or higher. The cluster should be registered with the service in Azure.
-- The solution update package <insert a link here>. You will side-load these updates.
+- You’ve access to an Azure Stack HCI cluster that is running 2302 or higher. The cluster should be registered in Azure.
+- You’ve access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
+- You’ve access to the solution update package over the network. You will sideload or copy these updates to the nodes of your cluster.
 
+## Connect to your Azure Stack HCI cluster
 
-## Connect to your cluster
+Follow these steps on your client to connect to one of the nodes of your Azure Stack HCI cluster.
 
-To connect to one of the nodes of your Azure Stack HCI cluster, follow these steps:
+1. Run PowerShell as administrator on the client that you are using to connect to your cluster.
+1. Open a remote PowerShell session to a node on your Azure Stack HCI cluster. Run the following command and provide the credentials of your node when prompted:
 
-- Run PowerShell as administrator on the client that you are using to connect to your cluster.
-- Open a remote PowerShell session to a node on your Azure Stack HCI cluster. Run the following command:
+    ```powershell
+    $cred = Get-Credential
+    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred -Authentication 'CredSSP'
+    ```
 
-## Step 1: Discover available updates
+    Here is an example output:
+    
+    ```Console
+    PS C:\Users\Administrator> $cred = Get-Credential
+     
+    cmdlet Get-Credential at command pipeline position 1
+    Supply values for the following parameters:
+    Credential
+    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred -Authentication 'CredSSP'
+    [100.100.100.10]: PS C:\Users\Administrator\Documents>
+    ```
 
-The first step is to identify which solution updates are available for your cluster.
+## Step 1: Identify the existing version on your cluster
 
+Before you discover the updates, identify the versions that your cluster is currently running. Run the following command and make a note of the operating system version of your cluster:
 
-## Known issues
+```powershell
+cmd /c ver
+```
 
-The following are known issues when applying a solution update on your cluster from Azure Stack HCI, version 20H2 to version 21H2.
+## Step 2: Discover the updates
 
-### Couldn't install updates
+You’ll now sideload the updates that you intend to apply to your cluster.
 
-This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell, and then refresh your browser when the run is complete.
+1. Set some parameters. Run the following command:
 
-:::image type="content" source="media/update-cluster/known-issues.png" alt-text="This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Refresh your browser." lightbox="media/update-cluster/known-issues.png"::::::
+    ```powershell
+    $updates = Get-SolutionUpdate
+    ```
 
-### Couldn't check for updates
+1. Get all the available solution updates and filter out the ones that are ready to start preparation and installation. Run the following command:
 
-This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell and then refresh your browser when the run is complete.
+    ```powershell
+    $readyUpdate = $updates | where State -eq "Ready" 
+    $readyUpdate | ft DisplayName, Version, State   
+    ```
 
-This message is also seen when the clustered servers have mixed versions of patches installed. This causes the `Invoke_CAUScan` command with `RollingUpgrade` plugin to return multiple feature updates. To mitigate this issue, apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to all servers in the cluster before attempting to update the cluster.
+1. Check the component version of the updates that are ready to start preparation and installation. Run the following command:
 
-### Multiple prompts for login credentials
+    ```powershell
+    $readyUpdate.ComponentVersions
+    ```
 
-In older versions of Windows Admin Center, you may be prompted to authenticate multiple times during an updating run. Either authenticate each time when prompted or go back to **Connections** and re-connect to the cluster.
+    Here is an example output:
+    
+    ```console
+    PS C:\> $updates = Get-SolutionUpdate
+    PS C:\> $readyUpdate = $updates | where State -eq "Ready"    
+    PS C:\> $readyUpdate | ft DisplayName, Version, State
+    
+    DisplayName                 Version      State
+    -----------                 -------      -----
+    Azure Stack HCI 2302 bundle 10.2302.0.15 Ready
+    
+    PS C:\> $ readyUpdate.ComponentVersions
+    
+    PackageType Version      LastUpdated
+    ----------- -------      -----------
+    Services    10.2302.0.15
+    Platform    10.2302.0.15
+    SBE         4.1.2.3
+    ```
+    
+## Step 3: Download, check readiness, and install updates
 
-### Cluster readiness check doesn't complete
+You can download the updates, perform a set of checks to verify the update readiness of your cluster, and start installing the updates.
 
-At times, the readiness check remains in **Checking** status for the cluster validation tests and never finishes. This is predominantly seen in non-English Azure Stack HCI clusters due to localization issues. 
+1. You can only download the update without starting the installation or download and install the update. 
 
-When `Test-Cluster` finishes on the machines (usually after a couple of minutes), Windows Admin Center may not recognize that the checks have completed. Because `Test-Cluster` does succeed behind the scenes in this scenario, you can download the `Test-Cluster` report file directly from the servers to validate cluster health before continuing with the updating run. Alternatively, run `Test-Cluster` using PowerShell on any of the servers in the cluster.
+    - To download and install the update, run the following command:
 
-### CredSSP credentials error
+        ```powershell
+        Get-SolutionUpdate | Start-SolutionUpdate
+        ```
 
-In older versions of Windows Admin Center, you may encounter the error message "You can't use Cluster Aware Updating without enabling CredSSP and providing explicit credentials" when you've already done so. This issue is fixed in Windows Admin Center version 2110.
+    - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
 
-### CredSSP session endpoint permissions issue
+1. To track the update progress, monitor the update state. Run the following command:
 
-During an updating run, you may see a notification to enable CredSSP, along with an error message: "Couldn't enable CredSSP delegation. Connecting to the remote server failed."
+    ```powershell
+    Get-SolutionUpdate
+    ```
 
-This CredSSP error is seen when Windows Admin Center is running on a local PC and when the Windows Admin Center user is not the same user who installed Windows Admin Center on the machine.
+    When the update starts, the following actions occur:
 
-To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC and then sign back in, and the error should go away.
+    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download may take several minutes.
 
-### Naming mismatch on operating system versions
+        Here is an example output when the updates are being downloaded:
 
-Although the update header says Azure Stack HCI 22H2, if a cluster hasn't joined the preview channel, it will only receive the publicly offered 21H2 GA update. This is a hard-coding mismatch.
+        ```
+        [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdate
+        
+        
+        ResourceId            : redmond/Solution10.2302.1.1
+        InstalledDate         :
+        Description           :
+        
+        State                 : Downloading
+        KbLink                : https://learn.microsoft.com/en-us/azure-stack/hci/
+        MinVersionRequired    :
+        MinOemVersionRequired : 1.0.0.0
+        PackagePath           : C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\Updates\Packages\Solution10.2302
+                                .1.1
+        PackageSizeInMb       : 331
+        DisplayName           : Azure Stack HCI 2302 bundle
+        Version               : 10.2302.1.1
+        OemVersion            :
+        Publisher             : Microsoft
+        ReleaseLink           : https://learn.microsoft.com/en-us/azure-stack/hci/
+        AvailabilityType      : Online
+        PackageType           : Solution
+        Prerequisites         :
+        UpdateStateProperties :
+        AdditionalProperties  :
+        ComponentVersions     : {Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.PackageVersionInfo,
+                                 Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.PackageVersionInfo}
+        RebootRequired        : Yes
+        HealthState           : Unknown
+        HealthCheckResult     :
+        HealthCheckDate       : 1/1/0001 12:00:00 AM
+        ```
+
+    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](). During this phase, the **State** of the update shows as `HealthChecking`.
+
+    - When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage completed.
+
+        **IMPORTANT:**
+    
+        During the install, the cluster nodes may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single node, your Azure Stack HCI will experience a downtime.
+    
+        Here is a sample output while the updates are being installed.
+
+        ```console
+        [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdate
+        
+        
+        ResourceId            : redmond/Solution10.2302.1.1
+        InstalledDate         :
+        Description           :
+        
+        State                 : Installing
+        KbLink                : https://learn.microsoft.com/en-us/azure-stack/hci/
+        MinVersionRequired    :
+        MinOemVersionRequired : 1.0.0.0
+        PackagePath           : C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\Updates\Packages\Solution10.2302
+                                .1.1
+        PackageSizeInMb       : 331
+        DisplayName           : Azure Stack HCI 2302 bundle
+        Version               : 10.2302.1.1
+        OemVersion            :
+        Publisher             : Microsoft
+        ReleaseLink           : https://learn.microsoft.com/en-us/azure-stack/hci/
+        AvailabilityType      : Online
+        PackageType           : Solution
+        Prerequisites         :
+        UpdateStateProperties : 89% complete.
+        AdditionalProperties  :
+        ComponentVersions     : {Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.PackageVersionInfo,
+                                 Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.PackageVersionInfo}
+        RebootRequired        : Yes
+        HealthState           : Success
+        HealthCheckResult     : {Storage Subsystem Summary, Storage Pool Summary, Storage Services Physical Disks Summary,
+                                Storage Services Physical Disks Summary...}
+        HealthCheckDate       : 2/23/2023 5:48:42 PM
+        ```
+
+Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Asz.Update PowerShell Module.docx](https://microsoft.sharepoint.com/:w:/t/ASZ/EYSSpZVOM-NBm35x867-REwBiOq-9LmW62H_KsL5ENxYcA?e=aHgPLv).
+
+To track a more granular progress of the updates, see [Verify detailed progress](#appendix-verify-detailed-progress).
+
+## Step 4: Verify the installation
+
+After the updates are installed, verify the solution version of the environment as well as the version of the operating system.
+
+1. After the update is in Installed state, check the environment solution version. Run the following command:
+
+    ```powershell
+    Get-SolutionUpdateEnvironment | ft State, CurrentVersion
+    ```
+
+    Here is a sample output:
+    
+    ```console
+    [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdateEnvironment | ft State, CurrentVersion
+    
+    State               CurrentVersion
+    -----               --------------
+    AppliedSuccessfully 10.2302.1.1
+        
+    ```
+
+1. Check the operating system version to confirm it matches the recipe you installed. Run the following command:
+
+    ```powershell
+    cmd /c ver
+    ```
+
+    Here is a sample output:
+
+    ```console
+    [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> cmd /c ver
+    
+    Microsoft Windows [Version 10.0.20349.1547]
+    ```
+
+## Appendix: Verify detailed progress
+
+While the update is in the preparation phase (download if necessary, stage the content on the cluster, and run readiness checks), the preparation steps can be viewed as part of the progress.
+
+1. To track the more granular preparation state, run the following command:
+
+    ```powershell
+    $updateRun = $readyUpdate | Get-SolutionUpdateRun
+    $updateRun.Progress.Steps | ft Name, Status
+    ```
+
+    Here is an example output:
+
+    ```console
+    PS C:\> $updateRun = $readyUpdate | Get-SolutionUpdateRun
+    PS C:\> $updateRun.Progress.Steps | ft Name, Status
+    
+    Name                                         Status
+    ----                                         ------
+    Downloading update                           Success
+    Verifying additional content is added        Success
+    Validating the download and extracting files InProgress
+    Checking health.                             NotStarted
+    Initiating update installation               NotStarted
+    ```
+
+1. When the update has proceeded to the installation phase, the specific installation steps are shown as part of the progress.
+
+    ```powershell
+    C:\> $readyUpdate | Get-SolutionUpdate | % State
+    ```
+
+    Here is an example output:
+
+    ```console
+    PS C:\> $readyUpdate | Get-SolutionUpdate | % State
+    Installing
+    ```
 
 ## Next steps
 
-For related information, see also:
-
-- [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating)
-- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
-- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx)
-- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md)
-- [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
-- [Validate an Azure Stack HCI cluster](../deploy/validate.md)
+Learn more about how to [Troubleshoot updates](../index.yml).
