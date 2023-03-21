@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 12/19/2022
+ms.date: 03/21/2023
 ---
 
 # Firewall requirements for Azure Stack HCI
