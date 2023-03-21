@@ -26,9 +26,19 @@ Get-AksHciCredential -name <String>
 ## Description
 Access your cluster using kubectl.
 
+## Update to the kubelogin authentication plugin
+
+To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins). After Kubernetes version 1.26, AKS hybrid will require the [Azure **kubelogin** binary](https://github.com/Azure/kubelogin) installed. If this plugin is not installed, existing installations of kubectl will stop working. The Azure **kubelogin** plugin is supported from version 1.23 and later.
+
+You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to automatically download **kubelogin.exe** and make it available for use.
+You can verify the installation by running `kubelogin.exe –help`.
+
+For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page](https://github.com/Azure/kubelogin).
+
 ## Examples
 
-### Access your cluster using kubectl.
+### Access your cluster using kubectl
+
 ```powershell
 Get-AksHciCredential -name myCluster
 ```
