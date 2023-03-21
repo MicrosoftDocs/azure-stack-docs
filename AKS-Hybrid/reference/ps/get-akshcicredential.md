@@ -3,7 +3,7 @@ title: Get-AksHciCredential for AKS hybrid
 author: sethmanheim
 description: The Get-AksHciCredential PowerShell command accesses your cluster using kubectl.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 03/21/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Access your cluster using `kubectl`. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`.
+Access your cluster using `kubectl`. This will use the specified cluster's **kubeconfig** file as the default **kubeconfig** file for `kubectl`.
 
 ## Syntax
 
@@ -22,20 +22,12 @@ Access your cluster using `kubectl`. This will use the specified cluster's _kube
 Get-AksHciCredential -name <String>
                     [-configPath <String>]
                     [-adAuth]
+                    [-aadAuth]
 ```
 
 ## Description
 
 Access your cluster using kubectl.
-
-### Update to the kubelogin authentication plugin
-
-To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins). After Kubernetes version 1.26, AKS hybrid will require the [Azure **kubelogin** binary](https://github.com/Azure/kubelogin) installed. If this plugin is not installed, existing installations of kubectl will stop working. The Azure **kubelogin** plugin is supported from version 1.23 and later.
-
-You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to automatically download **kubelogin.exe** and make it available for use.
-You can verify the installation by running `kubelogin.exe –help`.
-
-For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page](https://github.com/Azure/kubelogin).
 
 ## Examples
 
@@ -81,7 +73,23 @@ Accept wildcard characters: False
 
 ### -adAuth
 
-Use this flag to get the Active Directory SSO version of the kubeconfig.
+Gets the Active Directory SSO version of the kubeconfig.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -aadAuth
+
+Gets the Azure RBAC kubeconfig.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
