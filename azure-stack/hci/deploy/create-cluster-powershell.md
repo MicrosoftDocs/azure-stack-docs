@@ -366,7 +366,7 @@ Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent
 ```powershell
  $siteOverride = New-NetIntentSiteOverrides
 ```
-Once you have created a siteOverride, you can set any property for the siteOverride. The list of properties you can set for a particular siteOverride is: Name, StorageVlan, StretchVlan and ManagementVlan. For eg: 
+Once you have created a siteOverride, you can set any property for the siteOverride. The list of properties you can set for a particular siteOverride is: Name, StorageVlan, StretchVlan and ManagementVlan. For example: 
 
 ```powershell
 $siteoverride.Name = "A"

@@ -423,4 +423,5 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 ## Next steps
 
 - Learn more about [Network ATC](../concepts/network-atc-overview.md).
+- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).

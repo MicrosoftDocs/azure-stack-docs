@@ -331,6 +331,56 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
+
+## Common Error Messages 
+
+With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered.
+
+### Error: AdapterBindingConflict
+
+:::image type="content" source="media/network-atc/adapterbinderror.png" alt-text="Adapter Binding Error Screenshot"  lightbox="media/network-atc/network-atc-adapterbinderror.png":::
+ 
+- An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
+
+**Solution:** Remove the conflicting vSwitch, then Set-NetIntentRetryState
+
+
+
+- An adapter is bound to the component, but not necessarily a vSwitch.
+
+**Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
+
+:::image type="content" source="media/network-atc/adapterbindresolve.png" alt-text="Adapter Binding Error Resolved"  lightbox="media/network-atc/network-atc-adapterbindresolve.png":::
+
+### Error: ConflictingTrafficClass
+
+:::image type="content" source="media/network-atc/ConflictingTrafficClass.png" alt-text="ConflictingTrafficClass Screenshot"  lightbox="media/network-atc/network-atc-ConflictingTrafficClass.png":::
+
+This issue occurs because a traffic class is already configured that conflicts with the ones Network ATC is deploying. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
+
+**Solution:** 
+
+Clear the existing DCB configuration on the system then Set-NetIntentRetryState
+
+```powershell
+
+Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+Get-NetQosFlowControl | Disable-NetQosFlowControl
+```
+
+### Error: Request for help on ATC - to check ConfigurationStatus
+
+You will see this error in 2 instances: 
+1.	If RDMA is not enabled on adapters for storage and/or compute intents
+**Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
+```powershell
+Enable-NetAdapterRdma -Name 'pNIC1'
+```
+2.	Inbox drivers in use on adapters
+**Solution:** You can not deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
+
+
 ## Next steps
 
 - Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
