@@ -211,7 +211,7 @@ Here are the scenarios where you can use the `Start-SdnCertificateRotation` cmdl
 
 - [Self-signed certificates](#renew-self-signed-certificates-automatically). Use the `Start-SdnCertificateRotation` cmdlet to generate self-signed certificates and renew those certificates in all the Network Controller nodes.
 - [Bring your own certificates](#renew-your-own-certificates-automatically). You bring your own certificates, either self-signed or CA-signed and use the `Start-SdnCertificateRotation` cmdlet for certificate renewal. The cmdlet installs the certificates on all the Network Controller nodes and distributes them to other SDN infrastructure components.
-- [Preinstalled certificates](#renew-preinstalled-certificates-automatically). You have the required certificates already installed on the Network Controller nodes. Use the `Start-SdnCertificateRotation` cmdlet to renew those certificate to other SDN infrastructure components.
+- [Preinstalled certificates](#renew-preinstalled-certificates-automatically). You have the required certificates already installed on the Network Controller nodes. Use the `Start-SdnCertificateRotation` cmdlet to renew those certificates to other SDN infrastructure components.
 
 For more information about how to create and manage SDN certificates, see [Manage certificates for Software Defined Networking](./sdn-manage-certs.md).
 
