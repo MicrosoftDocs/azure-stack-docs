@@ -182,7 +182,7 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
 
     > [!NOTE]
-    > Ensure that the total number of gateway VMs is at least one more than the number of redundant gateways. Else, you won't have any active gateways to host gateway connections.
+    > Ensure that the total number of gateway VMs is at least one more than the number of redundant gateways. Otherwise, you won't have any active gateways to host gateway connections.
 1. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
 1. For VM network addressing, select either **DHCP** or **Static**.
 
