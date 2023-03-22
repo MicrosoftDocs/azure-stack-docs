@@ -454,6 +454,10 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
+    - name: Update
+      items:
+      - name: Update via PowerShell
+        href: update/update-via-powershell.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
