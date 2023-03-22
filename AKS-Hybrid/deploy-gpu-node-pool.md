@@ -13,15 +13,15 @@ ms.reviewer: sethm
 
 # Use GPU for compute-intensive workloads in AKS hybrid
 
-Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning and more.
+Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more.
 
 ## Before you begin
 
-If you are updating AKS hybrid from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPU before you begin.
+If you are updating AKS hybrid from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin.
 
 ### Step 1: Uninstall the Nvidia host driver
 
-On each host machine, navigate to **Control Panel > Add or Remove programs** and uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver has been successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver has been successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
@@ -57,7 +57,7 @@ Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A
 
 ### Step 3: Download and install the NVIDIA mitigation driver
 
-The software may include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
+The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
 
 See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine.
 
@@ -87,10 +87,10 @@ OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
-### Step 4: Repeat steps 1 to 3 for each node in your failover cluster
+Repeat steps 1 to 3 for each node in your failover cluster.
 
 > [!IMPORTANT]
-> GPU enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2002 or Azure Stack HCI.
+> GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Stack HCI.
 
 ## Install or update AKS hybrid
 
@@ -110,7 +110,7 @@ After installing the workload cluster, run the following command to get your Kub
 Get-AksHciCredential -Name gpucluster
 ```
 
-## Confirm that GPUs are schedulable
+## Confirm you can schedule GPUs
 
 With your GPU node pool created, confirm that you can schedule GPUs in Kubernetes. First, list the nodes in your cluster using the [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command:
 
@@ -212,7 +212,7 @@ If you receive a version mismatch error when calling into drivers, such as "CUDA
 
 ### What happens during upgrade of a GPU-enabled node pool?
 
-Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. Hence, for GPU-enabled node pools for a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
+Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. For GPU-enabled node pools in a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
 
 Before you upgrade:
 
