@@ -5,8 +5,8 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 03/21/2023
-ms.lastreviewed: 12/01/2022
+ms.date: 03/22/2023
+ms.lastreviewed: 03/22/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -219,8 +219,13 @@ To connect to an AKS hybrid cluster over a private network, perform the followin
 
 To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins). After Kubernetes version 1.26, AKS hybrid will require the [Azure **kubelogin** binary](https://github.com/Azure/kubelogin) installed. If this plugin is not installed, existing installations of kubectl will stop working. The Azure **kubelogin** plugin is supported from version 1.23 and later.
 
-You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to automatically download **kubelogin.exe** and make it available for use.
-You can verify the installation by running `kubelogin.exe –help`.
+You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to generate a **kubeconfig** file that requires the **kubelogin** authentication plugin.
+
+To download **kubelogin**, use the following command:
+
+```shell
+wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-amd64.zip -OutFile kubelogin-win-amd64.zip
+```
 
 For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page](https://github.com/Azure/kubelogin).
 
