@@ -1,6 +1,6 @@
 ---
 title: Update Azure Stack HCI clusters via PowerShell (preview)
-description: How to apply operating system, service, and Solution Extension updates to Azure Stack HCI using PowerShell (preview).
+description: How to apply operating system, service, and Solution Extension updates to Azure Stack HCI solution using PowerShell (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
