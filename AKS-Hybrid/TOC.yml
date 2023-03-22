@@ -325,6 +325,8 @@
       href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
+    - name: Access TPM secrets
+      href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials
