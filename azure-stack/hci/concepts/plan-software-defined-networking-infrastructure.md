@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 06/14/2021
+ms.date: 03/22/2023
 ---
 # Plan a Software Defined Network infrastructure
 
