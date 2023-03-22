@@ -200,10 +200,6 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Enter the path to the VMs. You can also use the default populated path.
 1. When finished, click **Next: Deploy the Gateway**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
-1. If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
-
-    - update-source Vlan 250: This specifies the source address for BGP updates, that is L3 VLAN.
-    - ebgp multihop 255: This specifies additional hops required since the BGP neighbor is more than 1 hop away.
 
 ## Next steps
 
