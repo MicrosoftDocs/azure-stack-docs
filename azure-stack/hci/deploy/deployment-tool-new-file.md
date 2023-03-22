@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 1/26/2023
+ms.date: 03/08/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -27,32 +27,7 @@ Before you begin, make sure you've done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
-
-## Set up the deployment tool
-
-> [!NOTE]
-> You need to install and set up the deployment tool only on the first server in the cluster. The deployment tool is included in the Azure Stack HCI Supplemental Package.
-
-Ensure the following Supplemental Package components are downloaded first:
-- [BootstrapCloudDeploymentTool.ps1](https://go.microsoft.com/fwlink/?linkid=2210545)
-- [CloudDeployment.zip](https://go.microsoft.com/fwlink/?linkid=2210546)
-- [Verify-CloudDeployment.ps1](https://go.microsoft.com/fwlink/?linkid=2210608)
-
-1. In the deployment UI, select the **first server listed for the cluster to act as a staging server** during deployment.
-
-1. Sign in to the staging server using local administrative credentials.
-
-1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
-
-1. Run PowerShell as administrator.
-
-1. Run the following command to install the deployment tool:
-
-   ```PowerShell
-    .\BootstrapCloudDeploymentTool.ps1 
-    ```
-
-    This step takes several minutes to complete.
+- [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster.
 
 ## Run the deployment tool
 
@@ -71,6 +46,8 @@ If you want to use an existing configuration file you have previously created, s
 1. In the deployment UI, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
 
       :::image type="content" source="media/deployment-tool/new-file/deploy-new-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/new-file/deploy-new-get-started.png":::
+
+### Step 1: Initial configuration
 
 1. On step 1.1 **Provide registration details**, enter the following details to authenticate your cluster with Azure:
 
@@ -136,6 +113,8 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
 
+### Step 2: Networking
+
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
@@ -171,13 +150,17 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
+### Step 3: Clustering
+
 1. On step **3.1 Create cluster**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
 
-1. On step **4.1 Create workload and infrastructure volumes**, select the recommended option to **Create workload volumes** in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+### Step 4: Storage
 
-    If you select **Create infrastructure volumes** only, you will need to create workload volumes yourselves.  
+1. On step **4.1 Create workload and infrastructure volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+
+    If you select **Create required volumes** only, you will need to create workload volumes yourselves.  
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 
@@ -198,7 +181,7 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-    
+### Step 5: Services
 
 1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
@@ -207,6 +190,8 @@ If you want to use an existing configuration file you have previously created, s
 1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch (already populated) used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/new-file/deploy-new-step-5-arc.png":::
+
+### Step 6: Deploy
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
@@ -226,8 +211,6 @@ If you want to use an existing configuration file you have previously created, s
     If the deployment fails, you can also choose to **Download deployment logs** and **Download deployment report**. Deployment logs can help you troubleshoot a failed deployment.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-download-config-logs-report.png" alt-text="Screenshot of the Download options that let you download config, logs, and report." lightbox="media/deployment-tool/new-file/deployment-download-config-logs-report.png":::
-
-
 
 ## Next steps
 

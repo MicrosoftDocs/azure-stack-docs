@@ -35,36 +35,36 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first and reboot.
 
-Before you install the MSI, you can review the [feature support](aks-edge-system-requirements.md#feature-support-matrix) to understand the different options available.  
+Before you install the MSI, you can review the [feature support](aks-edge-system-requirements.md#ga-feature-support-matrix) to understand the different options available.  
 
 ## Install AKS Edge Essentials
 
 1. Open PowerShell as an admin, and navigate to the folder directory with the installer files.
 
-2. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+2. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you have downloaded and run:
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi
     ```
 
     Optionally, you can specify the install directory and the vhdx directory (directory where the vhdx files for the virtual machines are stored) using `INSTALLDIR` and `VHDXDIR`. By default, these will be in `C:\Program Files\AksEdge`.
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
     ```
 
-    Alternatively, you can double-click the **AksEdge-k8s-x.xx.x.msi** or **AksEdge-k3s-x.xx.x.msi** file to install the latest version.
+    Alternatively, you can double-click the **AksEdge-k8s-x.x.xxx.x.msi** or **AksEdge-k3s-x.x.xxx.x.msi** file to install the latest version.
 
-3. To include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.xx.x` with the Kubernetes distribution/version you have downloaded and run:
+3. To include Windows nodes, make sure you have the MSI installer with Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you have downloaded and run:
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
     ```
 
     (or)
 
     ```powershell
-    msiexec.exe /i AksEdge-kXs-x.xx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
+    msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature INSTALLDIR=C:\Programs\AksEdge VHDXDIR=C:\vhdx
     ```
 
     Now you're ready to do mixed deployment.

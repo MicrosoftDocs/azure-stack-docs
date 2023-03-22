@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 12/19/2022
+ms.date: 03/21/2023
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -77,15 +77,23 @@ Ensure that the proper network ports are open between all server nodes both with
 
 When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
 
+### Azure Stack HCI OS management
+
+Ensure that the following firewall rules are configured in your on-premises firewall for Azure Stack HCI OS management, including licensing and billing.
+
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow inbound/outbound traffic to and from the Azure Stack HCI service on cluster servers | Allow | Cluster servers | Cluster servers | TCP | 30301 |
+
 ### Windows Admin Center
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
 
-| Rule                                          | Action | Source                      | Destination            | Service | Ports |
-| :-------------------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :---- |
-| Provide access to Azure and Microsoft Update  | Allow  | Windows Admin Center        | Azure Stack HCI        | TCP     | 445   |
-| Use Windows Remote Management (WinRM) 2.0<br> for HTTP connections to run commands<br> on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5985  |
-| Use WinRM 2.0 for HTTPS connections to run<br> commands on remote Windows servers                            | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5986  |
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Provide access to Azure and Microsoft Update | Allow | Windows Admin Center | Azure Stack HCI | TCP | 445 |
+| Use Windows Remote Management (WinRM) 2.0<br> for HTTP connections to run commands<br> on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5985 |
+| Use WinRM 2.0 for HTTPS connections to run<br> commands on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5986 |
 
 >[!NOTE]
 > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
@@ -94,15 +102,15 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Failover Clustering.
 
-| Rule                                | Action | Source                     | Destination            | Service | Ports  |
-| :---------------------------------  | :----- | :------------------------- | :--------------------- | :------ | :----- |
-| Allow Failover Cluster validation   | Allow  | Management system          | Cluster servers        | TCP     | 445    |
-| Allow RPC dynamic port allocation   | Allow  | Management system          | Cluster servers        | TCP     | Minimum of 100 ports<br> above port 5000 |
-| Allow Remote Procedure Call (RPC)   | Allow  | Management system          | Cluster servers        | TCP     | 135    |
-| Allow Cluster Administrator         | Allow  | Management system          | Cluster servers        | UDP     | 137    |
-| Allow Cluster Service               | Allow  | Management system          | Cluster servers        | UDP     | 3343   |
-| Allow Cluster Service (Required during<br> a server join operation.) | Allow  | Management system  | Cluster servers  | TCP     | 3343 |
-| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow  | Management system           | Cluster servers  | n/a     | n/a  |
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow Failover Cluster validation | Allow | Management system | Cluster servers | TCP | 445 |
+| Allow RPC dynamic port allocation | Allow | Management system | Cluster servers | TCP | Minimum of 100 ports<br> above port 5000 |
+| Allow Remote Procedure Call (RPC) | Allow | Management system | Cluster servers | TCP | 135 |
+| Allow Cluster Administrator | Allow | Management system | Cluster servers | UDP | 137 |
+| Allow Cluster Service | Allow | Management system | Cluster servers | UDP | 3343 |
+| Allow Cluster Service (Required during<br> a server join operation.) | Allow | Management system | Cluster servers | TCP | 3343 |
+| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Cluster servers | n/a | n/a |
 
 >[!NOTE]
 > The management system includes any computer from which you plan to administer the cluster, using tools such as Windows Admin Center, Windows PowerShell or System Center Virtual Machine Manager.
@@ -111,15 +119,15 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Hyper-V.
 
-| Rule                               | Action | Source                      | Destination            | Service | Ports  |
-| :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
-| Allow cluster communication        | Allow  | Management system             | Hyper-V server         | TCP     | 445    |
-| Allow RPC Endpoint Mapper and WMI  | Allow  | Management system             | Hyper-V server         | TCP     | 135    |
-| Allow HTTP connectivity            | Allow  | Management system             | Hyper-V server         | TCP     | 80     |
-| Allow HTTPS connectivity           | Allow  | Management system             | Hyper-V server         | TCP     | 443    |
-| Allow Live Migration               | Allow  | Management system             | Hyper-V server         | TCP     | 6600   |
-| Allow VM Management Service        | Allow  | Management system             | Hyper-V server         | TCP     | 2179   |
-| Allow RPC dynamic port allocation  | Allow  | Management system             | Hyper-V server         | TCP     | Minimum of 100 ports<br> above port 5000 |
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow cluster communication | Allow | Management system | Hyper-V server | TCP | 445 |
+| Allow RPC Endpoint Mapper and WMI | Allow | Management system | Hyper-V server | TCP | 135 |
+| Allow HTTP connectivity | Allow | Management system | Hyper-V server | TCP | 80 |
+| Allow HTTPS connectivity | Allow | Management system | Hyper-V server | TCP | 443 |
+| Allow Live Migration | Allow | Management system | Hyper-V server | TCP | 6600 |
+| Allow VM Management Service | Allow | Management system | Hyper-V server | TCP | 2179 |
+| Allow RPC dynamic port allocation | Allow | Management system | Hyper-V server | TCP | Minimum of 100 ports<br> above port 5000 |
 
 >[!NOTE]
 > Open up a range of ports above port 5000 to allow RPC dynamic port allocation. Ports below 5000 may already be in use by other applications and could cause conflicts with DCOM applications. Previous experience shows that a minimum of 100 ports should be opened, because several system services rely on these RPC ports to communicate with each other. For more information, see [How to configure RPC dynamic port allocation to work with firewalls](/troubleshoot/windows-server/networking/configure-rpc-dynamic-port-allocation-with-firewalls).
@@ -128,11 +136,11 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
 
-| Rule                                          | Action | Source                     | Destination                      | Service | Ports  |
-| :-------------------------------------------  | :----- | :------------------------- | :------------------------------- | :------ | :----- |
-| Allow Server Message Block<br> (SMB) protocol | Allow  | Stretched cluster servers  | Stretched cluster servers        | TCP     | 445    |
-| Allow Web Services-Management<br> (WS-MAN)    | Allow  | Stretched cluster servers  | Stretched cluster servers        | TCP     | 5985   |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Stretched cluster servers  | Stretched cluster servers  | n/a     | n/a  |
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 445 |
+| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 5985 |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched cluster servers | Stretched cluster servers | n/a | n/a |
 
 ## Set up a proxy server
 

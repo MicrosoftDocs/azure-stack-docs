@@ -1,5 +1,5 @@
 ---
-title: AKS Edge Essentials clusters and noes
+title: AKS Edge Essentials clusters and nodes
 description: Clusters and nodes running on AKS Edge Essentials 
 author: rcheeran
 ms.author: rcheeran

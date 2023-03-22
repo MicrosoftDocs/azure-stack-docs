@@ -23,6 +23,11 @@ The following are the requirements on the host machine that runs AKS Edge Essent
 
 To better understand the concept of vCPUs, [read this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 
+You can run AKS Edge Essentials on an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization like the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. 
+
+> [!CAUTION]
+> Running AKS Edge Essentials on a virtual machine, using nested virtualization is an experimental feature and is recommended only for developer use cases.  
+
 ### OS requirements
 
 Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
@@ -35,14 +40,21 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
   | Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
-## Feature support matrix
+## GA Feature support matrix
 
-| Feature | Public Preview   |Experimental|
-|------------|-----------|--------|
-|Kubernetes (K8S)|Version: 1.24.3| - |
-|Kubernetes (K3S)|Version: 1.24.3| - |
-|Network plugin | Calico on K8S <br/> Flannel on K3S | Flannel on K8S <br/> Calico on K3S|
-|Configuration| Single machine Kubernetes<br/> Full Kubernetes (on single machine)|Full Kubernetes (on multiple machines)|
+- **Infrastructure** -  Install AKS Edge Essentials on physical host machines.
+- **Kubernetes Distribution supported** -  Kubernetes (K8S) - Version: 1.24.3 and on Kubernetes (K3S) - Version: 1.24.3
+- **Deployment options** - Single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
+- **Workloads** -  Only Linux worker node.
+- **Network plugins**: Calico on K8S and Flannel on K3S.
+
+## Experimental or Pre-release Features
+
+- **Infrastructure** - Installing AKS Edge Essentials on a virtual machine using nested virtualization is experimental.
+- **Deployment options** - Full Kubernetes deployment on multiple machines. 
+- **Workloads** -  Windows worker node.
+- **Network plugins**: Flannel on K8S and Calico on K3S
+
 
 ## Next steps
 

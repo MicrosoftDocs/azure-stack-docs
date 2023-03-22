@@ -51,7 +51,7 @@ $env:Path = "C:\helm\windows-amd64;$env:Path"
 
 ## Step 2: Configure your Azure environment
 
-Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
+Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal with the built-in `Microsoft.Kubernetes connected cluster` role to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
@@ -60,8 +60,8 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
 |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-|`ClientId` | GUID | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
-|`ClientSecret` | string | The name of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |
+|`ClientId` | GUID | Provide the Application ID of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. |
+|`ClientSecret` | string | Provide the password for the service principal. |
 
 > [!NOTE]
 > This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.

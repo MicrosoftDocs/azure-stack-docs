@@ -4,7 +4,7 @@ description: This article describes how to deploy a containerized application to
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 03/09/2023
 ms.custom: template-how-to
 ---
 
@@ -14,7 +14,7 @@ This article describes how to deploy a containerized application on your Kuberne
 
 ## Prerequisites
 
-- Set up your [single machine Kubernetes](aks-edge-howto-single-node-deployment.md) or [full Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
+To get started, set up your [single machine Kubernetes](aks-edge-howto-single-node-deployment.md) or [full Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
 
 ## Deploy a sample Linux application
 
@@ -38,7 +38,7 @@ Wait a few minutes for the pods to be in the **running** state.
 kubectl get pods -o wide
 ```
 
-![Screenshot of results showing linux pods running.](media/aks-edge/linux-pods-running.png)
+:::image type="content" source="media/aks-edge/linux-pods-running.png" alt-text="Screenshot showing Linux pods running." lightbox="media/aks-edge/linux-pods-running.png":::
 
 ### 3. Verify the services
 
@@ -48,7 +48,7 @@ To monitor progress, use the [kubectl get service][kubectl-get] command with the
 kubectl get services
 ```
 
-![Screenshot of results showing linux services running.](media/aks-edge/linux-services-running.png)
+:::image type="content" source="media/aks-edge/linux-services-running.png" alt-text="Screenshot showing Linux services running." lightbox="media/aks-edge/linux-services-running.png":::
 
 Initially, the `EXTERNAL-IP` for the `azure-vote-front` service is shown as `pending`. When the `EXTERNAL-IP` address changes from `pending` to an actual public IP address, you can use the IP address assigned to the service.
 
@@ -65,7 +65,7 @@ You can now append the external port to the VM's IP address (for example, **192.
 
 To see the application in action, open a web browser to the external IP address of your service:
 
-![Screenshot showing Linux apps running](./media/aks-edge/linux-app-up.png)
+:::image type="content" source="media/aks-edge/linux-app-up.png" alt-text="Screenshot showing Linux apps that are running." lightbox="media/aks-edge/linux-app-up.png":::
 
 If the application doesn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?bc=/azure/container-registry/breadcrumb/toc.json&toc=/azure/container-registry/toc.json).
 
@@ -86,7 +86,7 @@ This example runs a sample ASP.NET application based on [Microsoft's sample imag
 Make sure you are in the directory of the YAML in a PowerShell window, and then run the following command:
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
+kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/win-sample.yaml
 ```
 
 ### 2. Verify that the sample pod is running
@@ -97,7 +97,7 @@ It might take a while for the pod to reach the running status, depending on your
 kubectl get pods -o wide
 ```
 
-![Screenshot showing Windows pods running.](media/aks-edge/win-pods-running.png)
+:::image type="content" source="media/aks-edge/win-pods-running.png" alt-text="Screenshot showing Windows pods running." lightbox="media/aks-edge/win-pods-running.png":::
 
 ### 3. Verify that the sample service is up
 
@@ -105,7 +105,7 @@ kubectl get pods -o wide
 kubectl get services
 ```
 
-![Screenshot showing Windows services running.](media/aks-edge/win-svc-running.png)
+:::image type="content" source="media/aks-edge/win-svc-running.png" alt-text="Screenshot showing Windows services running." lightbox="media/aks-edge/win-svc-running.png":::
 
 Since this sample is deployed as a service of type **NodePort**, we can get the IP of the Kubernetes node that the application is running on, then append the port of the NodePort. Get the IP of the Kubernetes node using the following `Get-AksEdgeNodeAddr`command
 
@@ -113,13 +113,13 @@ Since this sample is deployed as a service of type **NodePort**, we can get the 
 Get-AksEdgeNodeAddr -NodeType Windows
 ```
 
-![Screenshot showing Windows cluster information.](media/aks-edge/win-cluster-info.png)
+:::image type="content" source="media/aks-edge/win-cluster-info.png" alt-text="Screesnhot showing Windows cluster information." lightbox="media/aks-edge/win-cluster-info.png":::
 
 ### 4. Check out your running Windows sample
 
 Open a web browser and locate the NodePort to access your service:
 
-![Screenshot showing Windows app running.](media/aks-edge/win-app-up.png)
+:::image type="content" source="media/aks-edge/win-app-up.png" alt-text="Screenshot showing Windows app running." lightbox="media/aks-edge/win-app-up.png":::
 
 ### 5. Clean up
 

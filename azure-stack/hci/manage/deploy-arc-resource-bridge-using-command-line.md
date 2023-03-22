@@ -3,6 +3,8 @@ title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
 author: ManikaDhiman
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 1/4/2023
 ms.author: v-mandhiman
 ms.reviewer: alkohli
@@ -80,8 +82,6 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-        If you are deploying your Arc Resource Bridge behind a network proxy, you will need to configure the proxy configuration first. For specific information, see [network proxy requirements](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). Once completed, return back to this article to set up Arc VM management.
-   
       ### [For static IP address](#tab/for-static-ip-address-1)
 
       ```PowerShell
@@ -133,7 +133,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    ```PowerShell
    $subscription="subscription ID in Azure"
    $resource_group="<pre-created resource group in Azure>"
-   $location="<Azure Region - Available regions include 'eastus', 'westeurope' and 'southeastasia'>"
+   $location="<Azure Region - Available regions include 'eastus' and 'westeurope'>"
    ```
 
    where:
@@ -142,7 +142,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | ----- | ----------- |
    | **subscription** | Subscription ID in Azure. |
    | **resource_group** | Name of the pre-created resource group in Azure. |
-   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **westeurope** or **southeastasia**. |
+   | **location** | Name of the Azure region. Specify one of the following available regions: **eastus** or **westeurope**. |
 
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
@@ -178,7 +178,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -202,7 +202,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       >    ```powershell
       >    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
       >    ```
-      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge#kva-timeout-error).
    
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell
@@ -218,7 +218,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       > The configuration files are required to perform essential az arcappliance CLI commands. The kvatoken.tok file is required for logs collection. Make sure you store these files in a secure and safe location for future use.
       > 
-      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements). After the proxy settings are applied, come back here and continue set up with the following steps:
+      > For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After the proxy settings are applied, come back here and continue set up with the following steps:
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
       ```powershell
@@ -240,7 +240,7 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       >    ```powershell
       >    az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
       >    ```
-      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](../manage/troubleshoot-arc-enabled-vms.md#kva-timeout-error).
+      >     While there can be a number of reasons why the Arc Resource Bridge deployment fails, one of them is KVA timeout error. For more information about the KVA timeout error and how to troubleshoot it, see [KVA timeout error](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge#kva-timeout-error).
 
    1. Create the connection between the Azure ARM resource and on-premises appliance VM of Arc Resource Bridge:
       ```PowerShell

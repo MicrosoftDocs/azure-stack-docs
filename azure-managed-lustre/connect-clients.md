@@ -4,9 +4,9 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/16/2023
+ms.lastreviewed: 02/21/2023
 ms.reviewer: dsundarraj
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
@@ -21,7 +21,7 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
-- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages that have been tested with Azure Managed Lustre are available from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software). See [Install client software](#install-client-software) for more information. Client packages are available for several commonly used Linux OS distributions.
+- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See [Install client software](#install-client-software) for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions.
 - **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** -
@@ -41,14 +41,14 @@ You can download pre-built and tested client packages for Azure Managed Lustre f
 
 Packages and kernel modules are available for these Linux operating systems. Click the links to go to the installation instructions.
 
-<!-- - [AlmaLinux 8](client-rhel8.md) - NOT SUPPORTED in public preview
-- [CentOS Linux 7](client-rhel7.md) - NOT SUPPORTED in public preview
-- [CentOS Linux 8](client-rhel8.md) - NOT SUPPORTED in public preview-->
-- Red Hat Enterprise Linux (RHEL) 7
-- Red Hat Enterprise Linux (RHEL) 8
-- Ubuntu 18.04
-- Ubuntu 20.04
-- Ubuntu 22.04
+- [AlmaLinux 8](install-rhel-8.md)
+- [CentOS Linux 7](install-rhel-7.md)
+- [CentOS Linux 8](install-rhel-8.md)
+- [Red Hat Enterprise Linux (RHEL) 7](install-rhel-7.md)
+- [Red Hat Enterprise Linux (RHEL) 8](install-rhel-8.md)
+- [Ubuntu 18.04](install-ubuntu-18.md)
+- [Ubuntu 20.04](install-ubuntu-20.md)
+- [Ubuntu 22.04](install-ubuntu-22.md)
 
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
 

@@ -10,11 +10,11 @@ ms.date: 09/29/2022
 ---
 
 
-# System requirements for AKS hybrid cluster provisioing from Azure (preview)
+# System requirements for AKS hybrid cluster provisioning from Azure (preview)
 
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
 
-This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioing from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
+This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioning from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
 
 ## Minimum resource requirements
 
@@ -33,8 +33,8 @@ Windows Server or Azure Stack HCI infrastructure admin:
 | -- | ----- | ----- | ------- |
 | 1 | Do you have an Azure subscription?  | The Azure Arc Resource Bridge, Custom Location, and all AKS hybrid clusters will be deployed in this Azure subscription. |  Make sure you have your Azure subscription ID. |
 | 2 | Do you have a recent version of Az CLI installed on all nodes in your physical cluster? | Required to run the Az commands. You need to install Az CLI on all physical nodes in your Windows Server cluster. Follow this link to [install Az CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). You can upgrade to the latest version by running `az upgrade`. | Verify that you have Az CLI by running `az -v`. |
-| 3 | Have you registered all the right providers on your subscription? Make sure you login to Azure first. You only need to do this operation once per Azure subscription.  | Wait till the features in the previous step have been registered before proceeding with this step. You need to register the following providers to use this preview: <br> `az account set -s <subscriptionID from step #1>` <br> `az provider register --namespace Microsoft.Kubernetes --wait` <br> `az provider register --namespace Microsoft.ExtendedLocation --wait` <br> `az provider register --namespace Microsoft.ResourceConnector --wait` <br> `az provider register --namespace Microsoft.HybridContainerService --wait`  <br> `az provider register --namespace Microsoft.HybridConnectivity --wait ` | If the status shows *registering*, try again after some time. <br> `az account set -s <subscriptionID from step #1>` <br> `az provider show --namespace Microsoft.Kubernetes -o table` <br> `az provider show --namespace Microsoft.ExtendedLocation -o table` <br> `az provider show --namespace Microsoft.ResourceConnector -o table` <br> `az provider show --namespace Microsoft.HybridContainerService -o table` <br> `az provider show --namespace Microsoft.HybridConnectivity -o table` | 
-| 4 | Did you install the Az CLI extensions on all nodes in your physical cluster? | `az extension add -n k8s-extension` <br> `az extension add -n customlocation` <br> `az extension add -n arcappliance --version 0.2.27` <br> `az extension add -n hybridaks` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.40.0` <br> `core                              2.40.0` <br> `telemetry                          1.0.8` <br> Extensions: <br>` arcappliance                      0.2.27` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.2.0` <br> `k8s-extension                      1.3.5` |
+| 3 | Have you registered all the right providers on your subscription? Make sure you log in to Azure first. You only need to do this operation once per Azure subscription.  | Wait till the features in the previous step have been registered before proceeding with this step. You need to register the following providers to use this preview: <br> `az account set -s <subscriptionID from step #1>` <br> `az provider register --namespace Microsoft.Kubernetes --wait` <br> `az provider register --namespace Microsoft.ExtendedLocation --wait` <br> `az provider register --namespace Microsoft.ResourceConnector --wait` <br> `az provider register --namespace Microsoft.HybridContainerService --wait`  <br> `az provider register --namespace Microsoft.HybridConnectivity --wait ` | If the status shows *registering*, try again after some time. <br> `az account set -s <subscriptionID from step #1>` <br> `az provider show --namespace Microsoft.Kubernetes -o table` <br> `az provider show --namespace Microsoft.ExtendedLocation -o table` <br> `az provider show --namespace Microsoft.ResourceConnector -o table` <br> `az provider show --namespace Microsoft.HybridContainerService -o table` <br> `az provider show --namespace Microsoft.HybridConnectivity -o table` | 
+| 4 | Did you install the Az CLI extensions on all nodes in your physical cluster? | `az extension add -n k8s-extension` <br> `az extension add -n customlocation` <br> `az extension add -n arcappliance` <br> `az extension add -n hybridaks` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.40.0` <br> `core                              2.40.0` <br> `telemetry                          1.0.8` <br> Extensions: <br>` arcappliance                      0.2.29` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.2.0` <br> `k8s-extension                      1.3.5` |
 
 ## PowerShell module prerequisites
 
@@ -44,8 +44,8 @@ Windows Server admin:
 
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
-| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 1.1.39` | Confirm that the AksHci module version is `1.1.39` by running the following command: `Get-Command -Module AksHci` |
-| 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense` | Confirm that the ArcHci module version is atleast `0.2.11` by running the following command: `Get-Command -Module ArcHci` |
+| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery` | Confirm that the AksHci module version is at least `1.1.39` by running the following command: `Get-Command -Module AksHci` |
+| 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense -RequiredVersion 0.2.21` | Confirm that the ArcHci module version is `0.2.21` by running the following command: `Get-Command -Module ArcHci` |
 
 ## Networking prerequisites
 
@@ -61,9 +61,8 @@ Windows Server admin in consultation with the datacenter network admin:
 | 2 | Do you have atleast 4 IP addresses in your environment? | You need to ensure that you have atleast 4 available IP addresses in the above subnet. <br> | Ensure and list the range of available IP addresses in your subnet. For example - "172.16.0.3" to "172.16.0.10" |
 | 3 | Do you have a gateway? | The IP address of the default gateway of the subnet you provided above.  | The IP address of your gateway. For example - "172.16.0.1" |
 | 4 | Do you have one or more DNS servers? | Along with gateway, this is required for creating a network with a static IP. A minimum of one and a maximum of three DNS servers can be provided.  | The IP address(es) of your DNS servers. For example - "172.16.0.2" |
-| 5 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that the Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. This will be required to install the Azure Arc Resource Bridge. |
-| 6 | Do you have an external virtual switch? | You need an external virtual switch for the Azure Arc Resource Bridge. | Name of your virtual switch |
-| 7 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
+| 5 | Do you have an external virtual switch? | You need an external virtual switch for the Azure Arc Resource Bridge. | Name of your virtual switch |
+| 6 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Option 2: DHCP networking
 
@@ -72,8 +71,7 @@ Windows Server admin in consultation with the datacenter network admin:
 | 1 | Do you have a DHCP server with atleast 3 IP addresses in your environment? | This DHCP server will be used to assign an IP address to the underlying VM of the Azure Arc Resource Bridge. | Check with your admin if your Windows Server network environment has a DHCP server. |
 | 2 | Do you have atleast 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope? | You need 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope. <br> Apart from 3 required IP addresses in the DHCP server, we also need to statically assign IP addresses to some important agents, so they are long lived. | List of atleast 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope. |
 | 3 | Do you have an external virtual switch? | You need an external virtual switch for the underlying VM of the Azure Arc Resource Bridge. | Name of your virtual switch |
-| 4 | Do you have a cloudserviceIP? | You need a cloudserviceIP so that Azure Arc Resource Bridge can talk to your Windows Server physical nodes. | Enter your cloudserviceIP address. |
-| 5 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
+| 4 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Proxy settings
 
@@ -112,8 +110,9 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 | 55000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Server                            | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 | 65000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Authentication                    | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 
-
 ### Firewall URL exceptions
+
+For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist).
 
 The following firewall URL exceptions are needed on all servers in the Windows Server cluster:
 

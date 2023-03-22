@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/05/2022
+ms.date: 03/17/2023
 ---
 
 # What's new in Azure Stack HCI, version 22H2
@@ -30,7 +30,11 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 ### New deployment tool (preview)
 
+For servers running Azure Stack HCI, version 22H2 OS, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file, or via PowerShell.
+
 [!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
+
+To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
 
 ### New security capabilities (preview)
 
@@ -156,9 +160,11 @@ For more information, see:
 
 ### Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI
 
-Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases. 
+Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases.
 
+### Automatic renewal of Network Controller certificates
 
+You can now renew your Network Controller certificates automatically, in addition to manual renewal. For information on how to renew the Network Controller certificates automatically, see [Automatic renewal](./manage/update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates).
 
 ## Next steps
 

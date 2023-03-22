@@ -23,6 +23,8 @@ This article gives examples of two different methods for creating Azure Resource
 
 For help understanding your options, see [Comparing JSON and Bicep for templates](/azure/azure-resource-manager/bicep/compare-template-syntax).
 
+[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
+
 ## File system type and size options
 
 Before you write a template, you must make some decisions about your Azure Managed Lustre file system. If you aren't familiar with the options, read the [Create an Azure Managed Lustre file system](create-file-system-portal.md) article and page through the Azure portal create workflow to learn more.

@@ -1,13 +1,13 @@
 ---
-title: Deploy AKS infrastructure using Windows Admin Center
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using Windows Admin Center for your AKS hybrid evaluation.
+title: Deploy AKS hybrid infrastructure using Windows Admin Center
+description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using Windows Admin Center to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 01/27/2023
+ms.topic: quickstart
+ms.date: 02/28/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure Virtual Machine.
+# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 
@@ -64,7 +64,7 @@ Your Azure Virtual Machine deployment automatically installed Windows Admin Cent
 
 In order to deploy AKS using Windows Admin Center, connect your Windows Admin Center instance to Azure:
 
-1. Still in **Settings**, under **Gateway**, select **Azure**.
+1. Still in **Settings**, under **Gateway**, select **Register**.
 2. Select **Register**, and in the **Get started with Azure in Windows Admin Center** blade, follow the instructions to **Copy the code**, then select the link to configure device login.
 3. When prompted for credentials, enter your Azure credentials for a tenant you want to use to register Windows Admin Center.
 4. Back in Windows Admin Center, your tenant information has been added. You can now select **Connect** to connect Windows Admin Center to Azure.
@@ -81,7 +81,7 @@ In order to deploy AKS using Windows Admin Center, connect your Windows Admin Ce
 In order to successfully deploy AKS with Windows Admin Center, other permissions were applied on the Windows Admin Center Azure AD application that was created when you connected Windows Admin Center to Azure. In this step, you can quickly validate those permissions.
 
 1. Still in Windows Admin Center, click the **Settings** gear in the top-right corner.
-2. Under **Gateway**, click **Azure**. You should see your previously registered Azure AD app.
+2. Under **Gateway**, click **Register**. You should see your previously registered Azure AD app.
 3. Click on **View in Azure** to be taken to the Azure AD app portal, where you should see information about this app, including required permissions. If you're prompted to sign in, provide appropriate credentials.
 4. Once signed in, under **Configured permissions**, you should see a few permissions listed with the status **Granted for...** and the name of your tenant. The **Microsoft Graph (5)** API permissions show as **Not granted**, but this status will be updated upon deployment.
 
@@ -221,10 +221,10 @@ Whichever option you chose, you will now be at the start of the **Create Kuberne
 1. Once your node pools have been defined, click **Next: Authentication**.
 1. For this evaluation, for **AD Authentication** select **Disabled** and then click **Next: Networking**.
 1. On the **Networking** page, review the defaults. For this deployment, you'll deploy this Kubernetes cluster on the existing virtual network that was created when you installed AKS in the previous steps.
-1. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**.
-1. On the **Review + Create** page, review your chosen settings, then click **Create**.
+1. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review**.
+1. On the **Review** page, review your chosen settings, then click **Next: New cluster**:
 
-   :::image type="content" source="media/aks-hci-evaluation-guide/create-cluster.png" alt-text="Screenshot of the Review Plus Create screen for a new AKS cluster in Windows Admin Center.":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/create-cluster.png" alt-text="Screenshot of the Review Plus Create screen for a new AKS cluster in Windows Admin Center." lightbox="media/aks-hci-evaluation-guide/create-cluster.png":::
 
 1. The creation process begins, and takes a few minutes.
 1. Once completed, you should see a message for successful creation, then click **Finish**.
