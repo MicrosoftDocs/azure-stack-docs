@@ -87,6 +87,8 @@ OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
+### Step 4: Repeat steps 1 to 3
+
 Repeat steps 1 to 3 for each node in your failover cluster.
 
 > [!IMPORTANT]
