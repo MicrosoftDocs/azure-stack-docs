@@ -158,6 +158,8 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
 - **BackEndMac** - Provider network back end MAC address for the Gateway VM
 
+If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
+
 ### Additional settings for SLB and Gateway
 
 The following additional parameters are used by SLB and Gateway VMs. Leave these values blank if you are not deploying SLB or Gateway VMs:
@@ -183,6 +185,12 @@ The following parameters are used if you are deploying and managing overlay virt
 - **PAGateway** - IP address for the PA network Gateway
 - **PAPoolStart** - beginning IP address for the PA network pool
 - **PAPoolEnd** - end IP address for the PA network pool
+
+Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 ## Run the deployment script
 

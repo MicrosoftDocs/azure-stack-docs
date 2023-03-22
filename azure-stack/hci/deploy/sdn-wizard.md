@@ -101,6 +101,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values. This is the MAC pool used to assign MAC addresses to VMs attached to SDN networks.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. After the Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
 ### Redeploy SDN Network Controller
 
@@ -179,6 +180,9 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for gateways. We strongly recommend at least two VMs for production deployments.
 1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
+
+    > [!NOTE]
+    > Ensure that the total number of gateway VMs is at least one more than the number of redundant gateways. Else, you won't have any active gateways to host gateway connections.
 1. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
 1. For VM network addressing, select either **DHCP** or **Static**.
 
@@ -196,6 +200,10 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Enter the path to the VMs. You can also use the default populated path.
 1. When finished, click **Next: Deploy the Gateway**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+
+    - update-source Vlan 250: This specifies the source address for BGP updates, that is L3 VLAN.
+    - ebgp multihop 255: This specifies additional hops required since the BGP neighbor is more than 1 hop away.
 
 ## Next steps
 
