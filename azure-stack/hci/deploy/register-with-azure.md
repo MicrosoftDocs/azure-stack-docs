@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.custom:
   - references_regions
   - devx-track-azurepowershell
-ms.date: 02/28/2023
+ms.date: 03/21/2023
 ---
 
 # Register Azure Stack HCI with Azure
@@ -38,6 +38,7 @@ The Azure Stack HCI service is used for registration, billing, and management. I
 - West Europe
 - Southeast Asia
 - Australia East
+- Japan East
 
 Regions supported in the Azure China cloud:
 
