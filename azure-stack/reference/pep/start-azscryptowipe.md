@@ -11,7 +11,7 @@ ms.author: sethm
 
 ## Synopsis
 
-Performs cryptographic wipe of Azure Stack Hub infrastructure.
+Performs a cryptographic wipe of Azure Stack Hub infrastructure.
 
 ## Syntax
 
@@ -21,7 +21,7 @@ Start-AzsCryptoWipe [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ## Description
 
-Destroys Azure Stack Hub infrastructure and performs cryptographic wipe. After this command is executed, the stamp is not recoverable.
+Destroys Azure Stack Hub infrastructure and performs a cryptographic wipe. After this command is executed, the stamp is not recoverable.
 
 ## Next steps
 
