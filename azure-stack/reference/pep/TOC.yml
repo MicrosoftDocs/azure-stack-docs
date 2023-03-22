@@ -84,6 +84,8 @@
     href: set-telemetry.md
   - name: Set-TLSPolicy
     href: set-tlspolicy.md
+  - name: Start-AzsCryptoWipe
+    href: start-azscryptowipe.md
   - name: Start-AzureStack
     href: start-azurestack.md
   - name: Start-SecretRotation
