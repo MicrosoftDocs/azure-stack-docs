@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.custom:
   - references_regions
   - devx-track-azurepowershell
-ms.date: 03/21/2023
+ms.date: 03/22/2023
 ---
 
 # Register Azure Stack HCI with Azure
