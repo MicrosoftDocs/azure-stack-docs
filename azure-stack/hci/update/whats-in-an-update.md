@@ -3,7 +3,7 @@ title:  What's in an update?
 description: This article describes what's in a solution update and what's new with the addition of the Lifecycle Manager.
 author: ronmiab
 ms.author: robess
-ms.topic: concept
+ms.topic: conceptual
 ms.reviewer: aaronfa
 ms.lastreviewed: 03/17/2023
 ms.date: 03/17/2023
@@ -56,7 +56,8 @@ What can I say about this area?
 
 Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers. If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary node reboots within the same maintenance window. Which means you can spend less time searching for updates and experience fewer maintenance windows!
 
-> [!NOTE] Microsoft bundles these components into an update release and validates the combination of versions together to ensure interoperability.
+> [!NOTE]
+> Microsoft bundles these components into an update release and validates the combination of versions together to ensure interoperability.
 
 ## Next steps
 

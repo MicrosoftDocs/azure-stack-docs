@@ -51,7 +51,8 @@ Here of some of the primary customer uses cases for the Lifecycle Manager.
 
 - add another benefits
 
-> [!IMPORTANT] If you choose to upgrade an existing Azure Stack HCI solution rather than going through Deployment, you can install the Lifecycle Manager separately. For more information, see [Installing the Lifecycle Manager on an existing Azure Stack HCI Solution](lifecycle-management-placeholder.md).
+> [!IMPORTANT]
+> If you choose to upgrade an existing Azure Stack HCI solution rather than going through Deployment, you can install the Lifecycle Manager separately. For more information, see [Installing the Lifecycle Manager on an existing Azure Stack HCI Solution](lifecycle-management-placeholder.md).
 
 ## Next steps
 

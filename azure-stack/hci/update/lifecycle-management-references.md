@@ -24,13 +24,13 @@ Readiness checks are used to ensure the system is in a good state to install an 
 |Name               | Name of the test.                                                      |
 |Title              | User-facing description of the test.                                   |
 |Severity           | Critical, Warning, Informational, or Hidden.                           |
-|Description        | Overview of the issue and its impact on the cluster.                   |
+|Description        | Overview of the issue and its effect on the cluster.                   |
 |Tags               | Internal Key-value pairs to group or filter tests.                     |
 |Status             | Succeeded, Failed, or In Progress.                                     |
 |Remediation        | URL link to documentation for remediation.                             |
 |TargetResourceID   | Unique identifier for the affected resource (such as a node or drive). |
 |TargetResourceName | Name of the affected resource.                                         |
-|TargetResourceType |Type of the affected resource.                                          |
+|TargetResourceType | The type of affected resource.                                         |
 |Timestamp          | The time that the test was called.                                     |
 |AdditionalData     | Property bag of key value pairs for additional information.            |
 |HealthCheckSource  | The name of the services called for the health check.                  |
@@ -51,26 +51,26 @@ Currently, the Lifecycle Manager checks the following criteria:
 
 ## Progress actions
 
-The Lifecycle Manager will update its own agents to ensure it has the recent fixes corresponding to the update. There are a few steps taken by the Lifecycle Manager to achieve a successful update of its agents.
+The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. There are a few steps taken by the Lifecycle Manager to achieve a successful update of its agents.
 
-1. First, steps referred to as the "servicing stack" will be performed:
+1. First, steps referred to as the "servicing stack" are performed:
 
     - Prepare the servicing stack.
     - Update the servicing stack.
     - Copy the servicing stack agents.
     - Use the latest servicing stack agents.
 
-2. After updating the servicing stack, the Lifecycle Manager will begin installing new agents and services, such as the Health and Remote Support agents.  Here are some other agents and services that are part of the servicing stack:
+2. The Lifecycle Manager will begin installing new agents and services, after the servicing stack is updated.
 
-3. Once new agents and services have been installed, the host OS will be updated.
+3. Once new agents and services have been installed, the host OS is updated.
 
-    > [!NOTE] For this step, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
+    > [!NOTE] For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
 
-4. If the update includes Solution Extension content from the Solution Builder, it will be installed last with the use of Cluster-Aware Updating
+4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating
 
 ## PowerShell commands
 
-*Include content from Asz.Update PowerShell Module.docx - this may need to be linked to a separate article*.
+Include content from the Asz.Update PowerShell Module.docx document. This section may need to be linked to a separate article or specific modules need to be pulled from the document.
 
 ## Glossary
 

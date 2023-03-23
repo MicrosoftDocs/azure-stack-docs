@@ -77,7 +77,8 @@ You can also use PowerShell to manage your solution updates. The PowerShell proc
 
 For more information, see [Update your Azure Stack HCI solution via PowerShell](lifecycle-management-placeholder.md).
 
-> [!IMPORTANT] If your PowerShell modules were installed via Install-Module, run the [Update-Module](/powershell/module/powershellget/update-module?view=powershell-7.2#example-1--update-all-modules) command to update them.
+> [!IMPORTANT]
+> If your PowerShell modules were installed via Install-Module, run the [Update-Module](/powershell/module/powershellget/update-module?view=powershell-7.2#example-1--update-all-modules) command to update them.
 
 ### Windows Admin Center
 
@@ -89,7 +90,8 @@ You can use Windows Admin Center as another method to install your solution upda
 
 For more information, see [Update your Azure Stack solution via Windows Admin Center](lifecycle-management-placeholder.md).
 
-> [!NOTE] Alternatively, you can download and install the latest MSI package from the [Windows Admin Center](/windows-server/windows-admin-center) site.  
+> [!NOTE]
+> Alternatively, you can download and install the latest MSI package from the [Windows Admin Center](/windows-server/windows-admin-center) site.  
 
 ### Windows Admin Center Extensions
 
