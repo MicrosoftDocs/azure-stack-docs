@@ -64,7 +64,8 @@ The Lifecycle Manager updates its own agents to ensure it has the recent fixes c
 
 3. Once new agents and services have been installed, the host OS is updated.
 
-    > [!NOTE] For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
+    > [!NOTE]
+    > For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
 
 4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating
 
