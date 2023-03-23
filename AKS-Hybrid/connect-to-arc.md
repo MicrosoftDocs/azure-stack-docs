@@ -34,9 +34,9 @@ Verify that you have the following requirements:
 
 * An [AKS cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
 * Installed the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
-* **At least one** of the following access levels on your Azure subscription:
+* The following access level on your Azure subscription:
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, selecting "Access control (IAM)" on the left hand side of the Azure portal, and then clicking on "View my access".
-   - A service principal with either the built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role (minimum), the built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role, or the built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role. 
+   - A service principal with the built-in **[Owner](/azure/role-based-access-control/built-in-roles#owner) role**
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that you have met the [network requirements of AKS](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 
@@ -92,6 +92,13 @@ Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-
 ```
 
 Make sure the service principal used in the command above has the "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role assigned to it and that it has scope over the subscription ID and resource group used in the command. For more information on service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
+
+## Connect your AKS cluster to Azure Arc and enable custom locations
+If you want to enable custom locations on your cluster along with Azure Arc, run the following command to get the object ID of the custom location application, and connect to Azure Arc using a service principal -
+```powershell
+$objectID = (Get-AzADServicePrincipal -ApplicationId "bc313c14-388c-4e7d-a58e-70017303ee3b").Id
+Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-0000-4bdb12000000" -resourceGroup "myAzureResourceGroup" -credential $Credential -tenantId "xxxx-xxxx-xxxx-xxxx" -location "eastus" -customLocationsOid $objectID
+```
 
 ## Verify the connected cluster
 
