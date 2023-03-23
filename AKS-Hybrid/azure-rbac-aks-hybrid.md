@@ -5,8 +5,8 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 03/21/2023
-ms.lastreviewed: 12/01/2022
+ms.date: 03/23/2023
+ms.lastreviewed: 03/23/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -74,7 +74,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 The assignee is the object ID of the Azure AD group.
 
-For more details about the role, [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
+For more information about the role, [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 
 To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
 
@@ -211,18 +211,42 @@ To connect to an AKS hybrid cluster over a private network, perform the followin
    Get-AksHciCredential -Name <cluster name> -aadauth
    ```
 
-1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You'll be prompted for your Azure AD credentials.
+1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Azure AD credentials.
 
-   You'll get a warning message. You can ignore it.
+   You might get a warning message, but you can ignore it.
 
 ## Update to the kubelogin authentication plugin
 
-To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins). After Kubernetes version 1.26, AKS hybrid will require the [Azure **kubelogin** binary](https://github.com/Azure/kubelogin) installed. If this plugin is not installed, existing installations of kubectl will stop working. The Azure **kubelogin** plugin is supported from version 1.23 and later.
+> [!NOTE]
+> The information in this section applies to AKS hybrid version 1.0.17.10310 and later. [See the release notes](https://github.com/Azure/aks-hybrid/releases) for version information.
 
-You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to automatically download **kubelogin.exe** and make it available for use.
-You can verify the installation by running `kubelogin.exe –help`.
+To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins).
 
-For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page](https://github.com/Azure/kubelogin).
+To generate a **kubeconfig** file that requires the [Azure **kubelogin.exe** binary](https://github.com/Azure/kubelogin) authentication plugin, run the following PowerShell command:
+
+```powershell
+Get-AksHciCredential -Name <cluster name> -aadauth
+```
+
+This command also downloads the **kubelogin.exe** binary. To find the location of the **kubelogin.exe** file, run the following command:
+
+```powershell
+$workingdir = (Get-AksHciConfig).Akshci.installationPackageDir
+```
+
+This command returns the path to which **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
+
+```powershell
+cp $workingdir\kubelogin.exe "c:\program files\akshci"
+```
+
+Alternatively, to download **kubelogin.exe** to your client machine, you can run the following command:
+
+```shell
+wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-amd64.zip -OutFile kubelogin-win-amd64.zip
+```
+
+For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page on GitHub](https://github.com/Azure/kubelogin).
 
 ## Next steps
 
