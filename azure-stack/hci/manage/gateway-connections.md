@@ -5,7 +5,7 @@ ms.topic: how-to
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.reviewer: anpaul
-ms.date: 06/21/2021
+ms.date: 03/23/2023
 ---
 
 # Manage Azure Stack HCI gateway connections
@@ -91,6 +91,11 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 1. Provide an **L3 Peer IP address**. This must belong to the L3 Logical Subnet that you provided above. This IP will serve as the next hop, once the traffic destined to the physical network from the virtual network reaches the SDN gateway.
 1. Click **Create** to configure the connection.
 1. In the **Gateway Connections** list, verify the Configuration State of the connection is **Success**.
+
+    > [!NOTE]
+    > If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+    > - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
+    > - ebgp multihop: This specifies additional hops required since the BGP neighbor is more than one hop away.
 
 ## View all gateway connections
 

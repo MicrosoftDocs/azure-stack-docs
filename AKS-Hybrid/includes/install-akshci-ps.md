@@ -18,7 +18,7 @@ Follow these steps on all nodes in your Azure Stack HCI cluster or Windows Serve
 
    ```powershell  
    Install-PackageProvider -Name NuGet -Force 
-   Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
+   Install-Module -Name PowershellGet -Force -Confirm:$false
    ```
 
    You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all open PowerShell windows.

@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 01/19/2022
+ms.date: 03/22/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
@@ -173,6 +173,10 @@ The following additional parameters are used by Gateway VMs only. Leave these va
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
 - **Capacity** - capacity in Kbps for each Gateway VM in the pool
+- **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway moves to the redundant gateway and the redundant gateway becomes active.
+
+    > [!NOTE]
+    > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
@@ -183,6 +187,12 @@ The following parameters are used if you are deploying and managing overlay virt
 - **PAGateway** - IP address for the PA network Gateway
 - **PAPoolStart** - beginning IP address for the PA network pool
 - **PAPoolEnd** - end IP address for the PA network pool
+
+Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 ## Run the deployment script
 
