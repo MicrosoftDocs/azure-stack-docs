@@ -248,6 +248,23 @@ wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-
 
 For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page on GitHub](https://github.com/Azure/kubelogin).
 
+| Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
+| :------------ |:-----------|:------------------|:--------|:------------|
+| `SchemaVersion` |`1.5`|Specifies the version of the schema/format of the json | `1.5` |Single-machine and <br> full deployment|
+| `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.6` |Single-machine and <br> full deployment|
+| `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
+| `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add additional machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
+| `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**| None |Single-machine and <br> full deployment|
+@@ -54,6 +54,8 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
+| `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
+| `Machines[].LinuxNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `300` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.TpmPassthrough` | Boolean | Enables TPM access from the Linux node. | `false` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.SecondaryNetworks` | Array | Specify secondary network to be added to the Linux Node. You can specify an array of `VMSwitchName` with optional static IP information (`Ip4Address,Ip4GatewayAddress and Ip4PrefixLength`)  | `null` |Single-machine and <br> full deployment|
+| `Machines[].WindowsNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment||
+| `Machines[].WindowsNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs (multiples of 2). | `2048` |Single-machine and <br> full deployment|
+| `Machines[].WindowsNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
+
 ## Next steps
 
 - [Learn more about SPNs](/cli/azure/create-an-azure-service-principal-azure-cli)
