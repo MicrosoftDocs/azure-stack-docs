@@ -258,29 +258,30 @@ If your Azure subscription is through an EA or CSP, the easiest way to deploy AK
 
 ### Optional: Create a new service principal
 
-Run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role. Only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
+Run the following steps to create a new service principal with the built-in **Owner** role. Only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
+
+Set the following PowerShell variables in a PowerShell admin window. Verify that the subscription and tenant are what you want to use to register your AKS host for billing.
+```powershell
+$subscriptionID = <Your Azure subscrption ID>
+$tenantID = <Your Azure tenant ID>
+```
 
 Install and import the AKS hybrid PowerShell module:
-
 ```powershell
 Install-Module -Name AksHci
-Exit
 ```
-**Close all PowerShell windows** and reopen a new administrative session.
 
 Sign in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
-
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -tenant $tenantID
 ```
 
 Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) command.
 ```powershell
-Set-AzContext -Subscription myAzureSubscription
+Set-AzContext -Subscription $subscriptionID
 ```
 
 Verify that your sign-in context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant and account are what you want to use to register your AKS host for billing.
-
 ```powershell
 Get-AzContext
 ```
@@ -291,10 +292,10 @@ Name                                     Account                      Subscripti
 myAzureSubscription (92391anf-...        user@contoso.com             myAzureSubscription          AzureCloud                   xxxxxx-xxxx-xxxx-xxxxxx
 ```
 
-Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the  "Microsoft. Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
+Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the "Owner" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
 
 ```powershell
-$sp = New-AzADServicePrincipal -role "Owner"
+$sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscriptionID
 ```
 
 Retrieve the password for the service principal by running the following command:
