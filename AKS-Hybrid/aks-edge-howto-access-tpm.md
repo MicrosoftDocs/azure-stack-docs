@@ -44,7 +44,7 @@ The following steps show you how to create a sample executable to access a discr
 
 1. Select **Browse** and then search for `Microsoft.TSS`. For more information about this package, see [Microsoft.TSS](https://www.nuget.org/packages/Microsoft.TSS). Choose the **Microsoft.TSS** package from the list then select **Install**.
 
-1. Edit the *Program.cs* file and replace the contents with the [AKS EE sample code - Program.cs](https://raw.githubusercontent.com/Azure/AKS-Edge/tree/main/samples/others/Program.cs).
+1. Edit the *Program.cs* file and replace the contents with the [tpm-read-nv sample code - Program.cs](https://github.com/Azure/iotedge-eflow/blob/main/samples/tpm-read-nv/Program.cs).
 
 1. Select **Build** > **Build solution** to build the project.  Verify the build is successful.
 
@@ -67,10 +67,10 @@ Once the executable file and dependency files are created, you need to copy the 
 1. Start an elevated *PowerShell* session using **Run as Administrator**.
 
 1. Change directory to the parent folder that contains the published files.
-    For example, if your published files are under the folder *TPM* in the directory `C:\Users\User`.  You can use the following command to change to the parent folder.
+    For example, if your published files are under the folder *TPM* in the directory `C:\Users\<User>`.  You can use the following command to change to the parent folder.
 
     ```powershell
-    cd "C:\Users\User"
+    cd "C:\Users\<User>"
     ```
 
 1. Create a *tar* file with all the files created in previous steps. For more information about PowerShell *tar* support, see [Tar and Curl Come to Windows](/virtualization/community/team-blog/2017/20171219-tar-and-curl-come-to-windows).
@@ -80,57 +80,34 @@ Once the executable file and dependency files are created, you need to copy the 
      tar -cvzf TPM.tar ".\TPM"
     ```
 
-1. Once the *TPM.tar* file is created successfully, use the `Copy-AksEdgeNodeFile` cmdlet to copy the *tar* file created to the CBL-Mariner VM. For example, if you have the *tar* file name *TPM.tar* in the directory `C:\Users\User`. you can use the following command to copy to the CBL-Mariner VM.
+1. Once the *TPM.tar* file is created successfully, use the `Copy-AksEdgeNodeFile` cmdlet to copy the *tar* file created to the CBL-Mariner VM. For example, if you have the *tar* file name *TPM.tar* in the directory `C:\Users\<User>`. you can use the following command to copy to the CBL-Mariner VM.
 
     ```powershell
-    Copy-AksEdgeNodeFile -fromFile "C:\Users\User\TPM.tar" -toFile "/home/aksedge-user/" -pushFile
+    Copy-AksEdgeNodeFile -fromFile "C:\Users\<User>\TPM.tar" -toFile "/home/aksedge-user/" -pushFile
     ```
-
-1. Connect to the CBL-Mariner virtual machine. Use the `hcsdiag list` command to list the VMs running and find the line that has wssdagent after the GUID of the VM.
-
-     ```bash
-          hcsdiag list
-     ```
-
-1. You can now connect to the VM using the `hcsdiag console` command, using the GUID of the wssdagent
-
-    ```bash
-        hcsdiag console -uvm <guid>
-    ```
-
-    ![Screenshot showing the output of hcsdiag.](./media/aks-edge/hcs-diag-list.png)
-
-1. Change directory to the folder where you copied the *tar* file and check the file is available. If you used the example above, run the `cd` command to get to `/home/aksedge-user` folder and the `ls` command to view the contents of this folder.
 
 1. Run the following command to extract all the content from the *tar* file.
 
-    ```bash
-    tar -xvzf TPM.tar
+   ```powershell
+   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "tar -xvzf TPM.tar"
+   ```
+
+1. After extraction, Add executable permission to the main executable file. For example, if your project name was *TPMRead*, your main executable is named *TPMRead*. Run the following command to make it executable.
+
+    ```powershell
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && chmod +x TPMRead"
     ```
 
-1. After extraction, you should see a new folder with all the TPM files.
-1. Change directory to the *TPM* folder.
+1. To solve an [ICU globalization issue](https://github.com/dotnet/core/issues/2186#issuecomment-472629489), run the following command. For example, if your project name is *TPMRead* run:
 
-    ```bash
-    cd TPM
+    ```powershell
+     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && sed -i '/`"configProperties`": /a \\t`"System.Globalization.Invariant\`": true,' TPMRead.runtimeconfig.json"
     ```
 
-1. Add executable permission to the main executable file. For example, if your project name was *TPMRead*, your main executable is named *TPMRead*. Run the following command to make it executable.
+1. The last step is to run the executable file. For example, if your project name is *TPMRead*, run the following command:
 
-    ```bash
-    chmod +x TPMRead
-    ```
-
-1. To solve an [ICU globalization issue](https://github.com/dotnet/core/issues/2186#issuecomment-472629489), run the following command. For example, if your project name is *TPMTest* run:
-
-    ```bash
-     sed -i '/"configProperties": /a \\t"System.Globalization.Invariant\": true,' TPMTest.runtimeconfig.json
-    ```
-
-1. The last step is to run the executable file. For example, if your project name is *TPMTest*, run the following command:
-
-    ```bash
-    ./TPMTest
+    ```powershell
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && ./TPMRead"
     ```
 
     You should see an output similar to the following.
