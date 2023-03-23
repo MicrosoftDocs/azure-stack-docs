@@ -373,7 +373,7 @@ If Network Controller deployment fails, do the following before you try this aga
 There are situations in which you may need to actually remove the cluster which you created in Step 3. If so, choose the **Remove the Cluster** option in the Cluster 
 Creation Wizard.
 
-For more information on removing a cluster, see [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
+For more information about removing a cluster, see [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 ## Next steps
 
