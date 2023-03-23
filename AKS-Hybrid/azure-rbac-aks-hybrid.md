@@ -249,7 +249,7 @@ wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-
 For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page on GitHub](https://github.com/Azure/kubelogin).
 
 | Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
-| :------------ |:-----------|:------------------|:--------|:------------|
+| ------------ |-----------|------------------|--------|------------|
 | `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.6` |Single-machine and <br> full deployment|
 | `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
 | `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add additional machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
