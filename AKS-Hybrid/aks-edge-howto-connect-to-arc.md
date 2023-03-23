@@ -25,7 +25,7 @@ This article describes how to connect your AKS Edge Essentials cluster to [Azure
 
 ### Install dependencies
 
-Then run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
+Run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
 ```PowerShell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
