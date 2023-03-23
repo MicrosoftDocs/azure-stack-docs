@@ -217,17 +217,36 @@ To connect to an AKS hybrid cluster over a private network, perform the followin
 
 ## Update to the kubelogin authentication plugin
 
-To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins). After Kubernetes version 1.26, AKS hybrid requires the [Azure **kubelogin** binary](https://github.com/Azure/kubelogin) installed. If this plugin is not installed, existing installations of kubectl will stop working. The Azure **kubelogin** plugin is supported from version 1.23 and later.
+> [!NOTE]
+> The information in this section applies to AKS hybrid version 1.0.17.10310 and later. [See the release notes](https://github.com/Azure/aks-hybrid/releases) for version information.
 
-You can run `Get-AksHciCredential -Name <cluster name> -aadauth` to generate a **kubeconfig** file that requires the **kubelogin** authentication plugin.
+To provide authentication tokens for communicating with AKS hybrid clusters, **Kubectl** clients require [an authentication plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins).
 
-To download **kubelogin**, use the following command:
+To generate a **kubeconfig** file that requires the [Azure **kubelogin.exe** binary](https://github.com/Azure/kubelogin) authentication plugin, run the following PowerShell command:
+
+```powershell
+Get-AksHciCredential -Name <cluster name> -aadauth
+```
+
+This command also downloads the **kubelogin.exe** binary. To find the location of the **kubelogin.exe** file, run the following command:
+
+```powershell
+$workingdir = (Get-AksHciConfig).Akshci.installationPackageDir
+```
+
+This command returns the path to which **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described below. For a client machine, copy the executable to your client machine and add it to your path. For example:
+
+```powershell
+cp $workingdir\kubelogin.exe "c:\program files\akshci"
+```
+
+Alternatively, to download **kubelogin.exe** to your client machine, you can download the kubelogin.exe by running the following command:
 
 ```shell
 wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-amd64.zip -OutFile kubelogin-win-amd64.zip
 ```
 
-For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page](https://github.com/Azure/kubelogin).
+For more information about how to convert to the **kubelogin** authentication plugin, see the [Azure kubelogin page on GitHub](https://github.com/Azure/kubelogin).
 
 ## Next steps
 
