@@ -273,7 +273,7 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
 
 1. When finished, select **Create cluster**. This can take a while to complete. 
 
-    If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
+    If you get the error "Failed to reach cluster through DNS," select the **Retry connectivity checks** button. You might have to wait several hours before it succeeds on larger networks due to DNS propagation delays.
 
     > [!IMPORTANT]
     >  If you failed to create a cluster, do not click the **Back** button instead of the **Retry connectivity checks button**. If you select **Back**, the Cluster Creation wizard exits prematurely, and can potentially reset the entire process.
@@ -370,8 +370,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 ## Step 6: Remove a Cluster (optional)
 
-There are situations in which you may need to actually remove the cluster which you created in Step 3. If so, choose the **Remove the Cluster** option in the Cluster 
-Creation Wizard.
+There are situations in which you may need to actually remove the cluster which you created in Step 3. If so, choose the **Remove the Cluster** option in the Cluster Creation wizard.
 
 For more information about removing a cluster, see [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
