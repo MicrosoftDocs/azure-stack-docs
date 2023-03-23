@@ -33,22 +33,6 @@ Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorActi
 Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
 ```
 
-> [!NOTE]
-> For connecting to Arc, you must install a helm version that is greater than v3.0 but less than v3.7. We recommend installing version 3.6.3.
-
-```PowerShell
-#download helm from web
-Invoke-WebRequest -Uri "https://get.helm.sh/helm-v3.6.3-windows-amd64.zip" -OutFile ".\helm-v3.6.3-windows-amd64.zip"
-```
-
-```PowerShell
-#Unzip to a local directory
-Expand-Archive "helm-v3.6.3-windows-amd64.zip" C:\helm
-#set helm in the env Path
-$env:Path = "C:\helm\windows-amd64;$env:Path"
-[Environment]::SetEnvironmentVariable('Path', $env:Path)
-```
-
 ## Step 2: Configure your Azure environment
 
 Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the table below. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a Service Principal with the built-in `Microsoft.Kubernetes connected cluster` role to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can follow the steps [here.](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal)
