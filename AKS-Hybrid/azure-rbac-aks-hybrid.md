@@ -5,8 +5,8 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 03/22/2023
-ms.lastreviewed: 03/22/2023
+ms.date: 03/23/2023
+ms.lastreviewed: 03/23/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -240,7 +240,7 @@ This command returns the path to which **kubelogin.exe** is downloaded. Copy the
 cp $workingdir\kubelogin.exe "c:\program files\akshci"
 ```
 
-Alternatively, to download **kubelogin.exe** to your client machine, you can download the kubelogin.exe by running the following command:
+Alternatively, to download **kubelogin.exe** to your client machine, you can run the following command:
 
 ```shell
 wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-amd64.zip -OutFile kubelogin-win-amd64.zip
