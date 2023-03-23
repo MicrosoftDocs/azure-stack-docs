@@ -284,7 +284,7 @@ For more information about how to convert to the **kubelogin** authentication pl
 | `Machines[].LinuxNode.ControlPlane` | Boolean | Specify whether you want this new deployment to be a control plane. If `false`, it will be a worker node. *Only for Linux VM*| `false` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment||
 | `Machines[].LinuxNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs. | `2048` |Single-machine and <br> full deployment||
-| `Machines[].LinuxNode.DataSizeInGB` | Number | Size of the data partition. For large applications, we recommend increasing this number. *Only for Linux VM* | `10` |Single-machine and <br> full deployment||
+| `Machines[].LinuxNode.DataSizeInGB` | Number | Size of the data partition. For large applications, we recommend increasing this number. *Only for Linux VM* | `10` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
 | `Machines[].LinuxNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `300` |Single-machine and <br> full deployment|
