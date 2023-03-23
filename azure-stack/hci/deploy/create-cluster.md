@@ -276,7 +276,7 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
     If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
 
     > [!IMPORTANT]
-    >  If you failed to create a cluster, DO NOT click the Back button instead of the Retry connectivity checks button. Clicking the Back button will confuse the Cluster Creation wizard and possibly reset the entire process.
+    >  If you failed to create a cluster, do not click the **Back** button instead of the **Retry connectivity checks button**. If you select **Back**, the Cluster Creation wizard exits prematurely, and can potentially reset the entire process.
 
     If you run into issues with deployment after the cluster is created and you want to restart the Cluster Creation wizard, first remove (destroy) the cluster. To do so, see Remove a Cluster.
 
