@@ -278,7 +278,7 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
     > [!IMPORTANT]
     >  If you failed to create a cluster, do not click the **Back** button instead of the **Retry connectivity checks button**. If you select **Back**, the Cluster Creation wizard exits prematurely, and can potentially reset the entire process.
 
-    If you run into issues with deployment after the cluster is created and you want to restart the Cluster Creation wizard, first remove (destroy) the cluster. To do so, see Remove a Cluster.
+    If you encounter issues with deployment after the cluster is created and you want to restart the Cluster Creation wizard, first remove (destroy) the cluster. To do so, see  [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 1. The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
 
