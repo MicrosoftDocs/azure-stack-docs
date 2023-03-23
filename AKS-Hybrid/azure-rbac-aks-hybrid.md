@@ -296,7 +296,7 @@ For more information about how to convert to the **kubelogin** authentication pl
 | `Machines[].WindowsNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].WindowsNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `900` |Single-machine and <br> full deployment|
 
-| Attribute       | Value type | Description                                            | Default value | Applicable deployment types |
+| Attributes       | Value type | Description                                            | Default value | Applicable deployment types |
 |:-----------------|:------------|:--------------------------------------------------------|:---------------|:-----------------------------|
 | `SchemaVersion` | String     | Specifies the version of the schema/format of the json | `1.6`         | Single machind and          |
 
