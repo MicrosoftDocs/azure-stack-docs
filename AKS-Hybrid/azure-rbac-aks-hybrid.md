@@ -299,6 +299,7 @@ For more information about how to convert to the **kubelogin** authentication pl
 | Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
 |--------------|-----------|------------------|--------|------------|
 | `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.6` |Single-machine and <br> full deployment|
+| `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
 
 ## Next steps
 
