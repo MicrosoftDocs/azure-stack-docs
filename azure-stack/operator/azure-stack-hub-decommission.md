@@ -4,7 +4,7 @@ description: Learn how to properly decommission an Azure Stack Hub system.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/03/2023
+ms.date: 03/23/2023
 ms.custom: template-how-to
 ---
 
@@ -83,12 +83,14 @@ Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -
 
 There are two options to shut down your Azure Stack Hub system. Both commands require the cloud administrator to connect to the [Privileged Endpoint](azure-stack-privileged-endpoint.md):
 
-1. Shut down Azure Stack Hub (recoverable): run the [Stop-AzureStack](../reference/pep/Stop-AzureStack.md) command from the Privileged Endpoint.
-1. Shut down Azure Stack Hub (non-recoverable): run the **Start-AzsCryptoWipe** command from the Privileged Endpoint.
+1. Shut down Azure Stack Hub (recoverable): run the [Stop-AzureStack](../reference/pep/Stop-AzureStack.md) PowerShell cmdlet from the Privileged Endpoint.
+1. Shut down Azure Stack Hub (non-recoverable, data is wiped): run the [Start-AzsCryptoWipe](../reference/pep/start-azscryptowipe.md) cmdlet from the Privileged Endpoint.
 
    > [!IMPORTANT]
    > After this command is executed, the stamp is not recoverable.
 
 ## Next steps
 
-Learn about [Azure Stack Hub diagnostic tools](diagnostic-log-collection.md)
+- Learn about [Azure Stack Hub diagnostic tools](diagnostic-log-collection.md)
+- [Stop-AzureStack](../reference/pep/Stop-AzureStack.md)
+- [Start-AzsCryptoWipe](../reference/pep/start-azscryptowipe.md)
