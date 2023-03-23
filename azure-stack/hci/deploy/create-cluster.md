@@ -282,7 +282,7 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
 
 1. The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
 
-    Deploy host networking settings, select Deploy to apply the Network ATC intents you defined earlier. If you chose to manually deploy host networking in step 1.8 of the Cluster Creation wizard, you won't see this page.
+    In **Deploy host networking settings**, select **Deploy** to apply the Network ATC intents you defined earlier. If you chose to manually deploy host networking in step 1.8 of the Cluster Creation wizard, you won't see this page.
 
 1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the 
  Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
