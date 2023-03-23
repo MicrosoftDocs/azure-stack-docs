@@ -255,7 +255,6 @@ For more information about how to convert to the **kubelogin** authentication pl
 | `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
 | `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add additional machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
 | `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**| None |Single-machine and <br> full deployment|
-@@ -54,6 +54,8 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
 | `Machines[].LinuxNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `300` |Single-machine and <br> full deployment|
