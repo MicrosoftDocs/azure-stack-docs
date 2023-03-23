@@ -74,7 +74,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 The assignee is the object ID of the Azure AD group.
 
-For more details about the role, [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
+For more information about the role, [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 
 To get the scope ID for the cluster or resource group, run the following commands, and use the `"id":property`:
 
@@ -211,9 +211,9 @@ To connect to an AKS hybrid cluster over a private network, perform the followin
    Get-AksHciCredential -Name <cluster name> -aadauth
    ```
 
-1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You'll be prompted for your Azure AD credentials.
+1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Azure AD credentials.
 
-   You'll get a warning message. You can ignore it.
+   You might get a warning message, but you can ignore it.
 
 ## Update to the kubelogin authentication plugin
 
@@ -234,7 +234,7 @@ This command also downloads the **kubelogin.exe** binary. To find the location o
 $workingdir = (Get-AksHciConfig).Akshci.installationPackageDir
 ```
 
-This command returns the path to which **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described below. For a client machine, copy the executable to your client machine and add it to your path. For example:
+This command returns the path to which **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
 
 ```powershell
 cp $workingdir\kubelogin.exe "c:\program files\akshci"
