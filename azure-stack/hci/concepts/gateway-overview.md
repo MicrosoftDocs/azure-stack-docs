@@ -40,40 +40,28 @@ GRE support in S2S tunnels solves the problem of forwarding between tenant virtu
 
 Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. Using L3 forwarding connection, tenant network VMs can connect to a physical network through the Software Defined Networking (SDN) gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
 
+Here's an example of the L3 forwarding setup:
+
+This example assumes that you have an Azure Stack HCI cluster, which is already configured with SDN. Your cluster has two virtual networks: Virtual Network1 with address prefix 10.0.0.0/16 and Virtual Network2 with address prefix 16.0.0.0/16. Each virtual network has an L3 connection to the physical network. Because the L3 connections are for different virtual networks, the SDN gateway has a separate compartment for each connection to provide isolation guarantees. Each SDN gateway compartment has one interface in the virtual network space and one interface in the physical network space. Each L3 connection must map to a unique VLAN on the physical network. This VLAN must be different from the HNV PA VLAN, which is used as the underlying data forwarding physical network for virtualized network traffic.
+
+  :::image type="content" source="./media/ras-gateway/layer3-forwarding.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="./media/ras-gateway/layer3-forwarding.png":::
+Here are the details of each connection used in this example:
+
+| Network element          | Connection 1 | Connection 2 |
+|--------------------------|--------------|--------------|
+| Gateway subnet prefix    | 10.0.1.0/24  | 16.0.1.0/24  |
+| L3 IP address            | 15.0.0.5/24  | 20.0.0.5/24  |
+| L3 peer IP address       | 15.0.0.1     | 20.0.0.1     |
+| Routes on the connection | 18.0.0.0/24  | 22.0.0.0/24  |
+
+This example uses static routes. For static routing, you must configure a route on the physical network to reach the virtual network. For example, a route with address prefix 10.0.0.0/16 with the next hop as the L3 IP Address of the connection (15.0.0.5/24).
+
+For dynamic routing with BGP, you must still configure a static /32 route because the BGP connection is between the gateway compartment internal interface and the L3 peer IP. For Connection 1, the peering would be between 10.0.1.6 and 15.0.0.1. Hence, for this connection, you need a static route on the physical switch with destination prefix of 10.0.1.6/32 with the next hop as 15.0.0.5.
+
 If you plan to deploy L3 Gateway connections with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
 
 - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
 - ebgp multihop: This specifies additional hops required since the BGP neighbor is more than one hop away.
-
-#### Example
-
-Here's an example that provides a sample network setup for L3 forwarding.
-
-This example assumes you have an Azure Stack HCI cluster configured with SDN. This cluster has two virtual networks: Virtual Network1 with address prefix 10.0.0.0/16 and Virtual Network2 with address prefix 16.0.0.0/16. Each virtual network has an L3 connection to the physical network. Because the L3 connections are for different virtual networks, the SDN gateway has a separate compartment for each connection to provide isolation guarantees. Each SDN gateway compartment has one interface in the virtual network space and one interface in the physical network space. Note that each L3 connection must be mapped to a unique VLAN on the physical network. This VLAN must be separate from the HNV PA VLAN (that is used as the underlying data forwarding physical network for virtualized network traffic). 
- 
-Here are the details of each connection:
-
-Connection 1:
-Virtual network prefix: 10.0.0.0/16
-Gateway subnet prefix: 10.0.1.0/24
-L3 IP address: 15.0.0.5/24
-L3 peer IP address: 15.0.0.1
-Routes on the connection: 18.0.0.0/24
- 
-Connection 2:
-Virtual network prefix: 16.0.0.0/16
-Gateway subnet prefix: 16.0.1.0/24
-L3 IP address: 20.0.0.5/24
-L3 peer IP address: 20.0.0.1
-Routes on the connection: 22.0.0.0/24
-
-Important things to consider:
- 
-- This example uses static routes. If using static routes, you must plumb a route on the physical network to reach the virtual network. For example, a route with address prefix 10.0.0.0/16 with next hop as the L3 IP Address of the connection (15.0.0.5/24). 
-
-- If using BGP, you must still configure a static /32 route because the BGP connection is between the gateway compartment internal interface and the L3 peer IP. For connection 1, the peering would be between 10.0.1.6 and 15.0.0.1. Hence, for this connection, you need a static route on the physical switch with destination prefix of 10.0.1.6/32 with next hop as 15.0.0.5.
-
-  :::image type="content" source="./media/ras-gateway/layer3-forwarding.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="./media/ras-gateway/layer3-forwarding.png":::
 
 ### Dynamic routing with BGP
 
