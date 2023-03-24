@@ -68,6 +68,22 @@ Before you run the script, ensure that a virtual switch is created and the serve
     - ComputerName is the fully qualified domain name (FQDN) of the server to be added
     - HostPASubnetPrefix is the address prefix of the Provider Address (PA) network
 
+### Add a server to an Arc VM managed cluster
+
+TO add a new server to an Azure Arc VM managed cluster, perform these steps:
+
+1. To add a new server to the cluster, run the following command:
+
+    ```powershell
+    Add-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
+
+1. To enable Arc VM management on the newly added server, run the following command:
+
+    ```powershell
+    New-MocPhysicalNode -nodeName $nodeName
+    ```
+
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
@@ -102,6 +118,22 @@ The steps for removing a server from your cluster by using Windows Admin Center 
 1. Verify the server has been successfully removed from the cluster.
 
 Anytime you add or remove servers from a cluster, be sure and run a cluster validation test afterwards.
+
+### Remove a server from an Arc VM managed cluster
+
+To remove a server from an Arc VM managed cluster, perform these steps:
+
+1. To disable Arc VM Management on the server that you want to remove, run the following command:
+
+    ```powershell
+    Remove-MocPhysicalNode -nodeName $nodeName
+    ```
+
+1. To remove the server from the cluster, run the following command:
+
+    ```powershell
+    Remove-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
 
 ## Add server pairs to a stretched cluster
 
