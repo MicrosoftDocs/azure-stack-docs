@@ -125,7 +125,7 @@ To update AKS hybrid using PowerShell, use these instructions:
 
 ### Azure Arc
 
-Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multi-cloud environments.
+Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments.
 
 - To learn more about Azure Arc, see [Azure Arc resource bridge (preview) overview](/azure/azure-arc/resource-bridge/overview).
 

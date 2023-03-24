@@ -71,7 +71,7 @@ The Lifecycle Manager updates its own agents to ensure it has the recent fixes c
 
 ## PowerShell commands
 
-Include content from the Asz.Update PowerShell Module.docx document. This section may need to be linked to a separate article or specific modules need to be pulled from the document.
+Include content from the [Asz.Update PowerShell Module.docx](https://microsoft.sharepoint.com/:w:/t/ASZ/EYSSpZVOM-NBm35x867-REwBiOq-9LmW62H_KsL5ENxYcA?e=aHgPLv) document. This section may need to be linked to a separate article or specific modules need to be pulled from the document.
 
 ## Glossary
 
