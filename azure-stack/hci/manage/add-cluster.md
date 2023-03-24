@@ -70,9 +70,11 @@ Before you run the script, ensure that a virtual switch is created and the serve
 
 ### Add a server to an Arc VM managed cluster
 
-To add a new server to an Azure Arc VM managed cluster, perform these steps:
+To add a server to an Arc VM managed cluster, you must configure Arc VM management on the new server after adding it to the cluster.
 
-1. To add a new server to the cluster, run the following command:
+Follow these steps to add a server to an Azure Arc VM managed cluster:
+
+1. To add a server to an Arc VM managed cluster, run the following command:
 
     ```powershell
     Add-ClusterNode -Cluster Cluster1 -Name $nodeName
@@ -121,7 +123,9 @@ Anytime you add or remove servers from a cluster, be sure and run a cluster vali
 
 ### Remove a server from an Arc VM managed cluster
 
-To remove a server from an Arc VM managed cluster, perform these steps:
+To remove a server from an Arc VM managed cluster, you must disable Arc VM management on the server before removing it from the cluster.
+
+Follow these steps to remove a server from an Arc VM managed cluster:
 
 1. To disable Arc VM Management on the server that you want to remove, run the following command:
 
