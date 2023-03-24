@@ -70,7 +70,7 @@ Before you run the script, ensure that a virtual switch is created and the serve
 
 ### Add a server to an Arc VM managed cluster
 
-To add a server to an Arc VM managed cluster, you must configure Arc VM management on the new server after adding it to the cluster.
+To add a server to an Arc VM managed cluster, you must enable Arc VM management on the new server after adding it to the cluster.
 
 Follow these steps to add a server to an Azure Arc VM managed cluster:
 
