@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 06/14/2021
+ms.date: 03/22/2023
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -73,12 +73,20 @@ Each physical compute host requires network connectivity through one or more net
 >Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported. Windows Server 2019 supports both IPv4 and IPv6 addressing.
 
 ### Logical networks
+
 This section covers SDN infrastructure planning requirements for the management logical network and the Hyper-V Network Virtualization (HNV) Provider logical network. It includes details on provisioning additional logical networks to use gateways and the Software Load Balancer (SLB), and a sample network topology.
 
 #### Management and HNV Provider
+
 All physical compute hosts must access the management logical network and the HNV Provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
 
 The HNV Provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
+
+Here's how HNV Provider network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV Provider logical network for the individual Hyper-V hosts from an IP address pool. The Network Controller specifies and manages the IP address pool.
 
