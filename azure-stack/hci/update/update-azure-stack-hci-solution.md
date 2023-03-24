@@ -91,7 +91,7 @@ You can use Windows Admin Center as another method to install your solution upda
 For more information, see [Update your Azure Stack solution via Windows Admin Center](lifecycle-management-placeholder.md).
 
 > [!NOTE]
-> Alternatively, you can download and install the latest MSI package from the [Windows Admin Center](/windows-server/windows-admin-center) site.  
+> Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
 ### Windows Admin Center Extensions
 
@@ -125,7 +125,7 @@ To update AKS hybrid using PowerShell, use these instructions:
 
 ### Azure Arc
 
-Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments.
+Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multi-cloud environments.
 
 - To learn more about Azure Arc, see [Azure Arc resource bridge (preview) overview](/azure/azure-arc/resource-bridge/overview).
 
