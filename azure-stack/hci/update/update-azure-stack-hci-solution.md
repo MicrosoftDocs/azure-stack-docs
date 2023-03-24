@@ -63,7 +63,7 @@ Depending on the availability of content from your Solution Builder, you can app
 
 For more information, see [Update your Azure Stack HCI solution Manually](lifecycle-management-placeholder.md).
 
-For more reference information, see [ClusterAwareUpdating PowerShell commands](/powershell/module/clusterawareupdating/?view=windowsserver2022-ps).
+For more reference information, see [ClusterAwareUpdating PowerShell commands](/powershell/module/clusterawareupdating/?view=windowsserver2022-ps&preserve-view=true).
 
 There might be some issues or limitations when manually managing OS updates. For more information, see [Known issues](lifecycle-management-placeholder.md).
 
@@ -78,7 +78,7 @@ You can also use PowerShell to manage your solution updates. The PowerShell proc
 For more information, see [Update your Azure Stack HCI solution via PowerShell](lifecycle-management-placeholder.md).
 
 > [!IMPORTANT]
-> If your PowerShell modules were installed via Install-Module, run the [Update-Module](/powershell/module/powershellget/update-module?view=powershell-7.2#example-1--update-all-modules) command to update them.
+> If your PowerShell modules were installed via Install-Module, run the [Update-Module](/powershell/module/powershellget/update-module?view=powershell-7.2#example-1--update-all-modules&preserve-view=true) command to update them.
 
 ### Windows Admin Center
 
