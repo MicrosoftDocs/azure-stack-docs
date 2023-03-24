@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 01/19/2023
+ms.date: 03/22/2023
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
@@ -101,6 +101,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values. This is the MAC pool used to assign MAC addresses to VMs attached to SDN networks.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. After the Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
 ### Redeploy SDN Network Controller
 
@@ -179,6 +180,9 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for gateways. We strongly recommend at least two VMs for production deployments.
 1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
+
+    > [!NOTE]
+    > Ensure that the total number of gateway VMs is at least one more than the number of redundant gateways. Otherwise, you won't have any active gateways to host gateway connections.
 1. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
 1. For VM network addressing, select either **DHCP** or **Static**.
 
