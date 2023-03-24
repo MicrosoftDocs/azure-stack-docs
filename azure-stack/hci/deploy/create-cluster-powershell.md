@@ -366,18 +366,26 @@ Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent
 ```powershell
  $siteOverride = New-NetIntentSiteOverrides
 ```
-Once you have created a siteOverride, you can set any property for the siteOverride. The list of properties you can set for a particular siteOverride is: Name, StorageVlan, StretchVlan and ManagementVlan. For example: 
+Once you have created a siteOverride, you can set any property for the siteOverride. Make sure that the name property of the siteOverride has the exact same name, as the name your site has in the ClusterFaultDomain. A mismatch of names between the ClusterFaultDomain and the siteOverride will end up resulting in the siteOverride not being applied. 
+
+The properties you can set for a particular siteOverride are: Name, StorageVlan and StretchVlan. For example, this is how you create 2 siteOverrides for for your 2 sites- site1 and site2: 
 
 ```powershell
-$siteoverride.Name = "A"
-$siteoverride.StorageVLAN = 711
-$siteoverride.StretchVLAN = 25
+$siteOverride1 = New-NetIntentSiteOverrides
+$siteoverride1.Name = "site1"
+$siteOverride1.StorageVLAN = 711
+$siteOverride1.StretchVLAN = 25
+
+$siteOverride2 = New-NetIntentSiteOverrides
+$siteOverride2.Name = "site2"
+$siteOverride2.StorageVLAN = 712
+$siteOverride2.StretchVLAN = 26
 ```
-Finally, run `$siteOverride` to make sure all your properties are set in the desired manner. 
+You can run `$siteOverride1`, `$siteOverride2` in your powershell window to make sure all your properties are set in the desired manner. 
 
-And finally, to add one or more siteOverrides to your intent, run: 
+Finally, to add one or more siteOverrides to your intent, run: 
 ```powershell
-Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteoverride
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteOverride1, $siteOverride2
 ```
 
 ## Step 6: Enable Storage Spaces Direct

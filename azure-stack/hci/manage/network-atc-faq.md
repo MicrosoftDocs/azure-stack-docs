@@ -48,7 +48,7 @@ Currently, Automatic Storage IP Addressing (Auto IP) is only supported for 2-nod
 
 **The default storage IPs conflict with the IP Addresses in my network. Is there any way I can change or manage the storage IP addresses by myself?**
 
-Yes, you can. If you want to use a customer storage VLAN for your storage intent, use the `-StorageVlans` parameter when adding your intent.
+Yes, you can. If you want to use a custom storage VLAN for your storage intent, use the `-StorageVlans` parameter when adding your intent.
 If you want to manage the VLANS as well as the IP addresses, you can submit an override disabling Auto-IP as follows:
 ```powershell
 $storageOverride = new-NetIntentStorageOverrides
