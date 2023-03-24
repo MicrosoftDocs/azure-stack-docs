@@ -39,7 +39,7 @@ The Lifecycle Manager offers many benefits for updating your solution. Some of t
 
 - Improves reliability via automatic retry and remediation of known issues.
 
-- Common back-end drives a consistent experience whether managing locally or via the Azure Portal.
+- Common back-end drives a consistent experience whether managing locally or via the Azure portal.
 
 ## Use Cases
 
