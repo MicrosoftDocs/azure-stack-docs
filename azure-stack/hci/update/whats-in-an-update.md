@@ -17,7 +17,7 @@ This article describes what's in a solution update and what's new with the addit
 
 ## Lifecycle cadence
 
-The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). To stay current within this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](lifecycle-management-placeholder.md).
+The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). To stay current within this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](/azure-stack/hci/release-information).
 
 Microsoft might release the following types of updates for the Azure Stack HCI platform:
 
@@ -61,4 +61,4 @@ Hardware vendors might choose to integrate with the Lifecycle Manager to enhance
 
 ## Next steps
 
-[Update the Azure Stack HCI solution](lifecycle-management-placeholder.md).
+[Update the Azure Stack HCI solution](\azure-stack\hci\update\update-azure-stack-hci-solution.md).

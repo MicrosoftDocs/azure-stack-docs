@@ -56,4 +56,4 @@ Here of some of the primary customer uses cases for the Lifecycle Manager.
 
 ## Next steps
 
-[What's in an update](lifecycle-management-placeholder.md)?
+[What's in an update](azure-stack\hci\update\whats-in-an-update.md)?
