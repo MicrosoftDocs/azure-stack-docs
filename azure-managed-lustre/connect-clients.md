@@ -55,7 +55,7 @@ If you need to support a different distribution, contact the support team as des
 If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
 
 > [!NOTE]
-> Microsoft will have new packages published within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
+> Microsoft will publish new packages within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
 
 ## Update a Lustre client to the current version
 
