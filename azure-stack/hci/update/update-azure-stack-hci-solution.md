@@ -25,7 +25,7 @@ In the 22H2 release, the Lifecycle Manager allows management of the OS, solution
 
 The Azure Stack platform includes the Azure Stack HCI operating system (OS) that runs on the nodes within your cluster, system agents and services, and the drivers and firmware required by your host hardware.
 
-To keep the platform up to date via the Lifecycle Manager, see [What's the Lifecycle Manager](azure-stack\hci\update\whats-the-lifecycle-manager.md)?
+To keep the platform up to date via the Lifecycle Manager, see [What's the Lifecycle Manager](whats-the-lifecycle-manager.md)?
 
 ## Cluster update methods
 
@@ -75,7 +75,7 @@ In addition to the methods that can be used to update your solution, there are t
 
 You can also use PowerShell to manage your solution updates. The PowerShell procedures apply to a single node and multi-node cluster that is running with the Lifecycle Manager installed.
 
-For more information, see [Update your Azure Stack HCI solution via PowerShell](azure-stack\hci\update\update-via-powershell.md).
+For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell.md).
 
 > [!IMPORTANT]
 > If your PowerShell modules were installed via Install-Module, run the [Update-Module](/powershell/module/powershellget/update-module?view=powershell-7.2#example-1--update-all-modules&preserve-view=true) command to update them.
@@ -143,4 +143,4 @@ The Azure Stack HCI platform doesn't update customer workloads. Update processes
 
 ## Next steps
 
-[What's the Lifecycle Manager](azure-stack\hci\update\whats-the-lifecycle-manager.md)?
+[What's the Lifecycle Manager](whats-the-lifecycle-manager.md)?

@@ -61,4 +61,4 @@ Hardware vendors might choose to integrate with the Lifecycle Manager to enhance
 
 ## Next steps
 
-[Update the Azure Stack HCI solution](\azure-stack\hci\update\update-azure-stack-hci-solution.md).
+[Update the Azure Stack HCI solution](update-azure-stack-hci-solution.md).
