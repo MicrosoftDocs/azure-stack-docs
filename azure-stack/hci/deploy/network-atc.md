@@ -340,13 +340,11 @@ With the new event logs in 22H2, there are some simplistic troubleshooting metho
 
 :::image type="content" source="media/network-atc/adapterbinderror.png" alt-text="Adapter Binding Error Screenshot"  lightbox="media/network-atc/adapterbinderror.png":::
  
-- An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
+Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
 
 **Solution:** Remove the conflicting vSwitch, then Set-NetIntentRetryState
 
-
-
-- An adapter is bound to the component, but not necessarily a vSwitch.
+Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
 
 **Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
 
@@ -373,13 +371,15 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 You will see this error in 2 instances: 
 1.	If RDMA is not enabled on adapters for storage and/or compute intents
-**Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
-```powershell
-Enable-NetAdapterRdma -Name 'pNIC1'
-```
-2.	Inbox drivers in use on adapters
-**Solution:** You can not deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
 
+    **Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
+    ```powershell
+    Enable-NetAdapterRdma -Name 'pNIC1'
+    ```
+2.	Inbox drivers in use on adapters
+
+    **Solution:** You can not deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
+    
 
 ## Next steps
 

@@ -368,7 +368,7 @@ Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent
 ```
 Once you have created a siteOverride, you can set any property for the siteOverride. Make sure that the name property of the siteOverride has the exact same name, as the name your site has in the ClusterFaultDomain. A mismatch of names between the ClusterFaultDomain and the siteOverride will end up resulting in the siteOverride not being applied. 
 
-The properties you can set for a particular siteOverride are: Name, StorageVlan and StretchVlan. For example, this is how you create 2 siteOverrides for for your 2 sites- site1 and site2: 
+The properties you can set for a particular siteOverride are: Name, StorageVlan and StretchVlan. For example, this is how you create 2 siteOverrides for your 2 sites- site1 and site2: 
 
 ```powershell
 $siteOverride1 = New-NetIntentSiteOverrides
