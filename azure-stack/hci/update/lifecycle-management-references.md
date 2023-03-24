@@ -35,15 +35,15 @@ Readiness checks are used to ensure the system is in a good state to install an 
 |AdditionalData     | Property bag of key value pairs for additional information.            |
 |HealthCheckSource  | The name of the services called for the health check.                  |
 
-Currently, the Lifecycle Manager checks the following criteria:
+Currently, the Lifecycle Manager checks for the following criteria:
 
-- **Cluster-Aware Updating setup**. Cluster-Aware Updating is required for installing certain update content. This test evaluates its configuration requirements. For more information, see [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements).
+- **Cluster-Aware Updating setup**. Cluster-Aware Updating is required to install certain update content and configuration requirements are evaluated. For more information, see [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements).
 
 - **Memory usage**.
 
 - **CPU usage**.
 
-- **Storage health and capacity**. Here the configuration and capacity of your disks, volumes, and CSVs are tested.
+- **Storage health and capacity**. Tests the configuration and capacity of your disks, volumes, and CSVs.
 
 - **Open alerts**. Shows open Health Service alerts, which include faults in the [Windows Health Service](../manage/health-service-faults.md). Open alerts that are **Critical** must be reviewed and closed before performing an update.
 
@@ -51,23 +51,23 @@ Currently, the Lifecycle Manager checks the following criteria:
 
 ## Progress actions
 
-The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. There are a few steps taken by the Lifecycle Manager to achieve a successful update of its agents.
+The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. Here are the steps taken by the Lifecycle Manager to achieve a successful update of its agents:
 
-1. First, steps referred to as the "servicing stack" are performed:
+1. First, steps referred to as the "servicing stack" are performed.
 
     - Prepare the servicing stack.
     - Update the servicing stack.
     - Copy the servicing stack agents.
     - Use the latest servicing stack agents.
 
-2. The Lifecycle Manager will begin installing new agents and services, after the servicing stack is updated.
+2. After the servicing stack is updated, the Lifecycle Manager will install new agents and services.
 
-3. Once new agents and services have been installed, the host OS is updated.
+3. Once the new agents and services have been installed, the host OS is updated.
 
     > [!NOTE]
     > For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
 
-4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating
+4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating.
 
 ## PowerShell commands
 

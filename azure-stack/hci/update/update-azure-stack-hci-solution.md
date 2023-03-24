@@ -19,7 +19,7 @@ This article describes how you can keep various pieces of your Azure Stack HCI s
 
 The Lifecycle Manager intends to provide a flexible foundation, such that over time, more of the solution content can be integrated and managed in one place.
 
-In the 22H2 release, the Lifecycle Manager allows management of the OS, solution extension, core agent, and service content. The following section provides an overview of this content, along with methods and links for updating your solution outside of the Lifecycle Manager.  
+In the 22H2 release, the Lifecycle Manager allows management of the OS, solution extension, core agent, and service content. The following section provides an overview of these components, along with methods and links for updating your solution.  
 
 ## Azure Stack HCI Platform
 
@@ -82,13 +82,7 @@ For more information, see [Update your Azure Stack HCI solution via PowerShell](
 
 ### Windows Admin Center
 
-You can use Windows Admin Center as another method to install your solution updates. To install updates using Windows Admin Center, follow these steps:
-
-1. Navigate to Windows Admin Center **Settings** page.
-
-2. Select **Update** to install the update.  
-
-For more information, see [Update your Azure Stack solution via Windows Admin Center](lifecycle-management-placeholder.md).
+You can use Windows Admin Center as another method to install your solution updates. To install updates using Windows Admin Center, see [Install operating system and hardware updates using Windows Admin Center](/azure-stack/hci/manage/update-cluster#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
 > [!NOTE]
 > Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
