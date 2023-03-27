@@ -181,7 +181,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       >
       > - For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After applying the proxy settings, come back here and continue the setup with the following steps.
+      >
       > - When setting up the Arc Resource Bridge with AKS hybrid, ensure that the Resource Bridge shares the same `$vswitchName` and `$IPAddressPrefix`. However, you must assign distinct IP addresses for the vippoolstart/end (or `$controlPlaneIP`) and the k8snodeippoolstart/end (or `$VMIP_1` and `$VMIP_2`).
+      >
       > - Assign a unique virtual network name (`$vnetName`) for the Arc Resource Bridge, which must be different from the one used for AKS hybrid. To accomplish this, include `"-vnetName $vnetName"` when you run the `New-ArcHciConfigFiles` command.
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
@@ -231,7 +233,9 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       > [!IMPORTANT]
       >
       > - For setting up Arc VM management with a network proxy, create the above configuration files in PowerShell using [these steps](azure-arc-vm-management-prerequisites.md#network-proxy-requirements-for-setting-up-arc-vm-management). After applying the proxy settings, come back here and continue the setup with the following steps.
+      >
       > - When setting up the Arc Resource Bridge with AKS hybrid, ensure that the Resource Bridge shares the same `$vswitchName` and `$IPAddressPrefix`. However, you must assign distinct IP addresses for the vippoolstart/end (or `$controlPlaneIP`) and the k8snodeippoolstart/end (or `$VMIP_1` and `$VMIP_2`).
+      >
       > - Assign a unique virtual network name (`$vnetName`) for the Arc Resource Bridge, which must be different from the one used for AKS hybrid. To accomplish this, include `"-vnetName $vnetName"` when executing the `New-ArcHciConfigFiles` command.
 
    1. Validate the Arc Resource Bridge configuration file and perform preliminary environment checks:
