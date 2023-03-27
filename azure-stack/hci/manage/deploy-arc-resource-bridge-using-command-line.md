@@ -273,7 +273,6 @@ The following steps will deploy an Arc Resource Bridge on the Azure Stack HCI cl
       ```PowerShell
       az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig "$csv_path\ResourceBridge\kubeconfig" 
       ```
-
    ---
 
 1. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
