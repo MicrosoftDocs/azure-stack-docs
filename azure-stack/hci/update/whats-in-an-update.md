@@ -30,7 +30,7 @@ At times, you might see updates to the latest patch level of your current baseli
 
 Each baseline receives patch updates for as long as it's supported. Your cluster must stay within six months of the most recent baseline to be considered supported.
 
-## Rollout and preview
+## Rollout
 
 What can I say about this area?
 

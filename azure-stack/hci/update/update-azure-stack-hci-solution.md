@@ -27,13 +27,6 @@ The Azure Stack platform includes the Azure Stack HCI operating system (OS) that
 
 To keep the platform up to date via the Lifecycle Manager, see [What's the Lifecycle Manager](whats-the-lifecycle-manager.md)?
 
-## Cluster update methods
-
-There are two methods for managing your Azure Stack HCI cluster updates:
-
-- Lifecycle management.
-- Manual management.
-
 ### Lifecycle management
 
 The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster. When updating the platform, we recommend the following high-level process:
@@ -51,25 +44,9 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
   - Review the update and system health after completion.
   - Confirm that your storage and workloads are healthy.
 
-As mentioned, you can choose to bypass this method and manage your cluster updates manually.
+## User interfaces for updates
 
-### Manual management
-
-Depending on the availability of content from your Solution Builder, you can apply your clusters updates manually using these steps:
-
-1. [Updates and upgrades](../concepts/updates.md).
-
-2. [Update the cluster](../manage/update-cluster.md).
-
-For more information, see [Update your Azure Stack HCI solution Manually](lifecycle-management-placeholder.md).
-
-For more reference information, see [ClusterAwareUpdating PowerShell commands](/powershell/module/clusterawareupdating/?view=windowsserver2022-ps&preserve-view=true).
-
-There might be some issues or limitations when manually managing OS updates. For more information, see [Known issues](lifecycle-management-placeholder.md).
-
-## User interface for updates
-
-In addition to the methods that can be used to update your solution, there are two interfaces that can be used to apply your available updates. These interfaces are PowerShell and Windows Admin Center.
+In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. These interfaces are PowerShell and Windows Admin Center.
 
 ### PowerShell
 
@@ -84,16 +61,14 @@ For more information, see [Update your Azure Stack HCI solution via PowerShell](
 
 You can use Windows Admin Center as another method to install your solution updates. To install updates using Windows Admin Center, see [Install operating system and hardware updates using Windows Admin Center](/azure-stack/hci/manage/update-cluster#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
+Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
+
 > [!NOTE]
-> Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
-
-### Windows Admin Center Extensions
-
-To apply OS update and driver/firmware updates using Windows Admin Center extensions, see [Installing an extension](/windows-server/manage/windows-admin-center/configure/using-extensions).
+> Integrated solutions require the OEM to provide an extension. For more information, see [Windows Admin Extensions](lifecycle-management-placeholder.md)
 
 ## Workload updates
 
-Along with updates for your cluster, there are workload updates that can be applied. These workloads include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections will provide more detail on these workloads and ways to apply updates.
+Along with updates for your cluster, there are workload updates that can be applied that aren't integrated into the Lifecycle Manager. These workloads include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections will provide more detail on these workloads and ways to apply updates.
 
 ### Azure Kubernetes Service (AKS) hybrid
 
@@ -133,7 +108,13 @@ Other Microsoft services that rely on Azure Stack HCI VMs may have their own ins
 
 ### Customer apps and workloads
 
-The Azure Stack HCI platform doesn't update customer workloads. Update processes depend on the type of workload.
+The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. However, you can use Azure Arc for update management at scale. It is recommended to Arc enable your VMs and use the [Upgrade the agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
+
+To enable Azure Arc on your VMs and to manage OS updates for those servers, see the following:
+
+- [Arc enable your server](lifecycle-management-placeholder.md)
+
+- [Use Update Management in Azure Automation to manage operating system updates for Azure Arc-enabled servers](/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/arc-update-management).
 
 ## Next steps
 
