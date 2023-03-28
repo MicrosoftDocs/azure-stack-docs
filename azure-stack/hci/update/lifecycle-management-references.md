@@ -45,7 +45,10 @@ Currently, the Lifecycle Manager checks for the following criteria:
 
 - **Storage health and capacity**. Tests the configuration and capacity of your disks, volumes, and CSVs.
 
-- **Open alerts**. Shows open Health Service alerts, which include faults in the [Windows Health Service](../manage/health-service-faults.md). Open alerts that are **Critical** must be reviewed and closed before performing an update.
+- **Open alerts**. Shows open Health Service alerts, which include faults in the [Windows Health Service](../manage/health-service-faults.md).
+
+> [!NOTE]
+> Open alerts that are **Critical** must be reviewed and closed before performing an update.
 
 - **Workloads that cannot be migrated**.
 
@@ -64,8 +67,8 @@ The Lifecycle Manager updates its own agents to ensure it has the recent fixes c
 
 3. Once the new agents and services have been installed, the host OS is updated.
 
-    > [!NOTE]
-    > For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
+> [!NOTE]
+> For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
 
 4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating.
 
