@@ -88,6 +88,7 @@ Make sure to include the following firewall URLs in your allowlist:
 | https\://*.dp.kubernetesconfiguration.azure.com | 443 | Kubernetes | Used for Azure Arc configuration |
 | https\://*.servicebus.windows.net | 443 | Cluster connect | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall |
 | sts.windows.net | 443 | Secure token service | Used for custom locations |
+| hybridaks.azurecr.io  | 443 | Kubernetes | Used for creating Kubernetes extensions |
 | https\://guestnotificationservice.azure.com | 443 | Notification service | Used for guest notification operations |
 | https\://*.dp.prod.appliances.azure.com | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance) | 
 | https\://ecpacr.azurecr.io | 443 | Download agent | Used to download Resource bridge (appliance) container images |
