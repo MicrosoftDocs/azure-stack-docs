@@ -15,9 +15,9 @@ ms.date: 09/29/2022
 
 Follow these steps to install Arc Resource Bridge on Windows Server through command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
-``
+```
 Note: It's recommended to deploy the resources and the resource group in the same location (Azure Region) to avoid a mismatch error.
-``
+```
 
 ## Step 1: Install pre-requisite PowerShell modules
 Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
@@ -298,9 +298,9 @@ You can then create the custom location for your Windows Server or Azure Stack H
 ```azurecli
 az customlocation create --name $customLocationName --namespace "default" --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $AKSClusterExtensionResourceId --resource-group $resourceGroup
 ```
-``
+```
 Note: The resource location and the resourceGroup location (Azure Region) should match otherwise you get an error.
-``
+```
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
 | resource-group |  A resource group in the Azure subscription listed above. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
