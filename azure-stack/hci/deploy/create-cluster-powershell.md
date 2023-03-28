@@ -11,7 +11,7 @@ ms.reviewer: stevenek
 
 [!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
 
-In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
+In this article, you learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
 > [!NOTE]
 > If you're doing a single server installation of Azure Stack HCI 21H2, use PowerShell to create the cluster.
@@ -21,12 +21,12 @@ You have a choice between two cluster types:
 - Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-For the single server scenario, complete the same instructions below for the one server.
+For the single server scenario, complete the same instructions for the one server.
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
 
-In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
+In this article, we create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 

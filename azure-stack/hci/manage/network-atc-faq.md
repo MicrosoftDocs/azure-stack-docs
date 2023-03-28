@@ -9,12 +9,14 @@ ms.author: parammahajan
 
 # Network ATC: Frequently Asked Questions 
 
+This article goes over some frequently asked questions users of Network ATC have asked over the past few months. 
+
 ## What does Network ATC Manage?
 
 ### Stretch Clustering
 **Does Network ATC support stretch clustering?**
 
-Yes it does. From version 22H2, you can add `-Stretch` as a parameter when you adding an intent, and deploy stretch intents with Network ATC. For more information on how to deploy stretch intents, check out this [page](../deploy/create-cluster-powershell.md)
+Yes it does. From version 22H2, you can add `-Stretch` as a parameter when you adding an intent, and deploy stretch intents with Network ATC. For more information on how to deploy stretch intents, check out this [page](../deploy/create-cluster-powershell.md). 
 
 **My override is not being applied correctly. How should I fix it?**
  
@@ -24,7 +26,7 @@ One common mistake that occurs when deploying a siteOverride for stretch intents
 ### Live Migrations 
 **Does Network ATC manage live migrations?** 
 
-From the version 22H2, Network ATC does indeed manage Live Migrations. Network ATC manages a whole range of properties for Live Migrations, like live migration network selection, number of concurrent VM migrations, SMB bandwidth limit. 
+From the version 22H2, Network ATC does indeed manage Live Migrations. Network ATC manages a whole range of properties for Live Migrations. Live Migration properties managed by Network ATC include live migration network selection, number of concurrent VM migrations, SMB bandwidth limit. 
 
 **How do I pass an override to customize live migration settings?**
 
@@ -49,7 +51,7 @@ Currently, Automatic Storage IP Addressing (Auto IP) is only supported for 2-nod
 **The default storage IPs conflict with the IP Addresses in my network. Is there any way I can change or manage the storage IP addresses by myself?**
 
 Yes, you can. If you want to use a custom storage VLAN for your storage intent, use the `-StorageVlans` parameter when adding your intent.
-If you want to manage the VLANS as well as the IP addresses, you can submit an override disabling Auto-IP as follows:
+If you want to manage the VLANS and the IP addresses, you can submit an override disabling Auto-IP as follows:
 ```powershell
 $storageOverride = new-NetIntentStorageOverrides
 $storageOverride.EnableAutomaticIPGeneration = $false
@@ -60,12 +62,12 @@ Add-NetIntent -Name Storage_Compute -Storage -Compute -AdapterName 'pNIC01', 'pN
 
 **Disabling Cluster Network Naming is not changing the names of my vSwitches. How can I change the names of my vSwitches?**
 
-vSwitches created by Network ATC are named in accordance to the intent type being deployed. Naming vSwitches in correspondence with the intent helps in managing accurate and consistent configurations on vSwitches throughout the cluster. This is why we do not allow you to make changes to the naming of vSwitches, even with an override. 
+vSwitches created by Network ATC are named in accordance to the intent type being deployed. Naming vSwitches in correspondence with the intent helps in managing accurate and consistent configurations on vSwitches throughout the cluster. Hence, we do not allow you to make changes to the naming of vSwitches, even with an override. 
 
 **Can I modify any node's configuration manually? For example, manually make changes using cmdlets like `Set-VMHost`, `Set-NetadapterAdvancedProperty`?**
 
-You can not make any manual changes to configurations when using Network ATC. If you wish to customize your configuration, you can do so using Network ATC overrides. Network ATC will consider any manual changes as "drift" and drift correct them back to the intended goal state.
+You can not make any manual changes to configurations when using Network ATC. If you wish to customize your configuration, you can do so using Network ATC overrides. Network ATC considers any manual changes as "drift" and drift correct them back to the intended goal state.
 
 **How do I keep the management IP already set on the NIC?**
 
-Whether deploying a management intent with or without another intent type, make sure to pass the NIC with the management IP as the first NIC in the list of `AdapterNames` you will pass when adding an intent. Network ATC will resect the pre-existing management IP on the NIC and use the same IP address in its intent. 
+Whether deploying a management intent with or without another intent type, make sure to pass the NIC with the management IP as the first NIC in the list of `AdapterNames` you pass when adding an intent. Network ATC reads the pre-existing management IP on the NIC and uses the same IP address in its intent. 
