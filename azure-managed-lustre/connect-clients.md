@@ -4,7 +4,7 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
 ms.date: 02/21/2023
 
@@ -53,6 +53,9 @@ Packages and kernel modules are available for these Linux operating systems. Cli
 If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
 
 If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
+
+> [!NOTE]
+> Microsoft will publish new packages within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
 
 ## Update a Lustre client to the current version
 
