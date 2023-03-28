@@ -36,7 +36,7 @@ Before you begin, make sure to complete the [prerequisites for setting up Azure 
 
 The deployment for Arc Resource Bridge is natively available as part of the Windows Admin Center MSI. For Azure Arc Resource Bridge deployment, you must install Windows Admin Center 2110.2 or later on a Windows 10 machine or on a server. You can check the version by clicking the question mark icon on the top right corner of the Windows Admin Center screen.
 
-Also ensure that the latest version of the following extensions are installed:
+Also ensure that the latest versions of the following extensions are installed:
 
 - Azure Kubernetes Service
 
@@ -47,7 +47,7 @@ These extensions come pre-installed with Windows Admin Center versions 2110.2 an
 1. In Windows Admin Center, under **Tools** select **Settings**, then select **Extensions**.
 1. On the **Installed Extensions** tab, find the **Azure Kubernetes Service** and **Cluster Manager** extensions and verify their versions.
 
-    :::image type="content" source="media/manage-azure-arc-vm/installed-extensions.png" alt-text="[Windows Admin Center Installed Extensions screenshot":::
+    :::image type="content" source="media/manage-azure-arc-vm/installed-extensions.png" alt-text="Screenshot of the Windows Admin Center Installed Extensions.":::
 
 ## Set up Arc Resource Bridge and create custom location
 
@@ -55,10 +55,10 @@ To check all the prerequisites that should be met to deploy Arc Resource Bridge 
 
 If an Arc Resource Bridge is not detected, a button is displayed to deploy Resource Bridge.
 
- :::image type="content" source="media/manage-azure-arc-vm/deploy-resource-bridge-button.png" alt-text="[Windows Admin Center Deploy Resource Bridge button screenshot":::
+ :::image type="content" source="media/manage-azure-arc-vm/deploy-resource-bridge-button.png" alt-text="Screenshot of the Windows Admin Center Deploy Resource Bridge button.":::
 
 > [!IMPORTANT]
-> If you've already set up AKS-HCI on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge using Windows Admin Center. Use the command line instructions instead for deploying [Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md).
+> If you've already set up Azure Kubernetes Service (AKS) hybrid on your Azure Stack HCI cluster, you cannot currently deploy Arc Resource Bridge using Windows Admin Center. Use the command line instructions instead for deploying [Arc Resource Bridge](deploy-arc-resource-bridge-using-command-line.md).
 
 Perform the following steps to deploy Azure Arc Resource Bridge:
 

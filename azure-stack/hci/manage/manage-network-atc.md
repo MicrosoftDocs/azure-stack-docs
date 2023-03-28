@@ -374,9 +374,10 @@ There are several tasks to complete following a Network ATC deployment, includin
 
 - **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration doesn't consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
 
-- **Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
+- **For v21H2, Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
    - All nodes in the cluster must use the same intent.
    - There is no automatic provisioning for storage replica.
+- **For v22H2, Stretch cluster configuration**: Use the newly added stretch intent type to deploy your stretch clusters with Network ATC, just like you would any other intent or configuration. For more information on stretch intents deployed with Network ATC, please check: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md), step 5.4. 
 
 ## Validate automatic remediation
 
@@ -423,4 +424,5 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 ## Next steps
 
 - Learn more about [Network ATC](../concepts/network-atc-overview.md).
+- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
