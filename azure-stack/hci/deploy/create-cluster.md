@@ -17,7 +17,7 @@ Now that you've deployed the Azure Stack HCI operating system, you'll learn how 
 > [!NOTE]
 > If you are doing a single server installation of Azure Stack HCI 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster.
 
-If you're interested in testing Azure Stack HCI but have limited or no spare hardware, see the [Azure Stack HCI Evaluation Guide](../guided-quick-deploy-eval.md?tabs=global-admin), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
+If you're interested in testing Azure Stack HCI but have limited or no spare hardware, see the [Azure Stack HCI Evaluation Guide](../guided-quick-deploy-eval.yml?tabs=global-admin), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Cluster creation workflow
 
