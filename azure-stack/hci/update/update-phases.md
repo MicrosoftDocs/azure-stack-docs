@@ -31,7 +31,7 @@ The updates consist of several phases: discovering the update, staging the conte
 
 You can apply these updates via PowerShell or via the Windows Admin Center UI. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you may need to perform during each phase of an update, and what actions the Azure Stack HCI takes throughout the update operation.
 
-![A screenshot of a computer Description automatically generated with medium confidence](media/24c5bcbe2d24c2414964efa658629776.png)
+![A screenshot indicating the various phases of an update with actions you need to perform in each phase](../media/updates/updates-phases-actions.png)
 
 ## Phase 1: Discovery and acquisition
 
@@ -81,7 +81,7 @@ THOMAS TO PROVIDE - list common failures we encounter in previews
 
 ## Collecting logs
 
-If you encounter failures during the update process, collect diagnostic logs to help Microsoft identify and fix the issues. For more information, see how to [Collect diagnostic logs for Azure Stack HCI, version 22H2 (preview)](https://learn.microsoft.com/azure-stack/hci/manage/collect-logs)
+If you encounter failures during the update process, collect diagnostic logs to help Microsoft identify and fix the issues. For more information, see how to [Collect diagnostic logs for Azure Stack HCI, version 22H2 (preview)](../manage/collect-logs.md).
 
 ## Next steps
 
