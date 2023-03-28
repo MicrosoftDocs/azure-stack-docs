@@ -48,17 +48,17 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Machines[].NetworkConnection.AdapterName` |String | NetAdapterName for VSwitch. It is mandatory for a full Kubernetes deployment. You can run the PowerShell `Get-NetAdapter -Physical` command to view the `Name` column for the adapter of your choice. ||Single-machine and <br> full deployment|
 | `Machines[].NetworkConnection.Mtu` | Number | The maximum transmission unit (MTU) for the network | `0` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.ControlPlane` | Boolean | Specify whether you want this new deployment to be a control plane. If `false`, it will be a worker node. *Only for Linux VM*| `false` |Single-machine and <br> full deployment|
-| `Machines[].LinuxNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment||
-| `Machines[].LinuxNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs. | `2048` |Single-machine and <br> full deployment||
-| `Machines[].LinuxNode.DataSizeInGB` | Number | Size of the data partition. For large applications, we recommend increasing this number. *Only for Linux VM* | `10` |Single-machine and <br> full deployment||
-| `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
+| `Machines[].LinuxNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs. | `2048` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.DataSizeInGB` | Number | Size of the data partition. For large applications, we recommend increasing this number. *Only for Linux VM* | `10` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `300` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.TpmPassthrough` | Boolean | Enables TPM access from the Linux node. | `false` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.SecondaryNetworks` | Array | Specify secondary network to be added to the Linux Node. You can specify an array of `VMSwitchName` with optional static IP information (`Ip4Address,Ip4GatewayAddress and Ip4PrefixLength`)  | `null` |Single-machine and <br> full deployment|
-| `Machines[].WindowsNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment||
+| `Machines[].WindowsNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment|
 | `Machines[].WindowsNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs (multiples of 2). | `2048` |Single-machine and <br> full deployment|
-| `Machines[].WindowsNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment||
+| `Machines[].WindowsNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].WindowsNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM will take. ||Single-machine and <br> full deployment|
 | `Machines[].WindowsNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `900` |Single-machine and <br> full deployment|
 
