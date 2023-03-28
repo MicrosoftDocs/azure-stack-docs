@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 01/09/2023
+ms.date: 03/03/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -116,10 +116,10 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 1. Skip this step if you're deploying a single server.
 
-    1. For a multi-node cluster, go to the first server of your cluster. Run the following command:
+    1. For a multi-node cluster, go to the first server of your cluster. Run the following command. Wildcard characters (*) are not a valid value:
 
         ```powershell
-        Set-Item Wsman:\Localhost\Client\TrustedHosts -Value *
+        Set-Item Wsman:\Localhost\Client\TrustedHosts -Value <value>
         ```
 
     1. On all other subsequent nodes (excluding the first server), run the following command:

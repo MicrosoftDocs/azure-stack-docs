@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 03/08/2023
+ms.date: 03/28/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -152,7 +152,32 @@ If you want to use an existing configuration file you have previously created, s
 
 ### Step 3: Clustering
 
-1. On step **3.1 Create cluster**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
+For two-node clusters, you'll need to create a cluster witness. A cluster witness helps establish quorum for a two-node cluster if a node goes down. To learn about quorum, see [Understanding quorum](/windows-server/failover-clustering/manage-cluster-quorum#understanding-quorum).
+
+You can either create a cloud witness or a file share witness:
+
+Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. For more information on cloud witness, see [Deploy a cloud witness for Failover cluster](/windows-server/failover-clustering/deploy-cloud-witness).
+
+Use a file share witness if you use a local SMB file share to provide a vote in the cluster quorum. Use a file share witness if all the servers in a cluster have spotty internet connectivity or can't use disk witness as there aren't any shared drives. For more information on file share witness, see [Deploy a file share witness for Failover cluster](/windows-server/failover-clustering/file-share-witness).
+
+> [!NOTE]
+> For single-server clusters, a witness doesn't apply, so you only need to provide a cluster name for Step 3.1 below.
+
+1. On step **3.1 Provide the cluster name**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
+
+1. For two-node clusters, select either **Cloud witness** or **File share witness**.
+
+1. For **Cloud witness**, do the following:
+    1. Enter the Azure storage account name.
+    1. Enter the Access key for the storage account.
+    1. For Azure blob service endpoint type, select either **Default** or **Custom domain**.
+    1. If you selected **Custom domain**, enter the domain for the blob service.
+    1. When finished, select **Next**.
+
+1. For **File share witness**, do the following:
+
+   1. Enter the file share path in *//server/fileshare* format.
+   1. When finished, select **Next**.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
 
@@ -181,27 +206,19 @@ If you want to use an existing configuration file you have previously created, s
 
     Select **Next** to continue.
 
-### Step 5: Services
+### Step 5: Validate and Deploy
 
-1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
+1. On step **5.1 Validate configuration**, select **Download the config file for your deployment**, and then select **Validate** to start validation. You can select **Download logs** to view validation conflict details. When validation has successfully completed, select **Next** to continue with deployment.
 
-    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/new-file/deployment-step-5-add-services.png":::
-
-1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch (already populated) used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
-
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/new-file/deploy-new-step-5-arc.png":::
-
-### Step 6: Deploy
-
-1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
+    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-deploy.png" alt-text="Screenshot of the Deployment step 5.1 Validate configuration page." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-deploy.png":::
 
 
     > [!IMPORTANT]
-    > The staging server restarts after the deployment starts.
+    > The staging server will restart after the deployment starts.
 
-    :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 5.2 Deploy the cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time.
+1. On step **5.2 Deploy the cluster**, select **Deploy**. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
 
