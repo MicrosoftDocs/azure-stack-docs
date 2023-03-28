@@ -13,7 +13,7 @@ ms.lastreviewed: 10/04/2022
 
 # Start-AksEdgeNode
 
-Starts the node VM if it's currently stopped. This is an asynchronous call and does not wait for the Kubernetes endpoint to be available. This would mean that you will have a wait for a while before the Kubernetes endpoint is made available. 
+Starts the node VM if it's currently stopped. This cmdlet is an asynchronous call and doesn't wait for the Kubernetes endpoint to be available. You'll have a wait for a while before the Kubernetes endpoint is made available. 
 
 ## Syntax
 
