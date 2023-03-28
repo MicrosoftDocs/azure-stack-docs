@@ -12,7 +12,7 @@ ms.lastreviewed: 10/04/2022
 
 # Stop-AksEdgeNode
 
-Stops the node VM if it's currently started.
+Stops the node VM if it's currently started. This is an asynchronous call and does not wait for the Kubernetes endpoint to be available. This would mean that you will have a wait for a while before the Kubernetes endpoint is made available.
 
 ## Syntax
 
@@ -21,8 +21,7 @@ Stop-AksEdgeNode [[-NodeType] <String>]
 ```
 
 ## Description
-The Stop-AksEdgeNode cmdlet stops the virtual machine.
-No action is taken if the virtual machine is already stopped
+The Stop-AksEdgeNode cmdlet stops the virtual machine. No action is taken if the virtual machine is already stopped. 
 
 ## Examples
 
@@ -35,9 +34,7 @@ Stop-AksEdgeNode
 ### -NodeType
 
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained.
-When not specified, the 'Linux' node is drained only.
-When both nodes are drained, the Windows node is drained first, then the Linux node.
+'LinuxAndWindows'. 
 
 ```yaml
 Type: String
