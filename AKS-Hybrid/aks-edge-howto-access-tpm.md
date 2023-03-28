@@ -73,6 +73,13 @@ Once the executable file and dependency files are created, you need to copy the 
     cd "C:\Users\<User>"
     ```
 
+1. Modify the `TPMRead.runtimeconfig.json` to avoid [ICU globalization issue](https://github.com/dotnet/core/issues/2186#issuecomment-472629489) inside the Linux VM.
+    1. Open the `TPMRead.runtimeconfig.json`
+    2. Add the following line inside the *configProperties* section
+       ```
+       "System.Globalization.Invariant": true
+       ```
+
 1. Create a *tar* file with all the files created in previous steps. For more information about PowerShell *tar* support, see [Tar and Curl Come to Windows](/virtualization/community/team-blog/2017/20171219-tar-and-curl-come-to-windows).
     For example, if you have all your files under the folder *TPM*, you can use the following command to create the *TPM.tar* file.
 
@@ -89,25 +96,19 @@ Once the executable file and dependency files are created, you need to copy the 
 1. Run the following command to extract all the content from the *tar* file.
 
    ```powershell
-   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "tar -xvzf TPM.tar"
+   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "tar -xvzf /home/aksedge-user/TPM.tar"
    ```
 
 1. After extraction, Add executable permission to the main executable file. For example, if your project name was *TPMRead*, your main executable is named *TPMRead*. Run the following command to make it executable.
 
     ```powershell
-    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && chmod +x TPMRead"
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "chmod +x /home/aksedge-user/TPM/TPMRead"
     ```
-
-1. To solve an [ICU globalization issue](https://github.com/dotnet/core/issues/2186#issuecomment-472629489), run the following command. For example, if your project name is *TPMRead* run:
-
-    ```powershell
-     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && sed -i '/`"configProperties`": /a \\t`"System.Globalization.Invariant\`": true,' TPMRead.runtimeconfig.json"
-    ```
-
+ 
 1. The last step is to run the executable file. For example, if your project name is *TPMRead*, run the following command:
 
     ```powershell
-    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "cd TPM && ./TPMRead"
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "/home/aksedge-user/TPM/TPMRead"
     ```
 
     You should see an output similar to the following.
