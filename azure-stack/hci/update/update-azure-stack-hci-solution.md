@@ -72,7 +72,7 @@ Along with updates for your cluster, there are workload updates that can be appl
 
 ### Azure Kubernetes Service (AKS) hybrid
 
-Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. Microsoft releases a new version of the VM images monthly and you must update your VMs within 60 days. AKS hybrid tooling, which involves bringing up new VMs and moving workloads over in a rolling fashion, orchestrates the process.
+Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. The process is orchestrated by the AKS hybrid tooling, which involves bringing up new VMs and moving workloads over in a rolling fashion. For more information, see [AKS lifecycle and Updates pages](lifecycle-management-placeholder.md).
 
 There are two types of updates for AKS hybrid that can be initiated through PowerShell or Windows Admin Center.
 
@@ -94,11 +94,11 @@ To update AKS hybrid using PowerShell, use these instructions:
 
 ### Azure Arc
 
-Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments.
+Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments. For more information about Azure Arc and applying updates to your Azure Arc agent, see the following:
 
-- To learn more about Azure Arc, see [Azure Arc resource bridge (preview) overview](/azure/azure-arc/resource-bridge/overview).
+- [Azure Arc resource bridge (preview) overview](/azure/azure-arc/resource-bridge/overview).
 
-- To apply updates to your Azure Arc agent, see [Upgrade the Agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
+- [Upgrade the Agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
 
 ### Infrastructure Virtual Machines (VMs)
 
@@ -108,11 +108,11 @@ Other Microsoft services that rely on Azure Stack HCI VMs may have their own ins
 
 ### Customer apps and workloads
 
-The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. However, you can use Azure Arc for update management at scale. It is recommended to Arc enable your VMs and use the [Upgrade the agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
+The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. It is recommended to Arc-enable your VMs and use the upgrade the agent process. For more information, see the following:
 
-To enable Azure Arc on your VMs and to manage OS updates for those servers, see the following:
+- [Azure Arc-enabled servers](lifecycle-management-placeholder.md).
 
-- [Arc enable your server](lifecycle-management-placeholder.md)
+- [Upgrade the agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
 
 - [Use Update Management in Azure Automation to manage operating system updates for Azure Arc-enabled servers](/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/arc-update-management).
 
