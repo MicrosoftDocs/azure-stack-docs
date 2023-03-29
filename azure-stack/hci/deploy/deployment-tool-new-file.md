@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 03/28/2023
+ms.date: 03/29/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -119,7 +119,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
 
-    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to a difference in the overall speed. 
+    If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to a difference in the overall speed.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png" alt-text="Screenshot of the Deployment step 2.1 network adapters page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-adapters.png":::
 
@@ -138,7 +138,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png" alt-text="Screenshot of the Deployment step 2.3 storage network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-storage.png":::
 
-1. On step **2.4 Provide management network details**, enter the following input after consulting your network administrator:
+1. On step **2.4 Allocate IP addresses**, enter the following input after consulting your network administrator:
 
     1. In this release, only the static IPs can be assigned and DHCP isn't supported.
     1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
@@ -147,8 +147,7 @@ If you want to use an existing configuration file you have previously created, s
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
 
-
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-ip-addresses.png" alt-text="Screenshot of the Network step 2.4 Allocate IP addresses page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-ip-addresses.png":::
 
 ### Step 3: Clustering
 
@@ -174,18 +173,20 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
     1. If you selected **Custom domain**, enter the domain for the blob service.
     1. When finished, select **Next**.
 
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-cloud-witness.png" alt-text="Screenshot of the Deployment step 3.1 create cloud witness page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-cloud-witness.png":::
+
 1. For **File share witness**, do the following:
 
    1. Enter the file share path in *//server/fileshare* format.
    1. When finished, select **Next**.
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-file-witness.png" alt-text="Screenshot of the Deployment step 3.1 create file share witness page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-file-witness.png":::
 
 ### Step 4: Storage
 
 1. On step **4.1 Create workload and infrastructure volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
-    If you select **Create required volumes** only, you will need to create workload volumes yourselves.  
+    If you select **Create required volumes only**, you will need to create workload volumes yourselves.  
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 
@@ -208,24 +209,31 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
 
 ### Step 5: Validate and Deploy
 
-1. On step **5.1 Validate configuration**, select **Download the config file for your deployment**, and then select **Validate** to start validation. You can select **Download logs** to view validation conflict details. When validation has successfully completed, select **Next** to continue with deployment.
+1. On step **5.1 Validate configuration**, select **Download the config file for your deployment** and then select **Validate** to start validation.  When validation has successfully completed, select **Next** to continue with deployment.
 
-    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-deploy.png" alt-text="Screenshot of the Deployment step 5.1 Validate configuration page." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-deploy.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate.png" alt-text="Screenshot of the Deployment step 5.1 Validate configuration page." lightbox="media/deployment-tool/new-file/deployment-step-5-validate.png":::
 
+    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-successful.png" alt-text="Screenshot of the Deployment step 5.1 Validation successful status." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-successful.png":::
+
+    If validation fails, select **Download logs** to view validation conflict details and then retry validation.
+
+    :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-failed.png" alt-text="Screenshot of the Deployment step 5.1 Validate failed status." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-failed.png":::
+
+1. On step **5.2 Deploy the cluster**, select **Deploy**. It can take up to 1.5 hours for deployment to complete.
 
     > [!IMPORTANT]
     > The staging server will restart after the deployment starts.
 
-    :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 5.2 Deploy the cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
+      :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 5.2 Deploy the cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
 
-1. On step **5.2 Deploy the cluster**, select **Deploy**. It can take up to 1.5 hours for deployment to complete. You can monitor your deployment progress in near real time.
+     You can monitor your deployment progress in near real time:
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/new-file/deployment-progress.png":::
 
     > [!NOTE]
     > When you start the deployment, the page may not show actual progress even after the staging server has restarted. Refresh the page once using the browser refresh and then the page will automatically refresh for the remainder of the deployment.
 
-    If the deployment fails, you can also choose to **Download deployment logs** and **Download deployment report**. Deployment logs can help you troubleshoot a failed deployment.
+    You can select **Download** to download deployment logs and a deployment report. Deployment logs can help you troubleshoot a failed deployment.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-download-config-logs-report.png" alt-text="Screenshot of the Download options that let you download config, logs, and report." lightbox="media/deployment-tool/new-file/deployment-download-config-logs-report.png":::
 
