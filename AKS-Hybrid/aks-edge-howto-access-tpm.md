@@ -23,14 +23,14 @@ This article describes how to develop sample code in C# to read cryptographic ke
 
 - Enable TPM access from the CBL-Mariner virtual machine with TPM passthrough enabled. In your **aksedge-config** file, in the `machines` section, set the `Machine.LinuxNode.TpmPassthrough` to `True`. You can only enable or disable TPM access when creating a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
 
-- Ensure that the NV index (default index=3001) is initialized with 8 bytes of data. The default **AuthValue** used by the sample is **{1,2,3,4,5,6,7,8}**, which corresponds to the NV (Windows) sample in the **TSS.MSR** libraries when writing to the TPM. All index initialization must take place on the Windows host before reading from the CBL-Mariner VM. For more information about TPM samples, see [TSS.MSR](https://github.com/microsoft/TSS.MSR).
+- Ensure that the Non-Volatile(NV) index (default index=3001) is initialized with 8 bytes of data. The default **AuthValue** used by the sample is **{1,2,3,4,5,6,7,8}**, which corresponds to the NV (Windows) sample in the **TSS.MSR** libraries when writing to the TPM. All index initialization must take place on the Windows host before reading from the CBL-Mariner VM. For more information about TPM samples, see [TSS.MSR](https://github.com/microsoft/TSS.MSR).
 
 > [!CAUTION]
 > Enabling TPM passthrough to the virtual machine might increase security risks.
 
 ## Create a sample TPM executable
 
-The following steps show how to create a sample executable to access a discrete TPM index from the CBL-Mariner VM.
+The following steps show how to create a sample executable to access a discrete TPM (dTPM) index from the CBL-Mariner VM.
 
 1. Open Visual Studio 2019 or 2022. Select **Create a new project**. Choose **Console App** in the list of templates, then select **Next**.
 
@@ -38,7 +38,7 @@ The following steps show how to create a sample executable to access a discrete 
 
 1. Fill in the **Project Name**, **Location** and **Solution Name** fields, then select **Next**.
 
-1. Choose a target framework. The latest .NET 6.0 LTS version is preferred. After choosing a target framework, select **Create**. Visual Studio creates a new console app solution.
+1. Choose a target framework. The latest .NET 6.0 Long Term Support(LTS) version is preferred. After choosing a target framework, select **Create**. Visual Studio creates a new console app solution.
 
 1. In **Solution Explorer**, right-click the project name and select **Manage NuGet Packages**.
 
