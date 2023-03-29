@@ -4,6 +4,8 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-arm-template
 ms.date: 07/22/2021
 ms.author: sethm
 ms.reviewer: unknown
@@ -11,7 +13,6 @@ ms.lastreviewed: 01/04/2020
 
 # Intent: As an Azure Stack user, I want to install Visual Studio on Azure stack so I can write and deploy Azure Resource Manager templates.
 # Keyword: install visual studio azure stack
-
 ---
 
 
