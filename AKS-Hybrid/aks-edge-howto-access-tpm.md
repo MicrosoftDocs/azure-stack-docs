@@ -28,7 +28,7 @@ This article describes how to develop sample code in C# to read cryptographic ke
 > [!CAUTION]
 > Enabling TPM passthrough to the virtual machine might increase security risks.
 
-## Create a sample dTPM executable
+## Create a sample TPM executable
 
 The following steps show how to create a sample executable to access a discrete TPM index from the CBL-Mariner VM.
 
