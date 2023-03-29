@@ -56,7 +56,7 @@ The following image shows pods on a K3S cluster:
 ## 4. Add a Windows worker node (optional)
 
 > [!CAUTION]
-> Windows worker node is an experimental feature in this release. We are actively working on this and will have an update soon. 
+> Windows worker node is an experimental feature in this release. We are actively working on this feature. 
 
 If you want to add Windows node to an existing Linux only single machine cluster, first create the configuration file using the following command:
 
