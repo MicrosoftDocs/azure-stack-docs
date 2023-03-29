@@ -42,9 +42,10 @@ Layer 3 (L3) forwarding enables connectivity between the physical infrastructure
 
 Here's an example of the L3 forwarding setup:
 
-This example assumes that you have an Azure Stack HCI cluster, which is already configured with SDN. Your cluster has two virtual networks: Virtual Network1 with address prefix 10.0.0.0/16 and Virtual Network2 with address prefix 16.0.0.0/16. Each virtual network has an L3 connection to the physical network. Because the L3 connections are for different virtual networks, the SDN gateway has a separate compartment for each connection to provide isolation guarantees. Each SDN gateway compartment has one interface in the virtual network space and one interface in the physical network space. Each L3 connection must map to a unique VLAN on the physical network. This VLAN must be different from the HNV PA VLAN, which is used as the underlying data forwarding physical network for virtualized network traffic.
+This example assumes that you have an Azure Stack HCI cluster, which is already configured with SDN. Your cluster has two virtual networks: SDN virtual network 1 with address prefix 10.0.0.0/16 and SDN virtual network 2 with address prefix 16.0.0.0/16. Each virtual network has an L3 connection to the physical network. Because the L3 connections are for different virtual networks, the SDN gateway has a separate compartment for each connection to provide isolation guarantees. Each SDN gateway compartment has one interface in the virtual network space and one interface in the physical network space. Each L3 connection must map to a unique VLAN on the physical network. This VLAN must be different from the HNV provider VLAN, which is used as the underlying data forwarding physical network for virtualized network traffic.
 
-  :::image type="content" source="./media/ras-gateway/layer3-forwarding.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="./media/ras-gateway/layer3-forwarding.png":::
+  :::image type="content" source="./media/ras-gateway/layer3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/ras-gateway/layer3-forwarding-example.png":::
+
 Here are the details of each connection used in this example:
 
 | Network element          | Connection 1 | Connection 2 |
