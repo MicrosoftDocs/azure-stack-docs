@@ -33,7 +33,7 @@ Open an elevated PowerShell window, change directory to a working folder
 $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1"
 Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStart.ps1
 Unblock-File .\AksEdgeQuickStart.ps1
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 This script automates the following steps:
