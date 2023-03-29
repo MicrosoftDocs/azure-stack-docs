@@ -41,9 +41,11 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 The following new features are available in the 2303 preview release of Supplemental Package:
 
-- **ISO refresh**. In this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to March 2023. For more information, see how to install the March cumulative update.
+- **ISO refresh** - In this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to March 2023. For more information, see how to [Install the March cumulative update](../index.yml).
 
-- **Validate deployment**. Beginning this release, you have the option to validate the deployment before actually running it. The validation will assess the environment readiness and will ensure that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md).
+- **Validate deployment** - Beginning this release, you have the option to validate the deployment configuration before you run it. The validation assesses the environment readiness and ensures that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-6-deploy).
+
+- **Cluster witness** - Starting this release, you can configure the cluster witness from within the deployment tool. Use an Azure Storage account to define a cloud witness or provide a path to an SMB share for a local witness. For more information, see the clustering step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-3-clustering).
 
 
 ## Next steps
@@ -52,4 +54,4 @@ The following new features are available in the 2303 preview release of Suppleme
 
 - For new Azure Stack HCI deployments via supplemental package:
     - Read the [Deployment overview](../deploy/deployment-tool-introduction.md).
-    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md). using the Azure Stack HCI, Supplemental Package.
+    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.

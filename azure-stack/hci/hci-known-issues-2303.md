@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2303 Public Preview release. This release maps to software version number **10.2303.0.3XX**. This release supports only brand new software installations using a deployment tool.
+This article applies to Azure Stack HCI, Supplemental Package, for 2303 Public Preview release. This release maps to software version number **10.2303.0.29**. This release supports only brand new software installations using a deployment tool.
 
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2301-preview.md#azure-stack-hci-2301-supplemental-package-preview).
 
@@ -29,7 +29,7 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Azure Arc |Azure Arc enabled on Azure Stack HCI cluster may fail. |For Arc enablement failures, follow these steps to manually repair the registration: <br> Run this command: `Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration`. For more information, see [Troubleshoot Azure Stack HCI registration issues and errors](./deploy/troubleshoot-hci-registration.md).|
+|1|Azure Arc |Azure Arc enabled on Azure Stack HCI cluster may fail. |For Arc enablement failures, manually repair the registration on your cluster: <br> Run this command: `Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration`. For more information, see [Troubleshoot Azure Stack HCI registration issues and errors](./deploy/troubleshoot-hci-registration.md).|
 
 
 
