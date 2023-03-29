@@ -81,7 +81,7 @@ A screenshot of a Kubernetes cluster is shown below:
 ## 5. Add a Windows worker node (optional)
 
 > [!CAUTION]
-> Windows worker node is an experimental feature in this release. We are actively working on this and will have an update soon. 
+> Windows worker node is an experimental feature in this release. We are actively working on this feature. 
 
 If you want to add Windows node to an existing Linux only machine, you can run:
 
