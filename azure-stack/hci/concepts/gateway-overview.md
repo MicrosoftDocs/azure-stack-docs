@@ -40,11 +40,9 @@ GRE support in S2S tunnels solves the problem of forwarding between tenant virtu
 
 Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. By using L3 forwarding connection, tenant network VMs can connect to a physical network through the Software Defined Networking (SDN) gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
 
-The following diagram shows an example of L3 forwarding setup in an Azure Stack HCI cluster configured with SDN:
+The following diagram shows an example of the L3 forwarding setup in an Azure Stack HCI cluster configured with SDN:
 
   :::image type="content" source="./media/ras-gateway/layer3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/ras-gateway/layer3-forwarding-example.png":::
-
-Other setup details used in this example are as follows:
 
 - There are two virtual networks in the Azure Stack HCI cluster: SDN virtual network 1 with address prefix 10.0.0.0/16 and SDN virtual network 2 with address prefix 16.0.0.0/16.
 - Each virtual network has an L3 connection to the physical network.
@@ -61,6 +59,8 @@ Here are the details of each connection used in this example:
 | L3 IP address            | 15.0.0.5/24  | 20.0.0.5/24  |
 | L3 peer IP address       | 15.0.0.1     | 20.0.0.1     |
 | Routes on the connection | 18.0.0.0/24  | 22.0.0.0/24  |
+
+**Routing considerations when using L3 forwarding**
 
 For static routing, you must configure a route on the physical network to reach the virtual network. For example, a route with address prefix 10.0.0.0/16 with the next hop as the L3 IP Address of the connection (15.0.0.5/24).
 
