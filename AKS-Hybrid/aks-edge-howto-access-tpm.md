@@ -34,7 +34,7 @@ The following steps show how to create a sample executable to access a discrete 
 
 1. Open Visual Studio 2019 or 2022. Select **Create a new project**. Choose **Console App** in the list of templates, then select **Next**.
 
-    ![Visual Studio create new solution](./media/aks-edge/vs-new-solution.png)
+    ![Screenshot showing Visual Studio create new solution.](./media/aks-edge/vs-new-solution.png)
 
 1. Fill in the **Project Name**, **Location** and **Solution Name** fields, then select **Next**.
 
