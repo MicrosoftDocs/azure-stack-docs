@@ -23,7 +23,7 @@ This article describes how to develop sample code in C# to read cryptographic ke
 
 - Enable TPM access from the CBL-Mariner virtual machine with TPM passthrough enabled. In your **aksedge-config** file, in the `machines` section, set the `Machine.LinuxNode.TpmPassthrough` to `True`. You can only enable or disable TPM access when creating a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
 
-- Ensure that the NV index (default index=3001) is initialized with 8 bytes of data. The default **AuthValue** used by the sample is **{1,2,3,4,5,6,7,8}**, which corresponds to the NV (Windows) sample in the **TSS.MSR** libraries when writing to the TPM. All index initialization must take place on the Windows host before reading from the CBL-Mariner VM. For more information about TPM samples, see [TSS.MSR.](https://github.com/microsoft/TSS.MSR).
+- Ensure that the NV index (default index=3001) is initialized with 8 bytes of data. The default **AuthValue** used by the sample is **{1,2,3,4,5,6,7,8}**, which corresponds to the NV (Windows) sample in the **TSS.MSR** libraries when writing to the TPM. All index initialization must take place on the Windows host before reading from the CBL-Mariner VM. For more information about TPM samples, see [TSS.MSR](https://github.com/microsoft/TSS.MSR).
 
 > [!CAUTION]
 > Enabling TPM passthrough to the virtual machine might increase security risks.
@@ -78,7 +78,7 @@ Once the executable file and dependency files are created, copy the folder to th
 1. Modify the **TPMRead.runtimeconfig.json** file to avoid an [ICU globalization issue](https://github.com/dotnet/core/issues/2186#issuecomment-472629489) inside the Linux VM:
 
     1. Open **TPMRead.runtimeconfig.json**.
-    2. Add the following line inside the *configProperties* section:
+    2. Add the following line inside the `configProperties` section:
     
        ```json
        "System.Globalization.Invariant": true
