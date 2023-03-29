@@ -49,7 +49,7 @@ If you want to use an existing configuration file you have previously created, s
 
 ### Step 1: Initial configuration
 
-1. On step 1.1 **Provide registration details**, enter the following details to authenticate your cluster with Azure:
+1. On step **1.1 Provide registration details**, enter the following details to authenticate your cluster with Azure:
 
     1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
 
@@ -80,18 +80,18 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-privacy.png" alt-text="Screenshot of the Deployment step 1.1 Configure privacy page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-privacy.png":::
 
-1. On **step 1.3 Add servers**, follow these steps:
+1. On step **1.3 Add servers**, follow these steps:
 
     1. Provide the local administrator credentials. Make sure that the local administrator credentials are identical across all the servers.
 
-    1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server.
+    1. Enter the IP address of each server. Add the servers in the correct sequence, beginning with the first server.
     
         > [!NOTE]
         > The first server is the staging server from which you are currently running the deployment tool.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-add-servers.png":::
 
-1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
+1. On step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-security-default.png" alt-text="Screenshot of the Deployment step 1.4 Set cluster security default page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-security-default.png":::
 
@@ -105,19 +105,17 @@ If you want to use an existing configuration file you have previously created, s
     - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing).
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
 
-1. On **step 1.5 Specify Active Directory details**, enter the following:
+1. On step **1.5 Join a domain**, enter the following:
     1. Provide your **Active Directory domain** name. For example, this would be the fully qualified domain name in `Contoso.com` format.
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
     1. For **OU**, provide the full distinguished name of the organizational unit (including the domain components) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
 
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain-filled.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain-filled.png":::
 
 ### Step 2: Networking
 
-1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
-
-1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details. 
+1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details.
 
     If all the network adapters do not show up and if you have not excluded those, select **Show hidden adapters**. You may also need to check the cabling and the link speeds. While the network interfaces can have identical speeds across the nodes of the cluster, any low speed switch connections could lead to a difference in the overall speed.
 
@@ -130,7 +128,7 @@ If you want to use an existing configuration file you have previously created, s
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
     
-    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-network-topologies)
+    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-network-topologies).
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-intents.png":::
 
@@ -149,7 +147,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-ip-addresses.png" alt-text="Screenshot of the Network step 2.4 Allocate IP addresses page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-ip-addresses.png":::
 
-### Step 3: Clustering
+### Step 3: Cluster
 
 For two-node clusters, you'll need to create a cluster witness. A cluster witness helps establish quorum for a two-node cluster if a node goes down. To learn about quorum, see [Understanding quorum](/windows-server/failover-clustering/manage-cluster-quorum#understanding-quorum).
 
@@ -160,7 +158,7 @@ Use a cloud witness if you have internet access and if you use an Azure Storage 
 Use a file share witness if you use a local SMB file share to provide a vote in the cluster quorum. Use a file share witness if all the servers in a cluster have spotty internet connectivity or can't use disk witness as there aren't any shared drives. For more information on file share witness, see [Deploy a file share witness for Failover cluster](/windows-server/failover-clustering/file-share-witness).
 
 > [!NOTE]
-> For single-server clusters, a witness doesn't apply, so you only need to provide a cluster name for Step 3.1 below.
+> For single-server clusters, a witness doesn't apply, so you only need to provide a cluster name for step 3.1 below.
 
 1. On step **3.1 Provide the cluster name**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
 
@@ -171,20 +169,20 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
     1. Enter the Access key for the storage account.
     1. For Azure blob service endpoint type, select either **Default** or **Custom domain**.
     1. If you selected **Custom domain**, enter the domain for the blob service.
-    1. When finished, select **Next**.
+    1. When finished, select **Next: Storage**.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-cloud-witness.png" alt-text="Screenshot of the Deployment step 3.1 create cloud witness page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-cloud-witness.png":::
 
 1. For **File share witness**, do the following:
 
    1. Enter the file share path in *//server/fileshare* format.
-   1. When finished, select **Next**.
+   1. When finished, select **Next: Storage**.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-file-witness.png" alt-text="Screenshot of the Deployment step 3.1 create file share witness page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster-file-witness.png":::
 
 ### Step 4: Storage
 
-1. On step **4.1 Create workload and infrastructure volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+1. On step **4.1 Create volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
     If you select **Create required volumes only**, you will need to create workload volumes yourselves.  
 
@@ -205,17 +203,19 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
     | Two node      | Two-way mirror      | 2                         | 2                   |
     | Three node +  | Three-way mirror    | 3                         | 1 per node          |
 
-    Select **Next** to continue.
+    When finished, select **Next: Validate and Deploy** to continue.
 
 ### Step 5: Validate and Deploy
 
-1. On step **5.1 Validate configuration**, select **Download the config file for your deployment** and then select **Validate** to start validation.  When validation has successfully completed, select **Next** to continue with deployment.
+1. On step **5.1 Validate configuration**, select **Download the config file for your deployment** and then select **Validate** to start validation.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate.png" alt-text="Screenshot of the Deployment step 5.1 Validate configuration page." lightbox="media/deployment-tool/new-file/deployment-step-5-validate.png":::
 
+1. If validation has successfully completed, you will confirmation. Select **Next** to continue with deployment.
+
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-successful.png" alt-text="Screenshot of the Deployment step 5.1 Validation successful status." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-successful.png":::
 
-    If validation fails, select **Download logs** to view validation conflict details and then retry validation.
+    If validation fails, select **Download logs** to view validation conflict details and then select **Validate** again to rerun validation.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-failed.png" alt-text="Screenshot of the Deployment step 5.1 Validate failed status." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-failed.png":::
 
@@ -224,7 +224,7 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
     > [!IMPORTANT]
     > The staging server will restart after the deployment starts.
 
-      :::image type="content" source="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 5.2 Deploy the cluster page." lightbox="media/deployment-tool/new-file/deployment-step-6-deploy-cluster.png":::
+      :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-deploy-cluster.png" alt-text="Screenshot of the Deployment step 5.2 Deploy the cluster page." lightbox="media/deployment-tool/new-file/deployment-step-5-deploy-cluster.png":::
 
      You can monitor your deployment progress in near real time:
 

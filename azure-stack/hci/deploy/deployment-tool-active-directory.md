@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI deployments (preview)
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 3/28/2023
+ms.date: 3/29/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -85,7 +85,7 @@ To prepare and configure Active Directory, follow these steps:
 1. Run the following command to create the dedicated OU.
 
     ```powershell
-    New-HciAdObjectsPreCreation -Deploy -AsHciLCMUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
+    New-HciAdObjectsPreCreation -Deploy -AsHciAzureStackLCMUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
 
 1. When prompted, provide the username and password for the deployment. 
     1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.
