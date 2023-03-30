@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 03/29/2023
+ms.date: 03/30/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
+After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided UI experience to create a configuration (answer) file interactively that is saved.
 
 You can deploy both single server and multi-node clusters using this procedure.
 
@@ -55,7 +55,7 @@ If you want to use an existing configuration file you have previously created, s
 
     1. Under **Authentication**, copy the authentication code for your Azure cloud:
     
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-6b-authentication.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - authentication page." lightbox="media/deployment-tool/new-file/deploy-new-step-6b-authentication.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - authentication page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
     
     c. Select **Sign in**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported.
     
@@ -63,7 +63,7 @@ If you want to use an existing configuration file you have previously created, s
 
     d. Go back to the deployment screen and provide the Azure registration details:
     
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-6-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-6-registration-details.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
 
     e. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
 
