@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/27/2023
+ms.date: 03/30/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303 release (preview)
@@ -46,6 +46,10 @@ The following new features are available in the 2303 preview release of Suppleme
 - **Validate deployment** - Beginning this release, you have the option to validate the deployment configuration before you run it. The validation assesses the environment readiness and ensures that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-6-deploy).
 
 - **Cluster witness** - Starting this release, you can configure the cluster witness from within the deployment tool. Use an Azure Storage account to define a cloud witness or provide a path to an SMB share for a local witness. For more information, see the clustering step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-3-clustering).
+
+- Retention of deployment tool UX - IN earlier versions, the deployment tool instance was deleted once the deployment was complete. 
+
+    Beginning this release, the deployment tool UX is retained once the deployment runs successfully. This should help you investigate deployment logs and summary after the deployment is complete.
 
 
 ## Next steps
