@@ -62,7 +62,7 @@ Here are the details of each connection used in this example:
 
 **Routing considerations when using L3 forwarding**
 
-For static routing, you must configure a route on the physical network to reach the virtual network. For example, a route with address prefix 10.0.0.0/16 with the next hop as the L3 IP Address of the connection (15.0.0.5/24).
+For static routing, you must configure a route on the physical network to reach the virtual network. For example, a route with address prefix 10.0.0.0/16 with the next hop as the L3 IP Address of the connection (15.0.0.5).
 
 For dynamic routing with BGP, you must still configure a static /32 route because the BGP connection is between the gateway compartment internal interface and the L3 peer IP. For Connection 1, the peering would be between 10.0.1.6 and 15.0.0.1. Hence, for this connection, you need a static route on the physical switch with destination prefix of 10.0.1.6/32 with the next hop as 15.0.0.5.
 
