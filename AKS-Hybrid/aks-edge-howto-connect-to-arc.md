@@ -25,28 +25,12 @@ This article describes how to connect your AKS Edge Essentials cluster to [Azure
 
 ### Install dependencies
 
-Then run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
+Run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
 ```PowerShell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
 Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop 
 Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
-```
-
-> [!NOTE]
-> For connecting to Arc, you must install a helm version that is greater than v3.0 but less than v3.7. We recommend installing version 3.6.3.
-
-```PowerShell
-#download helm from web
-Invoke-WebRequest -Uri "https://get.helm.sh/helm-v3.6.3-windows-amd64.zip" -OutFile ".\helm-v3.6.3-windows-amd64.zip"
-```
-
-```PowerShell
-#Unzip to a local directory
-Expand-Archive "helm-v3.6.3-windows-amd64.zip" C:\helm
-#set helm in the env Path
-$env:Path = "C:\helm\windows-amd64;$env:Path"
-[Environment]::SetEnvironmentVariable('Path', $env:Path)
 ```
 
 ## Step 2: Configure your Azure environment
