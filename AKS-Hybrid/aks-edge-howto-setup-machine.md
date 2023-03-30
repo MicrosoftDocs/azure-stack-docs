@@ -75,6 +75,8 @@ Before you install the MSI, you can review the [feature support](aks-edge-system
 Once installation is complete, make sure it was successful by running the following command:
 
 ```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+Import-Module AksEdge
 Get-Command -Module AKSEdge | Format-Table Name, Version
 ```
 
