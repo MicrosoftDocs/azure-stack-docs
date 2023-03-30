@@ -42,7 +42,7 @@ Layer 3 (L3) forwarding enables connectivity between the physical infrastructure
 
 The following diagram shows an example of the L3 forwarding setup in an Azure Stack HCI cluster configured with SDN:
 
-  :::image type="content" source="./media/ras-gateway/layer3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/ras-gateway/layer3-forwarding-example.png":::
+  :::image type="content" source="./media/ras-gateway/layer-3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/ras-gateway/layer-3-forwarding-example.png":::
 
 - There are two virtual networks in the Azure Stack HCI cluster: SDN virtual network 1 with address prefix 10.0.0.0/16 and SDN virtual network 2 with address prefix 16.0.0.0/16.
 - Each virtual network has an L3 connection to the physical network.
