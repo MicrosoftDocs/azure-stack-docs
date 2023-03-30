@@ -4,7 +4,7 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
-ms.date: 01/04/2023
+ms.date: 03/30/2023
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
@@ -141,7 +141,7 @@ A few things to consider before you run the `Start-SdnDiagnostics` cmdlet:
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
-- The `Start-SdnDiagnostics` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, SoftwareLoadBalancer. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
+- The `Start-SdnDiagnostics` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
 - If you don't specify any credentials, the `Start-SdnDiagnostics` cmdlet uses the credentials of the current user by default.
 
@@ -170,7 +170,7 @@ In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Contro
 1. Run the following cmdlet to collect logs from Network Controller, Software Load Balancers, Gateways, and the servers running Azure Stack HCI:
 
     ```powershell
-    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,SoftwareLoadBalancer -IncludeLogs -IncludeNetView
+    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,LoadBalancerMux -IncludeLogs -IncludeNetView
     ```
 
 Here's a sample output of the `Start-SdnDataCollection` cmdlet:
