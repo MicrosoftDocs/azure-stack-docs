@@ -3,6 +3,8 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom:
+  - devx-track-azurecli
 ms.topic: include
 ms.date: 10/05/2022
 ---
