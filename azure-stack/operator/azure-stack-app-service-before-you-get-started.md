@@ -4,6 +4,8 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-arm-template
 ms.date: 10/24/2022
 ms.author: anwestg
 ms.reviewer: anwestg
@@ -12,7 +14,6 @@ zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
 # Keyword: app service prerequisites azure stack
-
 ---
 
 # Prerequisites for deploying App Service on Azure Stack Hub
