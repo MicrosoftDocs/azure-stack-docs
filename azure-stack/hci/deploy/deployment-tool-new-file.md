@@ -109,7 +109,7 @@ If you want to use an existing configuration file you have previously created, s
     1. Provide your **Active Directory domain** name. For example, this would be the fully qualified domain name in `Contoso.com` format.
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
     1. For **OU**, provide the full distinguished name of the organizational unit (including the domain components) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
-    1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
+    1. Provide the **username** and the **password** for the lifecycle manager (LCM) account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-join-domain-filled.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-join-domain-filled.png":::
 
@@ -200,8 +200,8 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
    | # Node         | Volume resiliency   | # Infrastructure volumes  | # Customer volumes  |
     |---------------|---------------------|---------------------------|---------------------|
     | Single node   | Two-way mirror      | 1                         | 1                   |
-    | Two node      | Two-way mirror      | 2                         | 2                   |
-    | Three node +  | Three-way mirror    | 3                         | 1 per node          |
+    | Two node      | Two-way mirror      | 1                         | 2                   |
+    | Three node +  | Three-way mirror    | 1                         | 1 per node          |
 
     When finished, select **Next: Validate and Deploy** to continue.
 
