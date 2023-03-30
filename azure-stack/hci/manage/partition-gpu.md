@@ -4,7 +4,7 @@ description: Learn how to partition and share a GPU with multiple virtual machin
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 03/21/2023
+ms.date: 03/29/2023
 ms.reviewer: alkohli
 ---
 
@@ -22,6 +22,15 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 > [!NOTE]
 > Currently, we support only Nvidia A2, A10, A16, A40 GPUs for GPU partitioning on Azure Stack HCI. We recommend that you work with your Original Equipment Manufacturer (OEM) partners and GPU Independent Hardware Vendors (IHVs) to plan, order, and set up the systems for your desired workloads with the appropriate configurations and necessary software. However, we support additional GPUs if you want to use GPU acceleration via Discrete Device Assignment (DDA) or GPU passthrough. Reach out to your OEM partners and IHVs to get a list of GPUs that support DDA. For more information about using GPU acceleration via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
+
+## When to use GPU-partitioning
+
+There are workloads, such as VDI and Machine Learning (ML) inferencing that you may still need to run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
+
+
+- Inference with ML: With GPU-partitioning, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. For example, customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models.  Along with DDA (where you can assign an entire physical GPU to a VM), GPU-P further enables customers to reduce their total cost of ownership by allowing them to scale their workloads by an order of magnitude. 
+
+- VDI environments: Distributed edge customers run basic productivity apps like MS office and rendering heavy apps like AutoCAD in their VDI environments, that require GPU acceleration.
 
 ## Supported guest operating systems
 
