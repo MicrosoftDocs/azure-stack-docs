@@ -88,7 +88,7 @@
       - name: Certificate management overview
         href: certificates-overview.md
       - name: Update certificates
-        href: repair-certificates.md
+        href: update-certificates.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -225,8 +225,6 @@
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
-          - name: Secure communication with certificates
-            href: secure-communication.md
           - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
