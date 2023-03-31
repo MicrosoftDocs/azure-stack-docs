@@ -10,7 +10,7 @@ ms.custom: template-overview
 
 # AKS Edge Essentials licensing options
 
-The Microsoft software license terms by default, enables you to use AKS Edge Essentials for development and test purposes. AKS Edge Essentials can be licensed for commercial use using one of the following options:
+Microsoft's software license terms by default enable you to use AKS Edge Essentials for development and test purposes. AKS Edge Essentials can be licensed for commercial use using one of the following options:
 
 - Azure subscription-based model
 - Volume licensing model 
