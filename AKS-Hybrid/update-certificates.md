@@ -2,7 +2,7 @@
 title: Update certificates in AKS hybrid
 description: Learn how to update certificates in AKS hybrid.
 author: sethmanheim
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 04/01/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
@@ -21,21 +21,21 @@ The behavior of the certificates at the MOC layer and AKS hybrid Kubernetes laye
 
 ## Certificate renewal dependencies on cluster shutdown
 
-|                                     |     MOC certificates    |   AKS hybrid Kubernetes certificates    |
+|             Shutdown                        |     MOC certificates    |   AKS hybrid Kubernetes certificates    |
 |-------------------------------------|---------------------------|---------------------------------------------|
 |     Shutdown less than 30 days    |     Not impacted          |     Impacted                                |
 |     Shutdown more than 30 days    |     Impacted              |     Impacted                                |
 
 ## Certificate renewal dependencies on cluster renewal
 
-|                                             |     MOC certificates    |   AKS hybrid Kubernetes certificates    |
+|              Cluster                               |     MOC certificates    |   AKS hybrid Kubernetes certificates    |
 |---------------------------------------------|---------------------------|---------------------------------------------|
 |     Cluster updated within 90 days        |     Not impacted          |     Not impacted                            |
 |     Cluster not updated within 90 days    |     Not impacted          |     Not impacted                            |
 
 ## Commands for fixing certificates
 
-|                        |     MOC certificates                                                                 |     AKS hybrid Kubernetes Control plane certificates                            |
+|              Cluster          |     MOC certificates                                                                 |     AKS hybrid Kubernetes Control plane certificates                            |
 |------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 |     Management cluster      |     [`Update-AksHciCertificates`](reference/ps/update-akshcicertificates.md)                                                 |     N/A                                                                         |
 |     Target cluster    |     [`Update-AksHciClusterCertificates -name fixCloudCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |     [`Update-AksHciClusterCertificates -name fixKubeletCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |

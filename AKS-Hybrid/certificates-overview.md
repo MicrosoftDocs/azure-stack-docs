@@ -2,7 +2,7 @@
 title: Overview of certificate management in AKS hybrid
 description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS hybrid.
 author: sethmanheim
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 04/01/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
@@ -15,7 +15,7 @@ ms.reviewer: sulahiri
 
 # Overview of certificate management
 
-!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 AKS hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
 

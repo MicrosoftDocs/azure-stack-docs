@@ -13,7 +13,7 @@ ms.reviewer: sulahiri
 
 ---
 
-# Update certificates in AKS hybrid
+# Repair certificates in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
