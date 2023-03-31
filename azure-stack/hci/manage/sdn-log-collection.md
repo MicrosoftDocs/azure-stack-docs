@@ -124,7 +124,7 @@ FabricNodes			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, n
 NcUrl				https ://SDN-POD06.TAILWINDTRADERS.COM
 Server			    {CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
 Gateway			    {nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
-SoftwareLoadBalancer 
+LoadBalancerMux 
 NetworkController
 
 ```
@@ -176,7 +176,7 @@ In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Contro
 Here's a sample output of the `Start-SdnDataCollection` cmdlet:
 
 ```output
-PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,SoftwareLoadBalancer,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
+PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,LoadBalancerMux,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
 [    N26-2] Starting SDN Data Collection
 [    N26-2] Results will be saved to C:\windows\Tracing\sdnDataCollection\20220ll8-23325l
 [    N26-2]	Node N26-GW0l.sal8.nttest.microsoft.com with role Gateway added	for data collection
@@ -244,11 +244,11 @@ WARNING: [	N26-1] 00155D865002 attached to netl does not have a port profile
 [    N26-2] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:41:22 pm utc
 [    N26-4] collect the following events: Application,Microsoft-Windows-Hyper-V*,System
 [    N26-2] Performing cleanup of C:\windows\Tracing\sdnoataCollection\Temp directory across
-[    N26-2] Collect configuration state details for SoftwareLoadBalancer nodes:
-[    N26-MUX01] collect configuration state details for role SoftwareLoadBalancer
-[    N26-2] Collect diagnostics logs for SoftwareLoadBalancer nodes:
+[    N26-2] Collect configuration state details for LoadBalancerMux nodes:
+[    N26-MUX01] collect configuration state details for role LoadBalancerMux
+[    N26-2] Collect diagnostics logs for LoadBalancerMux nodes:
 [    N26-MUX01] collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:48 pm utc
-[    N26-2] Collect event logs for SoftwareLoadBalancer nodes:
+[    N26-2] Collect event logs for LoadBalancerMux nodes:
 [    N26-MUX01] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:49 pm utc
 [    N26-MUX01] Collect the following events: Application,Microsoft-windows-SlbMux*,System
 [    N26-2] Copying \\	 \C$\windows\Tracing\sdnoataCollection\Temp to C:\Windows\Tracing\sdnDataCollection\20220ll8-23325l\
