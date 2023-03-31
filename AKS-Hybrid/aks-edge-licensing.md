@@ -31,7 +31,7 @@ The volume licensing model is available in the Microsoft Enterprise Agreement (E
 ### Third party access for software purchased via hoster’s Enterprise Agreement.
 
 Third-party access to solutions built on the volume licensing model procured via EA is granted via the [Azure Customer Solution](https://wwlpdocumentsearch.blob.core.windows.net/prodv2/Licensing_brief_PLT_Microsoft_Azure_Customer_Solution%20(9).pdf?sv=2020-08-04&se=2123-03-31T18:47:42Z&sr=b&sp=r&sig=dXbUQPxSo4dF1eANpQ8Zkr6ZA%2FgXxGBhCeUMEeoIdA0%3D). This means that, if the end customer needs to 
-deploy a disconnected AKS Edge Essentials, a hoster/service provider needing a disconnected scenario is able to use the AKS Edge Essentials Volume licensing model purchased with an EA. The Volume licensing model doesn't offer the same per-tenant billing and CSP Partner Center integration benefits as the pay-as-you-use model, but it eliminates the need to connect the AKS Edge Essentials clusters to Azure to report usage. 
+deploy a disconnected AKS Edge Essentials, a hoster/service provider needing a disconnected scenario is able to use the AKS Edge Essentials volume licensing model purchased with an EA. The volume licensing model doesn't offer the same per-tenant billing and CSP Partner Center integration benefits as the pay-as-you-use model, but it eliminates the need to connect the AKS Edge Essentials clusters to Azure to report usage. 
 
 Licenses procured via the Volume licensing model and EA are subject to terms and conditions stated in the Microsoft Product Terms.
 
