@@ -85,6 +85,8 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
+      - name: Certificate management overview
+        href: certificates-overview.md
       - name: Update certificates
         href: repair-certificates.md
   - name: Networking

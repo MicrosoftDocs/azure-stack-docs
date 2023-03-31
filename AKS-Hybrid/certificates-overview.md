@@ -1,8 +1,8 @@
 ---
-title: Secure communication with certificates in AKS hybrid
-description: Learn how to secure communication between in-cluster components in Azure Kubernetes Service by provisioning and managing certificates in AKS hybrid.
+title: Overview of certificate management in AKS hybrid
+description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS hybrid.
 author: sethmanheim
-ms.topic: how-to
+ms.topic: concept
 ms.date: 04/01/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
@@ -13,9 +13,42 @@ ms.reviewer: sulahiri
 
 ---
 
-# Secure communication with certificates in AKS hybrid
+# Overview of certificate management
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
+AKS hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+
+## Cloud agent
+
+When you deploy AKS hybrid, AKS installs agents that are used to perform various functions within the cluster. These agents include:
+
+- Cloud agent: a service that is responsible for the underlying platform orchestration.
+- Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
+- Key Management System (KMS) pod: a service responsible for key management.
+- Other services - cloud operator, certificate manager, etc.
+
+The cloud agent service in AKS hybrid is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
+
+To communicate with the cloud agent, clients require certificates to be provisioned in order to secure this communication. Each client requires an identity to be associated with it, which defines the Role Based Access Control (RBAC) rules associated with the client. Each identity consists of two entities:
+
+- A token, used for initial authentication, which returns a certificate, and
+- A certificate, obtained from the above sign-in process, and used for authentication in any communication.
+
+Each entity is valid for a specific period (the default is 90 days), at the end of which it expires. For continued access to the cloud agent, each client requires the certificate to be renewed and the token rotated.
+
+## Certificate types
+
+There are two types of certificates used in AKS hybrid:
+
+- Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
+- Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 90 days.
+
+Currently, not all clients automatically renew their respective certificates or rotate tokens on a regular basis. Clients that automatically renew the certificate or rotate the tokens currently do the auto-rotation and auto-renewal on a frequent basis. Clients that don't have the capability to automatically renew the certificate must sign back in using a token to continue accessing the cloud agent. Sometimes these clients won't have a valid token and thus require manual rotation of the token.
+
+Microsoft recommends that you update clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and to stay up to date with critical security patches. During these monthly updates, the update process rotates any tokens that can't be auto-rotated during normal operations of the cluster. Certificate and token validity is reset to the default 90 days from the date that the cluster is updated.
+
+## Secure communication with certificates in AKS hybrid
 
 Certificates are used to build secure communication between in-cluster components. AKS hybrid provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS hybrid.
 
@@ -103,67 +136,7 @@ spec:
     kind: IP 
 ```
 
-## Troubleshooting and maintenance
-
-Refer to the following scripts and documentation for logging and monitoring:
-
-- [Logging](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging)
-- [Monitoring](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#certs-and-keys-monitoring)
-
-### Renew certificates for worker nodes
-
-For worker nodes, failed certificate renewals are logged by the *certificate-renewal-worker* pod. If the certificate renewal continues to fail on a worker node, and the certificates expire, the node is removed, and a new worker node is created in its place. 
-
-Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-worker*: 
-
-```powershell
-kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system get pods 
-```
-
-```Output
-NAME                                           READY   STATUS             RESTARTS   AGE 
-… 
-certificate-renewal-worker-6f68k               1/1     Running            0          6d 
-```
-
-To get the logs from the certificate renewal pod:
-
-```powershell
-kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificate-renewal-worker-6f68k
-```
-
-### Renew certificates for control plane nodes
-
-For control plane nodes, failed certificate renewals are logged by the **certificate-renewal-controller** pod. If certificates expire on a control plane node, the node may eventually become unreachable by other nodes. If all control plane nodes enter this state, the cluster will become inoperable because of a TLS failure. To confirm whether the cluster has entered this state, try to access the cluster using `kubectl`, and then verify whether the connection fails with an error message related to expired x509 certificates. 
-
-Here's an example of viewing the logs for the pod with the prefix *certificate-renewal-controller*:
-
-```powershell
-kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system get pods 
-```
-
-```Output
-NAME                                           READY   STATUS             RESTARTS   AGE 
-… 
-certificate-renewal-controller-2cdmz               1/1     Running            0          6d 
-```
-
-To get the logs from the certificate renewal pod:
-
-```powershell
-kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificate-renewal-controller-2cdmz
-```
-
-Control plane nodes can't be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail because of expired certificates, run the following command: 
-
-```powershell
-Repair-AksHciClusterCerts -Name mytargetcluster 
-```
-
-If the cluster becomes unreachable via `kubectl`, you can find the logs in the `/var/log/pods` folder.
-
 ## Next steps
 
-In this how-to guide, you learned how to provision and manage certificates. Next, you can:
-- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
