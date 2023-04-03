@@ -44,8 +44,6 @@ There are two types of certificates used in AKS hybrid:
 - Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
 - Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 90 days.
 
-Currently, not all clients automatically renew their respective certificates or rotate tokens on a regular basis. Clients that automatically renew the certificate or rotate the tokens currently do the auto-rotation and auto-renewal on a frequent basis. Clients that don't have the capability to automatically renew the certificate must sign back in using a token to continue accessing the cloud agent. Sometimes these clients won't have a valid token and thus require manual rotation of the token.
-
 Microsoft recommends that you update clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and to stay up to date with critical security patches. During these monthly updates, the update process rotates any tokens that can't be auto-rotated during normal operations of the cluster. Certificate and token validity is reset to the default 90 days from the date that the cluster is updated.
 
 ## Secure communication with certificates in AKS hybrid
