@@ -23,13 +23,13 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 > [!NOTE]
 > Currently, we support only Nvidia A2, A10, A16, A40 GPUs for GPU partitioning on Azure Stack HCI. We recommend that you work with your Original Equipment Manufacturer (OEM) partners and GPU Independent Hardware Vendors (IHVs) to plan, order, and set up the systems for your desired workloads with the appropriate configurations and necessary software. However, we support additional GPUs if you want to use GPU acceleration via Discrete Device Assignment (DDA) or GPU passthrough. Reach out to your OEM partners and IHVs to get a list of GPUs that support DDA. For more information about using GPU acceleration via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
 
-## When to use GPU-partitioning
+## When to use GPU partitioning
 
-Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infrastructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning that allows you to share a physical GPU device with multiple VMs, which can help lower the total cost of ownership for your GPU devices.
+Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infrastructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning to help lower the total cost of ownership for your GPU devices.
 
 - Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you can assign an entire physical GPU to a VM, GPU-partitioning helps reduce the total cost of ownership by allowing you to scale your workloads by an order of magnitude.
 
-- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. You can achieve the required GPU acceleration via DDA or GPU partitioning.
+- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. For such workloads, you can achieve the required GPU acceleration via DDA or GPU partitioning.
 
 ## Supported guest operating systems
 
