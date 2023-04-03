@@ -40,6 +40,20 @@ The behavior of the certificates at the MOC layer and AKS hybrid Kubernetes laye
 |     Management cluster      |     [`Update-AksHciCertificates`](reference/ps/update-akshcicertificates.md)                                                 |     N/A                                                                         |
 |     Target cluster    |     [`Update-AksHciClusterCertificates -name fixCloudCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |     [`Update-AksHciClusterCertificates -name fixKubeletCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |
 
+## When both MOC and AKS hybrid Kubernetes certificates are impacted
+
+When the cluster has been shut down for more than 30 days, run the following commands in the following sequence:
+
+1. `Update-AksHciCertificates` (to fix Management cluster certificates)
+1. `Update-AksHciClusterCertificates –fixkubeletcredentials` (to fix target cluster control plane certificates)
+1. `Update-AksHciClusterCertificates –fixcloudcredentials` (to fix target cluster MOC certificates)
+
+When AKS hybrid Kubernetes certificates are impacted, run the following command:
+
+```powershell
+Update-AksHciClusterCertificates –fixkubeletcredentials [Target]
+```
+
 ## Next steps
 
 - [Certificates overview](certificates-overview.md)

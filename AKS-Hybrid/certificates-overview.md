@@ -102,12 +102,12 @@ To perform a revocation, use one of the following:
 - DNS name 
 - IP address  
 
-A _notBefore_ time can be specified to revoke only certificates that are issued before a certain timestamp. If a _notBefore_ time is not specified, all existing and future certificates matching the revocation will be revoked. 
+A `notBefore` time can be specified to revoke only certificates that are issued before a certain timestamp. If a `notBefore` time is not specified, all existing and future certificates matching the revocation will be revoked.
 
 > [!NOTE]
 > Revocation of `kubelet` server certificates is currently not available.
 
-If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify _notBefore_ time so you can recover your cluster using the `Repair-AksHciClusterCerts` command. 
+If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
 
 ```Console
 apiVersion: certificates.microsoft.com/v1 
