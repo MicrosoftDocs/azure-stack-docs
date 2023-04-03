@@ -162,6 +162,8 @@ Tasks that are active during this service might fail, or might only be delayed. 
 
 After the general availability (GA) release, maintenance is expected to be done less than once a month. Routine software upgrades will happen about six times a year, and approximately five other update tasks might be needed to address vulnerabilities or critical bugs over the same time.
 
+![Screenshot showing maintenance window settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-maintenance-window.png)
+
 When you finish entering **Advanced settings**:
 
 * If you want to use your own encryption keys for your Azure Managed Lustre file system storage, select **Next: Disk encryption keys**.
