@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 01/09/2023
+ms.date: 04/03/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -54,9 +54,9 @@ To install the Azure Stack HCI operating system, follow these steps:
     | Disk partition         | Recommended min. size | Purpose                  |
     |------------------------|-----------------------|--------------------------|
     | Boot partition (C:)    |60 GB<sup>*</sup>                  |Used for the operating system           |
-    | Data partition (D:)    |120 GB                 |Used for logs, crash dumps |
+    | Data partition (D:)    |120 GB                 |Used for logs |
 
-    <sup>*</sup> - *The minimum requirement should be based on the memory required to ensure a full memory dump can be created. For more information, see [Overview of memory dump file options for Windows](/troubleshoot/windows-server/performance/memory-dump-file-options).*
+    <sup>*</sup> *The minimum requirement should be based on the memory required to ensure a full memory dump can be created. For more information, see [Overview of memory dump file options for Windows](/troubleshoot/windows-server/performance/memory-dump-file-options).*
 
     Confirm the operating system installation in the boot partition, and then select **Next**.
 
@@ -116,19 +116,13 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 1. Skip this step if you're deploying a single server.
 
-    1. For a multi-node cluster, go to the first server of your cluster. Run the following command:
-
-        ```powershell
-        Set-Item Wsman:\Localhost\Client\TrustedHosts -Value *
-        ```
-
-    1. On all other subsequent nodes (excluding the first server), run the following command:
+    1. On each node, run the following command:
 
         ```powershell
         winrm quickconfig
         ```
 
-    1. Finally, enable ICMP. This command is required for the other nodes to access the first node.
+    1. Enable ICMP. This command is required for the other nodes to access the first node.
     
         ```azurepowershell
         netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow

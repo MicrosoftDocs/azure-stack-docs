@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 2/1/2023
+ms.date: 3/30/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -42,7 +42,7 @@ Before you begin, make sure you have done the following:
 1. Copy the configuration file to the first server by using the following command:
 
     ```powershell
-    Copy-Item -path <Path for you source file> -destination C:\setup\config.json
+    Copy-Item -path <Path for your source file> -destination C:\setup\config.json
     ```
 
 ## Get information for the required parameters
@@ -52,7 +52,7 @@ The following parameters are required to run the deployment tool. Consult your n
 |Parameter|Description|
 |----|----|
 |`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
-|`DeploymentUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
+|`AzureStackLCMUserCredential`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
 |`RegistrationCloudName`|Specify the cloud against which you'll authenticate your cluster. In this release, only the `AzureCloud` corresponding to global Azure is supported.|
 |`RegistrationRegion`|(Optional) Specify the region that should be used when registering the system with Azure Arc.|
@@ -74,7 +74,7 @@ Follow these steps to deploy Azure Stack HCI via PowerShell:
 1. Set the following parameters:
 
     ```powershell
-    $DeploymentUserCred=Get-Credential
+    $LCMUserCred=Get-Credential
     $LocalAdminCred=Get-Credential
     $SubscriptionID="<Your subscription ID>"
     $CloudName="AzureCloud"   
@@ -87,7 +87,7 @@ Follow these steps to deploy Azure Stack HCI via PowerShell:
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -DeploymentUserCredential  $DeploymentUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
     ```
 
 ## Reference: Configuration file settings
