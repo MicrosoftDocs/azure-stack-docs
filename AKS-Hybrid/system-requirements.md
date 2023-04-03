@@ -201,7 +201,7 @@ As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stret
 
 #### Arc for Kubernetes requirements
 > [!NOTE]
-> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters.
+> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/network-requirements) for Azure Arc enabled Kubernetes clusters.
 
 #### Azure Stack HCI requirements
 > [!NOTE]
