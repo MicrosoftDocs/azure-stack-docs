@@ -123,7 +123,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following sets of network intents are supported.
+    When you define network intents, only the following sets of network intents are supported for this preview release:
 
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
@@ -182,7 +182,7 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
 
 ### Step 4: Storage
 
-1. On step **4.1 Create volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
+- On step **4.1 Create volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
     If you select **Create required volumes only**, you will need to create workload volumes yourselves.  
 
@@ -211,7 +211,7 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate.png" alt-text="Screenshot of the Deployment step 5.1 Validate configuration page." lightbox="media/deployment-tool/new-file/deployment-step-5-validate.png":::
 
-1. If validation has successfully completed, you will confirmation. Select **Next** to continue with deployment.
+1. If validation has successfully completed, you will receive confirmation. Select **Next** to continue with deployment.
 
     :::image type="content" source="media/deployment-tool/new-file/deployment-step-5-validate-successful.png" alt-text="Screenshot of the Deployment step 5.1 Validation successful status." lightbox="media/deployment-tool/new-file/deployment-step-5-validate-successful.png":::
 
