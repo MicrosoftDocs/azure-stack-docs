@@ -47,7 +47,28 @@ Depending on the hardware in your cluster and the scope of an update bundle, you
 
 Before installing a solution update, the Lifecycle Manager runs a series of checks to confirm that your Azure Stack HCI cluster is safe to update. This helps the update go more smoothly.
 
-<!--Prechecks-->
+| Target component              | Description of precheck                                                                                                                  |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| Storage systems               | Check that the storage pools are healthy.                                                                                                |
+|                               | Check that the Storage services physical disks are healthy and online.                                                                   |
+|                               | Check that storage subsystems are healthy and online.                                                                                    |
+|                               | Check that storage volumes are healthy and online.                                                                                       |
+|                               | Check that storage virtual disks are healthy and online.                                                                                 |
+|                               | Check that storage job status is successful.                                                                                             |
+|                               | Check that storage cluster shared volume is healthy and online.                                                                          |
+| Failover cluster requirements | Check that the failover cluster is available.                                                                                            |
+|                               | Check that the failover cluster is running Windows Server 2012 or later.                                                                 |
+|                               | Check that the Cluster service is running on all cluster nodes.                                                                          |
+|                               | Check that the CAU clustered role is installed on the failover cluster to enable self-updating mode.                                     |
+|                               | Check that the required versions of .NET Framework and Windows PowerShell are installed on all of the failover cluster nodes.            |
+|                               | Check that the machine proxy on each failover cluster node is set to a local proxy server.                                               |
+|                               | Check that the automatic updates are not configured to automatically install updates on any failover cluster node.                       |
+|                               | Check that the failover cluster nodes are using the same update source.                                                                  |
+| Remote management of cluster  | Check that remote management is enabled for failover cluster nodes via Windows Management Instrumentation (WMI) version 2.               |
+|                               | Check that Windows PowerShell remoting is enabled on each failover cluster node.                                                         |
+|                               | Check for the presence of a firewall rule that allows remote shutdown. This rule should be enabled on each node in the failover cluster. |
+| Solution Builder Extensions   | Check that the Solution Builder Extensions status on the cluster is healthy.                                                             |
+|                               | Check that the Solution Builder Extension health status on each cluster node is healthy.                                                 |
 
 A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
 
