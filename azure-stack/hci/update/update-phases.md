@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 04/03/2023
 ---
 
-# Phases of an Update
+# Phases of an update
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
@@ -31,7 +31,7 @@ The updates consist of several phases: discovering the update, staging the conte
 
 You can apply these updates via PowerShell or via the Windows Admin Center UI. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you may need to perform during each phase of an update, and what actions the Azure Stack HCI takes throughout the update operation.
 
-![A screenshot indicating the various phases of an update with actions you need to perform in each phase](../media/updates/updates-phases-actions.png)
+![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../media/updates/updates-phases-actions.png)
 
 ## Phase 1: Discovery and acquisition
 
