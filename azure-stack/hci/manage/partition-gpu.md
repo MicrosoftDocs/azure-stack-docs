@@ -16,7 +16,7 @@ This article describes how to use the graphics processing unit (GPU) partitionin
 
 ## About GPU partitioning
 
-Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
+GPU partitioning allows you to share a physical GPU device with multiple virtual machines (VMs). With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU.
 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
@@ -25,12 +25,11 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 ## When to use GPU-partitioning
 
-There are workloads, such as VDI and Machine Learning (ML) inferencing that you may still need to run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
+Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infratructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning that allows you to share a physical GPU device with multiple VMs, which can help lower the total cost of ownership for your GPU devices.
 
+- Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you can assign an entire physical GPU to a VM, GPU-partitioning helps reduce the total cost of ownership by allowing you to scale your workloads by an order of magnitude.
 
-- Inference with ML: With GPU-partitioning, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. For example, customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models.  Along with DDA (where you can assign an entire physical GPU to a VM), GPU-P further enables customers to reduce their total cost of ownership by allowing them to scale their workloads by an order of magnitude. 
-
-- VDI environments: Distributed edge customers run basic productivity apps like MS office and rendering heavy apps like AutoCAD in their VDI environments, that require GPU acceleration.
+- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. You can achieve the required GPU acceleration via DDA or GPU partitioning.
 
 ## Supported guest operating systems
 
