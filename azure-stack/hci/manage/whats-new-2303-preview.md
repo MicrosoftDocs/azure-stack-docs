@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/30/2023
+ms.date: 04/03/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303 release (preview)
@@ -51,9 +51,9 @@ The following new features are available in the 2303 preview release of Suppleme
 
 - **Solution Updates** - Starting with this release, we're introducing the Solution Updates functionality that will let you update to the next preview release. To learn more about the new update experience, go to [Keep your Azure Stack HCI up-to-date](../index.yml).
 
-- **Validate deployment** - Beginning this release, you can choose to validate the deployment configuration before you run it. The validation assesses the environment readiness and ensures that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-6-deploy).
+- **Validate deployment** - Beginning this release, you can choose to validate the deployment configuration before you run it. The validation assesses the environment readiness and ensures that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-5-validate-and-deploy).
 
-- **Cluster witness** - Starting this release, you can configure the cluster witness from within the deployment tool. Use an Azure Storage account to define a cloud witness or provide a path to an SMB share for a local witness. For more information, see the clustering step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-3-clustering).
+- **Cluster witness** - Starting this release, you can configure the cluster witness from within the deployment tool. Use an Azure Storage account to define a cloud witness or provide a path to an SMB share for a local witness. For more information, see the clustering step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-3-cluster).
 
 
 Here are the changes to the existing features in this release:
