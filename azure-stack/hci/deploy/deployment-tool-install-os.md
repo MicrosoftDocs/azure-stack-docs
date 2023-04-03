@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 03/30/2023
+ms.date: 04/03/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
