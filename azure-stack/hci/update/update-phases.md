@@ -67,7 +67,7 @@ Before installing a solution update, the Lifecycle Manager runs a series of chec
 | Remote management of cluster  | Check that remote management is enabled for failover cluster nodes via Windows Management Instrumentation (WMI) version 2.               |
 |                               | Check that Windows PowerShell remoting is enabled on each failover cluster node.                                                         |
 |                               | Check for the presence of a firewall rule that allows remote shutdown. This rule should be enabled on each node in the failover cluster. |
-| Solution Builder Extensions   | Check that the Solution Builder Extensions status on the cluster is healthy.                                                             |
+| Solution Builder Extensions   | Check that the Solution Builder Extension status on the cluster is healthy.                                                             |
 |                               | Check that the Solution Builder Extension health status on each cluster node is healthy.                                                 |
 
 A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
