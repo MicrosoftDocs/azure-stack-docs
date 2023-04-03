@@ -25,7 +25,7 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 ## When to use GPU-partitioning
 
-Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infratructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning that allows you to share a physical GPU device with multiple VMs, which can help lower the total cost of ownership for your GPU devices.
+Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infrastructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning that allows you to share a physical GPU device with multiple VMs, which can help lower the total cost of ownership for your GPU devices.
 
 - Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you can assign an entire physical GPU to a VM, GPU-partitioning helps reduce the total cost of ownership by allowing you to scale your workloads by an order of magnitude.
 
