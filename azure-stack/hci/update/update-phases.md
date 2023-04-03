@@ -47,6 +47,8 @@ Depending on the hardware in your cluster and the scope of an update bundle, you
 
 Before installing a solution update, the Lifecycle Manager runs a series of checks to confirm that your Azure Stack HCI cluster is safe to update. This helps the update go more smoothly.
 
+The following table lists the prechecks performed on your Azure Stack HCI cluster before the updates are applied.
+
 | Target component              | Description of precheck                                                                                                                  |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Storage systems               | Check that the storage pools are healthy.                                                                                                |
