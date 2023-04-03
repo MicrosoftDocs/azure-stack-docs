@@ -456,8 +456,18 @@
         href: deploy/deployment-tool-troubleshoot.md
     - name: Update
       items:
+      - name: Keep solution up-to-date
+        href: update/update-phases.md
+      - name: Use Lifecycle Manager for Updates
+        href: update/update-phases.md
+      - name: What's in an update?
+        href: update/update-phases.md
+      - name: Update phases
+        href: update/update-phases.md
       - name: Update via PowerShell
         href: update/update-via-powershell.md
+      - name: Update glossary
+        href: update/update-phases.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
