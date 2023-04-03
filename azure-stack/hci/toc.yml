@@ -457,23 +457,17 @@
     - name: Update
       items:
       - name: Keep solution up-to-date
-        href: update-phases.md
+        href: update/update-phases.md
       - name: Use Lifecycle Manager for Updates
-        href: update-phases.md
+        href: update/update-phases.md
       - name: What's in an update?
-        href: update-phases.md
+        href: update/update-phases.md
       - name: Update phases
-        href: update-phases.md
-      - name: Apply Updates
-        items: 
-        - name: Via PowerShell
-          href: update/update-via-powershell.md
-        - name: Via Windows Admin Center
-          href: update/update-via-powershell.md
-        - name: Manually
-          href: update/update-via-powershell.md
-      - name: Reference
-        href: update-phases.md
+        href: update/update-phases.md
+      - name: Update via PowerShell
+        href: update/update-via-powershell.md
+      - name: Update glossary
+        href: update/update-phases.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
