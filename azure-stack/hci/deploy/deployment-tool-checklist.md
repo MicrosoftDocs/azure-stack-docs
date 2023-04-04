@@ -3,7 +3,7 @@ title: Deployment checklist for Azure Stack HCI (preview)
 description: Complete the deployment checklist prior to deploying Azure Stack HCI (preview).
 author: dansisson
 ms.topic: article
-ms.date: 04/03/2023
+ms.date: 04/04/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -32,6 +32,10 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 |DNS Server|A DNS Server that is used in your environment. The DNS server used must resolve the Active Directory Domain. <br> For more information, see the **Provide management network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
 |Azure subscription ID|ID for the Azure subscription used to register the cluster. Make sure that you are a user access administrator on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
 |Outbound connectivity| Run the [Environment checker](../manage/use-environment-checker.md) to ensure that your environment meets the outbound network connectivity requirements for firewall rules.|
+|Azure storage account|For two-node clusters, a witness is required. For cloud witnesses, an Azure storage account is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|Azure storage account Access key|To setup a cloud witness, the Access key for the Azure storage account is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|Azure blob service domain|The domain name for the Auzure blob service is needed if you choose to use a custom domain when setting up a cloud witness. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|File share path|For two-node clusters, a witness is required. For file share witness, the file share path for the witness is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
 
 ## Next steps
 
