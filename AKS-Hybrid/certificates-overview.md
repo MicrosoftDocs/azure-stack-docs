@@ -3,7 +3,7 @@ title: Overview of certificate management in AKS hybrid
 description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/01/2023
+ms.date: 04/04/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: sulahiri
@@ -95,9 +95,9 @@ Once you have the serial number of the certificate you would like to revoke, use
 
 To perform a revocation, use one of the following:
 
-- Serial number 
-- Group 
-- DNS name 
+- Serial number
+- Group
+- DNS name
 - IP address  
 
 A `notBefore` time can be specified to revoke only certificates that are issued before a certain timestamp. If a `notBefore` time is not specified, all existing and future certificates matching the revocation will be revoked.

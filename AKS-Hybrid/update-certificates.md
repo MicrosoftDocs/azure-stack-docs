@@ -3,7 +3,7 @@ title: Update certificates in AKS hybrid
 description: Learn how to update certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/01/2023
+ms.date: 04/04/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: sulahiri
@@ -47,12 +47,6 @@ When the cluster has been shut down for more than 30 days, run the following com
 1. `Update-AksHciCertificates` (to fix Management cluster certificates)
 1. `Update-AksHciClusterCertificates –fixkubeletcredentials` (to fix target cluster control plane certificates)
 1. `Update-AksHciClusterCertificates –fixcloudcredentials` (to fix target cluster MOC certificates)
-
-When AKS hybrid Kubernetes certificates are impacted, run the following command:
-
-```powershell
-Update-AksHciClusterCertificates –fixkubeletcredentials [Target]
-```
 
 ## Next steps
 
