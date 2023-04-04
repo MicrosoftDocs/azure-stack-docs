@@ -312,7 +312,7 @@ Follow these steps to configure partition count via Windows Admin Center:
 
 1. After you select a homogeneous set of GPUs, select the partition count from the **Number of Partitions** dropdown list. This list automatically populates the partition counts configured by your GPU manufacturer. The counts displayed in the list can vary depending on the type of GPU you selected.
 
-    As soon as you select a different partition count, a tooltip appears below the dropdown list, which dynamically displays the size of VRAM that each partition will get. For example, if the total VRAM is 16 GB for 16 partitions in the GPU, changing the partition count from 16 to 8 assigns each partition with 1.85 GB of VRAM.
+    As soon as you select a different partition count, a tooltip appears below the dropdown list, which dynamically displays the size of VRAM that each partition gets. For example, if the total VRAM is 16 GB for 16 partitions in the GPU, changing the partition count from 16 to 8 assigns each partition with 1.85 GB of VRAM.
 
     :::image type="content" source="./media/partition-gpu/tooltip-about-vram.png" alt-text="Screenshot showing the tooltip that appears when you select a different partition count." lightbox="./media/partition-gpu/tooltip-about-vram.png" :::
 
@@ -515,7 +515,7 @@ Follow these steps to assign GPU partition to a VM using PowerShell:
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
-    The next step is to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it will show a GPU in Device Manager.
+    The next step is to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it shows a GPU in Device Manager.
 
 ---
 
@@ -569,7 +569,7 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
     Remove-VMGpuPartitionAdapter -VMName $VMname
     ```
 
-1. Run the following command to confirm the partition is removed. If the partition is removed, this command won't return anything.
+1. Run the following command to confirm the partition is removed. If the partition is removed, this command doesn't return anything.
 
     ```powershell
     Get-VMGpuPartitionAdapter -VMName $VMName
