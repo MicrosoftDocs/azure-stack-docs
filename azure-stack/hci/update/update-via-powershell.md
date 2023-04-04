@@ -216,7 +216,7 @@ Before you discover the updates, you can manually validate the system health. Th
     PS C:\Users\lcmuser>
     ```
 
-> [!NOTE]:
+> [!NOTE]
 > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
 
 ## Step 2: Discover the updates
