@@ -25,11 +25,11 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 ## When to use GPU partitioning
 
-Some workloads, such as Machine Learning (ML) inferencing and virtual desktop infrastructure (VDI) are best run on-premises because of their data sovereignty and low latency requirements. For such workloads, you can use GPU partitioning to help lower the total cost of ownership for your GPU devices.
+You may prefer to keep certain workloads on premises because they require low latency or need to be compliant with the data sovereignty laws of your country. Certain workloads, such as virtual desktop infrastructure (VDI) and Machine Learning (ML) inferencing require GPU acceleration, and GPU partitioning can help reduce your total cost of ownership for your overall infrastructure.
 
-- Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you can assign an entire physical GPU to a VM, GPU-partitioning helps reduce the total cost of ownership by allowing you to scale your workloads by an order of magnitude.
+- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. For such workloads, you can achieve the required GPU acceleration via DDA or GPU partitioning. With GPU partitioning, you can create multiple partitions and assign each partition to VM hosting a VDI environment. GPU partitioning helps you achieve the desired density and scale the number of supported users by an order of magnitude.
 
-- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. For such workloads, you can achieve the required GPU acceleration via DDA or GPU partitioning.
+- Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you assign an entire physical GPU to a VM, GPU partitioning allows you to run multiple inferencing applications in parallel on the same GPU, but separate physical partitions, thereby utilizing the GPU to the maximum.
 
 ## Supported guest operating systems
 
