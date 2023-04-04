@@ -40,7 +40,7 @@ If your authentication token expires and deployment fails, you can update the re
 1. Sign in to the first server, them import the registration module by running the following PowerShell cmdlet:
 
     ```powershell
-    Update-AuthenticationTokabe 
+    Update-AuthenticationToken 
     ```
 
 1. From a second server that has a browser installed, open the browser and navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).

@@ -96,22 +96,20 @@ If you are using a service principal name to authenticate your cluster, follow t
 
 ## Run the deployment tool using MFA
 
-If you are using multi-factor authentication (MFA) to authenticate your cluster, follow these steps to deploy Azure Stack HCI via PowerShell:
-
-This method requires a second server with a browser to complete authentication.  
+If you are using multi-factor authentication (MFA) to authenticate your cluster, complete the following steps to deploy Azure Stack HCI using PowerShell. This method requires a second server in your cluster that has a browser to complete authentication.  
 
 1. Sign into the first server of your Azure Stack HCI cluster.
 
 1. You'll see Sconfig running on your server. Choose option 15 to exit to PowerShell.
 
-1. In the PowerShell prompt, run the following command to import the registration module and configure authentication:
+1. In the PowerShell prompt, run the following to import the registration module and configure authentication:
 
     ```powershell
     $SubscriptionID="<your_subscription_ID>"
     Set-AuthenticationToken -RegistrationCloudName AzureCloud -RegistrationSubscriptionID $SubscriptionID
     ```
 
-1. From a second server that has a browser installed, open the browser and navigate to  [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).  
+1. From a second server in your cluster that has a browser installed, open the browser and navigate to  [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).  
 
 1. Copy the authentication code that is displayed and complete the authentication request.
 
