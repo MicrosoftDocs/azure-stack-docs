@@ -305,7 +305,7 @@ Discovering solution updates using the online catalog is the recommended method.
     ```powershell
     Get-SolutionUpdate | ft DisplayName, State 
     ```
-1. Optionally review the update package components.
+1. Optionally review the versions of the update package components.
 
     ```powershell
     $Update=Get-SolutionUpdate 
