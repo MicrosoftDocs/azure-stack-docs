@@ -63,7 +63,7 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 1. Install **AzsReadinessChecker** from a PowerShell prompt (5.1 or above) by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 2. Create the certificate directory structure. In the example below, you can change `<C:\Certificates\Deployment>` to a new directory path of your choice.
@@ -146,7 +146,6 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
     Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
     Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
     Invoke-AzsHubDeploymentCertificateValidation Completed
-
     ```
 
     To validate certificates for other Azure Stack Hub services, change the value for `-CertificatePath`. For example:
@@ -160,7 +159,6 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 
     # EventHubs
     Invoke-AzsHubEventHubsCertificateValidation -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
-
     ```
 
     Each folder should contain a single PFX file for the certificate type. If a certificate type has multi-certificate requirements, nested folders for each individual certificate are expected and name-sensitive. The following code shows an example folder/certificate structure for all certificate types, and the appropriate value for `-CertificatePath`.
