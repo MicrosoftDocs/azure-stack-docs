@@ -99,7 +99,7 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 
 4. Check the output and ensure that all certificates pass all tests. For example:
 
-    ```powershell
+    ```shell
     Invoke-AzsHubDeploymentCertificateValidation v1.2005.1286.272 started.
     Testing: KeyVaultInternal\KeyVaultInternal.pfx
     Thumbprint: E86699****************************4617D6
