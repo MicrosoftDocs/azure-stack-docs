@@ -55,6 +55,7 @@ Run the following command to register your Azure subscription to Azure Arc enabl
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+Register-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 ```
 
 To validate the registration process, run the following PowerShell command:
@@ -62,6 +63,7 @@ To validate the registration process, run the following PowerShell command:
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 ```
 
 ## Step 1: Prepare your machine(s) for deployment
