@@ -42,9 +42,9 @@ When you apply a solution update, here are the high-level steps that you take:
 
 Before you begin, make sure that:
 
-- You’ve access to an Azure Stack HCI cluster that is running 2303 or higher. The cluster should be registered in Azure.
-- You’ve access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
-- You’ve access to the solution update package over the network. You'll sideload or copy these updates to the nodes of your cluster.
+- You have access to an Azure Stack HCI cluster that is running 2303 or higher. The cluster should be registered in Azure.
+- You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
+- You have access to the solution update package over the network. You sideload or copy these updates to the nodes of your cluster.
 
 ## Connect to your Azure Stack HCI cluster
 
@@ -74,7 +74,7 @@ Follow these steps on your client to connect to one of the nodes of your Azure S
 
 Before you discover the updates, make sure that the cluster was deployed using the Azure Stack HCI, 2303 Supplemental Package. 
 
-1. Make sure that you are connected to the cluster node using the Lifecycle Manager account. Run the following command:
+1. Make sure that you're connected to the cluster node using the Lifecycle Manager account. Run the following command:
 
     ```powershell
     whoami
@@ -85,7 +85,7 @@ Before you discover the updates, make sure that the cluster was deployed using t
     Get-StampInformation
     ```
 
-    Here is a sample output:
+    Here's a sample output:
 
     ```console
     PS C:\Users\lcmuser> Get-StampInformation
@@ -101,7 +101,7 @@ Before you discover the updates, make sure that the cluster was deployed using t
 
 ## Step 2: Optionally validate system health
 
-Before you discover the updates, you can manually validate the system health. This step is optional as the Lifecycle Manager will always assess update readiness prior to applying updates.
+Before you discover the updates, you can manually validate the system health. This step is optional as the Lifecycle Manager always assesses update readiness prior to applying updates.
 
 1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
 1. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
@@ -111,7 +111,7 @@ Before you discover the updates, you can manually validate the system health. Th
     $result|ft Name,Status,Severity  
     ```
 
-    Here is a sample output:
+    Here's a sample output:
 
     ```console
     PS C:\Users\lcmuser> whoami
@@ -225,20 +225,20 @@ Before you discover the updates, you can manually validate the system health. Th
 You can discover updates in one of the following two ways:
 
 - **Sideload and discover updates** - For scenarios with unreliable or slow internet connectivity, you can download the solution updates to a central location. You can then sideload the updates an Azure Stack HCI cluster and discover the updates locally.
-- **Discover updates online** - This is the recommended option when the your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
+- **Discover updates online** - This is the recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
 
 
 ### Sideload and discover solution updates
 
-You’ll now sideload the updates that you intend to apply to your cluster. Follow these steps to sideload and discover your solution updates.
+You now sideload the updates that you intend to apply to your cluster. Follow these steps to sideload and discover your solution updates.
 
 1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
-1. Go to the network share and acquire the update package that you'll use. Verify that the update package that you'll sideload contains the following files:
+1. Go to the network share and acquire the update package that you use. Verify that the update package that you sideload contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
     - *AS_Update_10.2303.4.1.zip*
 
-    If a solution builder extension is part of the update package, you'll also see the following files:
+    If a solution builder extension is part of the update package, you should also see the following files:
     - *SBE_Content_4.1.2.3.xml*
     - *SBE_Content_4.1.2.3.zip*
     - *SBE_Discovery_Contoso.xml*
@@ -443,4 +443,4 @@ After the updates are installed, verify the solution version of the environment 
 
 ## Next steps
 
-Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the Lifecycle Manager was not installed.
+Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the Lifecycle Manager isn't installed.
