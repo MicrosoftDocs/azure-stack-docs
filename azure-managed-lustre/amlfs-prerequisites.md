@@ -19,7 +19,6 @@ This article explains prerequisites that you must configure before creating an A
 
 * [Network prerequisites](#network-prerequisites)
 * [Blob integration prerequisites](#blob-integration-prerequisites-optional)
-* [Azure Key Vault integration prerequisites (Optional)](#azure-key-vault-integration-requirements-optional)
 
 [!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
