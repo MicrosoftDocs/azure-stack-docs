@@ -99,7 +99,6 @@ Before you discover the updates, make sure that the cluster was deployed using t
     Make a note of the `StampVersion` on your cluster.
 
 
-
 ## Step 2: Optionally validate system health
 
 Before you discover the updates, you can manually validate the system health. This step is optional as the Lifecycle Manager will always assess update readiness prior to applying updates.
@@ -215,9 +214,11 @@ Before you discover the updates, you can manually validate the system health. Th
     
     PS C:\Users\lcmuser>
     ```
+    > [!NOTE]
+    > - In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
+    > - Any faults that have a severity of *critical* will block the updates from being applied.
 
-> [!NOTE]
-> In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
+3. Review any failures and resolve those before you proceed to the discovery step.
 
 ## Step 2: Discover the updates
 
