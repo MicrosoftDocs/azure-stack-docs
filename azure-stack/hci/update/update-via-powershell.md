@@ -329,7 +329,7 @@ Discovering solution updates using the online catalog is the recommended method.
 
 You can download the updates, perform a set of checks to verify the update readiness of your cluster, and start installing the updates.
 
-1. You can only download the update without starting the installation or download and install the update. 
+1. You can only download the update without starting the installation or download and install the update.
 
     - To download and install the update, run the following command:
 
@@ -439,6 +439,7 @@ After the updates are installed, verify the solution version of the environment 
     PS C:\Users\lcmuser> cmd /c ver
     
     Microsoft Windows [Version 10.0.20349.1547]
+    PS C:\Users\lcmuser>
     ```
 
 ## Next steps
