@@ -7,13 +7,15 @@ ms.topic: how-to
 ms.date: 04/03/2023
 ---
 
-# Phases of an update
+# Phases of an Azure Stack HCI solution update (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date.
 
 The procedure in this article applies to both a single node and a multi-node cluster that is running software versions with Lifecycle Manager installed. For more information, see [What is Lifecycle Manager?](../index.yml).
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About update phases
 
@@ -49,7 +51,7 @@ Before installing a solution update, the Lifecycle Manager runs a series of chec
 
 The following table lists the prechecks performed on your Azure Stack HCI cluster before the updates are applied.
 
-| Target component              | Description of precheck                                                                                                                  |
+| Target component              | Precheck description                                                                                                                  |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Storage systems               | Check that the storage pools are healthy.                                                                                                |
 |                               | Check that the Storage services physical disks are healthy and online.                                                                   |
