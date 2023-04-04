@@ -216,13 +216,8 @@ Before you discover the updates, you can manually validate the system health. Th
     PS C:\Users\lcmuser>
     ```
 
-> [!NOTE]: 
-> In this release, the following failures are expected and will not impact the updates.
-> ```console
-> Test-CauSetup                           FAILURE INFORMATIONAL
-> Test-CauSetup                           FAILURE INFORMATIONAL
-> Test-CauSetup                           FAILURE INFORMATIONAL
->```
+> [!NOTE]:
+> In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
 
 ## Step 2: Discover the updates
 
@@ -269,13 +264,13 @@ You’ll now sideload the updates that you intend to apply to your cluster. Foll
     Here's an example output:
     
     ```console
-    PS C:\> Get-SolutionUpdate | ft DisplayName, Version, State
+     PS C:\Users\lcmuser> Get-SolutionUpdate | ft DisplayName, Version, State
     
     DisplayName                 Version      State
     -----------                 -------      -----
     Azure Stack HCI 2303 bundle 10.2303.0.31 Ready
 
-    PS C:\>
+     PS C:\Users\lcmuser>
     ```
 
 1. Optionally check the version of the update package components. Run the following command:
@@ -288,15 +283,15 @@ You’ll now sideload the updates that you intend to apply to your cluster. Foll
     Here's an example output:
     
     ```console
-    PS C:\> $Update = Get-SolutionUpdate 
-    PS C:\> $Update.ComponentVersions
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
     ----------- -------      -----------
     Services    10.2303.0.31
     Platform    10.2303.0.31
     SBE         4.1.2.3
-    PS C:\>
+     PS C:\Users\lcmuser>
     ```
 
 ### Discover solution updates online
@@ -318,15 +313,15 @@ Discovering solution updates using the online catalog is the recommended method.
     Here's an example output:
     
     ```console
-    PS C:\> $Update = Get-SolutionUpdate 
-    PS C:\> $Update.ComponentVersions
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
     ----------- -------      -----------
     Services    10.2303.0.31
     Platform    10.2303.0.31
     SBE         4.1.2.3
-    PS C:\>
+     PS C:\Users\lcmuser>
     ```
 
 ## Step 3: Download, check readiness, and install updates
@@ -356,7 +351,7 @@ You can download the updates, perform a set of checks to verify the update readi
         Here's an example output when the updates are being downloaded:
 
         ```console
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+          PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
 
         Version              State UpdateStateProperties HealthState
         -------              ----- --------------------- -----------
@@ -366,7 +361,7 @@ You can download the updates, perform a set of checks to verify the update readi
     - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](). During this phase, the **State** of the update shows as `HealthChecking`.
 
         ```console
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
 
         Version              State UpdateStateProperties HealthState
         -------              ----- --------------------- -----------
@@ -381,26 +376,26 @@ You can download the updates, perform a set of checks to verify the update readi
         Here's a sample output while the updates are being installed.
 
         ```console
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
 
         Version          State UpdateStateProperties HealthState
         -------          ----- --------------------- -----------
         10.2303.4.1 Installing 6% complete.              Success
         
         
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
         
         Version          State UpdateStateProperties HealthState
         -------          ----- --------------------- -----------
         10.2303.4.1 Installing 25% complete.             Success
 
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
         
         Version          State UpdateStateProperties HealthState
         -------          ----- --------------------- -----------
         10.2303.4.1 Installing 40% complete.             Success
 
-        PS C:\Users\AzureStackAdminD> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
         
         Version          State UpdateStateProperties HealthState
         -------          ----- --------------------- -----------
@@ -423,11 +418,11 @@ After the updates are installed, verify the solution version of the environment 
     Here's a sample output:
     
     ```console
-    [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> Get-SolutionUpdateEnvironment | ft State, CurrentVersion
+    PS C:\Users\lcmuser> Get-SolutionUpdateEnvironment | ft State, CurrentVersion
     
     State               CurrentVersion
     -----               --------------
-    AppliedSuccessfully 10.2302.1.1
+    AppliedSuccessfully 10.2303.0.31
         
     ```
 
@@ -440,11 +435,11 @@ After the updates are installed, verify the solution version of the environment 
     Here's a sample output:
 
     ```console
-    [100.100.100.10]: PS C:\ClusterStorage\Infrastructure_1\StagedSolutionAndSbe> cmd /c ver
+    PS C:\Users\lcmuser> cmd /c ver
     
     Microsoft Windows [Version 10.0.20349.1547]
     ```
 
 ## Next steps
 
-Learn more about how to [Troubleshoot updates](../index.yml).
+Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the Lifecycle Manager was not installed.
