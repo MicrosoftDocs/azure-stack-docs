@@ -49,18 +49,18 @@ Microsoft might release the following types of updates for the Azure Stack HCI p
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Patch Updates| Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host node reboots, while others don't. In some cases, hotfixes get released faster than monthly to fix critical or security issues.|
+|Patch Updates| Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host node reboots, while others don't. To fix critical or security issues, hotfixes might be released sooner than monthly. |
 |Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host node reboots and might take longer.|
 |Hotpatches | As needed |             |
 |Solution Builder Extension (SBE)        | Bi-Annually |           |
 
 Sometimes you might see updates to the latest patch level of your current baseline. Meaning, if a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline.
 
-Each baseline receives patch updates during the supported time frame. Your cluster must stay within six months of the most recent baseline to consider it supported.
+Each baseline receives patch updates during the supported period. Your cluster must stay within six months of the most recent baseline to consider it supported.
 
 ## Platform updates management
 
-Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions together to ensure interoperability.
+Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
 - **Operating System:** What can we say here?
 
