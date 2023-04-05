@@ -35,9 +35,9 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
   - Discover the update, read the release notes, and determine a good time to update. For example, a time when production workloads aren't in use, or nonpeak hours.
   - Take backups of your deployment.
   - Download the update.
-  - If more content is required from your Solution Builder, acquire the content.
+  - If your Solution Builder needs more content, acquire what's needed.
 
-- Review any precheck warnings or failures and remediate as necessary.
+- Review any precheck warnings or failures and remediate, as necessary.
   - Execute the update.
 
 - Monitor the update as it proceeds.
@@ -60,11 +60,11 @@ You can use Windows Admin Center as another method to install your solution upda
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
-Currently, the Lifecycle Manager isn't part of Windows Admin Center; however, the Lifecycle Manager will be integrated in a future release.
+Currently, the Lifecycle Manager isn't part of Windows Admin Center. It will be part of a future release.
 
 ## Workload updates
 
-Along with updates for your cluster, there are workload updates that can be applied that aren't integrated into the Lifecycle Manager. These workloads include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections will provide more detail on these workloads and ways to apply updates.
+Along with updates for your cluster, there are workload updates that can be applied that aren't integrated in the Lifecycle Manager. These workloads include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections will provide more detail on these workloads and ways to apply updates.
 
 ### Azure Kubernetes Service (AKS) hybrid
 
@@ -90,7 +90,7 @@ To update AKS hybrid using PowerShell, use these instructions:
 
 ### Azure Arc
 
-Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments. For more information about Azure Arc and applying updates to your Azure Arc agent, see the following:
+Azure Arc is a bridge that extends the Azure platform to help you build applications and services with the flexibility to run across datacenters, at the edge, and in multicloud environments. For more information about Azure Arc and applying updates to your Azure Arc agent, see:
 
 - [Azure Arc resource bridge (preview) overview](/azure/azure-arc/resource-bridge/overview).
 
@@ -104,7 +104,7 @@ Other Microsoft services that rely on Azure Stack HCI VMs may have their own ins
 
 ### Customer apps and workloads
 
-The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. It's recommended to Arc-enable your VMs and use the upgrade the agent process. For more information, see the following:
+The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. It's recommended to Arc-enable your VMs and use the upgrade the agent process. For more information, see:
 
 - [Azure Arc-enabled servers](lifecycle-management-placeholder.md).
 

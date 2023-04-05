@@ -6,14 +6,14 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: aaronfa
 ms.lastreviewed: 04/05/2023
-ms.date: 03/23/2023
+ms.date: 04/05/2023
 ---
 
 # What's the Lifecycle Manager?
 
 > Applies to: Azure Stack HCI, Supplemental Package.
 
-This article describes the Lifecycle Manager and the benefits it provides for an Azure Stack HCI cluster solution.
+This article describes the Lifecycle Manager, the benefits it provides for an Azure Stack HCI cluster solution, and more.
 
 ## About the Lifecycle Manager
 

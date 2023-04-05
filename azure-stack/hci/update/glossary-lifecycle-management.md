@@ -52,4 +52,4 @@ The Lifecycle Manager updates its own agents to ensure it has the recent fixes c
    > [!NOTE]
    > For step #3, updating the host OS uses Cluster-Aware Updating to orchestrate reboots.
 
-4. If the update includes Solution Extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating.
+4. If the update includes solution extension content from the Solution Builder, it's installed last with the use of Cluster-Aware Updating.
