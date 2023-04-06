@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: aaronfa
-ms.lastreviewed: 03/17/2023
-ms.date: 03/17/2023
+ms.lastreviewed: 04/06/2023
+ms.date: 04/06/2023
 ---
 
 # Update the Azure Stack HCI solution
