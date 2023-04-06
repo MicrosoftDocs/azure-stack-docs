@@ -1,5 +1,5 @@
 ---
-title:  Update an Azure Stack HCI solution.
+title:  Update the Azure Stack HCI solution.
 description: This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.lastreviewed: 03/17/2023
 ms.date: 03/17/2023
 ---
 
-# Update an Azure Stack HCI solution
+# Update the Azure Stack HCI solution
 
 > Applies to: Azure Stack HCI, Supplemental Package
 
