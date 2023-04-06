@@ -60,7 +60,7 @@ You can use Windows Admin Center as another method to install your solution upda
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
-Currently, the Lifecycle Manager isn't part of Windows Admin Center. It will be part of a future release.
+Currently, the Lifecycle Manager isn't part of Windows Admin Center. It will be introduced in a future release.
 
 ## Workload updates
 
