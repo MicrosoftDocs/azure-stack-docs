@@ -252,7 +252,10 @@ To check your access level, navigate to your subscription, select **Access contr
 - If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you're an **Owner**.
 - If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
    - A user account with the built-in **Owner** role.
-   - A service principal with **Owner** access level.
+   - A service principal with **one of the following** access levels:
+      - The built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role
+      - The built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role
+
 
 If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
@@ -298,7 +301,7 @@ Create a service principal by running the [New-AzADServicePrincipal](/powershell
 $sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscriptionID
 ```
 
-Retrieve the password for the service principal by running the following command:
+Retrieve the password for the service principal by running the following command. Note that the below command only works for Az.Accounts 2.6.0 or lesser. We automatically download Az.Accounts 2.6.0 module when you install the AksHci PowerShell module.
 
 ```powershell
 $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))
