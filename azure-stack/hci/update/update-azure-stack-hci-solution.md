@@ -9,7 +9,7 @@ ms.lastreviewed: 03/17/2023
 ms.date: 03/17/2023
 ---
 
-# Update the Azure Stack HCI solution
+# Update an Azure Stack HCI solution
 
 > Applies to: Azure Stack HCI, Supplemental Package
 
