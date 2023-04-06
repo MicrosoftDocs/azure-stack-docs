@@ -4,7 +4,7 @@ description: Learn how to partition and share a GPU with multiple virtual machin
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 03/21/2023
+ms.date: 04/05/2023
 ms.reviewer: alkohli
 ---
 
@@ -16,12 +16,20 @@ This article describes how to use the graphics processing unit (GPU) partitionin
 
 ## About GPU partitioning
 
-Many machine learning or other compute workloads, such as Azure Virtual Desktop on Azure Stack HCI (preview) may not need a dedicated GPU. For such workloads, you can use the GPU partitioning feature that allows you to share a physical GPU device with multiple VMs. With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU. This sharing can help lower the total cost of ownership (TCO) for your GPU devices.
+GPU partitioning allows you to share a physical GPU device with multiple virtual machines (VMs). With GPU partitioning or GPU virtualization, each VM gets a dedicated fraction of the GPU instead of the entire GPU.
 
 The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) interface](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-), which provides a hardware-backed security boundary with predictable performance for each VM. Each VM can access only the GPU resources dedicated to them and the secure hardware partitioning prevents unauthorized access by other VMs.
 
 > [!NOTE]
 > Currently, we support only Nvidia A2, A10, A16, A40 GPUs for GPU partitioning on Azure Stack HCI. We recommend that you work with your Original Equipment Manufacturer (OEM) partners and GPU Independent Hardware Vendors (IHVs) to plan, order, and set up the systems for your desired workloads with the appropriate configurations and necessary software. However, we support additional GPUs if you want to use GPU acceleration via Discrete Device Assignment (DDA) or GPU passthrough. Reach out to your OEM partners and IHVs to get a list of GPUs that support DDA. For more information about using GPU acceleration via DDA, see [Use GPUs with clustered VMs](../manage/use-gpu-with-clustered-vm.md).
+
+## When to use GPU partitioning
+
+You may prefer to keep certain workloads on premises because they require low latency or need to be compliant with the data sovereignty laws of your country. Certain workloads, such as virtual desktop infrastructure (VDI) and Machine Learning (ML) inferencing require GPU acceleration, and GPU partitioning can help reduce your total cost of ownership for your overall infrastructure.
+
+- VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. For such workloads, you can achieve the required GPU acceleration via DDA or GPU partitioning. With GPU partitioning, you can create multiple partitions and assign each partition to VM hosting a VDI environment. GPU partitioning helps you achieve the desired density and scale the number of supported users by an order of magnitude.
+
+- Inference with ML: Customers in retail stores and manufacturing plants can run inference at the edge, which requires GPU support for their servers. Using GPU on your servers, you can run ML models to get quick results that can be acted on before the data is sent to the cloud. The full data set can optionally be transferred to continue to retrain and improve your ML models. Along with DDA where you assign an entire physical GPU to a VM, GPU partitioning allows you to run multiple inferencing applications in parallel on the same GPU, but in separate physical partitions, thereby utilizing the GPU to the maximum.
 
 ## Supported guest operating systems
 
@@ -304,7 +312,7 @@ Follow these steps to configure partition count via Windows Admin Center:
 
 1. After you select a homogeneous set of GPUs, select the partition count from the **Number of Partitions** dropdown list. This list automatically populates the partition counts configured by your GPU manufacturer. The counts displayed in the list can vary depending on the type of GPU you selected.
 
-    As soon as you select a different partition count, a tooltip appears below the dropdown list, which dynamically displays the size of VRAM that each partition will get. For example, if the total VRAM is 16 GB for 16 partitions in the GPU, changing the partition count from 16 to 8 assigns each partition with 1.85 GB of VRAM.
+    As soon as you select a different partition count, a tooltip appears below the dropdown list, which dynamically displays the size of VRAM that each partition gets. For example, if the total VRAM is 16 GB for 16 partitions in the GPU, changing the partition count from 16 to 8 assigns each partition with 1.85 GB of VRAM.
 
     :::image type="content" source="./media/partition-gpu/tooltip-about-vram.png" alt-text="Screenshot showing the tooltip that appears when you select a different partition count." lightbox="./media/partition-gpu/tooltip-about-vram.png" :::
 
@@ -507,7 +515,7 @@ Follow these steps to assign GPU partition to a VM using PowerShell:
 
 1. Start the VM using PowerShell or Windows Admin Center to resolve the partitions.
 
-    The next step is to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it will show a GPU in Device Manager.
+    The next step is to start the VM using PowerShell or Windows Admin Center. Once the VM is up and running, it shows a GPU in Device Manager.
 
 ---
 
@@ -561,7 +569,7 @@ Follow these steps to unassign a GPU partition from a VM using PowerShell:
     Remove-VMGpuPartitionAdapter -VMName $VMname
     ```
 
-1. Run the following command to confirm the partition is removed. If the partition is removed, this command won't return anything.
+1. Run the following command to confirm the partition is removed. If the partition is removed, this command doesn't return anything.
 
     ```powershell
     Get-VMGpuPartitionAdapter -VMName $VMName

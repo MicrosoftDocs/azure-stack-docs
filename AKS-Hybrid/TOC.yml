@@ -85,8 +85,8 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
-      - name: Update certificates
-        href: repair-certificates.md
+      - name: Certificate management overview
+        href: certificates-overview.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -217,14 +217,14 @@
             href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
+          - name: Update certificates
+            href: update-certificates.md
           - name: Restrict SSH access
             href: restrict-ssh-access.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
-          - name: Secure communication with certificates
-            href: secure-communication.md
           - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
