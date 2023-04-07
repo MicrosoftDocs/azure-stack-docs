@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 4/04/2023
+ms.date: 4/07/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -62,8 +62,8 @@ The following parameters are required to run the deployment tool. Consult your n
 |`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
 |`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
-|RegistrationAccountCredential|(Optional for MFA) Specify a credential object which is used to authenticate the Azure subscription. This an alternative to using a service principal for authentication.|
-|RegistrationArcServerResourceGroupName|(Optional for MFA) Specify a dedicated resource group for the Arc for server objects. This allows separate resource groups between Arc for Servers and HCI clusters.|
+|`RegistrationAccountCredential`|(Optional for MFA) Specify a credential object which is used to authenticate the Azure subscription. This is an alternative to using a service principal for authentication.|
+|`RegistrationArcServerResourceGroupName`|(Optional for MFA) Specify a dedicated resource group for the Arc for server objects. This allows separate resource groups between Arc for Servers and Azure Stack HCI clusters.|
 
 ## Run the deployment tool using a service principal
 
@@ -120,7 +120,7 @@ If you are using multi-factor authentication (MFA) to authenticate your cluster,
 
     $LocalCred=get-credential 
 
-    Invoke-clouddeployment -JSONFilePath c:\sample.json -DeploymentUserCredential $DomainCred -LocalAdminCredential $LocalCred
+    Invoke-clouddeployment -JSONFilePath c:\sample.json -- AzureStackLCMUser $DomainCred -LocalAdminCredential $LocalCred
     ```
 
 

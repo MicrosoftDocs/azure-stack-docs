@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI deployment (preview)
 description: Learn to troubleshoot the Azure Stack HCI deployment (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 04/04/2023
+ms.date: 04/07/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -37,7 +37,7 @@ To rerun the deployment if there is a failure, follow these steps:
 
 If your authentication token expires and deployment fails, you can update the refresh token. Follow these steps to update the refresh token:
 
-1. Sign in to the first server, them import the registration module by running the following PowerShell cmdlet:
+1. Sign in to the first server. To import the registration module, run the following PowerShell cmdlet:
 
     ```powershell
     Update-AuthenticationToken 
@@ -50,7 +50,7 @@ If your authentication token expires and deployment fails, you can update the re
 1. Resume the deployment using the following cmdlet:
 
     ```powershell
-    Invoke-clouddeployment -rerun 
+    Invoke-CloudDeployment -Rerun 
     ```
 
 ## Reset deployment
