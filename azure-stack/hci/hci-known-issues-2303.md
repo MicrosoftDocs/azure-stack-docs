@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2303 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2303 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/31/2023
+ms.date: 04/04/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2303 Public Preview release. This release maps to software version number **10.2303.0.29**. This release supports only brand new software installations using a deployment tool.
+This article applies to Azure Stack HCI, Supplemental Package, for 2303 release. <!--This release maps to software version number **10.2303.0.34**.--> This release supports only brand new software installations using a deployment tool.
 
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2301-preview.md#azure-stack-hci-2301-supplemental-package-preview).
 
@@ -48,8 +48,6 @@ Here are the known issues that have carried over from the previous releases in A
 |7|Deployment|Cluster creation fails with the error "Microsoft-Windows-Kerberos-Key-Distribution-Center Event ID 14 error event" in the System section of Event Log on your domain controller.|Search for and install the following cumulative updates:<br>Windows Server 2022: [KB5021656](https://support.microsoft.com/help/5021656)<br>Windows Server 2019: [KB5021655](https://support.microsoft.com/help/5021655)<br>Windows Server 2016: [KB5021654](https://support.microsoft.com/help/5021654)<br>To get the standalone package for these out-of-band updates, search for the KB number in the Microsoft Update Catalog. You can manually import these updates into Windows Server Update Services (WSUS) and Microsoft Endpoint Configuration Manager. For WSUS instructions, see [WSUS and the Catalog Site](/windows-server/administration/windows-server-update-services/manage/wsus-and-the-catalog-site#the-microsoft-update-catalog-site). For Configuration Manger instructions, see [Import updates from the Microsoft Update Catalog](/mem/configmgr/sum/get-started/synchronize-software-updates#import-updates-from-the-microsoft-update-catalog). |
 |8|Environment Checker| If SSL inspection is turned on in your Azure Stack HCI system, the connectivity validator fails with the certificate validation error message.  | For information about the error and how to troubleshoot it, see [Potential failure scenario for connectivity validator](./manage/use-environment-checker.md#potential-failure-scenario-for-connectivity-validator).|
 |9|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data isn't collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
-<!--|10|Disk Firmware |CONFIRMING DELETION - You may experience an issue with the Disk Firmware in this release while testing updates using a Solution Builder Extension (SBE). In certain cases, the operation status (Updating Firmware) of the `PhysicalDisk` isn't getting cleared for some physical disks even after the firmware rollout is complete. |This issue will likely be fixed in a future release. |-->
-
 
 
 
