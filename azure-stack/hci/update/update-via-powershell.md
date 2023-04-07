@@ -69,7 +69,7 @@ Follow these steps on your client to connect to one of the nodes of your Azure S
     cmdlet Get-Credential at command pipeline position 1
     Supply values for the following parameters:
     Credential
-    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred -Authentication 'CredSSP'
+    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
     [100.100.100.10]: PS C:\Users\Administrator\Documents>
     ```
 
