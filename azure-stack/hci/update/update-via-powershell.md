@@ -36,7 +36,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Verify the version of the updates installed.
 
 > [!NOTE]
-> The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node cluster varies from X-Y hrs. and for a two-node cluster varies from Y-Z hrs.
+> The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node cluster varies from 30 minutes to 1.5 hrs. and for a two-node cluster varies from 1-2 hrs.
 
 ## Prerequisites
 
@@ -55,8 +55,11 @@ Follow these steps on your client to connect to one of the nodes of your Azure S
 
     ```powershell
     $cred = Get-Credential
-    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred -Authentication 'CredSSP'
+    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred 
     ```
+
+    > [!NOTE]
+    > You should sign in using your Lifecycle Manager account credentials.
 
     Here's an example output:
     
@@ -66,13 +69,14 @@ Follow these steps on your client to connect to one of the nodes of your Azure S
     cmdlet Get-Credential at command pipeline position 1
     Supply values for the following parameters:
     Credential
-    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred -Authentication 'CredSSP'
+    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
     [100.100.100.10]: PS C:\Users\Administrator\Documents>
     ```
 
 ## Step 1: Identify the stamp version on your cluster
 
-Before you discover the updates, make sure that the cluster was deployed using the Azure Stack HCI, 2303 Supplemental Package. 
+Before you discover the updates, make sure that the cluster was deployed using the Azure Stack HCI, 2303 Supplemental Package.  
+
 
 1. Make sure that you're connected to the cluster node using the Lifecycle Manager account. Run the following command:
 
@@ -95,13 +99,17 @@ Before you discover the updates, make sure that the cluster was deployed using t
     StampVersion              : 10.2303.0.31
     InitialDeployedVersion    : 10.2303.0.26
     PS C:\Users\lcmuser>
+    ```
 
-    Make a note of the `StampVersion` on your cluster.
+3. Make a note of the `StampVersion` on your cluster. The stamp version reflects the solution version that your cluster is running.
 
 
 ## Step 2: Optionally validate system health
 
 Before you discover the updates, you can manually validate the system health. This step is optional as the Lifecycle Manager always assesses update readiness prior to applying updates.
+
+> [!NOTE]
+> Any faults that have a severity of *critical* will block the updates from being applied.
 
 1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
 1. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
@@ -214,9 +222,10 @@ Before you discover the updates, you can manually validate the system health. Th
     
     PS C:\Users\lcmuser>
     ```
+    
     > [!NOTE]
-    > - In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
-    > - Any faults that have a severity of *critical* will block the updates from being applied.
+    > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
+
 
 3. Review any failures and resolve those before you proceed to the discovery step.
 
@@ -224,9 +233,39 @@ Before you discover the updates, you can manually validate the system health. Th
 
 You can discover updates in one of the following two ways:
 
-- **Sideload and discover updates** - For scenarios with unreliable or slow internet connectivity, you can download the solution updates to a central location. You can then sideload the updates an Azure Stack HCI cluster and discover the updates locally.
 - **Discover updates online** - This is the recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
+- **Sideload and discover updates** - This is an alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Stack HCI cluster and discover the updates locally.
 
+
+### Discover solution updates online (recommended)
+
+Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
+
+1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
+1. Verify that the update package was discovered by the Update service.
+
+    ```powershell
+    Get-SolutionUpdate | ft DisplayName, State 
+    ```
+1. Optionally review the versions of the update package components.
+
+    ```powershell
+    $Update=Get-SolutionUpdate 
+    $Update.ComponentVersions
+    ```
+    Here's an example output:
+    
+    ```console
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update.ComponentVersions
+    
+    PackageType Version      LastUpdated
+    ----------- -------      -----------
+    Services    10.2303.0.31
+    Platform    10.2303.0.31
+    SBE         4.1.2.3
+     PS C:\Users\lcmuser>
+    ```
 
 ### Sideload and discover solution updates
 
@@ -295,35 +334,6 @@ You now sideload the updates that you intend to apply to your cluster. Follow th
      PS C:\Users\lcmuser>
     ```
 
-### Discover solution updates online
-
-Discovering solution updates using the online catalog is the recommended method. Follow these steps to discover solution updates online:
-
-1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
-1. Verify that the update package was discovered by the Update service.
-
-    ```powershell
-    Get-SolutionUpdate | ft DisplayName, State 
-    ```
-1. Optionally review the versions of the update package components.
-
-    ```powershell
-    $Update=Get-SolutionUpdate 
-    $Update.ComponentVersions
-    ```
-    Here's an example output:
-    
-    ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
-     PS C:\Users\lcmuser> $Update.ComponentVersions
-    
-    PackageType Version      LastUpdated
-    ----------- -------      -----------
-    Services    10.2303.0.31
-    Platform    10.2303.0.31
-    SBE         4.1.2.3
-     PS C:\Users\lcmuser>
-    ```
 
 ## Step 3: Download, check readiness, and install updates
 
@@ -359,7 +369,7 @@ You can download the updates, perform a set of checks to verify the update readi
         10.2303.4.1 Downloading                        InProgress
         ```
 
-    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](). During this phase, the **State** of the update shows as `HealthChecking`.
+    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
 
         ```console
         PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
