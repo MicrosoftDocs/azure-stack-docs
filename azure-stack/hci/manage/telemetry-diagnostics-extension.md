@@ -59,7 +59,7 @@ You can configure the extension to be:
 
 - **Enhanced:** You send more diagnostic data to help Microsoft identify and fix operational issues and for product improvements. Diagnostics data might remain for up to 30 days.
 
-Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](placeholder.md).
+Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
 It's highly recommended to enable **enhanced** diagnostics. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions to ensure, at the right time, it collects the correct diagnostic information without needing any operator interaction. Microsoft can begin troubleshooting and resolve problems sooner in some cases.
 
