@@ -100,7 +100,7 @@ If you are using multi-factor authentication (MFA) to authenticate your cluster,
 
 1. Sign into the first server of your Azure Stack HCI cluster.
 
-1. You'll see Sconfig running on your server. Choose option 15 to exit to PowerShell.
+1. You'll see SConfig running on your server. Choose option 15 to exit to PowerShell.
 
 1. In the PowerShell prompt, run the following to import the registration module and configure authentication:
 
