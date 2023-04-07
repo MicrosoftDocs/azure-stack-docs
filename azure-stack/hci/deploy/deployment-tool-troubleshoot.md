@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article provides guidance on how to rerun and reset deployment if you encounter issues during the Azure Stack HCI deployment.
+This article provides guidance on how to rerun and reset deployment if you encounter issues during your Azure Stack HCI deployment.
 
 Also see [Known issues](../hci-known-issues.md).
 

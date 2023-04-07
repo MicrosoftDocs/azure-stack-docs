@@ -49,7 +49,7 @@ Before you begin, make sure you have done the following:
 
 ## Get information for the required parameters
 
-The following parameters are required to run the deployment tool. Consult your network administrator to get some of this information.
+The following parameters are required to run the deployment tool. Consult your network administrator as needed for this information.
 
 |Parameter|Description|
 |----|----|
