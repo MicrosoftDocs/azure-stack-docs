@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 3/30/2023
+ms.date: 4/07/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -16,6 +16,8 @@ ms.subservice: azure-stack-hci
 In this article, learn how to deploy Azure Stack HCI using PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
 This deployment method uses an existing configuration file that you have modified for your environment.
+
+There are two methods for authenticating your cluster: using a service principal name (SPN) or using multi-factor authentication (MFA).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -47,7 +49,7 @@ Before you begin, make sure you have done the following:
 
 ## Get information for the required parameters
 
-The following parameters are required to run the deployment tool. Consult your network administrator to get some of this information.
+The following parameters are required to run the deployment tool. Consult your network administrator as needed for this information.
 
 |Parameter|Description|
 |----|----|
@@ -60,10 +62,12 @@ The following parameters are required to run the deployment tool. Consult your n
 |`RegistrationResourceName`|(Optional) Specify the name used for the resource object of the Arc resource name for the cluster.|
 |`RegistrationSubscriptionID`|Specify the ID for the subscription used to authenticate the cluster to Azure.|
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
+|`RegistrationAccountCredential`|(Optional for MFA) Specify a credential object which is used to authenticate the Azure subscription. This is an alternative to using a service principal for authentication.|
+|`RegistrationArcServerResourceGroupName`|(Optional for MFA) Specify a dedicated resource group for the Arc for server objects. This allows separate resource groups between Arc for Servers and Azure Stack HCI clusters.|
 
-## Run the deployment tool
+## Run the deployment tool using a service principal
 
-Follow these steps to deploy Azure Stack HCI via PowerShell:
+If you are using a service principal name to authenticate your cluster, follow these steps to deploy Azure Stack HCI via PowerShell:
 
 1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
 
@@ -89,6 +93,36 @@ Follow these steps to deploy Azure Stack HCI via PowerShell:
     ```powershell
     .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
     ```
+
+## Run the deployment tool using MFA
+
+If you are using multi-factor authentication (MFA) to authenticate your cluster, complete the following steps to deploy Azure Stack HCI using PowerShell. This method requires a second server in your cluster that has a browser to complete authentication.  
+
+1. Sign into the first server of your Azure Stack HCI cluster.
+
+1. You'll see SConfig running on your server. Choose option 15 to exit to PowerShell.
+
+1. In the PowerShell prompt, run the following to import the registration module and configure authentication:
+
+    ```powershell
+    $SubscriptionID="<your_subscription_ID>"
+    Set-AuthenticationToken -RegistrationCloudName AzureCloud -RegistrationSubscriptionID $SubscriptionID
+    ```
+
+1. From a second server in your cluster that has a browser installed, open the browser and navigate to  [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).  
+
+1. Copy the authentication code that is displayed and complete the authentication request.
+
+1. On the first server, start the deployment using PowerShell and run the following command:
+
+    ```powershell
+    $DomainCred=get-credential 
+
+    $LocalCred=get-credential 
+
+    Invoke-clouddeployment -JSONFilePath c:\sample.json -- AzureStackLCMUser $DomainCred -LocalAdminCredential $LocalCred
+    ```
+
 
 ## Reference: Configuration file settings
 
