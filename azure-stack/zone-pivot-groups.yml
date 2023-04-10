@@ -42,7 +42,7 @@ groups:
     title: 5c and later
 - id: telemetry-diagnostics-data-collection
   title: Telemetry and diagnostics
-  prompt: Choose a data connection model
+  prompt: Choose a data collection model
   pivots:
   - id: old-collection
     title: Old Data Collection
