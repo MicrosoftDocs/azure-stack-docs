@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI data collection
+title: Azure Stack HCI telemetry and diagnostics.
 description: This topic describes the design and policies relevant to diagnostic data collected by Azure Stack HCI.
 author: jasongerend
 ms.author: jgerend
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 10/20/2021
 ---
 
-# Azure Stack HCI data collection
+# Azure Stack HCI telemetry and diagnostics
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
