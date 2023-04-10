@@ -65,7 +65,7 @@ It's highly recommended to enable **enhanced** diagnostics. The enhanced functio
 
 The new telemetry agent respects the same control as before. If you have already chosen these settings before installing the extension, they still apply, and you don't need to set them again. In other words, the telemetry extension doesn't override your existing control over telemetry data sent to Microsoft.
 
-Microsoft collects data in accordance with its standard privacy practices. If you decide to revoke your consent for data collection, it won't affect any data collected with your consent before revocation. Microsoft continues to handle and use the data collected, in accordance with the terms that were in place at the time of the data collection.
+Microsoft collects data in accordance with its standard privacy practices. If you decide to revoke your consent for data collection any data collected, with your consent, before revocation isn't affected. Microsoft continues to handle and use the data collected, in accordance with the terms that were in place at the time of the data collection.
 
 Here are a couple of things you might want to consider with data collection:
 
@@ -75,9 +75,9 @@ Here are a couple of things you might want to consider with data collection:
 
 ## Telemetry and diagnostics workflow
 
-A registered Azure Stack HCI device will have an ARC (Azure Arc Connected), machine agent installed on them. This  extension runs in Local System context, which allows it to have permissions to install the Geneva Monitoring Agent (GMA) on all the cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
+A registered Azure Stack HCI device has an ARC (Azure Arc Connected), machine agent installed on it. This  extension runs in Local System context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all the cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
 
-After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Meaning the extension will only require the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
+After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Meaning the extension only requires the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
 
 > [!NOTE]
 > This extension installs the Geneva Monitoring agent on all the cluster nodes.
@@ -104,7 +104,7 @@ After you've configured the extension, it can continue to function even if the A
 
 4. A scheduled task during installation runs every hour to fetch the telemetry status from the `Get-AzureStackHCI` cmdlet.
 
-    - The purpose of this task is to ensure that the telemetry configuration is up-to-date and accurate based on the current telemetry status. Based on this telemetry status, the extension will either add or remove telemetry configuration from the JSON drop location.
+    - The purpose of this task is to ensure that the telemetry configuration is up-to-date and accurate based on the current telemetry status. Based on this telemetry status, the extension either adds or removes telemetry configuration from the JSON drop location.
 
     - This task is useful in situations where you might change your mind about whether to enable or disable telemetry. For example, if you initially consent to telemetry but later decide to disable it, the scheduled task detects your change. It then updates the telemetry configuration to ensure respect for your telemetry preferences and makes sure the extension only collects telemetry data when explicitly authorized to do so.
 
@@ -131,9 +131,9 @@ Here are some examples from that list:
 
 | Error Code | Error Message | Description | Mitigation Steps |
 |------------|---------------|-------------|------------------|
-| 7 | There's already at least one GMA process running on the stamp. To proceed with the extension installation, shutdown the relevant processes. | During the extension installation, you can't run  other GMA processes on the stamp. The extension will raise an error message. | Remove the other GMA process and then continue. `Get-Process MonitoringAgent`. |
-| 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message indicating this issue. | Free up the disk space to allow the extension to continue.|
-| 12 | If either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information, the extension can't create the tenant JSON configuration files. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to retrieve the information needed to create the tenant JSONs, specifically for identity parameters. If these cmdlets aren't present, the extension raises an error message indicating that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
+| 7 | There's at least one GMA process running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run  other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. `Get-Process MonitoringAgent`. |
+| 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
+| 12 | If either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information, the extension can't create the tenant JSON configuration files. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to retrieve the information needed to create the tenant JSONs, specifically for identity parameters. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
 | 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the Extension logs file. | Look at the generic error message and contact Microsoft Support. |
 
 ## Data Collected
