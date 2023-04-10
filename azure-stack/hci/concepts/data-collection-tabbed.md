@@ -7,6 +7,7 @@ ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 04/10/2023
+zone_pivot_groups: azure-stack-hci-telemetry
 ---
 
 # Azure Stack HCI telemetry and diagnostics (preview)
@@ -19,7 +20,7 @@ This topic describes required data collected to keep Azure Stack HCI secure, up 
 
 ::: zone-end
 
-::: zone pivot="telemetryanddiagnostics extension"
+::: zone pivot="telemetryanddiagnostics-extension"
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
@@ -128,7 +129,7 @@ TimeCreated            EventName                                                
 
 ::: zone-end
 
-::: zone pivot="telemetryanddiagnostics extension"
+::: zone pivot="telemetryanddiagnostics-extension"
 
 ## About telemetry and diagnostics
 
