@@ -136,7 +136,7 @@ Here are some examples from that list:
 
 ## Data Collected
 
-Here's a list of details collected and shared back to Microsoft with the basic option enabled. This list is subjected to change, check back for updates.
+Here's a list of details collected and shared back to Microsoft with the basic option enabled. This list is subject to change, check back for updates.
 
 - Information about servers such as operating system version, processor model, number of processor cores, memory size, cluster identifier, and hash of hardware ID.
 - List of installed Azure Stack HCI server features (for example, BitLocker).
