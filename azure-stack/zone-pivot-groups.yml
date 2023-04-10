@@ -45,9 +45,9 @@ groups:
   prompt: Choose a data connection model
   pivots:
   - id: old-collection
-    title: Old
+    title: Old data collection
   - id: extension-collection
-    title: TelemetryAndDiagnostics
+    title: TelemetryAndDiagnostics extension
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
