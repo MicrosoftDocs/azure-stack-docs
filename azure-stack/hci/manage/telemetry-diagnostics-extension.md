@@ -38,7 +38,7 @@ Here are some of the advantages of the extension:
   - Changes allow Microsoft to seamlessly update the environment with new or improved functionality, when applicable.
 
 - **Improved Compliance:** Allows the telemetry and diagnostic data to be compliant with data uploads as per regional service and data residency requirements.
-
+  
   - Cloud assets are allocated to support regional boundaries and the resources become redundant within the regions.
 
 - **Simplified log gathering:** It's easier to collect diagnostics logs when the functionality to collect the logs is readily available on the stamp.
