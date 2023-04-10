@@ -165,7 +165,7 @@ Here are some of the advantages of the extension:
 
 When you have installed and run the telemetry extension, you can still retain control over whether you send telemetry data to Microsoft. To access the control, go to your cluster **Settings** in Azure portal and select **Extensions**.
 
-:::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension.png":::
+:::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-2.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-2.png":::
 
 You can configure the extension to be:
 
