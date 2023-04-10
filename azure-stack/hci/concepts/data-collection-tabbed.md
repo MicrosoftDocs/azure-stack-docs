@@ -1,31 +1,31 @@
 ---
 title: Azure Stack HCI telemetry and diagnostics.
-description: This topic describes the design and policies relevant to diagnostic data collected by Azure Stack HCI.
-author: jasongerend
-ms.author: jgerend
+description: This topic describes the design and policies associated with diagnostic data collected by Azure Stack HCI.
+author: ronmiab
+ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/20/2021
+ms.date: 04/10/2023
 ---
 
-# Azure Stack HCI telemetry and diagnostics
+# Azure Stack HCI telemetry and diagnostics (preview)
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-::: zone pivot="Old"
+::: zone pivot="old"
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
 ::: zone-end
 
-::: zone pivot="TelemetryAndDiagnostics extension"
+::: zone pivot="telemetryanddiagnostics extension"
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
 ::: zone-end
 
-::: zone pivot="Old"
+::: zone pivot="old"
 
 Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
@@ -128,7 +128,7 @@ TimeCreated            EventName                                                
 
 ::: zone-end
 
-::: zone pivot="TelemetryAndDiagnostics extension"
+::: zone pivot="telemetryanddiagnostics extension"
 
 ## About telemetry and diagnostics
 
@@ -164,7 +164,7 @@ Here are some of the advantages of the extension:
 
 When you have installed and run the telemetry extension, you can still retain control over whether you send telemetry data to Microsoft. To access the control, go to your cluster **Settings** in Azure portal and select **Extensions**.
 
-:::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension.png" alt-text="Screenshot of the cluster Virtual machine load balancing screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension.png":::
+:::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension.png":::
 
 You can configure the extension to be:
 
