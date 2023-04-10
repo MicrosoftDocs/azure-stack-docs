@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 04/10/2023
-zone_pivot_groups: azure-stack-hci-telemetry
+zone_pivot_groups: telemetry-diagnostics-data-collection
 ---
 
 # Azure Stack HCI telemetry and diagnostics (preview)
