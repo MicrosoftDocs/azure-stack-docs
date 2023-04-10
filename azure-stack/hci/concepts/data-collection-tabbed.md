@@ -12,15 +12,17 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 # Azure Stack HCI telemetry and diagnostics (preview)
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
-
 ::: zone pivot="old-collection"
+
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
 ::: zone-end
 
 ::: zone pivot="extension-collection"
+
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2.
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
