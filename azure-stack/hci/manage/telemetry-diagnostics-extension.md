@@ -23,7 +23,7 @@ The extension is a mandatory part for both new (green field) and existing (brown
 
 ## Benefits of the telemetry and diagnostics extension
 
-Azure Stack HCI has always reported telemetry data to Microsoft. Previously, the piece responsible for sending telemetry was part of the operating system. Today, Azure Arc installs and manages the piece and it's no longer part of the operating system.
+Azure Stack HCI has always reported telemetry data to Microsoft. Previously, the component responsible for sending telemetry was part of the operating system. Now, Azure Arc installs and manages sending telemetry; it's no longer part of the operating system.
 
 Here are some of the advantages of the extension:
 
@@ -37,13 +37,13 @@ Here are some of the advantages of the extension:
   
   - Changes allow Microsoft to seamlessly update the environment with new or improved functionality, when applicable.
 
-- **Improved Compliance:** Allows the telemetry and diagnostic data to be compliant with data uploads as per regional service and data residency requirements.
+- **Improved compliance:** Allows the telemetry and diagnostic data to be compliant with data uploads as per regional service and data residency requirements.
   
   - Cloud assets are allocated to support regional boundaries and the resources become redundant within the regions.
 
 - **Simplified log gathering:** It's easier to collect diagnostics logs when the functionality to collect the logs is readily available on the stamp.
 
-  - With the Proactive log collection functionality enabled, Microsoft can help look for certain errors, or exception patterns and collect logs proactively thereby saving support time.
+  - With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns, and collect logs proactively, thereby saving support time.
 
 ## Telemetry and diagnostics extension management
 
@@ -61,7 +61,7 @@ You can configure the extension to be:
 
 Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
-It's highly recommended to enable **enhanced** diagnostics. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects the correct diagnostic information, at the right time, without the need for any operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
+It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects the correct diagnostic information, at the right time, without the need for any operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
 
 The new telemetry agent respects the same control as before. If you have already chosen these settings before you installed the extension, they still apply, and you don't need to set them again. In other words, the telemetry extension doesn't override your existing control over telemetry data sent to Microsoft.
 
@@ -75,7 +75,7 @@ Here are a couple of things you might want to consider with data collection:
 
 ## Telemetry and diagnostics workflow
 
-A registered Azure Stack HCI device has an ARC (Azure Arc Connected), machine agent installed on it. This  extension runs in Local System context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all the cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
+A registered Azure Stack HCI device has an ARC (Azure Arc Connected) machine agent installed on it. This extension runs in the local system context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
 
 After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Meaning the extension only requires the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
 
@@ -88,7 +88,7 @@ After you've configured the extension, it can continue to function even if the A
 
     - The purpose of the Watchdog Service is to monitor the GMA process and ensure that it runs as expected.
 
-    - The Watchdog Service periodically checks the status of the GMA process and takes appropriate action if it detects any issues or errors. For example, if the GMA process stops running or becomes unresponsive the Watchdog Service attempts to restart the process automatically or triggers a notification alert.
+    - The Watchdog Service periodically checks the status of the GMA process and takes appropriate action if it detects any issues or errors. For example, if the GMA process stops running or becomes unresponsive, the Watchdog Service attempts to restart the process automatically or triggers a notification alert.
 
     - The Watchdog Service helps improve the reliability and availability of the extension and supports the smooth operation of stamp clusters in the Azure Stack HCI environment.
 
@@ -96,7 +96,7 @@ After you've configured the extension, it can continue to function even if the A
 
     - The JSON file contains information about the identity parameters of the stamp cluster, such as the Azure Resource Manager (ARM) resource URI and Stamp ID, to help identify which stamp the data belongs to.
 
-    - To obtain these identity parameters, the installation process makes use of the `Get-AzureStackHCI` cmdlet. Use this cmdlet to retrieve information about the Azure Stack HCI environment, including details about the stamp cluster.
+    - To obtain these identity parameters, the installation process uses the `Get-AzureStackHCI` cmdlet. This cmdlet retrieves information about the Azure Stack HCI environment, including details about the stamp cluster.
 
 3. The GMA process starts.
 
@@ -108,7 +108,7 @@ After you've configured the extension, it can continue to function even if the A
 
 5. Scheduled tasks download updated events from the Geneva configuration at regular intervals.
 
-6. The collection of telemetry events starts. Collected events get sent to the Geneva Accounts or Namespace.
+6. The collection of telemetry events starts. Collected events get sent to the Geneva accounts or namespace.
 
 ## Extension artifacts
 
