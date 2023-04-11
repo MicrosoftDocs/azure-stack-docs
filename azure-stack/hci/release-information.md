@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/20/2022
+ms.date: 04/11/2023
 ---
 
 # Azure Stack HCI release information
@@ -37,6 +37,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/5048ddfb-7bf3-4e6c-b29a-7b44b789d282)  |
 | 20349.1607   | 2023-03-14            | [KB 5023705](https://support.microsoft.com/topic/4f164afb-4249-4774-abf4-3d4581189588)  |
 | 20349.1547   | 2023-02-14            | [KB 5022842](https://support.microsoft.com/topic/d5293fe7-3d6e-42d4-aa77-b2993562863a)  |
 | 20349.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/08650290-831c-4b1b-b241-b2a0112b5246)  |
@@ -55,6 +56,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
 | 20348.1607   | 2023-03-14             | [KB 5023705](https://support.microsoft.com/topic/e039eca6-13cf-46c0-b2b4-ee9a27bf6b2d)  |
 | 20348.1547   | 2023-02-14             | [KB 5022842](https://support.microsoft.com/topic/c5f53080-d4aa-4c0e-ade8-62cb35acbd98)  |
 | 20348.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/02c080d2-0dee-44a0-8796-37cef529f6d6)  |
