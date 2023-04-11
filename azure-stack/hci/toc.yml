@@ -6,20 +6,20 @@
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
-  - name: Release information
-    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Save with Azure Hybrid Benefit
+  - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md
-  - name: Evaluate Azure Stack HCI
+  - name: Evaluation guide
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
+  - name: Release information
+    href: release-information.md
 - name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
