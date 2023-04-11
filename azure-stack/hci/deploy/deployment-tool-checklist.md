@@ -3,7 +3,7 @@ title: Deployment checklist for Azure Stack HCI (preview)
 description: Complete the deployment checklist prior to deploying Azure Stack HCI (preview).
 author: dansisson
 ms.topic: article
-ms.date: 04/03/2023
+ms.date: 04/04/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -31,6 +31,10 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.<br> We recommend using the default VLANS from Network ATC for storage subnets. If you plan to have two storage subnets, Network ATC will use VLANS from 712 and 711 subnets. <br> For more information, see the **Provide storage network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
 |DNS Server|A DNS Server that is used in your environment. The DNS server used must resolve the Active Directory Domain. <br> For more information, see the **Provide management network details** page in [Deploy interactively using a config file](./deployment-tool-new-file.md).|
 |Azure subscription ID|ID for the Azure subscription used to register the cluster. Make sure that you are a user access administrator on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
+|Azure Storage account|For two-node clusters, a witness is required. For a cloud witness, an [Azure Storage account](/azure/storage/common/storage-account-create) is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|Access key for Azure Storage account|To setup a cloud witness, the [Access key](/azure/storage/common/storage-account-get-info#get-a-connection-string-for-the-storage-account) for the Azure Storage account is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|Azure blob service domain|The domain name for the Azure blob service is needed if you choose to use a custom domain when setting up a cloud witness. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|File share path|For two-node clusters, a witness is required. For a file share witness, the file share path for the witness is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
 |Outbound connectivity| Run the [Environment checker](../manage/use-environment-checker.md) to ensure that your environment meets the outbound network connectivity requirements for firewall rules.|
 
 ## Next steps
