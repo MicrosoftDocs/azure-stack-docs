@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS hybrid
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 04/11/2023
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/25/2023
+ms.lastreviewed: 04/11/2023
 ms.reviewer: jeguan
 
 ---
@@ -28,6 +28,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-createAutoConfigContainers {true, false}]
                  [-offlineDownload]
                  [-offsiteTransferCompleted]
+                 [-mode {minimum, full}]
                  [-stagingShare <String>]
                  [-nodeConfigLocation <String>]
                  [-controlPlaneVmSize <VmSize>]
@@ -183,6 +184,22 @@ Accept wildcard characters: False
 ### -offsiteTransferCompleted
 
 Sets deployment to use artifacts downloaded offsite and transfered to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
+
+### -mode
+
+The download mode you want to use for offline download. Use `minimum` if you want the minimum images for AKS hybrid deployment. This includes the required Linux images and only the required Kubernetes image. Use `full` if you want all images for AKS hybrid deployment. This includes all Linux and Windows images and all supported Kubernetes images. Use this parameter in tandem with the `-offlineDownload` parameter. The default is `full`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: full
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -stagingShare
 

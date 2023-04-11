@@ -2,10 +2,10 @@
 title: Use offline download in AKS on Azure Stack HCI
 description: Learn how to use offline download in AKS on Azure Stack HCI
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 04/11/2023
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/10/2022
+ms.lastreviewed: 04/11/2023
 ms.reviewer: jeguan
 
 ---
@@ -33,26 +33,18 @@ Run the following command to check every physical node to see if all the require
 Initialize-AksHciNode
 ```
 
-### Step 2: Configure the deployment to use offline download
+### Step 2: Configure the deployment to use offline download and download the images
 
 In the configuration step, use [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to enable offline downloading with the `-offlineDownload` parameter. Then, specify the local path with the `-stagingShare` parameter. This is where the images will be downloaded.
 
 ```powershell
-Set-AksHciConfig -offlineDownload $true -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -offlineDownload $true -mode full -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 > [!NOTE]
-> This command is an example. You must replace the parameter arguments with those that fit your deployment. You must also set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network).
+> This command is an example. You must replace the parameter arguments with those that fit your deployment. You must also set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network). This example downloads in full mode. For more download modes, see the descriptions for the `-mode` parameter in [Set-AksHciConfig](set-akshciconfig.md).
 
-### Step 3: Download the images
-
-Run the following command to get the latest AKS on HCI images required for deployment. The images will be downloaded to the local path that you specified in the previous step.
-
-```powershell
-Get-AksHciRelease
-```
-
-### Step 4: Ensure that offline download is enabled and the local path is correct
+### Step 3: Ensure that offline download is enabled and the local path is correct
 
 You can make sure that offline download is enabled and that the local path is correct by running the following command:
 
@@ -60,9 +52,9 @@ You can make sure that offline download is enabled and that the local path is co
 Get-AksHciConfig | ConvertTo-Json
 ```
 
-The output will show that `offlineDownload` is set to `true`, and the `stagingShare` value is the local path.
+The output shows that `offlineDownload` is set to `true`, and the `stagingShare` value is the local path.
 
-### Step 5: Log into Azure and configure the registration settings
+### Step 4: Log into Azure and configure the registration settings
 
 Run the following command with your Azure subscription information:
 
@@ -70,7 +62,7 @@ Run the following command with your Azure subscription information:
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
 ```
 
-### Step 6: Start the new deployment
+### Step 5: Start the new deployment
 
 Run the following command to start the deployment:
 
@@ -88,7 +80,7 @@ Check if there is an available update by running the following command:
 Get-AksHciUpdates
 ```
 
-### Step 2: Turn on offline downloading
+### Step 2: Turn on offline download
 
 If you do not already have offline downloading turned on, run the following command with the local path to which you want the images to be downloaded. You can check if offline downloading is set to `true` with the correct local path by running `Get-AksHciConfig | ConvertToJson` and checking the values. If it is set to `true` and the local path is correct, skip to step 3.
 
@@ -98,10 +90,10 @@ Enable-AksHciOfflineDownload -stagingShare <your path>
 
 ### Step 3: Download the upgrade images
 
-Run the following command to download the images:
+Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
 
 ```powershell
-Get-AksHciRelease
+Get-AksHciRelease -mode full -windows
 ```
 
 ### Step 4: Start the AKS on HCI host update
@@ -126,10 +118,10 @@ Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
 
 ### Step 2: Download the images
 
-Run the following command to download the images:
+Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
 
 ```powershell
-Get-AksHciRelease
+Get-AksHciRelease -mode full 
 ```
 
 ### Step 3: Transfer the images onsite to where you will deploy
@@ -187,10 +179,10 @@ Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
 
 ### Step 2: Download the images
 
-Run the following command with the upgrade version that you need to download the images:
+Run the following command with the upgrade version that you need to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
 
 ```powershell
-Get-AksHciRelease 
+Get-AksHciRelease -mode full 
 ```
 
 ### Step 3: Transfer the images onsite to where you will deploy
