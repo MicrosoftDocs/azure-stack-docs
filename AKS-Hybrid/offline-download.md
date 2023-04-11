@@ -11,7 +11,7 @@ ms.reviewer: jeguan
 ---
 # Use offline download in AKS on Azure Stack HCI and Windows Server
 
-If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you will deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
+If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
 
 In both onsite and offsite scenarios, the latest change ensures that all the zip/cab files of different versions are extracted during the install/update process. This process takes less space then before, which required files to be extracted prior to install/upgrade and stored on the cluster storage.
 
@@ -35,7 +35,7 @@ Initialize-AksHciNode
 
 ### Step 2: Configure the deployment to use offline download and download the images
 
-In the configuration step, use [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to enable offline downloading with the `-offlineDownload` parameter. Then, specify the local path with the `-stagingShare` parameter. This is where the images will be downloaded.
+In the configuration step, use [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to enable offline downloading with the `-offlineDownload` parameter. Then, specify the local path with the `-stagingShare` parameter. This is where the images are downloaded.
 
 ```powershell
 Set-AksHciConfig -offlineDownload $true -mode full -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
@@ -106,7 +106,7 @@ Update-AksHci
 
 ## Use offline download to install offsite
 
-With the offsite functionality, you will download the images to a different location of your choice. This could be a location where you have a more reliable and secure connection.
+With the offsite functionality, you download the images to a different location of your choice. This could be a location where you have a more reliable and secure connection.
 
 ### Step 1: Set the offsite configurations
 
@@ -126,18 +126,18 @@ Get-AksHciRelease -mode full
 
 ### Step 3: Transfer the images onsite to where you will deploy
 
-In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on HCI will be deployed.
+In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on HCI are deployed.
 
 ### Step 4: Configure the deployment onsite
 
-Set your configuration, make sure to use the `-offlineDownload` flag, and set your path to where AKS on HCI will look for the images during install:
+Set your configuration, make sure to use the `-offlineDownload` flag, and set your path to where AKS on HCI looks for the images during install:
 
 ```powershell
 Set-AksHciConfig -offlineDownload $true -offsiteTransferCompleted $true -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 > [!NOTE]
-> This command is an example. Replace the parameter arguments to ones that fit your deployment. You will also need to set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network).
+> This command is an example. Replace the parameter arguments to ones that fit your deployment. You must also set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network).
 
 ### Step 5: Ensure that offline download is on and the local path is correct
 
@@ -147,7 +147,7 @@ You can make sure that offline download is enabled, and that the local path is c
 Get-AksHciConfig | ConvertTo-Json
 ```
 
-The output will show that `offlineDownload` is set to `true`, and the `stagingShare` value is the local path.
+The output shows that `offlineDownload` is set to `true`, and the `stagingShare` value is the local path.
 
 ### Step 6: Log into Azure and configure the registration settings
 
@@ -187,7 +187,7 @@ Get-AksHciRelease -mode full
 
 ### Step 3: Transfer the images onsite to where you will deploy
 
-In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on HCI will be deployed.
+In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on HCI is deployed.
 
 ### Step 4: Enable offline download
 
