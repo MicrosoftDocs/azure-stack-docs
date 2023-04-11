@@ -80,7 +80,7 @@ This section looks at creating an API model for your cluster.
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
     | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
     | vmSize |  Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04` or `aks-ubuntu-18.04`. |
+    | distro | Enter `aks-ubuntu-18.04` or `aks-ubuntu-20.04`. |
 
 7.  In `agentPoolProfiles` update:
 
@@ -88,7 +88,7 @@ This section looks at creating an API model for your cluster.
     | --- | --- |
     | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://aka.ms/aksengine-json-example-raw).  |
     | vmSize | Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04`, `aks-ubuntu-18.04` or `Windows`.<br>Use `Windows` for agents that will run on Windows. For example, see [kubernetes-windows.json](https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json) |
+    | distro | Enter `aks-ubuntu-18.04`, `aks-ubuntu-20.04` or `Windows`.<br>Use `Windows` for agents that will run on Windows. For example, see [kubernetes-windows.json](https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json) |
 
 8.  In `linuxProfile` update:
 
@@ -184,8 +184,8 @@ Proceed to deploy a cluster:
 
 Check your cluster by connecting to `kubectl`, getting the info, and then getting the states of your nodes.
 
-1. Get the **kubeconfig**** file to connect to the control plane.
-    - If you already have `kubectl` installed, check the **kubeconfig** file for the newly create cluster in this directory path: **/kubeconfig/kubeconfig.json**. You can add the **/kubeconfig.json** file to the **.kube** directory to access your new cluster.  
+1. Get the `kubeconfig` file to connect to the control plane.
+    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly created cluster in this directory path `/kubeconfig/kubeconfig.json`. You can add the `/kubeconfig.json` to the `.kube` directory to access your new cluster.  
     If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the instructions below to access the cluster from one of the control plane nodes.
 2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
