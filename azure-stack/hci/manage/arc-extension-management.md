@@ -13,7 +13,7 @@ ms.date: 04/11/2023
 
 >[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
 
-## About Arc extension management on Azure portal
+## About Arc extensions on Azure portal
 
 This article describes how to manage Arc extensions on Azure Stack HCI server machines.
 
