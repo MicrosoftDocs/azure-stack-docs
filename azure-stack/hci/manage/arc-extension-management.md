@@ -13,6 +13,8 @@ ms.date: 04/11/2023
 
 >[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
 
+## About Arc extension management on Azure portal
+
 This article describes how to manage Arc extensions on Azure Stack HCI server machines.
 
 Azure Stack HCI enables you to install, uninstall, and update Arc extensions on your Azure Stack HCI systems. With this functionality you can run hybrid services like monitoring Windows Admin Center, in Azure portal.
@@ -65,7 +67,7 @@ If you continue to have trouble with an extension upgrade, you can [disable auto
 
 ### Upgrades with multiple extensions
 
-If multiple extension upgrades are available for a machine, the upgrades might be batched together, however each extension upgrade is applied individually on a machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions)
+If multiple extension upgrades are available for a machine, the upgrades might be batched together, however each extension upgrade is applied individually on a machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
 ## Manage an extension upgrade
 
@@ -105,7 +107,7 @@ To manually upgrade an extension, go to the **Extensions page** and select the m
 
 :::image type="content" source="media/arc-extension-management/arc-extension-placeholder.png" alt-text="Screenshot of the Capabilities tab and options in Azure portal." lightbox="media/arc-extension-management/arc-extension-placeholder.png":::
 
-## Uninstall an extension from Portal
+## Uninstall an extension from Azure portal
 
 To uninstall the extension from all the servers of the cluster, select the **extension** from extensions page. Then select **uninstall** from the menu and confirm the intent by selecting **Yes**.
 
