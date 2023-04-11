@@ -200,58 +200,56 @@
       href: manage/thin-provisioning-conversion.md
     - name: Adjustable storage repair speed
       href: manage/storage-repair-speed.md
-  - name: Manage clusters 
+  - name: Monitor clusters
     items:
-    - name: Management
-      items:
-      - name: Manage the cluster
-        href: manage/cluster.md
-      - name: Manage the cluster using Windows Admin Center in Azure
-        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Manage clusters with PowerShell
-        href: manage/cluster-powershell.md
-      - name: Manage Network ATC
-        href: manage/manage-network-atc.md
-      - name: Update the cluster
-        href: manage/update-cluster.md
-      - name: Manage quick restarts
-        href: manage/kernel-soft-reboot.md
-    - name: Monitoring
-      items:
-      - name: Set up alerts for Azure Stack HCI systems
-        href: manage/setup-hci-system-alerts.md
-      - name: Monitor a single cluster using the Azure portal (preview)
-        href: manage/monitor-hci-single.md      
-      - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-        href: manage/monitor-hci-multi.md
-      - name: Monitor clusters from Windows Admin Center
-        href: manage/monitor-cluster.md
-      - name: Monitor clusters with Health Service
-        href: manage/health-service-overview.md        
-      - name: Get cluster performance history
-        href: manage/health-service-cluster-performance-history.md
-      - name: View Health Service faults
-        href: manage/health-service-faults.md
-      - name: Track Health Service actions
-        href: manage/health-service-actions.md
-      - name: Modify Health Service settings
-        href: manage/health-service-settings.md
-      - name: Use DISKSPD to test workloads
-        href: manage/diskspd-overview.md
-    - name: Cluster servers
-      items:
-      - name: Add or remove servers
-        href: manage/add-cluster.md
-      - name: Convert to stretched cluster
-        href: manage/convert-to-stretched-cluster.md
-      - name: Take a server offline for maintenance
-        href: manage/maintain-servers.md
-      - name: Change languages
-        href: manage/languages.md
-      - name: Change privacy settings
-        href: manage/change-privacy-settings.md
-      - name: Use BitLocker with Cluster Shared Volumes
-        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Set up alerts for Azure Stack HCI systems
+      href: manage/setup-hci-system-alerts.md
+    - name: Monitor a single cluster using the Azure portal (preview)
+      href: manage/monitor-hci-single.md      
+    - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+      href: manage/monitor-hci-multi.md
+    - name: Monitor clusters from Windows Admin Center
+      href: manage/monitor-cluster.md
+    - name: Monitor clusters with Health Service
+      href: manage/health-service-overview.md        
+    - name: Get cluster performance history
+      href: manage/health-service-cluster-performance-history.md
+    - name: View Health Service faults
+      href: manage/health-service-faults.md
+    - name: Track Health Service actions
+      href: manage/health-service-actions.md
+    - name: Modify Health Service settings
+      href: manage/health-service-settings.md
+    - name: Use DISKSPD to test workloads
+      href: manage/diskspd-overview.md
+  - name: Manage clusters
+    items:
+    - name: Manage the cluster
+      href: manage/cluster.md
+    - name: Manage the cluster using Windows Admin Center in Azure
+      href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Manage clusters with PowerShell
+      href: manage/cluster-powershell.md
+    - name: Manage Network ATC
+      href: manage/manage-network-atc.md
+    - name: Update the cluster
+      href: manage/update-cluster.md
+    - name: Manage quick restarts
+      href: manage/kernel-soft-reboot.md
+  - name: Manage cluster servers
+    items:
+    - name: Add or remove servers
+      href: manage/add-cluster.md
+    - name: Convert to stretched cluster
+      href: manage/convert-to-stretched-cluster.md
+    - name: Take a server offline for maintenance
+      href: manage/maintain-servers.md
+    - name: Change languages
+      href: manage/languages.md
+    - name: Change privacy settings
+      href: manage/change-privacy-settings.md
+    - name: Use BitLocker with Cluster Shared Volumes
+      href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage SDN
     items:
     - name: Update SDN infrastructure
