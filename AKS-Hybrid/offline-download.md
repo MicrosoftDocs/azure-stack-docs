@@ -42,7 +42,7 @@ Set-AksHciConfig -offlineDownload $true -mode full -stagingShare c:\akshciimages
 ```
 
 > [!NOTE]
-> This command is an example. You must replace the parameter arguments with those that fit your deployment. You must also set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network). This example downloads in full mode. For more download modes, see the descriptions for the `-mode` parameter in [Set-AksHciConfig](set-akshciconfig.md).
+> This command is an example. You must replace the parameter arguments with those that fit your deployment. You must also set your `vnet` settings. See step 2 [in this quickstart](kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network). This example downloads in full mode. For more download modes, see the descriptions for the `-mode` parameter in [Set-AksHciConfig](reference/ps/set-akshciconfig.md).
 
 ### Step 3: Ensure that offline download is enabled and the local path is correct
 
@@ -90,7 +90,7 @@ Enable-AksHciOfflineDownload -stagingShare <your path>
 
 ### Step 3: Download the upgrade images
 
-Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
+Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](reference/ps/get-akshcirelease.md).
 
 ```powershell
 Get-AksHciRelease -mode full -windows
@@ -118,7 +118,7 @@ Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
 
 ### Step 2: Download the images
 
-Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
+Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](reference/ps/get-akshcirelease.md).
 
 ```powershell
 Get-AksHciRelease -mode full 
@@ -179,7 +179,7 @@ Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
 
 ### Step 2: Download the images
 
-Run the following command with the upgrade version that you need to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](get-akshcirelease.md).
+Run the following command with the upgrade version that you need to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](reference/ps/get-akshcirelease.md).
 
 ```powershell
 Get-AksHciRelease -mode full 
