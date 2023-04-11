@@ -6,20 +6,20 @@
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
-  - name: Release information
-    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
   - name: Hybrid capabilities with Azure services
     href: hybrid-capabilities-with-azure-services.md
-  - name: Save with Azure Hybrid Benefit
+  - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md
-  - name: Evaluate Azure Stack HCI
+  - name: Evaluation guide
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
+  - name: Release information
+    href: release-information.md
 - name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
@@ -32,36 +32,48 @@
     href: deploy/tutorial-private-forest.md
 - name: Plan
   items:
-  - name: Network reference patterns overview
-    href: plan/network-patterns-overview.md
-  - name: Choose network reference pattern
-    href: plan/choose-network-pattern.md
-  - name: Single-server deployment
+  - name: Requirements
     items:
+    - name: System requirements
+      href: concepts/system-requirements.md
+    - name: Physical network requirements
+      href: concepts/physical-network-requirements.md
+    - name: Host network requirements
+      href: concepts/host-network-requirements.md
+    - name: Firewall requirements
+      href: concepts/firewall-requirements.md
+  - name: Network reference patterns
+    items:
+    - name: Network reference patterns overview
+      href: plan/network-patterns-overview.md
+    - name: Choose network reference pattern
+      href: plan/choose-network-pattern.md
     - name: Single-server deployment
-      href: plan/single-server-deployment.md
-    - name: Pattern components
-      href: plan/single-server-components.md
-    - name: Pattern IP requirements
-      href: plan/single-server-ip-requirements.md
-  - name: Two-node deployments
-    items:
-    - name: Storage switchless, single switch
-      href: plan/two-node-switchless-single-switch.md
-    - name: Storage switchless, two switches
-      href: plan/two-node-switchless-two-switches.md
-    - name: Storage switched, non-converged
-      href: plan/two-node-switched-non-converged.md
-    - name: Storage switched, fully converged
-      href: plan/two-node-switched-converged.md
-    - name: Pattern components
-      href: plan/two-node-components.md
-    - name: Pattern IP requirements
-      href: plan/two-node-ip-requirements.md
-    - name: Decision matrix
-      href: plan/two-node-decision-matrix.md
-  - name: SDN considerations
-    href: plan/network-patterns-sdn-considerations.md
+      items:
+      - name: Single-server deployment
+        href: plan/single-server-deployment.md
+      - name: Pattern components
+        href: plan/single-server-components.md
+      - name: Pattern IP requirements
+        href: plan/single-server-ip-requirements.md
+    - name: Two-node deployments
+      items:
+      - name: Storage switchless, single switch
+        href: plan/two-node-switchless-single-switch.md
+      - name: Storage switchless, two switches
+        href: plan/two-node-switchless-two-switches.md
+      - name: Storage switched, non-converged
+        href: plan/two-node-switched-non-converged.md
+      - name: Storage switched, fully converged
+        href: plan/two-node-switched-converged.md
+      - name: Pattern components
+        href: plan/two-node-components.md
+      - name: Pattern IP requirements
+        href: plan/two-node-ip-requirements.md
+      - name: Decision matrix
+        href: plan/two-node-decision-matrix.md
+    - name: SDN considerations
+      href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
@@ -150,10 +162,10 @@
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using Windows Admin Center (recommended)
-        href: manage/deploy-arc-resource-bridge-using-wac.md
-      - name: Set up using command line
+      - name: Set up using command line (recommended)
         href: manage/deploy-arc-resource-bridge-using-command-line.md
+      - name: Set up using Windows Admin Center
+        href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc VM resources
       items:
       - name: Create VM images
@@ -316,8 +328,6 @@
     items:
     - name: Single-node clusters
       href: concepts/single-server-clusters.md
-    - name: System requirements
-      href: concepts/system-requirements.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
@@ -346,16 +356,10 @@
       href: concepts/nested-virtualization.md
   - name: Host networking
     items:
-    - name: Physical network requirements
-      href: concepts/physical-network-requirements.md
-    - name: Host network requirements
-      href: concepts/host-network-requirements.md
     - name: Network ATC overview
       href: concepts/network-atc-overview.md
     - name: Network HUD overview
       href: concepts/network-hud-overview.md
-    - name: Firewall requirements
-      href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
     items:
     - name: SDN overview

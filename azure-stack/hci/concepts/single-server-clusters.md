@@ -56,7 +56,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 
 ## Known issues
 
-The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified: check back for updates.
+The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified, check back for updates.
 
 |Issue | Notes|
 |-----------|---------------|
