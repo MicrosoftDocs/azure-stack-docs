@@ -52,8 +52,8 @@
       items:
       - name: Single-server deployment
         href: plan/single-server-deployment.md
-    - name: Pattern components
-      href: plan/single-server-components.md
+      - name: Pattern components
+        href: plan/single-server-components.md
       - name: Pattern IP requirements
         href: plan/single-server-ip-requirements.md
     - name: Two-node deployments
