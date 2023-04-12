@@ -21,9 +21,9 @@ Azure Stack HCI enables you to install, uninstall, and update Arc extensions on 
 
 Here's a list of extensions that can be installed and managed in Azure portal:
 
-- [Microsoft Monitoring Agent](/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal)
-- [Windows Admin Center](/windows-admin-center/configure/using-extensions#installing-an-extension)
-- [Telemetry And Diagnostic](../concepts/data-collection-tabbed.md#about-telemetry-and-diagnostics)
+- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal)
+- [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-arc-hybrid-machines#install-windows-admin-center-in-the-azure-portal)
+- [TelemetryAndDiagnostic](../concepts/data-collection-tabbed.md#about-telemetry-and-diagnostics)
 
 ## Install an extension via Azure portal
 
@@ -63,7 +63,7 @@ If you need to upgrade an extension immediately, see [Manual extension upgrade v
 
 If an extension upgrade fails, Azure attempts to repair the extension by performing the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries).
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](../manage/arc-extension-management.md#disable-automatic-upgrade-via-azure-portal). When you disable the automatic upgrade, it prevents the system from retries while you troubleshoot the issue. You can [enable automatic extension upgrade](../manage/arc-extension-management.md#enable-automatic-upgrade-via-azure-portal) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](../manage/arc-extension-management.md#disable-automatic-upgrade-via-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](../manage/arc-extension-management.md#enable-automatic-upgrade-via-azure-portal) again when you're ready.
 
 ### Upgrades with multiple extensions
 
