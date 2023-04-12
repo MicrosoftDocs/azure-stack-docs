@@ -1,5 +1,5 @@
 ---
-title: Deploy Windows Server Azure Edition VMs
+title: Deploy Windows Server Azure Edition VMs (preview)
 description: Learn how to deploy Windows Server Azure Edition VMs starting with an image in Azure Stack HCI Marketplace or Azure Marketplace.
 ms.topic: conceptual
 author: dansisson
@@ -9,10 +9,10 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/07/2023
+ms.date: 04/18/2023
 ---
 
-# Deploy Windows Server Azure Edition VMs
+# Deploy Windows Server Azure Edition VMs (preview)
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
