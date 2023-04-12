@@ -27,7 +27,7 @@ Here's a list of extensions that can be installed and managed in Azure portal:
 
 ## Install an extension via Azure portal
 
-Most extensions can be installed via the **Capabilities tab**. Once configured you can install extensions for Logs, Windows Admin Center, and more.
+Once the HCI servers are Arc enabled you can install extensions from **Capabilities tab**. Most extensions can be installed from this tab.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-placeholder.png" alt-text="Screenshot of the Capabilities tab and options in Azure portal." lightbox="media/arc-extension-management/arc-extension-placeholder.png":::
 
