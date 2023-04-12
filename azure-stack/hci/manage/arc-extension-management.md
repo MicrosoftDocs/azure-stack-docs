@@ -47,7 +47,7 @@ Extensions that don't support the automatic extension upgrade are still configur
 
 ### Availability-first updates
 
-For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [automatic extension upgrade](../manage/arc-extension-management.md/#automatic-extension-upgrade) model. However, there are other points applicable to Arc-enabled HCI clusters:
+For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](../manage/arc-extension-management.md#automatic-extension-upgrade) model. However, there are other points applicable to Arc-enabled HCI clusters:
 
 - 20% of Arc-enabled HCI clusters from a subscription are picked up in a single batch for automatic upgrades.
 
@@ -57,7 +57,7 @@ For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platfor
 
 When a new version of a VM extension is published, it becomes available for installation and manual upgrade on Arc-enabled servers. Upgrades are issued in batches across Azure regions and subscriptions, so you might see the extension get upgraded on some servers before others. For more information, see [Timing of automatic extension upgrades](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#timing-of-automatic-extension-upgrades).
 
-If you need to upgrade an extension immediately, see [Manual extension upgrade via Azure portal](/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions).
+If you need to upgrade an extension immediately, see [Manual extension upgrade via Azure portal](../manage/arc-extension-management.md#manual-extension-upgrade-via-azure-portal).
 
 ### Automatic rollback and retries
 
@@ -89,7 +89,7 @@ To enable automatic upgrades, go to the **Extensions page** and select, the exte
 
 :::image type="content" source="media/arc-extension-management/arc-extension-placeholder.png" alt-text="Screenshot of the Capabilities tab and options in Azure portal." lightbox="media/arc-extension-management/arc-extension-placeholder.png":::
 
-To check the automatic extension upgrade history for individual cluster nodes, you can view the **Activity Log** tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions. For more information, see [Check automatic extension upgrade history](/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
+To check the automatic extension upgrade history for individual cluster nodes, you can view the **Activity Log** tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
 
 ### Manual extension upgrade via Azure portal
 
