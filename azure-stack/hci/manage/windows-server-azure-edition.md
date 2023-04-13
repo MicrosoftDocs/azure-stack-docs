@@ -1,5 +1,5 @@
 ---
-title: Deploy Windows Server Azure Edition VMs (preview)
+title: Deploy Windows Server Azure Edition VMs
 description: Learn how to deploy Windows Server Azure Edition VMs starting with an image in Azure Stack HCI Marketplace or Azure Marketplace.
 ms.topic: conceptual
 author: dansisson
@@ -12,7 +12,7 @@ ms.custom:
 ms.date: 04/18/2023
 ---
 
-# Deploy Windows Server Azure Edition VMs (preview)
+# Deploy Windows Server Azure Edition VMs
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -40,7 +40,7 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 - **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
 >[!NOTE]
->While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), this experience is in preview for this Azure Stack HCI release.
+> While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), using Hotpatch with Azure Edition guest VMs on Azure Stack HCI is in preview for this Azure Stack HCI release.
 
 ## Deploy the OS
 
@@ -154,7 +154,7 @@ Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_pat
 
 There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI in this preview release as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
 
-These differences include the following limitations for this preview release:
+These differences include the following limitations for using Hotpatch with Azure Edition guest VMs for this Azure Stack HCI release:
 
 - Hotpatch configuration isn't available using Azure Update Manager.
 - Hotpatch can't be disabled.
