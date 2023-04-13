@@ -84,7 +84,7 @@ With Azure Stack HCI, version 21H2, the clusters are automatically Arc-enabled o
 You need to manually enable Azure Arc integration in the following scenarios:
 
 - You updated your cluster servers from Azure Stack HCI, version 20H2 (which were previously not Arc-enabled manually) to version 21H2.
-- If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
+- If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](../deploy/troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
 - You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
 
 Follow these steps to enable Azure Arc integration:
@@ -104,7 +104,7 @@ Follow these steps to enable Azure Arc integration:
    > [!IMPORTANT]
    > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you must specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
 
-For failures while enabling Arc, [see the guidance here for troubleshooting](troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
+For failures while enabling Arc, [see the guidance here for troubleshooting](../deploy/troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
 
 ## Upgrade Arc agent on cluster servers
 
@@ -281,7 +281,7 @@ Before registration, make sure the [prerequisites](../deploy/register-with-azure
    To use SPN to connect, you can use:
    - Device Code-based authentication. Use `-DeviceCode` in the cmdlet.
    - Certificated based authentication. [See this article](/azure/active-directory/authentication/how-to-certificate-based-authentication) to configure the SPN for certificate-based authentication. Then use appropriate parameters in the `Connect-AzAccount` cmdlet that accept certificate information.
-   The SPN you use should have all the required permissions on the subscription(s) [as listed here](#assign-permissions-from-azure-portal).
+   The SPN you use should have all the required permissions on the subscriptions [as listed here](../deploy/register-with-azure.md#assign-permissions-from-the-azure-portal).
 1. Assign `$token = Get-AzAccessToken`.
 1. Use the [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) with the `TenantId`, `SubscriptionId`, `ArmAccessToken`, and `AccountId` parameters, as follows:
 
