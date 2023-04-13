@@ -183,7 +183,7 @@ Accept wildcard characters: False
 
 ### -offsiteTransferCompleted
 
-Sets deployment to use artifacts downloaded offsite and transfered to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
+Sets deployment to use artifacts downloaded offsite and transferred to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
 
 ### -mode
 
