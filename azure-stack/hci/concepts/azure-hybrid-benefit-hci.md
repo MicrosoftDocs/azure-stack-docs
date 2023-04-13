@@ -6,7 +6,7 @@ ms.author: v-mandhiman
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2022
+ms.date: 04/11/2023
 ---
 
 # Azure Hybrid Benefit for Azure Stack HCI
@@ -15,7 +15,7 @@ ms.date: 10/10/2022
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 
-[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
+[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that helps you reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
 
 ## What is Azure Hybrid Benefit for Azure Stack HCI?
 
