@@ -48,7 +48,7 @@ Before you begin cluster registration, make sure to complete the following prere
    - You must run all the PowerShell commands as the Administrator user.
    - Install the [`Az.StackHCI`](/powershell/module/az.stackhci) PowerShell module on your management PC.
    > [!NOTE]
-   > If you cannot run the cmdlet from a management PC that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system&preserve-view=true).
+   > If you cannot run the cmdlet from a management PC that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
 
 ## Prechecks
 
