@@ -72,7 +72,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 - An Azure Stack HCI cluster
   - [Install updates](update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008210 or later.
-  - [Register Azure Stack HCI](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center): All servers must be online and registered to Azure.
+  - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): All servers must be online and registered to Azure.
 
 - If using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
