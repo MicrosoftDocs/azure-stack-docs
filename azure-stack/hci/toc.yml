@@ -214,8 +214,6 @@
       href: manage/storage-repair-speed.md
   - name: Monitor clusters
     items:
-    - name: Manage cluster registration
-      href: manage/manage-cluster-registration.md
     - name: Set up alerts for Azure Stack HCI systems
       href: manage/setup-hci-system-alerts.md
     - name: Monitor a single cluster using the Azure portal (preview)
@@ -238,6 +236,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: Manage cluster registration
+      href: manage/manage-cluster-registration.md
     - name: Manage clusters with Windows Admin Center
       href: manage/cluster.md
     - name: Manage clusters with PowerShell
