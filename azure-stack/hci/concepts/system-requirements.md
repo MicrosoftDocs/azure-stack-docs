@@ -15,6 +15,55 @@ ms.date: 1/13/2023
 
 This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
+## Azure requirements
+
+Here are the Azure requirements for your Azure Stack HCI cluster:
+
+- **Azure subscription and permissions**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
+
+   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+  - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
+  - Subscription obtained through an Enterprise Agreement (EA).
+  - Subscription obtained through the Cloud Solution Provider (CSP) program.
+
+  You can assign permissions using the Azure portal or PowerShell.
+
+- **Azure regions**
+
+   The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions:
+
+   # [Azure public](#tab/azure-public)
+
+   These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
+
+   - East US
+   - South Central US
+   - Canada Central
+   - West Europe
+   - Southeast Asia
+   - Australia East
+   - Japan East
+
+   # [Azure China](#tab/azure-china)
+
+   Regions supported in the Azure China cloud:
+
+   - China East 2
+
+   # [Azure Government](#tab/azure-government)
+
+   Regions supported in the Azure Government cloud:
+
+   - US Gov Virginia
+
+   ---
+
+   Regions supported for additional features of Azure Stack HCI:
+
+   - Currently, [Azure Arc Resource Bridge](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements) supports only the following regions for Azure Stack HCI registration:
+  - East US
+  - West Europe
+
 ## Server requirements
 
 A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
