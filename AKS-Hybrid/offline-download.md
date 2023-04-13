@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 
 If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
 
-In both onsite and offsite scenarios, the latest change ensures that all the zip/cab files of different versions are extracted during the install/update process. This process takes less space then before, which required files to be extracted prior to install/upgrade and stored on the cluster storage.
+In both onsite and offsite scenarios, the latest change ensures that all the zip/cab files of different versions are extracted during the install/update process. This process takes less space than before, which required files to be extracted prior to install/upgrade and stored on the cluster storage.
 
 ## Before you begin
 
