@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: arduppal
-ms.lastreviewed: 04/11/2023
-ms.date: 04/11/2023
+ms.lastreviewed: 04/13/2023
+ms.date: 04/13/2023
 ---
 
 # Arc Extension Management on Azure Stack HCI
