@@ -49,7 +49,7 @@ To use Azure PowerShell, you can upgrade Azure PowerShell to the latest version 
    Update-Module Az.ConnectedKubernetes 
    ```
 
-1. (Optional) If the `Az.Module` installation is not successful and does not work, you must grant additional PowerShell permissions to execute external scripts:
+1. (Optional) If the `Az.*` modules installation is not successful and does not work, you must grant additional PowerShell permissions to execute external scripts:
 
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
