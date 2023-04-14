@@ -38,17 +38,20 @@ Before you begin cluster registration, make sure to complete the following prere
 - Make sure you have access to a management PC. Your management computer must be joined to the same Active Directory domain in which you've created your Azure Stack HCI cluster.
 
 - If you're using Windows Admin Center to register the cluster:
+
    - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register your Windows Admin Center instance with Azure](../manage/register-windows-admin-center.md).
-   > [!IMPORTANT]
-   > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, go to the Azure portal and select Azure Active Directory. Your tenant ID is displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
+      > [!IMPORTANT]
+      > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, go to the Azure portal and select Azure Active Directory. Your tenant ID is displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
 
    - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
 
 - If you're using PowerShell to register the cluster:
+
    - You must run all the PowerShell commands as the Administrator user.
+
    - Install the [`Az.StackHCI`](/powershell/module/az.stackhci) PowerShell module on your management PC.
-   > [!NOTE]
-   > If you cannot run the cmdlet from a management PC that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
+      > [!NOTE]
+      > If you cannot run the cmdlet from a management PC that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
 
 ## Prechecks
 
@@ -229,7 +232,7 @@ Depending on your cluster configuration and requirements, you may need to take t
 - Enable Azure Arc integration
 - Upgrade Arc agent on cluster servers
 - Unregister the cluster
-- Troubleshoot cluster registrations
+- Troubleshoot cluster registration
 - Review FAQs
 
 For information on how to manage your cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
