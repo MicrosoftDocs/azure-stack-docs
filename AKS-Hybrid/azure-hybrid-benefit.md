@@ -66,24 +66,13 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the `kvaName` name:
 
 ```PowerShell
-Get-AksHciConfig | ConvertTo-Json
+(Get-AksHciConfig).Kva.kvaName
 ```
 
 #### Sample output
 
 ```json
-{
-    "Moc":  {
-                ...
-            },
-    "AksHci":  {
-                ...    
-               },
-    "Kva":  {
-                ...
-                "kvaName":  "<manangement cluster name>"
-            }
-}
+"<manangement cluster name>"
 ```
 
 ### Verify that Azure Hybrid Benefit for AKS is not already enabled
