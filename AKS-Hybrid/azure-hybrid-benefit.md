@@ -49,7 +49,7 @@ To use Azure PowerShell, you can upgrade Azure PowerShell to the latest version 
    Update-Module Az.ConnectedKubernetes 
    ```
 
-1. (Optional) If the `Az.Module` installation is not successful and does not work, you must grant additional PowerShell permissions to execute external scripts:
+1. (Optional) If the `Az.*` modules installation is not successful and does not work, you must grant additional PowerShell permissions to execute external scripts:
 
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process 
@@ -66,24 +66,13 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the `kvaName` name:
 
 ```PowerShell
-Get-AksHciConfig | ConvertTo-Json
+(Get-AksHciConfig).Kva.kvaName
 ```
 
 #### Sample output
 
 ```json
-{
-    "Moc":  {
-                ...
-            },
-    "AksHci":  {
-                ...    
-               },
-    "Kva":  {
-                ...
-                "kvaName":  "<manangement cluster name>"
-            }
-}
+"<manangement cluster name>"
 ```
 
 ### Verify that Azure Hybrid Benefit for AKS is not already enabled
