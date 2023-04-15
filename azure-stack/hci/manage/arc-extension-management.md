@@ -23,7 +23,7 @@ Here's a list of extensions that can be installed and managed in Azure portal:
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [TelemetryAndDiagnostic](/azure-stack/hci/manage/telemetry-diagnostics-extension.md)
+- [TelemetryAndDiagnostics](/azure-stack/hci/manage/telemetry-diagnostics-extension.md)
 
 ## Install an extension via Azure portal
 
@@ -99,7 +99,7 @@ If you need to upgrade an extension immediately, see [Manual extension upgrade v
 
 If an extension upgrade fails, Azure attempts to repair the extension by performing the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries).
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](../manage/arc-extension-management.md#disable-automatic-upgrade-via-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](../manage/arc-extension-management.md#enable-automatic-upgrade-via-azure-portal) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](/azure-stack/hci/manage/arc-extension-management.md#disable-automatic-upgrade-via-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](/azure-stack/hci/manage/arc-extension-management.md#enable-automatic-upgrade-via-azure-portal) again when you're ready.
 
 ### Upgrades with multiple extensions
 
