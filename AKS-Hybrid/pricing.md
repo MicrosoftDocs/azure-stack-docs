@@ -17,7 +17,7 @@ ms.date: 10/04/2022
 
 # Azure Kubernetes Service (AKS) hybrid pricing details
 
-Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
+Azure Kubernetes Service (AKS) hybrid is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
 
 ## Pricing details
 
