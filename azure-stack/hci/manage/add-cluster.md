@@ -5,7 +5,7 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 3/24/2023
+ms.date: 04/17/2023
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster

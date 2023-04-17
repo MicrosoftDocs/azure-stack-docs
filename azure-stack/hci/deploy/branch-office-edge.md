@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: hsuzuki
 ms.author: hsuzuki
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/17/2023
 ---
 
 # Deploy branch office and edge on Azure Stack HCI

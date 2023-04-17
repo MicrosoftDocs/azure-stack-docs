@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/06/2021
+ms.date: 04/17/2023
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure

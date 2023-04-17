@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/07/2023
+ms.date: 04/17/2023
 ms.author: robess
 ms.reviewer: stevenek
 ---

@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/15/2020
+ms.date: 04/17/2023
 ---
 
 # Use the Azure portal with Azure Stack HCI

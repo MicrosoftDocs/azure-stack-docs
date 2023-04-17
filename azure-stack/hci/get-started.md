@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/10/2020
+ms.date: 04/17/2023
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
