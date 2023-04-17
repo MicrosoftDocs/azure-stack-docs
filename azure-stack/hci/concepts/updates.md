@@ -4,12 +4,12 @@ description: An overview of how updates and upgrades are applied to Azure Stack 
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 05/17/2022
+ms.date: 04/17/2023
 ---
 
 # Updates and upgrades
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes the lifecycle of updates and upgrades on Azure Stack HCI. 
 
