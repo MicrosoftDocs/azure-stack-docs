@@ -3,14 +3,14 @@ title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
 author: jasongerend
 ms.topic: how-to
-ms.date: 07/11/2022
+ms.date: 04/17/2023
 ms.author: jgerend
 ms.reviewer: robhind
 ---
 
 # Create server and site affinity rules for VMs
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Using either Windows Admin Center or Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 

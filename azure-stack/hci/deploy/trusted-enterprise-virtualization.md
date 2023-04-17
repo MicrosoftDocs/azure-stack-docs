@@ -4,12 +4,12 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: hsuzuki
 ms.author: hsuzuki
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 04/17/2023
 ---
 
 # Deploy trusted enterprise virtualization on Azure Stack HCI
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic provides guidance on how to plan, configure, and deploy a highly secure infrastructure that uses trusted enterprise virtualization on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to run secure workloads on hardware that uses [virtualization-based security (VBS)](/windows-hardware/design/device-experiences/oem-vbs) and hybrid cloud services through Windows Admin Center and the Azure portal.
 
