@@ -15,7 +15,7 @@ ms.date: 03/22/2023
 
 # Register Azure Stack HCI with Azure
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms). After registration, an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. From Azure Stack HCI 21H2 and later, by default it creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synchronized between the Azure resource and the on-premises cluster(s).
 
