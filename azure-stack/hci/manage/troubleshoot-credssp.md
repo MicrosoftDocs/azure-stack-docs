@@ -3,14 +3,14 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: jasongerend
 ms.topic: how-to
-ms.date: 06/04/2021
+ms.date: 04/17/2023
 ms.author: jgerend
 ms.reviewer: JasonGerend
 ---
 
 # Troubleshoot CredSSP
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Some Azure Stack HCI operations use Windows Remote Management (WinRM), which doesn't allow credential delegation by default. To allow delegation, the computer needs to have Credential Security Support Provider (CredSSP) enabled temporarily. CredSSP is a security support provider that allows a client to delegate credentials to a server for remote authentication.
 
