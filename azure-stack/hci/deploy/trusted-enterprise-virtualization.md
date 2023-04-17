@@ -4,17 +4,17 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: hsuzuki
 ms.author: hsuzuki
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 04/17/2023
 ---
 
 # Deploy trusted enterprise virtualization on Azure Stack HCI
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic provides guidance on how to plan, configure, and deploy a highly secure infrastructure that uses trusted enterprise virtualization on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to run secure workloads on hardware that uses [virtualization-based security (VBS)](/windows-hardware/design/device-experiences/oem-vbs) and hybrid cloud services through Windows Admin Center and the Azure portal.
 
 ## Overview
-VBS is a key component of the [security investments in Azure Stack HCI](/windows-server/get-started-19/whats-new-19#security) to protect hosts and virtual machines (VMs) from security threats. For example, the [Security Technical Implementation Guide (STIG)](https://nvd.nist.gov/ncp/checklist/914), which is published as a tool to improve the security of Department of Defense (DoD) information systems, lists VBS and [Hypervisor-Protected Code Integrity (HVCI)](/windows-hardware/drivers/bringup/device-guard-and-credential-guard) as general security requirements. It is imperative to use host hardware that is enabled for VBS and HVCI to protect workloads on VMs, because a compromised host cannot guarantee VM protection.
+VBS is a key component of the [security investments in Azure Stack HCI](/windows-server/get-started-19/whats-new-19#security) to protect hosts and virtual machines (VMs) from security threats. For example, the [Security Technical Implementation Guide (STIG)](https://ncp.nist.gov/checklist/914), which is published as a tool to improve the security of Department of Defense (DoD) information systems, lists VBS and [Hypervisor-Protected Code Integrity (HVCI)](/windows-hardware/drivers/bringup/device-guard-and-credential-guard) as general security requirements. It is imperative to use host hardware that is enabled for VBS and HVCI to protect workloads on VMs, because a compromised host cannot guarantee VM protection.
 
 VBS uses hardware virtualization features to create and isolate a secure region of memory from the operating system. You can use [Virtual Secure Mode (VSM)](/virtualization/hyper-v-on-windows/tlfs/vsm) in Windows to host a number of security solutions to greatly increase protection from operating system vulnerabilities and malicious exploits.
 
