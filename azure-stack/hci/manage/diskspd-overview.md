@@ -1,8 +1,8 @@
 ---
 title: Use DISKSPD to test workload storage performance
 description: This topic provides guidance on how to use DISKSPD to test workload storage performance.
-author: jasonnyi
-ms.author: jasonyi
+author: JasonGerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 04/17/2023
 ---
