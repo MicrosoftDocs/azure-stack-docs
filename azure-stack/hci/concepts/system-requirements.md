@@ -75,8 +75,7 @@ When you create an Azure Stack HCI cluster using Windows Admin Center, you have 
 
 - Make sure the host servers have at least 50-100 GB of free space to create the Network Controller VMs.
 
-- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep-generalize-a-windows-installation) 
-or by running the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage) PowerShell cmdlet to convert an .iso file into a VHD.
+- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) or by running the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage) PowerShell cmdlet to convert an .iso file into a VHD.
 
 For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 
