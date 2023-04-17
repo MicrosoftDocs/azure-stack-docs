@@ -3,14 +3,14 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 03/22/2023
+ms.date: 04/17/2023
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
 # Deploy SDN using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
 
