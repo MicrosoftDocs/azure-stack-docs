@@ -4,12 +4,12 @@ description: This topic provides guidance on security considerations for the Azu
 author:  jasongerend
 ms.author:  jgerend
 ms.topic: conceptual
-ms.date: 3/3/2023
+ms.date: 04/17/2023
 ---
 
 # Azure Stack HCI security considerations
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+>Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 
