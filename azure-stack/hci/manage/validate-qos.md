@@ -3,13 +3,13 @@ title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: jasongerend
 ms.topic: troubleshooting
-ms.date: 11/04/2021
+ms.date: 04/17/2023
 ms.author: jgerend
 ---
 
 # Troubleshoot cluster validation reporting
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
 
