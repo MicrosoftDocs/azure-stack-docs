@@ -6,17 +6,16 @@ ms.author: alvinm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2021
+ms.date: 04/17/2023
 ---
 
 # Dynamic processor compatibility mode in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 The dynamic processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment. Processor compatibility works by determining the supported processor features for each individual node in the cluster and calculating the common denominator across all processors. Virtual machines (VMs) are configured to use the maximum number of features available across all servers in the cluster. This improves performance compared to the previous version of processor compatibility that defaulted to a minimal, fixed set of processor capabilities.
 
-   > [!NOTE]
-   > Dynamic processor compatibility mode is only available in Azure Stack HCI, version 21H2, and it won't be backported to version 20H2. For information about processor compatibility mode in Windows Server, see [Processor Compatibility Mode in Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn859550(v=ws.11)).
+For information about processor compatibility mode in Windows Server, see [Processor Compatibility Mode in Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn859550(v=ws.11)).
 
 ## When to use processor compatibility mode
 

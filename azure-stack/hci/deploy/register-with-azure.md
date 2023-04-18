@@ -10,16 +10,16 @@ ms.subservice: azure-stack-hci
 ms.custom:
   - references_regions
   - devx-track-azurepowershell
-ms.date: 04/12/2023
+ms.date: 04/17/2023
 ---
 
 # Register Azure Stack HCI with Azure
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Now that you've deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register the cluster with Azure.
 
-This article describes how to register your Azure Stack HCI cluster with Azure via Windows Admin Center or PowerShell. For information on how to manage cluster registration, see [Manage cluster registration]().
+This article describes how to register your Azure Stack HCI cluster with Azure via Windows Admin Center or PowerShell. For information on how to manage cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
 
 ## About cluster registration
 
@@ -224,7 +224,7 @@ Follow these steps to register an Azure Stack HCI cluster with Azure using Power
 
 ## Manage cluster registration
 
-After you register your cluster with Azure, you can manage its registration in Windows Admin Center, PowerShell, and the Azure portal.
+After you've registered your cluster with Azure, you can manage its registration in Windows Admin Center, PowerShell, or the Azure portal.
 
 Depending on your cluster configuration and requirements, you may need to take the following actions to manage the cluster registration:
 

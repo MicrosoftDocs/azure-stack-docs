@@ -1,18 +1,18 @@
 ---
-title: Manage Azure Stack HCI clusters using PowerShell
-description: Learn how to manage clusters on Azure Stack HCI using PowerShell
+title: Manage Azure Stack HCI and Windows Server clusters using PowerShell
+description: Learn how to manage clusters on Azure Stack HCI and Windows Server using PowerShell
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/28/2022
+ms.date: 04/17/2023
 ms.author: jgerend
 ms.reviewer: stevenek
 ---
 
-# Manage Azure Stack HCI clusters using PowerShell
+# Manage Azure Stack HCI and Windows Server clusters using PowerShell
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters.
+Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI and Windows Server clusters.
 
 You manage clusters from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 

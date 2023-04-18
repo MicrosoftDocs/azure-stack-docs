@@ -6,12 +6,12 @@ ms.author: v-mandhiman
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/11/2023
+ms.date: 04/17/2023
 ---
 
 # Azure Hybrid Benefit for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 

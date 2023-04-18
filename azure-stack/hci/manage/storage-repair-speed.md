@@ -5,12 +5,12 @@ ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: tinawu
-ms.date: 02/28/2023
+ms.date: 04/17/2023
 ---
 
 # Adjustable storage repair speed in Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022
 
 User-adjustable storage repair speed offers more control over the data resync process by allocating resources to either repair data copies (resiliency) or run active workloads (performance). This helps improve availability and allows you to service your clusters more flexibly and efficiently.
 
