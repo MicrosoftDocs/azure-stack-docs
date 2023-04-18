@@ -160,7 +160,7 @@ Before registration make sure all the [prerequisites](#before-you-begin) and [pr
    > You can also register your cluster from the **Tools** > **Azure Arc** dashboard, which is currently in preview.
 
    > [!NOTE]
-   > If you did not register Windows Admin Center in step 1, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
+   > If you didn't register Windows Admin Center with Azure earlier, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
 1. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list.
 
