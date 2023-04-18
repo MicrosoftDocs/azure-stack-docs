@@ -5,12 +5,12 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 3/24/2023
+ms.date: 04/17/2023
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
