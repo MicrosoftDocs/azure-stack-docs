@@ -160,9 +160,9 @@ Follow these steps to verify that the deployment completed successfully:
     0.17          Success    Set up certificates                                 2022-09-27T18:16:03.9038202Z 202
     0.17.0        Success    Install ASCA and Set Up External Certificates       2022-09-27T18:16:03.9662569Z 202
     0.17.0.0      Success    StageAndGenerateCertificates                        2022-09-27T18:16:07.2006186Z 202
-    0.17.0.0.0    Success    Add deployment user to certificate Readers group    2022-09-27T18:16:07.2474936Z 202
+    0.17.0.0.0    Success    Add lifecycle manager to certificate Readers group    2022-09-27T18:16:07.2474936Z 202
     0.17.0.0.1    Success    Generate certificates                               2022-09-27T18:16:13.932161Z  202
-    0.17.0.0.2    Success    Remove deployment user to certificate Readers group 2022-09-27T18:16:47.5523932Z 202
+    0.17.0.0.2    Success    Remove lifecycle manager to certificate Readers group 2022-09-27T18:16:47.5523932Z 202
     0.17.0.0.3    Success    Publish artifacts                                   2022-09-27T18:16:50.7242697Z 202
     0.18          Success    VM Prerequisites                                    2022-09-27T18:16:58.3648937Z
     0.19          Success    Refresh Active Directory permissions
