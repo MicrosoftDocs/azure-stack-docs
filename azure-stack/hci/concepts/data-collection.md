@@ -6,12 +6,12 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/20/2021
+ms.date: 04/17/2023
 ---
 
 # Azure Stack HCI data collection
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
