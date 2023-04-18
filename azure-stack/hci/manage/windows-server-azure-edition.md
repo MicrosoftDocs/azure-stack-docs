@@ -159,7 +159,6 @@ These differences include the following limitations for this preview release:
 - Hotpatch configuration isn't available using Azure Update Manager.
 - Hotpatch can't be disabled.
 - Automatic Patching orchestration isn't available.
-- Orchestration must be performed manually, such as by going to Settings > Windows Update or using Windows Update with SConfig.
 
 ## Next steps
 
