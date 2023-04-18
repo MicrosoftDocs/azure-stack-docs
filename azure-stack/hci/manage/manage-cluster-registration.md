@@ -1,18 +1,18 @@
 ---
 title: Manage Azure Stack HCI cluster registration
-description: Learn how to manage the Azure Stack HCI cluster registration with Azure.
+description: Learn how to manage the Azure Stack HCI cluster registration.
 ms.topic: how-to
 author: ManikaDhiman
 ms.subservice: azure-stack-hci
 ms.author: v-mandhiman
-ms.date: 4/11/2023
+ms.date: 4/18/2023
 ---
 
-# Manage Azure Stack HCI cluster registration with Azure
+# Manage Azure Stack HCI cluster registration
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure Portal.
+Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure Portal. It also provides answers to the frequently asked questions about cluster registration.
 
 When you [register your cluster with Azure](../deploy/register-with-azure.md), an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. With Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
 
