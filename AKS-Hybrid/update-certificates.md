@@ -3,7 +3,7 @@ title: Update certificates in AKS hybrid
 description: Learn how to update certificates in AKS hybrid.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/04/2023
+ms.date: 04/18/2023
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: sulahiri
@@ -38,7 +38,8 @@ The behavior of the certificates at the MOC layer and AKS hybrid Kubernetes laye
 |              Cluster          |     MOC certificates                                                                 |     AKS hybrid Kubernetes Control plane certificates                            |
 |------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 |     Management cluster      |     [`Update-AksHciCertificates`](reference/ps/update-akshcicertificates.md)                                                 |     N/A                                                                         |
-|     Target cluster    |     [`Update-AksHciClusterCertificates -name fixCloudCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |     [`Update-AksHciClusterCertificates -name fixKubeletCredentials -force`](reference/ps/update-akshciclustercertificates.md)    |
+|     Target cluster    |     [`Update-AksHciClusterCertificates -name -fixCloudCredentials`](reference/ps/update-akshciclustercertificates.md)    |     [`Update-AksHciClusterCertificates -name -fixKubeletCredentials`](reference/ps/update-akshciclustercertificates.md)    |
+|     Load balancer    |     [`Update-AksHciClusterCertificates -name -patchLoadBalancer -fixCloudCredentials`](reference/ps/update-akshciclustercertificates.md)    |
 
 ## When both MOC and AKS hybrid Kubernetes certificates are impacted
 
