@@ -6,15 +6,15 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/14/2021
+ms.date: 04/17/2023
 ---
 # Virtual machine load balancing
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It is common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
 
-Enabled by default in Azure Stack HCI, Windows Server 2019, and Windows Server 2016, VM load balancing is a feature that allows you to optimize server utilization in your clusters. It identifies over-committed servers and live migrates VMs from those servers to under-committed servers. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
+Enabled by default in Azure Stack HCI, Windows Server 2022, Windows Server 2019, and Windows Server 2016, VM load balancing is a feature that allows you to optimize server utilization in your clusters. It identifies over-committed servers and live migrates VMs from those servers to under-committed servers. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
 
 VM load balancing evaluates a server's load based on the following heuristics:
 
