@@ -128,7 +128,9 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 1. During the OS installation phase, on the first OS boot, the following commands must be executed on each of the host machines. These commands ensure that Windows updates won't be downloaded and installed during the deployment. Run the following three commands right after the OS deployment:
 
     1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f`
+
     1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AUOptions /t REG_DWORD /d 3 /f`
+
     1. `sc config "WUAUSERV" start= disabled`
 
 ## Next steps
