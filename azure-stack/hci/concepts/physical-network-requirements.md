@@ -10,6 +10,7 @@ ms.reviewer: JasonGerend
 
 # Physical network requirements for Azure Stack HCI
 
+
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
@@ -41,7 +42,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X | |
 | [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
 | [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
@@ -55,7 +56,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model|Firmware|Management|Storage|Compute (Standard)|Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----|---|:-:|:-:|:-:|:-:|
 | [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X | |
 | [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
 | [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
@@ -69,7 +70,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |X| X| X| X | |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |X| X| X| X|
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|X| X| X| X |
@@ -78,7 +79,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11 or later |X| X| X| X | |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11 or later |X| X| X| X|
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11 or later|X| X| X| X |
@@ -91,7 +92,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > NX-OS version 10.3(2)F or later is required. -->
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
 | [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
 | [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
@@ -104,7 +105,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
 | [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
 | [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
@@ -117,7 +118,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X | |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
@@ -128,7 +129,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model | Firmware  | Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |--- | :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X | |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(25, 100 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X|
 
@@ -137,7 +138,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X | |
 | [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
 > [!NOTE]
@@ -146,7 +147,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE) |Comware 7 version R6710 or later|X| X| X| X | |
 | [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
 
@@ -155,7 +156,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later|X| X| X| X | |
 | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X| X|
 | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
@@ -168,7 +169,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later |X| X| X| X | |
 | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X| X|
 | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
@@ -181,7 +182,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 21H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272) <br>(10 GbE) |CNOS 10.10.7.100 or later|X| X| X| X | |
 | [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch) <br>(10 GbE)|CNOS 10.10.7.100 or later |X| X| X| X|
 | [NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) <br>(25 GbE)|CNOS 10.10.7.100 or later |X| X| X| X|
@@ -192,7 +193,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 22H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |X| X| X| X | |
 | [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |X| X| X| X|
 | [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
@@ -203,7 +204,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X | |
 | [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X|
 | [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
@@ -226,7 +227,7 @@ Here are the mandatory IEEE standards and specifications:
 ### 22H2 Role Requirements
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)| 
-|-----|-----|-----|-----|-----|-----|
+|-----  | :-:  | :-:  | :-:   | :-:   |
 | Virtual LANS |X| X| X| X | |
 | Priority Flow Control|| X| | |
 | Enhanced Transmission Selection|| X| | |
@@ -272,7 +273,7 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 | Organization | TLV Subtype                      |
 |--------------|----------------------------------|
 | IEEE 802.1   | Port VLAN ID (Subtype = 1)       |
-| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*|
+| IEEE 802.1   | VLAN Name (Subtype = 3) <br> *Minimum of 10 VLANS*         |
 | IEEE 802.1   | Link Aggregation (Subtype = 7)   |
 | IEEE 802.1   | ETS Configuration (Subtype = 9)  |
 | IEEE 802.1   | ETS Recommendation (Subtype = A) |
@@ -283,8 +284,7 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 *New Requirement in 22H2*
 
 The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
-
-### Border Gateway Protocol
+### Border Gateway Protocol 
 *New Requirement in 22H2*
 
 Ethernet switches used for Azure Stack HCI SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
@@ -299,7 +299,7 @@ Ethernet switches used for Azure Stack HCI management traffic must support DHCP 
 
 ### 21H2 Role Requirements
 |Requirement | Management | Storage | Compute (Standard)| Compute (SDN)|
-|-----|-----|-----|-----|-----|-----|
+|-----  | :-:  | :-:  | :-:   | :-:   |
 | Virtual LANS |X| X| X| X | |
 | Priority Flow Control || X| | |
 | Enhanced Transmission Selection || X| ||
