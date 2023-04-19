@@ -4,12 +4,12 @@ description: How to register Windows Admin Center with Azure.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 12/13/2022
+ms.date: 04/19/2023
 ---
 
 # Register Windows Admin Center with Azure
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to register Windows Admin Center with Azure.
 
