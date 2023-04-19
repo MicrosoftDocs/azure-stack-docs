@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2303 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2303 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/18/2023
+ms.date: 04/19/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2303 release. <!--This release maps to software version number **10.2303.0.34**.--> This release supports only brand new software installations using a deployment tool.
+This article applies to Azure Stack HCI, Supplemental Package, for 2303 release. This release maps to software version number **10.2303.0.36**. This release supports only brand new software installations using a deployment tool.
 
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2301-preview.md#azure-stack-hci-2301-supplemental-package-preview).
 
