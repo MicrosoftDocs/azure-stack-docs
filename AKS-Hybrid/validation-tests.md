@@ -32,4 +32,5 @@ The following table lists the tests that are executed when you run the [Set-AksH
 
 ## Next steps
 
-[AKS hybrid overview](overview.md)
+- [AKS hybrid overview](aks-hybrid-options-overview.md)
+- [Supported Kubernetes versions](supported-kubernetes-versions.md)
