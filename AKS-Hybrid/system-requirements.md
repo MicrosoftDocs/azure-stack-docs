@@ -4,7 +4,7 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Wi
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 09/27/2022
+ms.lastreviewed: 04/19/2023
 ms.reviewer: mikek
 ms.date: 11/03/2022
 
@@ -15,7 +15,7 @@ ms.date: 11/03/2022
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS on Azure Stack HCI and Windows Server, see [AKS on Azure Stack HCI and Windows Server overview](overview.md).
 
