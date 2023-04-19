@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub collects customer data and information.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 04/2194/2023
 ms.author: sethm
 ms.reviewer: chengwei
 ms.lastreviewed: 02/24/2020
@@ -18,8 +18,8 @@ ms.lastreviewed: 02/24/2020
 
 To the extent Microsoft is a processor or subprocessor of personal data in connection with Azure Stack Hub, Microsoft makes to all customers, effective May 25, 2018, the following commitments:
 
-- The "Processing of Personal Data; GDPR" provision in the "Data Protection Terms" section of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
-- The European Union General Data Protection Regulation Terms in Attachment 4 of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+- The "Processing of Personal Data; GDPR" provision in the "Data Protection Terms" section of the [Online Services Terms](https://www.microsoft.com/licensing/docs).
+- The European Union General Data Protection Regulation Terms in Attachment 4 of the [Online Services Terms](https://www.microsoft.com/licensing/docs).
 
 As Azure Stack Hub resides in customer datacenters, Microsoft is the Data Controller solely of the data that is shared with Microsoft through [Diagnostics](./diagnostic-log-collection.md), [Telemetry](azure-stack-telemetry.md), and [Billing](azure-stack-usage-reporting.md).  
 
