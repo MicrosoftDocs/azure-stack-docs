@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub collects customer data and information.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/2194/2023
+ms.date: 04/19/2023
 ms.author: sethm
 ms.reviewer: chengwei
 ms.lastreviewed: 02/24/2020
