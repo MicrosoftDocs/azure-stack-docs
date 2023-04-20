@@ -5,12 +5,12 @@ ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: jgerend
-ms.date: 02/28/2023
+ms.date: 04/19/2023
 ---
 
 # Replace failed drives on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 Azure Stack HCI works with direct-attached SATA, SAS, NVMe, and persistent memory drives that are physically attached to a single server. Storage Spaces Direct automatically retires and evacuates failed drives. When this happens, the drive status is **Retired**, and its storage capacity bar is empty.
 
