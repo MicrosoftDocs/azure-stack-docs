@@ -4,12 +4,12 @@ description: This article describes how to renew Network Controller certificates
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 03/10/2023
+ms.date: 04/19/2023
 ---
 
 # Renew Network Controller certificates before they expire
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 and Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Network Controller certificates before they expire, both manually and automatically. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
