@@ -4,12 +4,12 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
-ms.date: 03/30/2023
+ms.date: 04/19/2023
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Stack HCI cluster.
 
