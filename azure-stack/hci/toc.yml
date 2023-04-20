@@ -10,8 +10,6 @@
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
-  - name: Hybrid capabilities with Azure services
-    href: hybrid-capabilities-with-azure-services.md
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md
   - name: Evaluation guide
@@ -300,6 +298,8 @@
         href: manage/sdn-log-collection.md
   - name: Manage Azure services
     items:
+    - name: Hybrid capabilities with Azure services
+      href: hybrid-capabilities-with-azure-services.md
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
     - name: Use Windows Admin Center in Azure
@@ -307,7 +307,7 @@
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
-      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
