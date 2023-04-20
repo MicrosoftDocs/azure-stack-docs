@@ -50,7 +50,7 @@ productDirectory:
   - title: Azure Kubernetes Service (AKS) hybrid deployment options
     imageSrc: media/index/kubernetes-services.svg
     links:
-      - url: /azure/aks/hybrid/overview
+      - url: /azure/aks/hybrid/aks-hybrid-options-overview
         text: AKS hybrid overview  
       - url: /azure/aks/hybrid/system-requirements
         text: AKS hybrid system requirements                
