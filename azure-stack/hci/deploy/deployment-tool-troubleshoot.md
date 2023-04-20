@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI deployment (preview)
 description: Learn to troubleshoot the Azure Stack HCI deployment (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 02/23/2023
+ms.date: 04/07/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article provides guidance on how to rerun and reset deployment if you encounter issues during the Azure Stack HCI deployment.
+This article provides guidance on how to rerun and reset deployment if you encounter issues during your Azure Stack HCI deployment.
 
 Also see [Known issues](../hci-known-issues.md).
 
@@ -33,6 +33,25 @@ To rerun the deployment if there is a failure, follow these steps:
     
     This command should restart the deployment in verbose mode.
 
+## Update the refresh token
+
+If your authentication token expires and deployment fails, you can update the refresh token. Follow these steps to update the refresh token:
+
+1. Sign in to the first server. To import the registration module, run the following PowerShell cmdlet:
+
+    ```powershell
+    Update-AuthenticationToken 
+    ```
+
+1. From a second server that has a browser installed, open the browser and navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+
+1. Copy the authentication code that is displayed and complete the authentication request.
+
+1. Resume the deployment using the following cmdlet:
+
+    ```powershell
+    Invoke-CloudDeployment -Rerun 
+    ```
 
 ## Reset deployment
 
