@@ -19,14 +19,14 @@ This article discusses the system requirements for servers, storage, and network
 
 Here are the Azure requirements for your Azure Stack HCI cluster:
 
-- **Azure subscription and permissions**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
+- **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
 
    - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
-  - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
-  - Subscription obtained through an Enterprise Agreement (EA).
-  - Subscription obtained through the Cloud Solution Provider (CSP) program.
+   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
+   - Subscription obtained through an Enterprise Agreement (EA).
+   - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
-  You can assign permissions using the Azure portal or PowerShell.
+- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign permissions for registration](../deploy/register-with-azure.md#assign-permissions-for-registration).
 
 - **Azure regions**
 
