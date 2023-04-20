@@ -37,7 +37,7 @@ Before you begin, make sure you've done the following:
 - Obtain domain administrator access to the Active Directory domain server.
 - (Only if you deploy Azure Stack HCI via PowerShell) Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
     - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-    - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-from-the-azure-portal).
+    - [Assign permissions from the Azure portal](./register-with-azure.md#assign-permissions-for-registration).
     
 ## Active Directory preparation module
 

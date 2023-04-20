@@ -281,7 +281,7 @@ Before registration, make sure the [prerequisites](../deploy/register-with-azure
    To use SPN to connect, you can use:
    - Device Code-based authentication. Use `-DeviceCode` in the cmdlet.
    - Certificated based authentication. [See this article](/azure/active-directory/authentication/how-to-certificate-based-authentication) to configure the SPN for certificate-based authentication. Then use appropriate parameters in the `Connect-AzAccount` cmdlet that accept certificate information.
-   The SPN you use should have all the required permissions on the subscriptions [as listed here](../deploy/register-with-azure.md#assign-permissions-from-the-azure-portal).
+   The SPN you use should have all the required permissions on the subscriptions [as listed here](../deploy/register-with-azure.md#assign-permissions-for-registration).
 1. Assign `$token = Get-AzAccessToken`.
 1. Use the [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) with the `TenantId`, `SubscriptionId`, `ArmAccessToken`, and `AccountId` parameters, as follows:
 
