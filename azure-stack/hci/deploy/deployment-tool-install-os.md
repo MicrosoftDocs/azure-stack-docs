@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 04/18/2023
+ms.date: 04/20/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -87,6 +87,14 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
 
+1. Make sure that Windows updates won't be downloaded and installed during the deployment. On the first operating system boot, run the following commands on each of the servers right after the operating system installation:
+
+    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f`
+
+    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AUOptions /t REG_DWORD /d 3 /f`
+
+    1. `Set-Service "WUAUSERV" -StartupType Disabled`
+
 1. Configure networking as per your environment.
 
 1. Configure a default valid gateway and a DNS server.
@@ -125,13 +133,7 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
         netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow
         ```
 
-1. During the OS installation phase, on the first OS boot, the following commands must be executed on each of the host machines. These commands ensure that Windows updates won't be downloaded and installed during the deployment. Run the following three commands right after the OS deployment:
 
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f`
-
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AUOptions /t REG_DWORD /d 3 /f`
-
-    1. `sc config "WUAUSERV" start= disabled`
 
 ## Next steps
 

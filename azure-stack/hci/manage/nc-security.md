@@ -6,12 +6,12 @@ ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 11/02/2021
+ms.date: 04/19/2023
 ---
 
 # Secure the Network Controller
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, you learn how to configure security for all communication between [Network Controller](/azure-stack/hci/concepts/network-controller-overview) and other software and devices.
 
