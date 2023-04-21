@@ -12,9 +12,9 @@
     href: concepts-support.md
   - name: Architecture
     items:
-    - name: Baseline architecture for AKS on Azure Stack HCI
+    - name: Baseline architecture for AKS hybrid
       href: /azure/architecture/example-scenario/hybrid/aks-baseline
-    - name: Network architecture for AKS on Azure Stack HCI
+    - name: Network architecture for AKS hybrid
       href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
@@ -41,7 +41,7 @@
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS on Azure Stack HCI and Windows Server
+            - name: Set up AKS hybrid
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
