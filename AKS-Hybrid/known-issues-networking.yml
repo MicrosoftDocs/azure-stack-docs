@@ -186,10 +186,13 @@ sections:
         answer: | 
           This issue causes an AKS hybrid cluster to remain in the **ScalingControlPlane** state for an extended period of time.
           
-          ## To reproduce
+          ### To reproduce
+          
+          ```powershell
+          Get-AksHciCluster -Name <cluster name> | select *
+          ```
           
           ```output
-          PS>  Get-AksHciCluster -Name <cluster name> | select *
           Status                : {ProvisioningState, Details}
           ProvisioningState     : ScalingControlPlane
           KubernetesVersion     : v1.22.6
