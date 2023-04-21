@@ -30,7 +30,7 @@ For more information about Kubernetes basics, see [Kubernetes core concepts for 
 
 ## Why use AKS hybrid for containerized applications?
 
-If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kubernetes orchestrator helps with.
+If you've been using AKS in Azure to deploy and run your applications, it's easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kubernetes orchestrator helps with.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes, essential add-ons, and create Kubernetes clusters to host your workloads.
 
@@ -42,7 +42,7 @@ With AKS hybrid, you can connect your AKS clusters to Azure Arc while creating t
 
 ### Create and manage AKS clusters using Azure portal and Resource Manager templates
 
-You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Azure AD identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've ever used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, you'll feel comfortable using AKS hybrid on Windows Server or Azure Stack HCI. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
+You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Azure AD identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, it's easy to use AKS hybrid. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
 
 ### Integrated logging and monitoring
 
