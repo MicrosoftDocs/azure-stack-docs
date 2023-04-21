@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 03/16/2023
+  ms.date: 04/21/2023
 
 title: Fix known issues and errors when configuring a network in AKS hybrid
 summary: |
@@ -180,6 +180,33 @@ sections:
           
           Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If the error still occurs, you can create a support ticket through the Azure portal.
           
+      - question: | 
+          AKS hybrid cluster stuck in "ScalingControlPlane" provisioning state
+
+        answer: | 
+          This issue causes an AKS hybrid cluster to remain in the **ScalingControlPlane** state for an extended period of time.
+          
+          ## To reproduce
+          
+          ```output
+          PS>  Get-AksHciCluster -Name <cluster name> | select *
+          Status                : {ProvisioningState, Details}
+          ProvisioningState     : ScalingControlPlane
+          KubernetesVersion     : v1.22.6
+          PackageVersion        : v1.22.6-kvapkg.0
+          NodePools             : {nodepoolA, nodepoolB}
+          WindowsNodeCount      : 0
+          LinuxNodeCount        : 1
+          ControlPlaneNodeCount : 1
+          ControlPlaneVmSize    : Standard_D4s_v3
+          AutoScalerEnabled     : False
+          AutoScalerProfile     :
+          Name                  : <cluster name>
+          ```
+          
+          This issue has been fixed in recent AKS hybrid versions. We recommend updating your AKS hybrid clusters to the latest release.
+          
+          To mitigate this issue, contact support to manually patch the status of the control plane nodes to remove the condition **MachineOwnerRemediatedCondition** from the machine status via kubectl.
       - question: | 
           The workload cluster is not found 
 
