@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This tutorial describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Azure Kubernetes Service (AKS) cluster in AKS hybrid. You will also learn how to test and scale your app. 
+This tutorial describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Azure Kubernetes Service (AKS) cluster in AKS hybrid. You will also learn how to test and scale your app.
 
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
 
@@ -30,6 +30,7 @@ Verify you have the following requirements ready:
 * The **AksHci** PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci).
 
 When you do the tutorial procedures:
+
 * Run the commands in a PowerShell window opened with administrative privileges.
 * Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
@@ -181,7 +182,7 @@ kubectl get pods -n default
 
 The following example output shows one front-end pod and one back-end pod.
 
-```
+```console
 NAME                                READY     STATUS    RESTARTS   AGE
 azure-vote-back-6bdcb87f89-g2pqg    1/1       Running   0          25m
 azure-vote-front-84c8bf64fc-cdq86   1/1       Running   0          25m
