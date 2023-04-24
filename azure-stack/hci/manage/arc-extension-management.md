@@ -83,11 +83,7 @@ To check the automatic extension upgrade history for individual cluster nodes, y
 
 ### Availability-first updates
 
-For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model. However, there are other points applicable to Arc-enabled HCI clusters:
-
-- 20% of Arc-enabled HCI clusters from a subscription are picked up in a single batch for automatic upgrades.
-
-- Within a single Arc-enabled HCI cluster, 20% of nodes are picked up in a single batch for automatic upgrades.
+For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
 
 ### Timing of automatic extension upgrades
 
