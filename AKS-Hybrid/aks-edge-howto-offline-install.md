@@ -58,11 +58,11 @@ One way to check on the installing system is to follow these steps:
 
   If the **Microsoft Code Signing PCA 2011** intermediate certificate was only in the **Current User** Intermediate Certificate store, then it's available only to the user that is logged in. You might need to install it for other users.
 
-## How to install/refresh certificates when offline
+### How to install/refresh certificates when offline
 
 There are two options for installing or updating certificates in an offline environment.
 
-### Option 1 - Install certificates manually or as part of a scripted deployment
+#### Option 1 - Install certificates manually or as part of a scripted deployment
 
 If you're scripting the deployment of AKS Edge Essentials in an offline environment to client workstations, you should follow these steps:
 
@@ -70,7 +70,7 @@ If you're scripting the deployment of AKS Edge Essentials in an offline environm
 
 1. Download the necessary certificates
     1. [MicrosoftRootCertificateAuthority2011.cer](https://download.microsoft.com/download/2/4/8/248D8A62-FCCD-475C-85E7-6ED59520FC0F/MicrosoftRootCertificateAuthority2011.cer)
-    1. [MicCodSigPCA2011.crt](http://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+    1. [MicCodSigPCA2011.crt](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
 
 1. Manually run the following commands or add them to your AKS Edge Essentials installation script:
 
@@ -82,7 +82,7 @@ If you're scripting the deployment of AKS Edge Essentials in an offline environm
 
 1. To check if the certificates were correctly installed, use the PowerShell commands provided in the section [Windows certificates](#windows-certificates) above. 
 
-### Option 2 - Distribute trusted root certificates in an enterprise environment
+#### Option 2 - Distribute trusted root certificates in an enterprise environment
 
 For enterprises with offline machines that don't have the latest root certificates, an administrator can use the instructions on the [Configure Trusted Roots and Disallowed Certificates](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn265983(v=ws.11)) page to update them.
 
