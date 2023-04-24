@@ -72,7 +72,7 @@ This article describes known issues for the AKS engine on Azure Stack Hub.
 
 - **Remediation**: For control plane nodes, increase the master profile VM size. For agent nodes, increase the node pool VM size or scale up the node pool. To scale up the node pool, run the documented `scale` command and follow the instructions.
 
-  To increase a pool VM size, update the API model and run `aks-engine upgrade` (all VMs are deleted and recreated with the new VM size).
+  To increase a pool VM size, update the API model and run `aks-engine upgrade`. All VMs are deleted and recreated with the new VM size.
 
 - **Occurrence**: When the memory required/consumed by the cluster node exceeds the available memory.
 
