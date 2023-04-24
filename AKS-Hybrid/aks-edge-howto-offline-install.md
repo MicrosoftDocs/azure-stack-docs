@@ -100,5 +100,5 @@ AKS Edge Essentials offline deployments can be licensed for commercial use using
 
 ## Next steps
 
-[AKS Edge Essentials overview](aks-edge-overview.md)
-[AKS Edge Essentials setup](aks-edge-howto-setup-machine.md)
+- [AKS Edge Essentials overview](aks-edge-overview.md)
+- [AKS Edge Essentials setup](aks-edge-howto-setup-machine.md)
