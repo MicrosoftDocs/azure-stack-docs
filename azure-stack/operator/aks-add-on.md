@@ -87,7 +87,7 @@ To allow tenant users to use the AKS service, the operator must make it availabl
 
 You must configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub.
 
-For instructions, see [Configure multi-tenancy in Azure Stack Hub](/azure-stack/operator/enable-multitenancy?pivots=management-tool-portal)
+For instructions, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?pivots=management-tool-portal)
 
 ## Monitor and act on alerts
 
