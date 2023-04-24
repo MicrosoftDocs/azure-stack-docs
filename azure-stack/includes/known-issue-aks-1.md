@@ -10,7 +10,7 @@ ms.lastreviewed: 12/8/2021
 
 ### Applications deployed to AKS clusters fail to access persistent volumes
 
-- Applicable: This issue applies to release 2108.
+- Applicable to: This issue applies to release 2108.
 - Cause: When you deploy an AKS cluster using:
     - Kubernetes 1.19, or  
     - Kubernetes 1.20 with Kubenet as the network plug-in  

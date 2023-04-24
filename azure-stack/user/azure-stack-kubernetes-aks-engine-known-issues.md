@@ -2,21 +2,17 @@
 title: Known issues with the AKS engine on Azure Stack Hub 
 description: Learn Known issues using the AKS engine on Azure Stack Hub. 
 author: sethmanheim
-
 ms.topic: article
-ms.date: 11/1/2021
+ms.date: 04/24/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
-
-# Intent: Not done: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Not done: keyword noun phrase
 
 ---
 
 # Known issues with the AKS engine on Azure Stack Hub
 
-This topic covers known issues for the AKS engine on Azure Stack Hub.
+This article describes known issues for the AKS engine on Azure Stack Hub.
 
 [!INCLUDE [Expired secret for service principal (SPN) causes cluster to fail](../includes/known-issue-aks-2.md)]
 
@@ -43,8 +39,6 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 - **Remediation**: You can find the details and mitigation steps in [the AKS engine GitHub repository (Issue 3817)](https://github.com/Azure/aks-engine/issues/3817#issuecomment-691329443). Upgrade as soon as a new build of AKS engine and corresponding image are available.
 - **Occurrence**: When deleting a deployment that contains persistence volumes.
 
-
-
 ## Upgrade issues in AKS engine 0.51.0
 
 * During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, upgrade of the following kubernetes components requires extra manual steps: **kube-proxy**, **azure-cni-networkmonitor**, **csi-secrets-store**, **kubernetes-dashboard**. The following describes what you may observe and how to work around the issues.
@@ -58,14 +52,30 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
   * As a workaround to solve this issue for each of these components, run the command in the Workaround column in the following table.
 
-    |Component Name	|Workaround	|Affected Scenarios|
+    |Component Name    |Workaround    |Affected Scenarios|
     |---------------|-----------|------------------|
-    |**kube-proxy**	    | `kubectl delete ds kube-proxy -n kube-system`	|Connected, Disconnected |
-    |**azure-cni-networkmonitor**	| `kubectl delete ds azure-cni-networkmonitor -n kube-system`	| Connected, Disconnected |
-    |**csi-secrets-store**	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
+    |**kube-proxy**        | `kubectl delete ds kube-proxy -n kube-system`    |Connected, Disconnected |
+    |**azure-cni-networkmonitor**    | `kubectl delete ds azure-cni-networkmonitor -n kube-system`    | Connected, Disconnected |
+    |**csi-secrets-store**    |`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
     |**kubernetes-dashboard** |Run the following command on each control plane node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
 * Kubernetes 1.17 is not supported in this release. Although there are GitHub pull requests (PR)s referencing 1.17, it is not supported.
+
+## Cluster node moves to "Not Ready" status and `k8s-kern.log` contains message "Memory cgroup out of memory"
+
+- **Applicable to**: Azure Stack Hub, AKS engine (all)
+- **Description**: A cluster node moves to "Not Ready" status and the **k8s-kern.log** file contains the message "Memory cgroup out of memory." This issue applies to all AKS engine releases. To check whether this issue is occurring on your system, search the **k8s-kern.log** file for the string "Memory cgroup out of memory."
+
+  You can find the **k8s-kern.log** file by:
+
+  - Running `aks-engine get-logs` and navigating to **${NODE_NAME}/var/log/k8s-kern.log**, OR
+  - Navigating to **/var/log/kern.log** on the node file system.
+
+- **Remediation**: For control plane nodes, increase the master profile VM size. For agent nodes, increase the node pool VM size or scale up the node pool. To scale up the node pool, run the documented `scale` command and follow the instructions.
+
+  To increase a pool VM size, update the API model and run `aks-engine upgrade` (all VMs will be deleted and recreated with the new VM size).
+
+- **Occurrence**: When the memory required/consumed by the cluster node exceeds the available memory.
 
 ## Next steps
 
