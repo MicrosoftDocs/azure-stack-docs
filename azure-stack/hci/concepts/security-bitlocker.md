@@ -39,8 +39,12 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
 
 1. Here is sample output:
 
-    ![Image showing a PowerShell window displaying recovery keys.](media/security-bitlocker/recovery-keys.png)
+|ComputerName  |PasswordId   |RecoveryKey   |
+|--------------|-------------|--------------|
+|ASB88RR1OU19  |PasswordId01 |RecoveryKey01 |
+|ASB88RR1OU20  |PasswordId02 |RecoveryKey02 |
+|ASB88RR1OU21  |PasswordId07 |RecoveryKey09 |
 
 ## Next steps
 
-- [Azure Stack HCI security considerations](./security.md)
+- [Azure Stack HCI security considerations](./security.md).
