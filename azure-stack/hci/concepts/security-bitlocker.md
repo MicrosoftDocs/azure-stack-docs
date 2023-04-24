@@ -37,7 +37,7 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
     Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
     ```
 
-1. Here is sample output:
+   Here is sample output:
 
    ```output
     PS C:\Users\ashciuser> Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
