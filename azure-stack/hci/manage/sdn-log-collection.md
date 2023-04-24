@@ -4,7 +4,7 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
-ms.date: 04/19/2023
+ms.date: 04/24/2023
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
@@ -155,7 +155,7 @@ Here's the syntax of the `Start-SdnDataCollection` cmdlet:
 Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnRoles[]> [-OutputDirectory <FileInfo>] [-IncludeNetView] [-IncludeLogs] [-FromDate <DateTime>] [-Credential <PSCredential>] [-NcRestCredential <PSCredential>] [-Limit <Int32>] [-ConvertETW <Boolean>] [<CommonParameters>]
 ```
 
-For more information about the parameters and specifications, see the [Start SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
+For more information about the parameters and specifications, see the [Start-SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
 
 ### Example of the `Start-SdnDataCollection` cmdlet usage
 
