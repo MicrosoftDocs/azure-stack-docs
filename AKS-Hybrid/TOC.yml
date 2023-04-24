@@ -337,6 +337,10 @@
       href: aks-edge-howto-update.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
+    - name: Networking
+      items:
+      - name: Configure multiple NICs
+        href: aks-edge-howto-multi-nic.md
     - name: Storage
       items:
       - name: Add local storage binding
