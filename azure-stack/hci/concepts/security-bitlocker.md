@@ -47,6 +47,7 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
     ASB88RR1OU19    {Password1}   Key1
     ASB88RR1OU20    {Password2}   Key2
     ASB88RR1OU21    {Password3}   Key3
+    ASB88RR1OU22    {Password4}   Key4
     ```
 
 ## Next steps
