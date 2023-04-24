@@ -15,10 +15,10 @@ By default, the AKS Edge Essentials Linux node has a single network interface ca
 This article describes how to configure the AKS Edge Essentials Linux node to support multiple NICs and connect to multiple networks. This process is divided into the following steps:
 
 1. Create an AKS Edge Essentials deployment with a secondary NIC
-1. Check the multiple NIC network configuration 
+1. Verifiy multiple NIC network configuration 
 1. Configure [Multus CNI plugin](https://cloud.redhat.com/blog/demystifying-multus)
-1. Configure Multus secondary network
-1. Check Pod secondary network
+1. Configure Multus secondary network with sample pod
+1. Verifiy pod attached networks
 
 For more information about networking concepts and Multus configurations, see [AKS Edge Essentials networking](aks-edge-concept-networking.md) and [Multus - Quickstart guide](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md).
 
@@ -62,7 +62,7 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 1. Deploy your AKS Edge Essentials node following steps on [Create a single machine deployment](aks-edge-howto-single-node-deployment.md), or [Create a full deployment](aks-edge-howto-multi-node-deployment.md).
 
-## Check the multiple NIC network configuration
+## Verify multiple NIC network configuration
 
 After successfully installing and deploying the AKS Edge Essentials node, follow the steps below to make sure both primary, and secondary interfaces were created and added to the Linux node. 
 
@@ -182,7 +182,7 @@ The installation can be checking the following:
     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo cat /var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf"
     ```
 
-## Configure secondary network
+## Configure Multus secondary network with smaple pod
 
 Once the Multus plugin is installed and running, we need to create the Kubernetes network attachment definition. 
 
@@ -237,7 +237,7 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
     kubectl apply -f samplepod.yaml
     ``` 
 
-## Check the multiple NIC network configurations
+## Verifiy pod attached networks
 
 Final step is to ensure the pod is running and has the correct network interfaces attached. 
 
