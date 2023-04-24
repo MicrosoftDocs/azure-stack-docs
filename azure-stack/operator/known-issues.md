@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/26/2022
+ms.date: 11/17/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -76,6 +76,20 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2206.
 - Cause: The update blade and/or the portal dashboard can become unusable and show an error during the update itself.
 - Remediation: If the portal is unavailable for more than 1 hour, you can use the PEP to check the status of the update. For more information, see [Monitor updates in Azure Stack Hub using the privileged endpoint](/azure-stack/operator/azure-stack-monitor-update).
+
+### Public IP and Load Balancer blades display a banner that recommends upgrading from Basic to Standard SKU
+
+- Applicable: This issue applies to release 2108 and newer.
+- Cause: The Azure portal recommends the upgrade from Basic to Standard SKU; however, this functionality is not supported in Azure Stack Hub.
+- Remediation: Don't attempt the upgrade, as it will fail.
+- Occurrence: Common
+
+### Menu items not displayed when clicking on disk instance on VM overview blade
+
+- Applicable: This issue applies to releases 2102 and newer.
+- Cause: Menu items are not displayed when clicking on disk instance on the Virtual Machines overview blade.
+- Remediation: Refresh the page and the menu should reappear. Alternatively, you can navigate to the specific disk instance via the **Disks** area in the portal.
+- Occurrence: Minor portal issue that occurs consistently.
 
 ## Datacenter integration
 
@@ -181,6 +195,20 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Sign in to the Azure portal, and add an email address to the Azure AD account that is experiencing this issue.
 - Occurrence: Common
 
+### Public IP and Load Balancer blades display a banner that recommends upgrading from Basic to Standard SKU
+
+- Applicable: This issue applies to release 2108 and newer.
+- Cause: The Azure portal recommends the upgrade from Basic to Standard SKU; however, this functionality is not supported in Azure Stack Hub.
+- Remediation: Don't attempt the upgrade, as it will fail.
+- Occurrence: Common
+
+### Menu items not displayed when clicking on disk instance on VM overview blade
+
+- Applicable: This issue applies to releases 2102 and newer.
+- Cause: Menu items are not displayed when clicking on disk instance on the Virtual Machines overview blade.
+- Remediation: Refresh the page and the menu should reappear. Alternatively, you can navigate to the specific disk instance via the **Disks** area in the portal.
+- Occurrence: Minor portal issue that occurs consistently.
+
 <!-- ## Storage -->
 
 <!-- ## SQL and MySQL-->
@@ -222,6 +250,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: The two administrative subscription types **Metering** and **Consumption** have been disabled and should not be used. If you have resources in them, an alert is generated until those resources are removed.
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
+
+### Menu items not displayed when clicking on disk instance on VM overview blade
+
+- Applicable: This issue applies to releases 2102 and newer.
+- Cause: Menu items are not displayed when clicking on disk instance on the Virtual Machines overview blade.
+- Remediation: Refresh the page and the menu should reappear. Alternatively, you can navigate to the specific disk instance via the **Disks** area in the portal.
+- Occurrence: Minor portal issue that occurs consistently.
 
 ## Networking
 

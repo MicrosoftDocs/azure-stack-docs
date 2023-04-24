@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/19/2022
+ms.date: 08/23/2022
 ms.author: sethm
 ms.reviewer: shisab
 ms.lastreviewed: 04/19/2022
@@ -32,7 +32,7 @@ For more information about cmdlets that Microsoft support can execute during a r
 
 Remote support gives you the ability to:
 
-- Improve the speed to resolution as Microsoft Support no longer needs to arrange a meeting with you for troubleshooting.
+- Improve the speed to resolution. After the initial scoping consultation with Microsoft Support, you can enable remote support. At that point Microsoft Support no longer needs to arrange meetings with you for further troubleshooting.
 - Reduce the number of [privileged endpoint (PEP) session elevation](azure-stack-privileged-endpoint.md#unlocking-the-privileged-endpoint-for-support-scenarios) to resolve issues.
 - View the detailed transcript of all executed operations at any time.
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
@@ -186,8 +186,6 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 |`Invoke-AzsSupportWmiTracing` | Enables `netsh` ETL tracing for a series of WMI providers on a specified computer name. Also supports a series of procdumps of winmgt and WmiPrvSE if specified. |
 |`Save-AzsSupportObjectToFile` | Save an object to a file in a consistent format creating a file that contains the current time as a timestamp in the file name. |
 |`Send-AzureStackDiagnosticLog` | Sends Azure Stack diagnostic logs to Microsoft. |
-|`Start-AzsSupportClusterPerfAnalysis` | Analyzes key performance data such as cluster performance history and exports performance data. |
-|`Start-AzsSupportRingManager` | Provides a simplified management experience for working with Service Fabric clusters. |
 |`Start-AzsSupportSdnDiagnostic` | Automated network diagnostics and data collection/tracing script. |
 |`Start-AzsSupportStorageDiagnostic` | Runs a series of storage specific diagnostic tests and generates a storage report. |
 

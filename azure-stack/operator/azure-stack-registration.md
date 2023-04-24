@@ -9,12 +9,13 @@ ms.date: 05/26/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
-ms.custom: contperf-fy21q4
+ms.custom:
+  - contperf-fy21q4
+  - devx-track-azurepowershell
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
 # Keyword: register azure stack (registration)
-
 ---
 
 # Register Azure Stack Hub with Azure
@@ -28,12 +29,12 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ::: zone pivot="state-connected"
    > [!Note]
-   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by [unregistering and then re-registering](azure-stack-registration.md#renew-or-change-registration) Azure Stack Hub with Azure. 
+   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by [unregistering and then re-registering](azure-stack-registration.md#renew-or-change-registration) Azure Stack Hub with Azure.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
    > [!Note]
-   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected&tabs=az1%2caz2). 
+   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected&tabs=az1&az2).
 ::: zone-end
 
 ## Prerequisites
@@ -443,7 +444,8 @@ To get the activation key, run the following PowerShell cmdlets:
 Return to the Azure Stack Hub environment with the file or text from the activation key created from Get-AzsActivationKey. Next create an activation resource in Azure Stack Hub using that activation key. To create an activation resource, run the following PowerShell cmdlets:
 
   ```powershell
-  $ActivationKey = "<activation key>"
+  # Open the file that contains the activation key (from Azure), copy the entire contents into your clipboard, then within your PowerShell session (that will communicate with the PEP), paste the activation key contents into a string variable, enclosed by quotation marks: 
+  $ActivationKey = "<paste activation key here>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
@@ -687,7 +689,7 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | The billing model that your subscription uses. Allowed values for this parameter are: Capacity, PayAsYouUse, and Development. |
+| BillingModel | String | The billing model that your subscription uses. Allowed values for this parameter are: Capacity, Custom, and Development. |
 | MarketplaceSyndicationEnabled | True/False |  |
 | UsageReportingEnabled | True/False | Azure Stack Hub reports usage metrics by default. Operators with capacity uses or supporting a disconnected environment need to turn off usage reporting. Allowed values for this parameter are: True, False. |
 | AgreementNumber | String |  |

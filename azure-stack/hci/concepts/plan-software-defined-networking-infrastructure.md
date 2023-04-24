@@ -6,20 +6,20 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 06/14/2021
+ms.date: 04/17/2023
 ---
 # Plan a Software Defined Network infrastructure
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending a SDN infrastructure and using a phased deployment.
+Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
 
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
 
 ## Prerequisites
 
-There are several hardware and software prerequisites for a SDN infrastructure, including:
+There are several hardware and software prerequisites for an SDN infrastructure, including:
 
 - **Security groups and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups and dynamic DNS registration.
 
@@ -27,11 +27,11 @@ There are several hardware and software prerequisites for a SDN infrastructure, 
 
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, as well as options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
-- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the next section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host an SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the next section.
 
 ### SDN hardware requirements
 
-This section provides hardware requirements for physical switches when planning a SDN environment.
+This section provides hardware requirements for physical switches when planning an SDN environment.
 
 #### Switches and routers
 
@@ -73,12 +73,20 @@ Each physical compute host requires network connectivity through one or more net
 >Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported. Windows Server 2019 supports both IPv4 and IPv6 addressing.
 
 ### Logical networks
+
 This section covers SDN infrastructure planning requirements for the management logical network and the Hyper-V Network Virtualization (HNV) Provider logical network. It includes details on provisioning additional logical networks to use gateways and the Software Load Balancer (SLB), and a sample network topology.
 
 #### Management and HNV Provider
+
 All physical compute hosts must access the management logical network and the HNV Provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
 
 The HNV Provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
+
+Here's how HNV Provider network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV Provider logical network for the individual Hyper-V hosts from an IP address pool. The Network Controller specifies and manages the IP address pool.
 
@@ -180,7 +188,7 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
-|Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
+|Logical Network management<br> Network security groups (NSGs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
 |Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)<br> Virtual network peering|Network Controller|HNV PA VLAN, Subnet, Router|
 |Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB/MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
 |GRE gateway connections|Network Controller<br>SLB/MUX<br> Gateway|BGP on HNV PA network<br>Private and Public VIP subnets<br> GRE VIP subnet|
@@ -191,4 +199,4 @@ Feature|Deployment requirements|Network requirements|
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
 - [SDN in Azure Stack HCI](./software-defined-networking.md)
-- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)

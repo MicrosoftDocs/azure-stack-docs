@@ -4,12 +4,12 @@ description: How to plan storage volumes on Azure Stack HCI and Windows Server c
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 07/11/2022
+ms.date: 04/17/2023
 ---
 
 # Plan volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 

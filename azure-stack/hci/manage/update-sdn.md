@@ -5,12 +5,12 @@ ms.topic: how-to
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.reviewer: anpaul
-ms.date: 10/22/2021
+ms.date: 04/19/2023
 ---
 
 # Update SDN infrastructure for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software Defined Networking (SDN) infrastructure components include Network Controller and optionally, Software Load Balancers (SLBs), and SDN gateways that run on virtual machines (VMs).
 

@@ -6,27 +6,22 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/31/2022
+ms.date: 04/17/2023
 ---
 
 # System requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-Use this topic to assess system requirements for servers, storage, and networking for Azure Stack HCI.
+This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
 ## Server requirements
 
-A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers; however, clusters can be combined using cluster sets to create an HCI platform of hundreds of nodes.
+A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
 
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
-- Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). Each site must have the same number of servers and drives.
-
-> [!NOTE]
-> Stretch clusters are not supported in a single server configuration.
-
-- It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade, or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
+- It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
 
 - Make sure that the servers are equipped with at least 32 GB of RAM per node to accommodate the server operating system, VMs, and other apps or workloads. In addition, allow 4 GB of RAM per terabyte (TB) of cache drive capacity on each server for Storage Spaces Direct metadata.
 
@@ -34,7 +29,9 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
     - Hardware-assisted virtualization. This is available in processors that include a virtualization option, specifically processors with Intel Virtualization Technology (Intel VT) or AMD Virtualization (AMD-V) technology.
     - Hardware-enforced Data Execution Prevention (DEP) must be available and enabled. For Intel systems, this is the XD bit (execute disable bit). For AMD systems, this is the NX bit (no execute bit).
 
-- You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required, but is supported for boot. A 200 GB minimum size is recommended.
+- Ensure all the servers are in the same time zone as your local domain controller.
+
+- You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required but is supported for boot. A 200 GB minimum size is recommended.
 
 - For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
@@ -44,9 +41,9 @@ Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory
 
 For best results, adhere to the following:
 
-- Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server, or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](drive-symmetry-considerations.md).
+- Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](drive-symmetry-considerations.md).
 
-- Each server in the cluster should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data, and one for log data.
+- Each server in the cluster should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data and one for log data.
 
 - SCSI Enclosure Services (SES) is required for slot mapping and identification. Each external enclosure must present a unique identifier (Unique ID). 
 
@@ -64,22 +61,42 @@ For physical networking considerations and requirements, see [Physical network r
 
 For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
-## Software Defined Networking (SDN) requirements
+Stretched clusters require servers be deployed at two separate sites. The sites can be in different countries/regions, different cities, different floors, or different rooms. For synchronous replication, you must have a network between servers with enough bandwidth to contain your IO write workload and an average of 5 ms round trip latency or lower. Asynchronous replication doesn't have a latency recommendation.
+
+-	A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). You can’t create a stretched cluster with two single servers.
+-	Each site must have the same number of servers and drives.
+-	SDN isn’t supported on stretched clusters.
+
+For additional discussion of stretched cluster networking requirements, see [Host network requirements](../concepts/host-network-requirements.md#stretched-clusters).
+
+### Software Defined Networking (SDN) requirements
 
 When you create an Azure Stack HCI cluster using Windows Admin Center, you have the option to deploy Network Controller to enable Software Defined Networking (SDN). If you intend to use SDN on Azure Stack HCI:
 
 - Make sure the host servers have at least 50-100 GB of free space to create the Network Controller VMs.
 
-- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep-process-overview) or by running the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage) PowerShell cmdlet to convert an .iso file into a VHD.
+- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) or by running the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage) PowerShell cmdlet to convert an .iso file into a VHD.
 
 For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
 
-### Domain requirements
+### Active Directory Domain requirements
 
-There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that's still supported. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already. to learn more, see [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+You must have an Active Directory Domain Services (AD DS) domain available for the Azure Stack HCI system to join. There are no special domain functional-level requirements. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already. To learn more, see [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+
+## Windows Admin Center requirements
+
+If you use Windows Admin Center to [create](../deploy/create-cluster.md) or [manage](../manage/cluster.md) your Azure Stack HCI cluster, make sure to complete the following requirements:
+
+- Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+
+- Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
+
+- If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
+
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 ## Maximum supported hardware specifications
 
@@ -90,7 +107,7 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 | Physical servers per cluster | 16      |
 | VMs per host                 | 1,024   |
 | Disks per VM (SCSI)          | 256     |
-| Storage per cluster          | 16 PB    |
+| Storage per cluster          | 4 PB    |
 | Storage per server           | 400 TB  |
 | Volumes per cluster          | 64      |
 | Volume size                  | 64 TB

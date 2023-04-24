@@ -3,14 +3,14 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 01/19/2022
+ms.date: 04/19/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
@@ -48,7 +48,7 @@ The following requirements must be met for a successful SDN deployment:
 
 SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage ](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
+If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
 
 The following shows an example using `Convert-WindowsImage`:
 
@@ -145,9 +145,9 @@ Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
 ### Gateway VM section
 
-A minimum of three Gateway VMs (two active and one redundant) are recommended for SDN.
+A minimum of two Gateway VMs (one active and one redundant) are recommended for SDN.
 
-The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range. Ensure that you get the `FrontEndIp` from the end of the PA Pool specified in the configuration file.
+The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range.
 
 Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
@@ -155,7 +155,6 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 - **HostName** - host name of server where the Gateway VM is located
 - **ManagementIP** - management network IP address for the Gateway VM
 - **MACAddress** - MAC address for the Gateway VM
-- **FrontEndIp** - Provider Network front end IP address for the Gateway VM
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
 - **BackEndMac** - Provider network back end MAC address for the Gateway VM
 
@@ -174,6 +173,10 @@ The following additional parameters are used by Gateway VMs only. Leave these va
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
 - **Capacity** - capacity in Kbps for each Gateway VM in the pool
+- **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway moves to the redundant gateway and the redundant gateway becomes active.
+
+    > [!NOTE]
+    > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
@@ -184,6 +187,12 @@ The following parameters are used if you are deploying and managing overlay virt
 - **PAGateway** - IP address for the PA network Gateway
 - **PAPoolStart** - beginning IP address for the PA network pool
 - **PAPoolEnd** - end IP address for the PA network pool
+
+Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 ## Run the deployment script
 
@@ -214,4 +223,4 @@ The following configuration sample files for deploying SDN are available on the 
 ## Next steps
 
 - [Manage VMs](../manage/vm.md)
-- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)

@@ -1,18 +1,18 @@
 ---
-title: Manage Azure Stack HCI clusters using PowerShell
-description: Learn how to manage clusters on Azure Stack HCI using PowerShell
+title: Manage Azure Stack HCI and Windows Server clusters using PowerShell
+description: Learn how to manage clusters on Azure Stack HCI and Windows Server using PowerShell
 author: JasonGerend
 ms.topic: how-to
-ms.date: 05/16/2022
+ms.date: 04/17/2023
 ms.author: jgerend
 ms.reviewer: stevenek
 ---
 
-# Manage Azure Stack HCI clusters using PowerShell
+# Manage Azure Stack HCI and Windows Server clusters using PowerShell
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters.
+Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI and Windows Server clusters.
 
 You manage clusters from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
@@ -23,7 +23,7 @@ For the complete reference documentation for managing clusters using PowerShell,
 
 ## Using Windows PowerShell
 
-Windows PowerShell is used to perform all the tasks in this article. It is recommended that you pin the app to your taskbar for convenience.
+Windows PowerShell is used to perform all the tasks in this article. It's recommended that you pin the app to your taskbar for convenience.
 
 If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
@@ -77,7 +77,7 @@ Get-CimSession -ComputerName Server1 | Get-ClusterStorageSpacesDirect
 
 Use the `Start-Cluster` and `Stop-Cluster` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Start-Cluster](/powershell/module/failoverclusters/start-cluster) and [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster) reference documentation.
 
-Starts the Cluster service on all server nodes of the cluster on which it is not yet started:
+Starts the Cluster service on all server nodes of the cluster on which it isn't yet started:
 
 ```powershell
 Start-Cluster -Name Cluster1
@@ -108,7 +108,7 @@ Remove-ClusterNode -Cluster Cluster1 -Name Node4
 >[!NOTE]
 > If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
-## Setup the cluster witness
+## Set up the cluster witness
 
 Use the `Set-ClusterQuorum` cmdlet to set quorum witness options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](/powershell/module/failoverclusters/set-clusterquorum) reference documentation.
 
@@ -158,7 +158,7 @@ Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerb
 
 ## Remove a cluster
 
-Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-powershell.
+Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-powershell).
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource) reference documentation.
 
@@ -179,5 +179,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-- You should validate the cluster afterwards after making changes. See [Validate an Azure Stack HCI cluster](../deploy/validate.md) for more information.
+- You should validate the cluster afterwards after making changes. For more information, see [Validate an Azure Stack HCI cluster](../deploy/validate.md).
 - Learn how to manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).

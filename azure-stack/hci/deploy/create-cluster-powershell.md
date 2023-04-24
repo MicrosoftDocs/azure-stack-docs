@@ -3,15 +3,15 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 05/16/2022
+ms.date: 04/17/2023
 ms.author: robess
 ms.reviewer: stevenek
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
+In this article, you learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
 > [!NOTE]
 > If you're doing a single server installation of Azure Stack HCI 21H2, use PowerShell to create the cluster.
@@ -21,12 +21,12 @@ You have a choice between two cluster types:
 - Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-For the single server scenario, complete the same instructions below for the one server.
+For the single server scenario, complete the same instructions for the one server.
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
 
-In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
+In this article, we create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
@@ -120,12 +120,14 @@ The next step is to install required Windows roles and features on every server 
 - RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - NetworkATC
+- NetworkHUD
+- SMB Bandwidth Limit
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -133,16 +135,13 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "FS-SMBBW", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist -IncludeAllSubFeature -IncludeManagementTools
 }
 ```
-
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
 
 Next, restart all the servers:
 
@@ -240,11 +239,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 Microsoft recommends using [Network ATC](./network-atc.md) to deploy host networking if you're running Azure Stack HCI version 21H2 or newer. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-Network ATC can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
-
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes
+Network ATC can automate the deployment of your intended networking configuration if you specify one or more intent types for your adapters. For more information on specific intent types, please see: [Network Traffic Types](../concepts/host-network-requirements.md#network-traffic-types).
 
 ### Step 4.1: Review physical adapters
 
@@ -270,10 +265,7 @@ Run the following command to add the storage and compute intent types to pNIC01 
 Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName $ClusterName -AdapterName pNIC01, pNIC02
 ```
 
-The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
-- the adapters specified
-- adapters report status 'Up'
-- adapters ready to be teamed to create the specified vSwitch
+The command should immediately return after some initial verification.
 
 ### Step 4.3: Validate intent deployment
 
@@ -292,12 +284,6 @@ Get-NetIntentStatus -ClusterName $ClusterName -Name Cluster_ComputeStorage
 Note the status parameter that shows Provisioning, Validating, Success, Failure.
 
 Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
- 
-Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage.
-
-```powershell
-Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
-```
 
 > [!NOTE]
 > At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
@@ -358,11 +344,49 @@ Specifying a preferred Site for stretched clusters has the following benefits:
 - **Cold start** - during a cold start, virtual machines are placed in the preferred site
 
 - **Quorum voting**
-  - Using a dynamic quorum, weighting is decreased from the passive (replicated) site first to ensure that the preferred site survives if all other things are equal. In addition, server nodes are pruned from the passive site first during regrouping after events such as an asymmetric network connectivity failures.
+  - Using a dynamic quorum, weighting is decreased from the passive (replicated) site first to ensure that the preferred site survives if all other things are equal. In addition, server nodes are pruned from the passive site first during regrouping after events such as asymmetric network connectivity failures.
 
   - During a quorum split of two sites, if the cluster witness cannot be contacted, the preferred site is automatically elected to win. The server nodes in the passive site then drop out of cluster membership. This allows the cluster to survive a simultaneous 50% loss of votes.
 
 The preferred site can also be configured at the cluster role or group level. In this case, a different preferred site can be configured for each virtual machine group. This enables a site to be active and preferred for specific virtual machines.
+
+### Step 5.4: Set-up Stretch Clustering with Network ATC
+
+After version 22H2, you can use Network ATC to set up Stretch clustering. Network ATC adds Stretch as an intent type from version 22H2. To deploy an intent with Stretch clustering with Network ATC, run the following command: 
+
+```powershell
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01", "pNIC02"
+```
+A stretch intent can also be combined with other intents, when deploying with Network ATC. 
+
+#### SiteOverrides
+
+Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent deployed with Network ATC. Network ATC will handle this using SiteOverrides. To create a SiteOverride, run: 
+
+```powershell
+ $siteOverride = New-NetIntentSiteOverrides
+```
+Once you have created a siteOverride, you can set any property for the siteOverride. Make sure that the name property of the siteOverride has the exact same name, as the name your site has in the ClusterFaultDomain. A mismatch of names between the ClusterFaultDomain and the siteOverride will end up resulting in the siteOverride not being applied. 
+
+The properties you can set for a particular siteOverride are: Name, StorageVlan and StretchVlan. For example, this is how you create 2 siteOverrides for your 2 sites- site1 and site2: 
+
+```powershell
+$siteOverride1 = New-NetIntentSiteOverrides
+$siteoverride1.Name = "site1"
+$siteOverride1.StorageVLAN = 711
+$siteOverride1.StretchVLAN = 25
+
+$siteOverride2 = New-NetIntentSiteOverrides
+$siteOverride2.Name = "site2"
+$siteOverride2.StorageVLAN = 712
+$siteOverride2.StretchVLAN = 26
+```
+You can run `$siteOverride1`, `$siteOverride2` in your powershell window to make sure all your properties are set in the desired manner. 
+
+Finally, to add one or more siteOverrides to your intent, run: 
+```powershell
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteOverride1, $siteOverride2
+```
 
 ## Step 6: Enable Storage Spaces Direct
 

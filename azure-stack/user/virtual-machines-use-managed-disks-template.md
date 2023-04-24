@@ -7,7 +7,9 @@ ms.date: 10/14/2021
 ms.topic: how-to
 ms.reviewer: wellsluo
 ms.lastreviewed: 8/25/2020
-ms.custom: contperf-fy22q2
+ms.custom:
+  - contperf-fy22q2
+  - devx-track-arm-template
 ---
 
 
@@ -221,5 +223,5 @@ To create managed availability sets with VMs using managed disks, add the `sku` 
 ## Next steps
 
 - See [Azure Stack Hub managed disks](azure-stack-managed-disk-considerations.md) to learn more about managed disks.
-- Review the template reference documentation for virtual machine resources at the [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/2017-12-01/virtualmachines).
-- Review the template reference documentation for disk resources at the [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/2017-03-30/disks) document.
+- Review the template reference documentation for virtual machine resources at the [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/2022-08-01/virtualmachines).
+- Review the template reference documentation for disk resources at the [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/2022-07-02/disks) document.

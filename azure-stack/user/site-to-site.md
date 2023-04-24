@@ -15,7 +15,7 @@ ms.lastreviewed: 11/22/2020
 
 This article describes troubleshooting steps you can take after you configure a site-to-site (S2S) VPN connection between an on-premises network and an Azure Stack Hub virtual network, and the connection suddenly stops working and cannot be reconnected.
 
-If your Azure Stack Hub issue is not addressed in this article, you can visit the [Azure Stack Hub Q&A forum](/answers/questions/topics/single/25482.html).
+If your Azure Stack Hub issue is not addressed in this article, you can visit the [Azure Stack Hub Q&A forum](/answers/topics/azure-stack-hub.html).
 
 You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 

@@ -3,14 +3,14 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 02/14/2022
+ms.date: 04/17/2023
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
 # Deploy SDN using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
 
@@ -25,10 +25,13 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. You can use [Microsoft System Center VMM 2022](https://techcommunity.microsoft.com/t5/system-center-blog/system-center-2022/ba-p/2907771) instead, which is currently in preview.
+> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022. Instead, you can use [Microsoft System Center VMM 2022](/system-center/vmm/overview?view=sc-vmm-2022&preserve-view=true).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center VMM 2019 and WAC to manage SDN at the same time.
+> You can't use Microsoft System Center VMM 2019 and Windows Admin Center to manage SDN at the same time.
+
+> [!IMPORTANT]
+> You can’t manage SDN on the Standard edition of Windows Server 2022 or Windows Server 2019. This is due to the limitations in the Remote Server Administration Tools (RSAT) installation on Windows Admin Center. However, you can manage SDN on the Datacenter edition of Windows Server 2022 and Windows Server 2019 and also on the Datacenter: Azure Edition of Windows Server 2022.
 
 ## Before you begin
 
@@ -98,6 +101,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values. This is the MAC pool used to assign MAC addresses to VMs attached to SDN networks.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. After the Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
 ### Redeploy SDN Network Controller
 
@@ -109,10 +113,17 @@ If the Network Controller deployment fails or you want to deploy it again, do th
    ```powershell
     Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections
    ```
+
 1. After removing the registry key, remove the cluster from the Windows Admin Center management, and then add it back.
 
    > [!NOTE]
    > If you don't do this step, you may not see the SDN deployment wizard in Windows Admin Center.
+
+1. (Additional step only if you plan to uninstall Network Controller and not deploy it again) Run the following cmdlet on all the servers in your Azure Stack HCI cluster, and then skip the last step.
+    
+    ```powershell
+    Disable-VMSwitchExtension -VMSwitchName "<Compute vmswitch name>" -Name "Microsoft Azure VFP Switch Extension"
+    ```
 
 1. Run the deployment wizard again.
 
@@ -169,6 +180,9 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for gateways. We strongly recommend at least two VMs for production deployments.
 1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
+
+    > [!NOTE]
+    > Ensure that the total number of gateway VMs is at least one more than the number of redundant gateways. Otherwise, you won't have any active gateways to host gateway connections.
 1. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
 1. For VM network addressing, select either **DHCP** or **Static**.
 

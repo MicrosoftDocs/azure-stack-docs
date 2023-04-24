@@ -49,7 +49,7 @@ You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure
 
 ### Improvements to Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 
-We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](../aks-hci/overview.md).
+We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](/azure/aks/hybrid/overview).
 
 ## New Azure management and governance capabilities
 
@@ -67,9 +67,9 @@ With Azure Site Recovery support, you can now continuously replicate VMs from Az
 
 Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
 
-### Arc-enabled VM management on Azure Stack HCI (preview)
+### Arc VM management on Azure Stack HCI (preview)
 
-Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux VMs running on Azure Stack HCI clusters. For more information about managing Arc-enabled VMs, see [Manage Arc-enabled VMs](manage/azure-arc-enabled-virtual-machines.md).
+Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux VMs running on Azure Stack HCI clusters. For more information about managing Arc VMs, see [Manage Arc VMs](manage/azure-arc-vm-management-overview.md).
  
 ### Multi-cluster monitoring in the Azure portal (preview)
 

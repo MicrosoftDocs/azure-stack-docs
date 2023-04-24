@@ -39,11 +39,11 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 Follow the appropriate instructions to prepare the VHD for your Linux OS:
 
-- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
 - [Red Hat Enterprise Linux](../operator/azure-stack-redhat-create-upload-vhd.md)
-- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
 
 > [!IMPORTANT]
 > Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
@@ -55,17 +55,17 @@ Identify what version of Linux Agent is installed in the source VM image, run th
    ```bash  
    waagent -version
    ```
-    
+
    For example:
-    
-   ```bash  
+
+   ```bash
    waagent -version
    WALinuxAgent-2.2.45 running on centos 7.7.1908
    Python: 2.7.5
    Goal state agent: 2.2.46
    ```
 
-#### Linux Agent 2.2.4 and earlier, disable the Linux Agent provisioning 
+#### Linux Agent 2.2.4 and earlier, disable the Linux Agent provisioning
 
 Disable the Linux Agent provisioning with Linux Agent lower than 2.2.4, set the following parameters in **/etc/waagent.conf**: `Provisioning.Enabled=n, and Provisioning.UseCloudInit=n`.
 

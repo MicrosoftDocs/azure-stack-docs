@@ -3,20 +3,56 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI.
 author: dcuomo
 ms.topic: how-to
-ms.date: 04/20/2022
+ms.date: 04/20/2022 
 ms.author: dacuo
 ms.reviewer: jgerend
 ---
 
 # Deploy host networking with Network ATC
 
-> Applies to: Azure Stack HCI, version 21H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md). 
+This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
 ## Requirements and best practices
+
+# [22H2](#tab/22H2)
+
+The following are requirements and best practices for using Network ATC in Azure Stack HCI:
+
+- Supported on Azure Stack HCI, version 22H2.
+
+- All servers in the cluster must be running Azure Stack HCI, version 22H2.
+
+- Must use physical hosts that are Azure Stack HCI certified.
+
+- A maximum of 16 nodes supported per cluster.
+
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. Network ATC, after version 22H2, will confirm symmetric properties for adapters on the node, and across the cluster before deploying an intent. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+
+- Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
+
+- Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
+
+- Each node must have the following Azure Stack HCI features installed:
+
+  - Network ATC
+  - Data Center Bridging (DCB)
+  - Failover Clustering
+  - Hyper-V
+   Here's an example of installing the required features via PowerShell:
+   
+   ```powershell
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   ```
+
+- Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
+
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
+
+# [21H2](#tab/21H2)
 
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
@@ -40,29 +76,34 @@ The following are requirements and best practices for using Network ATC in Azure
   - Data Center Bridging (DCB)
   - Failover Clustering
   - Hyper-V
+  - Network HUD
+  
    Here's an example of installing the required features via PowerShell:
    
    ```powershell
-   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, NetworkHUD, Failover-Clustering -IncludeManagementTools
    ```
-- Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
+
+- Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
+---
+
 > [!IMPORTANT]
 > Updated: Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
-> 
+>
 > Deploying Network ATC in standalone mode may be used for test and validation purposes only.
 
 ## Common Network ATC commands
 
 There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
-The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This does not destroy the invoked configuration.
+The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This command does not destroy the invoked configuration.
 
 ## Example intents
 
-Network ATC modifies how you deploy host networking, not what you deploy. Multiple scenarios may be implemented so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
 
 For simplicity we only demonstrate two physical adapters per SET team, however it is possible to add more. Refer to [Plan Host Networking](../concepts/host-network-requirements.md) for more information.
 
@@ -72,9 +113,19 @@ For this intent, compute, storage, and management networks are deployed and mana
 
 :::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent" lightbox="media/network-atc/network-atc-2-full-converge.png":::
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -AdapterName pNIC01, pNIC02
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
+
+---
 
 ### Converged compute and storage intent; separate management intent
 
@@ -82,10 +133,20 @@ Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02
 
 :::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC03, pNIC04
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 ```
+---
 
 ### Fully disaggregated intent
 
@@ -93,11 +154,22 @@ For this intent, compute, storage, and management networks are all managed on di
 
 :::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute -Compute -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 Add-NetIntent -Name Compute -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
+---
 
 ### Storage-only intent
 
@@ -105,9 +177,18 @@ For this intent, only storage is managed. Management and compute adapters are no
 
 :::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
+---
 
 ### Compute and management intent
 
@@ -115,27 +196,91 @@ For this intent, compute and management networks are managed, but not storage.
 
 :::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC01, pNIC02
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
 
-### Multiple compute (switch) intent
+---
+
+### Multiple compute (switch) intents
 
 For this intent, multiple compute switches are managed.
 
 :::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
+
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Compute1 -Compute -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
+```
+
+# [21H2](#tab/21H2)
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
 
+---
 
 ## Default Network ATC values
 
 This section lists some of the key default values used by Network ATC.
 
-### Default VLANs
+### 22H2 default values
+
+This section covers additional default values that Network ATC will be setting in versions 22H2 and later.
+
+#### Automatic storage IP addressing
+
+If you choose the `-Storage` intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster.
+
+The default IP Address for each adapter on each node in the storage intent will be set up as follows:
+
+|Adapter|IP Address and Subnet|VLAN|
+|--|--|--|
+|pNIC1|10.71.1.X |711|
+|pNIC2|10.71.2.X |712|
+|pNIC3|10.71.3.X |713|
+
+The IP Addresses and subnets are consistent with the VLANs assigned to the adapters. 
+
+To override Automatic Storage IP Addressing, create a storage override and pass the override when creating an intent:
+
+```powershell
+$storageOverride = new-NetIntentStorageOverrides
+$storageOverride.EnableAutomaticIPGeneration = $false
+```
+
+```powershell
+Add-NetIntent -Name Storage_Compute -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -StorageOverrides $storageoverride
+```
+
+#### Cluster network settings
+
+Version 22H2 and later, Network ATC configures a set of Cluster Network Features by default. The defaults are listed below:
+
+|Property|Default|
+|--|--|
+|EnableNetworkNaming | $true|
+|EnableLiveMigrationNetworkSelection | $true|
+|EnableVirtualMachineMigrationPerformance | $true|
+|VirtualMachineMigrationPerformanceOption | Default is calculated: SMB, TCP or Compression|
+|MaximumVirtualMachineMigrations | 1 |
+|MaximumSMBMigrationBandwidthInGbps  | Default is calculated based on set-up |
+
+### 21H2 default values
+
+#### Default VLANs
 
 The following default VLANs are used. These VLANs must be available on the physical network for proper operation.
 
@@ -154,11 +299,21 @@ The following default VLANs are used. These VLANs must be available on the physi
 
 Consider the following command:
 
+# [22H2](#tab/22H2)
+
+```powershell
+Add-NetIntent -Name Cluster_ComputeStorage -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
+```
+
+# [21H2](#tab/21H2)
+
 ```powershell
 Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
 
-The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
+---
+
+The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
 > [!NOTE]
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
@@ -176,8 +331,57 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
+
+## Common Error Messages 
+
+With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered.
+
+### Error: AdapterBindingConflict
+
+:::image type="content" source="media/network-atc/adapter-bind-error.png" alt-text="Screenshot of Adapter Binding Error."  lightbox="media/network-atc/adapter-bind-error.png":::
+ 
+Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
+
+**Solution:** Remove the conflicting vSwitch, then Set-NetIntentRetryState
+
+Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
+
+**Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
+
+:::image type="content" source="media/network-atc/adapter-bind-resolve.png" alt-text="Screenshot of Adapter Binding Error Resolved."  lightbox="media/network-atc/adapter-bind-resolve.png":::
+
+### Error: ConflictingTrafficClass
+
+:::image type="content" source="media/network-atc/conflicting-traffic-class.png" alt-text="Screenshot of Conflicting Traffic Class error."  lightbox="media/network-atc/conflicting-traffic-class.png":::
+
+This issue occurs because a traffic class is already configured. This pre-configured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
+
+**Solution:** 
+
+Clear the existing DCB configuration on the system then Set-NetIntentRetryState
+
+```powershell
+
+Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+Get-NetQosFlowControl | Disable-NetQosFlowControl
+```
+
+### Error: Request for help on ATC - to check ConfigurationStatus
+
+You will see this error in 2 instances: 
+1.	If RDMA is not enabled on adapters for storage and/or compute intents
+
+    **Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
+    ```powershell
+    Enable-NetAdapterRdma -Name 'pNIC1'
+    ```
+2.	Inbox drivers in use on adapters
+
+    **Solution:** You cannot deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
+    
+
 ## Next steps
 
 - Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
-
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).

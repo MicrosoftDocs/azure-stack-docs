@@ -11,14 +11,13 @@ ms.date: 08/19/2022
 
 # Assess your environment for deployment readiness (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 
 For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
 
-> [!IMPORTANT]
-> The Environment Checker for Azure Stack HCI is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About the Environment Checker tool
 
@@ -62,7 +61,7 @@ Before you begin, complete the following tasks:
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
 
-## Install and import Environment Checker
+## Install Environment Checker
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
@@ -100,7 +99,7 @@ You can run the validators from the following locations:
 
 - Locally from the Azure Stack HCI server node
 
-- Remotely via PS session  
+- Remotely via PowerShell session  
 
 - Locally from a workstation or a staging server
 
@@ -154,11 +153,52 @@ Invoke-AzStackHciConnectivityValidation -Service Arc
  
 #### Example 3: Check connectivity if you're using a proxy
 
-If you're using a proxy server, you can specify the connectivity check to go through the specified proxy and credentials, as shown in the following example:
+If you're using a proxy server, you can specify the connectivity validator to go through the specified proxy and credentials, as shown in the following example:
 
 ```powershell
 Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -ProxyCredential $proxyCredential 
 ```
+
+> [!NOTE]
+> The connectivity validator validates general proxy, it doesn’t check if your Azure Stack HCI is configured correctly to use a proxy. For information about how to configure firewalls for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+
+#### Example 4: Check connectivity and create PowerShell output object
+
+You can view the output of the connectivity checker as an object by using the `–PassThru` parameter:
+
+```powershell
+Invoke-AzStackHciConnectivityValidation –PassThru
+```
+
+Here's a sample screenshot of the output:
+
+   :::image type="content" source="./media/environment-checker/connectivity-validator-pass-thru-parameter.png" alt-text="Screenshot of a passed connectivity validator report for PassThru parameter." lightbox="./media/environment-checker/connectivity-validator-pass-thru-parameter.png":::
+
+### Connectivity validator attributes
+
+You can filter any of the following attributes and display the connectivity validator result in your desired format:
+
+| Attribute name | Description |
+| -------------  | ----------- |
+| EndPoint       | The endpoint being validated. |
+| Protocol       | Protocol used – example https. |
+| Service        | The service endpoint being validated. |
+| Operation Type | Type of operation – deployment, update. |
+| Group          | Readiness Checks. |
+| System         | For internal use. |
+| Name           | Name of the individual service. |
+| Title          | Service title ; user facing name. |
+| Severity       | Critical, Warning, Informational, Hidden. |
+| Description    | Description of the service name. |
+| Tags           | Internal Key-value pairs to group or filter tests. |
+| Status         | Succeeded, Failed, In Progress. |
+| Remediation    | URL link to documentation for remediation. |
+| TargetResourceID | Unique identifier for the affected resource (node or drive). |
+| TargetResourceName | Name of the affected resource. |
+| TargetResourceType | Type of the affected resource. |
+| Timestamp | The time in which the test was called. |
+| AdditionalData | Property bag of key value pairs for additional information. |
+| HealthCheckSource | The name of the services called for the health check. |
 
 ### Connectivity validator output
 
@@ -177,6 +217,60 @@ The following sample output is from a successful run of the connectivity validat
 If a test fails, the connectivity validator returns information to help you resolve the issue, as shown in the sample output below. The **Needs Remediation** section displays the issue that caused the failure. The **Remediation** section lists the relevant article to help remediate the issue.
 
    :::image type="content" source="./media/environment-checker/connectivity-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the connectivity validator." lightbox="./media/environment-checker/connectivity-validator-sample-failed.png":::
+
+### Potential failure scenario for connectivity validator
+
+The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
+
+:::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
+
+**Workaround**
+
+Work with your network team to turn off SSL inspection for your Azure Stack HCI system. To confirm your SSL inspection is turned off, you can use the following examples. After SSL inspection is turned off, you can run the tool again to check connectivity to all the endpoints.
+
+If you receive the certificate validation error message, run the following commands individually for each endpoint to manually check the certificate information:
+
+```powershell
+C:\> Import-Module AzStackHci.EnvironmentChecker 
+C:\> Get-SigningRootChain -Uri <Endpoint-URI> | ft subject 
+```
+
+For example, if you want to verify the certificate information for two endpoints, say `https://login.microsoftonline.com` and `https://portal.azure.com`, run the following commands individually for each endpoint:
+
+- For `https://login.microsoftonline.com`:
+
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker 
+   C:\> Get-SigningRootChain -Uri https://login.microsoftonline.com | ft subject
+   ```
+
+   Here's a sample output:
+
+   ```powershell
+   Subject
+   -------
+   CN=portal.office.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 02, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
+
+- For `https://portal.azure.com`:
+
+   ```powershell
+   C:\> Import-Module AzStackHci.EnvironmentChecker
+   C:\> Get-SigningRootChain -Uri https://portal.azure.com | ft Subject 
+
+   ```
+
+   Here's a sample output:
+
+   ```powershell
+   Subject
+   -------
+   CN=portal.azure.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+   CN=Microsoft Azure TLS Issuing CA 01, O=Microsoft Corporation, C=US
+   CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+   ```
 
 ## [Hardware](#tab/hardware)
 
@@ -385,5 +479,5 @@ For each test, the validator provides a summary of the unique issues and classif
 
 ## Next steps
 
-- Review the deployment checklist
+- [Review the deployment checklist](../deploy/deployment-tool-checklist.md)
 - [Contact Microsoft Support](get-support.md)
