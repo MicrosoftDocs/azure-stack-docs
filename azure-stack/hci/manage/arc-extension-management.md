@@ -21,7 +21,7 @@ Azure Stack HCI enables you to install, uninstall, and update Arc extensions on 
 
 Here's a list of extensions that can be installed and managed in Azure portal:
 
-- [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)d
+- [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 - [TelemetryAndDiagnostics](/azure-stack/hci/manage/telemetry-diagnostics-extension.md)
 
