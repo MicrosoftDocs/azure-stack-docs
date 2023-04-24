@@ -44,8 +44,8 @@ groups:
   title: Telemetry and diagnostics
   prompt: Choose a data collection model
   pivots:
-  - id: old-collection
-    title: Old data collection
+  - id: legacy-collection
+    title: Legacy data collection
   - id: extension-collection
     title: TelemetryAndDiagnostics extension
 

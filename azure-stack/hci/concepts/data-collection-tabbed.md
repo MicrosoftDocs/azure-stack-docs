@@ -12,7 +12,7 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 # Azure Stack HCI telemetry and diagnostics (preview)
 
-::: zone pivot="old-collection"
+::: zone pivot="legacy-collection"
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
@@ -28,7 +28,7 @@ This article describes the telemetry and diagnostics extension in Azure Stack HC
 
 ::: zone-end
 
-::: zone pivot="old-collection"
+::: zone pivot="legacy-collection"
 
 Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
