@@ -4,7 +4,7 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
-ms.date: 04/19/2023
+ms.date: 04/24/2023
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
@@ -131,35 +131,35 @@ NetworkController
 
 ## Collect SDN logs using SdnDiagnostics
 
-After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
+After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDataCollection` to collect SDN logs.
 
-### Before you run Start-SdnDiagnostics
+### Before you run Start-SdnDataCollection
 
-A few things to consider before you run the `Start-SdnDiagnostics` cmdlet:
+A few things to consider before you run the `Start-SdnDataCollection` cmdlet:
  
-- The `Start-SdnDiagnostics` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Stack HCI environment.
+- The `Start-SdnDataCollection` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Stack HCI environment.
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
-- The `Start-SdnDiagnostics` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
+- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
-- If you don't specify any credentials, the `Start-SdnDiagnostics` cmdlet uses the credentials of the current user by default.
+- If you don't specify any credentials, the `Start-SdnDataCollection` cmdlet uses the credentials of the current user by default.
 
-### Run Start-SdnDiagnostics
+### Run Start-SdnDataCollection
 
-Use the `Start-SdnDiagnostics` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
+Use the `Start-SdnDataCollection` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
 
-Here's the syntax of the `Start-SdnDiagnostics` cmdlet:
+Here's the syntax of the `Start-SdnDataCollection` cmdlet:
 
 ```powershell
 Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnRoles[]> [-OutputDirectory <FileInfo>] [-IncludeNetView] [-IncludeLogs] [-FromDate <DateTime>] [-Credential <PSCredential>] [-NcRestCredential <PSCredential>] [-Limit <Int32>] [-ConvertETW <Boolean>] [<CommonParameters>]
 ```
 
-For more information about the parameters and specifications, see the [Start SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
+For more information about the parameters and specifications, see the [Start-SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
 
-### Example of the `Start-SdnDiagnostics` cmdlet usage
+### Example of the `Start-SdnDataCollection` cmdlet usage
 
-In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Controller VM to collect logs from the deployed SDN components:
+In this example, you run the `Start-SdnDataCollection` cmdlet from a Network Controller VM to collect logs from the deployed SDN components:
 
 1. Set the variable for one of the Network Controller VMs:
 
