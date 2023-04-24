@@ -32,9 +32,9 @@ This Azure Stack HCI data:
 
 Data is stored in a secure Microsoft-operated datacenter as follows:
 
-- Billing and census data is sent to the respective resource of the region where the customer has registered the device to. The data is the information that we show about the resource in the portal and the data needed to bill and license the cluster nodes.
+- Billing and census data is sent to the respective resource of the region where the customer has registered the device to. This data is the information shown about the resource in Azure portal and the data needed to bill and license the cluster nodes.
 
-- Diagnostic data (classified as support data) will be stored in US or EU based on what the customer has opted for at the time of deployment.
+- Diagnostic data (classified as support data) will be stored within the US or the EU based on what the customer has opted for at the time of deployment.
 
 - Telemetry data (classified as OII data) is always stored within the US.
 
