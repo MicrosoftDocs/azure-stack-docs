@@ -6,12 +6,12 @@ author: ManikaDhiman
 ms.subservice: azure-stack-hci
 ms.author: v-mandhiman
 ms.reviewer: stevenek
-ms.date: 3/8/2023
+ms.date: 04/17/2023
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article details how Windows Admin Center can be used to manage your Azure Stack HCI clusters, specifically using the Cluster Manager feature in Windows Admin Center.
 

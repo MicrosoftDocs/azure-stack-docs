@@ -3,14 +3,14 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 07/08/2022
+ms.date: 04/17/2023
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
 
 # Host network requirements for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
 

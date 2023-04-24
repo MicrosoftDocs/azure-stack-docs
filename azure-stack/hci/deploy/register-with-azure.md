@@ -10,12 +10,12 @@ ms.subservice: azure-stack-hci
 ms.custom:
   - references_regions
   - devx-track-azurepowershell
-ms.date: 03/22/2023
+ms.date: 04/17/2023
 ---
 
 # Register Azure Stack HCI with Azure
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms). After registration, an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. From Azure Stack HCI 21H2 and later, by default it creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synchronized between the Azure resource and the on-premises cluster(s).
 
@@ -37,8 +37,9 @@ The Azure Stack HCI service is used for registration, billing, and management. I
 - Canada Central
 - West Europe
 - Southeast Asia
-- Australia East
+- Central India
 - Japan East
+- Australia East
 
 Regions supported in the Azure China cloud:
 
@@ -62,7 +63,7 @@ For more information, see [Azure Arc Resource Bridge prerequisites](../manage/az
 - **Configure internet access and firewall ports**: Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
    > [!NOTE]
-   > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system&preserve-view=true).
+   > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/gallery/how-to/working-with-local-psrepositories?view=powershellget-2.x&viewFallbackFrom=powershell-7.3#installing-powershellget-on-a-disconnected-system&preserve-view=true).
 - **Azure subscription and permissions**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
