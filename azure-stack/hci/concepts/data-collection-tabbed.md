@@ -133,14 +133,6 @@ TimeCreated            EventName                                                
 
 ::: zone pivot="extension-collection"
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2.
-
-This article describes the telemetry and diagnostics extension in Azure Stack HCI.
-
-::: zone-end
-
-::: zone pivot="extension-collection"
-
 ## About telemetry and diagnostics
 
 Telemetry and diagnostics, an ARC extension designed to set up a Geneva based observability pipeline, is the extension that allows Microsoft to collect logs and telemetry data from all the nodes in a stamp cluster in the Azure Stack HCI environment. The telemetry and diagnostics extension is an important tool used to monitor and troubleshoot the functionality of stamp clusters in the Azure Stack HCI environment.
