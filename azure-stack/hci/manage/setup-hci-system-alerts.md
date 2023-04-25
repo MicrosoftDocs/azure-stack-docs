@@ -24,11 +24,19 @@ This article describes how to set up alerts for Azure Stack HCI systems, using p
 
 3. Select **Load to Editor** to open the query workspace.
 4. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
-5. Add your **Cluster Arm ID** in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
+5. On the cluster **Overview** page, select **JSON View**
+
+    :::image type="content" source="media/alerts-logs-insights/json-view.png" alt-text="Screenshot of the JSON View link to find ClusteArmId." lightbox="media/alerts-logs-insights/json-view.png":::
+
+6. Copy the information from the **Resource ID** box for the next step.
+
+    :::image type="content" source="media/alerts-logs-insights/resource-id.png" alt-text="Screenshot of the Resource JSON page to copy ClusteArmId information." lightbox="media/alerts-logs-insights/resource-id.png":::
+
+7. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
     :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm Id query." lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
 
-6. Select **Run**.
+8. Select **Run**.
 
 Once the information is populated, you can analyze the logs and set up alerts on the results.
 
@@ -55,6 +63,48 @@ Alerts can be set up in Azure portal, using Azure Insights workbooks, if the Ins
 5. From the alerts interface you can set up alert rules and send notifications.
 
     :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
+
+## Set up alerts for multiple clusters
+
+To change an existing query to accommodate multiple ClusterArmId's in your log query add `| where ClusterArmId in~` to your query with the ClusterArmId's you want to include.
+
+Here is an example:
+
+| where ClusterArmId in~ ('clusterarmId1', 'clusterarmId2', 'clusterarmId3')
+
+:::image type="content" source="media/alerts-logs-insights/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/alerts-logs-insights/multiple-clusters.png":::
+
+## Log query results
+
+Once you have added logs, run the query to confirm that you get the expected results. If you don't, correct the log query and rerun it.
+
+If you want to set a new alert rule, click New alert rule and fill in the required details:
+
+- **Measure**: This is the value you want to set up alert on. By default, it takes only numeric value, so please convert your values to integer. Select the value from Measure dropdown.
+- Look at your logs query carefully to set up correct alerts. Eg if you are setting up alerts on multiple clusters, make sure that you give aggregation type as maximum and not an average or total. It will make sure that even if one cluster memory value meets the desired value, it should show up an alert.
+- Split by dimensions: Select this value if you want to split the alert measure value based on other values. So, if you want to get alerts on cluster, select clusterarmID or if you want to set up alerts using node, select _resourceID. Please check the value names in your log query to set up alert correctly.
+- Dimension name: Please use dimension name if you want to get alert measure split further like in this case, if you want to get alerts as per Node, then select Nodename as well.
+- Sometimes, while setting up alerts, you might not be able to see all the values being populated in the dropdown, make sure to select the checkbox for "Include all future values". It will help in setting up the same alert on more nodes in the cluster.
+- Threshold value: Give the value you want to be notified for. So, in the example below, when Memoryusageint maximum value reaches 15 minutes, customer will get an alert.
+ 
+## Log collection frequency
+
+By default logs are collected every hour, so alerts are generated every hour. To check the frequency of the log collection use the following PowerShell command:
+
+```powershell
+get-clusterresource "sddc management" | get-clusterparameter
+```
+
+To change the frequency of log generation on your local machine, change the log collection parameter `CacheDumpIntervalInSeconds`.
+
+Here is an example of changing the log frequency to 15 minutes.
+
+```powershell
+get-clusterresource "sddc management" | set-clusterparameter -name "CacheDumpIntervalInSeconds" -value 900
+```
+
+> [!NOTE]
+> For all logs to be collected don't lower the frequency below 15 minutes.
 
 ## Next steps
 
