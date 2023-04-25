@@ -37,8 +37,9 @@ The Azure Stack HCI service is used for registration, billing, and management. I
 - Canada Central
 - West Europe
 - Southeast Asia
-- Australia East
+- Central India
 - Japan East
+- Australia East
 
 Regions supported in the Azure China cloud:
 
