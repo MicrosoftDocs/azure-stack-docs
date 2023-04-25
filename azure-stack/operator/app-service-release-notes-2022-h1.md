@@ -35,6 +35,8 @@ Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azu
 - Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
 - Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
 - Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
+- As of this update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
+
 
 ## Prerequisites
 
@@ -126,6 +128,8 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 ## Pre-Update steps
 
 Azure App Service on Azure Stack Hub 2022 H1 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
+
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
