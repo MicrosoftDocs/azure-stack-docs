@@ -3,7 +3,7 @@ title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: Evaluate AKS hybrid, Step 1 - To keep costs low, prepare an Azure Virtual Machine to deploy Azure Kubernetes Service on.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/23/2023
+ms.date: 04/25/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -239,7 +239,7 @@ New-AzResourceGroup -Name $rgName -Location  $location -Verbose
 
 # Deploy ARM Template
 New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/aks-hci/october_eval/eval/json/akshcihost.json" `
+    -TemplateUri "https://github.com/Azure/aks-hybrid/blob/main/eval/json/akshcihost.json" `
     -virtualMachineName $vmName `
     -virtualMachineSize $vmSize `
     -virtualMachineGeneration $vmGeneration `
