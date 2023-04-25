@@ -6,7 +6,7 @@ ms.author: mosagie
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/06/2022
+ms.date: 04/24/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -37,10 +37,19 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
     Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
     ```
 
-1. See the results of the recovery keys displayed in PowerShell.
+   Here is sample output:
 
-    ![Image showing a PowerShell window displaying recovery keys.](media/security-bitlocker/recovery-keys.png)
+   ```output
+    PS C:\Users\ashciuser> Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
+
+    ComputerName    PasswordId    RecoveryKey
+    -------         ----------    -----------
+    ASB88RR1OU19    {Password1}   Key1
+    ASB88RR1OU20    {Password2}   Key2
+    ASB88RR1OU21    {Password3}   Key3
+    ASB88RR1OU22    {Password4}   Key4
+    ```
 
 ## Next steps
 
-- [Azure Stack HCI security considerations](./security.md)
+- [Azure Stack HCI security considerations](./security.md).
