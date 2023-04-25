@@ -18,12 +18,7 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
-Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
-
-We do collect diagnostic data. The data described below is required for Microsoft to provide Azure Stack HCI. This data is collected once a day, and data collection events can be viewed in the event logs. Azure Stack HCI collects the minimum data required to keep your clusters up to date, secure, and operating properly.
-
-   > [!IMPORTANT]
-   > The data described below that Azure Stack HCI collects is independent from Windows diagnostic data, which can be configured for various levels of collection. In Azure Stack HCI, the default setting for Windows diagnostic data collection is Security (off), meaning that no Windows diagnostic data is sent unless the administrator changes the diagnostic data settings. For more information, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization). Microsoft is an independent controller of any Windows diagnostic data collected in connection with Azure Stack HCI. Microsoft will handle the Windows diagnostic data in accordance with the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+[!INCLUDE [data-collection](../concepts/data-collection.md)]
 
 ::: zone-end
 
@@ -35,15 +30,7 @@ This article describes the telemetry and diagnostics extension in Azure Stack HC
 
 ::: zone-end
 
-::: zone pivot="legacy-collection"
-
-## Data collection and residency
-
-[!INCLUDE [data-collection](../concepts/data-collection.md)]
-
-::: zone-end
-
-::: zone pivot="extension-collection"
+::: zone pivot="extension-collection"s
 
 ## About telemetry and diagnostics
 
