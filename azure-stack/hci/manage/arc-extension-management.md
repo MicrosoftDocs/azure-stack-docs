@@ -43,7 +43,8 @@ When published by the extension publisher team, the extension upgrade process re
 
 Currently, Windows Admin Center is the only extension that supports automatic extension upgrades. More extensions will be added over time.
 
-Extensions that don't support the automatic extension upgrade are still configured by default to enable automatic upgrades. Note, this setting has no effect until the extension publisher chooses to support automatic upgrades for an extension.
+> [!NOTE]
+> All extensions are configured by default to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. This default setting has no effect until the extension publisher chooses to support the automatic extension upgrade.
 
 ### Disable automatic upgrade via Azure portal
 
@@ -115,6 +116,10 @@ Extension Status: Failed
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png" alt-text="Screenshot of how to troubleshoot an extension in Azure portal." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png":::
 
-Recommendation: Whenever the extension is in a failed state, select the **Failed (View Details)** status link to view all the information about the failure and troubleshooting tips.
+Recommendation: Whenever the extension is in a failed state, select the **Failed (View details)** status link to view all the information about the failure and troubleshooting tips.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
+
+Extension Status: Version mismatch
+
+Recommendation: Whenever a non Azure-managed extension fails with a version mismatch state, select the **Version mismatch (View details)** status link to update your clusters to the expected version.
