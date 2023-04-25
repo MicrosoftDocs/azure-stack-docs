@@ -175,7 +175,7 @@ You can configure the extension to be:
 
 - **Basic:** You send the minimum system data required to keep clusters current, secure, and operating properly.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. Diagnostics data might remain for up to 30 days.
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. System data might remain for up to 30 days.
 
 Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
