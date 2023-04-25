@@ -31,7 +31,7 @@ Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azu
 
 - All roles are now powered by Windows Server 2022 Datacenter.
 - Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService. 
-- Network design update for all worker virtual machine scale sets, addressing customers faced with SNAT port exhaustion issues.
+- Network design update for all worker Virtual Machine Scale Sets, addressing customers faced with SNAT port exhaustion issues.
 - Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
 - Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
 - Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
