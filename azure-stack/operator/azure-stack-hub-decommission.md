@@ -35,7 +35,7 @@ Follow these steps in a connected (Azure AD) environment:
    $context = Get-AzContext
    if (!$context.Subscription){
        @"
-       # Connect To Azure Stack Admin ARM endpoint first https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-configure-admin#connect-with-azure-ad
+       # Connect To Azure Stack Admin Azure Resource Manager endpoint first https://learn.microsoft.com/azure-stack/operator/azure-stack-powershell-configure-admin#connect-with-azure-ad
        "@ | Write-Host -ForegroundColor:Red
    }
 
@@ -70,7 +70,7 @@ Follow these steps in a connected (Azure AD) environment:
    Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
    ```
 
-1. Work with your Azure AD administrator to remove the app registrations in the list generated above.
+1. Work with your Azure AD administrator to remove the app registrations in the previously generated list.
 
    > [!NOTE]
    > Proceed with app registration cleanup with caution. Outside of the Privileged Endpoint (PEP), your Azure Stack Hub system becomes unusable once these are removed. The app registrations cannot be restored, and your system will not function without being redeployed.
