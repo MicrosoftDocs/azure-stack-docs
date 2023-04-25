@@ -19,7 +19,7 @@ This article explains how to expand, move, or delete volumes by using either Win
 > [!WARNING]
 >**Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the Add servers or drives section to add additional capacity before expanding volumes.
 
-# [Windows Admin Center](#tab/windows-admin-center)
+### [Windows Admin Center](#tab/windows-admin-center)
 
 Follow these steps to expand volumes in Windows Admin Center:
 
@@ -33,7 +33,7 @@ Follow these steps to expand volumes in Windows Admin Center:
 
     On the volumes detail page, the larger storage capacity for the volume is indicated, and the alert on the Dashboard is cleared.
 
-# [PowerShell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
 ### Capacity in the storage pool
 
@@ -43,7 +43,7 @@ Before you expand a volume, make sure you have enough capacity in the storage po
 
 In Storage Spaces Direct, every volume is comprised of several stacked objects: the cluster shared volume (CSV), which is a volume; the partition; the disk, which is a virtual disk; and one or more storage tiers (if applicable). To resize a volume, you will need to resize several of these objects.
 
-![Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers.](media/extend-volumes/volumes-in-smapi.png)
+![Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers.](media/manage-volumes/volumes-in-smapi.png)
 
 To familiarize yourself with them, try running the `Get-` cmdlet with the corresponding noun in PowerShell.
 
@@ -85,7 +85,7 @@ Get-VirtualDisk <FriendlyName> | Resize-VirtualDisk -Size <Size>
 
 When you expand the **VirtualDisk**, the associated **Disk** follows automatically and is resized too.
 
-![Animated diagram shows the virtual disk of a volume becoming larger while the disk layer immediately above it automatically becomes larger as a result.](media/extend-volumes/Resize-VirtualDisk.gif)
+![Animated diagram shows the virtual disk of a volume becoming larger while the disk layer immediately above it automatically becomes larger as a result.](media/manage-volumes/Resize-VirtualDisk.gif)
 
 #### With storage tiers
 
@@ -108,7 +108,7 @@ Get-StorageTier <FriendlyName> | Resize-StorageTier -Size <Size>
 
 When you expand the **StorageTier**(s), the associated **VirtualDisk** and **Disk** follow automatically and are resized too.
 
-![Animated diagram shows first one then another storage tier becoming large while the virtual disk layer and disk layer above become larger as well.](media/extend-volumes/Resize-StorageTier.gif)
+![Animated diagram shows first one then another storage tier becoming large while the virtual disk layer and disk layer above become larger as well.](media/manage-volumes/Resize-StorageTier.gif)
 
 ### Step 2 – Expand the partition
 
@@ -145,7 +145,7 @@ This section describes how to move volumes by using Windows Admin Center or Powe
 > [!NOTE]
 > For stretched clusters, you can only move a volume to another server in the same storage pool.
 
-# [Windows Admin Center](#tab\windows-admin-center)
+### [Windows Admin Center](#tab/windows-admin-center)
 
 Follow these steps to move volumes using Windows Admin Center:
 
@@ -154,7 +154,7 @@ Follow these steps to move volumes using Windows Admin Center:
 1. At the top of the **Volumes** page, select **Move**.
 1. In the right pane, select the **Destination server** where you want to move the volume to and then select **Move**.
 
-# [PowerShell](#tab\powershell)
+### [PowerShell](#tab/powershell)
 
 If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
@@ -187,7 +187,7 @@ Follow these steps to move volumes using PowerShell:
 
 ## Delete volumes
 
-# [Windows Admin Center](#tab\windows-admin-center)
+### [Windows Admin Center](#tab/windows-admin-center)
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to delete.
@@ -196,7 +196,7 @@ Follow these steps to move volumes using PowerShell:
 
    :::image type="content" source="media/delete-volumes/delete-volume.png" alt-text="Select the volume that you want to delete, select delete, and then confirm that you want to erase all the data on the volume." lightbox="media/delete-volumes/delete-volume.png":::
 
-# [PowerShell](#tab\powershell)
+### [PowerShell](#tab/powershell)
 
 Use the **Remove-VirtualDisk** cmdlet to delete the **VirtualDisk** object and return the space it used to the storage pool that exposes the **VirtualDisk** object.
 
