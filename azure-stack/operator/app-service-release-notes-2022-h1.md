@@ -97,7 +97,7 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
     - 14.18.1
     - 16.9.1
     - 16.13.0
-  - NPM
+  - npm
     - 6.14.15
     - 7.21.1
     - 8.1.0
