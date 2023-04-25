@@ -35,7 +35,7 @@ Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release]
 
 - All other updates are documented in the [Azure App Service on Azure Stack Hub 2022 H1 Update Release Notes](app-service-release-notes-2022-h1.md)
 
-- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2302:
  
  Azure App Service on Azure Stack Hub 2302 is a significant update that will take multiple hours to complete.  The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
-- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
@@ -156,7 +156,7 @@ This script must be run under the following conditions
 ```
 - Tenant Applications are unable to bind certificates to applications after upgrade
 
- The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
   1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
@@ -229,7 +229,7 @@ This script must be run under the following conditions
 
 - Tenant Applications are unable to bind certificates to applications after upgrade
 
- The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
   1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 

@@ -35,7 +35,7 @@ Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azu
 - Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
 - Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
 - Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
-- As of this update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
+- As of this update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
 
 
 ## Prerequisites
@@ -129,7 +129,7 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 
 Azure App Service on Azure Stack Hub 2022 H1 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
-- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilising the letter K, please contact support to assist resolving this situation prior to upgrade
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
@@ -218,7 +218,7 @@ This script must be run under the following conditions
 
 - Tenant Applications are unable to bind certificates to applications after upgrade
 
- The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
   1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
@@ -291,7 +291,7 @@ This script must be run under the following conditions
 
 - Tenant Applications are unable to bind certificates to applications after upgrade
 
- The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
   1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
