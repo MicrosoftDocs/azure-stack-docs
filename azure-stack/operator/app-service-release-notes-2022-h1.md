@@ -27,15 +27,15 @@ The App Service on Azure Stack Hub 2022 H1 build number is **98.0.1.699**
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azure Stack Hub
+Azure App Service on Azure Stack Hub 2022 H1 brings many new capabilities to Azure Stack Hub.
 
 - All roles are now powered by Windows Server 2022 Datacenter.
 - Administrators can isolate the platform image for use by App Service on Azure Stack Hub, by setting the SKU to AppService. 
-- Network design update for all worker virtual machine scale sets, addressing customers faced with SNAT port exhaustion issues.
+- Network design update for all worker Virtual Machine Scale Sets, addressing customers faced with SNAT port exhaustion issues.
 - Increased number of outbound addresses for all applications.  The updated list of outbound addresses can be discovered in the properties of an application in the Azure Stack Hub portal.
 - Administrators can set a three character deployment prefix for the individual instances in each Virtual Machine Scale Set that are deployed, useful when managing multiple Azure Stack Hub instances.
 - Deployment Center is now enabled for tenants, replacing the Deployment Options experience.  **IMPORTANT**: Operators will need to [reconfigure their deployment sources](azure-stack-app-service-configure-deployment-sources.md?pivots=version-2022h1) as the Redirect URLs have changed with this update, in addition tenants will need to reconnect their apps to their source control providers.
-- As of this update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
+- As of this update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade.
 
 
 ## Prerequisites
@@ -46,21 +46,21 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2022 H1:
 
 - Ensure your **Azure Stack Hub** is updated to **1.2108.2.127** or **1.2206.2.52**.
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
+- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal.
 
-- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal.
 
 - Back up the App Service and SQL Server Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the Tenant App content file share
+- Back up the Tenant App content file share.
 
   > [!Important]
   > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
+- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
 
 ## Updates
 
@@ -73,7 +73,7 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - 2022-09 Cumulative Update for .NET Framework 3.5 and 4.8 for Microsoft server operating system version 21H2 for x64 (KB5017028)
+  - 2022-09 Cumulative Update for .NET Framework 3.5 and 4.8 for Microsoft server operating system version 21H2 for x64 (KB5017028).
   - ASP.NET Core 
     - 3.1.18
     - 3.1.23
@@ -110,14 +110,14 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
     - 9.0.62
     - 10.0.12
     - 10.0.20
-  - Updated Kudu to 97.40427.5713
+  - Updated Kudu to 97.40427.5713.
 
 
 - **Updates to underlying operating system of all roles**:
-  - [2022-09 Cumulative Update for Windows Server 2022 for x64-based Systems (KB5017316)](https://support.microsoft.com/help/5017316)
+  - [2022-09 Cumulative Update for Windows Server 2022 for x64-based Systems (KB5017316)](https://support.microsoft.com/help/5017316).
   - Defender Definition 1.373.353.0
 
-- **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
+- **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
 ## Issues fixed in this release
 
@@ -129,7 +129,7 @@ Azure App Service on Azure Stack Update 2022 H1 includes the following improveme
 
 Azure App Service on Azure Stack Hub 2022 H1 is a significant update and as such can take multiple hours to complete as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
-- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
@@ -140,13 +140,13 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins haven't been successfully migrated to contained users
+- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins haven't been successfully migrated to contained users.
 
 Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, may experience upgrade failures.  
 
 Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  **This script is non-destructive and will not cause downtime**.
 
-This script must be run under the following conditions
+This script must be run under the following conditions:
 
 - By a user that has the system administrator privilege, for example the SQL SA Account;
 - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
@@ -216,7 +216,7 @@ This script must be run under the following conditions
         GO
 ```
 
-- Tenant Applications are unable to bind certificates to applications after upgrade
+- Tenant Applications are unable to bind certificates to applications after upgrade.
 
   The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
@@ -226,7 +226,7 @@ This script must be run under the following conditions
 
   1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
   1. Return to the **CN0-VM** remote desktop session.
-  1. In an Administrator PowerShell session run
+  1. In an Administrator PowerShell session run:
       
       > [!IMPORTANT] 
       > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
@@ -289,7 +289,7 @@ This script must be run under the following conditions
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
-- Tenant Applications are unable to bind certificates to applications after upgrade
+- Tenant Applications are unable to bind certificates to applications after upgrade.
 
   The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
 
@@ -299,7 +299,7 @@ This script must be run under the following conditions
 
   1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
   1. Return to the **CN0-VM** remote desktop session.
-  1. In an Administrator PowerShell session run
+  1. In an Administrator PowerShell session run:
       
       > [!IMPORTANT] 
       > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
@@ -336,7 +336,7 @@ This script must be run under the following conditions
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
-- Custom domains aren't supported in disconnected environments
+- Custom domains aren't supported in disconnected environments.
 
 App Service performs domain ownership verification against public DNS endpoints, as a result custom domains aren't supported in disconnected scenarios.
 
