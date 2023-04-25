@@ -180,5 +180,4 @@ For related topics and other storage management tasks, see also:
 
 - [Stretched cluster overview](../concepts/stretched-clusters.md)
 - [Plan volumes](../concepts/plan-volumes.md)
-- [Extend volumes](extend-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Manage volumes](manage-volumes.md)

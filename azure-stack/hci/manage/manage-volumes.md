@@ -1,23 +1,27 @@
 ---
-title: Expand volumes on Azure Stack HCI and Windows Server clusters
-description: How to expand volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center and PowerShell.
+title: Manage volumes on Azure Stack HCI and Windows Server clusters
+description: How to manage volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center or PowerShell.
 ms.topic: how-to
-author: dansisson
-ms.author: v-dansisson
+author: ManikaDhiman
+ms.author: v-mandhiman
 ms.reviewer: jgerend
-ms.date: 02/08/2023
+ms.date: 04/24/2023
 ---
 
-# Expand volumes on Azure Stack HCI and Windows Server clusters
+# Manage volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article explains how to expand volumes on a cluster by using Windows Admin Center and PowerShell.
+This article explains how to expand, move, or delete volumes by using either Windows Admin Center or PowerShell.
+
+## Expand volumes
 
 > [!WARNING]
 >**Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the Add servers or drives section to add additional capacity before expanding volumes.
 
-## Expand volumes using Windows Admin Center
+# [Windows Admin Center](#tab/windows-admin-center)
+
+Follow these steps to expand volumes in Windows Admin Center:
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
 1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to expand. On the volume detail page, the storage capacity for the volume is indicated. 
@@ -29,7 +33,7 @@ This article explains how to expand volumes on a cluster by using Windows Admin 
 
     On the volumes detail page, the larger storage capacity for the volume is indicated, and the alert on the Dashboard is cleared.
 
-## Expand volumes using PowerShell
+# [PowerShell](#tab/powershell)
 
 ### Capacity in the storage pool
 
@@ -132,10 +136,97 @@ That's it!
 > [!TIP]
 > You can verify the volume has the new size by running the `Get-Volume` cmdlet.
 
+---
+
+## Move volumes
+
+This section describes how to move volumes by using Windows Admin Center or PowerShell.
+
+> [!NOTE]
+> For stretched clusters, you can only move a volume to another server in the same storage pool.
+
+# [Windows Admin Center](#tab\windows-admin-center)
+
+Follow these steps to move volumes using Windows Admin Center:
+
+1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
+1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to move.
+1. At the top of the **Volumes** page, select **Move**.
+1. In the right pane, select the **Destination server** where you want to move the volume to and then select **Move**.
+
+# [PowerShell](#tab\powershell)
+
+If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
+
+> [!NOTE]
+> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades.
+
+Follow these steps to move volumes using PowerShell:
+
+1. Launch PowerShell on your management PC.
+1. To list all Cluster Shared Volumes (CSVs) in your cluster, run the following cmdlet:
+
+   ```powershell
+   Get-ClusterSharedVolume -Cluster <ClusterName>
+   ```
+   
+   where:
+   `ClusterName` is the name of the Azure Stack HCI cluster.
+
+1. To move a CSV from one node to another in your cluster, run the following cmdlet:
+
+   ```powershell
+   Move-ClusterSharedVolume -Name <CSV_Name> -Node <Node>
+   ```
+
+   where:
+   - `CSV_Name` is the name of the CSV that you want to move.
+   - `Node` is the server where you want to move the CSV to.
+
+---
+
+## Delete volumes
+
+# [Windows Admin Center](#tab\windows-admin-center)
+
+1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
+2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to delete.
+3. At the top of the volumes detail page, select **Delete**.
+4. In the confirmations dialog, select the check box to confirm that you want to delete the volume, and select **Delete**.
+
+   :::image type="content" source="media/delete-volumes/delete-volume.png" alt-text="Select the volume that you want to delete, select delete, and then confirm that you want to erase all the data on the volume." lightbox="media/delete-volumes/delete-volume.png":::
+
+# [PowerShell](#tab\powershell)
+
+Use the **Remove-VirtualDisk** cmdlet to delete the **VirtualDisk** object and return the space it used to the storage pool that exposes the **VirtualDisk** object.
+
+First, launch PowerShell on your management PC and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of a cluster or server node, for example *clustername.contoso.com*:
+
+```PowerShell
+Get-VirtualDisk -CimSession clustername.contoso.com
+```
+
+This will return a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
+
+### Example
+
+To delete a mirrored volume called *Volume1,* run the following command in PowerShell:
+
+```PowerShell
+Remove-VirtualDisk -FriendlyName "Volume1"
+```
+
+You will be asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
+
+   > [!WARNING]
+   > This is not a recoverable action. This permanently deletes a **VirtualDisk** Volume object.
+
+---
+
 ## Next steps
 
-For step-by-step instructions on other essential storage management tasks, see:
+For step-by-step instructions on other essential storage management tasks, see also:
 
 - [Plan volumes](../concepts/plan-volumes.md)
 - [Create volumes](create-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Protect volumes](volume-encryption-deduplication.md)

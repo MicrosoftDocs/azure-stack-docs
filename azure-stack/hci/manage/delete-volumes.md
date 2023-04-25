@@ -54,4 +54,4 @@ For step-by-step instructions on other essential storage management tasks, see a
 
 - [Plan volumes](../concepts/plan-volumes.md)
 - [Create volumes](create-volumes.md)
-- [Expand volumes](extend-volumes.md)
+- [Manage volumes](manage-volumes.md)
