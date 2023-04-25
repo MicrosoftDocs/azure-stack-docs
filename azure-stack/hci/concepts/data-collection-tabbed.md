@@ -179,11 +179,11 @@ When you have installed and run the telemetry extension, you can still retain co
 
 You can configure the extension to be:
 
-- **Off:** You don't send diagnostics data to Microsoft.
+- **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send the minimum diagnostic data required to keep clusters current, secure, and operating properly.
+- **Basic:** You send the minimum system data required to keep clusters current, secure, and operating properly.
 
-- **Enhanced:** You send more diagnostic data to help Microsoft identify and fix operational issues and for product improvements. Diagnostics data might remain for up to 30 days.
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. Diagnostics data might remain for up to 30 days.
 
 Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
@@ -208,34 +208,6 @@ After you've configured the extension, it can continue to function even if the A
 > [!NOTE]
 > This extension installs the Geneva Monitoring Agent on all the cluster nodes.
 
-### Flow of events
-
-1. When you trigger the extension installation, the installation, and Watchdog Service start.
-
-    - The purpose of the Watchdog Service is to monitor the GMA process and ensure that it runs as expected.
-
-    - The Watchdog Service periodically checks the status of the GMA process and takes appropriate action if it detects any issues or errors. For example, if the GMA process stops running or becomes unresponsive, the Watchdog Service attempts to restart the process automatically or triggers a notification alert.
-
-    - The Watchdog Service helps improve the reliability and availability of the extension and supports the smooth operation of stamp clusters in the Azure Stack HCI environment.
-
-2. The installation creates a tenant JSON for telemetry and diagnostics.
-
-    - The JSON file contains information about the identity parameters of the stamp cluster, such as the Azure Resource Manager (ARM) resource URI and Stamp ID, to help identify which stamp the data belongs to.
-
-    - To obtain these identity parameters, the installation process uses the `Get-AzureStackHCI` cmdlet. This cmdlet retrieves information about the Azure Stack HCI environment, including details about the stamp cluster.
-
-3. The GMA process starts.
-
-4. A scheduled task during installation runs every hour to fetch the telemetry status from the `Get-AzureStackHCI` cmdlet.
-
-    - The purpose of this task is to ensure that the telemetry configuration is up-to-date and accurate based on the current telemetry status. Based on this telemetry status, the extension either adds or removes telemetry configuration from the JSON drop location.
-
-    - This task is useful in situations where you might change your mind about whether to enable or disable telemetry. For example, if you initially consent to telemetry but later decide to disable it, the scheduled task detects your change. It then updates the telemetry configuration to ensure respect for your telemetry preferences and makes sure the extension only collects telemetry data when explicitly authorized to do so.
-
-5. Scheduled tasks download updated events from the Geneva configuration at regular intervals.
-
-6. The collection of telemetry events starts. Collected events get sent to the Geneva accounts or namespace.
-
 ## Extension artifacts
 
 As part of the extension installment, artifacts generated from your cluster node are created on the stamp. Here's a description of the artifact names and locations.
@@ -259,48 +231,5 @@ Here are some examples from that list:
 | 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
 | 12 | If either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information, the extension can't create the tenant JSON configuration files. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to retrieve the information needed to create the tenant JSONs, specifically for identity parameters. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
 | 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the [Extension logs](../manage/telemetry-diagnostics-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
-
-## Data Collected
-
-Here's a list of details collected and shared back to Microsoft with the basic option enabled. This list is subject to change, check back for updates.
-
-- Information about servers such as operating system version, processor model, number of processor cores, memory size, cluster identifier, and hash of hardware ID.
-- List of installed Azure Stack HCI server features (for example, BitLocker).
-- Information necessary to compute the reliability of the Azure Stack HCI operating system.
-- Information necessary to compute the reliability of the health collection data.
-- Information gathered from the event log for specific errors, such as update download failed.
-- Information for computing storage reliability.
-- Information for computing physical disk reliability.
-- Information for computing the reliability of volume encryption.
-- Information for computing the reliability and performance of Storage Spaces repair.
-- Information to validate security of the Azure Stack HCI operating system.
-- Information to compute reliability of the antivirus/antimalware state of the Azure Stack HCI operating system.
-- Information to correlate reliability of the networking components.
-- Information to correlate networking performance.
-- Information to correlate reliability of updates and installations.
-- Information to measure reliability of Hyper-V.
-- Information to measure/correlate reliability of the clustering components.
-- Information to track the success of the Cluster Aware Updating (CAU) feature.
-- Information to measure/correlate the reliability of the Disaster Recovery feature.
-- Information to describe the SMB bandwidth limits applied to Azure Stack HCI servers.
-- Information about SMB and NFS share configuration.
-- Information about Action plan status.
-- Information about OS update.
-- Information about environment validator.
-- Information about windows UTC events.
-- Information about OS process performance.
-- Information about Hyper-V process performance.
-- Information about StorageSpaces process performance.
-- Information about Network Adapter performance.
-- Information about NUMA Node performance.
-- Information about CSV process performance from OS Cluster
-- Information about Cluster Storage process performance from OS Cluster Storage.
-- Information about OEM setup completion telemetry.
-- Information about deployment status.
-- Information about VM Network Performance counters for each VM on each host.
-- Information about the health agent.
-- Information about cluster registration details.
-- Information about WAC.
-- Information about Update status.
 
 ::: zone-end
