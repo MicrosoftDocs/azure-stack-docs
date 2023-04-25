@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/24/2023
 ---
 
 # Azure Stack HCI data collection
@@ -24,12 +24,19 @@ We do collect diagnostic data. The data described below is required for Microsof
 
 ## Data collection and residency
 
-This Azure Stack HCI data: 
+This Azure Stack HCI data:
 
 - is not sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
 - is logged to the Microsoft-AzureStack-HCI/Analytic event channel.
 - is in JSON format, so that system administrators can examine and analyze the data being sent.
-- is stored within the United States in a secure Microsoft-operated datacenter.
+
+Data is stored in a secure Microsoft-operated datacenter as follows:
+
+- Billing and census data is sent to the respective resource of the region where the customer has registered the device to. This data is the information shown about the resource in Azure portal and the data needed to bill and license the cluster nodes.
+
+- Diagnostic data (classified as support data) will be stored within the US or the EU based on what the customer has opted for at the time of deployment.
+
+- Telemetry data (classified as OII data) is always stored within the US.
 
 To learn about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
