@@ -14,7 +14,17 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 ::: zone pivot="legacy-collection"
 
-[!INCLUDE [data-collection](../concepts/data-collection.md)]
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+
+[!INCLUDE [data-collection](../concepts/data-collection.md#azure-stack-hci-data-collection)]
+
+[!INCLUDE [data-collection](../concepts/data-collection.md#data-collection-and-residency)]
+
+[!INCLUDE [data-collection](../concepts/data-collection.md#data-retention)]
+
+[!INCLUDE [data-collection](../concepts/data-collection.md#view-this-data)]
+
+[!INCLUDE [data-collection](../concepts/data-collection.md#what-data-is-collected)]
 
 ::: zone-end
 
@@ -26,7 +36,7 @@ This article describes the telemetry and diagnostics extension in Azure Stack HC
 
 ::: zone-end
 
-::: zone pivot="extension-collection"s
+::: zone pivot="extension-collection"
 
 ## About telemetry and diagnostics
 
