@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 10/24/2022
+ms.date: 04/25/2023
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -212,6 +212,51 @@ This script must be run under the following conditions
         GO
 ```
 
+- Tenant Applications are unable to bind certificates to applications after upgrade
+
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+
+  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+
+  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+
+  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
+  1. Return to the **CN0-VM** remote desktop session.
+  1. In an Administrator PowerShell session run
+      
+      > [!IMPORTANT] 
+      > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
+      > that instance will be rebooted, use the pause in the script to maintain Front End availability.  Operators must ensure at least one Front End instance is "Ready" at all times
+      > to ensure tenant applications can receive traffic and not experience downtime.
+
+      ```powershell
+      $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
+      $spwd = ConvertTo-SecureString -String $c.Password -AsPlainText -Force
+      $cred = New-Object System.Management.Automation.PsCredential ($c.UserName, $spwd)
+
+      Get-AppServiceServer -ServerType LoadBalancer | ForEach-Object {
+          $lb = $_
+          $session = New-PSSession -ComputerName $lb.Name -Credential $cred
+
+          Invoke-Command -Session $session {
+            $f = Get-WindowsFeature -Name Web-CertProvider
+            if (-not $f.Installed) {
+                Write-Host Install feature on $env:COMPUTERNAME
+                Install-WindowsFeature -Name Web-CertProvider
+
+                Shutdown /t 5 /r /f 
+            }
+      }
+
+      Remove-PSSession -Session $session
+
+      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      ```
+
+  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+
+  1. Modify the **Inbound_Rdp_3389** rule to deny access. 
+
 ## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
@@ -240,6 +285,50 @@ This script must be run under the following conditions
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
+- Tenant Applications are unable to bind certificates to applications after upgrade
+
+ The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  To resolve this issue operators must follow this procedure.
+
+  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+
+  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+
+  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
+  1. Return to the **CN0-VM** remote desktop session.
+  1. In an Administrator PowerShell session run
+      
+      > [!IMPORTANT] 
+      > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
+      > that instance will be rebooted, use the pause in the script to maintain Front End availability.  Operators must ensure at least one Front End instance is "Ready" at all times
+      > to ensure tenant applications can receive traffic and not experience downtime.
+
+      ```powershell
+      $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
+      $spwd = ConvertTo-SecureString -String $c.Password -AsPlainText -Force
+      $cred = New-Object System.Management.Automation.PsCredential ($c.UserName, $spwd)
+
+      Get-AppServiceServer -ServerType LoadBalancer | ForEach-Object {
+          $lb = $_
+          $session = New-PSSession -ComputerName $lb.Name -Credential $cred
+
+          Invoke-Command -Session $session {
+            $f = Get-WindowsFeature -Name Web-CertProvider
+            if (-not $f.Installed) {
+                Write-Host Install feature on $env:COMPUTERNAME
+                Install-WindowsFeature -Name Web-CertProvider
+
+                Shutdown /t 5 /r /f 
+            }
+      }
+
+      Remove-PSSession -Session $session
+
+      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      ```
+
+  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+
+  1. Modify the **Inbound_Rdp_3389** rule to deny access. 
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
