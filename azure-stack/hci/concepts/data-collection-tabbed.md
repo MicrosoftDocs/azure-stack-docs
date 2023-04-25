@@ -14,10 +14,6 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 ::: zone pivot="legacy-collection"
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
-
-This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
-
 [!INCLUDE [data-collection](../concepts/data-collection.md)]
 
 ::: zone-end
