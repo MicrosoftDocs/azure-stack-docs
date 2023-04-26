@@ -159,6 +159,9 @@ az connectedk8s update -n <name> -g <resource group name> --azure-hybrid-benefit
 I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on HCI or Windows Server. Visit https://aka.ms/ahb-aks for details (y/n)
 ```
 
+> [!NOTE]
+> You can also do the Azure Hybrid Benefit for AKS hybrid activation operation from an [Azure Cloud Shell](https://shell.azure.com) instance.
+
 ### Verify that the benefit is enabled
 
 Run the following command and check that the JSON property `AzureHybridBenefit` is set to  `True`.
