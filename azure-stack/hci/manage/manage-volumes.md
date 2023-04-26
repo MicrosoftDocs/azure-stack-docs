@@ -5,14 +5,14 @@ ms.topic: how-to
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.reviewer: jgerend
-ms.date: 04/24/2023
+ms.date: 04/26/2023
 ---
 
 # Manage volumes on Azure Stack HCI and Windows Server clusters
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article explains how to expand, move, or delete volumes in Azure Stack HCI and Windows Server by using either Windows Admin Center or PowerShell.
+This article describes how to expand, move, or delete volumes in Azure Stack HCI and Windows Server by using either Windows Admin Center or PowerShell.
 
 ## Expand volumes
 
@@ -142,11 +142,14 @@ That's it!
 
 This section describes how to move Cluster Shared Volumes (CSV) from one cluster node to another by using Windows Admin Center or PowerShell.
 
-Several scenarios may require you to move volumes from one cluster node to another, including:
+There are several scenarios that may require you to move volumes:
 
-- If there's an imbalance in the storage capacity among different nodes in the cluster, you may need to move volumes to balance out the storage capacity.
-- If there's any issue in a cluster node, you may need to move its volumes to another node before troubleshooting the issue.
-- If your cluster environment follows certain rules, such as to have a specific volume type on a specific cluster node, you may need to move volumes to conform to those rules.
+- To balance out the storage capacity among different nodes in the cluster.
+- From an unhealthy cluster node to a healthy one before troubleshooting the issue.
+- To conform to certain system configuration rules to have certain volumes on a specific cluster node.
+
+   > [!NOTE]
+   > For stretched clusters, you can move a volume only to another server in the same storage pool.
 
 ### Prerequisites
 
@@ -154,11 +157,9 @@ Before you begin to move volumes, make sure that:
 
 - You have administrator privileges to access the cluster.
 - You have access to a management computer that is in the same domain as your cluster.
-- You know the volume and cluster node to move it to.
+- You know which volume to move and which cluster node to move it to.
+- The volume is in a healthy state before you move it. To find out about the health state of a volume, see [Monitor volumes](monitor-cluster.md#monitor-volumes) for Windows Admin Center and [Virtual disk state](/windows-server/storage/storage-spaces/storage-spaces-states#virtual-disk-states) for PowerShell.
 - If using PowerShell to move volumes, you have the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
-
-   > [!NOTE]
-   > For stretched clusters, you can only move a volume to another server in the same storage pool.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
@@ -178,13 +179,13 @@ Follow these steps to move volumes using PowerShell:
 1. Launch PowerShell as Administrator on your management computer.
 
 1. To remotely connect to the cluster, run the following command:
-    
+
    ```powershell
-   Enter-PSSession ClusterName
+   Enter-PSSession -ComputerName <ClusterName>
    ```
 
    where:
-   `ClusterName` is the name of your cluster.
+   - `ClusterName` is the name of your cluster.
 
 1. To list all the Cluster Shared Volumes (CSVs) in your cluster, run the following cmdlet:
 
@@ -194,7 +195,9 @@ Follow these steps to move volumes using PowerShell:
 
    Here's a sample output:
 
-   ```command
+   ```output
+   [hcicluster.contoso.corp.com]: PS C:\WINDOWS\system32> Get-ClusterSharedVolume
+
    Name                           State  Node
    ----                           -----  ----
    Cluster Virtual Disk (test)    Online azuredoc-srv2
@@ -206,16 +209,28 @@ Follow these steps to move volumes using PowerShell:
 1. To move a CSV from one node to another in your cluster, run the following cmdlet:
 
    ```powershell
-   Move-ClusterSharedVolume -Name <CSV_Name> -Node <NodeName>
+   Move-ClusterSharedVolume -Name "<CSV_Name>" -Node <NodeName>
    ```
 
    where:
-   - `CSV_Name` is the name of the CSV that you want to move. Make sure to include the entire 
-   - `NodeName` is the name of the cluster node to which to move the Cluster Shared Volume.
+   - `CSV_Name` is the name of the CSV that you want to move. Make sure to type the entire string of the CSV name, and not just the FriendlyName. For example, `Cluster Virtual Disk (Volume1)`.
+   - `NodeName` is the name of the cluster node where you want to move the CSV.
+
+   Here's a sample output:
+
+   ```output
+      [hcicluster.contoso.corp.com]: PS C:\WINDOWS\system32> Move-ClusterSharedVolume -Name "Cluster Virtual Disk (Volume1)" -Node azuredoc-srv1
+
+      Name                           State  Node
+      ----                           -----  ----
+      Cluster Virtual Disk (Volume1) Online azuredoc-srv1
+   ```
 
 ---
 
 ## Delete volumes
+
+This section describes how to delete volumes by using either Windows Admin Center or PowerShell.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
