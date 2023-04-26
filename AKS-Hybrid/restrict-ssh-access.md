@@ -28,7 +28,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 
 To enable SSH restrictions, perform the following steps:
 
-1. Create an SSH configuration using the `New-AksHciSSHConfiguration` cmdlet, with the allowed source IP addresses or CIDR you want to permit access to the VMs:
+1. Create an SSH configuration using the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) cmdlet, with the allowed source IP addresses or CIDR you want to permit access to the VMs:
 
    ```powershell
    $ssh = New-AksHciSSHConfiguration -name sshConfig -cidr 172.16.0.0/24
@@ -61,7 +61,7 @@ You can perform this step within the list of IP addresses/CIDRs specified, or ou
 
 ### Considerations
 
-- Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the **New-AksHciSSHConfiguration** PowerShell cmdlet.
+- Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) PowerShell cmdlet.
 - You can only set the configuration during the installation phase of AKS hybrid.
 - You must perform a reinstall if you incorrectly configure any SSH settings.
 - There is no support for upgrades.
