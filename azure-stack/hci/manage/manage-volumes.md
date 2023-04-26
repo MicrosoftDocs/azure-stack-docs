@@ -142,11 +142,11 @@ That's it!
 
 This section describes how to move Cluster Shared Volumes (CSV) from one cluster node to another by using Windows Admin Center or PowerShell.
 
-There are several scenarios that may require you to move volumes:
+You may require to move volumes in several scenarios, including:
 
 - To balance out the storage capacity among different nodes in the cluster.
-- From an unhealthy cluster node to a healthy one before troubleshooting the issue.
-- To conform to certain system configuration rules to have certain volumes on a specific cluster node.
+- To troubleshoot an issue on an unhealthy cluster node.
+- To conform to system configuration rules, such as to have certain volumes on a specific cluster node.
 
    > [!NOTE]
    > For stretched clusters, you can move a volume only to another server in the same storage pool.
@@ -187,13 +187,13 @@ Follow these steps to move volumes using PowerShell:
    where:
    - `ClusterName` is the name of your cluster.
 
-1. To list all the Cluster Shared Volumes (CSVs) in your cluster, run the following cmdlet:
+1. To list all the CSVs in your cluster, run the following cmdlet:
 
    ```powershell
    Get-ClusterSharedVolume
    ```
 
-   Here's a sample output:
+   Here's an example output that lists all the CSVs in the `hcicluster.contoso.corp.com` cluster:
 
    ```output
    [hcicluster.contoso.corp.com]: PS C:\WINDOWS\system32> Get-ClusterSharedVolume
@@ -209,14 +209,14 @@ Follow these steps to move volumes using PowerShell:
 1. To move a CSV from one node to another in your cluster, run the following cmdlet:
 
    ```powershell
-   Move-ClusterSharedVolume -Name "<CSV_Name>" -Node <NodeName>
+   Move-ClusterSharedVolume -Name "<CSV-Name>" -Node <NodeName>
    ```
 
    where:
-   - `CSV_Name` is the name of the CSV that you want to move. Make sure to type the entire string of the CSV name, and not just the FriendlyName. For example, `Cluster Virtual Disk (Volume1)`.
-   - `NodeName` is the name of the cluster node where you want to move the CSV.
+   - `CSV-Name` is the name of the CSV that you want to move. Make sure to type the entire string of the CSV name, and not just the FriendlyName. For example, `Cluster Virtual Disk (Volume1)`.
+   - `NodeName` is the name of the cluster node where you want to move the CSV to.
 
-   Here's a sample output:
+   Here's an example output that moves `Cluster Virtual Disk (Volume1)` to the `azuredoc-srv1` node:
 
    ```output
       [hcicluster.contoso.corp.com]: PS C:\WINDOWS\system32> Move-ClusterSharedVolume -Name "Cluster Virtual Disk (Volume1)" -Node azuredoc-srv1
