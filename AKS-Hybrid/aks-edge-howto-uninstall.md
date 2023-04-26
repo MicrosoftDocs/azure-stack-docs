@@ -5,7 +5,9 @@ author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
 ms.date: 12/05/2022
-ms.custom: template-how-to
+ms.custom:
+  - template-how-to
+  - devx-track-azurecli
 ---
 
 # Uninstall an AKS Edge Essentials cluster

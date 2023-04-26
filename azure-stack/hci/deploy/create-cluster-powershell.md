@@ -3,15 +3,15 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/07/2023
+ms.date: 04/17/2023
 ms.author: robess
 ms.reviewer: stevenek
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
+In this article, you learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
 > [!NOTE]
 > If you're doing a single server installation of Azure Stack HCI 21H2, use PowerShell to create the cluster.
@@ -21,12 +21,12 @@ You have a choice between two cluster types:
 - Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-For the single server scenario, complete the same instructions below for the one server.
+For the single server scenario, complete the same instructions for the one server.
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
 
-In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
+In this article, we create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
@@ -366,18 +366,26 @@ Based on steps 5.1-5.3 you can add your pre-created sites to your stretch intent
 ```powershell
  $siteOverride = New-NetIntentSiteOverrides
 ```
-Once you have created a siteOverride, you can set any property for the siteOverride. The list of properties you can set for a particular siteOverride is: Name, StorageVlan, StretchVlan and ManagementVlan. For eg: 
+Once you have created a siteOverride, you can set any property for the siteOverride. Make sure that the name property of the siteOverride has the exact same name, as the name your site has in the ClusterFaultDomain. A mismatch of names between the ClusterFaultDomain and the siteOverride will end up resulting in the siteOverride not being applied. 
+
+The properties you can set for a particular siteOverride are: Name, StorageVlan and StretchVlan. For example, this is how you create 2 siteOverrides for your 2 sites- site1 and site2: 
 
 ```powershell
-$siteoverride.Name = "A"
-$siteoverride.StorageVLAN = 711
-$siteoverride.StretchVLAN = 25
+$siteOverride1 = New-NetIntentSiteOverrides
+$siteoverride1.Name = "site1"
+$siteOverride1.StorageVLAN = 711
+$siteOverride1.StretchVLAN = 25
+
+$siteOverride2 = New-NetIntentSiteOverrides
+$siteOverride2.Name = "site2"
+$siteOverride2.StorageVLAN = 712
+$siteOverride2.StretchVLAN = 26
 ```
-Finally, run `$siteOverride` to make sure all your properties are set in the desired manner. 
+You can run `$siteOverride1`, `$siteOverride2` in your powershell window to make sure all your properties are set in the desired manner. 
 
-And finally, to add one or more siteOverrides to your intent, run: 
+Finally, to add one or more siteOverrides to your intent, run: 
 ```powershell
-Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteoverride
+Add-NetIntent -Name StretchIntent -Stretch -AdapterName "pNIC01" , "pNIC02" -SiteOverrides $siteOverride1, $siteOverride2
 ```
 
 ## Step 6: Enable Storage Spaces Direct

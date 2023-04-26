@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md).
+This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
@@ -30,9 +30,9 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - A maximum of 16 nodes supported per cluster.
 
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. Network ATC, after version 22H2, will confirm symmetric properties for adapters on the node, and across the cluster before deploying an intent. Asymmetric adapters will lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. Network ATC, after version 22H2, will confirm symmetric properties for adapters on the node, and across the cluster before deploying an intent. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
-- Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
+- Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
@@ -48,7 +48,7 @@ The following are requirements and best practices for using Network ATC in Azure
    Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
    ```
 
-- Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
+- Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
@@ -84,7 +84,7 @@ The following are requirements and best practices for using Network ATC in Azure
    Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, NetworkHUD, Failover-Clustering -IncludeManagementTools
    ```
 
-- Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
+- Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
@@ -99,11 +99,11 @@ The following are requirements and best practices for using Network ATC in Azure
 
 There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
-The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This does not destroy the invoked configuration.
+The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This command does not destroy the invoked configuration.
 
 ## Example intents
 
-Network ATC modifies how you deploy host networking, not what you deploy. Multiple scenarios may be implemented so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
 
 For simplicity we only demonstrate two physical adapters per SET team, however it is possible to add more. Refer to [Plan Host Networking](../concepts/host-network-requirements.md) for more information.
 
@@ -210,7 +210,7 @@ Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -
 
 ---
 
-### Multiple compute (switch) intent
+### Multiple compute (switch) intents
 
 For this intent, multiple compute switches are managed.
 
@@ -274,9 +274,9 @@ Version 22H2 and later, Network ATC configures a set of Cluster Network Features
 |EnableNetworkNaming | $true|
 |EnableLiveMigrationNetworkSelection | $true|
 |EnableVirtualMachineMigrationPerformance | $true|
-|VirtualMachineMigrationPerformanceOption | Default will be always calculated: SMB, TCP or Compression|
+|VirtualMachineMigrationPerformanceOption | Default is calculated: SMB, TCP or Compression|
 |MaximumVirtualMachineMigrations | 1 |
-|MaximumSMBMigrationBandwidthInGbps  | Default will be calculated based on set-up |
+|MaximumSMBMigrationBandwidthInGbps  | Default is calculated based on set-up |
 
 ### 21H2 default values
 
@@ -313,7 +313,7 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 
 ---
 
-The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
+The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
 > [!NOTE]
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
@@ -330,6 +330,56 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
+
+
+## Common Error Messages 
+
+With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered.
+
+### Error: AdapterBindingConflict
+
+:::image type="content" source="media/network-atc/adapter-bind-error.png" alt-text="Screenshot of Adapter Binding Error."  lightbox="media/network-atc/adapter-bind-error.png":::
+ 
+Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
+
+**Solution:** Remove the conflicting vSwitch, then Set-NetIntentRetryState
+
+Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
+
+**Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
+
+:::image type="content" source="media/network-atc/adapter-bind-resolve.png" alt-text="Screenshot of Adapter Binding Error Resolved."  lightbox="media/network-atc/adapter-bind-resolve.png":::
+
+### Error: ConflictingTrafficClass
+
+:::image type="content" source="media/network-atc/conflicting-traffic-class.png" alt-text="Screenshot of Conflicting Traffic Class error."  lightbox="media/network-atc/conflicting-traffic-class.png":::
+
+This issue occurs because a traffic class is already configured. This pre-configured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
+
+**Solution:** 
+
+Clear the existing DCB configuration on the system then Set-NetIntentRetryState
+
+```powershell
+
+Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+Get-NetQosFlowControl | Disable-NetQosFlowControl
+```
+
+### Error: Request for help on ATC - to check ConfigurationStatus
+
+You will see this error in 2 instances: 
+1.	If RDMA is not enabled on adapters for storage and/or compute intents
+
+    **Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
+    ```powershell
+    Enable-NetAdapterRdma -Name 'pNIC1'
+    ```
+2.	Inbox drivers in use on adapters
+
+    **Solution:** You cannot deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
+    
 
 ## Next steps
 

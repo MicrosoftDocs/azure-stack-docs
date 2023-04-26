@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 10/21/2022
+ms.date: 04/19/2023
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -11,7 +11,7 @@ ms.reviewer: JasonGerend
 # Physical network requirements for Azure Stack HCI
 
 
-> Applies to: Azure Stack HCI, versions 21H2 and 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
@@ -66,6 +66,15 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Aruba](#tab/Aruba)
+
+### 22H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |X| X| X| X | |
+| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |X| X| X| X|
+| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|X| X| X| X |
+| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|X| X| X|  X|
 
 ### 21H2
 

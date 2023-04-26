@@ -12,9 +12,9 @@
     href: concepts-support.md
   - name: Architecture
     items:
-    - name: Baseline architecture for AKS on Azure Stack HCI
+    - name: Baseline architecture for AKS hybrid
       href: /azure/architecture/example-scenario/hybrid/aks-baseline
-    - name: Network architecture for AKS on Azure Stack HCI
+    - name: Network architecture for AKS hybrid
       href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
@@ -41,7 +41,7 @@
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS on Azure Stack HCI and Windows Server
+            - name: Set up AKS hybrid
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
@@ -85,8 +85,8 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
-      - name: Update certificates
-        href: repair-certificates.md
+      - name: Certificate management overview
+        href: certificates-overview.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -217,14 +217,14 @@
             href: azure-rbac-aks-hybrid.md
           - name: Update certificate bundle on container hosts
             href: update-certificate-bundle.md
+          - name: Update certificates
+            href: update-certificates.md
           - name: Restrict SSH access
             href: restrict-ssh-access.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
-          - name: Secure communication with certificates
-            href: secure-communication.md
           - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
@@ -327,6 +327,8 @@
       href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
+    - name: Access TPM secrets
+      href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GitOps with AKS Edge Essentials

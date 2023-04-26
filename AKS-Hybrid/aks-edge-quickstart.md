@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # AKS Edge Essentials quickstart guide
 
-This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge Essentials single-machine K3S cluster.
+This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge Essentials single-machine K3S Linux-only cluster.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ Open an elevated PowerShell window, change directory to a working folder
 $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStart.ps1"
 Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStart.ps1
 Unblock-File .\AksEdgeQuickStart.ps1
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 This script automates the following steps:
@@ -68,6 +68,9 @@ For installing K8s version, specify the `-UseK8s` flag
 ```
 
 The script installs AKS Edge Essentials and connects your cluster to Azure using Azure Arc.
+
+> [!TIP]
+> If Hyper-V was not enabled on your machine, the quickstart script enables Hyper-V and restarts your machine. Run the `AksEdgeQuickStart` script again after the reboot.
 
 ## Step 3: Verify deployment
 
@@ -106,13 +109,15 @@ The script installs AKS Edge Essentials and connects your cluster to Azure using
 
     ![Screenshot showing all pods in Arc.](media/aks-edge/all-pods-in-arc.png)
 
-You now have an Arc-connected AKS Edge Essentials K3S cluster with a Linux node. You can now explore deploying a sample application on this cluster.
+You now have an Arc-connected AKS Edge Essentials K3S cluster with a Linux node. You can now explore deploying a sample Linux application on this cluster. 
 
 > [!TIP]
 > If you did not provide your Azure subscription details while running the `AksEdgeQuickStart.ps1` script, you can still connect to Azure Arc by [following the steps in this article](aks-edge-howto-connect-to-arc.md).
 
 ## Next steps
 
-- [Deploy your application](aks-edge-howto-deploy-app.md).
+- [Understand deployment options](aks-edge-concept-clusters-nodes.md).
+- [Deploy a Linux application](aks-edge-howto-deploy-app.md).
+- [Add a Windows node](aks-edge-howto-single-node-deployment.md#4-add-a-windows-worker-node-optional).
 - [Overview](aks-edge-overview.md)
 - [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

@@ -1259,6 +1259,16 @@
         "source_path": "AKS-Hybrid/aks-edge-deployment-options.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
         "redirect_document_id": false
+      },     
+      {
+        "source_path": "AKS-Hybrid/repair-certificates.md",
+        "redirect_url": "/azure/aks/hybrid/certificates-overview",
+        "redirect_document_id": false
+      },     
+      {
+        "source_path": "AKS-Hybrid/secure-communication.md",
+        "redirect_url": "/azure/aks/hybrid/certificates-overview",
+        "redirect_document_id": false
       }     
     ]
   }

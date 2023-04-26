@@ -5,12 +5,12 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 3/10/2023
+ms.date: 04/17/2023
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
@@ -68,6 +68,24 @@ Before you run the script, ensure that a virtual switch is created and the serve
     - ComputerName is the fully qualified domain name (FQDN) of the server to be added
     - HostPASubnetPrefix is the address prefix of the Provider Address (PA) network
 
+### Add a server to an Arc VM managed cluster
+
+To add a server to an Arc VM managed cluster, you must enable Arc VM management on the new server after adding it to the cluster.
+
+Follow these steps to add a server to an Azure Arc VM managed cluster:
+
+1. To add a server to an Arc VM managed cluster, run the following command:
+
+    ```powershell
+    Add-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
+
+1. To enable Arc VM management on the newly added server, run the following command:
+
+    ```powershell
+    New-MocPhysicalNode -nodeName $nodeName
+    ```
+
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
@@ -102,6 +120,24 @@ The steps for removing a server from your cluster by using Windows Admin Center 
 1. Verify the server has been successfully removed from the cluster.
 
 Anytime you add or remove servers from a cluster, be sure and run a cluster validation test afterwards.
+
+### Remove a server from an Arc VM managed cluster
+
+To remove a server from an Arc VM managed cluster, you must disable Arc VM management on the server before removing it from the cluster.
+
+Follow these steps to remove a server from an Arc VM managed cluster:
+
+1. To disable Arc VM Management on the server that you want to remove, run the following command:
+
+    ```powershell
+    Remove-MocPhysicalNode -nodeName $nodeName
+    ```
+
+1. To remove the server from the cluster, run the following command:
+
+    ```powershell
+    Remove-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
 
 ## Add server pairs to a stretched cluster
 

@@ -4,12 +4,12 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
-ms.date: 01/04/2023
+ms.date: 04/24/2023
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Stack HCI cluster.
 
@@ -124,42 +124,42 @@ FabricNodes			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, n
 NcUrl				https ://SDN-POD06.TAILWINDTRADERS.COM
 Server			    {CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
 Gateway			    {nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
-SoftwareLoadBalancer 
+LoadBalancerMux 
 NetworkController
 
 ```
 
 ## Collect SDN logs using SdnDiagnostics
 
-After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDiagnostics` to collect SDN logs.
+After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDataCollection` to collect SDN logs.
 
-### Before you run Start-SdnDiagnostics
+### Before you run Start-SdnDataCollection
 
-A few things to consider before you run the `Start-SdnDiagnostics` cmdlet:
+A few things to consider before you run the `Start-SdnDataCollection` cmdlet:
  
-- The `Start-SdnDiagnostics` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Stack HCI environment.
+- The `Start-SdnDataCollection` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Stack HCI environment.
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
-- The `Start-SdnDiagnostics` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, SoftwareLoadBalancer. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
+- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
-- If you don't specify any credentials, the `Start-SdnDiagnostics` cmdlet uses the credentials of the current user by default.
+- If you don't specify any credentials, the `Start-SdnDataCollection` cmdlet uses the credentials of the current user by default.
 
-### Run Start-SdnDiagnostics
+### Run Start-SdnDataCollection
 
-Use the `Start-SdnDiagnostics` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
+Use the `Start-SdnDataCollection` cmdlet to collect information about the current configuration state and diagnostic logs for SDN.
 
-Here's the syntax of the `Start-SdnDiagnostics` cmdlet:
+Here's the syntax of the `Start-SdnDataCollection` cmdlet:
 
 ```powershell
 Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnRoles[]> [-OutputDirectory <FileInfo>] [-IncludeNetView] [-IncludeLogs] [-FromDate <DateTime>] [-Credential <PSCredential>] [-NcRestCredential <PSCredential>] [-Limit <Int32>] [-ConvertETW <Boolean>] [<CommonParameters>]
 ```
 
-For more information about the parameters and specifications, see the [Start SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
+For more information about the parameters and specifications, see the [Start-SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
 
-### Example of the `Start-SdnDiagnostics` cmdlet usage
+### Example of the `Start-SdnDataCollection` cmdlet usage
 
-In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Controller VM to collect logs from the deployed SDN components:
+In this example, you run the `Start-SdnDataCollection` cmdlet from a Network Controller VM to collect logs from the deployed SDN components:
 
 1. Set the variable for one of the Network Controller VMs:
 
@@ -170,13 +170,13 @@ In this example, you run the `Start-SdnDiagnostics` cmdlet from a Network Contro
 1. Run the following cmdlet to collect logs from Network Controller, Software Load Balancers, Gateways, and the servers running Azure Stack HCI:
 
     ```powershell
-    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,SoftwareLoadBalancer -IncludeLogs -IncludeNetView
+    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,LoadBalancerMux -IncludeLogs -IncludeNetView
     ```
 
 Here's a sample output of the `Start-SdnDataCollection` cmdlet:
 
 ```output
-PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,SoftwareLoadBalancer,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
+PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,LoadBalancerMux,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
 [    N26-2] Starting SDN Data Collection
 [    N26-2] Results will be saved to C:\windows\Tracing\sdnDataCollection\20220ll8-23325l
 [    N26-2]	Node N26-GW0l.sal8.nttest.microsoft.com with role Gateway added	for data collection
@@ -244,11 +244,11 @@ WARNING: [	N26-1] 00155D865002 attached to netl does not have a port profile
 [    N26-2] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:41:22 pm utc
 [    N26-4] collect the following events: Application,Microsoft-Windows-Hyper-V*,System
 [    N26-2] Performing cleanup of C:\windows\Tracing\sdnoataCollection\Temp directory across
-[    N26-2] Collect configuration state details for SoftwareLoadBalancer nodes:
-[    N26-MUX01] collect configuration state details for role SoftwareLoadBalancer
-[    N26-2] Collect diagnostics logs for SoftwareLoadBalancer nodes:
+[    N26-2] Collect configuration state details for LoadBalancerMux nodes:
+[    N26-MUX01] collect configuration state details for role LoadBalancerMux
+[    N26-2] Collect diagnostics logs for LoadBalancerMux nodes:
 [    N26-MUX01] collect diagnostic logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:48 pm utc
-[    N26-2] Collect event logs for SoftwareLoadBalancer nodes:
+[    N26-2] Collect event logs for LoadBalancerMux nodes:
 [    N26-MUX01] Collect event logs between 1/18/2022 10:32:51 pm and 1/18/2022 11:44:49 pm utc
 [    N26-MUX01] Collect the following events: Application,Microsoft-windows-SlbMux*,System
 [    N26-2] Copying \\	 \C$\windows\Tracing\sdnoataCollection\Temp to C:\Windows\Tracing\sdnDataCollection\20220ll8-23325l\
