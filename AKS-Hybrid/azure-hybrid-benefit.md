@@ -61,6 +61,9 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 
 ---
 
+> [!NOTE]
+> You have to the `Microsoft.Kubernetes/connectedClusters/write` permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate Azure Hybrid Benefit for AKS.
+
 ### Retrieve your management cluster name
 
 You can verify the AKS host management cluster by running the following command on any one node in your physical cluster to retrieve the `kvaName` name:
