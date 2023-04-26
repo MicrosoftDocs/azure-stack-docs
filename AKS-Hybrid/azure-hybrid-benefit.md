@@ -157,7 +157,7 @@ I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to
 ```
 
 > [!NOTE]
-> You can also do the Azure Hybrid Benefit for AKS activation operation from an [Azure Cloud Shell](https://shell.azure.com) instance.
+> You can also do the Azure Hybrid Benefit for AKS hybrid activation operation from an [Azure Cloud Shell](https://shell.azure.com) instance.
 
 ### Verify that the benefit is enabled
 
