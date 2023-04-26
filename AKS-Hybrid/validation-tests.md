@@ -3,7 +3,7 @@ title: Validation tests in AKS hybrid
 description: Learn how to validate your environment and configuration prior to installing AKS hybrid.
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 04/19/2023
+ms.date: 04/26/2023
 ms.author: sethm 
 ms.lastreviewed: 04/19/2023
 ms.reviewer: waltero
