@@ -56,6 +56,7 @@ Commands to interact with AKS hybrid.
 | [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) | Creates an object for a new virtual network. |
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Creates a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Creates an object defining proxy server settings to pass into `Set-AksHciConfig`. |
+| [New-AksHciSSHConfiguration](./newakshcisshconfiguration.md) | Creates an object for a new SSH configuration. |
 | [New-AksHciStorageContainer](./new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Removes an unused autoscaler configuration profile from the system.  |
 | [Remove-AksHciCluster](./remove-akshcicluster.md) | Deletes a managed Kubernetes cluster. |

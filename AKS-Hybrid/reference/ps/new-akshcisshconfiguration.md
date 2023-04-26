@@ -164,3 +164,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+## Next steps
+
+[AksHci PowerShell Reference](index.md)
