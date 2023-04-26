@@ -472,6 +472,8 @@
         href: update/update-phases.md
       - name: Update via PowerShell
         href: update/update-via-powershell.md
+      - name: Troubleshoot Updates
+        href: update/update-troubleshooting.md
       - name: Update glossary
         href: update/update-phases.md
 - name: Reference
