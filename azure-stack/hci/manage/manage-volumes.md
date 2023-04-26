@@ -8,13 +8,27 @@ ms.reviewer: jgerend
 ms.date: 04/26/2023
 ---
 
-# Manage volumes on Azure Stack HCI and Windows Server clusters
+# Manage volumes in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to expand, move, or delete volumes in Azure Stack HCI and Windows Server by using either Windows Admin Center or PowerShell.
 
+## Prerequisites
+
+Before you begin to manage volumes, make sure that:
+
+- You have administrator privileges to access the cluster.
+- You have access to a management computer that is in the same domain as your cluster.
+- You know which volume to expand, move, or delete.
+
+Here are a few additional prerequisites for moving volumes:
+   - Make sure the volume is in a healthy state before you move it. To find out about the health state of a volume, see [Monitor volumes](monitor-cluster.md#monitor-volumes) for Windows Admin Center and [Virtual disk state](/windows-server/storage/storage-spaces/storage-spaces-states#virtual-disk-states) for PowerShell.
+   - If using PowerShell to move volumes, make sure you have the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
+
 ## Expand volumes
+
+This section describes how to expand volumes using Windows Admin Center or PowerShell.
 
 > [!WARNING]
 >**Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the Add servers or drives section to add additional capacity before expanding volumes.
@@ -150,16 +164,6 @@ You may require to move volumes in several scenarios, including:
 
    > [!NOTE]
    > For stretched clusters, you can move a volume only to another server in the same storage pool.
-
-### Prerequisites
-
-Before you begin to move volumes, make sure that:
-
-- You have administrator privileges to access the cluster.
-- You have access to a management computer that is in the same domain as your cluster.
-- You know which volume to move and which cluster node to move it to.
-- The volume is in a healthy state before you move it. To find out about the health state of a volume, see [Monitor volumes](monitor-cluster.md#monitor-volumes) for Windows Admin Center and [Virtual disk state](/windows-server/storage/storage-spaces/storage-spaces-states#virtual-disk-states) for PowerShell.
-- If using PowerShell to move volumes, you have the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
