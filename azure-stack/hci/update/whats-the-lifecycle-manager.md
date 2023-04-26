@@ -1,5 +1,5 @@
 ---
-title:  What's the Lifecycle Manager?
+title:  What's the Lifecycle Manager (preview)?
 description: This article describes the Lifecycle Manager, the benefits it provides for an Azure Stack HCI cluster solution, and more.
 author: ronmiab
 ms.author: robess
@@ -9,11 +9,13 @@ ms.lastreviewed: 04/05/2023
 ms.date: 04/05/2023
 ---
 
-# What's the Lifecycle Manager?
+# What's the Lifecycle Manager (preview)?
 
-> Applies to: Azure Stack HCI, Supplemental Package.
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes the Lifecycle Manager, the benefits it provides for an Azure Stack HCI cluster solution, and more.
+This article is applicable to version 2303 of the Supplemental Package and later. It describes the Lifecycle Manager, the benefits it provides for an Azure Stack HCI cluster solution, and more.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About the Lifecycle Manager
 
@@ -23,9 +25,11 @@ In past releases of Azure Stack HCI, like 20H2 and 21H2, the operating system (O
 
 The Lifecycle Manager provides centralized orchestration capabilities for Azure Stack HCI solutions. It's installed as part of and enables the new deployment experience with the management of OS, core agents and services, and the solution extension. The Lifecycle Manager supports a broad range of updates and sets the foundation for substantial future improvements.
 
+Here is an example of a new cluster deployment using the deployment tool with the Lifecycle Manager.
+
 :::image type="content" source="media/lifecycle-manager/update-your-solution.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/lifecycle-manager/update-your-solution.png":::
 
-Some new agents and services can't be updated outside the Lifecycle Manager. Availability of those updates depends on the specific feature.
+In this solution the Azure Stack HCI OS, driver, firmware, and agents and services, are automatically updated. Note, some new agents and services can't be updated outside the Lifecycle Manager and availability of those updates depends on the specific feature.
 
 ## Benefits of the Lifecycle Manager
 
@@ -43,32 +47,18 @@ The Lifecycle Manager offers many benefits for updating your solution. Some of t
 
 ## Lifecycle cadence
 
-The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). To stay current within this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](/azure-stack/hci/release-information).
+The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). This policy defines the products and services that are continuously serviced and supported. To stay current within this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](/azure-stack/hci/release-information).
 
 Microsoft might release the following types of updates for the Azure Stack HCI platform:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Patch Updates| Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host node reboots, while others don't. To fix critical or security issues, hotfixes might be released sooner than monthly. |
-|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host node reboots and might take longer.|
+|Patch Updates| Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host system reboots, while others don't. To fix critical or security issues, hotfixes might be released sooner than monthly. |
+|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer.|
 |Hotpatches | As needed |             |
 |Solution Builder Extension (SBE)        | Bi-Annually |           |
 
-Sometimes you might see updates to the latest patch level of your current baseline. Meaning, if a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline.
-
-Each baseline receives patch updates during the supported period. Your cluster must stay within six months of the most recent baseline to consider it supported.
-
-## Platform updates management
-
-Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
-
-- **Operating System:** What can we say here?
-
-- **Lifecycle Manager agents and services:** What can we say here?
-
-- **Solution extension:** Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers.
-
-  - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary node reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
+Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your cluster must stay within six months of the most recent baseline to consider it supported.
 
 ## Next steps
 

@@ -1,5 +1,5 @@
 ---
-title:  Update the Azure Stack HCI solution.
+title:  Update the Azure Stack HCI solution (preview).
 description: This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
 author: ronmiab
 ms.author: robess
@@ -9,27 +9,39 @@ ms.lastreviewed: 04/06/2023
 ms.date: 04/06/2023
 ---
 
-# Update the Azure Stack HCI solution
+# Update the Azure Stack HCI solution (preview)
 
-> Applies to: Azure Stack HCI, Supplemental Package
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
+This article is applicable to version 2303 of the Supplemental Package and later. It describes how to keep various pieces of your Azure Stack HCI solution up to date.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About update the solution
 
-The Lifecycle Manager intends to provide a flexible foundation, such that over time, more of the solution content can be integrated and managed in one place.
+The Lifecycle Manager provides a flexible foundation to integrate and manage more of the solution content in one place.
 
-In the 22H2 release, the Lifecycle Manager allows management of the OS, solution extension, core agent, and service content. The following section provides an overview of these components, along with methods and links for updating your solution.  
+In this release, the Lifecycle Manager allows management of the OS, core agent and services, and the solution extension. The following section provides an overview of components, along with methods and links for updating your solution.  
 
-## Azure Stack HCI platform
+## Platform updates management
 
-The Azure Stack platform includes the Azure Stack HCI operating system (OS) that runs on the nodes within your cluster, system agents and services, and the drivers and firmware required by your host hardware.
+Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
-To keep the platform up to date via the Lifecycle Manager, see [What's the Lifecycle Manager](whats-the-lifecycle-manager.md)?
+- **Operating System:** What can we say here?
+
+- **Lifecycle Manager agents and services:** The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. To achieve a successful update of its agents, the Lifecycle Manager:
+
+  - Prepares and updates the servicing stack
+  - Installs new agents and services
+  - Updates the host OS. Cluster-Aware Updating is used to orchestrate reboots.
+
+- **Solution extension:** Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers.
+
+  - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
 
 ### Lifecycle management
 
-The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster. When updating the platform, we recommend the following high-level process:
+The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster. Here's a high-level process for platform updates with Lifecycle Manager:
 
 - Plan for the update.
   - Discover the update, read the release notes, and determine a good time to update. For example, a time when production workloads aren't in use, or nonpeak hours.
@@ -46,25 +58,26 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
 
 ## User interfaces for updates
 
-In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. These interfaces are PowerShell and Windows Admin Center.
+In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. The interfaces are:
+
+- PowerShell (Command line)
+- Windows Admin Center
 
 ### PowerShell
 
-You can use PowerShell to manage your solution updates. The PowerShell procedures apply to a single node and multi-node cluster that runs with the Lifecycle Manager installed.
-
-For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell.md).
+The PowerShell procedures apply to a single server and multi-server cluster that runs with the Lifecycle Manager installed. For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell.md).
 
 ### Windows Admin Center
 
-You can use Windows Admin Center as another method to install your solution updates. To install updates using Windows Admin Center, see [Install operating system and hardware updates using Windows Admin Center](/azure-stack/hci/manage/update-cluster#install-operating-system-and-hardware-updates-using-windows-admin-center).
+Currently, the Lifecycle Manager isn't part of Windows Admin Center. To install updates using Windows Admin Center, see [Install feature updates](/azure-stack/hci/manage/install-preview-version.md#windows-admin-center).
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
-Currently, the Lifecycle Manager isn't part of Windows Admin Center. It will be introduced in a future release.
-
 ## Workload updates
 
-Along with updates for your cluster, there are workload updates that can be applied that aren't integrated in the Lifecycle Manager. These workloads include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections will provide more detail on these workloads and ways to apply updates.
+Along with your cluster updates, there are workload updates not integrated into the Lifecycle Manager that can be applied.
+
+The workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections provide details on these workloads and ways to apply updates.
 
 ### Azure Kubernetes Service (AKS) hybrid
 
@@ -72,9 +85,9 @@ Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azur
 
 AKS hybrid has two types of updates that can be initiated through PowerShell or Windows Admin Center.
 
-- Host updates.
+- Host updates
 
-- Workload cluster updates.
+- Workload cluster updates
 
 To update AKS hybrid via Windows Admin Center, use these instructions:
 
