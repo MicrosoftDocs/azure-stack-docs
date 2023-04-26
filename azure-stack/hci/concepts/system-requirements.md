@@ -41,8 +41,9 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
    - Canada Central
    - West Europe
    - Southeast Asia
-   - Australia East
+   - Central India
    - Japan East
+   - Australia East
 
    # [Azure China](#tab/azure-china)
 
