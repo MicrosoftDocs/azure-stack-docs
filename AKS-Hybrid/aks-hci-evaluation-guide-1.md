@@ -3,7 +3,7 @@ title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: Evaluate AKS hybrid, Step 1 - To keep costs low, prepare an Azure Virtual Machine to deploy Azure Kubernetes Service on.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/23/2023
+ms.date: 04/25/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
@@ -239,7 +239,7 @@ New-AzResourceGroup -Name $rgName -Location  $location -Verbose
 
 # Deploy ARM Template
 New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/aks-hci/october_eval/eval/json/akshcihost.json" `
+    -TemplateUri "https://github.com/Azure/aks-hybrid/blob/main/eval/json/akshcihost.json" `
     -virtualMachineName $vmName `
     -virtualMachineSize $vmSize `
     -virtualMachineGeneration $vmGeneration `
@@ -354,13 +354,13 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
 
 ## Product improvements
 
-If, while you work through this guide, you have an idea to make the product better, let us know - whether it's something in AKS hybrid, Azure Stack HCI, Windows Admin Center, or the Azure Arc integration and experience! We want to hear from you! [Head on over to our AKS on Azure Stack HCI GitHub page](https://github.com/Azure/aks-hci/issues "AKS on Azure Stack HCI GitHub"), where you can share your thoughts and ideas about making the technologies better.  If however, you have an issue that you'd like some help with, read on...
+If, while you work through this guide, you have an idea to make the product better, let us know - whether it's something in AKS hybrid, Azure Stack HCI, Windows Admin Center, or the Azure Arc integration and experience! We want to hear from you! [Head on over to our AKS on Azure Stack HCI GitHub page](https://github.com/Azure/aks-hybrid/issues "AKS on Azure Stack HCI GitHub"), where you can share your thoughts and ideas about making the technologies better.  If however, you have an issue that you'd like some help with, read on...
 
 ## Raising issues
 
 If you notice something is wrong with the evaluation guide, such as a step isn't working, or something just doesn't make sense - help us to make this guide better!  Raise an issue in GitHub, and we'll be sure to fix this as quickly as possible!
 
-If however, you're having a problem with AKS hybrid outside of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hci/issues), where Microsoft experts and valuable members of the community will do their best to help you.
+If however, you're having a problem with AKS hybrid outside of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hybrid/issues), where Microsoft experts and valuable members of the community will do their best to help you.
 
 ## Next steps
 
