@@ -234,7 +234,7 @@ Follow these steps to move volumes using PowerShell:
 
 ## Delete volumes
 
-This section describes how to delete volumes by using either Windows Admin Center or PowerShell.
+This section describes how to delete volumes by using Windows Admin Center or PowerShell.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
