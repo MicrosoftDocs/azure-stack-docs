@@ -153,13 +153,13 @@ Accept wildcard characters: False
 Restricts SSH access to certain commands.
 
 ```yaml
-Type: Parameter
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: false
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
