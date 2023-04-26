@@ -23,7 +23,7 @@ For information on how to apply solution updates to clusters that were created w
 
 The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](../index.yml).
 
-The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).
+<!--The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).-->
 
 When you apply a solution update, here are the high-level steps that you take:
 
@@ -35,8 +35,14 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
-> [!NOTE]
-> The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node cluster varies from 30 minutes to 1.5 hrs. and for a two-node cluster varies from 1-2 hrs.
+The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node and 4-node cluster are summarized in the following table:
+
+|Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
+|------------------|-------------------------------------|---------|
+|Single server     | 0:01:44	        |1:25:42         |
+|4-node cluster    | 0:01:58	        |3:53:09         |
+
+
 
 ## Prerequisites
 
