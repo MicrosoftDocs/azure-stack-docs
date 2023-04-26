@@ -69,7 +69,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### Windows Admin Center
 
-Currently, the Lifecycle Manager isn't part of Windows Admin Center. To install updates using Windows Admin Center, see [Install feature updates](/azure-stack/hci/manage/install-preview-version.md).
+Currently, the Lifecycle Manager isn't part of Windows Admin Center. To install updates using Windows Admin Center, see [Install feature updates](install-preview-version.md).
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
