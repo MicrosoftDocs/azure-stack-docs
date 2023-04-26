@@ -41,7 +41,7 @@ Before you expand a volume, make sure you have enough capacity in the storage po
 
 ### Familiarity with volumes in Storage Spaces
 
-In Storage Spaces Direct, every volume is comprised of several stacked objects: the cluster shared volume (CSV), which is a volume; the partition; the disk, which is a virtual disk; and one or more storage tiers (if applicable). To resize a volume, you will need to resize several of these objects.
+In Storage Spaces Direct, every volume is composed of several stacked objects: the cluster shared volume (CSV), which is a volume; the partition; the disk, which is a virtual disk; and one or more storage tiers (if applicable). To resize a volume, you need to resize several of these objects.
 
 ![Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers.](media/manage-volumes/volumes-in-smapi.png)
 
@@ -112,9 +112,9 @@ When you expand the **StorageTier**(s), the associated **VirtualDisk** and **Dis
 
 ### Step 2 – Expand the partition
 
-Next, expand the partition using the `Resize-Partition` cmdlet. The virtual disk is expected to have two partitions: the first is `Reserved` and should not be modified; the one you need to resize has **PartitionNumber = 2** and **Type = Basic**.
+Next, expand the partition using the `Resize-Partition` cmdlet. The virtual disk is expected to have two partitions: the first is `Reserved` and shouldn't be modified; the one you need to resize has **PartitionNumber = 2** and **Type = Basic**.
 
-Provide the new size in the `-Size` parameter. We recommend using the maximum supported size, as shown below:
+Provide the new size in the `-Size` parameter. We recommend using the maximum supported size, as follows:
 
 ```PowerShell
 # Choose virtual disk
@@ -251,7 +251,7 @@ First, launch PowerShell on your management PC and run the **Get-VirtualDisk** c
 Get-VirtualDisk -CimSession clustername.contoso.com
 ```
 
-This will return a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
+This returns a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
 
 ### Example
 
@@ -261,7 +261,7 @@ To delete a mirrored volume called *Volume1,* run the following command in Power
 Remove-VirtualDisk -FriendlyName "Volume1"
 ```
 
-You will be asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
+You are asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
 
    > [!WARNING]
    > This is not a recoverable action. This permanently deletes a **VirtualDisk** Volume object.
