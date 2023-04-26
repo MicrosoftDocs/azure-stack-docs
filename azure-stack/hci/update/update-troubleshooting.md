@@ -21,25 +21,25 @@ The Lifecycle Manager includes retry and remediation logic. This logic attempts 
 
 ## Collect update logs
 
-You can also collect diagnostic logs to help Microsoft identify and fix the issues. To collect logs for the update failures, follow these steps on the client that you are using to access your cluster:
+You can also collect diagnostic logs to help Microsoft identify and fix the issues. To collect logs for the update failures, follow these steps on the client that you're using to access your cluster:
 
 1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
     ```powershell
     Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server>
     ```
-2. Filter the solution updates corresponding to a specific version. 
+2. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
     ```powershell
     $Update = Get-SolutionUpdate| ? version -eq "<Version string>" -verbose
     ```
-3. Identify the failure from the solution update run.
+3. Identify the action plan for the failed solution update run.
     ```powershell
-    $Failure = $update|Get-SolutionUpdatRun
+    $Failure = $update|Get-SolutionUpdateRun
     ```
 4. Identify the `ResourceID` for the Update.
     ```powershell
     $Failure
     ```
-    Here is a sample output:
+    Here's a sample output:
     
     ```output
     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? version -eq "10.2303.1.7" -verbose
@@ -61,7 +61,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
     Get-ActionplanInstance -ActionplanInstanceId <Action Plan Instance ID> >log.txt
     notepad log.txt
     ```
-    Here is sample output:
+    Here's sample output:
 
     ```output
     PS C:\Users\lcmuser> Get-ActionplanInstance -actionplaninstanceid 2c21b859-e063-4f24-a4db-bc1d6be82c4e >log.txt
