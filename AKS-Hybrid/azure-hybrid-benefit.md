@@ -62,7 +62,7 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 ---
 
 > [!NOTE]
-> You have to the `Microsoft.Kubernetes/connectedClusters/write` permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate Azure Hybrid Benefit for AKS.
+> You must have the **Microsoft.Kubernetes/connectedClusters/write** permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate the Azure Hybrid Benefit for AKS hybrid.
 
 ### Retrieve your management cluster name
 
