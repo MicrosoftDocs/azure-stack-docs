@@ -1,6 +1,6 @@
 ---
-title: Manage volumes on Azure Stack HCI and Windows Server clusters
-description: How to manage volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center or PowerShell.
+title: Manage volumes in Azure Stack HCI and Windows Server
+description: How to manage volumes in Azure Stack HCI and Windows Server by using Windows Admin Center or PowerShell.
 ms.topic: how-to
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -12,7 +12,7 @@ ms.date: 04/24/2023
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article explains how to expand, move, or delete volumes by using either Windows Admin Center or PowerShell.
+This article explains how to expand, move, or delete volumes in Azure Stack HCI and Windows Server by using either Windows Admin Center or PowerShell.
 
 ## Expand volumes
 
@@ -24,14 +24,14 @@ This article explains how to expand, move, or delete volumes by using either Win
 Follow these steps to expand volumes in Windows Admin Center:
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
-1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to expand. On the volume detail page, the storage capacity for the volume is indicated. 
+1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to expand. On the volume detail page, the storage capacity for the volume is indicated.
 
-    You can also open the volumes detail page directly from **Dashboard**. On the Dashboard, in the **Alerts** section, select the alert, which notifies you if a volume is running low on storage capacity, and then select **Go To Volume**.
+   You can also open the volumes detail page directly from **Dashboard**. On the Dashboard, in the **Alerts** section, select the alert, which notifies you if a volume is running low on storage capacity, and then select **Go To Volume**.
 
 1. At the top of the volumes detail page, select **Settings**.
 1. Enter a new larger size in the right pane, and then select **Save**.
 
-    On the volumes detail page, the larger storage capacity for the volume is indicated, and the alert on the Dashboard is cleared.
+   On the volumes detail page, the larger storage capacity for the volume is indicated, and the alert on the Dashboard is cleared.
 
 ### [PowerShell](#tab/powershell)
 
@@ -129,7 +129,7 @@ $Partition | Resize-Partition -Size ($Partition | Get-PartitionSupportedSize).Si
 
 When you expand the **Partition**, the associated **Volume** and **ClusterSharedVolume** follow automatically and are resized too.
 
-![Animated diagram shows the virtual disk layer, at the bottom of the volume, growing larger with each of the layers above it growing larger as well.](media/extend-volumes/Resize-Partition.gif)
+![Animated diagram shows the virtual disk layer, at the bottom of the volume, growing larger with each of the layers above it growing larger as well.](media/manage-volumes/Resize-Partition.gif)
 
 That's it!
 
@@ -140,10 +140,25 @@ That's it!
 
 ## Move volumes
 
-This section describes how to move volumes by using Windows Admin Center or PowerShell.
+This section describes how to move Cluster Shared Volumes (CSV) from one cluster node to another by using Windows Admin Center or PowerShell.
 
-> [!NOTE]
-> For stretched clusters, you can only move a volume to another server in the same storage pool.
+Several scenarios may require you to move volumes from one cluster node to another, including:
+
+- If there's an imbalance in the storage capacity among different nodes in the cluster, you may need to move volumes to balance out the storage capacity.
+- If there's any issue in a cluster node, you may need to move its volumes to another node before troubleshooting the issue.
+- If your cluster environment follows certain rules, such as to have a specific volume type on a specific cluster node, you may need to move volumes to conform to those rules.
+
+### Prerequisites
+
+Before you begin to move volumes, make sure that:
+
+- You have administrator privileges to access the cluster.
+- You have access to a management computer that is in the same domain as your cluster.
+- You know the volume and cluster node to move it to.
+- If using PowerShell to move volumes, you have the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
+
+   > [!NOTE]
+   > For stretched clusters, you can only move a volume to another server in the same storage pool.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
@@ -156,32 +171,47 @@ Follow these steps to move volumes using Windows Admin Center:
 
 ### [PowerShell](#tab/powershell)
 
-If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
-
-> [!NOTE]
-> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades.
+You can either run PowerShell locally using the Remote Desktop Protocol (RDP) on a host server, or you can run PowerShell remotely from a management computer.
 
 Follow these steps to move volumes using PowerShell:
 
-1. Launch PowerShell on your management PC.
-1. To list all Cluster Shared Volumes (CSVs) in your cluster, run the following cmdlet:
+1. Launch PowerShell as Administrator on your management computer.
+
+1. To remotely connect to the cluster, run the following command:
+    
+   ```powershell
+   Enter-PSSession ClusterName
+   ```
+
+   where:
+   `ClusterName` is the name of your cluster.
+
+1. To list all the Cluster Shared Volumes (CSVs) in your cluster, run the following cmdlet:
 
    ```powershell
-   Get-ClusterSharedVolume -Cluster <ClusterName>
+   Get-ClusterSharedVolume
    ```
-   
-   where:
-   `ClusterName` is the name of the Azure Stack HCI cluster.
+
+   Here's a sample output:
+
+   ```command
+   Name                           State  Node
+   ----                           -----  ----
+   Cluster Virtual Disk (test)    Online azuredoc-srv2
+   Cluster Virtual Disk (VMs1)    Online azuredoc-srv1
+   Cluster Virtual Disk (VMs2)    Online azuredoc-srv1
+   Cluster Virtual Disk (Volume1) Online azuredoc-srv2
+   ```
 
 1. To move a CSV from one node to another in your cluster, run the following cmdlet:
 
    ```powershell
-   Move-ClusterSharedVolume -Name <CSV_Name> -Node <Node>
+   Move-ClusterSharedVolume -Name <CSV_Name> -Node <NodeName>
    ```
 
    where:
-   - `CSV_Name` is the name of the CSV that you want to move.
-   - `Node` is the server where you want to move the CSV to.
+   - `CSV_Name` is the name of the CSV that you want to move. Make sure to include the entire 
+   - `NodeName` is the name of the cluster node to which to move the Cluster Shared Volume.
 
 ---
 
@@ -194,7 +224,7 @@ Follow these steps to move volumes using PowerShell:
 3. At the top of the volumes detail page, select **Delete**.
 4. In the confirmations dialog, select the check box to confirm that you want to delete the volume, and select **Delete**.
 
-   :::image type="content" source="media/delete-volumes/delete-volume.png" alt-text="Select the volume that you want to delete, select delete, and then confirm that you want to erase all the data on the volume." lightbox="media/delete-volumes/delete-volume.png":::
+   :::image type="content" source="media/manage-volumes/delete-volume.png" alt-text="Select the volume that you want to delete, select delete, and then confirm that you want to erase all the data on the volume." lightbox="media/manage-volumes/delete-volume.png":::
 
 ### [PowerShell](#tab/powershell)
 
