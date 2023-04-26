@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Stack H
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 04/26/2023
 ---
 
 # Troubleshoot Azure Stack HCI solution update (preview)
