@@ -17,9 +17,9 @@ This article describes how to manage Arc extensions on Azure Stack HCI server ma
 
 ## About Arc extensions on Azure portal
 
-Azure Stack HCI enables you to install, uninstall, and update Arc extensions on your Azure Stack HCI systems. With this functionality you can run hybrid services like monitoring, Windows Admin Center, in Azure portal.
+Azure Stack HCI enables you to install, uninstall, and update Arc extensions on your Azure Stack HCI systems. With Arc extensions you can run hybrid services like monitoring, Windows Admin Center, in Azure portal.
 
-Here's a list of extensions that can be installed and managed in Azure portal:
+Here is a list of extensions that can be installed and managed in Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
@@ -27,7 +27,7 @@ Here's a list of extensions that can be installed and managed in Azure portal:
 
 ## Install an extension via Azure portal
 
-Once the HCI servers are Arc enabled, you can install extensions from **Capabilities tab**. Most extensions can be installed from this tab.
+Once Azure Stack HCI servers are Arc enabled, you can install extensions from **Capabilities tab**. Most extensions can be installed from this tab.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
@@ -39,7 +39,7 @@ To check the status of extensions on each of your nodes, go to the **Extensions 
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Arc-enabled HCI clusters, unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Arc-enabled clusters, unless you explicitly opt-out of automatic upgrades.
 
 Currently, Windows Admin Center is the only extension that supports automatic extension upgrades. More extensions will be added over time.
 
@@ -64,7 +64,7 @@ To enable automatic upgrades, go to the **Extensions page** and select, the exte
 
 ### Manual extension upgrade via Azure portal
 
-The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). When you manually upgrade an extension to a given version, on an Azure Arc-enabled HCI cluster, Azure platform saves the version you've selected and tries to upgrade the extension on all cluster nodes to that version.
+The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). When you manually upgrade an extension to a given version, on an Azure Stack HCI Arc-enabled cluster, Azure platform saves the version you've selected and tries to upgrade the extension on all cluster nodes to that version.
 
 If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](/azure-stack/hci/faq#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
@@ -84,7 +84,7 @@ To check the automatic extension upgrade history for individual cluster nodes, y
 
 ### Availability-first updates
 
-For a group of Arc-enabled HCI clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
+For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
 
 ### Timing of automatic extension upgrades
 
