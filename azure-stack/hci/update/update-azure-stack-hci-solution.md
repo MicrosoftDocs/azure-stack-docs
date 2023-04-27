@@ -21,7 +21,7 @@ This article is applicable to version 2303 of the Supplemental Package and later
 
 The Lifecycle Manager provides a flexible foundation to integrate and manage more of the solution content in one place.
 
-In this release, the Lifecycle Manager allows management of the OS, core agent and services, and the solution extension. The following section provides an overview of components, along with methods and links for updating your solution.  
+In this release, the Lifecycle Manager allows management of the OS, core agent and services, and the solution extension. The next sections provide an overview of components, along with methods and links for updating your solution.  
 
 ## Platform updates management
 
