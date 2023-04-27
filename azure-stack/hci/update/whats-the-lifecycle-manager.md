@@ -19,11 +19,11 @@ This article is applicable to version 2303 of the Supplemental Package and later
 
 ## About the Lifecycle Manager
 
-Azure Stack HCI solutions contain many individual features and components. Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. Note, you might need to follow different processes to apply updates, depending on which services you use.
+Azure Stack HCI solutions contain many individual features and components. Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. To stay up to date, you might need to follow different processes to apply updates depending on the services you use.
 
 In past releases of Azure Stack HCI, like 20H2 and 21H2, the operating system (OS) was the primary component being updated. In 22H2, the Supplemental Package introduces new features and components in addition to the OS, including the Lifecycle Manager.
 
-The Lifecycle Manager provides centralized orchestration capabilities for Azure Stack HCI solutions. It's installed as part of and enables the new deployment experience with the management of OS, core agents and services, and the solution extension. The Lifecycle Manager supports a broad range of updates and sets the foundation for substantial future improvements.
+The Lifecycle Manager provides centralized orchestration capabilities for Azure Stack HCI solutions. It's installed as part of and enables the new deployment experience with the management of the OS, core agents and services, and the solution extension. The Lifecycle Manager supports a broad range of updates and sets the foundation for substantial future improvements.
 
 Here's an example of a new cluster deployment using the deployment tool with the Lifecycle Manager.
 
