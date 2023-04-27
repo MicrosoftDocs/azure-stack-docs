@@ -29,7 +29,7 @@ For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supp
 |-|------|------|
 |1|Deployment |In an earlier release, there was an issue where ECE cluster deployment failed with: Status of step 0.26.0.3.1.1 - `RunCompleteSBECAURunOnAllNodes` is `Error`. This issue is fixed in this release.|
 |2|Lifecycle Manager |There was an issue where SBE update would hang during CAU scanning. This issue is fixed in this release. |
-|3|Add node | With this release, an issue seen in earlier vesions - VM Switch name convention aligns with what ATC will configure before node reboot - is fixed in this release.|
+|3|Add node | An issue seen in earlier vesions - VM Switch name convention aligns with what ATC will configure before node reboot - is fixed in this release.|
 
 ## Known issues in this release
 
