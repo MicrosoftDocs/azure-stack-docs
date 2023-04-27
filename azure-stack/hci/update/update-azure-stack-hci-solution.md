@@ -3,7 +3,7 @@ title:  Lifecycle Management for Azure Stack HCI solution updates (preview).
 description: This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
 author: ronmiab
 ms.author: robess
-ms.topic: how-to
+ms.topic: conceptual
 ms.reviewer: thoroet
 ms.lastreviewed: 04/27/2023
 ms.date: 04/27/2023
