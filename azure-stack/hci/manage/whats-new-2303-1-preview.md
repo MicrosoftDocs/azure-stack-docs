@@ -32,13 +32,18 @@ Azure Stack HCI, 2303.1 Supplemental Package is now in preview. This package dep
 
 ### Download Azure Stack HCI, 2303.1 Supplemental Package
 
-You can download the Supplemental Package here:  
+Follow these steps to download the Supplemental Package files:  
 
-| Azure Stack HCI Supplemental Package component| URL                                             |
-|-----------------------------------------------|-------------------------------------------------|
-| Bootstrap PowerShell                           | https://go.microsoft.com/fwlink/?linkid=2210545 |
-| CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
-| Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
+1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
+
+1. On the **Azure Stack HCI software download** page, go to **Supplemental package for Azure Stack HCI 22H2 (public preview)**. 
+
+    :::image type="content" source="../manage/media/whats-in-preview/azure-stack-hci--supplemental-package-download.png" alt-text="Screenshot of the Azure Stack HCI v22H2 Supplemental Package download.":::
+
+    You can download the following files:
+    - *Bootstrap PowerShell*.
+    - *CloudDeployment.zip*.
+    - *Verify Cloud Deployment PowerShell*.
 
 To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
 
@@ -47,14 +52,14 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 The following new features are available in the 2303.1 preview release of Supplemental Package:
 
-- **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. From the disconnected storage network interfaces, you can go to a two node deployment that has switches storage network interfaces. You can now define a storage network intent for storage RDMA network interfaces and you can also add a second top-of-rack switch to provide redundancy if required. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
+- **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. You can now define a storage network intent for storage RDMA network interfaces and also add a second top-of-rack switch to provide redundancy if required. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
 
 - **Update improvements** - In this release, the following enhancements have been made for the solution updates: 
     - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. <!--To learn more about update times, see [Track the update progress](../index.yml).-->
     - With this release, you can update the cluster nodes following the addition or replacement of a node.
-    - SBE toolkit is available in this release. To download this toolkit, go to: []().
+    - SBE toolkit is available in this release. <!--To download this toolkit, go to: []().-->
 
-- **Multi-language support for deployment tool** - Beginning this release, the deployment tool will support multiple languages. DO WE HAVE INFO ON LANGUAGES SUPPORTED?
+- **Multi-language support for deployment tool** - Beginning this release, the deployment tool will support multiple languages. <!--DO WE HAVE INFO ON LANGUAGES SUPPORTED?-->
 
 
 ## Next steps
