@@ -15,10 +15,10 @@ By default, the AKS Edge Essentials Linux node has a single network interface ca
 This article describes how to configure the AKS Edge Essentials Linux node to support multiple NICs and connect to multiple networks. This process is divided into the following steps:
 
 1. Create an AKS Edge Essentials deployment with a secondary NIC.
-1. Verifiy multiple NIC network configuration. 
+1. Verify multiple NIC network configuration. 
 1. Configure [Multus CNI plugin](https://cloud.redhat.com/blog/demystifying-multus).
 1. Configure Multus secondary network with sample pod.
-1. Verifiy pod attached networks.
+1. Verify pod attached networks.
 
 For more information about networking concepts and Multus configurations, see [AKS Edge Essentials networking](aks-edge-concept-networking.md) and [Multus - Quickstart guide](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md).
 
@@ -246,7 +246,7 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
     kubectl apply -f samplepod.yaml
     ``` 
 
-## Verifiy pod attached networks
+## Verify pod attached networks
 
 The final step is to ensure that the pod is running and has the correct network interfaces attached. 
 
