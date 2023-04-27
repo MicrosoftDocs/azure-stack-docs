@@ -119,7 +119,7 @@ Other Microsoft services that rely on Azure Stack HCI VMs may have their own ins
 
 The Azure Stack HCI platform doesn't update customer workloads given the update processes depend on the type of workload. It's recommended to Arc-enable your VMs and use the upgrade the agent process. For more information, see:
 
-- [Azure Arc-enabled servers](lifecycle-management-placeholder.md).
+- [Azure Arc-enabled servers](/azure/azure-arc/servers/overview).
 
 - [Upgrade the agent](/azure/azure-arc/servers/manage-agent#upgrade-the-agent).
 
