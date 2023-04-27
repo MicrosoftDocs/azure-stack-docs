@@ -64,7 +64,7 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 ## Verify multiple NIC network configuration
 
-After successfully installing and deploying the AKS Edge Essentials node, follow the steps below to make sure both primary, and secondary interfaces were created and added to the Linux node. 
+After successfully installing and deploying the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node. 
 
 1. Check the primary interface:
 
@@ -163,9 +163,9 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
     kubectl apply -f multus-daemonset.yml
     ```
 
-If everything was correctly installed, Kubernetes will start the Multus daemon set, which runs a pod on each node, and results in a Multus binary to be placed on each node in **/var/lib/rancher/k3s/data/<replace-with-your-hash>/bin**.
+If everything is correctly installed, Kubernetes starts the Multus daemon set, which runs a pod on each node, and results in a Multus binary to be placed on each node in **/var/lib/rancher/k3s/data/<replace-with-your-hash>/bin**.
 
-The daemon set reads the first alphabetical configuration file in **/var/lib/rancher/k3s/agent/etc/cni/net.d**, and creates a new configuration file for Multus on each node as **/var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf**. This is auto-generated and is based on the default network configuration. It also creates a **/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d** directory on each node with authentication information for Multus to access the Kubernetes API.
+The daemon set reads the first alphabetical configuration file in **/var/lib/rancher/k3s/agent/etc/cni/net.d**, and creates a new configuration file for Multus on each node as **/var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf**. This file is auto-generated and is based on the default network configuration. It also creates a **/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d** directory on each node with authentication information for Multus to access the Kubernetes API.
 
 ### Validate Multus installation
 
@@ -261,7 +261,7 @@ The final step is to ensure that the pod is running and has the correct network 
     kubectl exec -it samplepod -- ip a
     ```
 
-    Note that there are 3 interfaces:
+    There are 3 interfaces:
     
     - **lo** – a loopback interface
     - **eth0** – the default network
