@@ -56,7 +56,7 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
 
 ## User interfaces for updates
 
-In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. The interfaces are:
+In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. Here are the interfaces:
 
 - PowerShell (Command line)
 - Windows Admin Center
