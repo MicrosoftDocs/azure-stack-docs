@@ -44,7 +44,14 @@ This Azure Stack HCI data:
 - is not sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
 - is logged to the Microsoft-AzureStack-HCI/Analytic event channel.
 - is in JSON format, so that system administrators can examine and analyze the data being sent.
-- is stored within the United States in a secure Microsoft-operated datacenter.
+
+Data is stored in a secure Microsoft-operated datacenter as follows:
+
+- Billing and census data is sent to the respective resource of the region where the customer has registered the device to. This data is the information shown about the resource in Azure portal and the data needed to bill and license the cluster nodes.
+
+- Diagnostic data (classified as support data) will be stored within the US or the EU based on what the customer has opted for at the time of deployment.
+
+- Telemetry data (classified as OII data) is always stored within the US.
 
 To learn about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
@@ -135,15 +142,15 @@ TimeCreated            EventName                                                
 
 ## About telemetry and diagnostics
 
-Telemetry and diagnostics, an ARC extension designed to set up a Geneva based observability pipeline, is the extension that allows Microsoft to collect logs and telemetry data from all the nodes in a stamp cluster in the Azure Stack HCI environment. The telemetry and diagnostics extension is an important tool used to monitor and troubleshoot the functionality of stamp clusters in the Azure Stack HCI environment.
+Telemetry and diagnostics, an ARC extension designed to set up a Geneva based observability pipeline, is the extension that allows Microsoft to collect logs and telemetry data from all the nodes in a stamp cluster, in the Azure Stack HCI environment.
 
-The extension is a mandatory part for both new (green field) and existing (brown field) stamps in Azure Stack HCI, and the Azure Stack HCI RP Team manages the lifecycle of the extension.
+The extension is a mandatory part for both new (green field) and existing (brown field) stamps in Azure Stack HCI, and the Azure Stack HCI RP Team manages the lifecycle of the extension. Additionally, the extension is an important tool used to monitor and troubleshoot the functionality of stamp clusters in the Azure Stack HCI environment.
 
 ## Benefits of the telemetry and diagnostics extension
 
-Azure Stack HCI has always reported telemetry data to Microsoft. Previously, the component responsible for sending telemetry was part of the operating system. Now, Azure Arc installs and manages sending telemetry; it's no longer part of the operating system.
+Azure Stack HCI has always reported telemetry data to Microsoft. Previously, the component responsible for sending telemetry was part of the operating system. Now, Azure Arc installs and manages sending telemetry and it's no longer part of the operating system.
 
-Here are some of the advantages of the extension:
+Here are some advantages of the extension:
 
 - **Improved transparency:** Supplies the extensions name, version, and status directly in the Azure portal.
 
@@ -153,7 +160,7 @@ Here are some of the advantages of the extension:
 
   - When available you can manage changes from the Azure portal.
   
-  - Changes allow Microsoft to seamlessly update the environment with new or improved functionality, when applicable.
+  - When applicable, changes allow Microsoft to seamlessly update the environment with new or improved functionality.
 
 - **Improved compliance:** Allows the telemetry and diagnostic data to be compliant with data uploads as per regional service and data residency requirements.
   
@@ -161,11 +168,11 @@ Here are some of the advantages of the extension:
 
 - **Simplified log gathering:** It's easier to collect diagnostics logs when the functionality to collect the logs is readily available on the stamp.
 
-  - With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns, and collect logs proactively, thereby saving support time.
+  - With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns, and collect logs proactively which saves support time.
 
 ## Telemetry and diagnostics extension management
 
-When you have installed and run the telemetry extension, you can still retain control over whether you send telemetry data to Microsoft. To access the control, go to your cluster **Settings** in Azure portal and select **Extensions**.
+When you have installed and run the telemetry extension, you still maintain control over whether you send telemetry data to Microsoft. To access the options to send telemetry data, go to your cluster **Settings** in Azure portal and select **Extensions**.
 
 :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
@@ -179,13 +186,13 @@ You can configure the extension to be:
 
 Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
-It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects the correct diagnostic information, at the right time, without the need for any operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
+It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects correct and timely diagnostic information without the need for any operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
 
 The new telemetry agent respects the same control as before. If you have already chosen these settings before you installed the extension, they still apply, and you don't need to set them again. In other words, the telemetry extension doesn't override your existing control over telemetry data sent to Microsoft.
 
 Microsoft collects data in accordance with its standard privacy practices. If you decide to revoke your consent for data collection any data collected, with your consent, before revocation isn't affected. Microsoft continues to handle and use the data collected, in accordance with the terms that were in place at the time of the data collection.
 
-Here are a couple of things you might want to consider with data collection:
+Here are a couple of things to consider with data collection:
 
 - A review of Microsoft's privacy practices and policies to understand how Microsoft handles and uses your data.
 
@@ -193,16 +200,16 @@ Here are a couple of things you might want to consider with data collection:
 
 ## Telemetry and diagnostics workflow
 
-A registered Azure Stack HCI device has an ARC (Azure Arc Connected) machine agent installed on it. This extension runs in the local system context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
+A registered Azure Stack HCI device has an Azure Arc Connected, ARC machine agent installed on it. This extension runs in the local system context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
 
-After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Meaning the extension only requires the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
+After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Which means the extension only requires the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
 
 > [!NOTE]
-> This extension installs the Geneva Monitoring Agent on all the cluster nodes.
+> This extension installs the Geneva Monitoring Agent on all cluster nodes.
 
 ## Extension artifacts
 
-As part of the extension installment, artifacts generated from your cluster node are created on the stamp. Here's a description of the artifact names and locations.
+As part of the extension installment, artifacts generated from your cluster node are created on the stamp. Here's a description of the artifact names and locations:
 
 |Artifact Name     | Location                                                                   |
 |------------------|----------------------------------------------------------------------------|
@@ -213,15 +220,15 @@ As part of the extension installment, artifacts generated from your cluster node
 
 ## Error handling
 
-To handle errors in extensions, we have identified specific code paths for expected errors and have provided error messages with unique error codes.
+To handle errors in extensions, we have identified expected errors with specific code paths and have provided error messages with unique error codes.
 
-Here are some examples from that list:
+Here are some examples:
 
 | Error Code | Error Message | Description | Mitigation Steps |
 |------------|---------------|-------------|------------------|
-| 7 | There's at least one GMA process already running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run  other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. `Get-Process MonitoringAgent`. |
+| 7 | There's at least one GMA process already running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. Use `Get-Process MonitoringAgent` to identify active processes on the stamp. |
 | 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
-| 12 | If either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information, the extension can't create the tenant JSON configuration files. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to retrieve the information needed to create the tenant JSONs, specifically for identity parameters. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
+| 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
 | 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the [Extension logs](../manage/telemetry-diagnostics-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
 
 ::: zone-end
