@@ -4,9 +4,9 @@ description: This article describes the Lifecycle Manager, the benefits it provi
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.reviewer: aaronfa
-ms.lastreviewed: 04/05/2023
-ms.date: 04/05/2023
+ms.reviewer: thoroet
+ms.lastreviewed: 04/27/2023
+ms.date: 04/27/2023
 ---
 
 # What's the Lifecycle Manager (preview)?

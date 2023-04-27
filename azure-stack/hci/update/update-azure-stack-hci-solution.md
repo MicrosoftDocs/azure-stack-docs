@@ -4,9 +4,9 @@ description: This article describes how you can keep various pieces of your Azur
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.reviewer: aaronfa
-ms.lastreviewed: 04/06/2023
-ms.date: 04/06/2023
+ms.reviewer: thoroet
+ms.lastreviewed: 04/27/2023
+ms.date: 04/27/2023
 ---
 
 # Update the Azure Stack HCI solution (preview)

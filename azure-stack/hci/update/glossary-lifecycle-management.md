@@ -4,9 +4,9 @@ description: This article describes the glossary of terms for the Lifecycle Mana
 author: ronmiab
 ms.author: robess
 ms.topic: reference
-ms.reviewer: aaronfa
-ms.lastreviewed: 04/05/2023
-ms.date: 04/05/2023
+ms.reviewer: thoroet
+ms.lastreviewed: 04/27/2023
+ms.date: 04/27/2023
 ---
 
 # Glossary for Lifecycle Management (preview)
