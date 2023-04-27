@@ -62,4 +62,4 @@ Sometimes you might see updates to the latest patch level of your current baseli
 
 ## Next steps
 
-[Update the Azure Stack HCI solution](update-azure-stack-hci-solution.md).
+Learn more about how to [Use Lifecycle Manager for Azure Stack HCI solution updates](update-azure-stack-hci-solution.md).

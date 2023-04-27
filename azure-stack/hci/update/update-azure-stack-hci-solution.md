@@ -125,4 +125,4 @@ The Azure Stack HCI platform doesn't update customer workloads given the update 
 
 ## Next steps
 
-[What's the Lifecycle Manager](whats-the-lifecycle-manager.md)?
+To learn more about the [Phases of an Azure Stack HCI solution update](update-phases.md)?
