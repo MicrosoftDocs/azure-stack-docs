@@ -463,11 +463,9 @@
     - name: Update
       items:
       - name: Keep solution up-to-date
-        href: update/update-phases.md
+        href: update/update-azure-stack-hci-solution.md
       - name: Use Lifecycle Manager for updates
-        href: update/update-phases.md
-      - name: What's in an update?
-        href: update/update-phases.md
+        href: update/whats-the-lifecycle-manager.md
       - name: Understand update phases
         href: update/update-phases.md
       - name: Update via PowerShell
@@ -475,7 +473,7 @@
       - name: Troubleshoot updates
         href: update/update-troubleshooting.md
       - name: View update glossary
-        href: update/update-phases.md
+        href: update/glossary-lifecycle-management.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
