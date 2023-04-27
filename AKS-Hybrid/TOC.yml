@@ -313,6 +313,8 @@
     items:
     - name: Set up machine
       href: aks-edge-howto-setup-machine.md
+    - name: Offline installation
+      href: aks-edge-howto-offline-install.md
     - name: Create single machine deployment
       href: aks-edge-howto-single-node-deployment.md
     - name: Create full deployment
@@ -337,6 +339,10 @@
       href: aks-edge-howto-update.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
+    - name: Networking
+      items:
+      - name: Configure multiple NICs
+        href: aks-edge-howto-multi-nic.md
     - name: Storage
       items:
       - name: Add local storage binding
