@@ -81,7 +81,7 @@ The workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, a
 
 ### Azure Kubernetes Service (AKS) hybrid
 
-Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. The process is orchestrated via AKS hybrid tooling, which involves bringing up new VMs and moving workloads over in a rolling fashion. For more information, see [AKS lifecycle and Updates pages](lifecycle-management-placeholder.md).
+Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. AKS hybrid tooling, orchestrates the workload updates process, which involves bringing up new VMs and moving workloads over in a rolling fashion. For more information, see [AKS lifecycle and Updates pages](lifecycle-management-placeholder.md).
 
 AKS hybrid has two types of updates that can be initiated through PowerShell or Windows Admin Center.
 
@@ -89,13 +89,13 @@ AKS hybrid has two types of updates that can be initiated through PowerShell or 
 
 - Workload cluster updates
 
-To update AKS hybrid via Windows Admin Center, use these instructions:
+To update AKS hybrid using Windows Admin Center, see:
 
 - [Upgrade the Azure Kubernetes Service host in AKS hybrid using Windows Admin Center](/azure/aks/hybrid/update-akshci-host-windows-admin-center).  
 
 - [Upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters with Windows Admin Center](/azure/aks/hybrid/upgrade-kubernetes).
 
-To update AKS hybrid using PowerShell, use these instructions:
+To update AKS hybrid using PowerShell, see:
 
 - [Upgrade the Azure Kubernetes Service host in AKS hybrid using PowerShell](/azure/aks/hybrid/update-akshci-host-powershell).
 
