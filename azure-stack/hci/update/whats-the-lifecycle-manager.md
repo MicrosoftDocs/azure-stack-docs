@@ -25,7 +25,7 @@ In past releases of Azure Stack HCI, like 20H2 and 21H2, the operating system (O
 
 The Lifecycle Manager provides centralized orchestration capabilities for Azure Stack HCI solutions. It's installed as part of and enables the new deployment experience with the management of OS, core agents and services, and the solution extension. The Lifecycle Manager supports a broad range of updates and sets the foundation for substantial future improvements.
 
-Here is an example of a new cluster deployment using the deployment tool with the Lifecycle Manager.
+Here's an example of a new cluster deployment using the deployment tool with the Lifecycle Manager.
 
 :::image type="content" source="media/lifecycle-manager/update-your-solution.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/lifecycle-manager/update-your-solution.png":::
 
