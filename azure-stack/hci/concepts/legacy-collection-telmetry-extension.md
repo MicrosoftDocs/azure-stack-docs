@@ -168,7 +168,7 @@ Here are some advantages of the extension:
 
 - **Simplified log gathering:** It's easier to collect diagnostics logs when the functionality to collect the logs is readily available on the stamp.
 
-  - With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns, and collect logs proactively which saves support time.
+  - With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns and collect logs proactively which saves support time.
 
 ## Telemetry and diagnostics extension management
 
@@ -186,7 +186,7 @@ You can configure the extension to be:
 
 Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
 
-It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects correct and timely diagnostic information without the need for any operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
+It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects correct and timely diagnostic information without the need for operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
 
 The new telemetry agent respects the same control as before. If you have already chosen these settings before you installed the extension, they still apply, and you don't need to set them again. In other words, the telemetry extension doesn't override your existing control over telemetry data sent to Microsoft.
 
