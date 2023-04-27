@@ -39,7 +39,7 @@ After you install an extension, check the status of the extension on each of you
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Azure Arc-enabled clusters, unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Azure Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
 
 Currently, Windows Admin Center is the only extension that supports automatic extension upgrades. More extensions will be added over time.
 
@@ -48,11 +48,11 @@ Currently, Windows Admin Center is the only extension that supports automatic ex
 
 ### Disable automatic upgrade via Azure portal
 
-In Azure portal, you have the ability to disable automatic upgrade for some extensions. To disable automatic upgrades, go to the **Extensions pane**, then perform these steps:
+In Azure portal, you can disable automatic upgrade for some extensions. To disable automatic upgrades, go to the **Extensions pane**, then perform these steps:
 
 1. Choose the extension you want to disable the automatic upgrade on.
 2. Select **Disable automatic upgrade** from the top menu.
-3. On the notification widow, select **OK**.
+3. On the notification window, select **OK**.
 
 Here's an example of the disable automatic extension process:
 
@@ -62,13 +62,13 @@ Here's an example of the disable automatic extension process:
 
 ### Enable automatic upgrade via Azure portal
 
-With extension management, you can also enable automatic upgrade for some extensions.
+With extension management, you can enable an automatic upgrade for some extensions.
 
 To enable automatic upgrade, go to the **Extensions pane**, then perform these steps:
 
 1. Choose the extension you want to enable automatic upgrade on.
 2. Select **Enable automatic upgrade** from the top menu.
-3. On the notification widow, select **OK**.
+3. On the notification window, select **OK**.
 
 Here's an example of the enable automatic extension process:
 
@@ -90,7 +90,7 @@ Use the manual workflow in these scenarios:
 
 To manually upgrade an extension, see these steps:
 
-1. Go to the **Extensions page**
+1. Go to the **Extensions page**.
 2. Select the menu item **Settings**.
 3. Choose the latest version and select **Save**.
 
@@ -124,7 +124,7 @@ If multiple extension upgrades are available for a machine, the upgrades might b
 
 If desired, you can uninstall some extensions from your Azure Stack HCI clusters in Azure portal. To uninstall an extension, use these steps:
 
-1. Go to the **Extensions pane**.
+1. Go to the **Extensions page**.
 2. Choose the extension you want to uninstall. The uninstall button is available only if you can uninstall the extension.
 3. Select **Uninstall** from the top menu.
 4. Confirm the intent and select **Yes**.
