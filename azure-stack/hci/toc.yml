@@ -460,12 +460,12 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
-    - name: Update
+    - name: Update (preview)
       items:
-      - name: Keep solution up-to-date
-        href: update/update-azure-stack-hci-solution.md
-      - name: Use Lifecycle Manager for updates
+      - name: What's the Lifecycle Manager
         href: update/whats-the-lifecycle-manager.md
+      - name: Use Lifecycle Manager for updates
+        href: update/update-azure-stack-hci-solution.md
       - name: Understand update phases
         href: update/update-phases.md
       - name: Update via PowerShell
