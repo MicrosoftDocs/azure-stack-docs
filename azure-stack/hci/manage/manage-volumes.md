@@ -163,15 +163,15 @@ You may require to move volumes in several scenarios, including:
 - To conform to system configuration rules, such as to have certain volumes on a specific cluster node.
 
    > [!NOTE]
-   > For stretched clusters, you can move a volume only to another server in the same storage pool.
+   > For stretched clusters, you can move a volume only to another server in the same site.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
 Follow these steps to move volumes using Windows Admin Center:
 
-1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
-1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to move.
-1. At the top of the **Volumes** page, select **Move**.
+1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
+1. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to move.
+1. At the top of the **Volumes** page, select **Move**.
 1. In the right pane, select the **Destination server** where you want to move the volume to and then select **Move**.
 
 ### [PowerShell](#tab/powershell)
@@ -241,9 +241,7 @@ This section describes how to delete volumes by using Windows Admin Center or Po
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to delete.
 3. At the top of the volumes detail page, select **Delete**.
-4. In the confirmations dialog, select the check box to confirm that you want to delete the volume, and select **Delete**.
-
-   :::image type="content" source="media/manage-volumes/delete-volume.png" alt-text="Select the volume that you want to delete, select delete, and then confirm that you want to erase all the data on the volume." lightbox="media/manage-volumes/delete-volume.png":::
+4. In the confirmations dialog, confirm that you want to delete the volume, and select **Delete**.
 
 ### [PowerShell](#tab/powershell)
 
