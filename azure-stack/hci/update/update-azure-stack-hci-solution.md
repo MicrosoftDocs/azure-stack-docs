@@ -41,16 +41,16 @@ Platform updates managed by the Lifecycle Manager contain new versions of the Az
 
 The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster. Here's a high-level process for platform updates with Lifecycle Manager:
 
-- Plan for the update.
+- **Plan for the update**.
   - Discover the update, read the release notes, and determine a good time to update. For example, a time when production workloads aren't in use, or nonpeak hours.
   - Take backups of your deployment.
   - Download the update.
   - If your Solution Builder needs more content, acquire what's needed.
 
-- Review any precheck warnings or failures and remediate, as necessary.
+- **Review any precheck warnings or failures and remediate, as necessary**.
   - Execute the update.
 
-- Monitor the update as it proceeds.
+- **Monitor the update as it proceeds**.
   - Review the update and system health after completion.
   - Confirm that your storage and workloads are healthy.
 
