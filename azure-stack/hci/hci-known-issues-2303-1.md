@@ -23,21 +23,22 @@ For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supp
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
+## Issues fixed in this release
+
+|#|Feature|Issue|
+|-|------|------|----------|
+|1|Deployment |In an earlier release, there was an issue where ECE cluster deployment failed with: Status of step 0.26.0.3.1.1 - `RunCompleteSBECAURunOnAllNodes` is `Error`. This issue is fixed in this release.|
+|2|Lifecycle Manager |There was an issue where SBE update would hang during CAU scanning. This issue is fixed in this release. |
+|3|Add node | With this release, an issue seen in earlier vesions - VM Switch name convention aligns with what ATC will configure before node reboot - is fixed in this release.|
+
 ## Known issues in this release
 
 Here are the known issues in the current Azure Stack HCI supplemental package release:
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |ECE cluster deployment failed at step 0.26.0.3.1.1 - Error in `RunCompleteSBECAURunOnAllNodes`.|workaround|
-|2|Lifecycle Manager |SBE update hangs during CAU scanning. |workaround|
-|3|Add node | VMSwitch name convention aligns with what ATC will configure before node reboot |workaround|
-|4|Add node|Cluster network is unstable after a new node added to cluster.|workaround|
-|5|Repair node |Repair node operation results in a null exception error.|workaround|
-|6|Update |`Get-HealthFaults` hangs causing update health check failure. |workaround|
-|7|Add node |Missing root certificate when a new node is added. |workaround|
-|8|TBD? |FDA is unable to start on internal system. |workaround|
-|9|Observability |ECE telemetry event emitter fails if SBE information is absent in metadata. |workaround|
+|1|Category |Brief description of issue|Provide workaround|
+
 
 ## Known issues from previous releases
 
