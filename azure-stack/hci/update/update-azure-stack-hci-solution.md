@@ -23,7 +23,7 @@ The Lifecycle Manager provides a flexible foundation to integrate and manage mor
 
 In this release, the Lifecycle Manager allows management of the OS, core agent and services, and the solution extension. The next sections provide an overview of components, along with methods and links for updating your solution.  
 
-## Platform updates management
+## Lifecycle Manager for platform updates
 
 Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
@@ -38,8 +38,6 @@ Platform updates managed by the Lifecycle Manager contain new versions of the Az
 - **Solution extension:** Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers.
 
   - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
-
-### Lifecycle management
 
 The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster. Here's a high-level process for platform updates with Lifecycle Manager:
 
