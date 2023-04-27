@@ -3,13 +3,12 @@ title: Restrict SSH access in AKS hybrid
 description: Learn how to restrict SSH access in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/26/2023
+ms.date: 04/27/2023
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
 
-# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
-# Keyword: secure connection to Kubernetes API server
+# Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS hybrid.
 
 ---
 
@@ -19,10 +18,10 @@ This article describes a new security feature in AKS hybrid that restricts Secur
 
 ## Overview
 
-Currently, anyone with administrator access to AKS hybrid has access to VMs through SSH on any machine. In some scenarios you might want to reduce that access, because unlimited access makes it difficult to pass compliance.
+Currently, anyone with administrator access to AKS hybrid has access to VMs through SSH on any machine. In some scenarios you might want to limit that access, because unlimited access makes it difficult to pass compliance.
 
 > [!NOTE]
-> Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict commands that run over SSH.
+> Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
 
 ## Enable SSH restriction
 
@@ -57,7 +56,7 @@ Once you've created the cluster, you can manually validate that the SSH restrict
 ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 ```
 
-You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs should have access. SSH attempts from outside the list should not have access.
+You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs have access. SSH attempts from outside the list do not have access.
 
 ### Considerations
 
