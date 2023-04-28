@@ -5,7 +5,7 @@ ms.topic: how-to
 author: ManikaDhiman
 ms.subservice: azure-stack-hci
 ms.author: v-mandhiman
-ms.date: 4/18/2023
+ms.date: 4/28/2023
 ---
 
 # Manage Azure Stack HCI cluster registration
@@ -14,13 +14,13 @@ ms.date: 4/18/2023
 
 Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure Portal. It also provides answers to the frequently asked questions about cluster registration.
 
-When you [register your cluster with Azure](../deploy/register-with-azure.md), an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. With Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
+When you [register your cluster with Azure](../deploy/register-with-azure.md), an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. Starting with Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
 
 ## View registration and Arc-enabled servers status
 
 # [Windows Admin Center](#tab/windows-admin-center)
 
-When you connect to a cluster using Windows Admin Center, you'll see the dashboard, which displays the Azure Stack HCI registration and Arc-enabled servers status. 
+When you connect to a cluster using Windows Admin Center, you'll see the dashboard, which displays the Azure Stack HCI registration and Arc-enabled servers status.
 
 - For Azure Stack HCI registration, **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
 - For Arc-enabled servers, **Connected** means that all physical servers are Arc-enabled and can be managed from the Azure portal.

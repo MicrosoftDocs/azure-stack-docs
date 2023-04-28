@@ -6,6 +6,9 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
 ms.date: 04/17/2023
 ---
 
