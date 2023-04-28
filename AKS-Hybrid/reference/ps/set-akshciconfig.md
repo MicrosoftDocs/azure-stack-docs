@@ -251,7 +251,7 @@ Accept wildcard characters: False
 
 ### -sshPublicKey
 
-Path to an SSH public key file. Using this public key, you can log in to any of the VMs created by the AKS hybrid deployment. If you have your own SSH public key, pass its location here. If no key is provided, we look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location is generated and used.
+Path to an SSH public key file. Using this public key, you can log in to any of the VMs created by the AKS hybrid deployment. If you have your own SSH public key, pass its location here. If no key is provided, we look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair is generated in this location and used.
 
 ```yaml
 Type: System.String
