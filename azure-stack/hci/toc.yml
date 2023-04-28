@@ -414,7 +414,7 @@
     items:
     - name: View known issues
       items:
-      - name: 2303.1 release - Current
+      - name: 2303.1 release
         href: hci-known-issues-2303-1.md 
       - name: 2303 release
         href: hci-known-issues-2303.md
