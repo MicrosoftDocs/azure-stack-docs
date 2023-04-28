@@ -392,6 +392,8 @@
   items:
   - name: What's in preview?
     items:
+    - name: 2303.1 release - Current
+      href: manage/whats-new-2303-1-preview.md 
     - name: 2303 release - Current
       href: manage/whats-new-2303-preview.md 
     - name: 2301 release 
@@ -409,8 +411,10 @@
   - name: Supplemental package
     items:
     - name: View known issues
-      items: 
-      - name: 2303 release - Current
+      items:
+      - name: 2303.1 release - Current
+        href: hci-known-issues-2303-1.md 
+      - name: 2303 release
         href: hci-known-issues-2303.md
       - name: 2301 release 
         href: hci-known-issues-2301.md
