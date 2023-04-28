@@ -220,7 +220,7 @@ Find answers to some frequently asked questions:
 
 ### How do I use a more restricted custom permissions role?
 
-You can further reduce the permissions required to perform HCI registration as described in [Assign permissions using PowerShell](../deploy/register-with-azure.md#assign-permissions-using-powershell), provided that some of the operations described below are already performed out-of-band by a user having contributor and user access administrator roles.
+You can further reduce the permissions required to perform HCI registration as described in [Assign Azure permissions using PowerShell](../deploy/register-with-azure.md#assign-azure-permissions-using-powershell), provided that some of the operations described below are already performed out-of-band by a user having contributor and user access administrator roles.
 
 1. Register the required resource providers. Sign in to the subscription you will use to register the cluster. Under **Settings > Resource Providers**, select the following resource providers and then select **Register**:
    - Microsoft.AzureStackHCI
@@ -228,7 +228,7 @@ You can further reduce the permissions required to perform HCI registration as d
    - Microsoft.GuestConfiguration
    - Microsoft.HybridConnectivity
 
-2. Create the resource groups. Make sure the resource groups into which the HCI resources will be projected are pre-created by a privileged user. For more details, see the [prechecks](../deploy/register-with-azure.md#prechecks) section.
+2. Create the resource groups. Make sure the resource groups into which the HCI resources will be projected are pre-created by a privileged user. For more details, see the [prerequisites](../deploy/register-with-azure.md#prerequisites) section.
 
    Once these two pre-requisites are set up, create a custom role and use it for registration as described below. First, create a JSON file called **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to the ID of your Azure subscription. To get your subscription ID, visit the Azure portal, go to **Subscriptions**, then copy/paste your ID from the list:
 
@@ -272,7 +272,7 @@ You can further reduce the permissions required to perform HCI registration as d
 
 ### How do I register a cluster using ArmAccessToken/SPN?
 
-Before registration, make sure the [prerequisites](../deploy/register-with-azure.md#before-you-begin) and [prechecks](../deploy/register-with-azure.md#prechecks) are met.
+Before registration, make sure the [prerequisites](../deploy/register-with-azure.md#prerequisites) are met.
 
 > [!NOTE]
 > These SPN credentials are used for initial onboarding to HCI. HCI still creates separate SPN credentials for Arc onboarding. To use a custom SPN for Arc onboarding, see [How do I register a cluster using SPN for Arc onboarding?](#how-do-i-register-a-cluster-using-spn-for-arc-onboarding).
@@ -281,7 +281,7 @@ Before registration, make sure the [prerequisites](../deploy/register-with-azure
    To use SPN to connect, you can use:
    - Device Code-based authentication. Use `-DeviceCode` in the cmdlet.
    - Certificated based authentication. [See this article](/azure/active-directory/authentication/how-to-certificate-based-authentication) to configure the SPN for certificate-based authentication. Then use appropriate parameters in the `Connect-AzAccount` cmdlet that accept certificate information.
-   The SPN you use should have all the required permissions on the subscriptions [as listed here](../deploy/register-with-azure.md#assign-permissions-for-registration).
+   The SPN you use should have all the required permissions on the subscriptions [as listed here](../deploy/register-with-azure.md#assign-azure-permissions-for-registration).
 1. Assign `$token = Get-AzAccessToken`.
 1. Use the [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) with the `TenantId`, `SubscriptionId`, `ArmAccessToken`, and `AccountId` parameters, as follows:
 

@@ -29,7 +29,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
-- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign permissions for registration](../deploy/register-with-azure.md#assign-permissions-for-registration).
+- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/register-with-azure.md#assign-azure-permissions-for-registration).
 
 - **Azure regions**
 
