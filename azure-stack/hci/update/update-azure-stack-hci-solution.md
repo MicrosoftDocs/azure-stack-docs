@@ -27,7 +27,7 @@ The next sections provide an overview of components, along with methods and link
 
 Platform updates managed by the Lifecycle Manager contain new versions of the Azure Stack HCI operating system (OS), the Lifecycle Manager core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
-- **Operating System:** What can we say here?
+- **Operating System:** These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.
 
 - **Lifecycle Manager agents and services:** The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. To achieve a successful update of its agents, the Lifecycle Manager:
 
@@ -67,7 +67,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### Windows Admin Center
 
-Currently, the Lifecycle Manager isn't part of Windows Admin Center. To install updates using Windows Admin Center, see [Install feature updates](../manage/install-preview-version.md).
+To install feature updates using Windows Admin Center, see [Install feature updates](../manage/install-preview-version.md). At this time, don't use Windows Admin Center to update a cluster deployed with Lifecycle Manager. An update extension refresh that enables you to update from Windows Admin Center, is in the future plan.
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
@@ -79,7 +79,7 @@ The workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, a
 
 ### Azure Kubernetes Service (AKS) hybrid
 
-Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. AKS hybrid tooling, orchestrates the workload updates process, which involves bringing up new VMs and moving workloads over in a rolling fashion. For more information, see [AKS lifecycle and Updates pages](lifecycle-management-placeholder.md).
+Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. AKS hybrid tooling, orchestrates the workload updates process, which involves bringing up new VMs and moving workloads over in a rolling fashion.
 
 AKS hybrid has two types of updates that can be initiated through PowerShell or Windows Admin Center.
 
