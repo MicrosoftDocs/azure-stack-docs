@@ -3,7 +3,7 @@ title:  Azure Arc extension management on Azure Stack HCI.
 description: This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines.
 author: ronmiab
 ms.author: robess
-ms.topic: overview
+ms.topic: how-to
 ms.reviewer: arduppal
 ms.lastreviewed: 04/13/2023
 ms.date: 04/13/2023
