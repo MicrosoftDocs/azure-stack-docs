@@ -4,7 +4,7 @@ description: Learn how to apply operating system, service, and Solution Extensio
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/04/2023
+ms.date: 04/28/2023
 ---
 
 # Update your Azure Stack HCI solution via PowerShell (preview)
@@ -13,7 +13,7 @@ ms.date: 04/04/2023
 
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
-The procedure in this article applies to both a single node and multi-node cluster that is running software versions with Lifecycle Manager installed. If your cluster was created via a new deployment of Azure Stack HCI, Supplemental Package, then Lifecycle Manager was automatically installed as part of the deployment.
+The procedure in this article applies to both a single server and multi-server cluster that is running software versions with Lifecycle Manager installed. If your cluster was created via a new deployment of Azure Stack HCI, Supplemental Package, then Lifecycle Manager was automatically installed as part of the deployment.
 
 For information on how to apply solution updates to clusters that were created with older versions of Azure Stack HCI that didn't have Lifecycle Manager installed, see [Update existing Azure Stack HCI clusters](../manage/update-cluster.md).
 
@@ -21,7 +21,7 @@ For information on how to apply solution updates to clusters that were created w
 
 ## About solution updates
 
-The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](../index.yml).
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [Use the Lifecycle Manager to apply solution updates](../index.yml).
 
 <!--The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).-->
 
@@ -35,7 +35,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
-The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single node and 4-node cluster are summarized in the following table:
+The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single server and 4-server cluster are summarized in the following table:
 
 |Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
