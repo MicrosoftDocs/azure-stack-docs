@@ -39,7 +39,7 @@ After you install an extension, check the status of the extension on each of you
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Azure Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
 
 Currently, Windows Admin Center is the only extension that supports automatic extension upgrades. More extensions will be added over time.
 
@@ -102,7 +102,7 @@ To check the automatic extension upgrade history for individual cluster nodes, y
 
 ### Availability-first updates
 
-For a group of Azure Stack HCI Azure Arc-enabled clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
+For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
 
 ### Timing of automatic extension upgrades
 
