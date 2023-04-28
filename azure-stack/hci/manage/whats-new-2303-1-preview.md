@@ -27,25 +27,9 @@ The Azure Stack HCI preview channel features preview versions of Azure Stack HCI
 Azure Stack HCI, 2303.1 Supplemental Package is now in preview. This package deploys on servers running Azure Stack HCI, version 22H2, which is now generally available. For more information on Azure Stack HCI, version 22H2, see [What's new](../whats-new.md).
 
 > [!IMPORTANT]
-> When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the Supplemental Package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
+> Update to Azure Stack HCI, 2303.1 Supplemental Package only if you have an existing deployment of Azure Stack HCI, 2303 Supplemental Package.
 
-
-### Download Azure Stack HCI, 2303.1 Supplemental Package
-
-Follow these steps to download the Supplemental Package files:  
-
-1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
-
-1. On the **Azure Stack HCI software download** page, go to **Supplemental package for Azure Stack HCI 22H2 (public preview)**. 
-
-    :::image type="content" source="../manage/media/whats-in-preview/azure-stack-hci--supplemental-package-download.png" alt-text="Screenshot of the Azure Stack HCI v22H2 Supplemental Package download.":::
-
-    You can download the following files:
-    - *Bootstrap PowerShell*.
-    - *CloudDeployment.zip*.
-    - *Verify Cloud Deployment PowerShell*.
-
-To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
+To update to this release, see on how to [Update your Azure Stack HCI solution via PowerShell](../update/update-via-powershell.md).
 
 
 ### What's new
@@ -59,9 +43,6 @@ The following new features are available in the 2303.1 preview release of Supple
 - **Update improvements** - In this release, the following enhancements have been made for the solution updates: 
     - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. <!--To learn more about update times, see [Track the update progress](../index.yml).-->
     - With this release, you can update the cluster nodes following the addition or replacement of a node.
-    - SBE toolkit is available in this release. <!--To download this toolkit, go to: [Download SKE toolkit](../index.yml).-->
-
-- **Multi-language support for deployment tool** - Beginning this release, the deployment tool will support multiple languages. <!--DO WE HAVE INFO ON LANGUAGES SUPPORTED?-->
 
 
 ## Next steps
