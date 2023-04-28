@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/26/2023
+ms.date: 04/28/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303.1 release (preview)
@@ -16,7 +16,7 @@ ms.date: 04/26/2023
 This article describes the new features or enhancements that are currently available in the preview for Azure Stack HCI. This article includes:
 
 - [What's in the preview channel](#azure-stack-hci-preview-channel).
-- [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-2303-1-supplemental-package-preview).
+- [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-23031-supplemental-package-preview).
 
 ## Azure Stack HCI preview channel
 
@@ -59,7 +59,7 @@ The following new features are available in the 2303.1 preview release of Supple
 - **Update improvements** - In this release, the following enhancements have been made for the solution updates: 
     - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. <!--To learn more about update times, see [Track the update progress](../index.yml).-->
     - With this release, you can update the cluster nodes following the addition or replacement of a node.
-    - SBE toolkit is available in this release. <!--To download this toolkit, go to: []().-->
+    - SBE toolkit is available in this release. <!--To download this toolkit, go to: [Download SKE toolkit](../index.yml).-->
 
 - **Multi-language support for deployment tool** - Beginning this release, the deployment tool will support multiple languages. <!--DO WE HAVE INFO ON LANGUAGES SUPPORTED?-->
 
