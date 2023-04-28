@@ -67,7 +67,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### Windows Admin Center
 
-To install feature updates using Windows Admin Center, see [Install feature updates](../manage/install-preview-version.md). Don't use Windows Admin Center to update a cluster deployed with Lifecycle Manager, at this time. An update extension refresh that enables you to update from Windows Admin Center, is in the future plan.
+To install feature updates using Windows Admin Center, see [Install feature updates](../manage/install-preview-version.md). Don't use Windows Admin Center to update a cluster deployed with the Lifecycle Manager, at this time. An update extension refresh that enables you to update from Windows Admin Center, is in the future plan.
 
 Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
 
