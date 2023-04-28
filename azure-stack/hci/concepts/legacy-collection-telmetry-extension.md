@@ -184,7 +184,7 @@ You can configure the extension to be:
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. System data might remain for up to 30 days.
 
-Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](../manage/telemetry-diagnostics-extension.md#data-collected).
+Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](/azure-stack/hci/concepts/legacy-collection-telmetry-extension.md#what-data-is-collected).
 
 It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects correct and timely diagnostic information without the need for operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
 
@@ -229,6 +229,6 @@ Here are some examples:
 | 7 | There's at least one GMA process already running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. Use `Get-Process MonitoringAgent` to identify active processes on the stamp. |
 | 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
 | 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
-| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the [Extension logs](../manage/telemetry-diagnostics-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
+| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the [Extension logs](/azure-stack/hci/concepts/legacy-collection-telmetry-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
 
 ::: zone-end
