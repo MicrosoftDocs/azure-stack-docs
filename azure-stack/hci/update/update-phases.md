@@ -4,7 +4,7 @@ description: Understand the various phases of solution updates applied to Azure 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/03/2023
+ms.date: 04/28/2023
 ---
 
 # Phases of an Azure Stack HCI solution update (preview)
@@ -13,13 +13,13 @@ ms.date: 04/03/2023
 
 This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date.
 
-The procedure in this article applies to both a single node and a multi-node cluster that is running software versions with Lifecycle Manager installed. For more information, see [What is Lifecycle Manager?](../index.yml).
+The procedure in this article applies to both a single server and a multi-server cluster that is running software versions with Lifecycle Manager installed. For more information, see [What is Lifecycle Manager?](../update/whats-the-lifecycle-manager.md).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [What's in an Update](../index.yml).
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [Use Lifecycle Manager to apply solution updates](../update/update-azure-stack-hci-solution.md).
 
 The Lifecycle Manager automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
@@ -39,7 +39,7 @@ You can apply these updates via PowerShell or via the Windows Admin Center UI. R
 
 Before Microsoft releases a new update package, the package is validated as a collection of components. After the validation is complete, the content is released along with the release notes.
 
-The release notes include the update contents, changes, known issues, and links to any external downloads that may be required (for example, drivers and firmware). For more information, see the [Latest release notes](../index.yml).
+The release notes include the update contents, changes, known issues, and links to any external downloads that may be required (for example, drivers and firmware). For more information, see the [Latest release notes](../manage/whats-new-2303-preview.md).
 
 After Microsoft releases the update, your Azure Stack HCI update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 
@@ -95,14 +95,10 @@ While the update installs, you can monitor the progress via your chosen interfac
 
 The Lifecycle Manager includes retry and remediation logic. It attempts to fix issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. You can retry the update or visit the Azure Support Center to evaluate the next steps.
 
-<!--## Common failure cases
-
-THOMAS TO PROVIDE - list common failures we encounter in previews-->
-
 ## Collecting logs
 
 If you encounter failures during the update process, collect diagnostic logs to help Microsoft identify and fix the issues. For more information, see how to [Collect diagnostic logs for Azure Stack HCI, version 22H2 (preview)](../manage/collect-logs.md).
 
 ## Next steps
 
-Learn more about how to [Troubleshoot updates](../index.yml).
+Learn more about how to [Troubleshoot updates](../update/update-troubleshooting.md).
