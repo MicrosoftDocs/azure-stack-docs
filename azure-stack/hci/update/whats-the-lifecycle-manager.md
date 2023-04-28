@@ -53,10 +53,10 @@ Microsoft might release the following types of updates for the Azure Stack HCI p
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Patch Updates| Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host system reboots, while others don't. To fix critical or security issues, hotfixes might be released sooner than monthly. |
-|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer.|
+|Patch Updates | Monthly |Patch updates primarily contain quality and reliability improvements. They might include OS LCUs or hotpatches. Some patches require host system reboots, while others don't. To fix critical or security issues, hotfixes might be released sooner than monthly. |
+|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer. |
 |Hotpatches | As needed |             |
-|Solution Builder Extension (SBE)        | Bi-Annually | Provides a consistent interface to integrate Solution Builder partner content into deployment and operational processes such as update, expansion, and field replacement.      |
+|Solution Builder Extension (SBE)  | Bi-Annually | OEM partner determines the package release.  |
 
 Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your cluster must stay within six months of the most recent baseline to consider it supported.
 
