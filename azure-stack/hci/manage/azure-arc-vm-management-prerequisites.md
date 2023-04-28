@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2023
+ms.date: 04/26/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -98,7 +98,6 @@ Make sure to include the following firewall URLs in your allowlist:
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pythonhosted.org  | 443 | Python package | Used for downloading python packages during Azure CLI installation |
-| msk8s.sf.tlu.dl.delivery.mp.microsoft.com | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
 | msk8s.sb.tlu.dl.delivery.mp.microsoft.com	 | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
