@@ -392,10 +392,12 @@
   items:
   - name: What's in preview?
     items:
-    - name: 2303.1 release - Current
-      href: manage/whats-new-2303-1-preview.md 
     - name: 2303 release - Current
-      href: manage/whats-new-2303-preview.md 
+      href: manage/whats-new-2303-preview.md
+      - name: Updates
+        items:
+          - name: 2303.1 Release
+            href: manage/whats-new-2303-1-preview.md  
     - name: 2301 release 
       href: manage/whats-new-2301-preview.md
     - name: 2210 release
