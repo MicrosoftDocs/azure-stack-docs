@@ -394,7 +394,7 @@
     items:
     - name: 2303 release - Current
       href: manage/whats-new-2303-preview.md
-    - name: Updates
+    - name: 2303 updates
       items:
       - name: 2303.1 release
         href: manage/whats-new-2303-1-preview.md  
