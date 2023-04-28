@@ -1,5 +1,5 @@
 ---
-title:  Glossary for Lifecycle Management (preview).
+title:  Glossary for the Lifecycle Manager (preview).
 description: This article describes the glossary of terms for the Lifecycle Manager.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.lastreviewed: 04/27/2023
 ms.date: 04/27/2023
 ---
 
-# Glossary for Lifecycle Management (preview)
+# Glossary for Lifecycle Manager (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
