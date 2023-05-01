@@ -65,7 +65,7 @@ To enable automatic upgrade, go to the **Extensions** pane, then perform these s
 
 The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). When you manually upgrade an extension, on an Azure Stack HCI Arc-enabled cluster, Azure saves the version you've selected and tries to upgrade the extension on all cluster nodes to that version.
 
-If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](/azure-stack/hci/faq.yml).
+If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](../faq.yml).
 
 Use the manual workflow in these scenarios:
 
