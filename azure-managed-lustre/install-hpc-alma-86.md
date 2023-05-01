@@ -1,6 +1,6 @@
 ---
 title: Install client software for AlmaLinux 8
-description: Describes how to install client software for the Azure Managed Lustre File System.
+description: Learn how to install client software for the Azure Managed Lustre File System.
 ms.topic: how-to
 author: mayabishop
 ms.author:  mayab
