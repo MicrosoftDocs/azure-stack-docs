@@ -22,7 +22,7 @@ This article describes required data collected to keep Azure Stack HCI secure, u
 
 ::: zone pivot="extension-collection"
 
-> [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
+> [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
