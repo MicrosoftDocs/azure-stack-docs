@@ -462,6 +462,20 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
+    - name: Update (preview)
+      items:
+      - name: What's the Lifecycle Manager?
+        href: update/whats-the-lifecycle-manager.md
+      - name: Use Lifecycle Manager for updates
+        href: update/update-azure-stack-hci-solution.md
+      - name: Understand update phases
+        href: update/update-phases.md
+      - name: Update via PowerShell
+        href: update/update-via-powershell.md
+      - name: Troubleshoot updates
+        href: update/update-troubleshooting.md
+      - name: View update glossary
+        href: update/glossary-lifecycle-management.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
