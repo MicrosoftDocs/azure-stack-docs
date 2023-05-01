@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.lastreviewed: 04/13/2023
-ms.date: 04/13/2023
+ms.lastreviewed: 05/01/2023
+ms.date: 05/01/2023
 ---
 
 # Azure Arc extension management on Azure Stack HCI
@@ -23,7 +23,7 @@ Here are extensions you can install and manage in the Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [TelemetryAndDiagnostics](legacy-collection-telemetry-extension.md#about-telemetry-and-diagnostics)
+- [Telemetry and diagnostics](legacy-collection-telemetry-extension.md#about-telemetry-and-diagnostics)
 
 ## Install an extension via the Azure portal
 
@@ -46,20 +46,6 @@ Currently, Windows Admin Center is the only extension that supports automatic ex
 > [!NOTE]
 > All extensions are configured by default to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. This default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
-### Disable automatic upgrade via the Azure portal
-
-In the Azure portal, you can disable automatic upgrade for some extensions. To disable automatic upgrades, go to the **Extensions** pane, then perform these steps:
-
-1. Choose the extension you want to disable the automatic upgrade on.
-2. Select **Disable automatic upgrade** from the top menu.
-3. On the notification window, select **OK**.
-
-Here's an example of the disable automatic extension process:
-
-:::image type="content" source="media/arc-extension-management/arc-extension-disable-auto-upgrade-1.png" alt-text="Screenshot of how to disable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-disable-auto-upgrade-1.png":::
-
-:::image type="content" source="media/arc-extension-management/arc-extension-disable-auto-upgrade-2.png" alt-text="Screenshot of notification when you disable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-disable-auto-upgrade-2.png":::
-
 ### Enable automatic upgrade via the Azure portal
 
 With extension management, you can enable an automatic upgrade for some extensions.
@@ -67,14 +53,13 @@ With extension management, you can enable an automatic upgrade for some extensio
 To enable automatic upgrade, go to the **Extensions** pane, then perform these steps:
 
 1. Choose the extension you want to enable automatic upgrade on.
-2. Select **Enable automatic upgrade** from the top menu.
-3. On the notification window, select **OK**.
+2. Select **Enable automatic upgrade** from the top menu
 
-Here's an example of the enable automatic extension process:
+    :::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-1.png" alt-text="Screenshot of how to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-1.png":::
 
-:::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-1.png" alt-text="Screenshot of how to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-1.png":::
+3. When prompted to confirm your intent, select **OK**.
 
-:::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png" alt-text="Screenshot of the notification to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png":::
+    :::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png" alt-text="Screenshot of the notification to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png":::
 
 ### Manual extension upgrade via the Azure portal
 
@@ -90,11 +75,25 @@ Use the manual workflow in these scenarios:
 
 To manually upgrade an extension, see these steps:
 
-1. Go to the **Extensions page**.
-2. Select the menu item **Settings**.
+1. Go to the **Extensions** page.
+2. Choose the extension you want to upgrade, then select **Settings** from the top menu.
+
+    :::image type="content" source="media/arc-extension-management/arc-extension-manual-upgrade.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-manual-upgrade.png":::
+
 3. Choose the latest version and select **Save**.
 
-:::image type="content" source="media/arc-extension-management/arc-extension-manual-upgrade.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-manual-upgrade.png":::
+### Disable automatic upgrade via the Azure portal
+
+In the Azure portal, you can disable automatic upgrade for some extensions. To disable automatic upgrades, go to the **Extensions** pane, then perform these steps:
+
+1. Choose the extension you want to disable the automatic upgrade on.
+2. Select **Disable automatic upgrade** from the top menu.
+
+    :::image type="content" source="media/arc-extension-management/arc-extension-disable-auto-upgrade-1.png" alt-text="Screenshot of how to disable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-disable-auto-upgrade-1.png":::
+
+3. When prompted to confirm your intent, select **OK**.
+
+    :::image type="content" source="media/arc-extension-management/arc-extension-disable-auto-upgrade-2.png" alt-text="Screenshot of notification when you disable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-disable-auto-upgrade-2.png":::
 
 ### Check the extension upgrade history
 
@@ -126,21 +125,20 @@ If desired, you can uninstall some extensions from your Azure Stack HCI clusters
 
 1. Go to the **Extensions page**.
 2. Choose the extension you want to uninstall. The uninstall button is available only if you can uninstall the extension.
+
+    :::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-1.png" alt-text="Screenshot of how to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-1.png":::
+
 3. Select **Uninstall** from the top menu.
 4. Confirm the intent and select **Yes**.
 
-Here's an example of the uninstall extension process:
-
-:::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-1.png" alt-text="Screenshot of how to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-1.png":::
-
-:::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-2.png" alt-text="Screenshot of the notification to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-2.png":::
+    :::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-2.png" alt-text="Screenshot of the notification to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-2.png":::
 
 ## Troubleshooting extension errors
 
-Extension Status: Failed
+**Extension Status**: Failed
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png" alt-text="Screenshot of how to troubleshoot an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png":::
 
-Recommendation: Whenever the extension is in a failed state, select the **Failed (View details)** status link to view all the information about the failure and troubleshooting tips.
+**Recommendation**: Whenever the extension is in a failed state, select the **Failed (View details)** status link to view all the information about the failure and troubleshooting tips.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
