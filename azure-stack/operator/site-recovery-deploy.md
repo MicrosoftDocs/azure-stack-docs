@@ -34,7 +34,7 @@ Users must perform the following steps:
 
 - Source:
   - Deploy the **ASR appliance on AzureStack Hub** VM image in the Azure Stack Hub user subscription.
-  - Ensure that the user has owner rights on each Azure Stack Hub user subscription in which they protect VM workloads.
+  - The user must have owner rights on each Azure Stack Hub user subscription in which they protect VM workloads.
 - Target:
   - Deploy the Azure Site Recovery Vault.
   - Create the protection policies and enable the protection of the workloads.
