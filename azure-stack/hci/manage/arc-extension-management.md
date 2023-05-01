@@ -64,7 +64,7 @@ Here's an example of the disable automatic extension process:
 
 With extension management, you can enable an automatic upgrade for some extensions.
 
-To enable automatic upgrade, go to the **Extensions pane**, then perform these steps:
+To enable automatic upgrade, go to the **Extensions** pane, then perform these steps:
 
 1. Choose the extension you want to enable automatic upgrade on.
 2. Select **Enable automatic upgrade** from the top menu.
