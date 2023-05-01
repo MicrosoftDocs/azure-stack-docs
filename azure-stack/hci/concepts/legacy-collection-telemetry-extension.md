@@ -175,6 +175,7 @@ You can configure the extension to be:
 - **Off:** You don't send system data to Microsoft.
 
 - **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Benefits of basic telemetry:
+
   - Supports an improved user experience.
   - Critical reliability issues are identified for greater resolution.
   - Provides quality feature, deployment, and other product improvements.
