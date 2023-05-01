@@ -16,7 +16,7 @@ zone_pivot_groups: telemetry-diagnostics-data-collection
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
+This article describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
 ::: zone-end
 
@@ -142,7 +142,7 @@ TimeCreated            EventName                                                
 
 ## About telemetry and diagnostics
 
-Telemetry and diagnostics, an ARC extension designed to set up a Geneva based observability pipeline, is the extension that allows Microsoft to collect logs and telemetry data from all the nodes in a stamp cluster, in the Azure Stack HCI environment.
+Telemetry and diagnostics, an Azure arc extension designed to set up a Geneva based observability pipeline, is the extension that allows Microsoft to collect logs and telemetry data from all the nodes in a stamp cluster, in the Azure Stack HCI environment.
 
 The extension is a mandatory part for both new (green field) and existing (brown field) stamps in Azure Stack HCI, and the Azure Stack HCI RP Team manages the lifecycle of the extension. Additionally, the extension is an important tool used to monitor and troubleshoot the functionality of stamp clusters in the Azure Stack HCI environment.
 
@@ -172,7 +172,7 @@ Here are some advantages of the extension:
 
 ## Telemetry and diagnostics extension management
 
-When you have installed and run the telemetry extension, you still maintain control over whether you send telemetry data to Microsoft. To access the options to send telemetry data, go to your cluster **Settings** in Azure portal and select **Extensions**.
+When you have installed and run the telemetry extension, you still maintain control over whether you send telemetry data to Microsoft. To access the options to send telemetry data, go to your cluster **Settings** in the Azure portal and select **Extensions**.
 
 :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
@@ -184,7 +184,7 @@ You can configure the extension to be:
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. System data might remain for up to 30 days.
 
-Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](/azure-stack/hci/concepts/legacy-collection-telmetry-extension.md#what-data-is-collected).
+Basic diagnostics data shares minimum pieces of data back to Microsoft. For more information, see [Data collected](#what-data-is-collected).
 
 It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures it collects correct and timely diagnostic information without the need for operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
 
@@ -200,9 +200,9 @@ Here are a couple of things to consider with data collection:
 
 ## Telemetry and diagnostics workflow
 
-A registered Azure Stack HCI device has an Azure Arc Connected, ARC machine agent installed on it. This extension runs in the local system context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all cluster nodes. The GMA extension relies on the ARC agent's Instance Metadata Service (IMDS) to install and configure itself.
+A registered Azure Stack HCI device has an Azure Arc Connected, arc machine agent installed on it. This extension runs in the local system context, which gives it the necessary permissions to install the Geneva Monitoring Agent (GMA) on all cluster nodes. The GMA extension relies on the arc agent's Instance Metadata Service (IMDS) to install and configure itself.
 
-After you've configured the extension, it can continue to function even if the ARC agent fails for any reason. Which means the extension only requires the ARC agent installation initially, and it can continuously operate even if the agent isn't running.
+After you've configured the extension, it can continue to function even if the arc agent fails for any reason. Which means the extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
 
 > [!NOTE]
 > This extension installs the Geneva Monitoring Agent on all cluster nodes.
