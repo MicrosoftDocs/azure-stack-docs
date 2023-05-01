@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines in Azure Site Recovery on Azur
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/10/2023
+ms.date: 05/01/2023
 ---
 
 
@@ -12,8 +12,8 @@ ms.date: 03/10/2023
 
 To enable replication of virtual machines (VMs) across two Azure Stack Hub environments, you must configure the following environments:
 
-- The **source** environment. This is the Azure Stack Hub environment in which user VMs (the actual workloads you want to protect) are running.
-- The **target** environment. This is where the Azure Site Recovery resource provider and dependencies run.
+- The **source** environment. The Azure Stack Hub environment in which user VMs (the actual workloads you want to protect) are running.
+- The **target** environment. The environment in which the Azure Site Recovery resource provider and dependencies run.
 
   :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Diagram showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
 
@@ -33,8 +33,8 @@ Operators must perform the following steps:
 Users must perform the following steps:
 
 - Source:
-  - Deploy the **ASR appliance on AzureStack Hub** VM image in their Azure Stack Hub user subscription.
-  - Ensure that their use has owner rights on each Azure Stack Hub user subscription where they will protect VM workloads.
+  - Deploy the **ASR appliance on AzureStack Hub** VM image in the Azure Stack Hub user subscription.
+  - The user must have owner rights on each Azure Stack Hub user subscription in which they protect VM workloads.
 - Target:
   - Deploy the Azure Site Recovery Vault.
   - Create the protection policies and enable the protection of the workloads.
