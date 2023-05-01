@@ -13,7 +13,7 @@ ms.date: 04/13/2023
 
 >[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
 
-This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in Azure portal.
+This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in the Azure portal.
 
 ## About Azure Arc extensions in the Azure portal
 
@@ -23,7 +23,7 @@ Here are extensions you can install and manage in the Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [TelemetryAndDiagnostics](legacy-collection-telmetry-extension.md#about-telemetry-and-diagnostics)
+- [TelemetryAndDiagnostics](legacy-collection-telemetry-extension.md#about-telemetry-and-diagnostics)
 
 ## Install an extension via the Azure portal
 
@@ -80,7 +80,7 @@ Here's an example of the enable automatic extension process:
 
 The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). When you manually upgrade an extension, on an Azure Stack HCI Arc-enabled cluster, Azure saves the version you've selected and tries to upgrade the extension on all cluster nodes to that version.
 
-If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](#how-often-does-azure-stack-hci-sync-with-the-cloud).
+If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](/azure-stack/hci/faq.yml).
 
 Use the manual workflow in these scenarios:
 
@@ -108,13 +108,13 @@ For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the A
 
 When a new version of a supported extension is published, it becomes available for installation and manual upgrade on Azure Arc-enabled servers. Upgrades are issued in batches across Azure regions and subscriptions, so you might see the extension get upgraded on some servers before others. For more information, see [Timing of automatic extension upgrades](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#timing-of-automatic-extension-upgrades).
 
-If you need to upgrade an extension immediately, see [Manual extension upgrade via the Azure portal](../manage/arc-extension-management.md#manual-extension-upgrade-via-azure-portal).
+If you need to upgrade an extension immediately, see [Manual extension upgrade via the Azure portal](#manual-extension-upgrade-via-the-azure-portal).
 
 ### Automatic rollback and retries
 
 If an extension upgrade fails, Azure performs the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries) in an attempt to repair the extension.
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade-via-azure-portal) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-the-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade-via-the-azure-portal) again when you're ready.
 
 ### Upgrades with multiple extensions
 
