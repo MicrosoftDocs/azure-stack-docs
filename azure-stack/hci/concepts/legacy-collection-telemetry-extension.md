@@ -162,6 +162,8 @@ Here are some advantages of the extension:
   
 - **Simplified log gathering:** It's easier to collect diagnostics logs when the collection functionality is readily available. With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns and collect logs proactively, which saves support time.
 
+- **Faster case resolution**: Microsoft customer support and engineering teams can use your Azure Stack HCI system logs to efficiently identify and quickly resolve your issues.
+
 ## Telemetry and diagnostics extension management
 
 When you have installed and run the telemetry extension, you still maintain control over whether you send telemetry data to Microsoft. To access the options to send telemetry data, go to your cluster **Settings** in the Azure portal and select **Extensions**.
@@ -172,14 +174,31 @@ You can configure the extension to be:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. For more information, see [Data collected](#Data that Azure Stack HCI collects).
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Here are some benefits of basic telemetry:
+  - Supports an improved user experience.
+  - Critical reliability issues are identified for greater resolution.
+  - Provides quality feature, deployment, and other product improvements.
+  - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. System data might remain for up to 30 days.
-  - It's highly recommended that you enable **enhanced diagnostics**. The enhanced function allows the product team to diagnose problems due to failure events and improve the quality of the product. It captures logs with the correct error conditions and ensures the correct and timely diagnostic information without the need for operator interaction. Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Here are some of the benefits:
 
-### Data Collection
+  - System data might remain for up to 30 days.
+  - Errors are captured more accurately ensuring timely diagnostic information without the need for operator interaction.
+  - You have a connected experience with proactive log collection. Your logs are automatically uploaded to an Azure Storage account managed and controlled by Microsoft. These logs are used to resolve your issues.
+  - Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
+  - The product team can diagnose problems due to failure events and improve the quality of the product.
 
-Microsoft collects data in accordance with its standard privacy practices and the new telemetry agent doesn't override your existing control setting.
+For basic or enhanced diagnostics, when there is no or intermittent connectivity to Azure, logs are captured and stored locally for failure events. These are only accessed by Microsoft for a support case and not sent to Azure.
+
+### Telemetry and diagnostics workflow
+
+A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it. After you've configured the extension, it can continue to function even if the arc agent fails.
+
+The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
+
+## Telemetry data collection
+
+Microsoft collects data in accordance with its standard privacy practices. The new telemetry agent doesn't override your existing control setting.
 
 If you decide to revoke your consent for data collection, any data collected before revocation isn't affected. Microsoft continues to handle and use the data collected, in accordance with the terms that were in place at the time of the data collection.
 
@@ -189,14 +208,11 @@ Here are a couple of things to consider with data collection:
 
 - A consultation with legal or privacy professionals to ensure that they fully understand the implications of consenting to data collection and the revocation of consent.
 
-## Telemetry and diagnostics workflow
+### Azure Stack HCI privacy considerations
 
-A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it. After you've configured the extension, it can continue to function even if the arc agent fails. 
+Azure stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the Microsoft Privacy Statement. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
-The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
-
-> [!NOTE]
-> This extension installs the Geneva Monitoring Agent on all cluster nodes.
+Do not include any confidential information or personal information in resource names or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
 
 ## Extension artifacts
 
