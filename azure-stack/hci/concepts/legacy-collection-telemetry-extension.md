@@ -41,7 +41,7 @@ We do collect diagnostic data. The data described below is required for Microsof
 
 This Azure Stack HCI data:
 
-- is not sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
+- isn't sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
 - is logged to the Microsoft-AzureStack-HCI/Analytic event channel.
 - is in JSON format, so that system administrators can examine and analyze the data being sent.
 
@@ -57,7 +57,7 @@ To learn about how Microsoft stores diagnostic data in Azure, see [Data residenc
 
 ## Data retention
 
-After Azure Stack HCI collects this data, it is retained for 90 days. Aggregated, de-identified data may be kept longer.
+After Azure Stack HCI collects this data, it's retained for 90 days. Aggregated, de-identified data may be kept longer.
 
 ## Data that Azure Stack HCI collects?
 
@@ -174,13 +174,13 @@ You can configure the extension to be:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Here are some benefits of basic telemetry:
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Benefits of basic telemetry:
   - Supports an improved user experience.
   - Critical reliability issues are identified for greater resolution.
   - Provides quality feature, deployment, and other product improvements.
   - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Here are some of the benefits:
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Benefits of enhanced telemetry:
 
   - System data might remain for up to 30 days.
   - Errors are captured more accurately ensuring timely diagnostic information without the need for operator interaction.
@@ -188,7 +188,7 @@ You can configure the extension to be:
   - Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
   - The product team can diagnose problems due to failure events and improve the quality of the product.
 
-For basic or enhanced diagnostics, when there is no or intermittent connectivity to Azure, logs are captured and stored locally for failure events. These are only accessed by Microsoft for a support case and not sent to Azure.
+For basic or enhanced diagnostics, when there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events. These logs are access  by Microsoft for a support case and not sent to Azure.
 
 ### Telemetry and diagnostics workflow
 
@@ -210,9 +210,9 @@ Here are a couple of things to consider with data collection:
 
 ### Azure Stack HCI privacy considerations
 
-Azure stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the Microsoft Privacy Statement. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
+Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the Microsoft Privacy Statement. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
-Do not include any confidential information or personal information in resource names or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
+Don't include any confidential information or personal information in resource names or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
 
 ## Extension artifacts
 
