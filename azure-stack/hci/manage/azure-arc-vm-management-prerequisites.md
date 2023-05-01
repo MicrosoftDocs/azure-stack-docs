@@ -19,11 +19,11 @@ This article lists the prerequisites for Azure Arc VM management. We recommend t
 
 ## Resource requirements
 
-The resource requirements include:
+To ensure the successful activation of Arc VM and the availability of sufficient resources for deploying Arc VMs, please make sure that:
 
-- A cluster shared volume with at least 50 GB of space. This is required to store configuration details and the OS image for your Arc Resource Bridge VM.
+- A cluster shared volume with at least 1 TB of space. This is required to store configuration details and the OS image for your Arc Resource Bridge VM.
 - At least 4 vCPUs
-- At least 8 GB of memory
+- At least 16 GB of memory
 
 ## Azure requirements
 
