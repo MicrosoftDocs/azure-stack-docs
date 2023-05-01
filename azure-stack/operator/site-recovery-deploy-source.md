@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines in Azure Site Recovery from so
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/10/2023
+ms.date: 05/01/2023
 ---
 
 
@@ -32,7 +32,7 @@ For a connected scenario, download the items from Azure Marketplace directly to 
 1. Select + **Add from Azure**.
 1. Search for "Azure Site Recovery" using the search bar.
 
-   :::image type="content" source="../mdc/operator/media/azure-stack-commvault-offer-tzl/add-from-azure.png" alt-text="Screenshot of portal Add from Azure page." lightbox="../mdc/operator/media/azure-stack-commvault-offer-tzl/add-from-azure.png":::
+   :::image type="content" source="media/site-recovery-deploy-source/add-from-azure.png" alt-text="Screenshot of portal add from Azure page." lightbox="media/site-recovery-deploy-source/add-from-azure.png":::
 
 1. The **ASR appliance on AzureStack Hub** is the VM that you must download. Based on the type of VMs you want to protect, select and download the respective **Virtual Machine Extensions** for each of the VM types to be protected.
 1. Once the downloads are complete, you are ready to deploy and configure the appliance.
