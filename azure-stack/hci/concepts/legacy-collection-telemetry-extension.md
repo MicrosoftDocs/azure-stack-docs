@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI telemetry and diagnostics.
-description: This topic describes the design and policies associated with diagnostic data collected by Azure Stack HCI.
+description: This article describes the design and policies associated with diagnostic data collected by Azure Stack HCI.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
@@ -22,7 +22,7 @@ This article describes required data collected to keep Azure Stack HCI secure, u
 
 ::: zone pivot="extension-collection"
 
-> [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+> [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
@@ -160,7 +160,7 @@ Here are some advantages of the extension:
 
 - **Improved compliance:** Allows the telemetry and diagnostic data to be compliant with data uploads as per regional service and data residency requirements.
   
-- **Simplified log gathering:** It's easier to collect diagnostics logs when the collection functionality is readily available. With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns and collect logs proactively which saves support time.
+- **Simplified log gathering:** It's easier to collect diagnostics logs when the collection functionality is readily available. With the proactive log collection functionality enabled, Microsoft can help look for certain errors or exception patterns and collect logs proactively, which saves support time.
 
 ## Telemetry and diagnostics extension management
 
@@ -191,9 +191,9 @@ Here are a couple of things to consider with data collection:
 
 ## Telemetry and diagnostics workflow
 
-A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it.
+A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it. After you've configured the extension, it can continue to function even if the arc agent fails. 
 
-After you've configured the extension, it can continue to function even if the arc agent fails. The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
+The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
 
 > [!NOTE]
 > This extension installs the Geneva Monitoring Agent on all cluster nodes.
@@ -211,7 +211,7 @@ As part of the extension installment, artifacts generated from your cluster node
 
 ## Error handling
 
-To handle errors in extensions, we have identified expected errors and have provided error messages with unique error codes.
+To handle errors in extensions, we have identified and provided expected messages with unique error codes.
 
 Here are some examples:
 
@@ -220,7 +220,7 @@ Here are some examples:
 | 7 | There's at least one GMA process already running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. Use `Get-Process MonitoringAgent` to identify active processes on the stamp. |
 | 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
 | 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
-| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message displays. You can find the complete error message and its stack trace in the [Extension logs](legacy-collection-telemetry-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
+| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the [Extension logs](legacy-collection-telemetry-extension.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
 
 ::: zone-end
 
