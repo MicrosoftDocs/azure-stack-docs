@@ -203,5 +203,4 @@ Nested resiliency only applies to two-server clusters running Azure Stack HCI or
 For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Extend volumes](extend-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Manage volumes](manage-volumes.md)
