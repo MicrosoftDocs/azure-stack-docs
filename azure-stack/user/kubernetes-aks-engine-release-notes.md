@@ -16,7 +16,7 @@ ms.lastreviewed: 09/23/2022
 # Release notes for the AKS engine on Azure Stack Hub
 
 ::: moniker range=">=azs-2206"
-*Applies to version v0.75.3 of the AKS engine.*
+*Applies to version v0.76.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
 
@@ -123,6 +123,10 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 
 > [!Note]  
 > ** Starting from Kubernetes v1.24, **ONLY** the `containerd` container runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker container runtime*](#upgrading-kubernetes-clusters-created-with-docker-container-runtime) for more details.
+
+## What's new with AKSe 0.76.0
+ - Added support for Kubernetes v1.24.11 and v1.25.7
+ - You can find additional features at [v0.76.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.76.0)
 
 ## What's new with AKSe 0.75.3 and above
 
