@@ -973,7 +973,7 @@
     },
     {
       "source_path": "azure-stack/hci/concepts/legacy-collection-telemetry-extension.md",
-      "redirect_url": "/azure-stack/hci",
+      "redirect_url": "/azure-stack/hci/overview",
       "redirect_document_id": true
     },
     {    
