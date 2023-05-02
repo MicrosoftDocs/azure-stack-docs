@@ -972,6 +972,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/concepts/legacy-collection-telemetry-extension.md",
+      "redirect_url": "/azure-stack/hci",
+      "redirect_document_id": true
+    },
+    {    
       "source_path": "azure-stack/hci/manage/extend-volumes.md",
       "redirect_url": "/azure-stack/hci/manage/manage-volumes",
       "redirect_document_id": false
