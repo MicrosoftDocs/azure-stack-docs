@@ -11,7 +11,7 @@ ms.date: 05/01/2023
 
 # Azure Arc extension management on Azure Stack HCI
 
->[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
+>[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)].
 
 This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in the Azure portal.
 
@@ -23,7 +23,6 @@ Here are extensions you can install and manage in the Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [Telemetry and diagnostics](../concepts/legacy-collection-telemetry-extension.md)
 
 ## Install an extension via the Azure portal
 
