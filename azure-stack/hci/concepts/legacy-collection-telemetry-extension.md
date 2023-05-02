@@ -241,4 +241,4 @@ Here are some examples:
 
 ## Next steps
 
-Learn about [Azure Arc extension management on Azure Stack HCI](/azure-stack/hci/manage/arc-extension-management.md).
+Learn about [Azure Arc extension management on Azure Stack HCI](arc-extension-management.md).
