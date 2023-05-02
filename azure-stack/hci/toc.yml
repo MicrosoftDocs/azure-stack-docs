@@ -306,6 +306,10 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
+  - name: Manage Azure Arc extensions
+    items: 
+  - name: Manage Arc extensions
+    href: manage/arc-extension-management.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -390,6 +394,8 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
+    - name: Telemetry and diagnostics extensions
+      href: concepts/legacy-collection-telemetry-extension.md
 - name: Preview
   items:
   - name: What's in preview?
