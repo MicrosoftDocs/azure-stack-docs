@@ -124,11 +124,15 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 > [!Note]  
 > ** Starting from Kubernetes v1.24, **ONLY** the `containerd` container runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker container runtime*](#upgrading-kubernetes-clusters-created-with-docker-container-runtime) for more details.
 
-## What's new with AKSe 0.76.0
+ ## Update planning
+
+The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+
+### What's new with AKSe 0.76.0
  - Added support for Kubernetes v1.24.11 and v1.25.7
  - You can find additional features at [v0.76.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.76.0)
 
-## What's new with AKSe 0.75.3 and above
+### What's new with AKSe 0.75.3 and above
 
 AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in the [Create Linux Client](./azure-stack-kubernetes-aks-engine-deploy-linux.md) and [Create Windows Client](./azure-stack-kubernetes-aks-engine-deploy-windows.md) directions. Please create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any. 
 
@@ -137,10 +141,6 @@ AKS Engine release v0.75.3 on Azure Stack Hub offers Ubuntu 20.04 LTS as its Lin
 Starting from Kubernetes v1.24, only the `containerd` runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker runtime*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-docker-runtime) for more details. For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 can use [the Windows base image with Docker runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows/2019-datacenter-core-azurestack-smalldisk-17763.3887.20230332.txt). Clusters with windows nodes on Kubernetes v1.24 can use [the Windows base image with Containerd runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.3887.20230332.txt).
  
  You can find additional features at [v0.75.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3). 
- 
- ## Update planning
-
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Instructions to use AKS engine 0.70.0 and above
 
