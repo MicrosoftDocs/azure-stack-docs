@@ -308,8 +308,8 @@
       href: manage/azure-site-recovery.md
   - name: Manage Azure Arc extensions
     items: 
-  - name: Manage Arc extensions
-    href: manage/arc-extension-management.md
+    - name: Manage Arc extensions
+      href: manage/arc-extension-management.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -387,14 +387,14 @@
     - name: Billing
       href: concepts/billing.md
     - name: Updates and upgrades
-      href: concepts/updates.md
+      href: concepts/updates.mds
     - name: Security considerations
       href: concepts/security.md
     - name: Utility applications
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-    - name: Telemetry and diagnostic extension
+    - name: Azure Arc extension data collection
       href: concepts/legacy-collection-telemetry-extension.md
 - name: Preview
   items:
