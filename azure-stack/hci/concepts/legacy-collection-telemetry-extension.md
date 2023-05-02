@@ -144,6 +144,10 @@ TimeCreated            EventName                                                
 
 Telemetry and diagnostics, an Azure arc extension that allows Microsoft to collect logs and telemetry data from all the nodes in the servers, in your Azure Stack HCI cluster. This mandatory extension is available for both new and existing Azure Stack HCI clusters. Use this extension as an important tool to monitor and troubleshoot the functionality of your Azure Stack HCI clusters.
 
+A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it. After you've configured the extension, it can continue to function even if the arc agent fails.
+
+The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
+
 ## Benefits of the telemetry and diagnostics extension
 
 Azure Stack HCI previously used the operating system to report telemetry data to Microsoft. Now, telemetry data is installed and managed through the telemetry and diagnostics extension.
@@ -191,13 +195,7 @@ You can configure the extension to be:
 
 For basic or enhanced diagnostics, when there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events. These logs are access  by Microsoft for a support case and not sent to Azure.
 
-### Telemetry and diagnostics workflow
-
-A registered Azure Stack HCI device has an Azure Arc Connected, agent installed on it. After you've configured the extension, it can continue to function even if the arc agent fails.
-
-The extension only requires the arc agent installation initially, and it can continuously operate even if the agent isn't running.
-
-## Telemetry data collection
+## Consent for data collection
 
 Microsoft collects data in accordance with its standard privacy practices. The new telemetry agent doesn't override your existing control setting.
 
