@@ -394,7 +394,7 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-    - name: Telemetry and diagnostics extensions
+    - name: Telemetry and diagnostic extension
       href: concepts/legacy-collection-telemetry-extension.md
 - name: Preview
   items:
