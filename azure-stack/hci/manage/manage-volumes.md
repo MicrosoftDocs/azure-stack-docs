@@ -5,7 +5,7 @@ ms.topic: how-to
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.reviewer: jgerend
-ms.date: 04/26/2023
+ms.date: 05/02/2023
 ---
 
 # Manage volumes in Azure Stack HCI and Windows Server
@@ -20,7 +20,6 @@ Before you begin to manage volumes, make sure that:
 
 - You have administrator privileges to access the cluster.
 - You have access to a management computer that is in the same domain as your cluster.
-- You know which volume to expand, move, or delete.
 
 Here are a few additional prerequisites for moving volumes:
    - Make sure the volume is in a healthy state before you move it. To find out about the health state of a volume, see [Monitor volumes](monitor-cluster.md#monitor-volumes) for Windows Admin Center and [Virtual disk state](/windows-server/storage/storage-spaces/storage-spaces-states#virtual-disk-states) for PowerShell.
