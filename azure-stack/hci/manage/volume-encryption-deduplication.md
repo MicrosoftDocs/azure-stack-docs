@@ -59,5 +59,4 @@ For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
 - [Plan volumes](../concepts/plan-volumes.md)
-- [Extend volumes](extend-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Manage volumes](manage-volumes.md)

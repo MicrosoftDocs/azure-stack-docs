@@ -23,7 +23,6 @@ Here are extensions you can install and manage in the Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [Telemetry and diagnostics](../concepts/legacy-collection-telemetry-extension.md)
 
 ## Install an extension via the Azure portal
 
