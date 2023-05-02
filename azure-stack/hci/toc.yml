@@ -387,7 +387,7 @@
     - name: Billing
       href: concepts/billing.md
     - name: Updates and upgrades
-      href: concepts/updates.mds
+      href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
     - name: Utility applications
