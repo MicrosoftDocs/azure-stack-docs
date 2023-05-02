@@ -194,10 +194,8 @@
       href: manage/create-stretched-volumes.md
     - name: Protect volumes
       href: manage/volume-encryption-deduplication.md
-    - name: Expand volumes
-      href: manage/extend-volumes.md
-    - name: Delete volumes
-      href: manage/delete-volumes.md
+    - name: Manage volumes
+      href: manage/manage-volumes.md
     - name: Replace drives
       href: manage/replace-drives.md
     - name: Use the CSV in-memory read cache
@@ -307,9 +305,7 @@
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
   - name: Manage Azure Arc extensions
-    items: 
-    - name: Manage Arc extensions
-      href: manage/arc-extension-management.md
+    href: manage/arc-extension-management.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -394,8 +390,6 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-    - name: Azure Arc extension data collection
-      href: concepts/legacy-collection-telemetry-extension.md
 - name: Preview
   items:
   - name: What's in preview?
