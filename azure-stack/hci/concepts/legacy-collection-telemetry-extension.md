@@ -182,7 +182,7 @@ You can configure the extension to be:
 
   - Supports an improved user experience.
   - Critical reliability issues are identified for greater resolution.
-  - Provides quality feature, deployment, and other product improvements.
+  - Provides quality features, deployment, and other product improvements.
   - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Benefits of enhanced telemetry:
