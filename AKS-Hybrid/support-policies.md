@@ -6,7 +6,7 @@ ms.date: 05/03/2023
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023
-ms.reviewer: mikek
+ms.reviewer: rbaziwane
 
 # Customer intent: As a cluster operator or developer, I want to understand what AKS components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features for AKS hybrid.
 # Intent: As an IT Pro, I want to understand the support policies associated with my AKS deployment, including security patches, networking, and preview features in AKS hybrid.
