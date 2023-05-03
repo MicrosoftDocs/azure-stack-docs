@@ -82,7 +82,7 @@ Get-AksHciLogs –virtualMachineLogs
 ### Considerations
 
 - Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) PowerShell cmdlet.
-- The restriction should only be for linux, windows node should not have this restriction. You should be able to ssh 
+- The restriction is only for Linux. Windows nodes do not have this restriction; you should be able to SSH successfully. 
 - You can only set the configuration during the installation phase of AKS hybrid.
 - You must perform a reinstall if you incorrectly configure any SSH settings.
 - There is no support for upgrades.
