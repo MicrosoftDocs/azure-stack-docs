@@ -24,6 +24,8 @@
       href: connect-clients.md
     - name: Install AlmaLinux 8
       href: install-rhel-8.md
+    - name: Install AlmaLinux HPC 8.6
+      href: install-hpc-alma-86.md
     - name: Install CentOS Linux 7
       href: install-rhel-7.md
     - name: Install CentOS Linux 8
