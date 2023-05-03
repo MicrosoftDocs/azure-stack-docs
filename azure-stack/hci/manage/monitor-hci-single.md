@@ -45,7 +45,7 @@ Once the prerequisite are met, the **Get Started** button for Insights onboa
 
 There are several prerequisites for using Azure Stack HCI Insights:
 
-- Azure Stack HCI cluster should be [registered](/azure-stack/hci/deploy/register-with-azure) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration](azure-stack/hci/deploy/register-with-azure.md?enable-azure-arc-integration).
+- Azure Stack HCI cluster should be [registered](azure-stack/hci/deploy/register-with-azure) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration](azure-stack/hci/deploy/register-with-azure.md?enable-azure-arc-integration).
 
 - The cluster must have Azure Stack HCI version 22H2 and the May 2023 cumulative update or later installed.
 
@@ -277,7 +277,7 @@ This content applies to version 21H2 of Azure Stack HCI.
 
 To use Azure Stack HCI Insights with the legacy Agent, make sure you've completed the following:
 
-- Azure Stack HCI cluster should be [registered](/azure-stack/hci/deploy/register-with-azure) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration].
+- Azure Stack HCI cluster should be [registered](azure-stack/hci/deploy/register-with-azure) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration].
 
 - [Enable Log Analytics](/azure-stack/hci/deploy/register-with-azure.md) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
 
