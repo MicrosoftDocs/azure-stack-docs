@@ -1,28 +1,23 @@
 ---
-title: Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
-description: Describes how to install client software for the Azure Managed Lustre File System.
+title: Install client software for AlmaLinux 8
+description: Learn how to install client software for the Azure Managed Lustre File System.
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+author: mvbishop
+ms.author:  mayabishop
+ms.lastreviewed: 04/28/2023
 ms.reviewer: dsundarraj
-ms.date: 02/21/2023
+ms.date: 04/28/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
 
 ---
 
-# Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+# Install client software for AlmaLinux HPC 8.6
 
 Follow these steps to download and install the Azure Managed Lustre client on these operating systems:
 
-* Red Hat Enterprise Linux 8 (RHEL 8)
-* CentOS Linux 8
-* AlmaLinux 8
-
-> [!NOTE]
-> For AlmaLinux 8.6 HPC Marketplace images, please see separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md)
+* AlmaLinux HPC 8.6
 
 You can install a pre-built software package for your OS. The following section describes the installation procedures.
 
@@ -34,7 +29,7 @@ For complete information, see [Connect clients to an Azure Managed Lustre file s
 
 ## Install prebuilt client software
 
-[!INCLUDE [client-install-rhel-8](includes/client-install-rhel-8.md)]
+[!INCLUDE [client-install-hpc-alma-86](includes/client-install-hpc-alma-86.md)]
 
 ## Next steps
 
