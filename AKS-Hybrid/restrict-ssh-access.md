@@ -3,7 +3,7 @@ title: Restrict SSH access in AKS hybrid
 description: Learn how to restrict SSH access in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/27/2023
+ms.date: 05/03/2023
 ms.author: sethm 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
@@ -39,15 +39,12 @@ To enable SSH restrictions, perform the following steps:
    $ssh = New-AksHciSSHConfiguration -name sshConfig -ipAddresses 4.4.4.4,8.8.8.8
    ```
    
-   or 
+   or, to restrict SSH access: 
    
    ```powershell
    $ssh = New-AksHciSSHConfiguration -name sshConfig –restrictSSHCommands 
    ```
-
-   Use the above command to restrict SSH access
-   
-   
+      
    > [!NOTE]
    > If the SSH keys are not passed, the management cluster SSH keys are reused.
 
@@ -57,8 +54,7 @@ To enable SSH restrictions, perform the following steps:
    Set-AksHciConfig -ssh $ssh
    ```
 
-
-### Validation : Target Cluster 
+### Validation: target cluster 
 
 Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
 
@@ -66,25 +62,22 @@ Once you've created the cluster, you can manually validate that the SSH restrict
 ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 ```
 
-You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs have access. SSH attempts from outside the list do not have access.
+You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs has access. SSH attempts from outside the list do not have access.
 
 
-You can also run commands directly from ssh 
+You can also run commands directly from SSH. This command returns the date. `Sudo` commands should not work:
 
 ```powershell
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
-```
+``` 
 
-The above command should return the date. Sudo commands should not work 
+## Validation: log collection 
 
-## Validation (Log Collection) 
+This command returns the VM logs such as `cloudinit`, `lb` logs, etc.
 
 ```powershell
 Get-AksHciLogs –virtualMachineLogs
 ```
-
-The log collection command should work and the logs should contain the vm logs like cloudinit, lb logs etc/ 
-
 
 ### Considerations
 
