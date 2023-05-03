@@ -65,7 +65,7 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs has access. SSH attempts from outside the list do not have access.
 
 
-You can also run commands directly from SSH. This command returns the date. `Sudo` commands should not work:
+You can also run commands directly from SSH. This command returns the date. `Sudo` commands do not work:
 
 ```powershell
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
