@@ -24,7 +24,7 @@ This article provides details about technical support policies and limitations f
 - Microsoft offers a support window of 1 year for each Kubernetes minor version, starting with the initial release date. During this period, AKS hybrid releases subsequent minor or patch versions to ensure ongoing support.  
 - An AKS hybrid cluster that operates on a deprecated minor version must be updated to a supported version to be eligible for support.
 - Once a minor version has been deprecated, any clusters still running on this version will continue to function. You can still perform operations such as scaling up or down, but AKS hybrid displays a warning during cluster operations.
-- Once a minor version has been deprecated, it's removed from the Microsoft servers. At that point, AKS hybrid clusters using this version are unable to update Kubernetes or OS versions, and must be upgraded to the latest release. In some cases, this can also mean full re-deployment if the system is not in a healthy state.
+- Once a minor version has been deprecated, it's removed from the Microsoft servers. At that point, AKS hybrid clusters using this version are unable to update Kubernetes or OS versions, and must be upgraded to the latest release. In some cases, this upgrade can also mean full re-deployment if the system is not in a healthy state.
 
 For release information, see the [AKS hybrid release notes](https://github.com/Azure/aks-hci/releases). For information about features in preview, see [AKS hybrid preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
@@ -32,7 +32,7 @@ For release information, see the [AKS hybrid release notes](https://github.com/A
 
 As an AKS hybrid user, you have limited customization and deployment options. However, you don't need to worry about or manage Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options.
 
-By contrast, AKS hybrid provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. With AKS hybrid, you get a partially managed control plane. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
+By contrast, AKS hybrid provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. With AKS hybrid, you get a partially managed control plane. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. Microsoft maintains all Kubernetes components.
 
 Microsoft maintains the following components through the management cluster and the associated virtual machine base images:
 
@@ -53,7 +53,7 @@ Kubernetes versions in AKS hybrid follow the [Kubernetes version policy](https:/
 AKS hybrid doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list. "Outside of support" means that:
 
 - Your cluster operates on a deprecated minor version. The version you're running is outside of the supported versions list.
-- You'll be asked to upgrade the cluster to a supported version when requesting support.
+- You are asked to upgrade the cluster to a supported version when requesting support.
 
 For information about the supported Kubernetes versions, see [Supported Kubernetes versions](supported-kubernetes-versions.md).
 
@@ -112,7 +112,7 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
 
 - The base OS image has required additions (such as monitoring and networking agents).
 - The agent nodes receive OS patches automatically.
-- Issues with the Kubernetes control plane components that run on the agent nodes are automatically remediated during the update cycle or when you redeploy an agent node. These components include the following:
+- Issues with the Kubernetes control plane components that run on the agent nodes are automatically remediated during the update cycle or when you redeploy an agent node. These components include:
 
   - `kube-proxy`
   - Networking tunnels that provide communication paths to the Kubernetes master components:
@@ -157,7 +157,7 @@ You can only customize network settings using AKS hybrid defined subnets. You ca
 
 As previously stated, manually de-allocating all cluster nodes via the Hyper-V APIs, CLI, or MMC renders the cluster out of support.
 
-Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state are out of support after 30 days, and they can't be updated to the latest version.
+Clusters that are stopped for more than 90 days can no longer be updated. The control planes for clusters in this state are out of support after 30 days, and they can't be updated to the latest version.
 
 The management cluster in AKS hybrid must be able to connect to Azure via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days to maintain day 2 operations such as upgrade and node pool scaling. If the management cluster is disconnected within the 30 day period, workloads continue to run and work as expected until the management cluster and or Azure Stack HCI re-connect and synchronize to Azure. Once re-connected, all day 2 operations should recover and continue as expected. See [Azure Stack HCI Azure connectivity requirements](/azure-stack/hci/concepts/firewall-requirements) for more information. After 30 days, Azure Stack HCI prevents the creation of new virtual machines.  
 
