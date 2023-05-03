@@ -38,7 +38,16 @@ To enable SSH restrictions, perform the following steps:
    ```powershell
    $ssh = New-AksHciSSHConfiguration -name sshConfig -ipAddresses 4.4.4.4,8.8.8.8
    ```
+   
+   or 
+   
+   ```powershell
+   $ssh = New-AksHciSSHConfiguration -name sshConfig –restrictSSHCommands 
+   ```
 
+   Use the above command to restrict SSH access
+   
+   
    > [!NOTE]
    > If the SSH keys are not passed, the management cluster SSH keys are reused.
 
@@ -48,7 +57,8 @@ To enable SSH restrictions, perform the following steps:
    Set-AksHciConfig -ssh $ssh
    ```
 
-### Validation
+
+### Validation : Target Cluster 
 
 Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
 
@@ -58,9 +68,28 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs have access. SSH attempts from outside the list do not have access.
 
+
+You can also run commands directly from ssh 
+
+```powershell
+ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
+```
+
+The above command should return the date. Sudo commands should not work 
+
+## Validation (Log Collection) 
+
+```powershell
+Get-AksHciLogs –virtualMachineLogs
+```
+
+The log collection command should work and the logs should contain the vm logs like cloudinit, lb logs etc/ 
+
+
 ### Considerations
 
 - Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) PowerShell cmdlet.
+- The restriction should only be for linux, windows node should not have this restriction. You should be able to ssh 
 - You can only set the configuration during the installation phase of AKS hybrid.
 - You must perform a reinstall if you incorrectly configure any SSH settings.
 - There is no support for upgrades.
