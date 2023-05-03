@@ -33,13 +33,13 @@ This article explains how to monitor an Azure Stack HCI cluster using Azure Sta
 
 HCI Insights installs the Azure Monitor Agent and helps you to configure Data Collection rules for monitoring your Azure Stack HCI cluster.
 
-If you haven't already, be sure to [Register your cluster with Azure](/azure-stack/hci/deploy/register-with-azure). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage. Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
-
 # [New](#tab/22h2)
 
 In the May 2023 cumulative update for Azure Stack HCI, version 22H2, a feature enhancement has been made to the Azure Stack HCI operating system that enables on-premises Azure Stack HCI systems to be monitored with Azure Monitor HCI Insights.
 
 We recommend that you use the new Insights experience with Azure Monitor Agent (AMA) as AMA is faster, more secure and more performant. You can onboard new nodes to AMA or can also [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the legacy Log Analytics (MMA) agent to AMA.
+
+Once the prerequisite are met, the **Get Started** button for Insights onboarding is enabled.
 
 ## Prerequisites for enabling Insights
 
@@ -65,7 +65,7 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
     :::image type="content" source="media/monitor-hci-single/get-started.png" alt-text="Screenshot showing the Get Started button." lightbox="media/monitor-hci-single/get-started.png":::
 
     > [!NOTE]
-    > The **Get Started** button is only available for version 22H2 with the March 2023 cumulative update or later installed and only after the managed identity is enabled. Otherwise this button is disabled.
+    > The **Get Started** button is only available for version 22H2 with the May 2023 cumulative update or later installed and only after the managed identity is enabled. Otherwise this button is disabled.
 
 1. In the **Insights** configuration window, select an existing [Data Collection Rule](/azure/azure-monitor/essentials/data-collection-rule-overview) (DCR) or create a new DCR and then select **Set up**.
 
@@ -227,20 +227,20 @@ To enable Insights again, do the following:
 
     :::image type="content" source="media/monitor-hci-single/agent-migration.png" alt-text="Portal shows update needed" lightbox="media/monitor-hci-single/agent-migration.png":::
 
-1. Select **Install AMA**; the **Data collection rules** window opens.
+1. Select **Install AMA**; the **Insights configuration** window opens.
 
     :::image type="content" source="media/monitor-hci-single/agent-migration-2.png" alt-text="Screenshot showing the Data collection rules window." lightbox="media/monitor-hci-single/agent-migration-2.png":::
 
 1. Select or create a data collection rule as mentioned previously in the *Enable Insights* section.
 
-The Azure Monitor agent and the MicrosoftMonitoringAgent extension can both be installed on the same computer during migration. Running both agents might lead to duplication of data and increased cost. If a machine has both agents installed, you'll see a warning in the Azure portal that you might be collecting duplicate data.
+The Azure Monitor agent and the Microsoft Monitoring Agent extension can both be installed on the same computer during migration. Running both agents might lead to duplication of data and increased cost. If a machine has both agents installed, you'll see a warning in the Azure portal that you might be collecting duplicate data, as shown below.
 
 > [!WARNING]
-> Collecting duplicate data from a single machine with both the Azure Monitor agent and the MicrosoftMonitoringAgent extension can result in extra ingestion cost from sending duplicate data to the Log Analytics workspace.
+> Collecting duplicate data from a single machine with both the Azure Monitor agent and the Microsoft Monitoring Agent extension can result in extra ingestion cost from sending duplicate data to the Log Analytics workspace.
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-3.png" alt-text="Screenshot showing a data duplication warning." lightbox="media/monitor-hci-single/agent-migration-3.png":::
 
-You must remove the MicrosoftMonitoringAgent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require MicrosoftMonitoringAgent.  After you verify that the MicrosoftMonitoringAgent extension is not still connected to your Log Analytics workspace, you can remove the **MicrosoftMonitoringAgent** extension manually by redirecting to the **Extensions** page.  
+You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** is not still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page.  
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
