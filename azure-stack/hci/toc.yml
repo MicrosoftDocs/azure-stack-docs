@@ -212,7 +212,7 @@
     items:
     - name: Set up alerts for Azure Stack HCI systems
       href: manage/setup-hci-system-alerts.md
-    - name: Monitor a single cluster with Azure Stack HCI Insights (preview)
+    - name: Monitor single cluster with Azure Stack HCI Insights
       href: manage/monitor-hci-single.md      
     - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
       href: manage/monitor-hci-multi.md
