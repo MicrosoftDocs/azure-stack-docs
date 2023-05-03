@@ -23,7 +23,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
 
-## Enable SSH restriction
+## Enable SSH restrictions
 
 To enable SSH restrictions, perform the following steps:
 
@@ -71,7 +71,7 @@ You can also run commands directly from SSH. This command returns the date. `Sud
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
 ``` 
 
-## Validation: log collection 
+### Validation: log collection 
 
 This command returns the VM logs such as `cloudinit`, `lb` logs, etc.
 
