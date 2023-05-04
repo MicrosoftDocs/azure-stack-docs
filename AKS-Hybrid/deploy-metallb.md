@@ -15,7 +15,7 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use [MetalLB](https://metallb.org/) to provide load balancing services for a workload cluster in AKS hybrid. AKS hybrid allows you to configure custom load balancers for your workload clusters. MetalLB is an example.
+This article describes how to use [MetalLB](https://metallb.org/) to provide load balancing services for a workload cluster in AKS hybrid. AKS hybrid allows you to configure custom load balancers for your workload clusters. MetalLB is an example...
 
 ## Overview
 
