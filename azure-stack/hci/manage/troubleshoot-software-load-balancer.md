@@ -35,15 +35,15 @@ Follow these steps to check the configuration state of the SLB MUX through Windo
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **SDN Infrastructure** and then **Load Balancer**.
 
-    If there're issues with SLB, you see alerts on the **Load Balancer** page.
+    If there are issues with SLB, you see alerts on the **Load Balancer** page.
 
-    If there's no issue with SLB, the status shows as **Healthy**.
+    If there is no issue with SLB, the status shows as **Healthy**.
 
 ### [PowerShell](#tab/powershell)
 
 To check the configuration state of the MUX through PowerShell, run the following commands on any of the Network Controller VMs:
 
-1. To get Network Controller application settings, run the following command. From the output, note down the `RestName` parameter value.
+1. To get the Network Controller application settings, run the following command. From the output, note down the `RestName` parameter value.
 
     ```powershell
     Get-NetworkController
@@ -167,7 +167,7 @@ You can get this error if the certificate presented by the SLB MUX to the Networ
         Test-Certificate $cert
         ```
 
-    1. Ensure that the certificate is trusted by Network Controller VMs. If the certificate is a self-signed certificate, the same certificate must be present in the root store of all the Network Controller VMs. If the certificate is CA-signed, the CA certificate must be present in the root store of all the Network Controller VMs. To list all the certificates in the root store of the Network Controller VMs, run the following command on all the Network Controller VMs:
+    1. Ensure that the certificate is trusted by the Network Controller VMs. If the certificate is a self-signed certificate, the same certificate must be present in the root store of all the Network Controller VMs. If the certificate is CA-signed, the CA certificate must be present in the root store of all the Network Controller VMs. To list all the certificates in the root store of the Network Controller VMs, run the following command on all the Network Controller VMs:
 
         ```powershell
         get-childitem "cert:\localmachine\root"
@@ -178,15 +178,15 @@ You can get this error if the certificate presented by the SLB MUX to the Networ
 This error can manifest as one of these: *PolicyConfigurationFailureonHost, PolicyConfigurationFailureonMux, PolicyConfigurationFailureonVfp*, or
 *PolicyConfigurationFailure*.
 
-This error occurs when Network Controller can't push policies to the SLB MUX VMs or the Hyper-V hosts either due to reachability or certificate issues, or any other issue.
+This error occurs when the Network Controller can't push policies to the SLB MUX VMs or the Hyper-V hosts either due to reachability or certificate issues, or any other issue.
 
 To troubleshoot the policy configuration failure error, first check if there's any reachability and certificate issues. See steps in the previous sections: [SLB MUX isn't connected to a BGP router](#slb-mux-isnt-connected-to-a-bgp-router), [Virtual server is unreachable](#virtual-server-is-unreachable), and [Certificate not trusted or certificate not authorized](#certificate-not-trusted-or-certificate-not-authorized).
 
-If there isn't any reachability and certificate issue, perform the following steps to check connectivity between Network Controller and the SLB MUX VMs and the SLB host agent on the host:
+If there isn't any reachability and certificate issue, perform the following steps to check connectivity between the Network Controller and the SLB MUX VMs and the SLB host agent on the host:
 
-1. Check connection between Network Controller and SLB MUX VMs. Keep in mind that Network Controller (SlbManager service) connects to MUX on port 8560. The connection is initiated by Network Controller. Various virtual IP address (VIP) configurations, Source Network Address Translation (SNAT) ports etc. are pushed via this connection.
+1. Check connection between the Network Controller and SLB MUX VMs. Keep in mind that the Network Controller (SlbManager service) connects to MUX on port 8560. The Network Controller initiates the connection. Various virtual IP address (VIP) configurations, Source Network Address Translation (SNAT) ports etc. are pushed via this connection.
 
-    To check connection between Network Controller and SLB MUX, run `netstat` on SLB MUX VMs.
+    To check connection between the Network Controller and SLB MUX, run `netstat` on SLB MUX VMs.
 
     Here's a sample output of the command usage:
 
@@ -196,9 +196,9 @@ If there isn't any reachability and certificate issue, perform the following ste
     TCP    100.88.79.12:8560      100.88.79.9:59977      ESTABLISHED 
     ```
 
-1. Check connection between Network Controller and SLB host agent. Keep in mind that the SLB host agent connects to Network Controller (SlbManager service) on port 8571. Various SLB policies are pushed via this connection.
+1. Check connection between the Network Controller and SLB host agent. Keep in mind that the SLB host agent connects to the Network Controller (SlbManager service) on port 8571. Various SLB policies are pushed via this connection.
 
-    To check connectivity between Network Controller and SLB host agent, run `netstat` on the SLB host.
+    To check connectivity between the Network Controller and SLB host agent, run `netstat` on the SLB host.
 
     Here's a sample output of the command usage:
 
@@ -211,9 +211,9 @@ If there isn't any reachability and certificate issue, perform the following ste
 
 You might get data path connectivity issues, even when the SLB MUX VMs are in a healthy configuration state. This implies that the SLB traffic is getting dropped somewhere along the way. To identify where the traffic is getting dropped, you need to collect data path traces. Before you do that, ensure the following:
 
-- **The ToR switch can see the advertised VIPs.** As you've already set up a load balancer for load balancing, inbound NAT, outbound NAT or a combination of those, the load balancer VIP is advertised to the ToR. Using the switch CLI, check if the VIP is getting advertised. <!--can we describe how to check this?-->
+- **The ToR switch can see the advertised VIPs.** As you have already set up a load balancer for load balancing, inbound NAT, outbound NAT or a combination of those, the load balancer VIP is advertised to the ToR. Using the switch CLI, check if the VIP is getting advertised. <!--can we describe how to check this?-->
 
-- **The SLBM VIP must not be blocked on the ToR or any physical firewalls.** This is the IP address specified as loadBalancerManagerIPAddress in the LoadBalancerManager/config resource of Network Controller. When the inbound packet comes in and MUX VM determines the correct backend IP to send the packet to, it sends the packet with the source IP address as the MUX SLBM VIP. There can be scenarios where that is dropped on the ToR.
+- **The SLBM VIP must not be blocked on the ToR or any physical firewalls.** This is the IP address specified as loadBalancerManagerIPAddress in the LoadBalancerManager/config resource of the Network Controller. When the inbound packet comes in and MUX VM determines the correct backend IP to send the packet to, it sends the packet with the source IP address as the MUX SLBM VIP. There can be scenarios where that is dropped on the ToR.
 
 - **SLB Health probes are up.** If you've configured SLB health probes, ensure that at least one of the backend VMs is active, and is able to respond to the health probe. You can also get the state of the probes through the [SLB state dump](#collect-slb-state-dump), as described later in this article.
 
@@ -273,7 +273,7 @@ Following is an example where `MuxAdvertisedRoutes` is empty. This means that th
 
 - If the routes are empty, the issue could be either MUX-ToR peering or SLBM not pushing the correct goal state.
 
-- In other cases, the routes will be missing only a few VIPs causing connectivity failure to only them. If this is the case, issue is with SLBM not pushing the goal state.
+- In other cases, the routes are missing only a few VIPs causing connectivity failure to only them. If so, issue is with SLBM not pushing the goal state.
 
 **Mitigation**
 
@@ -293,7 +293,7 @@ Move the primary of SlbManager service and ControllerService and restart the hos
         Get-Process Sdnctlr| Stop-Process and Get-Process SdnSlbm | Stop-Process
         ```
 
-        This will restart the processes on a different Network Controller VM.
+        This restarts the processes on a different Network Controller VM.
 
 - To restart the host agents, on every Azure Stack HCI host, run the following command:
 
@@ -304,7 +304,7 @@ Move the primary of SlbManager service and ControllerService and restart the hos
 
 ### Check programming and connectivity state for VipAddress
 
-This section of the SLB state dump provides detailed information about the VIP. It provides the state of the VIP on SLBM, MUX, and hosts. Under the host, it dumps all the dips which are currently part of the VIP. Make sure the list is consistent with the configuration. If the issue is with outbound connections, check the SNAT configurations and make sure the port allocations between the MUXes and the host is consistent.
+This section of the SLB state dump provides detailed information about the VIP. It provides the state of the VIP on SLBM, MUX, and hosts. Under the host, it dumps all the dips that are currently part of the VIP. Make sure the list is consistent with the configuration. If the issue is with outbound connections, check the SNAT configurations and make sure the port allocations between the MUXes and the host is consistent.
 
 ```output
 "name": "192.168.102.1", 
