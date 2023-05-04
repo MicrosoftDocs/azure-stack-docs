@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Software Load Balancer (SLB) for SDN in Azure Stack HCI and Windows Server
-description: Learn how to troubleshoot Software Load Balancer on Azure Stack HCI.
+description: Learn how to troubleshoot Software Load Balancer for SDN in Azure Stack HCI and Windows Server.
 ms.topic: how-to
 ms.author: v-mandhiman
 author: ManikaDhiman
