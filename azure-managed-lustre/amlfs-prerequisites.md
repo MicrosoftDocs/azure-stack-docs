@@ -133,7 +133,7 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
 
 For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
-### Private Endpoints (Optional)
+### Private endpoints (optional)
 If you are using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the Private Endpoint setting "Integrate with private DNS Zone" during the creation of a new endpoint.
 * **Integrate with Private DNS zone** - Must be set to "Yes."
 
