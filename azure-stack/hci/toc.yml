@@ -325,7 +325,7 @@
     - name: Collect SDN logs
       href: manage/sdn-log-collection.md
     - name: Troubleshoot Software Load Balancer for SDN
-      href: manage/troubleshoot-software-load-balancer
+      href: manage/troubleshoot-software-load-balancer.md
 - name: Concepts
   items:
   - name: Storage and clusters

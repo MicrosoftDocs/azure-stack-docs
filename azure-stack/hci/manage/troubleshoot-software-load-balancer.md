@@ -286,17 +286,17 @@ Mitigations: Move the primary of SlbManager service and ControllerService and re
     1. Locate the NodeName for the SlbManagerService and ControllerService. Go to the respective nodes and run the following commands:
 
         ```powershell
-        Get-Process Sdnctlr| Stop-Process and Get-Process SdnSlbm | Stop-Process
+            Get-Process Sdnctlr| Stop-Process and Get-Process SdnSlbm | Stop-Process
         ```
 
         This will restart the processes on a different Network Controller VM.
 
 - To restart the host agents, on every Azure Stack HCI host, run the following command:
 
-        ```powershell
-        Restart-Service nchostagent --force
-        Start-Service slbhostagent
-        ```
+    ```powershell
+       Restart-Service nchostagent --force
+       Start-Service slbhostagent
+    ```
 
 ### Check programming and connectivity state for VipAddress
 
