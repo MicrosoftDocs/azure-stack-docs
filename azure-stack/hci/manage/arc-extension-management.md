@@ -26,11 +26,11 @@ Here are extensions you can install and manage in the Azure portal.
 
 ## Install an extension via the Azure portal
 
-Installation of an extension in the Azure portal is a cluster-wide operation. If you add more servers to your cluster all the extensions installed on your cluster are automatically added to the new servers.
-
 Once Azure Stack HCI servers are Azure Arc-enabled, you can install extensions from the **Capabilities** tab as highlighted in the screenshot. Use the capabilities tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
+
+Installation of an extension in the Azure portal is a cluster-wide operation. If you add more servers to your cluster all the extensions installed on your cluster are automatically added to the new servers.
 
 ## Check the extension status
 
