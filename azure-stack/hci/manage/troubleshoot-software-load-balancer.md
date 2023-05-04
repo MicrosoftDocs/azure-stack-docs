@@ -258,17 +258,16 @@ If necessary, you can create an SLB state dump and check for any errors. Additio
 Following is an example where `MuxAdvertisedRoutes` is empty. This means that the MUX isn't advertising any routes to the ToR. In this case, all the VIPs are down.
 
 ```output
- 
-    "name": "MuxRoutes", 
-	"description": "Mux Routes", 
-	"dataRetrievalFailed": false, 
-	"dataUnits": [ 
-   			{ 
-   			"value": [ 
+"name": "MuxRoutes", 
+"description": "Mux Routes", 
+"dataRetrievalFailed": false, 
+"dataUnits": [ 
+		{ 
+		"value": [ 
 
-    "MuxAdvertisedRouteInfo: MuxId=3951dc43-4764-4c65-a4b5-35558c479ce6    MuxDipEndpoint=[172.24.47.12:8560] MuxAdvertisedRoutes=[]", 
+"MuxAdvertisedRouteInfo: MuxId=3951dc43-4764-4c65-a4b5-35558c479ce6 MuxDipEndpoint=[172.24.47.12:8560] MuxAdvertisedRoutes=[]", 
 
-    "MuxAdvertisedRouteInfo: MuxId=a150f826-6069-4da7-9771-642e80a45c8d MuxDipEndpoint=[172.24.47.13:8560] MuxAdvertisedRoutes=[]"
+"MuxAdvertisedRouteInfo: MuxId=a150f826-6069-4da7-9771-642e80a45c8d MuxDipEndpoint=[172.24.47.13:8560] MuxAdvertisedRoutes=[]"
 ```
 
 - If the routes are empty, the issue could be either MUX-ToR peering or SLBM not pushing the correct goal state.
