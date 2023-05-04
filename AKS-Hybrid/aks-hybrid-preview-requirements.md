@@ -12,11 +12,10 @@ ms.date: 09/29/2022
 
 # System requirements for AKS hybrid cluster provisioning from Azure (preview)
 
+This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioning from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
+
+## Minimum resource requirements 
 > Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
-
-This article covers the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioning from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
-
-## Minimum resource requirements
 
 Azure Arc Resource Bridge has the following resource requirements:
   - A cluster shared volume with at least 50 GB of space
@@ -24,6 +23,7 @@ Azure Arc Resource Bridge has the following resource requirements:
   - At least 8 GB of memory per physical node
 
 ## Azure requirements
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
 
 Make sure that you have your Azure environment set up. Follow this table to ensure you've covered everything you need for a successful installation.
 
@@ -37,17 +37,16 @@ Windows Server or Azure Stack HCI infrastructure admin:
 | 4 | Did you install the Az CLI extensions on all nodes in your physical cluster? | `az extension add -n k8s-extension` <br> `az extension add -n customlocation` <br> `az extension add -n arcappliance` <br> `az extension add -n hybridaks` | You can check if you have the extensions installed and their versions by running the following command: `az -v` <br> Expected output: <br> `azure-cli                         2.40.0` <br> `core                              2.40.0` <br> `telemetry                          1.0.8` <br> Extensions: <br>` arcappliance                      0.2.29` <br> `customlocation                     0.1.3` <br> `hybridaks                     0.2.0` <br> `k8s-extension                      1.3.5` |
 
 ## PowerShell module prerequisites
+> Applies to: Windows Server 2019, Windows Server 2022
 
-Next, make sure that you download the right versions of PowerShell modules directly on each node in your Windows Server cluster. Open a remote PowerShell session in admin mode on each node in your cluster to download the following PowerShell modules.
+Make sure that you download the right versions of PowerShell modules directly on each node in your Windows Server cluster. Open a remote PowerShell session in admin mode on each node in your cluster to download the following PowerShell modules.
 
-Windows Server admin:
-
-| Prerequisite |  Item  |  Details  |  Value  |
-| -- | ----- | ------- | ------- |
-| 1 | Did you install the AKS-HCI PowerShell module? | `Install-Module -Name AksHci -Repository PSGallery` | Confirm that the AksHci module version is at least `1.1.39` by running the following command: `Get-Command -Module AksHci` |
-| 2 | Did you install the ArcHCI PowerShell module? | `Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense -RequiredVersion 0.2.21` | Confirm that the ArcHci module version is `0.2.21` by running the following command: `Get-Command -Module ArcHci` |
+```PowerShell
+Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense -RequiredVersion 0.2.21
+```
 
 ## Networking prerequisites
+> Applies to: Windows Server 2019, Windows Server 2022
 
 Setting up the right networking requires you to work with the network administrator of your datacenter. You have two options to choose from: static IP and DHCP. We highly recommend using static IP for your Azure Arc Resource Bridge for optimum reliability.
 
@@ -110,11 +109,12 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 | 55000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Server                            | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 | 65000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Authentication                    | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 
-### Firewall URL exceptions
-
+## Firewall URL exceptions
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+>
 For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist).
 
-The following firewall URL exceptions are needed on all servers in the Windows Server cluster:
+The following firewall URL exceptions are needed on all servers in the Windows Server or Azure Stack HCI cluster:
 
 | **URL** | **Port** | **Service** | **Notes** |
 |:--------|:---------|:------------|:----------|
@@ -137,3 +137,4 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 
 ## Next steps
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
+- [Deploy AKS service on Azure Stack HCI]()
