@@ -11,7 +11,7 @@ ms.date: 05/03/2023
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot common issues in SLB for SDN.
+If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot common issues in SLB for SDN.
 
 For an overview of SLB and how to manage it, see [What is Software Load Balancer (SLB) for SDN?](../concepts/software-load-balancer.md) and [Manage Software Load Balancer for SDN](./load-balancers.md).
 
@@ -35,13 +35,13 @@ Follow these steps to check the configuration state of the SLB MUX through Windo
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **SDN Infrastructure** and then **Load Balancer**.
 
-If there are any issues with the Software Load Balancer, you'll see alerts on the Load Balancer page.
+    If there're issues with SLB, you see alerts on the **Load Balancer** page.
 
-If the Status is showing Healthy, you can move on to Step 2. <!--what is step 2>
+    If there's no issue with SLB, the status shows as **Healthy**.
 
 ### [PowerShell](#tab/powershell)
 
-To check the configuration state of the MUX through Powershell, run the following commands on any of the Network Controller VMs:
+To check the configuration state of the MUX through PowerShell, run the following commands on any of the Network Controller VMs:
 
 1. To get Network Controller application settings, run the following command. From the output, note down the `RestName` parameter value.
 
@@ -65,7 +65,7 @@ To check the configuration state of the MUX through Powershell, run the followin
 
 ## Troubleshoot common configuration state errors
 
-If you've found out that the configuration state of the SLB MUX VMs isn't healthy, follow this section to troubleshoot the common configuration state errors.
+This section describes how to troubleshoot common errors if the configuration state of the SLB MUX VMs isn't healthy.
 
 ### SLB MUX isn't connected to a BGP router
 
@@ -73,8 +73,7 @@ This happens when the MUX VMs couldn't establish Border Gateway Protocol (BGP) p
 
 To resolve the MUX VMs and BGP router connection error:
 
-- Ensure you have connectivity between the MUX VMs and the ToR switches. If you're using network virtualization, the peering should occur over the Hyper-
-V Network Virtualization Provider Address (HNV PA) network.
+- Ensure you have connectivity between the MUX VMs and the ToR switches. If you're using network virtualization, the peering should occur over the Hyper-V Network Virtualization Provider Address (HNV PA) network.
 
 - Check that the connection is established by running the following on the MUX VMs:
 
@@ -89,6 +88,7 @@ V Network Virtualization Provider Address (HNV PA) network.
     ```
     
     where:
+
     - TOR_IP is part of the loadBalancerMuxes resource.
 
     The following is a snippet of the LoadBalancerMux resource, with the ToR IP
@@ -107,7 +107,7 @@ address as **192.168.200.1**:
             } 
     ```
 
-- If you've multiple switches configured, ensure that all of them are peered with the MUX VMs.
+- If you have multiple switches configured, ensure that all of them are peered with the MUX VMs.
 
 - For further debugging related to failed BGP peering, run the `Test-SDNExpressBGP` script on any of the Azure Stack HCI host machines:
 
@@ -117,18 +117,19 @@ address as **192.168.200.1**:
     ```
 
     where:
+
     - `RouterIPAddress` is ToR IP
     - `LocalIPAddress` is the PA IP address from the SLBMUX VM
     - `LocalASN` is the SDN SLB ASN
     - `ComputerName` is the name of the SLBMUX VM
 
-    The script stops the SLBMUX service on the MUX VM, tries to establish a connection, either failing or completing, and provides more details in case of failure.
+    The script stops the SLBMUX service on the MUX VM, tries to establish a connection, either failing or completing, and provides more details if there's a failure.
 
 ### Virtual server is unreachable
 
 This could be due to network errors or auth rejection at the virtual server. This usually indicates that the Network Controller can't connect to the SLB MUX VMs.
 
-To troubleshoot why virtual server isn't reachable, check that:
+To troubleshoot why the virtual server isn't reachable, check that:
 
 - There's connectivity between the Network Controller and the MUX VMs. To check the connectivity, run the following command:
 
@@ -136,13 +137,13 @@ To troubleshoot why virtual server isn't reachable, check that:
     Test-NetConnection -ComputerName <MUX IP address> -Port 8560
     ```
 
-- The MUX service is running on the MUX VMs. To check this, run the following command from a Powershell session on the MUX VMs. The status must be Running.
+- The MUX service is running on the MUX VMs. To check this, run the following command from a PowerShell session on the MUX VMs. The status must be Running.
 
     ```powershell
     Get-Service slbmux
     ```
 
-- There're no firewall issues. Ensure that port 8560 isn't blocked by the firewall on the MUX VM. If the `Test-NetConnection` command above succeeds, it implies there's no firewall issue.
+- There are no firewall issues. Ensure that port 8560 isn't blocked by the firewall on the MUX VM. If the `Test-NetConnection` command above succeeds, it implies there's no firewall issue.
 
 ### Certificate not trusted or certificate not authorized
 
@@ -174,7 +175,7 @@ You can get this error if the certificate presented by the SLB MUX to the Networ
 
 ### Policy configuration failure
 
-This can manifest as *PolicyConfigurationFailureonHost, PolicyConfigurationFailureonMux, PolicyConfigurationFailureonVfp*, and
+This can manifest as one of these errors: *PolicyConfigurationFailureonHost, PolicyConfigurationFailureonMux, PolicyConfigurationFailureonVfp*, or
 *PolicyConfigurationFailure*.
 
 This error occurs when Network Controller can't push policies to the SLB MUX VMs or the Hyper-V hosts either due to reachability or certificate issues, or any other issue.
@@ -216,11 +217,11 @@ You might get data path connectivity issues, even when the SLB MUX VMs are in a 
 
 - **SLB Health probes are up.** If you've configured SLB health probes, ensure that at least one of the backend VMs is active, and is able to respond to the health probe. You can also get the state of the probes through the SLB state dump, as described later in this article.
 
-- **Firewall inside the backend VM isn't blocking traffic.** Ensure that host firewall in the backend VMs aren't blocking incoming SLB traffic.
+- **Firewall inside the backend VM isn't blocking traffic.** Ensure that host firewall in the backend VMs isn't blocking incoming SLB traffic.
 
 - **SDN Network Security Groups isn't blocking traffic.** You may have some network security groups configured either directly on the backend NIC or on the subnet. Ensure that the network security group isn't blocking incoming SLB traffic.
 
-    1. To check the network security groups through Powershell, run the following commands on a machine which can issue REST commands to the Network Controller:
+    1. To check the network security groups through PowerShell, run the following commands on a machine, which can issue REST commands to the Network Controller:
 
         - On the NIC, run the following command:
 
@@ -240,7 +241,7 @@ You might get data path connectivity issues, even when the SLB MUX VMs are in a 
             Get-NetworkControllerLogicalNetwork –ConnectionUri <REST uri of Network Controller> -ResourceId <Resource ID of the network>|ConvertTo-Json –Depth 10 
             ```
     
-    1. The output of the previous commands have a section for `AccessControlList`. You can check if any AccessControlList is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList`:
+    1. The output from the previous commands has a section for `AccessControlList`. You can check if any AccessControlList is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList`:
     
         ```powershell
         Get-NetworkControllerAccessControlList –ConnectionUri <REST uri of Network Controller> - ResourceId <Resource ID of the AccessControlList>|ConvertTo-Json –Depth 10
@@ -254,7 +255,7 @@ If necessary, you can create an SLB state dump and check for any errors. Additio
 
 ### Check whether the MuxAdvertisedRoutes is empty or is missing the affected VIPs
 
-Following is an example where `MuxAdvertisedRoutes` is empty. This means that the MUX isn't advertising any routes to the ToR. In this case, all the VIPs will be down.
+Following is an example where `MuxAdvertisedRoutes` is empty. This means that the MUX isn't advertising any routes to the ToR. In this case, all the VIPs are down.
 
 ```output
  
