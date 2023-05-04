@@ -133,6 +133,14 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
 
 For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
+### Private Endpoints (Optional)
+If you are using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the Private Endpoint setting "Integrate with private DNS Zone" during the creation of a new endpoint.
+* **Integrate with Private DNS zone** - Must be set to "Yes."
+* **Subscription** - Should match the subscription the the Azure Managed Lustre will be setup in.
+* **Resource Group** - Should match the resource group the the Azure Managed Lustre will be setup in.
+
+:::image type="content source="media/prerequisites/blob-endpoints-DNSsettings.png" alt-text="<alt Image showing the DNS tab of the Enpoint setup process>":::
+
 ## Next steps
 
 * [Create an Azure Managed Lustre file system in the Azure portal](create-file-system-portal.md)
