@@ -160,7 +160,7 @@ To use AKS engine 0.70.0 and above:
 ### Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 - AKS Engine v0.67.0 uses the wrong Windows Image when deploying Windows clusters, users should use v0.70.0 to solve this issue.
 
 ### Reference
@@ -270,7 +270,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.19.10                                               | 1.19.15, 1.20.11      |
 | 1.20.6                                                | 1.20.11               |
 
-In the API Model json file, specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API Model json file, specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -300,7 +300,7 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 ## Reference
 
@@ -391,7 +391,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.17.11                                                   | 1.17.17, 1.18.15      |
 | 1.17.17                                                   | 1.18.15               |
 
-In the API Model json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API Model json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -426,7 +426,7 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 ## Reference
 
@@ -518,7 +518,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
 | 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
 
-In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you're planning to deploy Kubernetes 1.16.14, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you're planning to deploy Kubernetes 1.16.14, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
 
 ```json  
     -   "orchestratorRelease": "1.16",
@@ -552,7 +552,7 @@ In the API Model json file, please specify the release and version values under 
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 -   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
--   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+-   Since aks-engine tool is a shared source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 ## Reference
 
@@ -658,7 +658,7 @@ You can find the current version and upgrade version in the following table for 
 
 -   New hyperkube updates to support Kubernetes versions 1.14.8 and 1.15.10.
 
--   Update kubectl to match the version of Kubernetes for the cluster.. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
+-   Update kubectl to match the version of Kubernetes for the cluster. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
 
 -   Updates for the Azure Container Monitor add-on with latest [February 2020 release](https://github.com/microsoft/Docker-Provider/blob/ci_feature_prod/README.md) ([\#2850](https://github.com/Azure/aks-engine/issues/2850)).
 
@@ -694,7 +694,7 @@ Following is a list of some of the bugs fixed as well as the complete set of rel
 
 -   Correct defaults order for setting IPAddressCount ([\#2358](https://github.com/Azure/aks-engine/issues/2358))
 
--   Update to use single omsagent yaml for all k8s versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
+-   Update to use single omsagent yaml for all K8s versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
 
 ### Release notes
 
