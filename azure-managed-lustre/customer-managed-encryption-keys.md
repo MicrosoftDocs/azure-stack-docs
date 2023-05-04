@@ -33,7 +33,7 @@ After you create the file system, you can't change between customer-managed keys
 
 ## Prerequisites
 
-You may use either a pre-existing key vault and key, or you may create new ones to use with Azure Managed Lustre. See the required settings below to ensure you have a properly configured key vault and key. 
+You can use either a pre-existing key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key. 
 
 ### Create a key vault and key
 
@@ -49,7 +49,7 @@ Basics:
 * **Soft delete** - Azure Managed Lustre enables soft delete if it is not already configured on the key vault.
 * **Purge protection** - Enable purge protection.
 
-Access Policy:
+Access policy:
 * **Access Configuration** - Set to Azure role-based access control.
 
 Networking:
