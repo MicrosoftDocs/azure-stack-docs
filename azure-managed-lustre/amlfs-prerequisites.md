@@ -139,7 +139,7 @@ If you are using a private endpoint with your blob setup, in order to ensure Azu
 * **Subscription** - Should match the subscription the the Azure Managed Lustre will be setup in.
 * **Resource Group** - Should match the resource group the the Azure Managed Lustre will be setup in.
 
-:::image type="content source="media/prerequisites/blob-endpoints-DNSsettings.png" alt-text="<alt Image showing the DNS tab of the Enpoint setup process>":::
+![Image showing the DNS tab of the Enpoint setup process](./media/prerequisites/blob-endpoints-DNSsettings.png)
 
 ## Next steps
 
