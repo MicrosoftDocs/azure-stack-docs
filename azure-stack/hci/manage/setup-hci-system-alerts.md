@@ -103,11 +103,11 @@ To determine how you're notified for your cluster alerts use the **Actions** tab
 
 Once you have set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select the Review + Create for a final review of all your alert settings and to create your alert.
 
-:::image type="content" source="media/alerts-logs-insights/alert-details.png" alt-text="Screenshot of the action groups action options." lightbox="media/alerts-logs-insights/alert-details.png":::
+:::image type="content" source="media/alerts-logs-insights/alert-details.png" alt-text="Screenshot of the action details for alerts." lightbox="media/alerts-logs-insights/alert-details.png":::
 
 After your alerts are set up, you can monitor your alert rules, action groups, and more in the **Alerts** tab.
 
-:::image type="content" source="media/alerts-logs-insights/alert-rules-monitoring.png" alt-text="Screenshot of the action groups action options." lightbox="media/alerts-logs-insights/alert-rules-monitoring.png":::
+:::image type="content" source="media/alerts-logs-insights/alert-rules-monitoring.png" alt-text="Screenshot of the monitoring alerts." lightbox="media/alerts-logs-insights/alert-rules-monitoring.png":::
 
 ## Log collection frequency
 
