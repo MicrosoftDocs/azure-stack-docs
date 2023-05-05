@@ -14,7 +14,7 @@ ms.date: 04/17/2023
 Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages. Azure Site Recovery on Azure Stack Hub replicates virtual machines (VMs) workloads from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to a secondary location, and access apps from there. After the primary location is running again, you can fail back to it.
 
 > [!IMPORTANT]
-> During the public preview of Azure Site Recovery on Azure Stack Hub, updates might require complete re-installation (a complete removal and then re-add) of the service.
+> During the public preview of Azure Site Recovery on Azure Stack Hub, updates might require a complete re-installation (a complete removal and then re-add) of the service.
 
 To enable replication of VMs across two Azure Stack Hub stamps, configure the following environments:
 
