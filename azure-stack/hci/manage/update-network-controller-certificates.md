@@ -1,6 +1,6 @@
 ---
 title: Renew SDN Network Controller expired or near expiry certificates
-description: This article describes how to renew Network Controller certificates before they expire.
+description: This article describes how to renew Network Controller certificates before they expire or have already expired.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
