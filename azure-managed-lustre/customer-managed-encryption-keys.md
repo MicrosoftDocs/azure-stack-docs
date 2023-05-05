@@ -4,9 +4,7 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/22/2023
-ms.reviewer: sethm
-ms.date: 02/21/2023
+ms.date: 05/05/2023
 
 ---
 
@@ -40,9 +38,11 @@ You can use either a pre-existing key vault and key, or you can create new ones 
 Set up an Azure key vault to store your encryption keys. The key vault and key must meet these requirements to work with Azure Managed Lustre.
 
 #### Key vault properties
-The following settings are required for use with Azure Managed Lustre. Options that are not listed may be configured as needed.
+
+The following settings are required for use with Azure Managed Lustre. You can configure options that are not listed as needed.
 
 Basics:
+
 * **Subscription** - Use the same subscription that will be used for the Azure Managed Lustre cluster.
 * **Region** - The key vault must be in the same region as the Azure Managed Lustre cluster.
 * **Pricing tier** - Standard tier is sufficient for use with Azure Managed Lustre.
@@ -50,6 +50,7 @@ Basics:
 * **Purge protection** - Enable purge protection.
 
 Access policy:
+
 * **Access Configuration** - Set to Azure role-based access control.
 
 Networking:
@@ -58,9 +59,9 @@ Networking:
 * **Allow Access** - Must be set to "all networks"
 
 > [!NOTE]
-> If you are using an existing key vault, you can review the Network settings section to confirm that "Allow access from" is set to "Allow public access from all networks," or make changes if necessary.
+> If you are using an existing key vault, you can review the network settings section to confirm that **Allow access from** is set to **Allow public access from all networks**, or make changes if necessary.
 
-#### Key properties:
+#### Key properties
 
 * **Key type** - RSA
 * **RSA key size** - 2048
