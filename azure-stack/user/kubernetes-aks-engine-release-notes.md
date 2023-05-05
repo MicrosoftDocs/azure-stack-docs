@@ -3,7 +3,7 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/12/2023
+ms.date: 05/03/2023
 ms.author: sethm
 ms.reviewer: sumsmith
 ms.lastreviewed: 09/23/2022
@@ -16,7 +16,7 @@ ms.lastreviewed: 09/23/2022
 # Release notes for AKS engine on Azure Stack Hub
 
 ::: moniker range=">=azs-2206"
-*Applies to version v0.75.3 of the AKS engine.*
+*Applies to version v0.76.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for AKS engine for global Azure.
 
@@ -33,7 +33,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ### Use the upgrade command
 
-You'll be required to use the AKS engine `upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You are required to use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -55,7 +55,7 @@ As explained in the documentation for AKS engine for Azure Stack Hub, deploying 
 - AKS Base Ubuntu 16.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 20.04 instead)
 - AKS Base Ubuntu 18.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 20.04 instead)
 - AKS Base Ubuntu 20.04-LTS Image Distro (required for Linux agents)
-- AKS Base Windows Server Image (one of the following is required for Windows agents)
+- AKS Base Windows Server Image (one of the following images is required for Windows agents)
     - AKS Base Windows Server Image Containerd
     - AKS Base Windows Server Image Docker
 
@@ -65,19 +65,23 @@ New versions of these are available with this update:
 
     Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md)
 
+<<<<<<< HEAD
 -   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine. See instructions in the following article, [Install AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the **get-akse.sh** script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+=======
+-   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update overwrites the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md)#install-in-a-connected-environment. The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ### Upgrading Kubernetes clusters created with the Ubuntu 16.04 distro
 
-Starting with AKS Engine v0.63.0, the Ubuntu 16.04 distro is not longer a supported option as the OS reached its end-of-life. For AKS Engine v0.67.0 or later versions, aks-engine upgrade will automatically overwrite the unsupported `aks-ubuntu-16.04` distro value with with `aks-ubuntu-18.04`. For AKS Engine v0.75.3 or later versions, if using Kubernetes v1.24 or above, aks-engine-azurestack upgrade will automatically overwrite the unsupported `aks-ubuntu-16.04` distro value with `aks-ubuntu-20.04`.
+Starting with AKS Engine v0.63.0, the Ubuntu 16.04 distro is not longer a supported option as the OS reached its end-of-life. For AKS Engine v0.67.0 or later versions, aks-engine upgrade automatically overwrites the unsupported `aks-ubuntu-16.04` distro value with with `aks-ubuntu-18.04`. For AKS Engine v0.75.3 or later versions, if using Kubernetes v1.24 or above, aks-engine-azurestack upgrade automatically overwrites the unsupported `aks-ubuntu-16.04` distro value with `aks-ubuntu-20.04`.
 
 ### Upgrading Kubernetes clusters created with the Ubuntu 18.04 distro
 
-Starting with AKS Engine v0.75.3, the Ubuntu 18.04 distro is not longer a supported option as the OS reached its end-of-life. For AKS Engine v0.75.3 or later versions, aks-engine-azurestack upgrade will automatically overwrite the unsupported `aks-ubuntu-18.04` distro value with `aks-ubuntu-20.04`.
+Starting with AKS Engine v0.75.3, the Ubuntu 18.04 distro is not longer a supported option as the OS reached its end-of-life. For AKS Engine v0.75.3 or later versions, aks-engine-azurestack upgrade automatically overwrites the unsupported `aks-ubuntu-18.04` distro value with `aks-ubuntu-20.04`.
 
 ### Upgrading Kubernetes clusters created with docker container runtime
 
-In Kubernetes v1.24, the dockershim component was removed from kubelet. As a result, the docker container runtime is no longer a supported option. See [Kubernetes v1.24 release notes](https://kubernetes.io/blog/2022/05/03/kubernetes-1-24-release-announcement/#dockershim-removed-from-kubelet) for more information. For AKS Engine v0.75.3 or later versions, aks-engine-azurestack upgrade will automatically overwrite the unsupported `docker` containerRuntime value with `containerd`.
+In Kubernetes v1.24, the dockershim component was removed from kubelet. As a result, the docker container runtime is no longer a supported option. See [Kubernetes v1.24 release notes](https://kubernetes.io/blog/2022/05/03/kubernetes-1-24-release-announcement/#dockershim-removed-from-kubelet) for more information. For AKS Engine v0.75.3 or later versions, aks-engine-azurestack upgrade automatically overwrites the unsupported `docker` containerRuntime value with `containerd`.
 
 For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 can use the Windows base image with Docker runtime. Clusters with windows nodes on Kubernetes v1.24 can use the Windows base image with Containerd runtime.
 
@@ -90,8 +94,8 @@ For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 
 | 2005                                           | 0.48.0, 0.51.0, 0.55.0, 0.55.4 |
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0, 0.67.3 |
-| 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0, 0.71.0, 0.73.0*, 0.75.3* |
-| 2206                                           | 0.70.0, 0.71.0, 0.73.0*, 0.75.3* |
+| 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0, 0.71.0, 0.73.0, 0.75.3*, 0.76.0* |
+| 2206                                           | 0.70.0, 0.71.0, 0.73.0, 0.75.3*, 0.76.0* |
 
 > [!Note]  
 > *Supported. See [AKS Engine Version Support policy](../user/azure-stack-kubernetes-aks-engine-support.md#version-support) for more information. 
@@ -99,7 +103,7 @@ For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 
 
 ### AKS engine and corresponding image mapping
 
-You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub in the table below. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. 
+You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub in the following table. Don't follow the aks-engine get-versions command since the command one also includes the versions supported in global Azure. 
 
 
 |      AKS engine     |      AKS base image     |      Kubernetes versions     |      API model samples     |
@@ -116,27 +120,32 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 | [v0.70.0](https://github.com/Azure/aks-engine/releases/tag/v0.70.0)   | [AKS Base Ubuntu 18.04-LTS Image Distro, 2022 Q2 (2022.04.07)](https://github.com/Azure/aks-engine/blob/v0.70.0/vhd/release-notes/aks-engine-ubuntu-1804/aks-engine-ubuntu-1804-202112_2022.04.07.txt), [AKS Base Windows Image (17763.2565.220408)](https://github.com/Azure/aks-engine/blob/v0.70.0/vhd/release-notes/aks-windows/2019-datacenter-core-smalldisk-17763.2565.220408.txt)  | 1.21.10*, 1.22.7* | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.71.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.71.0/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.71.0](https://github.com/Azure/aks-engine/releases/tag/v0.71.0)   | [AKS Base Ubuntu 18.04-LTS Image Distro, 2022 Q3 (2022.08.12)](https://github.com/Azure/aks-engine/blob/v0.71.0/vhd/release-notes/aks-engine-ubuntu-1804/aks-engine-ubuntu-1804-202112_2022.08.12.txt), [AKS Base Windows Image (17763.3232.220805)](https://github.com/Azure/aks-engine/blob/v0.71.0/vhd/release-notes/aks-windows/2019-datacenter-core-smalldisk-17763.3232.220805.txt)  | 1.22.7*, 1.23.6* | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.73.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.73.0/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.73.0](https://github.com/Azure/aks-engine/releases/tag/v0.73.0)   | [AKS Base Ubuntu 18.04-LTS Image Distro, 2022 Q4 (2022.11.02)](https://github.com/Azure/aks-engine/blob/v0.73.0/vhd/release-notes/aks-engine-ubuntu-1804/aks-engine-ubuntu-1804-202112_2022.11.02.txt), [AKS Base Windows Image (17763.3532.221102)](https://github.com/Azure/aks-engine/blob/v0.73.0/vhd/release-notes/aks-windows/2019-datacenter-core-smalldisk-17763.3532.221102.txt)  | 1.22.15*, 1.23.13* | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/examples/azure-stack/kubernetes-windows.json)) |
-| [v0.75.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2023.032.2)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2023.032.2.txt), [AKS Base Windows Server 2019 Image Docker (17763.3887.20230332)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows/2019-datacenter-core-azurestack-smalldisk-17763.3887.20230332.txt), [AKS Base Windows Server 2019 Image Containerd (17763.3887.20230332)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.3887.20230332.txt) | 1.23.15*, 1.24.9** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-windows.json)) |
+| [v0.75.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2023.032.2)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2023.032.2.txt), [AKS Base Windows Server 2019 Image Docker (17763.3887.20230332)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows/2019-datacenter-core-azurestack-smalldisk-17763.3887.20230332.txt), [AKS Base Windows Server 2019 Image Containerd (17763.3887.20230332)](https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.3887.20230332.txt) | 1.23.15*, 1.24.9** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/v0.76.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/v0.76.0/examples/azure-stack/kubernetes-windows.json)) |
+| [v0.76.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.76.0)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2023.116.3)](https://github.com/Azure/aks-engine-azurestack/blob/v0.76.0/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2023.116.3.txt), [AKS Base Windows Server 2019 Image Containerd (17763.4252.20231163)](https://github.com/Azure/aks-engine-azurestack/blob/v0.76.0/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.4252.20231163.txt) | 1.24.11**, 1.25.7** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-windows.json)) |
 
 > [!Note]  
 > *Starting from Kubernetes v1.21, **only** [Cloud Provider for Azure](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) is supported on Azure Stack Hub.
 
 > [!Note]  
-> ** Starting from Kubernetes v1.24, **ONLY** the `containerd` container runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker container runtime*](#upgrading-kubernetes-clusters-created-with-docker-container-runtime) for more details.
+> ** Starting from Kubernetes v1.24, **ONLY** the `containerd` container runtime is supported. Refer to the section [*Upgrading Kubernetes clusters created with docker container runtime*](#upgrading-kubernetes-clusters-created-with-docker-container-runtime) for more details.
 
-## What's new with AKSe 0.75.3
-
-AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in the [Create Linux Client](./azure-stack-kubernetes-aks-engine-deploy-linux.md) and [Create Windows Client](./azure-stack-kubernetes-aks-engine-deploy-windows.md) directions. Please create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any. 
-
-AKS Engine release v0.75.3 on Azure Stack Hub offers Ubuntu 20.04 LTS as its Linux base image. Starting from this release, Ubuntu 18.04 will no longer be supported. Please refer to the section [*Upgrading Kubernetes clusters created with the Ubuntu 18.04 Distro*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-the-ubuntu-18.04-distro) for more details. 
-
-Starting from Kubernetes v1.24, only the `containerd` runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker runtime*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-docker-runtime) for more details. For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 can use [the Windows base image with Docker runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows/2019-datacenter-core-azurestack-smalldisk-17763.3887.20230332.txt). Clusters with windows nodes on Kubernetes v1.24 can use [the Windows base image with Containerd runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.3887.20230332.txt).
- 
- You can find additional features at [v0.75.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3). 
- 
  ## Update planning
 
 The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+
+### What's new with AKSe 0.76.0
+ - Added support for Kubernetes v1.24.11 and v1.25.7
+ - You can find other features at [v0.76.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.76.0)
+
+### What's new with AKSe 0.75.3 and above
+
+AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in the [Create Linux Client](./azure-stack-kubernetes-aks-engine-deploy-linux.md) and [Create Windows Client](./azure-stack-kubernetes-aks-engine-deploy-windows.md) directions. Create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any. 
+
+AKS Engine release v0.75.3 on Azure Stack Hub offers Ubuntu 20.04 LTS as its Linux base image. Starting from this release, Ubuntu 18.04 will no longer be supported. Refer to the section [*Upgrading Kubernetes clusters created with the Ubuntu 18.04 Distro*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-the-ubuntu-18.04-distro) for more details. 
+
+Starting from Kubernetes v1.24, only the `containerd` runtime is supported. Please refer to the section [*Upgrading Kubernetes clusters created with docker runtime*](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#upgrading-kubernetes-clusters-created-with-docker-runtime) for more details. For AKS Engine release v0.75.3, clusters with windows nodes on Kubernetes v1.23 can use [the Windows base image with Docker runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows/2019-datacenter-core-azurestack-smalldisk-17763.3887.20230332.txt). Clusters with windows nodes on Kubernetes v1.24 can use [the Windows base image with Containerd runtime]( https://github.com/Azure/aks-engine-azurestack/blob/v0.75.3/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.3887.20230332.txt).
+ 
+ You can find more features at [v0.75.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3). 
 
 ### Instructions to use AKS engine 0.70.0 and above
 
@@ -148,7 +157,7 @@ To use AKS engine 0.70.0 and above:
     Use the sample API model provided for appropriate version in the [AKS engine and corresponding image mapping](#aks-engine-and-corresponding-image-mapping) table.  
 
  - **If you're creating a new cluster, but want to use your existing API model**:  
-    Modify your API model by following the [Cloud Provider for Azure](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) instructions. Failure to include the new setting will result in a deployment error. 
+    Modify your API model by following the [Cloud Provider for Azure](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) instructions. Failure to include the new setting results in a deployment error. 
 
  - **If you're using storage volumes**:  
     Make sure that you're using the AzureDiskCSI driver. Version 0.70.0 and above only support CSI drivers, not the legacy *in-tree* storage provider. To upgrade, follow the instructions to [upgrade while using storage volumes](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure).
@@ -156,12 +165,17 @@ To use AKS engine 0.70.0 and above:
 ### Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
+<<<<<<< HEAD
 -   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
 - AKS Engine v0.67.0 uses the wrong Windows image when deploying Windows clusters. To resolve this issue, users should use v0.70.0.
+=======
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+- AKS Engine v0.67.0 uses the wrong Windows Image when deploying Windows clusters, users should use v0.70.0 to solve this issue.
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ### Reference
 
-This is the complete set of release notes for Azure and Azure Stack Hub combined:
+The list below is the complete set of release notes for Azure and Azure Stack Hub combined:
 
 -   https://github.com/Azure/aks-engine/releases/tag/v0.64.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.65.0
@@ -172,6 +186,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.70.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.71.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.73.0
+-   https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.75.3
 
 ::: moniker-end
 
@@ -197,7 +212,11 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
+<<<<<<< HEAD
 You will be required to use AKS engine `upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+=======
+You are required to use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ### Upgrade interruptions
 
@@ -218,13 +237,17 @@ As explained in the documentation for AKS engine on Azure Stack Hub, deploying a
 - AKS Base Ubuntu 18.04-LTS Image Distro (required for Linux agents)
 - AKS Base Windows Server Image Distro (required for Windows agents)
 
-New versions of these are available with this update:
+New versions of these images are available with this update:
 
 - Check the table [AKS engine and Azure Stack version mapping](#aks-engine-and-azure-stack-version-mapping) for the needed AKS base images.
 
   Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md)
 
+<<<<<<< HEAD
 - The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine version 0.67.0. See instructions in the following article, [Install AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the **get-akse.sh** script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+=======
+-   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) needs to download the new aks-engine version 0.67.0. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update overwrites the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ## Upgrading Kubernetes clusters created with the Ubuntu 16.04 distro
 
@@ -264,7 +287,11 @@ You can find the current version and upgrade version for Azure Stack Hub in the 
 | 1.19.10                                               | 1.19.15, 1.20.11      |
 | 1.20.6                                                | 1.20.11               |
 
+<<<<<<< HEAD
 In the API model .json file, please specify the release and version values under the orchestratorProfile section. For example, to deploy Kubernetes 1.17.17, set the following two values. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
+=======
+In the API Model json file, specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -294,7 +321,11 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
+<<<<<<< HEAD
 -   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
+=======
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ## Reference
 
@@ -383,7 +414,11 @@ You can find the current version and upgrade version for Azure Stack Hub in the 
 | 1.17.11                                                   | 1.17.17, 1.18.15      |
 | 1.17.17                                                   | 1.18.15               |
 
+<<<<<<< HEAD
 In the API model .json file, please specify the release and version values under the orchestratorProfile section. For example, to deploy Kubernetes 1.17.17, set the following two values. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
+=======
+In the API Model json file, please specify the release and version values under the orchestratorProfile section, for example, if you're planning to deploy Kubernetes 1.17.17, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ```json  
     -   "orchestratorRelease": "1.17",
@@ -418,7 +453,11 @@ New features include:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
+<<<<<<< HEAD
 -   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
+=======
+-   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ## Reference
 
@@ -510,7 +549,11 @@ You can find the current version and upgrade version for Azure Stack Hub in the 
 | 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
 | 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
 
+<<<<<<< HEAD
 In the API model .json file, please specify the release and version values in the `orchestratorProfile` section. For example, to deploy Kubernetes 1.16.14, set the following two values. must be set. For an example, see [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw).
+=======
+In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you're planning to deploy Kubernetes 1.16.14, the following two values must be set (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ```json  
     -   "orchestratorRelease": "1.16",
@@ -543,8 +586,13 @@ In the API model .json file, please specify the release and version values in th
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
+<<<<<<< HEAD
 -   Running `aks-engine get-versions` will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
 -   Because the aks-engine is in a source code repository that is shared by Azure and Azure Stack Hub, the many release notes and pull requests might wrongly lead you to believe the tool supports Kubernetes and OS platform versions other than those listed in the preceding table. Use that table only as your guide to this update.
+=======
+-   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there's not explicit way to discern what corresponds to Azure Stack Hub. Don't use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
+-   Since aks-engine tool is a shared source code repository across Azure and Azure Stack Hub, examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ## Reference
 
@@ -686,7 +734,11 @@ Following are a list of some of the bugs fixed and the complete set of release n
 
 -   Correct defaults order for setting `IPAddressCount` ([\#2358](https://github.com/Azure/aks-engine/issues/2358))
 
+<<<<<<< HEAD
 -   Update to use single **omsagent** .yaml file for all Kubernetes versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
+=======
+-   Update to use single omsagent yaml for all K8s versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
+>>>>>>> f6dd4dd14accf99c86112cc279b96a6d43af31be
 
 ### Release notes
 
