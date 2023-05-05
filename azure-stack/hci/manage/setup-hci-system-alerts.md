@@ -49,7 +49,7 @@ Alerts can be set up in the Azure portal to use Azure Insights workbooks if the 
 
 > [!IMPORTANT]
 > Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
-s
+
 1. From the Azure portal, navigate to Azure Monitor and select **Insights**.
 
     :::image type="content" source="media/alerts-logs-insights/hci-insights-preview.png" alt-text="Screenshot of Azure Stack HCI monitoring screen and the resources that are set up for alerts." lightbox="media/alerts-logs-insights/hci-insights-preview.png":::
@@ -58,7 +58,7 @@ s
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
-3. Select the blue **Logs view** icon to view and edit the query.
+3. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit the query.
 4. After the query loads, select **+ New alert rule**.
 
     :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
