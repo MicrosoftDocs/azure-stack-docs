@@ -137,7 +137,7 @@ For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-
 If you are using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the private endpoint setting **Integrate with private DNS Zone** during the creation of a new endpoint.
 * **Integrate with Private DNS zone** - Must be set to "Yes."
 
-![Image showing the DNS tab of the Enpoint setup process](./media/prerequisites/blob-endpoints-DNSsettings.png)
+![Screenshot showing the DNS tab of the Endpoint setup process.](./media/prerequisites/blob-endpoints-DNSsettings.png)
 
 ## Next steps
 
