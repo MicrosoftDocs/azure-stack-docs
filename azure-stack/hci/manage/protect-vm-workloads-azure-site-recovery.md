@@ -36,7 +36,7 @@ In the current implementation of Azure Site Recovery integration with Azure Stac
 
 The following diagram illustrates the overall workflow of Azure Site Recovery working in conjunction with Azure Stack HCI.
 
-![](media/cb9f6b85c82e4e15d40b539614747ca4.png)
+![Illustration describing Azure Site Recovery and Azure Stack HCI workflow.](../manage/media/azure-site-recovery/site-recovery-workflow.png)
 
 Here are the main steps that occur when using Site Recovery with an Azure Stack HCI cluster:
 
@@ -91,14 +91,19 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
 1. In the Azure portal, go to the **Overview** pane of the target cluster resource that is hosting VMs that you want to protect.
 
-    ![Graphical user interface Description automatically generated with medium confidence](media/16e13951174dfad788252b75e28e44bc.png
 1. In the right-pane, go to the **Capabilities** tab and select the **Disaster recovery** tile. As managed identity is enabled on your cluster, disaster recovery should be available.
+
+    ![Screenshot of Capabilities tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-1.png)
+
 1. In the right-pane, go to **Protect** and select **Protect VM workloads**.
 
-    ![Graphical user interface, application, website Description automatically generated](media/876e9e68b36038c81f09e549e9378092.png)
+    ![Screenshot of Protect VM workloads in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-2.png)
 
-    ![Graphical user interface, application Description automatically generated](media/aba41cc0cf67c2b2188339e014c61035.png)
 1. On the **Replicate VMs to Azure**, select **Prepare infrastructure**.
+
+    ![Screenshot of Prepare infrastructure in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-3.png)
+
+
 1. On the **Prepare infrastructure**, select an existing or create a new Recovery services vault. You will use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
     1. If you choose to create a new Recovery services vault, the subscription and resource groups are automatically populated.
     1. Provide a vault name and select the location of the vault same as where the cluster is deployed.
@@ -107,13 +112,13 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
         > [!IMPORTANT]
         > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Stack HCI cluster resource and its child resources.
 
-        ![Graphical user interface, text, application Description automatically generated](media/11399f3cd20c388757a3048c8e749bda.png)
+        Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
-        Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault).
+        ![Screenshot of Create Recovery Services vault in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-4.png)
 
 1. Select an existing **Hyper-V site** or create a new site.
 
-    ![](media/a3d328d9a90d5be7001fd434cf1ae5e5.png)
+    ![Screenshot of Create Recovery Services vault in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-5.png)
 
 1. Select an existing **Replication policy** or create new. This policy will be used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
 
