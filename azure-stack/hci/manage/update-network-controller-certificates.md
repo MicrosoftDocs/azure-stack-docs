@@ -1,5 +1,5 @@
 ---
-title: Renew Network Controller certificates before they expire
+title: Renew SDN Network Controller expired or near expiry certificates
 description: This article describes how to renew Network Controller certificates before they expire.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/19/2023
 ---
 
-# Renew Network Controller certificates before they expire
+# Renew Network Controller certificates that have expired or are nearing expiry
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
 
-This article provides instructions on how to renew or change Network Controller certificates before they expire, both manually and automatically. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
+This article provides instructions on how to renew or change Network Controller certificates before they expire or are already expired, both manually and automatically. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
-In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. You must renew them before they expire.
+In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. It is highly recommended to renew them before they expire.
 
 For an overview of Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 
@@ -63,7 +63,7 @@ You can renew your Network Controller certificates either manually or automatica
 Use the following instructions to manually renew REST certificates and Network Controller node certificates.
 
 > [!IMPORTANT]
-> If your Network Controller certificates have already expired, use the instructions in the [automatic renewal](update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates) section to renew the certificates.
+> If your Network Controller certificates have **already expired**, use the instructions in the [**automatic renewal**](update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates) section to renew the certificates.
 
 ## Renew REST certificates
 
