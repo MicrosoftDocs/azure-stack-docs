@@ -41,7 +41,7 @@ The following new features are available in the 2303.1 preview release of Supple
 - **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. You can now define a storage network intent for storage RDMA network interfaces and also add a second top-of-rack switch to provide redundancy if required. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
 
 - **Update improvements** - In this release, the following enhancements have been made for the solution updates: 
-    - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. <!--To learn more about update times, see [Track the update progress](../index.yml).-->
+    - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. To learn more about update times, see [Track the update progress](../update/update-via-powershell.md#step-3-download-check-readiness-and-install-updates).
     - With this release, you can update the cluster nodes following the addition or replacement of a node.
 
 
