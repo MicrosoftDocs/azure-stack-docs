@@ -33,23 +33,34 @@ After you create the file system, you can't change between customer-managed keys
 
 ## Prerequisites
 
-Complete these prerequisite steps before you create the Azure Managed Lustre system.
+You can use either a pre-existing key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key. 
 
 ### Create a key vault and key
 
 Set up an Azure key vault to store your encryption keys. The key vault and key must meet these requirements to work with Azure Managed Lustre.
 
-Key vault properties:
+#### Key vault properties
+The following settings are required for use with Azure Managed Lustre. Options that are not listed may be configured as needed.
 
-* **Subscription** - Use the same subscription that is used for the Azure Managed Lustre file system.
-* **Region** - The key vault must be in the same region as the file system.
+Basics:
+* **Subscription** - Use the same subscription that will be used for the Azure Managed Lustre cluster.
+* **Region** - The key vault must be in the same region as the Azure Managed Lustre cluster.
 * **Pricing tier** - Standard tier is sufficient for use with Azure Managed Lustre.
 * **Soft delete** - Azure Managed Lustre enables soft delete if it is not already configured on the key vault.
 * **Purge protection** - Enable purge protection.
-* **Access policy** - Default settings are sufficient.
-* **Network connectivity** - Azure Managed Lustre must be able to access the key vault, regardless of the endpoint settings you choose.
 
-Key properties:
+Access policy:
+* **Access Configuration** - Set to Azure role-based access control.
+
+Networking:
+
+* **Public Access** - Must be enabled.
+* **Allow Access** - Must be set to "all networks"
+
+> [!NOTE]
+> If you are using an existing key vault, you can review the Network settings section to confirm that "Allow access from" is set to "Allow public access from all networks," or make changes if necessary.
+
+#### Key properties:
 
 * **Key type** - RSA
 * **RSA key size** - 2048
