@@ -65,7 +65,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI server. However, if installed on an Azure Stack HCI server, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -103,7 +103,7 @@ You can run the validators from the following locations:
 
 - Locally from a workstation or a staging server.
 
-- Locally from the Azure Stack HCI server node. However, make sure to uninstall the Environment Checker before running the Deployment Tool to avoid any conflicts.
+- Locally from the Azure Stack HCI cluster node. However, make sure to uninstall the Environment Checker before running the Deployment Tool to avoid any conflicts.
 
 Select each of the following tabs to learn more about the corresponding validator.
 
@@ -123,7 +123,7 @@ You can use the connectivity validator to:
 
 To run the connectivity validator, follow these steps.
 
-1. Open PowerShell locally on the workstation, staging server, or Azure Stack HCI server.
+1. Open PowerShell locally on the workstation, staging server, or Azure Stack HCI cluster node.
 
 1. Run a connectivity validation by entering the following cmdlet:
 
