@@ -4,11 +4,14 @@ description: Learn how to deploy virtual machines in Azure Site Recovery on Azur
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/01/2023
+ms.date: 05/05/2023
 ---
 
 
 # Deployment overview (preview)
+
+> [!IMPORTANT]
+> During the public preview of Azure Site Recovery on Azure Stack Hub, updates might require complete re-installation (a complete removal and then re-add) of the service.
 
 To enable replication of virtual machines (VMs) across two Azure Stack Hub environments, you must configure the following environments:
 
