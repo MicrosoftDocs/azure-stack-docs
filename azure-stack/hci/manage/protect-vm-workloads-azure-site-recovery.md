@@ -122,7 +122,7 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
 1. Select an existing **Replication policy** or create new. This policy will be used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
 
-    ![Graphical user interface, text, application, email Description automatically generated](media/096c4eb6cc9c731fcdb55d0d77649dab.png)
+
 
 1. Select **Prepare infrastructure**. When you select **Prepare infrastructure**, the following actions occur:
     1. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
@@ -153,33 +153,31 @@ After the infrastructure preparation is complete, follow these steps to select t
 
         You can also choose to do the network configuration later.
 
-        ![Graphical user interface, application Description automatically generated](media/f1a48671e8b321baa408fd314fc7d31e.png)
+
 
         Once the VM is replicated, you can select the replicated VM and go to the **Compute and Network** setting and provide the network information.
 
 1. Select **Next**.
 1. On the **Virtual machine selection** tab, select the VMs to replicate, and then select **Next**. Make sure to review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
 
-    ![Graphical user interface, text, application, email Description automatically generated](media/57831d60839caf8bcc992fe0e9ea95e0.png)
 
-1. ![Graphical user interface, text, application, email Description automatically generated](media/8411174530a41245731ed218e34fce38.png)![Graphical user interface, text, application, email Description automatically generated](media/3d7a15b2dc4ee2544bf3aa1c252fbaae.png)
+
 1. On the **Replication settings** tab, select the operating system type, operating system disk and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
-1. ![Graphical user interface, text, application, email Description automatically generated](media/8411174530a41245731ed218e34fce38.png)
+
 1. On the **Replication policy** tab, verify that the correct replication policy is selected. This should be the same replication policy that you created when preparing the infrastructure. Select **Next**.
 1. On the **Review** tab, review your selections, and then select **Enable Replication**.
 
-    ![Graphical user interface, text, application, email Description automatically generated](media/9a7f1609f954c31adbbe586dfa3e014a.png)
+
 
 1. A notification indicating that the replication job is in progress is displayed. Go to **Protected items \> Replication items** to view the status of the replication health and the status of the replication job.
 
-    ![Graphical user interface, text, application, email Description automatically generated](media/1b80c37bf7693e708eaf7256e5923bdc.png)
+
 
 1. To monitor the VM replication, follow these steps.
-    1. ![Graphical user interface, text, application Description automatically generated](media/924f782de6c055f777610609f87d01b6.png)
+
     1. To view the **Replication health** and **Status**, select the VM and go to the Overview. You can see the percentage completion of the replication job.
     1. To see a more granular job status and **Job id**, select the VM and go to the **Properties** of the replicated VM.
-    1. ![Text Description automatically generated with medium confidence](media/e11836e446309b39710e50a69245dc63.png)
-    1. ![Table Description automatically generated](media/85901fc1e6c67daced4e5c59bcdba32f.png)
+
     1. To view the disk information, go to **Disks**. Once the replication is complete, the **Operating system disk** and **Data disk** should show as **Protected**.
 
 The next step is to configure a test failover.
@@ -191,9 +189,9 @@ Once the replication is complete, the VMs are protected. We do recommend that yo
 To prepare for fail over to an Azure VM, complete the following steps:
 
 1. If you did not specify the network configuration for the replicated VM, you can complete that configuration now.
-    1. First, make sure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](https://learn.microsoft.com/en-us/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
+    1. First, make sure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
     1. Select the VM and go to the **Compute and Network** settings and specify the virtual network and the subnet. The failed-over VM in Azure will attach to this virtual network and subnet.
-1. ![Graphical user interface, text, application, email Description automatically generated](media/75f9f67de4e4c68c12786d96c344db46.png)
+
 1. Once the replication is complete and the VM is **Protected** as reflected in the status, you can start **Test Failover**.
 1. To run a test failover, see the detailed instructions in [Run a disaster recovery drill to Azure](/azure/site-recovery/tutorial-dr-drill-azure#run-a-test-failover-for-a-single-vm).
 
