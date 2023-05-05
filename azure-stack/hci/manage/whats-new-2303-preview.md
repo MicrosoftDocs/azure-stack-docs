@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/06/2023
+ms.date: 05/05/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303 release (preview)
@@ -26,19 +26,7 @@ The Azure Stack HCI preview channel features preview versions of Azure Stack HCI
 
 Azure Stack HCI, 2303 Supplemental Package is now in preview. This package deploys on servers running Azure Stack HCI, version 22H2, which is now generally available. For more information on Azure Stack HCI, version 22H2, see [What's new](../whats-new.md).
 
-> [!IMPORTANT]
-> When you try out this new deployment tool, make sure that you do not run production workloads on systems deployed with the Supplemental Package while it's in preview even with the core operating system Azure Stack HCI 22H2 being generally available. Microsoft Customer Support will supply support services while in preview, but service level agreements available at GA do not apply.
-
-
-### Download Azure Stack HCI, 2303 Supplemental Package
-
-You can download the Supplemental Package here:  
-
-| Azure Stack HCI Supplemental Package component| URL                                             |
-|-----------------------------------------------|-------------------------------------------------|
-| Bootstrap PowerShell                           | https://go.microsoft.com/fwlink/?linkid=2210545 |
-| CloudDeployment.zip                           | https://go.microsoft.com/fwlink/?linkid=2210546 |
-| Verify Cloud Deployment PowerShell            | https://go.microsoft.com/fwlink/?linkid=2210608 |
+[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
 
 To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
 
@@ -49,7 +37,7 @@ The following new features are available in the 2303 preview release of Suppleme
 
 - **ISO refresh** - In this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to March 2023. <!--For more information, see how to [Install the March cumulative update](../index.yml).-->
 
-- **Solution Updates** - Starting with this release, we're introducing the Solution Updates functionality that will let you update to the next preview release. <!--To learn more about the new update experience, go to [Keep your Azure Stack HCI up-to-date](../index.yml).-->
+- **Solution Updates** - Starting with this release, we're introducing the Solution Updates functionality that will let you update to the next preview release. To learn more about the new update experience, go to [What's the Lifecycle Manager?](../update/whats-the-lifecycle-manager.md) and [Keep your Azure Stack HCI up-to-date](../update/update-azure-stack-hci-solution.md).
 
 - **Validate deployment** - Beginning this release, you can choose to validate the deployment configuration before you run it. The validation assesses the environment readiness and ensures that the actual deployment proceeds smoothly. For more information, see the validate deployment step in how to [Deploy interactively](../deploy/deployment-tool-new-file.md#step-5-validate-and-deploy).
 
