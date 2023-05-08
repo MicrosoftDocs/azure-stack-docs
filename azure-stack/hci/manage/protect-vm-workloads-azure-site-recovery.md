@@ -118,11 +118,11 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
 1. Select an existing **Hyper-V site** or create a new site.
 
-    ![Screenshot of Create Recovery Services vault in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-5.png)
+    ![Screenshot of Create Hyper-V site in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-5.png)
 
 1. Select an existing **Replication policy** or create new. This policy will be used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
 
-
+    ![Screenshot of Create replication policy in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-6.png)
 
 1. Select **Prepare infrastructure**. When you select **Prepare infrastructure**, the following actions occur:
     1. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
@@ -140,45 +140,60 @@ After the infrastructure preparation is complete, follow these steps to select t
 
 1. On **Step 2: Enable replication**, select **Enable replication**. You are now directed to the Recovery services vault where you can specify the VMs to replicate.
 
-    ![Graphical user interface, application Description automatically generated](media/4c53df7741cc2ff93e66fca6e25b543e.png)
+    ![Screenshot of Enable replication in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-1.png)
 
-1. ![](media/a3f908a79d3af0d2d488daf68f32ee5b.png)
 1. On the **Source environment** tab, specify the source location for your Hyper-V site. In this instance, you have set up the Hyper-V site on your Azure Stack HCI cluster. Select **Next**.
-1.  ![Graphical user interface, application Description automatically generated](media/e65b5967bf47b4e4aa438feb913d4a1f.png)On the **Target environment** tab, complete these steps:
+
+1. On the **Target environment** tab, complete these steps:
     1. For **Subscription**, enter or select the subscription.
     1. For **Post-failover resource group**, select the resource group name to which you will fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
     1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that will be used for the VM’s replication.
-    1. For the network configuration of the VMs that you’ve selected to replicate in Azure, provide a virtual network and a subnet that would be associated with the VMs in Azure. To create this network, see the instructions in [Create an Azure network for failover](https://learn.microsoft.com/en-us/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
+
+        ![Screenshot of target environment tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-2.png)
+
+    1. For the network configuration of the VMs that you’ve selected to replicate in Azure, provide a virtual network and a subnet that would be associated with the VMs in Azure. To create this network, see the instructions in [Create an Azure network for failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
 
         You can also choose to do the network configuration later.
 
-
+        ![Screenshot of target environment tab with Configure later selected in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-3.png)
 
         Once the VM is replicated, you can select the replicated VM and go to the **Compute and Network** setting and provide the network information.
 
 1. Select **Next**.
 1. On the **Virtual machine selection** tab, select the VMs to replicate, and then select **Next**. Make sure to review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
 
-
+    ![Screenshot of virtual selection tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-4.png)
 
 1. On the **Replication settings** tab, select the operating system type, operating system disk and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
 
+    ![Screenshot of Replication settings tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-5.png)
+
 1. On the **Replication policy** tab, verify that the correct replication policy is selected. This should be the same replication policy that you created when preparing the infrastructure. Select **Next**.
+
+    ![Screenshot of Replication policy tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-6.png)
+
 1. On the **Review** tab, review your selections, and then select **Enable Replication**.
 
-
+    ![Screenshot of Review tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-7.png)
 
 1. A notification indicating that the replication job is in progress is displayed. Go to **Protected items \> Replication items** to view the status of the replication health and the status of the replication job.
 
-
+    ![Screenshot of Replicated items in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-8.png)
 
 1. To monitor the VM replication, follow these steps.
 
     1. To view the **Replication health** and **Status**, select the VM and go to the Overview. You can see the percentage completion of the replication job.
+     
+        ![Screenshot of Overview of a replicated item in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-9.png)
+    
     1. To see a more granular job status and **Job id**, select the VM and go to the **Properties** of the replicated VM.
 
+        ![Screenshot of Properties of a replicated item in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-10.png)
+
     1. To view the disk information, go to **Disks**. Once the replication is complete, the **Operating system disk** and **Data disk** should show as **Protected**.
+
+        ![Screenshot of Disks for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-11.png)
 
 The next step is to configure a test failover.
 
