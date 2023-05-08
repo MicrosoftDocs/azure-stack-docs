@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/03/2023
+ms.date: 05/15/2023
 # zone_pivot_groups: hci-versions
 ---
 
