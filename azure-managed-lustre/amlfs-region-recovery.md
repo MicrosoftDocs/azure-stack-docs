@@ -38,7 +38,7 @@ To set up a cluster that is prepared for possible failover, follow these steps:
    1. [Archive your data to blob](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))
 
    > [NOTE]
-   > Azure Managed Lustre can be created programmatically, either through an [Azure Resource Manager template](../azure-resource-manager/templates/overview.md) or by [directly accessing its API](create-file-system-resource-manager.md). 
+   > Azure Managed Lustre can be created programmatically, either through an [Azure Resource Manager template](/azure/azure-resource-manager/templates/overview) or by [directly accessing its API](create-file-system-resource-manager.md). 
 
 ## Failover example
 
