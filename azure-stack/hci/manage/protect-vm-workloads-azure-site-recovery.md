@@ -11,7 +11,7 @@ ms.date: 05/05/2023
 
 [!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
 
-This guide describes how to protect Windows and Linux VM workloads running on your Azure Stack HCI clusters in the event of a disaster. You can use the Azure Site Recovery to replicate your on-premises Azure Stack HCI virtual machines (VMs) into Azure and protect your business critical workloads.
+This guide describes how to protect Windows and Linux VM workloads running on your Azure Stack HCI clusters if there is a disaster. You can use the Azure Site Recovery to replicate your on-premises Azure Stack HCI virtual machines (VMs) into Azure and protect your business critical workloads.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -79,7 +79,7 @@ Before you begin, make sure to complete the following prerequisites:
         Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Stack HCI resource and then retry the workflow. For more information, go to [Enable enhanced management from Azure for Azure Stack HCI](../index.yml).
 
     - The cluster must be Arc-enabled. If the cluster isn't Arc-enabled, you see an error in the Azure portal to the effect that the **Capabilities** tab isn't available.
-- You need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You’ll also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
+- You need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
 - [Review the caveats](#caveats) associated with the implementation of this feature.
 - [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
@@ -148,7 +148,7 @@ After the infrastructure preparation is complete, follow these steps to select t
     1. For **Subscription**, enter or select the subscription.
     1. For **Post-failover resource group**, select the resource group name to which you fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
-    1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that will be used for the VM’s replication.
+    1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that is used for the VM’s replication.
 
         ![Screenshot of target environment tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-2.png)
 
@@ -169,7 +169,7 @@ After the infrastructure preparation is complete, follow these steps to select t
 
     ![Screenshot of Replication settings tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-5.png)
 
-1. On the **Replication policy** tab, verify that the correct replication policy is selected. This should be the same replication policy that you created when preparing the infrastructure. Select **Next**.
+1. On the **Replication policy** tab, verify that the correct replication policy is selected. The selected policy should be the same replication policy that you created when preparing the infrastructure. Select **Next**.
 
     ![Screenshot of Replication policy tab in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-6.png)
 
@@ -225,7 +225,7 @@ To fail over to Azure, you can follow the instructions in [Fail over Hyper-V VMs
 
 ## Caveats
 
-Consider the following information before you use Azure Site Recovery to protect your on-premises VM workloads by replicating those to Azure.
+Consider the following information before you use Azure Site Recovery to protect your on-premises VM workloads by replicating those VMs to Azure.
 
 - Extensions installed by Arc aren’t visible on the Azure VMs. The Arc server will still show the extensions that are installed, but you can't manage those extensions (for example, install, upgrade, or uninstall) while the server is in Azure.
 - Guest Configuration policies won't run while the server is in Azure, so any policies that audit the OS security/configuration won't run until the machine is migrated back on-premises.
