@@ -55,6 +55,6 @@
     - name: Public preview support
       href: preview-support.md
 - name: Troubleshooting
-   items:
-   - name: Recover from a regional outage
-     href: amlfs-region-recovery.md
+  items:
+  - name: Recover from a regional outage
+    href: amlfs-region-recovery.md
