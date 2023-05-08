@@ -80,7 +80,7 @@ Before you begin, make sure to complete the following prerequisites:
 
     - The cluster must be Arc-enabled. If the cluster is not Arc-enabled, you will see an error in the Azure portal to the effect that the **Capabilities** tab is not available.
 - You’ll need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You’ll also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
-- [Review the caveats](#_Caveats) associated with the implementation of this feature.
+- [Review the caveats](#Caveats) associated with the implementation of this feature.
 - [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
 ## Step 1: Prepare infrastructure on your target host
@@ -208,6 +208,9 @@ To prepare for fail over to an Azure VM, complete the following steps:
     1. Select the VM and go to the **Compute and Network** settings and specify the virtual network and the subnet. The failed-over VM in Azure will attach to this virtual network and subnet.
 
 1. Once the replication is complete and the VM is **Protected** as reflected in the status, you can start **Test Failover**.
+
+    ![Screenshot of Test failover for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/run-test-failover-1.png)
+
 1. To run a test failover, see the detailed instructions in [Run a disaster recovery drill to Azure](/azure/site-recovery/tutorial-dr-drill-azure#run-a-test-failover-for-a-single-vm).
 
 ## Step 4: Create Recovery Plans
@@ -236,7 +239,7 @@ Here is a list of known issues and the associated workarounds in this release:
 | \# | Issue                   | Workaround/Comments    |
 |----|----------------------|---------------------------|
 | 1. | When you register Azure Site Recovery with a cluster, a node fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all servers in the cluster are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
-| 2. | Azure Site Recovery agent fails to install. No error details are seen at the cluster or server levels in the Azure Stack HCI portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  Installation fails as Hyper-V is not set up on the cluster. The Hyper-V host is already associated to a Hyper-V site and you are trying to install the extension with a different Hyper-V site.  |
+| 2. | Azure Site Recovery agent fails to install. No error details are seen at the cluster or server levels in the Azure Stack HCI portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V is not set up on the cluster. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you are trying to install the extension with a different Hyper-V site. </br>  |
 
 
 ## Next steps
