@@ -56,7 +56,7 @@ Alerts can be set up in the Azure portal to use Azure Insights workbooks if the 
 
     :::image type="content" source="media/alerts-logs-insights/workbooks-insights.png" alt-text="Screenshot of the workbooks and parameters for alerts." lightbox="media/alerts-logs-insights/workbooks-insights.png":::
 
-3. Once the workbook loads, set your time range, subscriptions and other parameters.
+3. Once the workbook loads, set your time range, subscriptions, and other parameters.
 
 4. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
 
