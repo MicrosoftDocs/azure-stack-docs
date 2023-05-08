@@ -58,7 +58,7 @@ Alerts can be set up in the Azure portal to use Azure Insights workbooks if the 
 
 3. Once the workbook loads, set your time range, subscriptions and other parameters.
 
-4. Select one of the tabs to view the health of those resources. For example, select **Servers** to view the health of servers in your cluster.
+4. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
 
 5. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit the query.
 
