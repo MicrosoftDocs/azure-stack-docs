@@ -7,10 +7,10 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/13/2022
+ms.date: 05/15/2022
 ---
 
-# Monitor multiple clusters with Azure Stack HCI Insights (preview)
+# Monitor multiple clusters with Azure Stack HCI Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -38,9 +38,9 @@ Azure Stack HCI Insights offers three primary benefits:
 
 To use Azure Stack HCI Insights, make sure you've completed the following:
 
-1. Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
-2. [Enable Log Analytics](/azure-stack/hci/manage/monitor-hci-single#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
-3. [Enable Insights](/azure-stack/hci/manage/monitor-hci-single#enable-insights) to allow Azure Monitor to start collecting the events that are required for monitoring.
+- Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
+
+- [Enable Insights](/azure-stack/hci/manage/monitor-hci-single#enable-insights) to allow Azure Monitor to start collecting the events that are required for monitoring.
 
 ## View health, performance, and usage insights
 
