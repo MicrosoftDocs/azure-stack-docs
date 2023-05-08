@@ -19,9 +19,9 @@ This guide describes how to protect Windows and Linux VM workloads running on yo
 
 *Azure Site Recovery* is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected if there's a disaster. For more information about Azure Site Recovery, see [About Site Recovery](/azure/site-recovery/site-recovery-overview).
 
-The disaster recovery strategy for Azure Site Recovery consists of the following :
+The disaster recovery strategy for Azure Site Recovery consists of the following steps:
 
-- **Replication** - Replication lets you replicate the target VM’s VHD to an Azure Storage account and thus protects your VM in case of a disaster.
+- **Replication** - Replication lets you replicate the target VM’s VHD to an Azure Storage account and thus protects your VM if there's a disaster.
 - **Failover** -  Once the VM is replicated, fail over the VM and run it in Azure. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
 - **Re-protect** – VMs are replicated back from Azure to the on-premises cluster.
 - **Failback** - You can fail back from Azure to the on-premises cluster.
@@ -34,13 +34,13 @@ In the current implementation of Azure Site Recovery integration with Azure Stac
 
 ## Overall workflow
 
-The following diagram illustrates the overall workflow of Azure Site Recovery working in conjunction with Azure Stack HCI.
+The following diagram illustrates the overall workflow of Azure Site Recovery working with Azure Stack HCI.
 
 ![Illustration describing Azure Site Recovery and Azure Stack HCI workflow.](../manage/media/azure-site-recovery/site-recovery-workflow.png)
 
 Here are the main steps that occur when using Site Recovery with an Azure Stack HCI cluster:
 
-1. Start with a registered Azure Stack HCI cluster on which you’ll enable Azure Site Recovery.
+1. Start with a registered Azure Stack HCI cluster on which you enable Azure Site Recovery.
 1. Make sure that you meet the [prerequisites](#prerequisites-and-planning) before you begin.
 1. Create the following resources in your Azure Stack HCI resource portal:
     1. Recovery services vault
@@ -69,17 +69,17 @@ The following table lists the scenarios that are supported for Azure Site Recove
 
 Before you begin, make sure to complete the following prerequisites:
 
-- The Hyper-V VMs that you intend to replicate should be made highly available for replication to happen. If VMs are not highly available, then the replication would fail. For more information, see [How to make an existing Hyper-V machine VM highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
+- The Hyper-V VMs that you intend to replicate should be made highly available for replication to happen. If VMs aren't highly available, then the replication would fail. For more information, see [How to make an existing Hyper-V machine VM highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
 - Make sure that Hyper-V is set up on the Azure Stack HCI cluster.
 - The servers hosting the VMs you want to protect must have internet access to replicate to Azure.
 - The Azure Stack HCI cluster must already be registered.
     - The cluster must be running March cumulative update for Azure Stack HCI, version 22H2.
-    - If you are running an earlier build, the Azure portal will indicate that the disaster recovery is not supported as managed identity is not enabled for older versions.
+    - If you're running an earlier build, the Azure portal indicates that the disaster recovery isn't supported as managed identity isn't enabled for older versions.
 
-        Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Stack HCI resource and then retry the workflow. For more information, go to *Enable enhanced management from Azure for Azure Stack HCI* private preview guide.
+        Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Stack HCI resource and then retry the workflow. For more information, go to [Enable enhanced management from Azure for Azure Stack HCI](../index.yml).
 
-    - The cluster must be Arc-enabled. If the cluster is not Arc-enabled, you will see an error in the Azure portal to the effect that the **Capabilities** tab is not available.
-- You’ll need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You’ll also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
+    - The cluster must be Arc-enabled. If the cluster isn't Arc-enabled, you see an error in the Azure portal to the effect that the **Capabilities** tab isn't available.
+- You need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You’ll also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
 - [Review the caveats](#caveats) associated with the implementation of this feature.
 - [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
@@ -104,7 +104,7 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
     ![Screenshot of Prepare infrastructure in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-3.png)
 
 
-1. On the **Prepare infrastructure**, select an existing or create a new Recovery services vault. You will use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
+1. On the **Prepare infrastructure**, select an existing or create a new Recovery services vault. You use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
     1. If you choose to create a new Recovery services vault, the subscription and resource groups are automatically populated.
     1. Provide a vault name and select the location of the vault same as where the cluster is deployed.
     1. Accept the defaults for other settings.
@@ -120,7 +120,7 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
     ![Screenshot of Create Hyper-V site in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-5.png)
 
-1. Select an existing **Replication policy** or create new. This policy will be used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
+1. Select an existing **Replication policy** or create new. This policy is used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
 
     ![Screenshot of Create replication policy in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/prepare-infra-6.png)
 
@@ -130,7 +130,7 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
     1. Managed Identity gets the vault registration key file from Recovery Services vault that you created and then the key file is used to complete the installation of the Azure Site Recovery agent. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
     1. Replication policy is associated with the specified Hyper-V site and the target cluster host is registered with the Azure Site Recovery service.
 
-        If you do not have owner level access to the subscription/resource group where you will create the vault, you’ll see an error to the effect that you do not have authorization to perform the action.
+        If you don't have owner level access to the subscription/resource group where you create the vault, you see an error to the effect that you don't have authorization to perform the action.
 
 1. Depending on the number of nodes in your cluster, the infrastructure preparation could take several minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of the window).
 
@@ -138,7 +138,7 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
 After the infrastructure preparation is complete, follow these steps to select the VMs to replicate.
 
-1. On **Step 2: Enable replication**, select **Enable replication**. You are now directed to the Recovery services vault where you can specify the VMs to replicate.
+1. On **Step 2: Enable replication**, select **Enable replication**. You're now directed to the Recovery services vault where you can specify the VMs to replicate.
 
     ![Screenshot of Enable replication in Azure portal for Azure Stack HCI cluster resource.](../manage/media/azure-site-recovery/enable-replication-1.png)
 
@@ -146,7 +146,7 @@ After the infrastructure preparation is complete, follow these steps to select t
 
 1. On the **Target environment** tab, complete these steps:
     1. For **Subscription**, enter or select the subscription.
-    1. For **Post-failover resource group**, select the resource group name to which you will fail over. When the failover occurs, the VMs in Azure are created in this resource group.
+    1. For **Post-failover resource group**, select the resource group name to which you fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
     1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that will be used for the VM’s replication.
 
@@ -203,9 +203,9 @@ Once the replication is complete, the VMs are protected. We do recommend that yo
 
 To prepare for fail over to an Azure VM, complete the following steps:
 
-1. If you did not specify the network configuration for the replicated VM, you can complete that configuration now.
+1. If you didn't specify the network configuration for the replicated VM, you can complete that configuration now.
     1. First, make sure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
-    1. Select the VM and go to the **Compute and Network** settings and specify the virtual network and the subnet. The failed-over VM in Azure will attach to this virtual network and subnet.
+    1. Select the VM and go to the **Compute and Network** settings and specify the virtual network and the subnet. The failed-over VM in Azure attaches to this virtual network and subnet.
 
 1. Once the replication is complete and the VM is **Protected** as reflected in the status, you can start **Test Failover**.
 
@@ -215,9 +215,9 @@ To prepare for fail over to an Azure VM, complete the following steps:
 
 ## Step 4: Create Recovery Plans
 
-*Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application comprising a collection of VMs. While it is possible to recover protected VMs individually, by adding the VMs comprising an application to a recovery plan, you'll be able to fail over the entire application through the recovery plan.
+*Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application comprising a collection of VMs. While it's possible to recover protected VMs individually, by adding the VMs comprising an application to a recovery plan, you're able to fail over the entire application through the recovery plan.
 
-You can also use the test failover feature of Recovery Plan to test the recovery of the application. Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate additional steps to be performed as part of the recovery process. Once you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal and create recovery plans for these VMs. [Learn more about recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
+You can also use the test failover feature of Recovery Plan to test the recovery of the application. Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate other steps to be performed as part of the recovery process. Once you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal and create recovery plans for these VMs. [Learn more about recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Step 5: Fail over to Azure
 
@@ -228,19 +228,19 @@ To fail over to Azure, you can follow the instructions in [Fail over Hyper-V VMs
 Consider the following information before you use Azure Site Recovery to protect your on-premises VM workloads by replicating those to Azure.
 
 - Extensions installed by Arc aren’t visible on the Azure VMs. The Arc server will still show the extensions that are installed, but you can't manage those extensions (for example, install, upgrade, or uninstall) while the server is in Azure.
-- Guest Configuration policies won't run while the server is in Azure, so any policies that audit the OS security/configuration will not run until the machine is migrated back on-premises.
-- Log data (including Sentinel, Defender, and Azure Monitor info) will be associated with the Azure VM while it's in Azure. Historical data will be associated with the Arc server. If it's migrated back on-prem, it will start being associated with the Arc server again. They can still find all the logs by searching by computer name as opposed to resource ID, but it's worth noting the Portal UX experiences look for data by resource ID so you'll only see a subset on each resource.
-- We strongly recommend that you do not install the Azure VM Guest Agent to avoid conflicts with Arc if there's any potential that the server will be migrated back on-premises. If you need to install the guest agent, make sure that the VM has extension management disabled. If you try to install/manage extensions using the Azure VM guest agent when there are already extensions installed by Arc on the same machine (or vice versa), you'll run into all sorts of issues because our agents are unaware of the previous extension installations and will encounter state reconciliation issues.
+- Guest Configuration policies won't run while the server is in Azure, so any policies that audit the OS security/configuration won't run until the machine is migrated back on-premises.
+- Log data (including Sentinel, Defender, and Azure Monitor info) will be associated with the Azure VM while it's in Azure. Historical data is associated with the Arc server. If it's migrated back on-premises, it starts being associated with the Arc server again. They can still find all the logs by searching by computer name as opposed to resource ID, but it's worth noting the Portal UX experiences look for data by resource ID so you'll only see a subset on each resource.
+- We strongly recommend that you don't install the Azure VM Guest Agent to avoid conflicts with Arc if there's any potential that the server will be migrated back on-premises. If you need to install the guest agent, make sure that the VM has extension management disabled. If you try to install/manage extensions using the Azure VM guest agent when there are already extensions installed by Arc on the same machine (or vice versa), you run into all sorts of issues because our agents are unaware of the previous extension installations and will encounter state reconciliation issues.
 
 ## Known issues
 
-Here is a list of known issues and the associated workarounds in this release:
+Here's a list of known issues and the associated workarounds in this release:
 
 | \# | Issue                   | Workaround/Comments    |
 |----|----------------------|---------------------------|
 | 1. | When you register Azure Site Recovery with a cluster, a node fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all servers in the cluster are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
-| 2. | Azure Site Recovery agent fails to install. No error details are seen at the cluster or server levels in the Azure Stack HCI portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V is not set up on the cluster. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you are trying to install the extension with a different Hyper-V site. </br>  |
-| 3. | Azure Site Recovery extension installation succeeds on one of the cluster nodes but fails to install on other nodes. Selecting the failed extension shows the following error message: *"Extension returned non-zero exit code for Enable: 13. . Extension error output: C:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Failed to register for ASR \nwith DRConfigurator.exe.\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,RegisterAsr.ps1\n \nC:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Checking if Credentials file \nexists.\nProcessing credentials file\nInstalling management cert\nInitializing registration process.\nStopping DR service\nGetting resource details\nThe ASR cannot be registered due to an internal error. Run Setup again to register the server.\nThe ASR cannot be registered due to an internal error. Run Setup again to register the server.* < br>Azure Site Recovery extension uses the Managed Identity to get a certificate with the private key (validity of 2 days). This certificate can be used for the registration of the extension against the Key Vault. When all the nodes query the Azure Site Recovery service for this certificate, each time a new certificate is generated, and the older certificates are invalidated. This results in the extension installation succeeding on one node but not on the rest.| To work around this issue, follow these steps in the cluster resource of your Azure Stack HCI cluster: <br><br> 1. In the Azure portal, browse to your Azure Stack HCI cluster resource. Go to **Overview > Nodes >**. Select the node where the extension installation failed. This will take you to the Arc for Servers portal blade. </br><br>2. In the left pane, go to **Extensions**.</br><br>3. Select the Azure Site Recovery extension and select **Uninstall**.</br><br>4. After the Azure Site Recovery extension is uninstalled from the node, open a PowerShell session on any of the nodes of the cluster.</br><br>5. Type `Sync-AzureStackHci`. This begins the Azure Site Recovery extension installation on the node. </br><br>6. Verify that the extension has installed successfully on the node.</br><br>  a. In the left pane, go to **Extensions** and verify that the extensions show up as **Succeeded** with a green check. </br><br>  b. On the node, go to the registry. Go to the following location: *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\Registration* and validate the key vault name, resource name and site name.</br>  |
+| 2. | Azure Site Recovery agent fails to install. No error details are seen at the cluster or server levels in the Azure Stack HCI portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the cluster. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
+| 3. | Azure Site Recovery extension installation succeeds on one of the cluster nodes but fails to install on other nodes. Selecting the failed extension shows the following error message: *"Extension returned nonzero exit code for Enable: 13. . Extension error output: C:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Failed to register for ASR \nwith DRConfigurator.exe.\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,RegisterAsr.ps1\n \nC:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Checking if Credentials file \nexists.\nProcessing credentials file\nInstalling management cert\nInitializing registration process.\nStopping DR service\nGetting resource details\nThe ASR can't be registered due to an internal error. Run Setup again to register the server.\nThe ASR can't be registered due to an internal error. Run Setup again to register the server.* <br><br>Azure Site Recovery extension uses the Managed Identity to get a certificate with the private key (validity of two days). This certificate can be used for the registration of the extension against the Key Vault. When all the nodes query the Azure Site Recovery service for this certificate, each time a new certificate is generated, and the older certificates are invalidated. This results in the extension installation succeeding on one node but not on the rest.| To work around this issue, follow these steps in the cluster resource of your Azure Stack HCI cluster: <br><br> 1. In the Azure portal, browse to your Azure Stack HCI cluster resource. Go to **Overview > Nodes >**. Select the node where the extension installation failed. This takes you to the Arc for Servers portal blade. </br><br>2. In the left pane, go to **Extensions**.</br><br>3. Select the Azure Site Recovery extension and select **Uninstall**.</br><br>4. After the Azure Site Recovery extension is uninstalled from the node, open a PowerShell session on any of the nodes of the cluster.</br><br>5. Type `Sync-AzureStackHci`. This begins the Azure Site Recovery extension installation on the node. </br><br>6. Verify that the extension has installed successfully on the node.</br><br>  a. In the left pane, go to **Extensions** and verify that the extensions show up as **Succeeded** with a green check. </br><br>  b. On the node, go to the registry. Go to the following location: *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\Registration* and validate the key vault name, resource name and site name.</br>  |
 
 
 ## Next steps
