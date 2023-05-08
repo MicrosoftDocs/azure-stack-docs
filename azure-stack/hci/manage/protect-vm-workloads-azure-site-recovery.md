@@ -80,7 +80,7 @@ Before you begin, make sure to complete the following prerequisites:
 
     - The cluster must be Arc-enabled. If the cluster is not Arc-enabled, you will see an error in the Azure portal to the effect that the **Capabilities** tab is not available.
 - You’ll need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You’ll also need read/write permissions on the Azure Stack HCI cluster resource and its child resources.
-- [Review the caveats](#Caveats) associated with the implementation of this feature.
+- [Review the caveats](#caveats) associated with the implementation of this feature.
 - [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
 ## Step 1: Prepare infrastructure on your target host
