@@ -2,9 +2,9 @@
 title: Troubleshoot Software Load Balancer (SLB) for SDN in Azure Stack HCI and Windows Server
 description: Learn how to troubleshoot Software Load Balancer for SDN in Azure Stack HCI and Windows Server.
 ms.topic: how-to
-ms.author: v-mandhiman
-author: ManikaDhiman
-ms.date: 05/03/2023
+ms.author: sethm
+author: sethmanheim
+ms.date: 05/09/2023
 ---
 
 # Troubleshoot Software Load Balancer for SDN
@@ -25,7 +25,7 @@ Here's the high-level workflow to troubleshoot SLB issues:
 
 ## Check the configuration state of the SLB Multiplexer VMs
 
-If the SLB MUX reports any failure, you must first check the configuration state of the SLB MUX VMs. To do this, you can either use Windows Admin Center or PowerShell.
+You must first check the configuration state of the SLB MUX VMs. To do this, you can either use Windows Admin Center or PowerShell.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
@@ -33,11 +33,9 @@ Follow these steps to check the configuration state of the SLB MUX through Windo
 
 1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to connect to.
 
-1. Under **Tools**, scroll down to the **Networking** area, and select **SDN Infrastructure** and then **Load Balancer**.
+1. Under **Tools**, scroll down to the **Networking** area. Select **SDN Infrastructure** and then select **Summary**. If there are issues with SLB, you will see it in the **Load Balancers MUX** section. If there are no issues, all the MUX VMs will be in the **Healthy** state.
 
-    If there are issues with SLB, you see alerts on the **Load Balancer** page.
-
-    If there is no issue with SLB, the status shows as **Healthy**.
+    :::image type="content" source="./media/software-load-balancer/software-load-balancer-multiplexer-state.png" alt-text="Screenshot of the SDN Infrastructure page in Windows Admin center that shows the state of Load Balancers MUX." lightbox="./media/software-load-balancer/software-load-balancer-multiplexer-state.png":::
 
 ### [PowerShell](#tab/powershell)
 
@@ -60,7 +58,18 @@ To check the configuration state of the MUX through PowerShell, run the followin
     ```powershell
     (Get-NetworkControllerLoadBalancerMux -ConnectionUri $uri).Properties.ConfigurationState.DetailedInfo
     ```
-<!--can we add sample output for these commands-->
+
+    Here's a sample output of the command usage:
+
+    ```output
+    (Get-NetworkControllerLoadBalancerMux -ConnectionUri $uri).Properties.ConfigurationState.DetailedInfo
+
+    Source                      Message                      Code
+    ------                      -------                      ----
+    SoftwareLoadBalancerManager Loadbalancer Mux is Healthy. Success
+    SoftwareLoadBalancerManager Loadbalancer Mux is Healthy. Success
+    ```
+
 ---
 
 ## Troubleshoot common configuration state errors
@@ -109,7 +118,7 @@ address as **192.168.200.1**:
 
 - If you have multiple switches configured, ensure that all of them are peered with the MUX VMs.
 
-- For further debugging related to failed BGP peering, run the `Test-SDNExpressBGP` script on any of the Azure Stack HCI host machines:
+- For further debugging related to failed BGP peering, run the `Test-SDNExpressBGP` script on any of the physical hosts:
 
     ```powershell
     Install-Module test-sdnexpressbgp
@@ -198,7 +207,7 @@ If there isn't any reachability and certificate issue, perform the following ste
 
 1. Check connection between the Network Controller and SLB host agent. Keep in mind that the SLB host agent connects to the Network Controller (SlbManager service) on port 8571. Various SLB policies are pushed via this connection.
 
-    To check connectivity between the Network Controller and SLB host agent, run `netstat` on the SLB host.
+    To check connectivity between the Network Controller and SLB host agent, run `netstat` on the physical host.
 
     Here's a sample output of the command usage:
 
@@ -223,31 +232,35 @@ You might get data path connectivity issues, even when the SLB MUX VMs are in a 
 
     1. To check the network security groups through PowerShell, run the following commands on a machine, which can issue REST commands to the Network Controller:
 
-        - On the NIC, run the following command:
+        - To get the details of NetworkInterface resource, run the following command:
 
             ```powershell
             Get-NetworkControllerNetworkInterface –ConnectionUri <REST uri of Network Controller> -ResourceId <Resource ID of the backend NIC>|ConvertTo-Json –Depth 10
             ```
 
-        - On the virtual network subnet, run the following command:
+        - To get the details of VirtualNetworkSubnet resource, run the following command:
     
             ```powershell
             Get-NetworkControllerVirtualNetwork –ConnectionUri <REST uri of Network Controller> -ResourceId <Resource ID of the network>|ConvertTo-Json –Depth 10 
             ```
 
-        - On the logical network subnet, run the following command:
+        - To get the details of LogicalNetworkSubnet resource, run the following command:
     
             ```powershell
             Get-NetworkControllerLogicalNetwork –ConnectionUri <REST uri of Network Controller> -ResourceId <Resource ID of the network>|ConvertTo-Json –Depth 10 
             ```
     
-    1. The output from the previous commands has a section for `AccessControlList`. You can check if any AccessControlList is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList`:
+    1. The output from the previous commands has a section for `AccessControlList`. You can check if any AccessControlList is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList` to check if the `AccessControlList` is blocking any SLB traffic:
     
         ```powershell
         Get-NetworkControllerAccessControlList –ConnectionUri <REST uri of Network Controller> - ResourceId <Resource ID of the AccessControlList>|ConvertTo-Json –Depth 10
         ```
     
-    You can also find all this information through the Windows Admin Center extensions. <!--can we add the extension name here?-->
+    You can also find all this information through the following Windows Admin Center extensions:
+
+    - **Logical Networks** for LNET details
+    - **Virtual Networks** for VNET details
+    - **Network Security Groups** for ACL details
 
 ## Collect SLB state dump
 
@@ -294,7 +307,7 @@ Move the primary of SlbManager service and ControllerService and restart the hos
 
         This restarts the processes on a different Network Controller VM.
 
-- To restart the host agents, on every Azure Stack HCI host, run the following command:
+- To restart the host agents, on every physical host, run the following command:
 
     ```powershell
     Restart-Service nchostagent --force
@@ -343,7 +356,7 @@ The following logs should be collected only for a short duration. Start the logg
         netsh trace convert input=<trace file> ov=yes
         ```
 
-- **SLB host agent traces.** These traces must be collected on the Azure Stack HCI hosts. Follow these steps to collect traces:
+- **SLB host agent traces.** These traces must be collected on the physical hosts. Follow these steps to collect traces:
 
     1. To start logging, run the following command:
     
@@ -365,7 +378,7 @@ The following logs should be collected only for a short duration. Start the logg
         netsh trace convert input=<trace file> ov=yes
         ```
 
-- **VFP traces.** These traces must be collected on the Azure Stack HCI hosts where the MUX VM and the tenant VMs are present. Follow these steps to collect traces:
+- **VFP traces.** These traces must be collected on the physical hosts where the MUX VM and the tenant VMs are present. Follow these steps to collect traces:
 
     1. To start logging, run the following command:
     
