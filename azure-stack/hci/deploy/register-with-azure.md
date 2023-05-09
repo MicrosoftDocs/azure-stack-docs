@@ -87,9 +87,6 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
 1. If your cluster isn't registered, under **Azure Stack HCI registration**, select **Register** to proceed.
 
    > [!NOTE]
-   > You can also register your cluster from the **Tools** > **Azure Arc** dashboard, which is currently in preview.
-
-   > [!NOTE]
    > If you didn't register Windows Admin Center with Azure earlier, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
 1. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list.
@@ -145,7 +142,7 @@ Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you
    >
    > If you're registering in Azure Government, use `-EnvironmentName "AzureUSGovernment" -Region "UsGovVirginia"`.
 
-1. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, follow the device code-based login workflow, as guided on the console. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
+1. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 3. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, follow the device code-based login workflow, as guided on the console. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
 
 ---
 
