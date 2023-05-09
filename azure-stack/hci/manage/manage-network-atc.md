@@ -144,7 +144,7 @@ This value enables or disables the intent-based live migration cluster network s
 
 ###### Enable virtual machine migration: performance selection
 
-This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled ($true) and results in the system automatically determining the best live migration transport, for example: SMB, Compression, TCP.
+This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled and results in the system automatically determining the best live migration transport, for example: SMB, Compression, TCP.
 
 If disabled:
 
@@ -154,7 +154,7 @@ If disabled:
 
 ###### Virtual machine migration performance option
 
-Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system uses the selection logic outlined in this spec to determine the best transport.
+Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system calculates the best option based on the system configuration and capabilities.
 
 ###### Maximum concurrent virtual machine migrations
 
