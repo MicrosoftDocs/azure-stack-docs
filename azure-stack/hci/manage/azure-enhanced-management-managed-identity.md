@@ -29,13 +29,13 @@ The managed identity serves as an identity for the various components of your cl
 
 - **Azure Monitor HCI Insights with Azure Monitor Agent** – The enhanced HCI Insights feature in Azure Monitor requires the Azure Monitor Agent instead of the legacy Microsoft Monitoring Agent (MMA). The Azure Monitor Agent uses managed identity to send logs and data to your Log Analytics workspace.
 
-    For more information, see *Monitor Azure Stack HCI with Azure Monitor HCI Insights March Private Preview Guide*.
+    For more information, see [Monitor Azure Stack HCI with Azure Monitor Insights](../index.yml).
 
 - **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical VM workloads running on Azure Stack HCI cluster by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Stack HCI cluster managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Stack HCI clusters.
 
     The Arc for Server extension uses the cluster managed identity to download the key credential file to every node of the cluster. If a new node is added to your cluster, Azure Stack HCI automatically triggers the installation of Arc for Server extension for Azure Site Recovery on the new node. In the absence of managed identity, this was previously a manual step that required you to install the agent to each node that was added to the cluster.
 
-    For more information, see *Protect VM workloads with Azure Site Recovery on Azure Stack HCI* *Private Preview Guide*.
+    For more information, see [Protect VM workloads with Azure Site Recovery on Azure Stack HCI](./azure-site-recovery.md).
 
 With this feature enhancement, the following actions can be initiated from Azure and applied to the Azure Stack HCI system within seconds:
 
@@ -63,7 +63,7 @@ To reach the Azure Service Bus endpoint required by this feature, include the fo
 For clusters running version 22H2, to enable Azure management and managed identity, follow these steps:
 
 1. Install the March 2023 cumulative update for Azure Stack HCI, version 22H2.
-1. While this feature is in preview for the next few months, it is disabled by default in the cumulative update behind a Known Issue Rollback (KIR) mechanism. To enable the feature on the cluster, you need to enable the feature on each cluster node, then reboot each node. There are two options to enable the feature on each node:
+1. SHOULD WE REMOVE THIS STEP? While this feature is in preview for the next few months, it is disabled by default in the cumulative update behind a Known Issue Rollback (KIR) mechanism. To enable the feature on the cluster, you need to enable the feature on each cluster node, then reboot each node. There are two options to enable the feature on each node:
     1. [Download the KIR MSI file](https://download.microsoft.com/download/6/8/9/6893d47b-5fbf-41e1-88f5-4d8c64d4694d/Azure%20Stack%20HCI%2022H2%20KB5023705%20230228_00001%20Feature%20Preview.msi) for this feature and apply the included group policy definition to the cluster nodes. Learn more on [how to apply the KIR using Group Policy](/troubleshoot/windows-client/group-policy/use-group-policy-to-deploy-known-issue-rollback#apply-kir-to-a-single-device-using-group-policy).
     1. Create and set the following registry value on each cluster node:
         - Registry key: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\Microsoft\\FeatureManagement\\Overrides
@@ -88,7 +88,7 @@ For clusters running version 22H2, to enable Azure management and managed identi
         Update-Module -Name Az.StackHCI
         ```
 
-1. Skip this step and go to the next if your cluster is already registered. If your cluster has not been previously registered to Azure, [register your cluster with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
+1. Skip this step and go to the next step if your cluster is already registered. If your cluster has not been previously registered to Azure, [register your cluster with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
 1. If the cluster is already registered to Azure, rerun the registration. Use of `RepairRegistration` parameter will help configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group and other settings.
 
     ```powershell
