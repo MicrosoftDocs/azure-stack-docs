@@ -32,8 +32,7 @@ To set up a cluster that is prepared for possible failover, follow these steps:
    1. Cluster capacity
    1. Details about client machines, if they are located in the same region as the cluster
    1. Mount command for use by cluster clients
-1. Add and implement a checkpoint to the workflow
-   1. [Archive your data to blob](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))
+1. Add and implement a checkpoint to the workflow: [Archive your data to blob](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 
    > [!NOTE]
    > Azure Managed Lustre can be created programmatically, either through an [Azure Resource Manager template](/azure/azure-resource-manager/templates/overview) or by [directly accessing its API](create-file-system-resource-manager.md). 
