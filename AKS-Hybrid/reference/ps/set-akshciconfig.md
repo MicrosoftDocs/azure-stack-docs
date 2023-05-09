@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS hybrid
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 04/11/2023
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/25/2023
+ms.lastreviewed: 04/11/2023
 ms.reviewer: jeguan
 
 ---
@@ -28,6 +28,7 @@ Set-AksHciConfig  -imageDir <String>
                  [-createAutoConfigContainers {true, false}]
                  [-offlineDownload]
                  [-offsiteTransferCompleted]
+                 [-mode {minimum, full}]
                  [-stagingShare <String>]
                  [-nodeConfigLocation <String>]
                  [-controlPlaneVmSize <VmSize>]
@@ -86,7 +87,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocat
 
 ### -imageDir
 
-The path to the directory in which AKS hybrid will store its VHD images. This parameter is required. The path must point to a shared storage path, such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share, such as `\\FileShare\ImageStore`.
+The path to the directory in which AKS hybrid stores its VHD images. This parameter is required. The path must point to a shared storage path, such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share, such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -102,7 +103,7 @@ Accept wildcard characters: False
 
 ### -workingDir
 
-This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`.
+A working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path, such as `c:\ClusterStorage\Volume2\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 
 ### -createAutoConfigContainers
 
-Allows you to disable auto distribution of VM data on your cluster shared volumes (CSV). To disable auto distribution, use `false` as the argument for this parameter. If auto distribution is disabled, only the CSV you selected for `imageDir` will be used. The default value is `true`.
+Allows you to disable auto distribution of VM data on your cluster shared volumes (CSV). To disable auto distribution, use `false` as the argument for this parameter. If auto distribution is disabled, only the CSV you selected for `imageDir` is used. The default value is `true`.
 
 ```yaml
 Type: System.Boolean
@@ -182,7 +183,23 @@ Accept wildcard characters: False
 
 ### -offsiteTransferCompleted
 
-Sets deployment to use artifacts downloaded offsite and transfered to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
+Sets deployment to use artifacts downloaded offsite and transferred to deployment server during [Install-AksHci](install-akshci.md). This flag is used in tandem with the `-offlineDownload` and `-stagingShare` parameter.
+
+### -mode
+
+The download mode you want to use for offline download. Use `minimum` if you want the minimum images for AKS hybrid deployment. This option includes the required Linux images and only the required Kubernetes image. Use `full` if you want all images for AKS hybrid deployment. This option includes all Linux and Windows images and all supported Kubernetes images. Use this parameter in tandem with the `-offlineDownload` parameter. The default is `full`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: full
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -stagingShare
 
@@ -234,7 +251,7 @@ Accept wildcard characters: False
 
 ### -sshPublicKey
 
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the AKS hybrid deployment. If you have your own SSH public key, pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location is generated and used.
+Path to an SSH public key file. Using this public key, you can log in to any of the VMs created by the AKS hybrid deployment. If you have your own SSH public key, pass its location here. If no key is provided, we look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair is generated in this location and used.
 
 ```yaml
 Type: System.String
@@ -298,7 +315,7 @@ Accept wildcard characters: False
 
 ### -cloudServiceCidr
 
-Provides a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format; for example, **192.168.1.2/16**. You may want to specify this parameter to ensure that anything important on the network is always accessible, because the IP address will not change. The default is `None`.
+Provides a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format; for example, **192.168.1.2/16**. You may want to specify this parameter to ensure that anything important on the network is always accessible, because the IP address does not change. The default is `None`.
 
 ```yaml
 Type: System.String
@@ -490,7 +507,7 @@ Accept wildcard characters: False
 
 ### -forceDnsReplication
 
-DNS replication can take up to an hour on some systems. This causes the deployment to be slow. If you experience this issue, you'll see that `Install-AksHci` will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will proceed as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This causes the deployment to be slow. If you experience this issue, you'll see that `Install-AksHci` is stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error is hidden, and the command proceeds as if the flag was not provided.
 
 ```yaml
 Type: System.String
@@ -506,7 +523,7 @@ Accept wildcard characters: False
 
 ### -skipValidationChecks
 
-Use this flag if you want to skip the validation checks of the environment infrastructure and user configuration input. These checks will highlight potential issues to address before proceeding with the install. We do not recommend using this setting.
+Use this flag if you want to skip the validation checks of the environment infrastructure and user configuration input. These checks highlight potential issues to address before proceeding with the install. We do not recommend using this setting.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
