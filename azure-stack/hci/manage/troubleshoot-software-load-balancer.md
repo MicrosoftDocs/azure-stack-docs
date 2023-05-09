@@ -250,13 +250,13 @@ You might get data path connectivity issues, even when the SLB MUX VMs are in a 
             Get-NetworkControllerLogicalNetwork –ConnectionUri <REST uri of Network Controller> -ResourceId <Resource ID of the network>|ConvertTo-Json –Depth 10 
             ```
     
-    1. The output from the previous commands has a section for `AccessControlList`. You can check if any AccessControlList is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList` to check if the `AccessControlList` is blocking any SLB traffic:
+    1. The output from the previous commands has a section for `AccessControlList`. You can check if any `AccessControlList` is attached to these resources. If yes, you can run the following command to verify the details of the `AccessControlList` to check if the `AccessControlList` is blocking any SLB traffic:
     
         ```powershell
         Get-NetworkControllerAccessControlList –ConnectionUri <REST uri of Network Controller> - ResourceId <Resource ID of the AccessControlList>|ConvertTo-Json –Depth 10
         ```
     
-    You can also find all this information through the following Windows Admin Center extensions:
+    You can also find all this information by using the following Windows Admin Center extensions:
 
     - **Logical Networks** for LNET details
     - **Virtual Networks** for VNET details
