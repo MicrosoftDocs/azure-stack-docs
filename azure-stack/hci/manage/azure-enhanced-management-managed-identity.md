@@ -88,7 +88,7 @@ For clusters running version 22H2, to enable Azure management and managed identi
         Update-Module -Name Az.StackHCI
         ```
 
-1. Skip this step and go to the next if your cluster is already registered. If your cluster has not been previously registered to Azure, [register your cluster with Azure](https://learn.microsoft.com/azure-stack/hci/deploy/register-with-azure). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
+1. Skip this step and go to the next if your cluster is already registered. If your cluster has not been previously registered to Azure, [register your cluster with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
 1. If the cluster is already registered to Azure, rerun the registration. Use of `RepairRegistration` parameter will help configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group and other settings.
 
     ```powershell
