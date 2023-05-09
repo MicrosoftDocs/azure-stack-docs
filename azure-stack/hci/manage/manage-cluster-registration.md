@@ -79,7 +79,7 @@ To view the status of the cluster and Arc resources, navigate to the resource gr
 
 ## Enable Azure Arc integration
 
-With Azure Stack HCI, version 21H2, the clusters are automatically Arc-enabled on registration. Azure Arc integration isn't available on Azure Stack HCI, version 20H2.
+Starting with Azure Stack HCI, version 21H2, the clusters are automatically Arc-enabled on registration. Azure Arc integration isn't available on Azure Stack HCI, version 20H2.
 
 You need to manually enable Azure Arc integration in the following scenarios:
 
@@ -108,7 +108,7 @@ For failures while enabling Arc, [see the guidance here for troubleshooting](../
 
 ## Upgrade Arc agent on cluster servers
 
-With Azure Stack HCI, version 21H2, to automatically update the Arc agent when a new version is available, make sure the cluster servers are configured with Microsoft Update. For more information, see [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent).
+Starting with Azure Stack HCI, version 21H2, to automatically update the Arc agent when a new version is available, make sure the cluster servers are configured with Microsoft Update. For more information, see [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent).
 
 Follow these steps to upgrade Arc agent on cluster servers:
 
