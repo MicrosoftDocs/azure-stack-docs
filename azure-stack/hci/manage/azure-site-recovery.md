@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/05/2023
+ms.date: 05/09/2023
 ---
 
 # Protect VM workloads with Azure Site Recovery on Azure Stack HCI
