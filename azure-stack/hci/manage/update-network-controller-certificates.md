@@ -1,8 +1,8 @@
 ---
 title: Renew Network Controller certificates before they expire
 description: This article describes how to renew Network Controller certificates before they expire.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 04/19/2023
 ---

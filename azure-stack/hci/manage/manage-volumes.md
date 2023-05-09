@@ -2,8 +2,8 @@
 title: Manage volumes in Azure Stack HCI and Windows Server
 description: How to manage volumes in Azure Stack HCI and Windows Server by using Windows Admin Center or PowerShell.
 ms.topic: how-to
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.reviewer: jgerend
 ms.date: 05/02/2023
 ---
