@@ -1,10 +1,10 @@
 ---
 title: Configure Software Load Balancer for high availability ports
 description: Learn how to configure Software Load Balancer for high availability ports.
-ms.author: v-mandhiman
+ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
-author: ManikaDhiman
+author: sethmanheim
 ms.date: 04/17/2023
 ---
 
@@ -13,18 +13,18 @@ ms.date: 04/17/2023
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article provides an overview of high availability ports rule and why to use high availability ports. It then describes the prerequisites of setting up a high availability ports rule, steps to configure it, supported configurations, and its limitations.
- 
+
 ## Overview of high availability ports rule
 
-High availability ports is a type of load balancing rule that helps you load balance all protocols across all ports. Similar to all load balancing rules, high availability ports rule relies on the 5-tuple connection: source address, destination address, source port, destination port, and protocol. 
+High availability ports is a type of load balancing rule that helps you load balance all protocols across all ports. Similar to all load balancing rules, high availability ports rule relies on the 5-tuple connection: source address, destination address, source port, destination port, and protocol.
 
 To apply this rule, you set your **Protocol** status to **All**, so that both User Datagram Protocol (UDP) and Transmission Control Protocol (TCP) datagrams are accepted. You also need to set your **Frontend Port** and **Backend Port** to **0** for high availability.
 
 ### Why use high availability ports?
 
-High availability ports are useful for high availability scenarios and scaling out Network Virtual Appliances (NVA) within your virtual networks. This feature can also assist in load balancing a large number of ports.
+High availability ports are useful for high availability scenarios and scaling out Network Virtual Appliances (NVA) within your virtual networks. This feature can also help load balance a large number of ports.
 
-For instance, if you are using virtual appliances to manage security for your workloads, you would want to ensure that the virtual appliances are highly available. High availability ports can provide high availability and reliability by offering:
+For instance, if you're using virtual appliances to manage security for your workloads, you would want to ensure that the virtual appliances are highly available. High availability ports can provide high availability and reliability by offering:
 
 - Fast failover to healthy instances
 - High performance with scale-out to *n*-active instances
@@ -73,7 +73,7 @@ To set up the high availability ports rule, you must configure the following:
 
 ## Supported configurations
 
-The high availability ports rule support the following configurations:
+The high availability ports rule supports the following configurations:
 
 - A single, non-floating IP (non-Direct Server Return) high availability ports. Select **Disable** for the **Floating IP** button for this configuration.
 
@@ -93,10 +93,10 @@ The high availability ports rule support the following configurations:
 
 The following are the limitations of using high availability ports load balancing rules:
 
-- Combining high availability ports load balancing rules and non high availability ports load balancing rules pointing to the same backend ipconfigurations is not supported unless both have **Floating IP** enabled.
-- Flow symmetry (primarily for NVA scenarios) is only supported with a single front-end NIC (single front-end IP configuration) and a backend pool. Using multiple load balancers, load balancing rules or multiple NICs will not provide symmetry.
-- The backend instance of an high availability ports internal load balancer cannot be the backend instance of another internal load balancer.
-- The backend instance of a **Floating IP** high availability ports internal load balancer cannot be the backend instance of another non-floating IP high availability ports internal load balancer.
+- Combining high availability ports load balancing rules and non high availability ports load balancing rules pointing to the same backend ipconfigurations isn't supported unless both have **Floating IP** enabled.
+- Flow symmetry (primarily for NVA scenarios) is only supported with a single front-end NIC (single front-end IP configuration) and a backend pool. Using multiple load balancers, load balancing rules or multiple NICs won't provide symmetry.
+- The backend instance of a high availability ports internal load balancer can't be the backend instance of another internal load balancer.
+- The backend instance of a **Floating IP** high availability ports internal load balancer can't be the backend instance of another non-floating IP high availability ports internal load balancer.
 
 ## Next steps
 
