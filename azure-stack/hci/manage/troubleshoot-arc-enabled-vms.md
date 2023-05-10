@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Arc VM management (preview)
 description: Learn how to troubleshoot Azure Arc VM management (preview)
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.date: 03/24/2022
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
 

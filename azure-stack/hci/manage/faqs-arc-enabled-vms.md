@@ -1,10 +1,10 @@
 ---
 title: Azure Arc VM management FAQs (preview)
 description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: reference
 ms.date: 03/23/2022
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.reviewer: ksurjan
 ---
 
