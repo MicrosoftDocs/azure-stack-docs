@@ -67,15 +67,15 @@ If you exceed the maximum period of offline operation, `ConnectionStatus` will s
 > [!NOTE]
 > BIOS\UEFI Firmware configuration must be the same on each HCI cluster node's hardware. Any nodes with different BIOS configurations compared to the majority may show **ConnectionStatus** as **OutOfPolicy**.
 
----
-
-## View the cluster and Arc resources in Azure portal
+# [Azure portal](#tab/azure-portal)
 
 To view the status of the cluster and Arc resources, navigate to the resource group used during registration in the Azure portal:
 
 :::image type="content" source="media/register-with-azure/cluster-status-1.png" alt-text="Screenshot of cluster resources." lightbox="media/register-with-azure/cluster-status-1.png":::
 
 :::image type="content" source="media/register-with-azure/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-2.png":::
+
+---
 
 ## Enable Azure Arc integration
 
@@ -181,6 +181,10 @@ If the management PC has a GUI, you will get a login prompt, in which you provid
 > `-EnvironmentName AzureUSGovernment -Region "USGovVirginia"`
 >
 > If you provide the `-SubscriptionId` parameter, make sure that it's the correct one. It's recommended that you let the unregister script determine the subscription automatically.
+
+# [Azure portal](#tab/azure-portal)
+
+Use Windows Admin Center or PowerShell to unregister your cluster.
 
 ---
 

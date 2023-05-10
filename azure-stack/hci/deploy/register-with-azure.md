@@ -28,43 +28,43 @@ After registration, an Azure Resource Manager resource is created to represent t
 
 Before you begin cluster registration, make sure the following prerequisites are in place:
 
-**Azure Stack HCI cluster**
+- **Azure Stack HCI cluster**
+   
+   Make sure you have an Azure Stack HCI cluster with physical servers that are up and running.
 
-Make sure you have an Azure Stack HCI cluster with physical servers that are up and running.
+- **Network connectivity**
 
-**Network connectivity**
+   Azure Stack HCI needs to periodically connect to the Azure public cloud. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
-Azure Stack HCI needs to periodically connect to the Azure public cloud. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+- **Azure subscription and permissions**
 
-**Azure subscription and permissions**
+   Make sure you have an Azure subscription and you know the Azure region where the cluster resources should be created. For more information about Azure subscription and supported Azure regions, see [Azure requirements](../concepts/system-requirements.md#azure-requirements).
 
-Make sure you have an Azure subscription and you know the Azure region where the cluster resources should be created. For more information about Azure subscription and supported Azure regions, see [Azure requirements](../concepts/system-requirements.md#azure-requirements).
+- **Management computer**
 
-**Management computer**
+   Make sure you have access to a management computer with internet access. Your management computer must be joined to the same Active Directory domain in which you've created your Azure Stack HCI cluster.
 
-Make sure you have access to a management computer with internet access. Your management computer must be joined to the same Active Directory domain in which you've created your Azure Stack HCI cluster.
+- **Windows Admin Center**
 
-**Windows Admin Center**
+   If you're using Windows Admin Center to register the cluster, make sure you:
 
-If you're using Windows Admin Center to register the cluster, make sure you:
-
-   - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register your Windows Admin Center instance with Azure](../manage/register-windows-admin-center.md).
+      - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register your Windows Admin Center instance with Azure](../manage/register-windows-admin-center.md).
       > [!IMPORTANT]
       > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your tenant ID.
 
-   - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
+      - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
 
-**Azure policies**
+- **Azure policies**
 
-Make sure you don't have any conflicting Azure policies that might interfere with cluster registration. Some of the common conflicting policies can be:
+   Make sure you don't have any conflicting Azure policies that might interfere with cluster registration. Some of the common conflicting policies can be:
 
    - **Resource group naming**: Azure Stack HCI registration provides two configuration parameters for naming resource groups: `-ResourceGroupName` and `-ArcServerResourceGroupName`. See [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) for details on the resource group naming. Make sure that the naming does not conflict with the existing policies.
    - **Resource group tags**: Currently Azure Stack HCI does not support adding tags to resource groups during cluster registration. Make sure your policy accounts for this behavior.
    - **.msi download**: Azure Stack HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you don't restrict these downloads.
    - **Credentials lifetime**: By default, the Azure Stack HCI service requests two years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
 
-   > [!NOTE]
-   > If you have a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the **ArcServer** resource group.
+      > [!NOTE]
+      > If you have a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the **ArcServer** resource group.
 
 ## Assign Azure permissions for registration
 
