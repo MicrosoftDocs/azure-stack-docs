@@ -1,10 +1,10 @@
 ---
 title: Set up Azure Arc VM management using Windows Admin Center (preview)
 description: Learn how to set up Azure Arc VM management using Windows Admin Center (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.date: 06/06/2022
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
 

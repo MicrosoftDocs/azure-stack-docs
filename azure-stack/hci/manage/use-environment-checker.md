@@ -1,8 +1,8 @@
 ---
 title: Use Azure Stack HCI Environment Checker to assess deployment readiness (preview)
 description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
