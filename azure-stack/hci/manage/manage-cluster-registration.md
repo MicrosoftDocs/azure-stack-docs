@@ -182,13 +182,15 @@ If the management PC has a GUI, you will get a login prompt, in which you provid
 >
 > If you provide the `-SubscriptionId` parameter, make sure that it's the correct one. It's recommended that you let the unregister script determine the subscription automatically.
 
+---
+
 ## Clean up after a cluster that was not properly unregistered
 
 If a user destroys an Azure Stack HCI cluster without un-registering it, such as by re-imaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These artifacts are harmless and won't incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
 
 To delete the Azure Stack HCI resource, navigate to the resource in the Azure portal and select **Delete** from the action bar. You can get the resource details by running the `Get-AzureStackHCI` cmdlet.
 
-HCI creates two Azure AD applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Azure AD** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
+Azure Stack HCI creates two Azure AD applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Azure AD** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
 
 You can also delete the Azure Stack HCI resource by using PowerShell:
 
@@ -208,8 +210,6 @@ If the resource group was created during registration and doesn't contain any ot
 Remove-AzResourceGroup -Name "<resourceGroupName>"
 ```
 
----
-
 ## Troubleshooting
 
 For information about common errors and mitigation steps to resolve them, see [Troubleshoot Azure Stack HCI registration](../deploy/troubleshoot-hci-registration.md).
@@ -220,7 +220,7 @@ Find answers to some frequently asked questions:
 
 ### How do I use a more restricted custom permissions role?
 
-You can further reduce the permissions required to perform HCI registration as described in [Assign Azure permissions using PowerShell](../deploy/register-with-azure.md#assign-azure-permissions-using-powershell), provided that some of the operations described below are already performed out-of-band by a user having contributor and user access administrator roles.
+You can further reduce the permissions required to perform Azure Stack HCI registration as described in [Assign Azure permissions using PowerShell](../deploy/register-with-azure.md#assign-azure-permissions-using-powershell), provided that some of the operations described below are already performed out-of-band by a user having contributor and user access administrator roles.
 
 1. Register the required resource providers. Sign in to the subscription you will use to register the cluster. Under **Settings > Resource Providers**, select the following resource providers and then select **Register**:
    - Microsoft.AzureStackHCI
@@ -228,7 +228,7 @@ You can further reduce the permissions required to perform HCI registration as d
    - Microsoft.GuestConfiguration
    - Microsoft.HybridConnectivity
 
-2. Create the resource groups. Make sure the resource groups into which the HCI resources will be projected are pre-created by a privileged user. For more details, see the [prerequisites](../deploy/register-with-azure.md#prerequisites) section.
+2. Create the resource groups. Make sure the resource groups into which the Azure Stack HCI resources will be projected are pre-created by a privileged user. For more details, see the [prerequisites](../deploy/register-with-azure.md#prerequisites) section.
 
    Once these two pre-requisites are set up, create a custom role and use it for registration as described below. First, create a JSON file called **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to the ID of your Azure subscription. To get your subscription ID, visit the Azure portal, go to **Subscriptions**, then copy/paste your ID from the list:
 
@@ -275,7 +275,7 @@ You can further reduce the permissions required to perform HCI registration as d
 Before registration, make sure the [prerequisites](../deploy/register-with-azure.md#prerequisites) are met.
 
 > [!NOTE]
-> These SPN credentials are used for initial onboarding to HCI. HCI still creates separate SPN credentials for Arc onboarding. To use a custom SPN for Arc onboarding, see [How do I register a cluster using SPN for Arc onboarding?](#how-do-i-register-a-cluster-using-spn-for-arc-onboarding).
+> These SPN credentials are used for initial onboarding to Azure Stack HCI. Azure Stack HCI still creates separate SPN credentials for Arc onboarding. To use a custom SPN for Arc onboarding, see [How do I register a cluster using SPN for Arc onboarding?](#how-do-i-register-a-cluster-using-spn-for-arc-onboarding).
 
 1. Run ['Connect-AzAccount'](/powershell/module/az.accounts/connect-azaccount) to connect to Azure.
    To use SPN to connect, you can use:
@@ -294,7 +294,7 @@ Before registration, make sure the [prerequisites](../deploy/register-with-azure
 The following guidelines are for the user running the registration cmdlet who cannot get the **Microsoft.Authorization/roleAssignments/write** permission assigned. In such cases, they can use the pre-created SPN with Arc onboarding roles (**Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator**) assigned to the SPN, and specify the credentials to the registration cmdlet using the `-ArcSpnCredential` option.
 
 > [!NOTE]
-> HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
+> Azure Stack HCI doesn't update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
 
 > [!NOTE]
 > Use PowerShell module version 1.4.1 or earlier to use SPN credentials for Arc onboarding if you cannot assign the **Microsoft.Authorization/roleAssignments/write** permission to the registration role.
