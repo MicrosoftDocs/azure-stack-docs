@@ -49,7 +49,7 @@ There are several prerequisites for using Azure Stack HCI Insights:
 
 - The cluster must have Azure Stack HCI version 22H2 and the May 2023 cumulative update or later installed.
 
-- Enable the managed identity for the Azure resource. For more information, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview/)
+- Enable the managed identity for the Azure resource. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md#enable-enhanced-management).
 
 
 ### Enable Insights
