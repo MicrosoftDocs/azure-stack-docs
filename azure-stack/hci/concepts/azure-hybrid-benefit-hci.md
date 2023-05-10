@@ -1,8 +1,8 @@
 ---
 title: Azure Hybrid Benefit for Azure Stack HCI
 description: Learn about Azure Hybrid Benefit for Azure Stack HCI.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

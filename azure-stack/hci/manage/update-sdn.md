@@ -2,8 +2,8 @@
 title: Update SDN infrastructure for Azure Stack HCI
 description: Learn to update SDN infrastructure for Azure Stack HCI.
 ms.topic: how-to
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.reviewer: anpaul
 ms.date: 04/19/2023
 ---
