@@ -1,10 +1,10 @@
 ---
 title: Configure network security groups with tags in Windows Admin Center
 description: Learn how to configure network security groups with tags in Windows Admin Center.
-ms.author: v-mandhiman
+ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
-author: ManikaDhiman
+author: sethmanheim
 ms.date: 09/22/2022
 ---
 

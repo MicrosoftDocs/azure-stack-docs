@@ -1,13 +1,12 @@
 ---
 title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ms.date: 03/27/2023
-ms.author: v-mandhiman
-ms.reviewer: alkohli
+ms.author: alkohli
 ---
 
 # Set up Azure Arc VM management using command line (preview)
