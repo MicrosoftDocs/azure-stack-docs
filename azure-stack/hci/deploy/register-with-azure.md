@@ -48,11 +48,11 @@ Before you begin cluster registration, make sure the following prerequisites are
 
    If you're using Windows Admin Center to register the cluster, make sure you:
 
-      - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register your Windows Admin Center instance with Azure](../manage/register-windows-admin-center.md).
-      > [!IMPORTANT]
-      > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your tenant ID.
+   - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register your Windows Admin Center instance with Azure](../manage/register-windows-admin-center.md).
+   > [!IMPORTANT]
+   > When registering Windows Admin Center with Azure, use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your tenant ID.
 
-      - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
+   - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
 
 - **Azure policies**
 
