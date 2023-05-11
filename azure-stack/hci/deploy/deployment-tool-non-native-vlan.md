@@ -1,11 +1,10 @@
 ---
 title: Deploy Azure Stack HCI using non-native VLAN ID (preview)
 description: Learn how to deploy Azure Stack HCI using non-native VLAN ID for the management network (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.date: 03/02/2023
-ms.author: v-mandhiman
-ms.reviewer: alkohli
+ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 

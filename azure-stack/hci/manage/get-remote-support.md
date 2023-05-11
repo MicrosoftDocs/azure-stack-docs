@@ -1,8 +1,8 @@
 ---
 title: Get remote support for Azure Stack HCI (preview)
 description: This topic provides guidance on how to get remote support for the Azure Stack HCI operating system.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.date: 03/21/2023

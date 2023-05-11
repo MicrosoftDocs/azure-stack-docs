@@ -1,11 +1,10 @@
 --- 
 title: Set up the first server for new Azure Stack HCI deployments (preview) 
 description: Learn how to set up the first server before you deploy Azure Stack HCI (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.date: 02/02/2023
-ms.author: v-mandhiman
-ms.reviewer: alkohli
+ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 

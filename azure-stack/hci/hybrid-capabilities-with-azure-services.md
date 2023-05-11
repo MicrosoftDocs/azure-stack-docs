@@ -2,8 +2,8 @@
 title: Hybrid capabilities with Azure services
 description: This article describes the cloud service components of Azure Stack HCI.
 ms.topic: overview
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.date: 04/19/2023
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
