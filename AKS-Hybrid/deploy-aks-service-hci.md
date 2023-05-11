@@ -56,12 +56,12 @@ Succeeded
 #### **Optional** Verify if you have Arc VMs extension installed on your Arc Resource Bridge & custom location. Your output should be the ARM ID of the Arc VMs extension.
 ### [PowerShell](#tab/powershell)
 
-```
+```azurecli
 az k8s-extension list -g $resourceGroup --cluster-name $resourceBridgeName --cluster-type appliances --query "[?extensionType == ``microsoft.azstackhci.operator``]" 
 ```
 ### [Az CLI](#tab/shell)
 
-```
+```azurecli
 az k8s-extension list -g $resourceGroup --cluster-name $resourceBridgeName --cluster-type appliances --query "[?extensionType == \`microsoft.azstackhci.operator\`]" 
 ```
 
