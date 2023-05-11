@@ -52,7 +52,7 @@ Alerts can be set up in the Azure portal to use Azure Insights workbooks if the 
 
 1. From the Azure portal, navigate or search for **Monitor**.
 
-2. Select **Azure Stack HCI (preview)** and set your time range, subscriptions, and other parameters.
+2. Select **Azure Stack HCI** and set your time range, subscriptions, and other parameters.
 
     :::image type="content" source="media/alerts-logs-insights/workbooks-insights.png" alt-text="Screenshot of the workbooks and parameters for alerts." lightbox="media/alerts-logs-insights/workbooks-insights.png":::
 
@@ -94,9 +94,9 @@ In this alert example, when the measure value Memoryusageint with an aggregation
 
 :::image type="content" source="media/alerts-logs-insights/measure-detail.png" alt-text="Screenshot of the log query detail to specify." lightbox="media/alerts-logs-insights/measure-detail.png":::
 
-Once your details are set, you can preview your conditions for alert accuracy.
+Once your details are set, you can review your conditions for alert accuracy.
 
-:::image type="content" source="media/alerts-logs-insights/alert-preview.png" alt-text="Screenshot of the alert condition preview." lightbox="media/alerts-logs-insights/alert-preview.png":::
+:::image type="content" source="media/alerts-logs-insights/alert-preview.png" alt-text="Screenshot of the alert conditions to set." lightbox="media/alerts-logs-insights/alert-preview.png":::
 
 ## Alert actions and details
 
