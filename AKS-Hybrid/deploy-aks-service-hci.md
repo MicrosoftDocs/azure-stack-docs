@@ -16,7 +16,7 @@ If you want to install Arc provisioned AKS clusters on Windows Server, follow th
 
 
 ## Pre-requisites
-- [Review system requirements for installing Arc provisioned AKS clusters on Azure Stack HCI](/aks-hybrid-preview-requirements.md)
+- [Review system requirements for installing Arc provisioned AKS clusters on Azure Stack HCI](aks-hybrid-preview-requirements.md)
 - [Install Arc Resource Bridge and Arc VMs using command line](/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2) 
 - Collect the following variables. You should have these after installing Arc VMs using the above link.
 
