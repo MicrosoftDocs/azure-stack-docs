@@ -7,7 +7,7 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/28/2023
+ms.date: 05/11/2023
 ---
 
 # Register Azure Stack HCI with Azure
@@ -28,7 +28,7 @@ After registration, an Azure Resource Manager resource is created to represent t
 
 Before you begin cluster registration, make sure the following prerequisites are in place:
 
-- **Azure Stack HCI cluster.** Make sure you have an Azure Stack HCI cluster with physical servers that are up and running.
+- **Azure Stack HCI system deployed and online.** Make sure the system is deployed and all servers are online.
 
 - **Network connectivity.** Azure Stack HCI needs to periodically connect to the Azure public cloud. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
@@ -56,7 +56,7 @@ Before you begin cluster registration, make sure the following prerequisites are
 
 This section describes how to assign Azure permissions for registration from the Azure portal or using PowerShell.
 
-## Assign Azure permissions from the Azure portal
+### Assign Azure permissions from the Azure portal
 
 If your Azure subscription is through an EA or CSP, ask your Azure subscription admin to assign Azure subscription level privileges of:
 
@@ -67,7 +67,7 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 
 ### Assign Azure permissions using PowerShell
 
-Some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
+Some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration. The following procedure provides a typical set of permissions to the custom role; to set more restrictive permissions, see [How do I use a more restricted custom permissions role?](../manage/manage-cluster-registration.md#how-do-i-use-a-more-restricted-custom-permissions-role)
 
 1. Create a json file called **customHCIRole.json** with following content. Make sure to change `<subscriptionID>` to your Azure subscription ID. To get your subscription ID, visit [the Azure portal](https://portal.azure.com), navigate to **Subscriptions**, and copy/paste your ID from the list.
 
@@ -118,8 +118,6 @@ The following table explains why these permissions are required:
 |--|--|
 | "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.Resources/subscriptions/resourceGroups/write",</br> "Microsoft.Resources/subscriptions/resourceGroups/delete"</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",</br>"Microsoft.Authorization/roleAssignments/read", | To register and unregister the Azure Stack HCI cluster. |
 | "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
-
-You can further reduce the permissions required to perform Azure Stack HCI registration. For more information, see [How do I use a more restricted custom permissions role?](../manage/manage-cluster-registration.md#how-do-i-use-a-more-restricted-custom-permissions-role)
 
 ## Register a cluster
 
@@ -206,7 +204,7 @@ Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you
 
 ## Additional registration options
 
-You have a few other options to register your cluster:
+You have other options to register your cluster:
 
 - [Register a cluster using ArmAccessToken/SPN](../manage/manage-cluster-registration.md#how-do-i-register-a-cluster-using-armaccesstokenspn)
 - [Register a cluster using SPN for Arc onboarding](../manage/manage-cluster-registration.md#how-do-i-register-a-cluster-using-spn-for-arc-onboarding)

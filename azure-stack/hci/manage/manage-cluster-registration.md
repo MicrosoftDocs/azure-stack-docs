@@ -2,10 +2,10 @@
 title: Manage Azure Stack HCI cluster registration
 description: Learn how to manage the Azure Stack HCI cluster registration.
 ms.topic: how-to
-author: ManikaDhiman
+author: sethmanheim
 ms.subservice: azure-stack-hci
-ms.author: v-mandhiman
-ms.date: 4/28/2023
+ms.author: sethm
+ms.date: 5/11/2023
 ---
 
 # Manage Azure Stack HCI cluster registration
