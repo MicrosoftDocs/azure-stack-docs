@@ -30,7 +30,7 @@ If you want to install Arc provisioned AKS clusters on Windows Server, follow th
 
 ## Step 1: Verify if your Arc Resource Bridge and custom location have been provisioned successfully. 
 #### Run the following command to check if your Arc Resource Bridge is in "running" state.
-```
+```azurecli
 #login to Azure
 az account set -s $subscriptionID
 ```
