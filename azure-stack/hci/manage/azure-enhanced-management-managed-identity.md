@@ -4,20 +4,19 @@ description: Learn how to use enhanced Azure management for Azure Stack HCI. Thi
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/09/2023
+ms.date: 05/12/2023
 ---
 
 # Enhanced management of Azure Stack HCI from Azure
 
 [!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
 
-This guide describes the feature in the March 2023 cumulative update for Azure Stack HCI, version 22H2, that enables enhanced management from Azure.
+This guide describes the feature in the May 2023 cumulative update for Azure Stack HCI, version 22H2, that enables enhanced management from Azure.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About enhanced Azure management
 
-In the March 2023 cumulative update for Azure Stack HCI, version 22H2, a feature enhancement has been made to the Azure Stack HCI operating system that enables additional capabilities for Azure Stack HCI systems to be managed from Azure.
+In the May 2023 cumulative update for Azure Stack HCI, version 22H2, a feature enhancement has been made to the Azure Stack HCI operating system that enables additional capabilities for Azure Stack HCI systems to be managed from Azure.
 
 This feature enhancement includes support of managed identity for Azure Stack HCI cluster resources in Azure to enable Azure services such as Azure Monitor and Azure Site Recovery. The managed identity is created when your Azure Stack HCI system is registered with Azure and persists for the lifetime of the Azure Stack HCI cluster resource in Azure. The managed identity communicates with the resource provider in Azure and is used to authenticate your Azure Stack HCI system with Azure.
 
@@ -27,7 +26,7 @@ This feature also includes Azure Service Bus integration to allow for an improve
 
 The managed identity serves as an identity for the various components of your cluster to authenticate with Azure and enables support for the following scenarios:
 
-- **Azure Monitor HCI Insights with Azure Monitor Agent** – The enhanced HCI Insights feature in Azure Monitor requires the Azure Monitor Agent instead of the legacy Microsoft Monitoring Agent (MMA). The Azure Monitor Agent uses managed identity to send logs and data to your Log Analytics workspace.
+- **Monitor Azure Stack HCI Insights with Azure Monitor Agent** – The enhanced Azure Stack HCI Insights feature in Azure Monitor requires the Azure Monitor Agent instead of the legacy Microsoft Monitoring Agent (MMA). The Azure Monitor Agent uses managed identity to send logs and data to your Log Analytics workspace.
 
     For more information, see [Monitor Azure Stack HCI with Azure Monitor Insights](../index.yml).
 
@@ -46,8 +45,6 @@ With this feature enhancement, the following actions can be initiated from Azure
 
 To enable the enhanced management feature, you will need to install the latest cumulative update for Azure Stack HCI, version 22H2 and rerun registration for your cluster.
 
-> [!NOTE]
-> This feature is included in the preview versions of Azure Stack HCI 23H2 that you can access via the preview channel.
 
 ## Prerequisites
 
@@ -62,18 +59,7 @@ To reach the Azure Service Bus endpoint required by this feature, include the fo
 
 For clusters running version 22H2, to enable Azure management and managed identity, follow these steps:
 
-1. Install the March 2023 cumulative update for Azure Stack HCI, version 22H2.
-1. SHOULD WE REMOVE THIS STEP? While this feature is in preview for the next few months, it is disabled by default in the cumulative update behind a Known Issue Rollback (KIR) mechanism. To enable the feature on the cluster, you need to enable the feature on each cluster node, then reboot each node. There are two options to enable the feature on each node:
-    1. [Download the KIR MSI file](https://download.microsoft.com/download/6/8/9/6893d47b-5fbf-41e1-88f5-4d8c64d4694d/Azure%20Stack%20HCI%2022H2%20KB5023705%20230228_00001%20Feature%20Preview.msi) for this feature and apply the included group policy definition to the cluster nodes. Learn more on [how to apply the KIR using Group Policy](/troubleshoot/windows-client/group-policy/use-group-policy-to-deploy-known-issue-rollback#apply-kir-to-a-single-device-using-group-policy).
-    1. Create and set the following registry value on each cluster node:
-        - Registry key: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\Microsoft\\FeatureManagement\\Overrides
-        - Registry value:
-        - Name: 1113859724
-        - Type: DWORD (32-bit)
-        - Value: 1
-
-        > [!NOTE]
-        > Don’t forget to reboot each cluster node afterwards. The method of changing the registry value is only supported for this KIR and should not be used or shared outside of this preview.
+1. Install the May 2023 cumulative update for Azure Stack HCI, version 22H2.
 
 1. On one of the cluster nodes, install or update to the latest `Az.StackHCI` PowerShell module that includes the latest registration script changes.
     - To install the module, run the following command in PowerShell:
@@ -101,4 +87,4 @@ For clusters running version 22H2, to enable Azure management and managed identi
 
 ## Next steps
 
-[Learn more about Azure integration with Windows Admin Center](/windows-server/manage/windows-admin-center/azure/index)
+[Learn more about how to protect Azure Stack HCI VM workloads with Azure Site Recovery](./azure-site-recovery.md)

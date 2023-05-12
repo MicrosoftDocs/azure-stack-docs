@@ -1,13 +1,13 @@
 ---
-title: Protect your Hyper-V Virtual Machine workloads on Azure Stack HCI with Azure Site Recovery.
-description: Use Azure Site Recovery to protect Hyper-V VM workloads running on your Azure Stack HCI clusters.
+title: Protect your Hyper-V Virtual Machine workloads on Azure Stack HCI with Azure Site Recovery. (preview)
+description: Use Azure Site Recovery to protect Hyper-V VM workloads running on your Azure Stack HCI clusters. (preview)
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/09/2023
+ms.date: 05/12/2023
 ---
 
-# Protect VM workloads with Azure Site Recovery on Azure Stack HCI
+# Protect VM workloads with Azure Site Recovery on Azure Stack HCI (preview)
 
 [!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
 
