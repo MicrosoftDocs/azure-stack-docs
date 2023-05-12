@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 4/07/2023
+ms.date: 05/05/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -78,7 +78,7 @@ If you are using a service principal name to authenticate your cluster, follow t
 1. Set the following parameters:
 
     ```powershell
-    $LCMUserCred=Get-Credential
+    $AzureStackLCMUserCred=Get-Credential
     $LocalAdminCred=Get-Credential
     $SubscriptionID="<Your subscription ID>"
     $CloudName="AzureCloud"   
@@ -96,13 +96,15 @@ If you are using a service principal name to authenticate your cluster, follow t
 
 ## Run the deployment tool using MFA
 
-If you are using multi-factor authentication (MFA) to authenticate your cluster, complete the following steps to deploy Azure Stack HCI using PowerShell. This method requires a second server in your cluster that has a browser to complete authentication.  
+If you are using multi-factor authentication (MFA) to authenticate your cluster, complete the following steps to deploy Azure Stack HCI using PowerShell. This method requires a second server in your cluster that has a browser to complete authentication.
 
-1. Sign into the first server of your Azure Stack HCI cluster.
+1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
 
-1. You'll see SConfig running on your server. Choose option 15 to exit to PowerShell.
+1. Use option 15 in Server Configuration tool (SConfig) to exit to command line.
 
-1. In the PowerShell prompt, run the following to import the registration module and configure authentication:
+1. In the PowerShell window, change the directory to *C:\clouddeployment\setup*.
+
+1. Run the following to import the registration module and configure authentication:
 
     ```powershell
     $SubscriptionID="<your_subscription_ID>"
@@ -116,11 +118,11 @@ If you are using multi-factor authentication (MFA) to authenticate your cluster,
 1. On the first server, start the deployment using PowerShell and run the following command:
 
     ```powershell
-    $DomainCred=get-credential 
+    $DomainCred=Get-Credential 
 
-    $LocalCred=get-credential 
+    $LocalCred=Get-Credential 
 
-    Invoke-clouddeployment -JSONFilePath c:\sample.json -- AzureStackLCMUser $DomainCred -LocalAdminCredential $LocalCred
+    Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential $DomainCred -LocalAdminCredential $LocalCred
     ```
 
 
