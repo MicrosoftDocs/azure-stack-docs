@@ -261,7 +261,7 @@ Yes, you still need Windows Server CALs for BYOL, but not for Windows Server sub
 You do need internet connectivity:
 
 - To sync host servers to Azure at least once every 30 days, in order to maintain Azure Stack HCI 30-day connectivity requirements and to sync host licenses for AVMA.
-- When purchasing or cancelling Windows Server subscription.
+- When purchasing or canceling Windows Server subscription.
 
 You do not need internet connectivity:
 
@@ -281,7 +281,7 @@ Yes. Although you cannot use Windows Server 2016 keys to set up AVMA on Azure St
 
 To get a product key, choose from the following options:
 
-- **OEM provider**: Find a Certificates of Authenticity (COA) key label on the outside of the OEM hardware. You can use this key once per server in the cluster.
+- **OEM provider**: Find a Certificate of Authenticity (COA) key label on the outside of the OEM hardware. You can use this key once per server in the cluster.
 - **Volume Licensing Service Center (VLSC)**: From the VLSC, you can download a Multiple Activation Key (MAK) that you can reuse up to a predetermined number of allowed activations. For more information, see [MAK keys](/licensing/products-keys-faq#what-is-a-multiple-activation-key--mak-).
 - **Retail channels**: You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. For more information, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
 

@@ -12,7 +12,7 @@ ms.date: 5/11/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure Portal. It also provides answers to the frequently asked questions about cluster registration.
+Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure portal. It also provides answers to the frequently asked questions about cluster registration.
 
 When you [register your cluster with Azure](../deploy/register-with-azure.md), an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. Starting with Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
 
@@ -114,7 +114,7 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
 1. In the [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig), select the option to **Install Updates** (option 6):
 
-   :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
+   :::image type="content" source="media/register/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update":::
 
 2. Select the option for **All quality updates** (option 1).
 
