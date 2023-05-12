@@ -38,6 +38,8 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
    ```azurecli
    $vlanID=<vLAN identifier for Arc VMs. A 0 value means there is no vLan ID.>   
    $vnetName=<user provided name of virtual network>
+   $vswitchname=<virtual switch name on Azure Stack HCI nodes>
+   $customloc_name=<custom location name provided when deploying the Azure Arc VM management> 
    New-MocGroup -name "Default_Group" -location "MocLocation"
    New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} -vlanID $vlanID
    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanID
@@ -49,6 +51,8 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
    | ----- | ----------- |
    | **vlanID** | vLAN identifier for Arc VMs. |
    | **vnetName** | User provided name of virtual network. |
+   | **vswitchname** | virtual switch name on Azure Stack HCI nodes. |
+   | **customloc_name** | ustom location name provided when deploying the Azure Arc VM management. |
 
 ---
 
