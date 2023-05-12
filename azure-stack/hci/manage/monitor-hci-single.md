@@ -30,11 +30,11 @@ After you register your cluster and Arc-enable the servers, you'll see the follo
 - **Server - Azure Arc** resources for every server in the cluster in the `<clustername>ArcInstanceResourceGroup`.
 - Nodes with a **Server-Azure Arc** resource link on the Azure Stack HCI resource page under the **Nodes** tab.
 
-Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you will see the option to enable logs, which should say **Not configured**.
+Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you'll see the option to enable logs, which should say **Not configured**.
 
 :::image type="content" source="media/monitor-hci-single/logs-capability.png" alt-text="Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
 
-This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they will automatically have the Microsoft Monitoring Agent installed on them.
+This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they'll automatically have the Microsoft Monitoring Agent installed on them.
 
    > [!NOTE]
    > The Microsoft Monitoring Agent for Windows communicates outbound to the Azure Monitor service over TCP port 443. If the servers connect through a firewall or proxy server to communicate over the internet, review [these requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) to understand the network configuration required.
@@ -56,7 +56,7 @@ You have now successfully installed the log analytics extension.
 
 ### Disable Log Analytics
 
-If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this does not delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
+If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this doesn't delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
 
 To remove the Microsoft Monitoring Agent from every server in the cluster, follow these steps:
 
@@ -154,7 +154,7 @@ Provides the state of all the virtual machines in the cluster. A VM can be in on
 | Running      | The number of VMs running in a server node.                                                                                                | Count         | 2                     |
 | Stopped      | The number of VMs stopped in a server node.                                                                                                | Count         | 3                     |
 | Failed       | The number of VMs failed in a server node.                                                                                                 | Count         | 2                     |
-| Other        | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | Count         | 2                     |
+| Other        | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count         | 2                     |
 
 The following table provides the health of volumes in the cluster:
 
@@ -205,7 +205,7 @@ As described previously, when you enable monitoring visualization, logs are coll
 - Health Management (Microsoft-windows-health/operational).
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004).
 
-You are billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
+You're billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
 
 Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account per month is free. Because pricing can vary due to multiple factors, such as the region of Azure you're using, visit the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for the most up-to-date pricing calculations. The following table can help you calculate the cost:
 
@@ -252,7 +252,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
    :::image type="content" source="media/monitor-hci-single/tool-errors.png" alt-text="Command prompt showing tool errors" lightbox="media/monitor-hci-single/tool-errors.png":::
 
-   The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
+   The cause is that the local time is different than Azure time, and the workspace key couldn't be validated due to the mismatch.
 
    :::image type="content" source="media/monitor-hci-single/tool-errors-prompt.png" alt-text="Move to next error" lightbox="media/monitor-hci-single/tool-errors-prompt.png":::
 
@@ -265,7 +265,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
       1. If Active Directory PDC is correct and Azure Stack HCI local time is still incorrect, then the Active Directory domain hierarchy is not being recognized. If this is the case, complete steps iv - vi below. Otherwise, proceed to step c.
       1. From the Azure Stack HCI host,  select **option 15** to exit the **Sconfig menu**. Then run the following command in PowerShell as an administrator: `w32tm.exe /config /syncfromflags:domhier /update` - this should return a confirmation that the command completed successfully, and the time setting should now be correct.
       1. To diagnose further, run `w32tm /monitor` on the Azure Stack HCI host console. The active domain controller should be listed as stratum 1 server, and all other domain controllers as stratum 2.
-      1. Lastly, ensure that the Windows time service and time providers are not configured in a Group Policy Object, as this will interfere with the Active Directory domain hierarchy.
+      1. Lastly, ensure that the Windows time service and time providers aren't configured in a Group Policy Object, as this will interfere with the Active Directory domain hierarchy.
    1. Re-add the **Log Analytics** extension by going to your Azure Stack HCI resource page in Azure portal, select **[cluster name] > Overview**, then select **Capabilities** and configure Log Analytics and Monitoring.
 
 8. Rerun the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment in your Log Analytics workspace under **Agents Management** to match your cluster nodes, and monitoring events will begin to flow.
