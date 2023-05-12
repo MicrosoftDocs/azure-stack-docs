@@ -295,7 +295,7 @@
     - name: Hybrid capabilities with Azure services
       href: hybrid-capabilities-with-azure-services.md
     - name: Enhanced Azure management
-      href: azure-enhanced-management-managed-identity.md
+      href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
     - name: Use Azure Backup

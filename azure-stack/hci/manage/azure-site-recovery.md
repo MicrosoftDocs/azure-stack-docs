@@ -245,4 +245,4 @@ Here's a list of known issues and the associated workarounds in this release:
 
 ## Next steps
 
-[Learn more about Azure integration with Windows Admin Center](/windows-server/manage/windows-admin-center/azure/index)
+[Learn more about Hybrid capabilities with Azure services](../hybrid-capabilities-with-azure-services.md)
