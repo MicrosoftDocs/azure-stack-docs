@@ -114,7 +114,7 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
 1. In the [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig), select the option to **Install Updates** (option 6):
 
-   :::image type="content" source="media/register/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update":::
+   :::image type="content" source="media/register/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update.":::
 
 2. Select the option for **All quality updates** (option 1).
 
