@@ -27,7 +27,7 @@ Azure Stack HCI Insights offers three primary benefits:
 
 - It's highly customizable. The user experience is built on top of Azure Monitor workbook templates, allowing users to change the views and queries, modify or set thresholds that align with the users' limits, and save these customizations into a workbook. Charts in the workbooks can then be pinned to Azure dashboards.
 
-We recommend that you use the new Insights experience with Azure Monitor Agent (AMA) as AMA is faster, more secure and more performant. You can onboard new nodes to AMA  or  can also migrate your existing nodes from Legacy agent to AMA. Please refer to the “new” tab below in this document to configure Insights. For any reason, if you need to stay on the older experience temporarily, please refer the “old” tab below.
+We recommend that you use the new HCI Insights experience with Azure Monitor Agent (AMA) as AMA is faster, more secure and more performant. You can onboard new nodes to AMA  or  can also migrate your existing nodes from the Legacy agent to AMA. See the **New** tab below to configure HCI Insights. If you need to stay with the older experience, see the **Legacy** tab below.
 
 This article explains how to monitor an Azure Stack HCI cluster using Azure Stack HCI Insights. HCI Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view useful insights regarding cluster, servers, virtual machines, and storage.
 
