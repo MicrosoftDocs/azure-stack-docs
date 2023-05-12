@@ -13,6 +13,8 @@ ms.date: 05/12/2023
 
 This guide describes how to protect Windows and Linux VM workloads running on your Azure Stack HCI clusters if there is a disaster. You can use the Azure Site Recovery to replicate your on-premises Azure Stack HCI virtual machines (VMs) into Azure and protect your business critical workloads.
 
+This feature is enabled on your Azure Stack HCI clusters running May 2023 cumulative update of version 22H2 and later.
+
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Azure Site Recovery with Azure Stack HCI
@@ -73,7 +75,7 @@ Before you begin, make sure to complete the following prerequisites:
 - Make sure that Hyper-V is set up on the Azure Stack HCI cluster.
 - The servers hosting the VMs you want to protect must have internet access to replicate to Azure.
 - The Azure Stack HCI cluster must already be registered.
-    - The cluster must be running March cumulative update for Azure Stack HCI, version 22H2.
+    - The cluster must be running May cumulative update for Azure Stack HCI, version 22H2.
     - If you're running an earlier build, the Azure portal indicates that the disaster recovery isn't supported as managed identity isn't enabled for older versions.
 
         Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Stack HCI resource and then retry the workflow. For more information, go to [Enable enhanced management from Azure for Azure Stack HCI](../index.yml).
