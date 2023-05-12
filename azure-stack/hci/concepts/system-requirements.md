@@ -6,6 +6,9 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
 ms.date: 04/17/2023
 ---
 
@@ -14,6 +17,56 @@ ms.date: 04/17/2023
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+
+## Azure requirements
+
+Here are the Azure requirements for your Azure Stack HCI cluster:
+
+- **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
+
+   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
+   - Subscription obtained through an Enterprise Agreement (EA).
+   - Subscription obtained through the Cloud Solution Provider (CSP) program.
+
+- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/register-with-azure.md#assign-azure-permissions-for-registration).
+
+- **Azure regions**
+
+   The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions:
+
+   # [Azure public](#tab/azure-public)
+
+   These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
+
+   - East US
+   - South Central US
+   - Canada Central
+   - West Europe
+   - Southeast Asia
+   - Central India
+   - Japan East
+   - Australia East
+
+   # [Azure China](#tab/azure-china)
+
+   Regions supported in the Azure China cloud:
+
+   - China East 2
+
+   # [Azure Government](#tab/azure-government)
+
+   Regions supported in the Azure Government cloud:
+
+   - US Gov Virginia
+
+   ---
+
+   Regions supported for additional features of Azure Stack HCI:
+
+   Currently, [Azure Arc Resource Bridge](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements) supports only the following regions for Azure Stack HCI registration:
+   - East US
+   - West Europe
 
 ## Server requirements
 
