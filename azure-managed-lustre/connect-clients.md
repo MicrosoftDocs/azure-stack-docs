@@ -27,6 +27,7 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
 - **To achieve advertised performance** -
   - Clients must reside in the same Availability Zone in which the cluster resides.
   - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
+- **Secure boot** - If you are using Generation 2 VMs, disable secure boot. Otherwise it will prevent clients from mounting Azure Managed Lustre.
 
 The basic workflow is as follows:
 

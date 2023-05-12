@@ -232,6 +232,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: Manage cluster registration
+      href: manage/manage-cluster-registration.md
     - name: Manage clusters with Windows Admin Center
       href: manage/cluster.md
     - name: Manage clusters with PowerShell

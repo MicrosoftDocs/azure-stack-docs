@@ -356,9 +356,9 @@ The latest PowerShell module supports having a common resource group for both cl
 
 For clusters registered with PowerShell module version 1.4.1 or earlier, you can perform the following steps to use the new feature:
 
-1. Unregister the cluster by running `Unregister-AzStackHCI` from one of the nodes. See [Unregister Azure Stack HCI Using PowerShell](register-with-azure.md#unregister-azure-stack-hci-using-powershell).
+1. Unregister the cluster by running `Unregister-AzStackHCI` from one of the nodes. See [Unregister Azure Stack HCI Using PowerShell](../manage/manage-cluster-registration.md?tab=power-shell#unregister-azure-stack-hci).
 2. Install the latest PowerShell module: `Install-Module Az.StackHCI -Force`.
-3. Run [`Register-AzStackHCI`](register-with-azure.md#register-a-cluster-using-powershell) by passing the appropriate parameters for `-ResourceGroupName` and `-ArcForServerResourceGroupName`.
+3. Run [`Register-AzStackHCI`](./register-with-azure.md?tab=power-shell#register-a-cluster) by passing the appropriate parameters for `-ResourceGroupName` and `-ArcForServerResourceGroupName`.
 
 > [!NOTE]
 > If you are using a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the **ArcServerResourceGroup**.
