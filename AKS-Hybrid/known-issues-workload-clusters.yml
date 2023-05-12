@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 04/21/2023
+  ms.date: 05/12/2023
 
 title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
 summary: |
@@ -114,6 +114,66 @@ sections:
           ```
           
           Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.
+          
+      - question: | 
+          Error: You must be logged in to the server (Unauthorized)
+
+        answer: | 
+          Commands such as `Update-AksHci`, `Update-AksHciCertificates`, `Update-AksHciClusterCertificates`, or all interactions with the management cluster, return "Error: You must be logged in to the server (Unauthorized)."
+          
+          This error can occur when the **kubeconfig** file is expired. To check if it's expired, run the following script:
+          
+          ```powershell
+          $kubeconfig= $(get-kvaconfig).kubeconfig
+          $certDataRegex = '(?ms).*client-certificate-data:\s*(?<CertData>[^\n\r]+)'
+          $certDataMatch = Select-String -Path $kubeconfig -Pattern $certDataRegex
+          $certData = $certDataMatch.Matches[0].Groups['CertData'].Value
+          $certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+          $certObject.Import([System.Convert]::FromBase64String($certData))
+          $expiryDate = $certObject.GetExpirationDateString()
+          $expiryDate
+          ```
+          
+          If this script displays a date that is before the current date, then the **kubeconfig** file has expired.
+          
+          To mitigate the issue, copy the **admin.conf** file, which is inside the management control plane VM, to the HCI host:
+          
+          - SSH to the management control plane VM:
+            - Get the management control plane VM IP:
+          
+              ```powershell
+              get-clusternode | % {Get-vm -computerName $_ } | get-vmnetworkadapter | select Name, IPAddresses
+              ```
+          
+            - SSH into it:
+          
+              ```powershell
+              ssh -o StrictHostKeyChecking=no -i (Get-MocConfig).sshPrivateKey clouduser@<mgmt-control-plane-ip>
+              ```
+          
+          - Copy the file to the **clouduser** location:
+          
+            ```powershell
+            cp /etc/kubernetes/admin.conf /home/clouduser/admin.conf
+            ```
+          
+          - Give access to **clouduser**:
+          
+            ```powershell
+            sudo chown clouduser:clouduser admin.conf
+            ```
+          
+          - [Optional] Create a backup of the **kubeconfig** file:
+          
+            ```powershell
+            mv $(Get-KvaConfig).kubeconfig "$((Get-KvaConfig).kubeconfig).backup"
+            ```
+          
+          - Copy the file:
+          
+            ```powershell
+            scp -i (get-mocconfig).sshPrivateKey clouduser@10.64.92.14:~/admin.conf $(Get-KvaConfig).kubeconfig
+            ```
           
       - question: | 
           Hyper-V manager shows high CPU and/or memory demands for the management cluster (AKS host)
