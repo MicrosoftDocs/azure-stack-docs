@@ -80,15 +80,15 @@ sections:
           
           1. Turn off the Geneva agent with the following shell command:
           
-            ```shell
-            sudo systemctl disable -now mdsd
-            ```
+              ```shell
+              sudo systemctl disable -now mdsd
+              ```
           
           2. Delete accumulated files with the following command:
             
-            ```shell
-            sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;
-            ```
+              ```shell
+              sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;
+              ```
           
       - question: | 
           Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
