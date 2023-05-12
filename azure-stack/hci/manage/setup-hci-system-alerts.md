@@ -122,7 +122,7 @@ get-clusterresource "sddc management" | get-clusterparameter
 
 To change the frequency of log generation on your local machine, change the log collection parameter `CacheDumpIntervalInSeconds`.
 
-Here's an example of changing the log frequency to 15 minutes.
+Here's an example of the log frequency set for every 15 minutes.
 
 ```powershell
 get-clusterresource "sddc management" | set-clusterparameter -name "CacheDumpIntervalInSeconds" -value 900
