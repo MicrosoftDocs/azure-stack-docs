@@ -47,10 +47,10 @@ sections:
           
           Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.
       - question: | 
-          Disk storage might be filled up from crash dump logs
+          Disk storage filled up from crash dump logs
 
         answer: | 
-          Disk storage might be filled up from crash dump logs that are created. This is due to an expired Geneva agent client certificate. The symptoms can be as follows:
+          Disk storage can be filled up from crash dump logs that are created. This is due to an expired Geneva agent client certificate. The symptoms can be as follows:
           
           - Services fail to start.
           - Kubernetes pods, deployments, etc. fail to start due insufficient resources.
@@ -58,7 +58,7 @@ sections:
           This issue can impact any operation that involves allocating disk space or writing new files, so any "insufficient disk space/resources" error is a good hint. To check if this issue is present on a given node, run the following shell command:
           
           ```shell
-          clouduser@moc-lwm2oudnskl $ sudo du -h /var/lib/systemd/coredump/ 715M /var/lib/systemd/coredump/
+          clouduser@moc-lwm2oudnskl $ sudo du -h /var/lib/systemd/coredump/ 715M /var/lib/systemd/coredump/
           ```
           
           This command reports the storage space consumed by the diagnostic files.

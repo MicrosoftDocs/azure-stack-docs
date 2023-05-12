@@ -119,7 +119,7 @@ sections:
           Error: You must be logged in to the server (Unauthorized)
 
         answer: | 
-          Commands such as `Update-AksHci`, `Update-AksHciCertificates`, `Update-AksHciClusterCertificates`, or all interactions with the management cluster, return "Error: You must be logged in to the server (Unauthorized)."
+          Commands such as `Update-AksHci`, `Update-AksHciCertificates`, `Update-AksHciClusterCertificates`, and all interactions with the management cluster, can return "Error: You must be logged in to the server (Unauthorized)."
           
           This error can occur when the **kubeconfig** file is expired. To check if it's expired, run the following script:
           
@@ -134,7 +134,7 @@ sections:
           $expiryDate
           ```
           
-          If this script displays a date that is before the current date, then the **kubeconfig** file has expired.
+          If this script displays a date that is earlier than the current date, then the **kubeconfig** file has expired.
           
           To mitigate the issue, copy the **admin.conf** file, which is inside the management control plane VM, to the HCI host:
           
