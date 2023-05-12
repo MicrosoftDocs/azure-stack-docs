@@ -36,23 +36,29 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
 1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
 
    ```azurecli
+   $subscription=<subscription where the virtual network is created.>
+   $resource_group=<resourcegroup where the virtual network is created.>
    $vlanID=<vLAN identifier for Arc VMs. A 0 value means there is no vLan ID.>   
    $vnetName=<user provided name of virtual network>
    $vswitchname=<virtual switch name on Azure Stack HCI nodes>
    $customloc_name=<custom location name provided when deploying the Azure Arc VM management> 
+   $location=<azure region>
    New-MocGroup -name "Default_Group" -location "MocLocation"
    New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} -vlanID $vlanID
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanID
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $location --network-type "Transparent" --name $vnetName --vlan $vlanID
    ```
 
    where:
 
    | Parameter | Description |
    | ----- | ----------- |
+   | **subscription** | Subscription where the virtual network is created. |
+   | **resource_group** | Resourcegroup where the virtual network is created. |  
    | **vlanID** | vLAN identifier for Arc VMs. |
    | **vnetName** | User provided name of virtual network. |
    | **vswitchname** | virtual switch name on Azure Stack HCI nodes. |
-   | **customloc_name** | ustom location name provided when deploying the Azure Arc VM management. |
+   | **customloc_name** | Custom location name provided when deploying the Azure Arc VM management. |
+   | **location** | Azure region where the virtual network is created. |
 
 ---
 
