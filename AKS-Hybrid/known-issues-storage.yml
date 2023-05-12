@@ -55,6 +55,9 @@ sections:
           - Services fail to start.
           - Kubernetes pods, deployments, etc. fail to start due insufficient resources.
           
+          > [!IMPORTANT]
+          > This issue can impact all new Mariner management and target cluster nodes created after April 18, 2023 on releases from April 2022 to March 2023. The issue is fixed in the 2023-05-09 release and later.
+          
           This issue can impact any operation that involves allocating disk space or writing new files, so any "insufficient disk space/resources" error is a good hint. To check if this issue is present on a given node, run the following shell command:
           
           ```shell
@@ -69,9 +72,7 @@ sections:
           
           ### Mitigation
           
-          To resolve the issue, follow these directions to update to the most recent AKS-HCI update, 1.0.18.10425, or turn off the Geneva agent.
-          
-          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually upgrade your workload clusters to any of the following supported minor versions: 1.23.12, 1.23.15, 1.24.9, 1.24.11, 1.25.5, or 1.25.7 before updating your AKS-HCI host.
+          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your AKS-HCI host.
           
           For more information about AKS hybrid releases, and all the latest AKS-HCI news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
           
