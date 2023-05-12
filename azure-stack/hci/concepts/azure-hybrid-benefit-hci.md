@@ -24,7 +24,7 @@ If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licen
 This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for AKS on Azure Stack HCI. For more information, see [Azure Hybrid Benefits for AKS on Azure Stack HCI](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
+> You can maximize cost savings by also using Azure Hybrid Benefit for AKS. For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
 
 ## Activate Azure Hybrid Benefit for Azure Stack HCI
 
