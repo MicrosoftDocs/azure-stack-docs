@@ -63,8 +63,6 @@ To set up alerts using Azure Insights workbooks in the Azure portal, you must fi
 
 1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
 
-    :::image type="content" source="media/alerts-logs-insights/workbooks-insights.png" alt-text="Screenshot of the workbooks and parameters for alerts." lightbox="media/alerts-logs-insights/workbooks-insights.png":::
-
 2. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
 
 3. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
