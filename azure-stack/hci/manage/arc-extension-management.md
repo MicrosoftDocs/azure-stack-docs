@@ -30,7 +30,7 @@ You can install extensions from the **Capabilities** tab for your Azure Stack HC
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
-When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed across the entire cluster and if you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
+When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster and if you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
 
 ## Check the extension status
 
