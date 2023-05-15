@@ -47,6 +47,8 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
 ```
 
+## Parameters
+
 ### -name
 
 The alphanumeric name of your proxy settings object for AKS-HCI.

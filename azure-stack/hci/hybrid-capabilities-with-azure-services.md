@@ -2,8 +2,8 @@
 title: Hybrid capabilities with Azure services
 description: This article describes the cloud service components of Azure Stack HCI.
 ms.topic: overview
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.date: 04/19/2023
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
@@ -42,7 +42,7 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Stack HCI delivers hybrid value through the following Azure Arc technologies:
 
-- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) Starting with Azure Stack HCI, version 21H2, registering your cluster also Arc-enables every cluster node by default. To learn more about enabling Azure Arc integration, see [Enable Azure Arc integration](deploy/register-with-azure.md#enable-azure-arc-integration).
+- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) Starting with Azure Stack HCI, version 21H2, registering your cluster also Arc-enables every cluster node by default. To learn more about enabling Azure Arc integration, see [Enable Azure Arc integration](./manage/manage-cluster-registration.md#enable-azure-arc-integration).
 
     To monitor your Azure Arc-enabled clusters, you can enable Logs and Monitoring capabilities. To learn more about enabling Logs and Monitoring capabilities, see [Configure Azure portal to monitor Azure Stack HCI clusters](/azure-stack/hci/manage/monitor-hci-single).
 
@@ -50,7 +50,7 @@ Azure Stack HCI delivers hybrid value through the following Azure Arc technologi
 
 - [**Azure Arc resource bridge.**](/azure/azure-arc/resource-bridge/overview) Deploying Azure Arc resource bridge enables Azure Arc VMs on Azure Stack HCI, including self-service VM creation and management. To learn more about VM provisioning through Azure portal on Azure Stack HCI, see [VM provisioning through Azure portal on Azure Stack HCI](manage/azure-arc-vm-management-overview.md).
 
-- [**Azure Arc-enabled Kubernetes.**](/azure/azure-arc/kubernetes/overview) If you run [Azure Kubernetes Service on Azure Stack HCI and Windows Server ](/azure/aks/hybrid/overview) , you can project it to Azure via Azure Arc-enabled Kubernetes. To learn more about connecting an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster, see [Connect an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster to Azure Arc-enabled Kubernetes](/azure/aks/hybrid/connect-to-arc).
+- [**Azure Arc-enabled Kubernetes.**](/azure/azure-arc/kubernetes/overview) If you run [Azure Kubernetes Service on Azure Stack HCI and Windows Server ](/azure/aks/hybrid/overview), you can project it to Azure via Azure Arc-enabled Kubernetes. To learn more about connecting an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster, see [Connect an Azure Kubernetes Service cluster to Azure Arc in AKS hybrid](/azure/aks/hybrid/connect-to-arc).
 
 ## Other Azure hybrid services
 

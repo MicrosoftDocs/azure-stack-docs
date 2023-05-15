@@ -1,9 +1,9 @@
 ---
 title: Understand and monitor storage resync
 description: This article provides information on when storage resync happens and how to monitor it in Windows Server.
-ms.author: v-mandhiman
+ms.author: sethm
 ms.topic: article
-author: ManikaDhiman
+author: sethmanheim
 ms.date: 04/17/2023
 ---
 # Understand and monitor storage resync

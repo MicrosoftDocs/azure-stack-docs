@@ -1,10 +1,10 @@
 ---
 title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
-author: ManikaDhiman
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/17/2023
-ms.author: v-mandhiman
+ms.author: sethm
 ms.reviewer: JasonGerend
 ---
 
