@@ -118,7 +118,7 @@ If you continue to have trouble with an extension upgrade, you can [disable auto
 
 ### Upgrades with multiple extensions
 
-If multiple extension upgrades are available for a machine, the upgrades might be batched together, however each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
+If multiple extension upgrades are available for a machine, they might be batched together. However, each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
 ## Uninstall an extension from the Azure portal
 
@@ -140,7 +140,7 @@ If desired, you can uninstall some extensions from your Azure Stack HCI clusters
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png" alt-text="Screenshot of how to troubleshoot an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png":::
 
-**Recommendation**: Whenever the extension is in a failed state, select the **Failed (View details)** status link to view all the information about the failure and troubleshooting tips.
+**Recommendation**: For an extension with a failed status, select the **Failed (View details)** link. View all the information about the failure and apply the troubleshooting tips.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
 
