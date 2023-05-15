@@ -42,7 +42,7 @@ You can start monitoring your Azure Stack HCI system and setting up alerts for i
 
 9. Select **Run**.
 
-Once the information populates, you can analyze the logs and set up alerts on the results.
+After the information appears, you can examine the logs and create alerts based on the results.
 
 ## Set up alerts using Insights
 
@@ -51,7 +51,7 @@ To set up alerts using Azure Insights workbooks in the Azure portal, you must fi
 > [!IMPORTANT]
 > Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
 
-1. From the Azure portal, navigate or search for **Monitor**.
+1. From the Azure portal, navigate to or search for **Monitor**.
 
 2. Select **Azure Stack HCI** and set your time range, subscriptions, and other parameters.
 
@@ -59,7 +59,7 @@ To set up alerts using Azure Insights workbooks in the Azure portal, you must fi
 
 3. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
 
-4. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit the query.
+4. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
@@ -67,11 +67,9 @@ To set up alerts using Azure Insights workbooks in the Azure portal, you must fi
 
     :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
 
-6. From the alerts interface you can set up alert rules and send notifications.
+6. From the alerts interface you can set up your alert conditions, actions and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
 
     :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
-
-For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results).
 
 ## Set up alerts for multiple clusters
 
