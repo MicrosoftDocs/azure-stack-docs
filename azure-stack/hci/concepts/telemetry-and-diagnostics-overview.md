@@ -33,11 +33,11 @@ Telemetry data can be installed and managed through the telemetry and diagnostic
 
   - When available you can seamlessly update the environment with new or improved functionality.
 
-- **Improved compliance:** Enables the telemetry and diagnostic data to comply with regional service and data residency requirements during data uploads..
+- **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
   
-- **Simplified log gathering:** When the collection functionality is readily available it's easier to collect diagnostics logs. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time..
+- **Simplified log gathering:** When the collection functionality is readily available, it's easier to collect diagnostics logs. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time.
 
-- **Faster case resolution**: Your Azure Stack HCI system logs can be used by Microsoft customer support and engineering teams to identify and resolve your issues quickly and efficiently.
+- **Faster case resolution**: Your Azure Stack HCI system logs can help Microsoft customer support and engineering teams identify and resolve your issues quickly and efficiently.
 
 ## Telemetry and diagnostics extension management
 
@@ -59,7 +59,7 @@ You can configure the extension to be:
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Benefits of enhanced telemetry:
 
   - System data might remain for up to 30 days.
-  - Errors are captured more accurately ensuring timely diagnostic information without the need for operator interaction.
+  - Errors are captured more accurately ensuring timely diagnostics information without the need for operator interaction.
   - You have a connected experience with proactive log collection. Your logs are automatically uploaded to an Azure Storage account managed and controlled by Microsoft. These logs are used to resolve your issues.
   - Microsoft can begin to troubleshoot and resolve problems sooner in some cases.
   - The product team can diagnose problems due to failure events and improve the quality of the product.
