@@ -94,7 +94,7 @@ When creating a new alert rule, you must set conditional details to summarize yo
   - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple servers in the cluster.
 - **Threshold value**: Provides a notification based on the value you've set.
 
-In this alert example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.
+In this example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.
 
 :::image type="content" source="media/alerts-logs-insights/measure-detail.png" alt-text="Screenshot of the log query detail to specify." lightbox="media/alerts-logs-insights/measure-detail.png":::
 
