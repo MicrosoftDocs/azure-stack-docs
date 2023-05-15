@@ -264,7 +264,7 @@ For troubleshooting steps, see [Troubleshooting guidance for the Azure Monitor a
 ## Next steps
 
 - [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi)
-- [Register your cluster with Azure](../deploy/register-with-azure.md)
+- [Register cluster with Azure](../deploy/register-with-azure.md)
 - [Enable Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration)
 - [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
