@@ -67,7 +67,7 @@ Before you begin, you'll need the following prerequisites:
 
 - An Azure Stack HCI cluster:
   - [Install updates](../manage/update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008223 or later.
-  - [Register Azure Stack HCI](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center): All servers must be online and registered to Azure.
+  - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): All servers must be online and registered to Azure.
   - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 - If you are using Windows Admin Center:

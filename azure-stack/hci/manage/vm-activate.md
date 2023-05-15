@@ -72,7 +72,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 - An Azure Stack HCI cluster
   - [Install updates](update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008210 or later.
-  - [Register Azure Stack HCI](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center): All servers must be online and registered to Azure.
+  - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): All servers must be online and registered to Azure.
 
 - If using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
@@ -261,7 +261,7 @@ Yes, you still need Windows Server CALs for BYOL, but not for Windows Server sub
 You do need internet connectivity:
 
 - To sync host servers to Azure at least once every 30 days, in order to maintain Azure Stack HCI 30-day connectivity requirements and to sync host licenses for AVMA.
-- When purchasing or cancelling Windows Server subscription.
+- When purchasing or canceling Windows Server subscription.
 
 You do not need internet connectivity:
 
@@ -281,7 +281,7 @@ Yes. Although you cannot use Windows Server 2016 keys to set up AVMA on Azure St
 
 To get a product key, choose from the following options:
 
-- **OEM provider**: Find a Certificates of Authenticity (COA) key label on the outside of the OEM hardware. You can use this key once per server in the cluster.
+- **OEM provider**: Find a Certificate of Authenticity (COA) key label on the outside of the OEM hardware. You can use this key once per server in the cluster.
 - **Volume Licensing Service Center (VLSC)**: From the VLSC, you can download a Multiple Activation Key (MAK) that you can reuse up to a predetermined number of allowed activations. For more information, see [MAK keys](/licensing/products-keys-faq#what-is-a-multiple-activation-key--mak-).
 - **Retail channels**: You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. For more information, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
 

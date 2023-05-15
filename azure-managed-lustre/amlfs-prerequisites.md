@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 03/16/2023
 ms.reviewer: mayabishop
-ms.date: 02/09/2023
+ms.date: 05/05/2023
 
 # Intent: As an IT Pro, I  need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure what I need.
 # Keyword: 
@@ -82,16 +82,16 @@ When you plan blob integration for your file system, it's important to understan
 
 To integrate Azure Blob Storage with your Azure Managed Lustre file system, you must create the following items before you create the file system:
 
-* A storage account that meets the following requirements:
+- **Storage account**
+    - **Account type** - A compatible storage account type. See [Supported storage account types](#supported-storage-account-types).
+    - **Access roles** - Must have roles that permit the Azure Managed Lustre system to modify data. See [Required access roles](#access-roles-for-blob-integration).
+    - **Access keys** - The storage account must have the storage account key access setting set to **Enabled**.
+- **Data containers**
+    - **Files for Lustre** - A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.
+    - **Import/export logs** - A second container for import/export logs in the storage account. You must store the logs in a different container from the data container.
 
-  * A compatible storage account type. See [Supported storage account types](#supported-storage-account-types) for more information.
-  * Access roles that permit the Azure Managed Lustre system to modify data. See [Required access roles](#access-roles-for-blob-integration) for more information.
-
-* A data container in the storage account that contains the files you want to use in the Azure Managed Lustre file system.
-
-  You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system.
-
-* A second container for import/export logs in the storage account. You must store the logs in a different container from the data container.
+> [!NOTE]
+> You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system.
 
 ### Supported storage account types
 
@@ -132,6 +132,14 @@ To add the roles for the service principal **HPC Cache Resource Provider**, do t
 1. Repeat steps 3 and 4 for to add each role.
 
 For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+
+### Private endpoints (optional)
+
+If you are using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the private endpoint setting **Integrate with private DNS Zone** during the creation of a new endpoint.
+
+- **Integrate with Private DNS zone** - Must be set to **Yes**.
+
+![Screenshot showing the DNS tab of the Endpoint setup process.](./media/prerequisites/blob-endpoints-dns-settings.png)
 
 ## Next steps
 

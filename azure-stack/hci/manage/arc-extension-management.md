@@ -30,6 +30,8 @@ Once Azure Stack HCI servers are Azure Arc-enabled, you can install extensions f
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
+Installation of an extension in the Azure portal is a cluster-wide operation. If you add more servers to your cluster all the extensions installed on your cluster are automatically added to the new servers.
+
 ## Check the extension status
 
 After you install an extension, check the status of the extension on each of your nodes. To check the extension status, go to the **Extensions menu page** and view the **status column** of the grid.
