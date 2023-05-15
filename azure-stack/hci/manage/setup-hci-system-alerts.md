@@ -50,7 +50,7 @@ After the information appears, you can examine the logs and create alerts based 
 
 ## Set up alerts for multiple clusters
 
-To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query.
+To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('clusterArmId1', 'clusterArmId2', 'clusterArmId3')`
 
 :::image type="content" source="media/alerts-logs-insights/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/alerts-logs-insights/multiple-clusters.png":::
 
@@ -61,23 +61,21 @@ To set up alerts using Azure Insights workbooks in the Azure portal, you must fi
 > [!IMPORTANT]
 > Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
 
-1. From the Azure portal, navigate to or search for **Monitor**.
-
-2. Select **Azure Stack HCI** and set your time range, subscriptions, and other parameters.
+1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
 
     :::image type="content" source="media/alerts-logs-insights/workbooks-insights.png" alt-text="Screenshot of the workbooks and parameters for alerts." lightbox="media/alerts-logs-insights/workbooks-insights.png":::
 
-3. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
+2. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
 
-4. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
+3. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
 
     :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
 
-5. After the query loads, select **+ New alert rule**.
+4. After the query loads, select **+ New alert rule**.
 
     :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
 
-6. From the alerts interface you can set up your alert conditions, actions and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
+5. From the alerts interface you can set up your alert conditions, actions and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
 
     :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
 
