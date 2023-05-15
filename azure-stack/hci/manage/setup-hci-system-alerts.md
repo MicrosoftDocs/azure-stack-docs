@@ -12,7 +12,7 @@ ms.date: 05/15/2023
 
 # Set up alerts for Azure Stack HCI systems
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. To use the sample queries, you must first enable logs and associate a log analytics workspace with your Azure Stack HCI system. Additionally, we provide guidance on how to use Azure Insights for monitoring resources and setting up alerts.
 
