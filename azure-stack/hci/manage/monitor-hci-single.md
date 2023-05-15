@@ -110,7 +110,7 @@ When you enable Azure Stack HCI insights on a machine with the Azure Monitor age
 
 The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-health/operational` Windows event channel will be added to your Log Analytics workspace under **Windows event logs**.
 
-:::image type="content" source="media/monitor-hci-single/event-channel.png" alt-text="Screenshot showing Add data source window" lightbox="media/monitor-hci-single/event-channel.png":::
+:::image type="content" source="media/monitor-hci-single/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-hci-single/event-channel.png":::
 
 By collecting these logs, Insights will show the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters are added.
 
@@ -227,7 +227,7 @@ To enable Insights again, do the following:
 
 1. To migrate from the Microsoft Monitoring Agent (MMA) to the Azure Monitoring Agent (AMA), scroll down to **Insights**.
 
-    :::image type="content" source="media/monitor-hci-single/agent-migration.png" alt-text="Portal shows update needed" lightbox="media/monitor-hci-single/agent-migration.png":::
+    :::image type="content" source="media/monitor-hci-single/agent-migration.png" alt-text="Screenshot showing the Install AMA window." lightbox="media/monitor-hci-single/agent-migration.png":::
 
 1. Select **Install AMA**; the **Insights configuration** window opens.
 
@@ -279,7 +279,7 @@ This content applies to version 21H2 of Azure Stack HCI.
 
 To use Azure Stack HCI Insights with the legacy Agent, make sure you've completed the following:
 
-- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration].
+- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
 
 - [Enable Log Analytics](../deploy/register-with-azure.md) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
 
