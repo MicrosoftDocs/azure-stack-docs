@@ -46,7 +46,7 @@ You can start monitoring your Azure Stack HCI system and setting up alerts for i
 
 9. Select **Run**.
 
-After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details)
+After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
 
 ## Set up alerts using Insights
 
