@@ -13,11 +13,11 @@ ms.date: 10/28/2022
 
 >[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
 
-This article describes how to set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. To use the sample queries, you must first enable logs, and then associate a log analytics workspace with your Azure Stack HCI system. We also share how to configure Azure Insights for monitoring resources and setting up alerts.
+This article describes how to set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. To use the sample queries, you must first enable logs and associate a log analytics workspace with your Azure Stack HCI system. Additionally, we provide guidance on how to use Azure Insights for monitoring resources and setting up alerts.
 
 ## Set up alerts using sample Log queries
 
-Pre-existing log queries in the [Azure portal](https://portal.azure.com) are a helpful way to get started with checking the health of your Azure Stack HCI system and setting up alerts for it.
+You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
 
 1. From the Azure portal, navigate to **Azure Monitor** and select **Logs**.
 2. Select **+ Add filter** to add a filter for **Resource type**.
@@ -45,7 +45,7 @@ Once the information populates, you can analyze the logs and set up alerts on th
 
 ## Set up alerts using Insights
 
-Alerts can be set up in the Azure portal to use Azure Insights workbooks if the Insights function is configured for your Azure Stack HCI system. If your resources aren't monitored, see [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md) to enable Insights monitoring before setting up alerts.
+To set up alerts using Azure Insights workbooks in the Azure portal, you must first configure the Insights function for your Azure Stack HCI system. If your resources aren't monitored and you want to enable Insights, see [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md).
 
 > [!IMPORTANT]
 > Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
@@ -80,17 +80,18 @@ To set a new or change an existing query to accommodate multiple clusters Cluste
 
 ## Log query results
 
-Once you add logs, run your query against the workspace that stores your cluster logs to confirm that you get the expected results. If you don't receive the expected results, correct your log query, and rerun it.
+After adding logs, you should confirm that you get the expected results by running your query against the workspace that stores your cluster logs. If you don't get the expected results, correct your log query and rerun it.
 
-If you want to set a new alert rule, select **New alert rule** and fill in the required conditional details:
+When creating a new alert rule, you must set conditional details to summarize your query results. These details are based on three categories: measurement, split by dimensions, and alert logic. In your alert details, fill in the following components:
 
 - **Measure**: The value used to set up alerts. By default, it takes only numerical values. Convert your values to integer and select the correct one from the dropdown list.
-- **Aggregation type**: Ensures that if even one cluster memory value meets the desired value, an alert shows. For alerts on multiple clusters, you need to put the aggregation type as a maximum and not an average or total.
-- **Resource ID column**: The value used to split the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the server, use `_resourceID`. Check your value names in your log query for accuracy.
-- **Dimension name**: The value used to split an alert measure further. For example, to get alerts per server, select the `Nodename`. When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple servers in the cluster.
+- **Aggregation type**: Ensures you receive an alert, even if one cluster memory value meets the desired value. For alerts on multiple clusters, you need to put the aggregation type as a maximum and not an average or total.
+- **Resource ID column**: Splits the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the server, use `_resourceID`. Check your value names in your log query for accuracy.
+- **Dimension name**: Splits an alert measure further. For example, to get alerts per server, select the `Nodename`.
+  - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple servers in the cluster.
 - **Threshold value**: Provides a notification based on the value you've set.
 
-In this alert example, when the measure value Memoryusageint with an aggregation type of maximum value reaches the threshold of 15 minutes, you get an alert.
+In this alert example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.
 
 :::image type="content" source="media/alerts-logs-insights/measure-detail.png" alt-text="Screenshot of the log query detail to specify." lightbox="media/alerts-logs-insights/measure-detail.png":::
 
@@ -100,11 +101,11 @@ Once your details are set, you can review your conditions for alert accuracy.
 
 ## Alert actions and details
 
-To determine how you're notified for your cluster alerts use the **Actions** tab as highlighted in the image. You can set an alert rule for existing action groups or create new action groups. You can choose notifications via email, Azure app, Event Hubs, and more.
+To determine how you receive notifications for your cluster alerts, use the **Actions** tab as shown in the image. You can create new action groups or set an alert rule for existing ones. You can choose to receive notifications through email, Event Hubs, and more.
 
 :::image type="content" source="media/alerts-logs-insights/action-groups.png" alt-text="Screenshot of the action groups action options." lightbox="media/alerts-logs-insights/action-groups.png":::
 
-Once you have set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select the Review + Create for a final review of all your alert settings and to create your alert.
+Once you have set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select **Review + Create** for a final review of all your alert settings and to create your alert.
 
 :::image type="content" source="media/alerts-logs-insights/alert-details.png" alt-text="Screenshot of the action details for alerts." lightbox="media/alerts-logs-insights/alert-details.png":::
 
@@ -114,7 +115,7 @@ After your alerts are set up, you can monitor your alert rules, action groups, a
 
 ## Log collection frequency
 
-By default, logs collect and generate every hour. To check the frequency of the log collection, use the following PowerShell command:
+By default, logs are collected and generated every hour. To check the frequency of your log collection, use the following PowerShell command:
 
 ```powershell
 get-clusterresource "sddc management" | get-clusterparameter
