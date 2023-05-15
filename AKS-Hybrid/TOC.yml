@@ -277,8 +277,12 @@
     href: aks-hybrid-preview-azure-vm.md
   - name: How-to
     items:
-     - name: Install Azure Resource Bridge on Windows Server
-       href: deploy-arc-resource-bridge-windows-server.md
+     - name: Install AKS service
+       items:
+        - name: Install on Azure Stack HCI
+          href: deploy-aks-service-hci.md
+        - name: Install on Windows Server
+          href: deploy-arc-resource-bridge-windows-server.md
      - name: Configure networking for AKS hybrid clusters
        href: create-aks-hybrid-preview-networks.md
      - name: Provision AKS hybrid clusters from Azure

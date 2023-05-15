@@ -24,7 +24,7 @@ If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licen
 This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for AKS on Azure Stack HCI. For more information, see [Azure Hybrid Benefits for AKS on Azure Stack HCI](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
+> You can maximize cost savings by also using Azure Hybrid Benefit for AKS. For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
 
 ## Activate Azure Hybrid Benefit for Azure Stack HCI
 
@@ -39,7 +39,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
     - Version 22H2 or later; or
     - Version 21H2 with at least the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later
     
-- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) with Azure
+- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure
 
 - Make sure that your cluster has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1)
 
