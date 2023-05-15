@@ -6,7 +6,8 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/28/2022
+ms.reviewer: kimlam
+ms.date: 05/15/2023
 ---
 
 # Set up alerts for Azure Stack HCI systems
