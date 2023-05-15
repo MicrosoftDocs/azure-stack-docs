@@ -137,4 +137,4 @@ get-clusterresource "sddc management" | set-clusterparameter -name "CacheDumpInt
 
 ## Next steps
 
-Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule)
+Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
