@@ -18,23 +18,27 @@ This article describes how to set up alerts for Azure Stack HCI systems, using p
 
 ## Set up alerts using sample Log queries
 
-You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
+You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system. Identify the clusters you want to monitor using the sample queries and follow these steps:
 
-1. From the Azure portal, navigate to **Azure Monitor** and select **Logs**.
-2. Select **+ Add filter** to add a filter for **Resource type**.
-3. Choose **Azure Stack HCI** for a populated list of Azure Stack HCI system sample logs.
-
-    :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
-
-4. Select **Load to Editor** to open the query workspace.
-5. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
-6. On the cluster **Overview** page, select **JSON View**
+1. On your cluster **Overview** page, select **JSON View**.
 
     :::image type="content" source="media/alerts-logs-insights/json-view.png" alt-text="Screenshot of the JSON View link to find ClusteArmId." lightbox="media/alerts-logs-insights/json-view.png":::
 
-7. Copy the ClusterArmId detail from the **Resource ID** box.
+2. Copy the ClusterArmId detail from the **Resource ID** box.
 
     :::image type="content" source="media/alerts-logs-insights/resource-id.png" alt-text="Screenshot of the Resource JSON page to copy ClusteArmId information." lightbox="media/alerts-logs-insights/resource-id.png":::
+
+3. From the Azure portal, navigate to or search for **Monitor** and select **Logs**.
+
+4. Select **+ Add filter** to add a filter for **Resource type**.
+
+5. Choose **Azure Stack HCI** for a populated list of Azure Stack HCI system sample logs.
+
+    :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
+
+6. Select **Load to Editor** to open the query workspace.
+
+7. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
 
 8. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
@@ -42,7 +46,7 @@ You can start monitoring your Azure Stack HCI system and setting up alerts for i
 
 9. Select **Run**.
 
-After the information appears, you can examine the logs and create alerts based on the results.
+After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details)
 
 ## Set up alerts using Insights
 
@@ -84,7 +88,7 @@ After adding logs, you should confirm that you get the expected results by runni
 When creating a new alert rule, you must set conditional details to summarize your query results. These details are based on three categories: measurement, split by dimensions, and alert logic. In your alert details, fill in the following components:
 
 - **Measure**: The value used to set up alerts. By default, it takes only numerical values. Convert your values to integer and select the correct one from the dropdown list.
-- **Aggregation type**: Ensures you receive an alert, even if one cluster memory value meets the desired value. For alerts on multiple clusters, you need to put the aggregation type as a maximum and not an average or total.
+- **Aggregation type**: Ensures you receive an alert, even if only one cluster memory value meets what you have specified. For alerts on multiple clusters, you need to put the aggregation type as a maximum and not an average or total.
 - **Resource ID column**: Splits the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the server, use `_resourceID`. Check your value names in your log query for accuracy.
 - **Dimension name**: Splits an alert measure further. For example, to get alerts per server, select the `Nodename`.
   - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple servers in the cluster.
@@ -114,13 +118,13 @@ After your alerts are set up, you can monitor your alert rules, action groups, a
 
 ## Log collection frequency
 
-By default, logs are collected and generated every hour. To check the frequency of your log collection, use the following PowerShell command:
+Logs are generated every hour by default. To check how often your logs are collected, use the following PowerShell command:
 
 ```powershell
 get-clusterresource "sddc management" | get-clusterparameter
 ```
 
-To change the frequency of log generation on your local machine, change the log collection parameter `CacheDumpIntervalInSeconds`.
+To change the frequency of log generation on your local machine, change the `CacheDumpIntervalInSeconds` log collection parameter.
 
 Here's an example of the log frequency set for every 15 minutes.
 
