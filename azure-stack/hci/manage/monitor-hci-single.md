@@ -19,7 +19,7 @@ This article explains how to monitor an Azure Stack HCI cluster using Azure Stac
 
 ## Benefits of Azure Stack HCI Insights
 
-Azure Stack HCI Insights offers three primary benefits:
+Azure Stack HCI Insights provides three primary benefits:
 
 - It's managed by Azure and accessed from Azure portal, so it's always up to date, and there's no database or special software setup required.
 
