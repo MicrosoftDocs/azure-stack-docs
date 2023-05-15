@@ -50,7 +50,7 @@ After the information appears, you can examine the logs and create alerts based 
 
 ## Set up alerts for multiple clusters
 
-To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('clusterArmId1', 'clusterArmId2', 'clusterArmId3')`
+To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('ClusterArmId1', 'ClusterArmId2', 'ClusterArmId3')`
 
 :::image type="content" source="media/alerts-logs-insights/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/alerts-logs-insights/multiple-clusters.png":::
 
