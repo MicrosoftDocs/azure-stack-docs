@@ -51,7 +51,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
 1. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
 
    ```PowerShell
-   $VswitchName="<Switch-Name>"
+   $VswitchName='''<Switch-Name>'''
    $ControlPlaneIP="<IP-address>"
    $csv_path="<input-from-admin>"
    $VlanID="<vLAN-ID>" (Optional)
