@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 02/08/2023
+ms.date: 05/05/2023
 ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 12/05/2022
@@ -74,7 +74,7 @@ Here's a sample configuration file (JSON format) you can modify, save, and use f
                 ],
                 "PhysicalNodes": [
                     {
-                        "Name": "node1_name",
+                        "Name": "node1_netbios_name",
                         "IPv4Address": "10.0.50.51"
                     }
                 ],

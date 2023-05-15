@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2023
+ms.date: 04/26/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -19,11 +19,11 @@ This article lists the prerequisites for Azure Arc VM management. We recommend t
 
 ## Resource requirements
 
-The resource requirements include:
+To ensure the successful activation of Arc VM and the availability of sufficient resources for deploying Arc VMs, please make sure that:
 
-- A cluster shared volume with at least 50 GB of space. This is required to store configuration details and the OS image for your Arc Resource Bridge VM.
+- A cluster shared volume with at least 1 TB of space. This is required to store configuration details and the OS image for your Arc Resource Bridge VM.
 - At least 4 vCPUs
-- At least 8 GB of memory
+- At least 16 GB of memory
 
 ## Azure requirements
 
@@ -98,7 +98,6 @@ Make sure to include the following firewall URLs in your allowlist:
 | https\://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Azure Stack HCI or Windows Server host |
 | *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions |
 | *.pythonhosted.org  | 443 | Python package | Used for downloading python packages during Azure CLI installation |
-| msk8s.sf.tlu.dl.delivery.mp.microsoft.com | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
 | msk8s.api.cdp.microsoft.com | 443 | SFS API endpoint | Used when downloading product catalog, product bits, and OS images from SFS |
 | msk8s.sb.tlu.dl.delivery.mp.microsoft.com	 | 443 | Resource bridge (appliance) image download | Used for downloading the Arc Resource Bridge OS images |
@@ -150,7 +149,7 @@ New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourc
 In a PowerShell window of the host computer, run the following command as an administrator:
 
 ```PowerShell
-New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,.svc,172.16.0.0/12,192.168.0.0/16,corp.contoso.com" -proxyServerUsername <username_for_proxy> -proxyServerPassword <password_for_proxy>
+New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://<username_for_proxy>:<password_for_proxy>@proxy.corp.contoso.com:8080 -proxyServerHTTPS https://<username_for_proxy>:<password_for_proxy>@proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,.svc,172.16.0.0/12,192.168.0.0/16,corp.contoso.com" 
 ```
 
 #### Use certificate-based authentication

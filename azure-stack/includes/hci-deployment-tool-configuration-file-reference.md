@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 02/08/2023
+ms.date: 05/05/2023
 ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 12/05/2022
@@ -57,7 +57,7 @@ The following table gives descriptions for the settings listed in the configurat
 |EndingAddress|Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.|
 |DNSServers| IPv4 address of the DNS servers in your environment. DNS servers are required as they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.|
 |**PhysicalNodes**|Section name|
-|Name|Name of each physical server on your Azure Stack HCI cluster.|
+|Name|NETBIOS name of each physical server on your Azure Stack HCI cluster.|
 |IPv4Address|The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.|
 |**HostNetwork**|Section name|
 |Intents|The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.|

@@ -48,7 +48,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure benefits](../manage/azure-benefits.md) on Azure Stack HCI | Yes | Yes |
 |[Activate Windows Server Subscriptions](../manage/vm-activate.md) | Yes | Yes |
 |[Azure Defender and Secured-core](/shows/inside-azure-for-it/securing-azure-stack-hci-with-azure-defender-and-secured-core) | Yes | Yes |
-|[Azure Kubernetes Service on Azure Stack HCI](/azure-stack/aks-hci/) (AKS-HCI) | Yes | Yes |
+|[Azure Kubernetes Service (AKS) hybrid](/azure-stack/aks-hci/) | Yes | Yes |
 |[Azure Virtual Desktop](/azure/virtual-desktop/overview) | Yes | Yes |
 |[Azure Site Recovery](../manage/azure-site-recovery.md) | Yes | Yes |
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No | Yes |

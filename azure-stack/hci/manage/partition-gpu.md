@@ -1,8 +1,8 @@
 ---
 title: Partition and share GPUs with Azure Stack HCI virtual machines
 description: Learn how to partition and share a GPU with multiple virtual machines on Azure Stack HCI.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/05/2023
 ms.reviewer: alkohli
