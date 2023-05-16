@@ -490,6 +490,12 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
+    - name: Manage capacity (preview)
+      - name: Add a server
+        href: manage/add-server.md
+      - name: Repair a server
+        href: manage/repair-server.md
+      items:
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
