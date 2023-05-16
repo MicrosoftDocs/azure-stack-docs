@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 04/25/2023
+ms.date: 05/16/2023
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -277,6 +277,10 @@ This script must be run under the following conditions:
 - Custom domains aren't supported in disconnected environments.
 
 App Service performs domain ownership verification against public DNS endpoints, as a result custom domains aren't supported in disconnected scenarios.
+
+- Virtual Network Integration for Web and Function Apps is not supported
+
+The capability to add virtual network integration to Web and Function apps shows in the Azure Stack Hub portal and if a tenant attempts to configure they receive an internal server error.  This feature is **not supported** in Azure App Service on Azure Stack Hub.
 
 ## Next steps
 
