@@ -1,6 +1,6 @@
 ---
-title: Manage capacity by adding a server of Azure Stack HCI. (preview)
-description: Learn how to manage capacity on your Azure Stack HCI by adding a server. (preview)
+title: Repair a server on Azure Stack HCI. (preview)
+description: Learn how to repair a server on your Azure Stack HCI. (preview)
 ms.topic: article
 author: alkohli
 ms.author: alkohli
