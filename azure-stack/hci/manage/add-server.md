@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.date: 05/16/2023
 ---
 
-## Add a server on your Azure Stack HCI (preview)
+# Add a server on your Azure Stack HCI (preview)
 
 [!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
 
@@ -33,7 +33,7 @@ Before you add a server, make sure to check with your solution provider, which c
 
 The following flow diagram shows the overall process to add a server:
 
-![Diagram illustrating process to add a server](media/79918550304be2cda5c8a7482b92b16b.png)
+<!--![Diagram illustrating process to add a server](media/79918550304be2cda5c8a7482b92b16b.png)-->
 
 To add a server, follow these high-level steps:
 
@@ -80,9 +80,9 @@ This section describes how to add a server using PowerShell, monitor the status 
 
 ### Add a server using PowerShell
 
-Make sure that you have reviewed and completed the [prerequisites](#prerequisites-for-add-and-repair-servers). Follow these steps to add a server using PowerShell.
+Make sure that you have reviewed and completed the [prerequisites](#prerequisites). Follow these steps to add a server using PowerShell.
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os).
+1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
 
     > [!NOTE]
     > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
