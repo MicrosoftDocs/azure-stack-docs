@@ -32,7 +32,7 @@ If you have an existing Azure Stack HCI cluster that is registered to Azure with
 
 Here are the required extensions:
 
-- Telemetry and diagnostics
+- [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
 ## Install an extension via the Azure portal
 
