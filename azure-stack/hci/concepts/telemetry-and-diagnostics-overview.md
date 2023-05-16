@@ -60,11 +60,11 @@ You can set up the extension to be:
   - Benefits of enhanced telemetry:
     - System data might remain for up to 30 days.
     - The extension captures errors more accurately and provides timely diagnostics information without requiring operator interaction.
-    - You can enjoy a connected experience with proactive log collection as your logs are automatically uploaded to an Azure Storage account that is managed and controlled by Microsoft. These logs are used to resolve your issues.
+    - You can enjoy a connected experience with proactive log collection as your logs are automatically uploaded to an Azure Storage account that Microsoft manages and controls. These logs are used to resolve your issues.
     - In some cases, Microsoft can troubleshoot and resolve problems sooner.
     - The product team can identify and fix issues and improve the quality of the product based on failure events.
 
-If there is no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. These logs are accessed by Microsoft for support cases and aren't sent to Azure.
+If there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. Microsoft uses these logs for support cases. Logs aren't sent to Azure.
 
 ## Consent for data collection
 
