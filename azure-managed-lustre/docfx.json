@@ -41,9 +41,11 @@
     "externalReference": [],
     "globalMetadata": {
       "uhfHeaderId": "Azure.yml",
+      "feedback_system": "GitHub",
+      "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
+      "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
       "extendBreadcrumb": false,
-      "feedback_system": "None",
       "manager":"femila",
       "ms.service": "azure-stack",
       "recommendations": true

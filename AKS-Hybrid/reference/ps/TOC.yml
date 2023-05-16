@@ -120,6 +120,8 @@
     href: set-akshciregistration.md
   - name: Sync-AksHciBilling
     href: sync-akshcibilling.md
+  - name: Test-UpdateAksHci
+    href: test-updateakshci.md
   - name: Uninstall-AksHci
     href: uninstall-akshci.md
   - name: Uninstall-AksHciAdAuth
