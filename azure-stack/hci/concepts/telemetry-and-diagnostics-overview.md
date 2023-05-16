@@ -18,7 +18,7 @@ This article describes the telemetry and diagnostics extension in Azure Stack HC
 
 Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, telemetry data is installed and managed through the telemetry and diagnostics extension.
 
-When you register an Azure Stack HCI device, an Azure Arc Connected agent is installed on it. After you configure the extension, it can continue to function even if the arc agent fails. The extension only requires the arc agent installation initially and can continuously operate even if the agent isn't running.
+When you register an Azure Stack HCI device, an Azure Arc Connected agent is installed on it. After you set up the extension, it can continue to function even if the arc agent fails. The extension only requires the arc agent installation initially and can continuously operate even if the agent isn't running.
 
 ## Benefits of the telemetry and diagnostics extension
 
@@ -44,7 +44,7 @@ You maintain control over whether you send telemetry data to Microsoft, even aft
 
 :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
-You can configure the extension to be:
+You can set up the extension to be:
 
 - **Off:** You don't send system data to Microsoft.
 
@@ -64,7 +64,7 @@ You can configure the extension to be:
     - In some cases, Microsoft can troubleshoot and resolve problems sooner.
     - The product team can identify and fix issues and improve the quality of the product based on failure events.
 
-If there is no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. These logs are accessed by Microsoft for support cases and are not sent to Azure.
+If there is no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. These logs are accessed by Microsoft for support cases and aren't sent to Azure.
 
 ## Consent for data collection
 
