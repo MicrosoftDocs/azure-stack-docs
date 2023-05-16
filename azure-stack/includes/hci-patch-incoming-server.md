@@ -7,7 +7,7 @@ ms.topic: include
 ms.date: 05/16/2023
 ---
 
-```powershell
+    ```powershell
     # Retrieve incoming server's OS build version and installed KBs 
 
     Set-Item WSMan:\LocalHost\Client\TrustedHosts -Value "s-cluster" -Force
