@@ -491,6 +491,7 @@
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
     - name: Manage capacity (preview)
+      items:
       - name: Add a server
         href: manage/add-server.md
       - name: Repair a server
