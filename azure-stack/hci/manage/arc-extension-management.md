@@ -17,12 +17,22 @@ This article describes how to manage Azure Arc extensions on Azure Stack HCI ser
 
 ## About Azure Arc extensions in the Azure portal
 
-With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions on your Azure Stack HCI systems. Azure Arc allows you to run hybrid services such as monitoring and Windows Admin Center in the Azure portal.
+With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions on your Azure Stack HCI systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
 Here are the extensions you can install and manage in the Azure portal.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
+
+## Required Azure-managed extensions
+
+Once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are required for the efficient functioning of your Azure Stack HCI system are automatically installed on your cluster. These extensions can't be uninstalled and are essential to enhance the quality of your Azure Stack HCI system. You can control the behavior of these extensions in the Azure portal through the **Extensions** page and **Settings** menu.
+
+If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the Overview or Extensions page in the Azure portal. You can use the information provided in the banner to guide you through installing these extensions.
+
+Here are the required extensions:
+
+- Telemetry and diagnostics
 
 ## Install an extension via the Azure portal
 
@@ -30,7 +40,7 @@ You can install extensions from the **Capabilities** tab for your Azure Stack HC
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
-When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster and if you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
+When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
 
 ## Check the extension status
 
@@ -42,10 +52,10 @@ You can check the status of an extension on each server from the **Extensions** 
 
 When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Stack HCI Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
 
-Currently, automatic extension upgrades are only supported in the Windows Admin Center extension. However, more extensions will be added in the future.
+Currently, automatic extension upgrades are only supported in the Windows Admin Center extension, but more extensions will be added in the future.
 
 > [!NOTE]
-> By default, all extensions are configured to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
+> By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
 ### Enable automatic upgrade via the Azure portal
 
