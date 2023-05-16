@@ -24,9 +24,9 @@ You can dynamically scale your Azure Stack HCI cluster from 1 to 16 nodes. In re
 The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
-> - It is not possible to permanently remove a server from a cluster.
+> It is not possible to permanently remove a server from a cluster.
 
-Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires a reimaging of the server.
+Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires you to reimage the server.
 
 ## Repair server workflow
 
@@ -41,17 +41,12 @@ To repair an existing server, follow these high-level steps:
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
 1. Remove this server temporarily from the cluster.
 1. Reimage the server that needs to be repaired. Install the Azure Stack HCI OS, drivers, and firmware.
-1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server.
-
-Take into considerations the following limitations:
-
-- The operations to add a sever includes two phases: compute and storage
-- Storage phase is doing a rebalance which is a low priority task to not impact actual workloads and can run multiple days depending on number of nodes and used storage.
+1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task to not impact actual workloads and can run multiple days depending on number of nodes and used storage.
 
 
 ## Supported scenarios
 
-Repairing a server will re-image a server and bring it back to the cluster with the previous name and configuration. Repairing a single node cluster will result in a re-deployment with the option to persist the data volumes. Only the system volume will be deleted and newly provisioned during deployment.
+Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single node cluster will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 It is critical to ensure you always have backups for your workloads and do not rely on the system resiliency only, especially in single node cluster scenarios.
 
