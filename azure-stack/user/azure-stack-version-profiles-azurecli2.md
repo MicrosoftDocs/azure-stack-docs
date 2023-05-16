@@ -24,7 +24,8 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 1. Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. 
 
   > [!IMPORTANT]
-  > You must use Azure CLI version 2.29.2 or earlier with Azure Stack Hub. Microsoft has discovered an issue with Azure Stack Hub that prevents using Azure CLI version 2.30.0 or newer.
+  > Due to a [CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-39327) affecting Azure CLI versions previous to 2.40.0,
+  It is no longer recommended that Azure Stack Hub customers use Azure CLI 2.29.2 for ADFS. Customers may update to Azure CLI 2.40.0 or higher. However, ADFS customers will encounter issues with Azure CLI commands that interact with Microsoft Graph endpoints. This is because Microsoft Graph is not supported for ADFS. For workarounds to Microsoft Graph issues, check the [General known issues](#general-known-issues) section.
 
 2. You can install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
@@ -440,6 +441,160 @@ There are known issues when using CLI in Azure Stack Hub:
  - VM image aliases that are available in Azure may not be applicable to Azure Stack Hub. When using VM images, you must use the entire URN parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) instead of the image alias. This URN must match the image specifications as derived from the `az vm images list` command.
 
 ---
+
+## General known issues
+The general fix for most issues is to use the `az rest` command that will use the current Azure Stack context to make a REST API call for the associated command with the issue. The workarounds in the following issues list can generally be adapted for other Azure CLI issues as long as these issues are caused by Azure CLI and not Azure Stack Hub resource providers or other Azure Stack Hub services.
+
+### Microsoft Graph issues
+
+These are the known Microsoft Graph issues for Azure CLI 2.40.0, or greater, for Azure Stack Hub. This primarily affects ADFS environments as it doesn't support Microsoft Graph.
+
+- `az keyvault create` interacts with Microsoft Graph. The following is an example workaround for ADFS. Primarily, the workaround uses the Azure AD Graph to retrieve user information such as the `objectId` rather than the Microsoft Graph.
+  ```powershell
+  # First, sign into Azure CLI account you want to create the Key Vault from.
+  # TODO: change the principal name to name of principal you want to create the key vault with.
+  $principalNameLike = "CloudUser*"
+  # TODO: change location to your preference.
+  $location = "local"
+  $aadGraph = az cloud show --query endpoints.activeDirectoryGraphResourceId --output tsv
+  $tenantId = az account show --query tenantId --output tsv
+  if ($aadGraph[-1] -ne '/')
+  {
+      $aadGraph += '/'
+  }
+  $userObject = az rest --method get --url "${aadGraph}${tenantId}/users?api-version=1.6" `
+      | ConvertFrom-Json `
+      | Select-Object -ExpandProperty value `
+      | Where-Object {$_.userPrincipalName -like $principalNameLike}
+  $body = '{
+    "location": "' + $location + '",
+    "properties": {
+      "tenantId": "' + $tenantId + '",
+      "sku": {
+        "family": "A",
+        "name": "standard"
+      },
+      "accessPolicies": [
+        {
+          "tenantId": "' + $tenantId + '",
+          "objectId": "' + $userObject.objectId + '",
+          "permissions": {
+            "keys": [
+              "get",
+              "create",
+              "delete",
+              "list",
+              "update",
+              "import",
+              "backup",
+              "restore",
+              "recover"
+            ],
+            "secrets": [
+              "get",
+              "list",
+              "set",
+              "delete",
+              "backup",
+              "restore",
+              "recover"
+            ],
+            "certificates": [
+              "get",
+              "list",
+              "delete",
+              "create",
+              "import",
+              "update",
+              "managecontacts",
+              "getissuers",
+              "listissuers",
+              "setissuers",
+              "deleteissuers",
+              "manageissuers",
+              "recover"
+            ],
+            "storage": [
+              "get",
+              "list",
+              "delete",
+              "set",
+              "update",
+              "regeneratekey",
+              "setsas",
+              "listsas",
+              "getsas",
+              "deletesas"
+            ]
+          }
+        }
+      ],
+      "enabledForDeployment": true,
+      "enabledForTemplateDeployment": true
+    }
+  }'
+  $body | Out-File -FilePath (Join-Path -Path "." -ChildPath "body.json")
+  $resourceGroupName = "testrg123"
+  az group create -n $resourceGroupName -l $location
+  $armEndpoint = az cloud show --query endpoints.resourceManager --output tsv
+  if ($armEndpoint[-1] -ne '/')
+  {
+      $armEndpoint += '/'
+  }
+  $subscriptionId = az account show --query id --output tsv
+  $keyVaultName = "testkv123"
+  az rest --method put --url "${armEndpoint}subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.KeyVault/vaults/${keyVaultName}?api-version=2016-10-01" --body `@body.json
+  # OPTIONAL: test access to the Key Vault.
+  # az keyvault secret set --name MySecretName --vault-name $keyVaultName --value MySecret
+  ```
+  For more information about key vault REST API, see this [link](/rest/api/keyvault/).
+
+### Other issues
+The following are issues not limited to specific versions or ranges of versions of Azure CLI.
+
+- `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both AAD or ADFS.
+  ```powershell
+  # First, sign into account with access to the resource that is being given access or a role to another user.
+  # TODO: change the principal name to name of principal you want to assign the role to.
+  $principalNameLike = "CloudUser*"
+  # TODO: change role name to your preference.
+  $roleName = "Owner"
+  # TODO: change location to your preference.
+  $location = "local"
+  $aadGraph = az cloud show --query endpoints.activeDirectoryGraphResourceId --output tsv
+  $tenantId = az account show --query tenantId --output tsv
+  if ($aadGraph[-1] -ne '/')
+  {
+      $aadGraph += '/'
+  }
+  $userObject = az rest --method get --url "${aadGraph}${tenantId}/users?api-version=1.6" `
+      | ConvertFrom-Json `
+      | Select-Object -ExpandProperty value `
+      | Where-Object {$_.userPrincipalName -like $principalNameLike}
+  $roleDefinitionId = az role definition list --query "[?roleName=='${roleName}'].id" --output tsv
+  $body = @{
+      properties = @{
+          roleDefinitionId = $roleDefinitionId
+          principalId = $userObject.objectId
+      }
+  }
+  $body | ConvertTo-Json | Out-File -FilePath (Join-Path -Path "." -ChildPath "body.json")
+  $resourceGroupName = "testrg123"
+  az group create -n $resourceGroupName -l $location
+  $armEndpoint = az cloud show --query endpoints.resourceManager --output tsv
+  if ($armEndpoint[-1] -ne '/')
+  {
+      $armEndpoint += '/'
+  }
+  $scope =  az group show --name $resourceGroupName --query id --output tsv
+  $guid = (New-Guid).ToString()
+  az rest --method put --url "${armEndpoint}${scope}/providers/Microsoft.Authorization/roleAssignments/${guid}?api-version=2015-07-01" --body `@body.json
+  # OPTIONAL: test access to the resource group, or use the portal.
+  # az login -u <assigned user name> -p <assigned user password> --tenant $tenantId
+  # Test a resource creation command in the resource group:
+  # az network dns zone create -g $resourceGroupName -n "www.mysite.com"
+  ```
+  For more information about role assignment REST API, see this [link](/rest/api/authorization/role-assignments).
 
 ## Next steps
 
