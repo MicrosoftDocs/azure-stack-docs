@@ -496,7 +496,6 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-      items:
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
