@@ -75,6 +75,7 @@ Commands to interact with AKS hybrid.
 | [Set-AksHciNodePool](./set-akshcinodepool.md) | Scales a node pool within a Kubernetes cluster. |
 | [Set-AksHciRegistration](./set-akshciregistration.md) | Registers AKS hybrid with Azure. |
 | [Sync-AksHciBilling](./sync-akshcibilling.md) | Manually triggers a billing records sync. |
+| [Test-UpdateAksHci](./test-updateakshci.md) | Checks whether any target clusters are outside the AKS hybrid support window. |
 | [Uninstall-AksHci](./uninstall-akshci.md) | Removes AKS hybrid. |
 | [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) | Removes Active Directory authentication. |
 | [Uninstall-AksHciCsiNfs](./uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |
