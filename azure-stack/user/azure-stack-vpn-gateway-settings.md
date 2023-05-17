@@ -84,7 +84,7 @@ The following URL example makes the new virtual network gateway SKUs visible in 
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For more information, see [VPN Fast Path for operators](/azure-stack/operator/azure-stack-vpn-fast-path-operators.md).
+Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For more information, see [VPN Fast Path for operators](../operator/azure-stack-vpn-fast-path-operators.md).
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
 
@@ -136,7 +136,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### Virtual network gateways supported configurations when VPN Fast Path is not enabled
 
-|| **VPN Type** | **Connection type**| **Active Routing support (BGP)** | **Remote endpoint NAT-T Enabled** |
+|| VPN Type | Connection type| Active Routing support (BGP) | Remote endpoint NAT-T Enabled |
 |--|--|--|--|--|
 |Basic VNG SKU| Route-based VPN | IPSec Pre-shared key | Not Supported | Not required |
 |Standard VNG SKU | Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Not required |
@@ -144,7 +144,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### Virtual network gateways supported configurations when VPN Fast Path is enabled
 
-|| **VPN Type** | **Connection type**| **Active routing support (BGP)** | **Remote endpoint NAT-T Enabled** |
+|| VPN Type | Connection type| Active routing support (BGP) | Remote endpoint NAT-T Enabled |
 |--|--|--|--|--|
 |Basic VNG SKU| Route-based VPN | IPSec Pre-shared key | Not Supported | Required  |
 |Standard VNG SKU | Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Required  |

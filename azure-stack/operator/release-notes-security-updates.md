@@ -3,9 +3,9 @@ title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/11/2023
+ms.date: 05/17/2023
 ms.author: sethm
-ms.reviewer: carlosm
+ms.reviewer: thoroet
 ms.lastreviewed: 07/06/2022
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
