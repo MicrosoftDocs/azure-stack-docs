@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/11/2023
+ms.date: 05/17/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -83,7 +83,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- The Azure Stack Hub 2301 release is the last major update that can be installed on integrated systems that are based on Intel's Broadwell platform. Future updates are based on Windows Server 2022, which is [not supported on the Broadwell platform by Intel](https://www.intel.com/content/www/us/en/support/articles/000022396/processors.html). These systems will fall out of compliance with [the N-2 support policy](/azure-stack/operator/azure-stack-servicing-policy) for Azure Stack Hub.
 - Starting with the 2301 release, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
 
 ### Fixes
