@@ -17,23 +17,19 @@ This article describes how to repair a server on your Azure Stack HCI cluster.
 
 ## About repair servers
 
-Azure Stack HCI is a hyperconverged system that allows you to scale compute and storage at the same time by adding servers to an existing cluster. Azure Stack HCI cluster supports a maximum of up to 16 nodes.
+Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there is a hardware failure. 
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 nodes. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Lifecycle Manager agents, and Arc registration.
-
-The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires you to reimage the server.
 
 > [!IMPORTANT]
 > It is not possible to permanently remove a server from a cluster.
 
-Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires you to reimage the server.
 
 ## Repair server workflow
 
 The following flow diagram shows the overall process to repair a server.
 
-<!--![Diagram illustrating the repair server process](media/5c6250989cdee68489da5846900a2494.png)-->
-
+![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow.png)
 \**Server may not be in a state where shutdown is possible/necessary*
 
 To repair an existing server, follow these high-level steps:
