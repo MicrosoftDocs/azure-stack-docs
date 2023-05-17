@@ -1,11 +1,11 @@
 ### YamlMime:Landing
 
 title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-summary: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allows users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+summary: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
 
 metadata:
   title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-  description: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allows users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+  description: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
