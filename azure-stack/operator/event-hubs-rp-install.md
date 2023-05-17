@@ -5,13 +5,16 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 02/24/2023
 ms.reviewer: jfggdl
 ms.lastreviewed: 09/02/2020
 zone_pivot_groups: state-connected-disconnected
 ---
 
 # How to install Event Hubs on Azure Stack Hub
+
+> [!IMPORTANT]
+> Starting from Azure Stack Hub build 2301, the Event Hubs resource provider is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
 
 This article shows you how to download and install the Event Hubs resource provider, making it available to offer to customers for subscription. You must also complete the [Event Hubs install prerequisites](event-hubs-rp-prerequisites.md) before continuing.
 
