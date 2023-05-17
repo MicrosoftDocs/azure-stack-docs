@@ -29,7 +29,7 @@ Before you repair a server, make sure to check with your solution provider, whic
 
 The following flow diagram shows the overall process to repair a server.
 
-![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow.png)
+![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow-1.png)
 \**Server may not be in a state where shutdown is possible/necessary*
 
 To repair an existing server, follow these high-level steps:
@@ -37,18 +37,18 @@ To repair an existing server, follow these high-level steps:
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
 1. Remove this server temporarily from the cluster.
 1. Reimage the server that needs to be repaired. Install the Azure Stack HCI OS, drivers, and firmware.
-1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task to not impact actual workloads and can run multiple days depending on number of nodes and used storage.
+1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task to not impact actual workloads and can run multiple days depending on number of servers and used storage.
 
 
 ## Supported scenarios
 
-Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single node cluster will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
+Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single server will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
-It is critical to ensure you always have backups for your workloads and do not rely on the system resiliency only, especially in single node cluster scenarios.
+It is critical to ensure you always have backups for your workloads and do not rely on the system resiliency only, especially in single server scenarios.
 
 ### Hardware requirements
 
-When repairing a server, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the cluster.
+When repairing a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
 
