@@ -491,7 +491,7 @@
   - name: Version 23H2
     items:
     - name: Manage Azure Arc extensions
-      href: manage/arc-extension-management.md 
+      href: manage/arc-extension-management.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
