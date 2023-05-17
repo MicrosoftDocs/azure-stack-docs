@@ -2,7 +2,6 @@
 title: Azure Stack Hub VPN Fast Path 
 description: What's new in Azure Stack Hub VPN Fast Path Public Preview for users
 author: cedward
-
 ms.topic: conceptual
 ms.date: 05/17/2023
 ms.author: cedward
@@ -13,7 +12,7 @@ ms.lastreviewed: 03/09/2022
 # Keyword: azure stack hub VPN Gateways
 
 ---
-# Azure Stack Hub VPN Fast Path Public Preview for tenant users
+# Azure Stack Hub VPN Fast Path public preview for tenant users
 
 ## What is the Azure Stack Hub VPN Fast Path feature?
 
