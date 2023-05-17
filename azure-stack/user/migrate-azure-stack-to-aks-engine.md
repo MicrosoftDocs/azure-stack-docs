@@ -24,7 +24,7 @@ You can run AKS and AKS engine on Azure Stack Hub at the same time. To minimize 
 
 To move workloads to AKS engine, do the following steps:
 
-1. Meet the [prerequisites for AKS engine](azure-stack-kubernetes-aks-engine-set-up.md#prerequisites-for-the-aks-engine).
+1. Meet the [prerequisites for AKS engine](azure-stack-kubernetes-aks-engine-set-up.md#prerequisites-for-aks-engine).
 
 1. [Deploy a cluster using AKS engine](azure-stack-kubernetes-aks-engine-deploy-cluster.md).
 
