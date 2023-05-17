@@ -93,7 +93,7 @@ Enable-AksHciOfflineDownload -stagingShare <your path>
 Run the following command to download the images. This example downloads in full mode. For more download modes, see the descriptions of the `-mode` parameter in [Get-AksHCiRelease](reference/ps/get-akshcirelease.md).
 
 ```powershell
-Get-AksHciRelease -mode full -windows
+Get-AksHciRelease -mode full
 ```
 
 ### Step 4: Start the AKS on HCI host update
