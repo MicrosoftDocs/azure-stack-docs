@@ -15,18 +15,18 @@ ms.date: 05/01/2023
 
 This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in the Azure portal.
 
-## About Azure Arc extensions in the Azure portal
+## Customer-managed Azure Arc extensions on Azure Stack HCI
 
 With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions on your Azure Stack HCI systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
-Here are the extensions you can install and manage in the Azure portal.
+Here are the individual extensions you can install and manage.
 
 - [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 
-## Required Azure-managed extensions
+## Azure-managed extensions on Azure Stack HCI
 
-In the Azure Stack HCI 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are required for the efficient functioning of your Azure Stack HCI system are automatically installed on your cluster. These extensions can't be uninstalled and are essential to enhance the quality of your Azure Stack HCI system. You can control the behavior of these extensions in the Azure portal through the **Extensions** page and **Settings** menu.
+In the Azure Stack HCI 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are required for the efficient functioning of your Azure Stack HCI system are automatically installed on your cluster. These extensions can't be uninstalled and are essential to enhance the quality of your Azure Stack HCI system. You can control the behavior of these extensions in the Azure portal through the **Extensions** page. From the extensions page select the **Settings** menu.
 
 If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information provided in the banner to guide you through installing these extensions.
 
