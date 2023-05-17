@@ -1,21 +1,21 @@
 ---
-title: Deploy the AKS engine on Windows in Azure Stack Hub 
-description: Learn how to use a Windows machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster.
+title: Deploy AKS engine on Windows in Azure Stack Hub 
+description: Learn how to use a Windows machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 3/4/2021
+ms.date: 02/13/2023
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/4/2021
 
-# Intent: As an Azure Stack Hub user, I want to learn how to host the AKS engine on a Windows VM so that I can deploy the AKS engine on Windows in Azure Stack Hub.
+# Intent: As an Azure Stack Hub user, I want to learn how to host AKS engine on a Windows VM so that I can deploy AKS engine on Windows in Azure Stack Hub.
 # Keyword: host aks on windows vm in azure stack hub 
 
 ---
 
 
-# Install the AKS engine on Windows in Azure Stack Hub
+# Install AKS engine on Windows in Azure Stack Hub
 
 Binary downloads for the latest version of AKS Engine are available [on Github](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download the package for your operating system, and extract the **aks-engine** file for AKS Engine versions 0.73.0 and below. For AKS Engine versions 0.75.3 and above, extract the **aks-engine-azurestack** file (and optionally add it to your `$PATH` environment variable for more convenient CLI usage).
 
@@ -25,8 +25,8 @@ The AKS engine is a command-line tool used to deploy and manage your Kubernetes 
 
 When choosing your client machine, consider:
 
-1. If the client machine should be recoverable in case of a disaster.
-3. How you will connect to the client machine and how the machine will interact with your cluster.
+1. Whether the client machine should be recoverable in a disaster.
+1. How you will connect to the client machine, and how the machine will interact with your cluster?
 
 
 ## Install AKS Engine in a connected environment
@@ -81,7 +81,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 ## Verify the installation
 
-Once your client VM is set up, check that you have installed the AKS engine.
+Once your client VM is set up, check that you have installed AKS engine.
 
 1. Connect to your client VM.
 2. Run the following command:
@@ -93,8 +93,7 @@ Once your client VM is set up, check that you have installed the AKS engine.
     aks-engine version
     ```
 
-If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md).
-
+If you are unable to verify that you have installed AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md).
 
 ## ASDK installation
 
@@ -108,4 +107,4 @@ When you are using an ASDK your Azure Resource Manager endpoint is using a self-
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
+> [Deploy a Kubernetes cluster with AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
