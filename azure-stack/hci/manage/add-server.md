@@ -11,29 +11,28 @@ ms.date: 05/16/2023
 
 [!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
 
-This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster.
+This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster. 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About add servers
 
-Azure Stack HCI is a hyperconverged system that allows you to scale compute and storage at the same time by adding servers to an existing cluster. Azure Stack HCI cluster supports a maximum of up to 16 nodes.
+You can easily scale the compute and storage at the same time on your Azure Stack HCI by adding servers to an existing cluster. Your Azure Stack HCI cluster supports a maximum of up to 16 nodes. 
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 nodes. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Lifecycle Manager agents, and Arc registration.
+Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. 
 
-The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Stack HCI cluster from 1 to 16 nodes. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Lifecycle Manager agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 > - In this preview release, only one server can be added at a given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
 > - It is not possible to permanently remove a server from a cluster.
 
-Before you add a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires a reimaging of the server.
 
 ## Add server workflow
 
 The following flow diagram shows the overall process to add a server:
 
-<!--![Diagram illustrating process to add a server](media/79918550304be2cda5c8a7482b92b16b.png)-->
+![Diagram illustrating process to add a server](./media/add-server/add-server-workflow.png)
 
 To add a server, follow these high-level steps:
 
@@ -62,9 +61,23 @@ When adding a server, the system validates the hardware of the new, incoming nod
 
 ## Prerequisites
 
-Before you add a server, you must ensure that:
+Before you add a server, you would need to complete the hardware and software prerequisites.
+
+#### Hardware prerequsites
+
+Make sure to complete the following prerequisites:
+
+1. The first step is to acquire the new Azure Stack HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
+1. Place the new physical server in the rack and cable it appropriately.
+1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
+
+
+#### Software prerequisites
+
+Make sure to complete the following prerequisites:
 
 [!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
+
 
 ## Add a server
 
@@ -74,7 +87,7 @@ This section describes how to add a server using PowerShell, monitor the status 
 
 Make sure that you have reviewed and completed the [prerequisites](#prerequisites). Follow these steps to add a server using PowerShell.
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
+1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
 
     > [!NOTE]
     > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
@@ -105,7 +118,7 @@ To monitor the progress of the add server operation, follow these steps:
 
 [!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
 
-### Troubleshooting
+### Troubleshoot issues
 
 1. If you experience failures or errors while adding a server, you can capture the output of the failures in a log file.
 
