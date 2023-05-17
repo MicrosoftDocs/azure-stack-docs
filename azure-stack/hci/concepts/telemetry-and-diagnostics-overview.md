@@ -10,7 +10,7 @@ ms.date: 05/11/2023
 ---
 # Azure Stack HCI telemetry and diagnostics extension overview (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+>Applies to Azure Stack HCI, version 23H2
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
