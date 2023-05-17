@@ -86,9 +86,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Starting with the 2301 release, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
 - SQL resource provider 2.0.13 and MySQL resource provider 2.0.13 are released to accommodate some UI breaking changes introduced in Azure Stack Hub 2301. Update the SQL resource provider and MySQL resource provider to the latest version before updating Azure Stack Hub. You may need to refresh the browser cache for the new UI changes to take effect.
 
-### Fixes
-
-- New content here.
+<!-- ### Fixes -->
 
 ## Security updates
 
@@ -109,7 +107,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2206.2.38](hotfix-1-2206-2-38.md)
+- [Azure Stack Hub hotfix 1.2206.2.66](hotfix-1-2206-2-66.md)
 
 ### After successfully applying the 2301 update
 
