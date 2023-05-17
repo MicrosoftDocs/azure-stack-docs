@@ -494,7 +494,7 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-  - name: v23H2
+  - name: Version 23H2
     items: 
     - name: Manage Azure Arc extensions
       href: manage/arc-extension-management.md

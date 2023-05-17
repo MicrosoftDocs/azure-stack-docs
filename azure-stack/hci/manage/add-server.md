@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/16/2023
+ms.date: 05/17/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -17,11 +17,11 @@ This article describes how to manage capacity by adding a server (often called s
 
 ## About add servers
 
-You can easily scale the compute and storage at the same time on your Azure Stack HCI by adding servers to an existing cluster. Your Azure Stack HCI cluster supports a maximum of up to 16 nodes. 
+You can easily scale the compute and storage at the same time on your Azure Stack HCI by adding servers to an existing cluster. Your Azure Stack HCI cluster supports a maximum of up to 16 servers. 
 
-Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. 
+Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally.
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 nodes. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Lifecycle Manager agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 > - In this preview release, only one server can be added at a given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
@@ -36,8 +36,8 @@ The following flow diagram shows the overall process to add a server:
 
 To add a server, follow these high-level steps:
 
-1. Install OS, drivers, and firmware on the new cluster node that you plan to add.
-1. Add the prepared node via the `Add-server` PowerShell cmdlet.
+1. Install OS, drivers, and firmware on the new cluster server that you plan to add.
+1. Add the prepared server via the `Add-server` PowerShell cmdlet.
 1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
 1. Once the server is added, the storage pool is automatically rebalanced.
 
@@ -47,15 +47,15 @@ For adding a server, the following scale-out scenarios are supported:
 
 | **Start scenario**  | **Target scenario** | **Storage network architecture**     |
 |---------------------|---------------------|--------------------------------------|
-| Single server       | Two cluster nodes   | Configured with and without a switch |
-| Two server cluster  | Three cluster nodes | Configured with a switch only        |
-| Three server cluster| N cluster nodes     | Switch only                          |
+| Single-server       | Two-server cluster  | Configured with and without a switch |
+| Two-server cluster  | Three-server cluster | Configured with a switch only        |
+| Three-server cluster| N-server cluster     | Switch only                          |
 
-When upgrading a single from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When upgrading a single from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
 
 ### Hardware requirements
 
-When adding a server, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the cluster.
+When adding a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
 
@@ -101,7 +101,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 1. In a new PowerShell session, run the following command:
 
     ```powershell
-    Uninstall-module –Name PSWIndowsUpdate –Force
+    Uninstall-module –Name PSWindowsUpdate –Force
     ```   
 
 1.  Sign in with the lifecycle manager account into a server that is already a member of the cluster. Run the following command to add the new server
