@@ -1,6 +1,6 @@
 ---
-title: Known issues in Azure Stack HCI 2303.1 Supplemental Package (preview)
-description: Read about the known issues in Azure Stack HCI 2303.1 Supplemental Package (preview).
+title: Known issues in Azure Stack HCI 2303.2 Supplemental Package (preview)
+description: Read about the known issues in Azure Stack HCI 2303.2 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
 ms.date: 05/16/2023
@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI, 2303.1 Supplemental Package release (preview)
+# View known issues in Azure Stack HCI, 2303.2 Supplemental Package release (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
@@ -17,16 +17,20 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2303.1 patch update release. This release maps to software version number **10.2303.1.8**. This release supports only updating Azure Stack HCI deployments running 2303 Supplemental Package. 
+This article applies to Azure Stack HCI, Supplemental Package, for 2303.2 patch update release. This release maps to software version number **10.2303.2.8**. This release supports only updating Azure Stack HCI deployments running 2303 Supplemental Package and later. 
 
-For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2303-1-preview.md#azure-stack-hci-23031-supplemental-package-preview).
+For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2303-2-preview.md#azure-stack-hci-23032-supplemental-package-preview).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 
 ## Known issues in this release
 
-Microsoft is not currently aware of any issues with this release. All the known issues are carried over from previous releases.
+Here are the known issues in this release:
+
+|#  |Feature  |Issue  |Workaround  |
+|---------|---------|---------|---------|
+|1  |Observability      | When updating your Azure Stack HCI cluster from 2303.1 to 2303.2, during the expected reboot, the `Mount-VHD` command that mounts the observability volume fails with the following error:Hyper-V encountered an error trying to access an object on computer 'XXXXXXXXXXX' because the object was not found. The object might have been deleted, or you might not have permission to perform the task. Verify that the Virtual Machine Management service on the computer is running. If the service is running, try to perform the task again by using Run as Administrator.|The inability to mount the VHD is temporary and should resolve by itself within some time. If the issue persists, follow these steps to mount the volume:<br>`$Path = "$env:SystemDrive\Observability.vhdx"`<br>`Get-SmbOpenFile | Where-Object -Property -Path ieq $Path | Close-SmbOpenFile`<br>`Mount-VHD -Path $Path`|
 
 
 ## Known issues from previous releases
