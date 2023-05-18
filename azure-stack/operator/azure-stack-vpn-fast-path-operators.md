@@ -143,18 +143,6 @@ Once the operator enables VPN Fast Path on the Azure Stack Hub stamp, the overal
 
 ![Gateway Pool - Azure VPN Fast Path Enabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png)
 
-<!-- ## Monitoring Gateway Pool usage from the Azure Stack Hub admin portal
-
->Placeholder section to include the new admin UX experience to monitor Gateway Pool usage
-
-## Manage and troubleshoot VPN connections from the Azure Stack Hub admin portal
-
-Placeholder section to include information about the new blades in the admin UX portal listing the virtual network gateways, the connections and current state of the connections for each subscription 
-
-## Manage and troubleshoot VPN Connections using PowerShell
-
-Placeholder section to include information about how to leverage the new Admin API via PowerShell to manage and troubleshoot tenant users VPN connections and overall Gateway Pool usage. -->
-
 ## Next steps
 
 - [VPN gateway configuration settings for Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md)
