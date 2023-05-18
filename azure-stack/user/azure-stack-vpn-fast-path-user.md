@@ -22,7 +22,7 @@ When the Azure Stack operator enables the VPN Fast Path feature on the Azure Sta
 
 ## New virtual network gateways SKUs available when VPN Fast is enabled
 
-In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing for a greater number VPN connections.
+In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing for more VPN connections.
 
 The following table shows the new throughput for each SKU when VPN Fast Path is enabled:
 
@@ -49,7 +49,7 @@ The following URL example makes the new virtual network gateway SKUs visible in 
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources, the operator must enable VPN Fast Path on the Azure Stack Hub stamp.
+Before the operator creates these resources, they must enable VPN Fast Path on the Azure Stack Hub stamp:
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-fast-path-user/vpn-fast-path-vng-new-skus.png)
 
@@ -85,13 +85,13 @@ $vpnconnection = New-AzureRmVirtualNetworkGatewayConnection -Name 'Connection-01
 
 You can't update the SKU without recreating the virtual network gateway, which requires deleting all connections associated with the virtual network gateway. You can re-use the local network gateway resources after creating a virtual network gateway with the new SKU. The local network gateway resource defines the address space and IP address of your on-premises device and retains that configuration.
 
-These are the steps to upgrade virtual network gateway SKUs:
+Follow these steps to upgrade virtual network gateway SKUs:
 
 1. Delete all connections on the existing virtual network gateway: make note of the pre-shared key and whether the BGP flag is set to enabled.
 2. Delete the existing virtual network gateway using the legacy SKU: it is not possible to create two virtual network gateways in the same virtual network, so you must delete the existing one.
 3. Create a new virtual network gateway resource with the new SKU: you can select one of the new SKUs enabled with VPN Fast Path.
 4. Create a new connection between the new virtual network gateway and the existing local network gateway: if you are using a custom IP sec policy, create the connection via PowerShell. Use the pre-shared key and BGP flag noted in step 1.
-5. Repeat step 4 for any other connections you want to move to the new SKU: this is relevant for multi-site scenarios.
+5. Repeat step 4 for any other connections you want to move to the new SKU: this step is relevant for multi-site scenarios.
 
 ## VPN connection topologies
 
@@ -117,9 +117,9 @@ A *Site-to-multi-site* topology is a variation of the site-to-site topology. You
 
 ### Site-to-site or site-to-multi-site connections between Azure Stack Hub stamps
 
-You can only create one site-to-site VPN connection between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
+You can only create one site-to-site VPN connection between two Azure Stack Hub deployments. This restriction is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub uses the multi-tenant gateway, which has a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
 
-The following diagram shows how you can inter-connect multiple Azure Stack Hub stamps if you need to create a mesh topology between stamps. In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for additional VPN connections required for other use cases:
+The following diagram shows how you can inter-connect multiple Azure Stack Hub stamps if you need to create a mesh topology between stamps. In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for more VPN connections required for other use cases:
 
 ![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)
 

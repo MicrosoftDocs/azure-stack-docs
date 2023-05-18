@@ -20,7 +20,7 @@ Azure Stack Hub is introducing the three new SKUs described in this article as p
 
 ## New VPN Fast Path virtual network gateway SKUs
 
-With the introduction of the VPN Fast Path feature in Azure Stack Hub, tenant users have the option to create VPN connections using 3 new SKUs:
+With the introduction of the VPN Fast Path feature in Azure Stack Hub, tenant users can create VPN connections using 3 new SKUs:
 
 - Basic
 - Standard
@@ -44,11 +44,11 @@ Azure Stack Hub VPN Fast Path relies on the new SDN Gateway service, and it come
 - List of existing virtual network gateway resources settings.
 - List of existing connections resources settings.
 - List of IPSec policies and settings used on their existing connections.
-  - This ensures your users have policies configured that work with their device, including custom IPSec policies.
+  - This step ensures your users have policies configured that work with their device, including custom IPSec policies.
 - List local network gateway settings. Tenant users can re-use local network gateway resources and configurations. However, we also recommend that you save the existing configuration in case they need to be re-created.
 - Once VPN Fast Path is enabled, tenants must re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
-With the release of the VPN Fast Path public preview, there is a new PowerShell command that operators can call to list all the existing connections created by their tenants. This can help the operator manage capacity and reach out to the tenant admins if they need to recreate their Virtual Network gateways:
+With the release of the VPN Fast Path public preview, there is a new PowerShell command that operators can call to list all the existing connections created by their tenants. This cmdlet can help the operator manage capacity and reach out to the tenant admins if they need to recreate their Virtual Network gateways:
 
 ```powershell
 Get-AzsVirtualNetworkGatewayConnection
@@ -58,13 +58,13 @@ For more information, see [**Get-AzsVirtualNetworkGatewayConnection**](/powershe
 
 ## How to enable Azure Stack Hub VPN Fast Path
 
-For the VPN Fast Path public preview, operators can enable the new feature using the following PowerShell commands. Once the feature reaches general availability, the operators will also have the option to enable the feature using the Azure Stack Hub administrator portal.
+For the VPN Fast Path public preview, operators can enable the new feature using the following PowerShell commands. Once the feature reaches general availability, the operators can also enable the feature using the Azure Stack Hub administrator portal.
 
-Existing setups can be adjusted by re-creating the virtual network gateway and its connections with one of the new SKUs.
+You can adjust existing setups by re-creating the virtual network gateway and its connections with one of the new SKUs.
 
 ### Enable Azure Stack Hub VPN Fast Path using PowerShell
 
-From the Azure Stack Hub privileged endpoint you can run the following PowerShell command to enable the VPN Fast Path feature. 
+From the Azure Stack Hub privileged endpoint, you can run the following PowerShell command to enable the VPN Fast Path feature:
 
 For more information about the Azure Stack Hub PEP, see [Access privileged endpoint](azure-stack-privileged-endpoint.md).
 
@@ -96,15 +96,15 @@ If you need to disable VPN Fast Path, you must first work with your tenant to de
 
 There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
-Gateway connection failovers are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This can result in a temporary disconnect of the tunnels.
+Gateway connection failovers are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This failover can result in a temporary disconnect of the tunnels.
 
 ![Gateway VM failover diagram](media/azure-stack-vpn-fast-path-operators/azure-vpn-gateway-pool-failover.png)
 
 ## New Gateway Pool total capacity
 
-The overall Gateway Pool capacity of an Azure Stack Hub stamp is 4 Gbps. This capacity is divided between the two Active Gateway VMs, with each Gateway VM supporting up to 2 Gbps of throughput. When a connection resource is created, twice its SKU is reserved on the Gateway VM. This ensures that the maximum throughput of the SKU (measured in one direction) can be reached with either Tx or Rx traffic, depending on the requirements of the user workload.
+The overall Gateway Pool capacity of an Azure Stack Hub stamp is 4 Gbps. This capacity is divided between the two Active Gateway VMs, with each Gateway VM supporting up to 2 Gbps of throughput. When a connection resource is created, twice its SKU is reserved on the Gateway VM. This design ensures that the maximum throughput of the SKU (measured in one direction) can be reached with either Tx or Rx traffic, depending on the requirements of the user workload.
 
-For example, a **HighPerformance** SKU will reserve 400 Mbps on a Gateway VM (200 for Tx, 200 for Rx). This means that on the existing engine, a **HighPerformance** connection reserves one tenth of the overall Gateway Pool capacity.
+For example, a **HighPerformance** SKU reserves 400 Mbps on a Gateway VM (200 for Tx, 200 for Rx). This means that on the existing engine, a **HighPerformance** connection reserves one tenth of the overall Gateway Pool capacity.
 
 The following table shows the gateway types and the estimated aggregate throughput for each tunnel/connection by gateway SKU when VPN Fast Path is disabled:
 
@@ -124,7 +124,7 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 ### Estimated aggregate tunnel throughput by SKU with VPN Fast Path Enabled
 
-Once the operator enables VPN Fast Path on the Azure Stack Hub stamp, the overall Gateway Pool capacity will be increased to 10 Gbps. Since the capacity is divided between the two active Gateway VMs, each Gateway VM has a capacity of 5 Gbps. The amount of capacity reserved for each connection is the same as outlined above. Therefore, a VpnGw3 SKU (1250 Mbps) will reserve 2500 Mbps of capacity on a Gateway VM:
+Once the operator enables VPN Fast Path on the Azure Stack Hub stamp, the overall Gateway Pool capacity is increased to 10 Gbps. Since the capacity is divided between the two active Gateway VMs, each Gateway VM has a capacity of 5 Gbps. The amount of capacity reserved for each connection is the same as outlined in the previous section. Therefore, a VpnGw3 SKU (1250 Mbps) reserves 2500 Mbps of capacity on a Gateway VM:
 
 | SKU | Max VPN Connection throughput (1) |Max # of VPN Connections per active GW VM | Max # of VPN Connections per stamp (2) |
 |-------|-------|-------|-------|
