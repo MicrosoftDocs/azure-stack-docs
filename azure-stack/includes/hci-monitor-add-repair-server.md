@@ -14,7 +14,7 @@ ms.date: 05/16/2023
     Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID $ID 
     ```
 
-1. After the operation is complete, the background storage rebalancing job will continue to run. You must wait for the storage rebalance job to complete. To verify the progress of this storage rebalancing job, use the following cmdlet:
+1. After the operation is complete, the background storage rebalancing job will continue to run. Wait for the storage rebalance job to complete. To verify the progress of this storage rebalancing job, use the following cmdlet:
 
     ```powershell
     Get-VirtualDisk Get-StorageJob
