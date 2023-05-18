@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/16/2023
+ms.date: 05/18/2023
 # zone_pivot_groups: hci-versions
 ---
 
@@ -29,7 +29,7 @@ If you haven't already, be sure to [Register your cluster with Azure](../deploy/
 
 - It's highly customizable. The user experience is built on top of Azure Monitor workbook templates, allowing users to change the views and queries, modify or set thresholds that align with the users' limits, and save these customizations into a workbook. Charts in the workbooks can then be pinned to Azure dashboards.
 
-We recommend that you use the new HCI Insights experience with Azure Monitor Agent (AMA) as AMA is faster, more secure and more performant. You can onboard new nodes to AMA  or  can also migrate your existing nodes from the Legacy agent to AMA. See the **New** tab below to configure HCI Insights. If you need to stay with the older experience, see the **Legacy** tab below.
+We recommend that you use the new HCI Insights experience with [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA) as AMA is faster, more secure and more performant. You can onboard new nodes to AMA  or  can also migrate your existing nodes from the Legacy agent to AMA. See the **New** tab below to configure HCI Insights. If you need to stay with the older experience, see the **Legacy** tab below.
 
 This article explains how to monitor an Azure Stack HCI cluster using Azure Stack HCI Insights. HCI Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view useful insights regarding cluster, servers, virtual machines, and storage.
 
@@ -69,7 +69,7 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
     > [!NOTE]
     > The **Get Started** button is only available for version 22H2 with the May 2023 cumulative update or later installed and only after the managed identity is enabled. Otherwise this button is disabled.
 
-1. In the **Insights** configuration window, select an existing [Data Collection Rule](/azure/azure-monitor/essentials/data-collection-rule-overview) (DCR) or create a new DCR and then select **Set up**.
+1. In the **Insights** configuration window, select an existing [Data Collection Rule](/azure/azure-monitor/essentials/data-collection-rule-overview) (DCR) or create a new DCR and then select **Set up**. These rules specify the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace.
 
     :::image type="content" source="media/monitor-hci-single/data-collection-rule.png" alt-text="Screenshot showing the Insights configuration window." lightbox="media/monitor-hci-single/data-collection-rule.png":::
 
@@ -81,7 +81,7 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
 
 1.	Do one of the following:
 
-    - Create a new DCR by selecting **Create new** in the Insights configuration window. Specify the subscription, data collection rule name, and data collection endpoint (optional) and then select the **Review + create** button.
+    - Create a new DCR by selecting **Create new** in the Insights configuration window. Specify the subscription, data collection rule name, and [data collection endpoint](/azure/azure-monitor/essentials/data-collection-endpoint-overview) (optional) and then select the **Review + create** button. Data collection endpoints are used to access the configuration service to fetch associated data collection rules for Azure Monitor agent.
 
     - Select an existing data collection rule from the dropdown:
 
@@ -92,13 +92,17 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
     > [!IMPORTANT]
     > Don't create your own DCR. The DCR created by Azure Stack HCI Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events, but you should create additional DCRs and associate them with the computer if required. The DCRs created through AMA installation will have a prefix `AzureStackHCI-` attached with the DCR name.
 
+1. Review the final screen with a summary of DCR name, number of event logs, performance counters, and name of the Log analytics workspace in which data is stored. Select **Set up**.
+
+1. On the **Extensions** page, you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
+
 1. Insights should now show as **Configured** on the **Capabilities** tab:
 
     :::image type="content" source="media/monitor-hci-single/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single/insights-configured.png":::
 
 ### Data collection rule
 
-When you enable Azure Stack HCI insights on a machine with the Azure Monitor agent, you must specify a [data collection rule](/azure/azure-monitor/essentials/data-collection-rule-overview) to use. The DCR specifies the data to collect and the workspace to use.
+When you enable Azure Stack HCI insights on a machine with the Azure Monitor agent, you must specify a [data collection rule](/azure/azure-monitor/essentials/data-collection-rule-overview) to use. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace.
 
 |**Option**|**Description**|
 |--|--|
