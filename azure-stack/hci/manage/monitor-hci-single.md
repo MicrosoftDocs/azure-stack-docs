@@ -81,28 +81,28 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
 
 1.	Do one of the following:
 
-    - Create a new DCR by selecting **Create new** in the Insights configuration window. Specify the subscription, data collection rule name, and [data collection endpoint](/azure/azure-monitor/essentials/data-collection-endpoint-overview) (optional) and then select the **Review + create** button. Data collection endpoints are used to access the configuration service to fetch associated data collection rules for Azure Monitor agent.
+    - Create a new DCR by selecting **Create new** in the Insights configuration window. Specify the subscription, DCR name, and [Data Collection Endpoint (DCE)](/azure/azure-monitor/essentials/data-collection-endpoint-overview) (optional), and then select the **Review + create** button. DCEs are used to access the configuration service to fetch associated DCRs for Azure Monitor agent.
 
-    - Select an existing data collection rule from the dropdown:
+    - Select an existing DCR from the dropdown:
 
     :::image type="content" source="media/monitor-hci-single/data-collection-rule-3.png" alt-text="Screenshot showing the data collection rule dropdown selector." lightbox="media/monitor-hci-single/data-collection-rule-3.png":::
 
-    Only data collection rules enabled for Azure Stack HCI insights will be included. The DCR specifies the data to collect and the workspace to use. HCI insights creates a default DCR if one doesn't already exist.
+    Only DCRs enabled for Azure Stack HCI insights will be included. The DCR specifies the data to collect and the workspace to use. HCI insights creates a default DCR if one doesn't already exist.
 
     > [!IMPORTANT]
     > Don't create your own DCR. The DCR created by Azure Stack HCI Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events, but you should create additional DCRs and associate them with the computer if required. The DCRs created through AMA installation will have a prefix `AzureStackHCI-` attached with the DCR name.
 
-1. Review the final screen with a summary of DCR name, number of event logs, performance counters, and name of the Log analytics workspace in which data is stored. Select **Set up**.
+1. Review the final screen with a summary of DCR name, number of event logs, performance counters, and name of the Log Analytics workspace in which data is stored. Select **Set up**.
 
-1. On the **Extensions** page, you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
+1. After clicking **Set up**, you are redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
 
 1. Insights should now show as **Configured** on the **Capabilities** tab:
 
     :::image type="content" source="media/monitor-hci-single/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single/insights-configured.png":::
 
-### Data collection rule
+### Data Collection Rule (DCR)
 
-When you enable Azure Stack HCI insights on a machine with the Azure Monitor agent, you must specify a [data collection rule](/azure/azure-monitor/essentials/data-collection-rule-overview) to use. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace.
+When you enable Azure Stack HCI insights on a machine with the Azure Monitor agent, you must specify a [DCR](/azure/azure-monitor/essentials/data-collection-rule-overview) to use. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace.
 
 |**Option**|**Description**|
 |--|--|
