@@ -289,7 +289,7 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2022-22711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22711)
 - [CVE-2022-30221](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30221)
 - [CVE-2022-21845](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-21845)
-- ::: moniker-end
+::: moniker-end
 
 ::: moniker range="azs-2206"
 ## 2206 update
