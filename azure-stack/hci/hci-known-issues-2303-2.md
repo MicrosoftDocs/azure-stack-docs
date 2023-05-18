@@ -26,7 +26,13 @@ For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supp
 
 ## Known issues in this release
 
-Microsoft is not currently aware of any issues with this release. All the known issues are carried over from previous releases.
+## Known issues in this release
+
+Here are the known issues in this release:
+
+|#  |Feature  |Issue  |Workaround  |
+|---------|---------|---------|---------|
+|1  |Observability      | When updating your Azure Stack HCI cluster from 2303.1 to 2303.2, during the expected reboot, the `Mount-VHD` command that mounts the observability volume fails with the following error:Hyper-V encountered an error trying to access an object on computer 'XXXXXXXXXXX' because the object was not found. The object might have been deleted, or you might not have permission to perform the task. Verify that the Virtual Machine Management service on the computer is running. If the service is running, try to perform the task again by using Run as Administrator.|The inability to mount the VHD is temporary and should resolve by itself within some time. If the issue persists, follow these steps to mount the volume:<br>`$Path = "$env:SystemDrive\Observability.vhdx"`<br>`Get-SmbOpenFile | Where-Object -Property -Path ieq $Path | Close-SmbOpenFile`<br>`Mount-VHD -Path $Path`|
 
 
 ## Known issues from previous releases
