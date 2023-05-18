@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI telemetry and diagnostics extension overview (preview)
-description: This article describes the telemetry and diagnostics extension in Azure Stack HCI.
+description: This article describes the telemetry and diagnostics extension in Azure Stack HCI (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
@@ -10,7 +10,7 @@ ms.date: 05/11/2023
 ---
 # Azure Stack HCI telemetry and diagnostics extension overview (preview)
 
->Applies to Azure Stack HCI, version 23H2
+>Applies to: Azure Stack HCI, version 23H2 (preview)
 
 This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 
