@@ -44,7 +44,8 @@ To repair an existing server, follow these high-level steps:
 
 Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single server will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
-It is critical to ensure you always have backups for your workloads and do not rely on the system resiliency only, especially in single server scenarios.
+> [!IMPORTANT]
+> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
 
 ### Hardware requirements
 
@@ -57,6 +58,11 @@ When repairing a server, the system validates the hardware of the new, incoming 
 Before you repair a server, you must ensure that:
 
 [!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
+
+- If needed, take the server that you have identified for repair offline. Follow the steps here:
+    - [Verify the server is healthy prior to taking it offline](maintain-servers.md#verify-its-safe-to-take-the-server-offline-1).
+    - [Pause and drain the server](maintain-servers.md#pause-and-drain-the-server-1).
+    - [Shut down the server](maintain-servers.md#shut-down-the-server-1).
 
 ## Repair a server
 
