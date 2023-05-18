@@ -107,13 +107,13 @@ The diagrams and descriptions in the following sections can help you select a co
 
 A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address.
 
-![Azure VPN Gateway Site-to-site connection example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-topology.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-user/vpngateway-site-to-site-topology.png" alt-text="Conceptual image showing site-to-site connection topology." lightbox="media/azure-stack-vpn-fast-path-user/vpngateway-site-to-site-topology.png":::
 
 ### Site-to-multi-site connections
 
 A *Site-to-multi-site* topology is a variation of the site-to-site topology. You create more than one VPN connection from your virtual network gateway, typically connecting to multiple on-premises sites.
 
-![Azure VPN Gateway Site-to-Multi-Site connections example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-multi-site-topology.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-user/vpngateway-site-to-multi-site-topology.png" alt-text="Conceptual diagram showing site-to-multi-site connections." lightbox="media/azure-stack-vpn-fast-path-user/vpngateway-site-to-multi-site-topology.png":::
 
 ### Site-to-site or site-to-multi-site connections between Azure Stack Hub stamps
 
@@ -121,7 +121,7 @@ You can only create one site-to-site VPN connection between two Azure Stack Hub 
 
 The following diagram shows how you can inter-connect multiple Azure Stack Hub stamps if you need to create a mesh topology between stamps. In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for more VPN connections required for other use cases:
 
-![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png" alt-text="Conceptual diagram showing VPN gateway settings between stamps." lightbox="media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png":::
 
 ## Next steps
 

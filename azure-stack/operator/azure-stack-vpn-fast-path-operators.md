@@ -98,7 +98,7 @@ There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two 
 
 Gateway connection failovers are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This failover can result in a temporary disconnect of the tunnels.
 
-![Gateway VM failover diagram](media/azure-stack-vpn-fast-path-operators/azure-vpn-gateway-pool-failover.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-operators/azure-vpn-gateway-pool-failover.png" alt-text="Conceptual diagram showing VPN Fast Path failover." lightbox="media/azure-stack-vpn-fast-path-operators/azure-vpn-gateway-pool-failover.png":::
 
 ## New Gateway Pool total capacity
 
@@ -114,13 +114,11 @@ The following table shows the gateway types and the estimated aggregate throughp
 |**Standard** | 100 Mbps Tx/Rx  | 10 | 20 |
 |**High Performance** |  200 Mbps Tx/Rx  | 5 | 10 |
 
-### Table notes
-
 **(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet; it's the maximum possible throughput measurement. The total aggregate in one direction is 2 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing isn't supported for the Basic SKU.
 
-![Gateway Pool - Azure VPN Fast Path Disabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-disabled.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-disabled.png" alt-text="Conceptual diagram showing VPN Fast Path disabled." lightbox="media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-disabled.png":::
 
 ### Estimated aggregate tunnel throughput by SKU with VPN Fast Path Enabled
 
@@ -135,13 +133,11 @@ Once the operator enables VPN Fast Path on the Azure Stack Hub stamp, the overal
 |**VPNGw2**|  1000 Mbps Tx/Rx  |2 |4|
 |**VPNGw3**|  1250 Mbps Tx/Rx  |2 |4|
 
-#### Table notes
-
 **(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet; it's the maximum possible throughput measurement. The total aggregate in one direction is 5 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing isn't supported for the Basic SKU.
 
-![Gateway Pool - Azure VPN Fast Path Enabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png)
+:::image type="content" source="media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png" alt-text="Conceptual diagram showing VPN Fast Path enabled." lightbox="media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png":::
 
 ## Next steps
 
