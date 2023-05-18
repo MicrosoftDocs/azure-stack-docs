@@ -308,8 +308,6 @@
       href: manage/azure-portal.md
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-  - name: Manage Azure Arc extensions
-    href: manage/arc-extension-management.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -406,6 +404,8 @@
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
       items:
+      - name: 2303.2 release
+        href: manage/whats-new-2303-2-preview.md 
       - name: 2303.1 release
         href: manage/whats-new-2303-1-preview.md  
     - name: 2301 release 
@@ -424,6 +424,8 @@
     items:
     - name: View known issues
       items:
+      - name: 2303.2 update release
+        href: hci-known-issues-2303-2.md 
       - name: 2303.1 update release
         href: hci-known-issues-2303-1.md 
       - name: 2303 release
@@ -490,6 +492,10 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
+  - name: Version 23H2
+    items:
+    - name: Manage Azure Arc extensions
+      href: manage/arc-extension-management.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
