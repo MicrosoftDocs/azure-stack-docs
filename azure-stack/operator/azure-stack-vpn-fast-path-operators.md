@@ -90,7 +90,7 @@ Get-AzSVPNFastPath
 Set-AzSVPNFastPath -Disable
 ```
 
-If you need to disable VPN Fast Path, you must first work with your tenant to delete and recreate all their Virtual Network Gateways using VPN Fast Path SKUs. Because stamp VPN capacity increases when VPN Fast Path is enabled, you can't disable VPN Fast Path if the overall in-use capacity exceeds the total capacity when Azure Stack Hub is not using VPN Fast Path.
+If you need to disable VPN Fast Path, you must first work with your tenant to delete and recreate all their Virtual Network Gateways using VPN Fast Path SKUs. Because stamp VPN capacity increases when VPN Fast Path is enabled, you can't disable VPN Fast Path if the overall in-use capacity exceeds the total capacity when Azure Stack Hub isn't using VPN Fast Path.
 
 ## Azure Stack Hub Gateway Pool architecture
 
@@ -116,9 +116,9 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 ### Table notes
 
-**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement. The total aggregate in one direction is 2 Gbps.  
+**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet; it's the maximum possible throughput measurement. The total aggregate in one direction is 2 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
-**(3)** - BGP routing is not supported for the Basic SKU.
+**(3)** - BGP routing isn't supported for the Basic SKU.
 
 ![Gateway Pool - Azure VPN Fast Path Disabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-disabled.png)
 
@@ -137,9 +137,9 @@ Once the operator enables VPN Fast Path on the Azure Stack Hub stamp, the overal
 
 #### Table notes
 
-**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement. The total aggregate in one direction is 5 Gbps.  
+**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet; it's the maximum possible throughput measurement. The total aggregate in one direction is 5 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
-**(3)** - BGP routing is not supported for the Basic SKU.
+**(3)** - BGP routing isn't supported for the Basic SKU.
 
 ![Gateway Pool - Azure VPN Fast Path Enabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png)
 
