@@ -404,6 +404,8 @@
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
       items:
+      - name: 2303.2 release
+        href: manage/whats-new-2303-2-preview.md 
       - name: 2303.1 release
         href: manage/whats-new-2303-1-preview.md  
     - name: 2301 release 
@@ -422,6 +424,8 @@
     items:
     - name: View known issues
       items:
+      - name: 2303.2 update release
+        href: hci-known-issues-2303-2.md 
       - name: 2303.1 update release
         href: hci-known-issues-2303-1.md 
       - name: 2303 release
