@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/17/2023
+ms.date: 05/19/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -42,7 +42,14 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Alerts -->
 
-<!-- ## Portal -->
+## Portal
+
+### Incorrect reporting of node CPU cores in the admin portal
+
+- Applicable: This issue applies to release 2301.
+- Cause: The number of cores reported in the Azure Stack Hub admin portal in the cluster **Nodes Capacity** window is incorrect. This is cosmetic and an issue with a change in 2301 with respect to how the Fabric Resource Provider gets this information. This impacts both new deployments and existing stamps updating to 2301, but doesn't affect operation of the stamp or any workload deployments.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Minor portal issue that occurs consistently.
 
 <!-- ## Datacenter integration -->
 
