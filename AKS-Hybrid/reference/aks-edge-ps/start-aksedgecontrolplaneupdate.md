@@ -1,43 +1,48 @@
 ---
-title: Start-AksEdgeUpdate for AKS Edge
+title: Start-AksEdgeControlPlaneUpdate for AKS Edge
 author: rcheeran
-description: The Start-AksEdgeUpdate PowerShell command set whether AksEdge is allowed to upgrade the Kubernetes version on update.
+description: The Start-AksEdgeControlPlaneUpdate PowerShell command updates any control plane nodes on this machine as part of the update process.
 ms.topic: reference
 ms.date: 02/02/2023
 ms.author: rcheeran 
-ms.lastreviewed: 02/02/2023
+ms.lastreviewed: 02/03/2023
 #ms.reviewer: jeguan
 
 ---
 
-# Start-AksEdgeUpdate
+# Start-AksEdgeControlPlaneUpdate
 
-Starts the update process for updating AKS Edge Essentials nodes.
+Updates the control plane nodes on this machine as part of the update process. You must have already run `Start-AksEdgeUpdate` on every deployment in the cluster before running this command on the control plane node. Refresh the PowerShell instance and reimport the AKS Edge Essentials module before running this command.
 
 ## Syntax
 
 ```powershell
-Start-AksEdgeUpdate [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AksEdgeControlPlaneUpdate -firstControlPlane  [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## Description
 
-Microsoft Update sends all the binaries necessary to complete the AKS Edge Essentials Update. The `Start-AksEdgeUpdate` command locates and downloads the binaries. You have to run this command on both the Control Plane nodes and the worker nodes.
+After starting the upgrade process with `Start-AksEdgeUpdate`, and running `Start-AksEdgeUpdate` on every machine in the cluster, run this command on every machine to upgrade the worker nodes. Refresh the PowerShell instance and reimport the AKS Edge Essentials module before running this command.
 
 ## Examples
 
-### To update the any node  in the cluster
+### Update the primary control plane node
 
 ```powershell
- Start-AksEdgeUpdate 
+Start-AksEdgeControlPlaneUpdate -firstControlPlane true -Force
+```
+
+### Update the secondary control plane nodes
+
+```powershell
+Start-AksEdgeControlPlaneUpdate -firstControlPlane false -Force
 ```
 
 ## Parameters
 
 ### -Force
 
-This parameter enables you to update the node without user interaction.
-If Force is specified, user will not be asked for confirmation. Otherwise, user will be asked for confirmation if force updating is required.
+This parameter force-installs required features and capabilities despite errors.
 
 ```yaml
 Type: SwitchParameter

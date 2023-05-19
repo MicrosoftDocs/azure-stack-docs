@@ -28,6 +28,16 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
+2. Low disk space causes pre-cached container images to be deleted:
+
+When the node runs out of disk space, some of the preloaded images are garbage collected by the containerd runtime. In this case, you will first have to free up some disk space and then run the following command to pull the cached images again.
+
+```powershell
+    Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo /path/to/script/reimport-ci.sh
+```
+
+This script will check for the missing images and re-import them as needed.
+
 ## Azure Arc connectivity
 
 1. Issues with `Disconnect-AksEdgeArc`:
@@ -40,8 +50,9 @@ if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPo
         kubectl delete clusterrolebinding azure-arc-operator
         kubectl delete secret sh.helm.release.v1.azure-arc.v1
     ```
+
 2. Azure Arc connectivity with a proxy setup:
     Issue: Azure Arc connectivity doesn't work in a proxy environment.
-    Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**. 
-    
+    Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**.
+
     ![Screenshot showing internet options.](./media/aks-edge/aks-edge-azure-arc-proxy.png)
