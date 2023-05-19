@@ -26,7 +26,7 @@ Microsoft Update sends all the binaries necessary to complete the AKS Edge Essen
 
 ## Examples
 
-### To update the any node  in the cluster
+### To update any node in the cluster
 
 ```powershell
  Start-AksEdgeUpdate 
@@ -37,7 +37,7 @@ Microsoft Update sends all the binaries necessary to complete the AKS Edge Essen
 ### -Force
 
 This parameter enables you to update the node without user interaction.
-If Force is specified, user will not be asked for confirmation. Otherwise, user will be asked for confirmation if force updating is required.
+If Force is specified, users won't be asked for confirmation. Otherwise, the user is asked for confirmation if force updating is required.
 
 ```yaml
 Type: SwitchParameter
