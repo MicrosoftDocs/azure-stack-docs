@@ -28,22 +28,22 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
-2. Low disk space causes pre-cached container images to be deleted:
+2. Low disk space causes precached container images to be deleted:
 
-When the node runs out of disk space, some of the preloaded images are garbage collected by the containerd runtime. In this case, you will first have to free up some disk space and then run the following command to pull the cached images again.
+When the node runs out of disk space, some of the preloaded images are garbage collected by the `containerd` runtime. In this case, you'll first have to free up some disk space and then run the following command to pull the cached images again.
 
 ```powershell
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo /path/to/script/reimport-ci.sh
 ```
 
-This script will check for the missing images and re-import them as needed.
+This script checks for the missing images and reimport them as needed.
 
 ## Azure Arc connectivity
 
 1. Issues with `Disconnect-AksEdgeArc`:
     Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-    Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc related resources before trying to reconnect again.
+    Workaround: If the pods aren't cleaned up, run the following commands to manually clean-up the existing Azure Arc related resources before trying to reconnect again.
 
     ```powershell
         kubectl delete ns azure-arc
