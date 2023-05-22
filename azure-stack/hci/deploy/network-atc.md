@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md).
+This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, please see [Network ATC overview](../concepts/network-atc-overview.md).
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
@@ -56,7 +56,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. For more information, please see [Physical Network Requirements](../concepts/physical-network-requirements.md).
 
 # [21H2](#tab/21H2)
 
@@ -68,7 +68,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Adapters in the same Network ATC intent must be symmetric and available on each cluster node. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
-- Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
+- Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
@@ -88,7 +88,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information. In 21H2 and 22H2, Network HUD can help you identify misconfiguration of the physical network.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. For more information, please see [Physical Network Requirements](../concepts/physical-network-requirements.md). In 21H2 and 22H2, Network HUD can help you identify misconfiguration of the physical network.
 
 ---
 
@@ -101,13 +101,13 @@ The following are requirements and best practices for using Network ATC in Azure
 
 There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
-The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This command does not destroy the invoked configuration.
+The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This command doesn't destroy the invoked configuration.
 
 ## Example intents
 
-Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These aren't the only combinations available but they should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per SET team, however it is possible to add more. Refer to [Plan Host Networking](../concepts/host-network-requirements.md) for more information.
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Plan Host Networking](../concepts/host-network-requirements.md).
 
 ### Fully converged intent
 
@@ -175,7 +175,7 @@ Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNI
 
 ### Storage-only intent
 
-For this intent, only storage is managed. Management and compute adapters are not be managed by Network ATC.
+For this intent, only storage is managed. Management and compute adapters aren't managed by Network ATC.
 
 :::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
 
@@ -284,7 +284,7 @@ The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 7
 #### Automatic storage IP addressing
 Applies to: Azure Stack HCI 22H2
 
-Network ATC will automatically configure valid IP Addresses for adapters with the _storage_ intent type. Network ATC does this in a uniform manner across all nodes in your cluster and verifies that the address chosen is not already in use on the network.
+Network ATC will automatically configure valid IP Addresses for adapters with the _storage_ intent type. Network ATC does this in a uniform manner across all nodes in your cluster and verifies that the address chosen isn't already in use on the network.
 
 The default IP Address for each adapter on each node in the storage intent will be set up as follows:
 
@@ -352,7 +352,7 @@ Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
 
 :::image type="content" source="media/network-atc/error-conflictingtrafficclass.png" alt-text="Screenshot of Conflicting Traffic Class error."  lightbox="media/network-atc/error-conflictingtrafficclass.png":::
 
-This issue occurs because a traffic class is already configured. This pre-configured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
+This issue occurs because a traffic class is already configured. This preconfigured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
 
 **Solution:** 
 
@@ -371,7 +371,7 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 You may see this message:
 
-1.	If the network adapter uses an inbox driver. Inbox drivers are not supported and must be updated.
+1.	If the network adapter uses an inbox driver. Inbox drivers aren't supported and must be updated.
 
     **Solution:** Upgrade the driver for the adapter.
     
@@ -387,11 +387,11 @@ You may see this message:
 
 :::image type="content" source="media/network-atc/error-invalidisolationid.png" alt-text="Screenshot of Invalid Isolation ID error."  lightbox="media/network-atc/error-invalidisolationid.png":::
 
-This message will occur when RoCE RDMA is in use and you have overridden the default VLAN with a value that cannot be used with that protocol. For example, RoCE RDMA requires a non-zero VLAN so that Priority Flow Control (PFC) markings can be added to the frame. A VLAN value between 1 - 4094 must be used. Network ATC will not override the value you specified without administrator intervention for several reasons. To resolve this issue:
+This message will occur when RoCE RDMA is in use and you have overridden the default VLAN with a value that can't be used with that protocol. For example, RoCE RDMA requires a non-zero VLAN so that Priority Flow Control (PFC) markings can be added to the frame. A VLAN value between 1 - 4094 must be used. Network ATC won't override the value you specified without administrator intervention for several reasons. To resolve this issue:
 
 1. Choose iWARP as the RDMA (NetworkDirect) protocol
 
-    **Solution:** If supported by the adapter, Network ATC automatically chooses iWARP as its RDMA protocol which may use a VLAN ID of 0. One option is to remove the override that enforce RoCE as the chosen protocol.
+    **Solution:** If supported by the adapter, Network ATC automatically chooses iWARP as its RDMA protocol which may use a VLAN ID of 0. Remove the override that enforces RoCE as the chosen protocol.
 
 2. Use the default VLANs
 
@@ -399,7 +399,7 @@ This message will occur when RoCE RDMA is in use and you have overridden the def
     
 3. Use a valid VLAN
 
-    When specifying a VLAN use the -StorageVLANs parameter ans specify comma separated values between 1 - 4094.
+    When specifying a VLAN use the -StorageVLANs parameter and specify comma separated values between 1 - 4094.
 
 ## Next steps
 
