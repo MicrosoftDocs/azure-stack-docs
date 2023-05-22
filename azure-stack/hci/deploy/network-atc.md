@@ -3,7 +3,7 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI.
 author: dcuomo
 ms.topic: how-to
-ms.date: 04/20/2022 
+ms.date: 05/22/2023
 ms.author: dacuo
 ms.reviewer: jgerend
 ---
@@ -370,13 +370,13 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 ### Error: Request for help on ATC - to check ConfigurationStatus
 
 You will see this error in 2 instances: 
-1.	If RDMA is not enabled on adapters for storage and/or compute intents
+1.    If RDMA is not enabled on adapters for storage and/or compute intents
 
     **Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
     ```powershell
     Enable-NetAdapterRdma -Name 'pNIC1'
     ```
-2.	Inbox drivers in use on adapters
+2.    Inbox drivers in use on adapters
 
     **Solution:** You cannot deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
     
