@@ -371,7 +371,7 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 ### Error: RDMANotOperational
 
-:::image type="content" source="media/network-atc/error-RDMANotOperational.png" alt-text="Screenshot of RDMA Not Operational error."  lightbox="media/network-atc/error-RDMANotOperational.png":::
+:::image type="content" source="media/network-atc/error-rdmanotoperational.png" alt-text="Screenshot of RDMA Not Operational error."  lightbox="media/network-atc/error-rdmanotoperational.png":::
 
 You may see this message:
 
