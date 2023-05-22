@@ -238,53 +238,14 @@ Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pN
 
 This section lists some of the key default values used by Network ATC.
 
-### 22H2 default values
+### Default values
 
 This section covers additional default values that Network ATC will be setting in versions 22H2 and later.
 
-#### Automatic storage IP addressing
-
-If you choose the `-Storage` intent type, Network ATC after version 22H2, will configure your IP Addresses, Subnets and VLANs for you. Network ATC does this in a consistent and uniform manner across all nodes in your cluster.
-
-The default IP Address for each adapter on each node in the storage intent will be set up as follows:
-
-|Adapter|IP Address and Subnet|VLAN|
-|--|--|--|
-|pNIC1|10.71.1.X |711|
-|pNIC2|10.71.2.X |712|
-|pNIC3|10.71.3.X |713|
-
-The IP Addresses and subnets are consistent with the VLANs assigned to the adapters. 
-
-To override Automatic Storage IP Addressing, create a storage override and pass the override when creating an intent:
-
-```powershell
-$storageOverride = new-NetIntentStorageOverrides
-$storageOverride.EnableAutomaticIPGeneration = $false
-```
-
-```powershell
-Add-NetIntent -Name Storage_Compute -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -StorageOverrides $storageoverride
-```
-
-#### Cluster network settings
-
-Version 22H2 and later, Network ATC configures a set of Cluster Network Features by default. The defaults are listed below:
-
-|Property|Default|
-|--|--|
-|EnableNetworkNaming | $true|
-|EnableLiveMigrationNetworkSelection | $true|
-|EnableVirtualMachineMigrationPerformance | $true|
-|VirtualMachineMigrationPerformanceOption | Default is calculated: SMB, TCP or Compression|
-|MaximumVirtualMachineMigrations | 1 |
-|MaximumSMBMigrationBandwidthInGbps  | Default is calculated based on set-up |
-
-### 21H2 default values
-
 #### Default VLANs
+Applies to: Azure Stack HCI 21H2, 22H2
 
-The following default VLANs are used. These VLANs must be available on the physical network for proper operation.
+Network ATC uses the following VLANs by default for adapters with the _storage_ intent type. If the adapters are connected to a _physical_ switch, these VLANs must be allowed on the physical network. If the adapters are switchless, no additional configuration is required.
 
 |Adapter Intent|Default Value|
 |--|--|
@@ -304,13 +265,13 @@ Consider the following command:
 # [22H2](#tab/22H2)
 
 ```powershell
-Add-NetIntent -Name Cluster_ComputeStorage -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
+Add-NetIntent -Name MyIntent -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
 
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
+Add-NetIntent -Name MyIntent -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
 
 ---
@@ -319,6 +280,44 @@ The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 7
 
 > [!NOTE]
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
+
+#### Automatic storage IP addressing
+Applies to: Azure Stack HCI 22H2
+
+Network ATC will automatically configure valid IP Addresses for adapters with the _storage_ intent type. Network ATC does this in a uniform manner across all nodes in your cluster and verifies that the address chosen is not already in use on the network.
+
+The default IP Address for each adapter on each node in the storage intent will be set up as follows:
+
+|Adapter|IP Address and Subnet|VLAN|
+|--|--|--|
+|pNIC1|10.71.1.X |711|
+|pNIC2|10.71.2.X |712|
+|pNIC3|10.71.3.X |713|
+
+To override Automatic Storage IP Addressing, create a storage override and pass the override when creating an intent:
+
+```powershell
+$StorageOverride = New-NetIntentStorageOverrides
+$StorageOverride.EnableAutomaticIPGeneration = $false
+```
+
+```powershell
+Add-NetIntent -Name MyIntent -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -StorageOverrides $StorageOverride
+```
+
+#### Cluster network settings
+Applies to: Azure Stack HCI 22H2
+
+Network ATC configures a set of Cluster Network Features by default. The defaults are listed below:
+
+|Property|Default|
+|--|--|
+|EnableNetworkNaming | $true|
+|EnableLiveMigrationNetworkSelection | $true|
+|EnableVirtualMachineMigrationPerformance | $true|
+|VirtualMachineMigrationPerformanceOption | Default is calculated: SMB, TCP or Compression|
+|MaximumVirtualMachineMigrations | 1 |
+|MaximumSMBMigrationBandwidthInGbps  | Default is calculated based on set-up |
 
 ### Default Data Center Bridging (DCB) configuration
 
@@ -333,14 +332,13 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
-
 ## Common Error Messages 
 
 With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered.
 
 ### Error: AdapterBindingConflict
 
-:::image type="content" source="media/network-atc/adapter-bind-error.png" alt-text="Screenshot of Adapter Binding Error."  lightbox="media/network-atc/adapter-bind-error.png":::
+:::image type="content" source="media/network-atc/error-adapterbindingconflict.png" alt-text="Screenshot of Adapter Binding Error."  lightbox="media/network-atc/error-adapterbindingconflict.png":::
  
 Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
 
@@ -348,19 +346,17 @@ Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts w
 
 Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
 
-**Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then Set-NetIntentRetryState.
-
-:::image type="content" source="media/network-atc/adapter-bind-resolve.png" alt-text="Screenshot of Adapter Binding Error Resolved."  lightbox="media/network-atc/adapter-bind-resolve.png":::
+**Solution:** Disable the vms_pp component (unbind the adapter from the vSwitch) then run Set-NetIntentRetryState.
 
 ### Error: ConflictingTrafficClass
 
-:::image type="content" source="media/network-atc/conflicting-traffic-class.png" alt-text="Screenshot of Conflicting Traffic Class error."  lightbox="media/network-atc/conflicting-traffic-class.png":::
+:::image type="content" source="media/network-atc/error-conflictingtrafficclass.png" alt-text="Screenshot of Conflicting Traffic Class error."  lightbox="media/network-atc/error-conflictingtrafficclass.png":::
 
 This issue occurs because a traffic class is already configured. This pre-configured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
 
 **Solution:** 
 
-Clear the existing DCB configuration on the system then Set-NetIntentRetryState
+Clear the existing DCB configuration on the system then run Set-NetIntentRetryState
 
 ```powershell
 
@@ -386,6 +382,24 @@ You may see this message:
 4.	If RDMA is disabled in the BIOS
 
     **Solution:** Enable RDMA for the adapter in the system BIOS
+    
+### Error: InvalidIsolationID
+
+:::image type="content" source="media/network-atc/error-invalidisolationid.png" alt-text="Screenshot of Invalid Isolation ID error."  lightbox="media/network-atc/error-invalidisolationid.png":::
+
+This message will occur when RoCE RDMA is in use and you have overridden the default VLAN with a value that cannot be used with that protocol. For example, RoCE RDMA requires a non-zero VLAN so that Priority Flow Control (PFC) markings can be added to the frame. A VLAN value between 1 - 4094 must be used. Network ATC will not override the value you specified without administrator intervention for several reasons. To resolve this issue:
+
+1. Choose iWARP as the RDMA (NetworkDirect) protocol
+
+    **Solution:** If supported by the adapter, Network ATC automatically chooses iWARP as its RDMA protocol which may use a VLAN ID of 0. One option is to remove the override that enforce RoCE as the chosen protocol.
+
+2. Use the default VLANs
+
+    **Solution:** We highly recommend using the Network ATC [Default VLANs](../deploy/network-atc.md#default-vlans)
+    
+3. Use a valid VLAN
+
+    When specifying a VLAN use the -StorageVLANs parameter ans specify comma separated values between 1 - 4094.
 
 ## Next steps
 
