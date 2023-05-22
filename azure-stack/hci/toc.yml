@@ -495,7 +495,7 @@
   - name: Version 23H2
     items:
     - name: Telemetry and diagnostics extension overview
-      href: telemetry-and-diagnostics-overview.md
+      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
