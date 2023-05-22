@@ -26,7 +26,7 @@ Here are the individual extensions you can install and manage.
 - [Azure Site Recovery](/azure-stack/hci/manage/azure-site-recovery)
 - [Azure Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2)
 
-## Azure-managed extensions on Azure Stack HCI
+## Azure-managed extensions on Azure Stack HCI (preview)
 
 In the Azure Stack HCI 23H2 (preview) onlyhttps://learn.microsoft.com/en-us/azure-stack/hci/manage/azure-site-recovery, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are required for the efficient functioning of your Azure Stack HCI system are automatically installed on your cluster. These extensions can't be uninstalled and are essential to enhance the quality of your Azure Stack HCI system. You can control the behavior of these extensions in the Azure portal through the **Extensions** page. From the extensions page select the **Settings** menu.
 
