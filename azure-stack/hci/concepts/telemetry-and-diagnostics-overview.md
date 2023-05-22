@@ -12,17 +12,17 @@ ms.date: 05/11/2023
 
 >Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article describes the telemetry and diagnostics extension in Azure Stack HCI.
+This article provides a brief overview, benefits, and the options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
-## About telemetry and diagnostics
+## About the telemetry and diagnostics extension
 
-Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, telemetry data is installed and managed through the telemetry and diagnostics extension.
+Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, the telemetry and diagnostics extension configures and manages the telemetry data.
 
-When you register an Azure Stack HCI device, an Azure Arc Connected agent is installed on it. After you set up the extension, it can continue to function even if the arc agent fails. The extension only requires the arc agent installation initially and can continuously operate even if the agent isn't running.
+When you register an Azure Stack HCI cluster, an Azure Arc Connected agent is installed on the cluster. The telemetry and diagnostics extension only requires the initial Arc agent installation and setup and can continue to operate even when the agent isn't running.
 
 ## Benefits of the telemetry and diagnostics extension
 
-Telemetry data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the extension include:
+Telemetry data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved transparency:** Supplies the Azure portal with the extension name, version, and status.
 
@@ -48,18 +48,18 @@ You can choose one of these options for sending telemetry data:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Advantages of basic telemetry include:
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Some of the advantages of basic telemetry data sharing include:
 
-  - Supports an improved user experience.
-  - Critical reliability issues are identified for greater resolution.
-  - Provides quality features, deployment, and other product improvements.
-  - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
+  - An improved user experience.
+  - Identification of critical reliability issues for greater resolution.
+  - The improvement of quality features, deployment, and other product.
+  - Greater developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Advantages of enhanced telemetry include:
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the advantages of enhanced telemetry data sharing include:
 
   - System data might remain for up to 30 days.
-  - The extension captures errors more accurately and provides timely diagnostics information without requiring operator interaction.
-  - You can enjoy a connected experience with proactive log collection as your logs are automatically uploaded to an Azure Storage account that Microsoft manages and controls. These logs are used to resolve your issues.
+  - Error captures are more accurate and timely diagnostics information is provided. No operator interaction required.
+  - Proactive log collection. Your logs are automatically uploaded to an Azure Storage account managed and controlled by Microsoft, and used to resolve your issues.
   - In some cases, Microsoft can troubleshoot and resolve problems sooner.
   - The product team can identify and fix issues and improve the quality of the product based on failure events.
 
