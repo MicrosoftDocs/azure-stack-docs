@@ -22,30 +22,36 @@ If you have feedback or encounter any issues, review the Requirements and best p
 
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
-- Supported on Azure Stack HCI, version 22H2.
-
-- All servers in the cluster must be running Azure Stack HCI, version 22H2.
+- All servers in the cluster must be running Azure Stack HCI, version 22H2 with the November update (or later).
 
 - Must use physical hosts that are Azure Stack HCI certified.
 
-- A maximum of 16 nodes supported per cluster.
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node.
 
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. Network ATC, after version 22H2, will confirm symmetric properties for adapters on the node, and across the cluster before deploying an intent. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+  - Asymmetric adapters lead to a failure in deploying any intent.
+
+  - With Azure Stack HCI 22H2, Network ATC will automatically confirm adapter symmetry for all nodes in the cluster before deploying an intent.
+
+  - For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
 - Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
+- Ensure all hosts have the November Azure Stack HCI update or later.
+
 - Each node must have the following Azure Stack HCI features installed:
 
   - Network ATC
-  - Data Center Bridging (DCB)
-  - Failover Clustering
+  - Network HUD
   - Hyper-V
+  - Failover Clustering
+  - Data Center Bridging
+
    Here's an example of installing the required features via PowerShell:
    
    ```powershell
-   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+  Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
@@ -56,15 +62,11 @@ The following are requirements and best practices for using Network ATC in Azure
 
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
-- Supported on Azure Stack HCI, version 21H2 or later.
-
-- All servers in the cluster must be running Azure Stack HCI, version 21H2.
+- All servers in the cluster must be running Azure Stack HCI, version 21H2 with the November update (or later).
 
 - Must use physical hosts that are Azure Stack HCI certified.
 
-- Any number of cluster nodes are supported.
-
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric and available on each cluster node. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
 - Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
 
@@ -73,20 +75,20 @@ The following are requirements and best practices for using Network ATC in Azure
 - Each node must have the following Azure Stack HCI features installed:
 
   - Network ATC
-  - Data Center Bridging (DCB)
-  - Failover Clustering
-  - Hyper-V
   - Network HUD
+  - Hyper-V
+  - Failover Clustering
+  - Data Center Bridging
   
    Here's an example of installing the required features via PowerShell:
    
    ```powershell
-   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, NetworkHUD, Failover-Clustering -IncludeManagementTools
+   Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information. In 21H2 and 22H2, Network HUD can help you identify misconfiguration of the physical network.
 
 ---
 
@@ -367,19 +369,23 @@ Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
 Get-NetQosFlowControl | Disable-NetQosFlowControl
 ```
 
-### Error: Request for help on ATC - to check ConfigurationStatus
+### Error: RDMANotOperational
 
-You will see this error in 2 instances: 
-1.    If RDMA is not enabled on adapters for storage and/or compute intents
+:::image type="content" source="media/network-atc/error-rdmanotoperational.png" alt-text="Screenshot of RDMA Not Operational error."  lightbox="media/network-atc/error-rdmanotoperational.png":::
 
-    **Solution:** Enable RDMA or NetworkDirect on your adapters. You can use a command similar to this: 
-    ```powershell
-    Enable-NetAdapterRdma -Name 'pNIC1'
-    ```
-2.    Inbox drivers in use on adapters
+You may see this message:
 
-    **Solution:** You cannot deploy an intent with an inbox driver. Please switch to an adapter without an inbox driver. 
+1.	If the network adapter uses an inbox driver. Inbox drivers are not supported and must be updated.
+
+    **Solution:** Upgrade the driver for the adapter.
     
+2.	If SR-IOV is disabled in the BIOS.
+
+    **Solution:** Enable SR-IOV for the adapter in the system BIOS
+
+4.	If RDMA is disabled in the BIOS
+
+    **Solution:** Enable RDMA for the adapter in the system BIOS
 
 ## Next steps
 
