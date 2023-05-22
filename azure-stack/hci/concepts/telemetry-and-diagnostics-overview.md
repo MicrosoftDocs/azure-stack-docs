@@ -44,24 +44,24 @@ You maintain control over whether you send telemetry data to Microsoft, even aft
 
 :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
-You can choose one of these options for sending telemetry data:
+You can choose one of these options for sharing telemetry data:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Some of the advantages of basic telemetry data sharing include:
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Some of the benefits of basic telemetry data sharing include:
 
   - An improved user experience.
   - Identification of critical reliability issues for greater resolution.
-  - The improvement of quality features, deployment, and other product.
+  - The improvement of quality features, deployments, and other products.
   - Greater developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the advantages of enhanced telemetry data sharing include:
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the benefits of enhanced telemetry data sharing include:
 
   - System data might remain for up to 30 days.
-  - Error captures are more accurate and timely diagnostics information is provided. No operator interaction required.
+  - More accurate error capturing and timely diagnostics information. No operator interaction is required.
   - Proactive log collection. Your logs are automatically uploaded to an Azure Storage account managed and controlled by Microsoft, and used to resolve your issues.
   - In some cases, Microsoft can troubleshoot and resolve problems sooner.
-  - The product team can identify and fix issues and improve the quality of the product based on failure events.
+  - The product team can use failure events to identify and fix issues and improve the quality of the product.
 
 If there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. Microsoft uses these logs for support cases. Logs aren't sent to Azure.
 
