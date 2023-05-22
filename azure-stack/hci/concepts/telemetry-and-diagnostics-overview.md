@@ -52,7 +52,7 @@ You can choose one of these options for sharing telemetry data:
 
   - An improved user experience.
   - Identification of critical reliability issues for greater resolution.
-  - The improvement of quality features, deployments, and other products.
+  - Improvement of quality features, deployments, and other products.
   - Greater developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the benefits of enhanced telemetry data sharing include:
