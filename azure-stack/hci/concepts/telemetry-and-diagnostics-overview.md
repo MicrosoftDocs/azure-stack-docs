@@ -38,31 +38,30 @@ Telemetry data can be installed and managed through the telemetry and diagnostic
 
 - **Faster case resolution**: Your Azure Stack HCI system logs can help Microsoft customer support and engineering teams identify and resolve your issues quickly and efficiently.
 
-## Telemetry and diagnostics extension management
+## Telemetry and diagnostics data sharing
 
 You maintain control over whether you send telemetry data to Microsoft, even after you've installed and run the telemetry extension. To access the options to send telemetry data, navigate to your cluster **Settings** in the Azure portal and select **Extensions**.
 
 :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
-You can set up the extension to be:
+You can choose one of these options for sending telemetry data:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Advantages of basic telemetry include:
 
-  - Benefits of basic telemetry:
-    - Supports an improved user experience.
-    - Critical reliability issues are identified for greater resolution.
-    - Provides quality features, deployment, and other product improvements.
-    - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
+  - Supports an improved user experience.
+  - Critical reliability issues are identified for greater resolution.
+  - Provides quality features, deployment, and other product improvements.
+  - Drives developments and intelligence into Azure Stack HCI management and monitoring solutions.
 
-- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**.
-  - Benefits of enhanced telemetry:
-    - System data might remain for up to 30 days.
-    - The extension captures errors more accurately and provides timely diagnostics information without requiring operator interaction.
-    - You can enjoy a connected experience with proactive log collection as your logs are automatically uploaded to an Azure Storage account that Microsoft manages and controls. These logs are used to resolve your issues.
-    - In some cases, Microsoft can troubleshoot and resolve problems sooner.
-    - The product team can identify and fix issues and improve the quality of the product based on failure events.
+- **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. It's highly recommended that you enable **enhanced diagnostics**. Advantages of enhanced telemetry include:
+
+  - System data might remain for up to 30 days.
+  - The extension captures errors more accurately and provides timely diagnostics information without requiring operator interaction.
+  - You can enjoy a connected experience with proactive log collection as your logs are automatically uploaded to an Azure Storage account that Microsoft manages and controls. These logs are used to resolve your issues.
+  - In some cases, Microsoft can troubleshoot and resolve problems sooner.
+  - The product team can identify and fix issues and improve the quality of the product based on failure events.
 
 If there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. Microsoft uses these logs for support cases. Logs aren't sent to Azure.
 
