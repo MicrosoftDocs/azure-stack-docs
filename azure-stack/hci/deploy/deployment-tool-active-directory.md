@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI deployments (preview)
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 3/29/2023
+ms.date: 5/22/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -41,18 +41,17 @@ Before you begin, make sure you've done the following:
     
 ## Active Directory preparation module
 
-The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. The following parameters can be provided with the module:
+The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. Here are the required parameters associated with the cmdlet:
 
-|Parameter|Required |Description|
-|--|--|--|
-|`-AsHciAzureStackLCMUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI 22H2 deployment tool.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
-|`-AsHciOUName`|Yes |A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names). |
-|`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
-|`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
-|`-AsHciClusterName`|No |The name for the new cluster AD object.|
-|`-AsHciDeploymentPrefix`|Yes |The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
-|`-Deploy`|No |Select this scenario if this is a brand new deployment instead of an upgrade of an existing system.   |
-|`-Upgrade`|No |Select this scenario if this is an upgrade of an existing system instead of a brand new deployment.  |
+|Parameter|Description|
+|--|--|
+|`-AsHciAzureStackLCMUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI 22H2 deployment tool.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
+|`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
+|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
+|`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
+|`-AsHciClusterName`|The name for the new cluster AD object.|
+|`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
+|`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|
 
 ## Prepare Active Directory
 
