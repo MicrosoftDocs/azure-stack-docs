@@ -27,11 +27,11 @@ Here are the individual extensions you can install and manage.
 
 ## Azure-managed extensions in Azure Stack HCI (preview)
 
-In the Azure Stack HCI 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are required for the efficient functioning of your Azure Stack HCI system are automatically installed on your cluster. These extensions can't be uninstalled and are essential to enhance the quality of your Azure Stack HCI system. You can control the behavior of these extensions in the Azure portal through the **Extensions** page. From the extensions page select the **Settings** menu.
+In the Azure Stack HCI, version 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions that are essential for the functionality and quality of your system are automatically installed on your cluster. These extensions can't be uninstalled, but you can control their behavior in the Azure portal through the **Extensions** page. From the extensions page select the **Settings** menu.
 
 If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information provided in the banner to guide you through installing these extensions.
 
-Here are the Azure managed extensions:
+Here are the Azure-managed extensions:
 
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
