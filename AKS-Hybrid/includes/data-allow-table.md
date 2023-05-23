@@ -20,6 +20,7 @@ ms.lastreviewed: 08/15/2022
 |  \<region>.dp.kubernetesconfiguration.azure.com | 443  | Required to onboard AKS hybrid clusters to Azure Arc |
 | gbl.his.arc.azure.com | 443 | Required to get the regional endpoint for pulling system-assigned Managed Identity certificates. |
 | \*.his.arc.azure.com | 443 | Required to pull system-assigned Managed Identity certificates. |
+| guestnotificationservice.azure.com | 443 |	For Azure notification service for Azure extension and Arc connectivity scenarios. |
 | \*.arc.azure.net| 443 | Required to manage AKS hybrid clusters in Azure portal. |
 |  akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 |  v20.events.data.microsoft.com </br> gcs.prod.monitoring.core.windows.net | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
