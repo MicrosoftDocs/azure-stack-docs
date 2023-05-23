@@ -31,7 +31,7 @@ In the Azure Stack HCI 23H2 (preview) only, once you've successfully registered 
 
 If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information provided in the banner to guide you through installing these extensions.
 
-Here are the Azure managed extensions in Azure Stack HCI:
+Here are the Azure managed extensions:
 
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
