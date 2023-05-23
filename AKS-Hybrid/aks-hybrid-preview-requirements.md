@@ -52,7 +52,9 @@ Setting up the right networking requires you to work with the network administra
 Windows Server admin in consultation with the datacenter network admin:
 
 ### Option 1: Static IP networking (Highly recommended)
+
 You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
+
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a static IP subnet? | This subnet will be used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge. | The IP address prefix of your subnet. For example - "172.16.0.0/16" |
@@ -63,7 +65,9 @@ You can skip this section if you have Arc VMs installed on your Azure Stack HCI 
 | 6 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Option 2: DHCP networking
+
 You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
+
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a DHCP server with atleast 3 IP addresses in your environment? | This DHCP server will be used to assign an IP address to the underlying VM of the Azure Arc Resource Bridge. | Check with your admin if your Windows Server network environment has a DHCP server. |
@@ -72,18 +76,22 @@ You can skip this section if you have Arc VMs installed on your Azure Stack HCI 
 | 4 | Do you have a VLAN ID? | This is an optional parameter. Check with your network administrator if the subnet you provided above is tagged. | The VLAN ID. For example - 7 |
 
 ### Proxy settings
+
 You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
-| Prerequisite |  Item  |  Details 
+
+| Prerequisite |  Item  |  Details |
 | -- | ----- | ------- |
 | 1 | HTTP URL and port information |  Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTP URL and port information from your network admin. It should be of the following format - `http://proxy.corp.contoso.com:8080`.  |
 | 2 | HTTPS URL and port information | Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If yes, obtain the HTTPS URL and port information from your network admin. It should be of the following format - `https://proxy.corp.contoso.com:8443`. You can reuse the HTTP URL and port information here if you do not have HTTPS URL and port information. |
 | 3 | [Optional] Valid credentials for authentication to the proxy server | You can either use a PowerShell credential object containing the username and password to authenticate against the proxy server or a filename or certificate string of a PFX formatted client certificate used to authenticate against the proxy server. |
 
 #### Noproxy settings
+
 You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
+
 The following table contains the list of addresses that must be excluded:
 
-|      **IP Address**       |    **Reason for exclusion**    |  
+|      IP address       |    Reason for exclusion    |  
 | ----------------------- | ------------------------------------ | 
 | localhost, 127.0.0.1  | Localhost traffic  |
 | .svc | Internal Kubernetes service traffic (.svc) where _.svc_ represents a wildcard name. This is similar to saying \*.svc, but none is used in this schema. |
@@ -95,6 +103,7 @@ The following table contains the list of addresses that must be excluded:
 The default value for `noProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`. While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (for example, .contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the `noProxy` list.
 
 ### Network port requirements
+
 If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge VM are on two isolated vlans, these ports need to be opened at the Firewall between.
 
 | Port   | Source                               | Description                                        | Firewall Notes                                                                               |
@@ -108,11 +117,12 @@ If the Windows Server physical cluster nodes and the Azure Arc Resource Bridge V
 | 65000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Authentication                    | If using separate VLANs, the Azure Arc Resource Bridge VM need to access the Cluster Resource's IP on this port.  |
 
 ### Firewall URL exceptions
+
 For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist).
 
 The following firewall URL exceptions are needed on all servers in the Windows Server cluster:
 
-| **URL** | **Port** | **Service** | **Notes** |
+| URL | Port | Service | Notes |
 |:--------|:---------|:------------|:----------|
 | https\://mcr.microsoft.com | 443 | Microsoft container registry | Used for official Microsoft artifacts such as container images |
 | https\://*.his.arc.azure.com | 443 | Azure Arc identity service | Used for identity and access control |
@@ -132,5 +142,6 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 | aka.ms | 443 | az extensions | Required to download Az CLI extensions like `hybridaks`
 
 ## Next steps
+
 - [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
 - [Deploy AKS hybrid extension if you have Arc VMs set up](deploy-aks-service-hci.md)
