@@ -24,6 +24,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 > - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](set-proxy-settings.md).
+> - Installing AKS on Azure Stack HCI after setting up Arc VMs is not supported. Read [known issues with Arc VMs](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues) for more information. If you want to install AKS on Azure Stack HCI, you will have to uninstall Arc Resource Bridge and then installing AKS on Azure Stack HCI. You can deploy a new Arc Resource Bridge again after cleanup and installing AKS-HCI, but it won't remember the VM entities created previously. 
 
 ## Before you begin
 
