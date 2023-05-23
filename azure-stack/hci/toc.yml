@@ -494,8 +494,8 @@
         href: update/glossary-lifecycle-management.md
   - name: Version 23H2
     items:
-    - name: Manage Azure Arc extensions
-      href: manage/arc-extension-management.md
+    - name: Telemetry and diagnostics extension overview
+      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
