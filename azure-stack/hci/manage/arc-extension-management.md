@@ -27,7 +27,7 @@ Here are the individual extensions you can install and manage.
 
 ## Azure-managed extensions in Azure Stack HCI (preview)
 
-In the Azure Stack HCI, version 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can control their behavior in the Azure portal through the **Extensions** page. From the extensions page, select the **Settings** menu.
+In the Azure Stack HCI, version 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
 
 If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information in the banner to guide you through installing these extensions.
 
