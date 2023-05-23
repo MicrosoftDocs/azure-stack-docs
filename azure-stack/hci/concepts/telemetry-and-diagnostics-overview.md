@@ -60,7 +60,7 @@ If there's no or intermittent connectivity, Microsoft captures and store logs lo
 
 ## Data collection consent
 
-Microsoft collects data in accordance with its [standard privacy practices](https://privacy.microsoft.com/en-US/). The new telemetry agent doesn't override your existing control setting.
+Microsoft collects data in accordance with its [standard privacy practices](https://privacy.microsoft.com/). The new telemetry agent doesn't override your existing control setting.
 
 If you withdraw your consent for data collection, any data collected before withdrawal isn't affected. Microsoft continues to handle and use the data collected in accordance with the terms that were in place at the time of the data collection.
 
@@ -72,7 +72,7 @@ Here are a couple of things to consider with data collection:
 
 ### Azure Stack HCI privacy considerations
 
-Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the [Microsoft Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement). Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
+Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
 Don't include any confidential information or personal information in resource or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
 
