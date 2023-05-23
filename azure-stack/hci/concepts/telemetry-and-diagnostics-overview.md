@@ -14,13 +14,13 @@ ms.date: 05/22/2023
 
 This article provides a brief overview, benefits, and the options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
-## About the telemetry and diagnostics extension
+## About the extension
 
 Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, the telemetry and diagnostics extension configures and manages the telemetry data.
 
 When you register an Azure Stack HCI cluster, an Azure Arc Connected agent is installed on the cluster. The telemetry and diagnostics extension only requires the initial Arc agent installation and setup and can continue to operate even when the agent isn't running.
 
-## Benefits of the telemetry and diagnostics extension
+## Benefits
 
 Telemetry data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
 
@@ -38,7 +38,7 @@ Telemetry data can be installed and managed through the telemetry and diagnostic
 
 - **Faster case resolution**: Your Azure Stack HCI system logs can help Microsoft customer support and engineering teams identify and resolve your issues quickly and efficiently.
 
-## Telemetry and diagnostics data sharing
+## Telemetry and diagnostics settings
 
 You maintain control over whether you send telemetry data to Microsoft, even after you've installed and run the telemetry extension. To access the options to send telemetry data, navigate to your cluster **Settings** in the Azure portal and select **Extensions**.
 
@@ -57,17 +57,15 @@ You can choose one of these options for sharing telemetry data:
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the benefits of enhanced telemetry data sharing include:
 
-  - System data might remain for up to 30 days.
-  - More accurate error capturing and timely diagnostics information. No operator interaction is required.
-  - Proactive log collection. Your logs are automatically uploaded to an Azure Storage account managed and controlled by Microsoft, and used to resolve your issues.
-  - In some cases, Microsoft can troubleshoot and resolve problems sooner.
-  - The product team can use failure events to identify and fix issues and improve the quality of the product.
+  - Retain system data for up to a month.
+  - Automatically capture errors and diagnostics information for speedier issue resolution. No operator interaction is required.
+  - Proactively collect and upload logs to an Azure Storage account for troubleshooting.
 
-If there's no or intermittent connectivity to Azure, logs are captured and stored locally for failure events for basic or enhanced diagnostics. Microsoft uses these logs for support cases. Logs aren't sent to Azure.
+If there's no or intermittent connectivity, Microsoft captures and store logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
-## Consent for data collection
+## Data collection consent
 
-Microsoft collects data in accordance with its standard privacy practices. The new telemetry agent doesn't override your existing control setting.
+Microsoft collects data in accordance with its [standard privacy practices](https://privacy.microsoft.com/en-US/). The new telemetry agent doesn't override your existing control setting.
 
 If you withdraw your consent for data collection, any data collected before withdrawal isn't affected. Microsoft continues to handle and use the data collected in accordance with the terms that were in place at the time of the data collection.
 
@@ -79,7 +77,7 @@ Here are a couple of things to consider with data collection:
 
 ### Azure Stack HCI privacy considerations
 
-Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the Microsoft Privacy Statement. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
+Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the [Microsoft Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement). Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
 Don't include any confidential information or personal information in resource or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
 
