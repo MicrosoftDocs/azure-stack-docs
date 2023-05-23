@@ -48,12 +48,7 @@ You can choose one of these options for sharing telemetry data:
 
 - **Off:** You don't send system data to Microsoft.
 
-- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly. Some of the benefits of basic telemetry data sharing include:
-
-  - An improved user experience.
-  - Identification of critical reliability issues for greater resolution.
-  - Improvement of quality features, deployments, and other products.
-  - Greater developments and intelligence into Azure Stack HCI management and monitoring solutions.
+- **Basic:** You send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
 
 - **Enhanced:** You send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. Some of the benefits of enhanced telemetry data sharing include:
 
