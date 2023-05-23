@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 05/11/2023
+ms.date: 05/22/2023
 ---
 # Azure Stack HCI telemetry and diagnostics extension overview (preview)
 
