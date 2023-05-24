@@ -23,14 +23,14 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
 1. Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. 
 
-  > [!IMPORTANT]
-  > Due to a [CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-39327) affecting Azure CLI versions previous to 2.40.0, it is no longer recommended that you use Azure CLI 2.29.2 for AD FS in Azure Stack Hub. You can update to Azure CLI 2.40.0 or higher. However, AD FS customers might encounter issues with Azure CLI commands that interact with Microsoft Graph endpoints. This is because Microsoft Graph is not supported for AD FS. For workarounds to Microsoft Graph issues, see the [General known issues](#general-known-issues) section.
+   > [!IMPORTANT]
+   > Due to a [CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-39327) affecting Azure CLI versions previous to 2.40.0, it is no longer recommended that you use Azure CLI 2.29.2 for AD FS in Azure Stack Hub. You can update to Azure CLI 2.40.0 or higher. However, AD FS customers might encounter issues with Azure CLI commands that interact with Microsoft Graph endpoints. This is because Microsoft Graph is not supported for AD FS. For workarounds to Microsoft Graph issues, see the [General known issues](#general-known-issues) section.
 
 2. You can install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
 3. To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
-    ```shell
+    ```azurecli
     az --version
     ```
 
