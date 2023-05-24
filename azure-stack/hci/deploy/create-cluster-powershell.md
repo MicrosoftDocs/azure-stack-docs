@@ -402,7 +402,7 @@ After creating the cluster, use the `Enable-ClusterStorageSpacesDirect` cmdlet, 
 
 - **Create tiers:** Creates two tiers as default tiers. One is called "Capacity" and the other called "Performance". The cmdlet analyzes the devices and configures each tier with the mix of device types and resiliency.
 
-For the single server scenario, the only FaultDomainAwarenessDefault is PhysicalDisk. `Enable-ClusterStorageSpacesDirect` cmdlet will detect single server and automatically configure FaultDomainAwarenessDefault as PyhsicalDisk during enablement.
+For the single server scenario, the only FaultDomainAwarenessDefault is PhysicalDisk. `Enable-ClusterStorageSpacesDirect` cmdlet will detect single server and automatically configure FaultDomainAwarenessDefault as PhysicalDisk during enablement.
 
 For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also do the following:
 
