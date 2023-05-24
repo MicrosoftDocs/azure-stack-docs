@@ -443,13 +443,15 @@ There are known issues when using CLI in Azure Stack Hub:
 ---
 
 ## General known issues
-The general fix for most issues is to use the `az rest` command that will use the current Azure Stack context to make a REST API call for the associated command with the issue. The workarounds in the following issues list can generally be adapted for other Azure CLI issues as long as these issues are caused by Azure CLI and not Azure Stack Hub resource providers or other Azure Stack Hub services.
+
+The general fix for most issues is to use the `az rest` command that uses the current Azure Stack context, to make a REST API call for the associated command with the issue. The workarounds in the following issues list can generally be adapted for other Azure CLI issues as long as these issues are caused by Azure CLI and not Azure Stack Hub resource providers or other Azure Stack Hub services.
 
 ### Microsoft Graph issues
 
 These are the known Microsoft Graph issues for Azure CLI 2.40.0, or greater, for Azure Stack Hub. This primarily affects ADFS environments as it doesn't support Microsoft Graph.
 
 - `az keyvault create` interacts with Microsoft Graph. The following is an example workaround for ADFS. Primarily, the workaround uses the Azure AD Graph to retrieve user information such as the `objectId` rather than the Microsoft Graph.
+
   ```powershell
   # First, sign into Azure CLI account you want to create the Key Vault from.
   # TODO: change the principal name to name of principal you want to create the key vault with.
@@ -547,9 +549,10 @@ These are the known Microsoft Graph issues for Azure CLI 2.40.0, or greater, for
   # OPTIONAL: test access to the Key Vault.
   # az keyvault secret set --name MySecretName --vault-name $keyVaultName --value MySecret
   ```
-  For more information about key vault REST API, see this [link](/rest/api/keyvault/).
+  For more information about Key Vault REST API, [see the Key Vault REST API reference](/rest/api/keyvault/).
 
 ### Other issues
+
 The following are issues not limited to specific versions or ranges of versions of Azure CLI.
 
 - `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both AAD or ADFS.
@@ -594,7 +597,7 @@ The following are issues not limited to specific versions or ranges of versions 
   # Test a resource creation command in the resource group:
   # az network dns zone create -g $resourceGroupName -n "www.mysite.com"
   ```
-  For more information about role assignment REST API, see this [link](/rest/api/authorization/role-assignments).
+  For more information about role assignment REST API, [see the role assignments article](/rest/api/authorization/role-assignments).
 
 ## Next steps
 
