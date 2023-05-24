@@ -27,17 +27,22 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
 
 # [Azure CLI](#tab/azurecli)
 
-1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. Run the following command to get the name of the VM switch and provide this name to $vswitchName in the subsequent step.
+1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. Run the following command to get the name of the VM switch that you'll use. Provide the name of the switch in the subsequent step.
 
     ```azurecli
     Get-VmSwitch -SwitchType External
     ```
 
+    Here's a sample output:
+
+    ```azurecli
+    
+    ```
 1. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. Run the following commands:
 
    ```azurecli
-   $vlanID=<vLAN identifier for Arc VMs. A 0 value means there is no vLan ID.>   
-   $vnetName=<user provided name of virtual network>
+   $vlanID="<vLAN identifier for Arc VMs. A 0 value means there is no vLan ID.>"   
+   $vnetName="<user provided name of virtual network>"
    New-MocGroup -name "Default_Group" -location "MocLocation"
    New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} -vlanID $vlanID
    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanID
