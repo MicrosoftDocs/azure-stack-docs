@@ -16,9 +16,8 @@ This article provides a brief overview, benefits, and the options for the teleme
 
 ## About the extension
 
-Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, the telemetry and diagnostics extension configures and manages the telemetry data.
-
-When you register an Azure Stack HCI cluster, an Azure Arc Connected agent is installed on the cluster. The telemetry and diagnostics extension only requires the initial Arc agent installation and setup and can continue to operate even when the agent isn't running.
+Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, the telemetry and diagnostics extension configures and manages the telemetry data. For more information, see
+[Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
 ## Benefits
 
