@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI. (preview)
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/16/2023
+ms.date: 05/24/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -36,8 +36,8 @@ To repair an existing server, follow these high-level steps:
 
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
 1. Remove this server temporarily from the cluster.
-1. Reimage the server that needs to be repaired. Install the Azure Stack HCI OS, drivers, and firmware.
-1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task to not impact actual workloads and can run multiple days depending on number of servers and used storage.
+1. Reimage the server that needs to be repaired. Install the Azure Stack HCI operating system, drivers, and firmware.
+1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
 
 
 ## Supported scenarios
@@ -80,14 +80,14 @@ Make sure that you have reviewed the [prerequisites](#prerequisites). Follow the
 
     [!INCLUDE [hci-patch-incoming-server](../../includes/hci-patch-incoming-server.md)]
 
-1. Close all the PowerShell session on the server you're signed in.
-1. In a new PowerShell session, run the following command:
+1. Close all the PowerShell sessions on this server.
+1. Open a new PowerShell session on this server. Run the following command:
 
     ```powershell
     Uninstall-Module –Name PSWindowsUpdate –Force
     ```
 
-1. Sign in with the lifecycle manager account into the server that is already a member of the cluster. Run the following command to repair the incoming server:
+1. Sign in with the Lifecycle Manager account into the server that is already a member of the cluster. Run the following command to repair the incoming server:
 
     ```powershell
     $Cred = Get-Credential 
@@ -107,7 +107,7 @@ To monitor the progress of the add server operation, follow these steps:
 1. If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
 
     ```powershell
-    Get-ActionPlanInstance -actionPlanInstanceID $ID |out-file log.txt
+    Get-ActionPlanInstance -ActionPlanInstanceID $ID |out-file log.txt
     ```
 
 1. To rerun the failed operation, use the following cmdlet:
@@ -119,4 +119,4 @@ To monitor the progress of the add server operation, follow these steps:
 
 ## Next steps
 
-[Learn more about Hybrid capabilities with Azure services](../hybrid-capabilities-with-azure-services.md)
+Learn more about how to [Add a server](./add-server.md).
