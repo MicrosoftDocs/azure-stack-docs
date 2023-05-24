@@ -368,16 +368,21 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 ## Post-deployment tasks
 
-There are several tasks to complete following a Network ATC deployment, including the following:
+The tasks to complete following a Network ATC deployment is depending on the Azure Stack HCI version used. For Azure Stack HCI 21H2 Clusters:
 
-- **Add DHCP or static IP addresses to storage adapters:** Use DHCP on the storage VLANs or set static IP addresses using the NetIPAdress cmdlet. You can't use the Automatic Private IP Addressing (APIPA) addresses given to adapters that can't get an address from a DHCP server.
+- **Add IP addresses to storage adapters:** Use DHCP on the storage VLANs or set static IP addresses using the NetIPAdress cmdlet. You can't use the Automatic Private IP Addressing (APIPA) addresses given to adapters that can't get an address from a DHCP server.
 
 - **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration doesn't consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
 
-- **For v21H2, Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
-   - All nodes in the cluster must use the same intent.
-   - There is no automatic provisioning for storage replica.
-- **For v22H2, Stretch cluster configuration**: Use the newly added stretch intent type to deploy your stretch clusters with Network ATC, just like you would any other intent or configuration. For more information on stretch intents deployed with Network ATC, please check: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md), step 5.4. 
+- **Stretched cluster configuration:** To add Stretch S2D to your Network ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after Network ATC has implemented the specified intent.
+
+Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see: 
+
+- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#automatic-storage-ip-addressing)
+
+- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#cluster-network-settings)
+
+- **Stretch cluster configuration**: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md#step-54-set-up-stretch-clustering-with-network-atc)
 
 ## Validate automatic remediation
 
