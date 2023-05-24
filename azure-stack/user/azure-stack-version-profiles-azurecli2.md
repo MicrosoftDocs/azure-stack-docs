@@ -24,8 +24,7 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 1. Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. 
 
   > [!IMPORTANT]
-  > Due to a [CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-39327) affecting Azure CLI versions previous to 2.40.0,
-  It is no longer recommended that Azure Stack Hub customers use Azure CLI 2.29.2 for ADFS. Customers may update to Azure CLI 2.40.0 or higher. However, ADFS customers will encounter issues with Azure CLI commands that interact with Microsoft Graph endpoints. This is because Microsoft Graph is not supported for ADFS. For workarounds to Microsoft Graph issues, check the [General known issues](#general-known-issues) section.
+  > Due to a [CVE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-39327) affecting Azure CLI versions previous to 2.40.0, it is no longer recommended that you use Azure CLI 2.29.2 for AD FS in Azure Stack Hub. You can update to Azure CLI 2.40.0 or higher. However, AD FS customers might encounter issues with Azure CLI commands that interact with Microsoft Graph endpoints. This is because Microsoft Graph is not supported for AD FS. For workarounds to Microsoft Graph issues, see the [General known issues](#general-known-issues) section.
 
 2. You can install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
@@ -43,7 +42,8 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
 ## Add certificate
 
-Export and then import Azure Stack Hub certificate for disconnected integrated systems and for the ASDK. For connected integrated systems, the certificate is publicly signed and this step isn't necessary. You can find instructions at [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
+Export and then import the Azure Stack Hub certificate for disconnected integrated systems and for the ASDK. For connected integrated systems, the certificate is publicly signed and this step isn't necessary. For instructions, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
+
 ## Connect with Azure CLI
 
 ### [Azure AD on Windows](#tab/ad-win)
