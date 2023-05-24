@@ -555,7 +555,7 @@ These are the known Microsoft Graph issues for Azure CLI 2.40.0, or greater, for
 
 The following are issues not limited to specific versions or ranges of versions of Azure CLI.
 
-- `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both AAD or ADFS.
+- `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both Azure AD or ADFS.
   ```powershell
   # First, sign into account with access to the resource that is being given access or a role to another user.
   # TODO: change the principal name to name of principal you want to assign the role to.
