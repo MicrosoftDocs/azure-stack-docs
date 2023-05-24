@@ -123,17 +123,17 @@ This section walks you through setting up CLI if you're using Azure AD as your i
           az cloud list --output table
       ```
 
-You should see that your environment is listed and **IsActive** is `true`. For example:
+   You should see that your environment is listed and **IsActive** is `true`. For example:
 
-```output  
-IsActive    Name               Profile
-----------  -----------------  -----------------
-False       AzureCloud         2020-09-01-hybrid
-False       AzureChinaCloud    latest
-False       AzureUSGovernment  latest
-False       AzureGermanCloud   latest
-True        AzureStackUser     2020-09-01-hybrid
-```
+   ```output  
+   IsActive    Name               Profile
+   ----------  -----------------  -----------------
+   False       AzureCloud         2020-09-01-hybrid
+   False       AzureChinaCloud    latest
+   False       AzureUSGovernment  latest
+   False       AzureGermanCloud   latest
+   True        AzureStackUser     2020-09-01-hybrid
+   ```
 
 #### Test the connectivity
 
