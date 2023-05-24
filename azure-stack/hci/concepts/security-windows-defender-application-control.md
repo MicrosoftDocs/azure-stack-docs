@@ -4,7 +4,7 @@ description: This article provides guidance on Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 11/18/2022
+ms.date: 05/16/2023
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -330,9 +330,7 @@ Follow these steps to switch between WDAC policy modes. These PowerShell command
 
 [!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
 
-## Support for OEM extensions
-
-This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build. OEM partners can manually create a supplemental policy, as described below, until the SBE toolkit becomes available.
+<!--- ## Support for OEM extensions --->
 
 ## Create a WDAC policy to enable third party software
 
