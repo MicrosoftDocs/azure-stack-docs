@@ -195,21 +195,13 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 > [!NOTE]
 > AKS on Azure Stack HCI and Windows Server stores/processes customer data. By default, customer data stays within the region the customer deploys the service instance in. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
 
+#### Additional URL requirements for Azure Arc features
+The above URL list covers the minimum required URLs for you to connect your AKS on Azure Stack HCI service to Azure for billing. You will have to allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC and other Azure services like Azure Monitor, etc. on your AKS workload cluster. For a complete list of Arc URLs, visit [Azure Arc enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
+You should also review [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements). Since Arc for server agents are now installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
+
 #### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server
 
 As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
-
-#### Arc for Kubernetes requirements
-> [!NOTE]
-> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/network-requirements) for Azure Arc enabled Kubernetes clusters.
-
-#### Azure Stack HCI requirements
-> [!NOTE]
-> You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
-
-#### Arc for servers requirements
-> [!NOTE]
-> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 
 ## Windows Admin Center requirements
 

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/28/2023
+ms.date: 05/15/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303.1 release (preview)
@@ -29,14 +29,14 @@ Azure Stack HCI, 2303.1 Supplemental Package is now in preview. This package dep
 > [!IMPORTANT]
 > Update to Azure Stack HCI, 2303.1 Supplemental Package only if you have an existing deployment of Azure Stack HCI, 2303 Supplemental Package.
 
-To update to this release, see on how to [Update your Azure Stack HCI solution via PowerShell](../update/update-via-powershell.md).
+To update to this release, see how to [Update your Azure Stack HCI solution via PowerShell](../update/update-via-powershell.md).
 
 
 ### What's new
 
 The following new features are available in the 2303.1 preview release of Supplemental Package:
 
-- **Updated OS build** - This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to April 2023. For more information on April release, see [Azure Stack HCI, version 22H2 OS build 20349](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+- **Updated OS build** - This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to April 2023. Make sure to download the latest ISO. For more information on April release, see [Azure Stack HCI, version 22H2 OS build 20349.1688](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 - **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. You can now define a storage network intent for storage RDMA network interfaces and also add a second top-of-rack switch to provide redundancy if required. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
 
