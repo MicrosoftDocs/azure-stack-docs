@@ -30,7 +30,7 @@ To access known issues for a different archived version, use the version selecto
 - Remediation: The operator must delete all AKS clusters and ACR Registries and uninstall the private preview of the AKS and ACR services.
 - Occurrence: Any stamp that has the AKS and ACR private previews installed will experience this message.
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ## Networking
 
