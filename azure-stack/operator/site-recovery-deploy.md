@@ -20,7 +20,7 @@ To enable replication of virtual machines (VMs) across two Azure Stack Hub envir
 
   :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Diagram showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
   
-During the Public Preview we will release serveral versions for both the service RPs and the extensions. Below is the complete list of current available images:
+During the public preview, Microsoft will release serveral versions for both the service RPs and the extensions. The following is the complete list of currently available images:
 
 | Service                                   | Image Name                                                          | Image Version       |
 | :---------------------------------- | :------------------------------------------------------------- | :------------- |
@@ -38,7 +38,6 @@ During the Public Preview we will release serveral versions for both the service
 | [source] Extension (Ubuntu 2004)   | microsoft.azure-recoveryservices-siterecovery-linuxUBUNTU2004 | 1.0.31.522    |
 | [source] Extension (Ubuntu 1604)   | microsoft.azure-recoveryservices-siterecovery-linuxubuntu1604 | 1.0.31.522    |
 | [source] Extension (OL7)           | microsoft.azure-recoveryservices-siterecovery-linuxOL7        | 1.0.31.522    |
-
 
 The process to install Azure Site Recovery includes actions from both the Azure Stack Hub operator and the Azure Stack Hub user:
 
