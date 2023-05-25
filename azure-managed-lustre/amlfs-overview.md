@@ -32,7 +32,8 @@ To participate in the preview, complete the [Azure Managed Lustre Preview regist
 
 The Azure Managed Lustre preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.
 
-Azure Managed Lustre resides in a single region. It can access data stored in other regions if you connect it to Blob containers located there. The cluster does not permanently store customer data.
+> [!NOTE]
+> Azure Managed Lustre doesn't store customer data outside the region the customer deploys the service instance in.
 
 ## Data security in Azure Managed Lustre
 
