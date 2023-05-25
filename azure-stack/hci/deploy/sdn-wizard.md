@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 05/25/2023
 ms.author: sethm
 ms.reviewer: JasonGerend
 ---
@@ -53,11 +53,13 @@ The following requirements must be met for a successful SDN deployment:
 - A virtual switch must be created
 - The physical network must be configured
 
-## Create the VHDX file
+## Download the VHDX file
 
-SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
+SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the `Convert-WindowsImage` utility. The following shows an example of using `Convert-WindowsImage`:
+You can download the Azure Stack HCI VHDX file from the [Azure Stack HCI software download site](https://azure.microsoft.com/en-us/contact/azure-stack-hci/). Complete the download form and select **Submit** to display the **Azure Stack HCI software download** page. Under **Azure Stack HCI**, from the **Choose language** dropdown menu, select **English – VHDX**, and then select **Download Azure Stack HCI** to download the VHDX file.
+
+Currently, non-English VHDX file is not available for download. If you require a non-English version, download the corresponding iso file and convert it into VHDX using the `Convert-WindowsImage` cmdlet. The following is an example of using `Convert-WindowsImage`:
 
 ```powershell
 Install-Module -Name Convert-WindowsImage
