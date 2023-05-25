@@ -19,6 +19,25 @@ To enable replication of virtual machines (VMs) across two Azure Stack Hub envir
 - The **target** environment. The environment in which the Azure Site Recovery resource provider and dependencies run.
 
   :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Diagram showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
+  
+During the public preview, Microsoft will release serveral versions for both the service RPs and the extensions. The following is the complete list of currently available images:
+
+| Service                                   | Image name                                                          | Image version       |
+| :---------------------------------- | :------------------------------------------------------------- | :------------- |
+| [target] ASR RP                    | Microsoft.SiteRecovery                                        | 1.2301.0.2227 |
+| [target] ASR DependencyService     | microsoft.servicebus                                          | 1.2210.4.0    |
+| [source] Appliance VM              | microsoft.asrazsappliance                                     | 1.8.2         |
+| [source] Extension (Windows)       | microsoft.azure-recoveryservices-siterecovery-windows         | 1.1.31.388    |
+| [source] Extension (Linux general) | microsoft.azure-recoveryservices-siterecovery-linux           | 1.0.2         |
+| [source] Extension (RHEL 8)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL8      | 1.0.31.522    |
+| [source] Extension (RHEL 7)        | microsoft.azure-recoveryservices-siterecovery-linuxrhel7      | 1.0.31.522    |
+| [source] Extension (Debian 9)      | microsoft.azure-recoveryservices-siterecovery-linuxDEBIAN9    | 1.0.31.522    |
+| [source] Extension (Debian 8)      | microsoft.azure-recoveryservices-siterecovery-linuxdebian8    | 1.0.31.522    |
+| [source] Extension (Debian 10)     | microsoft.azure-recoveryservices-siterecovery-linuxdebian10   | 1.0.31.522    |
+| [source] Extension (Ubuntu 1804)   | microsoft.azure-recoveryservices-siterecovery-linuxUBUNTU1804 | 1.0.31.522    |
+| [source] Extension (Ubuntu 2004)   | microsoft.azure-recoveryservices-siterecovery-linuxUBUNTU2004 | 1.0.31.522    |
+| [source] Extension (Ubuntu 1604)   | microsoft.azure-recoveryservices-siterecovery-linuxubuntu1604 | 1.0.31.522    |
+| [source] Extension (OL7)           | microsoft.azure-recoveryservices-siterecovery-linuxOL7        | 1.0.31.522    |
 
 The process to install Azure Site Recovery includes actions from both the Azure Stack Hub operator and the Azure Stack Hub user:
 
@@ -41,6 +60,8 @@ Users must perform the following steps:
 - Target:
   - Deploy the Azure Site Recovery Vault.
   - Create the protection policies and enable the protection of the workloads.
+
+
 
 ## Next steps
 
