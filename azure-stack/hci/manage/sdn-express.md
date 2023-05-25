@@ -37,12 +37,12 @@ Make sure all host servers have the Azure Stack HCI operating system installed. 
 
 The following requirements must be met for a successful SDN deployment:
 
-- All host servers must have Hyper-V enabled
-- All host servers must be joined to Active Directory
-- A virtual switch must be created
-- The physical network must be configured for the subnets and VLANs defined in the configuration file
-- The SDN Express script needs to be run from a Windows Server 2016 or later computer
-- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run
+- All host servers must have Hyper-V enabled.
+- All host servers must be joined to Active Directory.
+- A virtual switch must be created.
+- The physical network must be configured for the subnets and VLANs defined in the configuration file.
+- The SDN Express script needs to be run from a Windows Server 2016 or later computer.
+- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
 
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 

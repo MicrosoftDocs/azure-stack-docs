@@ -48,10 +48,10 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 
 The following requirements must be met for a successful SDN deployment:
 
-- All server nodes must have Hyper-V enabled
-- All server nodes must be joined to Active Directory
-- A virtual switch must be created
-- The physical network must be configured
+- All server nodes must have Hyper-V enabled.
+- All server nodes must be joined to Active Directory.
+- A virtual switch must be created.
+- The physical network must be configured.
 
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
