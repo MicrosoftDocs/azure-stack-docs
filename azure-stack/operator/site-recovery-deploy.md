@@ -22,7 +22,7 @@ To enable replication of virtual machines (VMs) across two Azure Stack Hub envir
   
 During the public preview, Microsoft will release serveral versions for both the service RPs and the extensions. The following is the complete list of currently available images:
 
-| Service                                   | Image Name                                                          | Image Version       |
+| Service                                   | Image name                                                          | Image version       |
 | :---------------------------------- | :------------------------------------------------------------- | :------------- |
 | [target] ASR RP                    | Microsoft.SiteRecovery                                        | 1.2301.0.2227 |
 | [target] ASR DependencyService     | microsoft.servicebus                                          | 1.2210.4.0    |
