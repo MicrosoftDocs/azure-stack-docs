@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/19/2023
+ms.date: 05/25/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,11 +20,11 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2108"
+::: moniker range=">=azs-2206"
 > [!IMPORTANT]  
 > Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2108"
+::: moniker range="<azs-2206"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
@@ -32,6 +32,35 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2306"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2301"
 <!-- ## Update -->
@@ -270,6 +299,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2108"
+## 2108 archived known issues
+::: moniker-end
 ::: moniker range="azs-2102"
 ## 2102 archived known issues
 ::: moniker-end
@@ -334,6 +366,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2108"
+::: moniker range="<azs-2206"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
