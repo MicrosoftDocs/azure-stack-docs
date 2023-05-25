@@ -135,7 +135,7 @@ Connect to the Azure Managed Lustre cluster by doing these steps:
 1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
 
    ```azurecli
-   az aks get-credentials --subscription <AKS_subscription_id> --resource group <AKS_resource_group_name> --name <name_of_AKS>
+   az aks get-credentials --subscription <AKS_subscription_id> --resource_group <AKS_resource_group_name> --name <name_of_AKS>
    ```
 
 ## Install the CSI driver
