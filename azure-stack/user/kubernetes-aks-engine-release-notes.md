@@ -33,7 +33,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ### Use the upgrade command
 
-You must use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -126,7 +126,7 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### What's new with AKSe 0.76.0
 
@@ -200,7 +200,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
-You must use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -319,7 +319,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
@@ -334,7 +334,7 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You must use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -442,7 +442,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
@@ -457,7 +457,7 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You must use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -561,7 +561,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
+The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
@@ -576,7 +576,7 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Use the upgrade command
 
-You must use the AKS engine upgrade command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
