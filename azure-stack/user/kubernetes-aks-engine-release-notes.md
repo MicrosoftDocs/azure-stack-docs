@@ -33,7 +33,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ### Use the upgrade command
 
-You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -200,7 +200,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
-You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -334,7 +334,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
-You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -457,7 +457,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
-You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
@@ -576,7 +576,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 
 ### Use the upgrade command
 
-You must use the `aks-engine upgrade` command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
+You must use the `aks-engine upgrade` command as described in [Upgrade a Kubernetes cluster on Azure Stack Hub](./azure-stack-kubernetes-aks-engine-upgrade.md).
 
 ### Upgrade interruptions
 
