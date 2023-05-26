@@ -29,14 +29,14 @@ During the public preview, Microsoft will release serveral versions for both the
 | [source] Appliance VM              | microsoft.asrazsappliance                                     | 1.8.2         |
 | [source] Extension (Windows)       | microsoft.azure-recoveryservices-siterecovery-windows         | 1.1.31.388    |
 | [source] Extension (Linux general) | microsoft.azure-recoveryservices-siterecovery-linux           | 1.0.2         |
-| [source] Extension (RHEL 8)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL8      | 1.0.31.522    |
 | [source] Extension (RHEL 7)        | microsoft.azure-recoveryservices-siterecovery-linuxrhel7      | 1.0.31.522    |
-| [source] Extension (Debian 9)      | microsoft.azure-recoveryservices-siterecovery-linuxDEBIAN9    | 1.0.31.522    |
+| [source] Extension (RHEL 8)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL8      | 1.0.31.522    |
 | [source] Extension (Debian 8)      | microsoft.azure-recoveryservices-siterecovery-linuxdebian8    | 1.0.31.522    |
+| [source] Extension (Debian 9)      | microsoft.azure-recoveryservices-siterecovery-linuxDEBIAN9    | 1.0.31.523    |
 | [source] Extension (Debian 10)     | microsoft.azure-recoveryservices-siterecovery-linuxdebian10   | 1.0.31.522    |
+| [source] Extension (Ubuntu 1604)   | microsoft.azure-recoveryservices-siterecovery-linuxubuntu1604 | 1.0.31.522    |
 | [source] Extension (Ubuntu 1804)   | microsoft.azure-recoveryservices-siterecovery-linuxUBUNTU1804 | 1.0.31.522    |
 | [source] Extension (Ubuntu 2004)   | microsoft.azure-recoveryservices-siterecovery-linuxUBUNTU2004 | 1.0.31.522    |
-| [source] Extension (Ubuntu 1604)   | microsoft.azure-recoveryservices-siterecovery-linuxubuntu1604 | 1.0.31.522    |
 | [source] Extension (OL7)           | microsoft.azure-recoveryservices-siterecovery-linuxOL7        | 1.0.31.522    |
 
 The process to install Azure Site Recovery includes actions from both the Azure Stack Hub operator and the Azure Stack Hub user:
