@@ -53,6 +53,8 @@ The following requirements must be met for a successful SDN deployment:
 - A virtual switch must be created.
 - The physical network must be configured.
 
+## Download the VHDX file
+
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Deploy SDN Network Controller

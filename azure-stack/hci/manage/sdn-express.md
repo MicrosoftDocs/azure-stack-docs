@@ -44,6 +44,8 @@ The following requirements must be met for a successful SDN deployment:
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
 
+## Download the VHDX file
+
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository

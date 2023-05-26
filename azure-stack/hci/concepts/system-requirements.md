@@ -128,7 +128,7 @@ When you create an Azure Stack HCI cluster using Windows Admin Center, you have 
 
 - Make sure the host servers have at least 50-100 GB of free space to create the Network Controller VMs.
 
-- You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For instructions on how download the VHDX file, see [Download the VHDX file](../../includes/hci-download-vhdx.md).
+- You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard.md#download-the-vhdx-file).
 
 For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 

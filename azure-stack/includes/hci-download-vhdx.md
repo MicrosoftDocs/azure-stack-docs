@@ -8,8 +8,6 @@ ms.date: 05/25/2023
 ---
 
 
-## Download the VHDX file
-
 SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs).
 
 > [!NOTE]
