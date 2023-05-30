@@ -3,11 +3,12 @@ title: Prepare an Azure Virtual Machine for AKS hybrid evaluation
 description: Evaluate AKS hybrid, Step 1 - To keep costs low, prepare an Azure Virtual Machine to deploy Azure Kubernetes Service on.
 author: sethmanheim
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 04/25/2023
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 # Keyword: Azure Virtual Machine deployment
 ---
 

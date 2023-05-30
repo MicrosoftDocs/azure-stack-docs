@@ -21,7 +21,7 @@ Previously, Azure Stack HCI used the operating system to report telemetry data t
 
 ## Benefits
 
-Telemetry data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
+Emitted system data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved transparency:** Supplies the Azure portal with the extension name, version, and status.
 
