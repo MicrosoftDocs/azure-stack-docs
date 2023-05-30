@@ -25,7 +25,7 @@ The GPU partitioning feature uses the [Single Root IO Virtualization (SR-IOV) in
 
 ## When to use GPU partitioning
 
-You may prefer to keep certain workloads on premises because they require low latency or need to be compliant with the data sovereignty laws of your country. Certain workloads, such as virtual desktop infrastructure (VDI) and Machine Learning (ML) inferencing require GPU acceleration, and GPU partitioning can help reduce your total cost of ownership for your overall infrastructure.
+You may prefer to keep certain workloads on premises because they require low latency or need to be compliant with the data sovereignty laws of your country/region. Certain workloads, such as virtual desktop infrastructure (VDI) and Machine Learning (ML) inferencing require GPU acceleration, and GPU partitioning can help reduce your total cost of ownership for your overall infrastructure.
 
 - VDI applications: Distributed edge customers run basic productivity apps, such as Microsoft Office and graphics-heavy visualization workloads in their VDI environments, which require GPU acceleration. For such workloads, you can achieve the required GPU acceleration via DDA or GPU partitioning. With GPU partitioning, you can create multiple partitions and assign each partition to VM hosting a VDI environment. GPU partitioning helps you achieve the desired density and scale the number of supported users by an order of magnitude.
 
