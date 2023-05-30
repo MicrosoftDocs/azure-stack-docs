@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 05/17/2023
 ms.author: sethm
-ms.reviewer: rtibi
+ms.reviewer: rtiberiu
 ms.lastreviewed: 08/10/2020
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
