@@ -2,6 +2,8 @@
 title: Known issues with AKS hybrid clusters provisioned from Azure
 description: Known issues with AKS hybrid clusters provisioned from Azure
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 10/03/2022
 author: sethmanheim
 ms.author: sethm 
