@@ -36,11 +36,12 @@ To install the Azure Stack HCI operating system in English, follow these steps:
 
 1. On the **Azure Stack HCI software download** page, select **English** from the **Choose language** drop-down menu.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
-
 1. Select **Download Azure Stack HCI**. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
-1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
-1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
+    
+3. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
+4. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard.":::
 
