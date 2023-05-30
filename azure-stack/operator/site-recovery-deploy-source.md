@@ -12,6 +12,11 @@ ms.date: 05/01/2023
 
 This article describes the actions that are required to complete the installation of the source environment.
 
+
+> [!IMPORTANT]
+> Azure Site Recovery on Azure Stack Hub requires Azure Stack Hub 2301 update build number to be at least 1.2301.2.58.
+
+
 ## Prerequisites
 
 As an Azure Stack Hub operator, download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
