@@ -14,7 +14,7 @@ This article describes how to create AKS Edge Essentials cluster deployments, no
 
 ## Virtual machine nodes
 
-When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine for each deployed node. ASK Edge Essentials manages the lifecycle, configuration, and updates of the virtual machines. 
+When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine for each deployed node. AKS Edge Essentials manages the lifecycle, configuration, and updates of the virtual machines. 
 
 ![Screenshot showing the the VMs in AKS Edge.](./media/aks-edge/aks-edge-vm.png)
 

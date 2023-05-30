@@ -3,6 +3,8 @@ title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster 
 description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
 author: sethmanheim
 ms.topic: quickstart
+ms.custom:
+  - devx-track-azurecli
 ms.date: 02/21/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023

@@ -4,6 +4,8 @@ description: How to deploy Azure Arc Resource Bridge on Windows Server
 author: abha
 ms.author: abha
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 03/29/2023
 ---
 
