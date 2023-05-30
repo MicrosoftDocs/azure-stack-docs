@@ -20,6 +20,16 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
 
+
+::: moniker range="azs-2301"
+## Build 1.2301.0.14
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+::: moniker-end
+
 ::: moniker range="azs-2206"
 ## Build 1.2206.0.6
 
