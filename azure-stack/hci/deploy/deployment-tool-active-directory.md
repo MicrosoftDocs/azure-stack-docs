@@ -1,10 +1,10 @@
 --- 
 title: Prepare Active Directory for new Azure Stack HCI deployments (preview) 
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 5/22/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
