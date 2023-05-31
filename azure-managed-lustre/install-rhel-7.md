@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Install client software for Red Hat Enterprise Linux or CentOS 7
+title: Install client software for Red Hat Enterprise Linux or CentOS 7
 description: Tutorial that describes how to install Linux or CentOS 7 client software for the Azure Managed Lustre File System.
 ms.topic: tutorial
 author: sethmanheim
