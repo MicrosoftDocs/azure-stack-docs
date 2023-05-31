@@ -27,8 +27,62 @@ Use this article as a guide to get started using Azure Stack Hub storage develop
 
 For the storage client libraries, be aware of the version that is compatible with the REST API. You must also specify the Azure Stack Hub endpoint in your code.
 
+::: moniker range=">=azs-2301"
+### 2301 update and newer
 
-::: moniker range=">=azs-2008"
+| Client library | Azure Stack Hub supported version | Link | Endpoint specification |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | Common: 12.9.0<br>Blob: 12.10.0<br>Queue: 12.8.0 | NuGet package:<br>Common: <https://www.nuget.org/packages/Azure.Storage.common/12.9.0><br>Blob: <https://www.nuget.org/packages/Azure.Storage.Blobs/12.10.0><br>Queue: <https://www.nuget.org/packages/Azure.Storage.queues/12.8.0><br> <br>GitHub release:<br>Common: <https://github.com/Azure/azure-sdk-for-net/tree/Azure.Storage.Common_12.9.0/sdk/storage/Azure.Storage.Common><br>Blob: <https://github.com/Azure/azure-sdk-for-net/tree/Azure.Storage.Blobs_12.10.0/sdk/storage/Azure.Storage.Blobs><br>Queue: <https://github.com/Azure/azure-sdk-for-net/tree/Azure.Storage.Queues_12.8.0/sdk/storage/Azure.Storage.Queues>  | app.config file |
+| Java | Common: 12.12.0<br>Blob: 12.14.3<br>Queue: 12.11.3 | Maven package:<br>Common: <https://mvnrepository.com/artifact/com.azure/azure-storage-common/12.12.0><br>Blob: <https://mvnrepository.com/artifact/com.azure/azure-storage-blob/12.14.3><br>Queue: <https://mvnrepository.com/artifact/com.azure/azure-storage-queue/12.11.3><br> <br>GitHub release:<br>Common: <https://github.com/Azure/azure-sdk-for-java/tree/azure-storage-common_12.12.0/sdk/storage/azure-storage-common><br>Blob: <https://github.com/Azure/azure-sdk-for-java/tree/azure-storage-blob_12.14.3/sdk/storage/azure-storage-blob><br>Queue: <https://github.com/Azure/azure-sdk-for-java/tree/azure-storage-queue_12.11.3/sdk/storage/azure-storage-queue> | Connection string setup |
+| Node.js | 2.8.3 | NPM link:<br><https://www.npmjs.com/package/azure-storage><br>(Run: `npm install azure-storage@2.8.3`)<br> <br>GitHub release:<br><https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3> | Service instance declaration |
+| C++ | 7.2.0 | GitHub release:<br><https://github.com/Azure/azure-storage-cpp/releases/tag/v7.2.0> | Connection string setup |
+| PHP | 1.2.0 | GitHub release:<br>Common: <https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common><br>Blob: <https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob><br>Queue:<br><https://github.com/Azure/azure-storage-php/releases/tag/v1.1.1-queue><br>Table: <https://github.com/Azure/azure-storage-php/releases/tag/v1.1.0-table><br> <br>Install via Composer (To learn more, [see the details below](#install-php-client-via-composer---current).) | Connection string setup |
+| Python | Blob: 12.9.0<br>Queue: 12.1.6 | GitHub release:<br>Blob:<br><https://github.com/Azure/azure-sdk-for-python/tree/azure-storage-blob_12.9.0/sdk/storage/azure-storage-blob><br>Queue:<br><https://github.com/Azure/azure-sdk-for-python/tree/azure-storage-queue_12.1.6/sdk/storage/azure-storage-queue> | Service instance declaration |
+| Ruby | 1.0.1 | RubyGems package:<br>Common:<br><https://rubygems.org/gems/azure-storage-common/versions/1.0.1><br>Blob: <https://rubygems.org/gems/azure-storage-blob/versions/1.0.1><br>Queue: <https://rubygems.org/gems/azure-storage-queue/versions/1.0.1><br>Table: <https://rubygems.org/gems/azure-storage-table/versions/1.0.1><br> <br>GitHub release:<br>Common: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common><br>Blob: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob><br>Queue: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue><br>Table: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table> | Connection string setup |
+
+> [!NOTE]
+> There is a high severity vulnerability in old version of .NET and Java client library, because of the dependencies on a vulnerable version of Jackson package. It is strongly suggested to use the latest supported version of .NET and Java client library to avoid security issue.
+
+#### Install PHP client via Composer - current
+
+To install via Composer: (take the blob as an example).
+
+1. Create a file named **composer.json** in the root of the project with following code:
+
+    ```json
+    {
+      "require": {
+      "Microsoft/azure-storage-blob":"1.2.0"
+      }
+    }
+    ```
+
+2. Download [composer.phar](https://getcomposer.org/composer.phar) to the project root.
+3. Run: `php composer.phar install`.
+
+### Specify API version
+To use the new **.NET** client library (**Common: v12.9.0 / Blob: v12.10.0 / Queue: v12.8.0**) and **Java** client library (**Common: v12.12.0 / Blob: v12.13.0 / Queue: v12.10.0**), you must explicitly specify the serviceVersion in each client class (including *BlobServiceClient*, *BlobContainerClient*, *BlobClient*, *QueueServiceClient*, and *QueueClient*), because the default version in the client class is not currently supported by Azure Stack Hub.
+#### Examples
+
+##### .NET
+```.net
+BlobClientOptions options = new BlobClientOptions(BlobClientOptions.ServiceVersion.V2019_07_07);
+BlobServiceClient client = new BlobServiceClient("<connection_string>", options);
+```
+
+##### Java
+```java
+BlobServiceVersion version = BlobServiceVersion.V2019_07_07; 
+BlobServiceClient blobServiceClient = new BlobServiceClientBuilder()
+    .endpoint("<your_endpoint>")
+    .sasToken("<your_SAS_token>")
+    .serviceVersion(version)
+    .buildClient();
+
+```
+::: moniker-end
+
+::: moniker range=">=azs-2008 <azs-2301"
 ### 2008 update and newer
 
 | Client library | Azure Stack Hub supported version | Link | Endpoint specification |
