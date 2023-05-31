@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/15/2023
+ms.date: 05/30/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2303 release (preview)
@@ -24,7 +24,7 @@ The Azure Stack HCI preview channel features preview versions of Azure Stack HCI
 
 ## Azure Stack HCI, 2303 Supplemental Package (preview)
 
-Azure Stack HCI, 2303 Supplemental Package is now in preview. This package deploys on servers running Azure Stack HCI, version 22H2, which is now generally available. For more information on Azure Stack HCI, version 22H2, see [What's new](../whats-new.md).
+Azure Stack HCI, 2303 Supplemental Package is now in preview. You can deploy this package on servers running the English version of the Azure Stack HCI, version 22H2 OS. For more information on Azure Stack HCI, version 22H2, see [What's new](../whats-new.md).
 
 [!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
 
@@ -37,9 +37,8 @@ The following new features are available in the 2303 preview release of Suppleme
 
 - **ISO refresh** - In this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to March 2023.  
 
-    > [!NOTE] 
-    > Make sure to download and use the refreshed ISO.    
-    For more information on March release, see [Azure Stack HCI, version 22H2 OS build 20349.1607](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+    > [!NOTE]
+    > The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on March release, see [Azure Stack HCI, version 22H2 OS build 20349.1607](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 - **Solution Updates** - Starting with this release, we're introducing the Solution Updates functionality that will let you update to the next preview release. To learn more about the new update experience, go to [What's the Lifecycle Manager?](../update/whats-the-lifecycle-manager.md) and [Keep your Azure Stack HCI up-to-date](../update/update-azure-stack-hci-solution.md).
 
