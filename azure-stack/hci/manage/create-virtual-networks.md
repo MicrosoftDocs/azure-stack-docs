@@ -82,17 +82,21 @@ Follow these steps to configure a DHCP virtual network:
 1. Set the following parameters:
 
     ```azurecli
-    $VNetName = 
+    $MocLocation = 
+    $VNetName =
     $VSwitchName = 
+    $ResourceGroupName = 
+    $CustomLocName = 
+    $Subscription =    
     $Location = 
     ```
 
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   New-MocGroup -name "Default_Group" -location "MocLocation"
-   New-MocVirtualNetwork -name "$vnetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$vswitchName"} -vlanID $vlanID
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName --vlan $vlanID
+   New-MocGroup -name "Default_Group" -location "$MocLocation"
+   New-MocVirtualNetwork -name "$VNetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$VSwitchName"} 
+   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName 
    ```
 
     Here's a sample output:
@@ -129,7 +133,7 @@ Follow these steps to configure a DHCP virtual network:
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
-Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** again. On this page, project the vmswitch name that is used for network interfaces during VM provisioning. Also project the OS gallery images that are used for creating VMs through Azure Arc.
+Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** again. On this page, project the virtual switch name that is used for network interfaces during VM provisioning. Also project the OS gallery images that are used for creating VMs through Azure Arc.
 
 ---
 
