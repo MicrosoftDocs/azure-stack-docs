@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/02/2022
+ms.date: 5/31/2023
 ---
 
 # Azure Stack HCI network deployment patterns
