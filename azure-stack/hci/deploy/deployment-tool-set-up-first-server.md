@@ -3,7 +3,7 @@ title: Set up the first server for new Azure Stack HCI deployments (preview)
 description: Learn how to set up the first server before you deploy Azure Stack HCI (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/02/2023
+ms.date: 05/30/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -25,9 +25,11 @@ Before you begin, make sure you've done the following:
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md).
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
+- [Install version 22H2 OS](deployment-tool-install-os.md) in English on each server.
 
 ## Download the Supplemental Package
+
+The Supplemental Package supports only the English version of the Azure Stack HCI operating system. Make sure that you've installed Azure Stack HCI, version 22H2 OS in English on each server before downloading the Supplemental Package.
 
 [!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
 
