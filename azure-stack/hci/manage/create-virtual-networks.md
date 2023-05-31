@@ -96,7 +96,7 @@ Follow these steps to configure a DHCP virtual network:
    ```azurecli
    New-MocGroup -name "Default_Group" -location "$MocLocation"
    New-MocVirtualNetwork -name "$VNetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$VSwitchName"} 
-   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName 
+   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $vnetName 
    ```
 
     Here's a sample output:
@@ -128,7 +128,9 @@ Follow these steps to configure a DHCP virtual network:
     Here's a sample output:
 
     ```azurecli
-    
+   New-MocGroup -name "Default_Group" -location "$MocLocation"
+   New-MocVirtualNetwork -name "$VNetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$VSwitchName"} 
+   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Static" --AddressPrefix $AddressPrefix --IpPoolStart $IpPoolStart --IpPoolEnd $IpPoolEnd --network-type "Transparent" --name $vnetName    
     ```
 
 ### [Windows Admin Center](#tab/windows-admin-center)
