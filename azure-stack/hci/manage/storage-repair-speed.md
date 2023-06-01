@@ -5,7 +5,7 @@ ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: tinawu
-ms.date: 04/17/2023
+ms.date: 06/01/2023
 ---
 
 # Adjustable storage repair speed in Azure Stack HCI and Windows Server
@@ -35,7 +35,7 @@ The storage speed repair settings are:
 
 To change the storage repair speed for a cluster by using Windows Admin Center, do the following:
 
-:::image type="content" source="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png" alt-text="You can change storage repair speeds in Cluster Manager > Settings > Storage Spaces and pools" lightbox="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png":::
+:::image type="content" source="media/storage-repair-speed/change-storage-repair-speed.png" alt-text="You can change storage repair speeds in Cluster Manager > Settings > Storage Spaces and pools" lightbox="media/storage-repair-speed/change-storage-repair-speed.png":::
 
 1. In Windows Admin Center, connect to a cluster, and then select **Settings** from the **Tools** pane.
 1. In the **Settings** pane, select **Storage Spaces and pools**.
@@ -43,7 +43,7 @@ To change the storage repair speed for a cluster by using Windows Admin Center, 
 1. Review the caution text if selecting **Very low** or **Very high**.
 1. Select **Save**.
 
-## Change storage repair speed using PowerShell:
+## Change storage repair speed using PowerShell
 
 To check the current repair speed setting:
 
