@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 04/20/2023
+ms.date: 05/30/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -28,16 +28,20 @@ Before you begin, make sure you've done the following:
 
 ## Boot and install the operating system
 
-To install the Azure Stack HCI operating system, follow these steps:
+The Supplemental package supports only the English version of the Azure Stack HCI operating system.
+
+To install the Azure Stack HCI operating system in English, follow these steps:
 
 1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
 
-1. On the **Azure Stack HCI software download** page, select **Download Azure Stack HCI**. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
+1. On the **Azure Stack HCI software download** page, select **English** from the **Choose language** drop-down menu.
+
+1. Select **Download Azure Stack HCI**. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
-
-1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
-1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
+    
+3. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
+4. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard.":::
 
