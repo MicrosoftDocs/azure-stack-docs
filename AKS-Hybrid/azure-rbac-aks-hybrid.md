@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 03/23/2023
+ms.date: 05/31/2023
 ms.lastreviewed: 03/23/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -152,7 +152,7 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
 1. Set the subscription context to the subscription where the target cluster is to be created:
 
    ```powershell
-   az account set --subscription "subscriptionName"
+   Set-AzContext -Subscription "subscriptionName"
    ```
 
 1. Create the AKS hybrid target cluster, with Azure RBAC enabled:
