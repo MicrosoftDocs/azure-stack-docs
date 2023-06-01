@@ -27,7 +27,10 @@ You can create or add virtual networks using Windows Admin Center or PowerShell 
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that you've access to an Azure Stack HCI cluster.
+1. Make sure that you've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
+
+    - Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the Azure Arc should show as **Connected**.
+    - As a part of Arc Resource Bridge deployment, you'll also create a custom location for your Azure Stack HCI cluster that you'll use in this scenario. The custom location will also show up in the Overview page for Azure Stack HCI cluster.
 
 1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster. You can also create another external switch on your cluster.
 
@@ -40,11 +43,16 @@ Before you begin, make sure to complete the following prerequisites:
     Here's a sample output:
 
     ```azurecli
-    
+    PS C:\Users\ms309deployuser> Get-VmSwitch -SwitchType External
+    Name       SwitchType       NetAdapterInterfaceDescription
+    ----       ----------       ----------------------------
+    ConvergedSwitch(compute_management) External   Teamed-Interface
+    PS C:\Users\ms309deployuser>
     ```
+
 1. Make a note of the name of the switch. You'll use this information when you create a virtual switch.
 
-### Create virtual network 
+### Create virtual network
 
 You can use the `New-MocVirtualNetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. The parameters used for each case are different. Create a virtual network on the VM switch that is deployed on all hosts of your cluster. 
 
@@ -54,7 +62,13 @@ You can use the `New-MocVirtualNetwork` cmdlet to create a virtual network on th
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **Name** | User provided name for the virtual network. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it is created. |
+   | **name** | User provided name for the virtual network. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it is created. |
+   | **vSwitchName** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
+   | **resource-group** |Name or the resource group. |
+   | **subscription** |Name or ID of the subscription to use for virtual network on your Azure Stack HCI cluster. |
+   | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. |
+   | **MocGroup** |Name of the MOC group containing the MOC network for your Azure Stack HCI.|
+   | **MocLocation** |Name of the MOC location containing the MOC group with the network for your Azure Stack HCI.|
 
 
    For static IP only, the *required* basic parameters are tabulated as follows:
@@ -62,9 +76,9 @@ You can use the `New-MocVirtualNetwork` cmdlet to create a virtual network on th
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **IP allocation method** |IP address allocation method. Choose from dynamic or static. |
-   | **Address prefix** | Subnet address in CIDR notation.  |
-   | **IpPoolStart**, **IpPoolEnd** | Start and end IPv4 addresses of the IP pool. This pool maps to an available, reserved IP range by your network administrator. |
+   | **IPAllocationMethod** |IP address allocation method. Choose from dynamic or static. |
+   | **IpAddressPrefix** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
+   | **IpPoolStart**, **IpPoolEnd** | Start and end IPv4 addresses of the IP pool. This pool maps to an available, reserved IP range in the subnet by your network administrator.  |
 
    For static IP only, you can specify the following *optional* parameters:
 
@@ -72,8 +86,8 @@ You can use the `New-MocVirtualNetwork` cmdlet to create a virtual network on th
    | --------- | ----------- |
    | **DNSServers** | IPv4 address of DNS servers. |
    | **Gateway** | Ipv4 address of the default gateway. |
-   | **Routes** | User provided name of virtual network. |
-   | **VLAN ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A 0 value implies that there is no vLAN ID.  |
+   | **Routes** | Name for the traffic routes used by the virtual network. |
+   | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A 0 value implies that there is no vLAN ID.  |
 
 #### Configure DHCP
 
@@ -94,8 +108,8 @@ Follow these steps to configure a DHCP virtual network:
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   New-MocGroup -name "Default_Group" -location "$MocLocation"
-   New-MocVirtualNetwork -name "$VNetName" -group "Default_Group" -tags @{'VSwitch-Name' = "$VSwitchName"} 
+   New-MocGroup -name Default_Group -location $MocLocation
+   New-MocVirtualNetwork -name $VNetName -group Default_Group -tags @{'VSwitch-Name' = $VSwitchName} 
    az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $vnetName 
    ```
 
