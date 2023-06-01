@@ -44,7 +44,7 @@ When an event triggers these alerts, Azure Stack Hub proactively sends the logs 
 Enabling proactive log collection is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
 
 >[!NOTE]
->To renew or change your Azure Stack Hub registration, see [Renew or change registration](azure-stack-registration.md#renew-or-change-registration). You must re-enable proactive log collection after completing this process.
+>If proactive log collection is enabled and you renew or change your Azure Stack Hub registration, you must re-enable proactive log collection. For more information, see [Renew or change registration](azure-stack-registration.md#renew-or-change-registration).
 
 ::: moniker-end
 
