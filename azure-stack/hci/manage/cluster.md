@@ -6,7 +6,7 @@ author: sethmanheim
 ms.subservice: azure-stack-hci
 ms.author: sethm
 ms.reviewer: stevenek
-ms.date: 04/17/2023
+ms.date: 06/02/2023
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -47,25 +47,25 @@ There are currently two storage settings that can be applied to your cluster. To
 
        :::image type="content" source="media/manage-cluster/in-memory-cache.png" alt-text="Screenshot of the cluster In-memory cache screen." lightbox="media/manage-cluster/in-memory-cache.png":::
 
-    - To change and view the properties of the Storage pool, including the friendly name that Storage Spaces Direct uses, health status, and more, select **Storage Spaces and pools** and locate the **Storage pool** section. These settings are applicable for stretched clusters as well.
+    - To change and view the properties of the Storage pool, including the friendly name that Storage Spaces Direct uses, health status, and more, select **Storage Spaces and pools** and locate the **Storage pool** section. These settings are applicable for stretched clusters also.
 
         - **Status** - displays the status of the storage pool cluster resource.
-        
+
         - **Health status** - displays the health of the storage pool.
-        
+
         - **Storage pool friendly name** - displays the friendly name that Storage Spaces Direct uses. Change the default friendly name, if desired.
-        
+
         - **Capacity alert threshold** - specifies the level at which a capacity alert is triggered and displayed on the system's dashboard. This alert is generated when the pool reaches the specified threshold, indicating that it is nearing its capacity limit.
-    
+
         :::image type="content" source="media/manage-cluster/storage-pool.png" alt-text="Screenshot of the cluster Storage Spaces and pools page showing the Storage pool section." lightbox="media/manage-cluster/storage-pool.png":::
-        
-    - To change the properties of the Storage bus layer, select **Storage Spaces and pools** and locate the **Storage bus layer** section. These settings are applicable for stretched clusters as well.
 
-        - **Cache State** - enable or disable persistent cache
+    - To change the properties of the Storage bus layer, select **Storage Spaces and pools** and locate the **Storage bus layer** section. These settings are applicable for stretched clusters also.
 
-        - **Cache mode for HDD** - change the cache mode for HDD drives
+        - **Cache State** - enable or disable persistent cache.
 
-        - **Cache mode for SSD** - change the cache for SSD drives
+        - **Cache mode for HDD** - change the cache mode for HDD drives.
+
+        - **Cache mode for SSD** - change the cache for SSD drives.
 
         :::image type="content" source="media/manage-cluster/storage-bus-layer.png" alt-text="Screenshot of the cluster Storage Spaces and pools page showing the Storage bus layer section." lightbox="media/manage-cluster/storage-bus-layer.png":::
 
