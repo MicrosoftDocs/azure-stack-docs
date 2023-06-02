@@ -22,6 +22,10 @@ Deploying AKS hybrid target clusters on different software defined networking (S
 - **Service segmentation**: Isolated networks enable you to logically segregate services or applications based on their function or the business they serve, especially O/T networks with high compliance and regulatory requirements. This simplifies management, monitoring, and troubleshooting.
 - **Regulatory compliance**: For organizations operating under strict guidelines such as manufacturing, healthcare, and finance, isolated networks can help achieve compliance with little increase in physical IP address space such as VLANs, subnets, etc.
 
+The following image shows the deployment of AKS hybrid target clusters. Note that the AKS hybrid management cluster and target clusters are all on different SDN vNets:
+
+:::image type="content" source="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png" alt-text="Image showing the architecture of AKS hybrid target clusters on different SDN virtual networks." lightbox="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png":::
+
 ## Configure a new SDN virtual network
 
 Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN vNET was already created using Windows Admin Center or PowerShell, you can re-use the existing vNET (SDN managed vNET). If it has not been created, we create this for you in AKS and SDN Network Controller (MOC Managed Virtual Network):
