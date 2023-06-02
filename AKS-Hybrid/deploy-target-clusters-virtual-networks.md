@@ -33,7 +33,7 @@ Prior to deploying a new AKS hybrid target cluster, you must create a new virtua
 ```powershell
 New-AksHciNetworkSetting -name "SDNvNET1" -vswitchName "ConvergedSwitch(hci) ` 
 -ipAddressPrefix "13.20.0.0/8" -gateway "13.20.0.1" -dnsServers "10.195.95.223"  ` 
--k8sNodeIpPoolStart "13.20.0.2" -k8sNodeIpPoolEnd "13.20.100.255"  ` 
+-k8sNodeIpPoolStart "13.20.0.2" -k8sNodeIpPoolEnd "13.20.100.255"
 ```
 
 |       Parameter                          |     Description                                                                                                                                                                                                           |
