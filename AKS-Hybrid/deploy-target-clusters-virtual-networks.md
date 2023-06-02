@@ -15,7 +15,7 @@ ms.reviewer: kybisnet
 
 # Deploy AKS hybrid target clusters on different SDN virtual networks
 
-Deploying AKS hybrid target clusters on different software defined networking (SDN) virtual networks (VNETs, see [Deploy Microsoft SDN with AKS hybrid](software-defined-networking.md)) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
+Deploying AKS hybrid target clusters on different [software defined networking (SDN) virtual networks (vNETs)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
 
 - **Security and isolation**: Each isolated vNET acts as a separate entity, which can help to contain potential security threats. If one network is compromised, the threat is less likely to spread to other vNETs.
 - **Scalability**: Deploying AKS hybrid target clusters on multiple networks can improve the scalability of your applications. As your requirements and/or compliance grows, you can add more AKS hybrid target clusters to new SDN vNETs.
