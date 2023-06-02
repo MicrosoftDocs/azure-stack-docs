@@ -55,6 +55,10 @@ There are currently two storage settings that can be applied to your cluster. To
 
         - **Storage pool friendly name** - displays the friendly name that Storage Spaces Direct uses. Change the default friendly name, if desired.
 
+        - **Storage pool version** - displays the current storage pool version. Increase the storage pool version after a successful Azure Stack HCI feature update or Windows Server upgrade. Always use the latest available storage pool version unless you plan to revert the update. Once increased, you cannot decrease the storage pool version.
+
+        - **Default provisioning type** - displays the default provisioning type. For more information on provisioning types, see [Storage thin provisioning in Azure Stack HCI](./thin-provisioning.md).
+
         - **Capacity alert threshold** - specifies the level at which a capacity alert is triggered and displayed on the system's dashboard. This alert is generated when the pool reaches the specified threshold, indicating that it is nearing its capacity limit.
 
         :::image type="content" source="media/manage-cluster/storage-pool.png" alt-text="Screenshot of the cluster Storage Spaces and pools page showing the Storage pool section." lightbox="media/manage-cluster/storage-pool.png":::
