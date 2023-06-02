@@ -14,7 +14,7 @@ ms.lastreviewed: 09/20/2021
 ---
 # Diagnostic log collection
 
-You can share diagnostic logs created by Azure Stack Hub. These logs are created by the Windows components and on-premises Azure services. Microsoft Support can use the logs to fix or identify issues with your Azure Stack Hub instance.
+You can share diagnostic logs created by Azure Stack Hub. The Windows components and on-premises Azure services create these logs. Microsoft Support can use the logs to fix or identify issues with your Azure Stack Hub instance.
 
 To get started with Azure Stack Hub diagnostic log collection, you have to register your instance. If you haven't registered Azure Stack Hub, use [the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs.
 
@@ -33,15 +33,18 @@ The flowchart shows which option to use for sending diagnostic logs. If Azure St
 
 ## Send logs proactively
 
-Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. These logs are only collected when a system health alert is raised and are only accessed by Microsoft Support in the context of a support case.
+Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. Only when a system health alert is raise are these logs collected. Microsoft Support only accesses these logs in the context of a support case.
 
 ::: moniker range=">= azs-2008"
 
-Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren't visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on **patch and update operations**.
+Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm to capture logs even during error conditions that aren't visible to an operator. This improvement helps ensure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on **patch and update operations**.
 
 When an event triggers these alerts, Azure Stack Hub proactively sends the logs to Microsoft. **In addition, Azure Stack Hub sends logs to Microsoft triggered by other failure events. These events are not visible to the operator**.
 
 Enabling proactive log collection is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
+
+>[!NOTE]
+>If proactive log collection is enabled and you renew or change your Azure Stack Hub registration, as described in [Renew or change registration](azure-stack-registration.md#renew-or-change-registration), you must re-enable proactive log collection.
 
 ::: moniker-end
 
@@ -69,7 +72,7 @@ Azure Stack Hub proactively collects logs for:
 | Blob service data is corrupted | StorageService.Blob.service.data.is.corrupted-Critical |
 | Account and Container Service data corruption | StorageService.Account.and.Container.Service.data.corruption-Critical |
 
-Beginning with Azure Stack Hub version 2108 if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case.
+Beginning with Azure Stack Hub version 2108 if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. Microsoft only accesses the local logs in the context of a support case.
 
 ::: moniker-end
 
@@ -86,11 +89,11 @@ Proactive log collection can be disabled and re-enabled anytime. Follow these st
 
 You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
 
-The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
+The data is used for troubleshooting system health alerts and isn't used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and Microsoft handles any data collected following our [standard privacy practices](https://privacy.microsoft.com/).
 
-Any data previously collected with your consent won't be affected by the revocation of your permission.
+The revocation of your permission doesn't affect any data previously collected with your consent.
 
-Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
+Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. Microsoft might access these logs in the context of a support case and to improve the health of Azure Stack Hub.
 
 ## Send logs now
 
@@ -204,7 +207,7 @@ By initiating diagnostic log collection from Azure Stack Hub, you acknowledge an
 
 You can save logs to a local Server Message Block (SMB) share when Azure Stack Hub is disconnected from Azure. You may, for example, run a disconnected environment. If you're normally connected but are experiencing connectivity issues, you can save logs locally to help with troubleshooting.
 
- In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support will provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
+ In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support works to provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/save-logs-locally.png)
 
@@ -218,11 +221,11 @@ The following table lists considerations for environments with limited or metere
 
 | Network connection | Impact |
 |----|---|
-| Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete. |
-| Shared connection | The upload may also impact other apps/users sharing the network connection. |
+| Low-bandwidth/high-latency connection | Log upload takes an extended amount of time to complete. |
+| Shared connection | The upload may also affect other apps/users sharing the network connection. |
 | Metered connection | There may be another charge from your ISP for the extra network usage. |
 
-For example, if the internet connection or link speed from Azure Stack Hub is 5 Megabits/second (low-bandwidth), it would take approximately 57 minutes to upload 2 GB of diagnostic log data to Microsoft support. For an 8 GB manual log collection using a 5 Megabits/second link speed, it would take approx. 3 hours and 49 minutes to upload the data. This extended length of time to upload diagnostic data could delay or impact the support experience.
+For example, if the internet connection or link speed from Azure Stack Hub is 5 Megabits/second (low-bandwidth), it would take approximately 57 minutes to upload 2 GB of diagnostic log data to Microsoft support. For an 8 GB manual log collection using a 5 Megabits/second link speed, it would take approx. 3 hours and 49 minutes to upload the data. This extended length of time to upload diagnostic data could delay or affect the support experience.
 
 ## View log collection
 
