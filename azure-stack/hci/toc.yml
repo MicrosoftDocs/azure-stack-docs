@@ -326,6 +326,8 @@
     href: manage/collect-diagnostic-data.md
   - name: Troubleshoot SDN
     items:
+    - name: Troubleshoot SDN deployment
+      href: manage/troubleshott-sdn-deployment
     - name: Collect SDN logs
       href: manage/sdn-log-collection.md
     - name: Troubleshoot Software Load Balancer for SDN
