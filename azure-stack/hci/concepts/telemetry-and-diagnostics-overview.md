@@ -21,7 +21,7 @@ Previously, Azure Stack HCI used the operating system to report telemetry data t
 
 ## Benefits
 
-Emitted system data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
+Emitted system data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved transparency:** Supplies the Azure portal with the extension name, version, and status.
 
@@ -75,17 +75,6 @@ Azure Stack HCI routes system data back to a protected cloud storage location. O
 
 Don't include any confidential information or personal information in resource or file names. For example, VM names, volume names, configuration file names, storage file names (VHD names), or cluster resource names.
 
-## Extension artifacts
-
-Artifacts generated from your cluster node are created on the stamp as part of the extension installment. Here's a description of the artifact names and locations:
-
-|Artifact name     | Location                                                                                   |
-|------------------|--------------------------------------------------------------------------------------------|
-| Extension        |C:\Packages\Plugins\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\<Version#>\                                                                              |
-| Extension logs   |C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log                                                               |
-| GMA process logs |SystemDrive\GMACache                                                                        |
-| Diagnostics logs |SystemDrive\Observability                                                                   |
-
 ## Error handling
 
 We have identified and provided unique error codes with expected messages to handle errors in extensions.
@@ -93,10 +82,9 @@ Here are some examples:
 
 | Error code | Error message | Description | Mitigation steps |
 |------------|---------------|-------------|------------------|
-| 7 | There's at least one GMA process already running on the stamp. To proceed with the extension installation, shut down the relevant processes. | During the extension installation, you can't run other GMA processes on the stamp. The extension raises an error message. | Remove the other GMA processes and then continue. Use `Get-Process MonitoringAgent` to identify active processes on the stamp. |
 | 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
 | 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
-| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the [Extension logs](telemetry-and-diagnostics-overview.md#extension-artifacts) file. | Look at the generic error message and contact Microsoft Support. |
+| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs. | Check the generic error message and contact Microsoft Support. Follow this path `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log` to the logs and provide them to Microsoft Support.|
 
 ## Next steps
 
