@@ -16,7 +16,7 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The TelemetryAndDiagnostics ARC extension enables the collection of telemetry and diagnostics information from the customer environment so that Microsoft can gain valuable insights into their system's behavior, identifying potential issues or opportunities for improvement. Telemetry and diagnostics play a crucial role in the monitoring and assessment of system performance, functionality, and overall well-being. Diagnostics information provides additional specifics regarding the system's operations, errors, and potential problem triggers. This empowers developers and administrators to troubleshoot and address issues efficiently as they arise. For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
+The TelemetryAndDiagnostics ARC extension enables the collection of telemetry and diagnostics information from the customer environment so that Microsoft can gain valuable insights into their system's behavior, identifying potential issues or opportunities for improvement. Telemetry and diagnostics play a crucial role in the monitoring and assessment of system performance, functionality, and overall well-being. Diagnostic information provides additional specifics regarding the system's operations, errors, and potential problem triggers. This empowers developers and administrators to troubleshoot and address issues efficiently as they arise. For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
 ## Benefits
 
@@ -58,7 +58,7 @@ If there's no or intermittent connectivity, Microsoft captures and store logs lo
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually, collect and send diagnostic logs to Microsoft use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend using this command to upload diagnostic data before opening a support case. Microsoft Support accesses the data to troubleshoot and resolve issues. For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend using this cmdlet to upload diagnostic data before opening a support case. Microsoft Support accesses the data to troubleshoot and resolve issues. For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
 
 ## Data collection consent
 
