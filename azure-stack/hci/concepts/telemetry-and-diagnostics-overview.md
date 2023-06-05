@@ -77,14 +77,31 @@ Don't include any confidential information or personal information in resource o
 
 ## Error handling
 
-We have identified and provided unique error codes with expected messages to handle errors in extensions.
-Here are some examples:
+To handle extension errors, we have provided some unique error codes with expected messages and resolution detail.
 
-| Error code | Error message | Description | Mitigation steps |
-|------------|---------------|-------------|------------------|
-| 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
-| 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
-| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs. | Check the generic error message and contact Microsoft Support. Follow this path `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log` to the logs and provide them to Microsoft Support.|
+### Error code 1
+
+**Error message:** An unhandled exception has occurred.
+
+**Cause:** If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs.
+
+**Suggested resolution:** Check the generic error message and contact Microsoft Support. Follow this path `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log` to the logs and provide them to Microsoft Support.
+
+### Error code 9
+
+**Error message:** There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space.
+
+**Cause:** The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue.
+
+**Suggested resolution:** Free up the disk space to allow the extension to continue.
+
+### Error code 12
+
+**Error message:** The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information.
+
+**Cause:** The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them.
+
+**Suggested resolution:** Complete the Azure Stack HCI registration step correctly.
 
 ## Next steps
 
