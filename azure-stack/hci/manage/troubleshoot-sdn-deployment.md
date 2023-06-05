@@ -49,15 +49,15 @@ Follow these steps to verify connectivity of the management network VLAN:
 
 1. In Windows Admin Center, [create a new VM](./vm.md#create-a-new-vm) on the Azure Stack HCI cluster with any supported operating system.
 
-1. Assign the same IP address to the new VM that was assigned to the management network. <!--how do we find out the IP address for management n/w-->
+1. Assign the same IP address to the new VM that was assigned to the management network.
 
-1. Configure the same VLAN for the new VM on the host where the VM is located. <!--how do we do this?-->
+1. Configure the same VLAN for the new VM on the host where the VM is located.
 
 1. To confirm the new VM is assigned the correct IP address and to rule out any duplicate address issues, run the `ipconfig /all` command on the new VM.
 
-1. Verify the new VM can ping the Azure Stack HCI hosts and vice versa. <!--how do we do this?-->
+1. Verify the new VM can ping the Azure Stack HCI hosts and vice versa.
 
-1. Check if the new VM can communicate with the DNS servers and the default gateway of the management network. <!--can we have a sample output?-->
+1. Check if the new VM can communicate with the DNS servers and the default gateway of the management network.
 
 1. Join the new VM to the same domain using the same credentials provided during SDN VM deployment.
 
@@ -138,11 +138,11 @@ Follow these steps to collect guest logs for the SDN VM:
     > [!TIP]
     > If you don't see the "Hyper-V" screen after logging in to the VM using the Hyper-V host, press the Shift + F10 keys to open a command prompt.
 
-1. Go to the C: drive and collect the answer file (**unattend.xml**). <!--what type of logs are saved in the file? can we get a sample output?-->
+1. Go to the C: drive and collect the answer file (**unattend.xml**).
 
-1. To get VM deployment history details, go to the C:\Windows\Panther folder and collect the entire content of this folder. <!--can we get a screenshot?-->
+1. To get VM deployment history details, go to the C:\Windows\Panther folder and collect the entire content of this folder.
 
-1. To collect SDN logs on the server, connect to the first physical node of the Azure Stack HCI cluster. Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**. <!--is there a filename that we can mention here? can we get a sample output?-->
+1. To collect SDN logs on the server, connect to the first physical node of the Azure Stack HCI cluster. Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**.
 
 ## Next steps
 
