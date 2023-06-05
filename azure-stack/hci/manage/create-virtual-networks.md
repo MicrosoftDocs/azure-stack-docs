@@ -1,6 +1,6 @@
 ---
 title: Create virtual networks for Azure Stack HCI cluster (preview)
-description: Learn how to create virtual networks that can be used by Azure Arc VMs running on your Azure Stack HCI cluster (preview).
+description: Learn how to create virtual networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this virtual network (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -27,14 +27,14 @@ You can create or add virtual networks using Windows Admin Center or PowerShell 
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that you've access to an Azure Stack HCI cluster. This cluster should have Arc Resource Bridge installed on it and a custom location created as per the instructions in [Set up Arc Resource Bridge using Azure CLI](./deploy-arc-resource-bridge-using-command-line.md).
-    - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Go to the custom location and then to the **Overview**. Select *Json* view in the right-pane and copy the URL. You'll specify this as the custom location later in this scenario.
+1. Make sure that you have access to an Azure Stack HCI cluster. This cluster should have Arc Resource Bridge installed on it and a custom location created as per the instructions in [Set up Arc Resource Bridge using Azure CLI](./deploy-arc-resource-bridge-using-command-line.md).
+    - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Go to the custom location and then to the **Overview**. Select *Json* view in the right-pane and copy the URL. You specify this as the custom location later in this scenario.
 
 1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use. You can also create another external switch on your cluster.
 
     Run the following command to get the name of the external VM switch on your cluster. 
 
-    Make a note of the name of the switch. You'll use this information when you create a virtual network.
+    Make a note of the name of the switch. You use this information when you create a virtual network.
 
     ```azurecli
     Get-VmSwitch -SwitchType External
@@ -62,9 +62,9 @@ You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual netwo
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **name** | User provided name for the virtual network. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it is created. |
+   | **name** | User provided name for the virtual network. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
-   | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another pre-created resource group. |
+   | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
    | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. |
 
@@ -79,9 +79,9 @@ You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual netwo
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **IPAllocationMethod** |IP address allocation method and could be dynamic or static. If this parameters is not specified, by default the virtual network is created with a dynamic configuration. |
+   | **IPAllocationMethod** |IP address allocation method and could be dynamic or static. If this parameter isn't specified, by default the virtual network is created with a dynamic configuration. |
    | **IpAddressPrefix** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
-   | **IpPoolStart**, **IpPoolEnd** | Start and end IPv4 addresses of the IP pool. This pool maps to an available, reserved IP range in the subnet by your network administrator.  |
+   | **IpPoolStart**, **IpPoolEnd** | Start and end IPv4 addresses of the IP pool. This pool maps to an available IP range in the subnet reserved by your network administrator.  |
 
    For static IP only, you can specify the following *optional* parameters:
 
@@ -90,7 +90,7 @@ You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual netwo
    | **DNSServers** | IPv4 address of DNS servers. |
    | **Gateway** | Ipv4 address of the default gateway. |
    | **Routes** | Name for the traffic routes used by the virtual network. |
-   | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A 0 value implies that there is no vLAN ID.  |
+   | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no vLAN ID.  |
 
 #### Configure DHCP
 
@@ -122,7 +122,7 @@ Follow these steps to configure a DHCP virtual network:
 
 #### Configure static
 
-1. Set the parameters. Here's an sample output:
+1. Set the parameters. Here's a sample output:
 
     ```azurecli
     $VNetName = "test-vnet-si-cidr"
