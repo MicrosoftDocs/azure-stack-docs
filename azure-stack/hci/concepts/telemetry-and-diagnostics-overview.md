@@ -85,7 +85,8 @@ To handle extension errors, we have provided some unique error codes with the ex
 
 **Cause:** If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs.
 
-**Suggested resolution:** Check the generic error message and contact Microsoft Support. Follow this path `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log` to the logs and provide them to Microsoft Support.
+**Suggested resolution:** Check the generic error message and contact Microsoft Support. Follow the provided path to the logs and provide them to Microsoft Support:
+`C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log`.
 
 ### Error code 9
 
