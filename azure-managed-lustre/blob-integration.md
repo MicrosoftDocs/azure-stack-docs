@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/17/2023
+ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
 ms.date: 02/09/2023
 
@@ -65,12 +65,11 @@ When files are archived from the Azure Managed Lustre system to the blob contain
 
 You can modify these POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described above.
 
-## Copying a Lustre Blob container with AZCOPY (or Storage Explorer)
+## Copy a Lustre blob container with AZCOPY (or Storage Explorer)
 
-The Blob container used by Lustre can be moved/copied with `azcopy` or `Storage Explorer` but (as of time of writing with `azcopy` version `10.17.0`) the default settings for those tools will not include the Directory Attributes (ie. `hdi_isfolder`).  That can be included with `azcopy` flag `--include-directory-stub True` to include the directory POSIX attributes (ie. `owner`, `group` and `permissions`).  If you azcopy the storage container without that flag set to `True` (it defaults to `False`), the data and directories will copy but the directories will not retain their POSIX attributes.
+You can move or copy the blob container Lustre uses by using **azcopy** or Storage Explorer, but at the time of this writing, with **azcopy** version 10.17.0 the default settings for those tools don't include the directory attributes (such as **hdi_isfolder**). You can include those attributes with the **azcopy** flag `--include-directory-stub True`, which includes the directory POSIX attributes (for example, **owner**, **group**, and **permissions**). If you **azcopy** the storage container without that flag set to `True` (it defaults to `False`), the data and directories copy but the directories do not retain their POSIX attributes.
 
-Likewise for `Storage Explorer` you can enable this flag in `Settings` under `Transfers` by checking the box for `Include Directory Stubs`.  
-
+Similarly, for Storage Explorer you can enable this flag in **Settings**, under **Transfers**, by checking the box for **Include Directory Stubs**.  
 
 ## Next steps
 
