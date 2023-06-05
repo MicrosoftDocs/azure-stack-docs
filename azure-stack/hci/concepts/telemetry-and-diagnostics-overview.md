@@ -60,9 +60,9 @@ If there's no or intermittent connectivity, Microsoft captures and store logs lo
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. 
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend using this cmdlet to upload diagnostic data before opening a support case. Microsoft Support accesses the data to troubleshoot and resolve issues.
 
-We recommend using this cmdlet to upload diagnostic data before opening a support case. Microsoft Support accesses the data to troubleshoot and resolve issues. For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
+For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
 
 ## Data collection consent
 
