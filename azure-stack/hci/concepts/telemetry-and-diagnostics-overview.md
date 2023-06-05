@@ -12,16 +12,17 @@ ms.date: 05/22/2023
 
 >Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article provides a brief overview, benefits, and the options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
+This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
 ## About the extension
 
-Previously, Azure Stack HCI used the operating system to report telemetry data to Microsoft. Now, the telemetry and diagnostics extension configures and manages the telemetry data. For more information, see
-[Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
+The TelemetryAndDiagnostics ARC extension enables the collection of telemetry and diagnostics information from the customer environment so that Microsoft can gain valuable insights into their system's behavior, identifying potential issues or opportunities for improvement. Telemetry and diagnostics play a crucial role in the monitoring and assessment of system performance, functionality, and overall well-being. Diagnostic information provides additional specifics regarding the system's operations, errors, and potential problem triggers. This empowers developers and administrators to troubleshoot and address issues efficiently as they arise.
+
+For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
 ## Benefits
 
-Emitted system data can be installed and managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
+Emitted system data can be managed through the telemetry and diagnostics extension, which offers several benefits. Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved transparency:** Supplies the Azure portal with the extension name, version, and status.
 
@@ -57,6 +58,12 @@ You can choose one of these options for sharing telemetry data:
 
 If there's no or intermittent connectivity, Microsoft captures and store logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
+## Diagnostic data collection
+
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. 
+
+We recommend using this cmdlet to upload diagnostic data before opening a support case. Microsoft Support accesses the data to troubleshoot and resolve issues. For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
+
 ## Data collection consent
 
 Microsoft collects data in accordance with its [standard privacy practices](https://privacy.microsoft.com/). The new telemetry agent doesn't override your existing control setting.
@@ -77,14 +84,32 @@ Don't include any confidential information or personal information in resource o
 
 ## Error handling
 
-We have identified and provided unique error codes with expected messages to handle errors in extensions.
-Here are some examples:
+To handle extension errors, we have provided some unique error codes with the expected message and resolution detail.
 
-| Error code | Error message | Description | Mitigation steps |
-|------------|---------------|-------------|------------------|
-| 9 | There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space. | The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue. | Free up the disk space to allow the extension to continue.|
-| 12 | The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information. | The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them. | Complete the Azure Stack HCI registration step correctly. |
-| 1 | An unhandled exception has occurred. | If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs. | Check the generic error message and contact Microsoft Support. Follow this path `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log` to the logs and provide them to Microsoft Support.|
+### Error code 1
+
+**Error message:** An unhandled exception has occurred.
+
+**Cause:** If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs.
+
+**Suggested resolution:** Check the generic error message and contact Microsoft Support. Follow this path to the logs and provide them to Microsoft Support:
+`C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log`.
+
+### Error code 9
+
+**Error message:** There's insufficient disk space available on the drive. To proceed with the extension installation, delete some files to free up space.
+
+**Cause:** The extension validates as a pre-installation step and requires a minimum of 20 GB of space for the GMA cache on the SystemDrive. If the drive doesn't have enough space, the extension raises an error message for this issue.
+
+**Suggested resolution:** Free up the disk space to allow the extension to continue.
+
+### Error code 12
+
+**Error message:** The extension can't create the tenant JSON configuration files if either the `Get-AzureStackHCI` or `Get-ClusterNode` cmdlet isn't available to retrieve the necessary information.
+
+**Cause:** The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them.
+
+**Suggested resolution:** Complete the Azure Stack HCI registration step correctly.
 
 ## Next steps
 
