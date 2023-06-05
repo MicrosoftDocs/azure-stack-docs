@@ -77,7 +77,7 @@ Don't include any confidential information or personal information in resource o
 
 ## Error handling
 
-To handle extension errors, we have provided some unique error codes with expected messages and resolution detail.
+To handle extension errors, we have provided some unique error codes with the expected message and resolution detail.
 
 ### Error code 1
 
