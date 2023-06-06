@@ -109,6 +109,9 @@ In the **Networking** section:
 
 When you finish entering **Basic** settings, select **Next: Advanced** to continue.
 
+> [!NOTE]
+> Moving Azure Virtual Network Manager instance is not currently supported. The existing virtual network manager instance may be deleted and another created in a new location using the ARM template.
+
 ## Advanced
 
 Use the **Advanced** tab to set up Blob Storage integration and customize the maintenance window.
