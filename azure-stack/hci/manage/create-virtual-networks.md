@@ -28,7 +28,7 @@ You can create or add virtual networks using Windows Admin Center or PowerShell 
 Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure that you have access to an Azure Stack HCI cluster. This cluster should have Arc Resource Bridge installed on it and a custom location created as per the instructions in [Set up Arc Resource Bridge using Azure CLI](./deploy-arc-resource-bridge-using-command-line.md).
-    - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Go to the custom location and then to the **Overview**. Select *Json* view in the right-pane and copy the URL. You specify this as the custom location later in this scenario.
+    - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
 1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use. You can also create another external switch on your cluster.
 
