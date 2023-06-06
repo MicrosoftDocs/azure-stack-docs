@@ -109,7 +109,7 @@ To handle extension errors, we have provided some unique error codes with the ex
 
 **Cause:** The extension uses the `Get-AzureStackHCI` and `Get-ClusterNode` cmdlets to identify parameters and retrieve information needed to create the tenant JSONs. If these cmdlets aren't present, the extension raises an error message with an indication that it can't proceed without them.
 
-**Suggested resolution:** Complete the Azure Stack HCI registration step correctly.
+**Suggested resolution:** Verify Azure Stack HCI registration.
 
 ## Next steps
 
