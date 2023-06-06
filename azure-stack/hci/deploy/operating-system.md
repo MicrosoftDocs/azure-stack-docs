@@ -142,13 +142,14 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the Welcome to Azure Stack HCI window (SConfig tool), you can perform these initial configuration tasks on each server:
+From the Welcome to Azure Stack HCI window (SConfig tool), you can perform these initial configuration tasks:
 
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.
 - Join the server to an Active Directory domain.
 - Add your domain user account or designated domain group to local administrators.
 - Enable access to Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet and decided not to join domain yet. (The default Firewall rules allow management both from local subnet and from any subnet within your Active Directory domain services.)
+- Repeat the previous tasks on each server.
 
 For more detail, see [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
