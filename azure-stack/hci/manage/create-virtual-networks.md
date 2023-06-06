@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/05/2023
+ms.date: 06/06/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
@@ -99,7 +99,7 @@ Follow these steps to configure a DHCP virtual network:
 1. Set the parameters. Here's an example output using the default external switch:
 
     ```azurecli
-    $VNetName = "test-vnet-si-cidr"
+    $VNetName = "test-vnet-dynamic"
     $VSwitchName = "ConvergedSwitch(compute_management)"    
     $Subscription =  "hcisub" 
     $ResourceGroupName = "hcirg"
@@ -110,22 +110,52 @@ Follow these steps to configure a DHCP virtual network:
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $VNetName 
+   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $VNetName --vm-switch-name $VSwitchName
    ```
 
-<!--    Here's a sample output:
+    Here's a sample output:
 
-    ```azurecli
-    <sample output>
+    ```console
+
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/altsnclus-cl",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-dynamic",
+      "location": "eastus2euap",
+      "name": "test-vnet-dynamic",
+      "properties": {
+        "dhcpOptions": {
+          "dnsServers": null
+        },
+        "networkType": "Transparent",
+        "provisioningState": "Succeeded",
+        "status": {},
+        "subnets": [],
+        "vmSwitchName": "ConvergedSwitch(compute_management)"
+      },
+      "resourceGroup": "hcirg",
+      "systemData": {
+        "createdAt": "2023-06-06T00:10:40.562941+00:00",
+        "createdBy": "johndoe@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-06-06T00:11:26.659220+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/virtualnetworks"
+    }
     ```
--->
+
 
 #### Configure static
 
 1. Set the parameters. Here's a sample output:
 
     ```azurecli
-    $VNetName = "test-vnet-si-cidr"
+    $VNetName = "test-vnet-static"
     $VSwitchName = "ConvergedSwitch(compute_management)" 
     $Subscription =  "hcisub" 
     $ResourceGroupName = "hcirg"
@@ -149,9 +179,9 @@ Follow these steps to configure a DHCP virtual network:
         "name": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourcegroups/hcirg/providers/microsoft.extendedlocation/customlocations/altsnclus-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-si-cidr",
+      "id": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-static",
       "location": "eastus2euap",
-      "name": "test-vnet-si-cidr",
+      "name": "test-vnet-static",
       "properties": {
         "dhcpOptions": {
           "dnsServers": null
