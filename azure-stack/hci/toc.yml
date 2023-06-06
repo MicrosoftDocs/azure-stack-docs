@@ -327,7 +327,7 @@
   - name: Troubleshoot SDN
     items:
     - name: Troubleshoot SDN deployment
-      href: manage/troubleshoot-sdn-deployment
+      href: manage/troubleshoot-sdn-deployment.md
     - name: Collect SDN logs
       href: manage/sdn-log-collection.md
     - name: Troubleshoot Software Load Balancer for SDN
