@@ -5,14 +5,14 @@ ms.topic: how-to
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: tinawu
-ms.date: 06/01/2023
+ms.date: 06/05/2023
 ---
 
 # Adjustable storage repair speed in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022
 
-User-adjustable storage repair speed offers more control over the data resync process by allocating resources to either repair data copies (resiliency) or run active workloads (performance). This helps improve availability and allows you to service your clusters more flexibly and efficiently.
+User-adjustable storage repair speed offers more control over the data resync process by allocating resources to either repair data copies (resiliency) or run active workloads (performance). This feature helps improve availability and enables you to service your clusters more flexibly and efficiently.
 
 ## Storage repair speed settings
 
@@ -26,7 +26,7 @@ The storage speed repair settings are:
 | High                 | 8               | More resources to resync and repairs |
 | Very high            | 16              | Most resources to resync and repairs |
 
-**Very low** to **Low** settings will allocate more resources to active workloads, allowing the server to complete mission-critical tasks. Take caution when changing the setting to **Very low**, as this may impact the time it takes for storage to regain full resiliency. **High** to **Very high** settings will prioritize storage resync and repairs, allowing a patch and update cycle to complete faster. The default setting is **Medium**, which ensures a balance of workload and repair prioritization. It's recommended to keep the repair speed set to **Medium** in most cases, unless you have a good reason for prioritizing either resiliency or performance.
+**Very low** to **Low** settings allocates more resources to active workloads, allowing the server to complete mission-critical tasks. Take caution when changing the setting to **Very low**, as it may impact the time for storage to regain full resiliency. **High** to **Very high** settings prioritize storage resync and repairs, allowing a patch and update cycle to complete faster. The default setting is **Medium**, which ensures a balance of workload and repair prioritization. It's recommended to keep the repair speed set to **Medium** in most cases, unless you have a good reason for prioritizing either resiliency or performance.
 
    > [!IMPORTANT]
    > When storage repair speed is set to **Very high**, active workloads and cluster performance can be impacted. Likewise, when repair speed is set to **Very low**, it will take more time for storage to regain full resiliency.
