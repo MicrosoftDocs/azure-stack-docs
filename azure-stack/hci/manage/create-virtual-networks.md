@@ -32,7 +32,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure you have an external VM switch deployed on all hosts of the Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use. You can also create another external switch on your cluster.
 
-    Run the following command to get the name of the external VM switch on your cluster. 
+    Run the following command to get the name of the external VM switch on your cluster.
 
     Make a note of the name of the switch. You use this information when you create a virtual network.
 
@@ -44,9 +44,9 @@ Before you begin, make sure to complete the following prerequisites:
 
     ```azurecli
     PS C:\Users\hcideployuser> Get-VmSwitch -SwitchType External
-    Name       SwitchType       NetAdapterInterfaceDescription
-    ----       ----------       ----------------------------
-    ConvergedSwitch(compute_management) External   Teamed-Interface
+    Name                               SwitchType       NetAdapterInterfaceDescription
+    ----                               ----------       ----------------------------
+    ConvergedSwitch(compute_management) External        Teamed-Interface
     PS C:\Users\hcideployuser>
     ```
 1. If you want to create a virtual network with static IP allocation, reserve an IP range with your network admin. You use this range to specify the starting and the ending IP of your IP pool.
@@ -54,7 +54,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Create virtual network
 
-You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. This VM switch is deployed on all hosts of your cluster. The parameters used for each case are different.
+You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. This VM switch is deployed on all hosts of your cluster. The parameters used for DHCP and static are different.
 
 #### Parameters used to create virtual network
 
@@ -62,7 +62,7 @@ You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual netwo
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **name** | User provided name for the virtual network. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
+   | **name** | Name for the virtual network that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
@@ -96,7 +96,7 @@ You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual netwo
 
 Follow these steps to configure a DHCP virtual network:
 
-1. Set the parameters. Here's an example output using the default external switch:
+1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
     $VNetName = "test-vnet-dynamic"
@@ -152,7 +152,7 @@ Follow these steps to configure a DHCP virtual network:
 
 #### Configure static
 
-1. Set the parameters. Here's a sample output:
+1. Set the parameters. Here's an example:
 
     ```azurecli
     $VNetName = "test-vnet-static"
