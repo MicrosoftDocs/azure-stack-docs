@@ -45,7 +45,8 @@ To repair an existing server, follow these high-level steps:
 Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single server will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
-> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
+> - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
+> - If you replace a component during server repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the server joins the cluster.
 
 ### Hardware requirements
 
