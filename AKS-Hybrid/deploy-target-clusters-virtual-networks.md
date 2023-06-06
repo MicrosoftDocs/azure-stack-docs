@@ -15,23 +15,23 @@ ms.reviewer: kybisnet
 
 # Deploy AKS hybrid target clusters on different SDN virtual networks
 
-Deploying AKS hybrid target clusters on different [software defined networking (SDN) virtual networks (vNETs)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
+Deploying AKS hybrid target clusters on different [software defined networking (SDN) virtual networks (VNets)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
 
-- **Security and isolation**: Each isolated vNET acts as a separate entity, which can help to contain potential security threats. If one network is compromised, the threat is less likely to spread to other vNETs.
-- **Scalability**: Deploying AKS hybrid target clusters on multiple networks can improve the scalability of your applications. As your requirements and/or compliance grows, you can add more AKS hybrid target clusters to new SDN vNETs.
+- **Security and isolation**: Each isolated VNet acts as a separate entity, which can help to contain potential security threats. If one network is compromised, the threat is less likely to spread to other VNets.
+- **Scalability**: Deploying AKS hybrid target clusters on multiple networks can improve the scalability of your applications. As your requirements and/or compliance grows, you can add more AKS hybrid target clusters to new SDN VNets.
 - **Service segmentation**: Isolated networks enable you to logically segregate services or applications based on their function or the business they serve, especially O/T networks with high compliance and regulatory requirements. This segmentation simplifies management, monitoring, and troubleshooting.
 - **Regulatory compliance**: For organizations that operate under strict guidelines such as manufacturing, healthcare, and finance, isolated networks can help achieve compliance with little increase in physical IP address space such as VLANs, subnets, and so on.
 
-The following image shows the deployment of AKS hybrid target clusters. The image shows that the AKS hybrid management cluster and target clusters are on different SDN vNets:
+The following image shows the deployment of AKS hybrid target clusters. The image shows that the AKS hybrid management cluster and target clusters are on different SDN VNets:
 
 :::image type="content" source="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png" alt-text="Image showing the architecture of AKS hybrid target clusters on different SDN virtual networks." lightbox="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png":::
 
 ## Configure a new SDN virtual network
 
-Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN vNET was already created using Windows Admin Center or PowerShell, you can reuse the existing vNET (SDN managed vNET). If it hasn't been created, we create the vNET for you in the AKS hybrid and SDN Network Controller (MOC Managed Virtual Network):
+Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN VNet was already created using Windows Admin Center or PowerShell, you can reuse the existing VNet (SDN managed VNet). If it hasn't been created, we create the VNet for you in the AKS hybrid and SDN Network Controller (MOC Managed Virtual Network):
 
 ```powershell
-New-AksHciNetworkSetting -name "SDNvNET1" -vswitchName "ConvergedSwitch(hci) ` 
+New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci) ` 
 -ipAddressPrefix "13.20.0.0/8" -gateway "13.20.0.1" -dnsServers "10.195.95.223"  ` 
 -k8sNodeIpPoolStart "13.20.0.2" -k8sNodeIpPoolEnd "13.20.100.255"
 ```
@@ -47,16 +47,16 @@ New-AksHciNetworkSetting -name "SDNvNET1" -vswitchName "ConvergedSwitch(hci) `
 
 ## Create a Kubernetes cluster on your SDN virtual network
 
-After you create an SDN vNET that is isolated, you can create a new Kubernetes cluster. First, retrieve the SDN vNET that you created, and save this value into a variable:
+After you create an SDN VNet that is isolated, you can create a new Kubernetes cluster. First, retrieve the SDN VNet that you created, and save this value into a variable:
 
 ```powershell
-$SDNvNET1 = Get-AksHciClusterNetwork -name "SDNvNET1"
+$SDNVNet1 = Get-AksHciClusterNetwork -name "SDNVNet1"
 ```
 
-You can use that variable to pass to the [New-AksHciCluster](reference/ps/new-akshcicluster.md) cmdlet. You must specify at least the name and the vnet:
+You can use that variable to pass to the [New-AksHciCluster](reference/ps/new-akshcicluster.md) cmdlet. You must specify at least the name and the VNet:
 
 ```powershell
-New-AksHciCluster -name "OTCluster1" -vnet "$SDNvNET1"
+New-AksHciCluster -name "OTCluster1" -vnet "$SDNVNet1"
 ```
 
 ## Next steps
