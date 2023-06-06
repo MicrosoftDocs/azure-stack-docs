@@ -97,7 +97,7 @@ To verify or enable WinRM and PowerShell remoting, perform these steps:
 
 ### Verify connectivity to the SDN URI or SDN cluster
 
-The SDN URI and cluster name is useful when Windows Admin Center connects for the first time to the SDN environment and when you run PowerShell cmdlets against Network Controller.
+The SDN URI and cluster name are useful when Windows Admin Center connects for the first time to the SDN environment and when you run PowerShell cmdlets against Network Controller.
 
 If you're unable to connect to the SDN URI or the cluster name, ensure that dynamic DNS is enabled. For information on how to enable dynamic DNS, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
