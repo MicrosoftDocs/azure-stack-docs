@@ -32,6 +32,7 @@ To collect logs for Arc VMs in your Azure Stack HCI cluster, run the following c
 ```PowerShell
 $csv_path="<input-from-admin>"
 $VMIP_1="<input-from-admin>"
+az login --use-device-code
 Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP_1
 ```
 
