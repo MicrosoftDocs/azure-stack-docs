@@ -28,7 +28,7 @@ The following image shows the deployment of AKS hybrid target clusters. The imag
 
 ## Configure a new SDN virtual network
 
-Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN VNet was already created using Windows Admin Center or PowerShell, you can reuse the existing VNet (SDN managed VNet). If it hasn't been created, we create the VNet for you in the AKS hybrid and SDN Network Controller (MOC Managed Virtual Network):
+Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN VNet was already created using Windows Admin Center or PowerShell, you can reuse the existing VNet (SDN-managed VNet). If it hasn't been created, we create the VNet for you in the AKS hybrid and SDN Network Controller (MOC Managed Virtual Network):
 
 ```powershell
 New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci) ` 
@@ -40,10 +40,10 @@ New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci) `
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     `name`                                 |   Name of the default virtual network. Reuses existing SDN managed network if it exists, or creates a new MOC managed network.                                                                                                |
 |     `vswitchName`                         |   Name of the vSwitch configured for SDN. This vSwitch has the VFP extension enabled; only one vSwitch with VFP can be enabled on the system.                                                                           |
-|     `ipAddressPrefix`                      |   Subnet prefix for creating the virtual network in the Network Controller. This prefix is a subnet prefix, not a virtual network prefix. Currently, MOC only supports a single subnet.                                           |
+|     `ipAddressPrefix`                      |   Subnet prefix for creating the virtual network in the network controller. This prefix is a subnet prefix, not a virtual network prefix. Currently, MOC only supports a single subnet.                                           |
 |     `gateway`                              |   Default gateway for the subnet. Must be the first IP of the subnet. SDN doesn't support custom default gateways for virtual networks.                                                                                  |
 |     `dnsServers`                           |   DNS servers reachable from SDN VMs public IP or other (for example, an L3 connection), used for name resolutions.                                                                                                              |
-|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKSHCI VMs on the same subnet, but not recommended due to possible misconfigurations.  |
+|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKS-HCI VMs on the same subnet, but not recommended due to possible misconfiguration.  |
 
 ## Create a Kubernetes cluster on your SDN virtual network
 
