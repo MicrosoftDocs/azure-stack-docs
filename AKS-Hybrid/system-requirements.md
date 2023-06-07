@@ -105,7 +105,7 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI or Windows Server cluster and a Windows Server Datacenter cluster:
+The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
 
 - Verify that you've an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes. 
 
