@@ -4,6 +4,8 @@ description: How to deploy Azure Arc Resource Bridge on Windows Server
 author: abha
 ms.author: abha
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 03/29/2023
 ---
 
@@ -32,7 +34,7 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.21
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.22
 Exit 
 ```
 

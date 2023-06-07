@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 05/12/2023
+  ms.date: 06/02/2023
 
 title: Fix known issues and errors when managing storage in AKS hybrid
 summary: |
@@ -78,13 +78,20 @@ sections:
           
           If upgrading is not an option, you can turn off the **mdsd** service. For each Mariner node:
           
-          1. Turn off the Geneva agent with the following shell command:
+          1. Turn off the Geneva agent with the following shell commands:
           
               ```shell
-              sudo systemctl disable -now mdsd
+              sudo systemctl stop mdsd
+              sudo systemctl disable --now mdsd
               ```
           
-          2. Delete accumulated files with the following command:
+          2. Verify that the Geneva agent was successfully disabled:
+          
+             ```shell
+             sudo systemctl status mdsd
+             ```
+          
+          3. Delete accumulated files with the following command:
             
               ```shell
               sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;

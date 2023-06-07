@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 04/19/2023
+ms.date: 05/25/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
@@ -37,34 +37,16 @@ Make sure all host servers have the Azure Stack HCI operating system installed. 
 
 The following requirements must be met for a successful SDN deployment:
 
-- All host servers must have Hyper-V enabled
-- All host servers must be joined to Active Directory
-- A virtual switch must be created
-- The physical network must be configured for the subnets and VLANs defined in the configuration file
-- The SDN Express script needs to be run from a Windows Server 2016 or later computer
-- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run
+- All host servers must have Hyper-V enabled.
+- All host servers must be joined to Active Directory.
+- A virtual switch must be created.
+- The physical network must be configured for the subnets and VLANs defined in the configuration file.
+- The SDN Express script needs to be run from a Windows Server 2016 or later computer.
+- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
 
-## Create the VHDX file
+## Download the VHDX file
 
-SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
-
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
-
-The following shows an example using `Convert-WindowsImage`:
-
- ```powershell
-Install-Module -Name Convert-WindowsImage
-Import-Module Convert-WindowsImage
-
-$wimpath = "E:\sources\install.wim"
-$vhdpath = "D:\temp\AzureStackHCI.vhdx"
-$edition=1
-Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
-
-```
-
-> [!NOTE]
-> This script should be run from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
+[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
 
@@ -90,7 +72,7 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
-- **VHDFile** - VHD file name used by all SDN infrastructure VMs
+- **VHDFile** - VHDX file name used by all SDN infrastructure VMs
 - **VMLocation** - file path to SDN infrastructure VMs
 - **JoinDomain** - domain to which SDN infrastructure VMs are joined to
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs

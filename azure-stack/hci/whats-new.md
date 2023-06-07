@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/17/2023
+ms.date: 05/30/2023
 ---
 
 # What's new in Azure Stack HCI, version 22H2
@@ -15,7 +15,7 @@ ms.date: 03/17/2023
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 22H2. This article also describes the Azure Stack HCI, Supplemental Package that can be deployed in conjunction with Azure Stack HCI, version 22H2 OS.
 
-Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution and focuses on Network ATC v2 improvements, storage replication compression, Hyper-V live migration, and more. Additionally, a preview version of Azure Stack HCI, Supplemental Package, is now available that can be deployed on servers running version 22H2 OS.
+Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution and focuses on Network ATC v2 improvements, storage replication compression, Hyper-V live migration, and more. Additionally, a preview version of Azure Stack HCI, Supplemental Package, is now available that can be deployed on servers running the English version of the Azure Stack HCI, version 22H2 OS.
 
 You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 

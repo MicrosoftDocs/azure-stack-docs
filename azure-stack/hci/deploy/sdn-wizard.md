@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 05/25/2023
 ms.author: sethm
 ms.reviewer: JasonGerend
 ---
@@ -48,29 +48,14 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 
 The following requirements must be met for a successful SDN deployment:
 
-- All server nodes must have Hyper-V enabled
-- All server nodes must be joined to Active Directory
-- A virtual switch must be created
-- The physical network must be configured
+- All server nodes must have Hyper-V enabled.
+- All server nodes must be joined to Active Directory.
+- A virtual switch must be created.
+- The physical network must be configured.
 
-## Create the VHDX file
+## Download the VHDX file
 
-SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
-
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the `Convert-WindowsImage` utility. The following shows an example of using `Convert-WindowsImage`:
-
-```powershell
-Install-Module -Name Convert-WindowsImage
-Import-Module Convert-WindowsImage
-
-$wimpath = "E:\sources\install.wim"
-$vhdpath = "D:\temp\AzureStackHCI.vhdx"
-$edition=1
-Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
-```
-
-> [!NOTE]
-> You must run this script from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the Set-ExecutionPolicy command.
+[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Deploy SDN Network Controller
 
@@ -209,3 +194,4 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 - Manage your VMs. See [Manage VMs](../manage/vm.md).
 - Manage Software Load Balancers. See [Manage Software Load Balancers](../manage/load-balancers.md).
 - Manage Gateway connections. See [Manage Gateway Connections](../manage/gateway-connections.md).
+- Troubleshoot SDN deployment. See [Troubleshoot Software Defined Networking deployment via Windows Admin Center](../manage/troubleshoot-sdn-deployment.md).

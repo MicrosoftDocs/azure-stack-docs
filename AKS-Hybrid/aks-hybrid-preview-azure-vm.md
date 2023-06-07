@@ -3,6 +3,8 @@ title: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster 
 description: Quickly get started with using Azure CLI to deploy an AKS hybrid cluster on Windows Server in an Azure VM
 author: sethmanheim
 ms.topic: quickstart
+ms.custom:
+  - devx-track-azurecli
 ms.date: 02/21/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023
@@ -126,7 +128,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.21
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.22
 Exit 
 ```
 

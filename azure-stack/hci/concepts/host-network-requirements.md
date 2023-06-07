@@ -156,6 +156,8 @@ SET is a software-based teaming technology that has been included in the Windows
 
 **Certifications required:** Compute (Standard) or Compute (Premium)
 
+SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
+
 > [!IMPORTANT]
 > Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 

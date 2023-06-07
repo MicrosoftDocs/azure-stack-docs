@@ -4,9 +4,8 @@ description: Use Azure Managed Lustre to quickly create an Azure-based Lustre fi
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/17/2023
+ms.date: 05/25/2023
 ms.reviewer: mayabishop
-ms.date: 02/09/2023
 ms.custom: references_regions
 
 # Intent: As an IT Pro, I want to understand how to use an Azure Managed Lustre file system xxx.
@@ -32,7 +31,8 @@ To participate in the preview, complete the [Azure Managed Lustre Preview regist
 
 The Azure Managed Lustre preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.
 
-Azure Managed Lustre resides in a single region. It can access data stored in other regions if you connect it to Blob containers located there. The cluster does not permanently store customer data.
+> [!NOTE]
+> Azure Managed Lustre doesn't store customer data outside the region in which you deploy the service instance.
 
 ## Data security in Azure Managed Lustre
 
