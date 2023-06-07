@@ -24,7 +24,7 @@ Deploying AKS hybrid target clusters on different [software defined networking (
 
 The following image shows the deployment of AKS hybrid target clusters. The image shows that the AKS hybrid management cluster and target clusters are on different SDN VNets:
 
-:::image type="content" source="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png" alt-text="Image showing the architecture of AKS hybrid target clusters on different SDN virtual networks." lightbox="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png":::
+:::image type="content" source="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png" alt-text="Image showing the architecture of AKS hybrid target clusters on different SDN virtual networks." lightbox="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy-large.png":::
 
 ## Configure a new SDN virtual network
 
