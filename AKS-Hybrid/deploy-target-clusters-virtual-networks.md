@@ -3,9 +3,9 @@ title: How to deploy AKS hybrid target clusters on different SDN virtual network
 description: Learn how to deploy AKS hybrid target clusters on different software defined networking (SDN) virtual networks.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/01/2023
+ms.date: 06/07/2023
 ms.author: sethm 
-ms.lastreviewed: 06/01/2023
+ms.lastreviewed: 06/07/2023
 ms.reviewer: kybisnet
 
 # Intent: As an IT pro, I want to learn how to deploy AKS hybrid target clusters on different SDN virtual networks.
