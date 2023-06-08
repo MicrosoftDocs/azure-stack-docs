@@ -18,7 +18,7 @@ This article provides a brief overview, benefits, and available options for the 
 
 The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. 
 
-Use the Telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
+Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
 For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
@@ -41,7 +41,7 @@ You maintain control over whether you send telemetry data to Microsoft, even aft
 
 To access the options to send telemetry data, follow these steps: 
 
-1. Go to your cluster **Settings** in the Azure portal and select **Extensions**.
+1. Go to your Azure Stack HCI cluster resource in the Azure portal. In the left-pane, go to **Settings** and then select **Extensions**.
 
    :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
@@ -55,11 +55,11 @@ To access the options to send telemetry data, follow these steps:
 
     Some of the benefits of enhanced telemetry data sharing include:
 
-    - Retain system data for up to a month.
-    - Automatically capture errors and diagnostics information for speedier issue resolution. No operator intervention is required.
-    - Proactively collect and upload logs to an Azure Storage account for troubleshooting.
+    - Retention of system data for up to a month.
+    - Automatica capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
+    - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
 
-If there's intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+In instances where is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
@@ -79,7 +79,7 @@ Here are a couple of things to consider with data collection:
 
 - Understand the implications of consenting to data collection and the withdrawal of consent. Consult with legal or privacy professionals to ensure complete understanding.
 
-### Azure Stack HCI privacy considerations
+### Data privacy considerations
 
 Azure Stack HCI routes system data back to a protected cloud storage location. Only Microsoft personnel with a valid business need are given access to the system data. Microsoft doesn't share personal customer data with third parties, except at the customer's discretion or for the limited purposes described in the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
@@ -87,7 +87,7 @@ Don't include any confidential information or personal information in resource o
 
 ## Error handling
 
-The following section discusses the error codes you may experience with the telemetry and diagnostics extension with the expected error messages and resolution detail: 
+The following section discusses the error codes, messages and suggested resolution for any issues that you may experience with the telemetry and diagnostics extension: 
 
 ### Error code 1
 
