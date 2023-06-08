@@ -148,17 +148,15 @@ Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA
 
 For more information, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
-### SET
+### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET requires a Compute (Standard) or Compute (Premium) adapter.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic and is supported with up to eight adapters in the same team.
 
 **Applicable traffic types:** compute, storage, and management
 
 **Certifications required:** Compute (Standard) or Compute (Premium)
 
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
-
-SET supports a minimum of one and up to a maximum of eight physical adapters per team.
 
 > [!IMPORTANT]
 > Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.

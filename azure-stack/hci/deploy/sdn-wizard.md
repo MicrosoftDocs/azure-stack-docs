@@ -194,3 +194,4 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 - Manage your VMs. See [Manage VMs](../manage/vm.md).
 - Manage Software Load Balancers. See [Manage Software Load Balancers](../manage/load-balancers.md).
 - Manage Gateway connections. See [Manage Gateway Connections](../manage/gateway-connections.md).
+- Troubleshoot SDN deployment. See [Troubleshoot Software Defined Networking deployment via Windows Admin Center](../manage/troubleshoot-sdn-deployment.md).
