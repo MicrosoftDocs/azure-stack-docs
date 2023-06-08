@@ -340,7 +340,8 @@ You can also deploy Network Controller using SDN Express scripts. See [Deploy an
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
 1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
-1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
+1. Download the Azure Stack HCI VHDX file. For more information, see [Download the VHDX file](../manage/sdn-express.md#download-the-vhdx-file).
+1. Specify the path where you downloaded the VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
