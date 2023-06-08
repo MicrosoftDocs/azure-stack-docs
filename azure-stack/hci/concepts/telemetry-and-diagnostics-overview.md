@@ -56,10 +56,10 @@ To access the options to send telemetry data, follow these steps:
     Some of the benefits of enhanced telemetry data sharing include:
 
     - Retention of system data for up to a month.
-    - Automatica capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
+    - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
     - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
 
-In instances where is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+If there is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
