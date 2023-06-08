@@ -16,7 +16,9 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The telemetry and diagnostics (shown as TelemetryAndDiagnostics in Azure portal) Arc extension enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. Use the Telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues for your system.
+The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. 
+
+Use the Telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
 For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
@@ -24,13 +26,12 @@ For more information, see [Azure Arc extension management on Azure Stack HCI](..
 
 Some of the advantages of the telemetry and diagnostics extension include:
 
-<!--- **Improved transparency:** Supplies the Azure portal with the extension name, version, and status. AM NOT SURE THIS ADDS ANY VALUE -->
-
-- **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server. 
 
 - **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
   
 - **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time.
+
+- **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server. 
 
 - **Resource consumption controls:** Ensures that no more than 5% CPU is consumed. Control of the process is enforced via the Azure Arc extension framework.
 
@@ -42,29 +43,27 @@ To access the options to send telemetry data, follow these steps:
 
 1. Go to your cluster **Settings** in the Azure portal and select **Extensions**.
 
-  :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+  :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
-1. Choose one of the following options for sharing telemetry data:
+2. Choose one of the following options for sharing telemetry data:
 
   - **Off:** Select this option to not send system data to Microsoft.
 
-- **Basic:** Select this option to send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
+  - **Basic:** Select this option to send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
 
-- **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**. 
+  - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product   improvements. We strongly recommend that you enable **enhanced diagnostics**. 
 
   Some of the benefits of enhanced telemetry data sharing include:
 
     - Retain system data for up to a month.
-    - Automatically capture errors and diagnostics information for speedier issue resolution. No operator interaction is required.
+    - Automatically capture errors and diagnostics information for speedier issue resolution. No operator intervention is required.
     - Proactively collect and upload logs to an Azure Storage account for troubleshooting.
 
-If there's no or intermittent connectivity, Microsoft captures and store logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+If there's intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. Microsoft Support uses the log data to troubleshoot and resolve issues.
-
-To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case. 
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case. 
 
 For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
 
