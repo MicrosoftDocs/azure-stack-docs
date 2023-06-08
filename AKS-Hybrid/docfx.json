@@ -42,7 +42,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "uhfHeaderId": "Azure.yml",
+      "uhfHeaderId": "Azure",
       "_op_documentIdPathDepotMapping": {
         "./": { 
           "depot_name": "Azure.azure-documents", 
