@@ -47,17 +47,17 @@ To access the options to send telemetry data, follow these steps:
 
 2. Choose one of the following options for sharing telemetry data:
 
-  - **Off:** Select this option to not send system data to Microsoft.
+   - **Off:** Select this option to not send system data to Microsoft.
 
-  - **Basic:** Select this option to send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
+   - **Basic:** Select this option to send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
 
-  - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product   improvements. We strongly recommend that you enable **enhanced diagnostics**. 
+   - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product   improvements. We strongly recommend that you enable **enhanced diagnostics**. 
 
-    Some of the benefits of enhanced telemetry data sharing include:
+     Some of the benefits of enhanced telemetry data sharing include:
 
-    - Retention of system data for up to a month.
-    - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-    - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
+     - Retention of system data for up to a month.
+     - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
+     - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
 
 If there is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
