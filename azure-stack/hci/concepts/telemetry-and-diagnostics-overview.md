@@ -43,7 +43,7 @@ To access the options to send telemetry data, follow these steps:
 
 1. Go to your cluster **Settings** in the Azure portal and select **Extensions**.
 
-  :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
 2. Choose one of the following options for sharing telemetry data:
 
@@ -53,7 +53,7 @@ To access the options to send telemetry data, follow these steps:
 
   - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product   improvements. We strongly recommend that you enable **enhanced diagnostics**. 
 
-  Some of the benefits of enhanced telemetry data sharing include:
+    Some of the benefits of enhanced telemetry data sharing include:
 
     - Retain system data for up to a month.
     - Automatically capture errors and diagnostics information for speedier issue resolution. No operator intervention is required.
