@@ -4,13 +4,18 @@ description: Learn how to deploy virtual machines in Azure Site Recovery from so
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/01/2023
+ms.date: 06/08/2023
 ---
 
 
 # Deploy for source environments (preview)
 
 This article describes the actions that are required to complete the installation of the source environment.
+
+
+> [!IMPORTANT]
+> Azure Site Recovery on Azure Stack Hub requires the Azure Stack Hub 2301 update build number to be at least 1.2301.2.58.
+
 
 ## Prerequisites
 
