@@ -16,7 +16,7 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The telemetry and diagnostics (shown as TelemetryAndDiagnostics in Azure portal) Arc extension enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. You can use the Telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues for your system.
+The telemetry and diagnostics (shown as TelemetryAndDiagnostics in Azure portal) Arc extension enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. Use the Telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues for your system.
 
 For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
 
@@ -62,7 +62,7 @@ If there's no or intermittent connectivity, Microsoft captures and store logs lo
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. Microsoft Support use the log data to troubleshoot and resolve issues.
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. Microsoft Support uses the log data to troubleshoot and resolve issues.
 
 To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case. 
 
@@ -96,7 +96,7 @@ The following section discusses the error codes you may experience with the tele
 
 **Cause:** If an unhandled exception occurs, an error message is displayed. You can find the complete error message and its stack trace in the Extension logs.
 
-**Suggested resolution:** Check the generic error message and contact Microsoft Support. Collect the logs from the following path and provide those to Microsoft Support:
+**Suggested resolution:** Check the generic error message and contact Microsoft Support. Collect the logs from the following path and provide these logs to Microsoft Support:
 `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureStack.Observability.TelemetrAndDiagnostics\ObservabilityExtension.log`.
 
 ### Error code 9
