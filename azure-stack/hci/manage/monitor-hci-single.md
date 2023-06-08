@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/06/2023
+ms.date: 06/08/2023
 # zone_pivot_groups: hci-versions
 ---
 
@@ -31,11 +31,14 @@ Insights offers the following benefits:
 
 The prerequisites and settings for using Insights vary depending on the version of Azure Stack HCI you have. Select one of the following tabs for instructions on how to use Insights on your specific version of Azure Stack HCI.
 
+The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the Legacy agents used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
+
+> [IIMPORTANT]
+> We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
+
 # [Azure Stack HCI, version 22H2 and later](#tab/22h2-and-later)
 
 Starting with the May 2023 cumulative update for Azure Stack HCI, version 22H2, you can monitor on-premises Azure Stack HCI systems with Insights.
-
-The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the Legacy agents used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
 
 ## Prerequisites
 
@@ -49,7 +52,7 @@ Here are the prerequisites for using Insights:
 
 ## Enable Insights
 
-Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure Data Collection rules for monitoring your Azure Stack HCI cluster.
+Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Stack HCI cluster.
 
 To enable this capability from the Azure portal, follow these steps:
 
@@ -64,7 +67,7 @@ To enable this capability from the Azure portal, follow these steps:
     > [!NOTE]
     > The **Get Started** button is available only for Azure Stack HCI, version 22H2 with the May 2023 cumulative update or later installed and only after the managed identity is enabled. Otherwise, this button is disabled.
 
-1. On the **Insights configuration** page, select an existing [data collection rule (DCR)](#data-collection-rules) from the **Data collection rule** dropdown. The DCR specifies the data to collect and the workspace to use. Insights creates a default DCR if one doesn't already exist. Only the DCRs that are enabled for Insights are included.
+1. On the **Insights configuration** page, select an existing DCR from the **Data collection rule** dropdown. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace. Insights creates a default DCR if one doesn't already exist. Only the DCRs that are enabled for Insights are included.
 
    :::image type="content" source="media/monitor-hci-single/data-collection-rule.png" alt-text="Screenshot showing the Insights configuration window." lightbox="media/monitor-hci-single/data-collection-rule.png":::
 
@@ -73,7 +76,10 @@ To enable this capability from the Azure portal, follow these steps:
    > [!IMPORTANT]
    > We strongly recommend that you don't create your own DCR. The DCR created by Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events. The DCRs created through AMA installation will have a prefix `AzureStackHCI-` attached with the DCR name.
 
-   1. On the **New data collection rule** page, specify the subscription, DCR name, and data collection endpoint (DCE) name. DCEs are used to access the configuration service to fetch associated DCRs for Azure Monitor Agent. If you're using private links on the agent, you must add DCEs. For more information about DCE, see [Data collection endpoints in Azure Monitor](/azure/azure-monitor/essentials/data-collection-endpoint-overview).
+   1. On the **New data collection rule** page, specify the subscription, DCR name, and data collection endpoint (DCE) name. DCEs are used to access the configuration service to fetch associated DCRs for Azure Monitor Agent. For more information about DCE, see [Data collection endpoints in Azure Monitor](/azure/azure-monitor/essentials/data-collection-endpoint-overview).
+
+      > [!NOTE]
+      > If you're using private links on the agent, you must add DCEs. For more information about AMA network settings, see [Define Azure Monitor Agent network settings](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows).
 
       :::image type="content" source="media/monitor-hci-single/data-collection-rule-2.png" alt-text="Screenshot showing the data collection rule window." lightbox="media/monitor-hci-single/data-collection-rule-2.png":::
 
@@ -93,7 +99,7 @@ To enable this capability from the Azure portal, follow these steps:
 
 ## Data collection rules
 
-When you enable Insights on a machine with the Azure Monitor Agent, you must specify a DCR to use. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace. For more information about DCRs, see [Data collection rules in Azure Monitor](/azure/azure-monitor/essentials/data-collection-rule-overview).
+When you enable Insights on a machine with the Azure Monitor Agent, you must specify a DCR to use. For more information about DCRs, see [Data collection rules in Azure Monitor](/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 |**Option**|**Description**|
 |--|--|
@@ -166,7 +172,7 @@ To enable Insights again, do the following:
 
     :::image type="content" source="media/monitor-hci-single/agent-migration-2.png" alt-text="Screenshot showing the Data collection rules window." lightbox="media/monitor-hci-single/agent-migration-2.png":::
 
-1. Select or create a data collection rule as mentioned previously in the *Enable Insights* section.
+1. Select or create a data collection rule as described previously in the [Enable Insights](#enable-insights) section.
 
 The Azure Monitor Agent and the Microsoft Monitoring Agent extension can both be installed on the same computer during migration. Running both agents might lead to duplication of data and increased cost. If a machine has both agents installed, you'll see a warning in the Azure portal that you might be collecting duplicate data, as shown below.
 
@@ -175,7 +181,10 @@ The Azure Monitor Agent and the Microsoft Monitoring Agent extension can both be
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-3.png" alt-text="Screenshot showing a data duplication warning." lightbox="media/monitor-hci-single/agent-migration-3.png":::
 
-You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** is not still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page. If you install AMA for Insights and uninstall MMA, Arc for Servers or VM Insights for individual cluster nodes will no longer work. If you would like to continue using Insights, Change tracking, Inventory, or other solutions relying on MMA for cluster nodes, we recommend that you install the MMA agent from the VM Insights page.
+You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** is not still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page.
+
+> [!NOTE]
+> If you install AMA for Insights and uninstall MMA, Arc for Servers or VM Insights for individual cluster nodes will no longer work. If you would like to continue using Insights, Change tracking, Inventory, or other solutions relying on MMA for cluster nodes, we recommend that you install the MMA agent from the VM Insights page.
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
@@ -373,21 +382,21 @@ Provides health faults on a cluster.
 | Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
 | Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {1245340c-780b-4afc-af3c-f9bdc4b12f8a}: SP:{c57f23d1-d784-4a42-8b59-4edd8e70e830} |
 | Severity | Severity of fault could be warning or critical. | No unit | Warning |
-| Initial fault time | Timestamp of when server was last updated. | Datetimestamp | 4/9/2022, 12:15:42 PM |
+| Initial fault time | Timestamp of when server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
 ### Server
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
 | Servers | The names of the servers in the cluster. | No unit | VM-1 |
-| Last updated | The timestamp of when the server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
+| Last updated | The date and time of when the server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 | Status | The health of server resources in the cluster. | It can be healthy, warning, critical, and other | Healthy |
 | CPU usage | The % of time the process has used the CPU. | Percent | 56% |
 | Memory usage | Memory usage of the server process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | 16% |
 | Logical processors | The number of logical processors. | Count | 2 |
 | CPUs | The number of CPUs. | Count | 2 |
 | Uptime | The time during which a machine, especially a computer, is in operation. | Timespan | 2.609 hr. |
-| Site | The site name to which the server belongs. | Site name | SiteA |
+| Site | The name of the site to which the server belongs. | Site name | SiteA |
 | Domain name | The local domain to which the server belongs. | No unit | Contoso.local |
 
 ### Virtual machines
@@ -397,21 +406,21 @@ Provides the state of all the virtual machines in the cluster. A VM can be in on
 | Metric | Description | Unit | Example |
 |--|--|--|--|
 | Servers | The name of the server. | No unit | Sample-VM-1 |
-| Last Updated | This gives the datetimestamp of when the server was last updated | Datetimestamp | 4/9/2022, 12:24:02 PM |
+| Last Updated | This gives the date and time of when the server was last updated | Datetime | 4/9/2022, 12:24:02 PM |
 | Total VMs | The number of VMs in a server node. | Count | 0 of 0 running |
 | Running | The number of VMs running in a server node. | Count | 2 |
 | Stopped | The number of VMs stopped in a server node. | Count | 3 |
 | Failed | The number of VMs failed in a server node. | Count | 2 |
-| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count | 2 |
+| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | Count | 2 |
 
-### Volume health
+### Storage
 
-The following table provides the health of volumes in the cluster:
+The following table provides the health of volumes and drives in the cluster:
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
 | Volumes | The name of the volume | No unit | ClusterPerformanceHistory |
-| Last updated | The date/timestamp of when the storage was last updated. | Datetime | 4/14/2022, 2:58:55 PM |
+| Last updated | The date and time of when the storage was last updated. | Datetime | 4/14/2022, 2:58:55 PM |
 | Status | The status of the volume. | Healthy, warning, critical, and other. | Healthy |
 | Total capacity | The total capacity of the device in bytes during the reporting period. | Bytes | 2.5GB |
 | Available capacity | The available capacity in bytes during the reporting period. | Bytes | 20B |
