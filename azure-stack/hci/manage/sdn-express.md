@@ -72,7 +72,7 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
-- **VHDFile** - VHD file name used by all SDN infrastructure VMs
+- **VHDFile** - VHDX file name used by all SDN infrastructure VMs
 - **VMLocation** - file path to SDN infrastructure VMs
 - **JoinDomain** - domain to which SDN infrastructure VMs are joined to
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs

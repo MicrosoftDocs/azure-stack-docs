@@ -32,7 +32,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
   - With Azure Stack HCI 22H2, Network ATC will automatically confirm adapter symmetry for all nodes in the cluster before deploying an intent.
 
-  - For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+  - For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#switch-embedded-teaming-set)
 
 - Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
 
@@ -66,7 +66,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Must use physical hosts that are Azure Stack HCI certified.
 
-- Adapters in the same Network ATC intent must be symmetric and available on each cluster node. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric and available on each cluster node. Asymmetric adapters lead to a failure in deploying any intent. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#switch-embedded-teaming-set)
 
 - Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
 
