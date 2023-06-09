@@ -255,13 +255,21 @@ You may want to view the properties of VM images before you use the image to cre
 
 To update a VM image, use the following steps in Azure portal. You are notified of when updates are available.
 
-1. 
+1. The list view of VM images will display *New update available* in the *Update* column. To view image details, select the link.
 
-   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/new-update-available.png":::
+   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
 
-   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing a new VM image available for download in VM images list view." lightbox="./media/manage-vm-resources/new-update-available.png":::
+   In the *Overview* blade of a VM image, you will see a banner that shows the new VM image available to download. To continue with the update, select *Download*.
+
+   :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
+
+2. Review image details and then select *Review and create*. By default, the new image will use the same Resource group and Instance details as the previous image.
+
+   The name for the new image is incremented based on the name of the previous image. For example, an existing image named *winServer2022-01* will have an updated image named *winServer2022-02*.
 
    :::image type="content" source="./media/manage-vm-resources/review-and-create-image.png" alt-text="Screenshot showing the Review and create dialog for a new VM image." lightbox="./media/manage-vm-resources/review-and-create-image.png":::
+
+3. To complete the operation, select *Create*.
 
    :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
 
