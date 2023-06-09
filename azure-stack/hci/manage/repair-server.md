@@ -9,7 +9,7 @@ ms.date: 06/09/2023
 
 # Repair a server on your Azure Stack HCI (preview)
 
-[!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-supplemental-package](../../includes/hci-applies-to-supplemental-package.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
