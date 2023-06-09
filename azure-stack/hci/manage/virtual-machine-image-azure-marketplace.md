@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/08/2023
+ms.date: 06/09/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -253,17 +253,19 @@ You may want to view the properties of VM images before you use the image to cre
 
 ## Update VM image
 
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation is not an in-place update of the image. Rather you can see for which VM images an updated image is available. When you update, the create VM image operation starts using the new, updated image.
+
 To update a VM image, use the following steps in Azure portal.
 
 1. If an update is available, the list view of VM images will display **New update available**. To update to the new image, select the link.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
 
-   In the **Overview** blade of a VM image, you will see a banner that shows the new VM image to download, if one is available. To update to the new image, select **Download**.
+   In the **Overview** blade of a VM image, you see a banner that shows the new VM image to download, if one is available. To update to the new image, select **Download**.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
 
-2. Review image details and then select **Review and create**. By default, the new image will use the same Resource group and Instance details as the previous image.
+2. Review image details and then select **Review and create**. By default, the new image uses the same resource group and instance details as the previous image.
 
    The name for the new image is incremented based on the name of the previous image. For example, an existing image named *winServer2022-01* will have an updated image named *winServer2022-02*.
 
@@ -273,7 +275,10 @@ To update a VM image, use the following steps in Azure portal.
 
    :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
 
-   After the new VM image is created, verify that the new VM/image works properly. You can delete the older VM image, but a VM image can't be deleted if a VM that uses that VM image is running. You must stop the VM and then delete the VM image.
+   After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
+
+   [!NOTE]
+   In this release, you can't delete a VM image if the VM associated with that image is running. Stop the VM and then delete the VM image.
 
 ## Delete VM image
 
