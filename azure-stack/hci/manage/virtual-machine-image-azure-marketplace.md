@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/03/2022
+ms.date: 06/08/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -251,6 +251,26 @@ You may want to view the properties of VM images before you use the image to cre
 
 ---
 
+## Update VM image
+
+To update a VM image, use the following steps in Azure portal. You are notified of when updates are available.
+
+1. 
+
+   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/new-update-available.png":::
+
+   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing a new VM image available for download in VM images list view." lightbox="./media/manage-vm-resources/new-update-available.png":::
+
+   :::image type="content" source="./media/manage-vm-resources/review-and-create-image.png" alt-text="Screenshot showing the Review and create dialog for a new VM image." lightbox="./media/manage-vm-resources/review-and-create-image.png":::
+
+   :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
+
+When the update is available, user is notified. Update available in list view, update available as banner notification in VM details page.
+If multiple versions of VM image exists, all of those images will indicate that updates are available. Once you create a new VM image with the latest updated version, then the update notifications for all the versions will go away.
+Clicking on update will lead you to create VM image flow. The fields are pre-filled. VM image name is = original name appended with -01, -02 or as the case may be.
+After the new VM image is created, the user should test that image and once the have verified that the VM/image works properly, they can delete the older VM image.
+Do not talk about storage path for now.
+Add info around a bug in VM image deletion. VM image can't be deleted if a VM that uses that VM image is running. You need to stop the VM and then delete the VM image.
 
 ## Delete VM image
 
