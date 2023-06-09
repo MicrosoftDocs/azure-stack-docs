@@ -49,7 +49,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Create virtual network
 
-You can use the `azurestack hci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. This VM switch is deployed on all hosts of your cluster. The parameters used for DHCP and static are different.
+You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. This VM switch is deployed on all hosts of your cluster. The parameters used for DHCP and static are different.
 
 ### Parameters used to create virtual network
 
@@ -150,13 +150,16 @@ Follow these steps to configure a DHCP virtual network:
 
     ```azurecli
     $VNetName = "test-vnet-static"
-    $VSwitchName = "ConvergedSwitch(compute_management)" 
+    $VSwitchName = '"ConvergedSwitch(compute_management)"' 
     $Subscription =  "hcisub" 
     $ResourceGroupName = "hcirg"
     $CustomLocName = "altsnclus-cl" 
     $Location = "eastus2euap" 
     $AddressPrefix = "10.0.0.0/24"
     ```
+
+    > [!NOTE]
+    > For the default VM switch created at the deployment, you will need to pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) will be passed as '"ConvergedSwitch(compute_management)"'.
 
 1. Create a static virtual network. Run the following cmdlet:
  
@@ -225,53 +228,7 @@ Follow these steps to configure a DHCP virtual network:
     }
     ```
 
-<!--VNIC sample output
-    ```console
-    az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location "eastus2euap" --name "test-vnic-SI-custom" --ip-allocation-method "Static" --subnet-id "test-vnet-SI-CIDR" --ip-address "10.0.0.14"
-    
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourcegroups/hcirg/altsnclus-cl",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/networkinterfaces/test-vnic-SI-custom",
-      "location": "eastus2euap",
-      "name": "test-vnic-SI-custom",
-      "properties": {
-        "dnsSettings": null,
-        "ipConfigurations": [
-          {
-            "name": null,
-            "properties": {
-              "gateway": null,
-              "prefixLength": "24",
-              "privateIpAddress": "10.0.0.14",
-              "privateIpAllocationMethod": "Static",
-              "subnet": {
-                "id": "test-vnet-SI-CIDR"
-              }
-            }
-          }
-        ],
-        "macAddress": null,
-        "provisioningState": "Succeeded",
-        "resourceName": null,
-        "status": {}
-      },
-      "resourceGroup": "hcirg",
-      "systemData": {
-        "createdAt": "2023-06-01T18:53:58.160639+00:00",
-        "createdBy": "johndoe@contoso.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2023-06-01T19:01:34.021718+00:00",
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-        "lastModifiedByType": "Application"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/networkinterfaces"
-    }
-    ```
--->
+
 
 ## Next steps
 
