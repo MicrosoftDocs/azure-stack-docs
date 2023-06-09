@@ -253,13 +253,13 @@ You may want to view the properties of VM images before you use the image to cre
 
 ## Update VM image
 
-To update a VM image, use the following steps in Azure portal. You are notified of when updates are available.
+To update a VM image, use the following steps in Azure portal. You are notified when updates are available.
 
-1. The list view of VM images will display *New update available* in the *Update* column. To view image details, select the link.
+1. If an update is available, the list view of VM images will display *New update available* in the *Update* column. To update to the new image, select the link.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
 
-   In the *Overview* blade of a VM image, you will see a banner that shows the new VM image available to download. To continue with the update, select *Download*.
+   In the *Overview* blade of a VM image, you will see a banner that shows the new VM image available to download, if one is available. To update to the new image, select *Download*.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
 
@@ -273,12 +273,7 @@ To update a VM image, use the following steps in Azure portal. You are notified 
 
    :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
 
-When the update is available, user is notified. Update available in list view, update available as banner notification in VM details page.
-If multiple versions of VM image exists, all of those images will indicate that updates are available. Once you create a new VM image with the latest updated version, then the update notifications for all the versions will go away.
-Clicking on update will lead you to create VM image flow. The fields are pre-filled. VM image name is = original name appended with -01, -02 or as the case may be.
-After the new VM image is created, the user should test that image and once the have verified that the VM/image works properly, they can delete the older VM image.
-Do not talk about storage path for now.
-Add info around a bug in VM image deletion. VM image can't be deleted if a VM that uses that VM image is running. You need to stop the VM and then delete the VM image.
+After the new VM image is created, verify that the new VM/image works properly. You can delete the older VM image, but a VM image can't be deleted if a VM that uses that VM image is running. You must stop the VM and then delete the VM image.
 
 ## Delete VM image
 
