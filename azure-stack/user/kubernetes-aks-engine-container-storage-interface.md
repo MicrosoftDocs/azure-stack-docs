@@ -33,7 +33,7 @@ As part of the Kubernetes community effort ([Kubernetes in-tree to CSI volume mi
 | Considerations        | [Azure Disk CSI Driver Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md) | 
 | Slack Support Channel | [\#provider-azure](https://kubernetes.slack.com/archives/C5HJXTT9Q)                                                          | 
 
-In the latest releases, CSI driver works for both Linux and Windows nodes and may be used in disconnected environments. Disconnected environments do not support CSI Drivers through Helm chart installations. Imagaes must be stored in a local repo. 
+In AKSe versions v0.75.3 and above, Azure Disk CSI driver works for both Linux and Windows nodes, through azuredisk-csi-driver addon or helm charts. In disconnected environments, only azuredisk-csi-driver addon is supported. 
 
 ## Requirements
 
