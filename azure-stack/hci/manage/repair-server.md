@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI. (preview)
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/24/2023
+ms.date: 06/09/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -54,6 +54,17 @@ When repairing a server, the system validates the hardware of the new, incoming 
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
 
+### Component replacement
+
+| **Server** | **Disk**                              | Supported |
+|--------------------------- |-----------------------|-----------|
+| New server                 | New disks             |Yes        |
+| New server                 | Old disks             |Yes        |
+| Old server (re-imaged)     | Reformatted old disks |No         |
+| Old server (re-imaged)     | New disks             |Yes        |
+| Old server (re-imaged)     | Reformatted old disks |Yes        |
+
+
 ## Prerequisites
 
 Before you repair a server, you must ensure that:
@@ -77,11 +88,7 @@ Make sure that you have reviewed the [prerequisites](#prerequisites). Follow the
     > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
 
 1. Sign in with local administrator account, into the server that will be repaired.
-1. Patch the server to ensure it has the same OS level as the servers that are already part of the cluster.
 
-    [!INCLUDE [hci-patch-incoming-server](../../includes/hci-patch-incoming-server.md)]
-
-1. Close all the PowerShell sessions on this server.
 1. Open a new PowerShell session on this server. Run the following command:
 
     ```powershell

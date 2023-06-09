@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/24/2023
+ms.date: 06/09/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -93,11 +93,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
     > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
 
 1. Sign as a local administrator account, into the new server that will join the existing cluster.
-1. On the server you signed into, run the following script to ensure that the new server is at the same patch level as the servers that are already a part of the cluster.
 
-    [!INCLUDE [hci-patch-incoming-server](../../includes/hci-patch-incoming-server.md)]
-
-1. Close all the PowerShell sessions on this server.
 1. Open a new PowerShell session on this server. Run the following command:
 
     ```powershell
