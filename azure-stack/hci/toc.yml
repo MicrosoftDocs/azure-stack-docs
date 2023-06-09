@@ -232,6 +232,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: (Optional) Configure proxy settings
+      href: manage/configure-proxy-settings.md
     - name: Manage cluster registration
       href: manage/manage-cluster-registration.md
     - name: Manage clusters with Windows Admin Center
