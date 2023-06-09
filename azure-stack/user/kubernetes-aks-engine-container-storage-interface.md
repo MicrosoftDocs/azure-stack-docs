@@ -23,17 +23,17 @@ ms.lastreviewed: 3/4/2021
 
 As part of the Kubernetes community effort ([Kubernetes in-tree to CSI volume migration](https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/)) to move in-tree volume providers to Container Storage Interface [CSI](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/), you can find the following two CSI drivers in Azure Stack: Azure Disk and NFS.
 
-|   **Details**                    | **Azure Disk CSI Driver**                                                                                                    | **NFS CSI Driver**                                                       |
-|-----------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Project Repository    | [azuredisk-csi-driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)                                              | [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs)       |
-| CSI Driver Version    | v1.0.0+                                                                                                                      | v3.0.0+                                                                  |
-| Access Mode           | ReadWriteOnce                                                                                                                | ReadWriteOnce ReadOnlyMany ReadWriteMany                                 |
-| Windows Agent Node    | Support                                                                                                                      | Not support                                                              |
-| Dynamic Provisioning  | Support                                                                                                                      | Support                                                                  |
-| Considerations        | [Azure Disk CSI Driver Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md) | Users will be responsible for setting up and maintaining the NFS server. |
-| Slack Support Channel | [\#provider-azure](https://kubernetes.slack.com/archives/C5HJXTT9Q)                                                          | [\#sig-storage](https://kubernetes.slack.com/archives/C09QZFCE5)         |
+|   **Details**                    | **Azure Disk CSI Driver**                                                                                                    | 
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Project Repository    | [azuredisk-csi-driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)                                              | 
+| CSI Driver Version    | v1.0.0+                                                                                                                      | 
+| Access Mode           | ReadWriteOnce                                                                                                                |
+| Windows Agent Node    | Support                                                                                                                      |
+| Dynamic Provisioning  | Support                                                                                                                      | 
+| Considerations        | [Azure Disk CSI Driver Limitations](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/limitations.md) | 
+| Slack Support Channel | [\#provider-azure](https://kubernetes.slack.com/archives/C5HJXTT9Q)                                                          | 
 
-Currently, disconnected environments do not support CSI Drivers.
+In the latest releases, CSI driver works for both Linux and Windows nodes and may be used in disconnected environments. Disconnected environments do not support CSI Drivers through Helm chart installations. Imagaes must be stored in a local repo. 
 
 ## Requirements
 
@@ -97,71 +97,6 @@ helm uninstall azuredisk-csi-driver --namespace kube-system
 helm repo remove azuredisk-csi-driver
 ```
 
-## NFS CSI driver
-
-### Install CSI driver
-
-```bash  
-helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
-helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-system --set controller.runOnMaster=true --version v3.0.0
-```
-
-### Deploy NFS server
-
-> [!NOTE]  
-> The NFS Server is just for validation, set up and maintain your NFS Server properly for production.
-
-Set up and maintain your NFS Server properly for production.
-
-```bash  
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
-```
-
-### Deploy Storage Class
-
-```bash  
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/storageclass-nfs.yaml
-```
-
-### Deploy example statefulset application
-
-```bash  
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/statefulset.yaml
-```
-
-### Validate volumes and applications
-
-You should see a sequence of timestamps are persisted in the volume.
-
-```bash  
-kubectl exec statefulset-nfs-0 -- tail /mnt/nfs/outfile
-```
-
-### Delete example statefulset application
-
-```bash  
-kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/statefulset.yaml
-```
-
-### Delete storage class
-
-Before you delete the Storage Class,  make sure Pods that consume the Storage Class have been terminated.
-
-```bash  
-kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/storageclass-nfs.yaml
-```
-### Delete example NFS server
-
-```bash  
-kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
-```
-
-### Uninstall CSI driver
-
-```bash  
-helm uninstall csi-driver-nfs --namespace kube-system
-helm repo remove csi-driver-nfs
-```
 ## Azure Disk CSI Driver limitations on Azure Stack Hub
 
 -   Azure Disk IOPS is capped at 2300. For details, see [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md).
