@@ -277,8 +277,8 @@ To update a VM image, use the following steps in Azure portal.
 
    After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
 
-   [!NOTE]
-   In this release, you can't delete a VM image if the VM associated with that image is running. Stop the VM and then delete the VM image.
+   > [!NOTE]
+   > In this release, you can't delete a VM image if the VM associated with that image is running. Stop the VM and then delete the VM image.
 
 ## Delete VM image
 
