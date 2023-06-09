@@ -46,7 +46,7 @@ Repairing a server will reimage a server and bring it back to the cluster with t
 
 > [!IMPORTANT]
 > - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
-> - If you replace a component during server repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the server joins the cluster.
+.
 
 ### Hardware requirements
 
@@ -56,14 +56,16 @@ When repairing a server, the system validates the hardware of the new, incoming 
 
 ### Component replacement
 
-| **Server** | **Disk**                              | Supported |
-|--------------------------- |-----------------------|-----------|
-| New server                 | New disks             |Yes        |
-| New server                 | Old disks             |Yes        |
-| Old server (re-imaged)     | Reformatted old disks |No         |
-| Old server (re-imaged)     | New disks             |Yes        |
-| Old server (re-imaged)     | Reformatted old disks |Yes        |
+| **Server** | **Disk**                             | **Supported** |
+|-------------------------- |-----------------------|-----------|
+| New server                | New disks             |Yes        |
+| New server                | Old disks             |Yes        |
+| Old server (reimaged)     | Reformatted old disks |No         |
+| Old server (reimaged)     | New disks             |Yes        |
+| Old server (reimaged)     | Reformatted old disks |Yes        |
 
+> [!IMPORTANT]
+> If you replace a component during server repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the server joins the cluster.
 
 ## Prerequisites
 
