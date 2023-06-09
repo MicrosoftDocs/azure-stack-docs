@@ -253,13 +253,13 @@ You may want to view the properties of VM images before you use the image to cre
 
 ## Update VM image
 
-To update a VM image, use the following steps in Azure portal. You are notified when updates are available.
+To update a VM image, use the following steps in Azure portal.
 
-1. If an update is available, the list view of VM images will display **New update available** in the **Update** column. To update to the new image, select the link.
+1. If an update is available, the list view of VM images will display **New update available**. To update to the new image, select the link.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
 
-   In the **Overview** blade of a VM image, you will see a banner that shows the new VM image available to download, if one is available. To update to the new image, select **Download**.
+   In the **Overview** blade of a VM image, you will see a banner that shows the new VM image to download, if one is available. To update to the new image, select **Download**.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
 
