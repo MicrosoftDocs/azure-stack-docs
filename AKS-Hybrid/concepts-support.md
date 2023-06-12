@@ -46,7 +46,7 @@ The hardware configuration of each physical node in the Azure Stack HCI cluster 
 - Disk: 8x HDDs (2 TB or larger) and 2x 1.6TB NVMe to support S2D storage configurations
 - Network: Four (4) 100-Gbit NICs (Mellanox or Intel)
 
-Microsoft engineering has tested AKS hybrid using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configurations, see [Scaling AKS hybrid on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
+Microsoft engineering has tested AKS hybrid using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configuration, see [Scaling AKS hybrid on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
 
 > [!IMPORTANT]  
 > When you upgrade a deployment of AKS on Azure Stack HCI, extra resources are temporarily consumed.
