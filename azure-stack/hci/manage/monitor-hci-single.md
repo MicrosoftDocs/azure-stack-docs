@@ -33,7 +33,7 @@ The prerequisites and settings for using Insights vary depending on the version 
 
 The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the Legacy agents used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
 
-> [IIMPORTANT]
+> [!IIMPORTANT]
 > We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
 
 # [Azure Stack HCI, version 22H2 and later](#tab/22h2-and-later)
