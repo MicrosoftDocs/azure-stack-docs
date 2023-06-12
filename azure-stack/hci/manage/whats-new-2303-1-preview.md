@@ -15,7 +15,7 @@ ms.date: 05/15/2023
 
 This article describes the new features or enhancements that are currently available in the preview for Azure Stack HCI. This article includes:
 
-- [What's in the preview channel](#azure-stack-hci-preview-channel).
+- [What's in the preview channel](#azure-stack-hci-preview-channel)?
 - [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-23031-supplemental-package-preview).
 
 ## Azure Stack HCI preview channel
@@ -38,10 +38,10 @@ The following new features are available in the 2303.1 preview release of Supple
 
 - **Updated OS build** - This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to April 2023. Make sure to download the latest ISO. For more information on April release, see [Azure Stack HCI, version 22H2 OS build 20349.1688](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
-- **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. You can now define a storage network intent for storage RDMA network interfaces and also add a second top-of-rack switch to provide redundancy if required. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
+- **Scale out using Storage Switched host networking pattern** - In this release, you can scale out your single node deployments to two nodes using the storage switched host networking pattern. You can now define a storage network intent for storage RDMA network interfaces and also add a second top-of-rack switch to provide redundancy if necessary. For more information, see the [Storage switched host networking pattern](../plan/two-node-switched-non-converged.md). 
 
 - **Update improvements** - In this release, the following enhancements have been made for the solution updates: 
-    - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. To learn more about update times, see [Track the update progress](../update/update-via-powershell.md#step-3-download-check-readiness-and-install-updates).
+    - Starting with this release, the solution update runs will display the start time and the last updated time for the various update phases while the update is in progress. To learn more about update times, see [Track the update progress](../update/update-via-powershell.md#step-4-download-check-readiness-and-install-updates).
     - With this release, you can update the cluster nodes following the addition or replacement of a node.
 
 
