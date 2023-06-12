@@ -4,7 +4,7 @@ description: Learn how to apply operating system, service, and Solution Extensio
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/25/2023
+ms.date: 06/12/2023
 ---
 
 # Update your Azure Stack HCI solution via PowerShell (preview)
