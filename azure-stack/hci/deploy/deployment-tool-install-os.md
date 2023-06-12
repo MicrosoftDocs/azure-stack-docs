@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 05/30/2023
+ms.date: 06/12/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -53,16 +53,7 @@ To install the Azure Stack HCI operating system in English, follow these steps:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the installation type option page of the Install Azure Stack HCI wizard.":::
 
-1. On the **Where do you want to install Azure Stack HCI?** page, make sure that a special disk partition layout is created:
-
-    | Disk partition         | Recommended min. size | Purpose                  |
-    |------------------------|-----------------------|--------------------------|
-    | Boot partition (C:)    |60 GB<sup>*</sup>                  |Used for the operating system           |
-    | Data partition (D:)    |120 GB                 |Used for logs |
-
-    <sup>*</sup> *The minimum requirement should be based on the memory required to ensure a full memory dump can be created. For more information, see [Overview of memory dump file options for Windows](/troubleshoot/windows-server/performance/memory-dump-file-options).*
-
-    Confirm the operating system installation in the boot partition, and then select **Next**.
+1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive where the operating system is installed, and then select **Next**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="Screenshot of the drive location page of the Install Azure Stack HCI wizard.":::
 
