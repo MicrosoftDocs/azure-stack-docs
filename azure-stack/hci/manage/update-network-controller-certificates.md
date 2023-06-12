@@ -4,7 +4,7 @@ description: This article describes how to renew Network Controller certificates
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/11/2023
+ms.date: 06/12/2023
 ---
 
 # Renew Network Controller certificates before they expire
@@ -371,6 +371,17 @@ To renew the Network Controller node certificate, perform the following steps on
    ```
 
 ---
+
+## Re-import certificates in Windows Admin Center
+
+If you have renewed the Network Controller REST certificate and you are using Windows Admin Center to manage SDN, you must remove the Azure Stack HCI cluster from Windows Admin Center and add it again. By doing this, you enforce Windows Admin Center to import the renewed certificate and use it for SDN management.
+
+Follow these steps to re-import the renewed certificate in Windows Admin Center:
+
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu.
+1. Select the cluster you want to remove and then select **Remove**.
+1. Select **Add**, enter the cluster name, and then select **Add**.
+1. Once the cluster is loaded, select **SDN Infrastructure**. This forces Windows Admin Center to automatically re-import the renewed certificate.
 
 ## Next steps
 
