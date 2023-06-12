@@ -40,7 +40,7 @@ The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Mo
 
 Starting with the May 2023 cumulative update for Azure Stack HCI, version 22H2, you can monitor on-premises Azure Stack HCI systems with Insights.
 
-## Prerequisites
+### Prerequisites
 
 Here are the prerequisites for using Insights:
 
@@ -50,7 +50,7 @@ Here are the prerequisites for using Insights:
 
 - The managed identity for the Azure resource must be enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 
-## Enable Insights
+### Enable Insights
 
 Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Stack HCI cluster.
 
@@ -97,7 +97,7 @@ To enable this capability from the Azure portal, follow these steps:
 
    :::image type="content" source="media/monitor-hci-single/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single/insights-configured.png":::
 
-## Data collection rules
+### Data collection rules
 
 When you enable Insights on a machine with the Azure Monitor Agent, you must specify a DCR to use. For more information about DCRs, see [Data collection rules in Azure Monitor](/azure/azure-monitor/essentials/data-collection-rule-overview).
 
@@ -107,7 +107,7 @@ When you enable Insights on a machine with the Azure Monitor Agent, you must spe
 |Event Log Channel|Specifies which Windows event logs to collect from the operating system. This option is required for all computers. Windows event logs are used to populate the visualizations in the Insights workbook. Currently, data is collected through two Windows event log channels: `- microsoft-windows-health/operational` and `microsoft-windows-sddc-management/operational`|
 |Log Analytics workspace|Workspace to store the data. Only workspaces with Insights are listed.|
 
-### Event channel
+#### Event channel
 
 The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-health/operational` Windows event channel is added to your Log Analytics workspace under **Windows event logs**.
 
@@ -115,7 +115,7 @@ The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-healt
 
 By collecting these logs, Insights shows the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters are added.
 
-### Performance counters
+#### Performance counters
 
 By default, five performance counters are added:
 
@@ -135,7 +135,7 @@ After you enable Insights, it can take up to 15 minutes to collect the data. Whe
 
 :::image type="content" source="media/monitor-hci-single/insights-visualization.png" alt-text="Screenshot showing Insight visualizations." lightbox="media/monitor-hci-single/insights-visualization.png":::
 
-## Disable Insights
+### Disable Insights
 
 To disable Insights, follow these steps:
 
@@ -146,7 +146,7 @@ To disable Insights, follow these steps:
 
 When you disable the Insights feature, the association between the data collection rule and the cluster is deleted and the Health Service and SDDC Management logs are no longer collected; however, existing data isn't deleted. If you'd like to delete that data, go into your DCR and Log Analytics workspace and delete the data manually.
 
-## Update Insights
+### Update Insights
 
 The Insights tile shows a **Needs update** message in the following cases:
 
@@ -162,7 +162,7 @@ To enable Insights again, do the following:
 
 :::image type="content" source="media/monitor-hci-single/update-insights.png" alt-text="Screenshot showing the Update Insights window." lightbox="media/monitor-hci-single/update-insights.png":::
 
-## Migrate from the Microsoft Monitoring Agent
+### Migrate from the Microsoft Monitoring Agent
 
 1. To migrate from the Microsoft Monitoring Agent (MMA) to the Azure Monitoring Agent (AMA), scroll down to **Insights**.
 
@@ -188,7 +188,7 @@ You must remove the Microsoft Monitoring Agent extension yourself from any compu
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
-## Troubleshooting
+### Troubleshooting
 
 For troubleshooting steps, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).
 
@@ -205,7 +205,7 @@ The data generated from your on-premises Azure Stack HCI cluster is collected in
 
 To change the frequency of log collection, see [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel).
 
-## Prerequisites
+### Prerequisites
 
 To use Insights with the legacy Agent, make sure you've completed the following:
 
@@ -215,7 +215,7 @@ To use Insights with the legacy Agent, make sure you've completed the following:
 
 - [Enable Insights](monitor-hci-single.md) to allow Azure Monitor to start collecting the events that are required for monitoring.
 
-## Logs capability
+### Logs capability
 
 After you register your cluster and Arc-enable the servers, you'll see the following in Azure portal:
 
@@ -232,7 +232,7 @@ This capability is an Arc for Servers extension that simplifies installing the M
    > [!NOTE]
    > The Microsoft Monitoring Agent for Windows communicates outbound to the Azure Monitor service over TCP port 443. If the servers connect through a firewall or proxy server to communicate over the internet, review [these requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) to understand the network configuration required.
 
-## Configure the Microsoft Monitoring Agent extension
+### Configure the Microsoft Monitoring Agent extension
 
 To configure the Microsoft Monitoring Agent (AMA) extension:
 
@@ -247,7 +247,7 @@ To configure the Microsoft Monitoring Agent (AMA) extension:
 
 You have now successfully installed the log analytics extension.
 
-## Disable Log Analytics
+### Disable Log Analytics
 
 If you'd like to disable the Logs capability, remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this doesn't delete the Log Analytics workspace in Azure or any of the data that resides in it, so you must do that manually.
 
@@ -257,7 +257,7 @@ To remove the Microsoft Monitoring Agent from every server in the cluster, follo
 2. Select the **MicrosoftMonitoringAgent** checkbox.
 3. Select **Remove**, and then **Yes**.
 
-## Enable Insights
+### Enable Insights
 
 Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. To enable this capability from the Azure portal, follow these steps:
 
@@ -266,7 +266,7 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
 
 :::image type="content" source="media/monitor-hci-single/enable-insights.png" alt-text="Portal screen to enable Insights" lightbox="media/monitor-hci-single/enable-insights.png":::
 
-## What data is collected?
+### What data is collected?
 
 The **Microsoft-windows-sddc-management/operational** and **microsoft-windows-health/operational** Windows event channel is added to your Log Analytics workspace under **Windows event logs**.
 
@@ -276,7 +276,7 @@ By collecting these logs, analytics will show the health status of the individua
 
 :::image type="content" source="media/monitor-hci-single/performance-counters.png" alt-text="Windows performance counters" lightbox="media/monitor-hci-single/performance-counters.png":::
 
-### Performance counters
+#### Performance counters
 
 The following table describes the performance counters that are monitored:
 
@@ -292,7 +292,7 @@ After you enable Insights, it can take up to 15 minutes to collect the data. Whe
 
 :::image type="content" source="media/monitor-hci-single/server-health.png" alt-text="Server visualizations" lightbox="media/monitor-hci-single/server-health.png":::
 
-## Disable Insights
+### Disable Insights
 
 To disable insights, follow these steps:
 
@@ -304,7 +304,7 @@ To disable insights, follow these steps:
 When you disable the Insights feature, the Health Service and SDDC Management logs are no longer collected; however, existing data isn't
 deleted. If you'd like to delete that data, go into your Log Analytics workspace and delete the data manually.
 
-## Update Insights
+### Update Insights
 
 The Insights tile shows a **Needs update** message in the following cases:
 
@@ -318,11 +318,11 @@ To enable Insights again,
 
 :::image type="content" source="media/monitor-hci-single/needs-update.png" alt-text="Portal shows update needed" lightbox="media/monitor-hci-single/needs-update.png":::
 
-## Troubleshooting
+### Troubleshooting
 
 If the Logs capability and Monitoring capability are enabled without errors but the monitoring data doesn't appear after an hour or so, you can use the [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot).
 
-### How to use the Log Analytics Troubleshooting Tool
+#### How to use the Log Analytics Troubleshooting Tool
 
 1. Open a PowerShell prompt as Administrator on the Azure Stack HCI host where the MicrosoftMonitoringAgent extension is installed.
 2. Navigate to the directory where the tool is located.
