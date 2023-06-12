@@ -3,7 +3,7 @@ title: Tested resource limits, VM sizes, and regions for AKS hybrid
 description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) hybrid deployment options.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/23/2023
+ms.date: 06/12/2023
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
@@ -89,11 +89,11 @@ AKS on Azure Stack HCI is supported in the following Azure regions:
 
 ## Scaling AKS on Azure Stack HCI
 
-Scaling an AKS deployment on Azure Stack HCI involves planning ahead and knowing what your workloads and target cluster utilization will look like. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
+Scaling an AKS deployment on Azure Stack HCI involves planning ahead by knowing your workloads and target cluster utilization. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
 
 The following examples assume that only AKS-based workloads are deployed on the underlying infrastructure. Deploying non-AKS workloads such as stand-alone or clustered virtual machines, or database servers, reduces the resources available to AKS, which you must take into account.
 
-Before you start, consider the following in order to determine your maximum scale and the number of target clusters you need to support:
+Before you start, consider the following points in order to determine your maximum scale and the number of target clusters you need to support:
 
 - The number of IP addresses you have available for pods in a target cluster.
 - The number of IP addresses available for Kubernetes services in a target cluster.
@@ -108,7 +108,7 @@ To determine the size of your Azure Kubernetes Service Host VM, you need to know
 > A single AKS host can only manage target clusters on the same platform.
 
 Also, to determine the size of your target cluster control plane node, you need to know the number of pods, containers, and worker nodes you're planning to deploy in each target cluster.
- 
+
 ### Default settings that currently can't be changed in AKS on Azure Stack HCI
 
 There are default configurations and settings currently not available for customer control during or after deployment. These settings may limit the scale for a given target cluster.
@@ -142,40 +142,36 @@ kubectl get nodes -o json | findstr 'hostname podCIDR'
 
 In the example, you can see three (3) nodes with three (3) CIDRs, each capable of hosting 254 pods. The Kubernetes scale documentation recommends that you don't exceed 110 pods per node for performance reasons (see [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
 
-In addition:
+Additional considerations:
 
 - The number of IP addresses for Kubernetes services, outside the VIP pool you've allocated, come from the `10.96.0.0/16` address pool. The system consumes one of the 255 available addresses for the Kubernetes API server.
-
-- The size of the AKS Host VM can only be set at installation, when you run **Set-AksHciConfig** for the first time. You can't change it later.
- 
-- The size of target cluster control plane and load balancer VMs can only be set at target cluster creation.
+- The size of the AKS host VM can only be set at installation, when you run **Set-AksHciConfig** for the first time. You can't change it later.
+- You can only set the size of target cluster control plane and load balancer VMs at the time of target cluster creation.
 
 ### Scale example
 
-The following scaling example is based on these general assumptions/use cases: 
+The following scaling example is based on these general assumptions/use cases:
 
 - You want to be able to completely tolerate the loss of one physical node in the Azure Stack HCI cluster.
 - You want to support upgrading target clusters to newer versions.
-- You want to allow for high availability of the target cluster control plane nodes and load balancer nodes, and, 
+- You want to allow for high availability of the target cluster control plane nodes and load balancer nodes, and,
 - You want to reserve a part of the overall Azure Stack HCI capacity for these cases.
 
-**Suggestions:**
+#### Suggestions
 
-- For optimal performance, make sure to set at least 15 percent (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be re-distributed to the other seven (7) nodes. This ensures you will have some reserve available to do an upgrade or other AKS on Azure Stack HCI day two (2) operations.
+- For optimal performance, make sure to set at least 15 percent (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be re-distributed to the other seven (7) nodes. This configuration ensures that you have some reserve available to do an upgrade or other AKS on Azure Stack HCI day two operations.
 
-- If you want to grow beyond the 200-VM limit for a maximum hardware sized eight (8) node Azure Stack HCI cluster, increase the size of the AKS Host VM. Doubling in size will result in roughly double the number of VMs it can manage. In an eight (8) node Azure Stack HCI cluster, you can get to 8,192 (8x1024) VMs based on the Azure Stack HCI recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You'll want to reserve ~30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
+- If you want to grow beyond the 200-VM limit for a maximum hardware sized eight (8) node Azure Stack HCI cluster, increase the size of the AKS Host VM. Doubling in size results in roughly double the number of VMs it can manage. In an eight (8) node Azure Stack HCI cluster, you can get to 8,192 (8x1024) VMs based on the Azure Stack HCI recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You should reserve ~30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
 
   - **Standard_D32s_v3**, for the AKS host with 32 cores and 128 GB - could support a maximum of 1,600 nodes. 
   > [!NOTE]
   > Since this has not been tested extensively at this time, it will require a careful approach and validation.
 
 - At a scale like this, you may want to split the environment into at least eight (8) target clusters with 200 worker nodes each.
-
 - To run 200 worker nodes in one target cluster, you can use the default control plane and load balancer size. Depending on the number of pods per node, you may go up at least one size on the control plane and use Standard_D8s_v3.
-
 - Depending on the number of Kubernetes services hosted in each target cluster, you might have to increase the size of the load balancer VM as well at target cluster creation to ensure that services can be reached with high-performance and traffic is routed accordingly.
 
-The deployment of AKS on Azure Stack HCI will distribute the worker nodes for each node pool in a target cluster across the available Azure Stack HCI nodes using the Azure Stack HCI placement logic. 
+The deployment of AKS on Azure Stack HCI will distribute the worker nodes for each node pool in a target cluster across the available Azure Stack HCI nodes using the Azure Stack HCI placement logic.
 
 > [!IMPORTANT]
 > The node placement is not preserved during platform and AKS upgrades and will change over time. A failed physical node will also impact the distribution of virtual machines across the remaining cluster nodes.
@@ -185,7 +181,7 @@ The deployment of AKS on Azure Stack HCI will distribute the worker nodes for ea
 > When scaling up target cluster node pools by large numbers, take into account available physical resources, as AKS on Azure Stack HCI does not verify resource availability for parallel running creation/scaling processes. 
 > Always ensure enough reserve to allow for upgrades and failover. Especially in very large environments, these operations, when run in parallel, can lead to rapid resource exhaustion.
 
-If in doubt, contact your local Microsoft office for assistance or post in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+If in doubt, contact your local Microsoft office for assistance or post in the [Azure Stack HCI community forum](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 ## Next steps
 
