@@ -44,7 +44,7 @@ Starting with the May 2023 cumulative update for Azure Stack HCI, version 22H2, 
 
 Here are the prerequisites for using Insights:
 
-- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
+- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you must enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
 
 - The cluster must have Azure Stack HCI, version 22H2 and the May 2023 cumulative update or later installed.
 
@@ -85,13 +85,13 @@ To enable this capability from the Azure portal, follow these steps:
 
    1. Select the **Review + create** button.
 
-      If a DCR hasn't already been created for the unmonitored cluster, then one will be created with performance counters enabled and the Windows event log channel enabled.
+      If a DCR hasn't already been created for the unmonitored cluster, then one is created with performance counters enabled and the Windows event log channel enabled.
 
 1. Review the final screen with a summary of DCR name, number of event logs, performance counters, and name of the Log Analytics workspace in which data is stored. Select **Set up**.
 
       :::image type="content" source="media/monitor-hci-single/data-collection-rule-3.png" alt-text="Screenshot showing the data collection rule dropdown selector." lightbox="media/monitor-hci-single/data-collection-rule-3.png":::
 
-   After selecting **Set up**, you are redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
+   After selecting **Set up**, you're redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
 
 1. Go to your Azure Stack HCI cluster resource page, and then select your cluster. Insights now shows as **Configured** on the **Capabilities** tab:
 
@@ -109,11 +109,11 @@ When you enable Insights on a machine with the Azure Monitor Agent, you must spe
 
 ### Event channel
 
-The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-health/operational` Windows event channel will be added to your Log Analytics workspace under **Windows event logs**.
+The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-health/operational` Windows event channel is added to your Log Analytics workspace under **Windows event logs**.
 
 :::image type="content" source="media/monitor-hci-single/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-hci-single/event-channel.png":::
 
-By collecting these logs, Insights will show the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters are added.
+By collecting these logs, Insights shows the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters are added.
 
 ### Performance counters
 
@@ -144,7 +144,7 @@ To disable Insights, follow these steps:
 
    :::image type="content" source="media/monitor-hci-single/disable-insights-new.png" alt-text="Screenshot showing the Disable Insights window." lightbox="media/monitor-hci-single/disable-insights-new.png":::
 
-When you disable the Insights feature, the association between the data collection rule and the cluster is deleted and the Health Service and SDDC Management logs are no longer collected; however, existing data is not deleted. If you'd like to delete that data, go into your DCR and Log Analytics workspace and delete the data manually.
+When you disable the Insights feature, the association between the data collection rule and the cluster is deleted and the Health Service and SDDC Management logs are no longer collected; however, existing data isn't deleted. If you'd like to delete that data, go into your DCR and Log Analytics workspace and delete the data manually.
 
 ## Update Insights
 
@@ -174,14 +174,14 @@ To enable Insights again, do the following:
 
 1. Select or create a data collection rule as described previously in the [Enable Insights](#enable-insights) section.
 
-The Azure Monitor Agent and the Microsoft Monitoring Agent extension can both be installed on the same computer during migration. Running both agents might lead to duplication of data and increased cost. If a machine has both agents installed, you'll see a warning in the Azure portal that you might be collecting duplicate data, as shown below.
+The Azure Monitor Agent and the Microsoft Monitoring Agent extension can both be installed on the same computer during migration. Running both agents might lead to duplication of data and increased cost. If a machine has both agents installed, you see a warning in the Azure portal that you might be collecting duplicate data, as shown below.
 
 > [!WARNING]
 > Collecting duplicate data from a single machine with both the Azure Monitor Agent and the Microsoft Monitoring Agent extension can result in extra ingestion cost from sending duplicate data to the Log Analytics workspace.
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-3.png" alt-text="Screenshot showing a data duplication warning." lightbox="media/monitor-hci-single/agent-migration-3.png":::
 
-You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** is not still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page.
+You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** isn't still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page.
 
 > [!NOTE]
 > If you install AMA for Insights and uninstall MMA, Arc for Servers or VM Insights for individual cluster nodes will no longer work. If you would like to continue using Insights, Change tracking, Inventory, or other solutions relying on MMA for cluster nodes, we recommend that you install the MMA agent from the VM Insights page.
@@ -209,7 +209,7 @@ To change the frequency of log collection, see [Event Log Channel](/azure-stack/
 
 To use Insights with the legacy Agent, make sure you've completed the following:
 
-- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
+- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and arc enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you must enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
 
 - [Enable Log Analytics](../deploy/register-with-azure.md) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
 
@@ -223,7 +223,7 @@ After you register your cluster and Arc-enable the servers, you'll see the follo
 - **Server - Azure Arc** resources for every server in the cluster in the `<clustername>ArcInstanceResourceGroup`.
 - Nodes with a **Server-Azure Arc** resource link on the Azure Stack HCI resource page under the **Nodes** tab.
 
-Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you'll see the option to enable logs, which should say **Not configured**.
+Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you see the option to enable logs, which should say **Not configured**.
 
 :::image type="content" source="media/monitor-hci-single/logs-capability.png" alt-text="Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
 
@@ -249,13 +249,13 @@ You have now successfully installed the log analytics extension.
 
 ## Disable Log Analytics
 
-If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this doesn't delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
+If you'd like to disable the Logs capability, remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this doesn't delete the Log Analytics workspace in Azure or any of the data that resides in it, so you must do that manually.
 
 To remove the Microsoft Monitoring Agent from every server in the cluster, follow these steps:
 
 1. Select **Settings > Extensions** from the toolbar on the left.
 2. Select the **MicrosoftMonitoringAgent** checkbox.
-3. Click **Remove**, and then **Yes**.
+3. Select **Remove**, and then **Yes**.
 
 ## Enable Insights
 
@@ -268,12 +268,11 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
 
 ## What data is collected?
 
-The **Microsoft-windows-sddc-management/operational** and **microsoft-windows-health/operational** Windows event channel will be
-added to your Log Analytics workspace under **Windows event logs**.
+The **Microsoft-windows-sddc-management/operational** and **microsoft-windows-health/operational** Windows event channel is added to your Log Analytics workspace under **Windows event logs**.
 
 :::image type="content" source="media/monitor-hci-single/windows-event-logs.png" alt-text="Portal workspace for Windows event logs" lightbox="media/monitor-hci-single/windows-event-logs.png":::
 
-By collecting these logs, analytics will show the health status of the individual servers, drives, volumes, and VMs. By default, 5 performance counters will be added:
+By collecting these logs, analytics will show the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters will be added:
 
 :::image type="content" source="media/monitor-hci-single/performance-counters.png" alt-text="Windows performance counters" lightbox="media/monitor-hci-single/performance-counters.png":::
 
@@ -289,7 +288,7 @@ The following table describes the performance counters that are monitored:
 | RDMA Activity(*)\RDMA Inbound Bytes/sec | Rate of data received over RDMA by the network adapter per second. |
 | RDMA Activity(*)\RDMA Outbound Bytes/sec | Rate of data sent over RDMA by the network adapter per second. |
 
-After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you'll be able to see a rich visualization of the health of your cluster, under the **Insights** tab on the left navigation, as shown in the following screen shot:
+After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you'll be able to see a rich visualization of the health of your cluster, under the **Insights** tab on the left navigation, as shown in the following screenshot:
 
 :::image type="content" source="media/monitor-hci-single/server-health.png" alt-text="Server visualizations" lightbox="media/monitor-hci-single/server-health.png":::
 
@@ -302,7 +301,7 @@ To disable insights, follow these steps:
 
    :::image type="content" source="media/monitor-hci-single/disable-insights.png" alt-text="Portal screen for disabling Insights" lightbox="media/monitor-hci-single/disable-insights.png":::
 
-When you disable the Insights feature, the Health Service and SDDC Management logs are no longer collected; however, existing data is not
+When you disable the Insights feature, the Health Service and SDDC Management logs are no longer collected; however, existing data isn't
 deleted. If you'd like to delete that data, go into your Log Analytics workspace and delete the data manually.
 
 ## Update Insights
@@ -340,7 +339,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 4. When prompted to select a troubleshooting scenario, choose option 1: **Agent not reporting data or heartbeat data missing**.
 
-5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
+5. You're prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
 
    :::image type="content" source="media/monitor-hci-single/tool-options-1.png" alt-text="Troubleshooting tool command line options" lightbox="media/monitor-hci-single/tool-options-1.png":::
 
@@ -358,13 +357,13 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    1. Ensure that your Azure Stack HCI host time zone is correct, and that the local time on the host is the same as Azure time for your time zone.
       1. From the Azure Stack HCI host console, select **option 9: Date & Time** from the **Sconfig** menu, then select **change time zone** and ensure local time is correct.
       1. Review the Active Directory PDC (Primary Domain Controller) time zone, and make sure the date and time are correct.
-      1. If Active Directory PDC is correct and Azure Stack HCI local time is still incorrect, then the Active Directory domain hierarchy is not being recognized. If this is the case, complete steps iv - vi below. Otherwise, proceed to step c.
+      1. If Active Directory PDC is correct and Azure Stack HCI local time is still incorrect, then the Active Directory domain hierarchy isn't being recognized. If so, complete steps iv - vi below. Otherwise, proceed to step c.
       1. From the Azure Stack HCI host,  select **option 15** to exit the **Sconfig menu**. Then run the following command in PowerShell as an administrator: `w32tm.exe /config /syncfromflags:domhier /update` - this should return a confirmation that the command completed successfully, and the time setting should now be correct.
       1. To diagnose further, run `w32tm /monitor` on the Azure Stack HCI host console. The active domain controller should be listed as stratum 1 server, and all other domain controllers as stratum 2.
       1. Lastly, ensure that the Windows time service and time providers aren't configured in a Group Policy Object, as this will interfere with the Active Directory domain hierarchy.
    1. Re-add the **Log Analytics** extension by going to your Azure Stack HCI resource page in Azure portal, select **[cluster name] > Overview**, then select **Capabilities** and configure Log Analytics and Monitoring.
 
-8. Rerun the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment in your Log Analytics workspace under **Agents Management** to match your cluster nodes, and monitoring events will begin to flow.
+8. Rerun the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment in your Log Analytics workspace under **Agents Management** to match your cluster nodes, and monitoring events begin to flow.
 
 ---
 
@@ -411,7 +410,7 @@ Provides the state of all the virtual machines in the cluster. A VM can be in on
 | Running | The number of VMs running in a server node. | Count | 2 |
 | Stopped | The number of VMs stopped in a server node. | Count | 3 |
 | Failed | The number of VMs failed in a server node. | Count | 2 |
-| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | Count | 2 |
+| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count | 2 |
 
 ### Storage
 
@@ -422,13 +421,13 @@ The following table provides the health of volumes and drives in the cluster:
 | Volumes | The name of the volume | No unit | ClusterPerformanceHistory |
 | Last updated | The date and time of when the storage was last updated. | Datetime | 4/14/2022, 2:58:55 PM |
 | Status | The status of the volume. | Healthy, warning, critical, and other. | Healthy |
-| Total capacity | The total capacity of the device in bytes during the reporting period. | Bytes | 2.5GB |
+| Total capacity | The total capacity of the device in bytes during the reporting period. | Bytes | 2.5 GB |
 | Available capacity | The available capacity in bytes during the reporting period. | Bytes | 20B |
 | Iops | Input/output operations per second. | Per second | 45/s |
 | Throughput | Number of bytes per second the Application Gateway has served. | Bytes per second | 5B/s |
-| Latency | The time it takes for the I/O request to be completed. | Second | 0.0016s |
+| Latency | The time it takes for the I/O request to be completed. | Second | 0.0016 s |
 | Resiliency | The capacity to recover from failures. Maximizes data availability. | No unit | Three Way Mirror |
-| Deduplication | The process of reducing the physical amount of bytes of data that needs to be stored on disk. | Available or not | Yes/No |
+| Deduplication | The process of reducing the physical number of bytes of data that needs to be stored on disk. | Available or not | Yes/No |
 | File system | The type of filesystem. | No unit | ReFS |
 
 ## Azure Monitor pricing
