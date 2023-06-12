@@ -43,7 +43,7 @@ The time taken to install the updates may vary based on the following factors:
 - Solution Builder Extension used.
 
 
-The approximate time estimate for a typical single server and 4-server cluster are summarized in the following table:
+The approximate time estimates for a typical single server and 4-server cluster are summarized in the following table:
 
 |Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
@@ -285,7 +285,7 @@ You can now proceed to [Download and install the updates](#step-4-download-check
 
 ### Sideload and discover solution updates
 
-If you are using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
+If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
 1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
 1. Go to the network share and acquire the update package that you use. Verify that the update package that you sideload contains the following files:
