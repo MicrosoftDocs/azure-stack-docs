@@ -374,7 +374,7 @@ To renew the Network Controller node certificate, perform the following steps on
 
 ## Re-import certificates in Windows Admin Center
 
-If you have renewed the Network Controller REST certificate and you are using Windows Admin Center to manage SDN, you must remove the Azure Stack HCI cluster from Windows Admin Center and add it again. By doing this, you enforce Windows Admin Center to import the renewed certificate and use it for SDN management.
+If you have renewed the Network Controller REST certificate and you are using Windows Admin Center to manage SDN, you must remove the Azure Stack HCI cluster from Windows Admin Center and add it again. By doing this, you ensure that Windows Admin Center imports the renewed certificate and uses it for SDN management.
 
 Follow these steps to re-import the renewed certificate in Windows Admin Center:
 
