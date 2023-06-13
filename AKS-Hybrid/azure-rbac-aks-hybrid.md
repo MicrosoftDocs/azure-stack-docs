@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 06/12/2023
+ms.date: 06/13/2023
 ms.lastreviewed: 03/23/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -43,7 +43,7 @@ Azure RBAC uses Azure AD client and server apps for different purposes. The clie
 
 The server app is a confidential client and is used to retrieve a signed-in user's security group details ([for overage claim users](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-active-directory-now-with-group-claims-and-application/ba-p/243862)) and for checking access requests that return the authorization result that the principal (user or SPN) has on the AKS hybrid cluster.
 
-When you register the Azure AD application, it stores configuration information in Azure AD. This configuration enables the application represented by the Azure AD application to authenticate on behalf of the user (or SPN). Once authenticated the application can then use the Azure AD app ID to access APIs on behalf of the user.
+When you register the Azure AD application, it stores configuration information in Azure AD. This configuration enables the application represented by the Azure AD application to authenticate on behalf of the user (or SPN). Once authenticated, the application can then use the Azure AD app ID to access APIs on behalf of the user.
 
 ### Create the server app and client app
 
