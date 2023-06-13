@@ -47,7 +47,7 @@ When you register the Azure AD application, it stores configuration information 
 
 ### Create the server app and client app
 
-Register your server app and secret and your client app and secret by performing the following steps:
+Register your server app and secret, and your client app and secret, by performing the following steps:
 
 > [!NOTE]
 > These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS hybrid.  
