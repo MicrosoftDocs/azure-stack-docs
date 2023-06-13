@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/07/2023
+ms.date: 06/13/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-This article describes how to create or add virtual networks for your Azure Stack HCI cluster.
+This article describes how to create virtual networks for your Azure Stack HCI cluster. Virtual networks are an Azure resource and can be used to deploy virtual machines on your cluster. After a virtual network is created, you can create virtual network interfaces and use those to create virtual machines.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -25,7 +25,9 @@ Before you begin, make sure to complete the following prerequisites:
 1. Make sure that you have access to an Azure Stack HCI cluster. This cluster should have Arc Resource Bridge installed on it and a custom location created as per the instructions in [Set up Arc Resource Bridge using Azure CLI](./deploy-arc-resource-bridge-using-command-line.md).
     - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
-1. Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use. You can also create another external switch on your cluster.
+1. Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. The virtual network that you create is associated with this external switch. 
+
+    By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use. You can also create another external switch on your cluster.
 
     Run the following command to get the name of the external VM switch on your cluster.
 
@@ -44,12 +46,12 @@ Before you begin, make sure to complete the following prerequisites:
     ConvergedSwitch(compute_management) External        Teamed-Interface
     PS C:\Users\hcideployuser>
     ```
-1. If you want to create a virtual network with static IP allocation, reserve an IP range with your network admin. Make sure to get the address prefix for this IP range from your network admin.
+1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
 
 ## Create virtual network
 
-You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. This VM switch is deployed on all hosts of your cluster. The parameters used for DHCP and static are different.
+You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual network on the VM switch for DHCP or a static configuration. The parameters used to create a DHCP and a static virtual network are different.
 
 ### Parameters used to create virtual network
 
@@ -59,9 +61,9 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
    | ----- | ----------- |
    | **name** | Name for the virtual network that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
-   | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
+   | **resource-group** |Name of the resource group where you create the virtual network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-   | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. |
+   | **CustomLocation** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you are creating this virtual network. |
 
    For both DHCP and static, you can specify the following *optional* parameters:
 
@@ -86,9 +88,9 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
    | **Gateway** | Ipv4 address of the default gateway. |
    | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no vLAN ID.  |
 
-### Configure DHCP
+### Create a DHCP virtual network
 
-Follow these steps to configure a DHCP virtual network:
+Create a DHCP virtual network when the underlying network to which you want to connect your virtual machines has DHCP. Follow these steps to configure a DHCP virtual network:
 
 1. Set the parameters. Here's an example using the default external switch:
 
@@ -144,7 +146,9 @@ Follow these steps to configure a DHCP virtual network:
     ```
 
 
-### Configure static
+### Create a static virtual network
+
+Create a statoc virtual network when you want to create virtual machines with network interfaces on these virtual networks. Follow these steps to configure a static virtual network:
 
 1. Set the parameters. Here's an example:
 
@@ -159,7 +163,7 @@ Follow these steps to configure a DHCP virtual network:
     ```
 
     > [!NOTE]
-    > For the default VM switch created at the deployment, you will need to pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) will be passed as '"ConvergedSwitch(compute_management)"'.
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
 
 1. Create a static virtual network. Run the following cmdlet:
  
@@ -228,7 +232,7 @@ Follow these steps to configure a DHCP virtual network:
     }
     ```
 
-
+Once the virtual network creation is complete, you are ready to create virtual machines with network interfaces on these virtual networks.
 
 ## Next steps
 
