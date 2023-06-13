@@ -76,7 +76,7 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **IPAllocationMethod** |IP address allocation method and could be dynamic or static. If this parameter isn't specified, by default the virtual network is created with a dynamic configuration. |
+   | **IPAllocationMethod** |IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the virtual network is created with a dynamic configuration. |
    | **IpAddressPrefix** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
 
 
@@ -84,7 +84,7 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **DNSServers** | IPv4 address of DNS servers. |
+   | **DNSServers** | List of IPv4 addresses of DNS servers. Specify DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10"|
    | **Gateway** | Ipv4 address of the default gateway. |
    | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no vLAN ID.  |
 
