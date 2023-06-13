@@ -4,7 +4,7 @@ description: Learn how to apply operating system, service, and Solution Extensio
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/28/2023
+ms.date: 06/12/2023
 ---
 
 # Update your Azure Stack HCI solution via PowerShell (preview)
@@ -35,7 +35,15 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
-The time taken to install the updates may vary based on the content of the update, the load on your cluster, and the number of nodes in your cluster. The approximate time estimate for a typical single server and 4-server cluster are summarized in the following table:
+The time taken to install the updates may vary based on the following factors:
+- Content of the update.
+- Load on your cluster.
+- Number of nodes in your cluster. 
+- Type of the hardware used.
+- Solution Builder Extension used.
+
+
+The approximate time estimates for a typical single server and 4-server cluster are summarized in the following table:
 
 |Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
@@ -235,7 +243,7 @@ Before you discover the updates, you can manually validate the system health. Th
 
 3. Review any failures and resolve those before you proceed to the discovery step.
 
-## Step 2: Discover the updates
+## Step 3: Discover the updates
 
 You can discover updates in one of the following two ways:
 
@@ -273,9 +281,11 @@ Discovering solution updates using the online catalog is the *recommended* metho
      PS C:\Users\lcmuser>
     ```
 
+You can now proceed to [Download and install the updates](#step-4-download-check-readiness-and-install-updates).
+
 ### Sideload and discover solution updates
 
-You now sideload the updates that you intend to apply to your cluster. Follow these steps to sideload and discover your solution updates.
+If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
 1. Connect to a node on your Azure Stack HCI cluster using the Lifecycle Manager account.
 1. Go to the network share and acquire the update package that you use. Verify that the update package that you sideload contains the following files:
@@ -341,7 +351,7 @@ You now sideload the updates that you intend to apply to your cluster. Follow th
     ```
 
 
-## Step 3: Download, check readiness, and install updates
+## Step 4: Download, check readiness, and install updates
 
 You can download the updates, perform a set of checks to verify the update readiness of your cluster, and start installing the updates.
 
@@ -422,7 +432,7 @@ You can download the updates, perform a set of checks to verify the update readi
 Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases.md#phase-3-installation-progress-and-monitoring).
 
 
-## Step 4: Verify the installation
+## Step 5: Verify the installation
 
 After the updates are installed, verify the solution version of the environment and the version of the operating system.
 
