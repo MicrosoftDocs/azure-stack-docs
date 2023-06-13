@@ -67,11 +67,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
    Currently, [Azure Arc Resource Bridge](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements) supports only the following regions for Azure Stack HCI registration:
    - East US
-   - South Central US
-   - Canada Central
    - West Europe
-   - Southeast Asia
-   - Australia East
 
 ## Server requirements
 
