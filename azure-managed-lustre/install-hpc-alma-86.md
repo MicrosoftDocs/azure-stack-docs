@@ -1,7 +1,7 @@
 ---
 title: Install client software for AlmaLinux 8
 description: Tutorial that describes how to install AlmaLinux HPC 8.6 client software for the Azure Managed Lustre File System.
-ms.topic: Tutorial
+ms.topic: tutorial
 author: mvbishop
 ms.author:  mayabishop
 ms.lastreviewed: 04/28/2023
