@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 06/12/2023
+ms.date: 06/14/2023
 ---
 
 # Get remote support for Azure Stack HCI (preview)
@@ -26,6 +26,15 @@ access level granted using [just enough administration](/powershell/scripting/l
 
 :::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/remote-support/remote-support-workflow.png" :::
 
+## Why use remote support?
+
+Remote support gives you the ability to:
+
+- Improve the speed to resolution as Microsoft support no longer needs to arrange a meeting with you for troubleshooting.
+- View the detailed transcript of all executed operations at any time.
+- Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
+- Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
+
 ## Remote support terms and conditions
 
 The following are the data handling terms and conditions for remote access. Carefully read them before granting access.
@@ -42,15 +51,6 @@ standard privacy practices.
 > Any data previously collected with your consent will not be affected by the revocation of your permission.
 
 For more information about the personal data that Microsoft processes, how Microsoft processes it, and for what purposes, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
-
-## Why use remote support?
-
-Remote support gives you the ability to:
-
-- Improve the speed to resolution as Microsoft support no longer needs to arrange a meeting with you for troubleshooting.
-- View the detailed transcript of all executed operations at any time.
-- Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
-- Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
 
 ## Prerequisites
 
