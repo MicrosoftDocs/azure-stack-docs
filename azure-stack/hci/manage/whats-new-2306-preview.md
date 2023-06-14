@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/09/2023
+ms.date: 06/14/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2306 release (preview)
@@ -38,9 +38,11 @@ The following new features are available in the 2306 preview release of Suppleme
 - **ISO refresh** - In this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to June 2023.  
 
     > [!NOTE]
-    > The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on June release, see [Azure Stack HCI, version 22H2 OS build 20349.1607](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+    > The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on June release, see [Azure Stack HCI, version 22H2 OS build 20349.1787](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
-- 
+- **Use existing data disks for storage** - Beginning this release, you can deploy a single server cluster using existing data drives. Use this option when you try to repair this server.  
+- **Remove requirement for D: drive** - In this release, the requirement of boot (C: drive) partition and data (D:) partition is removed. This partition was created when you installed the operating system on your Azure Stack HCI servers. For more information, see [Install the v22H2 OS](../deploy/deployment-tool-install-os.md#boot-and-install-the-operating-system) on your Azure Stack HCI.
+- **Manage capacity on your cluster** - Starting this release, you can manage the cluster capacity by adding servers to your cluster. You can also repair a server in an existing cluster. For more information, see [Add a server](./add-server.md) and [Repair a server](./repair-server.md) in your Azure Stack HCI cluster.
 
 
 ## Next steps
