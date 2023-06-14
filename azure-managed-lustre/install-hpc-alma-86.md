@@ -1,27 +1,30 @@
 ---
 title: Install client software for AlmaLinux 8
-description: Learn how to install client software for the Azure Managed Lustre File System.
-ms.topic: how-to
+description: Tutorial that describes how to install AlmaLinux HPC 8.6 client software for the Azure Managed Lustre File System.
+ms.topic: tutorial
 author: mvbishop
 ms.author:  mayabishop
-ms.lastreviewed: 04/28/2023
+ms.lastreviewed: 06/14/2023
 ms.reviewer: dsundarraj
-ms.date: 04/28/2023
-
-# Intent: As an IT Pro, XXX.
-# Keyword: 
+ms.date: 06/14/2023
 
 ---
 
-# Install client software for AlmaLinux HPC 8.6
+# Tutorial: Install client software for AlmaLinux HPC 8.6
 
-Follow these steps to download and install the Azure Managed Lustre client on these operating systems:
+This tutorial shows how to install an appropriate client package, in order to set up client VMs running AlmaLinux HPC 8.6 and attach them to an Azure Managed Lustre cluster.
+
+For client VMs running:
 
 * AlmaLinux HPC 8.6
 
-You can install a pre-built software package for your OS. The following section describes the installation procedures.
+In this tutorial you will:
 
-For complete information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+> [!div class="checklist"]
+> * download a pre-built client
+> * install the pre-built client
+
+For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
@@ -33,4 +36,5 @@ For complete information, see [Connect clients to an Azure Managed Lustre file s
 
 ## Next steps
 
-[AMLFS overview](amlfs-overview.md)
+* [How to connect clients to the file system](connect-clients.md)
+* [Azure Managed Lustre File System overview](amlfs-overview.md)
