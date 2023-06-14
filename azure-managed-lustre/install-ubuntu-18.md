@@ -4,12 +4,9 @@ description: Tutorial that describes how to install Ubuntu 18.04 client software
 ms.topic: tutorial
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 06/14/2023
 ms.reviewer: dsundarraj
-ms.date: 02/21/2023
-
-# Intent: As an IT Pro, XXX.
-# Keyword: 
+ms.date: 06/14/2023
 
 ---
 
@@ -27,7 +24,7 @@ In this tutorial you will:
 > * download a pre-built client
 > * install the pre-built client
 
-For additional information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
@@ -39,4 +36,5 @@ For additional information, see [Connect clients to an Azure Managed Lustre file
 
 ## Next steps
 
-[AMLFS overview](amlfs-overview.md)
+* [How to connect clients to the file system](connect-clients.md)
+* [Azure Managed Lustre File System overview](amlfs-overview.md)

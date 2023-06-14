@@ -5,15 +5,15 @@ author: ronmiab
 ms.author: robess
 ms.topic: reference
 ms.reviewer: thoroet
-ms.lastreviewed: 04/27/2023
-ms.date: 04/27/2023
+ms.lastreviewed: 06/14/2023
+ms.date: 06/14/2023
 ---
 
 # Glossary for Lifecycle Manager (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article is applicable to version 2303 of the Supplemental Package and later. It describes the glossary terms associated with the Lifecycle Manager.
+This article describes the glossary terms associated with the Lifecycle Manager and is applicable to version 2303 of the Supplemental Package and later.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
