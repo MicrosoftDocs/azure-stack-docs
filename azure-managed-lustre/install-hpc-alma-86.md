@@ -4,12 +4,9 @@ description: Tutorial that describes how to install AlmaLinux HPC 8.6 client sof
 ms.topic: tutorial
 author: mvbishop
 ms.author:  mayabishop
-ms.lastreviewed: 04/28/2023
+ms.lastreviewed: 06/14/2023
 ms.reviewer: dsundarraj
-ms.date: 04/28/2023
-
-# Intent: As an IT Pro, XXX.
-# Keyword: 
+ms.date: 06/14/2023
 
 ---
 

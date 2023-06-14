@@ -4,12 +4,9 @@ description: Tutorial that describes how to install Ubuntu 18.04 client software
 ms.topic: tutorial
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 06/14/2023
 ms.reviewer: dsundarraj
-ms.date: 02/21/2023
-
-# Intent: As an IT Pro, XXX.
-# Keyword: 
+ms.date: 06/14/2023
 
 ---
 
