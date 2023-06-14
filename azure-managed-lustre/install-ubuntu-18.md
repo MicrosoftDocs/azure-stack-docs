@@ -36,4 +36,5 @@ For additional information, see [Connect clients to an Azure Managed Lustre file
 
 ## Next steps
 
-[AMLFS overview](amlfs-overview.md)
+* [How to connect clients to the file system](connect-clients.md)
+* [Azure Managed Lustre File System overview](amlfs-overview.md)
