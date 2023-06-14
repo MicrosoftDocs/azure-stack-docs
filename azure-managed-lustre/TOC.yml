@@ -31,9 +31,7 @@
 - name: How-to guides
   items:
   - name: Connect clients to the file system
-    items:
-    - name: Connect clients overview
-      href: connect-clients.md
+    href: connect-clients.md
   - name: Create a file system
     items:
     - name: Prerequisites
