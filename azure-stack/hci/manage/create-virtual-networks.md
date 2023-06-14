@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/13/2023
+ms.date: 06/14/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2
 
-This article describes how to create virtual networks for your Azure Stack HCI cluster. Virtual networks are an Azure resource and can be used to deploy virtual machines on your cluster. After a virtual network is created, you can create virtual network interfaces and use those to create virtual machines.
+This article describes how to create virtual networks for your Azure Stack HCI cluster. Virtual networks are an Azure resource and can be used to deploy virtual machines on your cluster. After a virtual network is created, you can create virtual network interfaces and associate those with the virtual machines you'll create.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -33,13 +33,13 @@ Before you begin, make sure to complete the following prerequisites:
 
     Make a note of the name of the switch. You use this information when you create a virtual network.
 
-    ```azurecli
+    ```powershell
     Get-VmSwitch -SwitchType External
     ```
 
     Here's a sample output:
 
-    ```azurecli
+    ```powershell
     PS C:\Users\hcideployuser> Get-VmSwitch -SwitchType External
     Name                               SwitchType       NetAdapterInterfaceDescription
     ----                               ----------       ----------------------------
