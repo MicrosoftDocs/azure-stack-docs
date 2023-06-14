@@ -73,9 +73,9 @@ Alternatively, you can download and install the latest MSI package from the Micr
 
 ## Workload updates
 
-In addition to your cluster updates, there are workload updates that aren't integrated into the Lifecycle Manager that can be applied to your cluster.
+In addition to your cluster updates, there are workload updates that aren't integrated into the Lifecycle Manager that can be applied to your cluster. These workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs).
 
-These workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs). The next sections provide information on these workloads and ways to apply updates.
+The next sections provide information on these workloads and ways to apply updates.
 
 ### Azure Kubernetes Service (AKS) hybrid
 
