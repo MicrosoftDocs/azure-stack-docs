@@ -64,11 +64,6 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
    | **resource-group** |Name of the resource group where you create the virtual network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
    | **CustomLocation** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you are creating this virtual network. |
-
-   For both DHCP and static, you can specify the following *optional* parameters:
-
-   | Parameter | Description |
-   | --------- | ----------- |
    | **Location** | Azure regions as specified by `az locations`. |
 
    For static IP only, the *required* basic parameters are tabulated as follows:
@@ -84,7 +79,7 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **DNSServers** | List of IPv4 addresses of DNS servers. Specify DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10"|
+   | **DNSServers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10"|
    | **Gateway** | Ipv4 address of the default gateway. |
    | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no vLAN ID.  |
 
