@@ -65,7 +65,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
    Regions supported for additional features of Azure Stack HCI:
 
-   Currently, [Arc VM Management](../manage/azure-arc-vm-management-overview.md) supports only the following regions for Azure Stack HCI registration:
+   Currently, [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) supports only the following regions for Azure Stack HCI registration:
 
    - East US
    - West Europe
