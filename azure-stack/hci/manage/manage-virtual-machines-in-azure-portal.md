@@ -83,7 +83,7 @@ For a virtual network interface created on a DHCP or static virtual network, the
 | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
 | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
 | **Location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-| **subnet-id** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
+| **subnet-id** |SHOULD THIS BE VNET? - Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
  
 
 For static IP only, additional *required* basic parameters are tabulated as follows:
@@ -98,7 +98,7 @@ For static IP only, additional *required* basic parameters are tabulated as foll
 
 To create a VM, you'll first need to create a virtual network interface on your virtual network. The steps can be different depending on whether your virtual network is static or DHCP.
 
-#### Configure on a DHCP virtual network
+#### Configure for a DHCP virtual network
 
 Follow these steps to create a virtual network interface on your DHCP virtual network. Replace the parameters in `< >` with the appropriate values.
 
@@ -123,7 +123,7 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     $VNetName = "test-vnet-dynamic"   
     $Subscription =  "hcisub" 
     $ResourceGroupName = "hcirg"
-    $CustomLocName = "altsnclus-cl" 
+    $CustomLocName = "hci-hybridaks-cl" 
     $Location = "eastus2euap"
 
 1. To create a virtual network interface, run the following command:
@@ -141,8 +141,8 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
         "name": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
-      "location": "eastus",
+      "id": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
+      "location": "eastus2euap",
       "name": "testnic001",
       "properties": {
         "ipConfigurations": [
@@ -154,7 +154,7 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
               "privateIpAddress": null,
               "privateIpAllocationMethod": null,
               "subnet": {
-                "id": "internalNAT"
+                "id": "test-vnet-dynamic"
               }
             }
           }
@@ -164,7 +164,7 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
         "resourceName": "testnic001",
         "status": {}
       },
-      "resourceGroup": "hybridaksresgrp-491206666",
+      "resourceGroup": "hcirg",
       "systemData": {
         "createdAt": "2023-02-08T23:25:10.984508+00:00",
         "createdBy": "hciuser@contoso.com",
@@ -202,11 +202,11 @@ Follow these steps to create a virtual network interface on your static virtual 
 1. Set the required parameters. Here's a sample output:
 
     ```azurecli
-    $VNic = "testnic001"
+    $VNic = "test-vnic-SI-custom"
     $VNetName = "test-vnet-static"   
     $Subscription =  "hcisub" 
     $ResourceGroupName = "hcirg"
-    $CustomLocName = "altsnclus-cl" 
+    $CustomLocName = "hci-hybridaks-cl" 
     $Location = "eastus2euap"
     $IpAddress = "10.0.0.14"
     $IpAllocationMethod = "Static"
@@ -226,7 +226,7 @@ Follow these steps to create a virtual network interface on your static virtual 
     
     {
       "extendedLocation": {
-        "name": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourcegroups/hcirg/altsnclus-cl",
+        "name": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourcegroups/hcirg/hci-hybridaks-cl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/networkinterfaces/test-vnic-SI-custom",
