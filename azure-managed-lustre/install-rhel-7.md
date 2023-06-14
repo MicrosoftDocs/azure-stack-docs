@@ -25,7 +25,7 @@ In this tutorial you will:
 > * download a pre-built client
 > * install the pre-built client
 
-For additional information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
