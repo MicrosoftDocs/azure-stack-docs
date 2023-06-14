@@ -1,7 +1,7 @@
 ---
 title: Install client software for Ubuntu 22.04
-description: Describes how to install Ubuntu 22.04 client software for the Azure Managed Lustre File System.
-ms.topic: how-to
+description: Tutorial that describes how to install Ubuntu 22.04 client software for the Azure Managed Lustre File System.
+ms.topic: tutorial
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/21/2023
@@ -13,13 +13,21 @@ ms.date: 02/21/2023
 
 ---
 
-# Install client software for Ubuntu 22.04
+# Tutorial: Install client software for Ubuntu 22.04
 
-Follow these steps to download and configure dynamic kernel module support (DKMS) for Azure Managed Lustre on Ubuntu 22.04 clients.
+This tutorial shows how to install an appropriate client package, in order to set up client VMs running Ubuntu 22.04, and attach them to an Azure Managed Lustre cluster.
 
-You can install a pre-built software package for your OS. The following section describes the installation procedures.
+For client VMs running:
 
-For complete information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+* Ubuntu 22.04
+
+In this tutorial you will:
+
+> [!div class="checklist"]
+> * download a pre-built client
+> * install the pre-built client
+
+For additional information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
 * [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
