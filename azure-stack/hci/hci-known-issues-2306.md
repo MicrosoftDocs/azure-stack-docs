@@ -1,9 +1,9 @@
 ---
-title: Known issues in Azure Stack HCI 2303 Supplemental Package (preview)
+title: Known issues in Azure Stack HCI 2306 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/08/2023
+ms.date: 06/14/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
