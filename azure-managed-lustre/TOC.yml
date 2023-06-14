@@ -51,10 +51,9 @@
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
   - name: Troubleshoot
-    items:
-    - name: Public preview support
-      href: preview-support.md
 - name: Troubleshooting
   items:
   - name: Recover from a regional outage
     href: amlfs-region-recovery.md
+  - name: Public preview support
+    href: preview-support.md
