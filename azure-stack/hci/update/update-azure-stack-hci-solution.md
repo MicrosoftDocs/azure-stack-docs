@@ -79,7 +79,7 @@ The next sections provide information on these workloads and ways to apply updat
 
 ### Azure Kubernetes Service (AKS) hybrid
 
-Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. AKS hybrid tooling, orchestrates the workload updates process, which involves bringing up new VMs and moving workloads over in a rolling fashion.
+Azure Kubernetes Service (AKS) hybrid runs via Virtual Machines (VM) on the Azure Stack HCI system. AKS hybrid tooling orchestrates the workload updates process, which involves bringing up new VMs and moving workloads over in a rolling fashion.
 
 AKS hybrid has two types of updates that can be initiated through PowerShell or Windows Admin Center.
 
