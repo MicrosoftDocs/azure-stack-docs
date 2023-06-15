@@ -33,7 +33,7 @@ The flowchart shows which option to use for sending diagnostic logs. If Azure St
 
 ## Send logs proactively
 
-Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. Only when a system health alert is raise are these logs collected. Microsoft Support only accesses these logs in the context of a support case.
+Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. Only when a system health alert is raised are these logs collected. Microsoft Support only accesses these logs in the context of a support case.
 
 ::: moniker range=">= azs-2008"
 
