@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/09/2023
+ms.date: 06/15/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -456,7 +456,7 @@ The following sample is the output from a failed run of the network validator. T
 
 The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
 
-In Azure, each node of the Azure Stack HCI cluster is represented as an Arc resource with a matching name. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+In Azure, each node of the Azure Stack HCI cluster is represented as an Arc resource with the same host name as that of the node. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
 
 ### Run the Arc integration validator
 
@@ -465,7 +465,7 @@ In Azure, each node of the Azure Stack HCI cluster is represented as an Arc reso
 1. Run the following command to connect to Azure with the account you intend to onboard your Azure Stack HCI cluster:
 
    ```powershell
-   Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_id> -DeviceCode
+   Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_ID> -DeviceCode
    ```
 
 1. Run the following command to create an array variable containing the names of your Azure Stack HCI cluster nodes:
@@ -477,7 +477,7 @@ In Azure, each node of the Azure Stack HCI cluster is represented as an Arc reso
 1. Run the following command to invoke the validator:
 
    ```powershell
-   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_id> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
+   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_ID> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
    ```
 
    where:
