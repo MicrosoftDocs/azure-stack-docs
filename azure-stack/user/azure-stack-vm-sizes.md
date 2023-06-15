@@ -210,9 +210,9 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
 | **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
 
-The Standard_DSv2 series VM includes [constrained core sizes](/azure/virtual-machines/constrained-vcpu) and they have the same quota requirements as their equivalent specs. For example, the Standard_DS14-4_v2 VM is listed with 4 vCPUs, but it consumes 16 vCPUs from your allocated quota in the subscription offer. Therefore, to create a Standard_DS14-4_v2 VM (4 vCPUs), you must ensure that your subscription has at least 16 vCPUs available in the quota. This is only for the quota and doesn't affect billing (a 4vCPU resource remains in the usage information).
+The Standard_DSv2 series VM includes [constrained core sizes](/azure/virtual-machines/constrained-vcpu), and they have the same quota requirements as their equivalent specs. For example, the Standard_DS14-4_v2 VM size is listed with 4 vCPUs, but it consumes 16 vCPUs from your allocated quota in the subscription offer. Therefore, to create a Standard_DS14-4_v2 VM (4 vCPUs), you must ensure that your subscription has at least 16 vCPUs available in the quota. This is only for the quota and doesn't affect billing (a 4vCPU resource remains in the usage information).
 
-For more information on VM sizes, see [Constrained vCPU capable VM sizes](/azure/virtual-machines/constrained-vcpu). For information on VM placement on Azure Stack Hub, see [Azure Stack Hub compute capacity](../operator/azure-stack-capacity-planning-compute.md#vm-placement).
+For more information about VM sizes, see [Constrained vCPU capable VM sizes](/azure/virtual-machines/constrained-vcpu). For information about VM placement on Azure Stack Hub, see [Azure Stack Hub compute capacity](../operator/azure-stack-capacity-planning-compute.md#vm-placement).
 
 ### Ev3-series
 
