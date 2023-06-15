@@ -11,7 +11,8 @@ ms.custom: template-how-to
 # Scaling out on multiple machines
 
 Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to other secondary machines to create a multi-machine deployment.
-> [!WARNING]
+
+> [!CAUTION]
 > Scaling to additional nodes is an experimental feature.
 
 ## Prerequisites
@@ -54,6 +55,9 @@ On your primary machine on which you created your scalable deployment, run the f
     ```
 
 This command exports the necessary data to join a cluster in the JSON format and returns it as a JSON string and stores it in the file specified via `outFile` parameter.
+
+> [!CAUTION]
+> Every time you run the `New-AksEdgeScaleConfig` command, the previously-created `ClusterJoinToken` becomes invalid, so you will not be able to use a previously created **ScaleConfig.json** file. Additionally, `ClusterJoinToken` is only valid for 24 hours.
 
 ## 2. Validate the configuration parameters
 

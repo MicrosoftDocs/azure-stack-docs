@@ -50,6 +50,8 @@
     href: start-aksedgenode.md
   - name: Start-AksEdgeUpdate
     href: start-aksedgeupdate.md
+  - name: Start-AksEdgeControlPlaneUpdate
+    href: start-aksedgecontrolplaneupdate.md
   - name: Start-AksEdgeWorkerNodeUpdate
     href: start-aksedgeworkernodeupdate.md
   - name: Stop-AksEdgeNode
