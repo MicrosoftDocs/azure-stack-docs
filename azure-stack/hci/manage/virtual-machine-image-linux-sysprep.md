@@ -39,10 +39,10 @@ Before you begin, make sure that the following prerequisites are completed.
 
 Follow these steps to sysprep an Ubuntu image and create VM image from that image: 
 
-    - Create Ubuntu VM
-    - Configure VM 
-    - Clean up VM
-    - Create VM image
+1. Create Ubuntu VM
+1. Configure VM 
+1. Clean up VM
+1. Create VM image
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -71,12 +71,12 @@ Follow these steps to configure the VM that you provisioned earlier:
 1. To get and install the latest patches on your VM, run the following command: 
 
     ```azurecli
-    `sudo apt update`
+    sudo apt update
     ```
 1. Install Azure cloud tools. The cloud tools would enable you to sync the local files and folders with the file and folders in the cloud. When the cloud tools are enabled, your VM would get an IP. This IP is required for the network interface.
 
     ```azurecli
-    `sudo apt install linux-azure -y`
+    sudo apt install linux-azure -y
     ```
 1. 
 ### Step 3: Clean up VM
@@ -85,26 +85,27 @@ Delete machine-specific files and data from your VM.
 
 1. Clean `cloud-init` default configurations.
 
-        ```bash
-        sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
-        sudo rm -f /etc/cloud/ds-identify.cfg
-        sudo rm -f /etc/netplan/*.yaml
-        ```
+  ```bash
+  sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+  sudo rm -f /etc/cloud/ds-identify.cfg
+  sudo rm -f /etc/netplan/*.yaml
+  ```
 
 1. Clean up logs and cache.
-    ```bash
-    sudo cloud-init clean --logs --seed
-    sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-    sudo apt-get clean
-    ```
+
+  ```bash
+  sudo cloud-init clean --logs --seed
+  sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
+  sudo apt-get clean
+  ```
 
 1. Remove bash history.
 
-    ```bash
-    rm -f ~/.bash_history 
-    export HISTSIZE=0 
-    logout
-    ```
+  ```bash
+  rm -f ~/.bash_history 
+  export HISTSIZE=0 
+  logout
+  ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
     
