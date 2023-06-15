@@ -57,7 +57,7 @@ On your primary machine on which you created your scalable deployment, run the f
 This command exports the necessary data to join a cluster in the JSON format and returns it as a JSON string and stores it in the file specified via `outFile` parameter.
 
 > [!CAUTION]
-> Every time you run the `New-AksEdgeScaleConfig` command, the previously-created `ClusterJoinToken` becomes invalid, so you will not be able to use a previously created `ScaleConfig;json` file. Additionally, `ClusterJoinToken` is valid for 24 hours only.
+> Every time you run the `New-AksEdgeScaleConfig` command, the previously-created `ClusterJoinToken` becomes invalid, so you will not be able to use a previously created **ScaleConfig.json** file. Additionally, `ClusterJoinToken` is only valid for 24 hours.
 
 ## 2. Validate the configuration parameters
 
