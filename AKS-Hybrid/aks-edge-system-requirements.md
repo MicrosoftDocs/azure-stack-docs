@@ -44,13 +44,14 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 - **Infrastructure** -  Install AKS Edge Essentials on physical host machines.
 - **Kubernetes Distribution supported** -  Kubernetes (K8S) - Version: 1.24.3 and on Kubernetes (K3S) - Version: 1.24.3
-- **Deployment options** - Single-machine clusters and full Kubernetes deployment on multiple machines only. 
+- **Deployment options** - Single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
 - **Workloads** -  Only Linux worker node.
 - **Network plugins**: Calico on K8S and Flannel on K3S.
 
 ## Experimental or Pre-release Features
 
 - **Infrastructure** - Installing AKS Edge Essentials on a virtual machine using nested virtualization is experimental.
+- **Deployment options** - Full Kubernetes deployment on multiple machines. 
 - **Workloads** -  Windows worker node.
 - **Network plugins**: Flannel on K8S and Calico on K3S
 

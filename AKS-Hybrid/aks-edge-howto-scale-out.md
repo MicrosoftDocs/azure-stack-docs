@@ -12,6 +12,9 @@ ms.custom: template-how-to
 
 Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to other secondary machines to create a multi-machine deployment.
 
+> [!CAUTION]
+> Scaling to additional nodes is an experimental feature.
+
 ## Prerequisites
 
 - Set up your [scalable Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.

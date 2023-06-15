@@ -10,6 +10,10 @@ ms.custom: template-how-to
 
 # Full Kubernetes deployments in AKS Edge Essentials
 
+> [!CAUTION]
+> Full deployment on multiple machines is an experimental feature at this point. We are actively working on this feature.
+
+
 You can configure the AKS cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS HCI. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, etc.  
 
 ## Prerequisites
