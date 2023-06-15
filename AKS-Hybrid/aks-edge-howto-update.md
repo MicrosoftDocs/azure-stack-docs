@@ -18,9 +18,6 @@ The AKS Edge Essentials virtual machine is reliably updated via Microsoft Update
 
 AKS Edge Essentials upgrades are sequential and you must upgrade to every version. To get to the latest version, you'll have to either do a fresh installation using the latest available version, or apply all the previous servicing updates, up to the desired version.
 
-> [!CAUTION]
-> Updating full deployments across multi-machines is currently an experimental feature.
-
 ## Step 1: Configure the host machine to receive updates using Microsoft Update
 
 To receive AKS Edge Essentials updates, configure the Windows host to receive updates for other Microsoft products. By default, Microsoft Updates is turned on during AKS Edge Essentials installation. If custom configuration is needed after installation, you can turn this option on or off with the following steps:
@@ -39,33 +36,31 @@ Once the update is downloaded from either the cloud endpoint or a local WSUS ser
 
 ## Step 2: Update the primary control node
 
-First, update the primary control node, by running the following command on the primary control node:
+First, on **all** nodes in your cluster, run the `Start-AksEdgeUpdate` command to download the MSI.
 
 ```powershell
 Start-AksEdgeUpdate
 ```
 
-When this command returns, your version will be running in the new updated/patched version.
+## Step 3: Update the primary control nodes
 
-## Step 3: Update the secondary control nodes
-
-If you have more control nodes in your deployment, you can now update them using the following command:
+If you have more than one control nodes in your deployment, you first update the primary control node using the following command:
 
 ```powershell
-Start-AksEdgeUpdate -secondaryControlPlaneUpdate
+Start-AksEdgeControlPlaneUpdate -firstControlPlane true
 ```
 
-## Step 4: Update worker nodes
+## Step 4: Update the secondary control nodes
+
+You can update the other control nodes using the following command:
+
+```powershell
+Start-AksEdgeControlPlaneUpdate -firstControlPlane false
+```
+
+## Step 5: Update worker nodes
 
 Update the worker nodes in your cluster by running the following command on each of the worker nodes:
-
-```powershell
-Start-AksEdgeUpdate -secondaryControlPlaneUpdate
-```
-
-## Step 5: Complete the update
-
-Open a PowerShell window with administrative privileges and run the following command on all the nodes in the cluster:
 
 ```powershell
 Start-AksEdgeWorkerNodeUpdate 
