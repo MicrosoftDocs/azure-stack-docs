@@ -43,7 +43,7 @@ This script checks for the missing images and reimports them as needed.
 1. Issues with `Disconnect-AksEdgeArc`:
     Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-    Workaround: If the pods aren't cleaned up, run the following commands to manually clean-up the existing Azure Arc related resources before trying to reconnect again.
+    Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc-related resources before trying to reconnect again.
 
     ```powershell
         kubectl delete ns azure-arc
