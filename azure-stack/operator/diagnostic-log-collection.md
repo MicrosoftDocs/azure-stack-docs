@@ -103,6 +103,7 @@ Logs collected using **Proactive log collection** are uploaded to an Azure stora
 Send logs now is an option where you manually collect and uploads your diagnostic logs from Azure Stack Hub, usually before opening a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
+
 * [Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
 * [PowerShell](#send-logs-now-with-powershell)
 
