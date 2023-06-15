@@ -72,7 +72,7 @@ In the target environment, there are two parts to consider for capacity planning
 
 - The protected workloads requirements.
 
-The target environment requires one ASR Vault created for each ASR Appliance to protect VMs from the source (one appliance per vault). While this isn’t a limitation from a capacity perspective, it should be taken into consideration when planning the design of the overall environment.
+The target environment requires one ASR Vault to be created for each ASR Appliance to protect VMs from the source (one appliance per vault). Although this isn’t a limitation from a capacity perspective, it should be taken into consideration when planning the design of the overall environment.
 
 ## Azure Site Recovery RP resources
 
