@@ -90,7 +90,7 @@ Accept wildcard characters: False
 
 ### -Force
 
-This parameter enables user to create a deployment without the need to confirm on the TPM pass-through capability. Please note that enabling TPM passthrough to the virtual machine might increase security risks.
+This parameter enables you to create a deployment without the need to confirm the TPM pass-through capability. Note that enabling TPM passthrough to the virtual machine might increase security risks.
 If Force is specified, user will not be asked for confirmation unless Confirm is also specified.
 Otherwise, user will be asked for confirmation to enable TPM pass-through capability. 
 
