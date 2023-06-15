@@ -146,11 +146,39 @@ Open a new PowerShell admin window and run the following command:
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
 Install-Moc
-Add-ArcHcik8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
 curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
 $config = Get-MocConfig
 cp .\kubectl.exe $config.installationPackageDir
 ```
+
+Download the Linux VHD image by running the following command:
+```PowerShell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\ArcHci\0.2.23\ArcHci.psm1' -Force
+$mocConfig = Get-MocConfig
+$k8sVersion = "1.22.11"
+$mocVersion = "1.0.16.10113"
+$imageType = "Linux"
+$imageName = Get-LegacyKubernetesGalleryImageName -imagetype $imageType -k8sVersion $k8sVersion
+$galleryImage = $null
+
+# Check if requested k8s gallery image is already present
+try {
+    $galleryImage = Get-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation
+} catch {}
+
+if ($null -ine $galleryImage) {
+    Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
+} else {
+    $imageRelease = Get-ImageReleaseManifest -imageVersion $version -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
+
+    Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
+    $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
+
+    Write-Output "Adding $imageType $k8sVersion k8s gallery image to MOC"
+    New-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation -imagePath $result -container "MocStorageContainer"
+}
+```
+
 
 ## Step 7: Generate prerequisite YAML files needed to deploy Azure Arc Resource Bridge
 
