@@ -4,7 +4,7 @@ description: Reference for the supported VM sizes in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: reference
-ms.date: 03/21/2023
+ms.date: 06/15/2023
 ms.author: sethm
 ms.reviewer: nebird
 ms.lastreviewed: 03/10/2022
@@ -21,13 +21,13 @@ This article lists the virtual machine (VM) sizes that are available in Azure St
 
 Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
 
-VM vCPU depends on the number of cores per node. For example, systems with cores or logical processor of less than 64 will not support VM size Standard_F64s_v2.
+VM vCPU depends on the number of cores per node. For example, systems with cores or logical processor of less than 64 won't support VM size Standard_F64s_v2.
 
-VM series with premium storage have data disks with 2300 IOPS throughput. Data disks for all other VM series have 500 IOPS, with the exception of general purpose Basic A VMs which have 300 IOPS.
+VM series with premium storage have data disks with 2300 IOPS throughput. Data disks for all other VM series have 500 IOPS, with the exception of general purpose Basic A VMs, which have 300 IOPS.
 
 ## VM general purpose
 
-General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. 
+General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers.
 
 ### Basic A
 
@@ -209,6 +209,10 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_DS13-4_v2** | 4 | 56 | 112  | 32 / 32x2300 | 8  |
 | **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
 | **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
+
+The Standard_DSv2 series VM includes [constrained core sizes](/azure/virtual-machines/constrained-vcpu), and they have the same quota requirements as their equivalent specs. For example, the Standard_DS14-4_v2 VM size is listed with 4 vCPUs, but it consumes 16 vCPUs from your allocated quota in the subscription offer. Therefore, to create a Standard_DS14-4_v2 VM (4 vCPUs), you must ensure that your subscription has at least 16 vCPUs available in the quota. This is only for the quota and doesn't affect billing (a 4vCPU resource remains in the usage information).
+
+For more information about VM sizes, see [Constrained vCPU capable VM sizes](/azure/virtual-machines/constrained-vcpu). For information about VM placement on Azure Stack Hub, see [Azure Stack Hub compute capacity](../operator/azure-stack-capacity-planning-compute.md#vm-placement).
 
 ### Ev3-series
 
