@@ -86,7 +86,7 @@ Remove-AksEdgeNode -NodeType Linux
 
 During the removal of a **control plane node** from a cluster, it's crucial for the cluster administrator to verify that the cluster has completed reconciliation and the removed node no longer serves as the leader.
 
-This can be confirmed by running `kubectl get leases -A` and checking until the removed node is no longer a lease holder in the output. This is vital for maintaining cluster stability.
+You can verify this by running `kubectl get leases -A` and checking until the removed node is no longer a lease holder in the output. This is vital for maintaining cluster stability.
 
 To remove both nodes:
 
