@@ -72,6 +72,8 @@ In the target environment, there are two parts to consider for capacity planning
 
 - The protected workloads requirements.
 
+The target environment will require one ASR Vault created for each ASR Appliance that will protect VMs from the source (one appliance per vault). While this is not a limitation from a capacity perspective, it will need to be taken into account when planning the design of the overall environment.
+
 ## Azure Site Recovery RP resources
 
 Installing Azure Site Recovery on Azure Stack Hub involves adding two dependencies and the Azure Site Recovery Resource Provider (RP) itself:
