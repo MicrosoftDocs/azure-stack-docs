@@ -36,7 +36,7 @@ When the node runs out of disk space, some of the preloaded images are garbage c
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo /path/to/script/reimport-ci.sh
 ```
 
-This script checks for the missing images and reimport them as needed.
+This script checks for the missing images and reimports them as needed.
 
 ## Azure Arc connectivity
 
