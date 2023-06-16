@@ -3,7 +3,7 @@ title: Set up Azure Arc VM management using Windows Admin Center (preview)
 description: Learn how to set up Azure Arc VM management using Windows Admin Center (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/06/2022
+ms.date: 06/15/2023
 ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
@@ -11,6 +11,9 @@ ms.reviewer: JasonGerend
 # Set up Azure Arc VM management using Windows Admin Center (preview)
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+
+> [!IMPORTANT]
+> We recommend that you use PowerShell to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md). Windows Admin Center setup is deprecated and this article will soon be retired.
 
 You can set up Azure Arc VM management using Windows Admin Center or Azure Command-Line Interface (CLI).
 

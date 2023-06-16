@@ -18,7 +18,7 @@ This article describes how to set up an Azure Kubernetes Service (AKS) Edge node
 - OS requirements: Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
 >[!NOTE]
-> If you are doing an offline installation, or your machine is running on a corporate environment with security policies in place that may limit internet connection, make sure to check [AKS Edge Essentials offline installaion](aks-edge-howto-offline-install.md).
+> If you are doing an offline installation, or your machine is running on a corporate environment with security policies in place that may limit internet connection, make sure to check [AKS Edge Essentials offline installation](aks-edge-howto-offline-install.md).
 
 ## Download AKS Edge Essentials
 
@@ -78,7 +78,7 @@ Before you install the MSI, you can review the [feature support](aks-edge-system
 Once installation is complete, make sure it was successful by running the following command:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 Import-Module AksEdge
 Get-Command -Module AKSEdge | Format-Table Name, Version
 ```
