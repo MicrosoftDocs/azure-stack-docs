@@ -106,7 +106,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
       > [!TIP]
       > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
 
-1. Update the required extensions.
+1. Update the required extensions in all cluster nodes.
 
    - Uninstall the old extensions:
 
