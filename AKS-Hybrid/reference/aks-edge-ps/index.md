@@ -115,6 +115,10 @@ Starts the node VM if it's currently stopped.
 
 Starts the update process for updating AKS Edge Essentials.
 
+### [Start-AksEdgeControlPlaneUpdate](./start-aksedgecontrolplaneupdate.md)
+
+Updates the control plane nodes on this machine as a part of the update process.
+
 ### [Start-AksEdgeWorkerNodeUpdate](./start-aksedgeworkernodeupdate.md)
 
 Updates any worker nodes on this machine as part of the update process.
