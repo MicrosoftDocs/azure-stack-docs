@@ -223,6 +223,7 @@ If you are using kubenet, for example, `networkPlugin`: `kubenet` in the `kubern
     ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-route-table.png)
     
 5. Select **Route table** and then select the route table for your cluster.
+6. Ensure that this is done for every subnet specified in the API model, including the `masterProfile` subnet.
 
 > [!NOTE]  
 > Custom virtual network for Kubernetes Windows cluster has a [known issue](https://github.com/Azure/aks-engine/issues/371).
