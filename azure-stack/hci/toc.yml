@@ -282,6 +282,8 @@
         href: manage/sdn-manage-certs.md
       - name: Update Network Controller certificates
         href: manage/update-network-controller-certificates.md
+      - name: Update SDN infrastructure nodes certificates
+        href: manage/update-sdn-infrastructure-nodes-certificates.md
       - name: Authenticate with Kerberos
         href: manage/kerberos-with-spn.md
     - name: Manage software load balancers
