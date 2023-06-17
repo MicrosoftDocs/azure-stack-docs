@@ -68,20 +68,18 @@ Perform these steps to generate self-signed certificates and automatically renew
 > To renew the SLB MUX certificates, replace the cmdlet name with `Start-SdnMuxCertificateRotation` in the following commands.
 
    - To generate self-signed certificates with the default three years validity period, run the following commands:
-   
-      ```powershell
-      Import-Module -Name SdnDiagnostics -Force
-      Start-SdnServerCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -Credential (Get-Credential)
-      ```
 
-   - To generate self-signed certificates with a specific validity period, use the `NotAfter` parameter to specify the validity period.
+    ```powershell
+    Import-Module -Name SdnDiagnostics -Force
+    Start-SdnServerCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -Credential (Get-Credential)
+    ```
 
-    For example, to generate self-signed certificates with a validity period of five years, run the following commands:
+   - To generate self-signed certificates with a specific validity period, use the `NotAfter` parameter to specify the validity period. For example, to generate self-signed certificates with a validity period of five years, run the following commands:
 
-      ```powershell
-      Import-Module -Name SdnDiagnostics -Force
-      Start-SdnServerCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -NotAfter (Get-Date).AddYears(5) -Credential (Get-Credential)
-      ```
+    ```powershell
+    Import-Module -Name SdnDiagnostics -Force
+    Start-SdnServerCertificateRotation -GenerateCertificate -CertPassword (Get-Credential).Password -NotAfter (Get-Date).AddYears(5) -Credential (Get-Credential)
+    ```
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
