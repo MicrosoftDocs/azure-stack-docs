@@ -58,8 +58,8 @@ When repairing a server, the system validates the hardware of the new, incoming 
 
 You may replace the entire server:
 
-    - With a new server that has a different serial number compared to the old server. 
-    - With the older server that is reimaged.
+- With a new server that has a different serial number compared to the old server. 
+- With the older server that is reimaged.
 
 The following scenarios are supported during server replacement:
 
