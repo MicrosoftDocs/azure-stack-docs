@@ -19,9 +19,9 @@ This article describes how to manage capacity by adding a server (often called s
 
 You can easily scale the compute and storage at the same time on your Azure Stack HCI by adding servers to an existing cluster. Your Azure Stack HCI cluster supports a maximum of up to 16 servers.
 
-Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally.
+Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. 
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, Azure Stack HCI Lifecycle Manager adjusts the drive resiliency, network configuration including the on-premises agents such as Orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 > - In this preview release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
@@ -36,10 +36,10 @@ The following flow diagram shows the overall process to add a server:
 
 To add a server, follow these high-level steps:
 
-1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add.
+1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add. For more information, see [Install OS](../deploy/deployment-tool-install-os.md).
 1. Add the prepared server via the `Add-server` PowerShell cmdlet.
 1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
-1. Once the server is added, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. Once the server is added, cluster is also validated to ensure that it is functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
 
 ## Supported scenarios
 
@@ -47,19 +47,19 @@ For adding a server, the following scale-out scenarios are supported:
 
 | **Start scenario**  | **Target scenario** | **Resiliency settings** | **Storage network architecture**     | **Witness settings**     |
 |---------------------|---------------------|---------------------|--------------------------------------|----------------------------|
-| Single-server       | Two-server cluster  | Two-way mirror  | Configured with and without a switch | Witness recommended for target scenario. |
+| Single-server       | Two-server cluster  | Two-way mirror  | Configured with and without a switch | Witness required for target scenario.    |
 | Two-server cluster  | Three-server cluster| Three-way mirror  | Configured with a switch only      | Witness optional for target scenario.    |
 | Three-server cluster| N-server cluster    | Three-way mirror| Switch only                          | Witness optional for target scenario.    |
 
 When upgrading a cluster from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
 
-### Resiliency settings 
+### Resiliency settings
 
-In this preview release, for add server operation, specific tasks aren't performed on the volumes that you created after the deployment.
+In this preview release, for add server operation, specific tasks aren't performed on the workload volumes created after the deployment.
 
-For add server operation, the resiliency settings are updated for the infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other volumes that you created after the deployment (since the intentional resiliency settings of the these volumes are not known and you may just want a 2-way mirror volume regardless of the cluster scale). 
+For add server operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of the these volumes are not known and you may just want a 2-way mirror volume regardless of the cluster scale).
 
-However, the default resiliency settings are updated at the storage pool level and so any new volumes that you created after the deployment will inherit the resiliency settings.
+However, the default resiliency settings are updated at the storage pool level and so any new workload volumes that you created after the deployment will inherit the resiliency settings.
 
 ### Hardware requirements
 
@@ -76,7 +76,7 @@ Before you add a server, you would need to complete the hardware and software pr
 Make sure to complete the following prerequisites:
 
 1. The first step is to acquire the new Azure Stack HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
-1. Place the new physical server in the rack and cable it appropriately.
+1. Place the new physical server in the pre-determined location, for example, a rack and cable it appropriately.
 1. Enable and adjust physical switch ports as applicable in your network environment.
 
 

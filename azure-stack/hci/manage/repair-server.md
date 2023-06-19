@@ -47,13 +47,13 @@ Repairing a server reimages a server and brings it back to the cluster with the 
 Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
-> - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
+> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
 
 ### Resiliency settings 
 
-In this preview release, for repair server operation, specific tasks aren't performed on the volumes that you created after the deployment. For repair server operation, only the infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs). 
+In this preview release, for repair server operation, specific tasks aren't performed on the workload volumes that you created after the deployment. For repair server operation, only the required infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs). 
 
-The other volumes that you created after the deployment are still retained and you can discover these volumes by running Get-VirtuaDisk cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
+The other workload volumes that you created after the deployment are still retained and you can discover these volumes by running `Get-VirtuaDisk` cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
 
 ### Hardware requirements
 
