@@ -45,7 +45,7 @@ The following sections list the main points to consider from an Azure Site Recov
 
 ## Source considerations
 
-In the source environment, Azure Stack Hub runs the Azure Site Recovery VM appliance. The VM is a Standard DS4_V2 (8 vCPUs, 28-Gb memory, 32 data disks) VM that runs in the Azure Stack Hub user subscription.
+In the source environment, Azure Stack Hub runs the Azure Site Recovery VM appliance. The VM is a [Standard_DS4_v2](../user/azure-stack-vm-sizes.md#dsv2-series) (8 vCPUs, 28-Gb memory, 32 data disks) VM that runs in the Azure Stack Hub user subscription.
 
 On the source environment, consider the following areas:
 
