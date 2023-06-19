@@ -45,13 +45,21 @@ To add a server, follow these high-level steps:
 
 For adding a server, the following scale-out scenarios are supported:
 
-| **Start scenario**  | **Target scenario** | **Storage network architecture**     |
-|---------------------|---------------------|--------------------------------------|
-| Single-server       | Two-server cluster  | Configured with and without a switch |
-| Two-server cluster  | Three-server cluster | Configured with a switch only        |
-| Three-server cluster| N-server cluster     | Switch only                          |
+| **Start scenario**  | **Target scenario** | **Resiliency settings** | **Storage network architecture**     | **Witness settings**     |
+|---------------------|---------------------|---------------------|--------------------------------------|----------------------------|
+| Single-server       | Two-server cluster  | Two-way mirror  | Configured with and without a switch | Witness recommended for target scenario. |
+| Two-server cluster  | Three-server cluster| Three-way mirror  | Configured with a switch only      | Witness optional for target scenario.    |
+| Three-server cluster| N-server cluster    | Three-way mirror| Switch only                          | Witness optional for target scenario.    |
 
-When upgrading a single from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When upgrading a cluster from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+
+### Resiliency settings 
+
+In this preview release, for add server operation, specific tasks aren't performed on the volumes that you created after the deployment.
+
+For add server operation, the resiliency settings are updated for the infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other volumes that you created after the deployment (since the intentional resiliency settings of the these volumes are not known and you may just want a 2-way mirror volume regardless of the cluster scale). 
+
+However, the default resiliency settings are updated at the storage pool level and so any new volumes that you created after the deployment will inherit the resiliency settings.
 
 ### Hardware requirements
 
@@ -113,6 +121,18 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 To monitor the progress of the add server operation, follow these steps:
 
 [!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
+
+
+### Recovery scenarios
+
+Following recovery scenarios and the recommended mitigation steps are tabulated for adding a server:
+
+| Scenario description                                                                                          | Mitigation                                                                                                | Supported ?   |
+|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
+| Added a new server out of band without using the Lifecycle Manager (LCM).                            | Remove the added server. <br> Use the LCM process to add the server.                                              | No|
+| Added a new server with LCM and the operation failed.                                                | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.     | Yes    |
+| Added a new server with LCM. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, LCM has already updated its knowledge store with the new server. Use the repair server scenario. | Yes     |
+
 
 ### Troubleshoot issues
 

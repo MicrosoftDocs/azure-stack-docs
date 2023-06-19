@@ -47,8 +47,13 @@ Repairing a server reimages a server and brings it back to the cluster with the 
 Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
-> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
+> - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
 
+### Resiliency settings 
+
+In this preview release, for repair server operation, specific tasks aren't performed on the volumes that you created after the deployment. For repair server operation, only the infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs). 
+
+The other volumes that you created after the deployment are still retained and you can discover these volumes by running Get-VirtuaDisk cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
 
 ### Hardware requirements
 
@@ -134,6 +139,16 @@ Make sure that you have reviewed the [prerequisites](#prerequisites). Follow the
 To monitor the progress of the add server operation, follow these steps:
 
 [!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
+
+### Recovery scenarios
+
+Following recovery scenarios and the recommended mitigation steps are tabulated for repairing a server:
+
+| Scenario description                                                                                          | Mitigation                                                                                                | Supported ?   |
+|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
+| Repair server operation failed.                                                                      | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.                    | Yes     |
+| Repair server operation succeeded partially but had to start with a fresh operation system install.    | In this scenario, the Lifecycle Manager has already updated its knowledge store with the new server. Use the repair server scenario. | Yes    |
+
 
 ### Troubleshooting
 
