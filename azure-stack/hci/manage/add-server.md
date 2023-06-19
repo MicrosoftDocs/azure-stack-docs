@@ -63,7 +63,7 @@ When adding a server, the system validates the hardware of the new, incoming ser
 
 Before you add a server, you would need to complete the hardware and software prerequisites.
 
-#### Hardware prerequsites
+#### Hardware prerequisites
 
 Make sure to complete the following prerequisites:
 
@@ -106,7 +106,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
     $Cred = Get-Credential 
     Add-Server -Name "< Name of the new server>" -HostIpv4 -LocalAdminCredential $Cred 
     ```
-1. Make a note of the operation ID as output by the `Add-Server` command. You use this later to monitor the progress of the `Add-Server` operation.
+1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
 
 ### Monitor operation progress
 

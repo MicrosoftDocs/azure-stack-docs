@@ -17,7 +17,7 @@ This article describes how to repair a server on your Azure Stack HCI cluster.
 
 ## About repair servers
 
-Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there is a hardware failure. 
+Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there's a hardware failure. 
 
 Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires you to reimage the server.
 
@@ -42,7 +42,7 @@ To repair an existing server, follow these high-level steps:
 
 ## Supported scenarios
 
-Repairing a server will reimage a server and bring it back to the cluster with the previous name and configuration. Repairing a single server will result in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
+Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration. Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
 > - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
@@ -71,7 +71,7 @@ The following scenarios are supported during server replacement:
 | Old server (reimaged)     | New disks             |Yes        |
 | Old server (reimaged)     | Reformatted old disks |Yes        |
 
-**Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting is not sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
+**Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
 > [!IMPORTANT]
 > If you replace a component during server repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the server joins the cluster.
