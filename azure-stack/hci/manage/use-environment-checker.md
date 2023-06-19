@@ -190,7 +190,7 @@ You can filter any of the following attributes and display the connectivity vali
 | Group          | Readiness Checks. |
 | System         | For internal use. |
 | Name           | Name of the individual service. |
-| Title          | Service title ; user facing name. |
+| Title          | Service title; user facing name. |
 | Severity       | Critical, Warning, Informational, Hidden. |
 | Description    | Description of the service name. |
 | Tags           | Internal Key-value pairs to group or filter tests. |
