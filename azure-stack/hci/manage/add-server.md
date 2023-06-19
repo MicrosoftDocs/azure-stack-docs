@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/09/2023
+ms.date: 06/19/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -24,7 +24,7 @@ Each new physical server that you add to your cluster must closely match the res
 You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, Azure Stack HCI Orchestrator adjusts the drive resiliency, network configuration including the on-premises agents such as Orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
-> - In this preview release, only one server can be added at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
+> - In this preview release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
 > - It is not possible to permanently remove a server from a cluster.
 
 

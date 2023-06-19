@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI. (preview)
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/09/2023
+ms.date: 06/19/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -36,8 +36,8 @@ To repair an existing server, follow these high-level steps:
 
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
 1. Remove this server temporarily from the cluster.
-1. Reimage the server that needs to be repaired. Install the Azure Stack HCI operating system, drivers, and firmware.
-1. Add the repaired server back to the cluster. The storage will be automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. Reimage the server that needs to be repaired. 
+1. Add the repaired server back to the cluster. The Azure Stack HCI operating system, drivers, and firmware are installed as part of the repair operation. The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
 
 
 ## Supported scenarios
@@ -46,7 +46,7 @@ Repairing a server will reimage a server and bring it back to the cluster with t
 
 > [!IMPORTANT]
 > - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
-.
+
 
 ### Hardware requirements
 
@@ -54,18 +54,39 @@ When repairing a server, the system validates the hardware of the new, incoming 
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
 
-### Component replacement
+### Server replacement
+
+You may replace the entire server:
+
+    - With a new server that has a different serial number compared to the old server. 
+    - With the older server that is reimaged.
+
+The following scenarios are supported during server replacement:
 
 | **Server** | **Disk**                             | **Supported** |
 |-------------------------- |-----------------------|-----------|
 | New server                | New disks             |Yes        |
 | New server                | Old disks             |Yes        |
-| Old server (reimaged)     | Reformatted old disks |No         |
+| Old server (reimaged)     | Reformatted old disks*|No         |
 | Old server (reimaged)     | New disks             |Yes        |
 | Old server (reimaged)     | Reformatted old disks |Yes        |
 
+**Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting is not sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
+
 > [!IMPORTANT]
 > If you replace a component during server repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the server joins the cluster.
+
+### Component replacement
+
+On your Azure Stack HCI cluster, non hot-swappable components include the following items:
+
+- Motherboard/baseboard management controller (BMC)/video card
+- Disk controller/host bus adapter (HBA)/backplace
+- Network adapter
+- Graphics processing unit
+- Data drives (drives that don't support hot swap, for example PCI-e add-in cards)
+
+The actual replacement steps for non hot-swappable components vary based on your original equipment manufacturer (OEM) hardware vendor. See your OEM vendor's documentation if a server repair is required for non hot-swappable components.
 
 ## Prerequisites
 
