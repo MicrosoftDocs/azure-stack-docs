@@ -98,9 +98,6 @@ There are two types of resync:
     ```powershell
     $failbackPolicyName = "failback-default-replication-policy"
     $failbackExtensionName = "default-failback-extension"
-    ```
-
-    ```powershell
     $parameters = @{
         "properties" = @{
             "customProperties" = @{
@@ -112,9 +109,6 @@ There are two types of resync:
             }
         }
     }
-    ```
-
-    ```powershell
     $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
     ```
 
