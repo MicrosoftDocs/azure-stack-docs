@@ -39,7 +39,7 @@ To add a server, follow these high-level steps:
 1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add. For more information, see [Install OS](../deploy/deployment-tool-install-os.md).
 1. Add the prepared server via the `Add-server` PowerShell cmdlet.
 1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
-1. Once the server is added, cluster is also validated to ensure that it is functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. Once the server is added, cluster is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
 
 ## Supported scenarios
 
@@ -57,7 +57,7 @@ When upgrading a cluster from two to three servers, the storage resiliency level
 
 In this preview release, for add server operation, specific tasks aren't performed on the workload volumes created after the deployment.
 
-For add server operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of the these volumes are not known and you may just want a 2-way mirror volume regardless of the cluster scale).
+For add server operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you may just want a 2-way mirror volume regardless of the cluster scale).
 
 However, the default resiliency settings are updated at the storage pool level and so any new workload volumes that you created after the deployment will inherit the resiliency settings.
 
@@ -76,7 +76,7 @@ Before you add a server, you would need to complete the hardware and software pr
 Make sure to complete the following prerequisites:
 
 1. The first step is to acquire the new Azure Stack HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
-1. Place the new physical server in the pre-determined location, for example, a rack and cable it appropriately.
+1. Place the new physical server in the predetermined location, for example, a rack and cable it appropriately.
 1. Enable and adjust physical switch ports as applicable in your network environment.
 
 
@@ -127,7 +127,7 @@ To monitor the progress of the add server operation, follow these steps:
 
 Following recovery scenarios and the recommended mitigation steps are tabulated for adding a server:
 
-| Scenario description                                                                                          | Mitigation                                                                                                | Supported ?   |
+| Scenario description                                                                                          | Mitigation                                                                                                | Supported?   |
 |------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
 | Added a new server out of band without using the Lifecycle Manager (LCM).                            | Remove the added server. <br> Use the LCM process to add the server.                                              | No|
 | Added a new server with LCM and the operation failed.                                                | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.     | Yes    |
