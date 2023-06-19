@@ -93,24 +93,24 @@ There are two types of resync:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-2.png" alt-text="Sample screenshot of second operation error on a different VM."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error-2.png":::
 
-  - Always specify the `$failbackPolicyName` and `$failbackExtensionName`, as shown in the following example:
+- Always specify the `$failbackPolicyName` and `$failbackExtensionName`, as shown in the following example:
 
-    ```powershell
-    $failbackPolicyName = "failback-default-replication-policy"
-    $failbackExtensionName = "default-failback-extension"
-    $parameters = @{
-        "properties" = @{
-            "customProperties" = @{
-                "instanceType" = "AzStackToAzStackFailback"
-                "applianceId" = $applianceId
-                "logStorageAccountId" = $LogStorageAccount.Id
-                "policyName" = $failbackPolicyName
-                "replicationExtensionName" = $failbackExtensionName
-            }
-        }
-    }
-    $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
-    ```
+  ```powershell
+  $failbackPolicyName = "failback-default-replication-policy"
+  $failbackExtensionName = "default-failback-extension"
+  $parameters = @{
+      "properties" = @{
+          "customProperties" = @{
+              "instanceType" = "AzStackToAzStackFailback"
+              "applianceId" = $applianceId
+              "logStorageAccountId" = $LogStorageAccount.Id
+              "policyName" = $failbackPolicyName
+              "replicationExtensionName" = $failbackExtensionName
+          }
+      }
+  }
+  $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
+  ```
 
 ## Mobility service agent warning
 
