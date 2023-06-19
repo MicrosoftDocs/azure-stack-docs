@@ -95,28 +95,28 @@ There are two types of resync:
 
   - Always specify the `$failbackPolicyName` and `$failbackExtensionName`, as shown in the preceding example:
 
-        ```powershell
-        $failbackPolicyName = "failback-default-replication-policy"
-        $failbackExtensionName = "default-failback-extension"
-        ```
+    ```powershell
+    $failbackPolicyName = "failback-default-replication-policy"
+    $failbackExtensionName = "default-failback-extension"
+    ```
 
-        ```powershell
-        $parameters = @{
-            "properties" = @{
-                "customProperties" = @{
-                    "instanceType" = "AzStackToAzStackFailback"
-                    "applianceId" = $applianceId
-                    "logStorageAccountId" = $LogStorageAccount.Id
-                    "policyName" = $failbackPolicyName
-                    "replicationExtensionName" = $failbackExtensionName
-                }
+    ```powershell
+    $parameters = @{
+        "properties" = @{
+            "customProperties" = @{
+                "instanceType" = "AzStackToAzStackFailback"
+                "applianceId" = $applianceId
+                "logStorageAccountId" = $LogStorageAccount.Id
+                "policyName" = $failbackPolicyName
+                "replicationExtensionName" = $failbackExtensionName
             }
         }
-        ```
+    }
+    ```
 
-        ```powershell
-        $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
-        ```
+    ```powershell
+    $result = Invoke-AzureRmResourceAction -Action "reprotect" ` -ResourceId $protectedItemId ` -Force -Parameters $parameters 
+    ```
 
 ## Mobility service agent warning
 
