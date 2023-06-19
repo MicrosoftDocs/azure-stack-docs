@@ -42,10 +42,12 @@ To repair an existing server, follow these high-level steps:
 
 ## Supported scenarios
 
-Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration. Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
+Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration. 
+
+Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
-> - Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
+> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
 
 
 ### Hardware requirements
@@ -59,17 +61,17 @@ When repairing a server, the system validates the hardware of the new, incoming 
 You may replace the entire server:
 
 - With a new server that has a different serial number compared to the old server. 
-- With the older server that is reimaged.
+- With the current server after you reimage it.
 
 The following scenarios are supported during server replacement:
 
 | **Server** | **Disk**                             | **Supported** |
-|-------------------------- |-----------------------|-----------|
-| New server                | New disks             |Yes        |
-| New server                | Old disks             |Yes        |
-| Old server (reimaged)     | Reformatted old disks*|No         |
-| Old server (reimaged)     | New disks             |Yes        |
-| Old server (reimaged)     | Reformatted old disks |Yes        |
+|------------------------------ |-----------------------|-----------|
+| New server                    | New disks             |Yes        |
+| New server                    | Current disks             |Yes        |
+| Current server (reimaged)     | Reformatted disks*|No         |
+| Current server (reimaged)     | New disks             |Yes        |
+| Current server (reimaged)     | Reformatted disks |Yes        |
 
 **Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
