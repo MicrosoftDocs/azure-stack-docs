@@ -19,10 +19,9 @@ This article describes how to repair a server on your Azure Stack HCI cluster.
 
 Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there's a hardware failure. 
 
-Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. Any component replacement requires you to reimage the server.
+Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. 
 
-> [!IMPORTANT]
-> It is not possible to permanently remove a server from a cluster.
+Parts that support hot swap typically do not require you to reimage the server unlike the non hot-swappable components such as motherboard do. Consult your hardware manufacturer to determine which component replacements would require you to reimage the server. For more information, see [Component replacement](#component-replacement).
 
 
 ## Repair server workflow
@@ -30,14 +29,15 @@ Before you repair a server, make sure to check with your solution provider, whic
 The following flow diagram shows the overall process to repair a server.
 
 ![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow-1.png)
-\**Server may not be in a state where shutdown is possible/necessary*
+\**Server may not be in a state where shutdown is possible or necessary*
 
 To repair an existing server, follow these high-level steps:
 
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
-1. Remove this server temporarily from the cluster.
 1. Reimage the server that needs to be repaired. 
-1. Add the repaired server back to the cluster. The Azure Stack HCI operating system, drivers, and firmware are installed as part of the repair operation. The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. Run the repair server operation. The Azure Stack HCI operating system, drivers, and firmware are updated as part of the repair operation. 
+
+    The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that can run for multiple days depending on number of the servers and the storage used.
 
 
 ## Supported scenarios
@@ -76,7 +76,7 @@ The following scenarios are supported during server replacement:
 | New server                    | Current disks             |Yes        |
 | Current server (reimaged)     | Reformatted disks*|No         |
 | Current server (reimaged)     | New disks             |Yes        |
-| Current server (reimaged)     | Reformatted disks |Yes        |
+| Current server (reimaged)     | Current disks |Yes        |
 
 **Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
