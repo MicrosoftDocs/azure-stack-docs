@@ -39,7 +39,7 @@ The default profile consists of the default values below. You can update the fol
 | max-node-count | The maximum node count that the node pool to which this profile is assigned can scale up to. | 1 |
 | scan-interval | How often cluster is reevaluated for scale up or down. | 10 seconds |
 | scale-down-delay-after-add | How long after scale up that scale down evaluation resumes. | 10 minutes |
-| scale-down-delay-after-delete | How long after node deletion that scale down evaluation resumes. | scaninterval |
+| scale-down-delay-after-delete | How long after node deletion that scale down evaluation resumes. | scan-interval |
 | scale-down-delay-after-failure | How long after scale down failure that scale down evaluation resumes. | 3 minutes |
 | scale-down-unneeded-time | How long a node should be unneeded before it's eligible for scale down. | 10 minutes |
 | scale-down-unready-time | How long an unready node should be unneeded before it's eligible for scale down. | 20 minutes |
