@@ -132,7 +132,7 @@ try {
 if ($null -ine $galleryImage) {
     Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
 } else {
-    $imageRelease = Get-ImageReleaseManifest -imageVersion $version -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
+    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
 
     Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
     $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
@@ -160,7 +160,7 @@ try {
 if ($null -ine $galleryImage) {
     Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
 } else {
-    $imageRelease = Get-ImageReleaseManifest -imageVersion $version -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
+    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
 
     Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
     $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/04/2023
+ms.date: 06/15/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -29,6 +29,7 @@ The Environment Checker tool consists of the following validators:
 - **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
+- **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
 
 ## Why use Environment Checker?
 
@@ -189,7 +190,7 @@ You can filter any of the following attributes and display the connectivity vali
 | Group          | Readiness Checks. |
 | System         | For internal use. |
 | Name           | Name of the individual service. |
-| Title          | Service title ; user facing name. |
+| Title          | Service title; user facing name. |
 | Severity       | Critical, Warning, Informational, Hidden. |
 | Description    | Description of the service name. |
 | Tags           | Internal Key-value pairs to group or filter tests. |
@@ -450,6 +451,55 @@ The following sample is the output from a successful run of the network validato
 The following sample is the output from a failed run of the network validator. This output shows two active hosts are using IP address from the reserved IP range.
 
    :::image type="content" source="./media/environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-failed.png":::
+
+### [Arc integration](#tab/arc-integration)
+
+The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
+
+In the Azure portal, each node of the Azure Stack HCI cluster is represented as an Arc resource with the name as the respective node's hostname. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+
+### Run the Arc integration validator
+
+1. Open PowerShell on any Azure Stack HCI cluster node.
+
+1. Run the following command to connect to Azure with the account you intend to onboard your Azure Stack HCI cluster:
+
+   ```powershell
+   Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_ID> -DeviceCode
+   ```
+
+1. Run the following command to create an array variable containing the names of your Azure Stack HCI cluster nodes:
+
+   ```powershell
+   $nodes = [string[]]("host1"," host2"," host3"," host4")
+   ```
+
+1. Run the following command to invoke the validator:
+
+   ```powershell
+   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_ID> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
+   ```
+
+   where:
+   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Stack HCI cluster.
+
+### Arc integration validator output
+
+The following samples are the output from successful and unsuccessful runs of the Arc integration validator.
+
+To learn more about different sections in the readiness check report, see [Understand readiness check report](#understand-readiness-check-report).
+
+**Sample output: Successful test**
+
+The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current cluster.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-passed.png":::
+
+**Sample output: Failed test**
+
+The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current cluster. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-failed.png":::
 
 ---
 
