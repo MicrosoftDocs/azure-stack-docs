@@ -258,14 +258,13 @@ This script must be run under the following conditions:
             if (-not $f.Installed) {
                 Write-Host Install feature on $env:COMPUTERNAME
                 Install-WindowsFeature -Name Web-CertProvider
-
+                
+                Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
                 Shutdown /t 5 /r /f 
             }
       }
 
-      Remove-PSSession -Session $session
-
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Remove-PSSession -Session $session      
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
