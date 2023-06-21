@@ -258,7 +258,7 @@ After creating the Azure file share and certificates, upload the CA and OPC UA s
 
  After following these steps for security, click "Restart" on your container instances to update it and run with the mounted certificates. 
 
-## Run Akri
+### Run Akri and Deploy Web App
 Now follow the previous section on running Akri to discover your servers, except adding a line `--set opcua.configuration.mountCertificates='true'` to the end of the command. Make sure to replace the `opcua.configuration.discoveryDetails.discoveryUrls` with the URLs found from the Azure portal. 
    
    ```powershell
