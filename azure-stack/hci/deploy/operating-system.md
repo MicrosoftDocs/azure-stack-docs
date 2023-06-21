@@ -136,11 +136,13 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
+## Configure the server using SConfig
+
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use SConfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you log on to the server.
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the Welcome to Azure Stack HCI window (SConfig tool), you can perform the following initial configuration tasks:
+From the Welcome to Azure Stack HCI window (SConfig tool), you can perform these initial configuration tasks on each server:
 
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.
