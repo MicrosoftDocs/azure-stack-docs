@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/20/2023
+ms.date: 06/21/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -33,8 +33,8 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
 |1|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |The `Get-ASWDACPolicyMode` cmdlet fetches information related to WDAC policy from the CodeIntegrity events and is unable to get the information as the CodeIntegrity event logs are flushed with 3114 events. <br> A workaround is provided in the output of the cmdlet that instructs you to run `Invoke-RefreshWDACPolicyTool` to refresh the policy on the nodes to generate new CodeIntegrity events.|
-|2|Azure Arc|After update, the Azure Stack HCI cluster show as not registered with Azure Arc.| |
-|3|Feature|Issue|Workaround|
+|2|Azure Arc|After update, the Azure Stack HCI cluster show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that is not registered: <br>`Register-AzStackHCI`   |
+|3|Arc Resource Bridge  |Custom location is not created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
 
 
 ## Known issues from previous releases
