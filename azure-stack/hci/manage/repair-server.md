@@ -1,10 +1,10 @@
 ---
-title: Repair a server on Azure Stack HCI. (preview)
-description: Learn how to repair a server on your Azure Stack HCI. (preview)
+title: Repair a server on Azure Stack HCI (preview).
+description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/19/2023
+ms.date: 06/20/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -152,13 +152,13 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 
 ### Troubleshooting
 
-1. If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
+- If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
 
     ```powershell
     Get-ActionPlanInstance -ActionPlanInstanceID $ID |out-file log.txt
     ```
 
-1. To rerun the failed operation, use the following cmdlet:
+- To rerun the failed operation, use the following cmdlet:
 
     ```powershell
     Repair-Server -Rerun

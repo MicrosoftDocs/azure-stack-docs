@@ -1,6 +1,6 @@
 ---
-title: Manage capacity by adding a server of Azure Stack HCI. (preview)
-description: Learn how to manage capacity on your Azure Stack HCI by adding a server. (preview)
+title: Manage capacity by adding a server of Azure Stack HCI (preview).
+description: Learn how to manage capacity on your Azure Stack HCI by adding a server (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
@@ -136,13 +136,13 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 
 ### Troubleshoot issues
 
-1. If you experience failures or errors while adding a server, you can capture the output of the failures in a log file.
+- If you experience failures or errors while adding a server, you can capture the output of the failures in a log file.
 
     ```powershell
     Get-ActionPlanInstance -ActionPlanInstanceID $ID out-file log.txt
     ```
 
-1. To rerun the failed operation, use the following cmdlet:
+- To rerun the failed operation, use the following cmdlet:
 
     ```powershell
     Add-Server -Rerun
