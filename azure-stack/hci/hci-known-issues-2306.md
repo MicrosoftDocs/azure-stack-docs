@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/15/2023
+ms.date: 06/20/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.XX**. This release supports following:
+This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.45**. This release supports following:
 
 - Brand new software installations using a deployment tool. 
 - Update of existing 2303 installations.
@@ -33,6 +33,8 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
 |1|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |The `Get-ASWDACPolicyMode` cmdlet fetches information related to WDAC policy from the CodeIntegrity events and is unable to get the information as the CodeIntegrity event logs are flushed with 3114 events. <br> A workaround is provided in the output of the cmdlet that instructs you to run `Invoke-RefreshWDACPolicyTool` to refresh the policy on the nodes to generate new CodeIntegrity events.|
+|2|Azure Arc|After update, the Azure Stack HCI cluster show as not registered with Azure Arc.| |
+|3|Feature|Issue|Workaround|
 
 
 ## Known issues from previous releases
