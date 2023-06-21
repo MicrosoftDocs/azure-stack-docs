@@ -69,13 +69,13 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
 1. Check the primary interface:
 
     ```powershell
-    sudo ifconfig eth0
+    sudo ip addr eth0
     ```
 
 1. Check the secondary network interface. If you added more than one extra interface, it shows up as `ethX` with X being the number extra network interface.
 
     ```powershell
-    sudo ifconfig eth1
+    sudo ip addr eth1
     ```
 
 ## Configure Multus CNI plugin
