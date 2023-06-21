@@ -482,7 +482,7 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
-    - name: Update (preview)
+    - name: Update
       items:
       - name: What's the Lifecycle Manager?
         href: update/whats-the-lifecycle-manager.md
@@ -496,6 +496,12 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
+    - name: Manage capacity
+      items:
+      - name: Add a server
+        href: manage/add-server.md
+      - name: Repair a server
+        href: manage/repair-server.md
   - name: Version 23H2
     items:
     - name: Telemetry and diagnostics extension overview
