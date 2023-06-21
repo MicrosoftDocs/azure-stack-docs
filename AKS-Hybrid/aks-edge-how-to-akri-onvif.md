@@ -26,22 +26,8 @@ This article describes how you can discover ONVIF cameras that are connected to 
 > This sample ONVIF broker currently does not support connecting to cameras that require authentication. To run this demo, disable authentication on your ONVIF camera. 
 
 ## Run Akri
-
-1. Open a PowerShell window as administrator. Akri depends on `critcl` to track pod information. To use it, the Akri agent must know where the container runtime socket lives. To specify this information, set a variable `$AKRI_HELM_CRICTL_CONFIGURATION` and add it to each Akri installation.
-
-   If you're using K3s:
    
-   ```powershell
-   $AKRI_HELM_CRICTL_CONFIGURATION="--set kubernetesDistro=k3s"
-   ```
-   
-   If you're using K8s:
-   
-   ```powershell
-   $AKRI_HELM_CRICTL_CONFIGURATION="--set kubernetesDistro=k8s"
-   ```
-   
-2. Add the Akri helm charts if you've haven't already:
+1. Add the Akri helm charts if you've haven't already:
 
     ```powershell
     helm repo add akri-helm-charts https://project-akri.github.io/akri/
@@ -53,11 +39,10 @@ This article describes how you can discover ONVIF cameras that are connected to 
     helm repo update
     ```
 
-3. Install Akri using Helm. When installing Akri, specify that you want to deploy the ONVIF discovery handlers by setting the helm value `onvif.discovery.enabled=true`. Also, specify that you want to deploy the ONVIF video broker:  
+2. Install Akri using Helm. When installing Akri, specify that you want to deploy the ONVIF discovery handlers by setting the helm value `onvif.discovery.enabled=true`. Also, specify that you want to deploy the ONVIF video broker:  
     
    ```powershell
    helm install akri akri-helm-charts/akri `
-    $AKRI_HELM_CRICTL_CONFIGURATION  `
     --set onvif.discovery.enabled=true `
     --set onvif.configuration.enabled=true `
     --set onvif.configuration.capacity=2 `
