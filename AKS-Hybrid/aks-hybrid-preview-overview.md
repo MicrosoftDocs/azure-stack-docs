@@ -2,7 +2,7 @@
 title: Overview of AKS hybrid cluster provisioning from Azure (preview)
 description: An overview of AKS hybrid cluster provisioning from Azure.
 ms.topic: overview
-ms.date: 06/21/2023
+ms.date: 06/22/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/12/2022

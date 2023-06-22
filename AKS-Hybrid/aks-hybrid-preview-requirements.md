@@ -6,7 +6,7 @@ ms.author: abha
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/21/2023
+ms.date: 06/22/2023
 ---
 
 
