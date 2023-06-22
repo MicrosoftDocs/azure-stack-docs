@@ -404,7 +404,9 @@
   items:
   - name: What's in preview?
     items:
-    - name: 2303 release - Current
+    - name: 2306 release - Current
+      href: manage/whats-new-2306-preview.md
+    - name: 2303 release 
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
       items:
@@ -428,6 +430,8 @@
     items:
     - name: View known issues
       items:
+      - name: 2306 release - Current
+        href: hci-known-issues-2306.md 
       - name: 2303.2 update release
         href: hci-known-issues-2303-2.md 
       - name: 2303.1 update release
