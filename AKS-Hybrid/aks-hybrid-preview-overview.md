@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS hybrid clusters running on Azure Stack HCI and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Azure AD identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We've also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
 
-We continue to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed AKS using Azure, you'll feel right at home managing AKS hybrid clusters on Windows Server or Azure Stack HCI with familiar Azure portal or Azure CLI management experiences.
+Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed AKS using Azure, you'll feel right at home managing AKS hybrid clusters on Windows Server or Azure Stack HCI with familiar Azure portal or Azure CLI management experiences.
 
 You'll also be able to deploy applications at scale using GitOps in both AKS and AKS hybrid clusters. GitOps applies development practices like version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
 
@@ -28,14 +28,14 @@ At this time, you can perform the following operations through the Azure portal,
 - Add/list/show Linux and Windows nodepools on your AKS hybrid cluster.
 - Delete your AKS hybrid clusters and nodepools.
 
-Through Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioning from Azure:
+With Azure Arc, you can use the following Azure services on your AKS hybrid cluster provisioning from Azure:
 
 - Container Insights
 - GitOps v2
 - Open Service Mesh
 - Azure Key Vault
 
-In order to be able to create and manage AKS clusters from Azure, you must install the following key components.
+To create and manage AKS clusters from Azure, you must install the key components described in the following sections.
 
 ## Microsoft On-premises Cloud (MOC)
 
