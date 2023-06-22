@@ -37,7 +37,7 @@ ms.lastreviewed: 02/19/2023
 1. Install the metapackage that matches your running kernel:
 
    ```bash
-   sudo yum install amlfs-lustre-client-2.15.1_29_gbae0abe-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo yum install [!INCLUDE [client-kernel-version-rhel](client-kernel-version-rhel.md)]-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
 
    > [!NOTE]
@@ -47,5 +47,5 @@ ms.lastreviewed: 02/19/2023
 
    ```bash
    export NEWKERNELVERSION=6.7.8
-   sudo yum upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.1-24-gbaa21ca-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo yum upgrade kernel-$NEWKERNELVERSION [!INCLUDE [client-kernel-version-rhel](client-kernel-version-rhel.md)]-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
