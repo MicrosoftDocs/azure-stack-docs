@@ -70,7 +70,7 @@ The following parameters are required to run the deployment tool. Consult your n
 
 If you are using a service principal name to authenticate your cluster, use the following steps to deploy Azure Stack HCI via PowerShell.
 
-For more information on creating a service principal, see [Create an Azure service principal with Azure PowerShell](../azure/create-azure-service-principal-azureps) and [Create an Azure Active Directory application and service principal that can access resources](../azure/active-directory/develop/howto-create-service-principal-portal).
+For more information on creating a service principal, see [Create an Azure service principal with Azure PowerShell](/azure/create-azure-service-principal-azureps) and [Create an Azure Active Directory application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal).
 
 1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
 
