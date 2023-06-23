@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 05/05/2023
+ms.date: 06/23/2023
 ---
 
 > [!IMPORTANT]
@@ -22,6 +22,6 @@ Follow these steps to download the Supplemental Package files:
 
     | Azure Stack HCI Supplemental Package component|  Description |
     |---------------------------------------------- |---------------------- |
-    |*BootstrapCloudDeploymentTool.ps1* | Script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file but not launch the deployment tool. |
-    | *CloudDeployment.zip* | Azure Stack HCI, version 22H2 content, such as images and agents. |
-    | *Verify-CloudDeployment.ps1* | Hash used to validate the integrity of zip file. |
+    |[*BootstrapCloudDeploymentTool.ps1*](https://go.microsoft.com/fwlink/?linkid=2210545) | Script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file but not launch the deployment tool. |
+    | [*CloudDeployment.zip*](https://go.microsoft.com/fwlink/?linkid=2210546) | Azure Stack HCI, version 22H2 content, such as images and agents. |
+    | [*Verify-CloudDeployment.ps1*](https://go.microsoft.com/fwlink/?linkid=2210608) | Hash used to validate the integrity of zip file. |
