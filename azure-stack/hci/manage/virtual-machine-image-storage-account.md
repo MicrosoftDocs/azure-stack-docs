@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/05/2022
+ms.date: 6/20/2023
 ---
 
 # Create Azure Stack HCI VM image using image in Azure Storage account (preview)
@@ -230,7 +230,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
