@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Arc VM management (preview)
 description: Learn how to troubleshoot Azure Arc VM management (preview)
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.date: 03/24/2022
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
 
@@ -31,15 +31,16 @@ To collect logs for Arc VMs in your Azure Stack HCI cluster, run the following c
 
 ```PowerShell
 $csv_path="<input-from-admin>"
-$VMIP="<input-from-admin>"
-Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP
+$VMIP_1="<input-from-admin>"
+az login --use-device-code
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP_1
 ```
 
 where:
 
 - **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
-- **$VMIP** is the IP address of the Arc Resource Bridge VM.
+- **$VMIP_1** is the IP address of the Arc Resource Bridge VM.
 
 - Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
 

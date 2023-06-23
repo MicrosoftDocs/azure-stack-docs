@@ -2,8 +2,8 @@
 title: Manage Azure Stack HCI gateway connections using Windows Admin Center
 description: Learn to manage your SDN gateway connections on Azure Stack HCI using Windows Admin Center.
 ms.topic: how-to
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.reviewer: anpaul
 ms.date: 04/17/2023
 ---

@@ -1,13 +1,12 @@
 ---
 title: Set up Azure Arc VM management using command line (preview)
 description: Learn how to set up Azure Arc VM management on Azure Stack HCI using command line (preview).
-author: ManikaDhiman
+author: alkohli
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ms.date: 03/27/2023
-ms.author: v-mandhiman
-ms.reviewer: alkohli
+ms.author: alkohli
 ---
 
 # Set up Azure Arc VM management using command line (preview)
@@ -80,7 +79,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
 
 1. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) hybrid is installed or not.
    - **If AKS hybrid is installed.** Skip this step and proceed to step 4 to update the required extensions.
-   - **If AKS hybrid is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
+   - **If AKS hybrid is not installed.** Run the following cmdlets to install Moc:
 
       ### [For static IP address](#tab/for-static-ip-address-1)
 

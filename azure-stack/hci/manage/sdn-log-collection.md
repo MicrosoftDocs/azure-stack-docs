@@ -2,8 +2,8 @@
 title: Collect Software Defined Networking logs on Azure Stack HCI
 description: Learn how to collect logs to troubleshoot Software Defined Networking (SDN) in Azure Stack HCI.
 ms.topic: how-to
-ms.author: v-mandhiman
-author: ManikaDhiman
+ms.author: sethm
+author: sethmanheim
 ms.date: 04/24/2023
 ---
 

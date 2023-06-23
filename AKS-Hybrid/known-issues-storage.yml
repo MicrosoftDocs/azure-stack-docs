@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 04/21/2023
+  ms.date: 06/02/2023
 
 title: Fix known issues and errors when managing storage in AKS hybrid
 summary: |
@@ -46,6 +46,57 @@ sections:
           ```
           
           Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.
+      - question: | 
+          Disk storage filled up from crash dump logs
+
+        answer: | 
+          Disk storage can be filled up from crash dump logs that are created. This is due to an expired Geneva agent client certificate. The symptoms can be as follows:
+          
+          - Services fail to start.
+          - Kubernetes pods, deployments, etc. fail to start due insufficient resources.
+          
+          > [!IMPORTANT]
+          > This issue can impact all new Mariner management and target cluster nodes created after April 18, 2023 on releases from April 2022 to March 2023. The issue is fixed in the 2023-05-09 release and later.
+          
+          This issue can impact any operation that involves allocating disk space or writing new files, so any "insufficient disk space/resources" error is a good hint. To check if this issue is present on a given node, run the following shell command:
+          
+          ```shell
+          clouduser@moc-lwm2oudnskl $ sudo du -h /var/lib/systemd/coredump/ 715M /var/lib/systemd/coredump/
+          ```
+          
+          This command reports the storage space consumed by the diagnostic files.
+          
+          ### Root cause
+          
+          The expiration of the client certificate used to authenticate the Geneva agent to the service endpoint causes the agent to crash, resulting in a crash dump. The agent's crash/retry loop is about 5 seconds at initial startup, and there is no timeout. This means that a new file (about 330MB) is created on the node's file system every few seconds, which can rapidly consume disk storage.
+          
+          ### Mitigation
+          
+          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your AKS-HCI host.
+          
+          For more information about AKS hybrid releases, and all the latest AKS-HCI news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
+          
+          If upgrading is not an option, you can turn off the **mdsd** service. For each Mariner node:
+          
+          1. Turn off the Geneva agent with the following shell commands:
+          
+              ```shell
+              sudo systemctl stop mdsd
+              sudo systemctl disable --now mdsd
+              ```
+          
+          2. Verify that the Geneva agent was successfully disabled:
+          
+             ```shell
+             sudo systemctl status mdsd
+             ```
+          
+          3. Delete accumulated files with the following command:
+            
+              ```shell
+              sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;
+              ```
+          
       - question: | 
           Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
 

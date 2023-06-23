@@ -56,6 +56,7 @@ Commands to interact with AKS hybrid.
 | [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) | Creates an object for a new virtual network. |
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Creates a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Creates an object defining proxy server settings to pass into `Set-AksHciConfig`. |
+| [New-AksHciSSHConfiguration](./new-akshcisshconfiguration.md) | Creates an object for a new SSH configuration. |
 | [New-AksHciStorageContainer](./new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Removes an unused autoscaler configuration profile from the system.  |
 | [Remove-AksHciCluster](./remove-akshcicluster.md) | Deletes a managed Kubernetes cluster. |
@@ -74,6 +75,7 @@ Commands to interact with AKS hybrid.
 | [Set-AksHciNodePool](./set-akshcinodepool.md) | Scales a node pool within a Kubernetes cluster. |
 | [Set-AksHciRegistration](./set-akshciregistration.md) | Registers AKS hybrid with Azure. |
 | [Sync-AksHciBilling](./sync-akshcibilling.md) | Manually triggers a billing records sync. |
+| [Test-UpdateAksHci](./test-updateakshci.md) | Checks whether any target clusters are outside the AKS hybrid support window. |
 | [Uninstall-AksHci](./uninstall-akshci.md) | Removes AKS hybrid. |
 | [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) | Removes Active Directory authentication. |
 | [Uninstall-AksHciCsiNfs](./uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |

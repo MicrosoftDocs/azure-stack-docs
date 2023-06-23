@@ -1,12 +1,12 @@
 ---
 title: Use Azure Stack HCI Environment Checker to assess deployment readiness (preview)
 description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/19/2022
+ms.date: 06/15/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -29,6 +29,7 @@ The Environment Checker tool consists of the following validators:
 - **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
+- **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
 
 ## Why use Environment Checker?
 
@@ -47,7 +48,7 @@ You can run the Environment Checker in two modes:
 
 - As a built-in tool: The Environment Checker functionality comes built-in with the Azure Stack HCI Deployment Tool. By default, the Deployment Tool runs all the validators to perform the pre-deployment readiness checks.
 
-- As a standalone tool: It's a light-weight PowerShell tool that you can download for free from the Windows PowerShell gallery. You can run the standalone tool anytime, independent of the Deployment Tool. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met. You can also run it from any Windows server or client on the network where you'll deploy Azure Stack HCI.
+- As a standalone tool: It's a light-weight PowerShell tool that you can download for free from the Windows PowerShell gallery. You can run the standalone tool anytime, independent of the Deployment Tool. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met.
 
 This article describes how to run the Environment Checker in a standalone mode.
 
@@ -65,7 +66,9 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-To install the Environment Checker on the client computer, follow these steps:
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
+
+To install the Environment Checker, follow these steps:
 
 1. Run PowerShell as administrator (5.1 or later). If you need to install PowerShell, see [Installing PowerShell on Windows](/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2&preserve-view=true).
 
@@ -73,7 +76,7 @@ To install the Environment Checker on the client computer, follow these steps:
 
    ```powershell
    Install-Module PowerShellGet -AllowClobber -Force
-   ``` 
+   ```
 
 1. After the installation completes, close the PowerShell window and open a new PowerShell session as administrator.
 
@@ -97,11 +100,11 @@ Each validator in the Environment Checker tool checks specific settings and requ
 
 You can run the validators from the following locations:  
 
-- Locally from the Azure Stack HCI server node
+- Remotely via PowerShell session.
 
-- Remotely via PowerShell session  
+- Locally from a workstation or a staging server.
 
-- Locally from a workstation or a staging server
+- Locally from the Azure Stack HCI cluster node. However, make sure to uninstall the Environment Checker before running the Deployment Tool to avoid any conflicts.
 
 Select each of the following tabs to learn more about the corresponding validator.
 
@@ -121,7 +124,7 @@ You can use the connectivity validator to:
 
 To run the connectivity validator, follow these steps.
 
-1. Open PowerShell locally on the Azure Stack HCI server, workstation, or a staging server.
+1. Open PowerShell locally on the workstation, staging server, or Azure Stack HCI cluster node.
 
 1. Run a connectivity validation by entering the following cmdlet:
 
@@ -187,7 +190,7 @@ You can filter any of the following attributes and display the connectivity vali
 | Group          | Readiness Checks. |
 | System         | For internal use. |
 | Name           | Name of the individual service. |
-| Title          | Service title ; user facing name. |
+| Title          | Service title; user facing name. |
 | Severity       | Critical, Warning, Informational, Hidden. |
 | Description    | Description of the service name. |
 | Tags           | Internal Key-value pairs to group or filter tests. |
@@ -448,6 +451,55 @@ The following sample is the output from a successful run of the network validato
 The following sample is the output from a failed run of the network validator. This output shows two active hosts are using IP address from the reserved IP range.
 
    :::image type="content" source="./media/environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-failed.png":::
+
+### [Arc integration](#tab/arc-integration)
+
+The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
+
+In the Azure portal, each node of the Azure Stack HCI cluster is represented as an Arc resource with the name as the respective node's hostname. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+
+### Run the Arc integration validator
+
+1. Open PowerShell on any Azure Stack HCI cluster node.
+
+1. Run the following command to connect to Azure with the account you intend to onboard your Azure Stack HCI cluster:
+
+   ```powershell
+   Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_ID> -DeviceCode
+   ```
+
+1. Run the following command to create an array variable containing the names of your Azure Stack HCI cluster nodes:
+
+   ```powershell
+   $nodes = [string[]]("host1"," host2"," host3"," host4")
+   ```
+
+1. Run the following command to invoke the validator:
+
+   ```powershell
+   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_ID> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
+   ```
+
+   where:
+   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Stack HCI cluster.
+
+### Arc integration validator output
+
+The following samples are the output from successful and unsuccessful runs of the Arc integration validator.
+
+To learn more about different sections in the readiness check report, see [Understand readiness check report](#understand-readiness-check-report).
+
+**Sample output: Successful test**
+
+The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current cluster.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-passed.png":::
+
+**Sample output: Failed test**
+
+The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current cluster. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-failed.png":::
 
 ---
 

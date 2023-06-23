@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 04/25/2023
+ms.date: 05/16/2023
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -160,7 +160,7 @@ This script must be run under the following conditions:
 
   1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
-  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
 
   1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
   1. Return to the **CN0-VM** remote desktop session.
@@ -276,7 +276,11 @@ This script must be run under the following conditions:
 
 - Custom domains aren't supported in disconnected environments.
 
-App Service performs domain ownership verification against public DNS endpoints, as a result custom domains aren't supported in disconnected scenarios.
+  App Service performs domain ownership verification against public DNS endpoints. As a result, custom domains aren't supported in disconnected scenarios.
+
+- Virtual Network integration for Web and Function Apps is not supported.
+
+  The ability to add virtual network integration to Web and Function apps shows in the Azure Stack Hub portal and if a tenant attempts to configure, they receive an internal server error. This feature is not supported in Azure App Service on Azure Stack Hub.
 
 ## Next steps
 

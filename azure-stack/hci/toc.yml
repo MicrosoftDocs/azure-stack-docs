@@ -162,8 +162,6 @@
         href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using command line (recommended)
         href: manage/deploy-arc-resource-bridge-using-command-line.md
-      - name: Set up using Windows Admin Center
-        href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc VM resources
       items:
       - name: Create VM images
@@ -212,9 +210,9 @@
     items:
     - name: Set up alerts for Azure Stack HCI systems
       href: manage/setup-hci-system-alerts.md
-    - name: Monitor a single cluster using the Azure portal (preview)
+    - name: Monitor single cluster with Azure Stack HCI Insights
       href: manage/monitor-hci-single.md      
-    - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+    - name: Monitor multiple clusters with Azure Stack HCI Insights
       href: manage/monitor-hci-multi.md
     - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
@@ -232,6 +230,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: Manage cluster registration
+      href: manage/manage-cluster-registration.md
     - name: Manage clusters with Windows Admin Center
       href: manage/cluster.md
     - name: Manage clusters with PowerShell
@@ -294,6 +294,10 @@
     items:
     - name: Hybrid capabilities with Azure services
       href: hybrid-capabilities-with-azure-services.md
+    - name: Enhanced management from Azure
+      href: manage/azure-enhanced-management-managed-identity.md
+    - name: Use Azure Site Recovery
+      href: manage/azure-site-recovery.md
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
     - name: Use Windows Admin Center in Azure
@@ -302,8 +306,6 @@
       href: manage/azure-portal.md
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
   - name: Manage Azure Arc extensions
     href: manage/arc-extension-management.md
 - name: Troubleshooting
@@ -318,10 +320,16 @@
     href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot storage health
     href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-  - name: Collect SDN logs
-    href: manage/sdn-log-collection.md
   - name: Collect diagnostic data
     href: manage/collect-diagnostic-data.md
+  - name: Troubleshoot SDN
+    items:
+    - name: Troubleshoot SDN deployment
+      href: manage/troubleshoot-sdn-deployment.md
+    - name: Collect SDN logs
+      href: manage/sdn-log-collection.md
+    - name: Troubleshoot Software Load Balancer for SDN
+      href: manage/troubleshoot-software-load-balancer.md
 - name: Concepts
   items:
   - name: Storage and clusters
@@ -395,7 +403,13 @@
   - name: What's in preview?
     items:
     - name: 2303 release - Current
-      href: manage/whats-new-2303-preview.md 
+      href: manage/whats-new-2303-preview.md
+    - name: 2303 updates
+      items:
+      - name: 2303.2 release
+        href: manage/whats-new-2303-2-preview.md 
+      - name: 2303.1 release
+        href: manage/whats-new-2303-1-preview.md  
     - name: 2301 release 
       href: manage/whats-new-2301-preview.md
     - name: 2210 release
@@ -411,8 +425,12 @@
   - name: Supplemental package
     items:
     - name: View known issues
-      items: 
-      - name: 2303 release - Current
+      items:
+      - name: 2303.2 update release
+        href: hci-known-issues-2303-2.md 
+      - name: 2303.1 update release
+        href: hci-known-issues-2303-1.md 
+      - name: 2303 release
         href: hci-known-issues-2303.md
       - name: 2301 release 
         href: hci-known-issues-2301.md
@@ -476,6 +494,10 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
+  - name: Version 23H2
+    items:
+    - name: Telemetry and diagnostics extension overview
+      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

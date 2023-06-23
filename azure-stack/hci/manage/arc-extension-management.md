@@ -1,5 +1,5 @@
 ---
-title:  Azure Arc extension management on Azure Stack HCI.
+title:  Azure Arc extension management on Azure Stack HCI
 description: This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines.
 author: ronmiab
 ms.author: robess
@@ -11,31 +11,46 @@ ms.date: 05/01/2023
 
 # Azure Arc extension management on Azure Stack HCI
 
->[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)].
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in the Azure portal.
 
-## About Azure Arc extensions in the Azure portal
+## Customer-managed Azure Arc extensions on Azure Stack HCI
 
-Azure Stack HCI enables you to install, uninstall, and update Azure Arc extensions on your Azure Stack HCI systems. With Azure Arc extensions you can run hybrid services such as monitoring and Windows Admin Center, in the Azure portal.
+With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions on your Azure Stack HCI systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
-Here are extensions you can install and manage in the Azure portal.
+Here are the individual extensions you can install and manage.
 
-- [Microsoft Monitoring Agent](/azure-stack/hci/manage/monitor-hci-single)
+- [Azure Monitoring Agent](monitor-hci-single.md)
+- [Azure Site Recovery](azure-site-recovery.md)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
+
+## Azure-managed extensions in Azure Stack HCI (preview)
+
+In the Azure Stack HCI, version 23H2 (preview) only, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
+
+If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information in the banner to guide you through installing these extensions.
+
+Here are the Azure-managed extensions:
+
+- [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
 ## Install an extension via the Azure portal
 
-Once Azure Stack HCI servers are Azure Arc-enabled, you can install extensions from the **Capabilities** tab as highlighted in the screenshot. Use the capabilities tab to install most extensions.
+You can install extensions from the **Capabilities** tab for your Azure Stack HCI Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
-Installation of an extension in the Azure portal is a cluster-wide operation. If you add more servers to your cluster all the extensions installed on your cluster are automatically added to the new servers.
+When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
+
 
 
 ## Check the extension status
 # [Azure portal](#tab/azureportal)
 After you install an extension, check the status of the extension on each of your nodes. To check the extension status, go to the **Extensions menu page** and view the **status column** of the grid.
+
+You can check the status of an extension on each server from the **Extensions** page by viewing the **status** column of the grid.
+
 
 :::image type="content" source="media/arc-extension-management/arc-extension-status-view.png" alt-text="Screenshot of the different extension statuses in the Azure portal." lightbox="media/arc-extension-management/arc-extension-status-view.png":::
 
@@ -81,19 +96,22 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported version. The automatic extension upgrade feature is enabled by default for all extensions you deploy on Azure Stack HCI Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Stack HCI Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
 
-Currently, Windows Admin Center is the only extension that supports automatic extension upgrades. More extensions will be added over time.
+Currently, automatic extension upgrades are only supported in the Windows Admin Center extension, but more extensions will be added in the future.
 
 > [!NOTE]
-> All extensions are configured by default to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. This default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
+> By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
 ### Enable automatic upgrade via the Azure portal
+
 
 # [Azure portal](#tab/azureportal)
 With extension management, you can enable an automatic upgrade for some extensions.
 
-To enable automatic upgrade, go to the **Extensions** pane, then perform these steps:
+For some extensions, you can enable automatic upgrades through extension management.
+
+To enable an automatic upgrade, navigate to the **Extensions** page and perform these steps:
 
 1. Choose the extension you want to enable automatic upgrade on.
 2. Select **Enable automatic upgrade** from the top menu
@@ -119,20 +137,20 @@ To install and enable auto upgrade for a specific extension like `AdminCenter` r
 
 ### Manual extension upgrade via the Azure portal
 
-The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). When you manually upgrade an extension, on an Azure Stack HCI Arc-enabled cluster, Azure saves the version you've selected and tries to upgrade the extension on all cluster nodes to that version.
+The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Stack HCI Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all servers in the cluster to that version.
 
-If the extension upgrade fails, on some nodes, the platform tries to upgrade to the selected version during the next [Azure Stack HCI cloud sync](../faq.yml).
+On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Stack HCI cloud sync](../faq.yml).
 
 Use the manual workflow in these scenarios:
 
-- Manually upgrade the extension version when a new version of the extension is available.
+- A new version of the extension is available and you want to upgrade it manually.
 
-- There's a version mismatch across different servers of the Azure Stack HCI cluster and enable automatic upgrade is disabled.
+- The extension's automatic upgrade option is disabled and there's a version mismatch across different servers of the Azure Stack HCI cluster.
 
-To manually upgrade an extension, see these steps:
+To manually upgrade an extension, follow these steps:
 
 1. Go to the **Extensions** page.
-2. Choose the extension you want to upgrade, then select **Settings** from the top menu.
+2. Choose the extension you want to upgrade and select **Settings** from the top menu.
 
     :::image type="content" source="media/arc-extension-management/arc-extension-manual-upgrade.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-manual-upgrade.png":::
 
@@ -140,7 +158,7 @@ To manually upgrade an extension, see these steps:
 
 ### Disable automatic upgrade via the Azure portal
 
-In the Azure portal, you can disable automatic upgrade for some extensions. To disable automatic upgrades, go to the **Extensions** pane, then perform these steps:
+You can disable automatic upgrades for certain extensions in the Azure portal. To disable automatic upgrades, navigate to the **Extensions** page and perform these steps:
 
 1. Choose the extension you want to disable the automatic upgrade on.
 2. Select **Disable automatic upgrade** from the top menu.
@@ -153,17 +171,17 @@ In the Azure portal, you can disable automatic upgrade for some extensions. To d
 
 ### Check the extension upgrade history
 
-To check the automatic extension upgrade history for individual cluster nodes, you can view the **Activity Log** tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
+You can view the Activity Log tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions to check the history of automatic extension upgrades for individual cluster servers. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
 
 ### Availability-first updates
 
-For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the Azure platform orchestrates upgrades with the use of the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model.
+For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the Azure platform used the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model to orchestrate upgrades.
 
 ### Timing of automatic extension upgrades
 
-When a new version of a supported extension is published, it becomes available for installation and manual upgrade on Azure Arc-enabled servers. Upgrades are issued in batches across Azure regions and subscriptions, so you might see the extension get upgraded on some servers before others. For more information, see [Timing of automatic extension upgrades](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#timing-of-automatic-extension-upgrades).
+When a new version of a supported extension is published, it becomes available for installation and manual upgrade on Azure Arc-enabled servers. Upgrades are issued in batches across Azure regions and subscriptions, so you might see an extension upgrade occur on some servers before others. For more information, see [Timing of automatic extension upgrades](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#timing-of-automatic-extension-upgrades).
 
-If you need to upgrade an extension immediately, see [Manual extension upgrade via the Azure portal](#manual-extension-upgrade-via-the-azure-portal).
+To upgrade an extension immediately, see [Manual extension upgrade via the Azure portal](#manual-extension-upgrade-via-the-azure-portal).
 
 ### Automatic rollback and retries
 
@@ -173,7 +191,7 @@ If you continue to have trouble with an extension upgrade, you can [disable auto
 
 ### Upgrades with multiple extensions
 
-If multiple extension upgrades are available for a machine, the upgrades might be batched together, however each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
+If multiple extension upgrades are available for a machine, they might be batched together. However, each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
 ## Uninstall an extension from the Azure portal
 
@@ -212,7 +230,7 @@ To remove a specific extension like `AzureMonitorWindowsAgent` run the following
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png" alt-text="Screenshot of how to troubleshoot an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png":::
 
-**Recommendation**: Whenever the extension is in a failed state, select the **Failed (View details)** status link to view all the information about the failure and troubleshooting tips.
+**Recommendation**: For an extension with a failed status, select the **Failed (View details)** link. View all the information about the failure and apply the troubleshooting tips.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
 

@@ -1,10 +1,10 @@
 ---
 title: Firewall requirements for Azure Stack HCI
 description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
-author: cosmosdarwin
-ms.author: cosdar
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 06/05/2023
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -23,15 +23,14 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited only t
 - Outbound direction
 - Port 443 (HTTPS)
 
-This article describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
+> [!IMPORTANT]
+> Azure Stack HCI doesn’t support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
 
 As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-The following sections provide consolidated lists of required and recommended URLs for the Azure Stack HCI core components, which include cluster creation, registration and billing, Microsoft Update, and cloud cluster witness. You can use the JSON tab to directly copy-and-paste the URLs into your allowlist.
-
-The subsequent sections provide additional details about the firewall requirements of Azure Stack HCI core components, followed by firewall requirements for additional Azure services (optional).
+This article describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
 
 ## Required firewall URLs
 
@@ -180,7 +179,7 @@ To view or verify current WinHTTP proxy configuration, at the command prompt, ty
 
 Refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
-- [AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings)
+- [AKS hybrid](/azure-stack/aks-hci/set-proxy-settings)
 - [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
 - [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)

@@ -22,6 +22,23 @@ Before you begin, make sure you meet the following requirements:
 
 IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](concepts-node-networking.md#minimum-ip-address-reservations-for-an-aks-hybrid-deployment).
 
+## Install pre-requisite PowerShell modules
+Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
+
+```PowerShell
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
+Install-PackageProvider -Name NuGet -Force  
+Install-Module -Name PowershellGet -Force 
+Exit 
+```
+
+Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
+
+```PowerShell
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.23
+Exit 
+```
+
 ## Choose between Static IP [recommended] and DHCP based networks
 
 You can choose between Static IP and DHCP based networks for your AKS hybrid clusters. Run the following commands from any one node on your physical cluster.
@@ -99,12 +116,60 @@ Run the following command to download the VHD file specific for `v1.22.11` Kuber
 
 ### [For Linux nodes](#tab/linux-vhd)
 ```powershell
-Add-ArcHcik8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\ArcHci\0.2.23\ArcHci.psm1' -Force
+$mocConfig = Get-MocConfig
+$k8sVersion = "1.22.11"
+$mocVersion = "1.0.16.10113"
+$imageType = "Linux"
+$imageName = Get-LegacyKubernetesGalleryImageName -imagetype $imageType -k8sVersion $k8sVersion
+$galleryImage = $null
+
+# Check if requested k8s gallery image is already present
+try {
+    $galleryImage = Get-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation
+} catch {}
+
+if ($null -ine $galleryImage) {
+    Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
+} else {
+    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
+
+    Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
+    $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
+
+    Write-Output "Adding $imageType $k8sVersion k8s gallery image to MOC"
+    New-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation -imagePath $result -container "MocStorageContainer"
+}
 ```
 
 ### [For Windows nodes](#tab/windows-vhd)
 ```powershell
-Add-ArcHcik8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113 -imageType Windows
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\ArcHci\0.2.23\ArcHci.psm1' -Force
+$mocConfig = Get-MocConfig
+$k8sVersion = "1.22.11"
+$mocVersion = "1.0.16.10113"
+$imageType = "Windows"
+$imageName = Get-LegacyKubernetesGalleryImageName -imagetype $imageType -k8sVersion $k8sVersion
+$galleryImage = $null
+
+# Check if requested k8s gallery image is already present
+try {
+    $galleryImage = Get-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation
+} catch {}
+
+if ($null -ine $galleryImage) {
+    Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
+} else {
+    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
+
+    Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
+    $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
+
+    Write-Output "Adding $imageType $k8sVersion k8s gallery image to MOC"
+    New-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation -imagePath $result -container "MocStorageContainer"
+}
+
+
 ```
 
 ---

@@ -4,7 +4,7 @@ description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/23/2023
+ms.lastreviewed: 06/06/2023
 ms.reviewer: mayabishop
 ms.date: 02/22/2023
 
@@ -97,7 +97,7 @@ In the **Networking** section:
 
    1. **Subnet**: Select or create the subnet to use for file system interaction.
 
-   The Azure Managed Lustre file system uses a dedicated virtual network (VNet) and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
+   The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
    You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are co-located with the file system.
   
@@ -107,7 +107,10 @@ In the **Networking** section:
 
 ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
 
-When you finish entering **Basic** settings, select **Next: Advanced** to continue.
+When you finish entering the **Basic** settings, select **Next: Advanced** to continue.
+
+> [!NOTE]
+> Moving an Azure Virtual Network Manager instance is not currently supported. The existing virtual network manager instance might be deleted and another created in a new location using the Azure Resource Manager template.
 
 ## Advanced
 

@@ -3,11 +3,12 @@ title: Deploy AKS infrastructure using PowerShell
 description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using PowerShell to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
 ms.topic: quickstart
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-#Intent: As an IT Pro, I want to test drive Azure Kubernetes Service (AKS) hybrid deployment options without investing in extra hardware.
 #Keyword: Azure Virtual Machine deployment, Evaluate AKS hybrid in Azure
 ---
 

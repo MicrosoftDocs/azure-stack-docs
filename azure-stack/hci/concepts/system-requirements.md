@@ -6,7 +6,10 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.custom:
+  - references_regions
+  - devx-track-azurepowershell
+ms.date: 06/14/2023
 ---
 
 # System requirements for Azure Stack HCI
@@ -14,6 +17,58 @@ ms.date: 04/17/2023
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+
+## Azure requirements
+
+Here are the Azure requirements for your Azure Stack HCI cluster:
+
+- **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
+
+   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
+   - Subscription obtained through an Enterprise Agreement (EA).
+   - Subscription obtained through the Cloud Solution Provider (CSP) program.
+
+- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/register-with-azure.md#assign-azure-permissions-for-registration).
+
+- **Azure regions**
+
+   The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions:
+
+   # [Azure public](#tab/azure-public)
+
+   These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
+
+   - East US
+   - South Central US
+   - Canada Central
+   - West Europe
+   - Southeast Asia
+   - Central India
+   - Japan East
+   - Australia East
+
+   # [Azure China](#tab/azure-china)
+
+   Regions supported in the Azure China cloud:
+
+   - China East 2
+   - China North 3
+
+   # [Azure Government](#tab/azure-government)
+
+   Regions supported in the Azure Government cloud:
+
+   - US Gov Virginia
+
+   ---
+
+   Regions supported for additional features of Azure Stack HCI:
+
+   Currently, [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) supports only the following regions for Azure Stack HCI registration:
+
+   - East US
+   - West Europe
 
 ## Server requirements
 
@@ -75,7 +130,7 @@ When you create an Azure Stack HCI cluster using Windows Admin Center, you have 
 
 - Make sure the host servers have at least 50-100 GB of free space to create the Network Controller VMs.
 
-- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) or by running the [Convert-WindowsImage](https://www.powershellgallery.com/packages/Convert-WindowsImage) PowerShell cmdlet to convert an .iso file into a VHD.
+- You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard.md#download-the-vhdx-file).
 
 For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 

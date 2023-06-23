@@ -195,8 +195,12 @@
             href: deploy-metallb.md
           - name: Use an ingress controller
             href: create-ingress-controller.md
-          - name: Use software defined networking
-            href: software-defined-networking.md
+          - name: Use Microsoft Software Defined Networking (SDN)
+            items:
+                - name: Deploy SDN
+                  href: software-defined-networking.md
+                - name: Deploy application clusters on different SDN virtual networks
+                  href: deploy-target-clusters-virtual-networks.md
     - name: Storage
       items:
           - name: Use persistent volume
@@ -277,8 +281,12 @@
     href: aks-hybrid-preview-azure-vm.md
   - name: How-to
     items:
-     - name: Install Azure Resource Bridge on Windows Server
-       href: deploy-arc-resource-bridge-windows-server.md
+     - name: Install AKS service
+       items:
+        - name: Install on Azure Stack HCI
+          href: deploy-aks-service-hci.md
+        - name: Install on Windows Server
+          href: deploy-arc-resource-bridge-windows-server.md
      - name: Configure networking for AKS hybrid clusters
        href: create-aks-hybrid-preview-networks.md
      - name: Provision AKS hybrid clusters from Azure

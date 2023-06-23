@@ -17,6 +17,8 @@ ms.lastreviewed: 04/19/2022
 
 > [!IMPORTANT]
 > Remote support is in public preview and only available in the following versions:
+>
+> - 2206
 > - 2108
 > - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
@@ -60,7 +62,7 @@ In Azure Stack Hub, remote support can be managed using [privileged endpoint](az
 
 ### Enable remote support for diagnostics
 
-In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
+In this example, you enable remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440

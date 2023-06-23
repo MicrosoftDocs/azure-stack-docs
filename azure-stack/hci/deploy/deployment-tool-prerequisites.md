@@ -3,7 +3,7 @@ title: Prerequisites to deploy Azure Stack HCI (preview)
 description: Learn about the prerequisites to deploy Azure Stack HCI (preview).
 author: dansisson
 ms.topic: conceptual
-ms.date: 10/24/2022
+ms.date: 05/30/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -19,11 +19,11 @@ This article discusses the security, software, hardware, and networking prerequi
 
 ## Security considerations
 
-Review the [security considerations](../manage/preview-channel.md) and [assess environment readiness](../manage/use-environment-checker.md) for Azure Stack HCI.
+Review the [security considerations](../manage/preview-channel.md) for Azure Stack HCI and [assess environment readiness](../manage/use-environment-checker.md) by using the Environment Checker. If you plan to use the standalone version of the Environment Checker on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool. This will help you avoid any potential conflicts that could arise during the deployment process.
 
 ## Software requirements
 
-You must install Azure Stack HCI, version 22H2 operating system using the instructions in [Deploy Azure Stack HCI, version 22H2 OS](./deployment-tool-install-os.md).
+The Supplemental Package supports only the English version of the Azure Stack HCI operating system. Therefore, you must install Azure Stack HCI, version 22H2 operating system in English using the instructions in [Deploy Azure Stack HCI, version 22H2 OS](./deployment-tool-install-os.md).
 
 ## Hardware requirements
 
