@@ -95,8 +95,7 @@ For more information on creating a service principal, see [Create an Azure servi
 1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
-    -WitnessStorageKey $AzureStorAcctAccessKey
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID -WitnessStorageKey $AzureStorAcctAccessKey
     ```
 
 ## Run the deployment tool using MFA
