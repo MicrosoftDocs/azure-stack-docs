@@ -1,5 +1,5 @@
 ---
-title: Renew certificates for Software Defined Networking infrastructure nodes
+title: Renew certificates for Software Defined Networking infrastructure
 description: This article describes how to renew or change SDN server and Software Load Balancer multiplexer certificates.
 author: sethmanheim
 ms.author: sethm
@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 06/16/2023
 ---
 
-# Renew certificates for Software Defined Networking infrastructure nodes
+# Renew certificates for Software Defined Networking infrastructure
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
 
@@ -48,7 +48,10 @@ where:
 
 ## Renew SDN server and SLB MUX certificates
 
-You can use the `Start-SdnServerCertificateRotation` and `Start-SdnMuxCertificateRotation` cmdlets to generate new self-signed certificates and automatically renew them to all the servers and SLB MUX VMs respectively. By default, the cmdlets generate certificates with a validity period of three years, but you can specify a different validity period. Certificate automatic renewal helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
+Use the [`Start-SdnServerCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnServerCertificateRotation) and [`Start-SdnMuxCertificateRotation`](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnMuxCertificateRotation) cmdlets to generate new self-signed certificates and automatically renew them to all the servers and SLB MUX VMs respectively. By default, the cmdlets generate certificates with a validity period of three years, but you can specify a different validity period. Certificate automatic renewal helps minimize any downtime or unplanned outages caused due to certificate expiry issues.
+
+> [!NOTE]
+> The functionality to renew bring-your-own-certificates and pre-installed certificates isn't yet available.
 
 ### Requirements
 
