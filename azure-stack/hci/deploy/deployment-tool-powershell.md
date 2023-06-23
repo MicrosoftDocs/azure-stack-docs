@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 06/22/2023
+ms.date: 06/23/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -89,7 +89,7 @@ For more information on creating a service principal, see [Create an Azure servi
     $SPNSecret= "<Your SPN Secret>"
     $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
     $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
-    $AzureStorAcctAccessKey="<Azure Storage account access key>"
+    $AzureStorAcctAccessKey = ConvertTo-SecureString '<Azure Storage account access key in plain text>' -AsPlainText -Force
     ```
 
 1. Specify the path to your configuration file and run the following to start the deployment:
