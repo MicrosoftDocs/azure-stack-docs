@@ -143,7 +143,7 @@ Create a DHCP virtual network when the underlying network to which you want to c
 
 ### Create a static virtual network
 
-Create a statoc virtual network when you want to create virtual machines with network interfaces on these virtual networks. Follow these steps to configure a static virtual network:
+Create a static virtual network when you want to create virtual machines with network interfaces on these virtual networks. Follow these steps to configure a static virtual network:
 
 1. Set the parameters. Here's an example:
 
