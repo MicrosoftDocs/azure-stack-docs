@@ -92,7 +92,7 @@ For more information on creating a service principal, see [Create an Azure servi
     $AzureStorAcctAccessKey = ConvertTo-SecureString '<Azure Storage account access key in plain text>' -AsPlainText -Force
     ```
 
-1. Specify the path to your configuration file and run the following to start the deployment:
+1. Specify the path to your configuration file and run the following command to start the deployment:
 
     ```powershell
     .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID -WitnessStorageKey $AzureStorAcctAccessKey
