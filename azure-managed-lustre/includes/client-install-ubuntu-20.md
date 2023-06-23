@@ -32,7 +32,7 @@ ms.lastreviewed: 02/19/2023
 1. Install the metapackage that matches your running kernel:
 
    ```bash
-   sudo apt install amlfs-lustre-client-2.15.1-24-gbaa21ca=$(uname -r)
+   sudo apt install amlfs-lustre-client-2.15.1_29_gbae0abe=$(uname -r)
    ```
 
    > [!NOTE]
