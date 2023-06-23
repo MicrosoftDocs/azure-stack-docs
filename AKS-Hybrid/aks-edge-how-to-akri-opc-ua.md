@@ -215,9 +215,9 @@ If you choose to use OPC Foundation's Certificate Generator, here is now to buil
 7. Create a `.crl` file for CA using OpenSSL (only if you created CA from the generator, which would be missing the `.crl` file).
 
 If you choose to use OpenSSL, here is a list of references:
-1. [OpenSSL Project](https://www.openssl.org/)
-2. [OpenSSL Cookbook](https://www.feistyduck.com/library/openssl-cookbook/online/)
-3. [Tutorial: Use OpenSSL to create test certificates](/azure/iot-hub/tutorial-x509-openssl)
+- [OpenSSL Project](https://www.openssl.org/)
+- [OpenSSL Cookbook](https://www.feistyduck.com/library/openssl-cookbook/online/)
+- [Tutorial: Use OpenSSL to create test certificates](/azure/iot-hub/tutorial-x509-openssl)
 
 ### Create an opcua-broker-credentials Kubernetes secret
 
@@ -274,7 +274,7 @@ Now follow the previous section on running Akri to discover your servers, except
       --set opcua.configuration.discoveryDetails.discoveryUrls[1]="opc.tcp://<FQDN of 2nd container instance>:50000/" `
       --set opcua.configuration.mountCertificates='true'
    ```
-From here, you can folow the section on deploying an anomaly detection web application as an end consumer of the brokers to see your OPC PLC values on your web page.
+From here, you can follow the section on deploying an anomaly detection web application as an end consumer of the brokers to see your OPC PLC values on your web page.
  
 ## Clean up
 
