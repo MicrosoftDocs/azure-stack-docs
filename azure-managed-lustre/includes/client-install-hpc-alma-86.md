@@ -39,7 +39,7 @@ ms.lastreviewed: 04/28/2023
 1. Install the metapackage that matches your running kernel:
 
    ```bash
-   sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.1_24_gbaa21ca-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.1_29_gbae0abe-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
         
 
