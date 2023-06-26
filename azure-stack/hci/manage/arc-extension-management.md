@@ -51,7 +51,7 @@ You can check the status of an extension on each server from the **Extensions** 
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps to check if the extensions are installed using the Azure CLI.
+You can use Azure CLI to check if the extensions are installed following these steps:
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in a Docker container and Azure Cloud Shell. 
 
@@ -63,11 +63,11 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
     az account set --subscription "${subscription}"
     ```
 
-1. Set up parameters from your subscription, resource group, cluster name and extension name
+1. Set up parameters from your subscription, resource group, cluster name, and extension name
     ```azurecli
     resourceGroup="hcicluster-rg" # Replace with your resource group name
     clusterName="HCICluster" # Replace with your cluster name
-    extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+    extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
     ```
 1. To list all the extensions on a cluster, run the following command:
 
@@ -75,7 +75,7 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
     az stack-hci extension list \
     --arc-setting-name "default" \
     --cluster-name "${clusterName}" \
-    --resource-group "${resourceGroup}"  \
+    --resource-group "${resourceGroup}" \
     -o table
     ```
 
@@ -84,8 +84,8 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
     az stack-hci extension list \
     --arc-setting-name "default" \
     --cluster-name "${clusterName}" \
-    --resource-group "${resourceGroup}"  \
-    --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
+    --resource-group "${resourceGroup}" \
+    --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}" \
     -o table
     ```
 ---
@@ -222,10 +222,9 @@ If desired, you can uninstall some extensions from your Azure Stack HCI clusters
 
 To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
 ```azurecli
-extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
 resourceGroup="hcicluster-rg" # Replace with your resource group name
-clusterName=""HCICluster" # Replace with your cluster name
-extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+clusterName="HCICluster" # Replace with your cluster name
 
 az stack-hci extension delete \
 --arc-setting-name "default" \
