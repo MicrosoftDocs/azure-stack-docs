@@ -44,10 +44,50 @@ You can install extensions from the **Capabilities** tab for your Azure Stack HC
 When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
 
 ## Check the extension status
-
+# [Azure portal](#tab/azureportal)
 You can check the status of an extension on each server from the **Extensions** page by viewing the **status** column of the grid.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-status-view.png" alt-text="Screenshot of the different extension statuses in the Azure portal." lightbox="media/arc-extension-management/arc-extension-status-view.png":::
+
+# [Azure CLI](#tab/azurecli)
+
+Follow these steps to check if the extensions are installed using the Azure CLI.
+
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in a Docker container and Azure Cloud Shell. 
+
+This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud Shell](https://shell.azure.com/). For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart)
+
+1. Set up your subscription
+    ```azurecli
+    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    az account set --subscription "${subscription}"
+    ```
+
+1. Set up parameters from your subscription, resource group, cluster name and extension name
+    ```azurecli
+    resourceGroup="hcicluster-rg" # Replace with your resource group name
+    clusterName=""HCICluster" # Replace with your cluster name
+    extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+    ```
+1. To list all the extensions on a cluster, run the following command:
+
+    ```azurecli    
+    az stack-hci extension list \
+    --arc-setting-name "default" \
+    --cluster-name "${clusterName}" \
+    --resource-group "${resourceGroup}"  \
+    -o table
+    ```
+
+1. To filter out a specific extension like `AzureMonitorWindowsAgent`, run the following command:
+    ```azurecli    
+    az stack-hci extension list \
+    --arc-setting-name "default" \
+    --cluster-name "${clusterName}" \
+    --resource-group "${resourceGroup}"  \
+    --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
+    -o table
+    ```
 
 ## How the extension upgrade works
 
@@ -59,6 +99,8 @@ Currently, automatic extension upgrades are only supported in the Windows Admin 
 > By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
 ### Enable automatic upgrade via the Azure portal
+
+# [Azure portal](#tab/azureportal)
 
 For some extensions, you can enable automatic upgrades through extension management.
 
@@ -72,6 +114,20 @@ To enable an automatic upgrade, navigate to the **Extensions** page and perform 
 3. When prompted to confirm your intent, select **OK**.
 
     :::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png" alt-text="Screenshot of the notification to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png":::
+
+# [Azure CLI](#tab/azurecli)
+
+To install and enable auto upgrade for a specific extension like `AdminCenter` run the following command:
+```azurecli
+extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+
+az stack-hci extension list \
+--arc-setting-name "default" \
+--cluster-name "${clusterName}" \
+--resource-group "${resourceGroup}"  \
+--query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
+-o table
+```
 
 ### Manual extension upgrade via the Azure portal
 
@@ -133,6 +189,8 @@ If multiple extension upgrades are available for a machine, they might be batche
 
 ## Uninstall an extension from the Azure portal
 
+# [Azure portal](#tab/azureportal)
+
 If desired, you can uninstall some extensions from your Azure Stack HCI clusters in the Azure portal. To uninstall an extension, use these steps:
 
 1. Go to the **Extensions page**.
@@ -144,6 +202,22 @@ If desired, you can uninstall some extensions from your Azure Stack HCI clusters
 4. Confirm the intent and select **Yes**.
 
     :::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-2.png" alt-text="Screenshot of the notification to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-2.png":::
+
+# [Azure CLI](#tab/azurecli)
+
+To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
+```azurecli
+extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+resourceGroup="hcicluster-rg" # Replace with your resource group name
+clusterName=""HCICluster" # Replace with your cluster name
+extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+
+az stack-hci extension delete \
+--arc-setting-name "default" \
+--name "${extensionName}" \
+--cluster-name "${clusterName}" \
+--resource-group "${resourceGroup}"
+```
 
 ## Troubleshooting extension errors
 
