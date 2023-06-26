@@ -41,10 +41,10 @@ Before you begin, make sure that the following prerequisites are completed.
 
 Follow these steps to sysprep an Ubuntu image and create VM image from that image: 
 
-1. [Create Ubuntu VM](#step-1-create-an-ubuntu-vm).
-1. [Configure VM](#step-2-configure-vm). 
-1. [Clean up VM](#step-3-clean-up-vm).
-1. [Create VM image](#step-4-create-vm-image).
+1. [Create an Ubuntu VM](#step-1-create-an-ubuntu-vm).
+1. [Configure the VM](#step-2-configure-vm). 
+1. [Clean up the VM](#step-3-clean-up-vm).
+1. [Create an Ubuntu VM image](#step-4-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
 
