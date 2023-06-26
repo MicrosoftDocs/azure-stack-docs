@@ -44,7 +44,7 @@ Next, make sure you download the correct versions of PowerShell modules directly
 Install the following ArcHCI PowerShell module on your Azure Stack HCI or Windows Server cluster:
 
 ```powershell
-Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense -RequiredVersion 0.2.23
+Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense -RequiredVersion 0.2.24
 ```
 
 ## Networking prerequisites
