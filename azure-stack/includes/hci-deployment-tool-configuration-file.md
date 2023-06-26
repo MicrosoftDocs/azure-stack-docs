@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/05/2023
+ms.date: 06/20/2023
 ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 12/05/2022
@@ -13,25 +13,20 @@ Here's a sample configuration file (JSON format) you can modify, save, and use f
 
 ```json
 {
-    "Version": "3.0.0.0",
+    "Version": "10.0.0.0",
     "ScaleUnits": [
         {
             "DeploymentData": {
                 "SecuritySettings": {
-                    "SecurityModeSealed": true,
-                    "SecuredCoreEnforced": true,
-                    "VBSProtection": true,
                     "HVCIProtection": true,
                     "DRTMProtection": true,
-                    "KernelDMAProtection": true,
                     "DriftControlEnforced": true,
-                    "CredentialGuardEnforced": false,
+                    "CredentialGuardEnforced": true,
                     "SMBSigningEnforced": true,
                     "SMBClusterEncryption": false,
                     "SideChannelMitigationEnforced": true,
                     "BitlockerBootVolume": true,
                     "BitlockerDataVolumes": true,
-                    "SEDProtectionEnforced": true,
                     "WDACEnforced": true
                 },
                 "Observability": {
@@ -40,89 +35,114 @@ Here's a sample configuration file (JSON format) you can modify, save, and use f
                     "EpisodicDataUpload": true
                 },
                 "Cluster": {
-                    "Name": "cluster_name",
-                    "StaticAddress": [
-                        ""
-                    ]
+                    "Name": "ms169154cluster",
+                    "WitnessType": "Cloud",
+                    "WitnessPath": "",
+                    "CloudAccountName": "myasestoragacct",
+                    "AzureServiceEndpoint": "core.windows.net"
                 },
                 "Storage": {
                     "ConfigurationMode": "Express"
                 },
-                "OptionalServices": {
-                    "VirtualSwitchName": "",
-                    "CSVPath": "",
-                    "ARBRegion": ""
-                },
-                "NamingPrefix": "HCI002",
-                "DomainFQDN": "contoso.com",
-                "ExternalDomainFQDN": "",
+                "NamingPrefix": "ms169",
+                "DomainFQDN": "ASZ1PLab8.nttest.microsoft.com",
                 "InfrastructureNetwork": [
                     {
                         "VlanId": "0",
-                        "SubnetMask": "255.255.255.0",
-                        "Gateway": "10.0.50.1",
+                        "SubnetMask": "255.255.248.0",
+                        "Gateway": "10.57.48.1",
                         "IPPools": [
                             {
-                                "StartingAddress": "10.0.50.52",
-                                "EndingAddress": "10.0.50.59"
+                                "StartingAddress": "10.57.48.60",
+                                "EndingAddress": "10.57.48.66"
                             }
                         ],
                         "DNSServers": [
-                            "10.0.50.10"
+                            "10.57.50.90"
                         ]
                     }
                 ],
                 "PhysicalNodes": [
                     {
-                        "Name": "node1_netbios_name",
-                        "IPv4Address": "10.0.50.51"
+                        "Name": "ms169host",
+                        "IPv4Address": "10.57.51.224"
+                    },
+                    {
+                        "Name": "ms154host",
+                        "IPv4Address": "10.57.53.236"
                     }
                 ],
                 "HostNetwork": {
                     "Intents": [
                         {
-                            "Name": "Compute_Management_Storage",
+                            "Name": "Compute_Management",
                             "TrafficType": [
                                 "Compute",
-                                "Management",
-                                "Storage"
+                                "Management"
                             ],
                             "Adapter": [
-                                "Ethernet_Name",
-                                "Ethernet2_Name"
+                                "Port2"
                             ],
                             "OverrideVirtualSwitchConfiguration": false,
+                            "VirtualSwitchConfigurationOverrides": {
+                                "EnableIov": "",
+                                "LoadBalancingAlgorithm": ""
+                            },
                             "OverrideQoSPolicy": false,
                             "QoSPolicyOverrides": {
-                                "PriorityValue8021Action_Cluster": "7",
-                                "PriorityValue8021Action_SMB": "3",
-                                "BandwidthPercentage_SMB": "50%"
+                                "PriorityValue8021Action_Cluster": "",
+                                "PriorityValue8021Action_SMB": "",
+                                "BandwidthPercentage_SMB": ""
                             },
                             "OverrideAdapterProperty": false,
                             "AdapterPropertyOverrides": {
                                 "JumboPacket": "",
-                                "NetworkDirect": "Enabled",
-                                "NetworkDirectTechnology": "iWARP"
+                                "NetworkDirect": "",
+                                "NetworkDirectTechnology": ""
+                            }
+                        },
+                        {
+                            "Name": "Storage",
+                            "TrafficType": [
+                                "Storage"
+                            ],
+                            "Adapter": [
+                                "Port3",
+                                "Port4"
+                            ],
+                            "OverrideVirtualSwitchConfiguration": false,
+                            "VirtualSwitchConfigurationOverrides": {
+                                "EnableIov": "",
+                                "LoadBalancingAlgorithm": ""
+                            },
+                            "OverrideQoSPolicy": false,
+                            "QoSPolicyOverrides": {
+                                "PriorityValue8021Action_Cluster": "",
+                                "PriorityValue8021Action_SMB": "",
+                                "BandwidthPercentage_SMB": ""
+                            },
+                            "OverrideAdapterProperty": false,
+                            "AdapterPropertyOverrides": {
+                                "JumboPacket": "",
+                                "NetworkDirect": "",
+                                "NetworkDirectTechnology": ""
                             }
                         }
                     ],
                     "StorageNetworks": [
                         {
-                            "Name": "Storage1_Network_Name",
-                            "NetworkAdapterName": "Ethernet_Adapter",
-                            "VlanId": 711
+                            "Name": "Storage1Network",
+                            "NetworkAdapterName": "Port3",
+                            "VlanId": 5
                         },
                         {
-                            "Name": "Storage2_Network_Name",
-                            "NetworkAdapterName": "Ethernet2_Adapter",
-                            "VlanId": 712
+                            "Name": "Storage2Network",
+                            "NetworkAdapterName": "Port4",
+                            "VlanId": 5
                         }
                     ]
                 },
-                "ADOUPath": "OU=HCI002,DC=contoso,DC=com",
-                "DNSForwarder": [
-                    "10.0.50.10"
-                ]
+                "ADOUPath": "OU=ms169,DC=ASZ1PLab8,DC=nttest,DC=microsoft,DC=com"
             }
         }
     ]
