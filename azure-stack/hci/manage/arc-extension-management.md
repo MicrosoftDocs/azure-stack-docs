@@ -85,7 +85,7 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
     --arc-setting-name "default" \
     --cluster-name "${clusterName}" \
     --resource-group "${resourceGroup}" \
-    --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}" \
+    --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State:aggregateState, Type:extensionParameters.type}" \
     -o table
     ```
 ---
@@ -129,18 +129,18 @@ extensionType="AdminCenter"
 az stack-hci arc-setting update \
 --name "default" \
 --cluster-name "${clusterName}" \
---resource-group "${resourceGroup}"  \
+--resource-group "${resourceGroup}" \
 --connectivity-properties '{"enabled": true}'
 
 az stack-hci extension create \
 --extension-name "${extensionName}" \
 --arc-setting-name "default" \
 --cluster-name "${clusterName}" \
---resource-group "${resourceGroup}"  \
+--resource-group "${resourceGroup}" \
 --publisher ${extensionPublisher} \
 --type ${extensionType} \
---settings '{"port": "6516"}' \
---auto-upgrade yes
+--settings "{\"port\": \"6516\"}" \
+--auto-upgrade true
 ```
 ---
 
