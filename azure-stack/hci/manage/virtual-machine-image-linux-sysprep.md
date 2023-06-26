@@ -17,6 +17,8 @@ ms.date: 06/26/2023
 
 This article describes how to prepare an Ubuntu image to create a virtual machine (VM) image for your Azure Stack HCI virtual machines. You can create VM images from this syspreped Linux image via the Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
+We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs that you'll create using this VM image.
+
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -33,7 +35,7 @@ Before you begin, make sure that the following prerequisites are completed.
         - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
         -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
 
-- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system.
+- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system. You are required to sysprep gallery images  for guest management for VMs created using Ubuntu images.
 
 ## Workflow 
 
@@ -146,7 +148,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 
-1. Use the VHDX of the VM to create a gallery image. This image can be used to deploy virtual machines.
+1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image image to create Arc virtual machines on your Azure Stack HCI.
 
     ```powershell
     $galleryImagePath = (Get-VMHardDiskDrive -VMName "ubuntu-server").Path 
@@ -155,33 +157,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
     az azurestackhci galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
     ```
-    Here's a sample output:
-    
-    ```
-    PS C:\Users\azcli> 
-
-    ```
-
-
-## List VM images
-
-You need to view the list of VM images to choose an image to manage.
-
-[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
-
-
-## View VM image properties
-
-You may want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
-
-
-## Delete VM image
-
-You may want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 
 ## Next steps
