@@ -4,7 +4,7 @@ description: This article describes how to renew or change SDN server and Softwa
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/16/2023
+ms.date: 06/26/2023
 ---
 
 # Renew certificates for Software Defined Networking infrastructure
@@ -67,8 +67,8 @@ Perform these steps to generate self-signed certificates and automatically renew
 
 1. To generate self-signed certificates on the physical hosts, run the `Start-SdnServerCertificateRotation` cmdlet. You can use the `-Force` parameter with the cmdlet to avoid any prompts for confirmation or manual inputs during the rotation process.
 
-> [!NOTE]
-> To renew the SLB MUX certificates, replace the cmdlet name with `Start-SdnMuxCertificateRotation` in the following commands.
+   > [!NOTE]
+   > To renew the SLB MUX certificates, replace the cmdlet name with `Start-SdnMuxCertificateRotation` in the following commands.
 
    - To generate self-signed certificates with the default three years validity period, run the following commands:
 
