@@ -88,6 +88,7 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
     --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
     -o table
     ```
+---
 
 ## How the extension upgrade works
 
@@ -128,6 +129,7 @@ az stack-hci extension list \
 --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
 -o table
 ```
+---
 
 ### Manual extension upgrade via the Azure portal
 
@@ -218,6 +220,8 @@ az stack-hci extension delete \
 --cluster-name "${clusterName}" \
 --resource-group "${resourceGroup}"
 ```
+
+---
 
 ## Troubleshooting extension errors
 
