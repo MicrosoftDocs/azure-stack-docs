@@ -85,27 +85,27 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 1. Clean `cloud-init` default configurations.
 
-  ```bash
-  sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
-  sudo rm -f /etc/cloud/ds-identify.cfg
-  sudo rm -f /etc/netplan/*.yaml
-  ```
+    ```bash
+    sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+    sudo rm -f /etc/cloud/ds-identify.cfg
+    sudo rm -f /etc/netplan/*.yaml
+    ```
 
 1. Clean up logs and cache.
 
-  ```bash
-  sudo cloud-init clean --logs --seed
-  sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-  sudo apt-get clean
-  ```
+    ```bash
+    sudo cloud-init clean --logs --seed
+    sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
+    sudo apt-get clean
+    ```
 
 1. Remove bash history.
 
-  ```bash
-  rm -f ~/.bash_history 
-  export HISTSIZE=0 
-  logout
-  ```
+    ```bash
+    rm -f ~/.bash_history 
+    export HISTSIZE=0 
+    logout
+    ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
     
