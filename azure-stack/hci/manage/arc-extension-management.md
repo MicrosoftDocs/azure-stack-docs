@@ -66,7 +66,7 @@ This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud 
 1. Set up parameters from your subscription, resource group, cluster name and extension name
     ```azurecli
     resourceGroup="hcicluster-rg" # Replace with your resource group name
-    clusterName=""HCICluster" # Replace with your cluster name
+    clusterName="HCICluster" # Replace with your cluster name
     extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
     ```
 1. To list all the extensions on a cluster, run the following command:
@@ -120,14 +120,27 @@ To enable an automatic upgrade, navigate to the **Extensions** page and perform 
 
 To install and enable auto upgrade for a specific extension like `AdminCenter` run the following command:
 ```azurecli
-extensionName="AzureMonitorWindowsAgent" # Replace with the extension  name
+resourceGroup="hcicluster-rg" # Replace with your resource group name
+clusterName="HCICluster" # Replace with your cluster name
+extensionName="AdminCenter"
+extensionPublisher="Microsoft.AdminCenter"
+extensionType="AdminCenter"
 
-az stack-hci extension list \
+az stack-hci arc-setting update \
+--name "default" \
+--cluster-name "${clusterName}" \
+--resource-group "${resourceGroup}"  \
+--connectivity-properties '{"enabled": true}'
+
+az stack-hci extension create \
+--extension-name "${extensionName}" \
 --arc-setting-name "default" \
 --cluster-name "${clusterName}" \
 --resource-group "${resourceGroup}"  \
---query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State: aggregateState, Type:extensionParameters.type}"  \
--o table
+--publisher ${extensionPublisher} \
+--type ${extensionType} \
+--settings '{"port": "6516"}' \
+--auto-upgrade yes
 ```
 ---
 
