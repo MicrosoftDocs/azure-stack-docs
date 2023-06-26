@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/15/2023
+ms.date: 06/26/2023
 ---
 
 # Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
@@ -39,16 +39,16 @@ Before you begin, make sure that the following prerequisites are completed.
 
 Follow these steps to sysprep an Ubuntu image and create VM image from that image: 
 
-1. Create Ubuntu VM
-1. Configure VM 
-1. Clean up VM
-1. Create VM image
+1. [Create Ubuntu VM](#step-1-create-an-ubuntu-vm).
+1. [Configure VM](#step-2-configure-vm). 
+1. [Clean up VM](#step-3-clean-up-vm).
+1. [Create VM image](#step-4-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
 
 ## Create VM image from Ubuntu image
 
-You'll create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -58,9 +58,9 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
 1. Use the downloaded image to create a VM with the following specifications: 
     1. Provide a friendly name ubuntu-server for your VM. 
-    1. Specify **Generation 2** for your VM as you are working with a VHDX image here.
+    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
     1. Make sure that the **Secure boot** is **Disabled**.
-    See [Provision a VM using Hyper-V Manager]() for step-by-step instructions.
+    See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
 
 ### Step 2: Configure VM
@@ -78,10 +78,10 @@ Follow these steps to configure the VM that you provisioned earlier:
     ```azurecli
     sudo apt install linux-azure -y
     ```
-1. 
+ 
 ### Step 3: Clean up VM
 
-Delete machine-specific files and data from your VM.
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations.
 
 1. Clean `cloud-init` default configurations.
 
@@ -114,13 +114,13 @@ Delete machine-specific files and data from your VM.
 
 1. Run PowerShell as an administrator.
 
-1. Sign in. Type:
+1. Sign in. Run the following cmdlet:
 
     ```azurecli
     az login
     ```
 
-1. Set your subscription.
+1. Set your subscription. Run the following cmdlet:
 
     ```azurecli
     az account set --subscription <Subscription ID>
@@ -141,7 +141,7 @@ Delete machine-specific files and data from your VM.
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
     | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
     | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
@@ -181,7 +181,7 @@ You may want to view the properties of VM images before you use the image to cre
 
 You may want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 
 ## Next steps
