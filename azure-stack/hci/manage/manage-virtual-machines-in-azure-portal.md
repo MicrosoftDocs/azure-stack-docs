@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/08/2023
+ms.date: 06/26/2023
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -83,7 +83,7 @@ For a virtual network interface created on a DHCP or static virtual network, the
 | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
 | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
 | **Location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-| **subnet-id** |SHOULD THIS BE VNET? - Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
+| **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
  
 
 For static IP only, additional *required* basic parameters are tabulated as follows:
@@ -92,6 +92,7 @@ For static IP only, additional *required* basic parameters are tabulated as foll
 | --------- | ----------- |
 | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
 | **ip-address** | An IPv4 address you want to assign to the virtual network interface that you are creating. For example: "192.168.0.10".  |
+| **Gateway** | Ipv4 address of the default gateway. |
     
 
 ### Create virtual network interface
@@ -208,6 +209,7 @@ Follow these steps to create a virtual network interface on your static virtual 
     $ResourceGroupName = "hcirg"
     $CustomLocName = "hci-hybridaks-cl" 
     $Location = "eastus2euap"
+    $Gateway = "10.0.0.1"
     $IpAddress = "10.0.0.14"
     $IpAllocationMethod = "Static"
 
@@ -215,7 +217,7 @@ Follow these steps to create a virtual network interface on your static virtual 
 1. To create a virtual network interface, run the following command:
 
     ```azurecli
-    az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name $VNic --ip-allocation-method $IpAllocationMethod --subnet-id $Vnet --ip-address $IpAddress
+    az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name $VNic --ip-allocation-method $IpAllocationMethod --subnet-id $Vnet --ip-address $IpAddress --gateway $gateway
     ```
     
     Here's a sample output:
@@ -238,7 +240,7 @@ Follow these steps to create a virtual network interface on your static virtual 
           {
             "name": null,
             "properties": {
-              "gateway": null,
+              "gateway": "10.0.0.1",
               "prefixLength": "24",
               "privateIpAddress": "10.0.0.14",
               "privateIpAllocationMethod": "Static",
