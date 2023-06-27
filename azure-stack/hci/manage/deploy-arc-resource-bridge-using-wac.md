@@ -25,9 +25,9 @@ This article describes how to use Windows Admin Center to set up Azure Arc VM ma
 
 - [Projecting virtual network and images](create-virtual-networks.md).
 
-To set up Azure Arc VM management using command line, see [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
+To set up Azure Arc VM management using the command line, see [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
 
-For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
+For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md).
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -54,7 +54,7 @@ These extensions come preinstalled with Windows Admin Center versions 2110.2 and
 
 ## Set up Arc Resource Bridge and create custom location
 
-To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, in Windows Admin Center select the **Settings** option on the lower left-hand side when connected to a cluster, and then navigate to **Azure Arc VM setup for Azure Stack HCI**.
+To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI cluster, in Windows Admin Center select the **Settings** option on the lower left-hand side when connected to a cluster, and then navigate to **Azure Arc VM setup for Azure Stack HCI**.
 
 If an Arc Resource Bridge isn't detected, a button is displayed to deploy Resource Bridge.
 
@@ -84,19 +84,19 @@ Perform the following steps to deploy Azure Arc Resource Bridge:
     
         - The **Controlplane IP** address is used for the load balancer in the Arc Resource Bridge. This IP address needs to be in the same subnet as the DHCP scope for virtual machines and must be excluded from the DHCP scope to avoid IP address conflicts.
         
-        - The **Cloudagent IP** address is required only for static IP configurations on the underlay network for the physical hosts.
+        - The **Cloudagent IP** address is required only for static IP configurations on the underlying network for the physical hosts.
 
         The following screenshot displays an example of a DHCP networking configuration:
 
         :::image type="content" source="media/manage-azure-arc-vm/networking-configuration.png" alt-text="Screenshot that shows Networking configuration tab with DHCP option as selected":::
 
-1. On the Azure Registration page of the wizard, provide the details about the subscription, resource group, and region you wish to use for this service. Your resource group needs to be in the East US or West Europe region.
+1. On the Azure registration page of the wizard, provide the details about the subscription, resource group, and region you wish to use for this service. Your resource group needs to be in the East US or West Europe region.
 
     When finished, select **Review Settings**.
 
 1. Review all of your selections in the **Review Settings** step. If you're satisfied with your selections, select, **Apply** to prepare the cluster hosts, and after completion of that step, proceed to **Deployment**.
 
-1. On the **Deployment** page, you can watch the progress of the Arc Resource Bridge. At this point, you're welcome to open Windows Admin Center in a new tab and continue your management tasks. The deployment takes about 15-30 minutes to complete.
+1. On the **Deployment** page, you can watch the progress of the Arc Resource Bridge. At this point, you can open Windows Admin Center in a new tab and continue your management tasks. The deployment takes about 15-30 minutes to complete.
 
 If the deployment is successful, the wizard automatically navigates to the Arc Resource Bridge dashboard. On this dashboard, you can see the details of the custom location and Arc Resource Bridge.
 
