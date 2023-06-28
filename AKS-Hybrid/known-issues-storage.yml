@@ -101,7 +101,7 @@ sections:
 
           4. Reboot affected nodes
           
-            ```shell
+              ```shell
              sudo reboot
              ```
           
