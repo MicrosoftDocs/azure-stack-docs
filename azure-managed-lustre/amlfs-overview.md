@@ -25,14 +25,14 @@ Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allo
 
 You can also use your Azure Managed Lustre file system with your Azure Kubernetes Service (AKS) containers. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
 
-> [!NOTE]
-> Azure Managed Lustre doesn't store customer data outside the region in which you deploy the service instance.
-
 ## Data security in Azure Managed Lustre
 
 All data stored in Azure is encrypted at rest using Azure managed keys by default. If you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster, follow the instructions in [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
 All information in an Azure Managed Lustre file system also is protected by VM host encryption on the managed disks that hold your data, even if you add a customer-managed key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. For more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
+
+> [!NOTE]
+> Azure Managed Lustre doesn't store customer data outside the region in which you deploy the service instance.
 
 ## Data resilience in Azure Managed Lustre
 
