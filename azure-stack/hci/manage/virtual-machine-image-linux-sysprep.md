@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/27/2023
+ms.date: 06/28/2023
 ---
 
 # Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
@@ -75,6 +75,8 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**. 
     1. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**. 
     1. Apply the changes. On the next boot, the VM boots without the secure mode.
+
+    :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-secure-boot-disabled.png":::
 
 ### Step 2: Configure VM
 
