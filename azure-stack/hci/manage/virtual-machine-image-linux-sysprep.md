@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/28/2023
+ms.date: 06/27/2023
 ---
 
 # Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
