@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 05/25/2023
+ms.date: 06/28/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
