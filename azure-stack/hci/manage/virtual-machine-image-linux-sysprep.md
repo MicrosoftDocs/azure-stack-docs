@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/27/2023
+ms.date: 06/28/2023
 ---
 
 # Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
@@ -57,10 +57,19 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
 1. Use the downloaded image to create a VM with the following specifications: 
     1. Provide a friendly name for your VM. 
+    
+        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../manage/media/manage-vm-resources/ubutnu-virtual-machine-name.png":::
+
     1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+
+        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../manage/media/manage-vm-resources/ubutnu-virtual-machine-name.png":::
+
     1. Make sure that the **Secure boot** is **Disabled**.
+    
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
+
+    :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../manage/media/manage-vm-resources/ubutnu-virtual-machine-name.png":::
 
 ### Step 2: Configure VM
 
