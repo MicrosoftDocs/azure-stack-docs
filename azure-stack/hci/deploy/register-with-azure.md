@@ -30,7 +30,7 @@ Before you begin cluster registration, make sure the following prerequisites are
 
 - **Azure Stack HCI system deployed and online.** Make sure the system is deployed and all servers are online.
 
-- **Network connectivity.** Azure Stack HCI needs to periodically connect to the Azure public cloud. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+- **Network connectivity.** Azure Stack HCI needs to periodically connect to the Azure public cloud. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md) and [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
 - **Azure subscription and permissions.** Make sure you have an Azure subscription and you know the Azure region where the cluster resources should be created. For more information about Azure subscription and supported Azure regions, see [Azure requirements](../concepts/system-requirements.md#azure-requirements).
 
