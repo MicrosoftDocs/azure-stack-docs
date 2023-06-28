@@ -41,7 +41,7 @@
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
     - name: Use Azure Lustre CSI driver for Kubernetes
-    href: use-csi-driver-kubernetes.md
+      href: use-csi-driver-kubernetes.md
   - name: Export data
     items:
     - name: Use archive jobs to export data
@@ -50,7 +50,6 @@
     items:
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
-  - name: Troubleshoot
 - name: Troubleshooting
   items:
   - name: Recover from a regional outage
