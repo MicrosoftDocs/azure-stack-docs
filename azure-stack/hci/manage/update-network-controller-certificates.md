@@ -1,19 +1,19 @@
 ---
-title: Renew Network Controller certificates before they expire
-description: This article describes how to renew Network Controller certificates before they expire.
+title: Renew certificates for Network Controller
+description: This article describes how to renew Network Controller certificates.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/12/2023
+ms.date: 06/27/2023
 ---
 
-# Renew Network Controller certificates before they expire
+# Renew certificates for Network Controller
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
 
-This article provides instructions on how to renew or change Network Controller certificates before they expire, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
+This article provides instructions on how to renew or change Network Controller certificates, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
-In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. You must renew them before they expire.
+In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. It is highly recommended that you renew them before they expire.
 
 For an overview of Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 
