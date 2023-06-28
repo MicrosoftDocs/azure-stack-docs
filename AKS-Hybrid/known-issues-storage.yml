@@ -95,7 +95,15 @@ sections:
             
               ```shell
               sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;
+              sudo find /run/systemd/propagate -name 'systemd-coredump@*' -delete
+              sudo journalctl --rotate && sudo journalctl --vacuum-size=500M
               ```
+
+          4. Reboot affected nodes
+          
+            ```shell
+             sudo reboot
+             ```
           
       - question: | 
           Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
