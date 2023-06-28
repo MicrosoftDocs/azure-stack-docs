@@ -67,9 +67,13 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
     1. Make sure that the **Secure boot** is **Disabled**.
     
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
-1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
 
-    :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png":::
+
+    1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
+    
+        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png":::
+
+1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**.
 
 ### Step 2: Configure VM
 
