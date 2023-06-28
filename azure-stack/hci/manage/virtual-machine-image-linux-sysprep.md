@@ -185,4 +185,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Next steps
 
-- [Create Arc](./manage-virtual-machines-in-azure-portal.md) VMs on your Azure Stack HCI cluster.
+- [Create Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
