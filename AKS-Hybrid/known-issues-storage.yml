@@ -81,7 +81,6 @@ sections:
           1. Turn off the Geneva agent with the following shell commands:
           
               ```shell
-              sudo systemctl stop mdsd
               sudo systemctl disable --now mdsd
               ```
           
