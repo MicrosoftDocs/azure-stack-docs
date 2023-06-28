@@ -37,8 +37,6 @@ Plan these items carefully, and configure them correctly when you create your Az
 
 1. On the **Azure Managed Lustre** blade, select **+ Create**.
 
-   ![Screenshot showing the Create command for Azure Managed Lustre.](./media/create-file-system-portal/lustre-create.png)
-
 This starts the **Create** wizard.
 
 ## Basics
