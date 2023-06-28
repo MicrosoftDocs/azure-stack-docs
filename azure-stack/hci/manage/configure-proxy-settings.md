@@ -75,7 +75,7 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
     Here's an example of the command usage:
 
     ```powershell
-    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080 -ProxyBypass "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,*.contoso.com
+    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080 -ProxyBypass "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,*.contoso.com"
     ```
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
