@@ -15,7 +15,7 @@ ms.date: 06/27/2023
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article describes how to prepare an Ubuntu image to create virtual machines (VMs) for your Azure Stack HCI cluster. Use the Azure CLI to create VM images from this syspreped Ubuntu image.
+This article describes how to prepare an Ubuntu image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
 We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs.
 
@@ -67,7 +67,7 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 Follow these steps to configure the VM that you provisioned earlier:
 
 1. Sign into the VM. See steps in [Connect to a Linux VM](/azure/databox-online/azure-stack-edge-gpu-deploy-virtual-machine-portal#connect-to-a-linux-vm).
-1. To get and install the latest patches on your VM, run the following command: 
+1. To download all the latest package lists from the repositories, run the following command:
 
     ```azurecli
     sudo apt update
@@ -75,9 +75,20 @@ Follow these steps to configure the VM that you provisioned earlier:
 1. Install Azure cloud tools. This is a required step for your VM to get an IP for the network interface.
 
     ```azurecli
-    sudo apt install linux-azure -y
+    sudo apt install linux-cloud-tools-virtual -y
     ```
- 
+1. Install SSH server. Run the following command:
+
+    ```azurecli
+    sudo apt install openssh-server openssh-client -y
+    ```
+
+1. Configure passwordless sudo. Add the following at the end of `/etc/sudoers` file using `visudo`:
+
+    ```azurecli
+    ALL ALL=(ALL) NOPASSWD:ALL
+    ```
+
 ### Step 3: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations.
