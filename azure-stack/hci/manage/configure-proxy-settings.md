@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/10/2023
+ms.date: 06/28/2023
 ---
 
 # Configure proxy settings for Azure Stack HCI
@@ -75,36 +75,10 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
     Here's an example of the command usage:
 
     ```powershell
-    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080
-    ```
-
-    Here's a sample output of the command:
-
-    ```output
-    PS C:\Users\adminuser> Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080
-    Start proxy Configuration
-    Proxy is machine wide
-    AutoDetect is 0
-    PACUrl is
-    ProxyServer is proxy.contoso.com:8080
-    ProxyBypass is
-    Successfully set proxy
+    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080 -ProxyBypass "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,*.contoso.com
     ```
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
-
-Here's a sample output of the command:
-
-```output
-PS C:\Users\adminuser> Set-WinInetProxy
-Start proxy Configuration
-Proxy is Per User
-AutoDetect is 0
-PACUrl is
-ProxyServer is
-ProxyBypass is
-Successfully set proxy
-```
 
 ## Configure proxy settings for Azure Arc-enabled servers
 
