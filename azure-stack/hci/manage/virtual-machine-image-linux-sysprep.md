@@ -63,11 +63,11 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
     1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
 
-        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png":::
+        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png":::
     
     1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
     
-        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png":::
+        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png":::
 
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
