@@ -53,7 +53,7 @@ On the **Basics** tab, enter the following information:
 
    For best performance, create your Azure Managed Lustre file system in the same region and availability zone as your client machines.
 
-![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
+   ![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
 
 ### File system details
 
@@ -76,7 +76,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
      > [!NOTE]
      > These values are rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
 
-![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
+   ![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
 
 ### Networking
 
@@ -96,7 +96,7 @@ In the **Networking** section:
 
    To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
 
-![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
+   ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
 
 When you finish entering the **Basic** settings, select **Next: Advanced** to continue.
 
@@ -143,7 +143,7 @@ To configure blob integration:
 
    You can't change this field after you create the Azure Managed Lustre file system.
 
-![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
+   ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
 
 ### Maintenance window
 
