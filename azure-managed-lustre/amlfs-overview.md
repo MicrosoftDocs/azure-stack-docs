@@ -1,5 +1,5 @@
 ---
-title: What is Azure Managed Lustre (preview)?
+title: What is Azure Managed Lustre?
 description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 ms.topic: overview
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.custom: references_regions
 
 ---
 
-# What is Azure Managed Lustre (preview)?
+# What is Azure Managed Lustre?
 
 The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
@@ -24,12 +24,6 @@ Azure Managed Lustre saves you the work of provisioning, configuring, and managi
 Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allows you to specify files to import from a blob container for the file system's use. When the high-performance computing jobs are finished, you can export changed data to Azure Blob Storage, and delete the Azure Managed Lustre system. For more information, see [Azure Blob Storage integration](#azure-blob-storage-integration), later in this article.
 
 You can also use your Azure Managed Lustre file system with your Azure Kubernetes Service (AKS) containers. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
-
-## Join the preview
-
-To participate in the preview, complete the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0), providing contact information, Azure subscription ID(s), and basic use case information. Currently there is no cost for Azure Managed Lustre during the preview. You will be billed normally for other Azure services that you use as part testing.
-
-The Azure Managed Lustre preview is supported in these regions: Australia East, Canada Central, East US, East US 2, South Central US, UK South, West Europe, West US 2, and West US 3.
 
 > [!NOTE]
 > Azure Managed Lustre doesn't store customer data outside the region in which you deploy the service instance.
@@ -78,4 +72,3 @@ To find out which driver versions to use, see [Compatible Kubernetes versions](u
 
 - Learn more about [blob storage integration](blob-integration.md)
 - Learn more about [using Azure Managed Lustre with Kubernetes](use-csi-driver-kubernetes.md)
-- Sign up for the preview by completing the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0)
