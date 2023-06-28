@@ -85,10 +85,10 @@ Follow these steps to configure the VM that you provisioned earlier:
     ```azurecli
     sudo apt update
     ```
-1. Install Azure cloud tools. This is a required step for your VM to get an IP for the network interface.
+1. Install [Azure tailored kernel](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel). This is a required step for your VM to get an IP for the network interface.
 
     ```azurecli
-    sudo apt install linux-cloud-tools-virtual -y
+    sudo apt install linux-azure -y
     ```
 1. Install SSH server. Run the following command:
 
@@ -172,7 +172,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image image to create Arc virtual machines on your Azure Stack HCI.
 
     ```powershell
-    $galleryImagePath = (Get-VMHardDiskDrive -VMName "ubuntu-server").Path 
+    $galleryImagePath = (Get-VMHardDiskDrive -VMName "myubuntuvm").Path 
 
     $galleryImageName = "ubuntu-server-ssvm" 
 
