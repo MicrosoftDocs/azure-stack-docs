@@ -17,8 +17,6 @@ ms.date: 06/27/2023
 
 This article describes how to prepare an Ubuntu image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
-We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs.
-
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -48,6 +46,9 @@ Follow these steps to sysprep an Ubuntu image and create VM image from that imag
 The following sections provide detailed instructions for each step in the workflow.
 
 ## Create VM image from Ubuntu image
+
+> [!IMPORTANT]
+> We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs.
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -182,4 +183,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Next steps
 
-- [Create virtual networks](./create-virtual-networks.md)
+- [Create Arc](./manage-virtual-machines-in-azure-portal.md) VMs on your Azure Stack HCI cluster.
