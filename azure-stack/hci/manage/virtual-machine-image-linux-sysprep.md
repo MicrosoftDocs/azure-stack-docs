@@ -172,7 +172,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 
-1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image image to create Arc virtual machines on your Azure Stack HCI.
+1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image to create Arc virtual machines on your Azure Stack HCI.
 
     ```powershell
     $galleryImagePath = (Get-VMHardDiskDrive -VMName "myubuntuvm").Path 
