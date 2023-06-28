@@ -50,7 +50,6 @@
     items:
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
-  - name: Troubleshoot
 - name: Troubleshooting
   items:
   - name: Recover from a regional outage
