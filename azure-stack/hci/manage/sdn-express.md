@@ -73,7 +73,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
 - **VHDFile** - VHDX file name used by all SDN infrastructure VMs
-- **VMLocation** - file path to SDN infrastructure VMs
+- **VMLocation** - file path to SDN infrastructure VMs. Note that Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`
 - **JoinDomain** - domain to which SDN infrastructure VMs are joined to
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs
 - **SDNMacPoolEnd** -  end MAC pool address for client workload VMs
