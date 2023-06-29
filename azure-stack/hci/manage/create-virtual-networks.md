@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/28/2023
+ms.date: 06/29/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
