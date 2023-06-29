@@ -34,5 +34,5 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Contact support
-            url: preview-support.md
+          - text: Recover from a regional outage
+            url: amlfs-region-recovery.md
