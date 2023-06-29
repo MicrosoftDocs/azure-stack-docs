@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI using PowerShell (preview) 
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 06/20/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
