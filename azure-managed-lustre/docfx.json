@@ -48,7 +48,8 @@
       "extendBreadcrumb": false,
       "manager":"femila",
       "ms.service": "azure-stack",
-      "recommendations": true
+      "recommendations": true,
+      "zone_pivot_group_filename": "zone-pivot-groups.json"
    },
    "fileMetadata": {
     "titleSuffix": {
