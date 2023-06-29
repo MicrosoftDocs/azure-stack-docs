@@ -286,7 +286,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 

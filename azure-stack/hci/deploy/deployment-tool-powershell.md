@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI using PowerShell (preview) 
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
-ms.date: 05/05/2023
-ms.author: v-dansisson
+ms.date: 06/20/2023
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -64,10 +64,13 @@ The following parameters are required to run the deployment tool. Consult your n
 |`RegistrationSPCredential`|Specify the credentials including the App ID and the secret for the Service Principal used to authenticate the cluster to Azure.|
 |`RegistrationAccountCredential`|(Optional for MFA) Specify a credential object which is used to authenticate the Azure subscription. This is an alternative to using a service principal for authentication.|
 |`RegistrationArcServerResourceGroupName`|(Optional for MFA) Specify a dedicated resource group for the Arc for server objects. This allows separate resource groups between Arc for Servers and Azure Stack HCI clusters.|
+|`WitnessStorageKey`|Specify the access key for the Azure Storage account used for cloud witness for your Azure Stack HCI cluster.|
 
 ## Run the deployment tool using a service principal
 
-If you are using a service principal name to authenticate your cluster, follow these steps to deploy Azure Stack HCI via PowerShell:
+If you are using a service principal name to authenticate your cluster, use the following steps to deploy Azure Stack HCI via PowerShell.
+
+For more information on creating a service principal, see [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps) and [Create an Azure Active Directory application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal).
 
 1. Connect to the first server in your Azure Stack HCI cluster using Remote Desktop Protocol (RDP).
 
@@ -86,12 +89,13 @@ If you are using a service principal name to authenticate your cluster, follow t
     $SPNSecret= "<Your SPN Secret>"
     $SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force
     $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
+    $AzureStorAcctAccessKey = ConvertTo-SecureString '<Azure Storage account access key in plain text>' -AsPlainText -Force
     ```
 
-1. Specify the path to your configuration file and run the following to start the deployment:
+1. Specify the path to your configuration file and run the following command to start the deployment:
 
     ```powershell
-    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID
+    .\Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential  $AzureStackLCMUserCred  -LocalAdminCredential -$LocalAdminCred -RegistrationSPCredential $SPNCred -RegistrationCloudName $CloudName -RegistrationSubscriptionID $SubscriptionID -WitnessStorageKey $AzureStorAcctAccessKey
     ```
 
 ## Run the deployment tool using MFA
@@ -123,6 +127,7 @@ If you are using multi-factor authentication (MFA) to authenticate your cluster,
     $LocalCred=Get-Credential 
 
     Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential $DomainCred -LocalAdminCredential $LocalCred
+    -WitnessStorageKey $AzureStorAcctAccessKey
     ```
 
 

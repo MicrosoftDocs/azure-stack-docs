@@ -2,11 +2,11 @@
 title: Create an Azure Managed Lustre file system using Azure Resource Manager templates
 description: Use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
+ms.date: 06/28/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/21/2023
 ms.reviewer: mayabishop
-ms.date: 02/21/2023
 
 ---
 
@@ -22,8 +22,6 @@ This article gives examples of two different methods for creating Azure Resource
 * Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the information. When you deploy the template, the Bicep files are converted into Azure Resource Manager template files. See the [Bicep documentation](/azure/azure-resource-manager/bicep/).
 
 For help understanding your options, see [Comparing JSON and Bicep for templates](/azure/azure-resource-manager/bicep/compare-template-syntax).
-
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## File system type and size options
 
@@ -150,12 +148,10 @@ This section explains the information you need to include in your Azure Resource
 
 * **Storage capacity** - The size of your Azure Managed Lustre cluster, in TiB. Values depend on the SKU. For more information, see the [File system type and size options](#file-system-type-and-size-options) section.
 
-* **Maintenance period** (Not used in private preview) - Requires two values that set the maintenance period. These values define a 30-minute period weekly during which system updates can be done.
+* **Maintenance period** - Requires two values that set the maintenance period. These values define a 30-minute period weekly during which system updates can be done.
 
   * Day of the week (for example, `Sunday`)
   * Time of day (UTC) (for example, `22:00`)
-
-  During the private preview, maintenance might be done at any time.
 
 ## Optional information
 

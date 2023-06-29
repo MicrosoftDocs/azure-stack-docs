@@ -84,7 +84,7 @@ az k8s-extension create --resource-group $resourceGroup --cluster-name $resource
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az k8s-extension show --resource-group $resourceGroup --cluster-name $resourceBridgeName --cluster-type appliances --name $aksHybridExtnName --extension-type Microsoft.HybridAKSOperator --query "provisioningState" -o tsv
+az k8s-extension show --resource-group $resourceGroup --cluster-name $resourceBridgeName --cluster-type appliances --name $aksHybridExtnName --query "provisioningState" -o tsv
 ```
 Expected output:
 ```output

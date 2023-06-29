@@ -12,56 +12,32 @@ ms.lastreviewed: 02/02/2023
 
 # Start-AksEdgeUpdate
 
-Starts the update process for updating AKS Edge Essentials. Updates control plane nodes only.
+Starts the update process for updating AKS Edge Essentials nodes.
 
 ## Syntax
 
 ```powershell
-Start-AksEdgeUpdate [-secondaryControlPlaneUpdate] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AksEdgeUpdate [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## Description
 
-Microsoft Update sends all the binaries necessary to complete the AKS Edge Essentials Update. The `Start-AksEdgeUpdate` command locates these
-binaries and starts the MSI update process. Running this command results in some downtime for the images inside of AKS Edge Essentials.
-If you have any worker nodes in the cluster, you must run `Start-AksEdgeWorkerNodeUpdate` once all of the control plane nodes in the cluster are updated.
+Microsoft Update sends all the binaries necessary to complete the AKS Edge Essentials Update. The `Start-AksEdgeUpdate` command locates and downloads the binaries. You have to run this command on both the Control Plane nodes and the worker nodes.
 
 ## Examples
 
-### To update the first control node in the cluster
+### To update any node in the cluster
 
 ```powershell
  Start-AksEdgeUpdate 
 ```
 
-### To update the secondary control node in the cluster
-
-```powershell
- Start-AksEdgeUpdate -secondaryControlPlaneUpdate
-```
-
 ## Parameters
-
-### -secondaryControlPlaneUpdate
-
-If this is not the first control plane node you've upgraded in the cluster, you must set this flag.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Force
 
 This parameter enables you to update the node without user interaction.
-If Force is specified, user will not be asked for confirmation. Otherwise, user will be asked for confirmation if force updating is required.
+If Force is specified, users won't be asked for confirmation. Otherwise, the user is asked for confirmation if force updating is required.
 
 ```yaml
 Type: SwitchParameter

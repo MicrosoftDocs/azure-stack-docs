@@ -1,10 +1,10 @@
 ---
 title: Prerequisites to deploy Azure Stack HCI (preview)
 description: Learn about the prerequisites to deploy Azure Stack HCI (preview).
-author: dansisson
+author: alkohli
 ms.topic: conceptual
 ms.date: 05/30/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---

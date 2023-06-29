@@ -30,7 +30,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Arc.ResourceGroupName` |String|Resource group name| None |Single-machine and <br> full deployment|
 | `Arc.SubscriptionId` |GUID|Azure subscription ID| None |Single-machine and <br> full deployment|
 | `Arc.TenantId` |GUID| TenantID for the Azure subscription| None |Single-machine and <br> full deployment|
-| `Arc.ClientId` |GUID| AppID of the service principal| None |Single-machine and <br> full deployment|
+| `Arc.ClientId` |GUID| AppID of the service principal. You can use the **App Registrations** page in the Azure Active Directory resource page on the Azure portal, to list and manage the service principals in a tenant.| None |Single-machine and <br> full deployment|
 | `Arc.ClientSecret` |String|Secret associated with the Service Principal| None |Single-machine and <br> full deployment|
 | `Network.ControlPlaneEndpointIp` |IPv4 address `A.B.C.x`|A free IP address on your subnet **A.B.C**. The control plane (API server) gets this address. |  |Full deployment only|
 | `Network.NetworkPlugin` |[`calico` / `flannel`]|CNI plugin choice for the Kubernetes network model. For K8s cluster, always use `calico` and for K3s cluster, always use `flannel`.|  `flannel`|Single-machine and <br> full deployment|

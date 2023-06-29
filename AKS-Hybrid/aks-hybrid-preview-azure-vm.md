@@ -128,7 +128,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.22
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
 Exit 
 ```
 
@@ -146,11 +146,16 @@ Open a new PowerShell admin window and run the following command:
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
 Install-Moc
-Add-ArcHcik8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
 curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
 $config = Get-MocConfig
 cp .\kubectl.exe $config.installationPackageDir
 ```
+
+Download the Linux VHD image by running the following command:
+```PowerShell
+Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+```
+
 
 ## Step 7: Generate prerequisite YAML files needed to deploy Azure Arc Resource Bridge
 
