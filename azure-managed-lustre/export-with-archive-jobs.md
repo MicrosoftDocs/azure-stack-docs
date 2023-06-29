@@ -1,25 +1,23 @@
 ---
-title: Use archive jobs to export data from Azure Managed Lustre (preview)
+title: Use archive jobs to export data from Azure Managed Lustre
 description: How to use an archive job to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage.
 ms.topic: overview
+ms.date: 06/28/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
-ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I need to be able to export files from my Azure Managed Lustre file system to longterm Azure Blob Storage.
 # Keyword: 
 
 ---
 
-# Use archive jobs to export data from Azure Managed Lustre (preview)
+# Use archive jobs to export data from Azure Managed Lustre
 
 This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job, and explains what is exported from the file system.
 
 This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an archive job.
-
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## Which files does an archive job export?
 
@@ -44,7 +42,7 @@ The following procedures tell how to:
 
 To create an archive job to export changed data from an Azure Managed Lustre file system in the Azure portal, do the following steps:
 
-1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview), and open your Azure Managed Lustre file system.
+1. Sign in to [the Azure portal](https://portal.azure.com), and open your Azure Managed Lustre file system.
 
 1. Under **Settings**,  open the **Blob integration** page to export changed files to the integrated blob container.
 

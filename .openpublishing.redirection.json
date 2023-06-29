@@ -990,7 +990,12 @@
       "source_path": "azure-stack/hci/manage/azure-arc-vm-management-proxy.md",
       "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-prerequisites",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "azure-managed-lustre/preview-support.md",
+      "redirect_url": "/azure/azure-managed-lustre/amlfs-overview",
+      "redirect_document_id": false
+    }    
   ]
   
 }
