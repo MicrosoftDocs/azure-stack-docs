@@ -50,6 +50,6 @@ ms.lastreviewed: 04/28/2023
 
    ```bash
    export NEWKERNELVERSION=6.7.8
-   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.1-24-gbaa21ca-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.1_29_gbae0abe-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
 

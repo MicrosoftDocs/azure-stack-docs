@@ -34,7 +34,7 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.23
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
 Exit 
 ```
 
