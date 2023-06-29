@@ -1,10 +1,10 @@
 ---
 title: Known issues with AKS hybrid clusters provisioned from Azure
-description: Known issues with AKS hybrid clusters provisioned from Azure
+description: Learn about known issues with AKS hybrid clusters provisioned from Azure.
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/03/2022
+ms.date: 06/28/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/03/2022
@@ -129,3 +129,7 @@ az arcappliance delete hci --config-file "<path to working directory>\hci-applia
 ```powershell
 Remove-ArcHciAksConfigFiles -workDirectory <path to working directory>
 ```
+
+## Arc Resource Bridge stuck in in "offline" mode while creating AKS hybrid cluster from portal
+
+If you see your Arc Resource Bridge connection in an offline state, check that you are connected to the VM. Wait for approximately 10 minutes to see the status changed from **Offline** to **Running**.
