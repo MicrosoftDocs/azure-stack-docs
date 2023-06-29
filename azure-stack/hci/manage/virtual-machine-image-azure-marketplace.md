@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/09/2023
+ms.date: 06/29/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
