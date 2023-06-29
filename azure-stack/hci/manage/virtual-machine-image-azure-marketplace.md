@@ -253,15 +253,15 @@ You may want to view the properties of VM images before you use the image to cre
 
 ## Update VM image
 
-When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation is not an in-place update of the image. Rather you can see for which VM images an updated image is available. After you update, the create VM image operation uses the new, updated image.
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation is not an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
 
 To update a VM image, use the following steps in Azure portal.
 
-1. If an update is available, select a VM image from the list view.
+1. To see if an update is available, select a VM image from the list view.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
 
-   In the **Overview** blade, you see a banner that shows the new VM image available to download, if one is available. To update to the new image, select **the arrow icon**.
+   In the **Overview** blade, you see a banner that shows the new VM image available for download, if one is available. To update to the new image, select **the arrow icon**.
 
    :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
 
