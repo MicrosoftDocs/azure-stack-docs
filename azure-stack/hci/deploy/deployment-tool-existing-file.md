@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI using an existing configuration file (preview) 
 description: Learn how to deploy Azure Stack HCI using an existing configuration file (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 11/17/2022
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
