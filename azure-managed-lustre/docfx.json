@@ -49,7 +49,7 @@
       "manager":"femila",
       "ms.service": "azure-stack",
       "recommendations": true,
-      "zone_pivot_group_filename": "zone-pivot-groups.yml"
+      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
    },
    "fileMetadata": {
     "titleSuffix": {
