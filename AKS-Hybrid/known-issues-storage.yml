@@ -20,7 +20,7 @@ sections:
           Configuring persistent volume claims results in the error: "Unable to initialize agent. Error: mkdir /var/log/agent: permission denied"
 
         answer: | 
-          This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
+          This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class doesn't specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
           
           To resolve this issue, [define a custom storage class](container-storage-interface-disks.md) that you can use to provision PVCs.
           
@@ -81,7 +81,6 @@ sections:
           1. Turn off the Geneva agent with the following shell commands:
           
               ```shell
-              sudo systemctl stop mdsd
               sudo systemctl disable --now mdsd
               ```
           
@@ -95,7 +94,15 @@ sections:
             
               ```shell
               sudo find /var/lib/systemd/coredump/ -type f -mmin +1 -exec rm -f {} \;
+              sudo find /run/systemd/propagate -name 'systemd-coredump@*' -delete
+              sudo journalctl --rotate && sudo journalctl --vacuum-size=500M
               ```
+
+          4. Reboot affected nodes
+          
+              ```shell
+             sudo reboot
+             ```
           
       - question: | 
           Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
@@ -103,7 +110,7 @@ sections:
         answer: | 
           An error may occur if you have an SMB or NFS CSI driver installed in your deployment and you upgrade to the May build from an older version. One of the parameters, called `createSubDir`, is no longer accepted. If this applies to your deployment, follow the instructions below to resolve the storage class failure. 
           
-          If you have this error, the storage pod will crash and the logs will say that the `createSubDir` parameter is invalid. 
+          If you have this error, the storage pod crashes and the logs say that the `createSubDir` parameter is invalid. 
           
           The storage pod will crash.
           
