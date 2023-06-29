@@ -108,6 +108,7 @@ The state command reports the state of changes to the file. one of four states f
 |`(0x00000009) exists archived`|An archive job won't export the file to Blob Storage because Blob Storage already has the latest copy.|
 |`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. To send the changes in Lustre back to Blob Storage, run an archive job. The archive job overwrites the file in Blob Storage.|
 |`(0x00000000)`|The file is new and only exists in the Lustre file system. An archive job will create a new file in the blob container. If the file is updated again in Lustre, run another archive job to copy those changes to Blob Storage.|
+|`(0x00000001) exists`|The file is new and only exists in the Lustre file system. An archive job has been started and has not completed for this file. |
 
 ## Next steps
 
