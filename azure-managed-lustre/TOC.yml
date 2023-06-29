@@ -6,6 +6,8 @@
     href: amlfs-overview.md
 - name: Tutorials
   items:
+    - name: Install clients
+      href: client-install.md
     - name: Install AlmaLinux 8
       href: install-rhel-8.md
     - name: Install AlmaLinux HPC 8.6
