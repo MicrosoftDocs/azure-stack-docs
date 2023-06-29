@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: dansisson
 ms.topic: how-to
-ms.date: 04/03/2023
+ms.date: 06/28/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -53,9 +53,9 @@ If you want to use an existing configuration file you have previously created, s
 
     1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
 
-    1. Under **Authentication**, copy the authentication code for your Azure cloud:
+    1. Under **Authentication**, select **Copy** to copy the authentication code for your Azure cloud:
     
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - authentication page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-authentication-code.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - with authentication code." lightbox="media/deployment-tool/new-file/deploy-new-step-1-authentication-code.png":::
     
     c. Select **Sign in**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported.
     
