@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/25/2023
+ms.date: 06/28/2023
 ms.author: sethm
 ms.reviewer: JasonGerend
 ---
@@ -83,6 +83,8 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values. This is the MAC pool used to assign MAC addresses to VMs attached to SDN networks.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
@@ -145,6 +147,8 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
 1. Under **Credentials**, enter the username and password that you used to join the Software Load Balancer VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 
@@ -182,6 +186,8 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value may depend on various factors, such as physical NIC speed on the host machine, other VMs on the host machine and their throughput requirements.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. Enter the path to the VMs. You can also use the default populated path.
 1. When finished, click **Next: Deploy the Gateway**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
