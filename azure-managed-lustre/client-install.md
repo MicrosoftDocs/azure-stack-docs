@@ -86,7 +86,7 @@ In this tutorial you will:
 > * install the pre-built client
 
 > [!NOTE]
-> For AlmaLinux 8.6 HPC Marketplace images, please see separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md)
+> For AlmaLinux 8.6 HPC Marketplace images, see the separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md)
 
 For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
