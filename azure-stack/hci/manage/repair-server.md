@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/20/2023
+ms.date: 06/30/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -74,7 +74,7 @@ The following scenarios are supported during server replacement:
 |------------------------------ |-----------------------|-----------|
 | New server                    | New disks             |Yes        |
 | New server                    | Current disks             |Yes        |
-| Current server (reimaged)     | Reformatted disks*|No         |
+| Current server (reimaged)     | Current disks reformatted *|No         |
 | Current server (reimaged)     | New disks             |Yes        |
 | Current server (reimaged)     | Current disks |Yes        |
 
