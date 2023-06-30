@@ -13,11 +13,17 @@ ms.date: 10/20/2022
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution.
+This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Collect logs via PowerShell
+You can use the `Send-DiagnosticData` cmdlet to save and transmit diagnostic data to Microsoft. Depending on your connectivity to Azure, there are various ways to use this cmdlet:
+
+- When the cluster is deployed and connected to Azure, the cmdlet collects logs and temporarily saves them locally. This copy is parsed, sent to Microsoft, and then automatically deleted from your system. See [Collect logs when the cluster is connected to Azure](#collect-logs-when-the-cluster-is-connected-to-azure).
+
+- When the cluster is deployed but not connected to Azure or during the cluster validation process, the cmdlet saves the logs to a local Server Message Block (SMB) share. Then you can use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the validation process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any deployment issues. See [Collect logs when the cluster isn't connected to Azure or during validation](#collect-logs-when-the-cluster-isnt-connected-to-azure-or-during-validation).
+
+## Collect logs when the cluster is connected to Azure
 
 Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
@@ -47,7 +53,7 @@ where:
   - AutonomousLogs
   - OEMDiagnostics
   - ObservabilityVolume
-  - NC 
+  - NC
 
 - `CollectSddc` parameter is set to `$true` by default, which triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes its logs as part of the log collection.
 
@@ -136,6 +142,12 @@ To get a history of log collections for the last 90 days, enter:
    Error
    PS C:\CloudDeployment\logs>
    ```
+
+## Collect logs when the cluster isn't connected to Azure or during validation
+
+When the cluster is deployed but not connected to Azure or during the cluster validation process, the cmdlet saves the logs to a local Server Message Block (SMB) share. Then you can use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the validation process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any deployment issues.
+
+[!INCLUDE [include](../../includes/hci-send-logs-manually.md)]
 
 ## Next steps
 

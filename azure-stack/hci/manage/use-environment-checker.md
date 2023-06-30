@@ -529,6 +529,71 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
+## Use the Environment Checker to troubleshoot validation
+
+Starting with Azure Stack HCI, version 23H2 (preview) and later, you can use the Environment Checker to troubleshoot any issues that you may encounter during the validation process. You can use the Environment Checker cmdlets to save diagnostic data locally and send it to Microsoft to get remote support, after you log a support ticket.
+
+The following sections provide instructions on how to collect logs, send them to Microsoft, and get remote support to troubleshoot any issues during the validation process.
+
+- Send logs
+- Get remote support
+
+### Send logs
+
+In the Environment Checker, use the `Send-DiagnosticData` cmdlet to collect and save logs locally and then use the `Send-AzStackHciDiagnosticData` cmdlet to manually send them to Microsoft.
+
+[!INCLUDE [include](../../includes/hci-send-logs-manually.md)]
+
+### Get remote support
+
+When you enable remote support while registering, Microsoft Support can connect to your device remotely and offer assistance.
+
+The high-level workflow to enable remote support is as follows:
+
+- [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request)
+- Enable remote support via PowerShell. This is a one time configuration
+- Get remote support
+
+#### Enable remote support
+
+To enable remote support for the first time, a one-time configuration is required.
+
+> [!NOTE]
+> When you enable remote support, it requires a service restart to activate Just Enough Administration (JEA). During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. Wait for a few minutes before you can reconnect to the remote node and run the `Enable-AzStackHciRemoteSupport` cmdlet again.
+
+1. Establish a remote PowerShell session with the cluster node. Run PowerShell as administrator and run the following command:
+
+   ```powershell
+   Enter-PsSession -ComputerName <NodeName> -Credential $cred
+   ```
+
+1. Run the following command to enable remote support:
+
+   ```powershell
+   Enable-AzStackHciRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440 -SasCredential "Sample SAS" -PassThru
+   ```
+
+   When you run the enable remote support command for the first time, you get the following error:
+
+   `Processing data from remote server v-host1 failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
+
+1. Wait for a few minutes. Run the following command to re-establish a remote PowerShell session with the cluster node:
+
+   ```powershell
+   Enter-PsSession -ComputerName <NodeName> -Credential $cred
+   ```
+
+1. Run the following command to enable remote support again:
+
+   ```powershell
+   Enable-AzStackHciRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440 -SasCredential "Sample SAS" -PassThru
+   ```
+
+   The one-time configuration completes after this.  
+
+
+For examples on how to use remote support, see [Remote support examples](./get-remote-support.md#remote-support-examples).
+
 ## Next steps
 
 - [Review the deployment checklist](../deploy/deployment-tool-checklist.md)
