@@ -8,24 +8,6 @@
   items:
     - name: Install clients
       href: client-install.md
-    - name: Install AlmaLinux 8
-      href: install-rhel-8.md
-    - name: Install AlmaLinux HPC 8.6
-      href: install-hpc-alma-86.md
-    - name: Install CentOS Linux 7
-      href: install-rhel-7.md
-    - name: Install CentOS Linux 8
-      href: install-rhel-8.md
-    - name: Install Red Hat Enterprise Linux (RHEL) 7
-      href: install-rhel-7.md
-    - name: Install Red Hat Enterprise Linux (RHEL) 8
-      href: install-rhel-8.md
-    - name: Install Ubuntu 18.04
-      href: install-ubuntu-18.md
-    - name: Install Ubuntu 20.04
-      href: install-ubuntu-20.md
-    - name: Install Ubuntu 22.04
-      href: install-ubuntu-22.md    
 - name: Concepts
   items:
   - name: Use Azure Blob storage with Azure Managed Lustre

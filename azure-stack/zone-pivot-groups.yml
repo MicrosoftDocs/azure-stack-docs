@@ -54,10 +54,16 @@ groups:
   pivots:
   - id: alma-86
     title: AlmaLinux HPC 8.6
+  - id: alma-8
+    title: AlmaLinux 8
   - id: rhel-7
     title: Red Hat Enterprise Linux or CentOS 7
   - id: rhel-8
     title: Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+  - id: centos-7
+    title: CentOS Linux 7
+  - id: centos-8
+    title: CentOS Linux 8
   - id: ubuntu-18
     title: Ubuntu 18.04
   - id: ubuntu-20
