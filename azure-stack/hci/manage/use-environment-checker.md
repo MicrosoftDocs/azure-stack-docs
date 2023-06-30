@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/15/2023
+ms.date: 06/30/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
+This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution. It also describes how to use the tool to troubleshoot any validation issues that might come up during cluster deployment.
 
 For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
 
@@ -40,7 +40,7 @@ You can run the Environment Checker to:
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
 - Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Work with the support team more effectively in troubleshooting any advanced issues.
+- Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
 
@@ -529,37 +529,36 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
-## Use the Environment Checker to troubleshoot validation
+## Use Environment Checker to troubleshoot validation
 
 Starting with Azure Stack HCI, version 23H2 (preview) and later, you can use the Environment Checker to troubleshoot any issues that you may encounter during the validation process. You can use the Environment Checker cmdlets to save diagnostic data locally and send it to Microsoft to get remote support, after you log a support ticket.
 
 The following sections provide instructions on how to collect logs, send them to Microsoft, and get remote support to troubleshoot any issues during the validation process.
 
-- Send logs
+- Save and send logs
 - Get remote support
 
-### Send logs
+### Save and send logs
 
-In the Environment Checker, use the `Send-DiagnosticData` cmdlet to collect and save logs locally and then use the `Send-AzStackHciDiagnosticData` cmdlet to manually send them to Microsoft.
+Use the `Send-DiagnosticData` cmdlet to collect and save logs locally and then use the `Send-AzStackHciDiagnosticData` cmdlet to manually send them to Microsoft.
 
 [!INCLUDE [include](../../includes/hci-send-logs-manually.md)]
 
 ### Get remote support
 
-When you enable remote support while registering, Microsoft Support can connect to your device remotely and offer assistance.
+If you enable remote support during cluster deployment, Microsoft Support can connect to your device remotely and offer assistance.
 
-The high-level workflow to enable remote support is as follows:
+The high-level workflow to get remote support during cluster deployment is as follows:
 
 - [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- Enable remote support via PowerShell. This is a one time configuration
-- Get remote support
+- Enable remote support via PowerShell. This is a one-time configuration.
 
 #### Enable remote support
 
-To enable remote support for the first time, a one-time configuration is required.
+This is a one-time configuration when you enable remote support for the first time.
 
 > [!NOTE]
-> When you enable remote support, it requires a service restart to activate Just Enough Administration (JEA). During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. Wait for a few minutes before you can reconnect to the remote node and run the `Enable-AzStackHciRemoteSupport` cmdlet again.
+> When you enable remote support, a service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. You need to wait for a few minutes before you can reconnect to the remote node and run the cmdlet to enable remote support again.
 
 1. Establish a remote PowerShell session with the cluster node. Run PowerShell as administrator and run the following command:
 
@@ -589,10 +588,9 @@ To enable remote support for the first time, a one-time configuration is require
    Enable-AzStackHciRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440 -SasCredential "Sample SAS" -PassThru
    ```
 
-   The one-time configuration completes after this.  
+   The one-time configuration completes here.  
 
-
-For examples on how to use remote support, see [Remote support examples](./get-remote-support.md#remote-support-examples).
+After you enable remote support, see [Remote support examples](./get-remote-support.md#remote-support-examples) for usage scenarios.
 
 ## Next steps
 

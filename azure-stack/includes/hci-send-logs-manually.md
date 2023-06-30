@@ -9,7 +9,12 @@ ms.date: 06/30/2023
 
 **Save logs locally**
 
-For troubleshooting purposes, you can save logs to a local SMB share when your Azure Stack HCI cluster isn't deployed yet or when it is already deployed but disconnected from Azure. For example, post-deployment, if you're normally connected but are experiencing connectivity issues, you can save logs locally to help with troubleshooting.
+You can save diagnostic logs to a local SMB share when your Azure Stack HCI cluster isn't deployed yet or it is already deployed but disconnected from Azure.
+
+For example, you can save diagnostic logs locally in the following scenarios:
+
+- To troubleshoot any validation issues that may arise during the cluster deployment process.
+- To troubleshoot your cluster when it is typically connected to Azure but experiencing connectivity issues.
 
 Follow these steps to collect logs and save them locally:
 
@@ -19,19 +24,19 @@ Follow these steps to collect logs and save them locally:
    Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>  
    ```
 
-1. After all log collections on all nodes finish, run the following command:
+1. After log collections on all the nodes finish, run the following command:
 
    ```powershell
    Send-DiagnosticData –FromSMBShare –BypassObsAgent  –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>
    ```
 
-**Send logs to Microsoft manually**
+**Send logs manually**
 
-To manually send diagnostic logs to Microsoft, use the `Send-AzStackHciDiagnosticData` cmdlet from any Azure Stack HCI cluster node. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+To manually send diagnostic logs to Microsoft, you can use the `Send-AzStackHciDiagnosticData` cmdlet from any Azure Stack HCI cluster node. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 The input parameters used to send logs are the same that are required as a part of deployment, you may use any of the credentials
 
-1. Run the following command to 
+1. Run the following command to send logs:
 
    ```powershell
    Send-AzStackHciDiagnosticData -ResourceGroupName <Resource-Group-Name> -SubscriptionId <Subscription-ID> -TenantId <Tenant-ID> -RegistrationCredential $c -DiagnosticLogPath C:\CILogCollection  
