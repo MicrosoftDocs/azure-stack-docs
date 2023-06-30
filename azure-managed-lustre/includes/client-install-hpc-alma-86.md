@@ -3,13 +3,13 @@ author: mayabishop
 ms.author: mvbishop
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/28/2023
+ms.date: 06/30/2023
 ms.reviewer: dsundarraj
 ms.lastreviewed: 04/28/2023
 
 ---
  > [!WARNING]
- > These instructions apply **ONLY** to the AlmaLinux 8.6 HPC marketplace images. For all other AlmaLinux 8 installs, including HPC and general marketplace, refer to [Red Hat 8 instructions](../install-rhel-8.md).
+ > These instructions only apply to the AlmaLinux 8.6 HPC marketplace images. For all other AlmaLinux 8 installs, including HPC and general marketplace, refer to [Red Hat 8 instructions](../install-rhel-8.md).
 
 1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
 
