@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Stack HCI deployment (preview)
 description: Learn to troubleshoot the Azure Stack HCI deployment (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 06/13/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---

@@ -30,7 +30,7 @@ You can find examples of the API model for your OS and AKS engine version number
 A URL to the API model may look like:
 
 ```http  
-https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+https://raw.githubusercontent.com/Azure/aks-engine-azurestack/master/examples/azure-stack/kubernetes-azurestack.json
 ```
 
 For each of the following samples replace `<URL for the API Model>` with the URL.

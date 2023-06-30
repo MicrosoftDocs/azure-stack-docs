@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI interactively via a new configuration file (preview)
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 06/28/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
