@@ -36,7 +36,7 @@ For more information, see [Connect clients to an Azure Managed Lustre file syste
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
 * [Mount command](connect-clients.md#mount-command)
 
-### Install prebuilt client software
+### Download and install prebuilt client software
 
 [!INCLUDE [client-install-hpc-alma-86](includes/client-install-hpc-alma-86.md)]
 :::zone-end
@@ -120,7 +120,7 @@ For more information, see [Connect clients to an Azure Managed Lustre file syste
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
 * [Mount command](connect-clients.md#mount-command)
 
-### Install prebuilt client software
+### Download and install prebuilt client software
 
 [!INCLUDE [client-install-rhel-8](includes/client-install-ubuntu-18.md)]
 ::: zone-end
@@ -146,7 +146,7 @@ For more information, see [Connect clients to an Azure Managed Lustre file syste
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
 * [Mount command](connect-clients.md#mount-command)
 
-### Install prebuilt client software
+### Download and install prebuilt client software
 
 [!INCLUDE [client-install-ubuntu-20](includes/client-install-ubuntu-20.md)]
 ::: zone-end
@@ -172,7 +172,7 @@ For more information, see [Connect clients to an Azure Managed Lustre file syste
 * [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
 * [Mount command](connect-clients.md#mount-command)
 
-### Install prebuilt client software
+### Download and install prebuilt client software
 
 [!INCLUDE [client-install-ubuntu-22](includes/client-install-ubuntu-22.md)]
 ::: zone-end
