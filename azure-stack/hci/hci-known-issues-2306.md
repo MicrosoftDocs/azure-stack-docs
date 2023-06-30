@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/21/2023
+ms.date: 06/30/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.45**. This release supports following:
+This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.47**. This release supports following:
 
 - Brand new software installations using a deployment tool. 
 - Update of existing 2303 installations.
