@@ -4,7 +4,7 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.date: 05/05/2023
+ms.date: 06/28/2023
 
 ---
 
@@ -26,8 +26,6 @@ There are three steps to enable customer-managed key encryption for Azure Manage
 This article explains these steps in more detail.
 
 After you create the file system, you can't change between customer-managed keys and Microsoft-managed keys.
-
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## Prerequisites
 
