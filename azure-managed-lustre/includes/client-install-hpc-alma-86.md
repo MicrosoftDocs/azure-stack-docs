@@ -44,7 +44,7 @@ ms.lastreviewed: 04/28/2023
         
 
    > [!NOTE]
-   > The metapackage version does not always align with the kernel version. Please use the install command above to install the proper metapackage.
+   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
 
    If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
 
