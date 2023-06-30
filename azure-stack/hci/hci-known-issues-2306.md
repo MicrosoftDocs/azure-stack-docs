@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/21/2023
+ms.date: 06/30/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.45**. This release supports following:
+This article applies to Azure Stack HCI, Supplemental Package, for 2306 release. This release maps to software version number **10.2306.0.47**. This release supports following:
 
 - Brand new software installations using a deployment tool. 
 - Update of existing 2303 installations.
@@ -33,8 +33,8 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
 |1|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |The `Get-ASWDACPolicyMode` cmdlet fetches information related to WDAC policy from the CodeIntegrity events and is unable to get the information as the CodeIntegrity event logs are flushed with 3114 events. <br> A workaround is provided in the output of the cmdlet that instructs you to run `Invoke-RefreshWDACPolicyTool` to refresh the policy on the nodes to generate new CodeIntegrity events.|
-|2|Azure Arc|After update, the Azure Stack HCI cluster show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that is not registered: <br>`Register-AzStackHCI`   |
-|3|Arc Resource Bridge  |In this release, a custom location is not created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
+|2|Azure Arc|After update, the Azure Stack HCI cluster servers show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that isn't registered: <br>`Register-AzStackHCI`   |
+|3|Arc Resource Bridge  |In this release, a custom location isn't created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
 
 
 ## Known issues from previous releases
@@ -51,7 +51,7 @@ Here are the known issues that have carried over from the previous releases in A
 |6|OS update|After deployment, scanning for OS updates using *SConfig* or Cluster-Aware Updating may fail to scan Windows Update.|Manually enable and start the *wuauserv* service. Run the following PowerShell commands: <br>`Set-Service -Name WUAUServ -StartupType Auto -Verbose`<br/>`Start-Service -Name WUAUServ`|
 |7|Environment Checker| If SSL inspection is turned on in your Azure Stack HCI system, the connectivity validator fails with the certificate validation error message.  | For information about the error and how to troubleshoot it, see [Potential failure scenario for connectivity validator](./manage/use-environment-checker.md#potential-failure-scenario-for-connectivity-validator).|
 |8|Diagnostics | Deployment was configured with **Diagnostic data** set to ON in the deployment tool. However during the deployment and after the deployment is complete, the diagnostic data isn't collected.|You can run the `Send-DiagnosticsData`command on Azure Stack HCI cluster node to collect diagnostic logs. |
-|9|Host networking |Defining overrides for Network ATC intents will fail due to Constrained Language mode. |Make sure to configure overrides to default values during the network intent creation. After your cluster is deployed, you can create a network intent that uses a customized value for the property. <br><br> If the cluster is in Windows Defender Application Control (WDAC) enforcement mode, switch the node from where you'll set the override in `Audit` mode. To switch the local node to audit, run the following command: <br> `Enable-ASLocalWDACPolicy -Mode Audit` <br>For more information, see [Enable WDAC policy modes](./concepts/security-windows-defender-application-control.md#enable-wdac-policy-modes). <br/><br>You can now create a new compute intent with a customized value for any object property. For example, to create a new compute intent `NewComputeIntent` on adapters `NIC1` and `NIC2` that uses `JumboPacket` property as **9014**, run the following commands:<br/><br> `$adapterOverrides = New-NetIntentAdapterPropertyOverrides`<br><br>`$adapterOverrides.JumboPacket = 9014`<br><br>`Add-NetIntent -Name NewComputeIntent -Compute -AdapterName @("NIC1", "NIC2") -AdapterPropertyOverrides $adapterOverrides`<br> |
+|9|Host networking |Defining overrides for Network ATC intents fail due to Constrained Language mode. |Make sure to configure overrides to default values during the network intent creation. After your cluster is deployed, you can create a network intent that uses a customized value for the property. <br><br> If the cluster is in Windows Defender Application Control (WDAC) enforcement mode, switch the node from where you set the override in `Audit` mode. To switch the local node to audit, run the following command: <br> `Enable-ASLocalWDACPolicy -Mode Audit` <br>For more information, see [Enable WDAC policy modes](./concepts/security-windows-defender-application-control.md#enable-wdac-policy-modes). <br/><br>You can now create a new compute intent with a customized value for any object property. For example, to create a new compute intent `NewComputeIntent` on adapters `NIC1` and `NIC2` that uses `JumboPacket` property as **9014**, run the following commands:<br/><br> `$adapterOverrides = New-NetIntentAdapterPropertyOverrides`<br><br>`$adapterOverrides.JumboPacket = 9014`<br><br>`Add-NetIntent -Name NewComputeIntent -Compute -AdapterName @("NIC1", "NIC2") -AdapterPropertyOverrides $adapterOverrides`<br> |
 
 ## Next steps
 

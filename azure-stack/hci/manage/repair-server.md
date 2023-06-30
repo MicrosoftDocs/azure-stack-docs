@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/20/2023
+ms.date: 06/30/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -28,7 +28,7 @@ Parts that support hot swap typically do not require you to reimage the server u
 
 The following flow diagram shows the overall process to repair a server.
 
-![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow-1.png)
+![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow-2.png)
 \**Server may not be in a state where shutdown is possible or necessary*
 
 To repair an existing server, follow these high-level steps:
@@ -74,7 +74,7 @@ The following scenarios are supported during server replacement:
 |------------------------------ |-----------------------|-----------|
 | New server                    | New disks             |Yes        |
 | New server                    | Current disks             |Yes        |
-| Current server (reimaged)     | Reformatted disks*|No         |
+| Current server (reimaged)     | Current disks reformatted *|No         |
 | Current server (reimaged)     | New disks             |Yes        |
 | Current server (reimaged)     | Current disks |Yes        |
 

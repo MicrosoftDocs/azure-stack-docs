@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/19/2023
+ms.date: 06/30/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
