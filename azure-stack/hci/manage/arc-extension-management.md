@@ -51,11 +51,9 @@ You can check the status of an extension on each server from the **Extensions** 
 
 # [Azure CLI](#tab/azurecli)
 
-You can use Azure CLI to check if the extensions are installed following these steps:
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in a Docker container and Azure Cloud Shell. 
-
-This document details how to use Bash in Azure Cloud Shell. Launch [Azure Cloud Shell](https://shell.azure.com/). For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart)
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
 
 1. Set up your subscription
     ```azurecli
