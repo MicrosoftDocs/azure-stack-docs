@@ -72,9 +72,9 @@ sections:
           Get-Service wssdagent | Select-Object -Property Name, Status
           ```
           
-          Expected behavior: The node agent will be in the starting phase, which will constantly try joining the cloud agent, exhausting the ports.
+          Expected behavior: The node agent is in the starting phase, which will constantly try joining the cloud agent, exhausting the ports.
           
-          To resolve the issue, you'll need to first stop the wssdagent from running. Since the service is in the starting phase, it may prevent you from stopping the service. You'll need to kill the process before attempting to stop the service.
+          To resolve the issue, you need to first stop the wssdagent from running. Since the service is in the starting phase, it may prevent you from stopping the service. You need to kill the process before attempting to stop the service.
           
           1. Confirm the wssdagent is in starting phase.
               ```powershell
@@ -296,12 +296,12 @@ sections:
           Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity
 
         answer: | 
-          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
+          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes fail.
           
           > [!NOTE]
           > This issue only happens occasionally.
           
-          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2, an AKS operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are **OutOfCapacity**. For example:
+          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2, an AKS operation such as `New-AksHciCluster` may fail. The error message states the MOC nodes are **OutOfCapacity**. For example:
           
           ```PowerShell
           System.Collections.Hashtable.generic_non_zero1 [Error: failed to create nic test-load-balancer-whceb-nic for machinetest-load-balancer-whceb: unable to create VM network interface: failed to create network interface test-load-balancer-whceb-nic in resource group clustergroup-test: rpc error: code = Unknown desc = Location 'MocLocation' doesn't expose any nodes to create VNIC 'test-load-balancer-whceb-nic' on: OutOfCapacity]
@@ -327,11 +327,11 @@ sections:
           
           If there is a machine with `PHASE` Deleting and `VERSION` matching the previous Kubernetes version, proceed with the following steps.
           
-          To address this problem, you will need the following pieces of information:
+          To address this problem, need the following pieces of information:
           1.  Kubernetes version to which you're upgrading your workload cluster.
-          2. IP address of the node which is stuck.
+          2. IP address of the node that is stuck.
           
-          To find this information, run the following cmdlet and command. Note that by default the cmdlet, `Get-AksHciCredential`, writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you will need to provide that location to kubectl as an additional argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
+          To find this information, run the following cmdlet and command. By default the cmdlet, `Get-AksHciCredential`, writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you need to provide that location to kubectl as another argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
           
           ```powershell
           Get-AksHciCredential -name <workload cluster name>
@@ -351,7 +351,7 @@ sections:
         answer: | 
           Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and to fail day two operations. The `kube-vip` pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
           
-          To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
+          To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster fails with errors such as:
           
           ```powershell
           PS C:\Users\wolfpack> Get-AksHciCluster
@@ -362,7 +362,7 @@ sections:
           +         throw $errMessage
           +         ~~~~~~~~~~~~~~~~~
               + CategoryInfo          : OperationStopped: (C:\Program File...iting headers)]:String) [], RuntimeException
-              + FullyQualifiedErrorId : C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after 9 attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]
+              + FullyQualifiedErrorId : C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after nine attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]
           ``` 
           
           To resolve this issue: restart the `kube-vip` container to bring the deployment back to a good state.
@@ -395,7 +395,7 @@ sections:
             During the update of the _AksHci Billing Operator_, the _Operator_ incorrectly marked itself as out of policy. To resolve this issue, open a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
           
           * **Reason two**:
-            The management cluster VM may be out of memory, which causes the API server to be unreachable and, consequently, makes all commands from [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), billing, and update time out. As a workaround, set the management cluster VM to 32 GB in Hyper-V, and reboot it. 
+            The management cluster VM may be out of memory, which causes the API server to be unreachable and, so, makes all commands from [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), billing, and update time out. As a workaround, set the management cluster VM to 32 GB in Hyper-V, and reboot it. 
           
           * **Reason three**:
             The _AksHci Billing Operator_ may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To work around this issue, manually resize the billing pod `pvc` using the following steps. 
