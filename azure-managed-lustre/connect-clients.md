@@ -1,19 +1,19 @@
 ---
-title: Connect clients to an Azure Managed Lustre file system (preview)
+title: Connect clients to an Azure Managed Lustre file system
 description: Describes how to connect Linux clients with supported software versions to an Azure Managed Lustre file system.
 ms.topic: overview
 author: sethmanheim
+ms.date: 06/28/2023
 ms.author: sethm 
 ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
-ms.date: 02/21/2023
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
 
 ---
 
-# Connect clients to an Azure Managed Lustre file system (preview)
+# Connect clients to an Azure Managed Lustre file system
 
 This article describes how to prepare clients and mount the Azure Managed Lustre file system from a client machine.
 
@@ -51,7 +51,7 @@ Packages and kernel modules are available for these Linux operating systems. Cli
 - [Ubuntu 20.04](install-ubuntu-20.md)
 - [Ubuntu 22.04](install-ubuntu-22.md)
 
-If you need to support a different distribution, contact the support team as described in [Support information](preview-support.md).
+If you need to support a different distribution, contact the support team.
 
 If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
 

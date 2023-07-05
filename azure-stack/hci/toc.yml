@@ -410,7 +410,9 @@
   items:
   - name: What's in preview?
     items:
-    - name: 2303 release - Current
+    - name: 2306 release - Current
+      href: manage/whats-new-2306-preview.md
+    - name: 2303 release 
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
       items:
@@ -434,6 +436,8 @@
     items:
     - name: View known issues
       items:
+      - name: 2306 release - Current
+        href: hci-known-issues-2306.md 
       - name: 2303.2 update release
         href: hci-known-issues-2303-2.md 
       - name: 2303.1 update release
@@ -488,7 +492,7 @@
         href: manage/collect-logs.md
       - name: Troubleshoot issues
         href: deploy/deployment-tool-troubleshoot.md
-    - name: Update (preview)
+    - name: Update
       items:
       - name: What's the Lifecycle Manager?
         href: update/whats-the-lifecycle-manager.md
@@ -502,6 +506,12 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
+    - name: Manage capacity
+      items:
+      - name: Add a server
+        href: manage/add-server.md
+      - name: Repair a server
+        href: manage/repair-server.md
   - name: Version 23H2
     items:
     - name: Telemetry and diagnostics extension overview

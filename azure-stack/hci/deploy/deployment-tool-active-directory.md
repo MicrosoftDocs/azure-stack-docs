@@ -1,10 +1,10 @@
 --- 
 title: Prepare Active Directory for new Azure Stack HCI deployments (preview) 
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
-author: dansisson
+author: alkohli
 ms.topic: how-to
-ms.date: 5/22/2023
-ms.author: v-dansisson
+ms.date: 6/12/2023
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -128,7 +128,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. Verify that the OU and the corresponding **Computers** and **Users** objects are created.  If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name should be created and within that OU, you’ll see **Computers** and **Users** objects.
+1. An OU with the specified name should be created and within that OU, you'll see **Computers** and **Users** objects.
 
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-tool/active-directory/active-directory-1.png":::
 
@@ -141,8 +141,8 @@ To prepare and configure Active Directory, follow these steps:
     :::image type="content" source="media/deployment-tool/active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-tool/active-directory/active-directory-3.png":::
 
 > [!NOTE]
-> To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
-
+> - To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
+> - If you are repairing a single server, do not delete the existing OU. If the server volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
 
 
 ## Next steps

@@ -1,10 +1,10 @@
 ---
 title: Deployment checklist for Azure Stack HCI (preview) 
 description: Complete the deployment checklist prior to deploying Azure Stack HCI (preview).
-author: dansisson
+author: alkohli
 ms.topic: article
 ms.date: 04/04/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
