@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/05/2023
+ms.date: 06/28/2023
 ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 12/05/2022
@@ -36,6 +36,10 @@ The following table gives descriptions for the settings listed in the configurat
 |**Cluster**|Section name|
 |Name|The cluster name provided when preparing Active Directory.|
 |StaticAddress| This value is not used during deployment and will be removed in future releases.|
+|WitnessType|Specify the witness type as `cloud` or local `fileshare` for your Azure Stack HCI cluster. <br><br> Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. For more information on cloud witness, see [Deploy a cloud witness for Failover cluster](/windows-server/failover-clustering/deploy-cloud-witness). <br><br> Use a file share witness if you use a local SMB file share to provide a vote in the cluster quorum. You should also use a file share witness if all the servers in a cluster have spotty internet connectivity or can't use disk witness as there aren't any shared drives.|
+|WitnessPath|Specify the fileshare path for the local witness for your Azure Stack HCI cluster.|
+|CloudAccountName|Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.|
+|AzureServiceEndpoint|For Azure blob service endpoint type, select either **Default** or **Custom domain**. If you selected **Custom domain, enter the domain for the blob service in this format `core.windows.net`.|
 |**Storage**|Section name|
 |ConfigurationMode|By default, this mode is set to `Express` and your storage is configured as per best practices based on the number of nodes in the cluster. For more information, see step [4. 1 Set up cluster storage in Deploy Azure Stack HCI interactively](../hci/deploy/deployment-tool-new-file.md).|
 |**OptionalServices**|Section name|
