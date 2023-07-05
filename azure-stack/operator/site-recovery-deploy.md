@@ -20,7 +20,7 @@ To enable replication of virtual machines (VMs) across two Azure Stack Hub envir
 
   :::image type="content" source="media/site-recovery-deploy/target-source.png" alt-text="Diagram showing target and source architecture." lightbox="media/site-recovery-deploy/target-source.png":::
   
-During the public preview, Microsoft will release serveral versions for both the service RPs and the extensions. The following is the complete list of currently available images:
+During the public preview, Microsoft will release several versions for both the service RPs and the extensions. The following is the complete list of currently available images:
 
 | Service                                   | Image name                                                          | Image version       |
 | :---------------------------------- | :------------------------------------------------------------- | :------------- |
