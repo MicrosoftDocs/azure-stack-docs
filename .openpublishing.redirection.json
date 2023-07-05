@@ -990,6 +990,41 @@
       "source_path": "azure-stack/hci/manage/azure-arc-vm-management-proxy.md",
       "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-prerequisites",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/preview-support.md",
+      "redirect_url": "/azure/azure-managed-lustre/amlfs-overview",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-8.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-hpc-alma-86.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-7.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-18.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-20.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-22.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
     }
   ]
   

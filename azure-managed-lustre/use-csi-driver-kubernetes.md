@@ -1,23 +1,21 @@
 ---
-title: Use the Azure Lustre CSI Driver (preview) for Kubernetes
+title: Use the Azure Lustre CSI Driver for Kubernetes
 description: How to use an Azure Managed Lustre storage system with your Kubernetes containers in Azure Kubernetes Service (AKS).
 ms.topic: overview
+ms.date: 06/28/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/24/2023
 ms.reviewer: brianl
-ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I want to be able to use a Lustre file system with the apps I've deployed on Kubernetes.
 # Keyword: 
 
 ---
 
-# Use the Azure Lustre CSI Driver (preview) for Kubernetes
+# Use the Azure Lustre CSI Driver for Kubernetes
 
 The article describes how to install and mount the Azure Lustre container support interface (CSI) driver for Kubernetes to enable you to use an Azure Managed Lustre storage system with your Kubernetes containers in an Azure Kubernetes Service (AKS) deployment.
-
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
 
 ## About the Azure Lustre CSI driver for Kubernetes
 
@@ -124,7 +122,7 @@ Do the following steps to install a Lustre client, and mount the file system:
 
 Connect to the Azure Managed Lustre cluster by doing these steps:
 
-1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
+1. Sign in to [the Azure portal](https://portal.azure.com).
 
 1. On the **Overview** page for your AKS cluster, select the **Get started** tab.
 
