@@ -18,11 +18,6 @@ ms.lastreviewed: 05/17/2022
 
 This document provides guidance on how to rotate certificates on an existing AKS Engine cluster and recommendations for using adopting `aks-engine rotate-certs` as a tool.
 
-> [!IMPORTANT]  
-> This feature is currently in public preview.
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## Prerequisites
 
 This guide assumes that you already have deployed a cluster using AKS engine and the cluster is in a healthy state.
