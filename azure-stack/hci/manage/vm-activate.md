@@ -77,21 +77,46 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 - If using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
 
-### Enable Windows Server subscription using the Azure portal
+### Enable Windows Server subscription
 
+# [Azure portal](#tab/azureportal)
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** screen.
 2. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Licenses will take a few minutes to be applied on your cluster.
 
    :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
 
-### Troubleshooting - Windows Server subscription
+# [Azure CLI](#tab/azurecli)
 
-**Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-**Remediation**: Your cluster does not yet have the latest status on Windows Server subscription (for example, you just enrolled or just canceled), and therefore might not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this discrepancy, or you can sync manually. See [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
 
-### Enable Windows Server subscription using Windows Admin Center
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```azurecli
+    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
+    resourceGroup="hcicluster-rg" # Replace with your resource group name
+    clusterName="HCICluster" # Replace with your cluster name
+
+    az account set --subscription "${subscription}"
+    ```
+1. To view Windows Server Subscription status on a cluster, run the following command:
+
+    ```azurecli    
+   az stack-hci cluster list \
+   --resource-group "${resourceGroup}" \
+   --query "[?name=='${clusterName}'].{Name:name, DesiredWSSStatus:desiredProperties.windowsServerSubscription}" \
+   -o table
+    ```
+
+1. To filter out a specific extension like `AzureMonitorWindowsAgent`, run the following command:
+    ```azurecli    
+   az stack-hci cluster update \
+   --cluster-name "${clusterName}" \
+   --resource-group "${resourceGroup}" \
+   --desired-properties windows-server-subscription="Enabled"
+    ```
+# [WAC](#tab/wac)
 
 1. Select **Cluster Manager** from the top drop-down, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
 2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Select **Next** and confirm details, then select **Purchase.**
@@ -99,7 +124,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
    :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
-### Enable Windows Server subscription using PowerShell
+# [On-premises PS](#tab/onprem-ps)
 
 - **Purchase Windows Server subscription**: From your cluster, run the following command:
 
@@ -118,6 +143,15 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
   ```powershell
   Get-VMAutomaticActivation
   ```
+
+---
+
+### Troubleshooting - Windows Server subscription
+
+**Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
+
+**Remediation**: Your cluster does not yet have the latest status on Windows Server subscription (for example, you just enrolled or just canceled), and therefore might not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this discrepancy, or you can sync manually. See [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
+
 
 ## Activate VMs against a host server
 
