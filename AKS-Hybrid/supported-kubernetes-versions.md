@@ -130,12 +130,13 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 
 |  Kubernetes version | Upstream release  | AKS hybrid GA  | End of life |
 |--------------|-------------------|---------|-------------|
-| 1.20  | Dec-08-2020   | Mar 2021  | 1.23  |
-| 1.21  | Apr-09-2021   | Jul 2021  | 1.24  |
-| 1.22  | Sept-09-2021   | Jan 2022  | 1.25  |
-| 1.23  | Dec-07-2021   | Aug 2022  | 1.26  |
-| 1.24  | May-03-2022   | Oct 2022  | 1.27  |
+| 1.23  | Dec 2021  | Aug 2022 | 1.26* |
+| 1.24  | May 2022   | Oct 2022 | 1.27*  |
+| 1.25  | Aug 2022   | May 2023  | 1.28*  |
+| 1.26  | Dec 2022   | July/Aug 2023*  | 1.29*  |
+| 1.27  | Apr 2023   | Sep/Oct 2023* | 1.30*  |
 
+All (*) values are predicted.
 ## FAQ
 
 **How does Microsoft notify me of new Kubernetes versions?**
