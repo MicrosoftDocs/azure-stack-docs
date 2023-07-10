@@ -334,7 +334,7 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 
 ## Common Error Messages 
 
-With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered.
+With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered. The errors shown below are from the output of the `Get-NetIntentStatus` cmdlet.
 
 ### Error: AdapterBindingConflict
 

@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 06/02/2023
+  ms.date: 07/10/2023
 
 title: Fix known issues and errors when managing storage in AKS hybrid
 summary: |
@@ -61,7 +61,7 @@ sections:
           This issue can impact any operation that involves allocating disk space or writing new files, so any "insufficient disk space/resources" error is a good hint. To check if this issue is present on a given node, run the following shell command:
           
           ```shell
-          clouduser@moc-lwm2oudnskl $ sudo du -h /var/lib/systemd/coredump/ 715M /var/lib/systemd/coredump/
+          clouduser@moc-lwm2oudnskl $ sudo du -h /var/lib/systemd/coredump/
           ```
           
           This command reports the storage space consumed by the diagnostic files.
@@ -97,24 +97,23 @@ sections:
               sudo find /run/systemd/propagate -name 'systemd-coredump@*' -delete
               sudo journalctl --rotate && sudo journalctl --vacuum-size=500M
               ```
-
-          4. Reboot affected nodes
+          
+          4. Reboot the node:
           
               ```shell
-             sudo reboot
-             ```
+              sudo reboot
+              ```
           
       - question: | 
           Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
 
         answer: | 
-          An error may occur if you have an SMB or NFS CSI driver installed in your deployment and you upgrade to the May build from an older version. One of the parameters, called `createSubDir`, is no longer accepted. If this applies to your deployment, follow the instructions below to resolve the storage class failure. 
+          An error can occur if you have an SMB or NFS CSI driver installed in your deployment and you upgrade to the May build from an older version. One of the parameters, called `createSubDir`, is no longer accepted. If this applies to your deployment, follow the instructions below to resolve the storage class failure. 
           
-          If you have this error, the storage pod crashes and the logs say that the `createSubDir` parameter is invalid. 
-          
-          The storage pod will crash.
+          If you experience this error, the storage pod crashes and the logs indicate that the `createSubDir` parameter is invalid. 
           
           Recreate the storage class.
+          
       - question: | 
           When creating a persistent volume, an attempt to mount the volume fails
 

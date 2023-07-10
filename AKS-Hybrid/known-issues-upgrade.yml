@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 05/12/2023
+  ms.date: 07/10/2023
 
 title: Resolve issues when upgrading AKS hybrid
 summary: |
@@ -41,7 +41,7 @@ sections:
               sudo cp /etc/kubernetes/pki/cert-tattoo-kubelet.yaml ~/
               sudo chown clouduser cert-tattoo-kubelet.yaml
               sudo chgrp clouduser cert-tattoo-kubelet.yaml
-              (change file permissions here so that scp will work)
+              (change file permissions here so that scp works)
               scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
               ```
           
@@ -66,15 +66,15 @@ sections:
           Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days
 
         answer: | 
-          When a cluster has not been upgraded for more than 60 days, the node agent fails to start during a node agent restart because of token expiry. This causes the agents to be in the starting phase. Continuous attempts to join the cloudagent may exhaust the supply of ports on the host. The status for the following command will be **Starting**.
+          When a cluster has not been upgraded for more than 60 days, the node agent fails to start during a node agent restart because of token expiry. This failure causes the agents to be in the starting phase. Continuous attempts to join the cloudagent may exhaust the supply of ports on the host. The status for the following command is **Starting**.
           
           ```powershell
           Get-Service wssdagent | Select-Object -Property Name, Status
           ```
           
-          Expected behavior: The node agent will be in the starting phase, which will constantly try joining the cloud agent, exhausting the ports.
+          Expected behavior: The node agent should be in the starting phase, which constantly tries to join the cloud agent, exhausting the ports.
           
-          To resolve the issue, you'll need to first stop the wssdagent from running. Since the service is in the starting phase, it may prevent you from stopping the service. You'll need to kill the process before attempting to stop the service.
+          To resolve the issue, stop the wssdagent from running. Since the service is in the starting phase, it may prevent you from stopping the service. If so, kill the process before attempting to stop the service.
           
           1. Confirm the wssdagent is in starting phase.
               ```powershell
@@ -193,7 +193,7 @@ sections:
           AKS hybrid goes out-of-policy if a workload cluster hasn't been created in 60 days
 
         answer: | 
-          If you created a management cluster but haven't deployed a workload cluster in the first 60 days, you'll be blocked from creating one after that because it's out-of-policy. In this situation, when you run [Update-AksHci](./reference/ps/update-akshci.md), the update process is blocked with the error _Waiting for deployment 'AksHci Billing Operator' to be ready_. If you run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md), it returns successful output. However, if you run [Get-AksHciBillingStatus](./reference/ps/get-akshcibillingstatus.md), the connection status is _OutofPolicy_.
+          If you created a management cluster but haven't deployed a workload cluster in the first 60 days, you'll be blocked from creating one, because it's now out-of-policy. In this situation, when you run [Update-AksHci](./reference/ps/update-akshci.md), the update process is blocked with the error _Waiting for deployment 'AksHci Billing Operator' to be ready_. If you run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md), it returns successful output. However, if you run [Get-AksHciBillingStatus](./reference/ps/get-akshcibillingstatus.md), the connection status is _OutofPolicy_.
           
           If you haven't deployed a workload cluster in 60 days, the billing goes out of policy. 
           
@@ -205,7 +205,7 @@ sections:
           > [!NOTE]
           > This issue is fixed in the May 2022 release and later.
           
-          If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This causes the VMs to lose network connectivity, and the cluster falls into a bad state.
+          If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This loss of vNICs causes the VMs to lose network connectivity, and the cluster falls into a bad state.
           
           **To Reproduce**
           
@@ -296,12 +296,12 @@ sections:
           Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity
 
         answer: | 
-          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
+          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes fail.
           
           > [!NOTE]
           > This issue only happens occasionally.
           
-          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2, an AKS operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are **OutOfCapacity**. For example:
+          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2, an AKS operation such as `New-AksHciCluster` may fail. The error message states that the MOC nodes are **OutOfCapacity**. For example:
           
           ```PowerShell
           System.Collections.Hashtable.generic_non_zero1 [Error: failed to create nic test-load-balancer-whceb-nic for machinetest-load-balancer-whceb: unable to create VM network interface: failed to create network interface test-load-balancer-whceb-nic in resource group clustergroup-test: rpc error: code = Unknown desc = Location 'MocLocation' doesn't expose any nodes to create VNIC 'test-load-balancer-whceb-nic' on: OutOfCapacity]
@@ -327,11 +327,11 @@ sections:
           
           If there is a machine with `PHASE` Deleting and `VERSION` matching the previous Kubernetes version, proceed with the following steps.
           
-          To address this problem, you will need the following pieces of information:
+          To address this problem, you need the following pieces of information:
           1.  Kubernetes version to which you're upgrading your workload cluster.
-          2. IP address of the node which is stuck.
+          2. IP address of the node that is stuck.
           
-          To find this information, run the following cmdlet and command. Note that by default the cmdlet, `Get-AksHciCredential`, writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you will need to provide that location to kubectl as an additional argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
+          To find this information, run the following cmdlet and command. By default, the cmdlet `Get-AksHciCredential` writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you will need to provide that location to kubectl as another argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
           
           ```powershell
           Get-AksHciCredential -name <workload cluster name>
@@ -341,7 +341,7 @@ sections:
           The node that needs to be fixed should show `STATUS` `Ready,SchedulingDisabled`. If you see a node with this status, use the `INTERNAL-IP` of this node as the IP address value in the following command below. Use the Kubernetes version you are upgrading to as the version value; this should match the `VERSION` value from the node with `ROLES` `control-plane,master`. Be sure to include the full value for the Kubernetes version, including the `v`, for example `v1.22.6`.
           
           ```
-          ssh -i (Get-MocConfig).sshPrivateKey -o StrictHostKeyChecking=no  clouduser@<IP address> sudo crictl pull --creds 1516df5a-f1cc-4a6a-856c-03d127b02d05:92684690-48b5-4dce-856d-ef4cccb54f22 ecpacr.azurecr.io/kube-proxy:<Kubernetes version>
+          ssh -i (Get-MocConfig).sshPrivateKey -o StrictHostKeyChecking=no  clouduser@<IP address> sudo crictl pull ecpacr.azurecr.io/kube-proxy:<Kubernetes version>
           ```
           
           After running this ssh command, the remaining nodes with the old Kubernetes version should be deleted and the upgrade will proceed.
@@ -349,9 +349,9 @@ sections:
           Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
 
         answer: | 
-          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and to fail day two operations. The `kube-vip` pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
+          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, which renders the management cluster's API server unreachable and fails day two operations. The `kube-vip` pod cannot apply the VIP configuration to the interface, and as a result the VIP is unreachable.
           
-          To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
+          To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster fails with errors such as:
           
           ```powershell
           PS C:\Users\wolfpack> Get-AksHciCluster
@@ -392,10 +392,10 @@ sections:
           Review the following root causes to resolve the issue:
           
           * **Reason one**:
-            During the update of the _AksHci Billing Operator_, the _Operator_ incorrectly marked itself as out of policy. To resolve this issue, open a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
+            During the update of the **AksHci Billing Operator**, the operator incorrectly marked itself as out of policy. To resolve this issue, open a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
           
           * **Reason two**:
-            The management cluster VM may be out of memory, which causes the API server to be unreachable and, consequently, makes all commands from [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), billing, and update time out. As a workaround, set the management cluster VM to 32 GB in Hyper-V, and reboot it. 
+            The management cluster VM may be out of memory, which causes the API server to be unreachable and makes all commands from [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), billing, and update, time out. As a workaround, set the management cluster VM to 32 GB in Hyper-V, and reboot it. 
           
           * **Reason three**:
             The _AksHci Billing Operator_ may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To work around this issue, manually resize the billing pod `pvc` using the following steps. 
@@ -426,11 +426,11 @@ sections:
         answer: | 
           When you upgrade clusters from the AKS on Azure Stack HCI February 2022 Update to the April 2022 Update, the update may be stuck upgrading for an indefinite period of time. There may be be pods stuck in either the `Terminating` or `CrashLoopBackoff` state.
           
-          You may see that some of the AksHci CSI addon resources are missing. These are pods deployed using the `csi-akshcicsi-controller` or from the `csi-akshcicsi-node` daemonset.
+          You may see that some of the AksHci CSI addon resources are missing. These resources pods deployed using the `csi-akshcicsi-controller` or from the `csi-akshcicsi-node` daemonset.
           
-          The AksHci CSI addon in the February 2022 Update contained a change to the CSI driver spec that can sometimes leave the addon's resources in an unresponsive state during upgrade. The CSI driver's `.spec.fsGroupPolicy` was set to a new value even though it is an immutable field. Since the field is immutable, the driver spec will not update. A consequence of this is that the other AksHci CSI addon resources might not fully get reconciled. All of the CSI resources would be recreated.
+          The AksHci CSI addon in the February 2022 Update contained a change to the CSI driver spec that can sometimes leave the addon's resources in an unresponsive state during upgrade. The CSI driver's `.spec.fsGroupPolicy` was set to a new value even though it is an immutable field. Since the field is immutable, the driver spec does not update. A consequence of this is that the other AksHci CSI addon resources might not fully get reconciled. All of the CSI resources would be recreated.
           
-          To manually resolve the issue, the CSI driver can be manually deleted. Once you have removed it, the cloud-operator will reconcile the AksHci CSI addon within the 10 minutes and recreate the driver along with the rest of the missing addon resources.
+          To manually resolve the issue, the CSI driver can be manually deleted. Once you have removed it, the cloud-operator reconciles the AksHci CSI addon within the 10 minutes and recreate the driver along with the rest of the missing addon resources.
           
           ```bash
           kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig delete csidriver disk.csi.akshci.com`
