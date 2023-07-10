@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/12/2023
+ms.date: 07/10/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -82,13 +82,7 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
 
-1. Make sure that Windows updates won't be downloaded and installed during the deployment. On the first operating system boot, run the following commands on each of the servers right after the operating system installation:
-
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f`
-
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AUOptions /t REG_DWORD /d 3 /f`
-
-    1. `Set-Service "WUAUSERV" -StartupType Disabled`
+1. Make sure that Windows updates won't be downloaded and installed during the deployment.
 
 1. Configure networking as per your environment.
 
