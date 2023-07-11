@@ -34,6 +34,8 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 
 1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Stack HCI (AKS-HCI)** service in the **Compute** category.
 
+    :::image type="content" source="media/support/service-type.png" alt-text="Screenshot showing service selection.":::
+
 1. Add a short description of your issue in the **Summary** field.
 
 1. Select the appropriate **Problem type** from the dropdown menu for your issue (for example, **Kubernetes**):
@@ -52,15 +54,15 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 
 1. Fill in the problem details and description in the appropriate fields: 
 
-    :::image type="content" source="media/support/service-request-details.png" alt-text="Screenshot showing details of service request." lightbox="media/support/service-request-details.png":::
+    :::image type="content" source="media/support/service-request-details.png" alt-text="Screenshot showing details of service request.":::
 
 1. Scroll down and fill in your preferred support method of contact:
 
-    :::image type="content" source="media/support/service-request-support-method.png" alt-text="Screenshot showing support method preferences." lightbox="media/support/service-request-support-method.png":::
+    :::image type="content" source="media/support/service-request-support-method.png" alt-text="Screenshot showing support method preferences.":::
 
 1. Select **Next**. Review the information you submitted. If anything is incorrect, select **Previous** and correct it. When all looks correct, select **Create**.
 
-    :::image type="content" source="media/support/review-create.png" alt-text="Screenshot of confirmation screen to create support request." lightbox="media/support/review-create.png":::
+    :::image type="content" source="media/support/review-create.png" alt-text="Screenshot of confirmation screen to create support request.":::
 
 ## Next steps
 
