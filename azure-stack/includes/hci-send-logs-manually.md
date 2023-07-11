@@ -13,7 +13,7 @@ You can save diagnostic logs to a local SMB share when your Azure Stack HCI clus
 
 For example, you can save diagnostic logs locally in the following scenarios:
 
-- To troubleshoot any validation issues that may arise during the cluster deployment process.
+- To troubleshoot any validation issues that may arise during cluster deployment.
 - To troubleshoot your cluster when it is typically connected to Azure but experiencing connectivity issues.
 
 Follow these steps to collect logs and save them locally:
@@ -32,9 +32,9 @@ Follow these steps to collect logs and save them locally:
 
 **Send logs manually**
 
-To manually send diagnostic logs to Microsoft, you can use the `Send-AzStackHciDiagnosticData` cmdlet from any Azure Stack HCI cluster node. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+To manually send diagnostic logs to Microsoft, use the `Send-AzStackHciDiagnosticData` cmdlet from any Azure Stack HCI cluster node. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
-The input parameters used to send logs are the same that are required as a part of deployment, you may use any of the credentials
+The input parameters used to send logs are the same that are required as part of deployment, you may use any of the credentials
 
 1. Run the following command to send logs:
 
