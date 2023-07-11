@@ -1,6 +1,6 @@
 ---
-title: What's in Azure Stack HCI, 2306 Supplemental Package and preview channel (preview)
-description: Preview features and OS versions available via preview channel and 2306 supplemental package features.
+title: What's in Azure Stack HCI, 2306.1 Supplemental Package and preview channel (preview)
+description: Preview features and OS versions available via preview channel and 2306.1 supplemental package features.
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
