@@ -79,8 +79,6 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
 
 # [WAC](#tab/wac)
 
-:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in WAC":::
-
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure Benefits**.
 
 2. In the **Azure Benefits** pane, select **Turn on**. By default, the checkbox to turn on for all existing VMs is selected. You can deselect it and manually add VMs later.
@@ -92,6 +90,8 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
    2. Under the **Cluster** tab in the dashboard, check that Azure Benefits for every server shows as **Active** in the table.
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
+
+:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in WAC":::
 
 # [On-premises PS](#tab/onprem-ps)
 
@@ -166,9 +166,9 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
 ### Manage access to Azure Benefits for your VMs - WAC
 
-:::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
-
 To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs.**
+
+:::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
 ### Manage access to Azure Benefits for your VMs - On-premises PS
 
