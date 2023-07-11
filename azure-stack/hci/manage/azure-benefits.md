@@ -164,15 +164,13 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
 ---
 
-### Manage access to Azure Benefits for your VMs
-
-#### WAC
+### Manage access to Azure Benefits for your VMs - WAC
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
 To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs.**
 
-#### On-premises PS
+### Manage access to Azure Benefits for your VMs - On-premises PS
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -185,11 +183,13 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
    ```powershell
    Add-AzStackHCIVMAttestation -AddAll
    ```
----
+- Optionally, to check that VMs can properly access Azure Benefits on the host, you can run this command from the VM and confirm that there is a response:
 
-### Troubleshooting
+  ```powershell
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
+  ```
 
-#### WAC
+### Troubleshooting - WAC
 
 - To turn off and reset Azure Benefits on your cluster:
   - Under the **Cluster** tab, click **Turn off Azure Benefits**.
@@ -200,7 +200,7 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
   - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try and manage VMs again.
 
-#### On-premises PS
+### Troubleshooting - On-premise PS
 
 - To turn off and reset Azure Benefits on your cluster, run the following command:
 
@@ -231,15 +231,6 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
   ```powershell
   Enable-AzStackHCIAttestation
   ```
----
-
-## (Optional) Access Azure Benefits from VMs
-
-To check that VMs can properly access Azure Benefits on the host, you can run this command from the VM and confirm that there is a response:
-
-```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
-```
 
 ## FAQ
 
