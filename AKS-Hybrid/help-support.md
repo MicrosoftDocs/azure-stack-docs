@@ -84,7 +84,7 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 
 1. Add a short description of your issue in the **Summary** field.
 
-1. Select the appropriate **Problem type** from the dropdown menu for your issue (for example, **Kubernetes**):
+1. Select the appropriate **Problem type** from the dropdown menu for your issue (for example, **Setup and configuration**). Also, select a **Problem subtype** (for example, **Deployment**):
 
     :::image type="content" source="media/support/problem-type-edge.png" alt-text="Screenshot of completed problem type form." lightbox="media/support/problem-type-edge.png":::
 
