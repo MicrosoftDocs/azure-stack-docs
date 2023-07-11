@@ -21,8 +21,8 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 ## Go to Support + troubleshooting in the Azure portal
 
 # [AKS on Azure Stack HCI](#tab/akshci)
-1. Log into the [Azure portal](https://portal.azure.com).
-1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Stack HCI or AKS Edge Essentials. Select the subscription to open its dashboard.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Stack HCI. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
     ![Screenshot of the Azure portal Help and Support sidebar.](media/support/new-support-request-sidebar.png)
@@ -67,7 +67,7 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 
 # [AKS Edge Essentials](#tab/aksee)
 1. Log into the [Azure portal](https://portal.azure.com).
-1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Stack HCI or AKS Edge Essentials. Select the subscription to open its dashboard.
+1. Browse to the subscription you're using for Azure Kubernetes Services on AKS Edge Essentials. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
     ![Screenshot of the Azure portal Help and Support sidebar.](media/support/new-support-request-sidebar.png)
