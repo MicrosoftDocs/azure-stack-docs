@@ -75,7 +75,7 @@ Before you begin, you'll need the following prerequisites:
 
 You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Center or PowerShell. The following sections describe each option.
 
-## Turn on Azure Benefits
+## Manage Azure Benefits
 
 # [WAC](#tab/wac)
 
@@ -124,6 +124,12 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
    ```powershell
    Get-AzStackHCIVMAttestation
    ```
+
+# [Azure portal](#tab/azureportal)
+1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
+2. Under the feature **Enable Azure Benefits**, view the host attestation status:
+
+   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
 
 # [Azure CLI](#tab/azurecli)
 
@@ -224,26 +230,6 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
   ```powershell
   Enable-AzStackHCIAttestation
   ```
----
-
-## (Optional) View Azure Benefits using the Azure portal
-
-# [Azure portal](#tab/azureportal)
-1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
-2. Under the feature **Enable Azure Benefits**, view the host attestation status:
-
-   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
-
-# [Azure CLI](#tab/azurecli)
-
-1. To view Azure Benefits status on a cluster, run the following command:
-    ```azurecli    
-    az stack-hci cluster list \
-    --resource-group "${resourceGroup}" \
-    --query "[?name=='${clusterName}'].{Name:name, SoftwareAssurance:softwareAssuranceProperties.softwareAssuranceStatus}" \
-    -o table
-    ```
-
 ---
 
 ## (Optional) Access Azure Benefits from VMs
