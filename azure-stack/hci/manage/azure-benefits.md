@@ -166,13 +166,13 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
 ### Manage access to Azure Benefits for your VMs
 
-# [WAC](#tab/wac)
+#### WAC
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
 To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs.**
 
-# [On-premises PS](#tab/onprem-ps)
+#### On-premises PS
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -189,7 +189,8 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 
 ### Troubleshooting
 
-# [WAC](#tab/wac)
+#### WAC
+
 - To turn off and reset Azure Benefits on your cluster:
   - Under the **Cluster** tab, click **Turn off Azure Benefits**.
 - To remove access to Azure Benefits for VMs:
@@ -199,7 +200,7 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
   - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try and manage VMs again.
 
-# [On-premises PS](#tab/onprem-ps)
+#### On-premises PS
 
 - To turn off and reset Azure Benefits on your cluster, run the following command:
 

@@ -44,7 +44,7 @@ The following screen capture shows typical output when checking for required pre
 
 Follow these instructions to turn on Azure Benefits on the host:
 
-- Using Windows Admin Center: [Manage Azure Benefits using Windows Admin Center](azure-benefits.md#?tabs=wac#manage-azure-benefits).
+- Using Windows Admin Center: [Manage Azure Benefits using Windows Admin Center](azure-benefits.md?tabs=wac#manage-azure-benefits).
 - Using PowerShell: [Manage Azure Benefits using PowerShell](azure-benefits.md?tabs=onprem-ps#manage-azure-benefits).
 
 ### Step 2: Turn on Azure Benefits on the VM
