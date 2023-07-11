@@ -33,12 +33,12 @@ If you encounter an issue with AKS hybrid, this article describes how to open a 
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown.
 
     # [AKS on Azure Stack HCI](#tab/akshci)
-1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Stack HCI (AKS-HCI)** service in the **Compute** category.
+    1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Stack HCI (AKS-HCI)** service in the **Compute** category.
 
     :::image type="content" source="media/support/service-type.png" alt-text="Screenshot showing service selection.":::
 
     # [AKS Edge Essentials](#tab/aksee)
-1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Edge** in the search box to locate the **AKS Edge Essentials** service in the **Compute** category.
+    1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Edge** in the search box to locate the **AKS Edge Essentials** service in the **Compute** category.
 
     :::image type="content" source="media/support/service-type.png" alt-text="Screenshot showing service selection.":::
 
