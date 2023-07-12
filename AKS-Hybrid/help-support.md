@@ -67,7 +67,7 @@ Select the product you're using to see the relevant instructions on opening a su
 
 # [AKS Edge Essentials](#tab/aksee)
 1. Log into the [Azure portal](https://portal.azure.com).
-1. Browse to the subscription you're using for Azure Kubernetes Services on AKS Edge Essentials. Select the subscription to open its dashboard.
+1. Browse to the subscription you're using for AKS Edge Essentials. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
     ![Screenshot of the Azure portal Help and Support sidebar.](media/support/new-support-request-sidebar.png)
