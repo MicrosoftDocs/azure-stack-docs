@@ -66,7 +66,7 @@ Select the product you're using to see the relevant instructions on opening a su
     :::image type="content" source="media/support/review-create.png" alt-text="Screenshot of confirmation screen to create support request.":::
 
 # [AKS Edge Essentials](#tab/aksee)
-1. Log into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Browse to the subscription you're using for AKS Edge Essentials. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
