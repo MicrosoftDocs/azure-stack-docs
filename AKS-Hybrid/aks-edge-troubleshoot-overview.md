@@ -4,7 +4,7 @@ description: Common issues and workarounds
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 02/09/2023
+ms.date: 07/12/2023
 ms.custom: template-concept
 ms.reviewer: fcabrera
 ---
@@ -12,6 +12,10 @@ ms.reviewer: fcabrera
 # AKS Edge Essentials troubleshoot common issues
 
 This article describes how to find solutions for issues you encounter when using AKS Edge Essentials. Known issues and errors are organized by functional area. You can use the links provided in this article to find solutions and workarounds to resolve them.
+
+## Open a support request
+
+See the [Get support](/azure/aks/hybrid/help-support?tabs=aksee) article for information about how to use the Azure portal to get support or open a support request for AKS Edge Essentials.
 
 ## Deployment issues
 
