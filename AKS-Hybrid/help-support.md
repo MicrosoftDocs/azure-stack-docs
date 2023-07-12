@@ -1,8 +1,8 @@
 ---
-title: Concepts - Get support for AKS hybrid
-description: Learn about how to get support and open a support request for AKS hybrid.
+title: Concepts - Get support for AKS hybrid and AKS Edge Essentials
+description: Learn about how to get support and open a support request for AKS hybrid or AKS Edge Essentials.
 ms.topic: conceptual
-ms.date: 07/11/2023
+ms.date: 07/12/2023
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -12,13 +12,13 @@ author: sethmanheim
 # Keyword: AKS support AKS help support requests
 ---
 
-# Get support for AKS hybrid
+# Get support for AKS hybrid and AKS Edge Essentials
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
-
-If you encounter an issue with AKS hybrid, this article describes how to open a support request.
+If you encounter an issue with AKS hybrid or AKS Edge Essentials, this article describes how to open a support request.
 
 ## Go to Support + troubleshooting in the Azure portal
+
+Select the product you're using to see the relevant instructions on opening a support request.
 
 # [AKS on Azure Stack HCI](#tab/akshci)
 1. Sign in to the [Azure portal](https://portal.azure.com).
