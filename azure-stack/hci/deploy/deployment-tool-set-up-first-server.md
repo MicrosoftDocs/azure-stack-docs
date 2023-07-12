@@ -3,7 +3,7 @@ title: Set up the first server for new Azure Stack HCI deployments (preview)
 description: Learn how to set up the first server before you deploy Azure Stack HCI (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/30/2023
+ms.date: 07/11/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -41,7 +41,7 @@ Follow these steps to connect to the first server:
 
 1. Sign in to the first server using local administrative credentials.
 
-1. Copy the [Supplemental Package that you downloaded previously](#download-the-supplemental-package) to any drive other than the C:\ drive of the first server.
+1. Copy the [Supplemental Package that you downloaded previously](#download-the-supplemental-package) to a local drive on the first server.
 
 ## Set up the deployment tool
 
