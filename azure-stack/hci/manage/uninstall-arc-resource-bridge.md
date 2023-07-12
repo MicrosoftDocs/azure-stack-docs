@@ -1,14 +1,14 @@
 ---
 title: Uninstall Azure Arc VM management (preview)
 description: Learn how to uninstall Azure Arc VM management (preview).
-author: ksurjan
-ms.author: ksurjan
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/23/2022
+ms.date: 07/10/2023
 ---
 
 # Uninstall Azure Arc VM management (preview)
@@ -22,6 +22,9 @@ This article describes how to uninstall Azure Arc VM management on an Azure Arc-
 ## How to uninstall Azure Arc VM management
 
 You can set up Azure Arc VM management via [Windows Admin Center](deploy-arc-resource-bridge-using-wac.md) or [Azure Command-Line Interface (CLI)](deploy-arc-resource-bridge-using-command-line.md). However, you can uninstall it only via Azure CLI. You need to set up certain variables when you run the uninstallation commands. For information on how to set up those variables, see [Set up Azure Arc VM management using command line](./deploy-arc-resource-bridge-using-command-line.md).
+
+> [!IMPORTANT]
+> Back up any running VMs before you uninstall Arc VM management. Uninstallation also removes these VMs.
 
 Perform the following steps to uninstall Azure Arc VM management:
 
