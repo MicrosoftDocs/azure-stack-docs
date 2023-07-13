@@ -3,7 +3,7 @@ title: Network HUD overview
 description: This topic introduces Network HUD for Azure Stack HCI.
 author: dcuomo
 ms.topic: how-to
-ms.date: 11/11/2022
+ms.date: 07/13/2023
 ms.author: dacuo 
 ms.reviewer: dacuo
 ---
