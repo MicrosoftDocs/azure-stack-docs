@@ -196,7 +196,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Storage path.** Specify the storage location for your VM image.
+    1. **Storage path.** Specify a friendly name for the storage location of your VM image.
 
 1. Select **Review + Create** to create your VM image.
 
