@@ -71,6 +71,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |X| X| X| X | |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |X| X| X| X | |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |X| X| X| X|
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|X| X| X| X |
