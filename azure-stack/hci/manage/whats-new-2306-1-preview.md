@@ -33,10 +33,10 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 ### What's new
 
-This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to July 2023. For more information on July release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information#azure-stack-hci-version-22h2-os-build-20349).
+This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to July 2023. For more information on July release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
-    > [!NOTE]
-    > The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on June release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information#azure-stack-hci-version-22h2-os-build-20349).
+> [!NOTE]
+> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on June release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 ## Next steps
 
