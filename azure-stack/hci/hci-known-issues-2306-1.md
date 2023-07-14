@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306.1 patch update release. This release maps to software version number **10.2306.1.11**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later
+This article applies to Azure Stack HCI, Supplemental Package, for 2306.1 patch update release. This release maps to software version number **10.2306.1.11**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
 
 For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2306-1-preview.md).
 
