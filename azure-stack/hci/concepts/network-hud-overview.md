@@ -90,7 +90,7 @@ Network HUD can detect the following networking problems. For more information, 
 **Fault Level: Critical**
 Network HUD can detect if your adapter is disconnecting or resetting frequently. Adapters that disconnect or reset frequently can cause poor VM and container performance, or Storage Spaces Direct instability.
 
-> [!VIDEO https://youtu.be/embed/g1TDW_GnhMQ]
+> [!VIDEO https://www.youtube.com/embed/g1TDW_GnhMQ]
 
 #### PCIe bandwidth oversubscription
 
@@ -98,7 +98,7 @@ Network HUD can detect if your adapter is disconnecting or resetting frequently.
 
 Network HUD can detect if adapters have enough PCIe bandwidth to satisfy the listed linkspeed of the adapters.
 
-> [!VIDEO https://youtu.be/embed/GqOq3oBbRrM]
+> [!VIDEO https://www.youtube.com/embed/GqOq3oBbRrM]
 
 ### Drivers
 
