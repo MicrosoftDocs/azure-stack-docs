@@ -410,10 +410,12 @@
   items:
   - name: What's in preview?
     items:
-    - name: 2306.1 release - Current
-      href: manage/whats-new-2306-1-preview.md
-    - name: 2306 release
+    - name: 2306 release - Current
       href: manage/whats-new-2306-preview.md
+    - name: 2306 updates
+      items:
+      - name: 2306.1 release
+        href: manage/whats-new-2306-1-preview.md
     - name: 2303 release 
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
