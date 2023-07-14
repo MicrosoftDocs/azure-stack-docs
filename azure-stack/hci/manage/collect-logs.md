@@ -21,7 +21,7 @@ You can use the `Send-DiagnosticData` cmdlet to save and transmit diagnostic dat
 
 - When the cluster is deployed and connected to Azure, the cmdlet collects logs and temporarily saves them locally. This copy is parsed, sent to Microsoft, and then automatically deleted from your system. See [Collect logs when the cluster is connected to Azure](#collect-logs-when-the-cluster-is-connected-to-azure).
 
-- When the cluster is deployed but not connected to Azure or during the pre-deployment or pre-registration of cluster, the cmdlet saves the logs to a local Server Message Block (SMB) share. Then you can use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the validation process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any validation issues. See [Collect logs when the cluster isn't connected to Azure or during validation](#collect-logs-when-the-cluster-isnt-connected-to-azure-or-during-validation).
+- When the cluster is deployed but not connected to Azure or during the pre-deployment or pre-registration of cluster, the cmdlet saves the logs to a local Server Message Block (SMB) share. Then you can use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the validation process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any validation issues. See [Collect logs when the cluster is disconnected from Azure](#collect-logs-when-the-cluster-is-disconnected-from-azure).
 
 ## Collect logs when the cluster is connected to Azure
 

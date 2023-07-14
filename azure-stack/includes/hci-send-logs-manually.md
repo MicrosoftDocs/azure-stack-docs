@@ -4,75 +4,76 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 06/30/2023
+ms.date: 07/13/2023
 ---
 
 **Save logs locally**
 
-You can save diagnostic logs to a local SMB share when your Azure Stack HCI cluster isn't deployed yet or it is already deployed but disconnected from Azure.
+You can save diagnostic logs to a local Server Message Block (SMB) share, typically in the following scenarios:
 
-For example, you can save diagnostic logs locally in the following scenarios:
+- **Pre-deployment or pre-registration.** To troubleshoot any validation issues that may arise during the pre-deployment or pre-registration of the cluster.
+- **Post-deployment.** If you're normally connected but experiencing connectivity issues, you can save logs locally to help with troubleshooting.
 
-- To troubleshoot any validation issues that may arise during cluster deployment.
-- To troubleshoot your cluster when it is typically connected to Azure but experiencing connectivity issues.
-
-Follow these steps to collect logs and save them locally:
+Follow these steps to save logs locally:
 
 1. Run the following command on each node of the cluster to collect logs and save them locally:
 
    ```powershell
-   Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>  
+   Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <cred>  
    ```
 
-1. After log collections on all the nodes finish, run the following command:
+1. After log collection on all the nodes finishes, run the following command:
 
    ```powershell
-   Send-DiagnosticData –FromSMBShare –BypassObsAgent  –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>
+   Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <cred>
    ```
 
 **Send logs manually**
 
 To manually send diagnostic logs to Microsoft, use the `Send-AzStackHciDiagnosticData` cmdlet from any Azure Stack HCI cluster node. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
-The input parameters used to send logs are the same that are required as part of deployment, you may use any of the credentials
+The input parameters used to send logs are the same that are required as part of deployment. For description about the input parameters, see [Deploy Azure Stack HCI using PowerShell (preview)](../hci/deploy/deployment-tool-powershell.md).
 
-1. Run the following command to send logs:
+You can use any of the following credentials to send logs:
+
+- **Send logs using registration credentials**
 
    ```powershell
-   Send-AzStackHciDiagnosticData -ResourceGroupName <Resource-Group-Name> -SubscriptionId <Subscription-ID> -TenantId <Tenant-ID> -RegistrationCredential $c -DiagnosticLogPath C:\CILogCollection  
+   Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RegistrationCredential < RegistrationCredential>
    ```
 
-Examples:
-
-- **Using Registration credentials (Azure credentials used for authentication to register ArcAgent)**
+   You can use the following cmdlets to get registration credentials:
 
    ```powershell
-   $secpwd = ConvertTo-SecureString -String "p a s s w o r d" -AsPlainText -Force 
-   $c = New-Object System.Management.Automation.PSCredential("aszregistration@microsoft.com", $secpwd) 
- 
-   Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationCredential $c -DiagnosticLogPath C:\MasLogs
+   $secpwd = ConvertTo-SecureString -String <password> -AsPlainText -Force  
+   $c = New-Object System.Management.Automation.PSCredential("aszregistration@microsoft.com", $secpwd)
    ```
 
-- **Using Interactive (Option to use device and authenticate from)**
+- **Send logs using device code credentials**
 
    ```powershell
-   Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationWithDeviceCode -DiagnosticLogPath C:\MasLogs
-   ```
- 
-- **Using SPN Credential (This is SPN crednetials used for authentication to register ArcAgent. Needed only for ServicePrincipal set )**
-
-   ```powershell
-   $appsec = "3SW8Q~x1t8i_hg4mfEQG01UNqUeyDZkezAbpFaAP" 
-   $appid = "b0734a1c-db05-4b84-b494-a6904b235a80" 
-   $ss = ConvertTo-SecureString -String $appsec -AsPlainText -Force 
-   $sp = New-Object System.Management.Automation.PSCredential($appid, $ss) 
- 
- 
-   Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationSPCredential $sp -DiagnosticLogPath C:\MasLogs 
+   Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationWithDeviceCode <RegistrationWithDeviceCode>  
    ```
 
-- **Using Passsthrough (Using the existing context on the PowerShell window)**
+- **Send logs using service principal name (SPN) credentials**
 
    ```powershell
-   Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationWithExistingContext -DiagnosticLogPath C:\MasLogs 
+   Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationSPCredential <RegistrationSPCredential>
+   ```
+
+   You can use the following cmdlets to get SPN credentials:
+
+
+   ```powershell
+   $SPNAppID = "<Your App ID>"  
+   $SPNSecret= "<Your SPN Secret>"  
+   $SPNsecStringPassword = ConvertTo-SecureString  
+   $SPNSecret -AsPlainText -Force  
+   $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
+   ```
+
+- **Send logs using registration with existing context credentials**
+
+   ```powershell
+   Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationWithExistingContext <RegistrationWithExistingContext>    
    ```
