@@ -531,7 +531,7 @@ For each test, the validator provides a summary of the unique issues and classif
 
 ## Troubleshoot environment validation issues
 
-For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment, see [Troubleshoot environment vlidation issues](./troubleshoot-environment-validation-issues.md).
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Troubleshoot environment vlidation issues](./troubleshoot-environment-validation-issues.md).
 
 ## Next steps
 

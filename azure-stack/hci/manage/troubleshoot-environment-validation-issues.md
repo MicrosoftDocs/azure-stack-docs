@@ -13,7 +13,7 @@ ms.date: 07/14/2023
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article describes how to get support from Microsoft to troubleshoot validation issues that may arise during pre-deployment or pre-registration of the Azure Stack HCI cluster.
+This article describes how to get support from Microsoft to troubleshoot validation issues that may arise during the pre-deployment or pre-registration of the Azure Stack HCI cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -21,7 +21,7 @@ This article describes how to get support from Microsoft to troubleshoot validat
 
 Starting with Azure Stack HCI, version 23H2 (preview) and later, you can get support from Microsoft to troubleshoot any issues that may arise during the environment validation process for Azure Stack HCI.
 
-To get support from Microsoft, you must first file a support ticket and then use any of the following ways:
+To troublehoot environment validation issues, you can begin by filing a support ticket and then do the following:
 
 - Collect diagnostic data locally and submit it to Microsoft to assist with troubleshooting. See [Collect diagnostic data locally and send to Microsoft](#collect-diagnostic-data-locally-and-send-to-microsoft).
 - Enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
