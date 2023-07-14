@@ -29,7 +29,7 @@ For more information about your options, which depend on your Azure Stack Hub en
 - Azure Stack Hub integrated systems: [Deployment planning decisions for Azure Stack Hub integrated systems](azure-stack-connection-models.md).
 
 > [!IMPORTANT]
-> Azure AD Graph is being deprecated, and will be retired on June 30, 2022. For more information, [see this section](#azure-ad-graph).
+> Azure AD Graph is being deprecated, and will be retired on June 30, 2023. For more information, [see this section](#azure-ad-graph).
 
 ## Common concepts for identity providers
 
