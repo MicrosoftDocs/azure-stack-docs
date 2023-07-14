@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/13/2023
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -196,7 +196,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Storage path.** Specify a friendly name for the storage location of your VM image.
+    1. **Storage path.** Select the storage path for your VM image.
 
 1. Select **Review + Create** to create your VM image.
 
