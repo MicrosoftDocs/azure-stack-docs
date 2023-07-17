@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/14/2023
+ms.date: 07/17/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2306.1 release (preview)
@@ -33,10 +33,14 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 ### What's new
 
-This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to July 2023. For more information on July release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to July 2023.
+
+This release contains a bug fix for an issue that prevented the health service from starting when Azure Monitor Stack HCI Insights was enabled.
+
+For more information on the July release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 > [!NOTE]
-> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on June release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the June release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 ## Next steps
 
