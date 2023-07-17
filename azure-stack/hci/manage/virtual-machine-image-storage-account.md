@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 6/20/2023
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using image in Azure Storage account (preview)
@@ -167,6 +167,8 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
     1. **Source.** The source of the image should be Storage blobs and is automatically populated.
 
     1. **Storage blob.** Specify the Azure Storage account path for the source image on your HCI cluster.
+
+    1. **Storage path.** Select the storage path for your VM image.
 
 1. Select **Review + Create** to create your VM image.
 

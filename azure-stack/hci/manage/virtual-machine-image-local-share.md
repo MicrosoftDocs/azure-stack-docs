@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 6/20/2023
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
@@ -166,6 +166,8 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
     1. **Source.** The source of the image should be **Local file share** and is automatically populated.
 
     1. **Local file share path.** Specify the local share path for the source image on your HCI cluster.
+
+    1. **Storage path.** Select the storage path for your VM image.
 
 1. Select **Review + Create** to create your VM image.
 
