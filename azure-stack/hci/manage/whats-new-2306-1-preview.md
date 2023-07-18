@@ -35,7 +35,9 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to July 2023.
 
-This release contains a bug fix for an issue that prevented the health service from starting when Azure Monitor Stack HCI Insights was enabled.
+- **ISO refresh** - in this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to July 2023.
+
+- **Bug fix** - this release contains a bug fix for an issue that prevented the health service from starting when Azure Monitor Stack HCI insights was enabled.
 
 For more information on the July release, see [Azure Stack HCI, version 22H2 OS build 20349.1850](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
