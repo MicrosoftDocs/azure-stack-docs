@@ -4,7 +4,6 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
 ms.custom:
-  - devx-track-arm-template
 ms.date: 07/14/2023
 ms.author: sethm
 ms.reviewer: thoroet

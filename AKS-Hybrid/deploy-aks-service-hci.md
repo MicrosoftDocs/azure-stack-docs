@@ -4,6 +4,7 @@ description: How to deploy AKS service on Azure Stack HCI
 author: abha
 ms.author: abha
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.date: 05/04/2023
 ---
 
