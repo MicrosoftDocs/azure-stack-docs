@@ -12,13 +12,9 @@ ms.date: 06/23/2023
 
 Follow these steps to download the Supplemental Package files:  
 
-1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
+1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-operating-system.md). Make sure to select **English** from the **Choose language** dropdown list.
 
-1. On the **Azure Stack HCI software download** page, go to **Supplemental package for Azure Stack HCI 22H2 (public preview)**.
-
-    :::image type="content" source="../hci/manage/media/whats-in-preview/azure-stack-hci-supplemental-package-download.png" alt-text="Screenshot of the Azure Stack HCI v22H2 Supplemental Package download.":::
-
-1. Download the following files: 
+1. Download the following Supplemental Package files:
 
     | Azure Stack HCI Supplemental Package component|  Description |
     |---------------------------------------------- |---------------------- |

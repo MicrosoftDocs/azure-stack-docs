@@ -26,16 +26,17 @@ Follow these steps to download the Azure Stack HCI OS:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) with your Azure account credentials.
 1. From the **Home** page, go to **Azure Arc** > **Azure Stack HCI**.
-1. On the **Get started** page, select **Download Azure Stack HCI**.
+1. Select the **Get started** tab.
+1. On the **Get started** page, select **Download Azure Stack HCI** from the **Download software** tile.
 
     :::image type="content" source="media/download-operating-system/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-operating-system/get-started-page-with-download-button.png":::
     
-1. On the **Download Azure Stack HCI** context page on the right, do the following:
-    1. Choose software version. By default, the latest generally available version of Aure Stack HCI is selected.
-    1. Choose language from the dropdown list.
-    1. Review the privacy statement.
+1. On the **Download Azure Stack HCI** page on the right, do the following:
+    1. Choose software version. By default, the latest generally available version of Azure Stack HCI is selected.
+    1. Choose language from the dropdown list. For example, select **English** to download the English version of the OS.
+    1. Review the privacy statement. <!--link to privacy statement-->
     1. Select the license terms and privacy notice checkbox.
-    1. Select the **Download Azure Stack HCI** button. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
+    1. Select the **Download Azure Stack HCI** button. This action begins the download. Use the downloaded file to install the OS on each server that you want to cluster.
 
     :::image type="content" source="media/download-operating-system/download-azure-stack-hci-page.png" alt-text="Screenshot of the Download Azure Stack HCI page." lightbox="media/download-operating-system/download-azure-stack-hci-page.png":::
 
