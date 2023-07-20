@@ -74,6 +74,8 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
+  - name: 0. Download the Azure Stack HCI OS
+    href: deploy/download-operating-system.md
   - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: 2. Create a cluster

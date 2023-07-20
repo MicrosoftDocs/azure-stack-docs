@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 07/20/2023
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
@@ -16,7 +16,7 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
-Azure Stack HCI is [available for download with a free 60-day trial](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. Use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate the hardware requirements for your Azure Stack HCI solution. This sizing tool is currently in public preview and requires your personal Microsoft account (MSA) credentials (not a corporate account) to sign in.
+Azure Stack HCI is [available for download from the Azure portal with a free 60-day trial](deploy/download-operating-system.md). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. Use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate the hardware requirements for your Azure Stack HCI solution. This sizing tool is currently in public preview and requires your personal Microsoft account (MSA) credentials (not a corporate account) to sign in.
 
 Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
 
@@ -123,7 +123,7 @@ Some Microsoft partners are developing software that extends the capabilities of
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](deploy/download-operating-system.md)
 - [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
 - [Compare Azure Stack HCI to Windows Server](concepts/compare-windows-server.md)
