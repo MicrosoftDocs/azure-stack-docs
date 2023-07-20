@@ -12,7 +12,7 @@ ms.date: 06/23/2023
 
 Follow these steps to download the Supplemental Package files:  
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-operating-system.md). Make sure to select **English** from the **Choose language** dropdown list.
+1. [Download the Azure Stack HCI operating system from the Azure portal](../hci/deploy/download-operating-system.md). Make sure to select **English** from the **Choose language** dropdown list.
 
 1. Download the following Supplemental Package files:
 
