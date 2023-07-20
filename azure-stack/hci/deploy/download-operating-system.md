@@ -30,8 +30,7 @@ Follow these steps to download the Azure Stack HCI OS:
 
     :::image type="content" source="media/download-operating-system/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-operating-system/get-started-page-with-download-button.png":::
     
-1. On the **Download Azure Stack HCI** context page displays on the right:
- do the following:
+1. On the **Download Azure Stack HCI** context page on the right, do the following:
     1. Choose software version. By default, the latest generally available version of Aure Stack HCI is selected.
     1. Choose language from the dropdown list.
     1. Review the privacy statement.
