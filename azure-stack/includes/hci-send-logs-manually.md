@@ -14,19 +14,11 @@ You can save diagnostic logs to a local Server Message Block (SMB) share, typica
 - **Pre-deployment or pre-registration.** To troubleshoot any validation issues that may arise during the pre-deployment or pre-registration of the cluster.
 - **Post-deployment.** If you're normally connected but experiencing connectivity issues, you can save logs locally to help with troubleshooting.
 
-Follow these steps to save logs locally:
+Run the following command on each node of the cluster to collect logs and save them locally:
 
-1. Run the following command on each node of the cluster to collect logs and save them locally:
-
-   ```powershell
-   Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <cred>  
-   ```
-
-1. After log collection on all the nodes finishes, run the following command:
-
-   ```powershell
-   Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <cred>
-   ```
+```powershell
+Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>  
+```
 
 **Send logs manually**
 
@@ -34,7 +26,7 @@ To manually send diagnostic logs to Microsoft, use the `Send-AzStackHciDiagnosti
 
 The input parameters used to send logs are the same that are required as part of deployment. For description about the input parameters, see [Deploy Azure Stack HCI using PowerShell (preview)](../hci/deploy/deployment-tool-powershell.md).
 
-You can use any of the following credentials to send logs:
+You can use any of the following credentials to send the logs:
 
 - **Send logs using registration credentials**
 
@@ -77,3 +69,9 @@ You can use any of the following credentials to send logs:
    ```powershell
    Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationWithExistingContext <RegistrationWithExistingContext>    
    ```
+
+If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
+
+```powershell
+Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
+```

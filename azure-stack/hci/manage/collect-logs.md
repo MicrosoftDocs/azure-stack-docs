@@ -41,19 +41,27 @@ where:
 
 - `FilterByRole` parameter collects logs for each role. Currently, you can use the `FilterByRole` parameter to filter log collection by the following roles. This list of roles may change in a future release.
 
-  - DeploymentLogs
-  - BareMetal
-  - ECE
   - ALM
-  - MOC_ARB
-  - FleetDiagnosticsAgent
-  - ObservabilityAgent
-  - RemoteSupportAgent
-  - OSUpdateLogs
+  - ArcAgent
   - AutonomousLogs
-  - OEMDiagnostics
-  - ObservabilityVolume
+  - BareMetal
+  - CommonInfra
+  - DeploymentLogs
+  - ECE
+  - Extension
+  - FleetDiagnosticsAgent
+  - HCICloudService DownloadService
+  - Health
+  - HostNetwork
+  - MOC_ARB
   - NC
+  - ObservabilityAgent
+  - ObservabilityLogmanTraces
+  - ObservabilityVolume
+  - OEMDiagnostics
+  - OSUpdateLogs
+  - RemoteSupportAgent
+  - URP
 
 - `CollectSddc` parameter is set to `$true` by default, which triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes its logs as part of the log collection.
 
@@ -121,7 +129,7 @@ To get a history of log collections for the last 90 days, enter:
    Status                         Succeeded
    CollectionFromDate             9/29/2022 4:07:57 PM +00:00
    CollectionToDate               9/29/2022 5:07:57 PM +00:00
-   CorrelationId                  fdcd94c8-1bd2-4ec6-8612-c92d5abd9a84
+   LogCollectionId                fdcd94c8-1bd2-4ec6-8612-c92d5abd9a84
    Type                           OnDemand
    LogUploadSizeMb                1598
    UploadNumberOfFiles            1924
