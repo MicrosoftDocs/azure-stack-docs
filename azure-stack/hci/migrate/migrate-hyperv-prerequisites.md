@@ -84,4 +84,4 @@ Next, you need to open ports, configure the target cluster, set SAN policy, conf
 
 ## Next steps
 
-- Perform [Discovery](migrate-hyperv-discover.md).
+- Perform source appliance [discovery](migrate-hyperv-discover.md).
