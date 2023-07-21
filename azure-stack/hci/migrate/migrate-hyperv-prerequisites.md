@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 
 # Prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../../includes/hci-applies-to-23h2.md)]
 
 This article describes the prerequisite tasks you need to complete before proceeding with Hyper-V migration to Azure Stack HCI.
 
@@ -75,13 +75,13 @@ Next, you need to open ports, configure the target cluster, set SAN policy, conf
 
 1. Configure Arc Resource Bridge and then create a custom location on one of the nodes of the target HCI cluster, following the instructions in these articles:
 
-    a. [Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites).
+    a. [Azure Arc VM management prerequisites](/manage/azure-arc-vm-management-prerequisites).
     
-    b. [Set up Azure Arc VM management using command line](../hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).
+    b. [Set up Azure Arc VM management using command line](/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).
     
-    c. Create a storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks using the [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath?view=azure-cli-latest#az-azurestackhci-storagepath-create) command.
+    c. Create a storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks using the [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath) command.
 
 
 ## Next steps
 
-- Perform source appliance [discovery](migrate-hyperv-discover.md).
+- Perform source appliance [discovery](migrate-hyperv-prerequisites.md).
