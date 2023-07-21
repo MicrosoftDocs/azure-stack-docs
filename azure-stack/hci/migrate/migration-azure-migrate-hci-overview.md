@@ -9,13 +9,13 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Overview Azure Migrate based migration for Azure Stack HCI (preview)
+# Overview of Azure Migrate based migration for Azure Stack HCI (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-Azure Migration is a simplified, unified platform that is used to assess, migrate and modernize your on-premises VM workloads. You can use Azure Migrate to move your on-premises Hyper-V VMs to your Azure Stack HCI cluster.
-
 This article describes a brief overview of the Azure Migrate solution used to migrate Hyper-V VMs to your Azure Stack Cluster including the benefits and the workflow of the solution.
+
+Azure Migrate is a simplified, unified platform that is used to assess, migrate and modernize your on-premises VM workloads. Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment. You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your Azure Stack HCI cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -24,21 +24,22 @@ This article describes a brief overview of the Azure Migrate solution used to mi
 Using Azure Migrate to move your Hyper-V VMs to Azure Stack HCI offers the following benefits:
 
 - This solution works with both Hyper-V and VMware VM. In this release, only the Hyper-V solution is made available.
+- This solution requires little to no prep. You don't need to prep your source VMs or install agents on them prior to migration.
 - This solution results in a minimal downtime for the VM-based applications running on your on-premises servers.
-- This solution keeps the application data on-premises only. The control plane is via the Azure and Azure portal can be used to start, run, and track your migration to Azure.
+- This solution keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster. The control plane is via the Azure and Azure portal can be used to start, run, and track your migration to Azure.
 
 
 ## Workflow
 
-In the traditional Azure Migrate model, the data flows from on-premises to Azure. In this solution, the traditional model was modified so that the VMs and their related data remains on-premises.
+In the traditional Azure Migrate model, the data flows from on-premises to Azure. In this solution, the traditional model was modified so that the VMs and their related data remain on-premises.
 
 The following diagram shows the workflow of the solution:
 
-
+:::image type="content" source="media/azure-migrate-workflow-1.png" alt-text="High level workflow for migration using Azure Migrate":::
 
 The solution has the following high-level steps:
 
-1. **Prepare** - Review and complete the migration prerequisites. Deploy, configure and register your Azure Stack HCI cluster. This cluster will be the migration target. Create an Azure Migrate project in Azure.
+1. **Prepare** - Review and complete the migration prerequisites. Deploy, configure and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project in Azure.
 
     For more information, see [Review prerequisites for Azure Migrate]().
 
