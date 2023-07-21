@@ -1,9 +1,9 @@
 ---
 title: User Azure Migrate to move Hyper-V VMs to Azure Stack HCI (preview)
-description: Learn about the deployment methods for Azure Stack HCI (preview).
+description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 07/20/2023
+ms.date: 07/21/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
