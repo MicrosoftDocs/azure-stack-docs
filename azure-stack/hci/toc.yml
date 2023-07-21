@@ -324,13 +324,13 @@
     - name: Migrate using Azure Migrate
       items:
       - name: Overview
-        href: migrate/overview.md
+        href: migrate/migration-azure-migrate-hci-overview.md
       - name: Review prerequisites
-        href: migrate/prerequisites.md
+        href: migrate/migrate-hyperv-prerequisites.md
       - name: Discover
-        href: migrate/discover.md
+        href: migrate/migrate-hyperv-discover.md
       - name: Replicate
-        href: migrate/replicate.md
+        href: migrate/migrate-hyperv-replicate.md
       - name: Migrate
         href: migrate/migrate.md
       - name: Verify
