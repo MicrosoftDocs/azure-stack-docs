@@ -66,20 +66,20 @@ Next, you need to open ports, configure the target cluster, set SAN policy, conf
 
 1. Open required firewall ports, following the instructions in these articles:
 
-    - [Port access](https://learn.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access).
-    - [URL access](https://learn.microsoft.com/azure/migrate/migrate-appliance#url-access).
+    - [Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).
+    - [URL access](/azure/migrate/migrate-appliance#url-access).
 
-1. Deploy, configure and [register a target Azure Stack HCI cluster](https://learn.microsoft.com/azure-stack/hci/deploy/deployment-quickstart).
+1. Deploy, configure and [register a target Azure Stack HCI cluster](/deploy/deployment-quickstart).
 
-1. [Configure SAN policy](https://learn.microsoft.com/azure/migrate/prepare-for-migration#configure-san-policy) on Windows VMs.
+1. [Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) on Windows VMs.
 
 1. Configure Arc Resource Bridge and then create a custom location on one of the nodes of the target HCI cluster, following the instructions in these articles:
 
-    a. [Azure Arc VM management prerequisites](https://learn.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-vm-management-prerequisites).
+    a. [Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites).
     
-    b. [Set up Azure Arc VM management using command line](https://learn.microsoft.com/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).
+    b. [Set up Azure Arc VM management using command line](../hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).
     
-    c. Create a storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks using the [az azurestackhci storagepath create](https://learn.microsoft.com/en-us/cli/azure/azurestackhci/storagepath?view=azure-cli-latest#az-azurestackhci-storagepath-create) command.
+    c. Create a storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks using the [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath?view=azure-cli-latest#az-azurestackhci-storagepath-create) command.
 
 
 ## Next steps
