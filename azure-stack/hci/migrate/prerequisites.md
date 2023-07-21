@@ -33,7 +33,7 @@ Complete the following tasks before you proceed with migration:
 
 1. [Configure SAN policy](https://learn.microsoft.com/azure/migrate/prepare-for-migration#configure-san-policy) on Windows VMs.
 
-1. Configure Arc Resource Bridge and create a custom location on one of the nodes of the target HCI cluster, following the instructions in these articles:
+1. Configure Arc Resource Bridge and then create a custom location on one of the nodes of the target HCI cluster, following the instructions in these articles:
 
     a. [Azure Arc VM management prerequisites](https://learn.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-vm-management-prerequisites).
     
