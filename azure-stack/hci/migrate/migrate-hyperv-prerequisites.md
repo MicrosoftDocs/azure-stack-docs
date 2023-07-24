@@ -26,7 +26,7 @@ You use Azure migrate to create a new migration project, associated storage acco
 
 1. Go to the [Azure Preview Portal](https://aka.ms/HCIMigratePP).
 
-1. In the Azure Preview Portal, select **Azure Migrate** abd then select **Servers, databases and web apps** to create a new Azure Migrate project.
+1. In the Azure Preview Portal, select **Azure Migrate** and then select **Servers, databases and web apps** to create a new Azure Migrate project.
 
 1. On the **Create project** page, enter your subscription and resource group, or select them if pre-existing.
 
