@@ -71,7 +71,7 @@ Next, you need to open ports, configure the target cluster, set SAN policy, conf
     - [Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).
     - [URL access](/azure/migrate/migrate-appliance#url-access).
 
-1. Deploy, configure and [register a target Azure Stack HCI cluster](/deploy/deployment-quickstart).
+1. Deploy, configure and [register a target Azure Stack HCI cluster](/deploy/deployment-quickstart.md).
 
 1. [Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) on Windows VMs.
 
