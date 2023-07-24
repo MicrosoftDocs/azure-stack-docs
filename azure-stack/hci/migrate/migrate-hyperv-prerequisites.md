@@ -22,6 +22,8 @@ You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your A
 
 You use Azure migrate to create a new migration project, associated storage account, and resources. Azure Migrate is a feature of Azure accessed from the Azure Preview Portal.
 
+:::image type="content" source="../media/prereq-placeholder.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="../media/prereq-placeholder.png":::
+
 1. Go to the [Azure Preview Portal](https://aka.ms/HCIMigratePP).
 
 1. In the Azure Preview Portal, select **Azure Migrate** abd then select **Servers, databases and web apps** to create a new Azure Migrate project.
