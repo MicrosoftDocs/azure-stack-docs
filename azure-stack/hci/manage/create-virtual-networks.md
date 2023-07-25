@@ -51,20 +51,20 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. When creating the static virtual network and network interface, make sure that you are running the following module versions:
     1. Microsoft On-premises Cloud (MOC) version 1.0.64.
-    1. Kubernetes extension version 2.0.2.
+    1. Kubernetes version 2.0.2.
     
     > [!NOTE]
-    > Make sure to run the prescribed versions of both the extensions to successfully create a static virtual network and network interface.
+    > Make sure to run the prescribed versions of both the components to successfully create a static virtual network and network interface.
 
-    To verify the MOC version and the Kubernetes extension versions you are running, follow these steps:
+    To verify the MOC version and the Kubernetes versions you are running, follow these steps:
      
     1. Use the `az arcappliance list --resource-group $resource_group`` command to get the name of your Arc Resource Bridge.
     1. Set `$ClusterName` to the name of your Arc Resource Bridge.
-    1. Get the version number for your Kubernetes extension. Verify the `version` is 2.0.2.
+    1. Get the version number for Kubernetes. Verify the `version` is 2.0.2.
         ```azurecli
         az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances
         ```
-        If you are not running the required version, update the extension to the required version.
+        If you are not running the required version, update the components to the required version.
 
         ```azurecli
         az k8s-extension update --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name $name --configuration-settings Microsoft.CustomLocation.ServiceAccount=$service_account --config-protected-file $workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --version "2.0.2"
@@ -74,9 +74,9 @@ Before you begin, make sure to complete the following prerequisites:
         |Parameters  |Description  |
         |---------|---------|
         |`$resource_Name`     | Name of your Arc Resource Bridge. To get this name, run `az arcappliance list --resource-group $resource_group` cmdlet.      |
-        |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType`. For example, `Microsoft.AzureStackHCI.Operator`.         |
+        |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType`. For example, `vmss-hci`.         |
         |`$service_account`     |Name of your service account. Run `az k8sextension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` and get the value against `Microsoft.CustomLocation.ServiceAccount`.         |
-        |`$workingDir`     |Name of your working diretory. Run `Get-MocConfig` and look for `workingDir`.       |
+        |`$workingDir`     |Name of your working directory. Run `Get-MocConfig` and look for `workingDir`.       |
         |`$hciClusterId`    |Cluster ID for your Azure Stack HCI cluster. Run `(Get-AzureStackHCI).AzureResourceUri`.        |
       
 
