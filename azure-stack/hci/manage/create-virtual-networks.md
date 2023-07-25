@@ -50,8 +50,8 @@ Before you begin, make sure to complete the following prerequisites:
 1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
 1. When creating the static virtual network and network interface, make sure that you're running the following module versions:
-    1. Microsoft On-premises Cloud (MOC) version 1.0.64.
-    1. Kubernetes version 2.0.2.
+    - Microsoft On-premises Cloud (MOC) version 1.0.64.
+    - Kubernetes version 2.0.2.
     
       > [!NOTE]
       > Make sure to run the prescribed versions of both the components to successfully create a static virtual network and network interface.
