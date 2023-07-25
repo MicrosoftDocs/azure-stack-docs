@@ -49,14 +49,14 @@ Before you begin, make sure to complete the following prerequisites:
     ```
 1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
-1. When creating the static virtual network and network interface, make sure that you are running the following module versions:
+1. When creating the static virtual network and network interface, make sure that you're running the following module versions:
     1. Microsoft On-premises Cloud (MOC) version 1.0.64.
     1. Kubernetes version 2.0.2.
     
     > [!NOTE]
     > Make sure to run the prescribed versions of both the components to successfully create a static virtual network and network interface.
 
-    To verify the MOC version and the Kubernetes versions you are running, follow these steps:
+    To verify the MOC version and the Kubernetes versions you're running, follow these steps:
      
     1. Use the `az arcappliance list --resource-group $resource_group` command to get the name of your Arc Resource Bridge.
     1. Set `$ClusterName` parameter:
@@ -67,7 +67,7 @@ Before you begin, make sure to complete the following prerequisites:
         ```azurecli
         az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances
         ```
-        If you are not running the required version, update the components to the required version.
+        If you aren't running the required version, update the components to the required version.
 
         ```azurecli
         az k8s-extension update --cluster-type appliances --cluster-name $ClusterName --resource-group $resource_group --name $name --configuration-settings Microsoft.CustomLocation.ServiceAccount=$serviceAccount --config-protected-file $workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --version "2.0.2"
@@ -87,7 +87,7 @@ Before you begin, make sure to complete the following prerequisites:
         ```azurecli
         Get-MocConfig
         ``` 
-        If you are not running the required version, update the extension to the required version.
+        If you aren't running the required version, update the extension to the required version.
         ```azurecli
         Update-Moc 
         ```          
@@ -104,11 +104,11 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
    | Parameter | Description |
    | ----- | ----------- |
-   | **name** | Name for the virtual network that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
+   | **name** | Name for the virtual network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
    | **resource-group** |Name of the resource group where you create the virtual network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-   | **CustomLocation** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you are creating this virtual network. |
+   | **CustomLocation** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you're creating this virtual network. |
    | **Location** | Azure regions as specified by `az locations`. |
 
    For static IP only, the *required* basic parameters are tabulated as follows:
@@ -272,7 +272,7 @@ Create a static virtual network when you want to create virtual machines with ne
     }
     ```
 
-Once the virtual network creation is complete, you are ready to create virtual machines with network interfaces on these virtual networks.
+Once the virtual network creation is complete, you're ready to create virtual machines with network interfaces on these virtual networks.
 
 ## Next steps
 
