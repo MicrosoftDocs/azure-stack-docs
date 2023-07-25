@@ -61,11 +61,11 @@ Before you begin, make sure to complete the following prerequisites:
     1. Use the `az arcappliance list --resource-group $resource_group` command to get the name of your Arc Resource Bridge.
     1. Set `$ClusterName` parameter:
         ```powershell
-        $ClusterName
-        ``````
+        $ClusterName = "<Name of your Arc Resource Bridge>"
+        ```
     1. Get the version number for Kubernetes. Verify the `version` is 2.0.2.
         ```azurecli
-        az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances
+        az k8s-extension list --resource-group $resource_group --cluster-name $clusterName --cluster-type appliances
         ```
         If you aren't running the required version, update the components to the required version.
 
