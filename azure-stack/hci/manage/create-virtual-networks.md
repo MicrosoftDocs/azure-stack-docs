@@ -53,8 +53,8 @@ Before you begin, make sure to complete the following prerequisites:
     1. Microsoft On-premises Cloud (MOC) version 1.0.64.
     1. Kubernetes version 2.0.2.
     
-    > [!NOTE]
-    > Make sure to run the prescribed versions of both the components to successfully create a static virtual network and network interface.
+      > [!NOTE]
+      > Make sure to run the prescribed versions of both the components to successfully create a static virtual network and network interface.
 
     To verify the MOC version and the Kubernetes versions you're running, follow these steps:
      
@@ -77,7 +77,7 @@ Before you begin, make sure to complete the following prerequisites:
         |Parameters  |Description  |
         |---------|---------|
         |`$clusterName`     | Name of your Arc Resource Bridge. To get this name, run `az arcappliance list --resource-group $resource_group` cmdlet.      |
-        |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType`. For example, `vmss-hci`.         |
+        |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType=microsoft.azstackhci.operator`. For example, `vmss-hci`.         |
         |`$serviceAccount`     |Name of your service account. Run `az k8sextension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` and get the value against `Microsoft.CustomLocation.ServiceAccount`.         |
         |`$workingDir`     |Name of your working directory. Run `Get-MocConfig` and look for `workingDir`.       |
         |`$hciClusterId`    |Cluster ID for your Azure Stack HCI cluster. Run `(Get-AzureStackHCI).AzureResourceUri`.        |
