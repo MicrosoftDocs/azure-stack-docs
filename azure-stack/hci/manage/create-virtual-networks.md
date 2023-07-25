@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/24/2023
+ms.date: 07/25/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
@@ -58,8 +58,11 @@ Before you begin, make sure to complete the following prerequisites:
 
     To verify the MOC version and the Kubernetes versions you are running, follow these steps:
      
-    1. Use the `az arcappliance list --resource-group $resource_group`` command to get the name of your Arc Resource Bridge.
-    1. Set `$ClusterName` to the name of your Arc Resource Bridge.
+    1. Use the `az arcappliance list --resource-group $resource_group` command to get the name of your Arc Resource Bridge.
+    1. Set `$ClusterName` parameter:
+        ```powershell
+        $ClusterName
+        ``````
     1. Get the version number for Kubernetes. Verify the `version` is 2.0.2.
         ```azurecli
         az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances
@@ -67,15 +70,15 @@ Before you begin, make sure to complete the following prerequisites:
         If you are not running the required version, update the components to the required version.
 
         ```azurecli
-        az k8s-extension update --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name $name --configuration-settings Microsoft.CustomLocation.ServiceAccount=$service_account --config-protected-file $workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --version "2.0.2"
+        az k8s-extension update --cluster-type appliances --cluster-name $ClusterName --resource-group $resource_group --name $name --configuration-settings Microsoft.CustomLocation.ServiceAccount=$serviceAccount --config-protected-file $workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --version "2.0.2"
         ```
         where,
             
         |Parameters  |Description  |
         |---------|---------|
-        |`$resource_Name`     | Name of your Arc Resource Bridge. To get this name, run `az arcappliance list --resource-group $resource_group` cmdlet.      |
+        |`$clusterName`     | Name of your Arc Resource Bridge. To get this name, run `az arcappliance list --resource-group $resource_group` cmdlet.      |
         |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType`. For example, `vmss-hci`.         |
-        |`$service_account`     |Name of your service account. Run `az k8sextension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` and get the value against `Microsoft.CustomLocation.ServiceAccount`.         |
+        |`$serviceAccount`     |Name of your service account. Run `az k8sextension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` and get the value against `Microsoft.CustomLocation.ServiceAccount`.         |
         |`$workingDir`     |Name of your working directory. Run `Get-MocConfig` and look for `workingDir`.       |
         |`$hciClusterId`    |Cluster ID for your Azure Stack HCI cluster. Run `(Get-AzureStackHCI).AzureResourceUri`.        |
       
@@ -132,18 +135,18 @@ Create a DHCP virtual network when the underlying network to which you want to c
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
-    $VNetName = "test-vnet-dynamic"
-    $VSwitchName = "ConvergedSwitch(compute_management)"    
-    $Subscription =  "hcisub" 
-    $ResourceGroupName = "hcirg"
-    $CustomLocName = "altsnclus-cl" 
-    $Location = "eastus2euap"
+    $vNetName = "test-vnet-dynamic"
+    $vSwitchName = "ConvergedSwitch(compute_management)"    
+    $subscription =  "hcisub" 
+    $resourceGroupName = "hcirg"
+    $customLocName = "altsnclus-cl" 
+    $location = "eastus2euap"
     ```
 
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   az azurestackhci virtualnetwork create --subscription $Subscription --resource-group $ResourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocName" type="CustomLocation" --location $Location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $VNetName --vm-switch-name $VSwitchName
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
    ```
 
     Here's a sample output:
@@ -190,13 +193,13 @@ Create a static virtual network when you want to create virtual machines with ne
 1. Set the parameters. Here's an example:
 
     ```azurecli
-    $VNetName = "test-vnet-static"
-    $VSwitchName = '"ConvergedSwitch(compute_management)"' 
-    $Subscription =  "hcisub" 
-    $ResourceGroupName = "hcirg"
-    $CustomLocName = "altsnclus-cl" 
-    $Location = "eastus2euap" 
-    $AddressPrefix = "10.0.0.0/24"
+    $vNetName = "test-vnet-static"
+    $vSwitchName = '"ConvergedSwitch(compute_management)"' 
+    $subscription =  "hcisub" 
+    $resourceGroupName = "hcirg"
+    $customLocName = "altsnclus-cl" 
+    $location = "eastus2euap" 
+    $addressPrefix = "10.0.0.0/24"
     ```
 
     > [!NOTE]
@@ -205,7 +208,7 @@ Create a static virtual network when you want to create virtual machines with ne
 1. Create a static virtual network. Run the following cmdlet:
  
     ```azurecli
-    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --network-type "Transparent" --name $VNetName --vm-switch-name $VSwitchName --ip-allocation-method "Static" --address-prefix $AddressPrefix   
+    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name=$customLocationID type="CustomLocation" --location $location --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName --ip-allocation-method "Static" --address-prefix $addressPrefix   
     ```
     Here's a sample output:
 
