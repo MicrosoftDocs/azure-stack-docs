@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/29/2023
+ms.date: 07/24/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
@@ -23,7 +23,8 @@ This article describes how to create virtual networks for your Azure Stack HCI c
 Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure that you have access to an Azure Stack HCI cluster. This cluster should have Arc Resource Bridge installed on it and a custom location created as per the instructions in [Set up Arc Resource Bridge using Azure CLI](./deploy-arc-resource-bridge-using-command-line.md).
-    - Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
+    
+    Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
 1. Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. The virtual network that you create is associated with this external switch. 
 
@@ -48,6 +49,47 @@ Before you begin, make sure to complete the following prerequisites:
     ```
 1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
+1. When creating the static virtual network and network interface, make sure that you are running the following module versions:
+    1. Microsoft On-premises Cloud (MOC) version 1.0.64.
+    1. Kubernetes extension version 2.0.2.
+    
+    > [!NOTE]
+    > Make sure to run the prescribed versions of both the extensions to successfully create a static virtual network and network interface.
+
+    To verify the MOC version and the Kubernetes extension versions you are running, follow these steps:
+     
+    1. Use the `az arcappliance list --resource-group $resource_group`` command to get the name of your Arc Resource Bridge.
+    1. Set `$ClusterName` to the name of your Arc Resource Bridge.
+    1. Get the version number for your Kubernetes extension. Verify the `version` is 2.0.2.
+        ```azurecli
+        az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances
+        ```
+        If you are not running the required version, update the extension to the required version.
+
+        ```azurecli
+        az k8s-extension update --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name $name --configuration-settings Microsoft.CustomLocation.ServiceAccount=$service_account --config-protected-file $workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --version "2.0.2"
+        ```
+        where,
+            
+        |Parameters  |Description  |
+        |---------|---------|
+        |`$resource_Name`     | Name of your Arc Resource Bridge. To get this name, run `az arcappliance list --resource-group $resource_group` cmdlet.      |
+        |`$name`     |Name for the operator. To get this, run `az k8s-extension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` cmdlet. Get the `name` parameter under `extensionType`. For example, `Microsoft.AzureStackHCI.Operator`.         |
+        |`$service_account`     |Name of your service account. Run `az k8sextension list --resource-group $resource_group --cluster-name $cluster_name --cluster-type appliances` and get the value against `Microsoft.CustomLocation.ServiceAccount`.         |
+        |`$workingDir`     |Name of your working diretory. Run `Get-MocConfig` and look for `workingDir`.       |
+        |`$hciClusterId`    |Cluster ID for your Azure Stack HCI cluster. Run `(Get-AzureStackHCI).AzureResourceUri`.        |
+      
+
+    1. Get the version number for MOC extension. Verify the `moduleVersion` is 1.0.64.
+        ```azurecli
+        Get-MocConfig
+        ``` 
+        If you are not running the required version, update the extension to the required version.
+        ```azurecli
+        Update-Moc 
+        ```          
+        > [!NOTE]
+        > Depending on the MOC version your cluster is running, you may need multiple updates to get to the required version. Run `Get-MocConfig` after each update to verify the version number.
 
 ## Create virtual network
 
