@@ -266,12 +266,12 @@ The following Azure Blob storage tutorials are applicable to Azure Stack Hub. No
 
 The following Azure Queue storage tutorials are applicable to Azure Stack Hub. Note the specific endpoint suffix requirement for Azure Stack Hub described in the previous [Examples](#examples) section.
 
-* [Get started with Azure Queue storage using .NET](/azure/storage/queues/storage-dotnet-how-to-use-queues)
-* [How to use Queue storage from Java](/azure/storage/queues/storage-java-how-to-use-queue-storage)
-* [How to use Queue storage from Node.js](/azure/storage/queues/storage-nodejs-how-to-use-queues)
+* [Get started with Azure Queue storage using .NET](/azure/storage/queues/storage-quickstart-queues-dotnet?tabs=passwordless%2Croles-azure-portal%2Cenvironment-variable-windows%2Csign-in-azure-cli)
+* [How to use Queue storage from Java](/azure/storage/queues/storage-quickstart-queues-java?tabs=powershell%2Cpasswordless%2Croles-azure-portal%2Cenvironment-variable-windows%2Csign-in-azure-cli)
+* [How to use Queue storage from Node.js](/azure/storage/queues/storage-quickstart-queues-nodejs?tabs=passwordless%2Croles-azure-portal%2Cenvironment-variable-windows%2Csign-in-azure-cli)
 * [How to use Queue storage from C++](/azure/storage/queues/storage-c-plus-plus-how-to-use-queues)
 * [How to use Queue storage from PHP](/azure/storage/queues/storage-php-how-to-use-queues)
-* [How to use Queue storage from Python](/azure/storage/queues/storage-python-how-to-use-queue-storage)
+* [How to use Queue storage from Python](/azure/storage/queues/storage-quickstart-queues-python?tabs=passwordless%2Croles-azure-portal%2Cenvironment-variable-windows%2Csign-in-azure-cli)
 * [How to use Queue storage from Ruby](/azure/storage/queues/storage-ruby-how-to-use-queue-storage)
 
 ## Table storage
