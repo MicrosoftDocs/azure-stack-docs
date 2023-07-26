@@ -90,7 +90,7 @@ You need to manually enable Azure Arc integration in the following scenarios:
 
 Follow these steps to enable Azure Arc integration:
 
-1. Install the latest version of the Az.Resources module on your management PC:
+1. Install the latest version of the `Az.Resources` module on your management PC:
 
     ```PowerShell
     Install-Module -Name Az.Resources
