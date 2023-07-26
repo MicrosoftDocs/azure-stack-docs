@@ -59,13 +59,13 @@ In order for the AKS Edge Essentials cluster to discover your camera, open the p
 1. Run the following command to open port 3072 within the Linux node:
 
     ```powershell
-    Invoke-AksEdgeNodeCommand -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
     ```
     
 2. Save the IP tables so that even if the node is stopped and restarted, the rules for opening port 3072 will be saved:
 
     ```powershell
-    Invoke-AksEdgeNodeCommand -command "sudo iptables-save | sudo tee /etc/systemd/scripts/ip4save > /dev/null"
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo sed -i '/-A OUTPUT -j ACCEPT/i-A INPUT -p udp -m udp --sport 3702 -j ACCEPT' /etc/systemd/scripts/ip4save"
     ```
 
 3. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera:
