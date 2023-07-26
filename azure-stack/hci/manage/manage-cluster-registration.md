@@ -90,13 +90,19 @@ You need to manually enable Azure Arc integration in the following scenarios:
 
 Follow these steps to enable Azure Arc integration:
 
-1. Install the latest version of the `Az.StackHCI` module on your management PC:
+1. Install the latest version of the `Az.Resources` module on your management PC:
+
+    ```PowerShell
+    Install-Module -Name Az.Resources
+    ``````
+
+2. Install the latest version of the `Az.StackHCI` module on your management PC:
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
    ```
 
-1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
+3. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"
