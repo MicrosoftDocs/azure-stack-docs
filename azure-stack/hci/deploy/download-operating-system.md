@@ -22,7 +22,7 @@ The first step in deploying Azure Stack HCI is to download Azure Stack HCI softw
 
 ## Prerequisites
 
-Before you start to download the Azure Stack HCI software, make sure you have the following prerequsites:
+Before you begin the download of the Azure Stack HCI software, ensure that you have the following prerequisites:
 
 - An Azure account. If you don’t already have an Azure account, first [create an account](https://azure.microsoft.com/free/).
 - An Azure subscription. You can use an existing subscription of any type:
@@ -37,12 +37,13 @@ Before you start to download the Azure Stack HCI software, make sure you have th
 Follow these steps to download the Azure Stack HCI software:
 
 1. If not already signed in, sign in to the [Azure portal](https://portal.azure.com/) with your Azure account credentials.
-1. On the **Welcome to Azure!** page, under **Azure services**, select **Azure Stack HCI**.
+1. In the Azure portal search bar at the top, enter **Azure Stack HCI**. As you type, the portal starts suggesting related resources and services based on your input. Select **Azure Stack HCI** under the **Services** category.
 
-    :::image type="content" source="media/download-operating-system/welcome-screen.png" alt-text="Screenshot of the welcome screen in the Azure portal to select the Azure Stack HCI service." lightbox="media/download-operating-system/welcome-screen.png":::
+    :::image type="content" source="media/download-operating-system/search-azure-stack-hci.png" alt-text="Screenshot that shows how to search for Azure Stack HCI." lightbox="media/download-operating-system/search-azure-stack-hci.png":::
 
-1. Select the **Get started** tab. This is the default tab.
-1. On the **Get started** page, from the **Download software** tile, select **Download Azure Stack HCI**.
+    After you select **Azure Stack HCI**, you're directed to the Azure Stack HCI **Get started** page, with the **Get started** tab selected by default.
+
+1. On the **Get started** tab, under the **Download software** tile, select **Download Azure Stack HCI**.
 
     :::image type="content" source="media/download-operating-system/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-operating-system/get-started-page-with-download-button.png":::
     
