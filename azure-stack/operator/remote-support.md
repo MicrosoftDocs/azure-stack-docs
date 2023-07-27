@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.date: 08/23/2022
 ms.author: sethm
 ms.reviewer: shisab
-ms.lastreviewed: 04/19/2022
+ms.lastreviewed: 07/27/2023
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
