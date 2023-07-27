@@ -47,7 +47,7 @@ Connect to the physical server on which you'll create the VM-based lab. If you'r
 
 ### Download Azure Stack HCI
 
-You can download the Azure Stack HCI OS from the Azure portal. For download instructions, see [Download Azure Stack HCI operating system](./download-operating-system.md).
+You can download the Azure Stack HCI OS from the Azure portal. For download instructions, see [Download Azure Stack HCI operating system](./download-azure-stack-hci-software.md).
 
 ### Download Windows Server
 

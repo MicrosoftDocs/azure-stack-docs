@@ -31,4 +31,4 @@ Study the two-node storage reference pattern decision matrix to help decide whic
 
 ## Next steps
 
-- [Download Azure Stack HCI](../deploy/download-operating-system.md)
+- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)

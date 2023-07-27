@@ -62,4 +62,4 @@ For details on the new features and improvements, see the blog on [Windows Admin
 
 ## Next steps
 
-- [Download Azure Stack HCI](deploy/download-operating-system.md)
+- [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)

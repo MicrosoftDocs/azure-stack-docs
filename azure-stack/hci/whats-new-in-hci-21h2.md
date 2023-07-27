@@ -128,4 +128,4 @@ For more information about Windows Admin Center, see the [Windows Admin Center d
 ## Next steps
 
 - [Watch the webinar on what's new in Azure Stack HCI, version 21H2](https://www.youtube.com/watch?v=uiU1XTO0oMw&t=343s)
-- [Download Azure Stack HCI](deploy/download-operating-system.md)
+- [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)

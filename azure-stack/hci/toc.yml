@@ -75,7 +75,7 @@
 - name: Deploy
   items:
   - name: 0. Download the Azure Stack HCI software
-    href: deploy/download-operating-system.md
+    href: deploy/download-azure-stack-hci-software.md
   - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: 2. Create a cluster
