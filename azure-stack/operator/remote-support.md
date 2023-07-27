@@ -16,7 +16,7 @@ ms.lastreviewed: 04/19/2022
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only available in the following versions:
+> Remote support is only available in the following versions:
 >
 > - 2206
 > - 2108
