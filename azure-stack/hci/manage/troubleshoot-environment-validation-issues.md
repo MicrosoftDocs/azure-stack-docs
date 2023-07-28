@@ -43,9 +43,7 @@ The high-level workflow to get remote support in the pre-deployment or pre-regis
 
 ### Enable remote support
 
-This is a one-time configuration when you enable remote support for the first time during the pre-deployment or pre-registeration of the cluster.
-
-When you enable remote support, a service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. You need to wait for a few minutes before you can reconnect to the remote node and run the cmdlet to enable remote support again.
+Follow these steps to enable remote support:
 
 1. Establish a remote PowerShell session with the cluster node. Run PowerShell as administrator and run the following command:
 
@@ -53,31 +51,21 @@ When you enable remote support, a service restart is required to activate Just E
    Enter-PsSession -ComputerName <NodeName> -Credential $cred
    ```
 
-1. Run the following command to enable remote support:
+1. Run the following command to enable remote support. The sample Shared Access Signature (SAS) is provided by the Microsoft support team.
 
    ```powershell
    Enable-AzStackHciRemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440> -SasCredential <Sample SAS> -PassThru
    ```
 
-   When you run the enable remote support command for the first time, you get the following error:
+   > [!NOTE]
+   > When you run the command to enable remote support, you may get the following error:
+   >
+   > `Processing data from remote server <NodeName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
+   > 
+   > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. To resolve this error, wait for a few minutes before reconnecting to the remote node and then run the `Enable-AzStackHciRemoteSupport` cmdlet again to enable remote support.
+   >
 
-   `Processing data from remote server <NodeName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
-
-1. Wait for a few minutes. Run the following command to re-establish a remote PowerShell session with the cluster node:
-
-   ```powershell
-   Enter-PsSession -ComputerName <NodeName> -Credential $cred
-   ```
-
-1. Run the following command to enable remote support again:
-
-   ```powershell
-   Enable-AzStackHciRemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440> -SasCredential <Sample SAS> -PassThru
-   ```
-
-   The one-time configuration completes here.  
-
-After you enable remote support, see [Remote support examples](./get-remote-support.md#remote-support-examples) for usage scenarios.
+For remote support usage scenarios, see [Remote support examples](./get-remote-support.md#remote-support-examples).
 
 ## Next steps
 

@@ -57,7 +57,7 @@ $deployArgs = Import-Clixml -Path C:\Deployment\DeployArguments.xml
 
 The following parameters are required to use the `Send-AzStackHciDiagnosticData` cmdlet. Consult your network administrator as needed for this information.
 
-- `ResourceGroupName`: Name of the Azure resource group that is used during the deployment process. Use the following command to get the resource group name:
+- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process.that is used during the deployment process. Use the following command to get the resource group name:
 
    ```powershell
    Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
@@ -68,13 +68,13 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
    }
    ```
 
-- `SubscriptionId`: Name of the Azure subscription ID that is used as part of the deployment process. Use the following command to get the subscription ID:
+- `SubscriptionId`: Name of the Azure subscription ID, which must be the same as used during the deployment process. Use the following command to get the subscription ID:
 
    ```powershell
    $subscriptionId = $deployArgs.RegistrationSubscriptionId
    ```
 
-- `TenantId`: Azure tenant ID that is used as part of the deployment process. Use the following command to get the tenant ID:
+- `TenantId`: Azure tenant ID, which must be the same as used during the deployment process. Use the following command to get the tenant ID:
 
    ```powershell
    $cloudName = $deployargs.RegistrationCloudName
@@ -82,9 +82,9 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
    $RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid
    ```
 
-- `RegistrationRegion`: Regstration region that is used as part of the deployment process.
+- `RegistrationRegion`: Regstration region, which must be the same as used during the deployment process.
 
-- `Cloud`: Azure cloud name that is used as part of the deployment process.
+- `Cloud`: Azure cloud name, which must be the same as used during the deployment process..
 
 - `CacheFlushWaitTimeInSec`: Optional wait time in seconds to flush the cache folder. The default value is 600.
 
