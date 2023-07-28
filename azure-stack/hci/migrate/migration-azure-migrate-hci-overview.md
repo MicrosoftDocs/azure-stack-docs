@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes a brief overview of the Azure Migrate solution used to migrate Hyper-V VMs to your Azure Stack Cluster including the benefits and the workflow of the solution.
+This article describes a brief overview of the Azure Migrate solution used to migrate Hyper-V VMs to your Azure Stack HCI cluster including the benefits and the workflow of the solution.
 
 Azure Migrate is a simplified, unified platform that is used to assess, migrate and modernize your on-premises VM workloads. Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment. You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your Azure Stack HCI cluster.
 
