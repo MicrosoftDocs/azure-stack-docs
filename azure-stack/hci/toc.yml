@@ -320,11 +320,11 @@
 - name: Migrate
   items: 
     - name: Migration overview
-      href: migrate/migration-overview.md
+      href: ../index.yml
     - name: Migrate using Azure Migrate
       items:
       - name: Overview
-        href: ../index.yml
+        href: migrate/migration-azure-migrate-hci-overview.md
       - name: Review prerequisites
         href: ../index.yml
       - name: Discover
