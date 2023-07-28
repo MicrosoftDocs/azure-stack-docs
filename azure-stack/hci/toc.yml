@@ -324,25 +324,25 @@
     - name: Migrate using Azure Migrate
       items:
       - name: Overview
-        href: migrate/migration-azure-migrate-hci-overview.md
+        href: ../index.yml
       - name: Review prerequisites
-        href: migrate/migrate-hyperv-prerequisites.md
+        href: ../index.yml
       - name: Discover
-        href: migrate/migrate-hyperv-discover.md
+        href: ../index.yml
       - name: Replicate
-        href: migrate/migrate-hyperv-replicate.md
+        href: ../index.yml
       - name: Migrate
-        href: migrate/migrate.md
+        href: ../index.yml
       - name: Verify
-        href: migrate/verify.md
+        href: ../index.yml
       - name: Troubleshoot
-        href: migrate/troubleshoot.md
+        href: ../index.yml
     - name: Migrate using SCVMM
       items:
       - name: For Hyper-V VMs
-        href: migrate/migration-overview#scvmm-hyper-v.md
+        href: ../index.yml
       - name: For VMware VMs
-        href: migrate/migration-overview#scvmm-vmware.md
+        href: ../index.yml
     - name: Migrate manually 
       items:
       - name: To same hardware
@@ -350,7 +350,7 @@
       - name: To new hardware
         href: deploy/migrate-cluster-new-hardware.md
     - name: Migrate using 3rd party tools
-      href: migrate/migrate-3rd-party.md     
+      href: ../index.yml
 
 - name: Troubleshooting
   items:
