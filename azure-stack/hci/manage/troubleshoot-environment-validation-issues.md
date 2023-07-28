@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/14/2023
+ms.date: 07/28/2023
 ---
 
 # Troubleshoot environment validation issues (preview)
@@ -21,20 +21,18 @@ This article describes how to get support from Microsoft to troubleshoot validat
 
 Starting with Azure Stack HCI, version 23H2 (preview) and later, you can get support from Microsoft to troubleshoot any issues that may arise during the environment validation process for Azure Stack HCI.
 
-To troublehoot environment validation issues, you can begin by filing a support ticket and then do the following:
+To troubleshoot environment validation issues, you can begin by filing a support ticket and then do the following:
 
 - Collect diagnostic data locally and submit it to Microsoft to assist with troubleshooting. See [Collect diagnostic data locally and send to Microsoft](#collect-diagnostic-data-locally-and-send-to-microsoft).
 - Enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
 
-### Collect diagnostic data locally and send to Microsoft
+## Collect diagnostic data locally and send to Microsoft
 
-If the environment validation process fails, you can collect local diagnostic data and transmit it to Microsoft for troubleshooting purposes. Microsoft can access that data after you file a support case.  
-
-Use the `Send-DiagnosticData` cmdlet to collect and save logs locally and the `Send-AzStackHciDiagnosticData` cmdlet to manually send the diagnostic data to Microsoft.
+If the environment validation process fails, you can save diagnostic data to a local Server Message Block (SMB) share and then transmit it to Microsoft for troubleshooting purposes. Microsoft can access that data after you file a support case.  
 
 [!INCLUDE [include](../../includes/hci-send-logs-manually.md)]
 
-### Get remote support
+## Get remote support
 
 In the pre-deployment or pre-registration scenarios, you are prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the cluster, see [Get remote support for Azure Stack HCI](./get-remote-support.md).
 
@@ -43,7 +41,7 @@ The high-level workflow to get remote support in the pre-deployment or pre-regis
 - [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request)
 - Enable remote support via PowerShell. This is a one-time configuration.
 
-#### Enable remote support
+### Enable remote support
 
 This is a one-time configuration when you enable remote support for the first time during the pre-deployment or pre-registeration of the cluster.
 

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/30/2023
+ms.date: 07/28/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -40,7 +40,7 @@ You can run the Environment Checker to:
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
 - Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Collect diagnostic logs and get support to troubleshoot any validation issues.
+- Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
 
