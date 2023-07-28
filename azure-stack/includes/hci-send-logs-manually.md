@@ -57,7 +57,7 @@ $deployArgs = Import-Clixml -Path C:\Deployment\DeployArguments.xml
 
 The following parameters are required to use the `Send-AzStackHciDiagnosticData` cmdlet. Consult your network administrator as needed for this information.
 
-- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process.that is used during the deployment process. Use the following command to get the resource group name:
+- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process. Use the following command to get the resource group name:
 
    ```powershell
    Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
@@ -82,7 +82,7 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
    $RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid
    ```
 
-- `RegistrationRegion`: Regstration region, which must be the same as used during the deployment process.
+- `RegistrationRegion`: Registration region, which must be the same as used during the deployment process.
 
 - `Cloud`: Azure cloud name, which must be the same as used during the deployment process..
 
