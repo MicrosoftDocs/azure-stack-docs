@@ -35,11 +35,11 @@ In the traditional Azure Migrate model, the data flows from on-premises to Azure
 
 The following diagram shows the workflow of the solution:
 
-:::image type="content" source="media/azure-migrate-workflow-1.png" alt-text="High level workflow for migration using Azure Migrate":::
+:::image type="content" source="media/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for migration using Azure Migrate.":::
 
 The solution has the following high-level steps:
 
-1. **Prepare** - Review and complete the migration prerequisites. Deploy, configure and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project in Azure.
+1. **Prepare** - Review and complete the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project in Azure.
 
     For more information, see [Review prerequisites for Azure Migrate](../index.yml).
 
