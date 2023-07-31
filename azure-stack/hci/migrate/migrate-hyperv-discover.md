@@ -1,14 +1,14 @@
 --- 
-title: Discovery for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview) 
+title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview) 
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/26/2023
+ms.date: 07/31/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Discovery for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview)
+# Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
 
@@ -20,7 +20,7 @@ In this step, you generate a key and download the .zip file for the source appli
 
 :::image type="content" source="media/discover-placeholder.png" alt-text="Screenshot of Discover page in Azure portal." lightbox="media/discover-placeholder.png":::
 
-1. Go to the [Azure Preview Portal](https://aka.ms/HCIMigratePP).
+1. Go to the [Azure portal](https://aka.ms/HCIMigratePP).
 
 1. Select **Azure Migrate**, then select **Servers, databases and web apps** on the **Get started** page.
 
@@ -69,14 +69,14 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Create a new appliance virtual machine (VM) in the source cluster using the ISO just downloaded. Complete the **New Virtual Machine Wizard** with the following configuration:
 
-    - **VM type**: `Standalone` (non-HA type)
+    - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2016
     - **vCPU**: 8
     - **Disk**: >80GB
     - **Memory**: 16GB min
     
     > [!NOTE]
-    > Appliance VM shouldn’t be migrated if you create it as an HA VM. Azure Migrate will discover this VM type as a potential VM to be migrated and display it during the discovery process.
+    > Appliance VM shouldn’t be migrated if you create it as a High Availability VM. Azure Migrate will discover this VM type as a potential VM to be migrated and display it during the discovery process.
 
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
@@ -97,14 +97,14 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. As an administrator, run the following PowerShell script from the folder of the extracted .zip file:
 
-    ~~~PowerShell
+  ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 - DisableAutoUpdate -Scenario HyperV -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
-    ~~~
+  ``````
 
 1. When prompted, select **Y** to do the following:
-    - Install source appliance bits
-    - Install the Edge browser
-    - Remove Internet Explorer
+    - Install source appliance bits.
+    - Install the Edge browser.
+    - Remove Internet Explorer.
 
 1. Restart and sign into the VM.
 
