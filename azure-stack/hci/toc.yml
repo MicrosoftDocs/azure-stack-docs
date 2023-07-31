@@ -316,6 +316,42 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage Azure Arc extensions
     href: manage/arc-extension-management.md
+
+- name: Migrate
+  items: 
+    - name: Migration overview
+      href: ../index.yml
+    - name: Migrate using Azure Migrate
+      items:
+      - name: Overview
+        href: migrate/migration-azure-migrate-hci-overview.md
+      - name: Review prerequisites
+        href: ../index.yml
+      - name: Discover
+        href: ../index.yml
+      - name: Replicate
+        href: ../index.yml
+      - name: Migrate
+        href: ../index.yml
+      - name: Verify
+        href: ../index.yml
+      - name: Troubleshoot
+        href: ../index.yml
+    - name: Migrate using SCVMM
+      items:
+      - name: For Hyper-V VMs
+        href: ../index.yml
+      - name: For VMware VMs
+        href: ../index.yml
+    - name: Migrate manually 
+      items:
+      - name: To same hardware
+        href: deploy/migrate-cluster-same-hardware.md
+      - name: To new hardware
+        href: deploy/migrate-cluster-new-hardware.md
+    - name: Migrate using 3rd party tools
+      href: ../index.yml
+
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
