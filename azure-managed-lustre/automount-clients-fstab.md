@@ -26,9 +26,8 @@ Before you can update the /etc/fstab file of your Azure Lustre client, make sure
 To update the /etc/fstab file in your Lustre client VM
 
 - Connect to your Managed Lustre client VM and open the /etc/fstab file in an editor
-- Add the following line to the /etc/fstab file
-
-Mount the Azure Managed Lustre File System to the directory that you created. use the following command and replace the following: 
+- Add the line detailed below to the /etc/fstab file
+- Save the fstab file 
 
 ### Syntax
 
@@ -36,14 +35,23 @@ Mount the Azure Managed Lustre File System to the directory that you created. us
 <MGS IP Address>@tcp:/lustrefs </mount_point> lustre <Mount Options> <Backup method> <Filesystem check>
 ```
 
+### Example
+
+```bash
+<MGS IP Address>@tcp:/lustrefs </mount_point> lustre defaults,noatime,flock,_netdev,x-systemd.automount,x-systemd.requires=network.service 0 0
+```
+> [!NOTE]
+> you can copy the example and input the appropriate MGS IP Address and Mount Point for a functional default setup.
+
 ### Parameters
 The following parameters are required.
 
 | Name  | Value | Description |
 |----------|-----------|-----------|
 | MGS IP Address | | IP address provided in the portal |
-| /mount_point | | directory that you want to mount your Managed Lustre system to |
-| Backup method | 0 | indicates whether the file system should be backed up by dump. |
+| /mount_point | | directory that you want to mount your Managed Lustre system to. |
+| Mount Options | | See the table below for recommended settings.|
+| Backup method | 0 | A binary option that indicates whether the file system should be backed up by dumping. This method is not recommended for use, and should be set at 0.|
 | File system check | 0 | indicates the order in which fsck checks file systems at boot. this value will indicate that fsck will not run at startup. |
 
 ### Mount Options
@@ -58,13 +66,7 @@ Mount Options may be included in the fstab line. Each value is seperated by a co
 | x-systemd.automount | Helps ensure that the auto mounter does not run until the network connectivity is online.  Used in conjunction with x-systemd.requires=netowrk.service|
 | x-systemd.requires=network.service | Helps ensure that the auto mounter does not run until the network connectivity is online. Used in conjunction with x-systemd.automount |
 
-
-### Example
-
-```bash
-<MGS IP Address>@tcp:/lustrefs </mount_point> lustre defaults,noatime,flock,_netdev,x-systemd.automount,x-systemd.requires=network.service 0 0
-```
-
+## Conclusion
 Your Lustre client VM is now configured to mount AMLFS whenever it restarts.
 
 In some cases, your Lustre client VM might need to start regardless of the status of your mounted AMLFS file system. In these cases, add the nofail option to your file system's entry in your /etc/fstab file.
