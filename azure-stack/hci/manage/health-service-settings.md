@@ -58,6 +58,13 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.PhysicalDisk.Unresponsive.Reset.CountAllowed"              = 3
 ```
 
+### Available Memory Threshold
+
+```
+"Microsoft.Health.Setting.Node.AvailableToSystemMemoryLimit" = 0.100
+```
+
+
 ### Supported Components Document
 
 The Health Service provides an enforcement mechanism to restrict the components used by Storage Spaces Direct to those on a Supported Components Document provided by the administrator or solution vendor. For more information, see [Supported Components Document](health-service-overview.md#supported-components-document).
