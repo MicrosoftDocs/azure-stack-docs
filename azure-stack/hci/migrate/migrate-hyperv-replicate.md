@@ -3,7 +3,7 @@ title: Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (previ
 description: Learn the replication process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 08/01/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -38,32 +38,32 @@ Complete the following tasks before you proceed with replication:
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-1. Save the generated key to Notepad or other text editor for future use.
+1. Save the generated target key to Notepad or other text editor for future use.
 
-1. (Optional) Select **Download installer** to download the .zip file. Since the same bits are used for both source and target appliance, you can reuse the .zip file you downloaded previously for the source appliance.
+1. (Optional) Select **Download installer** to download the .zip file. Since the same bits are used for both source and target appliance, you can copy and reuse the .zip file you downloaded previously for the source appliance.
 
 ## Step 2: Create connection between source and target appliances
 
-Next you create a new VM on the target Azure Stack HCI cluster.
+This step creates a connection between the source and target appliance and facilitates VM creation on the target appliance.
 
 1. Open **Hyper-V Manager** on the source appliance.
 
 1. Select **Connect to Server**, then select **Another computer**.
 
-1. Select from the dropdown, or browse for, the first node of the target Azure Stack HCI cluster, and then select **OK**. This aids in connection to, and VM creation for, the target appliance.
+1. Select from the dropdown, or browse for, the first node of the target Azure Stack HCI cluster, and then select **OK**.
 
 1. Repeat steps 2 and 3 for each node in the target Azure Stack HCI cluster.
 
 ## Step 3: Install target appliance VM OS
 
-In this step, you download the operating system (OS) VHD for the target appliance virtual machine (VM) on the target cluster.
+In this step, you download the operating system (OS) VHD for the target appliance VMs on the target Azure Stack HCI cluster.
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the applicable Windows Server 2022 VHD for the VM.
 
     > [!NOTE]
-    > It is not a requirement to use the evaluation OS version - you can use you own corporate images as long as the OS version is Windows Server 2022.
+    > It is not a requirement to use the evaluation OS version. You can use your own corporate images as long as the OS version is Windows Server 2022.
 
-1. Open **Hyper-V Manager** and select your target cluster.
+1. Open **Hyper-V Manager** on a node in the target cluster and then select the target cluster from the list.
 
 1. Under **Actions** on the right, select **New > Virtual machine**.
 
@@ -94,21 +94,21 @@ In this step, you download the operating system (OS) VHD for the target applianc
 
 1. Select the OS you just downloaded and begin OS set up.
 
-1. Once the OS is finished installing, specify the local administrative credentials, then sign in using them.
+1. Once the OS is finished installing, enter the local administrative credentials, then sign in using them.
 
-1. Open **Hyper-V Manager** and select the VM just created.
+1. Open **Hyper-V Manager** again and select the VM just created.
 
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
+1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure the **Allow enhanced session mode** option is enabled.
 
-1. Sign on to the newly created VM.
+1. Sign on to the new VM.
 
 ## Step 4: Install target appliance bits
 
 The target appliance and the source appliance use the same .zip file, so no need to download it again.
 
-1. Open Server Manager.
+1. Open **Server Manager**.
 
-1. Copy and paste the downloaded .zip file to the target VM that you just created and extract it.
+1. Copy and paste the downloaded .zip file to the target VM virtual hard disk location that you created and extract it.
 
 1. As an administrator, run the following PowerShell script from the folder of the extracted .zip file:
 
@@ -124,17 +124,19 @@ The target appliance and the source appliance use the same .zip file, so no need
 
 1. Open **Server Manager** and sign on to the target appliance VM.
 
-1. Open the target appliance **Azure Configuration Manager** from the desktop shortcut.
+1. Open **Azure Configuration Manager** from the desktop shortcut.
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, then select **Verify**.
 
-1. Once verified, select **Log in** and sign in to your Azure account using those account credentials. Enter the code that is displayed in your device for MFA authentication.
+1. Once verification is complete, select **Log in** and sign in to your Azure account.
+
+1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
-1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app. It can up to 10 minutes for you appliance to be registered.
+1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
-1. nce the appliance is registered, scroll down and select **Add cluster information**.
+1. After the appliance is registered, scroll down and select **Add cluster information**.
 
 1. Enter cluster FQDN, domain, username, and password information, and then select **Configure**.
 
@@ -146,11 +148,11 @@ The target appliance and the source appliance use the same .zip file, so no need
 
 1. Under **Migration tools** select **Replicate**.
 
-1. On the **Specify intent** page, select **Azure Stack HCI**, select **Hyper-V** and then select **Continue**.
+1. On the **Specify intent** page, select **Azure Stack HCI**, select **Hyper-V**, and then select **Continue**.
 
 1. On the **Basics** tab, complete these steps:
 	1. For **Cluster resource**, select the applicable HCI server resource.
-	1. Verify there is a green check under the HCI server name. This indicates that the Arc Resource Bridge is configured on this server.
+	1. Verify there is a green check for the HCI server name. This indicates that the Arc Resource Bridge is configured on this server.
     1. Select **Next**.
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
@@ -158,8 +160,8 @@ The target appliance and the source appliance use the same .zip file, so no need
 1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. Select **Next**.
 
 1. On the **Target settings** tab, complete these steps:
-	1. For **Cache storage account**, select the storage account that you created previously in the **Prerequisites** article, and then select **Confirm**.
-    1. Select the resource group that you want these VMs to be created under.
+	1. For **Cache storage account**, select the storage account that you created previously in the [Prerequisites](migrate-hyperv-replicate.md) article, and then select **Confirm**.
+    1. Select the resource group that you want these VMs to be associated with.
 	1. Select the virtual switch these VMs are connected to.
 	1. Select the storage path where these VMs are created.
     1. Select **Next**.
@@ -172,7 +174,7 @@ The target appliance and the source appliance use the same .zip file, so no need
 
 1. On the **Disks** tab, select which disks you would like to replicate, then select **Next**.
 
-1. On the  **Review + Start replication** tab, stay on the page until the request is complete (this may take 5-10 minutes). Then select **Replicate**.
+1. On the  **Review + Start replication** tab, stay on the page until the process is complete (this may take 5-10 minutes). Then select **Replicate**.
 
  1. On the **Replications** page, review the replication status. Select **Refresh** to see all the VMs.
 
