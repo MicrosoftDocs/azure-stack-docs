@@ -38,7 +38,7 @@ The managed identity serves as an identity for the various components of your cl
 
 With this feature enhancement, the following actions can be initiated from Azure and applied to the Azure Stack HCI system within seconds:
 
-- Enabling a Windows Server guest license subscription via the Azure portal. For more information, see [Activate Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md#enable-windows-server-subscription).
+- Enabling a Windows Server guest license subscription via the Azure portal. For more information, see [Activate Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md#enable-windows-server-subscription?tab=azure-portal).
 - Changing the level of service health data sent to Microsoft. For more information, see [Azure Stack HCI data collection](../concepts/data-collection.md) to understand the diagnostic data that Microsoft collects for your cluster.
 
 ## Enable enhanced management
