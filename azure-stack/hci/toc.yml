@@ -326,7 +326,7 @@
       - name: Overview
         href: migrate/migration-azure-migrate-hci-overview.md
       - name: Review prerequisites
-        href: ../index.yml
+        href: migrate/migrate-hyperv-prerequisites.md
       - name: Discover
         href: ../index.yml
       - name: Replicate
