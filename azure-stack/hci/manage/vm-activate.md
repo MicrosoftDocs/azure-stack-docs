@@ -58,15 +58,13 @@ The following table shows the guest operating systems that the different licensi
 | Windows Server 2022: Azure Edition | Requires Software Assurance | Requires Software Assurance | X |
 | Future editions (Evergreen) |  |  | X |
 
-## Enable Windows Server subscription
+## Activate Windows Server subscription
 
-Windows Server subscription enables you to subscribe to Windows Server guest licensing on Azure Stack HCI through Azure.
+Windows Server subscription enables you to subscribe to Windows Server guest licensing on Azure Stack HCI through Azure. For the Windows Server subscription fees, see the *Add-on workloads (optional)* section in the [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page.
 
 ### How does Windows Server subscription work?
 
 When Windows Server subscription is purchased, Azure Stack HCI servers retrieve licenses from the cloud and automatically set up AVMA on the cluster. After setting up AVMA, you can then apply the generic AVMA keys on the client side.
-
-For the Windows Server subscription fees, see the *Add-on workloads (optional)* section in the [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page.
 
 :::image type="content" source="media/vm-activation/windows-server-subscription.png" alt-text="Windows Server subscription":::
 
@@ -79,9 +77,9 @@ For the Windows Server subscription fees, see the *Add-on workloads (optional)* 
 - If using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
 
-### Activate Windows Server subscription
+### Enable Windows Server subscription
 
-You can activate Windows Server subscription through different methods. Select one of the following tabs based on your preferred method.
+You can enable Windows Server subscription through different methods. Select one of the following tabs based on your preferred method.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -171,7 +169,7 @@ You can set up AVMA through different methods. Select one of the following tabs 
 
 ### [Azure portal](#tab/azure-portal)
 
-Use either Windows Admin Center or PowerShell to enable AVMA.
+Use either Windows Admin Center or PowerShell to set up AVMA.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
