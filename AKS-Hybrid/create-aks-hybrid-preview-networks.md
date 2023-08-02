@@ -17,8 +17,6 @@ Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator
 Before you begin, make sure you meet the following requirements:
 - Have access to an Azure subscription.
 - Have installed the Azure Arc Resource Bridge, deployed the AKS hybrid extension and created a Custom Location. If you have not, visit [Deploy Azure Arc Resource Bridge](deploy-arc-resource-bridge-windows-server.md).
-- Make sure that the IP addresses you give here do not overlap with the VIP pool or k8sNodePool you created by running `New-AksHciNetworkSetting`, `New-AksHciClusterNetwork`, or `New-ArcHciAksConfigFiles`.
-
 
 IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](concepts-node-networking.md#minimum-ip-address-reservations-for-an-aks-hybrid-deployment).
 

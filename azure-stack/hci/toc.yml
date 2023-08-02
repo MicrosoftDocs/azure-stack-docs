@@ -162,8 +162,6 @@
         href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using command line (recommended)
         href: manage/deploy-arc-resource-bridge-using-command-line.md
-      - name: Set up using Windows Admin Center 
-        href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc VM resources
       items:
       - name: Create VM images
@@ -265,7 +263,9 @@
   - name: Manage SDN
     items:
     - name: Update SDN infrastructure
-      href: manage/update-sdn.md       
+      href: manage/update-sdn.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with PowerShell
@@ -316,6 +316,42 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage Azure Arc extensions
     href: manage/arc-extension-management.md
+
+- name: Migrate
+  items: 
+    - name: Migration overview
+      href: ../index.yml
+    - name: Migrate using Azure Migrate
+      items:
+      - name: Overview
+        href: migrate/migration-azure-migrate-hci-overview.md
+      - name: Review prerequisites
+        href: ../index.yml
+      - name: Discover
+        href: ../index.yml
+      - name: Replicate
+        href: ../index.yml
+      - name: Migrate
+        href: ../index.yml
+      - name: Verify
+        href: ../index.yml
+      - name: Troubleshoot
+        href: ../index.yml
+    - name: Migrate using SCVMM
+      items:
+      - name: For Hyper-V VMs
+        href: ../index.yml
+      - name: For VMware VMs
+        href: ../index.yml
+    - name: Migrate manually 
+      items:
+      - name: To same hardware
+        href: deploy/migrate-cluster-same-hardware.md
+      - name: To new hardware
+        href: deploy/migrate-cluster-new-hardware.md
+    - name: Migrate using 3rd party tools
+      href: ../index.yml
+
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
