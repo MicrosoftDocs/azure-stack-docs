@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/10/2023
+ms.date: 07/18/2023
 ---
 
 # Uninstall Azure Arc VM management (preview)

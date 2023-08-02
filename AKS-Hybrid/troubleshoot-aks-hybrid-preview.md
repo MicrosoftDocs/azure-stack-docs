@@ -14,6 +14,10 @@ ms.reviewer: abha
 
 # Troubleshooting and known issues
 
+## Issues with using AKS-HCI and Azure Arc Resource Bridge
+
+We do NOT recommend or support running AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster. If you have AKS on Azure Stack HCI installed, run `Uninstall-AksHci` and start deploying your Azure Arc Resource Bridge from scratch.
+
 ## KVA timeout error
 
 Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
@@ -27,18 +31,6 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
 ## Issues with using Remote Desktop
 
 Deploying Azure Arc Resource Bridge through command line must be performed with line of sight to the on-premises infrastructure. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI or Windows Server cluster.
-
-## Issues with using AKS-HCI and Azure Arc Resource Bridge
-
-AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster must be enabled in the following deployment order
-- Step 1: Deploy AKS host management cluster 
-- Step 2: Deploy Arc Resource Bridge 
-
-If Azure Arc Resource Bridge is already deployed, you can't deploy the AKS management cluster. Uninstall Azure Arc Resource Bridge before installing AKS host management cluster. You must uninstall in the following order:
-- Step 1: Uninstall Arc Resource Bridge
-- Step 2: Uninstall the AKS host management cluster
-
-Uninstalling the AKS host management cluster will also uninstall Azure Arc Resource Bridge and all your AKS clusters. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the AKS hybrid clusters that were created earlier.
 
 ## my AKS hybrid cluster create call has timed out 
 If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource come up on Azure but if you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This can happen due to the following identified reasons:
@@ -58,7 +50,7 @@ The `az hybridaks create` command will time out and fail silently if you supply 
 If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we may help you with your deployment.
 
 ## I cannot use the AksHci PowerShell module or Windows Admin Center to manage my Azure provisioned AKS hybrid clusters
-Right now, you cannot use local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI to manage your AKS hybrid clusters once they've been created. We'll be adding extra day 2 operations and scenarios both through a local CLI option as well as in Azure portal in upcoming releases.
+You cannot use local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI, Azure portal or ARM templates to manage your AKS hybrid clusters once they've been created. 
 
 ## I cannot use `az connectedk8s` commands to manage my Azure provisioned AKS hybrid clusters
 You cannot use `az connectedk8s` commands to manage Azure Arc on your Azure provisioned AKS hybrid preview clusters. This is because `az connectedk8s` points to `Microsoft.Kubernetes` Azure resource type and Azure provisioned AKS hybrid clusters have a different Azure resource type - `Microsoft.HybridContainerService`.
@@ -132,4 +124,4 @@ Remove-ArcHciAksConfigFiles -workDirectory <path to working directory>
 
 ## Arc Resource Bridge stuck in in "offline" mode while creating AKS hybrid cluster from portal
 
-If you see your Arc Resource Bridge connection in an offline state, check that you are connected to the VM. Wait for approximately 10 minutes to see the status changed from **Offline** to **Running**.
+If you're deploying Arc Resource Bridge on an Azure VM and see the Arc Resource Bridge connection in an offline state, check that you are connected to the VM. If not, restart the VM and wait for approximately 10 minutes to see the status change from **Offline** to **Running**.

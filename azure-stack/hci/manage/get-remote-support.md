@@ -1,22 +1,18 @@
 ---
-title: Get remote support for Azure Stack HCI (preview)
-description: This topic provides guidance on how to get remote support for the Azure Stack HCI operating system.
+title: Get remote support for Azure Stack HCI
+description: Learn how to get remote support for the Azure Stack HCI operating system.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 06/14/2023
+ms.date: 07/17/2023
 ---
 
-# Get remote support for Azure Stack HCI (preview)
+# Get remote support for Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
-> [!IMPORTANT]
-> Remote support for Azure Stack HCI is currently in preview.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
-This topic provides guidance on how to get remote support for your Azure Stack HCI operating system.
+This article provides guidance on how to get remote support for your Azure Stack HCI operating system.
 
 You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and
 duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
@@ -89,11 +85,11 @@ If you are using a proxy with Azure Stack HCI, include the following endpoints i
 - \*.servicebus.windows.net
 - \*.core.windows.net
 - login.microsoftonline.com
-- https\://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https\://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https\://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https\://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https\://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https\://asztrsprod.westus2.cloudapp.azure.com
+- https\://asztrsprod.westeurope.cloudapp.azure.com
+- https\://asztrsprod.eastus.cloudapp.azure.com
+- https\://asztrsprod.westcentralus.cloudapp.azure.com
+- https\://asztrsprod.southeastasia.cloudapp.azure.com
 - https\://edgesupprd.trafficmanager.net
 
 ### Install JEA configurations (before Azure registration)
@@ -213,8 +209,8 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Measure-Object        
     Select-Object
     Sort-Object
+    Out-Default
     Where-Object
-    Out-Default
 ```
 
 **Azure Stack HCI**
@@ -225,6 +221,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Get-AzureStackHCIBillingRecord
     Get-AzureStackHCIRegistrationCertificate
     Get-AzureStackHCISubscriptionStatus
+    Send-DiagnosticData
     Test-AzStackHCIConnection
 ```
 

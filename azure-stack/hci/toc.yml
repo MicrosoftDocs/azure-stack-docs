@@ -162,8 +162,6 @@
         href: manage/azure-arc-vm-management-prerequisites.md
       - name: Set up using command line (recommended)
         href: manage/deploy-arc-resource-bridge-using-command-line.md
-      - name: Set up using Windows Admin Center 
-        href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc VM resources
       items:
       - name: Create VM images
@@ -265,7 +263,9 @@
   - name: Manage SDN
     items:
     - name: Update SDN infrastructure
-      href: manage/update-sdn.md       
+      href: manage/update-sdn.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with PowerShell
