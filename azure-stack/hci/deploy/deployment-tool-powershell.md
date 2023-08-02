@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI using PowerShell cmdlets (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/20/2023
+ms.date: 07/25/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -122,14 +122,11 @@ If you are using multi-factor authentication (MFA) to authenticate your cluster,
 1. On the first server, start the deployment using PowerShell and run the following command:
 
     ```powershell
-    $DomainCred=Get-Credential 
-
-    $LocalCred=Get-Credential 
-
-    Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential $DomainCred -LocalAdminCredential $LocalCred
-    -WitnessStorageKey $AzureStorAcctAccessKey
+    $DomainCred=Get-Credential
+    $LocalCred=Get-Credential
+    $AzureStorAcctAccessKey = ConvertTo-SecureString '<Azure_Storage_account_access_key_for_cluster_witness_in_plain_text>' -AsPlainText -Force
+    Invoke-CloudDeployment -JSONFilePath <path_to_config_file.json> -AzureStackLCMUserCredential $DomainCred -LocalAdminCredential $LocalCred -WitnessStorageKey $AzureStorAcctAccessKey
     ```
-
 
 ## Reference: Configuration file settings
 
