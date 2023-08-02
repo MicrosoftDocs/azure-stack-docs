@@ -3,14 +3,14 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 08/02/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
 # Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the prerequisite tasks you need to complete before you proceed to migrate Hyper-V VMs to Azure Stack HCI.
 
@@ -18,17 +18,25 @@ You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your A
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
+## Review system requirements
+
+ADD: Review system requirements as a prereq and link out to the system req page.
+
 ## Create an Azure Migrate project
 
 Azure Migrate is an Azure feature that you can access from the Azure portal.
 
-:::image type="content" source="media/prereq-placeholder.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/prereq-placeholder.png":::
-
 1. Go to the [Azure portal](https://aka.ms/HCIMigratePP).
+
+    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Azure Migrate Get Started page." lightbox="media/project-get-started.png":::
 
 1. In the Azure portal, select **Azure Migrate** and then select **Servers, databases and web apps** to create a new Azure Migrate project.
 
+    :::image type="content" source="media/project-assessment-tools.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/project-assessment-tools.png":::
+
 1. On the **Create project** page, enter your subscription and resource group, or select them if pre-existing.
+
+    :::image type="content" source="media/project-create.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/project-create.png":::
 
 1. Enter the new project name and select a region in the selector field.
 
@@ -36,7 +44,13 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
 
 1. After the project is successfully created, select **Storage accounts**.
 
+## Create the storage account
+
+For this task, you create a storage account for the Azure Migrate project.
+
 1. On the **Storage accounts** page, select **Create**.
+
+    :::image type="content" source="media/tab-basics.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/tab-basics.png":::
 
 1. On the **Create a storage account** page, under **Project details**, select the same subscription and the resource group that you used to create the Azure Migrate project.
 
@@ -54,13 +68,13 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
 
 1. On the **Resource groups** page, select your new resource group.
 
+    :::image type="content" source="media/storage-resource-group.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/storage-resource-group.png":::
+
 1. Under the **Resources** list, verify that the following resources are listed:
     - Arc Resource Bridge resource
     - Azure Stack HCI resource
     - Custom location resource
     - Storage path resource(s)
-    
-You have now created a new project using Azure Migrate.
 
 ## Configure the infrastructure
 
