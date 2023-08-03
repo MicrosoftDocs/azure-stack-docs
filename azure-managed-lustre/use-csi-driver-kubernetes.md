@@ -35,10 +35,10 @@ The Azure Lustre CSI Driver is compatible with [Azure Kubernetes Service](/azure
 
 The following container images are compatible with Azure Managed Lustre file systems.
 
-| CSI driver version | Container image                                               | Supported Kubernetes version | Lustre client version |
-|--------------------|---------------------------------------------------------------|------------------------------|-----------------------|
-| main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest` | 1.21 or later | 2.15.1 |
-| v0.1.5             | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.5` | 1.21 or later | 2.15.1 |
+| CSI driver version | Container image                                                | Supported Kubernetes version | Lustre client version |
+|--------------------|----------------------------------------------------------------|------------------------------|-----------------------|
+| main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest`  | 1.21 or later | 2.15.1 |
+| v0.1.11            | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.11` | 1.21 or later | 2.15.1 |
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
 
 ## Create an Azure Managed Lustre file system
 
-If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal). Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
+If you haven't already created your AMLFS cluster, create the cluster now. For instructions, see [Create an Azure Managed Lustre file system in the Azure portal](create-file-system-portal.md). Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
 
 ## Connect a client to your Azure Managed Lustre file system
 
@@ -118,9 +118,9 @@ Do the following steps to install a Lustre client, and mount the file system:
 
 1. Link to specific steps for the client software version you're installing. See [Install client software](connect-clients.md#install-client-software) for links to supported software versions. Follow the steps in the individual article for your preferred client software version to install the client software.
 
-## Connect to the Lustre cluster
+## Connect to the AKS cluster
 
-Connect to the Azure Managed Lustre cluster by doing these steps:
+Connect to the Azure Kubernetes Service cluster by doing these steps:
 
 1. Sign in to [the Azure portal](https://portal.azure.com).
 
@@ -138,34 +138,16 @@ Connect to the Azure Managed Lustre cluster by doing these steps:
 
 ## Install the CSI driver
 
-The Azure Managed Lustre CSI Driver is available in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver) repository in GitHub. The **deploy** folder includes a script that installs the driver.
+To install the CSI driver, run the following command:
 
-To install the CSI driver, do these steps:
+```bash
+curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
+```
 
-1. To get the software, clone the **azurelustre-csi-driver** repository:
+For local installation command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
 
-   ```bash
-   git clone https://github.com/kubernetes-sigs/azurelustre-csi-driver.git
-   cd azurelustre-csi-driver
-   ```
-
-1. The version of the CSI driver to use depends on the networking model in your AKS deployment.
-    1. Azure CNI
-
-    ```bash
-    curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash -s azurecni_stable
-    ```
-
-   1. Kubenet
-
-   ```bash
-   curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
-   ```
-
-   For command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
-
-   > [!NOTE]
-   > The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed you're installing from a system that doesn't have `kubectl` installed, follow the instructions in [Connect to the AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
+> [!NOTE]
+> The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed `kubectl`, follow the instructions in [Connect to the cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
 
 ## Create and configure a persistent volume
 
