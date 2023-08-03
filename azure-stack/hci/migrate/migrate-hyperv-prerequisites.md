@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/02/2023
+ms.date: 08/03/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -22,14 +22,13 @@ You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your A
 
 You need to open ports, configure the target cluster, set SAN policy, configure the Arc Resource Bridge, and set up Azure Arc VM management as detailed below:
 
-|Requirement|Reference|
+|Requirement|Resource|
 |--|--|
 |Open required firewall ports.|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
 |Deploy, configure and register a target Azure Stack HCI cluster.|[Register a cluster](/deploy/deployment-quickstart.md).|
 |Configure SAN policy on Windows VMs.|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Configure Arc Resource Bridge and create a custom location on one of the nodes of the target HCI cluster.|[Azure Arc VM management prerequisites](/manage/azure-arc-vm-management-prerequisites).<br>[Set up Azure Arc VM management using command line](/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
-    
-    c. Create a storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks using the [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath) command.
+|Create storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks.|[az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath) command.|
 
 ## Create an Azure Migrate project
 
