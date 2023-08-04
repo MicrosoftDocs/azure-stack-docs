@@ -13,13 +13,13 @@ ms.reviewer: brianl
 
 ---
 
-# Use the Azure Lustre CSI Driver for Kubernetes
+# Use the Azure Managed Lustre CSI Driver for Kubernetes
 
-The article describes how to install and mount the Azure Lustre container support interface (CSI) driver for Kubernetes to enable you to use an Azure Managed Lustre storage system with your Kubernetes containers in an Azure Kubernetes Service (AKS) deployment.
+The article describes how to install and mount the Azure Managed Lustre container support interface (CSI) driver for Kubernetes to enable you to use an Azure Managed Lustre storage system with your Kubernetes containers in an Azure Kubernetes Service (AKS) deployment.
 
-## About the Azure Lustre CSI driver for Kubernetes
+## About the Azure Managed Lustre CSI driver for Kubernetes
 
-The Azure Lustre container support interface (CSI) driver for Kubernetes enables you to use an Azure Managed Lustre storage system with Kubernetes containers. The driver is compatible with [Azure Kubernetes Service (AKS)](/azure/aks/).
+The Azure Managed Lustre container support interface (CSI) driver for Kubernetes enables you to use an Azure Managed Lustre storage system with Kubernetes containers. The driver is compatible with [Azure Kubernetes Service (AKS)](/azure/aks/).
 
 Kubernetes can simplify the process to configure and deploy virtual client endpoints for your Azure Managed Lustre workload. It can automate setup tasks like these:
 
@@ -27,11 +27,11 @@ Kubernetes can simplify the process to configure and deploy virtual client endpo
 - Load the correct Lustre client software onto the VM instances.
 - Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
 
-The Azure Lustre CSI Driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
+The Azure Managed Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
 
 ## Compatible Kubernetes versions
 
-The Azure Lustre CSI Driver is compatible with [Azure Kubernetes Service](/azure/aks/). Other Kubernetes installations aren't currently supported.
+The Azure Managed Lustre CSI Driver is compatible with [Azure Kubernetes Service](/azure/aks/). Other Kubernetes installations aren't currently supported.
 
 The following container images are compatible with Azure Managed Lustre file systems.
 
@@ -42,17 +42,17 @@ The following container images are compatible with Azure Managed Lustre file sys
 
 ## Prerequisites
 
-Before you deploy the Azure Lustre CSI Driver for Kubernetes, complete the following prerequisite:
+Before you deploy the Azure Managed Lustre CSI Driver for Kubernetes, complete the following prerequisite:
 
 - If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
 
 ## Setup overview
 
-To enable  the Azure Managed Lustre CSI Driver for Kubernetes, do these steps:
+To enable  the Azure Managed Lustre CSI Driver for Kubernetes, perform these steps:
 
 1. [Provide subnet access between AKS and your Azure Managed Lustre file system](#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
-1. [Install the Azure Lustre CSI Driver for Kubernetes](#install-the-csi-driver).
+1. [Install the Azure Managed Lustre CSI Driver for Kubernetes](#install-the-csi-driver).
 
 1. [Create and configure a persistent volume](#create-and-configure-a-persistent-volume).
 
@@ -108,7 +108,7 @@ A third option is to use the AKS default `kubenet`-style network for your AKS cl
 
 ## Create an Azure Managed Lustre file system
 
-If you haven't already created your AMLFS cluster, create the cluster now. For instructions, see [Create an Azure Managed Lustre file system in the Azure portal](create-file-system-portal.md). Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
+If you haven't already created your Azure Managed Lustre File System cluster, create the cluster now. For instructions, see [Create an Azure Managed Lustre file system in the Azure portal](create-file-system-portal.md). Currently, the driver can only be used with a pre-existing Azure Managed Lustre system.
 
 ## Connect a client to your Azure Managed Lustre file system
 
