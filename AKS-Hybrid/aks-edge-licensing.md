@@ -36,7 +36,7 @@ Third-party access to solutions built on the volume licensing model procured via
 deploy a disconnected AKS Edge Essentials, a hoster/service provider needing a disconnected scenario is able to use the AKS Edge Essentials volume licensing model purchased with an EA. The volume licensing model doesn't offer the same per-tenant billing and CSP Partner Center integration benefits as the pay-as-you-use model, but it eliminates the need to connect the AKS Edge Essentials clusters to Azure to report usage.
 
 > [!CAUTION]
-> Microsoft controls [personal data](https://www.microsoft.com/licensing/terms/product/Glossary/all) processed in connection with your use of AKS Edge Essentials, and Microsoft handles the [personal data](https://www.microsoft.com/licensing/terms/product/Glossary/all) in accordance with the [Microsoft Privacy Statement](https://aka.ms/privacy).
+> Microsoft will be a controller of [personal data](https://www.microsoft.com/licensing/terms/product/Glossary/all) processed in connection with your use of AKS Edge Essentials, and Microsoft handles the [personal data](https://www.microsoft.com/licensing/terms/product/Glossary/all) in accordance with the [Microsoft Privacy Statement](https://aka.ms/privacy).
 
 ## Next steps
 
