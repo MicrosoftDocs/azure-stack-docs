@@ -3,41 +3,44 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 08/07/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
 # Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate.
+
+## Before you begin
+
+Before the discovery process takes place, make sure you have satisfied all requirements and [prerequisites](migrate=hyperv-discover.md).
 
 ## Step 1: Generate source appliance key and download the appliance
 
 In this step, you generate a key and download the .zip file for the source appliance.
 
-:::image type="content" source="media/discover-placeholder.png" alt-text="Screenshot of Discover page in Azure portal." lightbox="media/discover-placeholder.png":::
+1. Go to the [Azure portal](https://aka.ms/HCIMigratePP)  and select **Azure Migrate**.
 
-1. Go to the [Azure portal](https://aka.ms/HCIMigratePP).
+    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Get Started page in Azure Migrate portal." lightbox="media/project-get-started.png":::
 
-1. Select **Azure Migrate**, then select **Servers, databases and web apps** on the **Get started** page.
+1. Select **Servers, databases and web apps** and then select the migrate project you previously created.
 
-On the **Servers, databases and web apps** on the **Get started** page, select the project you previously created.
+    :::image type="content" source="media/project-assessment-tools.png" alt-text="Screenshot of Get Started page in Azure Migrate portal." lightbox="media/project-assessment-tools.png":::
 
-1. Under **Azure Migrate: Discovery and assessment**, select **Discover**.
+1. Under **Migration tools > Migration and modernization**, select **Discover**.
 
 1. On the **Discover** page, select **Discover using appliance** and then select the **Yes, with Hyper-V** option.
 
-1. Under **Generate project key**, enter a name for your appliance and then select **Generate key**. This may take a few minutes.
+    :::image type="content" source="media/discover-generate-key.png" alt-text="Screenshot of Discover page Azure Migrate portal." lightbox="media/discover-generate-key.png":::
+
+1. Under **Step 1: Generate project key**, enter a name for your appliance and then select **Generate key**. This may take a few minutes.
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for easy future reference.
 
-1. Under **Download Azure Migrate appliance**, select **.zip file**, and then select **Download**.
-
-> [!NOTE]
-> The actual size of the .zip file is ~500MB - there is a known issue that it is shown as 120MB in Azure portal.
+1. Under **Step 2: Download Azure Migrate appliance**, select **.zip file**, and then select **Download**.
 
 ## Step 2: Install source appliance VM OS
 
