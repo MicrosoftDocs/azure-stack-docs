@@ -104,6 +104,8 @@ Make sure to include the following firewall URLs in your allowlist:
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 | hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required to download the AZ CLI Extension azurestackhci |
+| https://pipelineagent.azurecr.io | 443 | Azure Monitor core agent | Used to get the Azure Monitor core agent |
+| https://linuxgeneva-microsoft.azurecr.io | 443 | Geneva database agents | Used to get the Geneva database agents |
 
 ## Network proxy requirements for setting up Arc VM management
 
@@ -120,8 +122,8 @@ You will need the following information about the proxy server to set up Arc VM 
 
 |Parameter|Description|
 |--|--|
-|ProxyServerHTTP|Destination proxy for HTTP traffic. It can be HTTP or HTTPS. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
-|ProxyServerHTTPS|Destination proxy for HTTPS traffic. It can be HTTP or HTTPS. Example: `http://proxy.corp.contoso.com:8080` or `https://proxy.corp.contoso.com:8443`|
+|ProxyServerHTTP|Destination proxy for HTTP traffic. Example: `http://proxy.corp.contoso.com:8080`|
+|ProxyServerHTTPS|Destination proxy for HTTPS traffic. Example: `http://proxy.corp.contoso.com:8080`|
 |ProxyServerNoProxy|URLs and IP addresses that you shouldn't relay through the proxy, including:<br>- Localhost traffic: `localhost,127.0.0.1`<br>- Private network address space: `10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`<br>- URLs in your organizations domain: `corp.contoso.com`|
 |ProxyServerUsername|Username for proxy authentication|
 |ProxyServerPassword|Password for proxy authentication|

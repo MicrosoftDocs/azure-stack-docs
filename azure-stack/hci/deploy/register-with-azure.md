@@ -7,6 +7,7 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-azurepowershell
 ms.date: 05/11/2023
 ---
 

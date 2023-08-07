@@ -2,13 +2,11 @@
 title: Install Visual Studio and connect to Azure Stack Hub 
 description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: article
 ms.custom:
-  - devx-track-arm-template
-ms.date: 07/22/2021
+ms.date: 07/14/2023
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: thoroet
 ms.lastreviewed: 01/04/2020
 
 # Intent: As an Azure Stack user, I want to install Visual Studio on Azure stack so I can write and deploy Azure Resource Manager templates.
@@ -33,6 +31,9 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 4. Restart the computer after the installation completes.
 
 ## Connect to Azure Stack Hub with Azure AD
+
+> [!NOTE]
+> While Azure Stack Hub supports both Visual Studio 2019 and 2022, Cloud Explorer has been deprecated from Visual Studio 2022. Therefore, although both Visual Studio 2019 and 2022 work if you're using Azure AD, if you are using AD FS with Azure Stack Hub (as described in the next section), you must use Visual Studio 2019 or earlier.
 
 1. Launch Visual Studio.
 

@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 6/20/2023
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -196,6 +196,8 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Save image as.** Enter a name for your VM image.
 
+    1. **Storage path.** Select the storage path for your VM image.
+
 1. Select **Review + Create** to create your VM image.
 
    :::image type="content" source="./media/manage-vm-resources/create-an-image.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/manage-vm-resources/create-an-image.png":::
@@ -251,6 +253,34 @@ You may want to view the properties of VM images before you use the image to cre
 
 ---
 
+## Update VM image
+
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation is not an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
+
+To update a VM image, use the following steps in Azure portal.
+
+1. To see if an update is available, select a VM image from the list view.
+
+   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
+
+   In the **Overview** blade, you see a banner that shows the new VM image available for download, if one is available. To update to the new image, select **the arrow icon**.
+
+   :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
+
+2. Review image details and then select **Review and create**. By default, the new image uses the same resource group and instance details as the previous image.
+
+   The name for the new image is incremented based on the name of the previous image. For example, an existing image named *winServer2022-01* will have an updated image named *winServer2022-02*.
+
+   :::image type="content" source="./media/manage-vm-resources/review-and-create-image.png" alt-text="Screenshot showing the Review and create dialog for a new VM image." lightbox="./media/manage-vm-resources/review-and-create-image.png":::
+
+3. To complete the operation, select **Create**.
+
+   :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
+
+   After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
+
+   > [!NOTE]
+   > In this release, you can't delete a VM image if the VM associated with that image is running. Stop the VM and then delete the VM image.
 
 ## Delete VM image
 
