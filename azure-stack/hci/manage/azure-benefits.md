@@ -73,11 +73,11 @@ Before you begin, you'll need the following prerequisites:
 - If you are using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with Cluster Manager extension (version 2.41.0 or later).
 
-You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Center or PowerShell. The following sections describe each option.
+You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, PowerShell, Azure CLI, or Azure portal. The following sections describe each option.
 
 ## Manage Azure Benefits
 
-# [WAC](#tab/wac)
+# [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure Benefits**.
 
@@ -91,9 +91,9 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
-:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in WAC":::
+:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in Windows Admin Cneter":::
 
-# [On-premises PS](#tab/onprem-ps)
+# [PowerShell](#tab/onprem-ps)
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
@@ -150,27 +150,19 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     ```azurecli    
     az stack-hci cluster list \
     --resource-group "${resourceGroup}" \
-    --query "[?name=='${clusterName}'].{Name:name, SoftwareAssurance:softwareAssuranceProperties.softwareAssuranceStatus}" \
+    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.imdsAttestation}" \
     -o table
-    ```
-    
-1. To enable Azure benefits, run the following command:
-    ```azurecli    
-    az stack-hci cluster extend-software-assurance-benefit \
-    --cluster-name "${clusterName}" \
-    --resource-group "${resourceGroup}" \
-    --software-assurance-intent enable
     ```
 
 ---
 
-### Manage access to Azure Benefits for your VMs - WAC
+### Manage access to Azure Benefits for your VMs - Windows Admin Center
 
 To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs.**
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
-### Manage access to Azure Benefits for your VMs - On-premises PS
+### Manage access to Azure Benefits for your VMs - PowerShell
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -183,24 +175,24 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
    ```powershell
    Add-AzStackHCIVMAttestation -AddAll
    ```
-- Optionally, to check that VMs can properly access Azure Benefits on the host, you can run this command from the VM and confirm that there is a response:
+- Optionally, to check that the VMs can access Azure Benefits on the host, run the following command on the VM:
 
   ```powershell
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
 
-### Troubleshooting - WAC
+### Troubleshoot via Windows Admin Center
 
 - To turn off and reset Azure Benefits on your cluster:
-  - Under the **Cluster** tab, click **Turn off Azure Benefits**.
+  - On the **Cluster** tab, select **Turn off Azure Benefits**.
 - To remove access to Azure Benefits for VMs:
-  - Under the **VM** tab, select the VM(s) in the top table **VMs without Azure Benefits**, and then click **Turn on Azure Benefits for VMs**.
+  - On the **VM** tab, select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs**.
 - Under the **Cluster** tab, one or more servers appear as **Expired**:
   - If Azure Benefits for one or more servers has not synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Select **Sync with Azure** to schedule a manual sync.
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
   - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try and manage VMs again.
 
-### Troubleshooting - On-premise PS
+### Troubleshoot via PowerShell
 
 - To turn off and reset Azure Benefits on your cluster, run the following command:
 

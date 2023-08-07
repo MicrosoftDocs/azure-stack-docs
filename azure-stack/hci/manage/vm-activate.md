@@ -116,7 +116,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    --resource-group "${resourceGroup}" \
    --desired-properties windows-server-subscription="Enabled"
     ```
-# [WAC](#tab/wac)
+# [Windows Admin Center](#tab/wac)
 
 1. Select **Cluster Manager** from the top drop-down, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
 2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Select **Next** and confirm details, then select **Purchase.**
@@ -124,7 +124,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
    :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
-# [On-premises PS](#tab/onprem-ps)
+# [PowerShell](#tab/onprem-ps)
 
 - **Purchase Windows Server subscription**: From your cluster, run the following command:
 
@@ -146,11 +146,11 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
 ---
 
-### Troubleshooting - Windows Server subscription
+### Troubleshoot subscription issues
 
 **Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-**Remediation**: Your cluster does not yet have the latest status on Windows Server subscription (for example, you just enrolled or just canceled), and therefore might not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this discrepancy, or you can sync manually. See [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
+**Remediation**: Your cluster doesn't have the latest status on Windows Server subscription (for example, you just enrolled or canceled), and therefore may not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
 
 ## Activate VMs against a host server

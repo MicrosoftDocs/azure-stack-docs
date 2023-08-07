@@ -51,7 +51,7 @@ Follow these instructions to turn on Azure Benefits on the host:
 
 You must also turn on Azure Benefits on each VM that requires ESU. Follow these instructions:
 
-- Using Windows Admin Center: [Manage access to Azure Benefits for your VMs - WAC](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---wac). Check that your ESU VMs (highlighted) are in the bottom table for **VMs with Azure Benefits**.
+- Using Windows Admin Center: [Manage access to Azure Benefits for your VMs - Windows Admin Center](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---windows-admin-center). Check that your ESU VMs (highlighted) are in the bottom table for **VMs with Azure Benefits**.
 - Using PowerShell: [Manage access to Azure Benefits for your VMs - PowerShell](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---on-premises-ps).
 
 ### Step 3: Install Extended Security Updates
