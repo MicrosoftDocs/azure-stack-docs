@@ -47,7 +47,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
 
 ### Activate Azure Hybrid Benefit
 
-# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azure-portal)
 Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI cluster via the Azure portal:
 
 1. Use your Microsoft Azure credentials to sign in to the Azure portal at this URL: https://portal.azure.com.
@@ -72,7 +72,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
-# [Azure PowerShell](#tab/azurepowershell)
+# [Azure PowerShell](#tab/azure-powershell)
 Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
@@ -99,7 +99,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
     ```
 
-# [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azure-cli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
@@ -142,7 +142,7 @@ You can perform an inventory of your clusters through the Azure portal and [Azur
 
 You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, PowerShell, or Azure CLI.
 
-# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azure-portal)
 
 1. In your Azure Stack HCI cluster resource page, under **Settings**, select **Configuration**. 
 1. Under **Azure Hybrid Benefit**, the status shows as:
@@ -151,14 +151,14 @@ You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, P
 
 You can also navigate to **Cost Analysis** > **Cost by Resource** > **Cost by Resource**. Expand your Azure Stack HCI resource to check that the meter is under **Software Assurance**.
 
-# [Azure PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/azure-powershell)
 
 ```powershell
 Install-Module -Name Az.ResourceGraph
 Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
-# [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az extension add --name resource-graph
@@ -171,11 +171,11 @@ az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'|
 
 You can list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription using PowerShell and Azure CLI.
 
-# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azure-portal)
 
 Use PowerShell or Azure CLI to list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription.
 
-# [PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/azure-powershell)
 
 ```powershell
 Install-Module -Name Az.ResourceGraph
@@ -183,7 +183,7 @@ Connect-AzAccount -Environment $EnvironmentName -Subscription $subId
 Search-AzGraph -Query "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
-# [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az extension add --name resource-graph

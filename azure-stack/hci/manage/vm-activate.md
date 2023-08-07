@@ -88,7 +88,7 @@ You can enable Windows Server subscription through different methods. Select one
 
    :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
@@ -199,6 +199,10 @@ Before you begin:
 You can set up AVMA through different methods. Select one of the following tabs based on your preferred method.
 
 ### [Azure portal](#tab/azure-portal)
+
+Use either Windows Admin Center or PowerShell to set up AVMA.
+
+### [Azure CLI](#tab/azurecli)
 
 Use either Windows Admin Center or PowerShell to set up AVMA.
 
