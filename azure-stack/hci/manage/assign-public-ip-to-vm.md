@@ -3,7 +3,7 @@ title: Assign a public IP address to a virtual machine
 description: Learn how to assign a public IP address to a virtual machine in an SDN environment.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/21/2023
+ms.date: 08/02/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
