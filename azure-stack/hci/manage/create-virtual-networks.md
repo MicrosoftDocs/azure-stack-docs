@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/25/2023
+ms.date: 08/08/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
@@ -47,9 +47,25 @@ Before you begin, make sure to complete the following prerequisites:
     ConvergedSwitch(compute_management) External        Teamed-Interface
     PS C:\Users\hcideployuser>
     ```
+
+### Additional prerequisites for static networks only
+
 1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
-1. When creating the static virtual network and network interface, make sure that you're running the following module versions:
+1. When creating the static virtual network and network interface, make sure that the `az` CLI client installed on the management computer is the latest CLI extension versions. To verify the `az` CLI client version, run the following command:
+
+    ```azurecli
+    az extension list
+    ```
+
+    If you aren't running the latest version, update the az CLI client to the latest version.
+
+    ```azurecli
+    az extension upgrade --name azurestackhci
+    az extension upgrade --name k8s-extension
+    ```
+
+1. When creating the static virtual network and network interface, make sure that you're running the following module versions on your Azure Stack HCI cluster:
     - Microsoft On-premises Cloud (MOC) version 1.0.64.
     - Kubernetes version 2.0.2.
     
@@ -102,31 +118,32 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
    For both DHCP and static, the *required* parameters to be specified are tabulated as follows:
 
-   | Parameter | Description |
+   | Arguments | Description |
    | ----- | ----------- |
    | **name** | Name for the virtual network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network after it's created. |
    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the virtual network. |
    | **resource-group** |Name of the resource group where you create the virtual network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-   | **CustomLocation** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you're creating this virtual network. |
-   | **Location** | Azure regions as specified by `az locations`. |
+   | **extended-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this virtual network. |
+   | **location** | Azure regions as specified by `az locations`. |
+   | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID.  |
 
    For static IP only, the *required* basic parameters are tabulated as follows:
 
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **IPAllocationMethod** |IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the virtual network is created with a dynamic configuration. |
-   | **IpAddressPrefix** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
+   | **ip-allocation-method** |IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the virtual network is created with a dynamic configuration. |
+   | **address-prefix** | Subnet address in CIDR notation. For example: "192.168.0.0/16".  |
 
 
    For static IP only, you can specify the following *optional* parameters:
 
    | Parameter | Description |
    | --------- | ----------- |
-   | **DNSServers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10"|
-   | **Gateway** | Ipv4 address of the default gateway. |
-   | **VLan ID** | vLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no vLAN ID.  |
+   | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10"|
+   | **gateway** | Ipv4 address of the default gateway. |
+   
 
 ### Create a DHCP virtual network
 
@@ -136,17 +153,20 @@ Create a DHCP virtual network when the underlying network to which you want to c
 
     ```azurecli
     $vNetName = "test-vnet-dynamic"
-    $vSwitchName = "ConvergedSwitch(compute_management)"    
+    $vSwitchName = '"ConvergedSwitch(compute_management)"'    
     $subscription =  "hcisub" 
     $resourceGroupName = "hcirg"
     $customLocName = "altsnclus-cl" 
     $location = "eastus2euap"
     ```
 
+    > [!NOTE]
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
    ```
 
     Here's a sample output:
@@ -208,7 +228,7 @@ Create a static virtual network when you want to create virtual machines with ne
 1. Create a static virtual network. Run the following cmdlet:
  
     ```azurecli
-    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name=$customLocationID type="CustomLocation" --location $location --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName --ip-allocation-method "Static" --address-prefix $addressPrefix   
+    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName --ip-allocation-method "Static" --address-prefix $addressPrefix   
     ```
     Here's a sample output:
 
