@@ -132,8 +132,8 @@ You can use the `azurestackhci virtualnetwork` cmdlet to create a virtual networ
 
 Create a DHCP virtual network when the underlying network to which you want to connect your virtual machines has DHCP. Follow these steps to configure a DHCP virtual network:
 
-    > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+> [!NOTE]
+> For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
@@ -192,8 +192,8 @@ Create a DHCP virtual network when the underlying network to which you want to c
 
 Create a static virtual network when you want to create virtual machines with network interfaces on these virtual networks. Follow these steps to configure a static virtual network:
 
-    > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+> [!NOTE]
+> For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
 
 1. Set the parameters. Here's an example:
 
