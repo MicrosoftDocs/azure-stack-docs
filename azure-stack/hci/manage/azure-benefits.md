@@ -91,7 +91,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
-:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in Windows Admin Cneter":::
+:::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Screenshot of Azure Benefits in Windows Admin Center":::
 
 # [PowerShell](#tab/onprem-ps)
 
@@ -129,7 +129,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
-   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
+   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Screenshot of Azure Benefit Attestation status":::
 
 # [Azure CLI](#tab/azurecli)
 
@@ -160,7 +160,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
 To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs.**
 
-:::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
+:::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Screenshot of Azure Benefits for VMs":::
 
 ### Manage access to Azure Benefits for your VMs - PowerShell
 
