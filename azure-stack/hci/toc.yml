@@ -325,7 +325,9 @@
       items:
       - name: Overview
         href: migrate/migration-azure-migrate-hci-overview.md
-      - name: Review prerequisites
+      - name: Review requirements
+        href: migrate-hyperv-requirements.md
+      - name: Complete prerequisites
         href: ../index.yml
       - name: Discover
         href: ../index.yml
