@@ -148,7 +148,7 @@ Create a DHCP virtual network when the underlying network to which you want to c
 1. Run the following cmdlet to create a DHCP virtual network:
 
    ```azurecli
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --IpAllocationMethod "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
    ```
 
     Here's a sample output:
@@ -209,7 +209,7 @@ Create a static virtual network when you want to create virtual machines with ne
 1. Create a static virtual network. Run the following cmdlet:
  
     ```azurecli
-    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name=$customLocationID type="CustomLocation" --location $location --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName --ip-allocation-method "Static" --address-prefix $addressPrefix   
+    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resourceGroupName --extended-location name="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" type="CustomLocation" --location $location --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName --ip-allocation-method "Static" --address-prefix $addressPrefix   
     ```
     Here's a sample output:
 
