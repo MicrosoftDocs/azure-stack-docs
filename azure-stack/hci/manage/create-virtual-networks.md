@@ -50,6 +50,8 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Additional prerequisites for static networks only
 
+On top of the prerequisites mentioned in the preceding section, if deploying a static virtual network, make sure to complete the following prerequisites:
+
 1. To create VMs with static IP addresses in your address space, add a virtual network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
 1. When creating the static virtual network and network interface, make sure that the `az` CLI client installed on the management computer is the latest CLI extension versions. To verify the `az` CLI client version, run the following command:
