@@ -190,6 +190,9 @@ Create a DHCP virtual network when the underlying network to which you want to c
 
 Create a static virtual network when you want to create virtual machines with network interfaces on these virtual networks. Follow these steps to configure a static virtual network:
 
+    > [!NOTE]
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+
 1. Set the parameters. Here's an example:
 
     ```azurecli
@@ -201,10 +204,6 @@ Create a static virtual network when you want to create virtual machines with ne
     $location = "eastus2euap" 
     $addressPrefix = "10.0.0.0/24"
     ```
-
-    > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
-
 1. Create a static virtual network. Run the following cmdlet:
  
     ```azurecli
