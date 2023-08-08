@@ -136,7 +136,7 @@ Create a DHCP virtual network when the underlying network to which you want to c
 
     ```azurecli
     $vNetName = "test-vnet-dynamic"
-    $vSwitchName = "ConvergedSwitch(compute_management)"    
+    $vSwitchName = '"ConvergedSwitch(compute_management)"'    
     $subscription =  "hcisub" 
     $resourceGroupName = "hcirg"
     $customLocName = "altsnclus-cl" 
