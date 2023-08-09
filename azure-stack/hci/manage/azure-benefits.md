@@ -93,7 +93,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 :::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Screenshot of Azure Benefits in Windows Admin Center":::
 
-## [PowerShell](#tab/onprem-ps)
+## [Azure PowerShell](#tab/azure-ps)
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
