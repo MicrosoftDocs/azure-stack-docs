@@ -111,7 +111,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    -o table
     ```
 
-1. To filter out a specific extension like `AzureMonitorWindowsAgent`, run the following command:
+1. To enable Windows Server Subscription on a cluster, run the following command:
     ```azurecli    
    az stack-hci cluster update \
    --cluster-name "${clusterName}" \

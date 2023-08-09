@@ -94,7 +94,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     ```
 
     
-1. To enable Azure benefits, run the following command and check if Azure Benefits got enabled using above command:
+1. To enable Azure Hybrid Benefits, run the following command and check if Azure Hybrid Benefits got enabled using above command:
     ```powershell    
     Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
     ```
