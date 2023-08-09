@@ -3,7 +3,7 @@ title: System requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/08/2023
+ms.date: 08/09/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -61,10 +61,10 @@ Make sure that the source appliance VM and the target appliance VM have a health
      - Azure Site Recovery Management Service (*asrmgmtsvc*)
 
     Logs and configuration can be found at:
-
-        C:\ProgramData\Microsoft Azure\Logs
-
-        C:\ProgramData\Microsoft Azure\Config
+    ```
+    C:\ProgramData\Microsoft Azure\Logs
+    C:\ProgramData\Microsoft Azure\Config
+    ```
 
 1. On the target appliance VM
  
@@ -72,10 +72,10 @@ Make sure that the source appliance VM and the target appliance VM have a health
      - Azure Site Recovery Management Service (*asrmgmtsvc*)
     
     Logs and configuration can be found at:
-
-        C:\ProgramData\Microsoft Azure\Logs
-
-        C:\ProgramData\Microsoft Azure\Config
+    ```
+    C:\ProgramData\Microsoft Azure\Logs
+    C:\ProgramData\Microsoft Azure\Config
+    ```
 
 The Arc Resource Bridge must be configured and running on the target appliance VM. Use the instructions in the deployment PowerPoint to install the Arc Resource Bridge, and make sure that you have the following configured:
 
