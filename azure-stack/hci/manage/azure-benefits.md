@@ -162,7 +162,7 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Screenshot of Azure Benefits for VMs":::
 
-### Manage access to Azure Benefits for your VMs - PowerShell
+### Manage access to Azure Benefits for your VMs - Azure PowerShell
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
