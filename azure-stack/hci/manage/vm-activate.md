@@ -92,7 +92,7 @@ You can enable Windows Server subscription through different methods. Select one
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Windows Server Subscription following these steps:
 
 1. Set up parameters from your subscription, resource group, and cluster name
     ```azurecli

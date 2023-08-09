@@ -77,7 +77,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 ## Manage Azure Benefits
 
-# [Windows Admin Center](#tab/wac)
+## [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure Benefits**.
 
@@ -93,7 +93,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 :::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Screenshot of Azure Benefits in Windows Admin Center":::
 
-# [PowerShell](#tab/onprem-ps)
+## [PowerShell](#tab/onprem-ps)
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
@@ -125,13 +125,13 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
    Get-AzStackHCIVMAttestation
    ```
 
-# [Azure portal](#tab/azureportal)
+## [Azure portal](#tab/azureportal)
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
    :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Screenshot of Azure Benefit Attestation status":::
 
-# [Azure CLI](#tab/azurecli)
+## [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
