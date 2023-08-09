@@ -94,7 +94,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     ```
 
     
-1. To enable Azure benefits, run the following command and check if Azure Benefits got enabled using above command:
+1. To enable Azure Hybrid Benefits, run the following command and check if Azure Hybrid Benefits got enabled using above command:
     ```powershell    
     Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
     ```
@@ -102,7 +102,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
 # [Azure CLI](#tab/azure-cli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
 
 1. Set up parameters from your subscription, resource group, and cluster name
     ```azurecli
@@ -113,7 +113,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     az account set --subscription "${subscription}"
     ```
 
-1. To view Azure Benefits status on a cluster, run the following command:
+1. To view Azure Hybrid Benefits status on a cluster, run the following command:
     ```azurecli    
     az stack-hci cluster list \
     --resource-group "${resourceGroup}" \
@@ -122,7 +122,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     ```
 
     
-1. To enable Azure benefits, run the following command:
+1. To enable Azure Hybrid Benefits, run the following command:
     ```azurecli    
     az stack-hci cluster extend-software-assurance-benefit \
     --cluster-name "${clusterName}" \
