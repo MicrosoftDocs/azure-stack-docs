@@ -325,8 +325,11 @@
       items:
       - name: Overview
         href: migrate/migration-azure-migrate-hci-overview.md
-      - name: Review prerequisites
-        href: ../index.yml
+      - name: Phase 0: Prepare
+        items:
+        - name: Review requirements
+          href: ../index.yml
+        - name: Complete prerequisites
       - name: Phase 1: Discover
         href: ../index.yml
       - name: Phase 2: Replicate
