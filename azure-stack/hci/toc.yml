@@ -327,22 +327,20 @@
         href: migrate/migration-azure-migrate-hci-overview.md
       - name: Review prerequisites
         href: ../index.yml
-      - name: Discover
+      - name: Phase 1: Discover
         href: ../index.yml
-      - name: Replicate
+      - name: Phase 2: Replicate
         href: ../index.yml
-      - name: Migrate
-        href: ../index.yml
-      - name: Verify
+      - name: Phase 3: Migrate, verify
         href: ../index.yml
       - name: Troubleshoot
         href: ../index.yml
     - name: Migrate using SCVMM
       items:
       - name: For Hyper-V VMs
-        href: ../index.yml
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
       - name: For VMware VMs
-        href: ../index.yml
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
     - name: Migrate manually 
       items:
       - name: To same hardware

@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to migrate the Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate.
+This article describes how to migrate the Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate and includes the steps tp verify the migration.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
