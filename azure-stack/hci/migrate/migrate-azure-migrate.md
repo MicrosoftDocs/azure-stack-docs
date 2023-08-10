@@ -35,15 +35,15 @@ Before you migrate your VMs:
 
 1. On the **Azure Stack HCI migration > Replications** page, select **Refresh** and then view the replication progress. When the initial replication is complete, the VM **Migration status** changes to **Ready to migrate**.
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate.":::
 
 1. From the top command bar, select **Migrate** to migrate multiple VMs that are ready.  
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected.":::
 
     Alternatively, you can select **Migrate** from the context menu for a single VM that is ready to migrate.
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of Migrate page in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of Migrate page in Azure portal with Migrate option selected from context menu.":::
 
 
 1. On the **Migrate** page:
@@ -111,7 +111,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     :::image type="content" source="media/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu.":::
     
-    Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps).
+    Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true).
 
 1. The last step is to delete the VM from the Failover Cluster Manager.
     1. In the Failover Cluster Manager, connect to the Hyper-V cluster and go to **Roles**.
