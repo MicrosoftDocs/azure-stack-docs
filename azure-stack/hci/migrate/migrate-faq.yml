@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 08/08/2023
+  ms.date: 08/10/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you may have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
