@@ -55,14 +55,14 @@ Before you migrate your VMs:
     
 1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details. 
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-3b.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-3b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal.":::
 
     The **Planned failover** blade indicates the various migration tasks in progress.
-    :::image type="content" source="media/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of PLanned failover for a VM in Azure portal.":::
 
     The migration status changes from **Migration in progress** to **Completed** when the migration is complete.
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-4.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-4.png" alt-text="Screenshot of Migrate page with Migration status as completed in Azure portal.":::
 
 Once the migration is complete, the VMs are running on your Azure Stack HCI cluster. You can view the VMs in the Azure portal.
 
@@ -80,34 +80,36 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
     1. The VM behaves as expected.
     1. Your applications work as expected.
 
-    :::image type="content" source="media/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal.":::
 
 1. Sign into the VM. Verify that the VM is running as expected.
 
 1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**. 
 
-    :::image type="content" source="media/complete-migration-virtual-machine-1.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/complete-migration-virtual-machine-1.png" alt-text="Screenshot of Replications view with complete migration selected from the context menu in Azure portal.":::
 
     Alternatively, select the VM name. 
 
-    :::image type="content" source="media/complete-migration-virtual-machine-2.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/complete-migration-virtual-machine-2.png" alt-text="Screenshot of Replications view with a VM selected in Azure portal.":::
 
     From the top command bar, select **Complete migration**. When prompted for confirmation, select **Yes** to continue. Repeat this action for all the migrated VMs.
 
-    :::image type="content" source="media/complete-migration-virtual-machine-3.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal.":::
 
     This action starts a deletion job that you can track from the **Jobs** page.
 
-    :::image type="content" source="media/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal.":::
 
     After the migrate resource is deleted, it is also removed it from the **Replications** view. You'll see the migrated VM disappear from the list of the VMs. 
 
-    :::image type="content" source="media/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Migrate page with context menu in Azure portal.":::
+    :::image type="content" source="media/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal.":::
 
 1. After the migration is complete, delete the source VM from Hyper-V server.
     1. In the Hyper-V manager, select the source VM that you migrated.
     1. Verify that the VM is turned off.
     1. Right-click and from the context menu, select **Delete...**. This action should delete the source VM.
+
+    :::image type="content" source="media/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu.":::
     
     Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps).
 
