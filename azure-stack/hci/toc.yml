@@ -339,6 +339,8 @@
         href: migrate/migrate-azure-migrate.md
       - name: Troubleshoot
         href: ../index.yml
+      - name: FAQ
+        href: migrate/migrate-faq.yml
     - name: Migrate using SCVMM
       items:
       - name: For Hyper-V VMs
