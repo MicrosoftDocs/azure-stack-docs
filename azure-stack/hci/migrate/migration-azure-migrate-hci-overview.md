@@ -31,7 +31,7 @@ Using Azure Migrate to move your Hyper-V VMs to Azure Stack HCI offers the follo
 
 ## Workflow
 
-In the traditional Azure Migrate model, the data flows from on-premises to Azure. In this solution, the traditional model was modified so that the VMs and their related data remain on-premises.
+In the traditional Azure Migrate model, the data flows from on-premises to Azure. In this solution, the traditional model was modified so that the VMs and their related data remain on-premises. The data flows from your on-premises Hyper-V VMs to VMs running on your on-premises Azure Stack HCI cluster. 
 
 The following diagram shows the workflow of the solution:
 
@@ -39,11 +39,11 @@ The following diagram shows the workflow of the solution:
 
 The solution has the following high-level steps:
 
-1. **Prepare** - Review and complete the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project in Azure.
+1. **Prepare** - Review the migration requirements to identify if your source servers are supported for migration. Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.
 
     For more information, see [Review prerequisites for Azure Migrate](../index.yml).
 
-1. **Discover** - Create and configure an Azure Migrate appliance. Use this appliance to discover and assess your on-premises source Hyper-V servers.
+1. **Discover** - Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers.
 
     For more information, see [Discover Hyper-V VMs](../index.yml).
 
@@ -53,14 +53,15 @@ The solution has the following high-level steps:
 
 1. **Migrate** - Once the replication is complete, select and migrate VMs to your Azure Stack HCI.
 
-    For more information, see [Migrate Hyper-V VMs](../index.yml).
+    For more information, see [Migrate Hyper-V VMs](./migrate-azure-migrate.md#migrate-vms).
 
 1. **Verify** - After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMs.
 
-    For more information, see [Verify Hyper-V VMs](../index.yml).
+    For more information, see [Verify Hyper-V VMs](./migrate-azure-migrate.md#verify-migration).
 
-If needed, [troubleshoot migration issues](../index.yml).
+If needed, [troubleshoot migration issues](../index.yml). If you have any questions, see [Azure Migrate FAQ](./migrate-faq.yml).
 
 ## Next steps
 
-- [Review the prerequisites](../index.yml) for Hyper-V VM migration to Azure Stack HCI.
+- [Review the requirements](../index.yml) for Hyper-V VM migration to Azure Stack HCI.
+- [Complete the prerequisites](../index.yml) for Hyper-V VM migration to Azure Stack HCI.
