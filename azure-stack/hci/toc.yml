@@ -330,6 +330,7 @@
         - name: Review requirements
           href: ../index.yml
         - name: Complete prerequisites
+          href: ../index.yml
       - name: Phase 1: Discover
         href: ../index.yml
       - name: Phase 2: Replicate
