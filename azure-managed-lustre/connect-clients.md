@@ -113,6 +113,9 @@ After your clients are connected to the file system, you can use the Azure Manag
 - Add data to the file system (if you did not add a populated blob container at create time).
 - Start a compute job.
 
+> [!IMPORTANT]
+> When a client is no longer needed, it is essential that the client be unmounted prior to shutting it down. 
+
 ## Next steps
 
 - [Azure Managed Lustre File System overview](amlfs-overview.md)
