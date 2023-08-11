@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/08/2023
+ms.date: 08/11/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -14,9 +14,11 @@ ms.subservice: azure-stack-hci
 
 This article describes the discovery process for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Before you begin
 
-Before the discovery process takes place, make sure you have satisfied all requirements and [prerequisites](migrate=hyperv-discover.md).
+Before the discovery process takes place, make sure you have satisfied all requirements and [prerequisites](migrate-hyperv-discover.md).
 
 ## Step 1: Generate source appliance key and download the appliance
 
@@ -24,11 +26,11 @@ In this step, you generate a key and download the .zip file for the source appli
 
 1. Go to the [Azure portal](https://aka.ms/HCIMigratePP)  and select **Azure Migrate**.
 
-    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Get Started page in Azure Migrate portal." lightbox="media/project-get-started.png":::
+    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of the Get Started page in Azure Migrate portal." lightbox="media/project-get-started.png":::
 
 1. Select **Servers, databases and web apps** and then select the migrate project you previously created.
 
-    :::image type="content" source="media/project-assessment-tools.png" alt-text="Screenshot of Get Started page in Azure Migrate portal." lightbox="media/project-assessment-tools.png":::
+    :::image type="content" source="media/project-assessment-tools.png" alt-text="Screenshot of the Servers, databases and web apps page in Azure Migrate portal." lightbox="media/project-assessment-tools.png":::
 
 1. Under **Migration tools > Migration and modernization**, select **Discover**.
 
@@ -120,13 +122,19 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. When prompted, enter the code that is displayed in your mobile device for MFA authentication.
 
+    :::image type="content" source="media/enter-code.png" alt-text="Screenshot showing Enter code popup." lightbox="media/key-verified.png":::
+
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app.
 
-1. It can up to 10 minutes for the appliance to be registered. Once registered, select ***Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
+    :::image type="content" source="media/enter-code2.png" alt-text="Screenshot showing device code field for sign in." lightbox="media/key-verified.png":::
+
+1. It can up to 10 minutes for the appliance to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
 
 1. Select **Add cluster information** and enter cluster FQDN, domain,username, and password information for each cluster that you want to discover VMs from.
+
+    :::image type="content" source="media/add-cluster-info2.png" alt-text="Screenshot showing device code field for sign in." lightbox="media/key-verified.png":::
 
 1. Enter the name and credentials of the target (HCI) cluster.
 
@@ -134,7 +142,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Select **Start Discovery**.
 
-1. Wait until you have a green checkmark indicating discovery is completed successfully, then go to the Azure portal to review inventory
+1. Wait until you have a green checkmark indicating discovery is completed successfully, then go to the Azure portal to review inventory.
 
 ## Next steps
 
