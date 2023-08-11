@@ -1,11 +1,11 @@
 ---
 title: Change the billing owner for an Azure Stack Hub user subscription 
 description: Learn how to change the billing owner for an Azure Stack Hub user subscription.
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 02/11/2021
 

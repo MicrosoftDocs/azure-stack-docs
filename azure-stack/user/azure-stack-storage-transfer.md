@@ -1,17 +1,19 @@
 ---
 title: Use data transfer tools in Azure Stack Hub Storage 
 description: Learn about Azure Stack Hub Storage data transfer tools.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: conceptual
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-azurecli
 ms.date: 11/22/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to learn about data transfer tools for Azure Stack Storage so I can transfer data to and from Azure Stack.
 # Keyword: Azure stack storage data transfer
-
 ---
 
 # Use data transfer tools in Azure Stack Hub Storage

@@ -1,16 +1,17 @@
 ---
 title: Enable Azure CLI for Azure Stack Hub users 
 description: Learn how to enable the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-azurecli
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.lastreviewed: 05/16/2019
 
 # Intent: As an Azure Stack operator, I want to enable Azure CLI so my users can manage resources through CLI.
 # Keyword: enable azure cli azure stack
-
 ---
 
 # Enable Azure CLI for Azure Stack Hub users

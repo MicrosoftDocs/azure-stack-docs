@@ -1,6 +1,6 @@
 ---
-author: mattbriggs
-ms.author: mabrigg
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
 ms.date: 11/2/2020

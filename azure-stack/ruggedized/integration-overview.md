@@ -3,7 +3,7 @@ title: Azure Stack Hub datacenter integration overview
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub ruggedized from Microsoft, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: ashika789
 ms.lastreviewed: 10/14/2020
 ---
@@ -43,7 +43,7 @@ To create an Azure Stack Hub resource, take the following steps in the Azure por
 
 1. Use your Microsoft Azure credentials to sign in to the Azure portal at this URL: [https://portal.azure.com](https://portal.azure.com).
 1. In the left-pane, select **+ Create a resource**. Search for and select **Azure Stack Hub ruggedized**. Select **Create**.
-1. Pick the subscription that you want to use for the Azure Stack Hub device. Select the country to where you want to ship this physical device. Select **Show devices**.
+1. Pick the subscription that you want to use for the Azure Stack Hub device. Select the country/region to where you want to ship this physical device. Select **Show devices**.
 1. A short form is displayed. Fill out the form and select **Submit**. Microsoft will enable your subscription.
 1. After the subscription is enabled, you should be able to able to proceed with the resource creation. In the **Select device type** blade, choose **Select**. 
 1. On the **Basics** tab, enter or select the following **Project details**.

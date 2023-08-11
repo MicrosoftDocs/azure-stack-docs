@@ -1,8 +1,8 @@
 ---
-author: PatAltimore
+author: sethmanheim
 ms.topic: include
 ms.date: 02/04/2021
-ms.author: patricka
+ms.author: sethm
 ---
 
 When you're evaluating an Azure Stack Hub solution, consider the hardware configuration choices that have a direct impact on the overall capacity of the Azure Stack Hub cloud.

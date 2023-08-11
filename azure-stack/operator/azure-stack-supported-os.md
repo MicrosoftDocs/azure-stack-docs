@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/09/2021
+ms.date: 02/11/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2021
@@ -21,6 +21,22 @@ ms.lastreviewed: 09/09/2021
 
 Azure Stack Hub supports the Windows guest operating systems listed in the following table:
 
+### [Azure Stack Hub 2108 or later](#tab/os1)
+
+| Operating system | Description | Available in Azure Stack Hub Marketplace |
+| --- | --- | --- |
+| Windows Server 2022 | 64-bit | Datacenter, Datacenter core |
+| Windows Server, version 1709 | 64-bit | Core with containers |
+| Windows Server 2019 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
+| Windows Server 2016 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
+| Windows Server 2012 R2 | 64-bit |  Datacenter |
+| Windows Server 2012 | 64-bit |  Datacenter |
+| Windows Server 2008 R2 SP1 | 64-bit |  Datacenter |
+| Windows Server 2008 SP2 | 64-bit |  Bring your own image |
+| Windows 10 *(see note 1)* | 64-bit, Pro, and Enterprise | Bring your own image |
+
+### [Azure Stack Hub 2102 or earlier](#tab/os2)
+
 | Operating system | Description | Available in Azure Stack Hub Marketplace |
 | --- | --- | --- |
 | Windows Server, version 1709 | 64-bit | Core with containers |
@@ -32,19 +48,21 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 | Windows Server 2008 SP2 | 64-bit |  Bring your own image |
 | Windows 10 *(see note 1)* | 64-bit, Pro, and Enterprise | Bring your own image |
 
+---
+
 > [!NOTE]
 > To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a [Qualified Multitenant Hoster (QMTH)](https://partner.microsoft.com/membership/cloud-solution-provider).
 
 Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack Hub instance isn't supported. During deployment, Azure Stack Hub injects a suitable version of the guest agent into the image.
 
-Datacenter editions are available in Azure Stack Hub Marketplace for downloading; customers can bring their own server images including other editions. Windows client images aren't available in Azure Stack Hub Marketplace.
+Datacenter editions are available in Azure Stack Hub Marketplace for downloading; customers can bring their own server images including other editions. 
 
 ## Linux
 
 Linux distributions listed as available in Azure Stack Hub Marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack, follow the guidelines in [Add Linux images to Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]  
-> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent). 
+> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent).
 >
 > [cloud-init](https://cloud-init.io/) is supported.
 

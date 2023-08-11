@@ -1,11 +1,11 @@
 ---
 title: Post deployment configurations for the ASDK 
 description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: article
 ms.date: 12/03/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/03/2020
 

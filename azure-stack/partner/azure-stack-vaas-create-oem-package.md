@@ -2,10 +2,10 @@
 title: Create an OEM extension package
 titleSuffix: Azure Stack Hub
 description: Learn how to create an OEM extension package in Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
 ms.date: 12/16/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
 

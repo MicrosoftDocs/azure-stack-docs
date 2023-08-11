@@ -6,18 +6,18 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/29/2020
+ms.date: 04/17/2023
 ---
 
 # Drive symmetry considerations for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 Azure Stack HCI and Windows Server clusters work best when every server has exactly the same drives.
 
 In reality, we recognize this is not always practical. Today, you may buy spacious 3 TB hard drives; next year, it may become impossible to find drives that small. Therefore, some amount of mixing-and-matching is expected and supported. Keep in mind, however, that more symmetry is always better.
 
-This article explains the constraints and provides examples of supported and unsupported configurations in Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI.
+This article explains the constraints and provides examples of supported and unsupported configurations in Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI and Windows Server.
 
 ## Constraints
 

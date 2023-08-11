@@ -1,20 +1,17 @@
 ---
 title: Azure Stack Hub privileged endpoint reference
 description: Reference for PowerShell Azure Stack privileged endpoint
-author: mattbriggs
-
+author: sethmanheim
 ms.topic: reference
-ms.date: 02/19/2021
-ms.author: mabrigg
-ms.reviewer: fiseraci
-ms.lastreviewed: 04/27/2020
+ms.date: 03/22/2023
+ms.author: sethm
 ---
 
 # Azure Stack Hub privileged endpoint reference
 
-The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you perform a required task. The endpoint uses PowerShell JEA (Just Enough Administration) to expose only a restricted set of cmdlets.
+The Azure Stack Hub privileged endpoint (PEP) is a pre-configured remote PowerShell console that provides you with the capabilities to perform a required task. The endpoint uses PowerShell JEA (Just Enough Administration) to expose only a restricted set of cmdlets.
 
-## Privilege Endpoint cmdlets
+## Privileged endpoint cmdlets
 
 | Cmdlet | Description |
 | --- | --- |
@@ -59,6 +56,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Set-SyslogServer](set-syslogserver.md) | Sets the syslog server endpoint. |
 | [Set-Telemetry](set-telemetry.md) | Enables or disables the transfer of telemetry data to Microsoft. |
 | [Set-TLSPolicy](set-tlspolicy.md) | No description. |
+| [Start-AzsCryptoWipe](start-azscryptowipe.md) | Performs cryptographic wipe of Azure Stack Hub infrastructure. |
 | [Start-AzureStack](start-azurestack.md) | Starts all Azure Stack services. |
 | [Start-SecretRotation](start-secretrotation.md) | Triggers secret rotation on a stamp. |
 | [Stop-AzureStack](stop-azurestack.md) | Stops all Azure Stack services. |
@@ -67,4 +65,4 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 
 ## Next steps
 
-For more information, about the Privileged Endpoint on Azure Stack Hub see [Using the privileged endpoint in Azure Stack](../../operator/azure-stack-privileged-endpoint.md).
+For more information about the Privileged Endpoint on Azure Stack Hub, see [Using the privileged endpoint in Azure Stack](../../operator/azure-stack-privileged-endpoint.md).

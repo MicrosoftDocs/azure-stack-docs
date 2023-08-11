@@ -1,10 +1,10 @@
 ---
 title: Integrate AD FS identity with your Azure Stack Hub datacenter 
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
-author: BryanLa
+author: sethmanheim
 ms.topic: article
-ms.date: 06/10/2021
-ms.author: bryanla
+ms.date: 05/15/2023
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
 
@@ -55,7 +55,7 @@ The following information is required as inputs for the automation parameters:
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
 |`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest that you want to integrate with|Contoso.com|
-|`CustomADAdminCredentials`| |A user with LDAP Read permission|YOURDOMAIN\graphservice|
+|`CustomADAdminCredentials`| |A user with LDAP Read permission|graphservice|
 
 ### Configure Active Directory Sites
 
@@ -65,7 +65,7 @@ Add the Azure Stack Hub [Public VIP network](azure-stack-network.md#public-vip-n
 
 For more information on Active Directory Sites, see [Designing the site topology](/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
-> [!Note]  
+> [!NOTE]  
 > If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Hub Public VIP network subnet isn't part of it.
 
 ### Create user account in the existing Active Directory (optional)
@@ -97,7 +97,7 @@ For this procedure, use a computer in your datacenter network that can communica
     $i = @(
            [pscustomobject]@{ 
                      CustomADGlobalCatalog="fabrikam.com"
-                     CustomADAdminCredential= get-credential
+                     CustomADAdminCredential= Get-Credential -Message "Do not include the domain name of the graphservice account in the username."
                      SkipRootDomainValidation = $false 
                      ValidateParameters = $true
                    }) 
@@ -150,8 +150,7 @@ The following information is required as input for the automation parameters:
 |CustomAD<br>FSFederationMetadataEndpointUri|AD FS Metadata URI|Federation metadata link.| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 |SigningCertificateRevocationCheck|NA|Optional Parameter to skip CRL checking.|None|
 
-
-### Trigger automation to configure claims provider trust in Azure Stack Hub
+### Trigger automation to configure claims provider trust in Azure Stack Hub (by downloading federation metadata)
 
 For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack Hub. It's expected that the certificate used by the account **STS AD FS** is trusted by Azure Stack Hub.
 
@@ -165,7 +164,7 @@ For this procedure, use a computer that can communicate with the privileged endp
 2. Now that you're connected to the privileged endpoint, run the following command using the parameters appropriate for your environment:
 
    ```powershell  
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri "https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml"
    ```
 
 3. Run the following command to update the owner of the default provider subscription using the parameters appropriate for your environment:
@@ -204,7 +203,7 @@ For the following procedure, you must use a computer that has network connectivi
 
 2. Copy the metadata file to a computer that can communicate with the privileged endpoint.
 
-### Trigger automation to configure claims provider trust in Azure Stack Hub
+### Trigger automation to configure claims provider trust in Azure Stack Hub (using federation metadata file)
 
 For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack Hub and has access to the metadata file you created in a previous step.
 

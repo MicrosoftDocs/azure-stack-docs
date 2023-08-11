@@ -2,11 +2,11 @@
 title: Azure Stack Hub SQL resource provider 1.1.30.0 release notes
 titleSuffix: Azure Stack Hub
 description: View the releases notes for the Azure Stack Hub SQL resource provider 1.1.30.0 update. 
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
 ms.custom: contperf-fy22q1

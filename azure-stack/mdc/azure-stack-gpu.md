@@ -3,7 +3,7 @@ title: GPU VMs on Azure Stack | Microsoft Docs
 description: Reference for GPU computing in Azure Stack. 
 services: azure-stack 
 documentationcenter: '' 
-author: PatAltimore 
+author: sethmanheim 
 manager: femila 
 ms.service: azure-stack 
 ms.workload: na 
@@ -11,7 +11,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na 
 ms.topic: article 
 ms.date: 01/02/2020 
-ms.author: patricka 
+ms.author: sethm 
 ms.reviewer: kivenkat 
 ms.lastreviewed: 01/02/2020
 

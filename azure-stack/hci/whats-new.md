@@ -1,101 +1,175 @@
 ---
-title: What's new in Azure Stack HCI
-description: Find out what's new in Azure Stack HCI
+title: What's new in Azure Stack HCI, version 22H2 and Azure Stack HCI, Supplemental Package
+description: Find out what's new in Azure Stack HCI, version 22H2 and Azure Stack HCI, Supplemental Package
 ms.topic: overview
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/15/2021
+ms.date: 05/30/2023
 ---
 
-# What's new in Azure Stack HCI
+# What's new in Azure Stack HCI, version 22H2
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [hci-applies-to-supplemental-package-22h2](../includes/hci-applies-to-supplemental-package-22h2.md)]
 
-This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and 20H2. It also lists what's new in different versions of Windows Admin Center to manage Azure Stack HCI systems.
+This article lists the various features and improvements that are available in Azure Stack HCI, version 22H2. This article also describes the Azure Stack HCI, Supplemental Package that can be deployed in conjunction with Azure Stack HCI, version 22H2 OS.
 
-Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
+Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution and focuses on Network ATC v2 improvements, storage replication compression, Hyper-V live migration, and more. Additionally, a preview version of Azure Stack HCI, Supplemental Package, is now available that can be deployed on servers running the English version of the Azure Stack HCI, version 22H2 OS.
 
-## What's new in Azure Stack HCI, version 21H2
+You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
-Clusters running Azure Stack HCI, version 21H2 now have the following new features:
+The following sections briefly describe the various features and enhancements in [Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package-preview) and in [Azure Stack HCI, version 22H2](#azure-stack-hci-version-22h2).
 
-- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
-- **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
-- **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
-- **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
-- **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
-- **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
-- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
 
-To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-## What's new in Azure Stack HCI, version 20H2
+## Azure Stack HCI, Supplemental Package (preview)
 
-Clusters running Azure Stack HCI, version 20H2 now have the following new features:
+Azure Stack HCI, Supplemental Package is now available to be deployed on servers running Azure Stack HCI, version 22H2 OS. This package contains a brand new deployment tool that allows for an interactive deployment, new security capabilities, an Azure Stack HCI Environment Checker tool that will validate connectivity, hardware, identity and networking prior to deployment, and a unified log collection experience.
 
-- **Azure Kubernetes Service hosting**: Azure Stack HCI now includes the ability to host [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
-- **New capabilities in Windows Admin Center**: With the ability to create and update hyperconverged clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
-- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
-- **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
-- **Azure portal integration**: The Azure portal experience for Azure Stack HCI is designed to view all of your Azure Stack HCI clusters across the globe, with new features in development.
-- **GPU acceleration for high-performance workloads**: AI/ML applications can benefit from boosting performance with GPUs.
-- **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
-- **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
+### New deployment tool (preview)
 
-To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
+For servers running Azure Stack HCI, version 22H2 OS, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file, or via PowerShell.
 
-## What's new in Windows Admin Center for Azure Stack HCI
+[!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
 
-Windows Admin Center versions 2110 and 2103 include a number of features and improvements to manage Azure Stack HCI systems. More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
+To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
 
-### What's new in Windows Admin Center version 2110
+### New security capabilities (preview)
 
-Windows Admin Center version 2110 includes the following improvements:
+[!INCLUDE [hci-security-capabilities-sp](../includes/hci-security-capabilities-sp.md)]
 
-- **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
+### New Azure Stack HCI Environment Checker tool (preview)
 
-- **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front-end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
+[!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
 
-- **Virtual Machine tool improvements**: We’ve improved the tool’s performance and you can now create VHDs when adding a new disk to your VM.
+## Azure Stack HCI, version 22H2
 
-- **New Security tool**: This new tool centralizes some key security settings for servers and clusters, including the ability to easily view the Secured-core status of systems.
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 22H2.
 
-- **New features when creating volumes on clusters**: The Volumes tool in Cluster Manager can now create volumes with thin provisioning, nested resiliency, and optional stretched cluster features.
+### Network ATC v2 improvements
 
-- **Feature updates for Azure Stack HCI**: The Updates tool has an improved history page and can upgrade clusters to Azure Stack HCI, version 21H2.
+In this release, the Network ATC has several new features and improvements:
 
-- **Automatic VM activation**: You can now set up Azure Stack HCI clusters to automatically activate Windows Server VMs (this was previously available via an extension update). To do so, connect to the cluster and then go to Settings > Activate Windows Server VMs.
+- **Network symmetry**. Network ATC automatically checks for and validates network symmetry across all adapters (on each node) in the same intent - specifically the make, model, speed, and configuration of your selected adapters.
 
-- **Set up SDN at any time**: You can now set up SDN after creating the cluster in addition to during cluster creation.
+- **Storage automatic IP assignment**. Network ATC automatically identifies available IPs in our default subnets and assigns those addresses to your storage adapters.
 
-- **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
+- **Scope detection**. Network ATC automatically detects if you're configuring a cluster node, so no need to add the `-ClusterName` or `-ComputerName` parameter in your commands.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
+- **Contextual cluster network naming**. Network ATC understands how you'll use cluster networks and names them more appropriately.
 
-### What's new in Windows Admin Center version 2103
+- **Live Migration optimization**. Network ATC intelligently manages:
 
-Windows Admin Center version 2103 includes the following improvements:
+  - **Maximum simultaneous live migrations** - Network ATC ensures that the maximum recommended value is configured and maintained across all cluster nodes.
+  - **Best live migration network** - Network ATC determines the best network for live migration and automatically configures your system.
+  - **Best live migration transport** - Network ATC selects the best algorithm for SMB, compression, and TCP given your network configuration.
+  - **Maximum SMB (RDMA) bandwidth** - If SMB (RDMA) is used, Network ATC determines the maximum bandwidth reserved for live migration to ensure that there's enough bandwidth for Storage Spaces Direct.
 
-- **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
+- **Proxy configuration**. Network ATC can configure all server nodes with the same proxy information as needed for your environment. This action provides one-time configuration for all current and future server nodes.
 
-- **Deploy Network Controller using Windows Admin Center**: An update to the Cluster Creation extension in Windows Admin Center allows you to set up a Network Controller for Software Defined Networking (SDN) deployments.
+- **Stretched cluster support**. Network ATC configures all storage adapters used by Storage Replica in stretched cluster environments. However, since such adapters need to route across subnets, Network ATC can't assign any IP addresses to them, so you’ll still need to assign these addresses yourselves.
 
-- **Use Windows Admin Center in the Azure portal (Preview)**: Manage the Windows Server operating system running in an Azure VM by using Windows Admin Center directly in the Azure portal.
-To learn more, see [Windows Admin Center in the Azure portal](https://cloudblogs.microsoft.com/windowsserver/2021/03/02/announcing-public-preview-of-window-admin-center-in-the-azure-portal/).
+- **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` cmdlet in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` cmdlet. No need to remove and then add the intents again when changing VLANs.
 
-- **Event tool redesign (Preview)**: We’ve redesigned the Events tool for servers and PCs for the first time in ages. To check it out, open the Events tool and then toggle **Preview Mode**.
+For more information, see the blog on [Network ATC v2 improvements](https://aka.ms/hciatcv2-blog).
 
-- **Install and manage Azure IoT Edge for Linux on Windows**: Install, manage, and troubleshoot IoT Edge for Linux on Windows from within Windows Admin Center.
-To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](https://techcommunity.microsoft.com/t5/internet-of-things/enabling-linux-based-azure-iot-edge-modules-on-windows-iot/ba-p/2075882?ocid=wac2103).
+### Storage Replica compression
 
-- **Open tools in separate windows**: Connect to a system and then on the **Tools** menu, hover over a tool and select **Open tool in a separate window**.
+This release includes the Storage Replica compression feature for data transferred between the source and destination servers. This new functionality compresses the replication data from the source system, which is transferred over the network, decompressed, and then saved on the destination. The compression results in fewer network packets to transfer the same amount of data, allowing for higher throughput and lower network utilization, which in turn results in lower costs for metered networks.
 
-- **Virtual machines tool improvements**: You can now create your own VM groups in the tool and edit columns. We’ve also made moving a VM easier, allowing you to reassign virtual switches while moving a VM.
+There are no changes to the way you create replica groups and partnerships. The only change is a new parameter that can be used with the existing Storage Replica cmdlets.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2103](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
+You specify compression when the group and the partnership are created. Use the following cmdlets to specify compression:
+ 
+```powershell
+New-SRGroup -EnableCompression 
+New-SRPartnership -EnableCompression 
+```
+
+If the parameter isn't specified, the default is set to **Disabled**.
+
+To modify this setting later, use the following cmdlets:
+ 
+```powershell
+Set-SRGroup -Compression <Boolean>
+Set-SRPartnership -Compression <Boolean>
+
+```
+
+where `$False` is **Disabled** and `$True` is **Enabled**.
+ 
+All the other commands and steps remain the same. These changes aren't in Windows Admin Center at this time and will be added in a subsequent release.
+
+For more information, see [Storage Replica overview](/windows-server/storage/storage-replica/storage-replica-overview).
+
+### Partition and share GPU with virtual machines on Azure Stack HCI
+
+With this release, GPU partitioning is now supported on NVIDIA [A2](https://www.nvidia.com/en-us/data-center/products/a2/), [A10](https://www.nvidia.com/en-us/data-center/products/a10-gpu/), [A16](https://www.nvidia.com/en-us/data-center/products/a16-gpu/), and [A40](https://www.nvidia.com/en-us/data-center/a40/) GPUs in Azure Stack HCI, enabled with NVIDIA RTX Virtual Workstation (vWS) and NVIDIA Virtual PC (vPC) software. GPU partitioning is implemented using single root I/O virtualization (SR-IOV), which provides a strong, hardware-backed security boundary with predictable performance for each virtual machine.
+
+For more information, see [Partition and share GPU with virtual machines on Azure Stack HCI](../hci/manage/partition-gpu.md).
+
+### Hyper-V live migration improvements
+
+In Azure Stack HCI, version 22H2, the Hyper-V live migration is faster and more reliable for switchless 2-node and 3-node clusters. Switchless interconnects can cause live migration delays and this release addresses these issues.
+
+### Cluster-Aware Updating (CAU) improvements
+
+With this release, Cluster-Aware Updating is more reliable due to the smarter retry and mitigation logic that reduces errors when pausing and draining cluster nodes. Cluster-Aware Updating also supports single server deployments.
+
+For more information, see [What is Cluster-Aware Updating?](/windows-server/failover-clustering/cluster-aware-updating)
+
+### Thin provisioning conversion
+
+With this release, you can now convert existing fixed provisioned volumes to thin using PowerShell. Thin provisioning improves storage efficiency and simplifies management.
+
+For more information, see [Convert fixed to thin provisioned volumes on your Azure Stack HCI](./manage/thin-provisioning-conversion.md).
+
+### Single server scale-out
+
+This release supports inline fault domain and resiliency changes to scale out a single server. Azure Stack HCI, version 22H2 provides easy scaling options to go from a single server to a two-node cluster, and from a two-node cluster to a three-node cluster.
+
+For more information, see [Scale out single server on your Azure Stack HCI](./manage/single-node-scale-out.md).
+
+### Tag-based segmentation
+
+In this release, you can secure your application workload virtual machines (VMs) from external and lateral threats with custom tags of your choice. Assign custom tags to classify your VMs, and then apply Network Security Groups (NSGs) based on those tags to restrict communication to and from external and internal sources. For example, to prevent your SQL Server VMs from communicating with your web server VMs, simply tag the corresponding VMs with *SQL* and *Web* tags. You can then create an NSG to prevent *Web* tag from communicating with *SQL* tag.
+
+For more information, see [Configure network security groups with Windows Admin Center](./manage/configure-network-security-groups-with-tags.md).
+
+### Azure Hybrid Benefit for Azure Stack HCI
+
+Azure Hybrid Benefit program enables customers to significantly reduce the costs of running workloads in the cloud. With Windows Server Software Assurance (SA), we are further expanding Azure Hybrid Benefit to reduce the costs of running workloads on-premises and at edge locations.
+
+If you have Windows Server Datacenter licenses with active Software Assurance, use Azure Hybrid Benefit to waive host service fees for Azure Stack HCI and unlimited virtualization with Windows Server subscription at no additional cost. You can then modernize your existing datacenter and edge infrastructure to run VM and container-based applications.
+
+For more information, see [Azure Hybrid Benefit for Azure Stack HCI](./concepts/azure-hybrid-benefit-hci.md).
+
+### Azure Arc VM changes and Azure Marketplace
+
+Another feature also available with this release is Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI. With this integration, you'll be able to access the latest fully updated images from Microsoft, including Windows Server 2022 Datacenter: Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
+
+You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc VMs. This feature works with your existing cluster running Azure Stack HCI, version 21H2 or later.
+
+For more information, see:
+
+- [Create VM image using an Azure Marketplace image](./manage/virtual-machine-image-azure-marketplace.md).
+- [Create VM image using an image in an Azure Storage account](./manage/virtual-machine-image-storage-account.md).
+- [Create VM image using an image in a local share](./manage/virtual-machine-image-local-share.md).
+
+### Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI
+
+Beginning this release, you can run Windows Server 2022 Datacenter: Azure Edition on Azure Stack HCI. The preview of Marketplace VM images lets customers deploy Windows Server 2022 Datacenter: Azure Edition (already generally available in Azure IaaS) on Azure Stack HCI. This enables unique features like Hotpatch and SMB over QUIC on Windows Server 2022 Datacenter: Azure Edition VMs on Azure Stack HCI. Through future guest management extensions, the full Azure Automanage experience will also become available in upcoming releases.
+
+### Automatic renewal of Network Controller certificates
+
+You can now renew your Network Controller certificates automatically, in addition to manual renewal. For information on how to renew the Network Controller certificates automatically, see [Automatic renewal](./manage/update-network-controller-certificates.md?tabs=automatic-renewal#renew-network-controller-certificates).
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-ignite-2022/ba-p/3650949).
+- For existing Azure Stack HCI deployments, [Update Azure Stack HCI](./manage/update-cluster.md).
+- For new Azure Stack HCI deployments:
+    - Read the [Deployment overview](./deploy/deployment-tool-introduction.md).
+    - Learn how to [Deploy interactively](./deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.

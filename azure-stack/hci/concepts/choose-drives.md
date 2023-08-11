@@ -6,18 +6,18 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/01/2020
+ms.date: 04/17/2023
 ---
 
 # Choose drives for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article provides guidance on how to choose drives to meet your performance and capacity requirements.
 
 ## Drive types
 
-Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI, currently works with four types of drives:
+Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI and Windows Server currently works with four types of drives:
 
 | Type of drive | Description |
 |----------------------|--------------------------|
@@ -28,6 +28,9 @@ Storage Spaces Direct, the underlying storage virtualization technology behind A
 
    >[!NOTE]
    > This article covers choosing drive configurations with NVMe, SSD, and HDD. For more information on PMem, see [Understand and deploy persistent memory](deploy-persistent-memory.md).
+
+  > [!NOTE]
+  > Storage Bus Layer (SBL) cache is not supported in single server configuration. All flat single storage type configurations (for example all-NVMe or all-SSD) is the only supported storage type for single server.
 
 ## Built-in cache
 
@@ -90,7 +93,7 @@ The cache should be sized to accommodate the working set of your applications an
 
 ### General
 
-We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabytes (PB) (4,000 TB) for Windows Server 2019.
+We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabytes (PB) (4,000 TB) (1 PB for Windows Server 2016).
 
 ## Next steps
 

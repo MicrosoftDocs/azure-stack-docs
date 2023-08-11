@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Container Registry on Azure Stack Hub for cloud operators
 description: As an operator, learn to troubleshoot Azure Container Registry on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2021
-ms.author: mabrigg
+ms.date: 06/06/2022
+ms.author: sethm
 ms.reviewer: chasat
 ms.lastreviewed: 10/26/2021
 
@@ -30,22 +30,22 @@ Users of ACR on Azure Stack Hub have troubleshooting guidance available for self
 
 ## Collect logs for support
 
-ACR logs are collected when collecting logs from the Azure Stack Hub administration portal or during a full run of **Get-AzureStackLog**. There may be circumstances where you just want to collect logs specific to ACR, for example, if you are collecting for more than a four-hour period.
+ACR logs are collected when collecting logs from the Azure Stack Hub administration portal or during a full run of **Send-AzureStackDiagnosticLog**. There may be circumstances where you just want to collect logs specific to ACR, for example, if you are collecting for more than a four-hour period.
 
 ### Collecting logs for ACR install issues
 
-To collect ACR logs for ACR issues including installation issues run **Get-AzureStackLog** with the following format:
+To collect ACR logs for ACR issues including installation issues, run **Send-AzureStackDiagnosticLog** with the following parameters:
 
 ```powershell  
-Get-AzureStackLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices,ECE,CLM
+Send-AzureStackDiagnosticLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices,ECE,CLM
 ```
 
 ### Collecting logs for all other ACR issues
 
-To collect ACR logs for ACR issues, excluding installation issues run **Get-AzureStackLog** with the following format:
+To collect ACR logs for ACR issues, excluding installation issues, run **Send-AzureStackDiagnosticLog** with the following parameters:
 
 ```powershell
-Get-AzureStackLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices
+Send-AzureStackDiagnosticLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices
 ```
 
 ## Next steps

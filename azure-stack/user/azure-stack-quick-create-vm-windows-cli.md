@@ -1,17 +1,17 @@
 ---
 title: Create Windows VM on Azure Stack Hub with Azure CLI 
 description: Create a Windows virtual machine on Azure Stack Hub using Azure CLI
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: quickstart
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want to create a Windows  virtual server using CLI.
 # Keyword: windows virtual machine CLI
 
-ms.custom: mode-api
+ms.custom: mode-api, devx-track-azurecli
 ---
 
 
@@ -31,7 +31,7 @@ You can create a Windows Server 2016 virtual machine by using the Azure CLI. Fol
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your Azure Stack Hub environment, run the [az group create](/cli/azure/group#az_group_create) command to create a resource group.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your Azure Stack Hub environment, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
 >  Values are assigned for all the variables in the code examples. However, you can assign new values if you want to.
@@ -44,7 +44,7 @@ az group create --name myResourceGroup --location local
 
 ## Create a virtual machine
 
-Create a virtual machine (VM) by using the [az vm create](/cli/azure/vm#az_vm_create) command. The following example creates a VM named myVM. This example uses Demouser for an admin username and Demouser@123 as the admin password. Change these values to something that is appropriate for your environment.
+Create a virtual machine (VM) by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. This example uses Demouser for an admin username and Demouser@123 as the admin password. Change these values to something that is appropriate for your environment.
 
 ```azurecli
 az vm create \

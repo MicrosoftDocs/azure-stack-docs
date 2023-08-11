@@ -1,8 +1,8 @@
 ---
 title: Modular Datacenter network integration
 description: Learn about Azure Stack network integration for Azure Modular Datacenter.
-author: PatAltimore
-ms.author: patricka
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 01/02/2020

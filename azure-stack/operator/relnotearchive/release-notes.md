@@ -4,9 +4,9 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/10/2021
+ms.date: 07/06/2022
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
 ROBOTS: NOINDEX
 ---
@@ -20,7 +20,111 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range=">azs-2002"
+
+::: moniker range="azs-2102"
+## 2102 build reference
+
+The latest Azure Stack Hub 2102 update build number is **1.2102.30.97**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
+
+### Update type
+
+The Azure Stack Hub 2102 update build type is **Full**.
+
+The 2102 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-20 hours
+- 8 nodes: 11-26 hours
+- 12 nodes: 14-32 hours
+- 16 nodes: 17-38 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2102 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](../remote-support.md).
+- The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you do not manipulate files under the backup root directory.
+- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-07-01**, with a subset of the available features.
+- Azure Stack Hub Storage now supports Azure Storage services management APIs version **2019-06-01**, with a subset of total available features.
+- The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. This requires a GPU to be installed in the system.
+- Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
+- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](../enable-multitenancy.md).
+- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](../azure-stack-security-configuration.md#legal-notice-for-pep-sessions).
+- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an extra validation was added in the **UpdateReadiness** check. Patch & update will fail at an early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, check the [OEM contact information](../azure-stack-update-oem.md#oem-contact-information).
+- Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
+- Azure Stack Hub now supports adding GPUs to any existing system. To add a GPU, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then re-started.
+- Reduced OEM update time using the live update process.
+- The AKS engine on Azure Stack Hub added the following new features. For details, see the release notes under the [AKS engine documentation](../../user/azure-stack-kubernetes-aks-engine-overview.md):
+
+  - General availability of Ubuntu 18.04.
+  - Support for Kubernetes 1.17.17 and 1.18.15.
+  - Certificate rotation command public preview.
+  - CSI Driver Azure Disks public preview.
+  - CSI Driver NFS public preview.
+  - CSI Driver for Azure Blobs private preview.
+  - T4 Nvidia GPU support private preview.
+  - Azure Active Directory integration private preview.
+
+### Improvements
+
+- Increased the Network Controller log retention period, so the logs will be available for longer to help engineers in effective troubleshooting, even after an issue has been resolved.
+- Improvements to preserve the Network Controller, Gateway VM, Load Balancer, and Host Agent logs during an update.
+- Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
+- Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
+- The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
+- Added PowerShell cmdlets [Set-AzSLegalNotice](../../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
+
+### Changes
+
+- The Fabric Resource Provider APIs now expose information about GPUs if available in the scale unit.
+- Azure Stack Hub operators can now change the GPU partitioning ratio via PowerShell (AMD only). This requires all virtual machines to be deallocated.
+- This build includes a new version of Azure Resource Manager.
+- The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
+- In the 2102 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
+- Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This algorithm ensures that the correct diagnostic info is collected at the right time, without requiring any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
+- There is a temporary increase of 10 GB of memory used by the Azure Stack Hub infrastructure.
+
+### Fixes
+
+- Fixed an issue in which internal DNS zones became out of sync during update, and caused the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
+- Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
+- Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
+- Removed the **ND6s_dev** size from the VM size picker, as it is an unsupported VM size.
+- Fixed an issue in which performing **Stop-Deallocate** on a VM results in an MTU configuration on the VM to be removed. This behavior was inconsistent with Azure.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+### Hotfix prerequisites: before applying the 2102 update
+
+The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
+
+- [Azure Stack Hub hotfix 1.2008.41.161](../hotfix-1-2008-41-161.md)
+
+### After successfully applying the 2102 update
+
+When you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2102.30.148](../hotfix-1-2102-30-148.md)
+::: moniker-end
+
+::: moniker range=">azs-2008"
 ## Release notes for supported versions
 
 Release notes for supported versions of Azure Stack Hub can be found under [Overview > Release notes](../release-notes.md)
@@ -29,12 +133,97 @@ Release notes for supported versions of Azure Stack Hub can be found under [Over
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
-::: moniker range="<=azs-2002"
+::: moniker range="<=azs-2008"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
+::: moniker-end
+
+::: moniker range="azs-2008"
+## 2008 build reference
+
+The latest Azure Stack Hub 2008 update build number is **1.2008.40.149**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
+
+### Update type
+
+The Azure Stack Hub 2008 update build type is **Full**.
+
+The 2008 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2008 update has had the following expected runtimes in our internal testing- 4 nodes: 13-20 hours, 8 nodes: 16-26 hours, 12 nodes: 19-32 hours, 16 nodes: 22-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2008 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- Azure Stack Hub now supports VNET peering, which gives the ability to connect VNETs without a Network Virtual Appliance (NVA). For more information, see the [new VNET peering documentation](../../user/virtual-network-peering.md).
+- Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
+- Azure Stack Hub Storage now supports Azure Storage services APIs version **2019-07-07**. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../../user/azure-stack-storage-dev.md#azure-client-libraries). For Azure Storage services management APIs, **2018-02-01** has been add of support, with a subset of total available features.
+- Azure Stack Hub compute now supports Azure Compute APIs version **2020-06-01**, with a subset of total available features.
+- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-03-01**, with a subset of the available features.
+- Preview of Windows Admin Center that can now connect to Azure Stack Hub to provide in-depth insights into the infrastructure during support operations (break-glass required).
+- Ability to add login banner to the privileged endpoint (PEP) at deployment time.
+- Released more **Exclusive Operations** banners, which improve the visibility of operations that are currently happening on the system, and disable users from initiating (and later failing) any other exclusive operation.
+- Introduced two new banners in each Azure Stack Hub Marketplace item's product page. If there is a Marketplace download failure, operators can view error details and attempt recommended steps to resolve the issue.
+- Released a rating tool for customers to provide feedback. This will enable Azure Stack Hub to measure and optimize the customer experience.
+- This release of Azure Stack Hub includes a private preview of Azure Kubernetes Service (AKS) and Azure Container Registry (ACR). The purpose of the private preview is to collect feedback about the quality, features, and user experience of AKS and ACR on Azure Stack Hub.
+- This release includes a public preview of Azure CNI and Windows Containers using [AKS Engine v0.55.4](../../user/kubernetes-aks-engine-release-notes.md). For an example of how to use them in your API model, [see this example on GitHub](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-windows.json).
+- There is now support for [Istio 1.3 deployment](https://github.com/Azure/aks-engine/tree/master/examples/service-mesh) on clusters deployed by [AKS Engine v0.55.4](../../user/kubernetes-aks-engine-release-notes.md). For more information, [see the instructions here](../../user/kubernetes-aks-engine-service-account.md).
+- There is now support for deployment of [private clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/features.md#private-cluster) using [AKS Engine v0.55.4](../../user/kubernetes-aks-engine-release-notes.md).
+- This release includes support for [sourcing Kubernetes configuration secrets](https://github.com/Azure/aks-engine/blob/master/docs/topics/keyvault-secrets.md#use-key-vault-as-the-source-of-cluster-configuration-secrets) from Azure and Azure Stack Hub Key Vault instances.
+
+### Improvements
+
+- Implemented internal monitoring for Network Controller and SLB host agents, so the services are auto-remediated if they ever enter into a stopped state.
+- Active Directory Federation Services (AD FS) now retrieves the new token signing certificate after the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](../azure-stack-integrate-identity.md).
+- Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. These changes increase the reliability for Azure Stack Hub startup and shutdown.
+- The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
+- Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
+- You can now view a detailed log collection HTML report that provides details on the roles, duration, and status of the log collection. The purpose of this report is to help users provide a summary of the logs collected. Microsoft Customer Support Services can then quickly assess the report to evaluate the log data, and help to troubleshoot and mitigate system issues.
+- The infrastructure fault detection coverage has been expanded with the addition of 7 new monitors across user scenarios such as CPU utilization and memory consumption, which helps to increase the reliability of fault detection.
+
+### Changes
+
+- The **supportHttpsTrafficOnly** storage account resource type property in SRP API version **2016-01-01** and **2016-05-01** has been enabled, but this property is not supported in Azure Stack Hub.
+- Raised volume capacity utilization alert threshold from 80% (warning) and 90% (critical) to 90% (warning) and 95% (critical). For more information, see [Storage space alerts](../azure-stack-manage-storage-shares.md#storage-space-alerts)
+- The AD Graph configuration steps change with this release. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](../azure-stack-integrate-identity.md).
+- To align to the current best practices defined for Windows Server 2019, Azure Stack Hub is changing to use an additional traffic class or priority to further separate server-to-server communication in support of the Failover Clustering control communication. The result of these changes provides better resiliency for Failover Cluster communication. This traffic class and bandwidth reservation configuration is accomplished by a change on the top-of-rack (ToR) switches of the Azure Stack Hub solution and on the host or servers of Azure Stack Hub.
+
+  These changes are added at the host level of an Azure Stack Hub system. Contact your OEM to make the change at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](../azure-stack-network.md).
+
+- The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Those are not visible in the portal yet, and can only be used via Azure Resource Manager templates.
+
+### Fixes
+
+- Fixed an issue in which deleting an NSG of a NIC that is not attached to a running VM failed.
+- Fixed an issue in which modifying the **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer put the public IP in a failed state.
+- Fixed the **Get-AzsDisk** cmdlet to return the correct **Attached** status, instead of **OnlineMigration**, for attached managed disks.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Make sure you install the latest 2005 hotfix before updating to 2008. Also, starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+> [!TIP]
+> If you want to be notified about each hotfix release, subscribe to the [**RSS feed**](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
+
+### After successfully applying the 2008 update
+
+Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically.
+
+After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2008.40.154](../hotfix-1-2008-40-154.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -60,7 +249,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub storage now supports Azure Storage services APIs version 2019-02-02. For Azure client libraries, that is compatible with the new REST API version. For more information, see [Azure Stack Hub storage development tools](../../user/azure-stack-storage-dev.md#azure-client-libraries).
 - Azure Stack Hub now supports the latest version of [CreateUiDefinition (version 2)](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview).
 - New guidance for batched VM deployments. For more information, [see this article](../azure-stack-capacity-planning-compute.md).
-- The Azure Stack Hub Marketplace CoreOS Container Linux item [is approaching its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/). For more information, see [Migrating from CoreOS Container Linux](https://docs.flatcar-linux.org/os/migrate-from-container-linux/).
+- The Azure Stack Hub Marketplace CoreOS Container Linux item [is approaching its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/). For more information, see [Migrating from CoreOS Container Linux](https://www.flatcar.org/docs/latest/migrating-from-coreos/).
 
 ### Improvements
 
@@ -1152,12 +1341,6 @@ After the installation of this update, install any applicable hotfixes. For more
 
 Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
->
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
-
 ## Next steps
 
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
@@ -1359,7 +1542,7 @@ The following are post-installation known issues for this build version.
 
 <!-- 2352906 - IS ASDK -->
 - Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
-- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest&preserve-view=true). The portal experience will be restored in the upcoming release of Azure App Service on Azure Stack 1.6 (Update 6).
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot). The portal experience will be restored in the upcoming release of Azure App Service on Azure Stack 1.6 (Update 6).
 
 <!-- ### Usage -->
 
@@ -1407,11 +1590,6 @@ The Azure Stack 1902 update build type is **Full**. For more information about u
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1901 before updating Azure Stack to 1902.
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### Azure Stack hotfixes
 
@@ -1688,11 +1866,6 @@ The Azure Stack 1901 update build number is **1.1901.0.95** or **1.1901.0.99** a
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1811 before updating Azure Stack to 1901.
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### Azure Stack hotfixes
 
@@ -2015,24 +2188,16 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
-    If you do not have the extension host requirements met, the `Test-AzureStack` output displays the following message: 
+    If you do not have the extension host requirements met, the `Test-AzureStack` output displays the following message:
   
-    `To proceed with installation of the 1811 update, you will need to import 
-    the SSL certificates required for Extension Host, which simplifies network 
-    integration and increases the security posture of Azure Stack. Refer to this 
-    link to prepare for Extension Host:
-    https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare`
+    `To proceed with installation of the 1811 update, you will need to import the SSL certificates required for Extension Host, which simplifies network integration and increases the security posture of Azure Stack. Refer to this link to prepare for Extension Host: https://learn.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare`
 
 - The Azure Stack 1811 update requires that you have properly imported the mandatory extension host certificates into your Azure Stack environment. To proceed with installation of the 1811 update, you must import the SSL certificates required for the extension host. To import the certificates, see [this section](../azure-stack-extension-host-prepare.md#import-extension-host-certificates).
 
-    If you ignore every warning and still choose to install the 1811 update, the update will fail in approximately 1 hour with the following message:   
- 
-    `The required SSL certificates for the Extension Host have not been found.
-    The Azure Stack update will halt. Refer to this link to prepare for 
-    Extension Host: https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare,
-    then resume the update.
-    Exception: The Certificate path does not exist: [certificate path here]` 
- 
+    If you ignore every warning and still choose to install the 1811 update, the update will fail in approximately 1 hour with the following message:
+
+    `The required SSL certificates for the Extension Host have not been found. The Azure Stack update will halt. Refer to this link to prepare for Extension Host: https://learn.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare, then resume the update. Exception: The Certificate path does not exist: [certificate path here]`
+
     Once you have properly imported the mandatory extension host certificates, you can resume the 1811 update from the Administrator portal. While Microsoft advises Azure Stack operators to schedule a maintenance window during the update process, a failure due to the missing extension host certificates should not impact existing workloads or services.  
 
     During the installation of this update, the Azure Stack user portal is unavailable while the extension host is being configured. The configuration of the extension host can take up to 5 hours. During that time, you can check the status of an update, or resume a failed update installation using [Azure Stack Administrator PowerShell or the privileged endpoint](../azure-stack-monitor-update.md).
@@ -2476,12 +2641,6 @@ For more information about these vulnerabilities, click on the preceding links, 
 ### Prerequisites
 
 - Install the latest Azure Stack Hotfix for 1808 before applying 1809. For more information, see [KB 4481066 - Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). While Microsoft recommends the latest Hotfix available, the minimum version required to install 1809 is 1.1808.5.110.
-
-  > [!TIP]  
-  > Subscribe to the following *RRS* or *Atom* feeds to keep up with Azure Stack Hotfixes:
-  > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss 
-  > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom
-
 
 - Before you start installation of this update, run [Test-AzureStack](../azure-stack-diagnostic-test.md) with the following parameters to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action.  
 
@@ -3261,7 +3420,7 @@ The following are post-installation known issues for this build version.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az_vm_create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
   - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
@@ -3448,7 +3607,7 @@ The following are post-installation known issues for this build version.
 
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
-  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
+  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md) procedure to reset the owner of the default provider subscription.   
 
 <!-- TBD - IS ASDK --> 
 - Some administrative subscription types are not available. When you upgrade Azure Stack to this version, the two subscription types that were introduced with version 1804 are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
@@ -3516,7 +3675,7 @@ The following are post-installation known issues for this build version.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az_vm_create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
   - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
@@ -3787,7 +3946,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
-  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
+  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md) procedure to reset the owner of the default provider subscription.   
 
 <!-- TBD - IS ASDK --> 
 - Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
@@ -3851,7 +4010,7 @@ The following are post-installation known issues for build  **20180513.1**.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az_vm_create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
   - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
@@ -4125,7 +4284,7 @@ The following are post-installation known issues for build  **20180323.2**.
 #### Portal
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
-  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
+  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md) procedure to reset the owner of the default provider subscription.   
 
 - The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn't available. Instead, use the following link:     
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.
@@ -4356,7 +4515,7 @@ The Azure Stack 1802 update build number is **20180302.1**.
 
 ### Post-update steps
 After the installation of 1802, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](../azure-stack-servicing-policy.md). 
-- Azure Stack hotfix **1.0.180302.4**. [KB 4131152 - Existing Virtual Machine Scale Sets may become unusable]( https://support.microsoft.com/help/4131152) 
+- Azure Stack hotfix **1.0.180302.4**. [KB 4131152 - Existing Virtual Machine Scale Sets may become unusable](https://support.microsoft.com/help/4131152) 
 
   This fix also resolves the issues detailed in  [KB 4103348 - Network Controller API service crashes when you try to install an Azure Stack update](https://support.microsoft.com/help/4103348).
 
@@ -4402,7 +4561,7 @@ The following are post-installation known issues for build  **20180302.1**
 #### Portal
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
-  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
+  Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md) procedure to reset the owner of the default provider subscription.   
 
 - The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn't available. Instead, use the following link:     
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.

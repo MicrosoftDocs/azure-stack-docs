@@ -4,12 +4,12 @@ description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 07/01/2020
+ms.date: 04/17/2023
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.

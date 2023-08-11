@@ -5,9 +5,8 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/06/2021
+ms.date: 05/17/2023
 ms.author: sethm
-ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
@@ -18,7 +17,7 @@ ms.lastreviewed: 03/18/2020
 
 # Azure Stack Hub servicing policy
 
-This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to keep your system in a supported state.
+Azure Stack Hub follows the [Modern Lifecycle Policy](/lifecycle/policies/modern). This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to [keep your system in a supported state](#keep-your-system-under-support).
 
 ## Download update packages for integrated systems
 
@@ -48,9 +47,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2301 update](./release-notes.md?preserve-view=true&view=azs-2301)
+- [Azure Stack Hub 2206 update](./release-notes.md?preserve-view=true&view=azs-2206)
 - [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108)
-- [Azure Stack Hub 2102 update](./release-notes.md?preserve-view=true&view=azs-2102)
-- [Azure Stack Hub 2008 update](./release-notes.md?preserve-view=true&view=azs-2008)
 
 ## Hotfixes
 
@@ -58,23 +57,31 @@ Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a spe
 
 Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. **Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version.** You can read more about the applicability of a specific hotfix in the corresponding KB article. See the release notes links in the previous section.
 
-Before you update to the new major version, apply the latest hotfix in the **current** major version.
+Before you update to a new major version, apply the latest hotfix in the **current** major version. It is recommended that cloud operators keep their scale units updated with hotfixes as they are released; for example, installing hotfixes within 45 days of their release date, if possible.
 
 Starting with build 2005, when you update to a **new** major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
 For information about currently available hotfixes, [see the release notes](release-notes.md) "Hotfixes" section for that update.
 
+## OEM packages
+
+Operators should maintain their OEM packages, and the recommendation is to be within N-2 OEM packages.
+
 ## Keep your system under support
 
-For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
+For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version (N) or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that aren't within our general two preceding versions support policy:
+
+- Hotfixes for the platform are provided for the current version and two preceding versions (N-1, N-2).
+- Root Cause Analysis (RCA) is provided for the current version and two preceding versions (N-1, N-2).
+- Issues on systems for unsupported versions (preceding N-2) are not entitled to receive support from Microsoft unless you're performing an update.
 
 You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 
-Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
+Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recently available update version is 2102, and the previous two update packages were versions 2005 and 2008, both 2005 and 2008 remain in support. However, 2002 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
+For example, if the most recent update version available is 2206 (N), the two previous update versions were 2108 and 2102, which means both 2108 (N-1) and 2102 (N-2) remain in support. However, the 2008 version would be out of support, as 2008 would be N-3 when the 2206 update was released.
 
-Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
+Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 
 ### Resource provider version support
 

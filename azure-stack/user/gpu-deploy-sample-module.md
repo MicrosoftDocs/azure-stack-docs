@@ -1,12 +1,12 @@
 ---
 title:  Deploy a graphic processing unit (GPU) enabled IoT Module on Azure Stack Hub
 description: How to deploy a graphic processing unit (GPU) enabled IoT Module on Azure Stack Hub
-author: mattbriggs
-ms.author: mabrigg
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 8/20/2021
-ms.reviewer: gara
+ms.reviewer: thoroet
 ms.lastreviewed: 8/20/2021
 
 # Intent: As a a developer on Azure Stack Hub, I want to deploy a solution using a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
@@ -52,11 +52,11 @@ You'll need to have the following resources in place in your Azure Stack Hub ins
   - Your development machine will need the following resources:
       - [Python 3.x](https://www.python.org/downloads/)
       - [Pip](https://pypi.org/project/pip/) for installing Python packages. This is been installed with your Python installation. If you have Pip installed, you may want to upgrade to the latest version. You can upgrade using pip, itself. Type: `pip install --upgrade pip`.
-      - [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
+      - [Azure CLI 2.0](/cli/azure/install-azure-cli)
       - [Git](https://git-scm.com/downloads)
       - [Docker](https://docs.docker.com/get-docker/)
       - [Visual Studio Code](https://code.visualstudio.com/)
-      - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) for Visual Studio Code
+      - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) for Visual Studio Code
       - [Python Extension Pack](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack) for Visual Studio Code
 
 ## Register an IoT Edge device

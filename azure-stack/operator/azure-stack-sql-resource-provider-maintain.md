@@ -2,7 +2,7 @@
 title: SQL resource provider maintenance operations
 titleSuffix: Azure Stack Hub
 description: Learn about SQL resource provider maintenance operations on Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 ms.topic: article
 ms.date: 08/19/2021
 ms.author: caoyang
@@ -19,7 +19,7 @@ ms.lastreviewed: 08/20/2021
 [!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 ::: moniker range="< azs-2108"
-The SQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to  update the VM's security. To do this using the principal of Least Privilege, use [PowerShell Just Enough Administration (JEA)](/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this action.
+The SQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to  update the VM's security. To do this using the principle of Least Privilege, use [PowerShell Just Enough Administration (JEA)](/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this action.
 ::: moniker-end
 
 ## Patching and updating
@@ -255,7 +255,7 @@ Install-Module -Name Azs.Deployment.Admin
 
 Next, create or renew your TLS certificate for securing the value-add resource provider endpoints:
 
-1. Complete the steps in [Generate certificate signing requests (CSRs) for certificate renewal](../operator/azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal) for your resource provider. Here you use the Azure Stack Hub Readiness Checker tool to create the CSR. Be sure to run the correct cmdlet for your resource provider, in the step "Generate certificate requests for other Azure Stack Hub services". For example `New-AzsDbAdapterCertificateSigningRequest` is used for SQL and MySQL RPs. When finished, you submit the generated .REQ file to your Certificate Authority (CA) for the new certificate.
+1. Complete the steps in [Generate certificate signing requests (CSRs) for certificate renewal](/azure-stack/operator/azure-stack-get-pki-certs?pivots=csr-type-renewal#generate-csrs-for-renewal-certificates) for your resource provider. Here you use the Azure Stack Hub Readiness Checker tool to create the CSR. Be sure to run the correct cmdlet for your resource provider, in the step "Generate certificate requests for other Azure Stack Hub services". For example `New-AzsDbAdapterCertificateSigningRequest` is used for SQL and MySQL RPs. When finished, you submit the generated .REQ file to your Certificate Authority (CA) for the new certificate.
 
 2. Once you've received your certificate file from the CA, complete the steps in [Prepare certificates for deployment or rotation](../operator/azure-stack-prepare-pki-certs.md). You use the Readiness Checker tool again, to process the file returned from the CA.
 
@@ -281,6 +281,7 @@ Open an elevated PowerShell console and complete the following steps to rotate t
 ### Rotate the external certificate
 
 You need to first make note of the values for the following parameters.
+
    | Placeholder | Description | Example value |
    | ----------- | ----------- | --------------|
    | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.sqlrp` |
@@ -338,13 +339,13 @@ You can monitor secret rotation progress in either the PowerShell console, or in
 
 ::: moniker range=">= azs-2008"
 
-Azure Stack Hub has multiple ways to collect, save, and send diagnostic logs to Microsoft Support. Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. For more information, see [Diagnostic log collection](diagnostic-log-collection.md).
+Azure Stack Hub has multiple ways to collect, save, and send diagnostic logs to Microsoft Support. Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from your Azure Stack Hub environment. For more information, see [Diagnostic log collection](diagnostic-log-collection.md).
 
 ::: moniker-end
 
 ::: moniker range="< azs-2008"
 
-Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. If you are using an older version, it is recommended to update your SQL Resource Provider to the latest version.
+Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from your Azure Stack Hub environment. If you are using an older version, it is recommended to update your SQL Resource Provider to the latest version.
 
 To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint *DBAdapterDiagnostics*. This endpoint provides the following commands:
 

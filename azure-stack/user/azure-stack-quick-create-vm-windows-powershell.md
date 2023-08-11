@@ -1,18 +1,20 @@
 ---
 title: Create Windows Server VM with PowerShell in Azure Stack Hub 
 description: Create a Windows Server VM with PowerShell in Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: quickstart
 ms.date: 02/18/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 02/18/2021
-ms.custom: conteperfq4, mode-api
+ms.custom:
+  - conteperfq4
+  - mode-api
+  - devx-track-azurepowershell
 
 # Intent: As an Azure Stack user, I want to create a Windows Server VM with PowerShell in Azure Stack so that I can automate the creation of VMs.
 # Keyword: Windows Server VM
-
 ---
 
 # Quickstart: Create a Windows Server VM by using PowerShell in Azure Stack Hub

@@ -1,11 +1,11 @@
 ---
 title: Scale unit node actions in Azure Stack Hub for an MDC
 description: Learn how to scale unit node actions, including power on, power off, disable, resume, and view node status in Azure Stack Hub integrated systems.
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: article
 ms.date: 10/26/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
 
@@ -162,4 +162,4 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-[Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
+[Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin).

@@ -2,15 +2,15 @@
 title: Convert to a stretched Azure Stack HCI cluster
 description: Learn how to convert to a stretched cluster in Azure Stack HCI
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: jasongerend
+ms.author: jgerend
+ms.reviewer: stevenek
 ms.date: 09/16/2021
 ---
 
 # Convert to a stretched Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article explains and gives the steps required to create a stretched cluster by adding new server nodes to an existing single-site cluster. You use Windows PowerShell commands to accomplish this.
 
@@ -46,7 +46,7 @@ Azure Stack HCI automatically creates a site when you create a (non-stretched) c
 
 Normally, when creating additional sites, the [New-ClusterFaultDomain](/powershell/module/failoverclusters/new-clusterfaultdomain) cmdlet is used. However, you cannot add server nodes to a site when the servers are not a part of the cluster.  
 
-Much like when you [Add or remove servers](add-cluster.md) to an Azure Stack HCI cluster using Windows Admin Center, the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets are used to create an XML file that specifies the sites and nodes in them. When additional server nodes are added to the cluster, they are added to the new site and the second site’s drive pool is created.
+Much like when you [Add or remove servers](add-cluster.md) to an Azure Stack HCI cluster using Windows Admin Center, the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets are used to create an XML file that specifies the sites and nodes in them. When additional server nodes are added to the cluster, they are added to the new site and the second site's drive pool is created.
 
 You can add additional servers simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, which adds each new server's drives at the same time.
 

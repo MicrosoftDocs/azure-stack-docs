@@ -1,11 +1,11 @@
 ---
 title: ASDK requirements and considerations 
 description: Learn about the hardware, software, and environment requirements for Azure Stack Development Kit (ASDK).
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: article
 ms.date: 09/23/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 09/23/2020
 

@@ -1,10 +1,10 @@
 ---
 title: Change settings on your Azure Stack Hub switch configuration 
 description: Learn what settings you can change on your Azure Stack Hub switch configuration.
-author: PatAltimore
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 

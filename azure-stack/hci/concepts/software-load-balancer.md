@@ -7,11 +7,11 @@ ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: contperf-fy22q1
-ms.date: 09/13/2021
+ms.date: 04/17/2023
 ---
 # What is Software Load Balancer \(SLB\) for SDN?
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN)](software-defined-networking.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
@@ -141,7 +141,7 @@ The SLB Host Agent listens for SLB policy updates from Network Controller. In ad
 ### SDN-enabled Hyper-V virtual switch
 For a virtual switch to be compatible with SLB, the Virtual Filtering Platform (VFP) extension must be enabled on the virtual switch. This is done automatically by the SDN deployment PowerShell scripts, Windows Admin Center deployment wizard, and System Center Virtual Machine Manager (SCVMM) deployment.
 
-For information on enabling VFP on virtual switches, see the Windows PowerShell commands [Get-VMSystemSwitchExtension](/powershell/module/hyper-v/get-vmsystemswitchextension?view=win10-ps) and [Enable-VMSwitchExtension](/powershell/module/hyper-v/enable-vmswitchextension?f=255&MSPPError=-2147217396&view=win10-ps).
+For information on enabling VFP on virtual switches, see the Windows PowerShell commands [Get-VMSystemSwitchExtension](/powershell/module/hyper-v/get-vmsystemswitchextension?view=win10-ps&preserve-view=true) and [Enable-VMSwitchExtension](/powershell/module/hyper-v/enable-vmswitchextension?f=255&MSPPError=-2147217396&view=win10-ps&preserve-view=true).
 
 The SDN-enabled Hyper-V virtual switch performs the following actions for SLB:
 
@@ -205,3 +205,4 @@ For related information, see also:
 
 - [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/training/modules/implement-firewall-load-balancer/)

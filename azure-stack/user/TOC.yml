@@ -153,6 +153,8 @@
           href: troubleshoot-vm-known-issues.md
         - name: VM update and management
           href: vm-update-management.md
+        - name: Azure Instance Metadata Service - public preview
+          href: instance-metadata-service.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
         - name: Migrate VMs
@@ -187,12 +189,14 @@
           items:
           - name: Connect using VPN
             href: azure-stack-connect-vpn.md
-          - name: About VPN gateway
+          - name: About VPN gateways
             href: azure-stack-vpn-gateway-about-vpn-gateways.md
           - name: Configure IPSec/IKE connection policies
             href: azure-stack-vpn-s2s.md
           - name: VPN gateway settings
             href: azure-stack-vpn-gateway-settings.md
+          - name: VPN Fast Path
+            href: azure-stack-vpn-fast-path-user.md
           - name: Troubleshoot Network Virtual Appliance issues
             href: network-virtual-appliance.md
           - name: Troubleshoot site-to-site connections
@@ -288,6 +292,8 @@
           items:
           - name: Overview
             href: aks-overview.md
+          - name: Migrate to AKS engine from AKS preview
+            href: migrate-azure-stack-to-aks-engine.md
           - name: AKS commands
             href: aks-commands.md
           - name: Use AKS with CLI
@@ -397,7 +403,7 @@
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
-    href: /cli/azure/reference-index?view=azure-cli-latest
+    href: /cli/azure/reference-index
 - name: Related
   items:
   - name: Azure Stack Hub operator documentation

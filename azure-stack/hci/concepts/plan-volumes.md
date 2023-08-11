@@ -4,18 +4,21 @@ description: How to plan storage volumes on Azure Stack HCI and Windows Server c
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 04/17/2023
 ---
 
 # Plan volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
+>[!NOTE]
+> Storage Spaces Direct does not support a file server for general use. If you need to run the file server or other generic services on Storage Space Direct, configure it on the virtual machines.
+
 ## Review: What are volumes
 
-Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI.
+Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI and Windows Server.
 
    >[!NOTE]
    > We use term "volume" to refer jointly to the volume and the virtual disk under it, including functionality provided by other built-in Windows features such as Cluster Shared Volumes (CSV) and ReFS. Understanding these implementation-level distinctions is not necessary to plan and deploy Storage Spaces Direct successfully.
@@ -86,12 +89,12 @@ Which resiliency type to use depends on the needs of your workload. Here's a tab
 
 Workloads that have strict latency requirements or that need lots of mixed random IOPS, such as SQL Server databases or performance-sensitive Hyper-V virtual machines, should run on volumes that use mirroring to maximize performance.
 
-   >[!TIP]
-   > Mirroring is faster than any other resiliency type. We use mirroring for nearly all our performance examples.
+>[!TIP]
+> Mirroring is faster than any other resiliency type. We use mirroring for nearly all our performance examples.
 
 #### When capacity matters most
 
-Workloads that write infrequently, such as data warehouses or "cold" storage, should run on volumes that use dual parity to maximize storage efficiency. Certain other workloads, such as traditional file servers, virtual desktop infrastructure (VDI), or others that don't create lots of fast-drifting random IO traffic and/or don't require the best performance may also use dual parity, at your discretion. Parity inevitably increases CPU utilization and IO latency, particularly on writes, compared to mirroring.
+Workloads that write infrequently, such as data warehouses or "cold" storage, should run on volumes that use dual parity to maximize storage efficiency. Certain other workloads, such as Scale-Out File Server (SoFS), virtual desktop infrastructure (VDI), or others that don't create lots of fast-drifting random IO traffic and/or don't require the best performance may also use dual parity, at your discretion. Parity inevitably increases CPU utilization and IO latency, particularly on writes, compared to mirroring.
 
 #### When data is written in bulk
 
@@ -113,7 +116,7 @@ In deployments with all three types of drives, only the fastest drives (NVMe) pr
 
 ## Choosing the size of volumes
 
-We recommend limiting the size of each volume to 64 TB in Windows Server 2019.
+We recommend limiting the size of each volume to 64 TB in Azure Stack HCI.
 
    > [!TIP]
    > If you use a backup solution that relies on the Volume Shadow Copy service (VSS) and the Volsnap software provider—as is common with file server workloads—limiting the volume size to 10 TB will improve performance and reliability. Backup solutions that use the newer Hyper-V RCT API and/or ReFS block cloning and/or the native SQL backup APIs perform well up to 32 TB and beyond.

@@ -2,13 +2,13 @@
 title: Overview of remote support for Azure Stack Hub
 titleSuffix: Azure Stack Hub
 description: Learn about remote support for Azure Stack Hub
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.author: patricka
+ms.date: 07/27/2023
+ms.author: sethm
 ms.reviewer: shisab
-ms.lastreviewed: 06/09/2021
+ms.lastreviewed: 07/27/2023
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
@@ -16,12 +16,13 @@ ms.lastreviewed: 06/09/2021
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only applies to version 2108.
+> Remote support is only available in the following versions:
+>
+> - 2206
+> - 2108
+> - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
-Use remote support to allow a Microsoft support professional to solve your support case faster by
-permitting access to your device remotely and performing limited troubleshooting and repair. You can
-enable this feature by granting consent while controlling the access level and duration of access.
-Support can only access your device after a support request has been submitted.
+Use remote support to allow a Microsoft support professional to diagnose and help speed resolution of your support request by permitting remote access to your device for limited troubleshooting and repair. You can enable this feature by granting consent for a specific access level and duration. Support can only access your device after a support request has been submitted.
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
@@ -33,7 +34,7 @@ For more information about cmdlets that Microsoft support can execute during a r
 
 Remote support gives you the ability to:
 
-- Improve the speed to resolution as Microsoft Support no longer needs to arrange a meeting with you for troubleshooting.
+- Improve the speed to resolution. After the initial scoping consultation with Microsoft Support, you can enable remote support. At that point Microsoft Support no longer needs to arrange meetings with you for further troubleshooting.
 - Reduce the number of [privileged endpoint (PEP) session elevation](azure-stack-privileged-endpoint.md#unlocking-the-privileged-endpoint-for-support-scenarios) to resolve issues.
 - View the detailed transcript of all executed operations at any time.
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
@@ -61,7 +62,7 @@ In Azure Stack Hub, remote support can be managed using [privileged endpoint](az
 
 ### Enable remote support for diagnostics
 
-In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
+In this example, you enable remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
@@ -69,7 +70,7 @@ Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 
 Use **ExpireInMinutes** parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access cannot be established.
 
-You can set **ExpireInDay** a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
+You can set **ExpireInMinutes** a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
 If duration is not defined the remote session will expire in 480 (8 hours) by default.
 
@@ -112,6 +113,9 @@ In this example, you get the details for remote session with the ID *SessionID*.
 ```powershell
 Get-RemoteSupportSessionHistory -SessionId <SessionId> -IncludeSessionTranscript
 ```
+
+> [!NOTE]
+> Session transcript details are retained for ninety days. You can retrieve detail for a remote session within ninety days after the session.
 
 ## List of Microsoft support operations
 
@@ -184,8 +188,6 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 |`Invoke-AzsSupportWmiTracing` | Enables `netsh` ETL tracing for a series of WMI providers on a specified computer name. Also supports a series of procdumps of winmgt and WmiPrvSE if specified. |
 |`Save-AzsSupportObjectToFile` | Save an object to a file in a consistent format creating a file that contains the current time as a timestamp in the file name. |
 |`Send-AzureStackDiagnosticLog` | Sends Azure Stack diagnostic logs to Microsoft. |
-|`Start-AzsSupportClusterPerfAnalysis` | Analyzes key performance data such as cluster performance history and exports performance data. |
-|`Start-AzsSupportRingManager` | Provides a simplified management experience for working with Service Fabric clusters. |
 |`Start-AzsSupportSdnDiagnostic` | Automated network diagnostics and data collection/tracing script. |
 |`Start-AzsSupportStorageDiagnostic` | Runs a series of storage specific diagnostic tests and generates a storage report. |
 

@@ -6,12 +6,12 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/26/2021
+ms.date: 04/19/2023
 ---
 
 # Monitor Azure Stack HCI clusters from Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 You can monitor Azure Stack HCI clusters and its underlying components by using Windows Admin Center or PowerShell.
 
@@ -115,7 +115,7 @@ Storage Quality of Service (QoS) provides a way to centrally monitor and manage 
 
 ## Monitor from Azure portal
 
-You can [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md) and use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
+You can [Monitor Azure Stack HCI clusters from Azure portal](/azure-stack/hci/manage/monitor-hci-single) and use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage.
 
 ## Next steps
 

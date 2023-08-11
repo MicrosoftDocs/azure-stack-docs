@@ -1,11 +1,11 @@
 ---
 title: Required knowledge for working with the Hardware Lifecycle Host
 description: Learn about the required knowledge for working with the Hardware Lifecycle Host
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: 
 ms.lastreviewed: 
 

@@ -2,11 +2,11 @@
 title: Update the Azure Stack Hub SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to update the Azure Stack Hub SQL resource provider.
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 8/24/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: jiadu
 ms.lastreviewed: 08/24/2021
 
@@ -29,7 +29,8 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
 
 |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2108|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2206,2301|SQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108,2206|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
@@ -39,7 +40,7 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
 
 If you have already deployed SQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
 
-If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from SQl RP V1 to SQL RP V2.
+If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from SQL RP V1 to SQL RP V2.
 
 ## Update from SQL RP V1.1.93.x to SQL RP V2.0.6.0
 
@@ -49,7 +50,7 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 
 2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
  
-3.    Download Microsoft AzureStack Add-On RP Windows Server    1.2009.0 to marketplace. 
+3.    Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
 
 4.    Ensure datacenter integration prerequisites are met.
 
@@ -60,33 +61,30 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
   |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
   |     |     |
 
-5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
+5.    (for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
 
 ### Trigger MajorVersionUpgrade
-Run the following script to perform major version upgrade. 
+Run the following script from an elevated PowerShell console to perform major version upgrade. 
 
-If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+> [!NOTE]
+> Make sure the client machine that you run the script on is of OS version no older than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
 
-1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
-``` powershell
-Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 0 -ErrorAction Stop 
-```
-
-2. Run the following script from an elevated PowerShell console.
 ``` powershell
 # Check Operating System version
 $osVersion = [environment]::OSVersion.Version
 if ($osVersion.Build -lt 10240)
 {
-    Write-Host "OS version is too old: $osVersion. Please consider using OAW and disable FIPS to perform the major upgrade."
+    Write-Host "OS version is too old: $osVersion."
     return
 }
 
 $osArch = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
 if ($osArch -ne "64-bit")
 {
-    Write-Host "OS Architecture is not 64 bit. Please consider using OAW and disable FIPS to perform the major upgrade."
+    Write-Host "OS Architecture is not 64 bit."
     return
 }
 
@@ -134,27 +132,21 @@ $PfxFilePath = "C:\tools\sqlcert\SSL.pfx"
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
 
-. $tempDir\MajorVersionUpgradeSQLProvider.ps1 `
-  -AzureEnvironment $AzureEnvironment `
-  -AzCredential $AdminCreds `
-  -CloudAdminCredential $CloudAdminCreds `
-  -Privilegedendpoint $privilegedEndpoint `
-  -PfxPassword $PfxPass `
-  -PfxCert $PfxFilePath
+. $tempDir\MajorVersionUpgradeSQLProvider.ps1 -AzureEnvironment $AzureEnvironment -AzCredential $AdminCreds -CloudAdminCredential $CloudAdminCreds -Privilegedendpoint $privilegedEndpoint -PfxPassword $PfxPass -PfxCert $PfxFilePath
 ```
 
-3. [If you run the script on OAW] Re-enable FIPS by running the script below. 
-
-``` powershell
-Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 1 -ErrorAction Stop 
-```
+> [!NOTE] 
+> The DNS address and the corresponding IP address of SQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the SQLRPVM1130-PublicIP resource. You can also run "nslookup sqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
 
 ### Validate the upgrade is successful
 
 1.    The MajorVersionUpgrade script executed without any errors.
 2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
-3.    The old **system.\<location\>.sqladapter** resource group in the default provider subscription will not be automatically deleted by the script. We recommend to keep the Storage Account in this resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the Storage Account.
-
+3.    The old **system.\<location\>.sqladapter** resource group and **system.\<location\>.dbadapter.dns** resource group in the default provider subscription will not be automatically deleted by the script. 
+* We recommend keeping the Storage Account and the Key Vault in the sqladapter resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the resource group.
+* After verifying that the DNS Zone in the dbadapter.dns resource group is empty with no DNS record, it is safe to delete the dbadapter.dns resource group.
+* [IMPORTANT] Do not use the V1 deploy script to uninstall the V1 version. After upgrade completed and confirmation that the upgrade was successful, you can manually delete the resource group from the provider subscription.
+ 
 
 ## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
 
@@ -257,13 +249,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-. $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -AzureEnvironment $AzureEnvironment `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+. $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint $privilegedEndpoint -AzureEnvironment $AzureEnvironment -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert
  ```
 
 When the resource provider update script finishes, close the current PowerShell session.

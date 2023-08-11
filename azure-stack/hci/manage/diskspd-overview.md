@@ -1,15 +1,15 @@
 ---
 title: Use DISKSPD to test workload storage performance
 description: This topic provides guidance on how to use DISKSPD to test workload storage performance.
-author: jasonnyi
-ms.author: jasonyi
+author: JasonGerend
+ms.author: jgerend
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 04/17/2023
 ---
 
 # Use DISKSPD to test workload storage performance
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
@@ -111,7 +111,7 @@ You generate the test file under the unified namespace that the Cluster Shared V
 
 As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
-- [VM sizes](/azure/virtual-machines/sizes-general?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [VM sizes](/azure/virtual-machines/sizes-general?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 ## Understand the output

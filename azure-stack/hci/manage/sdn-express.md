@@ -1,16 +1,16 @@
 --- 
 title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
-author: v-dasis 
+author: sethmanheim 
 ms.topic: how-to 
-ms.date: 10/22/2021
-ms.author: v-dasis 
+ms.date: 06/28/2023
+ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
@@ -37,34 +37,16 @@ Make sure all host servers have the Azure Stack HCI operating system installed. 
 
 The following requirements must be met for a successful SDN deployment:
 
-- All host servers must have Hyper-V enabled
-- All host servers must be joined to Active Directory
-- A virtual switch must be created
-- The physical network must be configured for the subnets and VLANs defined in the configuration file
-- The SDN Express script needs to be run from a Windows Server 2016 or later computer
-- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run
+- All host servers must have Hyper-V enabled.
+- All host servers must be joined to Active Directory.
+- A virtual switch must be created.
+- The physical network must be configured for the subnets and VLANs defined in the configuration file.
+- The SDN Express script needs to be run from a Windows Server 2016 or later computer.
+- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
 
-## Create the VHDX file
+## Download the VHDX file
 
-SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
-
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage ](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
-
-The following shows an example using `Convert-WindowsImage`:
-
- ```powershell
-Install-Module -Name Convert-WindowsImage
-Import-Module Convert-WindowsImage
-
-$wimpath = "E:\sources\install.wim"
-$vhdpath = "D:\temp\AzureStackHCI.vhdx"
-$edition=1
-Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
-
-```
-
-> [!NOTE]
-> This script should be run from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
+[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
 
@@ -90,8 +72,8 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
-- **VHDFile** - VHD file name used by all SDN infrastructure VMs
-- **VMLocation** - file path to SDN infrastructure VMs
+- **VHDFile** - VHDX file name used by all SDN infrastructure VMs
+- **VMLocation** - file path to SDN infrastructure VMs. Note that Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`
 - **JoinDomain** - domain to which SDN infrastructure VMs are joined to
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs
 - **SDNMacPoolEnd** -  end MAC pool address for client workload VMs
@@ -145,9 +127,9 @@ Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
 ### Gateway VM section
 
-A minimum of three Gateway VMs (two active and one redundant) are recommended for SDN.
+A minimum of two Gateway VMs (one active and one redundant) are recommended for SDN.
 
-The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range. Ensure that you get the `FrontEndIp` from the end of the PA Pool specified in the configuration file.
+The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MACAddress` parameter of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. The `FrontEndMac` and `BackendMac` must be from within the `SDNMACPool` range. Ensure that you get the `FrontEndMac` and the `BackendMac` parameters from the end of the `SDNMACPool` range.
 
 Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
@@ -155,7 +137,6 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 - **HostName** - host name of server where the Gateway VM is located
 - **ManagementIP** - management network IP address for the Gateway VM
 - **MACAddress** - MAC address for the Gateway VM
-- **FrontEndIp** - Provider Network front end IP address for the Gateway VM
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
 - **BackEndMac** - Provider network back end MAC address for the Gateway VM
 
@@ -174,6 +155,10 @@ The following additional parameters are used by Gateway VMs only. Leave these va
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
 - **Capacity** - capacity in Kbps for each Gateway VM in the pool
+- **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway moves to the redundant gateway and the redundant gateway becomes active.
+
+    > [!NOTE]
+    > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
@@ -184,6 +169,12 @@ The following parameters are used if you are deploying and managing overlay virt
 - **PAGateway** - IP address for the PA network Gateway
 - **PAPoolStart** - beginning IP address for the PA network pool
 - **PAPoolEnd** - end IP address for the PA network pool
+
+Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
+
+- Allocates two IP addresses to each physical server
+- Allocates one IP address to each SLB MUX VM
+- Allocates one IP address to each gateway VM
 
 ## Run the deployment script
 
@@ -213,4 +204,5 @@ The following configuration sample files for deploying SDN are available on the 
 
 ## Next steps
 
-Manage your VMs. For more information, see [Manage VMs](../manage/vm.md).
+- [Manage VMs](../manage/vm.md)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)

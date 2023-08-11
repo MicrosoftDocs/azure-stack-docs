@@ -6,14 +6,14 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/11/2021
+ms.date: 04/17/2023
 ---
 
 # Understanding the storage pool cache
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI, features a built-in server-side cache to maximize storage performance while reducing costs. It's a large, persistent, real-time read *and* write cache that is configured automatically upon deployment. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
+Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI and Windows Server, features a built-in server-side cache to maximize storage performance while reducing costs. It's a large, persistent, real-time read *and* write cache that is configured automatically upon deployment. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
 
 ## Drive types and deployment options
 
@@ -42,6 +42,9 @@ All-flash deployments aim to maximize storage performance and do not include HDD
 Hybrid deployments aim to balance performance and capacity or to maximize capacity, and do include HDD.
 
 ![Diagram shows hybrid deployments, including NVMe for cache with HDD for capacity, SSD for cache with HDD for capacity, and NVMe for cache with HDD plus SSD for capacity.](media/cache/Hybrid-Deployment-Possibilities.png)
+
+> [!NOTE]
+> Hybrid deployment is not supported in single server configuration. All flat single storage type configurations (for example all-NVMe or all-SSD) is the only supported storage type for single server.
 
 ## Cache drives are selected automatically
 

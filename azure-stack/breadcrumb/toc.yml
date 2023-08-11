@@ -34,4 +34,25 @@
       topicHref: /azure-stack/aks-hci/index
     - name: HCI
       tocHref: /azure-stack/hci/
-      topicHref: /azure-stack/hci/index  
+      topicHref: /azure-stack/hci/index
+    - name: HCI
+      tocHref: /azure-stack/hci/
+      topicHref: /azure-stack/hci/index
+      items:
+      - name: Overview
+        tocHref: /azure-stack/hci/overview/
+        topicHref: /azure-stack/hci/overview/
+        items: 
+        - name: Evaluate Azure Stack HCI
+          tocHref: /azure-stack/hci/guided-quick-deploy-eval
+          topicHRef: /azure-stack/hci/guided-quick-deploy-eval            
+### For contextual TOC
+    - name: HCI
+      tocHref: /windows-server/
+      topicHref: /azure-stack/hci/index
+    - name: HCI
+      tocHref: /system-center/
+      topicHref: /azure-stack/hci/index
+    - name: HCI
+      tocHref: /azure/
+      topicHref: /azure-stack/hci/index

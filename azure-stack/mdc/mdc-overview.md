@@ -1,8 +1,8 @@
 ---
 title: Modular Datacenter overview | 
 description: Azure Modular Datacenter is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
-author: PatAltimore
-ms.author: patricka
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: overview
 ms.date: 11/06/2020

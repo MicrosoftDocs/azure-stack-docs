@@ -1,11 +1,11 @@
 ---
 title: Power off scale unit nodes
 description: Learn how to power off scale unit nodes
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: 
 ms.lastreviewed: 
 

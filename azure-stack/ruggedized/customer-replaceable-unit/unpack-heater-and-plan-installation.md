@@ -1,11 +1,11 @@
 ---
 title: Unpack the heater and plan the heater installation
 description: Learn how to unpack the heater and plan the heater installation
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: 
 ms.lastreviewed: 
 

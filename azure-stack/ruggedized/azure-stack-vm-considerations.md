@@ -3,7 +3,7 @@ title: Azure Stack VM features | Microsoft Docs
 description: Learn about different features and considerations when working with VMs in an Azure Stack Hub ruggedized.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/14/2020
 

@@ -1,11 +1,11 @@
 ---
 title: Connect to Azure Stack Hub 
 description: Learn how to connect Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
 

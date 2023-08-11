@@ -1,10 +1,10 @@
 ---
 title: Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 description: How to manage subscriptions, plans, and offers with PowerShell in Azure Stack Hub.
-author: PatAltimore
+author: sethmanheim
 ms.topic: how-to
 ms.date: 12/18/2020
-ms.author: patricka
+ms.author: sethm
 ms.lastreviewed: 12/18/2020
 ms.reviewer: bganapa
 
@@ -75,7 +75,7 @@ To subscribe to a public offer as a user, use [New-AzsSubscription](/powershell/
 
 ```powershell
 $testOffer = Get-AzsOffer | Where-Object Name -eq "testoffer"
-New-AzsSubscription -OfferId "User subscription" -OfferId $testOffer.Id -DisplayName "My subscription"
+New-AzsSubscription -OfferId $testOffer.Id -DisplayName "My subscription"
 ```
 
 ## Delete quotas, plans, offers, and subscriptions

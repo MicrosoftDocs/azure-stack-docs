@@ -1,10 +1,10 @@
 ---
 title: Transparent proxy for Azure Stack Hub integrated systems 
 description: Overview of transparent property in Azure Stack Hub integrated systems.
-author: PatAltimore
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/16/2021
 

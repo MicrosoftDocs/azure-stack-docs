@@ -4,7 +4,7 @@ metadata:
   description: Learn about billing for Azure App Service on Azure Stack Hub.
   author: apwestgarth
   manager: stefsch
-  ms.topic: article
+  ms.topic: faq
   ms.date: 05/05/2020
   ms.author: anwestg
   ms.reviewer: anwestg
@@ -12,7 +12,6 @@ metadata:
   
   # Intent: As an Azure Stack Hub operator, I want to know how cloud operators are billed for offering Azure App Service and how I can bill my tenants. 
   # Keyword: azure stack hub app service billing
-    
 title: Azure App Service on Azure Stack Hub billing overview and FAQ
 summary: |
 

@@ -6,12 +6,12 @@ ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/02/2021
+ms.date: 04/17/2023
 ---
 
 # Software Defined Networking (SDN) in Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
@@ -33,7 +33,7 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend deploying [Network Controller using SDN Express](../manage/sdn-express.md).
+You have the option to [deploy SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard.md) either during or after creating a cluster.
 
 ## Software Load Balancing
 

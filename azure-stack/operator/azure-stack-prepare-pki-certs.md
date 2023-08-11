@@ -2,10 +2,10 @@
 title: Prepare Azure Stack Hub PKI certificates for deployment or rotation 
 titleSuffix: Azure Stack Hub
 description: Learn how to prepare PKI certificates for Azure Stack Hub deployment or for rotating secrets.
-author: BryanLa
+author: sethmanheim
 ms.topic: how-to
 ms.date: 10/19/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: ppacent
 ms.lastreviewed: 10/19/2020
 
@@ -19,6 +19,8 @@ ms.lastreviewed: 10/19/2020
 
 > [!NOTE]
 > This article pertains to the preparation of external certificates only, which are used to secure endpoints on external infrastructure and services. Internal certificates are managed separately, during the [certificate rotation process](azure-stack-rotate-secrets.md).
+> [!NOTE]
+> If you are installing Azure Container Registry (ACR), we recommend aligning the expiration dates of your external ACR certificates with the expiration dates of your other external Azure Stack Hub certificates. Additionally, we recommend protecting your PFX for ACR with the same password that you use to protect your other external certificate PFXs.
 
 The certificate files [obtained from the certificate authority (CA)](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 

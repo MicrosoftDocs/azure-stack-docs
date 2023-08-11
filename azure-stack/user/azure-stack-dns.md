@@ -27,7 +27,7 @@ For example, if you create a public IP resource with **contoso** as a domain nam
 
 For DNS resolution from outside the Azure Stack Hub, you can create a new zone with the public IP address instead of delegating the internal DNS zone. Otherwise, the clients won't have access to the IP address resolved by the Azure Stack Hub Infrastructure DNS servers.
 
-To learn more about name resolution, see the [DNS resolution](/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) article.
+To learn more about name resolution, see the [DNS resolution](/azure/dns/dns-for-azure-services?toc=/azure/virtual-machines/windows/toc.json).
 
 > [!IMPORTANT]
 > Each domain name label you create must be unique within its Azure Stack Hub location.

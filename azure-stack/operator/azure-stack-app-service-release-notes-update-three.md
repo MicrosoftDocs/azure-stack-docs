@@ -1,7 +1,7 @@
 ---
 title: App Service on Azure Stack Hub Update 3 release notes 
 description: Learn about improvements, fixes, and known issues in Update 3 for App Service on Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 manager: stefsch
 
 ms.topic: article

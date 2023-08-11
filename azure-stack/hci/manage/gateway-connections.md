@@ -2,15 +2,15 @@
 title: Manage Azure Stack HCI gateway connections using Windows Admin Center
 description: Learn to manage your SDN gateway connections on Azure Stack HCI using Windows Admin Center.
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
-ms.date: 06/21/2021
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: anpaul
+ms.date: 04/17/2023
 ---
 
 # Manage Azure Stack HCI gateway connections
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 
@@ -31,7 +31,7 @@ IPsec gateway connections are used to provide secure site-to-site encrypted conn
 1. Under **Create a new Gateway Connection**, enter a name for the connection
 1. Select a **Virtual Network** for which the gateway connection will be setup.
 1. Set the **Connection Type** as **IPSEC**.
-1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
+1. Select a gateway pool for the connection. By default, a gateway pool called "DefaultAll" is created. You can choose this or create a new gateway pool.
 You can create a new gateway pool using the `New-NetworkControllerGatewayPool` PowerShell cmdlet. This cmdlet can be run directly on the Network Controller VMs or it can be run remotely with credentials.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
 1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how the IPsec connection bandwidth affects it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation#gateway-capacity-calculation).
@@ -54,7 +54,7 @@ GRE-based tunnels enable connectivity between tenant virtual networks and extern
 1. Under **Create a new Gateway Connection**, enter a name for the connection.
 1. Select a **Virtual Network** for which the gateway connection will be setup.
 1. Set the **Connection Type** as **GRE**.
-1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
+1. Select a gateway pool for the connection. By default, a gateway pool called "DefaultAll" is created. You can choose this or create a new gateway pool.
 You can create a new gateway pool using the `New-NetworkControllerGatewayPool` PowerShell cmdlet. This cmdlet can be run directly on the Network Controller VMs or it can be run remotely with credentials.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
 1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how does GRE connection bandwidth affect it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation#gateway-capacity-calculation).
@@ -76,7 +76,7 @@ L3 forwarding enables connectivity between the physical infrastructure in the da
 1. Under **Create a new Gateway Connection**, enter a name for the connection.
 1. Select a **Virtual Network** for which the gateway connection will be setup.
 1. Set the **Connection Type** as **L3**.
-1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
+1. Select a gateway pool for the connection. By default, a gateway pool called "DefaultAll" is created. You can choose this or create a new gateway pool.
 You can also create a gateway pool using `New-NetworkControllerGatewayPool` PowerShell cmdlet. This cmdlet can be run directly on the Network Controller VMs or it can be run remotely with credentials.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
 1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how does L3 connection bandwidth affect it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation#gateway-capacity-calculation).
@@ -91,6 +91,11 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 1. Provide an **L3 Peer IP address**. This must belong to the L3 Logical Subnet that you provided above. This IP will serve as the next hop, once the traffic destined to the physical network from the virtual network reaches the SDN gateway.
 1. Click **Create** to configure the connection.
 1. In the **Gateway Connections** list, verify the Configuration State of the connection is **Success**.
+
+    > [!NOTE]
+    > If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+    > - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
+    > - ebgp multihop: This specifies additional hops required since the BGP neighbor is more than one hop away.
 
 ## View all gateway connections
 

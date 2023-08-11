@@ -1,11 +1,11 @@
 ---
 title: Azure Stack network deployment for Azure Stack Hub ruggedized
 description: Learn about Azure Stack network deployment for the Azure Stack Hub ruggedized device. 
-author: PatAltimore
+author: sethmanheim
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: shisab
 ms.lastreviewed: 10/14/2020
 ---

@@ -1,11 +1,11 @@
 ---
 title: Run a Windows virtual machine on Azure Stack Hub 
 description: Learn how to run a Windows virtual machine on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 3/9/2020
 

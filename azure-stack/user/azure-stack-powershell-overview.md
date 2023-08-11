@@ -1,12 +1,12 @@
 ---
 title: PowerShell in Azure Stack Hub 
 description: PowerShell in Azure Stack Hub has a number of modules and contexts.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 12/2/2020
-ms.author: mabrigg
-ms.reviewer: raymondl
+ms.author: sethm
+ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
 # Intent: As a developer or system admin, I want to write scripts to work with Azure Stack Hub so that I can automate my workflows. I need to understand the various version of PowerShell used in Azure Stack Hub.
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/2/2020
 
 PowerShell is designed for managing and administering resources from the command line. You can use PowerShell when you want to build automated tools that use the Azure Resource Manager model. A PowerShell module can be defined as a set of PowerShell functions that are grouped to manage all aspects of a particular area. To work with Azure Stack Hub, you need to juggle various sets of PowerShell cmdlets.
 
-This article helps you orient yourself to the variety of PowerShell modules that are used in Azure Stack Hub. When you use PowerShell in Azure Stack Hub, you can interact with any of four sets of APIs, as shown in the following table:
+This article helps you understand the variety of PowerShell modules that are used in Azure Stack Hub. When you use PowerShell in Azure Stack Hub, you can interact with any of four sets of APIs, as shown in the following table:
 
 | API | PowerShell reference | REST reference |
 | --- | --- | --- |

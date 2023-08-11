@@ -1,11 +1,11 @@
 ---
 title: Create an offer in Azure Stack Hub 
 description: Learn how to create an offer for your users in Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 
@@ -98,7 +98,7 @@ There are two ways to change the state of an offer:
     ![Select Accessibility state for your Azure Stack Hub offer](media/azure-stack-create-offer/change-stage-select-1807.png)
 
 > [!NOTE]
-> You can also use PowerShell to create default offers, plans, and quotas. For more information, see [Azure Stack Hub PowerShell Module 1.4.0](/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
+> You can also use PowerShell to create default offers, plans, and quotas. For more information, see [Azure Stack Hub PowerShell Module 1.4.0](/powershell/azure/azure-stack/overview).
 ::: moniker-end
 
 ## Next steps

@@ -2,7 +2,7 @@
 title: Deploy SQL Server resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to deploy the SQL Server resource provider on Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 04/09/2021
@@ -30,6 +30,9 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 > [!IMPORTANT]
 > Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
+> [!IMPORTANT]
+> The V2.x SQL/MySQL resource provider uses the Deployment Resource Provider (DRP) installation mechanism, which isn't supported on the ASDK. Therefore, the V2.x SQL/MySQL resource provider isn't supported on the ASDK.
+
 ## Prerequisites
 
 [!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
@@ -46,7 +49,8 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 
   |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2108|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2206, 2301|SQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108, 2206|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
 
