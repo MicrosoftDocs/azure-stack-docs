@@ -24,10 +24,8 @@ During the public preview, Microsoft will release several versions for both the 
 
 | Service                                   | Image name                                                          | Image version       |
 | :---------------------------------- | :------------------------------------------------------------- | :------------- |
-| [target] ASR RP                    | Microsoft.SiteRecovery                                        | 1.2301.0.2227 |
 | [target] ASR RP                    | Microsoft.SiteRecovery                                        | 1.2301.2216.2287 |
 | [target] ASR DependencyService     | microsoft.servicebus                                          | 1.2210.4.0    |
-| [source] Appliance VM              | microsoft.asrazsappliance                                     | 1.8.2         |
 | [source] Appliance VM              | microsoft.asrazsappliance                                     | 1.8.7         |
 | [source] Extension (Windows)       | microsoft.azure-recoveryservices-siterecovery-windows         | 1.1.31.388    |
 | [source] Extension (Linux general) | microsoft.azure-recoveryservices-siterecovery-linux           | 1.0.31.559    |
