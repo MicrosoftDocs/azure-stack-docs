@@ -20,7 +20,7 @@ This article describes the actions that are required to complete the installatio
 In the target environment, Azure Site Recovery requires the Azure Stack Hub operator to install the **Azure Site Recovery - dependency service**. Once this service is installed, you can install the Azure Site Recovery service itself.
 
 > [!NOTE]
-> With Microsoft.SiteRecovery-1.2301.2216.2287, ASR on Azure Stack Hub does not require Event Hubs as a dependency.
+> With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
 
 For the installation of these services, you must obtain 2 public key infrastructure (PKI) SSL certificates. The Subject Alternative Name (SAN) must adhere to the naming pattern described in [PKI certificate requirements](azure-stack-pki-certs.md). The following 2 certificates are required:
 
