@@ -3,7 +3,7 @@ title: Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (previ
 description: Learn the replication process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/01/2023
+ms.date: 08/11/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -17,8 +17,6 @@ This article describes the replication process for Hyper-V virtual machine (VM) 
 ## Step 1: Generate target appliance key
 
 Complete the following tasks before you proceed with replication:
-
-:::image type="content" source="../media/create-project.png" alt-text="Screenshot showing project creation." lightbox="../media/create-project.png":::
 
 1. Go to the [Azure portal](https://aka.ms/HCIMigratePP).
 
@@ -146,27 +144,48 @@ The target appliance and the source appliance use the same .zip file, so no need
 
 1. Select **Azure Migrate** and then select **Servers, databases and web apps**.
 
-1. Under **Migration tools** select **Replicate**.
+1. Select the **Replicate** tile
+
+    :::image type="content" source="./media/step1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/step1-replicate.png":::
 
 1. On the **Specify intent** page, select **Azure Stack HCI**, select **Hyper-V**, and then select **Continue**.
 
+    :::image type="content" source="./media/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate-specify-intent.png":::
+
 1. On the **Basics** tab, complete these steps:
+
+    :::image type="content" source="./media/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate-1-basics.png":::
+
 	1. For **Cluster resource**, select the applicable HCI server resource.
 	1. Verify there is a green check for the HCI server name. This indicates that the Arc Resource Bridge is configured on this server.
     1. Select **Next**.
+    
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
 
+    :::image type="content" source="./media/replicate-2-target.png" alt-text="Screenshot showing the Target applicance tab." lightbox="./media/replicate-2-target.png":::
+
 1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. Select **Next**.
 
+    :::image type="content" source="./media/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/replicate-3-vm.png":::
+
 1. On the **Target settings** tab, complete these steps:
+
+    :::image type="content" source="./media/replicate-4-target2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate-4-target.png":::
+
 	1. For **Cache storage account**, select the storage account that you created previously in the [Prerequisites](migrate-hyperv-replicate.md) article, and then select **Confirm**.
+
+    :::image type="content" source="./media/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate-4-target.png":::
+
     1. Select the resource group that you want these VMs to be associated with.
 	1. Select the virtual switch these VMs are connected to.
 	1. Select the storage path where these VMs are created.
     1. Select **Next**.
 
 1. On the **Compute** tab, complete these steps:
+
+    :::image type="content" source="./media/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/replicate-5-compute.png":::
+
 	1. Rename target VMs as needed.
 	1. Select the OS disk for each VM from the dropdown lists.
     1. Adjust values for vCPU and RAM for each VM as needed.
@@ -174,10 +193,16 @@ The target appliance and the source appliance use the same .zip file, so no need
 
 1. On the **Disks** tab, select which disks you would like to replicate, then select **Next**.
 
+    :::image type="content" source="./media/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate-6-disks.png":::
+
 1. On the  **Review + Start replication** tab, stay on the page until the process is complete (this may take 5-10 minutes). Then select **Replicate**.
 
+    :::image type="content" source="./media/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate-7-review.png":::
+
  1. On the **Replications** page, review the replication status. Select **Refresh** to see all the VMs.
+ 
+    :::image type="content" source="./media/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replications-page2.png":::
 
 ## Next steps
 
-- Complete [Hyper-V VM Migration](migrate-hyperv-migrate.md).
+- Complete [Hyper-V VM Migration](migrate-hyperv-replicate.md).
