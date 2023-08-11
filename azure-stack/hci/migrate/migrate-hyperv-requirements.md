@@ -3,7 +3,7 @@ title: System requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/09/2023
+ms.date: 08/11/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -14,13 +14,31 @@ ms.subservice: azure-stack-hci
 
 This article describes the system requirements for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## Supported operating systems
 
-The following operating systems are supported for the Azure Migrate source appliance and the target appliance, and for the guest VMs that you are migrating. For more information on the terminology used, see Appendix: Terminology.
+The following operating systems (OS) are supported for the Azure Migrate source appliance and the target appliance, and for the guest VMs that you are migrating.
 
-|Source appliance|Target appliance|Guest VMs|
-|---|--|--|
-|Windows Server 2016|Windows Server 2022|**Windows server guest VMs**:<br>- Windows server 2022<br>- Windows Server 2019<br>- Windows Server 2016<br>- Windows Server 2012 R2<br>- Windows Server 2008 R2<br>**Linux guest VMs**:<br>- Red Hat Linux 6.x, 7.x<br>- Ubuntu Server and Pro. 18.x<br>- CentOS 7.x<br>- SUSE Linux Enterprise 12.x<br>- Debian 9.x|
+**Source appliance OS** - Windows Server 2016
+
+**Target appliance OS** - Windows server 2022
+
+**Windows Server guest VM OS**
+
+- Windows server 2022
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012 R2
+- Windows Server 2008 R2
+
+**Linux guest VM OS**
+
+- Red Hat Linux 6.x, 7.x
+- Ubuntu Server and Pro. 18.x
+- CentOS 7.x
+- SUSE Linux Enterprise 12.x
+- Debian 9.x
 
 ## Region requirements
 
@@ -32,6 +50,8 @@ The following Azure regions are supported for your Azure Migrate service:
 |Europe|West Europe|
 
 ## Azure portal requirements
+
+For more information on subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](https://learn.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
 |Level|Permissions|
 |-|-|
@@ -60,24 +80,17 @@ Make sure that the source appliance VM and the target appliance VM have a health
      - Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
      - Azure Site Recovery Management Service (*asrmgmtsvc*)
 
-    Logs and configuration can be found at:
-    ```
-    C:\ProgramData\Microsoft Azure\Logs
-    C:\ProgramData\Microsoft Azure\Config
-    ```
+    Logs and configuration can be found at *C:\ProgramData\Microsoft Azure\Logs* and *C:\ProgramData\Microsoft Azure\Config*.
 
-1. On the target appliance VM
+1. On the target appliance VM:
  
      - Microsoft Azure Gateway Service (*asrgwy*)
      - Azure Site Recovery Management Service (*asrmgmtsvc*)
     
-    Logs and configuration can be found at:
-    ```
-    C:\ProgramData\Microsoft Azure\Logs
-    C:\ProgramData\Microsoft Azure\Config
-    ```
+    Logs and configuration can be found at *C:\ProgramData\Microsoft Azure\Logs* and *C:\ProgramData\Microsoft Azure\Config*.
 
-The Arc Resource Bridge must be configured and running on the target appliance VM. Use the instructions in the deployment PowerPoint to install the Arc Resource Bridge, and make sure that you have the following configured:
+
+The Arc Resource Bridge must be configured and running on the target appliance VM. Make sure that you have the following configured:
 
 - Arc Resource Bridge must have virtual network configured.
 
