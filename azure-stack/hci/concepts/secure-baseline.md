@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/09/2023
+ms.date: 08/14/2023
 ---
 
 # Security baseline settings for Azure Stack HCI (preview)
@@ -94,12 +94,12 @@ Once the deployment is complete, you can also toggle certain security features v
 
 | Name                                           |Feature     | Supports drift control | Reboot required |
 |------------------------------------------------|------------|------------|------------------------|
-| Enable-ASOSConfigCredentialGuardSetting<br>Disable-ASOSConfigCredentialGuardSetting  |Windows Defender Credential Guard|Yes     | Yes   |
-| Enable-ASOSConfigDRTMSetting<br>Disable-ASOSConfigDRTMSetting|Dynamic Root of Trust for Measurement (DRTM) | Yes   |Yes |
-| Enable-ASOSConfigHVCISetting<br>Disable-ASOSConfigHVCISetting|Hypervisor-protected Code Integrity (HVCI) | Yes   |Yes| 
-| Enable-ASOSConfigSideChannelMitigationSetting<br>Disable-ASOSConfigSideChannelMitigationSetting  |Side channel mitigation     | Yes   | Yes   |
-| Enable-ASOSConfigSMBSigning<br>Disable-ASOSConfigSMBSigning  |SMB signing  | Yes| Yes     |
-| Enable-ASOSConfigSMBClusterEncryption<br>Disable-ASOSConfigSMBClusterEncryption   |SMB cluster encryption    | No, cluster setting    | No                     |
+| Enable,<br>Disable|Yes     | Yes   |
+| Enable,<br>Disable|Dynamic Root of Trust for Measurement (DRTM) | Yes   |Yes |
+| Enable,<br>Disable|Hypervisor-protected Code Integrity (HVCI) | Yes   |Yes| 
+| Enable,<br>Disable|Side channel mitigation     | Yes   | Yes   |
+| Enable,<br>Disable|SMB signing  | Yes| Yes     |
+| Enable,<br>Disable|SMB cluster encryption    | No, cluster setting    | No                     |
 
 
 ## View the settings
