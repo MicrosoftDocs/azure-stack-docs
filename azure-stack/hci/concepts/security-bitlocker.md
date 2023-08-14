@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/11/2023
+ms.date: 08/14/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -34,7 +34,7 @@ You can enable, disable, and view BitLocker encryption settings on your Azure St
 
 2. Use option 15 in *Sconfig* to open a PowerShell session.
 
-3. To enable BitLocker encryption use the following cmdlet:
+3. To enable BitLocker encryption, use the following cmdlet:
 
     ```PowerShell
     Get-command -Module AzureStackBitlockerAgent -Name Enable-ASBitlocker
