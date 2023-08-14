@@ -160,7 +160,7 @@
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using command line (recommended)
+      - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
