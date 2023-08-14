@@ -40,29 +40,7 @@ Exit
 
 ## Step 2: Install AKS host management cluster or install MOC
 
-With the January 2023 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS hybrid or Microsoft On-premises cloud (MOC). For more information about MOC, see [Microsoft on-premises cloud](concepts-node-networking.md#microsoft-on-premises-cloud-service).
-
-### [AKS on Azure Stack HCI](#tab/powershell)
-
-Follow this article to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1 if you already have AKS hybrid installed on your Windows Server or Azure Stack HCI cluster.
-
-You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
-
-```PowerShell
-Get-AksHciVersion
-```
-
-The output should indicate the version number of the October release (or later) of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
-
-Expected output:
-
-```shell
-1.0.16.10113
-```
-
-If you encounter an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
-
-### [Microsoft On-premises cloud(Moc)](#tab/shell)
+Install Microsoft On-premises cloud (MOC) to enable cloud management. For more information about MOC, see [Microsoft on-premises cloud](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
 Run the following steps to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
 
@@ -70,8 +48,6 @@ Run the following steps to install the Microsoft On-premises cloud (MOC) on your
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
 Install-Moc
 ```
-
----
 
 ## Step 3: Generate YAML files required for installing Arc Resource Bridge
 
