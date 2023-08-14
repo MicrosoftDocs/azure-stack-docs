@@ -1,12 +1,12 @@
 ---
 title: Azure Arc VM management prerequisites (preview)
 description: Learn about the prerequisites for deploying Azure Arc VM management (preview).
-author: ksurjan
-ms.author: ksurjan
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/26/2023
+ms.date: 08/07/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -104,6 +104,8 @@ Make sure to include the following firewall URLs in your allowlist:
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 | hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required to download the AZ CLI Extension azurestackhci |
+| https://pipelineagent.azurecr.io | 443 | Azure Monitor core agent | Used to get the Azure Monitor core agent |
+| https://linuxgeneva-microsoft.azurecr.io | 443 | Geneva database agents | Used to get the Geneva database agents |
 
 ## Network proxy requirements for setting up Arc VM management
 
@@ -167,5 +169,4 @@ After proxy settings have been applied, continue with step 1.b. to [Set up Arc V
 
 ## Next steps
 
-- [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 - [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).

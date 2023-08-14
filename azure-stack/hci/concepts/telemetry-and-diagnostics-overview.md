@@ -57,9 +57,9 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
+     - **Proactive** collection and upload of logs to an Azure Storage account for troubleshooting.
 
-If there is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+**Autonomous** log collection occurs if there is intermittent or no connectivity to Azure. During an occurrence, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 

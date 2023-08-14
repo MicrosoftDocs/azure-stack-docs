@@ -1,12 +1,12 @@
 ---
 title: What is Azure Arc VM management? (preview)
 description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters (preview).
-author: ksurjan
-ms.author: ksurjan
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2022
+ms.date: 08/07/2023
 ---
 
 # What is Azure Arc VM management? (preview)
@@ -52,7 +52,7 @@ A **cluster extension** is the on-premises equivalent of an Azure Resource Manag
 
 To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you must:
 
-1. Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension. This can be done using Windows Admin Center or PowerShell.
+1. Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension via command line.
 1. Create a custom location for the Azure Stack HCI cluster.
 1. Create virtual network projections which will be used by VM network interfaces.
 1. Create OS gallery images for provisioning VMs.
@@ -61,7 +61,6 @@ To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you mus
 
 - Only one Arc Resource Bridge can be deployed on a cluster.
 - Each Azure Stack HCI cluster can have only one custom location.
-- Each virtual switch on the Azure Stack HCI cluster can have one virtual network.
 - Multiple OS images can be added to the gallery.
 - Additional virtual networks and images can be added any time after the initial setup.
 

@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/27/2023
+ms.date: 08/07/2023
 ms.author: alkohli
 ---
 
@@ -18,8 +18,6 @@ This article describes how to use Azure Command-Line Interface (CLI) to set up A
 - Installing PowerShell modules, Azure CLI extensions, and host agent service
 - Specify Azure subscription information and register resource providers
 - Set up Arc VM management
-
-To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
 For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
 
