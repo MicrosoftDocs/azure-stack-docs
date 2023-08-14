@@ -1,12 +1,12 @@
 ---
 title: Azure Arc VM management prerequisites (preview)
 description: Learn about the prerequisites for deploying Azure Arc VM management (preview).
-author: ksurjan
-ms.author: ksurjan
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/26/2023
+ms.date: 08/07/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -169,5 +169,4 @@ After proxy settings have been applied, continue with step 1.b. to [Set up Arc V
 
 ## Next steps
 
-- [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 - [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
