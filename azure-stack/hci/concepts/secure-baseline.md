@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/14/2023
+ms.date: 08/15/2023
 ---
 
 # Security baseline settings for Azure Stack HCI (preview)
@@ -49,16 +49,23 @@ To adjust security hardening as per your requirements, we recommend that you kee
 To disable or enable drift control, follow these steps.
 
 1. Connect to your Azure Stack HCI node via Remote Desktop Protocol.
-1. By default, drift control is enabled. To disable the drift control, run the following command:
-    ```azurepowershell
-    Disable-ASOSConfigDriftControl
 
+1. Run the following PowerShell search command:
+
+    ```PowerShell
+    Get-Command -Module AzureStackOSConfigAgent -Name *Security
     ```
 
-1. To enable the drift control again, run the following command:
-    ```azurepowershell
-    Enable-ASOSConfigDriftControl
-    ```
+1. The search will return cmdlets to Enable, Disable, and Get the security features. The various security features that can be configured using the cmdlets are:
+
+    - Credential Guard
+    - Drift Control
+    - DRTM
+    - HVCI
+    - Side Channel Mitigation
+    - SMB Encryption
+    - SMB Signing
+
 1. If using a multi-node cluster, repeat this command on all the nodes of your cluster.
 
 
