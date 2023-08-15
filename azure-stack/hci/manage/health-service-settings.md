@@ -1,10 +1,9 @@
 ---
 description: "Learn more about: Health Service settings"
 title: Modify Health Service settings
-manager: eldenc
-ms.author: arduppal
+ms.author: sethm
 ms.topic: article
-author: arduppal
+author: sethmanheim
 ms.date: 04/17/2023
 ---
 # Modify Health Service settings
@@ -33,7 +32,7 @@ Get-StorageSubSystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.V
 
 Some commonly modified settings are listed below, along with their default values.
 
-### Volume Capacity Threshold
+### Volume capacity threshold
 
 ```
 "System.Storage.Volume.CapacityThreshold.Enabled"  = True
@@ -41,13 +40,13 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.Volume.CapacityThreshold.Critical" = 90
 ```
 
-### Pool Reserve Capacity Threshold
+### Pool reserve capacity threshold
 
 ```
 "System.Storage.StoragePool.CheckPoolReserveCapacity.Enabled" = True
 ```
 
-### Physical Disk Lifecycle
+### Physical disk lifecycle
 
 ```
 "System.Storage.PhysicalDisk.AutoPool.Enabled"                             = True
@@ -58,11 +57,17 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.PhysicalDisk.Unresponsive.Reset.CountAllowed"              = 3
 ```
 
-### Supported Components Document
+### Available memory threshold
+
+```
+"Microsoft.Health.Setting.Node.AvailableToSystemMemoryLimit" = 0.100
+```
+
+### Supported components document
 
 The Health Service provides an enforcement mechanism to restrict the components used by Storage Spaces Direct to those on a Supported Components Document provided by the administrator or solution vendor. For more information, see [Supported Components Document](health-service-overview.md#supported-components-document).
 
-### Firmware Rollout
+### Firmware rollout
 
 ```
 "System.Storage.PhysicalDisk.AutoFirmwareUpdate.SingleDrive.Enabled"       = True
@@ -73,7 +78,7 @@ The Health Service provides an enforcement mechanism to restrict the components 
 "System.Storage.PhysicalDisk.AutoFirmwareUpdate.RollOut.FailureTolerance"  = 3
 ```
 
-### Platform / Quiescence
+### Platform/Quiescence
 
 ```
 "Platform.Quiescence.MinDelaySeconds" = 120 (i.e. 2 minutes)
@@ -92,7 +97,7 @@ The Health Service provides an enforcement mechanism to restrict the components 
 "System.LogLevel" = 4
 ```
 
-## Additional References
+## Next steps
 
 - [Health Service in Windows Server 2016](health-service-overview.md)
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
