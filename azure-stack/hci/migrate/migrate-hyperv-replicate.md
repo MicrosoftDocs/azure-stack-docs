@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 
 # Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the replication process for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
@@ -142,7 +142,7 @@ The target appliance and the source appliance use the same .zip file, so there i
 
     :::image type="content" source="./media/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/add-cluster-info2.png":::
 
-## Step 5: Start replication
+## Step 6: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
