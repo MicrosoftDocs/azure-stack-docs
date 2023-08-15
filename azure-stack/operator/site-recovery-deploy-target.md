@@ -17,24 +17,19 @@ This article describes the actions that are required to complete the installatio
 
 ## Prerequisites
 
-In the target environment, Azure Site Recovery requires the Azure Stack Hub operator to install the following prerequisites:
-
-- The [Event Hubs service](event-hubs-rp-install.md).
-- The **Azure Site Recovery - dependency service**.
-- Once these two services are installed, you can install the Azure Site Recovery service itself.
+In the target environment, Azure Site Recovery requires the Azure Stack Hub operator to install the **Azure Site Recovery - dependency service**. Once this service is installed, you can install the Azure Site Recovery service itself.
 
 > [!NOTE]
-> For more information, see the [Event Hubs installation](event-hubs-rp-install.md) page. Once installed, no other configuration is needed.
+> With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
 
-For the installation of these services, you must obtain 3 public key infrastructure (PKI) SSL certificates. The Subject Alternative Name (SAN) must adhere to the naming pattern described in [PKI certificate requirements](azure-stack-pki-certs.md). The following 3 certificates are required:
+For the installation of these services, you must obtain 2 public key infrastructure (PKI) SSL certificates. The Subject Alternative Name (SAN) must adhere to the naming pattern described in [PKI certificate requirements](azure-stack-pki-certs.md). The following 2 certificates are required:
 
-1. For Event Hubs: `CN=*.eventhub.<region>.<fqdn>`. You can specify a subject name, but it's not used by Event Hubs when handling certificates. Only the SAN is used.
 1. For Azure Site Recovery dependency service: `*.servicebus.<region>.<fqdn>`.
 1. For Azure Site Recovery service: `rp.asr.<region>.<fqdn> or *.asr.<region>.<fqdn>`.
 
 :::image type="content" source="media/site-recovery-deploy-target/certificates.png" alt-text="Screenshot of certificates selection picker." lightbox="media/site-recovery-deploy-target/certificates.png":::
 
-Once these 3 certificates are ready, installation on the target requires that you download each of these images from Marketplace Management, and start each respective installation.
+Once these 2 certificates are ready, installation on the target requires that you download each of these images from Marketplace Management, and start each respective installation.
 
 ## Download and install packages
 
@@ -44,7 +39,7 @@ download process varies, depending on whether your Azure Stack Hub instance is c
 > [!NOTE]
 > The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack Hub instance.
 
-First, [download the Event Hubs packages](event-hubs-rp-install.md). There is no special requirement for Azure Site Recovery. Once Event Hubs is installed, continue to the **Azure Site Recovery - dependency service**.
+First, install the **Azure Site Recovery - dependency service** - there is no special configuration required.
 
 ### Disconnected scenario
 
