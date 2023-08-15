@@ -42,7 +42,7 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
 
 1. On the **Get started** page, under **Servers, databases and web apps**, select **Discover, assess and migrate**.
 
-    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/project-get-started.png":::
+    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/project-get-started.png":::
 
 1. On the **Servers, databases and web apps** page, select **Create project**.
 
@@ -85,7 +85,7 @@ After the Azure Migrate project is created, you create a storage account for it.
 
 1. The project template deployment will begin. When deployment is complete, select **Go to resource**.
 
-    :::image type="content" source="media/deployment-complete.png" alt-text="Screenshot of Review tab page in Azure portal." lightbox="media/deployment-complete.png":::
+    :::image type="content" source="media/deployment-complete.png" alt-text="Screenshot of deployment complete status display." lightbox="media/deployment-complete.png":::
 
 1. On the resource group page, under **Resources**, verify there is a resource listed for each of the following:
 
@@ -96,7 +96,7 @@ After the Azure Migrate project is created, you create a storage account for it.
     - Custom location resource
     - Storage path resource(s)
 
-    :::image type="content" source="media/project-resources.png" alt-text="Screenshot of all project resources Azure portal." lightbox="media/project-resources.png":::
+    :::image type="content" source="media/project-resources.png" alt-text="Screenshot Resources list." lightbox="media/project-resources.png":::
 
 ## Next steps
 
