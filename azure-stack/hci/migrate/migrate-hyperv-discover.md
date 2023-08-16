@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/15/2023
+ms.date: 08/16/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
