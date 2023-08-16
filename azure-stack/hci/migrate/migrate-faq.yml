@@ -1,13 +1,13 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Migrate FAQ
-  description: This FAQ provides provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Stack HCI cluster using Azure Migrate.
+  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Stack HCI cluster using Azure Migrate.
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 08/10/2023
+  ms.date: 08/16/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you may have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -20,7 +20,7 @@ sections:
           
           Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
 
-          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it is version 10.
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
           > [!NOTE]
           > Migration is a one-way process and can't be reversed. The VM version can’t be downgraded.
