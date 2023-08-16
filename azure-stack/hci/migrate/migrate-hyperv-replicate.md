@@ -3,7 +3,7 @@ title: Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (previ
 description: Learn the replication process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/15/2023
+ms.date: 08/16/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -34,9 +34,9 @@ Complete the following tasks to generate the target appliance key:
     - **Hyper-V**.
     - source appliance.
 
-1. Select **Download and configure** in the **Before you start replication...** information block, then select **Continue**.
-
     :::image type="content" source="./media/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate-specify-intent.png":::
+
+1. Select **Download and configure** in the **Before you start replication...** information block, then select **Continue**.
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
@@ -44,9 +44,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. Once the key is generated, copy and save the generated target key to Notepad or other text editor for future use.
 
-    :::image type="content" source="./media/generate-target-key.png" alt-text="Screenshot showing the target key generated." lightbox="./media/generate-target-key.png":::
-
-1. (Optional) Under **Step 2:**, select **Download installer** to download the appliance .zip file. Since the same bits are used for both source and target appliances, you can copy and reuse the .zip file you downloaded previously for the source appliance.
+1. (Optional) Under **Step 2**, select **Download installer** to download the appliance .zip file. Since the same bits are used for both source and target appliances, you can copy and reuse the .zip file you downloaded previously for the source appliance.
 
 ## Step 2: Create connection between appliances
 
@@ -69,11 +67,11 @@ In this step, you download the operating system (OS) VHD for the target applianc
     > [!NOTE]
     > It is not a requirement to use the evaluation OS version. You can use your own images as long as the OS version is Windows Server 2022.
 
-1. Open **Hyper-V Manager** on a node in the target cluster and then select the target cluster from the list.
+1. Open **Hyper-V Manager** on a node in the target cluster and then select the Azure Stack HCI cluster from the list.
 
 1. Under **Actions** on the right, select **New > Virtual machine**.
 
-1. Create a new appliance virtual machine (VM) in the target cluster by completing the **New Virtual Machine Wizard** with the following configuration:
+1. Create a new appliance VM in the target cluster by completing the **New Virtual Machine Wizard** with the following configuration:
 
     - VM name
     - VM location
@@ -138,7 +136,7 @@ The target appliance and the source appliance use the same .zip file, so there i
 
     :::image type="content" source="./media/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/add-cluster-info.png":::
 
-1. Enter cluster fully-qualified domain name (FQDN), domain name, username, password, and then select **Configure**.
+1. Enter cluster fully-qualified domain name (FQDN), domain name, username, password, and then select **Save**.
 
     :::image type="content" source="./media/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/add-cluster-info2.png":::
 
