@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/14/2023
+ms.date: 08/16/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -51,7 +51,7 @@ The following Azure regions are supported for your Azure Migrate service:
 
 ## Azure portal requirements
 
-For more information on subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](https://learn.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles).
+For more information on Azure subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](https://learn.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
 |Level|Permissions|
 |-|-|
