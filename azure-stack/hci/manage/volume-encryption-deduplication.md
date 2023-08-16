@@ -4,7 +4,7 @@ description: This topic covers how to use volume encryption, deduplication, and 
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 08/16/2023
 ---
 
 # Enable volume encryption, deduplication, and compression in Azure Stack HCI
@@ -21,7 +21,7 @@ To turn on BitLocker in Windows Admin Center:
     >[!NOTE]
     > To use a new feature that provides an additional locally held BitLocker key and not rely on Active Directory, you must use Windows PowerShell. The new feature is only available in Windows Server 2022 and Azure Stack HCI, version 21H2. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
-1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
+1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
 
     :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
 
