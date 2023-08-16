@@ -17,6 +17,8 @@ The Azure Stack Hub privileged endpoint (PEP) is a pre-configured remote PowerSh
 | --- | --- |
 | [Close-PrivilegedEndpoint](close-privilegedendpoint.md) | No description. |
 | [Get-ActionStatus](get-actionstatus.md) | Gets the status of the latest action for the operation with the specified function name. |
+| [Get-AzsDnsForwarder](get-azsdnsforwarder) | Get the DNS forwarder IP addresses used by Azure Stack Hub |
+| [Get-AzSDnsServerSettings](get-azsdnsserversettings.md) | Get DNS server settings |
 | [Get-AzSLegalNotice](get-azslegalnotice.md) | Get legal notice caption and text |
 | [Get-AzureStackLog](get-azurestacklog.md) | Get logs from various roles of AzureStack with timeout. |
 | [Get-AzureStackStampInformation](get-azurestackstampinformation.md) | Gets the stamp information. |
@@ -49,6 +51,8 @@ The Azure Stack Hub privileged endpoint (PEP) is a pre-configured remote PowerSh
 | [Reset-DatacenterIntegrationConfiguration](reset-datacenterintegrationconfiguration.md) | Script to reset Datacenter Integration changes. |
 | [Send-AzureStackDiagnosticLog](send-azurestackdiagnosticlog.md) | Sends Azure Stack Diagnostic Logs to Microsoft. |
 | [Set-AzSLegalNotice](set-azslegalnotice.md) | Set legal notice caption and text |
+| [Set-AzsDnsForwarder](set-azsdnsforwarder) | Update the DNS forwarder IP addresses used by Azure Stack Hub |
+| [Set-AzSDnsServerSettings](set-azsdnsserversettings.md) | Update DNS server settings |
 | [Set-CloudAdminUserPassword](set-cloudadminuserpassword.md) | No description. |
 | [Set-GraphApplication](set-graphapplication.md) | Set-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
 | [Set-ServiceAdminOwner](set-serviceadminowner.md) | Script to update service administrator. |
