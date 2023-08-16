@@ -17,7 +17,7 @@ This article describes how to troubleshoot any potential issues that you may exp
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Collect logs
+## Collect logs and information
 
 - If you experience any issues during the migration, collect the logs from the Azure Migrate appliance and share them with the Azure Migrate team for analysis. To collect the logs, run the following command on the Azure Migrate appliance:
 
@@ -32,25 +32,15 @@ This article describes how to troubleshoot any potential issues that you may exp
     - VM name for issues in replication and migration 
     - Description of the issue or feedback
 
-
-- Depending upon the phase of migration you are in, you may need to review one of the following articles to troubleshoot issues: 
-
-- [Troubleshoot Azure Migrate projects](/azure/migrate/troubleshoot-general)
-- [Troubleshoot Azure Migrate appliance issues](/azure/migrate/troubleshoot-appliance-issues)
-
-- [Troubleshoot with appliance diagnostics](/azure/migrate/troubleshoot-appliance-diagnostic)
-
 The following sections describe how to gather this information based on the operation or the issue type.
  
 ## For user triggered operations from Azure portal
 
-For user triggered operations correlation ID or job ID are needed to troubleshoot.
+To troubleshoot user triggered operations, correlation ID for a deployment or a job ID are needed.
 
 ### Get correlation ID for a deployment
 
-Failures in operations like creating or deleting a migrate project, creation of appliance artifacts, entities and storage accounts, errors are shown as failures in **Deployments** section of the migrate project resource group.
-
-Each deployment operation also has a **Correlation ID** that is useful for troubleshooting.
+Failures in operations like creating or deleting a migrate project, creation of appliance artifacts, entities and storage accounts, errors are shown as failures in **Deployments** section of the migrate project resource group. Each deployment operation also has a **Correlation ID** that is useful for troubleshooting.
 
 Additionally failed operations in the session are shown as notifications or in activity logs from older history.
 
@@ -83,15 +73,13 @@ Follow these steps to get the job ID:
 
 1. In the left-pane, go to **Azure Stack HCI migration > Jobs**.
 
-    :::image type="content" source="./media/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs in Azure portal.":::
-
 1. Identify the job that you want the job ID for and select the job name.
 
-    :::image type="content" source="./media/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs > Your job in Azure portal.":::
+    :::image type="content" source="./media/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs > Your job in Azure portal.":::
 
 1. Find the **Job Id**.
 
-    :::image type="content" source="./media/get-job-id-4.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
+    :::image type="content" source="./media/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
 
 ## For scheduled replication operations  
 
@@ -128,4 +116,8 @@ Where product team might need component event viewer logs or system event logs l
 
 ## Next steps
 
-- If you experience any issues during migration, see [Troubleshoot migration issues](../index.yml).
+Depending upon the phase of migration you are in, you may need to review one of the following articles to troubleshoot issues:
+
+- [Troubleshoot Azure Migrate projects](/azure/migrate/troubleshoot-general).
+- [Troubleshoot Azure Migrate appliance issues](/azure/migrate/troubleshoot-appliance-issues).
+- [Troubleshoot with appliance diagnostics](/azure/migrate/troubleshoot-appliance-diagnostic).
