@@ -36,9 +36,11 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Network.NetworkPlugin` |[`calico` / `flannel`]|CNI plugin choice for the Kubernetes network model. For K8s cluster, always use `calico` and for K3s cluster, always use `flannel`.|  `flannel`|Single-machine and <br> full deployment|
 | `Network.Ip4GatewayAddress` |IPv4 address `A.B.C.x`|Gateway address; typically the router address.|    |Full deployment only|
 | `Network.Ip4PrefixLength` |`[1-31]`|The IP address subnet **A.B.C** prefix length. For example, use **24** if your network is **192.168.1.0/24**.| `24`|Full deployment only|
+| `Network.Ip4AddressPrefix` |Subnet mask `A.B.C.0/x`|The subnet from which IP addresses will be alloted in the case of single machine deployments.  For example, use **24** if your network is **192.168.1.0/24**. In this case Gateway address will be 192.168.1.1, Linux node will be 192.168.1.2, Windows node would be 192.168.1.3 and the Service IPs would be assigned 192.168.1.4 onwards. | |Single machine deployment only|
 | `Network.DnsServers` |IPv4 address `A.B.C.x` |IP address of your DNS (typically the router address). To view what DNS your machine uses, issue the command `Get-DnsClientServerAddress -AddressFamily IPv4`.  | |Full deployment only|
 | `Network.InternetDisabled` |Boolean|Whether your cluster has access to the internet. The default is `false`, meaning your cluster by default has access to the internet.|  `false`|Single-machine and <br> full deployment|
 | `Network.SkipAddressFreeCheck` |Boolean|Ignores IP Address check failures and continues with deployment.|  `false`|Full deployment|
+| `Network.SkipDnsCheck` |Boolean|Ignores DNS check and continues with deployment.|  `false`|Single-machine and <br> full deployment|
 | `Network.Proxy.Http` |String | HttpProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.Https` |String | HttpsProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.No` |String | No proxy config for bypassing the proxy. ||Single-machine and <br> full deployment|
