@@ -40,7 +40,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Network.DnsServers` |IPv4 address `A.B.C.x` |IP address of your DNS (typically the router address). To view what DNS your machine uses, issue the command `Get-DnsClientServerAddress -AddressFamily IPv4`.  | |Full deployment only|
 | `Network.InternetDisabled` |Boolean|Whether your cluster has access to the internet. The default is `false`, meaning your cluster by default has access to the internet.|  `false`|Single-machine and <br> full deployment|
 | `Network.SkipAddressFreeCheck` |Boolean|Ignores IP Address check failures and continues with deployment.|  `false`|Full deployment|
-| `Network.SkipDnsCheck` |Boolean|Ignores DNS check and continues with deployment.|  `false`|Single-machine and <br> full deployment|
+| `Network.SkipDnsCheck` |Boolean|If you have provided DNS servers in the `Network.DnsServers` parameter, this flag ignores DNS check and continues with deployment|  `false`|Single-machine and <br> full deployment|
 | `Network.Proxy.Http` |String | HttpProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.Https` |String | HttpsProxy link. ||Single-machine and <br> full deployment|
 | `Network.Proxy.No` |String | No proxy config for bypassing the proxy. ||Single-machine and <br> full deployment|
