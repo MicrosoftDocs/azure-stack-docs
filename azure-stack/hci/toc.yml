@@ -192,7 +192,7 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
-    - name: Protect volumes
+    - name: Encrypt & deduplicate volumes
       href: manage/volume-encryption-deduplication.md
     - name: Manage volumes
       href: manage/manage-volumes.md
