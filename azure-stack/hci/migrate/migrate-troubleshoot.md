@@ -99,13 +99,13 @@ To troubleshoot UX issues in portal, email the following information:
 
 To troubleshoot appliance registration issues, email the following information:
 
-- All the available logs on the appliance at *C:\ProgramData\MicrosoftAzure\Logs\*.
+- All the available logs on the appliance at *C:\ProgramData\MicrosoftAzure\Logs*.
 
 ## For discovery issues
 
 To troubleshoot discovery issues, email the following information: 
 
-- All available logs on the source appliance at C:\ProgramData\MicrosoftAzure\Logs\HyperV\Discovery*.
+- All available logs on the source appliance at *C:\ProgramData\MicrosoftAzure\Logs\HyperV\Discovery*.
 
 For more information, see [Troubleshoot Discovery](/azure/migrate/troubleshoot-discovery).
 
