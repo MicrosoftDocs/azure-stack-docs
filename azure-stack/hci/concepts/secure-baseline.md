@@ -50,7 +50,7 @@ To disable or enable drift control, follow these steps.
 
 1. Connect to your Azure Stack HCI node via Remote Desktop Protocol.
 
-1. Run the following PowerShell search command:
+1. Run the following PowerShell search command as Administrator:
 
     ```PowerShell
     Get-Command -Module AzureStackOSConfigAgent -Name *Security
