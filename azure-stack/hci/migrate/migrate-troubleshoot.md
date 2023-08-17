@@ -26,9 +26,10 @@ If you experience any issues, before you open a Support ticket, collect the foll
 - Description of the issue or feedback
 - Subscription ID 
 - Tenant ID 
-- Region or geography
 - Azure Migrate project name
+- Azure Migrate project region or geography
 - VM name for issues in replication and migration 
+- Correlation ID for deployment or job ID
 
 
 The following sections describe how to gather this information based on the operation or the issue type.
