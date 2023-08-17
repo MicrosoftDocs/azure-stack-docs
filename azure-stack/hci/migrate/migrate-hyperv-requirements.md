@@ -58,7 +58,7 @@ Keep in mind the following information as you create a project:
 
 ## Azure portal requirements
 
-For more information on Azure subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](https://learn.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles).
+For more information on Azure subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
 |Level|Permissions|
 |-|-|
@@ -71,7 +71,7 @@ Scale-Out File Server (SOFS) is not supported in Public Preview. If the VM disks
 
 ## Target Azure Stack HCI cluster and VM requirements
 
-- The target Azure Stack HCI cluster HCI version must be the 23H2 supplemental package release or the [latest release](https://learn.microsoft.com//azure-stack/hci/release-information#azure-stack-hci-version-22h2-os-build-20349).
+- The target Azure Stack HCI cluster HCI version must be the 23H2 supplemental package release or the [latest release](/release-information#azure-stack-hci-version-22h2-os-build-20349).
 
 - Standalone VMs on standalone (non-clustered) Hyper-V hosts can be discovered and migrated however, standalone VMs hosted on "clustered" Hyper-V hosts cannot be discovered and migrated. To migrate these VMs they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
 
