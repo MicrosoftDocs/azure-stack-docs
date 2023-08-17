@@ -103,13 +103,15 @@ To troubleshoot appliance registration issues, email the following information:
 
 ## For discovery issues
 
-Email needs to include the logs available on the source appliance at *C:\ProgramData\MicrosoftAzure\Logs\HyperV\Discovery*.
+To troubleshoot discovery issues, email the following information: 
 
-- [Troubleshoot Discovery](/azure/migrate/troubleshoot-discovery)
+- All available logs on the source appliance at C:\ProgramData\MicrosoftAzure\Logs\HyperV\Discovery*.
+
+For more information, see [Troubleshoot Discovery](/azure/migrate/troubleshoot-discovery).
 
 ## For special issues
 
-Where product team might need component event viewer logs or system event logs like Hyper-V logs, SMB logs, product team will make a request (if needed).
+If needed, Microsoft Support may also request component event viewer logs or system event logs such as Hyper-V logs and SMB logs.
 
 
 ## Next steps
