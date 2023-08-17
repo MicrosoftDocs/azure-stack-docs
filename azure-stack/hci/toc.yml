@@ -338,7 +338,7 @@
       - name: Phase 3 - Migrate, verify
         href: migrate/migrate-azure-migrate.md
       - name: Troubleshoot
-        href: ../index.yml
+        href: migrate/migrate-troubleshoot.md
       - name: FAQ
         href: migrate/migrate-faq.yml
     - name: Migrate using SCVMM
