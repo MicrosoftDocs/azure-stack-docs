@@ -75,32 +75,32 @@ Review the [known issues for update](#known-issues-update) and take any actions 
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you have provided the App Service resource provider with a SQL Always On instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
 - In situations where you have converted the appservice_hosting and appservice_metering databases to contained databases, the upgrade may fail if logins haven't been successfully migrated to contained users.
 
-If you converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, you might experience upgrade failures.  
+  If you converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, you might experience upgrade failures.  
 
-You must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  This script is non-destructive and will not cause downtime.
+  You must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  This script is non-destructive and will not cause downtime.
 
-This script must be run under the following conditions:
+  This script must be run under the following conditions:
 
-- By a user that has the system administrator privilege, for example the SQL SA Account.
-- If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
-  - appservice_hosting_FileServer
-  - appservice_hosting_HostingAdmin
-  - appservice_hosting_LoadBalancer
-  - appservice_hosting_Operations
-  - appservice_hosting_Publisher
-  - appservice_hosting_SecurePublisher
-  - appservice_hosting_WebWorkerManager
-  - appservice_metering_Common
-  - appservice_metering_Operations
-  - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+  - By a user that has the system administrator privilege, for example the SQL SA Account.
+  - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+    - appservice_hosting_FileServer
+    - appservice_hosting_HostingAdmin
+    - appservice_hosting_LoadBalancer
+    - appservice_hosting_Operations
+    - appservice_hosting_Publisher
+    - appservice_hosting_SecurePublisher
+    - appservice_hosting_WebWorkerManager
+    - appservice_metering_Common
+    - appservice_metering_Operations
+    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
-```sql
+  ```sql
         USE appservice_hosting
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
         BEGIN
@@ -152,7 +152,7 @@ This script must be run under the following conditions:
             DEALLOCATE user_cursor ;
             END
         GO
-```
+  ```
 
 - Tenant Applications are unable to bind certificates to applications after upgrade.
 
@@ -262,7 +262,7 @@ This script must be run under the following conditions:
 
                 Shutdown /t 5 /r /f 
             }
-        }
+         }
       }
 
       Remove-PSSession -Session $session
