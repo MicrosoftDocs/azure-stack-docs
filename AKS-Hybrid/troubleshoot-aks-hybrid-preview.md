@@ -32,43 +32,43 @@ To resolve this error, ensure that DNS can resolve all IP addresses assigned to 
 
 Deploying Azure Arc Resource Bridge through command line must be performed with line of sight to the on-premises infrastructure. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI or Windows Server cluster.
 
-## my AKS hybrid cluster create call has timed out
+## my AKS hybrid cluster 'create' call times out
 
-If your AKS hybrid cluster create call has timed out, or if you see the AKS hybrid cluster resource appear on Azure but you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster create command has timed out and failed silently. This failure can happen due to the following identified reasons:
+If your AKS hybrid cluster **create** call has timed out, or if you see the AKS hybrid cluster resource appear on Azure but you don't see any VMs/Kubernetes cluster on-premises, it's possible that the AKS hybrid cluster **create** command has timed out and failed silently. This failure can happen due to the following identified reasons:
 
 ### The infrastructure administrator didn't download the Kubernetes VHD image using `Add-ArcHciK8sGalleryImage`
 
-Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-ArcHciK8sGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster create call times out and fails silently. To download the Kubernetes VHD image, visit [this page](/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd#download-the-kubernetes-vhd-file). This issue will be fixed in an upcoming release. 
+Make sure the infrastructure administrator downloaded the Kubernetes VHD image using `Add-ArcHciK8sGalleryImage`. If your infrastructure administrator didn't download the Kubernetes VHD image, the AKS hybrid cluster **create** call times out and fails silently. To download the Kubernetes VHD image, visit [this page](/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd#download-the-kubernetes-vhd-file).
 
 ### The AKS hybrid vnet you used ran out of IP addresses
 
-If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster create times out and fails silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vNet [by following this documentation](/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd). At this point, it's not possible to edit an AKS hybrid vNet once it has been created.
+If the AKS hybrid vnet used for creating the AKS hybrid cluster runs out of IP addresses, the AKS hybrid cluster **create** times out and fails silently. Make sure your infrastructure administrator gives you access to another AKS hybrid vNet [by following this documentation](/azure/aks/hybrid/create-aks-hybrid-preview-networks?tabs=staticip%2Clinux-vhd). At this point, it's not possible to edit an AKS hybrid vNet once it has been created.
 
 ### You used an uppercase character for your AKS hybrid cluster name
 
-For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster create call will time out and fail silently. This issue will be fixed in an upcoming release.
+For this preview, you can't use any uppercase characters to name your AKS hybrid cluster resource. If you do so, the AKS hybrid cluster **create** call times out and fails silently.
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
 
-The `az hybridaks create` command will time out and fail silently if you supply a `--kubernetes-version` other than `v1.22.11.` Right now, we **only** support `v1.22.11`.
+The `az hybridaks create` command times out and fails silently if you provide a `--kubernetes-version` value other than `v1.22.11.` Right now, we only support `v1.22.11`.
 
-If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we may help you with your deployment.
+If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we can help you with your deployment.
 
 ## I cannot use the AksHci PowerShell module or Windows Admin Center to manage my Azure provisioned AKS hybrid clusters
 
-You cannot use local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI, the Azure portal, or Azure Resource Manager templates to manage your AKS hybrid clusters once they've been created.
+You cannot use a local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI, the Azure portal, or Azure Resource Manager templates to manage your AKS hybrid clusters once they've been created.
 
 ## I cannot use `az connectedk8s` commands to manage my Azure provisioned AKS hybrid clusters
 
-You cannot use `az connectedk8s` commands to manage Azure Arc on your Azure provisioned AKS hybrid preview clusters. This is because `az connectedk8s` points to `Microsoft.Kubernetes` Azure resource type and Azure provisioned AKS hybrid clusters have a different Azure resource type - `Microsoft.HybridContainerService`.
+You cannot use `az connectedk8s` commands to manage Azure Arc on your Azure provisioned AKS hybrid preview clusters. This restriction is because `az connectedk8s` points to `Microsoft.Kubernetes` Azure resource type. Azure provisioned AKS hybrid clusters have a different Azure resource type: `Microsoft.HybridContainerService`.
 
 ## After a period of time, `az hybridaks proxy` times out and doesn't respond to kubectl commands anymore
 
-If this happens to you, close all open command line windows and start a fresh `az hybridaks proxy` session. You should be able to regain access to your AKS hybrid cluster via kubectl.
+If this issue happens to you, close all open command line windows and start a fresh `az hybridaks proxy` session. You should be able to regain access to your AKS hybrid cluster via kubectl.
 
 ## When Azure Arc Resource Bridge is stopped, `az hybridaks` calls complete without errors but I don't see any AKS hybrid clusters on-premises
 
-We strongly recommend to never stop Azure Arc Resource Bridge as this could lead to unexpected failures. If you have stopped your Arc Resource Bridge, restart it immediately. If you see unexpected issues, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) and let us know that you stopped Arc Resource Bridge.
+We strongly recommend that you never stop Azure Arc Resource Bridge, as stopping it can lead to unexpected failures. If you have stopped your Arc Resource Bridge, restart it immediately. If you see unexpected issues, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) and let us know that you stopped Arc Resource Bridge.
 
 ## When `az hybridaks create` fails the Azure resources on the Azure portal are not deleted
 
@@ -76,7 +76,7 @@ If your `az hybridaks create` command has failed, delete all corresponding Azure
 
 ## Default node pool name can't be changed
 
-For this preview, we don't allow changing the name of the default node pool. This option will be added in an upcoming release.
+For this preview, we don't allow changing the name of the default node pool.
 
 ## How to get the certificate based admin kubeconfig of Azure provisioned AKS hybrid cluster 
 
@@ -86,7 +86,7 @@ To get the certificate based kubeconfig of your AKS hybrid cluster, sign in to t
 | ------------|  ----------------- |
 | $controlPlaneIP |  VM IP of the AKS hybrid cluster's control plane VM.  |
 | $sshPrivateKey  |  SSH private key location of the AKS hybrid cluster. The default value is  `.\.ssh\id_rsa`  |
-| $outfile  |  Location where you want to store the AKS hybrid Kubernetes cluster's kubeconfig. You will use this kubeconfig in `kubectl` commands to access the AKS hybrid cluster. |
+| $outfile  |  Location where you want to store the AKS hybrid Kubernetes cluster's kubeconfig. You use this kubeconfig in `kubectl` commands to access the AKS hybrid cluster. |
 
 ```powershell
 Get-TargetClusterAdminCredentials -controlPlaneIP $controlPlaneIP -sshPrivateKey $sshPrivateKey -outfile $outfile
