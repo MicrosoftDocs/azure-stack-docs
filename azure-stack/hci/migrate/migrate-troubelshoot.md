@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating Hyper V VMs to Azure Stack HCI using A
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/16/2023
+ms.date: 08/17/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -19,12 +19,10 @@ This article describes how to troubleshoot any potential issues that you may exp
 
 ## Collect logs and information
 
-- If you experience any issues during the migration, collect the logs from the Azure Migrate appliance and share them with the Azure Migrate team for analysis. To collect the logs, run the following command on the Azure Migrate appliance:
 
-    ```powershell
-    Get-AzureMigrateLog -Path C:\AzureMigrateLogs
-    ```
-- If you experience any issues, collect the following information about your issues before you open a Support ticket.
+If you experience any issues, before you open a Support ticket, collect the following information about your issues and share them with the Microsoft Support team for analysis.
+
+    - Logs from Azure Migrate appliance
     - Subscription ID 
     - Tenant ID 
     - Region
