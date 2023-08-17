@@ -26,8 +26,8 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 |--|--|--|
 |Open required firewall ports.|both|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
 |Configure SAN policy on Windows VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
-|Deploy, configure and register a Azure Stack HCI cluster.|target|[Register a cluster](/deploy/deployment-quickstart.md).|
-|Configure Arc Resource Bridge and create a custom location on one of the nodes of the Azure HCI cluster.|target|[Azure Arc VM management prerequisites](/manage/azure-arc-vm-management-prerequisites).<br>[Set up Azure Arc VM management using command line](/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
+|Deploy, configure and register an Azure Stack HCI cluster.|target|[Register a cluster](../deploy/deployment-quickstart.md).|
+|Configure Arc Resource Bridge and create a custom location on one of the nodes of the Azure HCI cluster.|target|[Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md).<br>[Set up Azure Arc VM management using command line](../manage/deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
 |Create storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath) command.|
 |Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Steps to assign an Azure role](/azure/role-based-access-control/role-assignments-steps).|
 |Create an Azure Migrate project|both|[Create Azure migrate project](#create-an-azure-migrate-project).|
