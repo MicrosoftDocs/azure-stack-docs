@@ -1,17 +1,17 @@
 ---
-title: Enable volume encryption, deduplication, and compression - Azure Stack HCI and Windows Server
-description: This topic covers how to use volume encryption, deduplication, and compression in Azure Stack HCI and Windows Server using Windows Admin Center.
+title: Enable volume encryption and deduplication - Azure Stack HCI and Windows Server
+description: This topic covers how to use volume encryption and deduplication in Azure Stack HCI and Windows Server using Windows Admin Center.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
 ms.date: 08/17/2023
 ---
 
-# Enable volume encryption, deduplication, and compression in Azure Stack HCI and Windows Server
+# Enable volume encryption and deduplication in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI or Windows Server using Windows Admin Center. It also covers how to enable deduplication and compression on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
+This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI or Windows Server using Windows Admin Center. It also covers how to enable deduplication on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
 
 ## Turn on BitLocker to protect volumes
 
@@ -28,11 +28,11 @@ To turn on BitLocker in Windows Admin Center:
 
    If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
-## Turn on deduplication and compression
+## Turn on deduplication
 
-Deduplication and compression are managed per volume. Deduplication and compression use a post-processing model, which means that you won't see savings until it runs. When it does, it will work over all files, even files that were there from before.
+Deduplication uses a post-processing model, which means that you won't see savings until it runs. When it does, it deduplicates all existing files.
 
-To turn on deduplication and compression on a volume in Windows Admin Center:
+To turn on deduplication on a volume in Windows Admin Center:
 
 1. Connect to an Azure Stack HCI system or Storage Spaces Direct cluster running Windows Server, and then on the **Tools** pane, select **Volumes**.
 1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
