@@ -35,7 +35,7 @@ Before you migrate your VMs:
 
 1. On the **Azure Stack HCI migration > Replications** page, select **Refresh** and then view the replication progress. When the initial replication is complete, the VM **Migration status** changes to **Ready to migrate**.
 
-    :::image type="content" source="media/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="media/migrate-replicated-virtual-machine-1a.png":::
 
 1. From the top command bar, select **Migrate** to migrate multiple VMs that are ready.  
 
