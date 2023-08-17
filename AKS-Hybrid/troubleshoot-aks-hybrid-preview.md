@@ -133,6 +133,6 @@ az arcappliance delete hci --config-file "<path to working directory>\hci-applia
 Remove-ArcHciAksConfigFiles -workDirectory <path to working directory>
 ```
 
-## Arc Resource Bridge stuck in in "offline" mode while creating AKS hybrid cluster from portal
+## Arc Resource Bridge stuck in "offline" mode while creating AKS hybrid cluster from portal
 
 If you're deploying Arc Resource Bridge on an Azure VM and see the Arc Resource Bridge connection in an offline state, check that you are connected to the VM. If not, restart the VM and wait for approximately 10 minutes to see the status change from **Offline** to **Running**.
