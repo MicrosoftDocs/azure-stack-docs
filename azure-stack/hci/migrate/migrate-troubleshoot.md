@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot issues when migrating Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
+title: Troubleshoot issues when migrating Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to

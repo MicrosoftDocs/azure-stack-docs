@@ -58,7 +58,7 @@ Before you migrate your VMs:
     :::image type="content" source="media/migrate-replicated-virtual-machine-3b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal.":::
 
     The **Planned failover** blade indicates the various migration tasks in progress.
-    :::image type="content" source="media/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of PLanned failover for a VM in Azure portal.":::
+    :::image type="content" source="media/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of Planned failover for a VM in Azure portal.":::
 
     The migration status changes from **Migration in progress** to **Completed** when the migration is complete.
 
@@ -84,11 +84,11 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
 1. Sign into the VM. Verify that the VM is running as expected.
 
-1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**. 
+1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**.
 
     :::image type="content" source="media/complete-migration-virtual-machine-1.png" alt-text="Screenshot of Replications view with complete migration selected from the context menu in Azure portal.":::
 
-    Alternatively, select the VM name. 
+    Alternatively, select the VM name.
 
     :::image type="content" source="media/complete-migration-virtual-machine-2.png" alt-text="Screenshot of Replications view with a VM selected in Azure portal.":::
 
