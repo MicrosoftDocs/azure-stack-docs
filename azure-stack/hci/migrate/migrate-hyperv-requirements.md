@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/16/2023
+ms.date: 08/17/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -40,14 +40,21 @@ The following operating systems (OS) are supported for the source appliance, tar
 - SUSE Linux Enterprise 12.x
 - Debian 9.x
 
-## Region requirements
+## Supported geographies
 
-The following Azure regions are supported for your Azure Migrate service:
+You can create an Azure Migrate project in many geographies in the Azure public cloud. Here is a list of supported geographies for migration to Azure Stack HCI:
 
-|Country|Supported regions|
+|Geography|Metadata storage locations|
 |-|-|
-|US|Central US|
-|Europe|West Europe|
+|Asia-Pacific|South East Asia, East Asia|
+|Europe|North Europe, West Europe|
+|United States|East US, Central US, West Central US, West US2|
+
+Keep in mind the following information as you create a project:
+
+- The project geography is only used to store the discovered metadata.
+- When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate does not move or store customer data outside of the region allocated.
+- Although you can only create projects in these geographies, you can migrate servers for other target locations.
 
 ## Azure portal requirements
 
