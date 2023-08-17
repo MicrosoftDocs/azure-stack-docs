@@ -18,7 +18,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | :------------ |:-----------|:------------------|:--------|:------------|
 | `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.6` |Single-machine and <br> full deployment|
 | `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
-| `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add another machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
+| `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add more machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
 | `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**| None |Single-machine and <br> full deployment|
 | `Init.ServiceIPRangeSize` |`[0-127]`|Number of reserved IP start addresses for your Kubernetes services. Based on the size, we'll allocate a range of free IP addresses on your subnet | `0` |Single-machine and <br> full deployment|
 | `Join.ClusterJoinToken` |String|`Reserved` | None |Full deployment only|
