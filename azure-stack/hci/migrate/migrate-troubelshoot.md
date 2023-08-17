@@ -61,7 +61,7 @@ Follow these steps to identify the correlation ID for your deployment in Azure p
 
 Operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration) are also listed as **Jobs** in the Azure Stack HCI migration section of the portal.
 
-In these cases, the Job ID needs to be sent in the email as well.
+In these cases, the **Job ID** needs to be sent in the email as well.
 
 Follow these steps to get the job ID:
 
