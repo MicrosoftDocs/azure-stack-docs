@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/16/2023
+ms.date: 08/17/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -19,6 +19,14 @@ This article describes the discovery process for Hyper-V virtual machine (VM) mi
 ## Before you begin
 
 Before the discovery process takes place, make sure you have reviewed all [requirements](migrate-hyperv-discover.md) and satisfied all [prerequisites](migrate-hyperv-discover.md).
+
+In addition, your Hyper-V host should have sufficient resources to create a Windows Server 2016 VM with this minimum configuration:
+
+- 16GB memory.
+- 80 GB disk.
+- 8 vCPUs.
+
+For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
 ## Step 1: Generate source appliance key and download appliance
 
@@ -61,17 +69,21 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
     - VM name
     - VM location
-    - **Memory**: 16GB min
     - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2016
-    - **vCPU**: 8
-    - **Disk**: >80GB
-    - **Memory**: 16GB min
- 
+    - **Disk**: 80GB (min)
+    - **Memory**: 16GB (min)
+    
+    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+
+1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+    
+    :::image type="content" source="media/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/vcpu-settings.png":::
+
 1. Create a virtual hard disk for the VM and specify a location for it.
 
     > [!NOTE]
-    > An appliance VM shouldn’t be migrated if you create it as a High Availability VM. Azure Migrate will discover this VM type and display it during the discovery process.
+    > Make sure that you create the appliance VM as a non-high availability VM.
 
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
@@ -79,9 +91,13 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
-1. In  **Hyper-V Manager**, select the VM just created.
+1. In  **Hyper-V Manager**, select the host.
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
+
+    :::image type="content" source="media/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog  ." lightbox="media/enhanced-session-mode.png":::
+
+    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
 ## Step 3: Install source appliance
 
@@ -124,7 +140,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
     :::image type="content" source="media/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/key-verified.png":::
 
-1. It can up to 10 minutes for the appliance to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
+1. The appliance may take up to 10 minutes to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
 
@@ -132,7 +148,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
     :::image type="content" source="media/add-cluster-info2.png" alt-text="Screenshot showing cluster information popup." lightbox="media/key-verified.png":::
 
-1. Enter the name and credentials of the target (HCI) cluster.
+1. Enter the name and credentials of the target Azure Stack HCI cluster.
 
 1. Disable the slider under **Step 4: Provide server credentials to perform software inventory...**.
 
