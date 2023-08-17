@@ -54,13 +54,13 @@ The `az hybridaks create` command times out and fails silently if you provide a 
 
 If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we can help you with your deployment.
 
-## I cannot use the AksHci PowerShell module or Windows Admin Center to manage my Azure provisioned AKS hybrid clusters
+## I can't use the AksHci PowerShell module or Windows Admin Center to manage my Azure provisioned AKS hybrid clusters
 
-You cannot use a local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI, the Azure portal, or Azure Resource Manager templates to manage your AKS hybrid clusters once they've been created.
+You can't use a local AksHci PowerShell module or Windows Admin Center to manage your Azure provisioned AKS hybrid preview clusters. You can only use Azure CLI, the Azure portal, or Azure Resource Manager templates to manage your AKS hybrid clusters once they've been created.
 
-## I cannot use `az connectedk8s` commands to manage my Azure provisioned AKS hybrid clusters
+## I can't use `az connectedk8s` commands to manage my Azure provisioned AKS hybrid clusters
 
-You cannot use `az connectedk8s` commands to manage Azure Arc on your Azure provisioned AKS hybrid preview clusters. This restriction is because `az connectedk8s` points to `Microsoft.Kubernetes` Azure resource type. Azure provisioned AKS hybrid clusters have a different Azure resource type: `Microsoft.HybridContainerService`.
+You can't use `az connectedk8s` commands to manage Azure Arc on your Azure provisioned AKS hybrid preview clusters. This restriction is because `az connectedk8s` points to `Microsoft.Kubernetes` Azure resource type. Azure provisioned AKS hybrid clusters have a different Azure resource type: `Microsoft.HybridContainerService`.
 
 ## After a period of time, `az hybridaks proxy` times out and doesn't respond to kubectl commands anymore
 
