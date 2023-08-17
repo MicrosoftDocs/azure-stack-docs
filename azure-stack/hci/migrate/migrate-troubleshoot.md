@@ -23,12 +23,13 @@ This article describes how to troubleshoot any potential issues that you may exp
 If you experience any issues, before you open a Support ticket, collect the following information about your issues and share them with the Microsoft Support team for analysis.
 
 - Logs from Azure Migrate appliance
+- Description of the issue or feedback
 - Subscription ID 
 - Tenant ID 
-- Region
+- Region or geography
 - Azure Migrate project name
 - VM name for issues in replication and migration 
-- Description of the issue or feedback
+
 
 The following sections describe how to gather this information based on the operation or the issue type.
  
@@ -93,7 +94,7 @@ To troubleshoot replication issues, email the following information:
 To troubleshoot UX issues in portal, email the following information:
 
 - Screenshots from Azure portal.
-- Record the operations in browser developer mode. Export the HAR file and share it.
+- Record the operations in browser developer mode. Export the *HAR* file and share it.
 
 ## For appliance registration issues
 
