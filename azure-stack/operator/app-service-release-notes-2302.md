@@ -83,7 +83,7 @@ Review the [known issues for update](#known-issues-update) and take any actions 
 
   If you converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, you might experience upgrade failures.  
 
-  You must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  This script is non-destructive and will not cause downtime.
+  You must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and will not cause downtime.
 
   This script must be run under the following conditions:
 
