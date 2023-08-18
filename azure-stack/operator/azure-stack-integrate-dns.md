@@ -38,8 +38,10 @@ The fully qualified domain name (FQDN) of your Azure Stack Hub deployment and en
 As such, examples of some of the endpoints for this deployment would look like the following URLs:
 
 `https://portal.east.cloud.fabrikam.com`
+`https://management.east.cloud.fabrikam.com`
 
 `https://adminportal.east.cloud.fabrikam.com`
+`https://adminmanagement.east.cloud.fabrikam.com`
 
 To use this example DNS namespace for an Azure Stack Hub deployment, the following conditions are required:
 
@@ -76,7 +78,14 @@ Azure Stack Hub includes both authoritative and recursive DNS servers. The recur
 
 ## Resolving external DNS names from Azure Stack Hub
 
-To resolve DNS names for endpoints outside Azure Stack Hub (for example: www\.bing.com), you need to provide DNS servers that Azure Stack Hub can use to forward DNS requests for which Azure Stack Hub isn't authoritative. For deployment, DNS servers that Azure Stack Hub forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack Hub deployment fails. You can edit the DNS Forwarder values with the [**Set-AzSDnsForwarder** cmdlet](#editing-dns-forwarder-ips) after deployment. 
+To resolve DNS names for endpoints outside Azure Stack Hub (for example: www\.bing.com), you need to provide DNS servers that Azure Stack Hub can use to forward DNS requests for which Azure Stack Hub isn't authoritative. For deployment, DNS servers that Azure Stack Hub forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack Hub deployment fails. You can edit the DNS Forwarder values with the [`Set-AzSDnsForwarder`](#editing-dns-forwarder-ips) cmdlet after deployment.
+
+If the external DNS forwarder servers are unable to resolve a DNS request forwarded from Azure Stack Hub, by default the internal DNS recursive resolver service will attempt to contact to the [DNS root hints servers](https://www.iana.org/domains/root/servers), this fallback behavior is consistent with DNS server name resolution standards. The internet root hints servers are used to help resolve DNS address information when the DNS forwarder servers are unable to resolve the query locally from a hosted zone or the DNS server cache.
+
+To manage the **DNS root hints** setting for the internal DNS name resolution service within Azure Stack Hub, use the [`Get-AzSDnsServerSettings`](../reference/pep/get-azsdnsserversettings.md) cmdlet to view the current configuration, the default setting is enabled. The [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet provides the ability to enable or disable the -UseRootHint configuration of the internal DNS servers.
+
+> [!NOTE]
+> For scenarios where Azure Stack Hub is unable to contact the internet DNS root hints servers, such as UDP port 53 (DNS) network access is permanently blocked or fully disconnected / air-gapped networks, it is recommended to disable the -UseRootHint setting to prevent extended timeouts in DNS name resolution. Use the [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet to control this setting.
 
 ### Configure conditional DNS forwarding
 
@@ -144,7 +153,7 @@ Example:
 
 ## Editing DNS Forwarder IPs
 
-DNS Forwarder IPs are set during deployment of Azure Stack Hub. However, if the Forwarder IPs need to be updated for any reason, you can edit the values by connecting to the privileged endpoint and running the `Get-AzSDnsForwarder` and `Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]` PowerShell cmdlets. For more information, see [privileged endpoint](azure-stack-privileged-endpoint.md).
+DNS Forwarder IPs are set during deployment of Azure Stack Hub. However, if the Forwarder IPs need to be updated for any reason, you can edit the values by connecting to the privileged endpoint and running the [`Get-AzSDnsForwarder`](../reference/pep/get-azsdnsforwarder.md) and [`Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]`](../reference/pep/set-azsdnsforwarder.md) PowerShell cmdlets. For more information, see [privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ## Delegating the external DNS zone to Azure Stack Hub
 

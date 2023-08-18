@@ -11,7 +11,7 @@ ms.author: nebird
 
 ## Synopsis
 
-Gets the DNS server settings.
+Updates DNS server settings. This cmdlet is used to control the -UseRootHint setting for the internal DNS servers. The default configuration for -UseRootHint is enabled / $true.
 
 ## Syntax
 
@@ -21,7 +21,11 @@ Set-AzSDnsServerSettings [-UseRootHint]
 
 ## Description
 
-Provides the ability to change the "UseRootHint" setting of the DNS servers in Azure Stack Hub. The current configuration can be viewed using the [Get-AzSDnsServerSettings](get-azsdnsserversettings.md) cmdlet.
+Provides the ability to change the "-UseRootHint" setting for the internal DNS servers in Azure Stack Hub.
+
+Setting the -UseRootHint parameter to $true enables DNS root hints on the internal DNS servers. Setting -UseRootHint to $false will disable the DNS root hints functionality.
+
+The current configuration can be viewed using the [Get-AzSDnsServerSettings](get-azsdnsserversettings.md) cmdlet.
 
 ## Examples
 
@@ -31,11 +35,17 @@ Provides the ability to change the "UseRootHint" setting of the DNS servers in A
 Set-AzSDnsServerSettings -UseRootHint $false
 ```
 
+### Example 2
+
+```
+Set-AzSDnsServerSettings -UseRootHint $true
+```
+
 ## Parameters
 
 ### -UseRootHint
 
-Boolean value to control if the "UseRootHints" DNS server setting is enabled ($true) or disabled ($false).
+Boolean value to control if the "-UseRootHint" DNS server setting is enabled ($true) or disabled ($false).
 
 ```yaml
 Type: Boolean
