@@ -34,7 +34,7 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 This release includes the Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to August 2023.
 
-- **ISO refresh** - in this release, the ISO for the installation of Azure Stack HCI, version 22H2 operating system is refreshed to include the latest cumulative update corresponding to August 2023.
+- **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to August 2023.
 
 For more information on the August release, see [Azure Stack HCI, version 22H2 OS build 20349.1906](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
