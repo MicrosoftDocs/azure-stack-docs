@@ -16,7 +16,7 @@ Updates the DNS forwarder configuration.
 ## Syntax
 
 ```
-Set-AzSDnsForwarder
+Set-AzSDnsForwarder -IPAddress <System.Net.IPAddress>
 ```
 
 ## Description

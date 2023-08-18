@@ -18,7 +18,7 @@ Note: This cmdlet is only available in Azure Stack Hub 1.2206.2.66 and later bui
 ## Syntax
 
 ```
-Set-AzSDnsServerSettings [-UseRootHint]
+Set-AzSDnsServerSettings [-UseRootHint] <boolean>
 ```
 
 ## Description
