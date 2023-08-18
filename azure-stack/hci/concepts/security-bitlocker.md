@@ -1,12 +1,12 @@
 ---
 title: BitLocker encryption on Azure Stack HCI (preview)
-description: Learn how to get your BitLocker recovery keys (preview).
-author: meaghanlewis
-ms.author: mosagie
+description: Learn how to get BitLocker recovery keys on your Azure Stack HCI cluster (preview).
+author: alkohli
+ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/24/2023
+ms.date: 08/14/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -25,6 +25,28 @@ Once Azure Stack HCI is successfully deployed, you can retrieve the BitLocker re
 
 > [!NOTE]
 > It is important that you save the BitLocker keys outside of the system. If the cluster is down and you don't have the key, it could potentially result in data loss.
+
+## Manage BitLocker encryption
+
+You can enable, disable, and view BitLocker encryption settings on your Azure Stack HCI cluster. Follow these steps to modify the BitLocker encryption:
+
+1. Connect to a server on your Azure Stack HCI system via Remote Desktop Protocol.
+
+2. Use option 15 in *Sconfig* to open a PowerShell session.
+
+3. To enable BitLocker encryption, use the following cmdlet:
+
+    ```PowerShell
+    Get-command -Module AzureStackBitlockerAgent -Name Enable-ASBitlocker
+    ```
+    To disable encryption, use the following:
+    ```PowerShell
+    Get-command -Module AzureStackBitlockerAgent -Name Disable-ASBitlocker
+    ```
+    To view encryption settings, use the following:
+    ```PowerShell
+    Get-command -Module AzureStackBitlockerAgent -Name Get-ASBitlocker
+    ```
 
 ## Get BitLocker recovery keys
 
