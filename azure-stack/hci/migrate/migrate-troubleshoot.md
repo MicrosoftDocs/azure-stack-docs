@@ -300,23 +300,11 @@ $ShutdownIC = Get-WmiObject -Namespace root\virtualization\v2  -Query "Associato
 $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 ```
 
-### Post migration failures
-
-**Root cause**
-There can be multiple failures once the migration has completed.
-
-- VM isn't booting.
-- VM doesn't have network connectivity.
-- VM disks aren't coming online.
-    
-**Recommended resolution**
-
-Suggestions from Engg?
-
 
 ## Next steps
 
 Depending upon the phase of migration you are in, you may need to review one of the following articles to troubleshoot issues:
 
+- [Troubleshoot discovery issues](/azure/migrate/troubleshoot-discovery)
 - [Troubleshoot Azure Migrate projects](/azure/migrate/troubleshoot-general).
 - [Troubleshoot with appliance diagnostics](/azure/migrate/troubleshoot-appliance-diagnostic).
