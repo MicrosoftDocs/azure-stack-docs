@@ -1,20 +1,32 @@
 --- 
-title: Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (preview) 
-description: Learn the replication process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
+title: Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview) 
+description: Learn the replication process for Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/16/2023
+ms.date: 08/18/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Replicate Hyper-V migration to Azure Stack HCI using Azure Migrate (preview)
+# Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the replication process for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
+
+## Before you begin
+
+Before the discovery process takes place, make sure you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server .
+
+In addition, your Azure Stack HCI cluster node should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
+
+- 16GB memory.
+- 80 GB disk.
+- 8 vCPUs.
+
+For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
 ## Step 1: Generate target appliance key
 
@@ -29,9 +41,9 @@ Complete the following tasks to generate the target appliance key:
 1. Under **Azure Migrate: Discovery and assessment**, select **Assess**.
 
 1. On the **Specify intent** page, select the following from the dropdown lists:
-    - **Servers or virtual machines (VM)**.
-    - **Azure Stack HCI**.
-    - **Hyper-V**.
+    - Servers or virtual machines (VM).
+    - Azure Stack HCI.
+    - Hyper-V.
     - source appliance.
 
     :::image type="content" source="./media/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate-specify-intent.png":::
@@ -71,30 +83,42 @@ In this step, you download the operating system (OS) VHD for the target applianc
 
 1. Under **Actions** on the right, select **New > Virtual machine**.
 
-1. Create a new appliance VM in the target cluster by completing the **New Virtual Machine Wizard** with the following configuration:
+1. Create the new appliance VM on the Azure Stack HCI cluster node using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
 
     - VM name
     - VM location
-    - **Memory**: 16GB min
     - **Connection**: ExternalSwitch
-    - **VM type**: `Standalone`
+    - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2022
-    - **vCPU**: 8
-    - **Disk**: >80GB
+    - **Disk**: 80GB (min)
+    - **Memory**: 16GB (min)
+    
+    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
+    > [!NOTE]
+    > Make sure that you create the appliance VM as a non-high availability VM.
+
+1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+    
+    :::image type="content" source="media/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/vcpu-settings.png":::
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
+1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
+
 1. Select the **install OS** from **image file** option and select the downloaded VHD.
 
-1. Select the OS you just downloaded and begin OS set up.
+1. Select the OS you just downloaded (Windows Server 2022) and begin OS set up.
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
 1. In **Hyper-V Manager**, select the VM just created.
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure the **Allow enhanced session mode** option is enabled.
+
+    :::image type="content" source="media/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/enhanced-session-mode.png":::
+
+    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
 1. Sign in to the VM again.
 
