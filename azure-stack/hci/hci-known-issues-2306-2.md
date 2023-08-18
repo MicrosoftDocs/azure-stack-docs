@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI.
 
-The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
+The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy Azure Stack HCI, carefully review the information contained in the release notes.
 
 This article applies to Azure Stack HCI, Supplemental Package, for 2306.2 patch update release. This release maps to software version number **10.2306.2.6**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
 
