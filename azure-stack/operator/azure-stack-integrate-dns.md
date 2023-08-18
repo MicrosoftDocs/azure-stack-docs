@@ -85,7 +85,7 @@ If the external DNS forwarder servers are unable to resolve a DNS request forwar
 To manage the **DNS root hints** setting for the internal DNS name resolution service within Azure Stack Hub, use the [`Get-AzSDnsServerSettings`](../reference/pep/get-azsdnsserversettings.md) cmdlet to view the current configuration, the default setting is enabled. The [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet provides the ability to enable or disable the -UseRootHint configuration of the internal DNS servers.
 
 > [!NOTE]
-> For scenarios where Azure Stack Hub is unable to contact the internet DNS root hints servers, such as UDP port 53 (DNS) network access is permanently blocked or fully disconnected / air-gapped networks, it is recommended to disable the -UseRootHint setting to prevent extended timeouts in DNS name resolution. Use the [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet to control this setting.
+> For scenarios where Azure Stack Hub is unable to contact the internet DNS root hints servers, such as UDP port 53 (DNS) network access is permanently blocked or fully disconnected / air-gapped networks, **it is recommended to disable the -UseRootHint setting** to prevent extended timeouts in DNS name resolution. Use the [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet to control this setting.
 
 ### Configure conditional DNS forwarding
 
