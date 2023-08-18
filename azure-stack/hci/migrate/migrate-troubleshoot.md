@@ -36,7 +36,7 @@ The following sections describe how to gather this information based on the oper
  
 ### For user triggered operations from Azure portal
 
-To troubleshoot user triggered operations, correlation ID for a deployment or a job ID are needed.
+To troubleshoot user triggered operations, correlation ID or a job ID are needed.
 
 #### Get correlation ID for a deployment
 
@@ -87,7 +87,7 @@ Failures in scheduled operations like hourly replication cycle failures are list
 
 To troubleshoot replication issues, email the following information:
 
-- Error details shown in the events which include Time, Error ID, Error message, VM ID.
+- Error details shown in the events that include Time, Error ID, Error message, VM ID.
 - Screenshots of Azure portal if possible.  
    
 ### For UX issues in portal  
@@ -113,7 +113,7 @@ For more information, see [Troubleshoot Discovery](/azure/migrate/troubleshoot-d
 
 ### For special issues
 
-If needed, Microsoft Support may also request component event viewer logs or system event logs such as Hyper-V logs and SMB logs.
+If needed, Microsoft Support may also request component event viewer logs, or system event logs such as Hyper-V logs and SMB logs.
 
 
 ## Common issues and resolutions
@@ -122,27 +122,27 @@ If needed, Microsoft Support may also request component event viewer logs or sys
 
 **Root cause** 
 
-The Azure Migrate project creation fails if the Azure subscription is not registered for Azure Migrate or if the user doesn't have the required permissions to create a project.
+The Azure Migrate project creation fails if the Azure subscription isn't registered for Azure Migrate or if the user doesn't have the required permissions to create a project.
 
 **Recommended resolution** 
 
 Verify the following:
 - Make sure that you have **Application Administrator** role on the Azure AD tenant.
 - Make sure that you have the **Contributor** and **User Access Administrator** roles on the Azure subscription.
-- Make sure that you are selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Azure Migrate supported regions](../index.yml).
+- Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Azure Migrate supported regions](../index.yml).
 
 
 ### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work 
 
 **Root cause** 
-When providing information in the Source Appliance Configuration Manager, the target cluster name cannot be changed once entered.
+When providing information in the Source Appliance Configuration Manager, the target cluster name can't be changed once entered.
 
 **Recommended resolution**
 Follow these steps to delete or change the target cluster from the Source Appliance Configuration Manager:
 
 1. On your source appliance, open Explorer. Go to *C:\ProgramData\Microsoft Azure\CredStore* and delete the  *TargetClusterCredentials.json*.
 
-1. Reload Appliance Configuration Manager and you will be able to enter new values for the target cluster.
+1. Reload Appliance Configuration Manager and you are able to enter new values for the target cluster.
 
 > [!NOTE]
 > This workaround is not recommended if you have started the replication. 
@@ -183,7 +183,7 @@ To remove the target appliance from the project, follow these steps:
 
 Replication of VMs can fail because of one or more of the following reasons:
 - The cluster shared volume or the storage container is full.
-- The VMs are not highly available. All VMs must be highly available clustered to be discovered for replication and migration. If VMs are not highly available, these do not show up in the list and are excluded for migration.
+- The VMs aren't highly available. All VMs must be highly available clustered to be discovered for replication and migration. If VMs aren't highly available, these don't show up in the list and are excluded for migration.
 
 **Recommended resolution** 
 
@@ -197,15 +197,15 @@ Also, to migrate a non-HA VM, follow these steps:
 Alternatively, go to Azure Migrate and select **Refresh** to manually refresh **Servers, databases, and web apps** to help expedite the discovery agent synchronization. 
 
 
-### Replication or migration fails with error value cannot be null
+### Replication or migration fails with error value can't be null
 
 **Root cause** 
 
 Replication or migration fails with the following error message:
 
-Value cannot be null. Parameter name: `FetchingHyperVDiskPropertiesFailed`.
+Value can't be null. Parameter name: `FetchingHyperVDiskPropertiesFailed`.
 
-The component fails to fetch the disk properties from the source Hyper-V host. This can happen if the underlying cluster virtual disk is offline or if the disk is not in a healthy state.
+The component fails to fetch the disk properties from the source Hyper-V host. This can happen if the underlying cluster virtual disk is offline or if the disk isn't in a healthy state.
 
 
 **Recommended resolution** 
@@ -226,13 +226,13 @@ The component fails to fetch the disk properties from the source Hyper-V host. T
 
 The disks on the migrated Windows VMs may not come online.
 
-Migration creates a new VHD/VHDX which results in a new disk for the Windows OS on the migrated VM. The OS sees this as a new drive and applies SAN policy. The OS will then not make the disk online as it is considered a shared disk.
+Migration creates a new VHD/VHDX, which results in a new disk for the Windows OS on the migrated VM. The OS sees this as a new drive and applies SAN policy. The OS will then not make the disk online as it is considered a shared disk.
 
 **Recommended resolution** 
 
 To work around this issue, choose one of the following options: 
 
-- Set SAN policy as `OnlineAll` for migrated Windows VMs. Reboot the VMs. This should bring all the disks online. For detailed instructions, see how to [Configure a SAN policy to brings disks online](/azure/migrate/prepare-for-migration#configure-san-policy).
+- Set SAN policy as `OnlineAll` for migrated Windows VMs. Reboot the VMs. This should bring all the disks online. For detailed instructions, see how to [Configure a SAN policy to bring disks online](/azure/migrate/prepare-for-migration#configure-san-policy).
 
 - Manually bring the drives online on migrated VMs.
 
@@ -252,7 +252,7 @@ To mitigate this error, make sure that the VM is operational.
 
 Connect to your source appliance and try the following steps to ensure that your migration is smooth.
 
-1. Get the VM Id in error info.
+1. Get the VM ID in error info.
 
     ```powershell
     $VmId= '146a690f-2e88-4c54-a662-c4e7da70b5e9'
@@ -305,9 +305,9 @@ $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 **Root cause**
 There can be multiple failures once the migration has completed.
 
-- VM is not booting.
-- VM does not have network connectivity.
-- VM disks are not coming online.
+- VM isn't booting.
+- VM doesn't have network connectivity.
+- VM disks aren't coming online.
     
 **Recommended resolution**
 
