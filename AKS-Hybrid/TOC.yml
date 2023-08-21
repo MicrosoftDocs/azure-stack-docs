@@ -321,28 +321,28 @@
     items:
     - name: Set up machine
       href: aks-edge-howto-setup-machine.md
-    - name: Offline installation
-      href: aks-edge-howto-offline-install.md
     - name: Create single machine deployment
       href: aks-edge-howto-single-node-deployment.md
     - name: Create full deployment
       href: aks-edge-howto-multi-node-deployment.md
-    - name: Set up nested virtualization
-      href: aks-edge-howto-setup-nested-environment.md
     - name: Scale out deployment
       href: aks-edge-howto-scale-out.md
     - name: Deploy application
       href: aks-edge-howto-deploy-app.md
-    - name: Enable metric server
-      href: aks-edge-howto-metric-server.md
     - name: Connect to Arc
       href: aks-edge-howto-connect-to-arc.md
+    - name: Enable metric server
+      href: aks-edge-howto-metric-server.md
+    - name: Set up nested virtualization
+      href: aks-edge-howto-setup-nested-environment.md
+    - name: Use GitOps with AKS Edge Essentials
+      href: aks-edge-howto-use-gitops.md
+    - name: Offline installation
+      href: aks-edge-howto-offline-install.md
     - name: Access TPM secrets
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
-    - name: Use GitOps with AKS Edge Essentials
-      href: aks-edge-howto-use-gitops.md
     - name: Update AKS Edge Essentials cluster
       href: aks-edge-howto-update.md
     - name: Uninstall AKS Edge Essentials
