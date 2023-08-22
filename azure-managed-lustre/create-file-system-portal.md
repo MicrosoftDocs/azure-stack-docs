@@ -78,6 +78,18 @@ Set the name and capacity of the Azure Managed Lustre file system:
 
      ![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
 
+Currently the following throughput configurations are available:
+
+| Throughput per TiB storage | Storage Min| Storage Max| Increment|
+|-----------|-----------|-----------|-----------|
+| 40 MB/second | 48 TB | 768 TB | 48 TB|
+| 125 MB/second | 16 TB | 128 TB | 16 TB |
+| 250 MB/second | 8 TB | 128TB | 8 TB |
+| 500 MB/second | 4 TB | 128TB | 4 TB |
+
+> [!NOTE]
+> If you are interested in storage values larger than the listed maximum, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
+
 ### Networking
 
 In the **Networking** section:
