@@ -31,20 +31,24 @@ When you use a template, specify a **SKU name** to define the basic type of Azur
 
 In Azure, the term *SKU* defines a set of features for the object being created. For an Azure Managed Lustre file system, the SKU sets system qualities such as the type of disks used, the amount of storage supported, and the maximum throughput capacity.
 
-As of late October 2022, two SKUs are supported:
+Currently, the following SKUs are supported:
 
+* AMLFS-Durable-Premium-40
 * AMLFS-Durable-Premium-125
 * AMLFS-Durable-Premium-250
+* AMLFS-Durable-Premium-500
+
+These SKUs create a file system that uses durable SSD storage, but they have different qualities for throughput and configurable storage size. This table explains the differences:
+
+| SKU | Throughput per TiB storage | Storage Min| Storage Max*| Increment|
+|----------|-----------|-----------|-----------|-----------|
+| AMLFS-Durable-Premium-40 | 40 MB/second | 48 TB | 768 TB | 48 TB|
+| AMLFS-Durable-Premium-125 | 125 MB/second | 16 TB | 128 TB | 16 TB |
+| AMLFS-Durable-Premium-250 | 250 MB/second | 8 TB | 128TB | 8 TB |
+| AMLFS-Durable-Premium-500 | 500 MB/second | 4 TB | 128TB | 4 TB |
 
 > [!NOTE]
-> The older SKU, AMLFS-Durable-Premium-200, is no longer supported.
-
-Both of these SKUs create a file system that uses durable SSD storage, but they have different qualities for throughput and configurable storage size. This table explains the differences:
-
-| SKU | Throughput per TiB storage | Storage size range|
-|----------|-----------|-----------|
-| AMLFS-Durable-Premium-125 | 125 MB/second | 16 - 128 TiB, in increments of 16 |
-| AMLFS-Durable-Premium-250 | 250 MB/second | 8 - 128 TiB, in increments of 8 |
+> If you are interested in storage values larger than the listed maximum, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
 
 You can use the Azure portal create workflow to double-check SKU capabilities. SKU-specific settings are in the **File System Details** section on the **Basics** tab.
 
