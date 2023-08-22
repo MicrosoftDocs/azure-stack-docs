@@ -461,9 +461,9 @@ You can use the Arc integration validator to verify the following:
 - The Arc resource group doesn’t already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
 - One or more nodes are not already Arc-enabled in a different subscription ID or resource group.
 - The specified Azure region is valid.
-- The resource group limit in subscription is not reached.
-- Azure Stack HCI resource count limit in registration resource group is not reached.
-- The role assignment count limit in subscription is not reached.
+- The resource group limit in the subscription is not reached.
+- The Azure Stack HCI resource count limit in the registration resource group is not reached.
+- The role assignment count limit in the subscription is not reached.
 
 ### Run the Arc integration validator
 
