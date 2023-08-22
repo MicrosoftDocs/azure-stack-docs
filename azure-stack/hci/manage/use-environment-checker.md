@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/15/2023
+ms.date: 08/22/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
