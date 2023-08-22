@@ -2,7 +2,7 @@
 title: Use the Azure Lustre CSI Driver for Kubernetes
 description: How to use an Azure Managed Lustre storage system with your Kubernetes containers in Azure Kubernetes Service (AKS).
 ms.topic: overview
-ms.date: 06/28/2023
+ms.date: 08/21/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 02/24/2023
@@ -150,7 +150,7 @@ For local installation command samples, see [Install Azure Lustre CSI Driver on 
 > The installation script uses `kubectl` to apply several configuration files to your environment. If you haven't installed `kubectl`, follow the instructions in [Connect to the cluster](/azure/aks/learn/quick-kubernetes-deploy-cli#connect-to-the-cluster) to connect to the cluster and access `kubectl`.
 
 > [!IMPORTANT]
-> Upgrades of the CSI driver are not currently supported. To use a newer version of the CSI driver, please install to a newly created AKS cluster. 
+> Upgrades of the CSI driver are not currently supported. To use a newer version of the CSI driver, install the driver to a newly created AKS cluster.
 
 ## Create and configure a persistent volume
 
