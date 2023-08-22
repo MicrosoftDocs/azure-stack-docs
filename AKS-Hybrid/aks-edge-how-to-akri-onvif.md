@@ -18,12 +18,100 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 ## Prerequisites
 
-- A [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials with an external switch up and running.
-- An ONVIF IP camera connected to the same network as your external switch cluster.
+- A [single-machine deployment](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-single-node-deployment) or [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials up and running (if you're using a real ONVIF IP camera you will have to create a full deployment with an external switch).
 - Akri only works on Linux: use Linux nodes for this exercise.
+- An ONVIF IP camera connected to the same network as your external switch cluster OR mock ONVIF container running (deployment steps below).
 
 > [!NOTE]
 > This sample ONVIF broker currently does not support connecting to cameras that require authentication. To run this demo, disable authentication on your ONVIF camera. 
+
+### Mock ONVIF Container
+
+If you do not have an ONVIF IP camera, you can use our mock ONVIF container for this exercise. This will work on both a single-machine or full deployment.
+
+1. (Optional) If you would like to set up a custom RTSP video feed for your ONVIF container, save your `mp4` video (works best if quality is SD rather than HD) and copy the file from your host machine directory into your Linux node using the command below (make sure to replace host machine directory and appropriate video file name):
+
+    ```powershell
+    Copy-AksEdgeNodeFile -FromFile C:\Users\WinIotUser\Downloads\sample.mp4 -toFile /home/aksedge-user/sample.mp4 -PushFile
+    ```
+2. Open an empty YAML file and copy paste the following contents. Make sure to replace the value after `/mnt/` with your video file name under `MP4FILE`. Save the file as `onvif-mock.yaml`. 
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onvif-camera-mocking
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: onvif-camera-mocking
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 1
+      minReadySeconds: 5    
+      template:
+        metadata:
+          labels:
+            app: onvif-camera-mocking
+        spec:
+          nodeSelector:
+            "kubernetes.io/os": linux
+          containers:
+          - name: azure-vote-front
+            image: winiotsaleskit.azurecr.io/onvif-camera-mocking:latest
+            ports:
+            - containerPort: 8554
+            - containerPort: 1000
+            - containerPort: 3702
+            env:
+            - name: INTERFACE
+              value: "eth0"
+            - name: DIRECTORY
+              value: "/onvif-camera-mock"
+            - name: MP4FILE
+              value: /mnt/sample.mp4 
+            volumeMounts:
+            - name: sample-volume
+              mountPath: /mnt
+          volumes:
+          - name: sample-volume
+            hostPath:
+              path: /home/aksedge-user
+              type: Directory
+    ```
+3. Apply the YAML and make sure that the pod is running:
+    ```powershell
+    kubectl apply -f onvif-mock.yaml
+    kubectl get pods
+    ```
+
+4. To enable the IP rules for this mock ONVIF camera to be discovered:
+    - If your CNI is Flannel: 
+      ```powershell
+      Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip route add 239.255.255.250/32 dev cni0"
+      ```
+    - If your CNI is Calico: 
+      1. Find the IP of mock ONVIF container: 
+          ```powershell
+          kubectl get pods -o wide
+          ```
+      2. Find the network interface name that matches the IP of the ONVIF pod (i.e. `cali909b8c65537`):
+          ```powershell
+          Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "route"
+          ```
+      3. Now enable the ONVIF discovery:
+          ```powershell
+          Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip route add 239.255.255.250/32 dev <insert interface name>"
+          ```
+    - Additionally, if you are running a full-deployment with an external switch, enable the `dport 3702` and save the IP tables: 
+      ```powershell
+      Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo iptables -A INPUT -p udp --dport 3702 -j ACCEPT"
+      Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo sed -i '/-A OUTPUT -j ACCEPT/i-A INPUT -p udp -m udp --dport 3702 -j ACCEPT' /etc/systemd/scripts/ip4save"
+      ```
+Now you're ready to run Akri and discover the mock ONVIF camera!
 
 ## Run Akri
    
@@ -56,19 +144,14 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 In order for the AKS Edge Essentials cluster to discover your camera, open the port for WS-Discovery (Web Services Dynamic Discovery), which is a multicast discovery protocol that operates over TCP and UDP port `3702`. 
 
-1. Run the following command to open port 3702 within the Linux node:
+1. Run the following command to open `sport 3702` within the Linux node and save the IP tables:
 
     ```powershell
     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
-    ```
-    
-2. Save the IP tables so that even if the node is stopped and restarted, the rules for opening port 3072 will be saved:
-
-    ```powershell
     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo sed -i '/-A OUTPUT -j ACCEPT/i-A INPUT -p udp -m udp --sport 3702 -j ACCEPT' /etc/systemd/scripts/ip4save"
     ```
-
-3. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera:
+    
+2. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera:
 
     ```powershell
     kubectl get akrii
@@ -190,6 +273,12 @@ In order for the AKS Edge Essentials cluster to discover your camera, open the p
 
     ```powershell
     helm delete akri
+    ```
+
+3. (Optional) If you used the mock ONVIF camera, delete the deployment.
+    
+    ```powershell
+    kubectl delete -f onvif-mock.yaml
     ```
 
 
