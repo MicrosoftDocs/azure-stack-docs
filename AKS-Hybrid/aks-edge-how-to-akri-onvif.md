@@ -18,7 +18,7 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 ## Prerequisites
 
-- A [single-machine deployment](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-single-node-deployment) or [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials up and running (if you're using a real ONVIF IP camera you will have to create a full deployment with an external switch).
+- A [single-machine deployment](aks-edge-howto-single-node-deployment.md) or [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials up and running (if you're using a real ONVIF IP camera you will have to create a full deployment with an external switch).
 - Akri only works on Linux: use Linux nodes for this exercise.
 - An ONVIF IP camera connected to the same network as your external switch cluster OR mock ONVIF container running (deployment steps below).
 
