@@ -16,11 +16,11 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. 
+The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior.
 
 Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
-For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
+For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci).
 
 ## Benefits
 
