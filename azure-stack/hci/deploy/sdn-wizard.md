@@ -81,7 +81,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
         1. Specify the default gateway.
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
-    > [NOTE]
+    > [!NOTE]
     > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
@@ -147,7 +147,7 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
     
 1. Under **Credentials**, enter the username and password that you used to join the Software Load Balancer VMs to the cluster domain.
-    > [NOTE]
+    > [!NOTE]
     > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
@@ -188,7 +188,7 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
         
 1. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
-    > [NOTE]
+    > [!NOTE]
     > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value may depend on various factors, such as physical NIC speed on the host machine, other VMs on the host machine and their throughput requirements.
