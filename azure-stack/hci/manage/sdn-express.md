@@ -81,8 +81,8 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **ManagementGateway** - Gateway address for the management network
 - **ManagementDNS** - DNS server for the management network
 - **ManagementVLANID** - VLAN ID for the management network
-- **DomainJoinUsername** - administrator username. Note that the username should be in the followiing format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
-- **LocalAdminDomainUser** - local administrator username. Note that the username should be in the followiing format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
+- **DomainJoinUsername** - administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
+- **LocalAdminDomainUser** - local administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **HyperVHosts** - host servers to be managed by Network Controller
 - **NCUsername** - Network Controller account username
