@@ -24,7 +24,7 @@ Get-AzSDnsServerSettings [<CommonParameters>]
 
 ## Description
 
-Returns the current configuration of the "UseRootHint" setting of the DNS servers in Azure Stack Hub. The configuration can be updated using the [Set-AzSDnsServerSettings](set-azsdnsserversettings.md) cmdlet.
+Returns the current configuration of the `UseRootHint` setting of the DNS servers in Azure Stack Hub. You can update the configuration by using the [Set-AzSDnsServerSettings](set-azsdnsserversettings.md) cmdlet.
 
 ## Examples
 
