@@ -13,7 +13,8 @@ ms.author: nebird
 
 Updates DNS server settings. This cmdlet is used to control the -UseRootHint setting for the internal DNS servers. The default configuration for -UseRootHint is enabled / $true.
 
-Note: This cmdlet is only available in Azure Stack Hub 1.2206.2.66 and later builds.
+> [!NOTE]
+> This cmdlet is only available in Azure Stack Hub 1.2206.2.66 and later builds.
 
 ## Syntax
 
