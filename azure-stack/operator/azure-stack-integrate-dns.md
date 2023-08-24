@@ -61,7 +61,7 @@ Therefore, if a tenant indicates a value **Myapp** in the DNS name label field o
 
 `myapp.east.cloudapp.cloud.fabrikam.com`
 
-If you want to leverage this functionality and use this namespace, you must integrate the DNS servers that host the external DNS zone for Azure Stack Hub with the DNS servers that host the parent zone you want to use as well. This is a different namespace than the namespace for the Azure Stack Hub service endpoints, so you must create an additional delegation or conditional forwarding rule.
+If you want to use this functionality and namespace, you must integrate the DNS servers that host the external DNS zone for Azure Stack Hub with the DNS servers that host the parent zone you want to use. This namespace is different than the namespace for the Azure Stack Hub service endpoints, so you must create another delegation or conditional forwarding rule.
 
 For more information about how the DNS Name label works, see [Using DNS in Azure Stack Hub](../user/azure-stack-dns.md).
 
@@ -82,7 +82,7 @@ To resolve DNS names for endpoints outside Azure Stack Hub (for example: www.bin
 
 If the external DNS forwarder servers are unable to resolve a DNS request forwarded from Azure Stack Hub, by default the internal DNS recursive resolver service attempts to contact the [DNS root hints servers](https://www.iana.org/domains/root/servers). This fallback behavior is consistent with DNS server name resolution standards. The internet root hints servers are used to help resolve DNS address information when the DNS forwarder servers are unable to resolve the query locally from a hosted zone or the DNS server cache.
 
-To manage the **DNS root hints** setting for the internal DNS name resolution service within Azure Stack Hub, use the [`Get-AzSDnsServerSettings`](../reference/pep/get-azsdnsserversettings.md) cmdlet to view the current configuration; the default setting is enabled. The [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet provides the ability to enable or disable the -**UseRootHint** configuration of the internal DNS servers.
+To manage the **DNS root hints** setting for the internal DNS name resolution service within Azure Stack Hub, use the [`Get-AzSDnsServerSettings`](../reference/pep/get-azsdnsserversettings.md) cmdlet to view the current configuration; the default setting is enabled. The [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet enables or disables the -**UseRootHint** configuration of the internal DNS servers.
 
 > [!NOTE]
 > For scenarios in which Azure Stack Hub is unable to contact the internet DNS root hints servers, such as UDP port 53 (DNS), in which network access is permanently blocked or fully disconnected/air-gapped, it is recommended that you disable the `-UseRootHint` setting to prevent extended timeouts in DNS name resolution. Use the [`Set-AzSDnsServerSettings`](../reference/pep/set-azsdnsserversettings.md) cmdlet to control this setting.
@@ -127,7 +127,7 @@ The FQDNs for the Azure Stack Hub DNS servers have the following format:
 
 `<NAMINGPREFIX>-ns02.<REGION>.<EXTERNALDOMAINNAME>`
 
-Using the sample values, the FQDNs for the DNS servers are:
+If you use the sample values, the FQDNs for the DNS servers are:
 
 `azs-ns01.east.cloud.fabrikam.com`
 
