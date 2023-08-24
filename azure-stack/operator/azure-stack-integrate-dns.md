@@ -153,7 +153,7 @@ Example:
 
 ## Editing DNS Forwarder IPs
 
-DNS Forwarder IPs are set during deployment of Azure Stack Hub. However, if the Forwarder IPs need to be updated for any reason, you can edit the values by connecting to the privileged endpoint and running the [`Get-AzSDnsForwarder`](../reference/pep/get-azsdnsforwarder.md) and [`Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]`](../reference/pep/set-azsdnsforwarder.md) PowerShell cmdlets. For more information, see [privileged endpoint](azure-stack-privileged-endpoint.md).
+DNS forwarder IPs are set during deployment of Azure Stack Hub. However, if the forwarder IPs need to be updated for any reason, you can edit the values by connecting to the privileged endpoint and running the [`Get-AzSDnsForwarder`](../reference/pep/get-azsdnsforwarder.md) and [`Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]`](../reference/pep/set-azsdnsforwarder.md) PowerShell cmdlets. For more information, see [privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ## Delegating the external DNS zone to Azure Stack Hub
 
