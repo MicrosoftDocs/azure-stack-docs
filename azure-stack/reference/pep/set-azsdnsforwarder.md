@@ -21,7 +21,7 @@ Set-AzSDnsForwarder -IPAddress <System.Net.IPAddress>
 
 ## Description
 
-Updates the DNS forwarder IP addresses used in Azure Stack Hub. The current configuration can be viewed using the [Get-AzSDnsForwarder](get-azsdnsforwarder.md) cmdlet.
+Updates the DNS forwarder IP addresses used in Azure Stack Hub. You can view the current configuration by using the [Get-AzSDnsForwarder](get-azsdnsforwarder.md) cmdlet.
 
 ## Examples
 
