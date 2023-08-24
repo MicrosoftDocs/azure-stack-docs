@@ -35,6 +35,7 @@ Get-AzSDnsServerSettings
 
 ## Parameters
 
+None.
 
 ## Next steps
 
