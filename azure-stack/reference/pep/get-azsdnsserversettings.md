@@ -13,7 +13,8 @@ ms.author: nebird
 
 Gets the DNS server settings.
 
-Note: This cmdlet is only available in Azure Stack Hub 1.2206.2.66 and later builds.
+> [!NOTE]
+> This cmdlet is only available in Azure Stack Hub 1.2206.2.66 and later builds.
 
 ## Syntax
 
