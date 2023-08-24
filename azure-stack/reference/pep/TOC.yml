@@ -6,6 +6,10 @@
     href: close-privilegedendpoint.md
   - name: Get-ActionStatus
     href: get-actionstatus.md
+  - name: Get-AzSDnsForwarder
+    href: get-azsdnsforwarder.md
+  - name: Get-AzSDnsServerSettings
+    href: get-azsdnsserversettings.md
   - name: Get-AzSLegalNotice
     href: get-azslegalnotice.md
   - name: Get-AzureStackLog
@@ -68,6 +72,10 @@
     href: reset-datacenterintegrationconfiguration.md
   - name: Send-AzureStackDiagnosticLog
     href: send-azurestackdiagnosticlog.md
+  - name: Set-AzSDnsForwarder
+    href: set-azsdnsforwarder.md
+  - name: Set-AzSDnsServerSettings
+    href: set-azsdnsserversettings.md
   - name: Set-AzSLegalNotice
     href: set-azslegalnotice.md
   - name: Set-CloudAdminUserPassword
