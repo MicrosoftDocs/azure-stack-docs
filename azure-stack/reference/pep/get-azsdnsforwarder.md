@@ -21,7 +21,7 @@ Get-AzSDnsForwarder
 
 ## Description
 
-Gets the list of DNS forwarder IP addresses. The configuration can be updated using the [Set-AzSDnsForwarder](set-azsdnsforwarder.md) cmdlet.
+Gets the list of DNS forwarder IP addresses. You can update the configuration by using the [Set-AzSDnsForwarder](set-azsdnsforwarder.md) cmdlet.
 
 ## Examples
 
