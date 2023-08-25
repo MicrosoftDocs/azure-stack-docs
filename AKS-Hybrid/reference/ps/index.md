@@ -3,10 +3,9 @@ title: AksHci PowerShell module for AKS hybrid
 description: Learn how to use the AksHci module commands to manage AKS hybrid 
 author: sethmanheim
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/25/2023
 ms.author: sethm 
 ms.lastreviewed: 01/26/2023
-ms.reviewer: jeguan
 
 ---
 
@@ -38,7 +37,7 @@ Commands to interact with AKS hybrid.
 | [Get-AksHciProxySetting](./get-akshciproxysetting.md) | Retrieves a list or an individual proxy settings object. |
 | [Get-AksHciRegistration](./get-akshciregistration.md) | Gets registration information for the AKS hybrid deployment. |
 | [Get-AksHciRelease](./get-akshcirelease.md) | Downloads the install and upgrade bits to a local share. |
-| [Get-AksHciContainerStorage](./get-akshcistoragecontainer.md) | Gets the information of the specified storage container. |
+| [Get-AksHciStorageContainer](./get-akshcistoragecontainer.md) | Gets information about the specified storage container. |
 | [Get-AksHciUpdates](./get-akshciupdates.md) | Lists available updates for AKS hybrid. |
 | [Get-AksHciVersion](./get-akshciversion.md) | Gets the current version of AKS hybrid. |
 | [Get-AksHciVmSize](./get-akshcivmsize.md) | Lists supported VM sizes. |
