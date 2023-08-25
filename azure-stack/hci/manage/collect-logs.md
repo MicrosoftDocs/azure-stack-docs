@@ -17,13 +17,7 @@ This article describes how to collect diagnostic logs and send them to Microsoft
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-You can use the `Send-DiagnosticData` cmdlet to save and transmit diagnostic data to Microsoft. Depending on your connectivity to Azure, there are various ways to use this cmdlet:
-
-- When the cluster is deployed and connected to Azure, the cmdlet collects logs and temporarily saves them locally. This copy is parsed, sent to Microsoft, and then automatically deleted from your system. See [Collect logs when the cluster is connected to Azure](#collect-logs-when-the-cluster-is-connected-to-azure).
-
-- When the cluster is deployed but not connected to Azure or during the pre-deployment or pre-registration of cluster, the cmdlet saves the logs to a local Server Message Block (SMB) share. You can then use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the validation process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any validation issues. See [Collect logs when the cluster is disconnected from Azure](#collect-logs-when-the-cluster-is-disconnected-from-azure).
-
-## Collect logs when the cluster is connected to Azure
+## Collect logs
 
 Use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
@@ -151,11 +145,20 @@ To get a history of log collections for the last 90 days, enter:
    PS C:\CloudDeployment\logs>
    ```
 
-## Collect logs when the cluster is disconnected from Azure
+## Save logs to a local file share
 
-When the cluster is deployed but not connected to Azure or during the pre-deployment process, you can use the `Send-DiagnosticData` cmdlet to save logs to a local Server Message Block (SMB) share. Then you can use the `Send-AzStackHciDiagnosticData` cmdlet to manually send the logs to Microsoft. During the deployment process, you can invoke the `Send-DiagnosticData` cmdlet from the Environment Checker to troubleshoot any deployment issues.
+You can save diagnostic logs to a local Server Message Block (SMB) share if you want to save data locally or don’t have access to send data to Azure.
+Run the following command on each node of the cluster to collect logs and save them locally:
 
-[!INCLUDE [include](../../includes/hci-send-logs-manually.md)]
+```powershell
+Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>  
+```
+
+If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
+
+```powershell
+Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
+```
 
 ## Next steps
 
