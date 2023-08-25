@@ -1,12 +1,12 @@
 ---
-title: Support policies for AKS hybrid
-description: Learn about AKS hybrid support policies, shared responsibility, and features that are in preview (or alpha or beta).
+title: Azure policy guidance for AKS hybrid
+description: Learn about AKS hybrid best practices and guidance in using Azure policy.
 ms.topic: article
-ms.date: 05/03/2023
+ms.date: 08/25/2023
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023
-ms.reviewer: rbaziwane
+ms.reviewer: sulahiri
 
 ---
 
