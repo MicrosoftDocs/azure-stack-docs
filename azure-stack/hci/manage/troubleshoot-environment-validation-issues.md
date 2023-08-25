@@ -61,7 +61,7 @@ Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the 
 
 Use the `Send-AzStackHciDiagnosticData` cmdlet to send logs from any machine with outbound connectivity, outside of the Azure Stack HCI stamp.
 
-The input parameters used to send logs using `Send-AzStackHciDiagnosticData` are the same that are required as part of the deployment process. For description about the input parameters, see [Deploy Azure Stack HCI using PowerShell (preview)](../hci/deploy/deployment-tool-powershell.md).
+The input parameters used to send logs using `Send-AzStackHciDiagnosticData` are the same that are required as part of the deployment process. For description about the input parameters, see [Deploy Azure Stack HCI using PowerShell (preview)](../deploy/deployment-tool-powershell.md).
 
 You can use any of the following credentials to send logs:
 
