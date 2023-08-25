@@ -80,8 +80,16 @@ $deployArgs = Import-Clixml -Path C:\Deployment\DeployArguments.xml
 
 The following parameters are required to use the `Send-AzStackHciDiagnosticData` cmdlet. Consult your network administrator as needed for this information.
 
-- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process. Use the following command to get the resource group name:
+- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process. Follow these steps to get the resource group name:
 
+   1. Establish a remote PowerShell session with one of the cluster nodes. Run PowerShell as administrator and run the following command:
+   
+   ```powershell
+   Enter-PsSession -ComputerName <NodeName> -Credential $cred
+   ```
+   
+   1. Run the following command to get the resource group name:
+   
    ```powershell
    Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
    $eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue
