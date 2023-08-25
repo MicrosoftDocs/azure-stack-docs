@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/27/2023
+ms.date: 08/07/2023
 ms.author: alkohli
 ---
 
@@ -18,8 +18,6 @@ This article describes how to use Azure Command-Line Interface (CLI) to set up A
 - Installing PowerShell modules, Azure CLI extensions, and host agent service
 - Specify Azure subscription information and register resource providers
 - Set up Arc VM management
-
-To set up Azure Arc VM management using Windows Admin Center, see [Set up Azure Arc VM management using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
 For an overview of Azure Arc VM management, see [What is Azure Arc VM management?](azure-arc-vm-management-overview.md)
 
@@ -51,7 +49,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
 1. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
 
    ```PowerShell
-   $VswitchName="<Switch-Name>"
+   $VswitchName='''<Switch-Name>'''
    $ControlPlaneIP="<IP-address>"
    $csv_path="<input-from-admin>"
    $VlanID="<vLAN-ID>" (Optional)
@@ -71,7 +69,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    | **ControlPlaneIP** | This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. If DHCP is used to assign the control plane IP, then the IP address needs to be reserved. |
    | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
    | **VlanID** | (Optional) vLAN identifier. A `0` value means there's no vLAN ID for optional DNS servers.|
-   | **VMIP_1**, **VMIP_2** | (Required only for static IP configurations) IP addresses for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. **VMIP_2** will only be used during an upgrade of the Arc Resource Bridge. Make sure **VMIP_1** and **VMIP_2** are in ascending order to form a pool, with **VMIP_1** the first IP of the pool and **VMIP_2** the last IP of the pool. |
+   | **VMIP_1**, **VMIP_2** | (Required only for static IP configurations) IP addresses for the Arc Resource Bridge. If you don't specify these parameters, the Arc Resource Bridge will get an IP address from an available DHCP server. **VMIP_2** will only be used during an upgrade of the Arc Resource Bridge. Make sure **VMIP_1** and **VMIP_2** are in ascending order to form a pool, with **VMIP_1** the first IP of the pool and **VMIP_2** the last IP of the pool. You need to reserve the IP address. Failure to reserve the IP address will cause the Arc resource bridge to be in an unusable state should the IP change. If using DHCP, the Arc resource bridge is not upgradeable - to get to the latest version, it will have to be redeployed.|
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: <br>- For a list of DNS servers: `@("192.168.250.250","192.168.250.255")`<br>- For a single DNS server: `"192.168.250.250"` |
    | **IPAddressPrefix** | (Required only for static IP configurations) Network address in CIDR notation. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |

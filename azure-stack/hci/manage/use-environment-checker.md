@@ -456,7 +456,14 @@ The following sample is the output from a failed run of the network validator. T
 
 The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
 
-In the Azure portal, each node of the Azure Stack HCI cluster is represented as an Arc resource with the name as the respective node's hostname. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+You can use the Arc integration validator to verify the following:
+
+- The Arc resource group doesn’t already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
+- One or more nodes are not already Arc-enabled in a different subscription ID or resource group.
+- The specified Azure region is valid.
+- The resource group limit in the subscription is not reached.
+- The Azure Stack HCI resource count limit in the registration resource group is not reached.
+- The role assignment count limit in the subscription is not reached.
 
 ### Run the Arc integration validator
 

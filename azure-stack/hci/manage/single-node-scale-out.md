@@ -122,7 +122,7 @@ Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 4
 **For a tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 4
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberOfDataCopies 4
 ```
 
 Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.
@@ -152,7 +152,7 @@ Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 3
 **For a tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 3
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberOfDataCopies 3
 ```
 
 Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.

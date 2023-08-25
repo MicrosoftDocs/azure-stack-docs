@@ -43,12 +43,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X | |
-| [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
-| [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
-| [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X|  X|
-| [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
-| [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
+| [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;| &check; | |
+| [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check;|
+| [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
+| [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
+| [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
+| [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;|&check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -57,12 +57,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model|Firmware|Management|Storage|Compute (Standard)|Compute (SDN)|
 |-----|---|:-:|:-:|:-:|:-:|
-| [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X | |
-| [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X| X|
-| [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|X| X| X| X |
-| [7280R](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|X| X| X|  X|
-| [7280R3](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|X| X| X| X |
-| [7060X4](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|X| X| X| X |
+| [7050X3](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf) <br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; | |
+| [7060X](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf) <br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check;|
+| [7260X3](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf) <br>(10, 25, 100 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
+| [7280R](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
+| [7280R3](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
+| [7060X4](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
 
 
 # [Aruba](#tab/Aruba)
@@ -71,19 +71,20 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |X| X| X| X | |
-| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |X| X| X| X|
-| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|X| X| X| X |
-| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|X| X| X|  X|
+| [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; | |
+| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
+| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 
 ### 21H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11 or later |X| X| X| X | |
-| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11 or later |X| X| X| X|
-| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11 or later|X| X| X| X |
-| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11 or later|X| X| X|  X|
+| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11 or later |&check;| &check;| &check;| &check; | |
+| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11 or later |&check;| &check;| &check;| &check; |
+| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11 or later|&check;| &check;| &check;| &check; |
+| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11 or later|&check;| &check;| &check;| &check; |
 
 # [Cisco](#tab/Cisco)
 
@@ -93,12 +94,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
-| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
-| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X|  X|
-| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
+| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; | |
+| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -106,12 +107,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X | |
-| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X| X|
-| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|X| X| X|  X|
-| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|X| X| X| X |
-| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|X| X| X| X |
+| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; | |
+| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
 
 # [Dell](#tab/Dell)
 
@@ -119,9 +120,9 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X | |
-| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
-| [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |X| X| X| X|
+| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; ||
+| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -130,8 +131,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model | Firmware  | Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |--- | :-:  | :-:  | :-:   | :-:   |
-| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X | |
-| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(25, 100 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|X| X| X| X|
+| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|&check;| &check;| &check;| &check; ||
+| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(25, 100 GbE) |SmartFabric OS10.5.2.4, <br>10.5.3.4 or later|&check;| &check;| &check;| &check; |
 
 # [HPE](#tab/HPE)
 
@@ -139,8 +140,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X | |
-| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
+| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; ||
+| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -148,8 +149,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE) |Comware 7 version R6710 or later|X| X| X| X | |
-| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |X| X| X| X|
+| [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE) |Comware 7 version R6710 or later|&check;| &check;| &check;| &check; | |
+| [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; |
 
 # [Juniper](#tab/Juniper)
 
@@ -157,12 +158,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later|X| X| X| X | |
-| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X| X|
-| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
-| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X|  X|
-| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X|  X|
-| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|X| X| X| X |
+| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; ||
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
+| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
+| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |&check;| &check;| &check;| &check; |
+| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
+| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -170,12 +171,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later |X| X| X| X | |
-| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X| X|
-| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
-| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |X| X| X|  X|
-| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|X| X| X|  X|
-| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE)|Junos 20.2R3-S2 or later|X| X| X| X |
+| [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf) <br>(10 GbE) |Junos 20.2R3-S2 or later |&check;| &check;| &check;| &check; ||
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |&check;| &check;| &check;| &check; |
+| [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
+| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)<br>(10, 25, 100 GbE)|Junos 20.2R3-S2 or later |&check;| &check;| &check;| &check; |
+| [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf)<br>(25, 100 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
+| [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE)|Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
 
 # [Lenovo](#tab/Lenovo)
 
@@ -183,10 +184,10 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272) <br>(10 GbE) |CNOS 10.10.7.100 or later|X| X| X| X | |
-| [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch) <br>(10 GbE)|CNOS 10.10.7.100 or later |X| X| X| X|
-| [NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) <br>(25 GbE)|CNOS 10.10.7.100 or later |X| X| X| X|
-| [NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) <br>(100 GbE)|CNOS 10.10.7.100 or later |X| X| X| X|
+| [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272) <br>(10 GbE) |CNOS 10.10.7.100 or later|&check;| &check;| &check;| &check; ||
+| [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch) <br>(10 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
+| [NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) <br>(25 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
+| [NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) <br>(100 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
 
 # [NVIDIA](#tab/NVIDIA)
 
@@ -194,9 +195,9 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |X| X| X| X | |
-| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |X| X| X| X|
-| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
+| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; | |
+| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; |
+| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -205,9 +206,9 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X | |
-| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|X| X| X| X|
-| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|X| X| X| X |
+| [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; ||
+| [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE) |Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; |
+| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; |
 
 ---
 
@@ -228,19 +229,19 @@ Here are the mandatory IEEE standards and specifications:
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)| 
 |-----  | :-:  | :-:  | :-:   | :-:   |
-| Virtual LANS |X| X| X| X | |
-| Priority Flow Control|| X| | |
-| Enhanced Transmission Selection|| X| | |
-| LLDP Port VLAN ID |X| | | |
-| LLDP VLAN Name|| X| X|X |
-| LLDP Link Aggregation|X| X| X|X |
-| LLDP ETS Configuration||X | | |
-| LLDP ETS Recommendation || X|| |
-| LLDP PFC Configuration  || X| | |
-| LLDP Maximum Frame Size |X| X| X|X |
-| Maximum Transmission Unit || | |X |
-| Border Gateway Protocol || | |X |
-| DHCP Relay Agent |X| | | |
+| Virtual LANS |&check;| &check;| &check;| &check; | |
+| Priority Flow Control|| &check;| | |
+| Enhanced Transmission Selection|| &check;| | |
+| LLDP Port VLAN ID |&check;| | | |
+| LLDP VLAN Name|| &check;| &check;|&check; |
+| LLDP Link Aggregation|&check;| &check;| &check;|&check; |
+| LLDP ETS Configuration||&check; | | |
+| LLDP ETS Recommendation || &check;|| |
+| LLDP PFC Configuration  || &check;| | |
+| LLDP Maximum Frame Size |&check;| &check;| &check;|&check; |
+| Maximum Transmission Unit || | |&check; |
+| Border Gateway Protocol || | |&check; |
+| DHCP Relay Agent |&check;| | | |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 ### Standard: IEEE 802.1Q
@@ -300,11 +301,11 @@ Ethernet switches used for Azure Stack HCI management traffic must support DHCP 
 ### 21H2 Role Requirements
 |Requirement | Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  | :-:  | :-:  | :-:   | :-:   |
-| Virtual LANS |X| X| X| X | |
-| Priority Flow Control || X| | |
-| Enhanced Transmission Selection || X| ||
-| LLDP VLAN Name|| X| X|X |
-| LLDP Maximum Frame Size|X| X| X|X |
+| Virtual LANS |&check;| &check;| &check;|&check; | |
+| Priority Flow Control || &check;| | |
+| Enhanced Transmission Selection || &check;| ||
+| LLDP VLAN Name|| &check;| &check;|&check; |
+| LLDP Maximum Frame Size|&check;| &check;| &check;|&check; |
 
 ### Standard: IEEE 802.1Q
 
