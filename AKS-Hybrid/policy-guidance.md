@@ -20,11 +20,11 @@ Azure policies are set at the subscription level. By default, the policies apply
 
 ### Different subscriptions for different environments
 
-Before launching a policy in production, it's recommended that you test it in a pre-production environment. Because policies are set at the subscription level, it's best to keep pre-production and production environments on separate subscriptions.
+Before launching a policy in production, it's recommended that you test it in a preproduction environment. Because policies are set at the subscription level, it's best to keep preproduction and production environments on separate subscriptions.
 
 ### Policy testing in audit mode
 
-Before enforcing a policy in pre-production or production environments, verify its functionality in audit mode.
+Before enforcing a policy in preproduction or production environments, verify its functionality in audit mode.
 
 ## Considerations for applying Azure policies to AKS hybrid management clusters
 
