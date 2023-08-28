@@ -3,7 +3,7 @@ title: Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azur
 description: Learn the replication process for Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/18/2023
+ms.date: 08/28/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -18,7 +18,7 @@ This article describes the replication process for Hyper-V virtual machine (VM) 
 
 ## Before you begin
 
-Before the discovery process takes place, make sure you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server .
+Before replication can occur, make sure that you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server .
 
 In addition, your Azure Stack HCI cluster node should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
@@ -56,7 +56,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. Once the key is generated, copy and save the generated target key to Notepad or other text editor for future use.
 
-1. (Optional) Under **Step 2**, select **Download installer** to download the appliance .zip file. Since the same bits are used for both source and target appliances, you can copy and reuse the .zip file you downloaded previously for the source appliance.
+1. Under **Step 2**, select **Download installer** to download the appliance .zip file.
 
 ## Step 2: Create connection between appliances
 
@@ -64,15 +64,13 @@ This step creates a connection between the source and target appliances and faci
 
 1. Open **Hyper-V Manager** on the source appliance.
 
-1. Select **Connect to Server**, then select **Another computer**.
-
 1. Select from the dropdown, or browse for, the first node of the target Azure Stack HCI cluster, and then select **OK**.
 
 1. Repeat steps 2 and 3 for each node in the target Azure Stack HCI cluster.
 
 ## Step 3: Install target appliance VM OS
 
-In this step, you download the operating system (OS) VHD for the target appliance VMs on the target Azure Stack HCI cluster.
+This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the operating system (OS) .vhd file for the target appliance VMs on the target Azure Stack HCI cluster.
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD for the VM.
 
@@ -124,7 +122,9 @@ In this step, you download the operating system (OS) VHD for the target applianc
 
 ## Step 4: Install target appliance
 
-The target appliance and the source appliance use the same .zip file, so there is no need to download it again.
+This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the .vhd file for the target appliance VMs on the target Azure Stack HCI cluster.
+
+The target appliance and the source appliance use the same file, so there is no need to download it again.
 
 1. Open **Server Manager**.
 
