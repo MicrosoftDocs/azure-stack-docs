@@ -20,9 +20,7 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that you are migrating.
 
-**Source appliance OS**: Windows Server 2016
-
-**Target appliance OS**: Windows server 2022
+**Source and target appliance OS**: Windows Server 2022
 
 **Windows Server guest VM OS**:
 
@@ -54,7 +52,6 @@ Keep in mind the following information as you create a project:
 
 - The project geography is only used to store the discovered metadata.
 - When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate does not move or store customer data outside of the region allocated.
-- Although you can only create projects in these geographies, you can migrate servers for other target locations.
 
 ## Azure portal requirements
 
@@ -67,11 +64,11 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Source Hyper-V cluster and VM requirements
 
-Scale-Out File Server (SOFS) is not supported in Public Preview. If the VM disks are on a SOFS, you can’t migrate those VMs using the Public Preview release.
+In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks are not attached to the local cluster storage, the disks can’t be migrated.
 
 ## Target Azure Stack HCI cluster and VM requirements
 
-- The target Azure Stack HCI cluster HCI version must be the 23H2 supplemental package release or the [latest release](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+- The target Azure Stack HCI cluster HCI version must be the 22H2 release or later.
 
 - Standalone VMs on standalone (non-clustered) Hyper-V hosts can be discovered and migrated however, standalone VMs hosted on "clustered" Hyper-V hosts cannot be discovered and migrated. To migrate these VMs they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
 
