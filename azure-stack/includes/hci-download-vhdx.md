@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 07/26/2023
+ms.date: 08/28/2023
 ---
 
 
@@ -17,9 +17,9 @@ Follow these steps to download an English version of the VHDX file:
 
 1. [Download the Azure Stack HCI operating system from the Azure portal](../hci/deploy/download-azure-stack-hci-software.md). Make sure to select **English VHDX** from the **Choose language** dropdown list.
 
-Currently, a non-English VHDX file is not available for download. If you require a non-English version, download the corresponding ISO file and convert it to VHDX using the `Convert-WindowsImage` cmdlet. You must run this script from a Windows client computer. You will probably need to run this as Administrator and modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
+Currently, a non-English VHDX file isn't available for download. If you require a non-English version, download the corresponding ISO file and convert it to VHDX using the `Convert-WindowsImage` cmdlet. You must run this script from a Windows client computer. You'll probably need to run this script as Administrator and modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
 
-The following is an example of using `Convert-WindowsImage`:
+The following syntax shows an example of using `Convert-WindowsImage`:
 
 ```powershell
 Install-Module -Name Convert-WindowsImage
