@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 05/25/2023
+ms.date: 07/26/2023
 ---
 
 
@@ -15,11 +15,7 @@ SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server ope
 
 Follow these steps to download an English version of the VHDX file:
 
-1. Go to [Azure Stack HCI software download site](https://azure.microsoft.com/contact/azure-stack-hci/).
-1. Complete the download form and select **Submit** to display the **Azure Stack HCI software download** page.
-1. Under **Azure Stack HCI**, select **English – VHDX** from the **Choose language** dropdown menu, and then select **Download Azure Stack HCI**.
-
-    :::image type="content" source="./media/sdn/download-vhdx.png" alt-text="Screenshot of the Azure Stack HCI software download page showing the option to download the VHDX file." lightbox="./media/sdn/download-vhdx.png":::
+1. [Download the Azure Stack HCI operating system from the Azure portal](../hci/deploy/download-azure-stack-hci-software.md). Make sure to select **English VHDX** from the **Choose language** dropdown list.
 
 Currently, a non-English VHDX file is not available for download. If you require a non-English version, download the corresponding ISO file and convert it to VHDX using the `Convert-WindowsImage` cmdlet. You must run this script from a Windows client computer. You will probably need to run this as Administrator and modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
 
