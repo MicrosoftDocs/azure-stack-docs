@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/17/2023
+ms.date: 08/28/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -20,7 +20,7 @@ This article describes the discovery process for Hyper-V virtual machine (VM) mi
 
 Before the discovery process takes place, make sure you have reviewed all [requirements](migrate-hyperv-discover.md) and satisfied all [prerequisites](migrate-hyperv-discover.md).
 
-In addition, your Hyper-V host should have sufficient resources to create a Windows Server 2016 VM with this minimum configuration:
+In addition, your Hyper-V host should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
 - 16GB memory.
 - 80 GB disk.
@@ -30,7 +30,7 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 ## Step 1: Generate source appliance key and download appliance
 
-In this step, you generate a source key and download a .zip file for the source appliance.
+In this step, you generate a source key and download a .zip or .vhd file for the source appliance.
 
 1. In the Azure portal, select **Servers, databases and webapps**, then select the migrate project you previously created.
 
@@ -52,16 +52,16 @@ In this step, you generate a source key and download a .zip file for the source 
 
 In this step, you download the operating system (OS) ISO for the source appliance virtual machine (VM) on the source Hyper-V server.
 
-1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2016), then select and download the Windows Server 2016 ISO file.
+1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
     :::image type="content" source="media/source-os-download.png" alt-text="Screenshot of Download source VM OS page  ." lightbox="media/source-os-download.png":::
 
     > [!NOTE]
-    > It is not a requirement to use the evaluation OS version - you can use you own ISO images as long as the OS version is Windows Server 2016.
+    > It is not a requirement to use the evaluation OS version - you can use you own ISO images as long as the OS version is Windows Server 2022.
 
-1. On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
+1. (Only applies for .zip file use) On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
 
-1. Under **Actions** on the right, select **New > Virtual machine**.
+1. (Only applies for .zip file use) Under **Actions** on the right, select **New > Virtual machine**.
 
 1. Select the install OS from **image file** option and select the downloaded ISO.
 
@@ -70,7 +70,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
     - VM name
     - VM location
     - **VM type**: `Standalone` (non-High Availability type)
-    - **Operating System**: Windows Server 2016
+    - **Operating System**: Windows Server 2022
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
@@ -108,7 +108,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 1. As an administrator, run the following PowerShell script from the folder of the extracted .zip file:
 
   ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 - DisableAutoUpdate -Scenario HyperV -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
+    Set-ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 - DisableAutoUpdate -Scenario HyperV -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
   ``````
 
 1. When prompted, select **Y** to do the following:
