@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 07/28/2023
+ms.date: 08/28/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,10 +23,10 @@ Azure Migrate is a simplified, unified platform that is used to assess, migrate 
 
 Using Azure Migrate to move your Hyper-V VMs to Azure Stack HCI offers the following benefits:
 
-- This solution works with both Hyper-V and VMware VM. In this release, only the Hyper-V solution is made available.
-- This solution requires little to no prep. You don't need to prep your source VMs or install agents on them prior to migration.
+- This solution works with both Hyper-V and VMware VM.
+- For this solution, you don't need to prep your source VMs or install agents on them prior to migration.
 - This solution results in a minimal downtime for the VM-based applications running on your on-premises servers.
-- This solution keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster. The control plane is via the Azure and Azure portal can be used to start, run, and track your migration to Azure.
+- This solution keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster. The control plane is via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
 
 
 ## Workflow
@@ -59,7 +59,7 @@ The solution has the following high-level steps:
 
     For more information, see [Verify Hyper-V VMs](./migrate-azure-migrate.md#verify-migration).
 
-If needed, [troubleshoot migration issues](../index.yml). If you have any questions, see [Azure Migrate FAQ](./migrate-faq.yml).
+If needed, [troubleshoot migration issues](./migrate-troubleshoot.md). If you have any questions, see [Azure Migrate FAQ](./migrate-faq.yml).
 
 ## Next steps
 
