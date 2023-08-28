@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/17/2023
+ms.date: 08/28/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -35,7 +35,7 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 
 ## Before you begin
 
-Before you migrate, create an Azure Migrate project and associated storage account in Azure portal. Azure portal doesn't store or transfer data between the source and target.
+Before you migrate, create an Azure Migrate project and associated storage account in Azure portal.
 
 ### Create an Azure Migrate project
 
