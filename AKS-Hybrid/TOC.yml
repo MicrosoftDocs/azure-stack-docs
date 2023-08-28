@@ -87,6 +87,8 @@
         href: container-security.md
       - name: Certificate management overview
         href: certificates-overview.md
+      - name: Azure policy guidance
+        href: policy-guidance.md
   - name: Networking
     items:
       - name: Kubernetes node networking
