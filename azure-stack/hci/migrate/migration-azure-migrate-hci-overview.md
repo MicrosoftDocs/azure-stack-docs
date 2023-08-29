@@ -23,7 +23,7 @@ Azure Migrate is a simplified, unified platform that is used to assess, migrate 
 
 Using Azure Migrate to move your Hyper-V VMs to Azure Stack HCI offers the following benefits:
 
-- This solution works with both Hyper-V and VMware VM.
+
 - For this solution, you don't need to prep your source VMs or install agents on them prior to migration.
 - This solution results in a minimal downtime for the VM-based applications running on your on-premises servers.
 - This solution keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster. The control plane is via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
