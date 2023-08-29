@@ -36,11 +36,11 @@ In this step, you generate a source key and download a .zip or .vhd file for the
 
 1. On the **Servers, databases and webapps** page, under **Assessment tools > Azure Migrate Discovery and assessment**, select **Discover**.
 
-    :::image type="content" source="media/project-assessment-tools.png" alt-text="Screenshot of the Servers, databases and web apps page in Azure Migrate portal." lightbox="media/project-assessment-tools.png":::
+    :::image type="content" source="media/discover/project-assessment-tools.png" alt-text="Screenshot of the Servers, databases and web apps page in Azure Migrate portal." lightbox="media/discover/project-assessment-tools.png":::
 
 1. On the **Discover** page, select **Discover using appliance**, and then select the **Yes, with Hyper-V** option.
 
-    :::image type="content" source="media/download-source-appliance.png" alt-text="Screenshot of Download source appliance step." lightbox="media/download-source-appliance.png":::
+    :::image type="content" source="media/discover/download-source-appliance.png" alt-text="Screenshot of Download source appliance step." lightbox="media/discover/download-source-appliance.png":::
 
 1. Under **Step 1: Generate project key**, enter a name for your appliance and then select **Generate key**. This may take a few minutes to generate the source key.
 
@@ -54,7 +54,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
-    :::image type="content" source="media/source-os-download.png" alt-text="Screenshot of Download source VM OS page  ." lightbox="media/source-os-download.png":::
+    :::image type="content" source="media/discover/source-os-download.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/discover/source-os-download.png":::
 
     > [!NOTE]
     > It is not a requirement to use the evaluation OS version - you can use you own ISO images as long as the OS version is Windows Server 2022.
@@ -78,7 +78,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
     
-    :::image type="content" source="media/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/vcpu-settings.png":::
+    :::image type="content" source="media/discover/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/discover/vcpu-settings.png":::
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
@@ -95,7 +95,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
 
-    :::image type="content" source="media/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog  ." lightbox="media/enhanced-session-mode.png":::
+    :::image type="content" source="media/discover/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/discover/enhanced-session-mode.png":::
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
@@ -126,19 +126,19 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Locate the source key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, then select **Verify**.
 
-    :::image type="content" source="media/paste-key.png" alt-text="Screenshot of Appliance Configuration Manager showing pasted source key." lightbox="media/paste-key.png":::
+    :::image type="content" source="media/discover/paste-key.png" alt-text="Screenshot of Appliance Configuration Manager showing pasted source key." lightbox="media/discover/paste-key.png":::
 
 1. Once verified, select **Log in** and sign in to your Azure account using those account credentials.
 
-    :::image type="content" source="media/key-verified.png" alt-text="Screenshot showing source key has been verified." lightbox="media/key-verified.png":::
+    :::image type="content" source="media/discover/key-verified.png" alt-text="Screenshot showing source key has been verified." lightbox="media/discover/key-verified.png":::
 
 1. When prompted, enter the code that is displayed in your mobile device for MFA authentication.
 
-    :::image type="content" source="media/enter-code.png" alt-text="Screenshot showing Enter code popup." lightbox="media/key-verified.png":::
+    :::image type="content" source="media/discover/enter-code.png" alt-text="Screenshot showing Enter code popup." lightbox="media/discover/key-verified.png":::
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app.
 
-    :::image type="content" source="media/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/key-verified.png":::
+    :::image type="content" source="media/discover/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/discover/key-verified.png":::
 
 1. The appliance may take up to 10 minutes to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
 
@@ -146,7 +146,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Select **Add cluster information** and enter cluster fully-qualified domain name (FQDN), domain name, username, and password information for each server or cluster node that you want to discover VMs from.
 
-    :::image type="content" source="media/add-cluster-info2.png" alt-text="Screenshot showing cluster information popup." lightbox="media/key-verified.png":::
+    :::image type="content" source="media/discover/add-cluster-info2.png" alt-text="Screenshot showing cluster information popup." lightbox="media/discover/key-verified.png":::
 
 1. Enter the name and credentials of the target Azure Stack HCI cluster.
 
