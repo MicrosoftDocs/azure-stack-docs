@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/28/2023
+ms.date: 08/29/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -46,7 +46,7 @@ In this step, you generate a source key and download a .zip or .vhd file for the
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
-1. Under **Step 2: Download Azure Migrate appliance**, select **.zip file**, and then select **Download**.
+1. Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
 ## Step 2: Install source appliance VM OS
 
