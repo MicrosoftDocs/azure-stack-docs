@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V VMs to Azure Stack HCI.
+This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V virtual machines (VMs) to Azure Stack HCI.
 
 Make sure to [review the requirements](migrate-hyperv-prerequisites.md) for migration if you haven't already.
 
