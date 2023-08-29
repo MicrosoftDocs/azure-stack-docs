@@ -3,7 +3,7 @@ title: Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azur
 description: Learn the replication process for Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/28/2023
+ms.date: 08/29/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -36,7 +36,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. Verify that you see a non-zero value for **Discovered servers** under **Assessment tools > Azure Migrate: Discovery and assessment**.
 
-    :::image type="content" source="./media/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate-discovered-servers.png":::
+    :::image type="content" source="./media/replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate/replicate-discovered-servers.png":::
 
 1. Under **Azure Migrate: Discovery and assessment**, select **Assess**.
 
@@ -44,15 +44,15 @@ Complete the following tasks to generate the target appliance key:
     - Servers or virtual machines (VM).
     - Azure Stack HCI.
     - Hyper-V.
-    - source appliance.
+    - Source appliance.
 
-    :::image type="content" source="./media/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate-specify-intent.png":::
+    :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
 
 1. Select **Download and configure** in the **Before you start replication...** information block, then select **Continue**.
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/generate-target-key.png":::
+    :::image type="content" source="./media/replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/replicate/generate-target-key.png":::
 
 1. Once the key is generated, copy and save the generated target key to Notepad or other text editor for future use.
 
@@ -98,7 +98,7 @@ This step applies only if you downloaded the appliance using the .zip file. In t
 
 1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
     
-    :::image type="content" source="media/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/vcpu-settings.png":::
+    :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
@@ -114,7 +114,7 @@ This step applies only if you downloaded the appliance using the .zip file. In t
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure the **Allow enhanced session mode** option is enabled.
 
-    :::image type="content" source="media/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/enhanced-session-mode.png":::
+    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/replicate/enhanced-session-mode.png":::
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
@@ -150,7 +150,7 @@ The target appliance and the source appliance use the same file, so there is no 
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
-    :::image type="content" source="./media/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/enter-code.png":::
+    :::image type="content" source="./media/replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/replicate/enter-code.png":::
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
@@ -158,11 +158,11 @@ The target appliance and the source appliance use the same file, so there is no 
 
 1. After the appliance is registered, scroll down and select **Add cluster information**.
 
-    :::image type="content" source="./media/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/add-cluster-info.png":::
+    :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
 
 1. Enter cluster fully-qualified domain name (FQDN), domain name, username, password, and then select **Save**.
 
-    :::image type="content" source="./media/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/add-cluster-info2.png":::
+    :::image type="content" source="./media/replicate/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info2.png":::
 
 ## Step 6: Start replication
 
@@ -170,7 +170,7 @@ The target appliance and the source appliance use the same file, so there is no 
 
 1. On the **Migration and modernization** page, select the **Step 1: Replicate** tile.
 
-    :::image type="content" source="./media/step1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/step1-replicate.png":::
+    :::image type="content" source="./media/replicate/step1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step1-replicate.png":::
 
 1. On the **Specify intent** page:
     1. Select **Servers or virtual machines (VM)**.
@@ -179,7 +179,7 @@ The target appliance and the source appliance use the same file, so there is no 
     1. Select the target appliance.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate-specify-intent.png":::
+    :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -189,29 +189,29 @@ The target appliance and the source appliance use the same file, so there is no 
 	1. Verify there is a green check for the cluster. This indicates that the Arc Resource Bridge is configured.
     1. When finished, select **Next**.
     
-    :::image type="content" source="./media/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate-1-basics.png":::
+    :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate/replicate-1-basics.png":::
     
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
 
-    :::image type="content" source="./media/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/replicate-2-target.png":::
+    :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./replicate/media/replicate-2-target.png":::
 
 1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. Select **Next**.
 
-    :::image type="content" source="./media/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/replicate-3-vm.png":::
+    :::image type="content" source="./media/replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./replicate/media/replicate-3-vm.png":::
 
 1. On the **Target settings** tab, complete these tasks:
 
 	1. For **Cache storage account**, select the storage account that you created previously in the [Prerequisites](migrate-hyperv-replicate.md) article, and then select **Confirm**.
 
-        :::image type="content" source="./media/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate-4-target.png":::
+        :::image type="content" source="./media/replicate/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate/replicate-4-target.png":::
 
     1. Select the resource group that you want these VMs to be associated with.
 	1. Select the virtual switch these VMs are connected to.
 	1. Select the storage path where these VMs are created.
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate-4-target2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate-4-target.png":::
+        :::image type="content" source="./media/replicate/replicate-4-target2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target.png":::
 
 1. On the **Compute** tab:
 
@@ -220,19 +220,23 @@ The target appliance and the source appliance use the same file, so there is no 
     1. Adjust values for vCPU and RAM for each VM as needed.
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/replicate-5-compute.png":::
+        :::image type="content" source="./media/replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/replicate/replicate-5-compute.png":::
 
 1. On the **Disks** tab, select which disks you would like to replicate, then select **Next**.
 
-    :::image type="content" source="./media/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate-6-disks.png":::
+    :::image type="content" source="./media/replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate/replicate-6-disks.png":::
 
 1. On the  **Review + Start replication** tab, stay on the page until the process is complete (this may take 5-10 minutes). Then select **Replicate**.
 
-    :::image type="content" source="./media/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate-7-review.png":::
+    :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
 
  1. On the **Replications** page, review the replication status. Select **Refresh** to see the replicated VMs.
  
-    :::image type="content" source="./media/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replications-page2.png":::
+1. Verify **Migration status** shows **Ready to migrate**.
+
+1. When finished, select **Migrate**.
+ 
+    :::image type="content" source="./media/replicate/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./replicate/media/replications-page2.png":::
 
 ## Next steps
 
