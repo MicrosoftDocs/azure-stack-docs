@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/28/2023
+ms.date: 08/29/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -45,7 +45,7 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
 
 1. On the **Get started** page, under **Servers, databases and web apps**, select **Discover, assess and migrate**.
 
-    :::image type="content" source="media/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/project-get-started.png":::
+    :::image type="content" source="media/prerequisites/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/prerequisites/project-get-started.png":::
 
 1. On the **Servers, databases and web apps** page, select **Create project**.
 
@@ -55,7 +55,7 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
     1. Enter the new project name.
     1. Select a geography region.
 
-    :::image type="content" source="media/project-create.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/project-create.png":::
+    :::image type="content" source="media/prerequisites/project-create.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/prerequisites/project-create.png":::
 
 1. When finished, select **Create**.
 
@@ -75,7 +75,7 @@ After the Azure Migrate project is created, you create a storage account for it.
     1. Choose either **Standard** or **Premium** performance.
     1. Select a redundancy level.
     
-    :::image type="content" source="media/tab-basics.png" alt-text="Screenshot of Basic tab page in Azure portal." lightbox="media/tab-basics.png":::
+    :::image type="content" source="media/prerequisites/tab-basics.png" alt-text="Screenshot of Basic tab page in Azure portal." lightbox="media/prerequisites/tab-basics.png":::
 
 1. When done, select **Review**.
 
@@ -84,11 +84,11 @@ After the Azure Migrate project is created, you create a storage account for it.
 
 1. Review all information on the **Review** tab of the **Create a storage account** page. If everything looks good, select **Create**.
 
-    :::image type="content" source="media/tab-review.png" alt-text="Screenshot of Review tab page in Azure portal." lightbox="media/tab-review.png":::
+    :::image type="content" source="media/prerequisites/tab-review.png" alt-text="Screenshot of Review tab page in Azure portal." lightbox="media/prerequisites/tab-review.png":::
 
 1. The project template deployment will begin. When deployment is complete, select **Go to resource**.
 
-    :::image type="content" source="media/deployment-complete.png" alt-text="Screenshot of deployment complete status display." lightbox="media/deployment-complete.png":::
+    :::image type="content" source="media/prerequisites/deployment-complete.png" alt-text="Screenshot of deployment complete status display." lightbox="media/prerequisites/deployment-complete.png":::
 
 1. On the resource group page, under **Resources**, verify there is a resource listed for each of the following:
 
@@ -99,7 +99,7 @@ After the Azure Migrate project is created, you create a storage account for it.
     - Custom location resource
     - Storage path resource(s)
 
-    :::image type="content" source="media/project-resources.png" alt-text="Screenshot Resources list." lightbox="media/project-resources.png":::
+    :::image type="content" source="media/prerequisites/project-resources.png" alt-text="Screenshot Resources list." lightbox="media/prerequisites/project-resources.png":::
 
 ## Next steps
 
