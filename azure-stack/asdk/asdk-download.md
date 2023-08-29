@@ -24,9 +24,10 @@ After ensuring that your development kit host computer meets the basic requireme
    - Your computer must have at least 60 GB of free disk space available on four separate and identical logical hard drives in addition to the operating system disk.
    - [.NET Framework 4.6 (or a later version)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) must be installed.
 
-2. [Go to the Get Started page](https://azure.microsoft.com/contact/azure-stack-dev-kit/thank-you/) where you can review requirements, download the ASDK, and then start deploying.
-3. Download and run the [Deployment Checker for ASDK](https://github.com/Azure/AzureStack-Tools/blob/master/Deployment/asdk-prechecker.ps1) prerequisite checker script. This standalone script goes through the prerequisite checks done by the setup for ASDK. It provides a way to confirm you're meeting the hardware and software requirements before downloading the larger package for ASDK.
-4. Under **Download the software**, click **Azure Stack Development Kit**.
+1. Review the [ASDK requirements and prerequisites](asdk-deploy-considerations.md).
+1. [Download the ASDK](https://aka.ms/azurestackdevkitdownloader), and then start deploying.
+1. Download and run the [Deployment Checker for ASDK](https://github.com/Azure/AzureStack-Tools/blob/master/Deployment/asdk-prechecker.ps1) prerequisite checker script. This standalone script goes through the prerequisite checks done by the setup for ASDK. It provides a way to confirm you're meeting the hardware and software requirements before downloading the larger package for ASDK.
+1. Under **Download the software**, click **Azure Stack Development Kit**.
 
    > [!NOTE]
    > The ASDK download (AzureStackDevelopmentKit.exe) is approximately 30.0 GB (ASDK version 1.2108.0.29).
