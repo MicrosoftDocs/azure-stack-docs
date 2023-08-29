@@ -18,7 +18,7 @@ This article describes the replication process for Hyper-V virtual machine (VM) 
 
 ## Before you begin
 
-Before replication can occur, make sure that you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server .
+Before replication can occur, make sure that you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server.
 
 In addition, your Azure Stack HCI cluster node should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
@@ -70,16 +70,16 @@ This step creates a connection between the source and target appliances and faci
 
 ## Step 3: Install target appliance VM OS
 
-This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the operating system (OS) .vhd file for the target appliance VMs on the target Azure Stack HCI cluster.
+This step applies only if you downloaded the appliance previously using the .zip file. In this scenario, you download the operating system (OS) .VHD file for the target appliance VMs on the target Azure Stack HCI cluster.
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD for the VM.
 
     > [!NOTE]
     > It is not a requirement to use the evaluation OS version. You can use your own images as long as the OS version is Windows Server 2022.
 
-1. Open **Hyper-V Manager** on a node in the target cluster and then select the Azure Stack HCI cluster from the list.
+1. (Only applies for .zip file use) Open **Hyper-V Manager** on a node in the target cluster and then select the Azure Stack HCI cluster from the list.
 
-1. Under **Actions** on the right, select **New > Virtual machine**.
+1. (Only applies for .zip file use) Under **Actions** on the right, select **New > Virtual machine**.
 
 1. Create the new appliance VM on the Azure Stack HCI cluster node using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
 
@@ -122,18 +122,18 @@ This step applies only if you downloaded the appliance using the .zip file. In t
 
 ## Step 4: Install target appliance
 
-This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the .vhd file for the target appliance VMs on the target Azure Stack HCI cluster.
+This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the .VHD file for the target appliance VMs on the target Azure Stack HCI cluster.
 
 The target appliance and the source appliance use the same file, so there is no need to download it again.
 
 1. Open **Server Manager**.
 
-1. Copy and paste the downloaded appliance .zip file to the target VM virtual hard disk location that you created and extract it.
+1. Copy and paste the downloaded appliance file to the target VM virtual hard disk location that you created.
 
-1. As an administrator, run the following PowerShell script from the folder of the extracted .zip file:
+1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
 
     ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 -DisableAutoUpdate -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
     ```
 
 1. Restart and sign into the VM.
