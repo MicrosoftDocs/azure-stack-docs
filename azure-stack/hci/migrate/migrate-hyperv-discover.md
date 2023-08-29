@@ -30,7 +30,7 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 ## Step 1: Generate source appliance key and download appliance
 
-In this step, you generate a source key and download a .zip or .vhd file for the source appliance.
+In this step, you generate a source key and download a .zip file or .vhd file for the source appliance.
 
 1. In the Azure portal, select **Servers, databases and webapps**, then select the migrate project you previously created.
 
@@ -87,7 +87,7 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
-1. Select the OS you just downloaded (Windows Server 2016) and begin OS set up.
+1. Select the OS you just downloaded (Windows Server 2022) and begin OS set up.
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
@@ -103,12 +103,12 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
 1. Open **Server Manager** on the Hyper-V server.
 
-1. Copy and paste the downloaded .zip file in **Step 2: Create source appliance VM** to the VM virtual disk that you created and extract it.
+1. Copy and paste the downloaded .vhd file or .zip file in **Step 2: Create source appliance VM** to the VM virtual disk that you created and extract it as needed.
 
-1. As an administrator, run the following PowerShell script from the folder of the extracted .zip file:
+1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
 
   ```PowerShell
-    Set-ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 - DisableAutoUpdate -Scenario HyperV -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
+    Set-ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud Public -PrivateEndpoint:$false
   ``````
 
 1. When prompted, select **Y** to do the following:
