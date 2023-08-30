@@ -3,7 +3,7 @@ title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
 author: dansisson
 ms.topic: how-to
-ms.date: 10/17/2022
+ms.date: 08/30/2023
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -160,6 +160,9 @@ Then, move the volume to a different node to remount the volume. A remount is ne
 ```powershell
 Move-ClusterSharedVolume -Name <name> -Node <node>
 ```
+
+> [!NOTE]
+> Volumes created in Windows Admin Center are configured as tiered volumes. To change the volume resiliency, use the StorageTier cmdlets, such as [Get-StorageTier](/powershell/module/storage/get-storagetier?view=windowsserver2022-ps) and [Set-StorageTier](/powershell/module/storage/set-storagetier?view=windowsserver2022-ps).
 
 ## Next steps
 
