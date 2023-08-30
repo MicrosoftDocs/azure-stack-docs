@@ -1,6 +1,6 @@
 --- 
-title: Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview) 
-description: Learn the replication process for Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview).
+title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview) 
+description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 08/30/2023
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview)
+# Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
