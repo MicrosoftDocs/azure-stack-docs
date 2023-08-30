@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/20/2022
+ms.date: 08/30/2023
 ---
 
 # Collect diagnostic logs (preview)
@@ -44,7 +44,8 @@ where:
   - ECE
   - Extension
   - FleetDiagnosticsAgent
-  - HCICloudService DownloadService
+  - HCICloudService
+  - DownloadService
   - Health
   - HostNetwork
   - MOC_ARB
@@ -135,7 +136,7 @@ To get a history of log collections for the last 90 days, enter:
    Status                         Succeeded
    CollectionFromDate             9/27/2022 9:57:16 PM +00:00
    CollectionToDate               9/27/2022 11:57:16 PM +00:00
-   CorrelationId                  f3d8dcc6-901e-4c72-a3cc-210055e6f198
+   LogCollectionId                f3d8dcc6-901e-4c72-a3cc-210055e6f198
    Type                           OnDemand
    LogUploadSizeMb                1069
    UploadNumberOfFiles            1941
