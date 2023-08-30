@@ -4,12 +4,12 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 06/30/2023
+ms.date: 08/30/2023
 ---
 
 ### Save logs locally
 
-For troubleshooting purposes, you can save logs to a local SMB share when your Azure Stack HCI cluster isn't deployed yet or when it is already deployed but disconnected from Azure. For example, post-deployment, if you're normally connected but are experiencing connectivity issues, you can save logs locally to help with troubleshooting.
+For troubleshooting purposes, you can save logs to a local SMB share when your Azure Stack HCI cluster isn't deployed yet or when it's already deployed but disconnected from Azure. For example, post-deployment, if you're normally connected but are experiencing connectivity issues, you can save logs locally to help with troubleshooting.
 
 Follow these steps to collect logs and save them locally:
 
@@ -19,7 +19,7 @@ Follow these steps to collect logs and save them locally:
    Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>  
    ```
 
-1. After all log collections on all nodes finish. Run the following log collections:
+1. After all log collections on all nodes finish, run the following log collections:
 
    ```powershell
    Send-DiagnosticData –FromSMBShare –BypassObsAgent  –SharePath C:\CILogCollection\Node1 -ShareCredential <cred>
@@ -54,7 +54,7 @@ Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd
 Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationWithDeviceCode -DiagnosticLogPath C:\MasLogs
 ```
  
-**Using SPN Credential (This is SPN crednetials used for authentication to register ArcAgent. Needed only for ServicePrincipal set )**
+**Using SPN Credential (This is SPN credentials used for authentication to register ArcAgent. Needed only for ServicePrincipal set )**
 
 ```powershell
 $appsec = "3SW8Q~x1t8i_hg4mfEQG01UNqUeyDZkezAbpFaAP" 
@@ -66,7 +66,7 @@ $sp = New-Object System.Management.Automation.PSCredential($appid, $ss)
 Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationSPCredential $sp -DiagnosticLogPath C:\MasLogs 
 ```
 
-**Using Passsthrough (Using the existing context on the PowerShell window)**
+**Using Passthrough (Using the existing context on the PowerShell window)**
 
 ```powershell
 Send-AzStackHciDiagnosticData -ResourceGroupName strdrg -SubscriptionId 4bed37fd-19a1-4d31-8b44-40267555bec5 -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RegistrationWithExistingContext -DiagnosticLogPath C:\MasLogs 
