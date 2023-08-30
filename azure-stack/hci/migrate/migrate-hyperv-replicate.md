@@ -3,7 +3,7 @@ title: Replicate Hyper-V virtual machine migration to Azure Stack HCI using Azur
 description: Learn the replication process for Hyper-V virtual machine migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/29/2023
+ms.date: 08/30/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -22,7 +22,7 @@ Before replication can occur, make sure that you have completed the [discovery p
 
 In addition, your Azure Stack HCI cluster node should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
-- 16GB memory.
+- 16 GB memory.
 - 80 GB disk.
 - 8 vCPUs.
 
@@ -56,19 +56,9 @@ Complete the following tasks to generate the target appliance key:
 
 1. Once the key is generated, copy and save the generated target key to Notepad or other text editor for future use.
 
-1. Under **Step 2**, select **Download installer** to download the appliance .zip file.
+1. Under **Step 2**, select **Download installer** to download the appliance .zip file or .VHD file.
 
-## Step 2: Create connection between appliances
-
-This step creates a connection between the source and target appliances and facilitates VM creation on the target appliance.
-
-1. Open **Hyper-V Manager** on the source appliance.
-
-1. Select from the dropdown, or browse for, the first node of the target Azure Stack HCI cluster, and then select **OK**.
-
-1. Repeat steps 2 and 3 for each node in the target Azure Stack HCI cluster.
-
-## Step 3: Install target appliance VM OS
+## Step 2: Install target appliance VM OS (.zip file only)
 
 This step applies only if you downloaded the appliance previously using the .zip file. In this scenario, you download the operating system (OS) .VHD file for the target appliance VMs on the target Azure Stack HCI cluster.
 
@@ -120,9 +110,9 @@ This step applies only if you downloaded the appliance previously using the .zip
 
 1. Sign in to the VM again.
 
-## Step 4: Install target appliance
+## Step 3: Install target appliance (.zip file only)
 
-This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the .VHD file for the target appliance VMs on the target Azure Stack HCI cluster.
+This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the file for the target appliance VMs on the target Azure Stack HCI cluster.
 
 The target appliance and the source appliance use the same file, so there is no need to download it again.
 
@@ -133,12 +123,13 @@ The target appliance and the source appliance use the same file, so there is no 
 1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
 
     ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
     ```
 
 1. Restart and sign into the VM.
 
-## Step 5: Configure and register target appliance
+## Step 4: Configure and register target appliance
 
 1. Open **Server Manager** and sign in to the target appliance VM.
 
@@ -164,11 +155,11 @@ The target appliance and the source appliance use the same file, so there is no 
 
     :::image type="content" source="./media/replicate/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info2.png":::
 
-## Step 6: Start replication
+## Step 5: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. On the **Migration and modernization** page, select the **Step 1: Replicate** tile.
+1. On the **Migration and modernization** page, select **Step 1: Replicate** tile.
 
     :::image type="content" source="./media/replicate/step1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step1-replicate.png":::
 
@@ -202,7 +193,7 @@ The target appliance and the source appliance use the same file, so there is no 
 
 1. On the **Target settings** tab, complete these tasks:
 
-	1. For **Cache storage account**, select the storage account that you created previously in the [Prerequisites](migrate-hyperv-replicate.md) article, and then select **Confirm**.
+	1. For **Cache storage account**, create a storage account as described in the next section.
 
         :::image type="content" source="./media/replicate/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate/replicate-4-target.png":::
 
@@ -237,6 +228,46 @@ The target appliance and the source appliance use the same file, so there is no 
 1. When finished, select **Migrate**.
  
     :::image type="content" source="./media/replicate/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./replicate/media/replications-page2.png":::
+
+### Create a storage account
+
+You need to create a storage account in Azure portal:
+
+1. On the Azure portal home page, select **Storage accounts**.
+
+1. On the **Storage accounts** page, select **Create**.
+
+1. On the **Basics** tab, under **Project details**, select the same subscription and resource group that you used to create the Azure Migrate project. If needed, select **Create new** to create a new resource group.
+
+1. Under **Instance details**, follow these steps:
+    1. Enter a name for the storage account.
+    1. Select a geographical region.
+    1. Choose either **Standard** or **Premium** performance.
+    1. Select a redundancy level.
+    
+    :::image type="content" source="media/replicate/tab-basics.png" alt-text="Screenshot of Basic tab page in Azure portal." lightbox="media/replicate/tab-basics.png":::
+
+1. When done, select **Review**.
+
+    > [!NOTE]
+    > Only fields on the **Basics** tab need to be filled out or altered. You can ignore the remaining tabs (and options therein) as the default options and values displayed on those tabs are recommended and are used.
+
+1. Review all information on the **Review** tab of the **Create a storage account** page. If everything looks good, select **Create**.
+
+    :::image type="content" source="media/replicate/tab-review.png" alt-text="Screenshot of Review tab page in Azure portal." lightbox="media/replicate/tab-review.png":::
+
+1. The project template deployment will begin. When deployment is complete, select **Go to resource**.
+
+    :::image type="content" source="media/replicate/deployment-complete.png" alt-text="Screenshot of deployment complete status display." lightbox="media/replicate/deployment-complete.png":::
+
+1. On the resource group page, under **Resources**, verify there is a resource listed for each of the following:
+
+    - Azure Stack HCI cluster resource
+    - Arc Resource Bridge resource
+    - Custom location resource
+    - Storage path resource(s)
+
+    :::image type="content" source="media/replicate/project-resources.png" alt-text="Screenshot Resources list." lightbox="media/replicate/project-resources.png":::
 
 ## Next steps
 
