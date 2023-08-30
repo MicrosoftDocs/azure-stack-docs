@@ -3,7 +3,7 @@ title: Discover Hyper-V VM migration to Azure Stack HCI using Azure Migrate (pre
 description: Learn the discovery process for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/29/2023
+ms.date: 08/30/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -22,7 +22,7 @@ Before the discovery process takes place, make sure you have reviewed all [requi
 
 In addition, your Hyper-V host should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
-- 16GB memory.
+- 16 GB memory.
 - 80 GB disk.
 - 8 vCPUs.
 
@@ -30,7 +30,7 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 ## Step 1: Generate source appliance key and download appliance
 
-In this step, you generate a source key and download a .zip file or .vhd file for the source appliance.
+In this step, you generate a source key and download either a .zip file or .VHD file for the source appliance.
 
 1. In the Azure portal, select **Servers, databases and webapps**, then select the migrate project you previously created.
 
@@ -48,9 +48,9 @@ In this step, you generate a source key and download a .zip file or .vhd file fo
 
 1. Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-## Step 2: Install source appliance VM OS
+## Step 2: Install source appliance VM OS (.zip file only)
 
-In this step, you download the operating system (OS) ISO for the source appliance virtual machine (VM) on the source Hyper-V server.
+This task applies only if you downloaded the .zip file option. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server.
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
@@ -99,16 +99,19 @@ In this step, you download the operating system (OS) ISO for the source applianc
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
-## Step 3: Install source appliance
+## Step 3: Install source appliance (.zip file only)
+
+This task applies only if you downloaded the .zip file option.
 
 1. Open **Server Manager** on the Hyper-V server.
 
-1. Copy and paste the downloaded .vhd file or .zip file in **Step 2: Create source appliance VM** to the VM virtual disk that you created and extract it as needed.
+1. Copy and paste the downloaded .zip file in **Step 2: Create source appliance VM** to the VM virtual disk that you created and extract it as needed.
 
 1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
 
   ```PowerShell
-    Set-ExecutionPolicy Unrestricted .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud Public -PrivateEndpoint:$false
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud Public -PrivateEndpoint:$false
   ``````
 
 1. When prompted, select **Y** to do the following:
