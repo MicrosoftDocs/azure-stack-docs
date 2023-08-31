@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/30/2023
+ms.date: 08/31/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -24,21 +24,17 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
-|Open required firewall ports.|both|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
+|Open required firewall ports.|source, target|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
 |Configure SAN policy on Windows VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure and register an Azure Stack HCI cluster.|target|[Register a cluster](../deploy/deployment-quickstart.md).|
 |Configure Arc Resource Bridge and create a custom location on one of the nodes of the Azure HCI cluster.|target|[Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md).<br>[Set up Azure Arc VM management using command line](../manage/deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
 |Create storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [az azurestackhci storagepath create](/cli/azure/azurestackhci/storagepath) command.|
 |Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Steps to assign an Azure role](/azure/role-based-access-control/role-assignments-steps).|
-|Create an Azure Migrate project|both|[Create Azure migrate project](#create-an-azure-migrate-project).|
+|Create an Azure Migrate project|source, target|[Create Azure migrate project](#create-an-azure-migrate-project).|
 
-## Before you begin
+## Create an Azure Migrate project
 
-Before you migrate, create an Azure Migrate project in Azure portal.
-
-### Create an Azure Migrate project
-
-Azure Migrate is an Azure feature that you can access from the Azure portal.
+Before you can migrate, create an Azure Migrate project in Azure portal.
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
@@ -49,8 +45,8 @@ Azure Migrate is an Azure feature that you can access from the Azure portal.
 1. On the **Servers, databases and web apps** page, select **Create project**.
 
 1. On the **Create project** page:
-    1. enter your subscription.
-    1. Enter the resource group, or select it if pre-existing.
+    1. Enter your subscription.
+    1. Enter the resource group, or select it if it already exists.
     1. Enter the new project name.
     1. Select a geography region.
 
