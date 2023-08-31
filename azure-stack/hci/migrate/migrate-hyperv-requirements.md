@@ -20,26 +20,14 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that you are migrating.
 
-### Source and target appliance OS
-- Windows Server 2022
 
-### Guest VM OS
+|Component  |Supported OS |
+|---------|---------|
+|Source appliance     |Windows Server 2022         |
+|Target appliance     |Windows Server 2022         |
+|Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2         |
+|Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
-**Windows Server OS**
-
-- Windows Server 2022
-- Windows Server 2019
-- Windows Server 2016
-- Windows Server 2012 R2
-- Windows Server 2008 R2
-
-**Linux guest VM OS**
-
-- Red Hat Linux 6.x, 7.x
-- Ubuntu Server and Pro. 18.x
-- CentOS 7.x
-- SUSE Linux Enterprise 12.x
-- Debian 9.x
 
 ## Supported geographies
 
@@ -78,7 +66,7 @@ Your Hyper-V server should have sufficient resources to create a Windows Server 
 
 ## Target Azure Stack HCI cluster and VM requirements
 
-- The target Azure Stack HCI cluster OS must be version 22H2 or later release.
+- The target Azure Stack HCI cluster OS must be version 22H2 or later.
 
 - You can discover and migrate standalone VMs on standalone (non-clustered) Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) (HA) first.
 
