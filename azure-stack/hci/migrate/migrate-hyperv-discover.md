@@ -1,9 +1,9 @@
 --- 
 title: Discover Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview) 
-description: Learn the discovery process for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview).
+description: Learn the discovery phase for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/30/2023
+ms.date: 08/31/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the discovery process for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
+This article describes the discovery phase for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -48,7 +48,7 @@ In this step, you generate a source key and download either a .zip file or .VHD 
 
 1. Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-## Step 2: Install source appliance VM OS (.zip file only)
+## Step 2: Install source appliance VM OS (for .zip file only)
 
 This task applies only if you downloaded the .zip file option. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server.
 
@@ -99,7 +99,7 @@ This task applies only if you downloaded the .zip file option. You download the 
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
-## Step 3: Install source appliance (.zip file only)
+## Step 3: Install source appliance (for .zip file only)
 
 This task applies only if you downloaded the .zip file option.
 
@@ -135,7 +135,7 @@ This task applies only if you downloaded the .zip file option.
 
     :::image type="content" source="media/discover/key-verified.png" alt-text="Screenshot showing source key has been verified." lightbox="media/discover/key-verified.png":::
 
-1. When prompted, enter the code that is displayed in your mobile device for MFA authentication.
+1. When prompted, enter the code that is displayed in your mobile device for multi-factor authentication (MFA).
 
     :::image type="content" source="media/discover/enter-code.png" alt-text="Screenshot showing Enter code popup." lightbox="media/discover/key-verified.png":::
 
@@ -147,7 +147,7 @@ This task applies only if you downloaded the .zip file option.
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
 
-1. Select **Add cluster information** and enter cluster fully-qualified domain name (FQDN), domain name, username, and password information for each server or cluster node that you want to discover VMs from.
+1. Select **Add cluster information** and enter the fully-qualified domain name (FQDN), domain name, username, and password information for each server or cluster node that you want to discover VMs from.
 
     :::image type="content" source="media/discover/add-cluster-info2.png" alt-text="Screenshot showing cluster information popup." lightbox="media/discover/key-verified.png":::
 
