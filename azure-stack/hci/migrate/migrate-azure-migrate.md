@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/17/2023
+ms.date: 08/29/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -107,23 +107,44 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
 ## Clean up
 
-The last step is to clean up the source VMs. You can delete the source VMs from the Hyper-V server and the Failover Cluster Manager.
+The last step is to clean up. Cleanup requires deletion of the following resources created during migration: 
+
+- Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager. 
+- Azure Migrate project.
+  
+### Clean up VMs and associated disks
+
+Clean up the source VMs. You can delete the source VMs from the Hyper-V server and the Failover Cluster Manager. When you delete a Hyper-V VM, only the VM configuration files are deleted. The virtual hard disks associated with the VM are not deleted. To clean up the VMs and the associated VM disks, follow these steps:
 
 1. After the migration is complete, delete the source VM from Hyper-V server.
     1. In the Hyper-V manager, select the source VM that you migrated.
+    1. Right-click the VM and select **Settings**.
+    1. Select **Hard Drive** to copy the file path of the associated virtual hard disk. 
     1. Verify that the VM is turned off.
-    1. Right-click and from the context menu, select **Delete...**. This action should delete the source VM.
+    1. Select the VM and right-click on the name of the VM. From the context menu, select **Delete...**. This action should delete the source VM.
 
-    :::image type="content" source="media/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu." lightbox="media/delete-source-virtual-machine-hyperv-manager-1.png":::
+        :::image type="content" source="media/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu." lightbox="media/delete-source-virtual-machine-hyperv-manager-1.png":::
     
-    Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true).
-
+        Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true).
+    1. Navigate to the folder where the virtual hard disk of the VM is stored and delete the virtual hard disk.
 1. The last step is to delete the VM from the Failover Cluster Manager.
     1. In the Failover Cluster Manager, connect to the Hyper-V cluster and go to **Roles**.
     1. Select the VM that you migrated. Verify that the VM is turned off.
     1. Right-click and from the context menu, select **Remove**. When prompted for confirmation, select **Yes** to continue. This action should delete the VM from the Failover Cluster Manager.
 
+### Clean up Azure Migrate project
+
+Clean up the Azure Migrate project and the associated resources including the Azure Migrate appliance. 
+
+Follow these steps to delete the Azure Migrate project:
+
+1. In the Azure portal, open the resource group in which the project was created.
+1. In the resource group page, select **Show hidden types**.
+1. Select the project and the associated resources that you want to delete. The resource type for Azure Migrate projects is *Microsoft.Migrate/migrateprojects*.
+
+> [!NOTE]
+> If the resource group only contains the Azure Migrate project, you can delete the entire resource group.
 
 ## Next steps
 
-- If you experience any issues during migration, see [Troubleshoot migration issues](../index.yml).
+- If you experience any issues during migration, see [Troubleshoot migration issues](./migrate-troubleshoot.md).
