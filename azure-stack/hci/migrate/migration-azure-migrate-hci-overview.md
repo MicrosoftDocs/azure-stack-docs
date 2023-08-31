@@ -33,7 +33,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 
 ## Migration components
 
-With Azure Migrate, you can choose to migrate your data from your on-premises setup to Azure or to your Azure Stack HCI cluster. In this case, the VMs and their related data is migrated to your on-premises Azure Stack HCI cluster.
+With Azure Migrate, you can choose to migrate your data from your on-premises setup to Azure or to your Azure Stack HCI cluster. In this case, the VMs and their related data are migrated to your on-premises Azure Stack HCI cluster.
 
 The following diagram shows the migration process:
 
