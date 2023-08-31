@@ -162,7 +162,7 @@ Move-ClusterSharedVolume -Name <name> -Node <node>
 ```
 
 > [!NOTE]
-> Volumes created in Windows Admin Center are configured as tiered volumes. To change the volume resiliency, use the StorageTier cmdlets, such as [Get-StorageTier](/powershell/module/storage/get-storagetier?view=windowsserver2022-ps) and [Set-StorageTier](/powershell/module/storage/set-storagetier?view=windowsserver2022-ps).
+> Volumes created in Windows Admin Center are configured as tiered volumes. To change the volume resiliency, use the StorageTier cmdlets, such as [Get-StorageTier](/powershell/module/storage/get-storagetier) and [Set-StorageTier](/powershell/module/storage/set-storagetier).
 
 ## Next steps
 
