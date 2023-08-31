@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating Hyper-V VMs to Azure Stack HCI using A
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/18/2023
+ms.date: 08/31/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -48,15 +48,15 @@ Follow these steps to identify the correlation ID for your deployment in Azure p
 
 1. Go to the resource group for your Azure Migrate project and then go to **Overview**. In the right-pane, select the hyperlink that shows failed and successful deployments.
 
-    :::image type="content" source="./media/get-correlation-id-1.png" alt-text="Screenshot Azure Migrate project resource group > Overview in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-1.png" alt-text="Screenshot Azure Migrate project resource group > Overview in Azure portal.":::
   
 1. Identify the deployment that you want the correlation ID for and select the deployment name.
 
-    :::image type="content" source="./media/get-correlation-id-2.png" alt-text="Screenshot Azure Migrate project resource group > Deployments in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-2.png" alt-text="Screenshot Azure Migrate project resource group > Deployments in Azure portal.":::
  
 1. Find the correlation ID.
 
-    :::image type="content" source="./media/get-correlation-id-3.png" alt-text="Screenshot Azure Migrate project resource group > Deployments > Your deployment > Overview in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-3.png" alt-text="Screenshot Azure Migrate project resource group > Deployments > Your deployment > Overview in Azure portal.":::
  
 
 #### Get job ID for replication or migration
@@ -69,17 +69,17 @@ Follow these steps to get the job ID:
 
 1. In your Azure Migrate project in the Azure portal, go to **Overview** under **Migration tools**.
 
-    :::image type="content" source="./media/get-job-id-1.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-1.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview in Azure portal.":::
 
 1. In the left-pane, go to **Azure Stack HCI migration > Jobs**.
 
 1. Identify the job that you want the job ID for and select the job name.
 
-    :::image type="content" source="./media/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs > Your job in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs > Your job in Azure portal.":::
 
 1. Find the **Job Id**.
 
-    :::image type="content" source="./media/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
 
 ### For scheduled replication operations  
 
