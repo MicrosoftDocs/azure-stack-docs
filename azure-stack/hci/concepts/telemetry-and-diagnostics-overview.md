@@ -113,6 +113,6 @@ The following section discusses the error codes, messages and suggested resoluti
 
 **Suggested resolution:** Verify Azure Stack HCI registration.
 
-## Next steps
+## Next step
 
 Learn about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md).
