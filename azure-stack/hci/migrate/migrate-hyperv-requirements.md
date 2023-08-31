@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/29/2023
+ms.date: 08/31/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -20,9 +20,12 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that you are migrating.
 
-**Source and target appliance OS**: Windows Server 2022
+### Source and target appliance OS
+- Windows Server 2022
 
-**Windows Server guest VM OS**:
+### Guest VM OS
+
+**Windows Server OS**
 
 - Windows Server 2022
 - Windows Server 2019
@@ -30,7 +33,7 @@ The following operating systems (OS) are supported for the source appliance, tar
 - Windows Server 2012 R2
 - Windows Server 2008 R2
 
-**Linux guest VM OS**:
+**Linux guest VM OS**
 
 - Red Hat Linux 6.x, 7.x
 - Ubuntu Server and Pro. 18.x
@@ -59,18 +62,25 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 |Level|Permissions|
 |-|-|
-|Tenant|Application administrator permissions|
-|Subscription|Contributor and User Access Administrator permissions|
+|Tenant|Application administrator|
+|Subscription|Contributor, User Access Administrator|
 
-## Source Hyper-V cluster and VM requirements
+## Source Hyper-V server and VM requirements
 
 In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks are not attached to the local cluster storage, the disks can’t be migrated.
 
+Your Hyper-V server should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
+
+- 16 GB memory.
+- 80 GB disk.
+- 8 vCPUs.
+
+
 ## Target Azure Stack HCI cluster and VM requirements
 
-- The target Azure Stack HCI cluster HCI version must be the 22H2 release or later.
+- The target Azure Stack HCI cluster OS must be version 22H2 or later release.
 
-- Standalone VMs on standalone (non-clustered) Hyper-V hosts can be discovered and migrated however, standalone VMs hosted on "clustered" Hyper-V hosts cannot be discovered and migrated. To migrate these VMs they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) (HA) first.
+- You can discover and migrate standalone VMs on standalone (non-clustered) Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) (HA) first.
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
