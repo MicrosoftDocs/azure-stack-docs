@@ -328,7 +328,7 @@
       - name: Phase 0 - Prepare
         items:
         - name: Review requirements
-          href: ../index.yml
+          href: migrate/migrate-hyperv-requirements.md
         - name: Complete prerequisites
           href: ../index.yml 
       - name: Phase 1 - Discover
