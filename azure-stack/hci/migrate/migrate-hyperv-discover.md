@@ -16,16 +16,6 @@ This article describes the discovery phase for Hyper-V virtual machine (VM) migr
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Before you begin
-
-Before the discovery process takes place, make sure you have reviewed all [requirements](migrate-hyperv-discover.md) and satisfied all [prerequisites](migrate-hyperv-discover.md).
-
-In addition, your Hyper-V host should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
-
-- 16 GB memory.
-- 80 GB disk.
-- 8 vCPUs.
-
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
 ## Step 1: Generate source appliance key and download appliance
