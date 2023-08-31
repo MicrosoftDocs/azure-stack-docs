@@ -504,7 +504,7 @@
         href: manage/collect-logs.md
     - name: Troubleshoot
       items:
-      - name: Troubleshoot environment readinesss
+      - name: Troubleshoot environment readiness
         href: manage/troubleshoot-environment-validation-issues.md
       - name: Troubleshoot deployment
         href: deploy/deployment-tool-troubleshoot.md

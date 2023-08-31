@@ -84,20 +84,20 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
 
    1. Establish a remote PowerShell session with one of the cluster nodes. Run PowerShell as administrator and run the following command:
    
-   ```powershell
-   Enter-PsSession -ComputerName <NodeName> -Credential $cred
-   ```
+      ```powershell
+      Enter-PsSession -ComputerName <NodeName> -Credential $cred
+      ```
    
    1. Run the following command to get the resource group name:
    
-   ```powershell
-   Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
-   $eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue
-   if ($eceConfig.Xml -match "<RegistrationResourceGroupName>(.*)</RegistrationResourceGroupName>")
-   {
-   $resourcegroupname =  $matches[1].Trim()
-   }
-   ```
+      ```powershell
+      Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
+      $eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue
+      if ($eceConfig.Xml -match "<RegistrationResourceGroupName>(.*)</RegistrationResourceGroupName>")
+      {
+      $resourcegroupname =  $matches[1].Trim()
+      }
+      ```
 
 - `SubscriptionId`: Name of the Azure subscription ID, which must be the same as used during the deployment process. Use the following command to get the subscription ID:
 
@@ -115,7 +115,7 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
 
 - `RegistrationRegion`: Registration region, which must be the same as used during the deployment process.
 
-- `Cloud`: Azure cloud name, which must be the same as used during the deployment process..
+- `Cloud`: Azure cloud name, which must be the same as used during the deployment process.
 
 - `CacheFlushWaitTimeInSec`: Optional wait time in seconds to flush the cache folder. The default value is 600.
 
@@ -127,7 +127,7 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
 
 - `RegistrationWithExistingContext`: Use this switch if current Powershell window already had `Connect-AzAccount` executed and use the existing context for Azure authentication.
 
-- `RegistrationSPCredential`: Part of the `ServicePrincipal` parameter set. Use this to send `SErvicePrincipal` credential.
+- `RegistrationSPCredential`: Part of the `ServicePrincipal` parameter set. Use this to send `ServicePrincipal` credential.
 
 #### Send logs using different credentials
 
