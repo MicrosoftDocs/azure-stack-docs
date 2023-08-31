@@ -50,6 +50,7 @@ The process to install Azure Site Recovery includes actions from both the Azure 
 
 Operators must perform the following steps:
 
+- Ensure that required networking requirements are in place for both **source** and **target** environments.
 - Source: prepare the environment.
   - Download the **Azure Site Recovery appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery – extensions** in the Azure Stack Hub Marketplace Management.
   - Ensure that Azure Stack Hub users can deploy the **ASR appliance on AzureStack Hub** VM image in their respective Azure Stack Hub user subscriptions (where the VM workloads run).
@@ -66,6 +67,22 @@ Users must perform the following steps:
   - Deploy the Azure Site Recovery Vault.
   - Create the protection policies and enable the protection of the workloads.
 
+## Networking requirements
+
+Since the source and target Azure Stack Hubs might be in different datacenters, regions, or security boundaries, it means the Azure Stack Hub Operator needs to make sure the networking connectivity is in place and configured for the Azure Site Recovery services to function:
+
+- Name resolution
+  - The ASR Appliance running on the **source** Azure Stack Hub has to be able to resolve the FQDN of the **target** Azure Stack Hub
+- the ASR appliance running on the **source** Azure Stack Hub, should be able to access the following ports of the source site:
+  - [when in use] AAD: *.microsoftonline.com:443
+  - [when in use] ADFS: adfs.< external-FQDN >:443
+  - ARM: management.< external-FQDN >:443
+- ASR appliance needs to be able to access the following ports of the **target** Azure Stack Hub:
+  - [when in use] AAD: *.microsoftonline.com:443
+  - [when in use] ADFS: adfs.< external-FQDN >:443
+  - ARM: management.< external-FQDN >:443
+  - Blob: *.blob.< external-FQDN >:443
+  - ASR: rp.asr.< external-FQDN >:8478,8479,44307
 
 
 ## Next steps
@@ -74,3 +91,4 @@ For more information about configuring the source and target environments, see t
 
 - [Deploy for source environments](site-recovery-deploy-source.md)
 - [Deploy for target environments](site-recovery-deploy-target.md)
+- check the [Known issues](known-issues.md)
