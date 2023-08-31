@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/30/2023
+ms.date: 08/31/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -12,19 +12,9 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the replication process for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
+This article describes the replication phase for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
-
-## Before you begin
-
-Before replication can occur, make sure that you have completed the [discovery process](migrate-hyperv-discover.md) on your Hyper-V server.
-
-In addition, your Azure Stack HCI cluster node should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
-
-- 16 GB memory.
-- 80 GB disk.
-- 8 vCPUs.
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
@@ -271,4 +261,4 @@ You need to create a storage account in Azure portal:
 
 ## Next steps
 
-- Complete [Hyper-V VM Migration](migrate-hyperv-replicate.md).
+- Complete the [Hyper-V VM Migration](migrate-hyperv-replicate.md) phase.
