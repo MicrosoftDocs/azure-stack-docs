@@ -94,12 +94,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; | |
-| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
-| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
-| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
-| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
-| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-EX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742283.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; | |
+| [Nexus 9300-FX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742284.html) <br>(10, 25 GbE) |NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-742282.html) <br>(10, 25, 100 GbE)|NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-FX3](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-744052.html)<br>(10, 25 GbE) |NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
