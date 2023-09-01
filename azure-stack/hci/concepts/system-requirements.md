@@ -72,6 +72,9 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
 
+> [!IMPORTANT]
+> When designing the number of nodes in your cluster, make sure to consider how both [Windows Failover Cluster and Storage Space Direct quorum](quorum.md) will impact your cluster's availability.
+
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
 - It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
