@@ -73,7 +73,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
 
 > [!IMPORTANT]
-> When designing the number of nodes in your cluster, make sure to consider how both [Windows Failover Cluster and Storage Space Direct quorum](quorum.md) will impact your cluster's availability.
+> When designing the number of nodes in your cluster, make sure to consider how both [Windows Failover Cluster and Storage Spaces Direct quorum](quorum.md) will impact your cluster's availability.
 
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
