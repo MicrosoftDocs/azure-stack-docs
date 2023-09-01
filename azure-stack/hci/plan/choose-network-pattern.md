@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 5/31/2023
+ms.date: 07/20/2023
 ---
 
 # Azure Stack HCI network deployment patterns
@@ -37,4 +37,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)
