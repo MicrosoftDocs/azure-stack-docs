@@ -61,7 +61,7 @@ Operators must perform the following steps:
 Users must perform the following steps:
 
 - Source:
-  - Deploy the **ASR appliance on AzureStack Hub** VM image in the Azure Stack Hub user subscription.
+  - Deploy the **Azure Site Recovery appliance on AzureStack Hub** VM image in the Azure Stack Hub user subscription.
   - The user must have owner rights on each Azure Stack Hub user subscription in which they protect VM workloads.
 - Target:
   - Deploy the Azure Site Recovery Vault.
@@ -69,20 +69,20 @@ Users must perform the following steps:
 
 ## Networking requirements
 
-Since the source and target Azure Stack Hubs might be in different datacenters, regions, or security boundaries, it means the Azure Stack Hub Operator needs to make sure the networking connectivity is in place and configured for the Azure Site Recovery services to function:
+Because the source and target Azure Stack Hubs might be in different datacenters, regions, or security boundaries, the Azure Stack Hub operator must make sure the networking connectivity is in place and configured in order for the Azure Site Recovery services to function:
 
 - Name resolution
-  - The ASR Appliance running on the **source** Azure Stack Hub has to be able to resolve the FQDN of the **target** Azure Stack Hub
-- the ASR appliance running on the **source** Azure Stack Hub, should be able to access the following ports of the source site:
-  - [when in use] AAD: *.microsoftonline.com:443
-  - [when in use] ADFS: adfs.< external-FQDN >:443
+  - The Azure Site Recovery appliance running on the **source** Azure Stack Hub instance must be able to resolve the FQDN of the **target** Azure Stack Hub instance.
+- The Azure Site Recovery appliance running on the **source** Azure Stack Hub instance should be able to access the following ports on the source site:
+  - (When in use) AAD: *.microsoftonline.com:443
+  - (When in use) ADFS: adfs.< external-FQDN >:443
   - ARM: management.< external-FQDN >:443
-- ASR appliance needs to be able to access the following ports of the **target** Azure Stack Hub:
-  - [when in use] AAD: *.microsoftonline.com:443
-  - [when in use] ADFS: adfs.< external-FQDN >:443
-  - ARM: management.< external-FQDN >:443
+- The Azure Site Recovery appliance must be able to access the following ports of the **target** Azure Stack Hub instance:
+  - (When in use) AAD: *.microsoftonline.com:443
+  - (When in use) ADFS: adfs.< external-FQDN >:443
+  - Azure Resource Manager: management.< external-FQDN >:443
   - Blob: *.blob.< external-FQDN >:443
-  - ASR: rp.asr.< external-FQDN >:8478,8479,44307
+  - Azure Site Recovery: rp.asr.< external-FQDN >:8478,8479,44307
 
 
 ## Next steps
@@ -91,4 +91,4 @@ For more information about configuring the source and target environments, see t
 
 - [Deploy for source environments](site-recovery-deploy-source.md)
 - [Deploy for target environments](site-recovery-deploy-target.md)
-- check the [Known issues](known-issues.md)
+- Check the [Known issues](known-issues.md).
