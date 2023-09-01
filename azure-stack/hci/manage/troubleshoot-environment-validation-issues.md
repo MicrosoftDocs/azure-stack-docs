@@ -125,7 +125,7 @@ The following parameters are required to use the `Send-AzStackHciDiagnosticData`
 
 - `RegistrationWithDeviceCode`: The switch that allows Azure authentication with the device code.
 
-- `RegistrationWithExistingContext`: Use this switch if current Powershell window already had `Connect-AzAccount` executed and use the existing context for Azure authentication.
+- `RegistrationWithExistingContext`: Use this switch if current PowerShell window already had `Connect-AzAccount` executed and use the existing context for Azure authentication.
 
 - `RegistrationSPCredential`: Part of the `ServicePrincipal` parameter set. Use this to send `ServicePrincipal` credential.
 
