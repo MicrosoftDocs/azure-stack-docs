@@ -74,12 +74,12 @@ Because the source and target Azure Stack Hubs might be in different datacenters
 - Name resolution
   - The Azure Site Recovery appliance running on the **source** Azure Stack Hub instance must be able to resolve the FQDN of the **target** Azure Stack Hub instance.
 - The Azure Site Recovery appliance running on the **source** Azure Stack Hub instance should be able to access the following ports on the source site:
-  - (When in use) AAD: *.microsoftonline.com:443
-  - (When in use) ADFS: adfs.< external-FQDN >:443
-  - ARM: management.< external-FQDN >:443
+  - (When in use) Azure AD: *.microsoftonline.com:443
+  - (When in use) AD FS: adfs.< external-FQDN >:443
+  - Azure Resource Manager: management.< external-FQDN >:443
 - The Azure Site Recovery appliance must be able to access the following ports of the **target** Azure Stack Hub instance:
-  - (When in use) AAD: *.microsoftonline.com:443
-  - (When in use) ADFS: adfs.< external-FQDN >:443
+  - (When in use) Azure AD: *.microsoftonline.com:443
+  - (When in use) AD FS: adfs.< external-FQDN >:443
   - Azure Resource Manager: management.< external-FQDN >:443
   - Blob: *.blob.< external-FQDN >:443
   - Azure Site Recovery: rp.asr.< external-FQDN >:8478,8479,44307
