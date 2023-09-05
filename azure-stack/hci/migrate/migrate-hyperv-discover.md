@@ -174,17 +174,11 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app.
 
-    :::image type="content" source="media/migrate-discover/migrate-enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/migrate-discover/key-verified.png":::
+    :::image type="content" source="media/migrate-discover/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/migrate-discover/enter-code2.png":::
 
 1. The appliance may take up to 10 minutes to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
-
-1. Select **Add cluster information** and enter the fully-qualified domain name (FQDN), domain name, username, and password information for each server or cluster node that you want to discover VMs from.
-
-    :::image type="content" source="media/migrate-discover/add-cluster-info2.png" alt-text="Screenshot showing cluster information popup." lightbox="media/migrate-discover/key-verified.png":::
-
-1. Enter the name and credentials of the target Azure Stack HCI cluster.
 
 1. Disable the slider under **Step 4: Provide server credentials to perform software inventory...**.
 
