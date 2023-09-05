@@ -39,7 +39,7 @@ To deploy multiple load balancers during the workload cluster creation, use the 
    $lbcfg = New-AksHciLoadBalancerSetting -name "haProxyLB" -loadBalancerSku HAProxy -vmSize Standard_K8S3_v1 -loadBalancerCount 3
    ```
 
-1. Deploy a workload cluster without providing the load balancer configuration using the following command:
+1. Deploy a workload cluster by providing the load balancer configuration using the following command:
 
    ```powershell
    New-AksHciCluster -name "holidays" -nodePoolName "thanksgiving" -nodeCount 2 -OSType linux -nodeVmSize Standard_A4_v2 -loadBalancerSettings $lbCfg
