@@ -334,7 +334,7 @@
         - name: Complete prerequisites
           href: migrate/migrate-hyperv-prerequisites.md 
       - name: Phase 1 - Discover
-        href: ../index.yml
+        href: migrate/migrate-hyperv-discover.md
       - name: Phase 2 - Replicate
         href: ../index.yml
       - name: Phase 3 - Migrate, verify
