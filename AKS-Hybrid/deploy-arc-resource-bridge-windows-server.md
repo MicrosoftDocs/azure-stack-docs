@@ -18,7 +18,8 @@ ms.date: 03/29/2023
 Follow these steps to install Arc Resource Bridge on Windows Server using the command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
 > [!NOTE]
-> To avoid a mismatch error, it's recommended that you deploy the resources and the resource group to the same location (the same Azure region).
+> To avoid a Azure region mismatch error, it's recommended that you deploy all the Azure resources like Arc Resource Bridge, networks, AKS hybrid clusters, etc. and the Azure resource group to the same Azure region/location.
+> We do not recommend running AKS host management cluster and AKS hybrid clusters managed using PowerShell/Windows Admin Center and this preview. Please uninstall the GA product by running `Uninstall-Akshci` before proceeding.
 
 ## Step 1: Install pre-requisite PowerShell modules
 
@@ -38,10 +39,7 @@ Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -Require
 Exit 
 ```
 
-## Step 2: Install AKS host management cluster or install MOC
-
-Install Microsoft On-premises cloud (MOC) to enable cloud management. For more information about MOC, see [Microsoft on-premises cloud](concepts-node-networking.md#microsoft-on-premises-cloud-service).
-
+## Step 2: Install Microsoft on-premises cloud to enable Azure management
 Run the following steps to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
 
 ```PowerShell
