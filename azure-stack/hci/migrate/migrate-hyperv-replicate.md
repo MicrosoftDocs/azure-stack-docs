@@ -91,7 +91,7 @@ This step applies only if you downloaded the .VHD file. You download the operati
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
 
-    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/replicate/enhanced-session-mode.png.png":::
+    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/replicate/enhanced-session-mode.png":::
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
