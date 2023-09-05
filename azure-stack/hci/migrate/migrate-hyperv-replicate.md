@@ -91,7 +91,7 @@ This step applies only if you downloaded the .VHD file. You download the operati
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
 
-    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/replicate/replicate.png":::
+    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/replicate/enhanced-session-mode.png.png":::
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
@@ -102,7 +102,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
-    :::image type="content" source="media/replicate/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/replicate/replicate.png":::
+    :::image type="content" source="media/replicate/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/replicate/source-os-download-iso.png":::
 
     > [!NOTE]
     > It is not a requirement to use the evaluation OS version - you can use your own ISO image as long as the OS version is Windows Server 2022.
