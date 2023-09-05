@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/31/2023
+ms.date: 09/05/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -44,37 +44,37 @@ Complete the following tasks to generate the target appliance key:
 
     :::image type="content" source="./media/replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/replicate/generate-target-key.png":::
 
-1. Once the key is generated, copy and save the generated target key to Notepad or other text editor for future use.
+1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
-1. Under **Step 2**, select **Download installer** to download the appliance .zip file or .VHD file.
+## Step 2: Download and install the appliance
 
-## Step 2: Install target appliance VM OS (.zip file only)
+You can download the appliance using either a .VHD file or a .zip file.
 
-This step applies only if you downloaded the appliance previously using the .zip file. In this scenario, you download the operating system (OS) .VHD file for the target appliance VMs on the target Azure Stack HCI cluster.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD for the VM.
+:::image type="content" source="media/migrate-discover/download-source-appliance-2.png" alt-text="Screenshot of Download source appliance step 2." lightbox="media/migrate-discover/download-source-appliance-2.png":::
+
+### Step 2a: Download using the .VHD file option
+
+This step applies only if you downloaded the .VHD file. You download the operating system (OS) VHD for the source appliance virtual machine (VM) to the source Hyper-V server. The source appliance is then installed for you.
+
+1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD file.
+
+    :::image type="content" source="media/replicate/source-os-download-vhd.png" alt-text="Screenshot of Download source VM OS VHD page." lightbox="media/replicate/source-os-download-vhd.png":::
 
     > [!NOTE]
-    > It is not a requirement to use the evaluation OS version. You can use your own images as long as the OS version is Windows Server 2022.
+    > It is not a requirement to use the evaluation OS version - you can use your own VHD as long as the OS version is Windows Server 2022.
 
-1. (Only applies for .zip file use) Open **Hyper-V Manager** on a node in the target cluster and then select the Azure Stack HCI cluster from the list.
-
-1. (Only applies for .zip file use) Under **Actions** on the right, select **New > Virtual machine**.
-
-1. Create the new appliance VM on the Azure Stack HCI cluster node using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
+1. Create the appliance VM on the Hyper-V server using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
 
     - VM name
     - VM location
-    - **Connection**: ExternalSwitch
     - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2022
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
-    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
-
-    > [!NOTE]
-    > Make sure that you create the appliance VM as a non-high availability VM.
+    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
 1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
     
@@ -82,35 +82,76 @@ This step applies only if you downloaded the appliance previously using the .zip
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
+    > [!NOTE]
+    > Make sure that you create the appliance VM as a non-high availability VM.
+
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
-1. Select the **install OS** from **image file** option and select the downloaded VHD.
+1. In  **Hyper-V Manager**, select the host.
+
+1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
+
+    :::image type="content" source="media/migrate-discover/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/migrate-discover/enhanced-session-mode.png":::
+
+    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
+
+
+### Step 2b: Download using the .zip file option
+
+This step applies only if you downloaded the .zip file. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server. Then you use a PowerShell script to install the source appliance.
+
+1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
+
+    :::image type="content" source="media/migrate-discover/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/migrate-discover/source-os-download-iso.png":::
+
+    > [!NOTE]
+    > It is not a requirement to use the evaluation OS version - you can use your own ISO image as long as the OS version is Windows Server 2022.
+
+1. On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
+
+1. Under **Actions** on the right, select **New > Virtual machine**.
+
+1. Select the install OS from **image file** option and select the downloaded ISO.
+
+1. Create the new appliance VM on the Hyper-V server using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
+
+    - VM name
+    - VM location
+    - **VM type**: `Standalone` (non-High Availability type)
+    - **Operating System**: Windows Server 2022
+    - **Disk**: 80GB (min)
+    - **Memory**: 16GB (min)
+    
+    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+
+1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+    
+    :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
+
+1. Create a virtual hard disk for the VM and specify a location for it.
+
+    > [!NOTE]
+    > Make sure that you create the appliance VM as a non-high availability VM.
+
+1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
 1. Select the OS you just downloaded (Windows Server 2022) and begin OS set up.
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
-1. In **Hyper-V Manager**, select the VM just created.
+1. In  **Hyper-V Manager**, select the host.
 
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure the **Allow enhanced session mode** option is enabled.
+1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
 
     :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/replicate/enhanced-session-mode.png":::
 
-    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
+    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
-1. Sign in to the VM again.
+1. Open **Server Manager** on the Hyper-V server.
 
-## Step 3: Install target appliance (.zip file only)
+1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
 
-This step applies only if you downloaded the appliance using the .zip file. In this scenario, you download the file for the target appliance VMs on the target Azure Stack HCI cluster.
-
-The target appliance and the source appliance use the same file, so there is no need to download it again.
-
-1. Open **Server Manager**.
-
-1. Copy and paste the downloaded appliance file to the target VM virtual hard disk location that you created.
-
-1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
+1. As an administrator, run the following PowerShell script from the folder of the downloaded file to install the target appliance:
 
     ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -119,7 +160,7 @@ The target appliance and the source appliance use the same file, so there is no 
 
 1. Restart and sign into the VM.
 
-## Step 4: Configure and register target appliance
+## Step 3: Configure and register target appliance
 
 1. Open **Server Manager** and sign in to the target appliance VM.
 
@@ -145,7 +186,7 @@ The target appliance and the source appliance use the same file, so there is no 
 
     :::image type="content" source="./media/replicate/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info2.png":::
 
-## Step 5: Start replication
+## Step 4: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
