@@ -74,6 +74,8 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
+  - name: 0. Download the Azure Stack HCI software
+    href: deploy/download-azure-stack-hci-software.md
   - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: 2. Create a cluster
@@ -328,9 +330,9 @@
       - name: Phase 0 - Prepare
         items:
         - name: Review requirements
-          href: ../index.yml
+          href: migrate/migrate-hyperv-requirements.md
         - name: Complete prerequisites
-          href: ../index.yml 
+          href: migrate/migrate-hyperv-prerequisites.md 
       - name: Phase 1 - Discover
         href: ../index.yml
       - name: Phase 2 - Replicate
@@ -540,7 +542,11 @@
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
         href: manage/collect-logs.md
-      - name: Troubleshoot issues
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot environment readiness
+        href: manage/troubleshoot-environment-validation-issues.md
+      - name: Troubleshoot deployment
         href: deploy/deployment-tool-troubleshoot.md
     - name: Update
       items:
