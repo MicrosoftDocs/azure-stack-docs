@@ -3,7 +3,7 @@ title: Discover Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate
 description: Learn the discovery phase for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/31/2023
+ms.date: 09/05/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -18,7 +18,7 @@ This article describes the discovery phase for Hyper-V virtual machine (VM) migr
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
-## Step 1: Generate source appliance key and download appliance
+## Step 1: Generate source appliance key
 
 In this step, you generate a source key and download either a .zip file or .VHD file for the source appliance.
 
@@ -36,22 +36,67 @@ In this step, you generate a source key and download either a .zip file or .VHD 
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
-1. Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
+## Step 2: Download the appliance
 
-## Step 2: Install source appliance VM OS (for .zip file only)
+You can download the appliance using either a .zip file or a .VHD file.
 
-This task applies only if you downloaded the .zip file option. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
+
+### Step 2a: Download using the .VHD file
+
+This step applies only if you downloaded the .VHD file. You download the operating system (OS) VHD for the source appliance virtual machine (VM) to the source Hyper-V server. The source appliance is then installed for you.
+
+1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD file.
+
+    :::image type="content" source="media/discover/source-os-download.png" alt-text="Screenshot of Download source VM OS VHD page." lightbox="media/discover/source-os-download.png":::
+
+    > [!NOTE]
+    > It is not a requirement to use the evaluation OS version - you can use your own VHD as long as the OS version is Windows Server 2022.
+
+1. Create the appliance VM on the Hyper-V server using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
+
+    - VM name
+    - VM location
+    - **VM type**: `Standalone` (non-High Availability type)
+    - **Operating System**: Windows Server 2022
+    - **Disk**: 80GB (min)
+    - **Memory**: 16GB (min)
+    
+    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+
+1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+    
+    :::image type="content" source="media/discover/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/discover/vcpu-settings.png":::
+
+1. Create a virtual hard disk for the VM and specify a location for it.
+
+    > [!NOTE]
+    > Make sure that you create the appliance VM as a non-high availability VM.
+
+1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
+
+1. In  **Hyper-V Manager**, select the host.
+
+1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
+
+    :::image type="content" source="media/discover/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/discover/enhanced-session-mode.png":::
+
+    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
+
+### Step 2b: Download using the .zip file
+
+This step applies only if you downloaded the .zip file. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server. Then you use a PowerShell script to install the source appliance.
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
     :::image type="content" source="media/discover/source-os-download.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/discover/source-os-download.png":::
 
     > [!NOTE]
-    > It is not a requirement to use the evaluation OS version - you can use you own ISO images as long as the OS version is Windows Server 2022.
+    > It is not a requirement to use the evaluation OS version - you can use your own ISO image as long as the OS version is Windows Server 2022.
 
-1. (Only applies for .zip file use) On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
+1. On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
 
-1. (Only applies for .zip file use) Under **Actions** on the right, select **New > Virtual machine**.
+1. Under **Actions** on the right, select **New > Virtual machine**.
 
 1. Select the install OS from **image file** option and select the downloaded ISO.
 
@@ -89,15 +134,11 @@ This task applies only if you downloaded the .zip file option. You download the 
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host)
 
-## Step 3: Install source appliance (for .zip file only)
-
-This task applies only if you downloaded the .zip file option.
-
 1. Open **Server Manager** on the Hyper-V server.
 
-1. Copy and paste the downloaded .zip file in **Step 2: Create source appliance VM** to the VM virtual disk that you created and extract it as needed.
+1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
 
-1. As an administrator, run the following PowerShell script from the folder of the downloaded file:
+1. As an administrator, run the following PowerShell script from the folder of the downloaded file to install the source appliance:
 
   ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -105,13 +146,13 @@ This task applies only if you downloaded the .zip file option.
   ``````
 
 1. When prompted, select **Y** to do the following:
-    - Install source appliance bits.
+    - Install the source appliance bits.
     - Install the Edge browser.
     - Remove Internet Explorer.
 
 1. Restart and sign into the VM.
 
-## Step 4: Configure source appliance and discover VMs
+## Step 3: Configure source appliance and discover VMs
 
 1. In **Server Manager**, sign in to the source appliance VM.
 
