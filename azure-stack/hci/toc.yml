@@ -332,7 +332,7 @@
         - name: Review requirements
           href: migrate/migrate-hyperv-requirements.md
         - name: Complete prerequisites
-          href: ../index.yml 
+          href: migrate/migrate-hyperv-prerequisites.md 
       - name: Phase 1 - Discover
         href: ../index.yml
       - name: Phase 2 - Replicate
