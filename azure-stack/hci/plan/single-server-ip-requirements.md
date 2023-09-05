@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 07/20/2023
 ---
 
 # Review single-server storage reference pattern IP requirements for Azure Stack HCI
@@ -57,4 +57,4 @@ The following table lists network attributes for deployments SDN optional servic
 
 ## Next steps
 
-- [Download Azure Stack HCI](../deploy/operating-system.md)
+- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)
