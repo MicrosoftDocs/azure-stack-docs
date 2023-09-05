@@ -52,7 +52,7 @@ You can download the appliance using either a .VHD file or a .zip file.
 
 Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-:::image type="content" source="media/migrate-discover/download-source-appliance-2.png" alt-text="Screenshot of Download source appliance step 2." lightbox="media/migrate-discover/download-source-appliance-2.png":::
+:::image type="content" source="media/replicate/download-source-appliance-2.png" alt-text="Screenshot of Download source appliance step 2." lightbox="media/replicate/download-source-appliance-2.png":::
 
 ### Step 2a: Download using the .VHD file option
 
@@ -91,7 +91,7 @@ This step applies only if you downloaded the .VHD file. You download the operati
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
 
-    :::image type="content" source="media/migrate-discover/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/migrate-discover/enhanced-session-mode.png":::
+    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/migrate-discover/replicate.png":::
 
     For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
@@ -102,7 +102,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
 
-    :::image type="content" source="media/migrate-discover/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/migrate-discover/source-os-download-iso.png":::
+    :::image type="content" source="media/replicate/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/migrate-discover/replicate.png":::
 
     > [!NOTE]
     > It is not a requirement to use the evaluation OS version - you can use your own ISO image as long as the OS version is Windows Server 2022.
@@ -216,11 +216,11 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
 
-    :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./replicate/media/replicate-2-target.png":::
+    :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/replicate/replicate-2-target.png":::
 
 1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. Select **Next**.
 
-    :::image type="content" source="./media/replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./replicate/media/replicate-3-vm.png":::
+    :::image type="content" source="./media/replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/replicate/replicate-3-vm.png":::
 
 1. On the **Target settings** tab, complete these tasks:
 
@@ -258,11 +258,11 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. When finished, select **Migrate**.
  
-    :::image type="content" source="./media/replicate/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./replicate/media/replications-page2.png":::
+    :::image type="content" source="./media/replicate/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replicate/replications-page2.png":::
 
 ### Create a storage account
 
-You need to create a storage account in Azure portal:
+You next need to create a storage account in Azure portal:
 
 1. On the Azure portal home page, select **Storage accounts**.
 
