@@ -6,7 +6,7 @@ ms.author: abha
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/29/2023
+ms.date: 09/05/2023
 ---
 
 
@@ -18,8 +18,8 @@ ms.date: 03/29/2023
 Follow these steps to install Arc Resource Bridge on Windows Server using the command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
 > [!NOTE]
-> To avoid a Azure region mismatch error, it's recommended that you deploy all the Azure resources like Arc Resource Bridge, networks, AKS hybrid clusters, etc. and the Azure resource group to the same Azure region/location.
-> We do not recommend running AKS host management cluster and AKS hybrid clusters managed using PowerShell/Windows Admin Center and this preview. Please uninstall the GA product by running `Uninstall-Akshci` before proceeding.
+> To avoid an Azure region mismatch error, it's recommended that you deploy all Azure resources such as Arc Resource Bridge, networks, AKS hybrid clusters, etc., and the Azure resource group to the same Azure region/location.
+> We do not recommend running AKS host management clusters and AKS hybrid clusters managed using PowerShell/Windows Admin Center and this preview. Uninstall the GA product by running `Uninstall-Akshci` before proceeding.
 
 ## Step 1: Install pre-requisite PowerShell modules
 
@@ -39,8 +39,9 @@ Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -Require
 Exit 
 ```
 
-## Step 2: Install Microsoft on-premises cloud to enable Azure management
-Run the following steps to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
+## Step 2: Install the Microsoft on-premises cloud to enable Azure management
+
+Run the following command to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
 
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
@@ -49,12 +50,12 @@ Install-Moc
 
 ## Step 3: Generate YAML files required for installing Arc Resource Bridge
 
-Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file for you. Before running the PowerShell command that generates these YAML files, make sure you have the following parameters ready:
+Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file. Before running the PowerShell command that generates these YAML files, make sure you have the following prerequisites ready:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
 | $subscriptionID | Your Azure Arc Resource Bridge is installed on this Azure subscription ID. |
-| $resourceGroup | A resource group in the Azure subscription listed above. Make sure your resource group is in the eastus, westeurope, southcentralus, or westus3 locations. |
+| $resourceGroup | A resource group in the specified Azure subscription. Make sure your resource group is in the eastus, westeurope, southcentralus, or westus3 locations. |
 | $location | The Azure location in which your Azure Arc Resource Bridge will be deployed. Make sure this location is eastus, westeurope, southcentralus, or westus3. It's recommended you use the same location you used when creating the resource group. |
 | $resourceName | The name of your Azure Arc Resource Bridge. |
 | $workDirectory | Path to a shared cluster volume that stores the config files we create for you. We recommend you use the same **workDir** you used when installing AKS hybrid. Make sure your **workDir** full path does not contain any spaces. |
@@ -83,10 +84,10 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 
 | Parameter  | Required or Optional? |  Parameter details |
 | -----------| ------ | ------------ |
-| $proxyServerHTTP | Required | HTTP URL and port information. For example, `http://192.168.0.10:80` |
-| $proxyServerHTTPS | Required | HTTPS URL and port information. For example, `https://192.168.0.10:443` |
+| $proxyServerHTTP | Required | HTTP URL and port information; for example, `http://192.168.0.10:80`. |
+| $proxyServerHTTPS | Required | HTTPS URL and port information; for example, `https://192.168.0.10:443`. |
 | $proxyServerNoProxy | Required | URLs which can bypass the proxy.  |
-| $certificateFilePath | Optional | Name of the certificate file path for the proxy. For example: `C:\Users\Palomino\proxycert.crt` |
+| $certificateFilePath | Optional | Name of the certificate file path for the proxy; for example: `C:\Users\Palomino\proxycert.crt`. |
 | $proxyServerUsername | Optional | Username for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `Eleanor`.
 | $proxyServerPassword | Optional | Password for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `PleaseUseAStrongerPassword!`.
 
