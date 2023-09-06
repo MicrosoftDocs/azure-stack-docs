@@ -322,7 +322,7 @@
 - name: Migrate
   items: 
     - name: Migration overview
-      href: migrate/migrate-options-hci-overview.md
+      href: migrate/migration-options-hci-overview.md
     - name: Migrate using Azure Migrate
       items:
       - name: Overview
