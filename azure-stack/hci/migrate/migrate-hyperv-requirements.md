@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/31/2023
+ms.date: 09/06/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article lists the system requirements for migrating Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate. If you haven't already, read the [Overview](migrate-hyperv-requirements.md).
+This article lists the system requirements for migrating Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -25,9 +25,14 @@ The following operating systems (OS) are supported for the source appliance, tar
 |---------|---------|
 |Source appliance     |Windows Server 2022         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2         |
+|Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
+For appliances to successfully discover Windows Server 2008 R2 VMs, you must do the following:
+
+1. Download and install [KB patch 3138612](https://www.microsoft.com/download/details.aspx?id=51208). This will clear the Windows Update error 80072EFE.
+ You can then update all patches to get the latest Hyper-V integration services.
+2. Run `winrm quickconfig` from a command prompt as an Administrator to add Windows Remote Management (WinRm) access through your firewall.
 
 ## Supported geographies
 
@@ -74,13 +79,23 @@ Your Hyper-V server should have sufficient resources to create a Windows Server 
 
 ## Agent and service requirements
 
-Make sure that the source appliance VM and the target appliance VM have a healthy configuration by ensuring the following agents and services are running:
+Make sure that the source appliance VM and the target appliance VM have a healthy configuration by ensuring the following agents and services are running.
+
+Open PowerShell as an Administrator and run the following command for each of the services listed in parentheses to verify they are running:
+
+```powershell
+Get-Service -Name <name_of_service>
+``````
 
 **On the source appliance VM**:
   
 - Microsoft Azure Gateway Service (*asrgwy*)
 - Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
 - Azure Site Recovery Management Service (*asrmgmtsvc*)
+
+Run the following PowerShell command as Administrator for each of the three services to verify they are running:
+
+
 
 Logs and configuration can be found at *C:\ProgramData\Microsoft Azure\Logs* and *C:\ProgramData\Microsoft Azure\Config*.
 
@@ -107,4 +122,4 @@ Get-ArcHciLogs
 
 ## Next steps
 
-- [Complete the prerequisites](migrate-hyperv-requirements.md).
+- [Complete the prerequisites](migrate-hyperv-prerequisites.md).
