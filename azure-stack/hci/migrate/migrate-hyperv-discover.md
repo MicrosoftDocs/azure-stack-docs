@@ -172,11 +172,9 @@ This step applies only if you downloaded the .zip file. You download the operati
 
     :::image type="content" source="media/migrate-discover/enter-code.png" alt-text="Screenshot showing Enter code popup." lightbox="media/migrate-discover/key-verified.png":::
 
-1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app.
+1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app. It can take up to 10 minutes for the appliance to be registered.
 
     :::image type="content" source="media/migrate-discover/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/migrate-discover/enter-code2.png":::
-
-1. The appliance may take up to 10 minutes to be registered. Once registered, select **Add credentials** and enter your Hyper-V source host credentials to allow discovery of your source VMs.
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
 
