@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Migration options to migrate VM workloads to Azure Stack HCI (preview)
+# About options to migrate VM workloads to Azure Stack HCI (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
