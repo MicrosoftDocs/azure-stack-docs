@@ -27,11 +27,9 @@ To migrate VM workloads and their data to your Azure Stack HCI cluster, several 
 First party migration options are provided by Microsoft. These options are built into the Azure Stack HCI platform and are available to you at no additional cost. The following first party migration options are available:
 
 - [Azure Migrate](./migration-azure-migrate-hci-overview.md)
-- [Software Centre for virtual machine migration]
+- Software Centre for virtual machine migration (SCVMM)
     - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
     - [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
-- [Storage Migration Service](#storage-migration-service)
-- [Windows Admin Center](#windows-admin-center)
 - [Azure Site Recovery](../manage/azure-site-recovery.md#protect-vm-workloads-with-azure-site-recovery-on-azure-stack-hci-preview)
  
 
@@ -39,8 +37,8 @@ First party migration options are provided by Microsoft. These options are built
 
 Third party migration options are provided by Microsoft partners. These options are available to you at an additional cost. The following third party migration options are available:
 
-- [VEEAM](#veeam)
-- [Commvault](#commvault)
+- [VEEAM](../index.yml)
+- [Commvault](../index.yml)
 
 ## Manual migration options
 
@@ -56,8 +54,6 @@ Manual migration options are provided by Microsoft. These options are available 
 ## Comparison summary
 
 The following table summarizes the various migration options available to migrate your VM workloads to Azure Stack HCI:
-
-
 
 
 ## Next steps
