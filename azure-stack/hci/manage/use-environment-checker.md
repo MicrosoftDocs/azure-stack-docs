@@ -66,7 +66,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before running the Deployment Tool to avoid any conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -535,6 +535,15 @@ The information displayed on each readiness check report varies depending on the
 > The results reported by the Environment Checker tool reflect the status of your settings only at the time that you ran it. If you make changes later, for example to your Active Directory or network settings, items that passed successfully earlier can become critical issues.
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
+
+## Uninstall environment checker
+
+The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the deployment tool, to avoid any conflicts.
+
+```powershell
+Remove-Module AzStackHci.EnvironmentChecker -Force
+Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path -like "*$($_.Version)*"} | Uninstall-Module -force
+```
 
 ## Troubleshoot environment validation issues
 
