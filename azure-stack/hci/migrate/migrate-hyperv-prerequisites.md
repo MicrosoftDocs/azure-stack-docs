@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/05/2023
+ms.date: 09/06/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -12,9 +12,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V virtual machines (VMs) to Azure Stack HCI.
-
-Make sure to [review the requirements](migrate-hyperv-prerequisites.md) for migration if you haven't already.
+This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V virtual machines (VMs) to Azure Stack HCI. Make sure to [review the requirements](migrate-hyperv-prerequisites.md) for migration if you haven't already.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -34,7 +32,9 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 
 ## Create an Azure Migrate project
 
-Before you can migrate, create an Azure Migrate project in Azure portal.
+Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure.
+
+You can also [create an Azure Migrate project using an ARM template](/azure/migrate/quickstart-create-migrate-project).
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
