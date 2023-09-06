@@ -34,7 +34,7 @@ In this step, you generate a source key and download either a .zip file or .VHD 
 
 1. Under **Step 1: Generate project key**, enter a name for your appliance and then select **Generate key**. This may take a few minutes to generate the source key.
 
-1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
+1. Copy and paste the key to Notepad or other text editor after it is generated for future use.
 
 ## Step 2: Download and install the appliance
 
