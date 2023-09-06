@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/05/2023
+ms.date: 09/06/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -76,7 +76,7 @@ This step applies only if you downloaded the .VHD file. You download the operati
     
     For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
     :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
 
@@ -124,7 +124,7 @@ This step applies only if you downloaded the .zip file. You download the operati
     
     For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-1. In **Hyper-V Manager**, on the **Settings** page, set the **Number of virtual processors** to `8`.
+1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
     :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
 
