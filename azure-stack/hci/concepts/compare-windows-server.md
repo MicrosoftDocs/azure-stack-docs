@@ -56,7 +56,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement | Has its own end-user license agreement |
 | Licensing        | Billed to your Azure subscription | Has its own paid license |
 | Support          | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
-| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci) or comes preinstalled on integrated systems | Microsoft Volume Licensing Service Center or Evaluation Center |
+| Where to get it  | Download from [the Azure portal](../deploy/download-azure-stack-hci-software.md) or comes preinstalled on integrated systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host operating system | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 | Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) | None |
