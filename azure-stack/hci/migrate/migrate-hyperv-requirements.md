@@ -28,15 +28,15 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
-For appliances to successfully discover Windows Server 2008 R2 VMs, you must do the following:
+For appliances to discover Windows Server 2008 R2 VMs, you must do the following:
 
-1. Download and install [KB patch 3138612](https://www.microsoft.com/download/details.aspx?id=51208). This will clear the Windows Update error 80072EFE.
+1. Download and install [KB patch 3138612](https://www.microsoft.com/download/details.aspx?id=51208). This clears the Windows Update error 80072EFE.
  You can then update all patches to get the latest Hyper-V integration services.
 2. Run `winrm quickconfig` from a command prompt as an Administrator to add Windows Remote Management (WinRm) access through your firewall.
 
 ## Supported geographies
 
-You can create an Azure Migrate project in many geographies in the Azure public cloud. Here is a list of supported geographies for migration to Azure Stack HCI:
+You can create an Azure Migrate project in many geographies in the Azure public cloud. Here's a list of supported geographies for migration to Azure Stack HCI:
 
 |Geography|Metadata storage locations|
 |-|-|
@@ -47,7 +47,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 Keep in mind the following information as you create a project:
 
 - The project geography is only used to store the discovered metadata.
-- When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate does not move or store customer data outside of the region allocated.
+- When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate doesn't move or store customer data outside of the region allocated.
 
 ## Azure portal requirements
 
@@ -60,7 +60,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Source Hyper-V server and VM requirements
 
-In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks are not attached to the local cluster storage, the disks can’t be migrated.
+In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks aren't attached to the local cluster storage, the disks can’t be migrated.
 
 Your Hyper-V server should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
