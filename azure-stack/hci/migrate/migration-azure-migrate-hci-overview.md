@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 08/31/2023
+ms.date: 09/06/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,17 +23,17 @@ For more information on Azure Migrate platform, see [About Azure Migrate](/azure
 
 ## Benefits
 
-Here are the benefits of using Azure Migrate to migrate your on-premises VMs to Azure Stack HCI:
+Here are the benefits of using Azure Migrate to migrate your on-premises VMs to Azure Stack HCI. This solution:
 
-- This solution requires little or no preparation. You don't need to prep your source VMs or install agents on them prior to migration.
-- This solution results in a minimal downtime for the VM-based applications running on your on-premises servers.
-- This solution keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster. 
-- This solution provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
+- Requires no prep for your source VMs including installation of agents on them prior to migration.
+- Results in a minimal downtime for the VM-based applications running on your on-premises servers.
+- Keeps the application data on-premises only. The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster.
+- Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
 
 
 ## Migration components
 
-With Azure Migrate, you can choose to migrate your data from your on-premises setup to Azure or to your Azure Stack HCI cluster. In this case, the VMs and their related data are migrated to your on-premises Azure Stack HCI cluster.
+With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V setup to Azure or to your on-premises Azure Stack HCI cluster. In this case, the VMs and their related data are migrated to your on-premises Azure Stack HCI cluster.
 
 The following diagram shows the migration process:
 
@@ -42,8 +42,8 @@ The following diagram shows the migration process:
 The migration process requires the following components:
 
 - Azure migrate appliance running on your on-premises source Hyper-V servers. The source servers host the VMs that you want to migrate.
-- Target appliance running on your on-premises Azure Stack HCI cluster. The Azure Migrate project is used to discover the source VMs and replicate them to the target Azure Stack HCI cluster.
-- An Azure Migrate project in Azure that contains an Azure Storage account. This account serves as a cache to store the metadata and the replication data. Both the source and target appliances are registered with this Migrate project.
+- Target appliance running on your on-premises Azure Stack HCI cluster. The target appliance hosts the VMs that you migrated from your source Hyper-V environment. 
+- An Azure Migrate project in Azure that contains an Azure Storage account. Both the source and target appliances are registered with this project. The Azure Migrate project is used to discover the source VMs and replicate them to the target Azure Stack HCI cluster. The associated Azure Storage account serves as a cache to store the metadata and the replication data. 
 
 The data flows from your on-premises Hyper-V VMs to VMs running on your on-premises Azure Stack HCI cluster.
 
