@@ -55,6 +55,18 @@ Manual migration options are provided by Microsoft. These options are available 
 
 The following table summarizes the various migration options available to migrate your VM workloads to Azure Stack HCI:
 
+| Options                  | First party<br/>Azure Migrate       | First party<br/>SCVMM                                                             | Third party<br/>Commvault/VEEAM | Manual                   |
+|--------------------------|-------------------------------------|-----------------------------------------------------------------------------------|---------------------------------|--------------------------|
+| Provider                 | Microsoft options                   | Microsoft options                                                                 | Partner solutions               | Microsoft options        |
+| Capability               | Built into Azure Stack HCI platform |                                                                                   |                                 | Little or no integration |
+| Prep required            | Little to no prep for source VMs    | Need to install agents?                                                           | Need to install agents?         |                          |
+| Ease of use              | UX driven, Azure portal,            | UX driven, wizard based conversion tool or netowrk migration functionality in VMM | UX driven                       | Command line experience  |
+| Hyper-V supported        | Yes                                 | Yes                                                                               | Yes                             | Yes                      |
+| VMware supported         | No                                  | Yes                                                                               | Yes                             | Yes                      |
+| Monitoring               | Via Azure portal                    |                                                                                   |                                 | Manually                 |
+| Live migration supported |                                     |                                                                                   |                                 |                          |
+| Use when                 |                                     |                                                                                   |                                 |                          |
+| Pricing                  | Azure Migrate                       | SCVMM                                                                             | Commvault<br/>VEEAM             | PowerShell and Robocopy  |
 
 ## Next steps
 
