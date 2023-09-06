@@ -77,36 +77,9 @@ Your Hyper-V server should have sufficient resources to create a Windows Server 
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
-## Agent and service requirements
+## Arc Resource Bridge requirements
 
-Make sure that the source appliance VM and the target appliance VM have a healthy configuration by ensuring the following agents and services are running.
-
-Open PowerShell as an Administrator and run the following command for each of the services listed in parentheses to verify they are running:
-
-```powershell
-Get-Service -Name <name_of_service>
-``````
-
-**On the source appliance VM**:
-  
-- Microsoft Azure Gateway Service (*asrgwy*)
-- Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
-- Azure Site Recovery Management Service (*asrmgmtsvc*)
-
-Run the following PowerShell command as Administrator for each of the three services to verify they are running:
-
-
-
-Logs and configuration can be found at *C:\ProgramData\Microsoft Azure\Logs* and *C:\ProgramData\Microsoft Azure\Config*.
-
-**On the target appliance VM**:
- 
-- Microsoft Azure Gateway Service (*asrgwy*)
-- Azure Site Recovery Management Service (*asrmgmtsvc*)
-    
-Logs and configuration can be found at *C:\ProgramData\Microsoft Azure\Logs* and *C:\ProgramData\Microsoft Azure\Config*.
-
-The **Arc Resource Bridge** must be configured and running on the target appliance VM. Make sure that you have the following configured:
+The Arc Resource Bridge must be configured and running on the target appliance VM. Make sure that you have the following configured:
 
 - Arc Resource Bridge must have a virtual network configured.
 
