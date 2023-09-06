@@ -28,17 +28,21 @@ First party migration options are provided by Microsoft. These options are built
 
 - [Azure Migrate](./migration-azure-migrate-hci-overview.md)
 - Software Centre for virtual machine migration (SCVMM)
-    - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
-    - [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
-- [Azure Site Recovery](../manage/azure-site-recovery.md#protect-vm-workloads-with-azure-site-recovery-on-azure-stack-hci-preview)
- 
+    - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
+    - [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
+
 
 ## Third party migration options
 
 Third party migration options are provided by Microsoft partners. These options are available to you at an additional cost. The following third party migration options are available:
 
-- [VEEAM](../index.yml)
-- [Commvault](../index.yml)
+- [Carbonite](https://www.carbonite.com/)  
+- [Commvault](https://www.commvault.com/) 
+- [Cloud Assert](https://www.cloudassert.com/) 
+- [Tetrate Service Bridge](https://tetrate.io/) 
+- [Veeam](https://www.veeam.com/)  
+- [Zerodown software](https://zerodownsoftware.com/)  
+
 
 ## Manual migration options
 
@@ -51,26 +55,7 @@ Manual migration options are provided by Microsoft. These options are available 
     If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](../deploy/migrate-cluster-new-hardware.md#migrating-older-vms).
 
 
-## Comparison summary
-
-The following table summarizes the various migration options available to migrate your VM workloads to Azure Stack HCI:
-
-| Options                  | First party<br/>Azure Migrate       | First party<br/>SCVMM                                                             | Third party<br/>Commvault/VEEAM | Manual                   |
-|--------------------------|-------------------------------------|-----------------------------------------------------------------------------------|---------------------------------|--------------------------|
-| Provider                 | Microsoft options                   | Microsoft options                                                                 | Partner solutions               | Microsoft options        |
-| Capability               | Built into Azure Stack HCI platform |                                                                                   |                                 | Little or no integration |
-| Prep required            | Little to no prep for source VMs    | Need to install agents?                                                           | Need to install agents?         |                          |
-| Ease of use              | UX driven, Azure portal,            | UX driven, wizard based conversion tool or netowrk migration functionality in VMM | UX driven                       | Command line experience  |
-| Hyper-V supported        | Yes                                 | Yes                                                                               | Yes                             | Yes                      |
-| VMware supported         | No                                  | Yes                                                                               | Yes                             | Yes                      |
-| Monitoring               | Via Azure portal                    |                                                                                   |                                 | Manually                 |
-| Live migration supported |                                     |                                                                                   |                                 |                          |
-| Use when                 |                                     |                                                                                   |                                 |                          |
-| Pricing                  | Azure Migrate                       | SCVMM                                                                             | Commvault<br/>VEEAM             | PowerShell and Robocopy  |
 
 ## Next steps
 
-To prepare for migration using Azure Migrate, see the following articles:
-
-- [Review the requirements](./migrate-hyperv-requirements.md) for Hyper-V VM migration to Azure Stack HCI.
-- [Complete the prerequisites](./migrate-hyperv-prerequisites.md) for Hyper-V VM migration to Azure Stack HCI.
+To learn more about migration using Azure Migrate, see [About Azure Migrate based migration for Azure Stack HCI ](./migration-azure-migrate-hci-overview.md)
