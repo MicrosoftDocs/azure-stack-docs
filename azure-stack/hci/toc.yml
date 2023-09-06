@@ -317,7 +317,11 @@
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage Azure Arc extensions
-    href: manage/arc-extension-management.md
+    items:
+    - name: Azure Arc extensions
+      href: manage/arc-extension-management.md
+    - name: Telemetry and diagnostics extension
+      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -528,10 +532,6 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-  - name: Version 23H2
-    items:
-    - name: Telemetry and diagnostics extension overview
-      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
