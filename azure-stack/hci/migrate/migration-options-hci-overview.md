@@ -65,4 +65,4 @@ The following table summarizes the various migration options available to migrat
 To prepare for migration using Azure Migrate, see the following articles:
 
 - [Review the requirements](./migrate-hyperv-requirements.md) for Hyper-V VM migration to Azure Stack HCI.
-- [Complete the prerequisites]() for Hyper-V VM migration to Azure Stack HCI.
+- [Complete the prerequisites](./migrate-hyperv-prerequisites.md) for Hyper-V VM migration to Azure Stack HCI.
