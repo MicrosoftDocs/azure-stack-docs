@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/06/2023
+ms.date: 09/07/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -122,7 +122,7 @@ This step applies only if you downloaded the .zip file. You download the operati
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
-    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
 1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
@@ -178,13 +178,15 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
+    :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/replicate/enter-code-2.png":::
+
 1. After the appliance is registered, scroll down and select **Add cluster information**.
 
     :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
 
 1. Enter cluster fully-qualified domain name (FQDN), domain name, username, password, and then select **Save**.
 
-    :::image type="content" source="./media/replicate/add-cluster-info2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info2.png":::
+    :::image type="content" source="./media/replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info-2.png":::
 
 ## Step 4: Start replication
 
@@ -233,7 +235,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 	1. Select the storage path where these VMs are created.
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate/replicate-4-target2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target.png":::
+        :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate/replicate-4-target-2.png":::
 
 1. On the **Compute** tab:
 
@@ -258,7 +260,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. When finished, select **Migrate**.
  
-    :::image type="content" source="./media/replicate/replications-page2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replicate/replications-page2.png":::
+    :::image type="content" source="./media/replicate/replications-page-2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replicate/replications-page-2.png":::
 
 ### Create a storage account
 
