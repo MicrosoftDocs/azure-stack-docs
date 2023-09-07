@@ -28,11 +28,14 @@ The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you
 
 An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
-- To use the services compatible with Azure Stack Hub, use one of the following packages:
+- If you are using the track-2 .NET SDK (recommended), you may use the following query to individually download packages used by your Azure Stack Hub services:
+  - **[NuGet Gallery | Azure Packages](https://www.nuget.org/packages?q=Azure.&prerel=true&sortby=relevance)**
+  
+- If you are using the track-1 .NET SDK (not recommended), you must download one of the following packages to leverage your Azure Stack Hub services. Be sure to download the one that corresponds with your API profile:
   - **[Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01)**
   - **[Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2019_03_01)**
 
-  Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
+  Note: The **ResourceProvider** portion of the NuGet package specification must be changed. Additionally, the packages for track-1 .NET SDK are deprecated, so you may face errors. We recommend updating to the track-2 .NET SDK as soon as possible.
 
 ## Profiles
 
@@ -40,6 +43,8 @@ For profiles containing dates, to use a different SDK profile or version, substi
 
 | Azure Stack version | Profile |
 |---------------------|---------|
+|2301|2020_09_01|
+|2206|2020_09_01|
 |2108|2020_09_01|
 |2102|2020_09_01|
 |2008|2019_03_01|
