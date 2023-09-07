@@ -322,7 +322,7 @@
 - name: Migrate
   items: 
     - name: Migration overview
-      href: ../index.yml
+      href: migrate/migration-options-hci-overview.md
     - name: Migrate using Azure Migrate
       items:
       - name: Overview
@@ -355,8 +355,6 @@
         href: deploy/migrate-cluster-same-hardware.md
       - name: To new hardware
         href: deploy/migrate-cluster-new-hardware.md
-    - name: Migrate using 3rd party tools
-      href: ../index.yml
 
 - name: Troubleshooting
   items:
@@ -568,10 +566,6 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-  - name: Version 23H2
-    items:
-    - name: Telemetry and diagnostics extension overview
-      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

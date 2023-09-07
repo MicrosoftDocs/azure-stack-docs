@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating Hyper-V VMs to Azure Stack HCI using A
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/31/2023
+ms.date: 09/06/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -16,6 +16,29 @@ ms.subservice: azure-stack-hci
 This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V VMs to your Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
+
+## Check if required services are running
+
+Make sure that the source appliance VM and the target appliance VM have a healthy configuration by ensuring the following services are running.
+
+Open PowerShell as an Administrator and run the following command for each of the services listed in parentheses for the source appliance and target appliance to verify they are running:
+
+```powershell
+Get-Service -Name <name_of_service>
+``````
+
+**On the source appliance VM**:
+  
+- Microsoft Azure Gateway Service (*asrgwy*)
+- Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
+- Azure Site Recovery Management Service (*asrmgmtsvc*)
+
+**On the target appliance VM**:
+ 
+- Microsoft Azure Gateway Service (*asrgwy*)
+- Azure Site Recovery Management Service (*asrmgmtsvc*)
+    
+Configuration data can be found at *C:\ProgramData\Microsoft Azure\Config*.
 
 ## Collect logs and information
 
