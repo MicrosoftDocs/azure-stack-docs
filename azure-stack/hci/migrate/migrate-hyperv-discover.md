@@ -3,7 +3,7 @@ title: Discover Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate
 description: Learn the discovery phase for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/05/2023
+ms.date: 09/07/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -68,7 +68,7 @@ This step applies only if you downloaded the .VHD file. You download the operati
 
 1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
-    :::image type="content" source="media/migrate-discover/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/migrate-discover/vcpu-settings.png":::
+    :::image type="content" source="media/migrate-discover/virtual-central-processing-unit-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/migrate-discover/virtual-central-processing-unit-settings.png":::
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
@@ -111,11 +111,11 @@ This step applies only if you downloaded the .zip file. You download the operati
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
-    For more information on using Hyper-V Manager to create a VM , see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
 1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
-    :::image type="content" source="media/migrate-discover/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/migrate-discover/vcpu-settings.png":::
+    :::image type="content" source="media/migrate-discover/virtual-central-processing-unit-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/migrate-discover/virtual-central-processing-unit-settings.png":::
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
@@ -124,7 +124,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
-1. Select the OS you just downloaded (Windows Server 2022) and begin OS set up.
+1. Select the OS you just downloaded (Windows Server 2022) and begin OS setup.
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
@@ -142,10 +142,10 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. As an administrator, run the following PowerShell script from the folder of the downloaded file to install the source appliance:
 
-  ```PowerShell
+    ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
     .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud Public -PrivateEndpoint:$false
-  ``````
+      ``````
 
 1. When prompted, select **Y** to do the following:
     - Install the source appliance bits.
@@ -174,7 +174,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator (or similar) app. It can take up to 10 minutes for the appliance to be registered.
 
-    :::image type="content" source="media/migrate-discover/enter-code2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/migrate-discover/enter-code2.png":::
+    :::image type="content" source="media/migrate-discover/enter-code-2.png" alt-text="Screenshot showing device code for PowerShell sign in." lightbox="media/migrate-discover/enter-code-2.png":::
 
 1. Select **Add discovery source** and enter discovery source, IP address, and Map credentials.
 
