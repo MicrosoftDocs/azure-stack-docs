@@ -178,7 +178,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
-    :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/replicate/enter-code-2.png":::
+    :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/replicate/enter-code-2.png":::
 
 1. After the appliance is registered, scroll down and select **Add cluster information**.
 
@@ -194,7 +194,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. On the **Migration and modernization** page, select **Step 1: Replicate** tile.
 
-    :::image type="content" source="./media/replicate/step1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step1-replicate.png":::
+    :::image type="content" source="./media/replicate/step-1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step-1-replicate.png":::
 
 1. On the **Specify intent** page:
     1. Select **Servers or virtual machines (VM)**.
@@ -235,7 +235,7 @@ This step applies only if you downloaded the .zip file. You download the operati
 	1. Select the storage path where these VMs are created.
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate/replicate-4-target-2.png":::
+        :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target-2.png":::
 
 1. On the **Compute** tab:
 
