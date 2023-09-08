@@ -52,6 +52,19 @@ In scenarios where outbound traffic from Azure Stack Hub is required to flow thr
 > [!IMPORTANT]
 > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts. For more information, see [Azure Stack Hub firewall integration](azure-stack-firewall.md#ssl-interception).
 
+## Software Transparent Proxy
+
+Software with the capability to stream TLS/SSL traffic without interception can serve as Transparent "Forward" Proxy for Azure Stack Hub egress traffic out to [Azure endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) or for all traffic. The following diagram is an example of using Transparent "Forward" Proxy in an Active-Passive HA configuration between Border Switch and Internet. Egress traffic to Azure endpoints do not require session affinity. Your implementation may use Datacenter load balancing capability for Active-Active HA with round-robin, or software load balancing for Active-Passive HA.
+
+![Network diagram with Transparent software proxy](./media/azure-stack-transparent-proxy/Azure-Stack-Hub-Nginx-Transparent-Proxy.svg)
+
+Similar to [Partner Integration](#partner-integration) section in this article, the Border Switches must be configured to configured to route traffic from Azure Stack Hub in one of the following ways:
+- Route all outbound traffic from Azure Stack Hub to the proxy devices
+- Route all outbound traffic from the first `/27` range of the Azure Stack Hub virtual IP pool to the proxy devices via policy-based routing.
+
+Examples of software transparent proxy implementations.
+- [OSS Nginx with Stream SSL module](azure-stack-oss-nginx-with-streams-module.md)
+
 ## Example border configuration
 
 The solution is based on policy-based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic that is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing that is based only on destination IP address. Specific infrastructure network traffic for ports 80 and 443 are routed from the border devices to the transparent proxy deployment. The transparent proxy does URL filtering, and *none allowed* traffic is dropped.
