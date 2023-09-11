@@ -92,7 +92,7 @@ Expected output:
 Succeeded
 ```
 
-## Step 4: Patch your existing custom location to support AKS hybrid alongside Arc VMs
+## Step 3: Patch your existing custom location to support AKS hybrid alongside Arc VMs
 Run the following commands to patch your existing custom location on top of the Arc Resource Bridge. You will choose this custom location when creating virtual machines and AKS hybrid clusters through Azure.
 
 Collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the Azure Stack HCI VM and AKS hybrid extensions in variables:
