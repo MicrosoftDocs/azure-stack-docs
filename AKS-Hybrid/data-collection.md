@@ -17,7 +17,7 @@ ms.reviewer: baziwane
 During the deployment of AKS hybrid, you must furnish a subscription and an Azure region in which data is stored. The Azure region is a virtual representation of your on-premises resources and does not correspond to the actual physical on-premises location. It represents the region with Microsoft-operated datacenters that store this data.
 
 > [!IMPORTANT]
-> Microsoft does not collect any sensitive information that may be classified as Personally Identifiable Information (PII). For more information, see the following data collection section.
+> Microsoft does not collect any sensitive information that may be classified as [Personally Identifiable Information](https://www.microsoft.com/microsoft-365-life-hacks/privacy-and-safety/what-is-pii) (PII). For more information, see the following data collection section.
 
 There are 3 separate tiers to consider when curating data collection and exchange for on-premises deployments. This article describes the data
 exchanged between Kubernetes clusters (Tier 2) and Azure. See the attached public documentation for descriptions about data collection and
@@ -29,16 +29,12 @@ exchange between [tier 1](/azure/azure-arc/kubernetes/conceptual-data-exchange) 
 
 ## Data collection and residency
 
-This AKS hybrid data:
-
-- Is not sent to Microsoft until the cluster is registered with Azure.
-- Is sent in JSON format.
-
-Data is stored in a secure Microsoft-operated datacenter as follows:
+AKS hybrid data is sent in JSON format, and is stored in a secure Microsoft-operated datacenter as follows:
 
 - Billing data is sent to the respective resource of that region in which the customer has registered the device.
 - Diagnostic data (classified as support data) is stored within the US or the EU, based on what the customer has opted for at the time of deployment.
 - Telemetry data (classified as OII data) is always stored within the US.
+- AKS hybrid data is not sent to Microsoft until the cluster is registered with Azure.
 
 For information about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
@@ -51,13 +47,12 @@ days. Aggregated, de-identified data may be kept longer.
 
 AKS hybrid collects the following types of data:
 
-- **Events related to the Hyper-V host operating systems**: Details such as the operating system name, version, and model. Identifiers     include event names and event dates for precise event tracking. A variety of flags, both integer and Boolean, to denote specific conditions or statuses, device, and operating system attributes, including name, device ID, and ISO country code. The data schema for these events incorporates a range of data types, including strings, integers, datetimes, and Booleans.
+- **Events related to the Hyper-V host operating systems**: Details such as the operating system name, version, and model. Identifiers     include event names and event dates for precise event tracking. Various flags, both integer and Boolean, denote specific conditions or statuses, device, and operating system attributes. These flags include the name, device ID, and ISO country code. The data schema for these events incorporates a range of data types, including strings, integers, datetimes, and Booleans.
 - **Events associated with Kubernetes clusters control plane**: Specific metrics include cluster creation timestamps, pods, and node counts, and resource metrics including vCore counts. This data is used for monitoring and management of the Azure Kubernetes Service (AKS) hybrid cluster. The data schema for these events includes a range of data types, including Boolean, string, integer, and double.
-- **Events pertaining to Hyper-V host operating system**: Specifically emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended exclusively to Windows Server and Azure Stack HCI platforms.
+- **Events pertaining to Hyper-V host operating system**: Emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended exclusively to Windows Server and Azure Stack HCI platforms.
 - **Events pertaining to Mariner Linux VMs**: Including r, system boot and shutdown, service status changes, kernel messages, application errors, and user authentication activities only for system namespaces.
-- **Billing events**: Events related to metering or billing of core usage. This includes event datetime and the quantity of cores. The
-    data types include datetime for the event timing, and a floating-point number for the quantity.
-- **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. This is crucial for tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema exclusively employs string data types to encapsulate this vital information.
+- **Billing events**: Events related to metering or billing of core usage. This set of events includes the event datetime and the quantity of cores. The data types include datetime for the event timing, and a floating-point number for the quantity.
+- **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. These events are crucial for tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema exclusively employs string data types to encapsulate this vital information.
 
   > [!NOTE]
   > All events use either the Windows Universal Telemetry Client (UTC) or the Mariner Azure Device Health Service (ADHS).
