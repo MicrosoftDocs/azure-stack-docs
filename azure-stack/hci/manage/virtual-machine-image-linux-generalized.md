@@ -1,6 +1,6 @@
 ---
-title: Sysprep Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to sysprep Linux images to create Azure Stack HCI VM image (preview).
+title: Generalize Linux image for Azure Stack HCI VM via Azure CLI (preview)
+description: Learn how to generalize Linux images to create Azure Stack HCI VM image (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.custom:
 ms.date: 06/28/2023
 ---
 
-# Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
+# Generalize Ubuntu image for Azure Stack HCI virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
@@ -32,11 +32,11 @@ Before you begin, make sure that the following prerequisites are completed.
         - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
         -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
 
-- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system. You are required to sysprep gallery images for guest management for VMs created using Ubuntu images.
+- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system. You are required to generalize gallery images for guest management for VMs created using Ubuntu images.
 
 ## Workflow 
 
-Follow these steps to sysprep an Ubuntu image and create VM image from that image: 
+Follow these steps to generalize an Ubuntu image and create VM image from that image: 
 
 1. [Create an Ubuntu VM](#step-1-create-an-ubuntu-vm).
 1. [Configure the VM](#step-2-configure-vm). 
@@ -48,7 +48,7 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create VM image from Ubuntu image
 
 > [!IMPORTANT]
-> We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs.
+> We recommend that you generalize an Ubuntu image if you intend to enable guest management on the VMs.
 
 Follow these steps to create a VM image using the Azure CLI.
 
