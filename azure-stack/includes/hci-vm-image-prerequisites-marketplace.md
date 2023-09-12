@@ -8,9 +8,9 @@ ms.date: 09/26/2022
 ---
 
 
-- You've your Microsoft account with credentials to access Azure portal.
+- You have Azure subscription credentials (Microsoft Account or Entra ID user).
 
-- You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
+- You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
 
    - Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
     
