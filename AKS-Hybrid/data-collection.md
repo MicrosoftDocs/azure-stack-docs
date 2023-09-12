@@ -59,8 +59,8 @@ AKS hybrid collects the following types of data:
     data types include datetime for the event timing, and a floating-point number for the quantity.
 - **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. This is crucial for tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema exclusively employs string data types to encapsulate this vital information.
 
-> [!NOTE]
-> All events use either the Windows Universal Telemetry Client (UTC) or the Mariner Azure Device Health Service (ADHS).
+  > [!NOTE]
+  > All events use either the Windows Universal Telemetry Client (UTC) or the Mariner Azure Device Health Service (ADHS).
 
 For more information about Azure data collection and privacy policies, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
