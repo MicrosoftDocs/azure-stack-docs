@@ -17,7 +17,7 @@ ms.reviewer: baziwane
 During the deployment of AKS hybrid, you must furnish a subscription and an Azure region in which data is stored. The Azure region is a virtual representation of your on-premises resources and does not correspond to the actual physical on-premises location. It represents the region with Microsoft-operated datacenters that store this data.
 
 > [!IMPORTANT]
-> Microsoft does not collect any sensitive information that may be classified as Personally Identifiable Information (PII). For more information, see the following data collection section.
+> Microsoft does not collect any sensitive information that may be classified as [Personally Identifiable Information](https://www.microsoft.com/microsoft-365-life-hacks/privacy-and-safety/what-is-pii) (PII). For more information, see the following data collection section.
 
 There are 3 separate tiers to consider when curating data collection and exchange for on-premises deployments. This article describes the data
 exchanged between Kubernetes clusters (Tier 2) and Azure. See the attached public documentation for descriptions about data collection and
@@ -29,16 +29,12 @@ exchange between [tier 1](/azure/azure-arc/kubernetes/conceptual-data-exchange) 
 
 ## Data collection and residency
 
-This AKS hybrid data:
-
-- Is not sent to Microsoft until the cluster is registered with Azure.
-- Is sent in JSON format.
-
-Data is stored in a secure Microsoft-operated datacenter as follows:
+AKS hybrid data is sent in JSON format, and is stored in a secure Microsoft-operated datacenter as follows:
 
 - Billing data is sent to the respective resource of that region in which the customer has registered the device.
 - Diagnostic data (classified as support data) is stored within the US or the EU, based on what the customer has opted for at the time of deployment.
 - Telemetry data (classified as OII data) is always stored within the US.
+- AKS hybrid data is not sent to Microsoft until the cluster is registered with Azure.
 
 For information about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
