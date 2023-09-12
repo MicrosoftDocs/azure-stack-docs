@@ -17,7 +17,10 @@ ms.lastreviewed: 3/23/2022
 
 # Use API version profiles with .NET in Azure Stack Hub
 
-The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and Key Vault. The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2020-09-01-hybrid** or **2019-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
+>[!IMPORTANT] 
+>The .NET SDK has been updated from track 1 to track 2. We highly recommend migrating to the track-2 SDK as soon as possible. Please refer to [this migration guide](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/resourcemanager/Azure.ResourceManager/docs/MigrationGuide.md) for instructions.
+
+The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and Key Vault. The .NET SDK includes 14 NuGet packages. If you are using the track-2 .NET SDK (recommended), you must download these packages to your solution every time you compile your project. If you are using the track-1 .NET SDK (not recommended), you must do the same and you must base your download(s) on the API profile that you are using (**2020-09-01-hybrid** or **2019-03-01-hybrid**). This will optimize memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
 
 ## Install the Azure .NET SDK
 
@@ -35,7 +38,8 @@ An API profile is a combination of resource providers and API versions. Use an A
   - **[Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01)**
   - **[Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2019_03_01)**
 
-  Note: The **ResourceProvider** portion of the NuGet package specification must be changed. Additionally, the packages for track-1 .NET SDK are deprecated, so you may face errors. We recommend updating to the track-2 .NET SDK as soon as possible.
+>[!NOTE] 
+>The **ResourceProvider** portion of the NuGet package specification must be changed. Additionally, the packages for track-1 .NET SDK are deprecated, so you may face errors. We recommend updating to the track-2 .NET SDK as soon as possible.
 
 ## Profiles
 
@@ -92,7 +96,7 @@ Sample JSON:
 
 ## Samples
 
-See the [sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for update-to-date sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
+See the [sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for update-to-date (track-2) sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
 
 ::: moniker range="<=azs-2008"
 
