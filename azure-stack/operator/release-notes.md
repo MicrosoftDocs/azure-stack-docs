@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 09/12/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -52,7 +52,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2306"
 ## 2306 build reference
 
-The Azure Stack Hub 2306 update build number is **1.2306.x.xx**.
+The Azure Stack Hub 2306 update build number is **1.2306.2.47**.
 
 ### Update type
 
@@ -100,7 +100,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfixes:
 
-- No Azure Stack Hub hotfix for 2301.
+- [Azure Stack Hub hotfix 1.2301.2.60](hotfix-1-2301-2-60.md)
 
 ### After successfully applying the 2306 update
 
