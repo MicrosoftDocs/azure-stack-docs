@@ -352,7 +352,7 @@
     - name: Networking
       items:
       - name: Expose Kubernetes services
-        href: aks-edge-howto-expose.service.md
+        href: aks-edge-howto-expose-service
       - name: Configure multiple NICs
         href: aks-edge-howto-multi-nic.md
     - name: Storage
