@@ -33,7 +33,7 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
@@ -95,6 +95,9 @@ Once you've created the on-premises network, run the following command to connec
 | $customlocationID  | ARM ID of the custom location you created on top of Azure Arc Resource Bridge. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 
 ```azurecli
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n hybridaks
+az extension add -n hybridaks --version 0.2.2
 az hybridaks vnet create -n <Name of your Azure connected AKS hybrid vnet> -g $resource_group --custom-location $customlocationID --moc-vnet-name $clustervnetname
 ```
 
@@ -115,6 +118,7 @@ Run the following command to download the VHD file specific for `v1.22.11` Kuber
 ### [For Linux nodes](#tab/linux-vhd)
 ```powershell
 Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 ### [For Windows nodes](#tab/windows-vhd)
