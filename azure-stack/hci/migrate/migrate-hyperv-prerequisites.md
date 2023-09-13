@@ -46,7 +46,7 @@ Before you can migrate, create an Azure Migrate project in Azure portal using th
     1. Enter your subscription.
     1. Enter the resource group, or select it if it already exists.
     1. Enter the new project name.
-    1. Select a supported geography region that you previously created. For more information, see [Requirements for Hyper-V VM migration](migrate-hyperv-requirements).
+    1. Select a supported geography region that you previously created. For more information, see [Requirements for Hyper-V VM migration](migrate-hyperv-requirements.md).
 
     :::image type="content" source="media/migrate-prerequisites/project-create.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/migrate-prerequisites/project-create.png":::
 

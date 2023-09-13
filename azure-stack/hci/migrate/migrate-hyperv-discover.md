@@ -186,4 +186,4 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 ## Next steps
 
-- Start [Replication](migrate-hyperv-replication.md).
+- Start [Replication](migrate-hyperv-replicate.md).
