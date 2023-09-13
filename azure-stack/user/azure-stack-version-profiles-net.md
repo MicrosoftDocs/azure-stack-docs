@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/6/2021
+ms.date: 09/13/2023
 ms.author: sethm
 ms.reviewer: weshi1
 ms.lastreviewed: 3/23/2022
@@ -96,7 +96,7 @@ Sample JSON:
 
 ## Samples
 
-See [this sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for update-to-date (track-2) sample code. See [this sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples/releases/tag/track1) for track-1 sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
+See [this sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for update-to-date (track-2) sample code. See [this sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples/releases/tag/track1) for track-1 sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` that describes how to run that sample.
 
 ::: moniker range="<=azs-2008"
 
