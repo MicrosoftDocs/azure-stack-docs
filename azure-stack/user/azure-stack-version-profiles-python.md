@@ -16,6 +16,10 @@ ms.lastreviewed: 3/24/2022
 
 
 # Use API version profiles with Python in Azure Stack Hub
+
+>[!IMPORTANT] 
+>The Python SDK has been updated from track 1 to track 2. We highly recommend migrating to the track-2 SDK as soon as possible. Please refer to [this migration guide](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/resourcemanager/Azure.ResourceManager/docs/MigrationGuide.md) for instructions.
+
 The Python SDK supports API version profiles to target different cloud platforms, such as Azure Stack Hub and global Azure. Use API profiles in creating solutions for a hybrid cloud.
 
 The instructions in this article require a Microsoft Azure subscription. If you don't have one, you can get a [free trial account](https://go.microsoft.com/fwlink/?LinkId=330212).
@@ -44,6 +48,8 @@ For profiles containing dates, to use a different SDK profile or version, substi
 
 | Azure Stack version | Profile |
 |---------------------|---------|
+|2301|2020_09_01|
+|2206|2020_09_01|
 |2108|2020_09_01|
 |2102|2020_09_01|
 |2008|2019_03_01|
@@ -141,7 +147,7 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
 ## Samples
 
-See the [sample repository](https://github.com/Azure-Samples/Hybrid-Python-Samples) for update-to-date sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
+See [this sample repository](https://github.com/Azure-Samples/Hybrid-Python-Samples) for update-to-date (track-2) sample code. See [this sample repository](https://github.com/Azure-Samples/Hybrid-Python-Samples/releases/tag/track1) for track-1 sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
 
 ::: moniker range="<=azs-2008"
 
