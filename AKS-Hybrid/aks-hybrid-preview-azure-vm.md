@@ -160,7 +160,8 @@ cp .\kubectl.exe $config.installationPackageDir
 
 Download the Linux VHD image by running the following command:
 ```PowerShell
-Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11 
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
+Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
 ```
 
 
