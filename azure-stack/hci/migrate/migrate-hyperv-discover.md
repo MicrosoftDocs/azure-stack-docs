@@ -3,7 +3,7 @@ title: Discover Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate
 description: Learn the discovery phase for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/07/2023
+ms.date: 09/13/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -186,4 +186,4 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 ## Next steps
 
-- Start [Replication](migrate-hyperv-discover.md).
+- Start [Replication](migrate-hyperv-replication.md).

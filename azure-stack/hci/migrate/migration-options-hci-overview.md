@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Stack HCI (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 09/06/2023
+ms.date: 09/13/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of some of the common options available to let you migrate virtual machine (VM) workloads to your Azure Stack HCI cluster.
+This article provides an overview of some of the common options available for migrating virtual machine (VM) workloads to your Azure Stack HCI cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
