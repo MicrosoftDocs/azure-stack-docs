@@ -47,7 +47,7 @@ az extension add -n hybridaks --version 0.2.2
 Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) command.
 
 ```azurecli
-az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys --kubernetes-version "v1.24.11"
+az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys --kubernetes-version "1.24.11"
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
