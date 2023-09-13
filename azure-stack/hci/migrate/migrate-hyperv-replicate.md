@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/07/2023
+ms.date: 09/13/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -304,4 +304,4 @@ You next need to create a storage account in Azure portal:
 
 ## Next steps
 
-- Complete the [Hyper-V VM Migration](migrate-hyperv-replicate.md) phase.
+- Complete the [Hyper-V VM Migration](migrate-azure-migrate.md) phase.
