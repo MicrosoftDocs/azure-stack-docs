@@ -72,7 +72,7 @@ AKS Edge Essentials Scalable cluster configuration uses an external virtual swit
 In this configuration, the Kubernetes nodes are connected to the external network, so Kubernetes services are reachable by external devices without the need for port forwarding. Following guidance for [Option 1](#option-1-single-machine-cluster-with-port-forwarding), if you're using a Kubernetes service of type **LoadBalancer**, make sure to obtain the correct **ServiceIp** by using the `kubectl get services` command. If you're using a Kubernetes service of type **ClusterIp** or **NodePort**, use the IP address of the Linux/Windows Kubernetes node.
 
 >NOTE!
->It is possible to keep the Scalable cluster to one device, and leverage the external virutal switch configuration to expose Kubernetes services directly to external devices on the external network.
+>It is possible to keep the Scalable cluster to one device, and leverage the external virutal switch configuration to expose Kubernetes services directly to external devices on the external network without the need for port forwarding.
 
 ## Next steps
 
