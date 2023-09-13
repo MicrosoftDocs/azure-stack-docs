@@ -161,7 +161,6 @@ cp .\kubectl.exe $config.installationPackageDir
 Download the Linux VHD image by running the following command:
 ```PowerShell
 Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
-Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
 ```
 
 
@@ -316,7 +315,7 @@ To learn more about how to create an Azure AD group, visit [how to manage and cr
 Run the following command to create an AKS hybrid cluster using Azure CLI:
 
 ```azurecli
-az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "v1.24.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
+az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "1.24.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
 ```
 
 ### Add a Linux nodepool to the AKS hybrid cluster
