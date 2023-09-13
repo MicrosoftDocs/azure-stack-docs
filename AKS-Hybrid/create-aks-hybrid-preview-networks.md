@@ -117,7 +117,6 @@ Run the following command to download the VHD file specific for `v1.22.11` Kuber
 
 ### [For Linux nodes](#tab/linux-vhd)
 ```powershell
-Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
 Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
