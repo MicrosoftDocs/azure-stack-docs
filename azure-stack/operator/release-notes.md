@@ -69,9 +69,9 @@ Exact update durations typically depend on the capacity used on your system by t
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
-### What's new
+<!-- ### What's new
 
-- New features TBD.
+- New features TBD. -->
 
 <!-- ### Improvements -->
 
