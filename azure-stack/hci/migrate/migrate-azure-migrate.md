@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/31/2023
+ms.date: 09/14/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -21,8 +21,8 @@ This article describes how to migrate the Hyper-V virtual machines (VMs) to Azur
 
 Before you migrate your VMs: 
 
-- Make sure that you have replicated the VM on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Stack HCI using Azure Migrate](../index.yml).
-- If the replication is still in progress, wait for the replication to complete.
+- Make sure that you have replicated the VM on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Stack HCI using Azure Migrate](migrate-hyperv-replicate.md).
+- Make sure the replication has completed and the migration status is **Ready to replicate**.
 
 
 ## Migrate VMs
@@ -33,11 +33,7 @@ Before you migrate your VMs:
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot Azure Migrate project > Server, databases and webapps in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png":::
 
-1. On the **Azure Stack HCI migration > Replications** page, select **Refresh** and then view the replication progress. When the initial replication is complete, the VM **Migration status** changes to **Ready to migrate**.
-
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png":::
-
-1. From the top command bar, select **Migrate** to migrate multiple VMs that are ready.  
+1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png":::
 
