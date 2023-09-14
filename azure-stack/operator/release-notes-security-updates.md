@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 09/14/2023
 ms.author: sethm
 ms.reviewer: carlosm
 ms.lastreviewed: 05/18/2023
@@ -20,8 +20,7 @@ This article lists all the security updates in the last three updates of Azure S
 
 Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
 
-For more information about these vulnerabilities, click on the links below.
-
+<!-- For more information about these vulnerabilities, click on the links below. -->
 
 ::: moniker-end
 
