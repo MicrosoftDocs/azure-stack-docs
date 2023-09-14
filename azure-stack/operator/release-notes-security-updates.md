@@ -167,7 +167,6 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2023-24868](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24868)
 - [CVE-2023-24870](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24870)
 - [CVE-2023-24880](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24880)
-- [CVE-2023-1018](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-1018)
 - [CVE-2023-24911](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24911)
 - [CVE-2023-24910](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24910)
 - [CVE-2023-23392](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23392)
