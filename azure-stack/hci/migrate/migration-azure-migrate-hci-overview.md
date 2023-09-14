@@ -42,7 +42,7 @@ The following diagram shows the migration process:
 The migration process requires the following components:
 
 - An Azure Migrate project in Azure that contains an Azure Storage account. Both the source and target appliances need to be registered with this project.
-- Azure migrate appliance running on your on-premises source Hyper-V servers. The source servers host the VMs that you want to migrate.
+- Azure Migrate appliance running on your on-premises source Hyper-V servers. The source servers host the VMs that you want to migrate.
 - Target appliance running on your on-premises Azure Stack HCI cluster. The target appliance hosts the VMs that you migrated from your source Hyper-V environment.
 
 > [!NOTE]

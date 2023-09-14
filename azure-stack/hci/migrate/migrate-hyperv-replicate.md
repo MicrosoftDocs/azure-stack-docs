@@ -115,7 +115,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
 
-1. Select the OS you just downloaded (Windows Server 2022) and begin OS set up.
+1. Select the OS you just downloaded (Windows Server 2022) and begin OS setup.
 
 1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
 
@@ -164,7 +164,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
 
-1. Enter cluster fully-qualified domain name (FQDN), domain name, username, password, and then select **Save**.
+1. Enter cluster fully qualified domain name (FQDN), domain name, username, password, and then select **Save**.
 
     :::image type="content" source="./media/replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info-2.png":::
 
