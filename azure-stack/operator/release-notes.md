@@ -237,7 +237,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2108.2.136](hotfix-1-2108-2-136.md)
+- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
 
 ### After successfully applying the 2206 update
 
