@@ -3,7 +3,7 @@ title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrat
 description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/13/2023
+ms.date: 09/14/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -28,17 +28,17 @@ Complete the following tasks to generate the target appliance key:
 
     :::image type="content" source="./media/replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate/replicate-discovered-servers.png":::
 
-1. Under **Azure Migrate: Discovery and assessment**, select **Assess**.
+1. Under **Azure Migrate: Migration tools**, select **Replicate**.
 
 1. On the **Specify intent** page, select the following from the dropdown lists:
     - Servers or virtual machines (VM).
     - Azure Stack HCI.
     - Hyper-V.
-    - Source appliance.
+    - Source appliance (pre-populated; select the applicable one from the dropdown if you have more than one).
 
     :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
 
-1. Select **Download and configure** in the **Before you start replication...** information block, then select **Continue**.
+1. Select **Download and configure** in **Before you start replication...** from the information block, then select **Continue**.
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
@@ -56,25 +56,18 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 ### Step 2a: Download using the .VHD file option
 
-This step applies only if you downloaded the .VHD file. You download the operating system (OS) VHD for the source appliance virtual machine (VM) to the source Hyper-V server. The source appliance is then installed for you.
+This step applies only if you downloaded the .VHD file. The target appliance is installed for you using the .VHD file.
 
-1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 VHD file.
+1. Install Windows Server 2022 from an ISO image on the source Hyper-V server.
 
-    :::image type="content" source="media/replicate/source-os-download-vhd.png" alt-text="Screenshot of Download source VM OS VHD page." lightbox="media/replicate/source-os-download-vhd.png":::
+1. Using **Hyper-V Manager**, create a new VM on the Hyper-V server using the following configuration:
 
-    > [!NOTE]
-    > It is not a requirement to use the evaluation OS version - you can use your own VHD as long as the OS version is Windows Server 2022.
-
-1. Create the appliance VM on the Hyper-V server using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
-
-    - VM name
-    - VM location
     - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2022
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
-    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
+1. Stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
 
 1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
@@ -98,35 +91,22 @@ This step applies only if you downloaded the .VHD file. You download the operati
 
 ### Step 2b: Download using the .zip file option
 
-This step applies only if you downloaded the .zip file. You download the operating system (OS) ISO for the source appliance virtual machine (VM) to the source Hyper-V server. Then you use a PowerShell script to install the source appliance.
+This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the target appliance.
 
-1. Go to the [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022), then select and download the Windows Server 2022 ISO file.
+1. Install Windows Server 2022 from an ISO image on the source Hyper-V server.
 
-    :::image type="content" source="media/replicate/source-os-download-iso.png" alt-text="Screenshot of Download source VM OS page." lightbox="media/replicate/source-os-download-iso.png":::
+1. Using **Hyper-V Manager**, create a new VM on the Hyper-V server using the following configuration:
 
-    > [!NOTE]
-    > It is not a requirement to use the evaluation OS version - you can use your own ISO image as long as the OS version is Windows Server 2022.
-
-1. On the source Hyper-V server, open **Hyper-V Manager** and select the server listed.
-
-1. Under **Actions** on the right, select **New > Virtual machine**.
-
-1. Select the install OS from **image file** option and select the downloaded ISO.
-
-1. Create the new appliance VM on the Hyper-V server using the ISO just downloaded. Complete the **New Virtual Machine Wizard** using the following configuration:
-
-    - VM name
-    - VM location
     - **VM type**: `Standalone` (non-High Availability type)
     - **Operating System**: Windows Server 2022
     - **Disk**: 80GB (min)
     - **Memory**: 16GB (min)
     
-    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
-
-1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
+1. Stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
     
     :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
+
+    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
 1. Create a virtual hard disk for the VM and specify a location for it.
 
@@ -210,7 +190,7 @@ This step applies only if you downloaded the .zip file. You download the operati
     1. Select the Azure subscription for this project.
     1. Select the resource group for this project.
 	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
-	1. Verify there is a green check for the cluster. This indicates that the Arc Resource Bridge is configured.
+	1. Verify there is a green check for the cluster.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate/replicate-1-basics.png":::
@@ -226,12 +206,12 @@ This step applies only if you downloaded the .zip file. You download the operati
 
 1. On the **Target settings** tab, complete these tasks:
 
-	1. For **Cache storage account**, create a storage account as described in the next section.
+	1. For **Cache storage account**, select the storage account you created previously.
 
         :::image type="content" source="./media/replicate/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate/replicate-4-target.png":::
 
     1. Select the resource group that you want these VMs to be associated with.
-	1. Select the virtual switch these VMs are connected to.
+	1. Select the virtual switch these VMs are connected to. For more information, see [Create and configure a virtual switch with Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines?tabs=hyper-v-manager).
 	1. Select the storage path where these VMs are created.
     1. When finished, select **Next**.
     
@@ -254,53 +234,13 @@ This step applies only if you downloaded the .zip file. You download the operati
 
     :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
 
- 1. On the **Replications** page, review the replication status. Select **Refresh** to see the replicated VMs.
+ 1. On the **Replications** page, review the replication status. Select **Refresh** to see the replicated VMs. When the initial replication is complete, the VM Migration status changes to **Ready to migrate**.
  
 1. Verify **Migration status** shows **Ready to migrate**.
 
-1. When finished, select **Migrate**.
- 
-    :::image type="content" source="./media/replicate/replications-page-2.png" alt-text="Screenshot showing the Replications page." lightbox="./media/replicate/replications-page-2.png":::
 
-### Create a storage account
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png":::
 
-You next need to create a storage account in Azure portal:
-
-1. On the Azure portal home page, select **Storage accounts**.
-
-1. On the **Storage accounts** page, select **Create**.
-
-1. On the **Basics** tab, under **Project details**, select the same subscription and resource group that you used to create the Azure Migrate project. If needed, select **Create new** to create a new resource group.
-
-1. Under **Instance details**, follow these steps:
-    1. Enter a name for the storage account.
-    1. Select a geographical region.
-    1. Choose either **Standard** or **Premium** performance.
-    1. Select a redundancy level.
-    
-    :::image type="content" source="media/replicate/tab-basics.png" alt-text="Screenshot of Basic tab page in Azure portal." lightbox="media/replicate/tab-basics.png":::
-
-1. When done, select **Review**.
-
-    > [!NOTE]
-    > Only fields on the **Basics** tab need to be filled out or altered. You can ignore the remaining tabs (and options therein) as the default options and values displayed on those tabs are recommended and are used.
-
-1. Review all information on the **Review** tab of the **Create a storage account** page. If everything looks good, select **Create**.
-
-    :::image type="content" source="media/replicate/tab-review.png" alt-text="Screenshot of Review tab page in Azure portal." lightbox="media/replicate/tab-review.png":::
-
-1. The project template deployment will begin. When deployment is complete, select **Go to resource**.
-
-    :::image type="content" source="media/replicate/deployment-complete.png" alt-text="Screenshot of deployment complete status display." lightbox="media/replicate/deployment-complete.png":::
-
-1. On the resource group page, under **Resources**, verify there is a resource listed for each of the following:
-
-    - Azure Stack HCI cluster resource
-    - Arc Resource Bridge resource
-    - Custom location resource
-    - Storage path resource(s)
-
-    :::image type="content" source="media/replicate/project-resources.png" alt-text="Screenshot Resources list." lightbox="media/replicate/project-resources.png":::
 
 ## Next steps
 
