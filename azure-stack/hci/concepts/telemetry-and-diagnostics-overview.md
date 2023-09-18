@@ -58,7 +58,7 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - **Proactive** log collection and the upload of logs to an Azure Storage account for troubleshooting. Logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
+     - **Proactive** log collection and upload of logs to an Azure Storage account for troubleshooting. Logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
 
 If your portal is unavailable and you need to enable proactive log collection, see the following:
 
