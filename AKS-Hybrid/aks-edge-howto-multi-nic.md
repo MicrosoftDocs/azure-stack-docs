@@ -22,15 +22,14 @@ This article describes how to configure the AKS Edge Essentials Linux node to su
 
 For more information about networking concepts and Multus configurations, see [AKS Edge Essentials networking](aks-edge-concept-networking.md) and [Multus - Quickstart guide](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md).
 
->[!NOTE]
+> [!NOTE]
 > AKS Edge Essentials support for multiple NICs is limited to Linux nodes. If you need support for Windows nodes, please file an issue/feature request in the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge/issues).
-
 
 ## Create an AKS Edge Essentials deployment with a secondary NIC
 
 To deploy a Linux node with multiple NICs, you must add your secondary interface cards in your deployment JSON file. Modify your deployment JSON file, and as part of the `LinuxNode.SecondaryNetworks` section, ensure that you specify a secondary network to be added to the Linux node. You can specify an array of `VMSwitchName` with optional static IP information (`Ip4Address`,`Ip4GatewayAddress` and `Ip4PrefixLength`).
 
-1. Follow the [Set up your machine](aks-edge-howto-setup-machine.md) steps. 
+1. Follow the steps in [Set up your machine](aks-edge-howto-setup-machine.md).
 
 1. Create a Hyper-V virtual switch. For more information, see [Create and configure a virtual switch with Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines?tabs=hyper-v-manager).
 
@@ -38,10 +37,10 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
     | Parameter | Accepted values | Comments |
     | --------- | --------------- | -------- |
-    | VMSwitchName | Name of the virtual switch | Name of the virtual switch assigned to the Linux node. |  
-    | Ip4Address | IPv4 Address in the range of the DCHP Server Scope | Static Ipv4 address of the Linux node. |
-    | Ip4GatewayAddress | IPv4 Address of the subnet gateway | Gateway Ipv4 address, only valid when static Ipv4 address is specified. | 
-    | Ip4PrefixLength | IPv4 Prefix Length of the subnet | Ipv4 subnet prefix length, only valid when static Ipv4 address is specified. |
+    | VMSwitchName | Name of the virtual switch. | Name of the virtual switch assigned to the Linux node. |  
+    | Ip4Address | IPv4 address in the range of the DCHP server scope. | Static Ipv4 address of the Linux node. |
+    | Ip4GatewayAddress | IPv4 address of the subnet gateway. | Gateway Ipv4 address, only valid when static Ipv4 address is specified. |
+    | Ip4PrefixLength | IPv4 prefix length of the subnet. | Ipv4 subnet prefix length, only valid when static Ipv4 address is specified. |
 
     ```json
     {
@@ -64,7 +63,7 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 ## Verify multiple NIC network configuration
 
-After successfully installing and deploying the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node. 
+After successfully installing and deploying the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node.
 
 1. Check the primary interface:
 
@@ -82,13 +81,13 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
 
 After successfully installing and deploying the AKS Edge Essentials node, follow these steps to enable Multus:
 
-1.	Verify that the default network is ready by listing the Kubernetes nodes:
+1. Verify that the default network is ready by listing the Kubernetes nodes:
 
     ```powershell
     kubectl get nodes
     ```
 
-1.	Clone the [Multus Cni repo](https://github.com/k8snetworkplumbingwg/multus-cni):
+1. Clone the [Multus Cni repo](https://github.com/k8snetworkplumbingwg/multus-cni):
 
     ```powershell
     git clone https://github.com/k8snetworkplumbingwg/multus-cni.git
@@ -101,7 +100,7 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
 1. If you're using the **K3s** version, make the following edits to the **multus-daemonset.yml** script to make it compatible for use with K3s:
 
     1. Get the AKS Edge Essentials storage hash token. The hash can be located by going to **/var/lib/rancher/k3s/data/**.
-    
+
         ```powershell
         Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "ls -AU /var/lib/rancher/k3s/data/ | head -1"
         ```
@@ -157,13 +156,13 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
             - "--multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig"
         ```
 
-1.	Apply the updated Multus daemon set file using the following command:
+1. Apply the updated Multus daemon set file using the following command:
 
     ```powershell
     kubectl apply -f multus-daemonset.yml
     ```
 
-If everything is correctly installed, Kubernetes starts the Multus daemon set, which runs a pod on each node, and results in a Multus binary to be placed on each node in **/var/lib/rancher/k3s/data/<replace-with-your-hash>/bin**.
+If everything is correctly installed, Kubernetes starts the Multus daemon set, which runs a pod on each node, and results in a Multus binary to be placed on each node in **/var/lib/rancher/k3s/data/[replace-with-your-hash]/bin**.
 
 The daemon set reads the first alphabetical configuration file in **/var/lib/rancher/k3s/agent/etc/cni/net.d**, and creates a new configuration file for Multus on each node as **/var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf**. This file is auto-generated and is based on the default network configuration. It also creates a **/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d** directory on each node with authentication information for Multus to access the Kubernetes API.
 
@@ -215,8 +214,8 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
     ---
     ```
 
-    >[!NOTE]
-    > The official Multus documentation specifies a `macvlan` type secondary interface. However, the `macvlan` plugin isn’t available by default. To use this plugin, please install it before specifying the secondary net configuration. For more information about various network plugins and their sample configurations, see [Using the Multus CNI in OpenShift](https://cloud.redhat.com/blog/using-the-multus-cni-in-openshift).
+    > [!NOTE]
+    > The official Multus documentation specifies a `macvlan` type secondary interface. However, the `macvlan` plugin isn't available by default. To use this plugin, install it before specifying the secondary net configuration. For more information about various network plugins and their sample configurations, see [Using the Multus CNI in OpenShift](https://cloud.redhat.com/blog/using-the-multus-cni-in-openshift).
 
 1. Create the secondary interface using the **secondarynet-conf.yaml** created in the previous step:
 
@@ -244,7 +243,7 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
 
     ```powershell
     kubectl apply -f samplepod.yaml
-    ``` 
+    ```
 
 ## Verify pod attached networks
 
@@ -255,6 +254,7 @@ The final step is to ensure that the pod is running and has the correct network 
     ```powershell
     kubectl get pods
     ```
+
 1. Inspect the pod, and see what interfaces are attached:
 
     ```powershell
@@ -262,10 +262,9 @@ The final step is to ensure that the pod is running and has the correct network 
     ```
 
     There are 3 interfaces:
-    
+
     - **lo** – a loopback interface
     - **eth0** – the default network
     - **net1** – the new interface created using secondarynet-conf
 
     ![Pod with multiple NICs attached.](./media/aks-edge/aks-edge-multus.png)
-
