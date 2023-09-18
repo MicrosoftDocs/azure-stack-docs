@@ -20,7 +20,7 @@ If you're working with Kubernetes applications, you might need to make Kubernete
 
 ## Option 1: Single machine cluster with port forwarding
 
-AKS Edge Essentials single machine cluster configuration uses an internal virtual switch to manage networking. This ensures that all communications between the Windows host OS and the Linux/Windows node are done using an internal network that isn't accessible by external devices. For more information about AKS Edge Essentials networking, see [AKS Edge Essentials networking](./aks-edge-concept-networking.md).
+AKS Edge Essentials single machine cluster configuration uses an internal virtual switch to manage networking. This switch ensures that all communications between the Windows host OS and the Linux/Windows node are done using an internal network that isn't accessible by external devices. For more information about AKS Edge Essentials networking, see [AKS Edge Essentials networking](./aks-edge-concept-networking.md).
 
 If you need to access a Kubernetes service from external devices, you need to set up port forwarding from the Windows host OS to the Linux or Windows node. If you're using a Kubernetes service of type **LoadBalancer**, make sure to obtain the correct **ServiceIp** by using the `kubectl get services` command. If you're using a Kubernetes service of type **ClusterIp** or **NodePort**, use the IP address of the Linux/Windows Kubernetes node.
 
@@ -36,16 +36,16 @@ To set up port forwarding, you can use the `netsh` cmdlet. For more information 
 1. Get the IP address of the targeted service in your namespace.
 
     ```powershell
-    kubectl get service -n <nammespace>
+    kubectl get service -n <namespace>
     ```
 
 1. Set up the port forwarding from your Windows host OS port to the Kubernetes service IP address and port.
 
    | Parameter | Description |
    | --------- | ----------- |
-   | listen-port | Windows host OS IPv4 port that will be used by external devices to communicate with the Kubernetes service. | 
+   | listen-port | Windows host OS IPv4 port used by external devices to communicate with the Kubernetes service. |
    | listen-address | Specifies the IPv4 address for which to listen on the Windows host OS. If an address isn't specified, the default is the local computer. |
-   | connect-port | Specifies the IPv4 port to which to redirect the traffic. This port should be the Kubernetes service port. | 
+   | connect-port | Specifies the IPv4 port to which to redirect the traffic. This port should be the Kubernetes service port. |
    | connect-address | Specifies the IPv4 address to which to redirect the traffic. This port should be the Kubernetes service IP address. |
 
     ```powershell
