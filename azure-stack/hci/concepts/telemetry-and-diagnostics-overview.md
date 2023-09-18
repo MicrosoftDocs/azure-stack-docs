@@ -62,11 +62,11 @@ To access the options to send telemetry data, follow these steps:
 
 ## Log collection types
 
-There are two log collection types associated with the telemetry and diagnostics extensions. These two types are proactive and autonomous.
+There are two log collection types associated with the telemetry and diagnostics extensions. These types are proactive and autonomous.
 
 **Proactive** log collection is an optional feature that can be activated for your Azure Stack HCI system.
 
-There are two ways to enable proactive log collection:
+To enable proactive log collection, you can:
 
 - Select `Enhanced` in the telemetry and diagnostics extension
 - Use the PowerShell command line.
