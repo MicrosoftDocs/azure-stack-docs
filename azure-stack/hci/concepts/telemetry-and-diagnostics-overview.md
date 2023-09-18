@@ -73,19 +73,19 @@ There are two ways to enable proactive log collection:
 
 If you choose to use PowerShell, see the following commands:
 
-To enable proactive log collection run this command:
+To enable proactive log collection, run this command:
 
 ```powershell
 Enable-ProactiveLogCollection
 ```
 
-To disable proactive log collection run this command:
+To disable proactive log collection, run this command:
 
 ```powershell
 Disable-ProactiveLogCollection
 ```
 
-To check the state of your proactive log collection run this command:
+To check the state of your proactive log collection, run this command:
 
 ```powershell
 Get-ProactiveLogCollectionState
