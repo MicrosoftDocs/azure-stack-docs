@@ -60,7 +60,7 @@ netsh interface portproxy add v4tov4 listenport=8080 listenaddress=10.0.0.2 conn
 netsh interface portproxy add v4tov4 listenport=8081 listenaddress=10.0.0.2 connectport=30035 connectaddress=192.168.0.5
 ```
 
-![Screenshot showing internal network port forwarding.](media/aks-edge/aks-edge-expose-service-internal-network.png)
+[ ![Screenshot showing internal network port forwarding.](media/aks-edge/aks-edge-expose-service-internal-network.png) ](media/aks-edge/aks-edge-expose-service-internal-network.png#lightbox)
 
 > [!WARNING]
 > If you don't use a static networking configuration, the IPv4 address of the Windows host OS may change. This can affect your port forwarding configurations and the target IPv4 address used by external devices. To minimize the impact of an IPv4 address change, you may want to use a more generic `listenaddress`.
