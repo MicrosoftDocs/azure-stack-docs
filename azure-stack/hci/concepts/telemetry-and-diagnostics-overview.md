@@ -64,7 +64,7 @@ To access the options to send telemetry data, follow these steps:
 
 There are two log collection types associated with the telemetry and diagnostics extensions. These types are proactive and autonomous.
 
-**Proactive** log collection is an optional feature that can be activated for your Azure Stack HCI system.
+**Proactive** log collection is an optional feature, in which logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
 
 To enable proactive log collection, you can:
 
@@ -91,7 +91,7 @@ To check the state of your proactive log collection, run this command:
 Get-ProactiveLogCollectionState
 ```
 
-**Autonomous** log collection occurs if there's intermittent or no connectivity to Azure. During an occurrence, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+**Autonomous** log collection archives failure event logs when proactive log collection isn't enabled. If there's intermittent or no connectivity to Azure, Microsoft captures and stores the event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
