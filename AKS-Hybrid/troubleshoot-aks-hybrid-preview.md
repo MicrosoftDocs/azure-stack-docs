@@ -50,7 +50,7 @@ For this preview, you can't use any uppercase characters to name your AKS hybrid
 
 ### Incorrect syntax for --kubernetes-version parameter during `az hybridaks create`
 
-The `az hybridaks create` command times out and fails silently if you provide a `--kubernetes-version` value other than `v1.22.11.` Right now, we only support `v1.22.11`.
+The `az hybridaks create` command times out and fails silently if you provide a `--kubernetes-version` value other than `1.24.11.` Right now, we only support `1.24.11`.
 
 If none of the above reasons apply to you, open a [GitHub issue](https://github.com/Azure/aks-hci/issues) so that we can help you with your deployment.
 
@@ -133,6 +133,5 @@ az arcappliance delete hci --config-file "<path to working directory>\hci-applia
 Remove-ArcHciAksConfigFiles -workDirectory <path to working directory>
 ```
 
-## Arc Resource Bridge stuck in "offline" mode while creating AKS hybrid cluster from portal
-
+## Arc Resource Bridge stuck in "offline" mode while creating AKS hybrid cluster from Azure portal on an Azure VM
 If you're deploying Arc Resource Bridge on an Azure VM and see the Arc Resource Bridge connection in an offline state, check that you are connected to the VM. If not, restart the VM and wait for approximately 10 minutes to see the status change from **Offline** to **Running**.
