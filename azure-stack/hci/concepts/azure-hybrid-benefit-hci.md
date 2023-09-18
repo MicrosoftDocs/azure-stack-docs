@@ -74,7 +74,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
 # [Azure PowerShell](#tab/azure-powershell)
-Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
 

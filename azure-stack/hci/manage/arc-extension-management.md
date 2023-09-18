@@ -36,12 +36,128 @@ Here are the Azure-managed extensions:
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
 ## Install an extension via the Azure portal
-
+# [Azure portal](#tab/azureportal)
 You can install extensions from the **Capabilities** tab for your Azure Stack HCI Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
 When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
+
+# [Azure CLI](#tab/azurecli)
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```azurecli
+    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    resourceGroup="hcicluster-rg" # Replace with your resource group name
+
+    az account set --subscription "${subscription}"
+    ```
+
+1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+    ```azurecli
+
+    clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup == '${resourceGroup}' | project name" | jq -r '.data[].name'))
+
+    extensionName="AzureMonitorWindowsAgent"
+    extensionType="AzureMonitorWindowsAgent"
+    extensionPublisher="Microsoft.Azure.Monitor"
+
+    for cluster in ${clusters}; do
+        echo "Creating extension with name ${extensionName}"
+        az stack-hci extension create \
+            --arc-setting-name "default" \
+            --cluster-name "${clusterName}" \
+            --resource-group "${resourceGroup}" \
+            --name "${extensionName}" \
+            --auto-upgrade "true" \
+            --publisher "${extensionPublisher}" \
+            --type "${extensionType}"
+    done
+    ```
+1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group, run the following command:
+    ```azurecli
+
+    clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup == '${resourceGroup}' | project name" | jq -r '.data[].name'))
+
+    extensionName="ASRExtension"
+    extensionType="Windows"
+    extensionPublisher="Microsoft.SiteRecovery.Dra"
+    settingsConfig="{'port':'6516'}"
+
+    for cluster in ${clusters}; do
+        echo "Setting up extension: ${extensionName}"
+        az stack-hci arc-setting update \
+            --resource-group $resourceGroup \
+            --cluster-name $currentCluster \
+            --name "default" \
+            --connectivity-properties "{enabled:true}"
+
+        az stack-hci extension create \
+            --arc-setting-name "default" \
+            --cluster-name "${clusterName}" \
+            --resource-group "${resourceGroup}" \
+            --name "${extensionName}" \
+            --auto-upgrade "true" \
+            --publisher "${extensionPublisher}" \
+            --type "${extensionType}" \
+            --settings $settingsConfig
+    done
+    ```
+1. To install Windows Admin Center (WAC) in portal extension on all the clusters under the resource group, run the following command:
+```azurecli
+
+clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters' | where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
+
+extensionName="AdminCenter"
+extensionType="AdminCenter"
+extensionPublisher="Microsoft.AdminCenter"
+settingsConfig="{'port':'6516'}"
+
+for cluster in ${clusters}; do
+    echo "Enabling connectivity for cluster: ${cluster}"
+    az stack-hci arc-setting update \
+        --resource-group $resourceGroup \
+        --cluster-name $cluster \
+        --name "default" \
+        --connectivity-properties '{enabled:true}';
+    
+    echo "Installing extension: ${extensionName} on cluster: ${cluster}";
+    az stack-hci extension create \
+        --arc-setting-name "default" \
+        --cluster-name "${cluster}" \
+        --resource-group "${resourceGroup}" \
+        --name "${extensionName}" \
+        --auto-upgrade "true" \
+        --publisher "${extensionPublisher}" \
+        --type "${extensionType}" \
+        --settings '{\"port\":\"6516\"}';
+done
+```
+
+# [Azure PowerShell](#tab/azurepowershell)
+Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perform the following these steps:
+
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```powershell
+    $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    $resourceGroup = "hcicluster-rg" # Replace with your resource group name
+    $clusterName = "HCICluster" # Replace with your cluster name
+
+    Set-AzContext -Subscription "${subscription}"
+    ```
+
+
+1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+    ```powershell
+    Install-Module -Name Az.ResourceGraph
+    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+    ```
+
+---
 
 ## Check the extension status
 # [Azure portal](#tab/azureportal)
@@ -50,9 +166,6 @@ You can check the status of an extension on each server from the **Extensions** 
 :::image type="content" source="media/arc-extension-management/arc-extension-status-view.png" alt-text="Screenshot of the different extension statuses in the Azure portal." lightbox="media/arc-extension-management/arc-extension-status-view.png":::
 
 # [Azure CLI](#tab/azurecli)
-
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
-
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
 
 1. Set up your subscription
@@ -67,6 +180,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     clusterName="HCICluster" # Replace with your cluster name
     extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
     ```
+
 1. To list all the extensions on a cluster, run the following command:
 
     ```azurecli    
@@ -86,6 +200,27 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State:aggregateState, Type:extensionParameters.type}" \
     -o table
     ```
+# [Azure PowerShell](#tab/azurepowershell)
+Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
+
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```powershell
+    $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    $resourceGroup = "hcicluster-rg" # Replace with your resource group name
+    $clusterName = "HCICluster" # Replace with your cluster name
+
+    Set-AzContext -Subscription "${subscription}"
+    ```
+
+
+1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+    ```powershell
+    Install-Module -Name Az.ResourceGraph
+    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+    ```
+
 ---
 
 ## How the extension upgrade works
