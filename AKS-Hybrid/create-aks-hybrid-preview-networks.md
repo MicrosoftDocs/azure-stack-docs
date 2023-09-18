@@ -33,7 +33,7 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
@@ -95,6 +95,9 @@ Once you've created the on-premises network, run the following command to connec
 | $customlocationID  | ARM ID of the custom location you created on top of Azure Arc Resource Bridge. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 
 ```azurecli
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n hybridaks
+az extension add -n hybridaks --version 0.2.2
 az hybridaks vnet create -n <Name of your Azure connected AKS hybrid vnet> -g $resource_group --custom-location $customlocationID --moc-vnet-name $clustervnetname
 ```
 
@@ -114,39 +117,13 @@ Run the following command to download the VHD file specific for `v1.22.11` Kuber
 
 ### [For Linux nodes](#tab/linux-vhd)
 ```powershell
-Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 ### [For Windows nodes](#tab/windows-vhd)
 ```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\ArcHci\0.2.23\ArcHci.psm1' -Force
-$mocConfig = Get-MocConfig
-$k8sVersion = "1.22.11"
-$mocVersion = "1.0.16.10113"
-$imageType = "Windows"
-$imageName = Get-LegacyKubernetesGalleryImageName -imagetype $imageType -k8sVersion $k8sVersion
-$galleryImage = $null
-
-# Check if requested k8s gallery image is already present
-try {
-    $galleryImage = Get-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation
-} catch {}
-
-if ($null -ine $galleryImage) {
-    Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
-} else {
-    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
-
-    Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
-    $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
-
-    Write-Output "Adding $imageType $k8sVersion k8s gallery image to MOC"
-    New-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation -imagePath $result -container "MocStorageContainer"
-}
-
-
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11 -imageType Windows
 ```
-
 ---
 
 ## Give the end user the following details
