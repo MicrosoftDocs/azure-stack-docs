@@ -111,7 +111,7 @@ az extension add -n customlocation --upgrade
 ```
 
 Make sure you remove any old versions of arcappliance and hybridaks extensions, and install the following specific versions -
-```
+```powershell
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension remove -n arcappliance 
 az extension remove -n hybridaks
