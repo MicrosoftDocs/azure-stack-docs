@@ -121,8 +121,9 @@ Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 ### [For Windows nodes](#tab/windows-vhd)
-We do not support Windows nodepools right now. We're working on adding back support for Windows nodepools.
-
+```powershell
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11 -imageType Windows
+```
 ---
 
 ## Give the end user the following details
