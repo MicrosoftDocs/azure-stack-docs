@@ -81,7 +81,7 @@ Get-ProactiveLogCollectionState
 ```
 
 > [!NOTE]
-> If enhanced data sharing isn't enabled, you have **Autonomous** log collection. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
+> If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
