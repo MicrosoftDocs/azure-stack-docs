@@ -35,7 +35,7 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
@@ -45,7 +45,7 @@ Run the following command to install the Microsoft On-premises cloud (MOC) on yo
 
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
-Install-Moc
+Install-Moc -catalog "aks-hci-stable-catalogs-ext" -ring "stable" -version "1.0.20.10819"
 ```
 
 ## Step 3: Generate YAML files required for installing Arc Resource Bridge
@@ -263,8 +263,9 @@ To install the AKS hybrid extension, run the following command:
 
 ```azurecli
 az account set -s <subscription ID>
-
-az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
+$release_train = "stable"
+$version = "0.1.7"
+az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default" --release-train $release_train --version $version --auto-upgrade-minor-version $false
 ```
 
 |  Parameter  |  Parameter details  |
