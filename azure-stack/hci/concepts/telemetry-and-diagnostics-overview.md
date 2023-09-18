@@ -7,6 +7,8 @@ ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
 ms.date: 08/25/2023
+
+# CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
 ---
 # Azure Stack HCI telemetry and diagnostics extension
 
@@ -42,7 +44,7 @@ To access the options to send telemetry data, follow these steps:
 
 1. Go to your Azure Stack HCI cluster resource in the Azure portal. In the left-pane, go to **Settings** and then select **Extensions**.
 
-   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
 2. Choose one of the following options for sharing telemetry data:
 
@@ -56,7 +58,38 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - **Proactive** collection and upload of logs to an Azure Storage account for troubleshooting.
+     - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
+
+## Log collection types
+
+There are two log collection types associated with the telemetry and diagnostics extensions. These two types are proactive and autonomous.
+
+**Proactive** log collection is an optional feature that can be activated for your Azure Stack HCI system.
+
+There are two ways to enable proactive log collection:
+
+- Select `Enhanced` in the telemetry and diagnostics extension
+- Use the PowerShell command line.
+
+If you choose to use PowerShell, see the following commands:
+
+To enable proactive log collection run this command:
+
+```powershell
+Enable-ProactiveLogCollection
+```
+
+To disable proactive log collection run this command:
+
+```powershell
+Disable-ProactiveLogCollection
+```
+
+To check the state of your proactive log collection run this command:
+
+```powershell
+Get-ProactiveLogCollectionState
+```
 
 **Autonomous** log collection occurs if there's intermittent or no connectivity to Azure. During an occurrence, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
 
