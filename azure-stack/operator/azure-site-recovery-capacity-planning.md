@@ -77,7 +77,7 @@ The target environment requires one Azure Site Recovery vault to be created for 
 
 ## Azure Site Recovery RP resources
 
-Installing Azure Site Recovery on Azure Stack Hub involves adding the ASR dependency server and the Azure Site Recovery Resource Provider (RP) itself.
+Installing Azure Site Recovery on Azure Stack Hub involves adding the Site Recovery dependency server and the Site Recovery Resource Provider (RP) itself.
 
 > [!NOTE]
 > With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
