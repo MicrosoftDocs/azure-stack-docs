@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.lastreviewed: 05/01/2023
-ms.date: 05/01/2023
+ms.lastreviewed: 09/19/2023
+ms.date: 09/19/2023
 ---
 
 # Azure Arc extension management on Azure Stack HCI
@@ -97,7 +97,7 @@ Currently, automatic extension upgrades are only supported in the Windows Admin 
 > [!NOTE]
 > By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
-### Enable automatic upgrade via the Azure portal
+### Enable automatic upgrade
 
 # [Azure portal](#tab/azureportal)
 
@@ -200,7 +200,7 @@ If you continue to have trouble with an extension upgrade, you can [disable auto
 
 If multiple extension upgrades are available for a machine, they might be batched together. However, each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
-## Uninstall an extension from the Azure portal
+## Uninstall an extension
 
 # [Azure portal](#tab/azureportal)
 
