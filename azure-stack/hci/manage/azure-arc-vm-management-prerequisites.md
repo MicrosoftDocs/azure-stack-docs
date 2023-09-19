@@ -104,8 +104,6 @@ Make sure to include the following firewall URLs in your allowlist:
 | kvamanagementoperator.azurecr.io | 443 | Resource bridge components download | Required to pull artifacts for Appliance managed components |
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 | hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required to download the AZ CLI Extension azurestackhci |
-| https://pipelineagent.azurecr.io | 443 | Azure Monitor core agent | Used to get the Azure Monitor core agent |
-| https://linuxgeneva-microsoft.azurecr.io | 443 | Geneva database agents | Used to get the Geneva database agents |
 
 ## Network proxy requirements for setting up Arc VM management
 

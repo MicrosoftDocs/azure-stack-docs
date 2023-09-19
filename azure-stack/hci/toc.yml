@@ -330,6 +330,8 @@
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
     href: manage/troubleshoot-credssp.md
+  - name: Troubleshoot live migration
+    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues#failed-to-get-the-network-address-for-the-destination-node-host2-a-cluster-network-isnt-available-for-this-operation-0x000013ab
   - name: Troubleshoot Storage Spaces Direct
     href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot storage health
@@ -506,7 +508,11 @@
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
         href: manage/collect-logs.md
-      - name: Troubleshoot issues
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot environment readiness
+        href: manage/troubleshoot-environment-validation-issues.md
+      - name: Troubleshoot deployment
         href: deploy/deployment-tool-troubleshoot.md
     - name: Update
       items:

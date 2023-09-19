@@ -6,6 +6,7 @@ ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-azurepowershell
 ms.date: 04/17/2023
 ---
 

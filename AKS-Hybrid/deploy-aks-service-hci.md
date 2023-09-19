@@ -79,7 +79,9 @@ $namespace = az customlocation show --name $customLocationName --resource-group 
 To install the AKS hybrid extension, run the following command:
 ```azurecli
 $aksHybridExtnName = "aks-hybrid-extn"
-az k8s-extension create --resource-group $resourceGroup --cluster-name $resourceBridgeName --cluster-type appliances --name $aksHybridExtnName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount=$namespace   
+$release_train = "stable"
+$version = "0.1.7"
+az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default" --release-train $release_train --version $version --auto-upgrade-minor-version $false 
 ```
 
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
@@ -92,7 +94,7 @@ Expected output:
 Succeeded
 ```
 
-## Step 4: Patch your existing custom location to support AKS hybrid alongside Arc VMs
+## Step 3: Patch your existing custom location to support AKS hybrid alongside Arc VMs
 Run the following commands to patch your existing custom location on top of the Arc Resource Bridge. You will choose this custom location when creating virtual machines and AKS hybrid clusters through Azure.
 
 Collect the Azure Resource Manager IDs of the Azure Arc Resource Bridge and the Azure Stack HCI VM and AKS hybrid extensions in variables:
