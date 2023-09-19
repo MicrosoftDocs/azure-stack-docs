@@ -47,7 +47,7 @@ where:
   - AutonomousLogs
   - OEMDiagnostics
   - ObservabilityVolume
-  - NC 
+  - NC
 
 - `CollectSddc` parameter is set to `$true` by default, which triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes its logs as part of the log collection.
 
