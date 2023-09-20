@@ -77,22 +77,20 @@ The target environment requires one Azure Site Recovery vault to be created for 
 
 ## Azure Site Recovery RP resources
 
-Installing Azure Site Recovery on Azure Stack Hub involves adding two dependencies as well as the Azure Site Recovery Resource Provider (RP) itself:
+Installing Azure Site Recovery on Azure Stack Hub involves adding the Site Recovery dependency server and the Site Recovery Resource Provider (RP) itself.
 
-- [Event Hubs on Azure Stack Hub](event-hubs-rp-overview.md)
-- Azure Site Recovery dependency service
-- Azure Site Recovery
+> [!NOTE]
+> With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
 
 :::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Screenshot of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
 
-These three services are created on the Azure Stack Hub admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated:
+These two services are created on the Azure Stack Hub admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated:
 
 |Service            | vCore  | Memory     | Disk Size  |
 |-------------------|--------|------------|------------|
-|Event Hubs         | 16     | 91 GB      | 800 GB     |
 |Dependency Service | 12     | 42 GB      | 600 GB     |
 |Azure Site Recovery| 12     | 42 GB      | 300 GB     |
-|**Total**          | **40** | **175 GB** | **1700 GB**|
+|**Total**          | **24** | **84 GB** | **900 GB**|
 
 > [!NOTE]
 > These resources are Azure Stack Hub services on the administration side of Azure Stack Hub. Once installed, the platform manages these resources.
