@@ -27,6 +27,7 @@ If you want to install Arc provisioned AKS clusters on Windows Server, follow th
 | $resourceGroup | The resource group in the Azure subscription listed above where you installed Arc Resource Bridge & custom location.  |
 | $resourceBridgeName | The name of your Azure Arc Resource Bridge. |
 | $customLocationName | The name of your custom location where you want to enable AKS hybrid extension. |
+| $aksHybridExtnName| The name of the AKS hybrid extentinsion name, it can be any name (ie. AKSExtension-01). 
 
 
 ## Step 1: Verify if your Arc Resource Bridge and custom location have been provisioned successfully. 
@@ -67,8 +68,6 @@ az k8s-extension list -g $resourceGroup --cluster-name $resourceBridgeName --clu
 ```
 
 ---
-
-
 
 ## Step 2: Install the AKS hybrid extension on the Azure Arc Resource Bridge 
 Run the following command to obtain the Arc Resource Bridge namespace where you created the custom location.
