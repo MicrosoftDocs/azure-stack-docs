@@ -40,7 +40,7 @@ Exit
 
 ## Step 2: Install the Microsoft on-premises cloud to enable Azure management
 
-Run the following command to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
+Run the following command to install the Microsoft On-premises Cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
 
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
@@ -59,7 +59,7 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | `$resourceName` | The name of your Azure Arc Resource Bridge. |
 | `$workDirectory` | Path to a shared cluster volume that stores the config files we create for you. We recommend you use the same **workDir** you used when installing AKS hybrid. Make sure your **workDir** full path does not contain any spaces. |
 
-### More parameters if you're using static IP (recommended)
+More parameters if you're using static IP (recommended):
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
@@ -71,7 +71,7 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | `$vmIP1`, `$vmIP2` | These IP addresses are the IP addresses of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that these IP addresses come from the subnet in your datacenter. Also make sure that these IP addresses are available and aren't being used anywhere else. You need two IP addresses to support Arc Resource Bridge update operations.
 | `$controlPlaneIP` | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Similar to `$vmIP`, make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
 
-### More parameters if you're using DHCP
+More parameters if you're using DHCP:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
@@ -79,7 +79,7 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | `$vnetName` | The name of your virtual network. This can be any value; for example, `$vnetName = "resourcebridge-vnet"`. |
 | `$controlPlaneIP` | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
 
-### More parameters if you have a proxy server in your environment
+More parameters if you have a proxy server in your environment:
 
 | Parameter  | Required or Optional? |  Parameter details |
 | -----------| ------ | ------------ |
@@ -90,7 +90,7 @@ Installing Azure Arc Resource Bridge requires you to generate a YAML file. We ha
 | `$proxyServerUsername` | Optional | Username for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `Eleanor`.
 | `$proxyServerPassword` | Optional | Password for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `PleaseUseAStrongerPassword!`.
 
-### More parameters if you are using a vlan
+More parameters if you are using a vlan:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
