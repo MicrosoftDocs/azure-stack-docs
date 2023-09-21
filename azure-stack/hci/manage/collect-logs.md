@@ -1,17 +1,17 @@
 ---
-title: Collect diagnostic logs for Azure Stack HCI, version 22H2 (preview)
+title: Collect diagnostic logs for Azure Stack HCI
 description: How to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/20/2022
+ms.date: 09/20/2023
 ---
 
-# Collect diagnostic logs (preview)
+# Collect diagnostic logs
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+> Applies to: Azure Stack HCI, Supplemental Package; Azure Stack HCI, version 23H2 (preview)
 
 This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution.
 
