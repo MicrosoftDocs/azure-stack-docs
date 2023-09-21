@@ -63,8 +63,8 @@ On top of the prerequisites mentioned in the preceding section, if deploying a s
     If you aren't running the latest version, update the az CLI client to the latest version.
 
     ```azurecli
-    az extension upgrade --name azurestackhci
-    az extension upgrade --name k8s-extension
+    az extension update --name azurestackhci
+    az extension update --name k8s-extension
     ```
 
 1. When creating the static virtual network and network interface, make sure that you're running the following module versions on your Azure Stack HCI cluster:
