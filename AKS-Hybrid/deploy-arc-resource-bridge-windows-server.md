@@ -1,15 +1,12 @@
 ---
 title: How to deploy Azure Arc Resource Bridge on Windows Server
-description: How to deploy Azure Arc Resource Bridge on Windows Server
+description: Learn how to deploy Azure Arc Resource Bridge on Windows Server.
 author: abha
 ms.author: abha
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurecli
+ms.custom: devx-track-azurecli
 ms.date: 09/21/2023
 ---
-
-
 
 # How to install Arc Resource Bridge on Windows Server using the command line
 
@@ -96,7 +93,7 @@ More parameters if you are using a vlan:
 | -----------| ------------ |
 | `$vlanid` | VLAN ID |
 
-### Generate YAML file for static IP-based Azure Arc Resource Bridge without VLAN
+To generate a YAML file for static IP-based Azure Arc Resource Bridge without VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -112,7 +109,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN, and proxy settings without authentication
+To generate a YAML file for static IP based Azure Arc Resource Bridge, VLAN, and proxy settings without authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -128,7 +125,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Generate YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with certificate-based authentication
+To generate a YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with certificate-based authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -141,9 +138,10 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ```powershell
 New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
 ```
+
 ---
 
-### Generate YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with username/password-based authentication
+To generate a YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with username/password-based authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -159,7 +157,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Generate YAML file for static IP-based Azure Arc Resource Bridge with VLAN
+To generate a YAML file for static IP-based Azure Arc Resource Bridge with VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -175,7 +173,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Generate YAML file for DHCP-based Azure Arc Resource Bridge without VLAN
+To generate a YAML file for DHCP-based Azure Arc Resource Bridge without VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -191,7 +189,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Generate YAML file for DHCP-based Azure Arc Resource Bridge with VLAN
+To generate a YAML file for DHCP-based Azure Arc Resource Bridge with VLAN:
 
 ### [Windows Server](#tab/powershell)
 

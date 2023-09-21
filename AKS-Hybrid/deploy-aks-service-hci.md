@@ -1,6 +1,6 @@
 ---
-title: How to deploy AKS service on Azure Stack HCI
-description: How to deploy AKS service on Azure Stack HCI
+title: How to deploy AKS on Azure Stack HCI with Arc VMs
+description: Learn how to deploy the AKS service on Azure Stack HCI with Arc VMs.
 author: abha
 ms.author: abha
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 09/21/2023
 ---
 
 
-# How to install AKS service on Azure Stack HCI, along side Arc VMs
+# How to install AKS service on Azure Stack HCI alongside Arc VMs
 
 > Applies to: Azure Stack HCI
 
