@@ -84,7 +84,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
       ```PowerShell
       mkdir $csv_path\ResourceBridge
       
-      Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
+      Set-MocConfig -workingDir $csv_path\ResourceBridge -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -version 1.0.20.10819 -CloudServiceIP $cloudServiceIP -createAutoConfigContainers $false
 
       Install-Moc
       ```
@@ -118,7 +118,7 @@ In preparation to install Azure Arc Resource Bridge on an Azure Stack HCI cluste
    - Install the new extensions:
 
      ```azurecli
-     az extension add --upgrade --name arcappliance
+     az extension add --upgrade --name arcappliance --version 0.2.33
      az extension add --upgrade --name k8s-extension
      az extension add --upgrade --name customlocation
      az extension add --upgrade --name azurestackhci
