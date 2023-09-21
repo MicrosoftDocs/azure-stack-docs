@@ -205,7 +205,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-### Sample output
+Sample output:
 
 ```output
 HCI login file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir\kvatoken.tok'
