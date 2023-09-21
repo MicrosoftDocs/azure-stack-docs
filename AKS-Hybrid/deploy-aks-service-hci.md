@@ -13,15 +13,15 @@ ms.date: 09/21/2023
 
 > Applies to: Azure Stack HCI
 
-Arc VMs and Arc provisioned AKS clusters share the same pre-requisites - Arc Resource Bridge and custom location. This how-to guide walks you through enabling Arc provisioned AKS clusters along side Arc VMs on Azure Stack HCI.
+Arc VMs and Arc-provisioned AKS clusters share the same prerequisites: Arc Resource Bridge and custom location. This how-to guide walks you through enabling Arc-provisioned AKS clusters alongside Arc VMs on Azure Stack HCI.
 
-If you want to install Arc-provisioned AKS clusters on Windows Server, follow this guide [Install Arc Resource Bridge and AKS service on Windows Server](deploy-arc-resource-bridge-windows-server.md).
+If you want to install Arc-provisioned AKS clusters on Windows Server, see [Install Arc Resource Bridge and AKS service on Windows Server](deploy-arc-resource-bridge-windows-server.md).
 
 ## Prerequisites
 
 - [Review system requirements for installing Arc provisioned AKS clusters on Azure Stack HCI](aks-hybrid-preview-requirements.md)
 - [Install Arc Resource Bridge and Arc VMs using command line](/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2) 
-- Collect the following variables. You should have these after installing Arc VMs using the above link:
+- Collect the following variables. You should have these after installing Arc VMs using the previous link:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
@@ -62,7 +62,7 @@ Expected output:
 Succeeded
 ```
 
-**Optional** Verify if you have the Arc VMs extension installed on your Arc Resource Bridge and custom location. Your output should be the Azure Resource Manager ID of the Arc VMs extension:
+(**Optional**) Verify if you have the Arc VMs extension installed on your Arc Resource Bridge and custom location. Your output should be the Azure Resource Manager ID of the Arc VMs extension:
 
 ### [PowerShell](#tab/powershell)
 
