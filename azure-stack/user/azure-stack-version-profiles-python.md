@@ -18,7 +18,7 @@ ms.lastreviewed: 3/24/2022
 # Use API version profiles with Python in Azure Stack Hub
 
 >[!IMPORTANT]
->The Python SDK has been updated from track 1 to track 2. We recommend migrating to the track-2 SDK as soon as possible. For instructions, see [this migration guide](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/resourcemanager/Azure.ResourceManager/docs/MigrationGuide.md).
+>The Python SDK has been updated from track 1 to track 2. We recommend migrating to the track-2 SDK as soon as possible. For instructions, see [this migration guide](https://devblogs.microsoft.com/azure-sdk/migrating-python-management-libraries/).
 
 The Python SDK supports API version profiles to target different cloud platforms, such as Azure Stack Hub and global Azure. Use API profiles in creating solutions for a hybrid cloud.
 
