@@ -18,7 +18,7 @@ Troubleshooting Azure Stack HCI registration issues requires looking at both Pow
 
 ## Collect PowerShell registration logs
 
-When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. You can set the log directory for these log files using the '-LogsDirectory' parameter in the 'Register-AzStackHCI' cmdlet, and 'Get-AzStackHCILogsDirectory' can be used to obtain the location. By default, these files are created in **C:\ProgramData\AzureStackHCI\Registration**. For PowerShell module version 2.1.2 or earlier, these files are created in the working directory of the PowerShell session in which the cmdlets are run.
+When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. You can set the log directory for these log files using the `-LogsDirectory` parameter in the `Register-AzStackHCI` cmdlet, and `Get-AzStackHCILogsDirectory` can be used to obtain the location. By default, these files are created in **C:\ProgramData\AzureStackHCI\Registration**. For PowerShell module version 2.1.2 or earlier, these files are created in the working directory of the PowerShell session in which the cmdlets are run.
 
 By default, debug logs are not included. If there is an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
 
