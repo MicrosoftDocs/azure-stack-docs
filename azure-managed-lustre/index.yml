@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 
-title: Azure Managed Lustre File System documentation (preview)
+title: Azure Managed Lustre File System documentation
 summary: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
 metadata:
@@ -34,5 +34,5 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Contact support
-            url: preview-support.md
+          - text: Recover from a regional outage
+            url: amlfs-region-recovery.md

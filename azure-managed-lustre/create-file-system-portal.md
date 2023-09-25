@@ -1,50 +1,41 @@
 ---
-title: Create an Azure Managed Lustre (preview) file system in the Azure portal
+title: Create an Azure Managed Lustre file system in the Azure portal
 description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
 author: sethmanheim
+ms.date: 06/28/2023
 ms.author: sethm 
 ms.lastreviewed: 06/06/2023
 ms.reviewer: mayabishop
-ms.date: 02/22/2023
 
 # Intent: As an IT Pro, I want to use a Lustre file system to process files that involve a heavy computation load.
 # Keyword: 
 
 ---
 
-# Create an Azure Managed Lustre (preview) file system
+# Create an Azure Managed Lustre file system
 
 If you'd prefer to use Azure Resource Manager templates to create your file system, see [Create a file system using Azure Resource Manager templates](create-file-system-resource-manager.md).
 
 This article describes how to create an Azure Managed Lustre file system in the Azure portal.
 
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
-
 ## Prerequisites
 
-Before you start to create an Azure Managed Lustre file system:
+Before you start to create an Azure Managed Lustre file system, note that you can't change the following configurations after you create your file system:
 
-1. If you haven't done so already, sign up for the preview by submitting the [Azure Managed Lustre Preview registration form](https://forms.office.com/r/vMW3ZGAyk0).
+* The size of the file system.
+* The option to use an integrated Azure Blob Storage container.
+* The choice between customer-managed or system-generated encryption keys for storage.
 
-   You can't change the following configurations after you create your file system:
-   * The size of the file system
-   * The option to use an integrated Azure Blob Storage container
-   * The choice between customer-managed or system-generated encryption keys for storage
-
-   Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
-
-Do the following procedure in the [Azure portal](https://aka.ms/azureLustrePrivatePreview).
+Plan these items carefully, and configure them correctly when you create your Azure Managed Lustre file system.
 
 ## Sign in to the Azure portal
 
-1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview).
+1. Sign in to [the Azure portal](https://portal.azure.com).
 
 1. Type **Azure Managed Lustre** in the search box, and press **Enter**.
 
 1. On the **Azure Managed Lustre** blade, select **+ Create**.
-
-   ![Screenshot showing the Create command for Azure Managed Lustre.](./media/create-file-system-portal/lustre-create.png)
 
 This starts the **Create** wizard.
 
@@ -62,7 +53,7 @@ On the **Basics** tab, enter the following information:
 
    For best performance, create your Azure Managed Lustre file system in the same region and availability zone as your client machines.
 
-![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
+   ![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
 
 ### File system details
 
@@ -70,7 +61,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
 
 1. **File system name**: Choose a name to identify this file system in your list of resources.
 
-2. **File system type**: Shows **Durable, SSD**, the type of infrastructure that's available for the file system in this preview.
+2. **File system type**: Shows **Durable, SSD**, the type of infrastructure that's available for the file system.
 
 3. **Storage and throughput**: Use these settings to set the size of your file system.
 
@@ -85,7 +76,19 @@ Set the name and capacity of the Azure Managed Lustre file system:
      > [!NOTE]
      > These values are rounded up to meet incremental size requirements. They are never rounded down, so make sure you check the final configuration to make sure it's cost-effective for your workload.
 
-![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
+     ![Screenshot showing Storage and Throughput settings to size an Azure Managed Lustre file system during file system creation.](./media/create-file-system-portal/basics-file-system-details.png)
+
+Currently the following throughput configurations are available:
+
+| Throughput per TiB storage | Storage Min| Storage Max| Increment|
+|-----------|-----------|-----------|-----------|
+| 40 MB/second | 48 TB | 768 TB | 48 TB|
+| 125 MB/second | 16 TB | 128 TB | 16 TB |
+| 250 MB/second | 8 TB | 128TB | 8 TB |
+| 500 MB/second | 4 TB | 128TB | 4 TB |
+
+> [!NOTE]
+> If you are interested in storage values larger than the listed maximum, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
 
 ### Networking
 
@@ -105,7 +108,7 @@ In the **Networking** section:
 
    To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
 
-![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
+   ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
 
 When you finish entering the **Basic** settings, select **Next: Advanced** to continue.
 
@@ -152,12 +155,9 @@ To configure blob integration:
 
    You can't change this field after you create the Azure Managed Lustre file system.
 
-![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
+   ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
 
 ### Maintenance window
-
-> [!NOTE]
-> The maintenance window configuration is not supported during the public preview. Maintenance tasks might be done at any time.
 
 To allow Azure staff to maintain your Azure Managed Lustre file system, they need access to the file system to run diagnostics, update software, and troubleshoot any problems. Use the **Maintenance window** setting to set a time when the system can be disrupted for routine service.
 
@@ -217,15 +217,7 @@ When you finish entering customer key settings and managed identities, select **
 
 ## Review settings and create the file system
 
-On the **Review + create** tab, do these steps:
-
-1. Review **Preview terms**, and select the check box indicating you agree to the terms.
-
-   Your setting is validated.
-
-1. When a **Validation passed** message appears, select **Create** to begin creating the file system.
-
-   ![Screenshot of Review and Validate tab for Azure Managed Lustre Create. Validation check box, status, Create button are highlighted.](./media/create-file-system-portal/review-validate.png)
+On the **Review + create** tab, when a **Validation passed** message appears, select **Create** to begin creating the file system.
 
 Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.
 

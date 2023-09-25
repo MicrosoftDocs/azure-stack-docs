@@ -11,7 +11,9 @@ ms.date: 06/05/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to set up a proxy server and how to use Azure service tags with Microsoft Defender firewall.
+This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
+
+If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
 ## Firewall requirements for outbound endpoints
 
@@ -140,56 +142,6 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Allow Server Message Block<br> (SMB) protocol | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 445 |
 | Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 5985 |
 | Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched cluster servers | Stretched cluster servers | n/a | n/a |
-
-## Set up a proxy server
-
-> [!NOTE]
-> Windows Admin Center proxy settings and Azure Stack HCI proxy settings are separate. Changing Azure Stack HCI cluster proxy settings doesn't affect Windows Admin Center outbound traffic, such as connecting to Azure, downloading extensions, and so on. Install the WinInetProxy module to run the commands in this section. For information about the module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0).
-
-To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
-
-```powershell
-Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
-```
-
-Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-wide instead of per user, which is the default.
-
-To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
-
-### Configure proxy for Microsoft Update and Cluster Cloud Witness
-
-You can configure proxy for Microsoft Update and Cluster Cloud Witness automatically with [WinHTTP autoproxy](/windows/win32/winhttp/winhttp-autoproxy-support) or manually by using the `netsh` command-line utility.
-
-To manually configure proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
-
-`netsh winhttp set proxy <proxy server name>:<port number>`
-
-To remove the proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
-
-`netsh winhttp reset proxy`
-
-To view or verify current WinHTTP proxy configuration, at the command prompt, type:
-
-`netsh winhttp show proxy`
-
-> [!IMPORTANT]
-> We don't support authenticated proxies due to security concerns associated with storing authenticated user credentials.
-
-### Configure proxy for Azure services
-
-Refer to the following articles for information about how to configure proxy server settings for each Azure service:
-
-- [AKS hybrid](/azure-stack/aks-hci/set-proxy-settings)
-- [Azure Arc VM management](/azure-stack/hci/manage/azure-arc-vm-management-proxy)
-- [Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
-- [Azure Arc-enabled servers](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
-- [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
-- [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
-- [Microsoft Defender](/microsoft-365/security/defender-endpoint/production-deployment?#network-configuration)
-- [Microsoft Monitoring Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
-- To configure proxy server in Windows Admin Center, go to **Settings** > **Proxy**, enter the proxy server address and any relevant bypass or authentication information, and select **Apply**.
-
-    :::image type="content" source="./media/firewall-requirements/windows-admin-center-proxy.png" alt-text="Screenshot of Windows Admin Center Proxy settings pane." lightbox="./media/firewall-requirements/windows-admin-center-proxy.png":::
 
 ## Update Microsoft Defender firewall
 

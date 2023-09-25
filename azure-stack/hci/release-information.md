@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/12/2023
+ms.date: 09/11/2023
 ---
 
 # Azure Stack HCI release information
@@ -37,6 +37,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1970   | 2023-09-12             | [KB 5030216](https://support.microsoft.com/topic/fdf76ccf-ae95-4e19-9842-d4b8f7359fa2)|
+| 20349.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/36a2464b-f91e-499a-98cd-661ad68a3536)  |
+| 20349.1850   | 2023-07-11            | [KB 5028171](https://support.microsoft.com/topic/34557119-e00c-4678-bb87-048a36ed8585)  |
 | 20349.1787   | 2023-06-13            | [KB 5027225](https://support.microsoft.com/topic/22021b0f-6d49-490c-9aef-f7556f928ad9)  |
 | 20349.1726   | 2023-05-09            | [KB 5026370](https://support.microsoft.com/topic/77d61c1a-07d2-44d1-8023-834d87a28d78)  |
 | 20349.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/5048ddfb-7bf3-4e6c-b29a-7b44b789d282)  |
@@ -58,6 +61,10 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.1970   | 2023-09-12             | [KB 5030216](https://support.microsoft.com/topic/a8a4f08d-33f1-49a0-afcc-40bd7d6f44f3)|
+| 20348.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/c1939499-12b7-4a23-8bda-2abd3a0fe084)  |
+| 20348.1850   | 2023-07-11            | [KB 5028171](https://support.microsoft.com/topic/81aa00e1-31fb-42d7-ade1-7de0b37b3738)  |
+| 20348.1787   | 2023-06-13            | [KB 5027225](https://support.microsoft.com/topic/dfe991ea-55bd-4618-89fe-b50870952dae)  |
 | 20348.1726   | 2023-05-09            | [KB 5026370](https://support.microsoft.com/topic/214132e6-d909-4078-8161-6039c14a8322)  |
 | 20348.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
 | 20348.1607   | 2023-03-14             | [KB 5023705](https://support.microsoft.com/topic/e039eca6-13cf-46c0-b2b4-ee9a27bf6b2d)  |

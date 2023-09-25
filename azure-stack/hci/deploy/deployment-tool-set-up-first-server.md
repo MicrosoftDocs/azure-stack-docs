@@ -3,7 +3,7 @@ title: Set up the first server for new Azure Stack HCI deployments (preview)
 description: Learn how to set up the first server before you deploy Azure Stack HCI (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/30/2023
+ms.date: 09/01/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -41,11 +41,96 @@ Follow these steps to connect to the first server:
 
 1. Sign in to the first server using local administrative credentials.
 
-1. Copy the [Supplemental Package that you downloaded previously](#download-the-supplemental-package) to any drive other than the C:\ drive of the first server.
+1. Copy the [Supplemental Package that you downloaded previously](#download-the-supplemental-package) to a local drive on the first server.
 
 ## Set up the deployment tool
 
 [!INCLUDE [hci-set-up-deployment-tool](../../includes/hci-set-up-deployment-tool.md)]
+
+## Assign Azure permissions for deployment
+
+This section describes how to assign Azure permissions for deployment from the Azure portal or using PowerShell.
+
+### Assign Azure permissions from the Azure portal
+
+If your Azure subscription is through an Enterprise Agreement (EA) or Cloud Solution Provider (CSP), ask your Azure subscription admin to assign Azure subscription level privileges of:
+
+- **User Access Administrator** role: Required to Arc-enable each server of an Azure Stack HCI cluster.
+- **Contributor** role: Required to register and unregister the Azure Stack HCI cluster.
+
+   :::image type="content" source="media/deployment-tool/first-server/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/deployment-tool/first-server/access-control.png":::
+
+### Assign Azure permissions using PowerShell
+
+Some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI deployment. To create this custom role, you need to be either an Owner or a User Access Administrator on the subscription. For more information about how to create a custom role including the various manage operations, see [Tutorial: Create an Azure custom role using Azure PowerShell](/azure/role-based-access-control/tutorial-custom-role-powershell).
+
+The following procedure provides a typical set of permissions to the custom role.
+
+1. Create a **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to your Azure subscription ID. To get your Azure subscription ID, use the [`Get-AzSubscription`](/powershell/module/az.accounts/get-azsubscription) command.
+
+    ```jason
+    {
+	    "Name": "Azure Stack HCI registration role - Custom",
+	    "Id": null,
+	    "IsCustom": true,
+	    "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+	    "Actions": [
+		"Microsoft.Resources/subscriptions/resourceGroups/read",
+		"Microsoft.Resources/subscriptions/resourceGroups/write",
+		"Microsoft.Resources/subscriptions/resourceGroups/delete",
+		"Microsoft.AzureStackHCI/register/action",
+		"Microsoft.AzureStackHCI/Unregister/Action",
+		"Microsoft.AzureStackHCI/clusters/*",
+		"Microsoft.Authorization/roleAssignments/write",
+		"Microsoft.Authorization/roleAssignments/read",
+		"Microsoft.HybridCompute/register/action",
+		"Microsoft.GuestConfiguration/register/action",
+		"Microsoft.HybridConnectivity/register/action",
+		"Microsoft.HybridCompute/machines/extensions/write",
+		"Microsoft.HybridCompute/machines/extensions/read",
+		"Microsoft.HybridCompute/machines/read",
+		"Microsoft.HybridCompute/machines/write",
+		"Microsoft.HybridCompute/privateLinkScopes/read",
+		"Microsoft.GuestConfiguration/guestConfigurationAssignments/read",
+		"Microsoft.ResourceConnector/register/action",
+		"Microsoft.Kubernetes/register/action",
+		"Microsoft.KubernetesConfiguration/register/action",
+		"Microsoft.ExtendedLocation/register/action",
+		"Microsoft.HybridContainerService/register/action",
+		"Microsoft.ResourceConnector/appliances/write"
+	    ],
+	    "NotActions": [],
+	    "AssignableScopes": [
+		"/subscriptions/<Azure Subscription ID>"
+	    ]
+    }
+    ```
+1. Create the custom role:
+
+    ```powershell
+    New-AzRoleDefinition -InputFile "C:\CustomRoles\customHciRole.json"
+    ```
+
+1. Assign the custom role to the user:
+
+    ```powershell
+    $user = Get-AzADUser -DisplayName <userdisplayname>
+    $role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
+    New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<Azure Subscription ID>
+    ```
+
+    The following table explains why these permissions are required:
+
+    | Operation | Description |
+    |--|--|
+    | "Microsoft.Resources/subscriptions/resourceGroups/read"<br>"Microsoft.Resources/subscriptions/resourceGroups/write"<br>"Microsoft.Resources/subscriptions/resourceGroups/delete"<br>"Microsoft.AzureStackHCI/register/action"<br>"Microsoft.AzureStackHCI/Unregister/Action"<br>"Microsoft.AzureStackHCI/clusters/\*"<br>"Microsoft.Authorization/roleAssignments/read" | To register and unregister the Azure Stack HCI cluster. |
+    | "Microsoft.Authorization/roleAssignments/write"<br>"Microsoft.HybridCompute/register/action"<br>"Microsoft.GuestConfiguration/register/action"<br>"Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
+    | "Microsoft.HybridCompute/machines/extensions/write" <br> "Microsoft.HybridCompute/machines/extensions/read" | To list and enable Arc Extensions on Azure Stack HCI cluster. |
+    | "Microsoft.HybridCompute/machines/read" <br> "Microsoft.HybridCompute/machines/write" | To enable Arc for Servers on each node of your Azure Stack HCI cluster. |
+    | "Microsoft.HybridCompute/privateLinkScopes/read" | To enable private endpoints. |
+    | "Microsoft.GuestConfiguration/guestConfigurationAssignments/read" <br> "Microsoft.ResourceConnector/register/action" <br> "Microsoft.Kubernetes/register/action" <br> "Microsoft.KubernetesConfiguration/register/action" <br> "Microsoft.ExtendedLocation/register/action" <br> "Microsoft.HybridContainerService/register/action" <br> "Microsoft.ResourceConnector/appliances/write" | For Azure Arc Resource Bridge installation. |
+
+To set more restrictive permissions, see [How do I use a more restricted custom permissions role?](../manage/manage-cluster-registration.md#how-do-i-use-a-more-restricted-custom-permissions-role)
 
 ## Next steps
 
