@@ -1,19 +1,19 @@
 ---
-title: Use Azure Blob storage with an Azure Managed Lustre file system (preview)
+title: Use Azure Blob storage with an Azure Managed Lustre file system
 description: Understand storage concepts for using Azure Blob storage with an Azure Managed Lustre file system. 
 ms.topic: overview
 author: sethmanheim
+ms.date: 06/28/2023
 ms.author: sethm 
-ms.lastreviewed: 02/17/2023
+ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
-ms.date: 02/09/2023
 
 # Intent: As an IT Pro, I want to be able to seamlessly use Azure Blob Storage for long-term storage of files in my Azure Managed Lustre file system.
 # Keyword: Lustre Blob Storage
 
 ---
 
-# Use Azure Blob storage with Azure Managed Lustre (preview)
+# Use Azure Blob storage with Azure Managed Lustre
 
 This article explains concepts for using the Azure blob integration with Azure Managed Lustre file systems.
 
@@ -64,6 +64,12 @@ When files are archived from the Azure Managed Lustre system to the blob contain
   `hdi_isfolder : true`
 
 You can modify these POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described above.
+
+## Copy a Lustre blob container with AzCopy (or Storage Explorer)
+
+You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer, but at the time of this writing, with AzCopy version 10.17.0 the default settings for those tools don't include the directory attributes (such as `hdi_isfolder`). You can include those attributes with the AzCopy flag `--include-directory-stub True`, which includes the directory POSIX attributes (for example, `owner`, `group`, and `permissions`). If you `azcopy` the storage container without that flag set to `True` (it defaults to `False`), the data and directories copy but the directories do not retain their POSIX attributes.
+
+Similarly, for Storage Explorer you can enable this flag in **Settings**, under **Transfers**, by checking the box for **Include Directory Stubs**.  
 
 ## Next steps
 

@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 07/20/2023
 ---
 
 # Review two-node storage reference pattern decision matrix for Azure Stack HCI
@@ -31,4 +31,4 @@ Study the two-node storage reference pattern decision matrix to help decide whic
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)

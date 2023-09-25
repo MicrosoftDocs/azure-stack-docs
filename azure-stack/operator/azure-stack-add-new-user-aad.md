@@ -3,6 +3,8 @@ title: Add a new Azure Stack Hub user account in Azure Active Directory
 description: Learn how to create a user account in Azure Active Directory, so you can explore the user portal.
 author: sethmanheim
 ms.topic: article
+ms.custom:
+  - has-azure-ad-ps-ref
 ms.date: 06/17/2021
 ms.author: sethm
 ms.reviewer: thoroet
@@ -10,7 +12,6 @@ ms.lastreviewed: 06/17/2021
 
 # Intent: As an Azure Stack Hub operator, I want to add a new user account in Azure Active Directory so I can explore the user portal and test offers and plans.
 # Keyword: user account azure stack hub
-
 ---
 
 # Add a new Azure Stack Hub user account in Azure Active Directory (Azure AD)

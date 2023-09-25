@@ -1,10 +1,9 @@
 ---
 description: "Learn more about: Cluster performance history"
 title: Cluster performance history
-manager: eldenc
-ms.author: arduppal
+ms.author: sethm
 ms.topic: article
-author: arduppal
+author: sethmanheim
 ms.date: 04/17/2023
 ---
 

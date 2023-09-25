@@ -13,7 +13,7 @@ ms.date: 09/29/2022
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
+The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](./download-azure-stack-hci-software.md) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
 > [!NOTE]
 > If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to [Create an Azure Stack HCI cluster](create-cluster.md).
@@ -136,11 +136,13 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
+## Configure the server using SConfig
+
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use SConfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you log on to the server.
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the Welcome to Azure Stack HCI window (SConfig tool), you can perform the following initial configuration tasks:
+From the Welcome to Azure Stack HCI window (SConfig tool), you can perform these initial configuration tasks on each server:
 
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.

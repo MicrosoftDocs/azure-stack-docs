@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/03/2022
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
@@ -167,6 +167,8 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
     1. **Local file share path.** Specify the local share path for the source image on your HCI cluster.
 
+    1. **Storage path.** Select the storage path for your VM image.
+
 1. Select **Review + Create** to create your VM image.
 
    :::image type="content" source="./media/manage-vm-resources/create-an-image-from-local-share.png" alt-text="Screenshot of the Create an image page showing the fields in the Basics tab." lightbox="./media/manage-vm-resources/create-an-image-from-local-share.png":::
@@ -219,7 +221,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 

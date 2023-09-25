@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 05/25/2023
+ms.date: 08/22/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
@@ -72,8 +72,8 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
-- **VHDFile** - VHD file name used by all SDN infrastructure VMs
-- **VMLocation** - file path to SDN infrastructure VMs
+- **VHDFile** - VHDX file name used by all SDN infrastructure VMs
+- **VMLocation** - file path to SDN infrastructure VMs. Note that Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`
 - **JoinDomain** - domain to which SDN infrastructure VMs are joined to
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs
 - **SDNMacPoolEnd** -  end MAC pool address for client workload VMs
@@ -81,11 +81,11 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **ManagementGateway** - Gateway address for the management network
 - **ManagementDNS** - DNS server for the management network
 - **ManagementVLANID** - VLAN ID for the management network
-- **DomainJoinUsername** - administrator user name
-- **LocalAdminDomainUser** - local administrator user name
+- **DomainJoinUsername** - administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
+- **LocalAdminDomainUser** - local administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **HyperVHosts** - host servers to be managed by Network Controller
-- **NCUsername** - Network Controller account user name
+- **NCUsername** - Network Controller account username
 - **ProductKey** - product key for SDN infrastructure VMs
 - **SwitchName** - only required if more than one virtual switch exists on the Hyper-V hosts
 - **VMMemory** - memory (in GB) assigned to infrastructure VMs. Default is 4 GB

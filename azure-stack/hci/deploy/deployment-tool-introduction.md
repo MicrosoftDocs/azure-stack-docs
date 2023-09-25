@@ -3,7 +3,7 @@ title: Azure Stack HCI deployment overview (preview)
 description: Learn about the deployment methods for Azure Stack HCI (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 11/17/2022
+ms.date: 05/30/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -38,7 +38,7 @@ Follow this process sequence to deploy Azure Stack HCI in your environment:
 - Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI.
 - Follow the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Install the English version of Azure Stack HCI, version 22H2](deployment-tool-install-os.md) on each server.
 - Install and run the deployment tool interactively with a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
 - After deployment, [validate deployment](deployment-tool-validate.md).

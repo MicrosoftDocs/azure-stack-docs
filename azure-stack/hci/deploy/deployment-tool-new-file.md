@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI interactively via a new configuration file (previe
 description: Learn how to deploy Azure Stack HCI interactively using a new configuration file (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/03/2023
+ms.date: 06/28/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -28,6 +28,10 @@ Before you begin, make sure you've done the following:
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2 OS](deployment-tool-install-os.md) on each server.
 - [Set up the first server](deployment-tool-set-up-first-server.md) in your Azure Stack HCI cluster.
+- If deploying as a part of single server recovery, make sure to:
+    - Not delete the existing Active Directly OU. If the volumes are encrypted, deletion of the existing OU causes the loss of BitLocker recovery keys.
+    - Use the same parameters with which the server was imaged previously.
+    - Select the **Use existing drives** option. This option unlocks the encrypted drives using the protector keys stored in your Active Directory.
 
 ## Run the deployment tool
 
@@ -39,7 +43,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. In the URL field, enter *https://your_staging-server-IP-address*.
 
-1. Accept the security warning displayed by your browser - this is shown because we’re using a self-signed certificate.
+1. Accept the security warning displayed by your browser - this is shown because we're using a self-signed certificate.
 
 1. Authenticate using the local administrator credentials of your staging server.
 
@@ -53,9 +57,9 @@ If you want to use an existing configuration file you have previously created, s
 
     1. Select the **Azure Cloud** to be used. In this release, only Azure public cloud is supported.
 
-    1. Under **Authentication**, copy the authentication code for your Azure cloud:
+    1. Under **Authentication**, select **Copy** to copy the authentication code for your Azure cloud:
     
-    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - authentication page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
+    :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-authentication-code.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details - with authentication code." lightbox="media/deployment-tool/new-file/deploy-new-step-1-authentication-code.png":::
     
     c. Select **Sign in**. A new browser window opens. Enter the code that you copied earlier and then provide your Azure credentials. Multi-factor authentication (MFA) is supported.
     
@@ -185,6 +189,8 @@ Use a file share witness if you use a local SMB file share to provide a vote in 
 - On step **4.1 Create volumes**, select the **Create workload volumes (recommended)** option to create workload volumes in addition to the infrastructure volumes used by Azure Stack HCI cluster. Choosing this option will create all the volumes with the best resiliency level.
 
     If you select **Create required volumes only**, you will need to create workload volumes yourselves.  
+
+    Select the **Existing data drives** option only when you are repairing a single server.  This option unlocks the  encrypted drives using the protector keys stored in your Active Directory. 
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png" alt-text="Screenshot of the Deployment step 4.1 storage volumes page." lightbox="media/deployment-tool/new-file/deploy-new-step-4-storage-volumes.png":::
 

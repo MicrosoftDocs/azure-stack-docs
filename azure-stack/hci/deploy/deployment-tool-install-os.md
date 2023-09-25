@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 22H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI version 22H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/20/2023
+ms.date: 07/20/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -28,14 +28,11 @@ Before you begin, make sure you've done the following:
 
 ## Boot and install the operating system
 
-To install the Azure Stack HCI operating system, follow these steps:
+The Supplemental package supports only the English version of the Azure Stack HCI operating system.
 
-1. Go to [Download Azure Stack HCI 22H2](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and fill out and submit a trial form.
+To install the Azure Stack HCI operating system in English, follow these steps:
 
-1. On the **Azure Stack HCI software download** page, select **Download Azure Stack HCI**. This action downloads an ISO file. Use this ISO file to install the operating system on each server that you want to cluster.
-
-    :::image type="content" source="../media/operating-system/azure-stack-hci-download.png" alt-text="Screenshot of the Azure Stack HCI download.":::
-
+1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-azure-stack-hci-software.md). Make sure to select **English** from the **Choose language** dropdown list.
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
@@ -49,16 +46,7 @@ To install the Azure Stack HCI operating system, follow these steps:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the installation type option page of the Install Azure Stack HCI wizard.":::
 
-1. On the **Where do you want to install Azure Stack HCI?** page, make sure that a special disk partition layout is created:
-
-    | Disk partition         | Recommended min. size | Purpose                  |
-    |------------------------|-----------------------|--------------------------|
-    | Boot partition (C:)    |60 GB<sup>*</sup>                  |Used for the operating system           |
-    | Data partition (D:)    |120 GB                 |Used for logs |
-
-    <sup>*</sup> *The minimum requirement should be based on the memory required to ensure a full memory dump can be created. For more information, see [Overview of memory dump file options for Windows](/troubleshoot/windows-server/performance/memory-dump-file-options).*
-
-    Confirm the operating system installation in the boot partition, and then select **Next**.
+1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive where the operating system is installed, and then select **Next**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="Screenshot of the drive location page of the Install Azure Stack HCI wizard.":::
 
@@ -87,13 +75,7 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
 
-1. Make sure that Windows updates won't be downloaded and installed during the deployment. On the first operating system boot, run the following commands on each of the servers right after the operating system installation:
-
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f`
-
-    1. `reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v AUOptions /t REG_DWORD /d 3 /f`
-
-    1. `Set-Service "WUAUSERV" -StartupType Disabled`
+1. Make sure that Windows updates won't be downloaded and installed during the deployment.
 
 1. Configure networking as per your environment.
 

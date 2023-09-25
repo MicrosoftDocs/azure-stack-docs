@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/25/2023
+ms.date: 08/22/2023
 ms.author: sethm
 ms.reviewer: JasonGerend
 ---
@@ -81,8 +81,12 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
         1. Specify the default gateway.
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
+    > [!NOTE]
+    > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values. This is the MAC pool used to assign MAC addresses to VMs attached to SDN networks.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
@@ -143,8 +147,12 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
     
 1. Under **Credentials**, enter the username and password that you used to join the Software Load Balancer VMs to the cluster domain.
+    > [!NOTE]
+    > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 
@@ -180,8 +188,12 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
         
 1. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
+    > [!NOTE]
+    > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value may depend on various factors, such as physical NIC speed on the host machine, other VMs on the host machine and their throughput requirements.
+    > [!NOTE]
+    > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.
 1. Enter the path to the VMs. You can also use the default populated path.
 1. When finished, click **Next: Deploy the Gateway**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
@@ -194,3 +206,4 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 - Manage your VMs. See [Manage VMs](../manage/vm.md).
 - Manage Software Load Balancers. See [Manage Software Load Balancers](../manage/load-balancers.md).
 - Manage Gateway connections. See [Manage Gateway Connections](../manage/gateway-connections.md).
+- Troubleshoot SDN deployment. See [Troubleshoot Software Defined Networking deployment via Windows Admin Center](../manage/troubleshoot-sdn-deployment.md).

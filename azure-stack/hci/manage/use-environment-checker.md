@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/04/2023
+ms.date: 08/30/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -29,6 +29,7 @@ The Environment Checker tool consists of the following validators:
 - **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
+- **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
 
 ## Why use Environment Checker?
 
@@ -39,7 +40,7 @@ You can run the Environment Checker to:
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
 - Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Work with the support team more effectively in troubleshooting any advanced issues.
+- Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
 
@@ -65,7 +66,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before running the Deployment Tool to avoid any conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -189,7 +190,7 @@ You can filter any of the following attributes and display the connectivity vali
 | Group          | Readiness Checks. |
 | System         | For internal use. |
 | Name           | Name of the individual service. |
-| Title          | Service title ; user facing name. |
+| Title          | Service title; user facing name. |
 | Severity       | Critical, Warning, Informational, Hidden. |
 | Description    | Description of the service name. |
 | Tags           | Internal Key-value pairs to group or filter tests. |
@@ -451,6 +452,62 @@ The following sample is the output from a failed run of the network validator. T
 
    :::image type="content" source="./media/environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-failed.png":::
 
+### [Arc integration](#tab/arc-integration)
+
+The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
+
+You can use the Arc integration validator to verify the following:
+
+- The Arc resource group doesn’t already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
+- One or more nodes are not already Arc-enabled in a different subscription ID or resource group.
+- The specified Azure region is valid.
+- The resource group limit in the subscription is not reached.
+- The Azure Stack HCI resource count limit in the registration resource group is not reached.
+- The role assignment count limit in the subscription is not reached.
+
+### Run the Arc integration validator
+
+1. Open PowerShell on any Azure Stack HCI cluster node.
+
+1. Run the following command to connect to Azure with the account you intend to onboard your Azure Stack HCI cluster:
+
+   ```powershell
+   Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_ID> -DeviceCode
+   ```
+
+1. Run the following command to create an array variable containing the names of your Azure Stack HCI cluster nodes:
+
+   ```powershell
+   $nodes = [string[]]("host1"," host2"," host3"," host4")
+   ```
+
+1. Run the following command to invoke the validator:
+
+   ```powershell
+   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_ID> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
+   ```
+
+   where:
+   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Stack HCI cluster.
+
+### Arc integration validator output
+
+The following samples are the output from successful and unsuccessful runs of the Arc integration validator.
+
+To learn more about different sections in the readiness check report, see [Understand readiness check report](#understand-readiness-check-report).
+
+**Sample output: Successful test**
+
+The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current cluster.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-passed.png":::
+
+**Sample output: Failed test**
+
+The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current cluster. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+
+   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-failed.png":::
+
 ---
 
 ### Understand readiness check report
@@ -478,6 +535,19 @@ The information displayed on each readiness check report varies depending on the
 > The results reported by the Environment Checker tool reflect the status of your settings only at the time that you ran it. If you make changes later, for example to your Active Directory or network settings, items that passed successfully earlier can become critical issues.
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
+
+## Uninstall environment checker
+
+The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the deployment tool, to avoid any conflicts.
+
+```powershell
+Remove-Module AzStackHci.EnvironmentChecker -Force
+Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path -like "*$($_.Version)*"} | Uninstall-Module -force
+```
+
+## Troubleshoot environment validation issues
+
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Troubleshoot environment validation issues](./troubleshoot-environment-validation-issues.md).
 
 ## Next steps
 

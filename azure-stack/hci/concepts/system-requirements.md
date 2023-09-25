@@ -6,10 +6,8 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom:
-  - references_regions
-  - devx-track-azurepowershell
-ms.date: 05/29/2023
+ms.custom: references_regions
+ms.date: 06/14/2023
 ---
 
 # System requirements for Azure Stack HCI
@@ -65,13 +63,10 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
    Regions supported for additional features of Azure Stack HCI:
 
-   Currently, [Azure Arc Resource Bridge](../manage/azure-arc-vm-management-prerequisites.md#azure-requirements) supports only the following regions for Azure Stack HCI registration:
+   Currently, [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) supports only the following regions for Azure Stack HCI registration:
+
    - East US
-   - South Central US
-   - Canada Central
    - West Europe
-   - Southeast Asia
-   - Australia East
 
 ## Server requirements
 

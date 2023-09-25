@@ -22,7 +22,7 @@ zone_pivot_groups: state-connected-disconnected
 
 Register Azure Stack Hub with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack Hub, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
 
-The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
+The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
@@ -72,7 +72,7 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 After registration, Azure Active Directory (Azure AD) global administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
-The user that registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they are a global admin, will have to be added to ‘Default Provider Subscription’ through ‘Access control (IAM)’. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
+The user that registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they're a global admin, must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
 If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
@@ -487,7 +487,10 @@ You need to update your registration in the following circumstances:
 
 - After you renew your capacity-based yearly subscription.
 - When you change your billing model.
-- When you scale changes (add/remove nodes) for capacity-based billing.
+- When your scale changes (add/remove nodes) for capacity-based billing.
+
+>[!NOTE]
+>If proactive log collection is enabled and you renew or change your Azure Stack Hub registration, you must re-enable proactive log collection. For more information on proactive log collection, see [Diagnostic log collection](diagnostic-log-collection.md).
 
 ### Prerequisites
 
@@ -591,7 +594,7 @@ Or you can use the registration name and registration resource group name from t
 
 ### Re-register using connected steps
 
-If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-billing-model-how-features-are-offered-or-re-register-your-instance).
+If you're changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-billing-model-how-features-are-offered-or-re-register-your-instance).
 
 >[!Note]
 >This does not change your identity model, only the billing mechanism, and you will still use AD FS as your identity source.
@@ -698,23 +701,23 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 You might see one of the errors below while attempting to register your Azure Stack Hub:
 
-- Could not retrieve mandatory hardware info for `$hostName`. Check physical host and connectivity, then try to rerun registration.
+- Couldn't retrieve mandatory hardware info for `$hostName`. Check physical host and connectivity, then try to rerun registration.
 
-- Cannot connect to `$hostName` to get hardware info. Check physical host and connectivity, then try to rerun registration.
+- Can't connect to `$hostName` to get hardware info. Check physical host and connectivity, then try to rerun registration.
 
-   Cause: this is typically because we try to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
+   Cause: We tried to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
 
-- Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers is not allowed.
+- Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers isn't allowed.
 
-   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, follow the [Renew or change registration steps](#renew-or-change-registration).
+   Cause: This happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, follow the [Renew or change registration steps](#renew-or-change-registration).
 
 - When trying to access Marketplace management, an error occurs when trying to syndicate products.
 
-   Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
+   Cause: This usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
 ::: zone pivot="state-disconnected"
 - Marketplace management still asks you to register and activate your Azure Stack Hub, even when you've already registered your stamp using the disconnected process.
 
-   Cause: this is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
+   Cause: This is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 ::: zone-end
 
 ## Next steps

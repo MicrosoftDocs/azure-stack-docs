@@ -117,7 +117,7 @@ The next step is to install required Windows roles and features on every server 
 - FS-Data-Deduplication module
 - Hyper-V
 - Hyper-V PowerShell
-- RSAT-AD-Clustering-PowerShell module
+- RSAT-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - NetworkATC
 - NetworkHUD
