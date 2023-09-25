@@ -56,14 +56,14 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2302:
 
 - Back up the Tenant App content file share.
 
-  > [!Important]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > [!IMPORTANT]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
 
 ## Pre-Update steps
 
- >[!Note] 
+ > [!NOTE] 
  > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues only.
  
  Azure App Service on Azure Stack Hub 2302 is a significant update that will take multiple hours to complete.  The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
@@ -192,7 +192,7 @@ This script must be run under the following conditions:
 
       Remove-PSSession -Session $session
 
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
@@ -259,7 +259,7 @@ This script must be run under the following conditions:
                 Write-Host Install feature on $env:COMPUTERNAME
                 Install-WindowsFeature -Name Web-CertProvider
                 
-                Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+                Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
                 Shutdown /t 5 /r /f 
             }
       }
