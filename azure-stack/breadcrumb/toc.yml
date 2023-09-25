@@ -56,3 +56,6 @@
     - name: HCI
       tocHref: /azure/
       topicHref: /azure-stack/hci/index
+    - name: HCI
+      tocHref: /troubleshoot/
+      topicHref: /azure-stack/hci/index

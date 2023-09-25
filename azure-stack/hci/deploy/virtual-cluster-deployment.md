@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI virtual deployment via Supplemental Package
 description: Describes how to perform an Azure Stack HCI virtual deployment using the Supplemental Package.
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.date: 07/11/2023
