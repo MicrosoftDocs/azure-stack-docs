@@ -248,13 +248,12 @@ This script must be run under the following conditions:
                 Write-Host Install feature on $env:COMPUTERNAME
                 Install-WindowsFeature -Name Web-CertProvider
 
+                Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
                 Shutdown /t 5 /r /f 
             }
       }
 
-      Remove-PSSession -Session $session
-
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Remove-PSSession -Session $session     
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
@@ -327,7 +326,7 @@ This script must be run under the following conditions:
 
       Remove-PSSession -Session $session
 
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
