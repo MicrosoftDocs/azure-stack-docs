@@ -397,7 +397,7 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift", which must be remediated.
 
     ```powershell
-    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryKeyword *JumboPacket -RegistryValue 4088
+    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryValue 4088
     ```
 
 1. Verify that the adapter's existing MTU (JumboPacket) value has been modified:
