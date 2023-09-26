@@ -93,7 +93,6 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
 
-
 ## Part 2: Use Microsoft Defender for Cloud (MDC)
 
 *Microsoft Defender for Cloud* is a unified infrastructure security management system that strengthens the security posture of your data centers and provides advanced threat protection across your hybrid workloads in the cloud and on premises. Defender for Cloud provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. Defender for Cloud performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
@@ -106,7 +105,7 @@ Working with Defender for Cloud through Windows Admin Center requires an Azure s
 
 After registering, access MDC in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Microsoft Defender for Cloud**, and then select **Sign into Azure**.
 
-To learn more, see [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction).
+For more information, see [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction).
 
 ## Part 3: Add advanced security
 
@@ -158,6 +157,5 @@ The following sections recommend advanced security tools and technologies to fur
 
 
 ## Next steps
-For more information on security and regulatory compliance, see also:
+For more information about security and regulatory compliance, see:
 - [Security and Assurance](/windows-server/security/security-and-assurance)
-- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
