@@ -1,49 +1,50 @@
 ---
-title: Azure Stack HCI telemetry and diagnostics extension overview (preview)
-description: This article describes the telemetry and diagnostics extension in Azure Stack HCI (preview).
+title: Azure Stack HCI telemetry and diagnostics extension
+description: This article describes the telemetry and diagnostics extension in Azure Stack HCI.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 06/07/2023
----
-# Azure Stack HCI telemetry and diagnostics extension overview (preview)
+ms.date: 08/25/2023
 
->Applies to: Azure Stack HCI, version 23H2 (preview)
+# CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
+---
+# Azure Stack HCI telemetry and diagnostics extension
+
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
 ## About the extension
 
-The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior. 
+The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in the Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior.
 
 Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
-For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci-preview).
+For more information, see [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci).
 
 ## Benefits
 
 Some of the advantages of the telemetry and diagnostics extension include:
 
-
 - **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
   
 - **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time.
 
-- **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server. 
+- **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server.
 
 - **Resource consumption controls:** Ensures that no more than 5% CPU is consumed. Control of the process is enforced via the Azure Arc extension framework.
 
 ## Telemetry and diagnostics settings
 
-You maintain control over whether you send telemetry data to Microsoft, even after you've installed and run the telemetry extension. 
+You maintain control over whether you send telemetry data to Microsoft, even after you've installed and run the telemetry extension.
 
-To access the options to send telemetry data, follow these steps: 
+To access the options to send telemetry data, follow these steps:
 
 1. Go to your Azure Stack HCI cluster resource in the Azure portal. In the left-pane, go to **Settings** and then select **Extensions**.
 
-   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the  extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
 
 2. Choose one of the following options for sharing telemetry data:
 
@@ -51,19 +52,40 @@ To access the options to send telemetry data, follow these steps:
 
    - **Basic:** Select this option to send Microsoft the minimum system data required to keep clusters current, secure, and operating properly.
 
-   - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product   improvements. We strongly recommend that you enable **enhanced diagnostics**. 
+   - **Enhanced:** Select this option to send more system data to help Microsoft identify and fix operational issues and for product improvements. We strongly recommend that you enable **enhanced diagnostics**.
 
-     Some of the benefits of enhanced telemetry data sharing include:
+     Some of the benefits of enhanced data sharing include:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - Proactive collection and upload of logs to an Azure Storage account for troubleshooting.
+     - **Proactive** log collection and upload of logs to an Azure Storage account for troubleshooting. Logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
 
-If there is intermittent or no connectivity, Microsoft captures and stores logs locally for failure analysis by customer support. Logs aren't sent to Azure.
+If your portal is unavailable and you need to enable proactive log collection, see the following:
+
+To enable proactive log collection, run this command:
+
+```powershell
+Enable-ProactiveLogCollection
+```
+
+To disable proactive log collection, run this command:
+
+```powershell
+Disable-ProactiveLogCollection
+```
+
+To check the state of your proactive log collection, run this command:
+
+```powershell
+Get-ProactiveLogCollectionState
+```
+
+> [!NOTE]
+> If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case. 
+To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case.
 
 For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
 
@@ -87,7 +109,7 @@ Don't include any confidential information or personal information in resource o
 
 ## Error handling
 
-The following section discusses the error codes, messages and suggested resolution for any issues that you may experience with the telemetry and diagnostics extension: 
+The following section discusses the error codes, messages and suggested resolution for any issues that you may experience with the telemetry and diagnostics extension:
 
 ### Error code 1
 
@@ -114,6 +136,6 @@ The following section discusses the error codes, messages and suggested resoluti
 
 **Suggested resolution:** Verify Azure Stack HCI registration.
 
-## Next steps
+## Next step
 
 Learn about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md).

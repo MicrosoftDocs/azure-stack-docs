@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/15/2023
+ms.date: 08/30/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -40,7 +40,7 @@ You can run the Environment Checker to:
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
 - Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Work with the support team more effectively in troubleshooting any advanced issues.
+- Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
 
@@ -66,7 +66,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to uninstall it before running the Deployment Tool to avoid any conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before running the Deployment Tool to avoid any conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -456,7 +456,14 @@ The following sample is the output from a failed run of the network validator. T
 
 The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
 
-In the Azure portal, each node of the Azure Stack HCI cluster is represented as an Arc resource with the name as the respective node's hostname. You can use the Arc integration validator to verify that the resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard. If the validator fails, you must select an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+You can use the Arc integration validator to verify the following:
+
+- The Arc resource group doesn’t already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
+- One or more nodes are not already Arc-enabled in a different subscription ID or resource group.
+- The specified Azure region is valid.
+- The resource group limit in the subscription is not reached.
+- The Azure Stack HCI resource count limit in the registration resource group is not reached.
+- The role assignment count limit in the subscription is not reached.
 
 ### Run the Arc integration validator
 
@@ -528,6 +535,19 @@ The information displayed on each readiness check report varies depending on the
 > The results reported by the Environment Checker tool reflect the status of your settings only at the time that you ran it. If you make changes later, for example to your Active Directory or network settings, items that passed successfully earlier can become critical issues.
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
+
+## Uninstall environment checker
+
+The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the deployment tool, to avoid any conflicts.
+
+```powershell
+Remove-Module AzStackHci.EnvironmentChecker -Force
+Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path -like "*$($_.Version)*"} | Uninstall-Module -force
+```
+
+## Troubleshoot environment validation issues
+
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Troubleshoot environment validation issues](./troubleshoot-environment-validation-issues.md).
 
 ## Next steps
 

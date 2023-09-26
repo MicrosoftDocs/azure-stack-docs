@@ -18,7 +18,7 @@ Starting in Azure Stack HCI, version 21H2, you can include GPUs in your Azure St
 GPU acceleration is provided via Discrete Device Assignment (DDA), also known as GPU pass-through, which allows you to dedicate one or more physical GPUs to a VM. Clustered VMs can take advantage of GPU acceleration, and clustering capabilities such as high availability via failover. Live migrating VMs isn't currently supported, but VMs can be automatically restarted and placed where GPU resources are available in the event of a failure.
 
 ## Prerequisites
-To get started, you’ll need an Azure Stack HCI cluster of at least two servers, running Azure Stack HCI, version 21H2. You’ll also need GPUs that are physically installed in every server of the cluster.
+To get started, you’ll need an Azure Stack HCI cluster running Azure Stack HCI, version 21H2. You’ll also need GPUs that are physically installed in every server of the cluster.
 
    >[!NOTE]
    > The Azure Stack HCI Catalog does not yet indicate GPU compatibility or certification information. Follow your manufacturer's instructions for GPU installation.

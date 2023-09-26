@@ -1,15 +1,12 @@
 ---
 title: How to deploy Azure Arc Resource Bridge on Windows Server
-description: How to deploy Azure Arc Resource Bridge on Windows Server
+description: Learn how to deploy Azure Arc Resource Bridge on Windows Server.
 author: abha
 ms.author: abha
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurecli
-ms.date: 03/29/2023
+ms.custom: devx-track-azurecli
+ms.date: 09/21/2023
 ---
-
-
 
 # How to install Arc Resource Bridge on Windows Server using the command line
 
@@ -18,9 +15,9 @@ ms.date: 03/29/2023
 Follow these steps to install Arc Resource Bridge on Windows Server using the command line. Make sure you have reviewed the [requirements for AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-requirements.md).
 
 > [!NOTE]
-> To avoid a mismatch error, it's recommended that you deploy the resources and the resource group to the same location (the same Azure region).
+> To avoid an Azure region mismatch error, it's recommended that you deploy all Azure resources such as Arc Resource Bridge, networks, AKS hybrid clusters, and the Azure resource group, to the same Azure region/location. We do not recommend running AKS host management clusters and AKS hybrid clusters managed using PowerShell/Windows Admin Center and this preview. Uninstall the GA product by running `Uninstall-Akshci` before proceeding.
 
-## Step 1: Install pre-requisite PowerShell modules
+## Step 1: Install prerequisite PowerShell modules
 
 Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
 
@@ -34,95 +31,69 @@ Exit
 Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.23
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
-## Step 2: Install AKS host management cluster or install MOC
+## Step 2: Install the Microsoft on-premises cloud to enable Azure management
 
-With the January 2023 update of the AKS hybrid cluster lifecycle management through Azure preview, you have the option to install the preview with AKS hybrid or Microsoft On-premises cloud (MOC). For more information about MOC, see [Microsoft on-premises cloud](concepts-node-networking.md#microsoft-on-premises-cloud-service).
-
-### [AKS on Azure Stack HCI](#tab/powershell)
-
-Follow this article to [install AKS host management cluster using PowerShell](kubernetes-walkthrough-powershell.md). You can skip Step 1 if you already have AKS hybrid installed on your Windows Server or Azure Stack HCI cluster.
-
-You can verify if the AKS host management cluster has been successfully deployed by running the following command on any one node in your physical cluster:
-
-```PowerShell
-Get-AksHciVersion
-```
-
-The output should indicate the version number of the October release (or later) of AKS hybrid. You can check the version numbers of AKS hybrid releases on [Github](https://github.com/Azure/aks-hybrid/releases).
-
-Expected output:
-
-```shell
-1.0.16.10113
-```
-
-If you encounter an issue installing AKS on Windows Server or Azure Stack HCI, review the [troubleshooting section](troubleshoot-overview.md). If the troubleshooting section does not help, file a [GitHub issue](https://github.com/Azure/aks-hci/issues). Make sure you attach logs (use `Get-AksHciLogs`), so that we can help you faster.
-
-### [Microsoft On-premises cloud(Moc)](#tab/shell)
-
-Run the following steps to install the Microsoft On-premises cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
+Run the following command to install the Microsoft On-premises Cloud (MOC) on your Windows Server or Azure Stack HCI cluster:
 
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
-Install-Moc
+Install-Moc -catalog "aks-hci-stable-catalogs-ext" -ring "stable" -version "1.0.20.10819"
 ```
-
----
 
 ## Step 3: Generate YAML files required for installing Arc Resource Bridge
 
-Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file for you. Before running the PowerShell command that generates these YAML files, make sure you have the following parameters ready:
+Installing Azure Arc Resource Bridge requires you to generate a YAML file. We have automated the process of creating this YAML file. Before running the PowerShell command that generates these YAML files, make sure you have the following prerequisites ready:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $subscriptionID | Your Azure Arc Resource Bridge is installed on this Azure subscription ID. |
-| $resourceGroup | A resource group in the Azure subscription listed above. Make sure your resource group is in the eastus, westeurope, southcentralus, or westus3 locations. |
-| $location | The Azure location in which your Azure Arc Resource Bridge will be deployed. Make sure this location is eastus, westeurope, southcentralus, or westus3. It's recommended you use the same location you used when creating the resource group. |
-| $resourceName | The name of your Azure Arc Resource Bridge. |
-| $workDirectory | Path to a shared cluster volume that stores the config files we create for you. We recommend you use the same **workDir** you used when installing AKS hybrid. Make sure your **workDir** full path does not contain any spaces. |
+| `$subscriptionID` | Your Azure Arc Resource Bridge is installed on this Azure subscription ID. |
+| `$resourceGroup` | A resource group in the specified Azure subscription. Make sure your resource group is in the eastus, westeurope, southcentralus, or westus3 locations. |
+| `$location` | The Azure location in which your Azure Arc Resource Bridge will be deployed. Make sure this location is eastus, westeurope, southcentralus, or westus3. It's recommended you use the same location you used when creating the resource group. |
+| `$resourceName` | The name of your Azure Arc Resource Bridge. |
+| `$workDirectory` | Path to a shared cluster volume that stores the config files we create for you. We recommend you use the same **workDir** you used when installing AKS hybrid. Make sure your **workDir** full path does not contain any spaces. |
 
-### More parameters if you're using static IP (recommended)
-
-| Parameter  |  Parameter details |
-| -----------| ------------ |
-| $vswitchname | The name of your VM switch. |
-| $vnetName | The name of your virtual network. This can be any value; for example, `$vnetName = "resourcebridge-vnet"`.|
-| $ipaddressprefix | The IP address of your subnet. |
-| $gateway | The IP address of your gateway for the subnet. |
-| $dnsservers | The IP address(es) of your DNS servers. |
-| $vmIP1, $vmIP2 | These IP addresses are the IP addresses of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that these IP addresses come from the subnet in your datacenter. Also make sure that these IP addresses are available and aren't being used anywhere else. You need two IP addresses to support Arc Resource Bridge update operations.
-| $controlPlaneIP | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Similar to `$vmIP`, make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
-
-#### More parameters if you're using DHCP
+More parameters if you're using static IP (recommended):
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $vswitchname | The name of your VM switch. |
-| $vnetName | The name of your virtual network. This can be any value; for example, `$vnetName = "resourcebridge-vnet"`. |
-| $controlPlaneIP | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
+| `$vswitchname` | The name of your VM switch. |
+| `$vnetName` | The name of your virtual network. This can be any value; for example, `$vnetName = "resourcebridge-vnet"`.|
+| `$ipaddressprefix` | The IP address of your subnet. |
+| `$gateway` | The IP address of your gateway for the subnet. |
+| `$dnsservers` | The IP address(es) of your DNS servers. |
+| `$vmIP1`, `$vmIP2` | These IP addresses are the IP addresses of the VM that is the underlying compute of Azure Arc Resource Bridge. Make sure that these IP addresses come from the subnet in your datacenter. Also make sure that these IP addresses are available and aren't being used anywhere else. You need two IP addresses to support Arc Resource Bridge update operations.
+| `$controlPlaneIP` | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Similar to `$vmIP`, make sure that this IP address comes from the subnet in your datacenter. Also make sure that this IP address is available and isn't being used anywhere else.
 
-#### More parameters if you have a proxy server in your environment
+More parameters if you're using DHCP:
+
+| Parameter  |  Parameter details |
+| -----------| ------------ |
+| `$vswitchname` | The name of your VM switch. |
+| `$vnetName` | The name of your virtual network. This can be any value; for example, `$vnetName = "resourcebridge-vnet"`. |
+| `$controlPlaneIP` | This IP address is used by the Kubernetes API server of the Azure Arc Resource Bridge. Make sure that this IP address is excluded from your DHCP scope. Also make sure that this IP address is available and isn't being used anywhere else.
+
+More parameters if you have a proxy server in your environment:
 
 | Parameter  | Required or Optional? |  Parameter details |
 | -----------| ------ | ------------ |
-| $proxyServerHTTP | Required | HTTP URL and port information. For example, `http://192.168.0.10:80` |
-| $proxyServerHTTPS | Required | HTTPS URL and port information. For example, `https://192.168.0.10:443` |
-| $proxyServerNoProxy | Required | URLs which can bypass the proxy.  |
-| $certificateFilePath | Optional | Name of the certificate file path for the proxy. For example: `C:\Users\Palomino\proxycert.crt` |
-| $proxyServerUsername | Optional | Username for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `Eleanor`.
-| $proxyServerPassword | Optional | Password for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `PleaseUseAStrongerPassword!`.
+| `$proxyServerHTTP` | Required | HTTP URL and port information; for example, `http://192.168.0.10:80`. |
+| `$proxyServerHTTPS` | Required | HTTPS URL and port information; for example, `https://192.168.0.10:443`. |
+| `$proxyServerNoProxy` | Required | URLs which can bypass the proxy.  |
+| `$certificateFilePath` | Optional | Name of the certificate file path for the proxy; for example: `C:\Users\Palomino\proxycert.crt`. |
+| `$proxyServerUsername` | Optional | Username for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `Eleanor`.
+| `$proxyServerPassword` | Optional | Password for proxy authentication. The username and password are combined into a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. For example: `PleaseUseAStrongerPassword!`.
 
-#### More parameters if you are using a vlan
+More parameters if you are using a vlan:
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $vlanid | VLAN ID |
+| `$vlanid` | VLAN ID |
 
-#### Generate YAML file for static IP-based Azure Arc Resource Bridge without VLAN
+To generate a YAML file for static IP-based Azure Arc Resource Bridge without VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -138,7 +109,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Generate YAML file for static IP based Azure Arc Resource Bridge, VLAN, and proxy settings without authentication
+To generate a YAML file for static IP based Azure Arc Resource Bridge, VLAN, and proxy settings without authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -154,7 +125,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Generate YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with certificate-based authentication
+To generate a YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with certificate-based authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -167,9 +138,10 @@ New-ArcHciAksConfigFiles -subscriptionID $subscriptionID -location $location -re
 ```powershell
 New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resourceGroup $resourceGroup -resourceName $resourceName -workDirectory $workDirectory -vnetName $vnetName -vswitchName $vswitchName -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsservers -controlPlaneIP $controlPlaneIP -k8snodeippoolstart $vmIP1 -k8snodeippoolend $vmIP2 -proxyServerHTTP $proxyServerHTTP -proxyServerHTTPS $proxyServerHTTPS -proxyServerNoProxy $proxyServerNoProxy -certificateFilePath $certificateFilePath -vlanid $vlanid 
 ```
+
 ---
 
-#### Generate YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with username/password-based authentication
+To generate a YAML file for static IP-based Azure Arc Resource Bridge, VLAN, and proxy settings with username/password-based authentication:
 
 ### [Windows Server](#tab/powershell)
 
@@ -185,7 +157,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Generate YAML file for static IP-based Azure Arc Resource Bridge with VLAN
+To generate a YAML file for static IP-based Azure Arc Resource Bridge with VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -201,7 +173,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Generate YAML file for DHCP-based Azure Arc Resource Bridge without VLAN
+To generate a YAML file for DHCP-based Azure Arc Resource Bridge without VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -217,7 +189,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Generate YAML file for DHCP-based Azure Arc Resource Bridge with VLAN
+To generate a YAML file for DHCP-based Azure Arc Resource Bridge with VLAN:
 
 ### [Windows Server](#tab/powershell)
 
@@ -233,7 +205,7 @@ New-ArcHciConfigFiles -subscriptionID $subscriptionID -location $location -resou
 
 ---
 
-#### Sample output
+Sample output:
 
 ```output
 HCI login file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir\kvatoken.tok'
@@ -243,12 +215,12 @@ Config file successfully generated in 'C:\ClusterStorage\Volume01\WorkDir'
 
 ## Step 4: Install Azure Arc Resource Bridge
 
-Once you have generated the required YAML files in step 2, you can proceed with deploying Azure Arc Resource Bridge. Make sure you sign in to any one of the nodes in your Azure Stack HCI or Windows Server cluster to run the following commands. We do not support using remote desktop.
+Once you have generated the required YAML files in step 2, you can deploy Azure Arc Resource Bridge. Make sure you sign in to any one of the nodes in your Azure Stack HCI or Windows Server cluster to run the following commands. We do not support using remote desktop.
 
 | Parameter  |  Parameter details |
 | -----------| ------------ |
-| $configfile | Pass the full path of the YAML file generated in Step 2. The default name of the YAML file is **hci-appliance.yaml**, and you can find the YAML file in the `$workDirectory` location. |
-| $appliancekubeconfig | The location in which you want to store the Azure Arc Resource Bridge **kubeconfig**. We recommend storing it in the **WorkDir** shared cluster volume location. You will need this **kubeconfig** file in later steps and to generate logs. |
+| `$configfile` | The full path of the YAML file generated in Step 2. The default name of the YAML file is **hci-appliance.yaml**, and you can find the YAML file in the `$workDirectory` location. |
+| `$appliancekubeconfig` | The location in which you want to store the Azure Arc Resource Bridge **kubeconfig**. We recommend storing it in the **WorkDir** shared cluster volume location. You will need this **kubeconfig** file in later steps and to generate logs. |
 
 Example input for $configfile and $appliancekubeconfig:
 
@@ -288,15 +260,16 @@ To install the AKS hybrid extension, run the following command:
 
 ```azurecli
 az account set -s <subscription ID>
-
-az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"   
+$release_train = "stable"
+$version = "0.1.7"
+az k8s-extension create --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default" --release-train $release_train --version $version --auto-upgrade-minor-version $false
 ```
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription listed in this section. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
-| $clusterName  |  The name of your Azure Arc Resource Bridge. |
-| $extensionName  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge. Can be any value, for example "hybridaks". |
+| `resource-group` |  A resource group in the Azure subscription listed in this section. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
+| `$clusterName`  |  The name of your Azure Arc Resource Bridge. |
+| `$extensionName`  |  Name of your AKS hybrid cluster extension to be created on top of Azure Arc Resource Bridge. This parameter can be any value; for example, **hybridaks**. |
 
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
@@ -326,11 +299,11 @@ az customlocation create --name $customLocationName --namespace "default" --host
 
 |  Parameter  |  Parameter details  |
 | ------------|  ----------------- |
-| resource-group |  A resource group in the Azure subscription listed in this section. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
-| namespace  |  Must be `default`. Do not change this value. |
-| $customLocationName  |  Name of your Windows Server or Azure Stack HCI custom location. It can be any value; for example, `$customLocationName = "hybridaks-cl"`. |
-| host-resource-id  | Resource Manager ID of the Azure Arc Resource Bridge. |
-| cluster-extension-ids   | Resource Manager ID of the AKS hybrid extension on top of Resource Bridge. |
+| `resource-group` |  A resource group in the Azure subscription listed in this section. Make sure you use the same resource group you used when deploying Arc Resource Bridge and the AKS hybrid extension. |
+| `namespace`  |  Must be `default`. Do not change this value. |
+| `$customLocationName`  |  Name of your Windows Server or Azure Stack HCI custom location. It can be any value; for example, `$customLocationName = "hybridaks-cl"`. |
+| `host-resource-id`  | Resource Manager ID of the Azure Arc Resource Bridge. |
+| `cluster-extension-ids`   | Resource Manager ID of the AKS hybrid extension on top of Resource Bridge. |
 
 Once you create the custom location on top of the Azure Arc Resource Bridge, run the following command to check if the custom location provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 

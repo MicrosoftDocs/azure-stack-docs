@@ -2,9 +2,8 @@
 title: Overview of identity providers for Azure Stack Hub 
 description: Learn about the identity providers you can use with Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: conceptual
-ms.date: 02/28/2023
+ms.date: 06/26/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
@@ -30,7 +29,7 @@ For more information about your options, which depend on your Azure Stack Hub en
 - Azure Stack Hub integrated systems: [Deployment planning decisions for Azure Stack Hub integrated systems](azure-stack-connection-models.md).
 
 > [!IMPORTANT]
-> Azure AD Graph is being deprecated, and will be retired on June 30, 2022. For more information, [see this section](#azure-ad-graph).
+> Azure AD Graph is being deprecated, and will be retired on June 30, 2023. For more information, [see this section](#azure-ad-graph).
 
 ## Common concepts for identity providers
 
@@ -205,13 +204,15 @@ Common use cases for Azure Policy include implementing governance for resource c
 
 ## Azure AD Graph
 
-Microsoft Azure has announced the deprecation of Azure AD Graph on June 30, 2020, and its retirement date of June 30, 2022. Microsoft has informed customers via email about [this change](/graph/migrate-azure-ad-graph-faq). The following section describes how this deprecation affects Azure Stack Hub.
+Microsoft Azure has announced the deprecation of Azure AD Graph on June 30, 2020, and its retirement date of June 30, 2023. Microsoft has informed customers via email about [this change](/graph/migrate-azure-ad-graph-faq). For more detailed information, see the Azure AD Graph [Retirement and Powershell Module Deprecation](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/important-azure-ad-graph-retirement-and-powershell-module/ba-p/3848270) blog.
 
-The Azure Stack Hub team is working closely with the Azure Graph team to ensure your systems continue to work beyond June 30, 2022 if necessary, to ensure a smooth transition. The most important action is to ensure you are compliant with the Azure Stack Hub servicing policy. Customers will receive an alert in the administrator portal of Azure Stack Hub and will be required to update the home directory and all onboarded guest directories.
+The following section describes how this deprecation affects Azure Stack Hub.
 
-The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require global administrator permissions in each Azure AD directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert will be raised in the admin portal directing you to complete this step using our multi-tenancy UI or PowerShell scripts (this is the same operation you perform when onboarding additional directories or resource providers; [more information can be found here](enable-multitenancy.md).)
+The Azure Stack Hub team is working closely with the Azure Graph team to ensure your systems continue to work beyond June 30, 2023 if necessary, to ensure a smooth transition. The most important action is to ensure you are compliant with the Azure Stack Hub servicing policy. Customers will receive an alert in the administrator portal of Azure Stack Hub and will be required to update the home directory and all onboarded guest directories.
 
-If you use AD FS as your identity system with Azure Stack Hub, these Graph changes will not impact your system directly. However, the latest versions of tools like Azure CLI, Azure PowerShell, etc. will require the new Graph APIs, and they will not work. Ensure that you only use the versions of these tools which are explicitly supported with your given Azure Stack Hub build. This article will be updated in the future and list supported tooling versions for Azure Stack Hub for AD FS.
+The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require global administrator permissions in each Azure AD directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert is raised in the admin portal directing you to complete this step using the multi-tenancy UI or PowerShell scripts. This is the same operation you perform when onboarding additional directories or resource providers; for more information, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
+
+If you use AD FS as your identity system with Azure Stack Hub, these Graph changes will not impact your system directly. However, the latest versions of tools such as Azure CLI, Azure PowerShell, etc., require the new Graph APIs, and they will not work. Ensure that you only use the versions of these tools which are explicitly supported with your given Azure Stack Hub build.
 
 In addition to the alert in the admin portal, we will communicate changes via the update release notes and will communicate which update package requires updating the home directory and all onboarded guest directories.
 

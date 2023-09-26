@@ -108,8 +108,15 @@ Run the following commands in a PowerShell admin window inside the Azure VM:
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --upgrade
-az extension add -n hybridaks --upgrade
+```
+
+Make sure you remove any old versions of arcappliance and hybridaks extensions, and install the following specific versions -
+```powershell
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n arcappliance 
+az extension remove -n hybridaks
+az extension add -n arcappliance --version 0.2.33
+az extension add -n hybridaks --version 0.2.2
 ```
 
 ## Step 5: Install prerequisite PowerShell repositories
@@ -128,7 +135,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.23
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
@@ -145,7 +152,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
-Install-Moc
+Install-Moc -catalog "aks-hci-stable-catalogs-ext" -ring "stable" -version "1.0.20.10819"
 curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
 $config = Get-MocConfig
 cp .\kubectl.exe $config.installationPackageDir
@@ -153,30 +160,7 @@ cp .\kubectl.exe $config.installationPackageDir
 
 Download the Linux VHD image by running the following command:
 ```PowerShell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\ArcHci\0.2.23\ArcHci.psm1' -Force
-$mocConfig = Get-MocConfig
-$k8sVersion = "1.22.11"
-$mocVersion = "1.0.16.10113"
-$imageType = "Linux"
-$imageName = Get-LegacyKubernetesGalleryImageName -imagetype $imageType -k8sVersion $k8sVersion
-$galleryImage = $null
-
-# Check if requested k8s gallery image is already present
-try {
-    $galleryImage = Get-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation
-} catch {}
-
-if ($null -ine $galleryImage) {
-    Write-Output "$imageType $k8sVersion k8s gallery image already present in MOC"
-} else {
-    $imageRelease = Get-ImageReleaseManifest -imageVersion $mocVersion -operatingSystem $imageType -k8sVersion $k8sVersion -moduleName "Moc"
-
-    Write-Output "Downloading $imageType $k8sVersion k8s gallery image"
-    $result = Get-ImageRelease -imageRelease $imageRelease -imageDir $mocConfig.imageDir -moduleName "Moc" -releaseVersion $mocVersion
-
-    Write-Output "Adding $imageType $k8sVersion k8s gallery image to MOC"
-    New-MocGalleryImage -name $imageName -location $mocConfig.cloudLocation -imagePath $result -container "MocStorageContainer"
-}
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 
@@ -258,7 +242,9 @@ You can run the commands in this step from an Azure portal shell.
 To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
 ```azurecli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"
+$release_train = "stable"
+$version = "0.1.7"
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default" --release-train $release_train --version $version --auto-upgrade-minor-version $false
 ```
 
 Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
@@ -329,7 +315,7 @@ To learn more about how to create an Azure AD group, visit [how to manage and cr
 Run the following command to create an AKS hybrid cluster using Azure CLI:
 
 ```azurecli
-az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "v1.22.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
+az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "1.24.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
 ```
 
 ### Add a Linux nodepool to the AKS hybrid cluster

@@ -1,11 +1,11 @@
 ---
 title: Azure Stack HCI virtual deployment via Supplemental Package
 description: Describes how to perform an Azure Stack HCI virtual deployment using the Supplemental Package.
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 3/08/2023
+ms.date: 07/11/2023
 ---
 
 # Deploy a virtual Azure Stack HCI cluster (preview)
@@ -50,7 +50,7 @@ Before you begin, make sure that the host system can dedicate the following reso
 
 - At least two network adapters connected to the internal network with MAC, spoofing-enabled.
 
-- At least one boot disk to [install the HCI operating system](deployment-tool-install-os.md).
+- At least one boot disk to [install the Azure Stack HCI operating system](deployment-tool-install-os.md).
 
 - At least six hard disks with a maximum size of 1024 GB for Storage Spaces Direct.
 

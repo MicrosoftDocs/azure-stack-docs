@@ -74,6 +74,8 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
+  - name: 0. Download the Azure Stack HCI software
+    href: deploy/download-azure-stack-hci-software.md
   - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: 2. Create a cluster
@@ -160,7 +162,7 @@
       items:
       - name: Review prerequisites
         href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using command line (recommended)
+      - name: Set up using command line
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
@@ -172,6 +174,8 @@
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+        - name: Using sysprepped Ubuntu image
+          href: manage/virtual-machine-image-linux-sysprep.md
       - name: Create virtual networks
         href: manage/create-virtual-networks.md
     - name: Deploy Arc VMs
@@ -190,7 +194,7 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
-    - name: Protect volumes
+    - name: Encrypt and deduplicate volumes
       href: manage/volume-encryption-deduplication.md
     - name: Manage volumes
       href: manage/manage-volumes.md
@@ -230,6 +234,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: (Optional) Configure proxy settings
+      href: manage/configure-proxy-settings.md
     - name: Manage cluster registration
       href: manage/manage-cluster-registration.md
     - name: Manage clusters with Windows Admin Center
@@ -259,7 +265,9 @@
   - name: Manage SDN
     items:
     - name: Update SDN infrastructure
-      href: manage/update-sdn.md       
+      href: manage/update-sdn.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with PowerShell
@@ -280,6 +288,8 @@
         href: manage/sdn-manage-certs.md
       - name: Update Network Controller certificates
         href: manage/update-network-controller-certificates.md
+      - name: Update SDN infrastructure certificates
+        href: manage/update-sdn-infrastructure-certificates.md
       - name: Authenticate with Kerberos
         href: manage/kerberos-with-spn.md
     - name: Manage software load balancers
@@ -307,7 +317,11 @@
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage Azure Arc extensions
-    href: manage/arc-extension-management.md
+    items:
+    - name: Azure Arc extensions
+      href: manage/arc-extension-management.md
+    - name: Telemetry and diagnostics extension
+      href: concepts/telemetry-and-diagnostics-overview.md
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -316,6 +330,8 @@
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
     href: manage/troubleshoot-credssp.md
+  - name: Troubleshoot live migration
+    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#failed-to-get-the-network-address-for-the-destination-node-host2-a-cluster-network-isnt-available-for-this-operation-0x000013ab
   - name: Troubleshoot Storage Spaces Direct
     href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot storage health
@@ -402,7 +418,17 @@
   items:
   - name: What's in preview?
     items:
-    - name: 2303 release - Current
+    - name: 2306 release - Current
+      href: manage/whats-new-2306-preview.md
+    - name: 2306 updates
+      items:
+      - name: 2306.3 release
+        href: manage/whats-new-2306-3-preview.md
+      - name: 2306.2 release
+        href: manage/whats-new-2306-2-preview.md
+      - name: 2306.1 release
+        href: manage/whats-new-2306-1-preview.md
+    - name: 2303 release 
       href: manage/whats-new-2303-preview.md
     - name: 2303 updates
       items:
@@ -426,6 +452,14 @@
     items:
     - name: View known issues
       items:
+      - name: 2306.3 update release - Current
+        href: hci-known-issues-2306-3.md 
+      - name: 2306.2 update release
+        href: hci-known-issues-2306-2.md 
+      - name: 2306.1 update release
+        href: hci-known-issues-2306-1.md 
+      - name: 2306 release
+        href: hci-known-issues-2306.md 
       - name: 2303.2 update release
         href: hci-known-issues-2303-2.md 
       - name: 2303.1 update release
@@ -478,9 +512,13 @@
         href: deploy/deployment-tool-validate.md
       - name: Collect logs 
         href: manage/collect-logs.md
-      - name: Troubleshoot issues
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot environment readiness
+        href: manage/troubleshoot-environment-validation-issues.md
+      - name: Troubleshoot deployment
         href: deploy/deployment-tool-troubleshoot.md
-    - name: Update (preview)
+    - name: Update
       items:
       - name: What's the Lifecycle Manager?
         href: update/whats-the-lifecycle-manager.md
@@ -494,10 +532,12 @@
         href: update/update-troubleshooting.md
       - name: View update glossary
         href: update/glossary-lifecycle-management.md
-  - name: Version 23H2
-    items:
-    - name: Telemetry and diagnostics extension overview
-      href: concepts/telemetry-and-diagnostics-overview.md
+    - name: Manage capacity
+      items:
+      - name: Add a server
+        href: manage/add-server.md
+      - name: Repair a server
+        href: manage/repair-server.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
