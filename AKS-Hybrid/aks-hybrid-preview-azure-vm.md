@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: quickstart
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/22/2023
+ms.date: 09/26/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023
 ms.reviewer: abha
